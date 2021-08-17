@@ -24,8 +24,10 @@ class ClearQueueRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param QueueName: Queue name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :type QueueName: str
         """
-        :param QueueName: Queue name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).\n        :type QueueName: str\n        """
         self.QueueName = None
 
 
@@ -46,8 +48,10 @@ class ClearQueueResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -61,8 +65,12 @@ class ClearSubscriptionFilterTagsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicName: Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :type TopicName: str
+        :param SubscriptionName: Subscription name, which is unique in the same topic under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :type SubscriptionName: str
         """
-        :param TopicName: Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).\n        :type TopicName: str\n        :param SubscriptionName: Subscription name, which is unique in the same topic under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).\n        :type SubscriptionName: str\n        """
         self.TopicName = None
         self.SubscriptionName = None
 
@@ -85,8 +93,10 @@ class ClearSubscriptionFilterTagsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -100,8 +110,38 @@ class CreateQueueRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param QueueName: Queue name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :type QueueName: str
+        :param MaxMsgHeapNum: Maximum number of heaped messages. The value range is 1,000,000–10,000,000 during the beta test and can be 1,000,000–1,000,000,000 after the product is officially released. The default value is 10,000,000 during the beta test and will be 100,000,000 after the product is officially released.
+        :type MaxMsgHeapNum: int
+        :param PollingWaitSeconds: Long polling wait time for message reception. Value range: 0–30 seconds. Default value: 0.
+        :type PollingWaitSeconds: int
+        :param VisibilityTimeout: Message visibility timeout period. Value range: 1–43200 seconds (i.e., 12 hours). Default value: 30.
+        :type VisibilityTimeout: int
+        :param MaxMsgSize: Maximum message length. Value range: 1024–65536 bytes (i.e., 1–64 KB). Default value: 65536.
+        :type MaxMsgSize: int
+        :param MsgRetentionSeconds: Message retention period. Value range: 60–1296000 seconds (i.e., 1 minute–15 days). Default value: 345600 (i.e., 4 days).
+        :type MsgRetentionSeconds: int
+        :param RewindSeconds: Whether to enable the message rewinding feature for a queue. Value range: 0–msgRetentionSeconds, where 0 means not to enable this feature, while `msgRetentionSeconds` indicates that the maximum rewindable period is the message retention period of the queue.
+        :type RewindSeconds: int
+        :param Transaction: 1: transaction queue, 0: general queue
+        :type Transaction: int
+        :param FirstQueryInterval: First lookback interval
+        :type FirstQueryInterval: int
+        :param MaxQueryCount: Maximum number of lookbacks
+        :type MaxQueryCount: int
+        :param DeadLetterQueueName: Dead letter queue name
+        :type DeadLetterQueueName: str
+        :param Policy: Dead letter policy. 0: message has been consumed multiple times but not deleted, 1: `Time-To-Live` has elapsed
+        :type Policy: int
+        :param MaxReceiveCount: Maximum receipt times. Value range: 1–1000
+        :type MaxReceiveCount: int
+        :param MaxTimeToLive: Maximum period in seconds before an unconsumed message expires, which is required if `policy` is 1. Value range: 300–43200. This value should be smaller than `msgRetentionSeconds` (maximum message retention period)
+        :type MaxTimeToLive: int
+        :param Trace: Whether to enable message trace. true: yes, false: no. If this field is not set, the feature will not be enabled
+        :type Trace: bool
         """
-        :param QueueName: Queue name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).\n        :type QueueName: str\n        :param MaxMsgHeapNum: Maximum number of heaped messages. The value range is 1,000,000–10,000,000 during the beta test and can be 1,000,000–1,000,000,000 after the product is officially released. The default value is 10,000,000 during the beta test and will be 100,000,000 after the product is officially released.\n        :type MaxMsgHeapNum: int\n        :param PollingWaitSeconds: Long polling wait time for message reception. Value range: 0–30 seconds. Default value: 0.\n        :type PollingWaitSeconds: int\n        :param VisibilityTimeout: Message visibility timeout period. Value range: 1–43200 seconds (i.e., 12 hours). Default value: 30.\n        :type VisibilityTimeout: int\n        :param MaxMsgSize: Maximum message length. Value range: 1024–65536 bytes (i.e., 1–64 KB). Default value: 65536.\n        :type MaxMsgSize: int\n        :param MsgRetentionSeconds: Message retention period. Value range: 60–1296000 seconds (i.e., 1 minute–15 days). Default value: 345600 (i.e., 4 days).\n        :type MsgRetentionSeconds: int\n        :param RewindSeconds: Whether to enable the message rewinding feature for a queue. Value range: 0–msgRetentionSeconds, where 0 means not to enable this feature, while `msgRetentionSeconds` indicates that the maximum rewindable period is the message retention period of the queue.\n        :type RewindSeconds: int\n        :param Transaction: 1: transaction queue, 0: general queue\n        :type Transaction: int\n        :param FirstQueryInterval: First lookback interval\n        :type FirstQueryInterval: int\n        :param MaxQueryCount: Maximum number of lookbacks\n        :type MaxQueryCount: int\n        :param DeadLetterQueueName: Dead letter queue name\n        :type DeadLetterQueueName: str\n        :param Policy: Dead letter policy. 0: message has been consumed multiple times but not deleted, 1: `Time-To-Live` has elapsed\n        :type Policy: int\n        :param MaxReceiveCount: Maximum receipt times. Value range: 1–1000\n        :type MaxReceiveCount: int\n        :param MaxTimeToLive: Maximum period in seconds before an unconsumed message expires, which is required if `policy` is 1. Value range: 300–43200. This value should be smaller than `msgRetentionSeconds` (maximum message retention period)\n        :type MaxTimeToLive: int\n        :param Trace: Whether to enable message trace. true: yes, false: no. If this field is not set, the feature will not be enabled\n        :type Trace: bool\n        """
         self.QueueName = None
         self.MaxMsgHeapNum = None
         self.PollingWaitSeconds = None
@@ -150,8 +190,12 @@ class CreateQueueResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param QueueId: `queueId` of a successfully created queue
+        :type QueueId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param QueueId: `queueId` of a successfully created queue\n        :type QueueId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.QueueId = None
         self.RequestId = None
 
@@ -167,8 +211,24 @@ class CreateSubscribeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicName: Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :type TopicName: str
+        :param SubscriptionName: Subscription name, which is unique in the same topic under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :type SubscriptionName: str
+        :param Protocol: Subscription protocol. Currently, two protocols are supported: http and queue. To use the `http` protocol, you need to build your own web server to receive messages. With the `queue` protocol, messages are automatically pushed to a CMQ queue and you can pull them concurrently.
+        :type Protocol: str
+        :param Endpoint: `Endpoint` for notification receipt, which is distinguished by `Protocol`. For `http`, `Endpoint` must begin with `http://` and `host` can be a domain name or IP. For `Queue`, enter `QueueName`. Please note that currently the push service cannot push messages to a VPC; therefore, if a VPC domain name or address is entered for `Endpoint`, pushed messages will not be received. Currently, messages can be pushed only to the public network and basic network.
+        :type Endpoint: str
+        :param NotifyStrategy: CMQ push server retry policy in case an error occurs while pushing a message to `Endpoint`. Valid values: 1. BACKOFF_RETRY: backoff retry, which is to retry at a fixed interval, discard the message after a certain number of retries, and continue to push the next message; 2. EXPONENTIAL_DECAY_RETRY: exponential decay retry, which is to retry at an exponentially increasing interval, such as 1s, 2s, 4s, 8s, and so on. As a message can be retained in a topic for one day, failed messages will be discarded at most after one day of retry. Default value: EXPONENTIAL_DECAY_RETRY.
+        :type NotifyStrategy: str
+        :param FilterTag: Message body tag (used for message filtering). The number of tags cannot exceed 5, and each tag can contain up to 16 characters. It is used in conjunction with the `MsgTag` parameter of `(Batch)PublishMessage`. Rules: 1. If `FilterTag` is not set, no matter whether `MsgTag` is set, the subscription will receive all messages published to the topic; 2. If the `FilterTag` array has a value, only when at least one of the values in the array also exists in the `MsgTag` array (i.e., `FilterTag` and `MsgTag` have an intersection) can the subscription receive messages published to the topic; 3. If the `FilterTag` array has a value, but `MsgTag` is not set, then no message published to the topic will be received, which can be considered as a special case of rule 2 as `FilterTag` and `MsgTag` do not intersect in this case. The overall design idea of rules is based on the intention of the subscriber.
+        :type FilterTag: list of str
+        :param BindingKey: The number of `BindingKey` cannot exceed 5, and the length of each `BindingKey` cannot exceed 64 bytes. This field indicates the filtering policy for subscribing to and receiving messages. Each `BindingKey` can contain up to 15 `.`, i.e., up to 16 phrases.
+        :type BindingKey: list of str
+        :param NotifyContentFormat: Push content format. Valid values: 1. JSON, 2. SIMPLIFIED, i.e., the raw format. If `Protocol` is `queue`, this value must be `SIMPLIFIED`. If `Protocol` is `http`, both options are acceptable, and the default value is `JSON`.
+        :type NotifyContentFormat: str
         """
-        :param TopicName: Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).\n        :type TopicName: str\n        :param SubscriptionName: Subscription name, which is unique in the same topic under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).\n        :type SubscriptionName: str\n        :param Protocol: Subscription protocol. Currently, two protocols are supported: http and queue. To use the `http` protocol, you need to build your own web server to receive messages. With the `queue` protocol, messages are automatically pushed to a CMQ queue and you can pull them concurrently.\n        :type Protocol: str\n        :param Endpoint: `Endpoint` for notification receipt, which is distinguished by `Protocol`. For `http`, `Endpoint` must begin with `http://` and `host` can be a domain name or IP. For `Queue`, enter `QueueName`. Please note that currently the push service cannot push messages to a VPC; therefore, if a VPC domain name or address is entered for `Endpoint`, pushed messages will not be received. Currently, messages can be pushed only to the public network and basic network.\n        :type Endpoint: str\n        :param NotifyStrategy: CMQ push server retry policy in case an error occurs while pushing a message to `Endpoint`. Valid values: 1. BACKOFF_RETRY: backoff retry, which is to retry at a fixed interval, discard the message after a certain number of retries, and continue to push the next message; 2. EXPONENTIAL_DECAY_RETRY: exponential decay retry, which is to retry at an exponentially increasing interval, such as 1s, 2s, 4s, 8s, and so on. As a message can be retained in a topic for one day, failed messages will be discarded at most after one day of retry. Default value: EXPONENTIAL_DECAY_RETRY.\n        :type NotifyStrategy: str\n        :param FilterTag: Message body tag (used for message filtering). The number of tags cannot exceed 5, and each tag can contain up to 16 characters. It is used in conjunction with the `MsgTag` parameter of `(Batch)PublishMessage`. Rules: 1. If `FilterTag` is not set, no matter whether `MsgTag` is set, the subscription will receive all messages published to the topic; 2. If the `FilterTag` array has a value, only when at least one of the values in the array also exists in the `MsgTag` array (i.e., `FilterTag` and `MsgTag` have an intersection) can the subscription receive messages published to the topic; 3. If the `FilterTag` array has a value, but `MsgTag` is not set, then no message published to the topic will be received, which can be considered as a special case of rule 2 as `FilterTag` and `MsgTag` do not intersect in this case. The overall design idea of rules is based on the intention of the subscriber.\n        :type FilterTag: list of str\n        :param BindingKey: The number of `BindingKey` cannot exceed 5, and the length of each `BindingKey` cannot exceed 64 bytes. This field indicates the filtering policy for subscribing to and receiving messages. Each `BindingKey` can contain up to 15 `.`, i.e., up to 16 phrases.\n        :type BindingKey: list of str\n        :param NotifyContentFormat: Push content format. Valid values: 1. JSON, 2. SIMPLIFIED, i.e., the raw format. If `Protocol` is `queue`, this value must be `SIMPLIFIED`. If `Protocol` is `http`, both options are acceptable, and the default value is `JSON`.\n        :type NotifyContentFormat: str\n        """
         self.TopicName = None
         self.SubscriptionName = None
         self.Protocol = None
@@ -203,8 +263,12 @@ class CreateSubscribeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SubscriptionId: SubscriptionId
+        :type SubscriptionId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param SubscriptionId: SubscriptionId\n        :type SubscriptionId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.SubscriptionId = None
         self.RequestId = None
 
@@ -220,8 +284,18 @@ class CreateTopicRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicName: Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :type TopicName: str
+        :param MaxMsgSize: Maximum message length. Value range: 1024–65536 bytes (i.e., 1–64 KB). Default value: 65536.
+        :type MaxMsgSize: int
+        :param FilterType: Message match policy for a specified topic.
+        :type FilterType: int
+        :param MsgRetentionSeconds: Message retention period. Value range: 60–86400 seconds (i.e., 1 minute–1 day). Default value: 86400.
+        :type MsgRetentionSeconds: int
+        :param Trace: Whether to enable message trace. true: yes, false: no. If this field is left empty, the feature will not be enabled.
+        :type Trace: bool
         """
-        :param TopicName: Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).\n        :type TopicName: str\n        :param MaxMsgSize: Maximum message length. Value range: 1024–65536 bytes (i.e., 1–64 KB). Default value: 65536.\n        :type MaxMsgSize: int\n        :param FilterType: Message match policy for a specified topic.\n        :type FilterType: int\n        :param MsgRetentionSeconds: Message retention period. Value range: 60–86400 seconds (i.e., 1 minute–1 day). Default value: 86400.\n        :type MsgRetentionSeconds: int\n        :param Trace: Whether to enable message trace. true: yes, false: no. If this field is left empty, the feature will not be enabled.\n        :type Trace: bool\n        """
         self.TopicName = None
         self.MaxMsgSize = None
         self.FilterType = None
@@ -250,8 +324,12 @@ class CreateTopicResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicId: TopicName
+        :type TopicId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TopicId: TopicName\n        :type TopicId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TopicId = None
         self.RequestId = None
 
@@ -267,13 +345,23 @@ class DeadLetterPolicy(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeadLetterQueueName: DeadLetterQueueName
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DeadLetterQueueName: str\n        :param DeadLetterQueue: DeadLetterQueue
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DeadLetterQueue: str\n        :param Policy: Policy
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Policy: int\n        :param MaxTimeToLive: MaxTimeToLive
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type MaxTimeToLive: int\n        :param MaxReceiveCount: MaxReceiveCount
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type MaxReceiveCount: int\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DeadLetterQueueName: str
+        :param DeadLetterQueue: DeadLetterQueue
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DeadLetterQueue: str
+        :param Policy: Policy
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Policy: int
+        :param MaxTimeToLive: MaxTimeToLive
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MaxTimeToLive: int
+        :param MaxReceiveCount: MaxReceiveCount
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MaxReceiveCount: int
+        """
         self.DeadLetterQueueName = None
         self.DeadLetterQueue = None
         self.Policy = None
@@ -302,10 +390,14 @@ class DeadLetterSource(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QueueId: QueueId
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type QueueId: str\n        :param QueueName: QueueName
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type QueueName: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type QueueId: str
+        :param QueueName: QueueName
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type QueueName: str
+        """
         self.QueueId = None
         self.QueueName = None
 
@@ -328,8 +420,10 @@ class DeleteQueueRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param QueueName: Queue name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :type QueueName: str
         """
-        :param QueueName: Queue name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).\n        :type QueueName: str\n        """
         self.QueueName = None
 
 
@@ -350,8 +444,10 @@ class DeleteQueueResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -365,8 +461,12 @@ class DeleteSubscribeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicName: Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :type TopicName: str
+        :param SubscriptionName: Subscription name, which is unique in the same topic under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :type SubscriptionName: str
         """
-        :param TopicName: Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).\n        :type TopicName: str\n        :param SubscriptionName: Subscription name, which is unique in the same topic under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).\n        :type SubscriptionName: str\n        """
         self.TopicName = None
         self.SubscriptionName = None
 
@@ -389,8 +489,10 @@ class DeleteSubscribeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -404,8 +506,10 @@ class DeleteTopicRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicName: Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :type TopicName: str
         """
-        :param TopicName: Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).\n        :type TopicName: str\n        """
         self.TopicName = None
 
 
@@ -426,8 +530,10 @@ class DeleteTopicResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -441,8 +547,16 @@ class DescribeDeadLetterSourceQueuesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DeadLetterQueueName: Dead letter queue name
+        :type DeadLetterQueueName: str
+        :param Limit: Starting position of topic list to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default.
+        :type Limit: int
+        :param Offset: Number of topics to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.
+        :type Offset: int
+        :param Filters: Filters source queue name of dead letter queue. Currently, only filtering by `SourceQueueName` is supported
+        :type Filters: list of Filter
         """
-        :param DeadLetterQueueName: Dead letter queue name\n        :type DeadLetterQueueName: str\n        :param Limit: Starting position of topic list to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default.\n        :type Limit: int\n        :param Offset: Number of topics to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.\n        :type Offset: int\n        :param Filters: Filters source queue name of dead letter queue. Currently, only filtering by `SourceQueueName` is supported\n        :type Filters: list of Filter\n        """
         self.DeadLetterQueueName = None
         self.Limit = None
         self.Offset = None
@@ -474,8 +588,14 @@ class DescribeDeadLetterSourceQueuesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of eligible queues
+        :type TotalCount: int
+        :param QueueSet: Source queues of dead letter queue
+        :type QueueSet: list of DeadLetterSource
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of eligible queues\n        :type TotalCount: int\n        :param QueueSet: Source queues of dead letter queue\n        :type QueueSet: list of DeadLetterSource\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.QueueSet = None
         self.RequestId = None
@@ -498,8 +618,18 @@ class DescribeQueueDetailRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: Starting position of queue list to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default
+        :type Offset: int
+        :param Limit: Number of queues to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.
+        :type Limit: int
+        :param Filters: Filter parameter. Currently, filtering by `QueueName` is supported, and only one keyword is allowed
+        :type Filters: list of Filter
+        :param TagKey: Tag search
+        :type TagKey: str
+        :param QueueName: Exact match by `QueueName`
+        :type QueueName: str
         """
-        :param Offset: Starting position of queue list to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default\n        :type Offset: int\n        :param Limit: Number of queues to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.\n        :type Limit: int\n        :param Filters: Filter parameter. Currently, filtering by `QueueName` is supported, and only one keyword is allowed\n        :type Filters: list of Filter\n        :param TagKey: Tag search\n        :type TagKey: str\n        :param QueueName: Exact match by `QueueName`\n        :type QueueName: str\n        """
         self.Offset = None
         self.Limit = None
         self.Filters = None
@@ -533,8 +663,14 @@ class DescribeQueueDetailResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of queues
+        :type TotalCount: int
+        :param QueueSet: Queue list
+        :type QueueSet: list of QueueSet
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of queues\n        :type TotalCount: int\n        :param QueueSet: Queue list\n        :type QueueSet: list of QueueSet\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.QueueSet = None
         self.RequestId = None
@@ -557,8 +693,16 @@ class DescribeSubscriptionDetailRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicName: Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :type TopicName: str
+        :param Offset: Starting position of topic list to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default
+        :type Offset: int
+        :param Limit: Number of topics to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.
+        :type Limit: int
+        :param Filters: Filter parameter. Currently, only filtering by `SubscriptionName` is supported, and only one keyword is allowed.
+        :type Filters: list of Filter
         """
-        :param TopicName: Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).\n        :type TopicName: str\n        :param Offset: Starting position of topic list to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default\n        :type Offset: int\n        :param Limit: Number of topics to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.\n        :type Limit: int\n        :param Filters: Filter parameter. Currently, only filtering by `SubscriptionName` is supported, and only one keyword is allowed.\n        :type Filters: list of Filter\n        """
         self.TopicName = None
         self.Offset = None
         self.Limit = None
@@ -590,9 +734,15 @@ class DescribeSubscriptionDetailResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number
+        :type TotalCount: int
+        :param SubscriptionSet: Subscription attribute set
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SubscriptionSet: list of Subscription
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number\n        :type TotalCount: int\n        :param SubscriptionSet: Subscription attribute set
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type SubscriptionSet: list of Subscription\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.SubscriptionSet = None
         self.RequestId = None
@@ -615,8 +765,18 @@ class DescribeTopicDetailRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: Starting position of queue list to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default.
+        :type Offset: int
+        :param Limit: Number of queues to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.
+        :type Limit: int
+        :param Filters: Currently, only filtering by `TopicName` is supported, and only one filter value can be entered
+        :type Filters: list of Filter
+        :param TagKey: Tag match
+        :type TagKey: str
+        :param TopicName: Exact match by `TopicName`
+        :type TopicName: str
         """
-        :param Offset: Starting position of queue list to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default.\n        :type Offset: int\n        :param Limit: Number of queues to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.\n        :type Limit: int\n        :param Filters: Currently, only filtering by `TopicName` is supported, and only one filter value can be entered\n        :type Filters: list of Filter\n        :param TagKey: Tag match\n        :type TagKey: str\n        :param TopicName: Exact match by `TopicName`\n        :type TopicName: str\n        """
         self.Offset = None
         self.Limit = None
         self.Filters = None
@@ -650,8 +810,14 @@ class DescribeTopicDetailResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: TotalCount
+        :type TotalCount: int
+        :param TopicSet: TopicSet
+        :type TopicSet: list of TopicSet
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: TotalCount\n        :type TotalCount: int\n        :param TopicSet: TopicSet\n        :type TopicSet: list of TopicSet\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TopicSet = None
         self.RequestId = None
@@ -674,8 +840,12 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: Filter parameter name
+        :type Name: str
+        :param Values: Value
+        :type Values: list of str
         """
-        :param Name: Filter parameter name\n        :type Name: str\n        :param Values: Value\n        :type Values: list of str\n        """
         self.Name = None
         self.Values = None
 
@@ -698,8 +868,36 @@ class ModifyQueueAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param QueueName: Queue name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :type QueueName: str
+        :param MaxMsgHeapNum: Maximum number of heaped messages. The value range is 1,000,000–10,000,000 during the beta test and can be 1,000,000–1,000,000,000 after the product is officially released. The default value is 10,000,000 during the beta test and will be 100,000,000 after the product is officially released.
+        :type MaxMsgHeapNum: int
+        :param PollingWaitSeconds: Long polling wait time for message reception. Value range: 0–30 seconds. Default value: 0.
+        :type PollingWaitSeconds: int
+        :param VisibilityTimeout: Message visibility timeout period. Value range: 1–43200 seconds (i.e., 12 hours). Default value: 30.
+        :type VisibilityTimeout: int
+        :param MaxMsgSize: Maximum message length. Value range: 1024–65536 bytes (i.e., 1–64 KB). Default value: 65536.
+        :type MaxMsgSize: int
+        :param MsgRetentionSeconds: Message retention period. Value range: 60–1296000 seconds (i.e., 1 minute–15 days). Default value: 345600 (i.e., 4 days).
+        :type MsgRetentionSeconds: int
+        :param RewindSeconds: Maximum message rewindable period. Value range: 0–msgRetentionSeconds (maximum message retention period of a queue). 0 means not to enable message rewinding.
+        :type RewindSeconds: int
+        :param FirstQueryInterval: First query time
+        :type FirstQueryInterval: int
+        :param MaxQueryCount: Maximum number of queries
+        :type MaxQueryCount: int
+        :param DeadLetterQueueName: Dead letter queue name
+        :type DeadLetterQueueName: str
+        :param MaxTimeToLive: Maximum period in seconds before an unconsumed message expires, which is required if `MaxTimeToLivepolicy` is 1. Value range: 300–43200. This value should be smaller than `MsgRetentionSeconds` (maximum message retention period)
+        :type MaxTimeToLive: int
+        :param MaxReceiveCount: Maximum number of receipts
+        :type MaxReceiveCount: int
+        :param Policy: Dead letter queue policy
+        :type Policy: int
+        :param Trace: Whether to enable message trace. true: yes, false: no. If this field is left empty, the feature will not be enabled.
+        :type Trace: bool
         """
-        :param QueueName: Queue name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).\n        :type QueueName: str\n        :param MaxMsgHeapNum: Maximum number of heaped messages. The value range is 1,000,000–10,000,000 during the beta test and can be 1,000,000–1,000,000,000 after the product is officially released. The default value is 10,000,000 during the beta test and will be 100,000,000 after the product is officially released.\n        :type MaxMsgHeapNum: int\n        :param PollingWaitSeconds: Long polling wait time for message reception. Value range: 0–30 seconds. Default value: 0.\n        :type PollingWaitSeconds: int\n        :param VisibilityTimeout: Message visibility timeout period. Value range: 1–43200 seconds (i.e., 12 hours). Default value: 30.\n        :type VisibilityTimeout: int\n        :param MaxMsgSize: Maximum message length. Value range: 1024–65536 bytes (i.e., 1–64 KB). Default value: 65536.\n        :type MaxMsgSize: int\n        :param MsgRetentionSeconds: Message retention period. Value range: 60–1296000 seconds (i.e., 1 minute–15 days). Default value: 345600 (i.e., 4 days).\n        :type MsgRetentionSeconds: int\n        :param RewindSeconds: Maximum message rewindable period. Value range: 0–msgRetentionSeconds (maximum message retention period of a queue). 0 means not to enable message rewinding.\n        :type RewindSeconds: int\n        :param FirstQueryInterval: First query time\n        :type FirstQueryInterval: int\n        :param MaxQueryCount: Maximum number of queries\n        :type MaxQueryCount: int\n        :param DeadLetterQueueName: Dead letter queue name\n        :type DeadLetterQueueName: str\n        :param MaxTimeToLive: Maximum period in seconds before an unconsumed message expires, which is required if `MaxTimeToLivepolicy` is 1. Value range: 300–43200. This value should be smaller than `MsgRetentionSeconds` (maximum message retention period)\n        :type MaxTimeToLive: int\n        :param MaxReceiveCount: Maximum number of receipts\n        :type MaxReceiveCount: int\n        :param Policy: Dead letter queue policy\n        :type Policy: int\n        :param Trace: Whether to enable message trace. true: yes, false: no. If this field is left empty, the feature will not be enabled.\n        :type Trace: bool\n        """
         self.QueueName = None
         self.MaxMsgHeapNum = None
         self.PollingWaitSeconds = None
@@ -746,8 +944,10 @@ class ModifyQueueAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -761,10 +961,22 @@ class ModifySubscriptionAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param TopicName: Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).\n        :type TopicName: str\n        :param SubscriptionName: Subscription name, which is unique in the same topic under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).\n        :type SubscriptionName: str\n        :param NotifyStrategy: CMQ push server retry policy in case an error occurs while pushing a message to `Endpoint`. Valid values:
+        r"""
+        :param TopicName: Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :type TopicName: str
+        :param SubscriptionName: Subscription name, which is unique in the same topic under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :type SubscriptionName: str
+        :param NotifyStrategy: CMQ push server retry policy in case an error occurs while pushing a message to `Endpoint`. Valid values:
 1. BACKOFF_RETRY: backoff retry, which is to retry at a fixed interval, discard the message after a certain number of retries, and continue to push the next message.
-2. EXPONENTIAL_DECAY_RETRY: exponential decay retry, which is to retry at an exponentially increasing interval, such as 1s, 2s, 4s, 8s, and so on. As a message can be retained in a topic for one day, failed messages will be discarded at most after one day of retry. Default value: EXPONENTIAL_DECAY_RETRY.\n        :type NotifyStrategy: str\n        :param NotifyContentFormat: Push content format. Valid values: 1. JSON, 2. SIMPLIFIED, i.e., the raw format. If `Protocol` is `queue`, this value must be `SIMPLIFIED`. If `Protocol` is `HTTP`, both options are acceptable, and the default value is `JSON`.\n        :type NotifyContentFormat: str\n        :param FilterTags: Message body tag (used for message filtering). The number of tags cannot exceed 5, and each tag can contain up to 16 characters. It is used in conjunction with the `MsgTag` parameter of `(Batch)PublishMessage`. Rules: 1. If `FilterTag` is not set, no matter whether `MsgTag` is set, the subscription will receive all messages published to the topic; 2. If the `FilterTag` array has a value, only when at least one of the values in the array also exists in the `MsgTag` array (i.e., `FilterTag` and `MsgTag` have an intersection) can the subscription receive messages published to the topic; 3. If the `FilterTag` array has a value, but `MsgTag` is not set, then no message published to the topic will be received, which can be considered as a special case of rule 2 as `FilterTag` and `MsgTag` do not intersect in this case. The overall design idea of rules is based on the intention of the subscriber.\n        :type FilterTags: list of str\n        :param BindingKey: The number of `BindingKey` cannot exceed 5, and the length of each `BindingKey` cannot exceed 64 bytes. This field indicates the filtering policy for subscribing to and receiving messages. Each `BindingKey` can contain up to 15 `.`, i.e., up to 16 phrases.\n        :type BindingKey: list of str\n        """
+2. EXPONENTIAL_DECAY_RETRY: exponential decay retry, which is to retry at an exponentially increasing interval, such as 1s, 2s, 4s, 8s, and so on. As a message can be retained in a topic for one day, failed messages will be discarded at most after one day of retry. Default value: EXPONENTIAL_DECAY_RETRY.
+        :type NotifyStrategy: str
+        :param NotifyContentFormat: Push content format. Valid values: 1. JSON, 2. SIMPLIFIED, i.e., the raw format. If `Protocol` is `queue`, this value must be `SIMPLIFIED`. If `Protocol` is `HTTP`, both options are acceptable, and the default value is `JSON`.
+        :type NotifyContentFormat: str
+        :param FilterTags: Message body tag (used for message filtering). The number of tags cannot exceed 5, and each tag can contain up to 16 characters. It is used in conjunction with the `MsgTag` parameter of `(Batch)PublishMessage`. Rules: 1. If `FilterTag` is not set, no matter whether `MsgTag` is set, the subscription will receive all messages published to the topic; 2. If the `FilterTag` array has a value, only when at least one of the values in the array also exists in the `MsgTag` array (i.e., `FilterTag` and `MsgTag` have an intersection) can the subscription receive messages published to the topic; 3. If the `FilterTag` array has a value, but `MsgTag` is not set, then no message published to the topic will be received, which can be considered as a special case of rule 2 as `FilterTag` and `MsgTag` do not intersect in this case. The overall design idea of rules is based on the intention of the subscriber.
+        :type FilterTags: list of str
+        :param BindingKey: The number of `BindingKey` cannot exceed 5, and the length of each `BindingKey` cannot exceed 64 bytes. This field indicates the filtering policy for subscribing to and receiving messages. Each `BindingKey` can contain up to 15 `.`, i.e., up to 16 phrases.
+        :type BindingKey: list of str
+        """
         self.TopicName = None
         self.SubscriptionName = None
         self.NotifyStrategy = None
@@ -795,8 +1007,10 @@ class ModifySubscriptionAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -810,8 +1024,16 @@ class ModifyTopicAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicName: Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :type TopicName: str
+        :param MaxMsgSize: Maximum message length. Value range: 1024–65536 bytes (i.e., 1–64 KB). Default value: 65536.
+        :type MaxMsgSize: int
+        :param MsgRetentionSeconds: Message retention period. Value range: 60–86400 seconds (i.e., 1 minute–1 day). Default value: 86400.
+        :type MsgRetentionSeconds: int
+        :param Trace: Whether to enable message trace. true: yes, false: no. If this field is left empty, the feature will not be enabled.
+        :type Trace: bool
         """
-        :param TopicName: Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).\n        :type TopicName: str\n        :param MaxMsgSize: Maximum message length. Value range: 1024–65536 bytes (i.e., 1–64 KB). Default value: 65536.\n        :type MaxMsgSize: int\n        :param MsgRetentionSeconds: Message retention period. Value range: 60–86400 seconds (i.e., 1 minute–1 day). Default value: 86400.\n        :type MsgRetentionSeconds: int\n        :param Trace: Whether to enable message trace. true: yes, false: no. If this field is left empty, the feature will not be enabled.\n        :type Trace: bool\n        """
         self.TopicName = None
         self.MaxMsgSize = None
         self.MsgRetentionSeconds = None
@@ -838,8 +1060,10 @@ class ModifyTopicAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -853,31 +1077,81 @@ class QueueSet(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param QueueId: QueueId
+        :type QueueId: str
+        :param QueueName: QueueName
+        :type QueueName: str
+        :param Qps: Qps
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Qps: int
+        :param Bps: Bps
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Bps: int
+        :param MaxDelaySeconds: MaxDelaySeconds
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MaxDelaySeconds: int
+        :param MaxMsgHeapNum: MaxMsgHeapNum
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MaxMsgHeapNum: int
+        :param PollingWaitSeconds: PollingWaitSeconds
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PollingWaitSeconds: int
+        :param MsgRetentionSeconds: MsgRetentionSeconds
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MsgRetentionSeconds: int
+        :param VisibilityTimeout: VisibilityTimeout
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type VisibilityTimeout: int
+        :param MaxMsgSize: MaxMsgSize
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MaxMsgSize: int
+        :param RewindSeconds: RewindSeconds
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RewindSeconds: int
+        :param CreateTime: CreateTime
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: int
+        :param LastModifyTime: LastModifyTime
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type LastModifyTime: int
+        :param ActiveMsgNum: ActiveMsgNum
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ActiveMsgNum: int
+        :param InactiveMsgNum: InactiveMsgNum
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type InactiveMsgNum: int
+        :param DelayMsgNum: DelayMsgNum
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DelayMsgNum: int
+        :param RewindMsgNum: RewindMsgNum
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RewindMsgNum: int
+        :param MinMsgTime: MinMsgTime
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MinMsgTime: int
+        :param Transaction: Transaction
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Transaction: bool
+        :param DeadLetterSource: DeadLetterSource
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DeadLetterSource: list of DeadLetterSource
+        :param DeadLetterPolicy: DeadLetterPolicy
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DeadLetterPolicy: :class:`tencentcloud.cmq.v20190304.models.DeadLetterPolicy`
+        :param TransactionPolicy: TransactionPolicy
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TransactionPolicy: :class:`tencentcloud.cmq.v20190304.models.TransactionPolicy`
+        :param CreateUin: Creator `uin`
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CreateUin: int
+        :param Tags: Tag
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of Tag
+        :param Trace: Message trace flag. true: enabled, false: not enabled
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Trace: bool
         """
-        :param QueueId: QueueId\n        :type QueueId: str\n        :param QueueName: QueueName\n        :type QueueName: str\n        :param Qps: Qps
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Qps: int\n        :param Bps: Bps
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Bps: int\n        :param MaxDelaySeconds: MaxDelaySeconds
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type MaxDelaySeconds: int\n        :param MaxMsgHeapNum: MaxMsgHeapNum
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type MaxMsgHeapNum: int\n        :param PollingWaitSeconds: PollingWaitSeconds
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type PollingWaitSeconds: int\n        :param MsgRetentionSeconds: MsgRetentionSeconds
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type MsgRetentionSeconds: int\n        :param VisibilityTimeout: VisibilityTimeout
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type VisibilityTimeout: int\n        :param MaxMsgSize: MaxMsgSize
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type MaxMsgSize: int\n        :param RewindSeconds: RewindSeconds
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type RewindSeconds: int\n        :param CreateTime: CreateTime
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type CreateTime: int\n        :param LastModifyTime: LastModifyTime
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type LastModifyTime: int\n        :param ActiveMsgNum: ActiveMsgNum
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ActiveMsgNum: int\n        :param InactiveMsgNum: InactiveMsgNum
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type InactiveMsgNum: int\n        :param DelayMsgNum: DelayMsgNum
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DelayMsgNum: int\n        :param RewindMsgNum: RewindMsgNum
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type RewindMsgNum: int\n        :param MinMsgTime: MinMsgTime
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type MinMsgTime: int\n        :param Transaction: Transaction
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Transaction: bool\n        :param DeadLetterSource: DeadLetterSource
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DeadLetterSource: list of DeadLetterSource\n        :param DeadLetterPolicy: DeadLetterPolicy
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DeadLetterPolicy: :class:`tencentcloud.cmq.v20190304.models.DeadLetterPolicy`\n        :param TransactionPolicy: TransactionPolicy
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TransactionPolicy: :class:`tencentcloud.cmq.v20190304.models.TransactionPolicy`\n        :param CreateUin: Creator `uin`
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type CreateUin: int\n        :param Tags: Tag
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Tags: list of Tag\n        :param Trace: Message trace flag. true: enabled, false: not enabled
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Trace: bool\n        """
         self.QueueId = None
         self.QueueName = None
         self.Qps = None
@@ -960,8 +1234,12 @@ class RewindQueueRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param QueueName: Queue name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :type QueueName: str
+        :param StartConsumeTime: After this time is set, the `(Batch)receiveMessage` API will consume the messages received after this timestamp in the order in which they are produced.
+        :type StartConsumeTime: int
         """
-        :param QueueName: Queue name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).\n        :type QueueName: str\n        :param StartConsumeTime: After this time is set, the `(Batch)receiveMessage` API will consume the messages received after this timestamp in the order in which they are produced.\n        :type StartConsumeTime: int\n        """
         self.QueueName = None
         self.StartConsumeTime = None
 
@@ -984,8 +1262,10 @@ class RewindQueueResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -999,20 +1279,44 @@ class Subscription(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubscriptionName: SubscriptionName
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type SubscriptionName: str\n        :param SubscriptionId: SubscriptionId
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type SubscriptionId: str\n        :param TopicOwner: TopicOwner
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TopicOwner: int\n        :param MsgCount: MsgCount
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type MsgCount: int\n        :param LastModifyTime: LastModifyTime
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type LastModifyTime: int\n        :param CreateTime: CreateTime
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type CreateTime: int\n        :param BindingKey: BindingKey
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type BindingKey: list of str\n        :param Endpoint: Endpoint
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Endpoint: str\n        :param FilterTags: FilterTags
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type FilterTags: list of str\n        :param Protocol: Protocol
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Protocol: str\n        :param NotifyStrategy: NotifyStrategy
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type NotifyStrategy: str\n        :param NotifyContentFormat: NotifyContentFormat
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type NotifyContentFormat: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SubscriptionName: str
+        :param SubscriptionId: SubscriptionId
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SubscriptionId: str
+        :param TopicOwner: TopicOwner
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TopicOwner: int
+        :param MsgCount: MsgCount
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MsgCount: int
+        :param LastModifyTime: LastModifyTime
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type LastModifyTime: int
+        :param CreateTime: CreateTime
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: int
+        :param BindingKey: BindingKey
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type BindingKey: list of str
+        :param Endpoint: Endpoint
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Endpoint: str
+        :param FilterTags: FilterTags
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FilterTags: list of str
+        :param Protocol: Protocol
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Protocol: str
+        :param NotifyStrategy: NotifyStrategy
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type NotifyStrategy: str
+        :param NotifyContentFormat: NotifyContentFormat
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type NotifyContentFormat: str
+        """
         self.SubscriptionName = None
         self.SubscriptionId = None
         self.TopicOwner = None
@@ -1055,10 +1359,14 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: Tag key
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TagKey: str\n        :param TagValue: Tag value
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TagValue: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TagKey: str
+        :param TagValue: Tag value
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TagValue: str
+        """
         self.TagKey = None
         self.TagValue = None
 
@@ -1081,20 +1389,44 @@ class TopicSet(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicId: TopicId
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TopicId: str\n        :param TopicName: TopicName
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TopicName: str\n        :param MsgRetentionSeconds: MsgRetentionSeconds
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type MsgRetentionSeconds: int\n        :param MaxMsgSize: MaxMsgSize
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type MaxMsgSize: int\n        :param Qps: Qps
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Qps: int\n        :param FilterType: FilterType
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type FilterType: int\n        :param CreateTime: CreateTime
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type CreateTime: int\n        :param LastModifyTime: LastModifyTime
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type LastModifyTime: int\n        :param MsgCount: MsgCount
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type MsgCount: int\n        :param CreateUin: CreateUin
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type CreateUin: int\n        :param Tags: Tags
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Tags: list of Tag\n        :param Trace: Whether to enable message trace for a topic. true: yes, false: no
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Trace: bool\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TopicId: str
+        :param TopicName: TopicName
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TopicName: str
+        :param MsgRetentionSeconds: MsgRetentionSeconds
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MsgRetentionSeconds: int
+        :param MaxMsgSize: MaxMsgSize
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MaxMsgSize: int
+        :param Qps: Qps
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Qps: int
+        :param FilterType: FilterType
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FilterType: int
+        :param CreateTime: CreateTime
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: int
+        :param LastModifyTime: LastModifyTime
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type LastModifyTime: int
+        :param MsgCount: MsgCount
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MsgCount: int
+        :param CreateUin: CreateUin
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CreateUin: int
+        :param Tags: Tags
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of Tag
+        :param Trace: Whether to enable message trace for a topic. true: yes, false: no
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Trace: bool
+        """
         self.TopicId = None
         self.TopicName = None
         self.MsgRetentionSeconds = None
@@ -1142,10 +1474,14 @@ class TransactionPolicy(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FirstQueryInterval: FirstQueryInterval
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type FirstQueryInterval: int\n        :param MaxQueryCount: MaxQueryCount
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type MaxQueryCount: int\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FirstQueryInterval: int
+        :param MaxQueryCount: MaxQueryCount
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MaxQueryCount: int
+        """
         self.FirstQueryInterval = None
         self.MaxQueryCount = None
 
@@ -1168,8 +1504,10 @@ class UnbindDeadLetterRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param QueueName: Source queue name of dead letter policy. Calling this API will clear the dead letter queue policy of this queue.
+        :type QueueName: str
         """
-        :param QueueName: Source queue name of dead letter policy. Calling this API will clear the dead letter queue policy of this queue.\n        :type QueueName: str\n        """
         self.QueueName = None
 
 
@@ -1190,8 +1528,10 @@ class UnbindDeadLetterResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 

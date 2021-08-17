@@ -24,8 +24,18 @@ class Account(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AccountName: Database account name
+        :type AccountName: str
+        :param Description: Database account description
+        :type Description: str
+        :param CreateTime: Creation time
+        :type CreateTime: str
+        :param UpdateTime: Update time
+        :type UpdateTime: str
+        :param Host: Host
+        :type Host: str
         """
-        :param AccountName: Database account name\n        :type AccountName: str\n        :param Description: Database account description\n        :type Description: str\n        :param CreateTime: Creation time\n        :type CreateTime: str\n        :param UpdateTime: Update time\n        :type UpdateTime: str\n        :param Host: Host\n        :type Host: str\n        """
         self.AccountName = None
         self.Description = None
         self.CreateTime = None
@@ -54,9 +64,33 @@ class AddInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param Cpu: Number of CPU cores
+        :type Cpu: int
+        :param Memory: Memory
+        :type Memory: int
+        :param ReadOnlyCount: Number of added read-only instances
+        :type ReadOnlyCount: int
+        :param InstanceGrpId: Instance group ID, which is used when you add an instance in an existing RO group. If this parameter is left empty, an RO group will be created.
+        :type InstanceGrpId: str
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param SubnetId: Subnet ID
+        :type SubnetId: str
+        :param Port: Port used when adding RO group
+        :type Port: int
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        :param AutoVoucher: Whether to automatically select a voucher. 1: yes; 0: no. Default value: 0
+        :type AutoVoucher: int
+        :param DbType: Database type. Valid values: 
+<li> MYSQL </li>
+        :type DbType: str
+        :param OrderSource: Order source
+        :type OrderSource: str
         """
-        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param Cpu: Number of CPU cores\n        :type Cpu: int\n        :param Memory: Memory\n        :type Memory: int\n        :param ReadOnlyCount: Number of added read-only instances\n        :type ReadOnlyCount: int\n        :param InstanceGrpId: Instance group ID, which is used when you add an instance in an existing RO group. If this parameter is left empty, an RO group will be created.\n        :type InstanceGrpId: str\n        :param VpcId: VPC ID\n        :type VpcId: str\n        :param SubnetId: Subnet ID\n        :type SubnetId: str\n        :param Port: Port used when adding RO group\n        :type Port: int\n        :param InstanceName: Instance name\n        :type InstanceName: str\n        :param AutoVoucher: Whether to automatically select a voucher. 1: yes; 0: no. Default value: 0\n        :type AutoVoucher: int\n        :param DbType: Database type. Valid values: 
-<li> MYSQL </li>\n        :type DbType: str\n        :param OrderSource: Order source\n        :type OrderSource: str\n        """
         self.ClusterId = None
         self.Cpu = None
         self.Memory = None
@@ -99,12 +133,22 @@ class AddInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TranId: Freezing transaction. One freezing transaction ID is generated each time an instance is added.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TranId: str\n        :param DealNames: Pay-as-You-Go order ID.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DealNames: list of str\n        :param ResourceIds: List of IDs of delivered resources
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ResourceIds: list of str\n        :param BigDealIds: Big order ID.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type BigDealIds: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TranId: str
+        :param DealNames: Pay-as-You-Go order ID.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DealNames: list of str
+        :param ResourceIds: List of IDs of delivered resources
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ResourceIds: list of str
+        :param BigDealIds: Big order ID.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type BigDealIds: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.TranId = None
         self.DealNames = None
         self.ResourceIds = None
@@ -126,8 +170,12 @@ class Addr(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IP: IP
+        :type IP: str
+        :param Port: Port
+        :type Port: int
         """
-        :param IP: IP\n        :type IP: str\n        :param Port: Port\n        :type Port: int\n        """
         self.IP = None
         self.Port = None
 
@@ -150,8 +198,26 @@ class BackupFileInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SnapshotId: Snapshot file ID used for rollback
+        :type SnapshotId: int
+        :param FileName: Snapshot file name
+        :type FileName: str
+        :param FileSize: Snapshot file size
+        :type FileSize: int
+        :param StartTime: Snapshot backup start time
+        :type StartTime: str
+        :param FinishTime: Snapshot backup end time
+        :type FinishTime: str
+        :param BackupType: Backup type. snapshot: snapshot backup; timepoint: time point backup
+        :type BackupType: str
+        :param BackupMethod: Back mode. auto: auto backup; manual: manual backup
+        :type BackupMethod: str
+        :param BackupStatus: Backup file status. success: backup succeeded; fail: backup failed; creating: creating backup file; deleting: deleting backup file
+        :type BackupStatus: str
+        :param SnapshotTime: Backup file time
+        :type SnapshotTime: str
         """
-        :param SnapshotId: Snapshot file ID used for rollback\n        :type SnapshotId: int\n        :param FileName: Snapshot file name\n        :type FileName: str\n        :param FileSize: Snapshot file size\n        :type FileSize: int\n        :param StartTime: Snapshot backup start time\n        :type StartTime: str\n        :param FinishTime: Snapshot backup end time\n        :type FinishTime: str\n        :param BackupType: Backup type. snapshot: snapshot backup; timepoint: time point backup\n        :type BackupType: str\n        :param BackupMethod: Back mode. auto: auto backup; manual: manual backup\n        :type BackupMethod: str\n        :param BackupStatus: Backup file status. success: backup succeeded; fail: backup failed; creating: creating backup file; deleting: deleting backup file\n        :type BackupStatus: str\n        :param SnapshotTime: Backup file time\n        :type SnapshotTime: str\n        """
         self.SnapshotId = None
         self.FileName = None
         self.FileSize = None
@@ -188,8 +254,12 @@ class BillingResourceInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param InstanceIds: Instance ID list
+        :type InstanceIds: list of str
         """
-        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param InstanceIds: Instance ID list\n        :type InstanceIds: list of str\n        """
         self.ClusterId = None
         self.InstanceIds = None
 
@@ -212,8 +282,24 @@ class ClusterInstanceDetail(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        :param InstanceType: Engine type
+        :type InstanceType: str
+        :param InstanceStatus: Instance status
+        :type InstanceStatus: str
+        :param InstanceStatusDesc: Instance status description
+        :type InstanceStatusDesc: str
+        :param InstanceCpu: Number of CPU cores
+        :type InstanceCpu: int
+        :param InstanceMemory: Memory
+        :type InstanceMemory: int
+        :param InstanceStorage: Disk
+        :type InstanceStorage: int
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param InstanceName: Instance name\n        :type InstanceName: str\n        :param InstanceType: Engine type\n        :type InstanceType: str\n        :param InstanceStatus: Instance status\n        :type InstanceStatus: str\n        :param InstanceStatusDesc: Instance status description\n        :type InstanceStatusDesc: str\n        :param InstanceCpu: Number of CPU cores\n        :type InstanceCpu: int\n        :param InstanceMemory: Memory\n        :type InstanceMemory: int\n        :param InstanceStorage: Disk\n        :type InstanceStorage: int\n        """
         self.InstanceId = None
         self.InstanceName = None
         self.InstanceType = None
@@ -248,25 +334,93 @@ class CreateClustersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Zone: AZ\n        :type Zone: str\n        :param VpcId: VPC ID\n        :type VpcId: str\n        :param SubnetId: Subnet ID\n        :type SubnetId: str\n        :param DbType: Database type. Valid values: 
-<li> MYSQL </li>\n        :type DbType: str\n        :param DbVersion: Database version. Valid values: 
-<li> Valid values for `MYSQL`: 5.7 </li>\n        :type DbVersion: str\n        :param ProjectId: Project ID\n        :type ProjectId: int\n        :param Cpu: Number of CPU cores of normal instance\n        :type Cpu: int\n        :param Memory: Memory of a non-serverless instance in GB\n        :type Memory: int\n        :param Storage: Storage capacity in GB\n        :type Storage: int\n        :param ClusterName: Cluster name\n        :type ClusterName: str\n        :param AdminPassword: Account password (it must contain 8-64 characters in at least three of the following four types: uppercase letters, lowercase letters, digits, and symbols (~!@#$%^&*_-+=`|\(){}[]:;'<>,.?/).)\n        :type AdminPassword: str\n        :param Port: Port. Default value: 5432\n        :type Port: int\n        :param PayMode: Billing mode. 0: pay-as-you-go; 1: monthly subscription. Default value: 0\n        :type PayMode: int\n        :param Count: Number of purchased items. Currently, only 1 can be passed in. If this parameter is left empty, 1 will be used by default.\n        :type Count: int\n        :param RollbackStrategy: Rollback type:
+        r"""
+        :param Zone: AZ
+        :type Zone: str
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param SubnetId: Subnet ID
+        :type SubnetId: str
+        :param DbType: Database type. Valid values: 
+<li> MYSQL </li>
+        :type DbType: str
+        :param DbVersion: Database version. Valid values: 
+<li> Valid values for `MYSQL`: 5.7 </li>
+        :type DbVersion: str
+        :param ProjectId: Project ID
+        :type ProjectId: int
+        :param Cpu: Number of CPU cores of normal instance
+        :type Cpu: int
+        :param Memory: Memory of a non-serverless instance in GB
+        :type Memory: int
+        :param Storage: Storage capacity in GB
+        :type Storage: int
+        :param ClusterName: Cluster name
+        :type ClusterName: str
+        :param AdminPassword: Account password (it must contain 8-64 characters in at least three of the following four types: uppercase letters, lowercase letters, digits, and symbols (~!@#$%^&*_-+=`|\(){}[]:;'<>,.?/).)
+        :type AdminPassword: str
+        :param Port: Port. Default value: 5432
+        :type Port: int
+        :param PayMode: Billing mode. 0: pay-as-you-go; 1: monthly subscription. Default value: 0
+        :type PayMode: int
+        :param Count: Number of purchased items. Currently, only 1 can be passed in. If this parameter is left empty, 1 will be used by default.
+        :type Count: int
+        :param RollbackStrategy: Rollback type:
 noneRollback: no rollback
 snapRollback: rollback by snapshot
-timeRollback: rollback by time point\n        :type RollbackStrategy: str\n        :param RollbackId: `snapshotId` for snapshot rollback or `queryId` for time point rollback. 0 indicates to determine whether the time point is valid\n        :type RollbackId: int\n        :param OriginalClusterId: Pass in the source cluster ID during rollback to find the source `poolId`\n        :type OriginalClusterId: str\n        :param ExpectTime: Specified time for time point rollback or snapshot time for snapshot rollback\n        :type ExpectTime: str\n        :param ExpectTimeThresh: Specified allowed time range for time point rollback\n        :type ExpectTimeThresh: int\n        :param StorageLimit: The maximum storage of a non-serverless instance in GB
-If `DbType` is `MYSQL` and the storage billing mode is prepaid, the parameter value cannot exceed the maximum storage corresponding to the CPU and memory specifications.\n        :type StorageLimit: int\n        :param InstanceCount: Number of instances\n        :type InstanceCount: int\n        :param TimeSpan: Purchase duration of monthly subscription plan\n        :type TimeSpan: int\n        :param TimeUnit: Purchase duration unit of monthly subscription plan\n        :type TimeUnit: str\n        :param AutoRenewFlag: Whether auto-renewal is enabled for monthly subscription plan\n        :type AutoRenewFlag: int\n        :param AutoVoucher: Whether to automatically select a voucher. 1: yes; 0: no. Default value: 0\n        :type AutoVoucher: int\n        :param HaCount: Number of instances (this parameter has been disused and is retained only for compatibility with existing instances)\n        :type HaCount: int\n        :param OrderSource: Order source\n        :type OrderSource: str\n        :param ResourceTags: Array of tags to be bound to the created cluster\n        :type ResourceTags: list of Tag\n        :param DbMode: Database type
+timeRollback: rollback by time point
+        :type RollbackStrategy: str
+        :param RollbackId: `snapshotId` for snapshot rollback or `queryId` for time point rollback. 0 indicates to determine whether the time point is valid
+        :type RollbackId: int
+        :param OriginalClusterId: Pass in the source cluster ID during rollback to find the source `poolId`
+        :type OriginalClusterId: str
+        :param ExpectTime: Specified time for time point rollback or snapshot time for snapshot rollback
+        :type ExpectTime: str
+        :param ExpectTimeThresh: Specified allowed time range for time point rollback
+        :type ExpectTimeThresh: int
+        :param StorageLimit: The maximum storage of a non-serverless instance in GB
+If `DbType` is `MYSQL` and the storage billing mode is prepaid, the parameter value cannot exceed the maximum storage corresponding to the CPU and memory specifications.
+        :type StorageLimit: int
+        :param InstanceCount: Number of instances
+        :type InstanceCount: int
+        :param TimeSpan: Purchase duration of monthly subscription plan
+        :type TimeSpan: int
+        :param TimeUnit: Purchase duration unit of monthly subscription plan
+        :type TimeUnit: str
+        :param AutoRenewFlag: Whether auto-renewal is enabled for monthly subscription plan
+        :type AutoRenewFlag: int
+        :param AutoVoucher: Whether to automatically select a voucher. 1: yes; 0: no. Default value: 0
+        :type AutoVoucher: int
+        :param HaCount: Number of instances (this parameter has been disused and is retained only for compatibility with existing instances)
+        :type HaCount: int
+        :param OrderSource: Order source
+        :type OrderSource: str
+        :param ResourceTags: Array of tags to be bound to the created cluster
+        :type ResourceTags: list of Tag
+        :param DbMode: Database type
 Valid values when `DbType` is `MYSQL` (default value: NORMAL):
 <li>NORMAL</li>
-<li>SERVERLESS</li>\n        :type DbMode: str\n        :param MinCpu: This parameter is required if `DbMode` is `SERVERLESS`
-Minimum number of CPU cores. For the value range, please see the returned result of `DescribeServerlessInstanceSpecs`\n        :type MinCpu: float\n        :param MaxCpu: This parameter is required if `DbMode` is `SERVERLESS`:
-Maximum number of CPU cores. For the value range, please see the returned result of `DescribeServerlessInstanceSpecs`\n        :type MaxCpu: float\n        :param AutoPause: This parameter specifies whether the cluster will be automatically paused if `DbMode` is `SERVERLESS`. Valid values:
+<li>SERVERLESS</li>
+        :type DbMode: str
+        :param MinCpu: This parameter is required if `DbMode` is `SERVERLESS`
+Minimum number of CPU cores. For the value range, please see the returned result of `DescribeServerlessInstanceSpecs`
+        :type MinCpu: float
+        :param MaxCpu: This parameter is required if `DbMode` is `SERVERLESS`:
+Maximum number of CPU cores. For the value range, please see the returned result of `DescribeServerlessInstanceSpecs`
+        :type MaxCpu: float
+        :param AutoPause: This parameter specifies whether the cluster will be automatically paused if `DbMode` is `SERVERLESS`. Valid values:
 <li>yes</li>
 <li>no</li>
-Default value: yes\n        :type AutoPause: str\n        :param AutoPauseDelay: This parameter specifies the delay for automatic cluster pause in seconds if `DbMode` is `SERVERLESS`. Value range: [600,691200]
-Default value: 600\n        :type AutoPauseDelay: int\n        :param StoragePayMode: The billing mode of cluster storage. Valid values: `0` (postpaid), `1` (prepaid). Default value: `0`.
+Default value: yes
+        :type AutoPause: str
+        :param AutoPauseDelay: This parameter specifies the delay for automatic cluster pause in seconds if `DbMode` is `SERVERLESS`. Value range: [600,691200]
+Default value: 600
+        :type AutoPauseDelay: int
+        :param StoragePayMode: The billing mode of cluster storage. Valid values: `0` (postpaid), `1` (prepaid). Default value: `0`.
 If `DbType` is `MYSQL` and the billing mode of cluster compute is pay-as-you-go (or the `DbMode` is `SERVERLESS`), the billing mode of cluster storage must be postpaid.
-Clusters with storage billed in prepaid mode cannot be cloned or rolled back.\n        :type StoragePayMode: int\n        """
+Clusters with storage billed in prepaid mode cannot be cloned or rolled back.
+        :type StoragePayMode: int
+        """
         self.Zone = None
         self.VpcId = None
         self.SubnetId = None
@@ -358,13 +512,25 @@ class CreateClustersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TranId: Freezing transaction ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TranId: str\n        :param DealNames: Order ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DealNames: list of str\n        :param ResourceIds: List of resource IDs (this parameter may not be returned in case of asynchronous delivery. We strongly recommend you call the `DescribeResourcesByDealName` API with the `dealNames` field to get the IDs of asynchronously delivered resources)
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ResourceIds: list of str\n        :param ClusterIds: List of cluster IDs (this parameter may not be returned in case of asynchronous delivery. We strongly recommend you call the `DescribeResourcesByDealName` API with the `dealNames` field to get the IDs of asynchronously delivered clusters)
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ClusterIds: list of str\n        :param BigDealIds: Big order ID.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type BigDealIds: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TranId: str
+        :param DealNames: Order ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DealNames: list of str
+        :param ResourceIds: List of resource IDs (this parameter may not be returned in case of asynchronous delivery. We strongly recommend you call the `DescribeResourcesByDealName` API with the `dealNames` field to get the IDs of asynchronously delivered resources)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ResourceIds: list of str
+        :param ClusterIds: List of cluster IDs (this parameter may not be returned in case of asynchronous delivery. We strongly recommend you call the `DescribeResourcesByDealName` API with the `dealNames` field to get the IDs of asynchronously delivered clusters)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ClusterIds: list of str
+        :param BigDealIds: Big order ID.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type BigDealIds: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.TranId = None
         self.DealNames = None
         self.ResourceIds = None
@@ -388,10 +554,76 @@ class CynosdbCluster(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Status: Cluster status\n        :type Status: str\n        :param UpdateTime: Update time\n        :type UpdateTime: str\n        :param Zone: AZ\n        :type Zone: str\n        :param ClusterName: Cluster name\n        :type ClusterName: str\n        :param Region: Region\n        :type Region: str\n        :param DbVersion: Database version\n        :type DbVersion: str\n        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param InstanceNum: Number of instances\n        :type InstanceNum: int\n        :param Uin: User `uin`\n        :type Uin: str\n        :param DbType: Engine type\n        :type DbType: str\n        :param AppId: User `appid`\n        :type AppId: int\n        :param StatusDesc: Cluster status description\n        :type StatusDesc: str\n        :param CreateTime: Cluster creation time\n        :type CreateTime: str\n        :param PayMode: Billing mode. 0: pay-as-you-go; 1: monthly subscription\n        :type PayMode: int\n        :param PeriodEndTime: End time\n        :type PeriodEndTime: str\n        :param Vip: Cluster read-write VIP\n        :type Vip: str\n        :param Vport: Cluster read-write vport\n        :type Vport: int\n        :param ProjectID: Project ID\n        :type ProjectID: int\n        :param VpcId: VPC ID\n        :type VpcId: str\n        :param SubnetId: Subnet ID\n        :type SubnetId: str\n        :param CynosVersion: TDSQL-C kernel version\n        :type CynosVersion: str\n        :param StorageLimit: Storage capacity\n        :type StorageLimit: int\n        :param RenewFlag: Renewal flag\n        :type RenewFlag: int\n        :param ProcessingTask: Task in progress\n        :type ProcessingTask: str\n        :param Tasks: Array of tasks in cluster\n        :type Tasks: list of ObjectTask\n        :param ResourceTags: Array of tags bound to cluster\n        :type ResourceTags: list of Tag\n        :param DbMode: Database type (`NORMAL` or `SERVERLESS`)\n        :type DbMode: str\n        :param ServerlessStatus: Serverless cluster status when the database type is `SERVERLESS`. Valid values:
+        r"""
+        :param Status: Cluster status
+        :type Status: str
+        :param UpdateTime: Update time
+        :type UpdateTime: str
+        :param Zone: AZ
+        :type Zone: str
+        :param ClusterName: Cluster name
+        :type ClusterName: str
+        :param Region: Region
+        :type Region: str
+        :param DbVersion: Database version
+        :type DbVersion: str
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param InstanceNum: Number of instances
+        :type InstanceNum: int
+        :param Uin: User `uin`
+        :type Uin: str
+        :param DbType: Engine type
+        :type DbType: str
+        :param AppId: User `appid`
+        :type AppId: int
+        :param StatusDesc: Cluster status description
+        :type StatusDesc: str
+        :param CreateTime: Cluster creation time
+        :type CreateTime: str
+        :param PayMode: Billing mode. 0: pay-as-you-go; 1: monthly subscription
+        :type PayMode: int
+        :param PeriodEndTime: End time
+        :type PeriodEndTime: str
+        :param Vip: Cluster read-write VIP
+        :type Vip: str
+        :param Vport: Cluster read-write vport
+        :type Vport: int
+        :param ProjectID: Project ID
+        :type ProjectID: int
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param SubnetId: Subnet ID
+        :type SubnetId: str
+        :param CynosVersion: TDSQL-C kernel version
+        :type CynosVersion: str
+        :param StorageLimit: Storage capacity
+        :type StorageLimit: int
+        :param RenewFlag: Renewal flag
+        :type RenewFlag: int
+        :param ProcessingTask: Task in progress
+        :type ProcessingTask: str
+        :param Tasks: Array of tasks in cluster
+        :type Tasks: list of ObjectTask
+        :param ResourceTags: Array of tags bound to cluster
+        :type ResourceTags: list of Tag
+        :param DbMode: Database type (`NORMAL` or `SERVERLESS`)
+        :type DbMode: str
+        :param ServerlessStatus: Serverless cluster status when the database type is `SERVERLESS`. Valid values:
 resume
-pause\n        :type ServerlessStatus: str\n        :param Storage: Prepaid cluster storage\n        :type Storage: int\n        :param StorageId: Cluster storage ID used in prepaid storage modification\n        :type StorageId: str\n        :param StoragePayMode: Billing mode of cluster storage. Valid values: `0` (postpaid), `1` (prepaid)\n        :type StoragePayMode: int\n        :param MinStorageSize: The minimum storage corresponding to the compute specifications of the cluster\n        :type MinStorageSize: int\n        :param MaxStorageSize: The maximum storage corresponding to the compute specifications of the cluster\n        :type MaxStorageSize: int\n        """
+pause
+        :type ServerlessStatus: str
+        :param Storage: Prepaid cluster storage
+        :type Storage: int
+        :param StorageId: Cluster storage ID used in prepaid storage modification
+        :type StorageId: str
+        :param StoragePayMode: Billing mode of cluster storage. Valid values: `0` (postpaid), `1` (prepaid)
+        :type StoragePayMode: int
+        :param MinStorageSize: The minimum storage corresponding to the compute specifications of the cluster
+        :type MinStorageSize: int
+        :param MaxStorageSize: The maximum storage corresponding to the compute specifications of the cluster
+        :type MaxStorageSize: int
+        """
         self.Status = None
         self.UpdateTime = None
         self.Zone = None
@@ -486,12 +718,60 @@ class CynosdbClusterDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param ClusterName: Cluster name\n        :type ClusterName: str\n        :param Region: Region\n        :type Region: str\n        :param Status: Status\n        :type Status: str\n        :param StatusDesc: Status description\n        :type StatusDesc: str\n        :param VpcName: VPC name\n        :type VpcName: str\n        :param VpcId: Unique VPC ID\n        :type VpcId: str\n        :param SubnetName: Subnet name\n        :type SubnetName: str\n        :param SubnetId: Subnet ID\n        :type SubnetId: str\n        :param Charset: Character set\n        :type Charset: str\n        :param CreateTime: Creation time\n        :type CreateTime: str\n        :param DbType: Database type\n        :type DbType: str\n        :param DbVersion: Database version\n        :type DbVersion: str\n        :param UsedStorage: Used capacity\n        :type UsedStorage: int\n        :param RoAddr: vport for read/write separation\n        :type RoAddr: list of Addr\n        :param InstanceSet: Instance information\n        :type InstanceSet: list of ClusterInstanceDetail\n        :param PayMode: Billing mode\n        :type PayMode: int\n        :param PeriodEndTime: Expiration time\n        :type PeriodEndTime: str\n        :param Vip: VIP\n        :type Vip: str\n        :param Vport: vport\n        :type Vport: int\n        :param ProjectID: Project ID\n        :type ProjectID: int\n        :param Zone: AZ\n        :type Zone: str\n        :param ResourceTags: Array of tags bound to instance\n        :type ResourceTags: list of Tag\n        :param ServerlessStatus: Serverless cluster status when the database type is `SERVERLESS`. Valid values:
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param ClusterName: Cluster name
+        :type ClusterName: str
+        :param Region: Region
+        :type Region: str
+        :param Status: Status
+        :type Status: str
+        :param StatusDesc: Status description
+        :type StatusDesc: str
+        :param VpcName: VPC name
+        :type VpcName: str
+        :param VpcId: Unique VPC ID
+        :type VpcId: str
+        :param SubnetName: Subnet name
+        :type SubnetName: str
+        :param SubnetId: Subnet ID
+        :type SubnetId: str
+        :param Charset: Character set
+        :type Charset: str
+        :param CreateTime: Creation time
+        :type CreateTime: str
+        :param DbType: Database type
+        :type DbType: str
+        :param DbVersion: Database version
+        :type DbVersion: str
+        :param UsedStorage: Used capacity
+        :type UsedStorage: int
+        :param RoAddr: vport for read/write separation
+        :type RoAddr: list of Addr
+        :param InstanceSet: Instance information
+        :type InstanceSet: list of ClusterInstanceDetail
+        :param PayMode: Billing mode
+        :type PayMode: int
+        :param PeriodEndTime: Expiration time
+        :type PeriodEndTime: str
+        :param Vip: VIP
+        :type Vip: str
+        :param Vport: vport
+        :type Vport: int
+        :param ProjectID: Project ID
+        :type ProjectID: int
+        :param Zone: AZ
+        :type Zone: str
+        :param ResourceTags: Array of tags bound to instance
+        :type ResourceTags: list of Tag
+        :param ServerlessStatus: Serverless cluster status when the database type is `SERVERLESS`. Valid values:
 resume
 resuming
 pause
-pausing\n        :type ServerlessStatus: str\n        """
+pausing
+        :type ServerlessStatus: str
+        """
         self.ClusterId = None
         self.ClusterName = None
         self.Region = None
@@ -573,12 +853,96 @@ class CynosdbInstance(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Uin: User `Uin`\n        :type Uin: str\n        :param AppId: User `AppId`\n        :type AppId: int\n        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param ClusterName: Cluster name\n        :type ClusterName: str\n        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param InstanceName: Instance name\n        :type InstanceName: str\n        :param ProjectId: Project ID\n        :type ProjectId: int\n        :param Region: Region\n        :type Region: str\n        :param Zone: AZ\n        :type Zone: str\n        :param Status: Instance status\n        :type Status: str\n        :param StatusDesc: Instance status description\n        :type StatusDesc: str\n        :param DbType: Database type\n        :type DbType: str\n        :param DbVersion: Database version\n        :type DbVersion: str\n        :param Cpu: Number of CPU cores\n        :type Cpu: int\n        :param Memory: Memory in GB\n        :type Memory: int\n        :param Storage: Storage capacity in GB\n        :type Storage: int\n        :param InstanceType: Instance type\n        :type InstanceType: str\n        :param InstanceRole: Current instance role\n        :type InstanceRole: str\n        :param UpdateTime: Update time\n        :type UpdateTime: str\n        :param CreateTime: Creation time\n        :type CreateTime: str\n        :param VpcId: VPC ID\n        :type VpcId: str\n        :param SubnetId: Subnet ID\n        :type SubnetId: str\n        :param Vip: Private IP of instance\n        :type Vip: str\n        :param Vport: Private port of instance\n        :type Vport: int\n        :param PayMode: Billing mode\n        :type PayMode: int\n        :param PeriodEndTime: Instance expiration time\n        :type PeriodEndTime: str\n        :param DestroyDeadlineText: Termination deadline\n        :type DestroyDeadlineText: str\n        :param IsolateTime: Isolation time\n        :type IsolateTime: str\n        :param NetType: Network type\n        :type NetType: int\n        :param WanDomain: Public domain name\n        :type WanDomain: str\n        :param WanIP: Public IP\n        :type WanIP: str\n        :param WanPort: Public port\n        :type WanPort: int\n        :param WanStatus: Public network status\n        :type WanStatus: str\n        :param DestroyTime: Instance termination time\n        :type DestroyTime: str\n        :param CynosVersion: TDSQL-C kernel version\n        :type CynosVersion: str\n        :param ProcessingTask: Task in progress\n        :type ProcessingTask: str\n        :param RenewFlag: Renewal flag\n        :type RenewFlag: int\n        :param MinCpu: Minimum number of CPU cores for serverless instance\n        :type MinCpu: float\n        :param MaxCpu: Maximum number of CPU cores for serverless instance\n        :type MaxCpu: float\n        :param ServerlessStatus: Serverless instance status. Valid values:
+        r"""
+        :param Uin: User `Uin`
+        :type Uin: str
+        :param AppId: User `AppId`
+        :type AppId: int
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param ClusterName: Cluster name
+        :type ClusterName: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        :param ProjectId: Project ID
+        :type ProjectId: int
+        :param Region: Region
+        :type Region: str
+        :param Zone: AZ
+        :type Zone: str
+        :param Status: Instance status
+        :type Status: str
+        :param StatusDesc: Instance status description
+        :type StatusDesc: str
+        :param DbType: Database type
+        :type DbType: str
+        :param DbVersion: Database version
+        :type DbVersion: str
+        :param Cpu: Number of CPU cores
+        :type Cpu: int
+        :param Memory: Memory in GB
+        :type Memory: int
+        :param Storage: Storage capacity in GB
+        :type Storage: int
+        :param InstanceType: Instance type
+        :type InstanceType: str
+        :param InstanceRole: Current instance role
+        :type InstanceRole: str
+        :param UpdateTime: Update time
+        :type UpdateTime: str
+        :param CreateTime: Creation time
+        :type CreateTime: str
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param SubnetId: Subnet ID
+        :type SubnetId: str
+        :param Vip: Private IP of instance
+        :type Vip: str
+        :param Vport: Private port of instance
+        :type Vport: int
+        :param PayMode: Billing mode
+        :type PayMode: int
+        :param PeriodEndTime: Instance expiration time
+        :type PeriodEndTime: str
+        :param DestroyDeadlineText: Termination deadline
+        :type DestroyDeadlineText: str
+        :param IsolateTime: Isolation time
+        :type IsolateTime: str
+        :param NetType: Network type
+        :type NetType: int
+        :param WanDomain: Public domain name
+        :type WanDomain: str
+        :param WanIP: Public IP
+        :type WanIP: str
+        :param WanPort: Public port
+        :type WanPort: int
+        :param WanStatus: Public network status
+        :type WanStatus: str
+        :param DestroyTime: Instance termination time
+        :type DestroyTime: str
+        :param CynosVersion: TDSQL-C kernel version
+        :type CynosVersion: str
+        :param ProcessingTask: Task in progress
+        :type ProcessingTask: str
+        :param RenewFlag: Renewal flag
+        :type RenewFlag: int
+        :param MinCpu: Minimum number of CPU cores for serverless instance
+        :type MinCpu: float
+        :param MaxCpu: Maximum number of CPU cores for serverless instance
+        :type MaxCpu: float
+        :param ServerlessStatus: Serverless instance status. Valid values:
 resume
-pause\n        :type ServerlessStatus: str\n        :param StoragePayMode: Storage billing mode
-Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type StoragePayMode: int\n        :param StorageId: Prepaid storage ID
-Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type StorageId: str\n        """
+pause
+        :type ServerlessStatus: str
+        :param StoragePayMode: Storage billing mode
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type StoragePayMode: int
+        :param StorageId: Prepaid storage ID
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type StorageId: str
+        """
         self.Uin = None
         self.AppId = None
         self.ClusterId = None
@@ -681,10 +1045,78 @@ class CynosdbInstanceDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Uin: User `Uin`\n        :type Uin: str\n        :param AppId: User `AppId`\n        :type AppId: int\n        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param ClusterName: Cluster name\n        :type ClusterName: str\n        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param InstanceName: Instance name\n        :type InstanceName: str\n        :param ProjectId: Project ID\n        :type ProjectId: int\n        :param Region: Region\n        :type Region: str\n        :param Zone: AZ\n        :type Zone: str\n        :param Status: Instance status\n        :type Status: str\n        :param StatusDesc: Instance status description\n        :type StatusDesc: str\n        :param DbType: Database type\n        :type DbType: str\n        :param DbVersion: Database version\n        :type DbVersion: str\n        :param Cpu: Number of CPU cores\n        :type Cpu: int\n        :param Memory: Memory in GB\n        :type Memory: int\n        :param Storage: Storage capacity in GB\n        :type Storage: int\n        :param InstanceType: Instance type\n        :type InstanceType: str\n        :param InstanceRole: Current instance role\n        :type InstanceRole: str\n        :param UpdateTime: Update time\n        :type UpdateTime: str\n        :param CreateTime: Creation time\n        :type CreateTime: str\n        :param PayMode: Billing mode\n        :type PayMode: int\n        :param PeriodEndTime: Instance expiration time\n        :type PeriodEndTime: str\n        :param NetType: Network type\n        :type NetType: int\n        :param VpcId: VPC ID\n        :type VpcId: str\n        :param SubnetId: Subnet ID\n        :type SubnetId: str\n        :param Vip: Private IP of instance\n        :type Vip: str\n        :param Vport: Private port of instance\n        :type Vport: int\n        :param WanDomain: Public domain name of instance\n        :type WanDomain: str\n        :param Charset: Character set\n        :type Charset: str\n        :param CynosVersion: TDSQL-C kernel version\n        :type CynosVersion: str\n        :param RenewFlag: Renewal flag\n        :type RenewFlag: int\n        :param MinCpu: The minimum number of CPU cores for a serverless instance\n        :type MinCpu: float\n        :param MaxCpu: The maximum number of CPU cores for a serverless instance\n        :type MaxCpu: float\n        :param ServerlessStatus: Serverless instance status. Valid values:
+        r"""
+        :param Uin: User `Uin`
+        :type Uin: str
+        :param AppId: User `AppId`
+        :type AppId: int
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param ClusterName: Cluster name
+        :type ClusterName: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        :param ProjectId: Project ID
+        :type ProjectId: int
+        :param Region: Region
+        :type Region: str
+        :param Zone: AZ
+        :type Zone: str
+        :param Status: Instance status
+        :type Status: str
+        :param StatusDesc: Instance status description
+        :type StatusDesc: str
+        :param DbType: Database type
+        :type DbType: str
+        :param DbVersion: Database version
+        :type DbVersion: str
+        :param Cpu: Number of CPU cores
+        :type Cpu: int
+        :param Memory: Memory in GB
+        :type Memory: int
+        :param Storage: Storage capacity in GB
+        :type Storage: int
+        :param InstanceType: Instance type
+        :type InstanceType: str
+        :param InstanceRole: Current instance role
+        :type InstanceRole: str
+        :param UpdateTime: Update time
+        :type UpdateTime: str
+        :param CreateTime: Creation time
+        :type CreateTime: str
+        :param PayMode: Billing mode
+        :type PayMode: int
+        :param PeriodEndTime: Instance expiration time
+        :type PeriodEndTime: str
+        :param NetType: Network type
+        :type NetType: int
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param SubnetId: Subnet ID
+        :type SubnetId: str
+        :param Vip: Private IP of instance
+        :type Vip: str
+        :param Vport: Private port of instance
+        :type Vport: int
+        :param WanDomain: Public domain name of instance
+        :type WanDomain: str
+        :param Charset: Character set
+        :type Charset: str
+        :param CynosVersion: TDSQL-C kernel version
+        :type CynosVersion: str
+        :param RenewFlag: Renewal flag
+        :type RenewFlag: int
+        :param MinCpu: The minimum number of CPU cores for a serverless instance
+        :type MinCpu: float
+        :param MaxCpu: The maximum number of CPU cores for a serverless instance
+        :type MaxCpu: float
+        :param ServerlessStatus: Serverless instance status. Valid values:
 resume
-pause\n        :type ServerlessStatus: str\n        """
+pause
+        :type ServerlessStatus: str
+        """
         self.Uin = None
         self.AppId = None
         self.ClusterId = None
@@ -771,8 +1203,38 @@ class CynosdbInstanceGrp(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AppId: appId
+        :type AppId: int
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param CreatedTime: Creation time
+        :type CreatedTime: str
+        :param DeletedTime: Deletion time
+        :type DeletedTime: str
+        :param InstanceGrpId: Instance group ID
+        :type InstanceGrpId: str
+        :param Status: Status
+        :type Status: str
+        :param Type: Instance group type. ha: HA group; ro: RO group
+        :type Type: str
+        :param UpdatedTime: Update time
+        :type UpdatedTime: str
+        :param Vip: Private IP
+        :type Vip: str
+        :param Vport: Private port
+        :type Vport: int
+        :param WanDomain: Public domain name
+        :type WanDomain: str
+        :param WanIP: Public IP
+        :type WanIP: str
+        :param WanPort: Public port
+        :type WanPort: int
+        :param WanStatus: Public network status
+        :type WanStatus: str
+        :param InstanceSet: Information of instances contained in instance group
+        :type InstanceSet: list of CynosdbInstance
         """
-        :param AppId: appId\n        :type AppId: int\n        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param CreatedTime: Creation time\n        :type CreatedTime: str\n        :param DeletedTime: Deletion time\n        :type DeletedTime: str\n        :param InstanceGrpId: Instance group ID\n        :type InstanceGrpId: str\n        :param Status: Status\n        :type Status: str\n        :param Type: Instance group type. ha: HA group; ro: RO group\n        :type Type: str\n        :param UpdatedTime: Update time\n        :type UpdatedTime: str\n        :param Vip: Private IP\n        :type Vip: str\n        :param Vport: Private port\n        :type Vport: int\n        :param WanDomain: Public domain name\n        :type WanDomain: str\n        :param WanIP: Public IP\n        :type WanIP: str\n        :param WanPort: Public port\n        :type WanPort: int\n        :param WanStatus: Public network status\n        :type WanStatus: str\n        :param InstanceSet: Information of instances contained in instance group\n        :type InstanceSet: list of CynosdbInstance\n        """
         self.AppId = None
         self.ClusterId = None
         self.CreatedTime = None
@@ -826,9 +1288,15 @@ class DescribeAccountsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param AccountNames: List of accounts to be filtered
+        :type AccountNames: list of str
+        :param DbType: Database type. Valid values: 
+<li> MYSQL </li>
+        :type DbType: str
         """
-        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param AccountNames: List of accounts to be filtered\n        :type AccountNames: list of str\n        :param DbType: Database type. Valid values: 
-<li> MYSQL </li>\n        :type DbType: str\n        """
         self.ClusterId = None
         self.AccountNames = None
         self.DbType = None
@@ -853,8 +1321,12 @@ class DescribeAccountsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AccountSet: Database account list
+        :type AccountSet: list of Account
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param AccountSet: Database account list\n        :type AccountSet: list of Account\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.AccountSet = None
         self.RequestId = None
 
@@ -875,8 +1347,10 @@ class DescribeBackupConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
         """
-        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -897,10 +1371,22 @@ class DescribeBackupConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BackupTimeBeg: Full backup start time. Value range: [0-24*3600]. For example, 0:00 AM, 1:00 AM, and 2:00 AM are represented by 0, 3600, and 7200, respectively
+        :type BackupTimeBeg: int
+        :param BackupTimeEnd: Full backup end time. Value range: [0-24*3600]. For example, 0:00 AM, 1:00 AM, and 2:00 AM are represented by 0, 3600, and 7200, respectively
+        :type BackupTimeEnd: int
+        :param ReserveDuration: Backup retention period in seconds. Backups will be cleared after this period elapses. 7 days is represented by 3600*24*7 = 604800
+        :type ReserveDuration: int
+        :param BackupFreq: Backup frequency. It is an array of 7 elements corresponding to Monday through Sunday. full: full backup; increment: incremental backup
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type BackupFreq: list of str
+        :param BackupType: Backup mode. logic: logic backup; snapshot: snapshot backup
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type BackupType: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param BackupTimeBeg: Full backup start time. Value range: [0-24*3600]. For example, 0:00 AM, 1:00 AM, and 2:00 AM are represented by 0, 3600, and 7200, respectively\n        :type BackupTimeBeg: int\n        :param BackupTimeEnd: Full backup end time. Value range: [0-24*3600]. For example, 0:00 AM, 1:00 AM, and 2:00 AM are represented by 0, 3600, and 7200, respectively\n        :type BackupTimeEnd: int\n        :param ReserveDuration: Backup retention period in seconds. Backups will be cleared after this period elapses. 7 days is represented by 3600*24*7 = 604800\n        :type ReserveDuration: int\n        :param BackupFreq: Backup frequency. It is an array of 7 elements corresponding to Monday through Sunday. full: full backup; increment: incremental backup
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type BackupFreq: list of str\n        :param BackupType: Backup mode. logic: logic backup; snapshot: snapshot backup
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type BackupType: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.BackupTimeBeg = None
         self.BackupTimeEnd = None
         self.ReserveDuration = None
@@ -924,9 +1410,17 @@ class DescribeBackupListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param Limit: Backup file list offset
+        :type Limit: int
+        :param Offset: Backup file list start
+        :type Offset: int
+        :param DbType: Database type. Valid values: 
+<li> MYSQL </li>
+        :type DbType: str
         """
-        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param Limit: Backup file list offset\n        :type Limit: int\n        :param Offset: Backup file list start\n        :type Offset: int\n        :param DbType: Database type. Valid values: 
-<li> MYSQL </li>\n        :type DbType: str\n        """
         self.ClusterId = None
         self.Limit = None
         self.Offset = None
@@ -953,8 +1447,14 @@ class DescribeBackupListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of backup files
+        :type TotalCount: int
+        :param BackupList: Backup file list
+        :type BackupList: list of BackupFileInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of backup files\n        :type TotalCount: int\n        :param BackupList: Backup file list\n        :type BackupList: list of BackupFileInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.BackupList = None
         self.RequestId = None
@@ -977,8 +1477,10 @@ class DescribeClusterDetailRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
         """
-        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -999,8 +1501,12 @@ class DescribeClusterDetailResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Detail: Cluster details
+        :type Detail: :class:`tencentcloud.cynosdb.v20190107.models.CynosdbClusterDetail`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Detail: Cluster details\n        :type Detail: :class:`tencentcloud.cynosdb.v20190107.models.CynosdbClusterDetail`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Detail = None
         self.RequestId = None
 
@@ -1018,8 +1524,10 @@ class DescribeClusterInstanceGrpsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
         """
-        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -1040,8 +1548,14 @@ class DescribeClusterInstanceGrpsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of instance groups
+        :type TotalCount: int
+        :param InstanceGrpInfoList: Instance group list
+        :type InstanceGrpInfoList: list of CynosdbInstanceGrp
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of instance groups\n        :type TotalCount: int\n        :param InstanceGrpInfoList: Instance group list\n        :type InstanceGrpInfoList: list of CynosdbInstanceGrp\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.InstanceGrpInfoList = None
         self.RequestId = None
@@ -1064,12 +1578,24 @@ class DescribeClustersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param DbType: Engine type. Valid values: MYSQL, POSTGRESQL\n        :type DbType: str\n        :param Limit: Number of returned results. Default value: 20. Maximum value: 100\n        :type Limit: int\n        :param Offset: Record offset. Default value: 0\n        :type Offset: int\n        :param OrderBy: Sort by field. Valid values:
+        r"""
+        :param DbType: Engine type. Valid values: MYSQL, POSTGRESQL
+        :type DbType: str
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100
+        :type Limit: int
+        :param Offset: Record offset. Default value: 0
+        :type Offset: int
+        :param OrderBy: Sort by field. Valid values:
 <li> CREATETIME: creation time</li>
-<li> PERIODENDTIME: expiration time</li>\n        :type OrderBy: str\n        :param OrderByType: Sorting order. Valid values:
+<li> PERIODENDTIME: expiration time</li>
+        :type OrderBy: str
+        :param OrderByType: Sorting order. Valid values:
 <li> ASC: ascending</li>
-<li> DESC: descending</li>\n        :type OrderByType: str\n        :param Filters: Filter. If more than one filter exists, the logical relationship between these filters is `AND`.\n        :type Filters: list of QueryFilter\n        """
+<li> DESC: descending</li>
+        :type OrderByType: str
+        :param Filters: Filter. If more than one filter exists, the logical relationship between these filters is `AND`.
+        :type Filters: list of QueryFilter
+        """
         self.DbType = None
         self.Limit = None
         self.Offset = None
@@ -1105,8 +1631,14 @@ class DescribeClustersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of clusters
+        :type TotalCount: int
+        :param ClusterSet: Cluster list
+        :type ClusterSet: list of CynosdbCluster
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of clusters\n        :type TotalCount: int\n        :param ClusterSet: Cluster list\n        :type ClusterSet: list of CynosdbCluster\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ClusterSet = None
         self.RequestId = None
@@ -1129,8 +1661,10 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance group ID
+        :type InstanceId: str
         """
-        :param InstanceId: Instance group ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1151,8 +1685,12 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Groups: Security group information
+        :type Groups: list of SecurityGroup
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Groups: Security group information\n        :type Groups: list of SecurityGroup\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Groups = None
         self.RequestId = None
 
@@ -1173,8 +1711,10 @@ class DescribeInstanceDetailRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1195,8 +1735,12 @@ class DescribeInstanceDetailResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Detail: Instance details
+        :type Detail: :class:`tencentcloud.cynosdb.v20190107.models.CynosdbInstanceDetail`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Detail: Instance details\n        :type Detail: :class:`tencentcloud.cynosdb.v20190107.models.CynosdbInstanceDetail`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Detail = None
         self.RequestId = None
 
@@ -1214,9 +1758,11 @@ class DescribeInstanceSpecsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DbType: Database type. Valid values: 
-<li> MYSQL </li>\n        :type DbType: str\n        """
+<li> MYSQL </li>
+        :type DbType: str
+        """
         self.DbType = None
 
 
@@ -1237,8 +1783,12 @@ class DescribeInstanceSpecsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceSpecSet: Specification information
+        :type InstanceSpecSet: list of InstanceSpec
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param InstanceSpecSet: Specification information\n        :type InstanceSpecSet: list of InstanceSpec\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InstanceSpecSet = None
         self.RequestId = None
 
@@ -1259,12 +1809,28 @@ class DescribeInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100\n        :type Limit: int\n        :param Offset: Record offset. Default value: 0\n        :type Offset: int\n        :param OrderBy: Sort by field. Valid values:
+        r"""
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100
+        :type Limit: int
+        :param Offset: Record offset. Default value: 0
+        :type Offset: int
+        :param OrderBy: Sort by field. Valid values:
 <li> CREATETIME: creation time</li>
-<li> PERIODENDTIME: expiration time</li>\n        :type OrderBy: str\n        :param OrderByType: Sorting order. Valid values:
+<li> PERIODENDTIME: expiration time</li>
+        :type OrderBy: str
+        :param OrderByType: Sorting order. Valid values:
 <li> ASC: ascending</li>
-<li> DESC: descending</li>\n        :type OrderByType: str\n        :param Filters: Filter. If more than one filter exists, the logical relationship between these filters is `AND`.\n        :type Filters: list of QueryFilter\n        :param DbType: Engine type. Valid values: MYSQL, POSTGRESQL\n        :type DbType: str\n        :param Status: Instance status\n        :type Status: str\n        :param InstanceIds: Instance ID list\n        :type InstanceIds: list of str\n        """
+<li> DESC: descending</li>
+        :type OrderByType: str
+        :param Filters: Filter. If more than one filter exists, the logical relationship between these filters is `AND`.
+        :type Filters: list of QueryFilter
+        :param DbType: Engine type. Valid values: MYSQL, POSTGRESQL
+        :type DbType: str
+        :param Status: Instance status
+        :type Status: str
+        :param InstanceIds: Instance ID list
+        :type InstanceIds: list of str
+        """
         self.Limit = None
         self.Offset = None
         self.OrderBy = None
@@ -1304,8 +1870,14 @@ class DescribeInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of instances
+        :type TotalCount: int
+        :param InstanceSet: Instance list
+        :type InstanceSet: list of CynosdbInstance
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of instances\n        :type TotalCount: int\n        :param InstanceSet: Instance list\n        :type InstanceSet: list of CynosdbInstance\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.InstanceSet = None
         self.RequestId = None
@@ -1328,8 +1900,10 @@ class DescribeMaintainPeriodRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1350,8 +1924,16 @@ class DescribeMaintainPeriodResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MaintainWeekDays: Maintenance days of the week
+        :type MaintainWeekDays: list of str
+        :param MaintainStartTime: Maintenance start time in seconds
+        :type MaintainStartTime: int
+        :param MaintainDuration: Maintenance duration in seconds
+        :type MaintainDuration: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param MaintainWeekDays: Maintenance days of the week\n        :type MaintainWeekDays: list of str\n        :param MaintainStartTime: Maintenance start time in seconds\n        :type MaintainStartTime: int\n        :param MaintainDuration: Maintenance duration in seconds\n        :type MaintainDuration: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.MaintainWeekDays = None
         self.MaintainStartTime = None
         self.MaintainDuration = None
@@ -1371,8 +1953,10 @@ class DescribeProjectSecurityGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProjectId: Project ID
+        :type ProjectId: int
         """
-        :param ProjectId: Project ID\n        :type ProjectId: int\n        """
         self.ProjectId = None
 
 
@@ -1393,8 +1977,12 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Groups: Security group details
+        :type Groups: list of SecurityGroup
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Groups: Security group details\n        :type Groups: list of SecurityGroup\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Groups = None
         self.RequestId = None
 
@@ -1415,8 +2003,10 @@ class DescribeResourcesByDealNameRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DealName: Order ID. (If the cluster is not delivered yet, the `DescribeResourcesByDealName` API may return the `InvalidParameterValue.DealNameNotFound` error. Please call the API again until it succeeds.)
+        :type DealName: str
         """
-        :param DealName: Order ID. (If the cluster is not delivered yet, the `DescribeResourcesByDealName` API may return the `InvalidParameterValue.DealNameNotFound` error. Please call the API again until it succeeds.)\n        :type DealName: str\n        """
         self.DealName = None
 
 
@@ -1437,8 +2027,12 @@ class DescribeResourcesByDealNameResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BillingResourceInfos: Billable resource ID information array
+        :type BillingResourceInfos: list of BillingResourceInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param BillingResourceInfos: Billable resource ID information array\n        :type BillingResourceInfos: list of BillingResourceInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.BillingResourceInfos = None
         self.RequestId = None
 
@@ -1459,8 +2053,10 @@ class DescribeRollbackTimeRangeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
         """
-        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -1481,8 +2077,14 @@ class DescribeRollbackTimeRangeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TimeRangeStart: Start time point of valid rollback time range
+        :type TimeRangeStart: str
+        :param TimeRangeEnd: End time point of valid rollback time range
+        :type TimeRangeEnd: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TimeRangeStart: Start time point of valid rollback time range\n        :type TimeRangeStart: str\n        :param TimeRangeEnd: End time point of valid rollback time range\n        :type TimeRangeEnd: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TimeRangeStart = None
         self.TimeRangeEnd = None
         self.RequestId = None
@@ -1500,8 +2102,14 @@ class DescribeRollbackTimeValidityRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param ExpectTime: Expected time point to roll back to
+        :type ExpectTime: str
+        :param ExpectTimeThresh: Error tolerance range for rollback time point
+        :type ExpectTimeThresh: int
         """
-        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param ExpectTime: Expected time point to roll back to\n        :type ExpectTime: str\n        :param ExpectTimeThresh: Error tolerance range for rollback time point\n        :type ExpectTimeThresh: int\n        """
         self.ClusterId = None
         self.ExpectTime = None
         self.ExpectTimeThresh = None
@@ -1526,8 +2134,18 @@ class DescribeRollbackTimeValidityResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PoolId: Storage `poolID`
+        :type PoolId: int
+        :param QueryId: Rollback task ID, which needs to be passed in when rolling back to this time point
+        :type QueryId: int
+        :param Status: Whether the time point is valid. pass: check passed; fail: check failed
+        :type Status: str
+        :param SuggestTime: Suggested time point. This value takes effect only if `Status` is `fail`
+        :type SuggestTime: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param PoolId: Storage `poolID`\n        :type PoolId: int\n        :param QueryId: Rollback task ID, which needs to be passed in when rolling back to this time point\n        :type QueryId: int\n        :param Status: Whether the time point is valid. pass: check passed; fail: check failed\n        :type Status: str\n        :param SuggestTime: Suggested time point. This value takes effect only if `Status` is `fail`\n        :type SuggestTime: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PoolId = None
         self.QueryId = None
         self.Status = None
@@ -1549,8 +2167,16 @@ class InstanceSpec(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Cpu: Number of instance CPU cores
+        :type Cpu: int
+        :param Memory: Instance memory in GB
+        :type Memory: int
+        :param MaxStorageSize: Maximum instance storage capacity GB
+        :type MaxStorageSize: int
+        :param MinStorageSize: Minimum instance storage capacity GB
+        :type MinStorageSize: int
         """
-        :param Cpu: Number of instance CPU cores\n        :type Cpu: int\n        :param Memory: Instance memory in GB\n        :type Memory: int\n        :param MaxStorageSize: Maximum instance storage capacity GB\n        :type MaxStorageSize: int\n        :param MinStorageSize: Minimum instance storage capacity GB\n        :type MinStorageSize: int\n        """
         self.Cpu = None
         self.Memory = None
         self.MaxStorageSize = None
@@ -1577,9 +2203,13 @@ class IsolateClusterRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param DbType: Database type. Valid values: 
+<li> MYSQL </li>
+        :type DbType: str
         """
-        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param DbType: Database type. Valid values: 
-<li> MYSQL </li>\n        :type DbType: str\n        """
         self.ClusterId = None
         self.DbType = None
 
@@ -1602,10 +2232,16 @@ class IsolateClusterResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: Task flow ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type FlowId: int\n        :param DealNames: Refund order ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DealNames: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FlowId: int
+        :param DealNames: Refund order ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DealNames: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.FlowId = None
         self.DealNames = None
         self.RequestId = None
@@ -1623,9 +2259,15 @@ class IsolateInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param InstanceIdList: Instance ID array
+        :type InstanceIdList: list of str
+        :param DbType: Database type. Valid values: 
+<li> MYSQL </li>
+        :type DbType: str
         """
-        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param InstanceIdList: Instance ID array\n        :type InstanceIdList: list of str\n        :param DbType: Database type. Valid values: 
-<li> MYSQL </li>\n        :type DbType: str\n        """
         self.ClusterId = None
         self.InstanceIdList = None
         self.DbType = None
@@ -1650,9 +2292,15 @@ class IsolateInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: Task flow ID
+        :type FlowId: int
+        :param DealNames: Order ID for isolated instance (prepaid instance)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DealNames: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param FlowId: Task flow ID\n        :type FlowId: int\n        :param DealNames: Order ID for isolated instance (prepaid instance)
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DealNames: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.DealNames = None
         self.RequestId = None
@@ -1670,8 +2318,20 @@ class ModifyBackupConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param BackupTimeBeg: Full backup start time. Value range: [0-24*3600]. For example, 0:00 AM, 1:00 AM, and 2:00 AM are represented by 0, 3600, and 7200, respectively
+        :type BackupTimeBeg: int
+        :param BackupTimeEnd: Full backup start time. Value range: [0-24*3600]. For example, 0:00 AM, 1:00 AM, and 2:00 AM are represented by 0, 3600, and 7200, respectively
+        :type BackupTimeEnd: int
+        :param ReserveDuration: Backup retention period in seconds. Backups will be cleared after this period elapses. 7 days is represented by 3600*24*7 = 604800
+        :type ReserveDuration: int
+        :param BackupFreq: Backup frequency. It is an array of 7 elements corresponding to Monday through Sunday. full: full backup; increment: incremental backup
+        :type BackupFreq: list of str
+        :param BackupType: Backup mode. logic: logic backup; snapshot: snapshot backup
+        :type BackupType: str
         """
-        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param BackupTimeBeg: Full backup start time. Value range: [0-24*3600]. For example, 0:00 AM, 1:00 AM, and 2:00 AM are represented by 0, 3600, and 7200, respectively\n        :type BackupTimeBeg: int\n        :param BackupTimeEnd: Full backup start time. Value range: [0-24*3600]. For example, 0:00 AM, 1:00 AM, and 2:00 AM are represented by 0, 3600, and 7200, respectively\n        :type BackupTimeEnd: int\n        :param ReserveDuration: Backup retention period in seconds. Backups will be cleared after this period elapses. 7 days is represented by 3600*24*7 = 604800\n        :type ReserveDuration: int\n        :param BackupFreq: Backup frequency. It is an array of 7 elements corresponding to Monday through Sunday. full: full backup; increment: incremental backup\n        :type BackupFreq: list of str\n        :param BackupType: Backup mode. logic: logic backup; snapshot: snapshot backup\n        :type BackupType: str\n        """
         self.ClusterId = None
         self.BackupTimeBeg = None
         self.BackupTimeEnd = None
@@ -1702,8 +2362,10 @@ class ModifyBackupConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1717,8 +2379,14 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance group ID
+        :type InstanceId: str
+        :param SecurityGroupIds: List of IDs of the security groups to be modified, which is an array of one or more security group IDs.
+        :type SecurityGroupIds: list of str
+        :param Zone: AZ
+        :type Zone: str
         """
-        :param InstanceId: Instance group ID\n        :type InstanceId: str\n        :param SecurityGroupIds: List of IDs of the security groups to be modified, which is an array of one or more security group IDs.\n        :type SecurityGroupIds: list of str\n        :param Zone: AZ\n        :type Zone: str\n        """
         self.InstanceId = None
         self.SecurityGroupIds = None
         self.Zone = None
@@ -1743,8 +2411,10 @@ class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1758,8 +2428,16 @@ class ModifyMaintainPeriodConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param MaintainStartTime: Maintenance start time in seconds. For example, 03:00 AM is represented by 10800
+        :type MaintainStartTime: int
+        :param MaintainDuration: Maintenance duration in seconds. For example, one hour is represented by 3600
+        :type MaintainDuration: int
+        :param MaintainWeekDays: Maintenance days of the week
+        :type MaintainWeekDays: list of str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param MaintainStartTime: Maintenance start time in seconds. For example, 03:00 AM is represented by 10800\n        :type MaintainStartTime: int\n        :param MaintainDuration: Maintenance duration in seconds. For example, one hour is represented by 3600\n        :type MaintainDuration: int\n        :param MaintainWeekDays: Maintenance days of the week\n        :type MaintainWeekDays: list of str\n        """
         self.InstanceId = None
         self.MaintainStartTime = None
         self.MaintainDuration = None
@@ -1786,8 +2464,10 @@ class ModifyMaintainPeriodConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1801,13 +2481,23 @@ class ObjectTask(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: Auto-Incrementing task ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TaskId: int\n        :param TaskType: Task type
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TaskType: str\n        :param TaskStatus: Task status
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TaskStatus: str\n        :param ObjectId: Task ID (cluster ID | instance group ID | instance ID)
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ObjectId: str\n        :param ObjectType: Task type
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ObjectType: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TaskId: int
+        :param TaskType: Task type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TaskType: str
+        :param TaskStatus: Task status
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TaskStatus: str
+        :param ObjectId: Task ID (cluster ID | instance group ID | instance ID)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ObjectId: str
+        :param ObjectType: Task type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ObjectType: str
+        """
         self.TaskId = None
         self.TaskType = None
         self.TaskStatus = None
@@ -1836,8 +2526,10 @@ class OfflineClusterRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
         """
-        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -1858,8 +2550,12 @@ class OfflineClusterResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: Task flow ID
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param FlowId: Task flow ID\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -1875,8 +2571,12 @@ class OfflineInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param InstanceIdList: Instance ID array
+        :type InstanceIdList: list of str
         """
-        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param InstanceIdList: Instance ID array\n        :type InstanceIdList: list of str\n        """
         self.ClusterId = None
         self.InstanceIdList = None
 
@@ -1899,8 +2599,12 @@ class OfflineInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: Task flow ID
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param FlowId: Task flow ID\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -1916,8 +2620,24 @@ class PolicyRule(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Action: Policy, which can be `ACCEPT` or `DROP`
+        :type Action: str
+        :param CidrIp: Source IP or IP range, such as 192.168.0.0/16
+        :type CidrIp: str
+        :param PortRange: Port
+        :type PortRange: str
+        :param IpProtocol: Network protocol, such as UDP and TCP
+        :type IpProtocol: str
+        :param ServiceModule: Protocol port ID or protocol port group ID.
+        :type ServiceModule: str
+        :param AddressModule: IP address ID or IP address group ID.
+        :type AddressModule: str
+        :param Id: id
+        :type Id: str
+        :param Desc: Description
+        :type Desc: str
         """
-        :param Action: Policy, which can be `ACCEPT` or `DROP`\n        :type Action: str\n        :param CidrIp: Source IP or IP range, such as 192.168.0.0/16\n        :type CidrIp: str\n        :param PortRange: Port\n        :type PortRange: str\n        :param IpProtocol: Network protocol, such as UDP and TCP\n        :type IpProtocol: str\n        :param ServiceModule: Protocol port ID or protocol port group ID.\n        :type ServiceModule: str\n        :param AddressModule: IP address ID or IP address group ID.\n        :type AddressModule: str\n        :param Id: id\n        :type Id: str\n        :param Desc: Description\n        :type Desc: str\n        """
         self.Action = None
         self.CidrIp = None
         self.PortRange = None
@@ -1952,8 +2672,16 @@ class QueryFilter(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Names: Search field. Valid values: "InstanceId", "ProjectId", "InstanceName", "Vip"
+        :type Names: list of str
+        :param Values: Search string
+        :type Values: list of str
+        :param ExactMatch: Whether to use exact match
+        :type ExactMatch: bool
+        :param Name: Search field
+        :type Name: str
         """
-        :param Names: Search field. Valid values: "InstanceId", "ProjectId", "InstanceName", "Vip"\n        :type Names: list of str\n        :param Values: Search string\n        :type Values: list of str\n        :param ExactMatch: Whether to use exact match\n        :type ExactMatch: bool\n        :param Name: Search field\n        :type Name: str\n        """
         self.Names = None
         self.Values = None
         self.ExactMatch = None
@@ -1980,8 +2708,22 @@ class SecurityGroup(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProjectId: Project ID
+        :type ProjectId: int
+        :param CreateTime: Creation time in the format of yyyy-mm-dd hh:mm:ss
+        :type CreateTime: str
+        :param Inbound: Inbound rule
+        :type Inbound: list of PolicyRule
+        :param Outbound: Outbound rule
+        :type Outbound: list of PolicyRule
+        :param SecurityGroupId: Security group ID
+        :type SecurityGroupId: str
+        :param SecurityGroupName: Security group name
+        :type SecurityGroupName: str
+        :param SecurityGroupRemark: Security group remarks
+        :type SecurityGroupRemark: str
         """
-        :param ProjectId: Project ID\n        :type ProjectId: int\n        :param CreateTime: Creation time in the format of yyyy-mm-dd hh:mm:ss\n        :type CreateTime: str\n        :param Inbound: Inbound rule\n        :type Inbound: list of PolicyRule\n        :param Outbound: Outbound rule\n        :type Outbound: list of PolicyRule\n        :param SecurityGroupId: Security group ID\n        :type SecurityGroupId: str\n        :param SecurityGroupName: Security group name\n        :type SecurityGroupName: str\n        :param SecurityGroupRemark: Security group remarks\n        :type SecurityGroupRemark: str\n        """
         self.ProjectId = None
         self.CreateTime = None
         self.Inbound = None
@@ -2024,8 +2766,12 @@ class SetRenewFlagRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceIds: ID of the instance to be manipulated
+        :type ResourceIds: list of str
+        :param AutoRenewFlag: Auto-Renewal flag
+        :type AutoRenewFlag: int
         """
-        :param ResourceIds: ID of the instance to be manipulated\n        :type ResourceIds: list of str\n        :param AutoRenewFlag: Auto-Renewal flag\n        :type AutoRenewFlag: int\n        """
         self.ResourceIds = None
         self.AutoRenewFlag = None
 
@@ -2048,8 +2794,12 @@ class SetRenewFlagResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Count: Number of successfully manipulated instances
+        :type Count: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Count: Number of successfully manipulated instances\n        :type Count: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Count = None
         self.RequestId = None
 
@@ -2065,8 +2815,12 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TagKey: Tag key
+        :type TagKey: str
+        :param TagValue: Tag value
+        :type TagValue: str
         """
-        :param TagKey: Tag key\n        :type TagKey: str\n        :param TagValue: Tag value\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -2089,9 +2843,23 @@ class UpgradeInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Cpu: Database CPU
+        :type Cpu: int
+        :param Memory: Database memory
+        :type Memory: int
+        :param UpgradeType: Upgrade type. Valid values: upgradeImmediate, upgradeInMaintain
+        :type UpgradeType: str
+        :param StorageLimit: Storage upper limit. 0 indicates to use the standard configuration
+        :type StorageLimit: int
+        :param AutoVoucher: Whether to automatically select a voucher. 1: yes; 0: no. Default value: 0
+        :type AutoVoucher: int
+        :param DbType: Database type. Valid values: 
+<li> MYSQL </li>
+        :type DbType: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param Cpu: Database CPU\n        :type Cpu: int\n        :param Memory: Database memory\n        :type Memory: int\n        :param UpgradeType: Upgrade type. Valid values: upgradeImmediate, upgradeInMaintain\n        :type UpgradeType: str\n        :param StorageLimit: Storage upper limit. 0 indicates to use the standard configuration\n        :type StorageLimit: int\n        :param AutoVoucher: Whether to automatically select a voucher. 1: yes; 0: no. Default value: 0\n        :type AutoVoucher: int\n        :param DbType: Database type. Valid values: 
-<li> MYSQL </li>\n        :type DbType: str\n        """
         self.InstanceId = None
         self.Cpu = None
         self.Memory = None
@@ -2124,10 +2892,18 @@ class UpgradeInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TranId: Freezing transaction ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TranId: str\n        :param BigDealIds: Big order ID.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type BigDealIds: list of str\n        :param DealNames: Order ID\n        :type DealNames: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TranId: str
+        :param BigDealIds: Big order ID.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type BigDealIds: list of str
+        :param DealNames: Order ID
+        :type DealNames: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.TranId = None
         self.BigDealIds = None
         self.DealNames = None

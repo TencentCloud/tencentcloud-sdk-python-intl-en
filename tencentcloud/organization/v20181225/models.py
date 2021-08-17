@@ -24,8 +24,10 @@ class AcceptOrganizationInvitationRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: Invitation ID
+        :type Id: int
         """
-        :param Id: Invitation ID\n        :type Id: int\n        """
         self.Id = None
 
 
@@ -46,8 +48,10 @@ class AcceptOrganizationInvitationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -61,8 +65,12 @@ class AddOrganizationNodeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ParentNodeId: Parent organizational unit ID
+        :type ParentNodeId: int
+        :param Name: Organizational unit name
+        :type Name: str
         """
-        :param ParentNodeId: Parent organizational unit ID\n        :type ParentNodeId: int\n        :param Name: Organizational unit name\n        :type Name: str\n        """
         self.ParentNodeId = None
         self.Name = None
 
@@ -85,8 +93,12 @@ class AddOrganizationNodeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NodeId: Organizational unit ID
+        :type NodeId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param NodeId: Organizational unit ID\n        :type NodeId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.NodeId = None
         self.RequestId = None
 
@@ -102,8 +114,10 @@ class CancelOrganizationInvitationRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: Invitation ID
+        :type Id: int
         """
-        :param Id: Invitation ID\n        :type Id: int\n        """
         self.Id = None
 
 
@@ -124,8 +138,10 @@ class CancelOrganizationInvitationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -139,8 +155,10 @@ class CreateOrganizationRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OrgType: Organization type; currently its value is fixed as `1`
+        :type OrgType: int
         """
-        :param OrgType: Organization type; currently its value is fixed as `1`\n        :type OrgType: int\n        """
         self.OrgType = None
 
 
@@ -161,8 +179,18 @@ class CreateOrganizationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OrgId: Organization ID
+        :type OrgId: int
+        :param Nickname: Creator's name
+        :type Nickname: str
+        :param Mail: Creator's email address
+        :type Mail: str
+        :param OrgType: Organization type
+        :type OrgType: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param OrgId: Organization ID\n        :type OrgId: int\n        :param Nickname: Creator's name\n        :type Nickname: str\n        :param Mail: Creator's email address\n        :type Mail: str\n        :param OrgType: Organization type\n        :type OrgType: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.OrgId = None
         self.Nickname = None
         self.Mail = None
@@ -184,8 +212,12 @@ class DeleteOrganizationMemberFromNodeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MemberUin: UIN of the member to be deleted
+        :type MemberUin: int
+        :param NodeId: Organizational unit ID
+        :type NodeId: int
         """
-        :param MemberUin: UIN of the member to be deleted\n        :type MemberUin: int\n        :param NodeId: Organizational unit ID\n        :type NodeId: int\n        """
         self.MemberUin = None
         self.NodeId = None
 
@@ -208,8 +240,10 @@ class DeleteOrganizationMemberFromNodeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -223,8 +257,10 @@ class DeleteOrganizationMembersRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Uins: List of UINs of members to be deleted
+        :type Uins: list of int non-negative
         """
-        :param Uins: List of UINs of members to be deleted\n        :type Uins: list of int non-negative\n        """
         self.Uins = None
 
 
@@ -245,8 +281,10 @@ class DeleteOrganizationMembersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -260,8 +298,10 @@ class DeleteOrganizationNodesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NodeIds: Organizational unit ID list
+        :type NodeIds: list of int non-negative
         """
-        :param NodeIds: Organizational unit ID list\n        :type NodeIds: list of int non-negative\n        """
         self.NodeIds = None
 
 
@@ -282,8 +322,10 @@ class DeleteOrganizationNodesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -303,8 +345,10 @@ class DeleteOrganizationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -318,8 +362,10 @@ class DenyOrganizationInvitationRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: Invitation ID
+        :type Id: int
         """
-        :param Id: Invitation ID\n        :type Id: int\n        """
         self.Id = None
 
 
@@ -340,8 +386,10 @@ class DenyOrganizationInvitationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -355,8 +403,10 @@ class GetOrganizationMemberRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MemberUin: Organization member UIN
+        :type MemberUin: int
         """
-        :param MemberUin: Organization member UIN\n        :type MemberUin: int\n        """
         self.MemberUin = None
 
 
@@ -377,8 +427,24 @@ class GetOrganizationMemberResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Uin: Organization member UIN
+        :type Uin: int
+        :param Name: Organization member name
+        :type Name: str
+        :param Remark: Notes
+        :type Remark: str
+        :param JoinTime: Joining time 
+        :type JoinTime: str
+        :param NodeId: Organizational unit ID
+        :type NodeId: int
+        :param NodeName: Organizational unit name
+        :type NodeName: str
+        :param ParentNodeId: Parent organizational unit ID
+        :type ParentNodeId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Uin: Organization member UIN\n        :type Uin: int\n        :param Name: Organization member name\n        :type Name: str\n        :param Remark: Notes\n        :type Remark: str\n        :param JoinTime: Joining time \n        :type JoinTime: str\n        :param NodeId: Organizational unit ID\n        :type NodeId: int\n        :param NodeName: Organizational unit name\n        :type NodeName: str\n        :param ParentNodeId: Parent organizational unit ID\n        :type ParentNodeId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Uin = None
         self.Name = None
         self.Remark = None
@@ -412,8 +478,22 @@ class GetOrganizationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OrgId: Organization ID
+        :type OrgId: int
+        :param HostUin: Creator UIN
+        :type HostUin: int
+        :param Nickname: Creator's name
+        :type Nickname: str
+        :param Mail: Creator's email address
+        :type Mail: str
+        :param OrgType: Organization type
+        :type OrgType: int
+        :param IsEmpty: Whether the organization is empty or not 
+        :type IsEmpty: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param OrgId: Organization ID\n        :type OrgId: int\n        :param HostUin: Creator UIN\n        :type HostUin: int\n        :param Nickname: Creator's name\n        :type Nickname: str\n        :param Mail: Creator's email address\n        :type Mail: str\n        :param OrgType: Organization type\n        :type OrgType: int\n        :param IsEmpty: Whether the organization is empty or not \n        :type IsEmpty: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.OrgId = None
         self.HostUin = None
         self.Nickname = None
@@ -439,8 +519,14 @@ class ListOrganizationInvitationsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Invited: Whether to list the invitations you received or the invitations you sent. `1`: list the invitations you received; `0`: list the invitations you sent.
+        :type Invited: int
+        :param Offset: Offset
+        :type Offset: int
+        :param Limit: Limit
+        :type Limit: int
         """
-        :param Invited: Whether to list the invitations you received or the invitations you sent. `1`: list the invitations you received; `0`: list the invitations you sent.\n        :type Invited: int\n        :param Offset: Offset\n        :type Offset: int\n        :param Limit: Limit\n        :type Limit: int\n        """
         self.Invited = None
         self.Offset = None
         self.Limit = None
@@ -465,8 +551,14 @@ class ListOrganizationInvitationsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Invitations: List of invitations
+        :type Invitations: list of OrgInvitation
+        :param TotalCount: Total number of results
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Invitations: List of invitations\n        :type Invitations: list of OrgInvitation\n        :param TotalCount: Total number of results\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Invitations = None
         self.TotalCount = None
         self.RequestId = None
@@ -489,8 +581,12 @@ class ListOrganizationMembersRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: Offset
+        :type Offset: int
+        :param Limit: Limit
+        :type Limit: int
         """
-        :param Offset: Offset\n        :type Offset: int\n        :param Limit: Limit\n        :type Limit: int\n        """
         self.Offset = None
         self.Limit = None
 
@@ -513,8 +609,14 @@ class ListOrganizationMembersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Members: Member list
+        :type Members: list of OrgMember
+        :param TotalCount: Total number of results
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Members: Member list\n        :type Members: list of OrgMember\n        :param TotalCount: Total number of results\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Members = None
         self.TotalCount = None
         self.RequestId = None
@@ -537,8 +639,14 @@ class ListOrganizationNodeMembersRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NodeId: Organizational unit ID
+        :type NodeId: int
+        :param Offset: Offset
+        :type Offset: int
+        :param Limit: Limit
+        :type Limit: int
         """
-        :param NodeId: Organizational unit ID\n        :type NodeId: int\n        :param Offset: Offset\n        :type Offset: int\n        :param Limit: Limit\n        :type Limit: int\n        """
         self.NodeId = None
         self.Offset = None
         self.Limit = None
@@ -563,8 +671,14 @@ class ListOrganizationNodeMembersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of results
+        :type TotalCount: int
+        :param Members: Member list
+        :type Members: list of OrgMember
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of results\n        :type TotalCount: int\n        :param Members: Member list\n        :type Members: list of OrgMember\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Members = None
         self.RequestId = None
@@ -593,8 +707,12 @@ class ListOrganizationNodesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Nodes: Organizational unit list
+        :type Nodes: list of OrgNode
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Nodes: Organizational unit list\n        :type Nodes: list of OrgNode\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Nodes = None
         self.RequestId = None
 
@@ -615,8 +733,12 @@ class MoveOrganizationMembersToNodeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NodeId: Organizational unit ID
+        :type NodeId: int
+        :param Uins: Member UIN list
+        :type Uins: list of int non-negative
         """
-        :param NodeId: Organizational unit ID\n        :type NodeId: int\n        :param Uins: Member UIN list\n        :type Uins: list of int non-negative\n        """
         self.NodeId = None
         self.Uins = None
 
@@ -639,8 +761,10 @@ class MoveOrganizationMembersToNodeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -654,8 +778,30 @@ class OrgInvitation(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: Invitation ID
+        :type Id: int
+        :param Uin: UIN of the invitee
+        :type Uin: int
+        :param HostUin: Creator UIN
+        :type HostUin: int
+        :param HostName: Creator's name
+        :type HostName: str
+        :param HostMail: Creator's email address
+        :type HostMail: str
+        :param Status: Invitation status. `-1`: expired; `0`: normal; `1`: accepted; `2`: invalid; `3`: cancelled
+        :type Status: int
+        :param Name: Name
+        :type Name: str
+        :param Remark: Notes
+        :type Remark: str
+        :param OrgType: Organization type
+        :type OrgType: int
+        :param InviteTime: Time of invitation
+        :type InviteTime: str
+        :param ExpireTime: Expiration time
+        :type ExpireTime: str
         """
-        :param Id: Invitation ID\n        :type Id: int\n        :param Uin: UIN of the invitee\n        :type Uin: int\n        :param HostUin: Creator UIN\n        :type HostUin: int\n        :param HostName: Creator's name\n        :type HostName: str\n        :param HostMail: Creator's email address\n        :type HostMail: str\n        :param Status: Invitation status. `-1`: expired; `0`: normal; `1`: accepted; `2`: invalid; `3`: cancelled\n        :type Status: int\n        :param Name: Name\n        :type Name: str\n        :param Remark: Notes\n        :type Remark: str\n        :param OrgType: Organization type\n        :type OrgType: int\n        :param InviteTime: Time of invitation\n        :type InviteTime: str\n        :param ExpireTime: Expiration time\n        :type ExpireTime: str\n        """
         self.Id = None
         self.Uin = None
         self.HostUin = None
@@ -696,8 +842,16 @@ class OrgMember(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Uin: UIN
+        :type Uin: int
+        :param Name: Name
+        :type Name: str
+        :param Remark: Notes
+        :type Remark: str
+        :param JoinTime: Joining time
+        :type JoinTime: str
         """
-        :param Uin: UIN\n        :type Uin: int\n        :param Name: Name\n        :type Name: str\n        :param Remark: Notes\n        :type Remark: str\n        :param JoinTime: Joining time\n        :type JoinTime: str\n        """
         self.Uin = None
         self.Name = None
         self.Remark = None
@@ -724,8 +878,16 @@ class OrgNode(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NodeId: Organizational unit ID
+        :type NodeId: int
+        :param Name: Name
+        :type Name: str
+        :param ParentNodeId: Parent organizational unit ID
+        :type ParentNodeId: int
+        :param MemberCount: Number of members
+        :type MemberCount: int
         """
-        :param NodeId: Organizational unit ID\n        :type NodeId: int\n        :param Name: Name\n        :type Name: str\n        :param ParentNodeId: Parent organizational unit ID\n        :type ParentNodeId: int\n        :param MemberCount: Number of members\n        :type MemberCount: int\n        """
         self.NodeId = None
         self.Name = None
         self.ParentNodeId = None
@@ -752,8 +914,10 @@ class QuitOrganizationRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OrgId: Organization ID
+        :type OrgId: int
         """
-        :param OrgId: Organization ID\n        :type OrgId: int\n        """
         self.OrgId = None
 
 
@@ -774,8 +938,10 @@ class QuitOrganizationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -789,8 +955,14 @@ class SendOrganizationInvitationRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InviteUin: UIN of the invitee
+        :type InviteUin: int
+        :param Name: Name
+        :type Name: str
+        :param Remark: Notes
+        :type Remark: str
         """
-        :param InviteUin: UIN of the invitee\n        :type InviteUin: int\n        :param Name: Name\n        :type Name: str\n        :param Remark: Notes\n        :type Remark: str\n        """
         self.InviteUin = None
         self.Name = None
         self.Remark = None
@@ -815,8 +987,10 @@ class SendOrganizationInvitationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -830,8 +1004,14 @@ class UpdateOrganizationMemberRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MemberUin: Member UIN
+        :type MemberUin: int
+        :param Name: Name
+        :type Name: str
+        :param Remark: Notes
+        :type Remark: str
         """
-        :param MemberUin: Member UIN\n        :type MemberUin: int\n        :param Name: Name\n        :type Name: str\n        :param Remark: Notes\n        :type Remark: str\n        """
         self.MemberUin = None
         self.Name = None
         self.Remark = None
@@ -856,8 +1036,10 @@ class UpdateOrganizationMemberResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -871,8 +1053,14 @@ class UpdateOrganizationNodeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NodeId: Organizational unit ID
+        :type NodeId: int
+        :param Name: Name
+        :type Name: str
+        :param ParentNodeId: Parent organizational unit ID
+        :type ParentNodeId: int
         """
-        :param NodeId: Organizational unit ID\n        :type NodeId: int\n        :param Name: Name\n        :type Name: str\n        :param ParentNodeId: Parent organizational unit ID\n        :type ParentNodeId: int\n        """
         self.NodeId = None
         self.Name = None
         self.ParentNodeId = None
@@ -897,8 +1085,10 @@ class UpdateOrganizationNodeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 

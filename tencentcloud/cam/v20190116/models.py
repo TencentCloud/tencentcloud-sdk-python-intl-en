@@ -24,8 +24,14 @@ class AccessKey(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AccessKeyId: Access key ID
+        :type AccessKeyId: str
+        :param Status: Key status. Valid values: Active (activated), Inactive (not activated)
+        :type Status: str
+        :param CreateTime: Creation time
+        :type CreateTime: str
         """
-        :param AccessKeyId: Access key ID\n        :type AccessKeyId: str\n        :param Status: Key status. Valid values: Active (activated), Inactive (not activated)\n        :type Status: str\n        :param CreateTime: Creation time\n        :type CreateTime: str\n        """
         self.AccessKeyId = None
         self.Status = None
         self.CreateTime = None
@@ -50,8 +56,26 @@ class AddUserRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: Sub-user username
+        :type Name: str
+        :param Remark: Sub-user remarks
+        :type Remark: str
+        :param ConsoleLogin: Whether or not the sub-user is allowed to log in to the console. 0: No; 1: Yes.
+        :type ConsoleLogin: int
+        :param UseApi: Whether or not to generate keys for sub-users. 0: No; 1: Yes.
+        :type UseApi: int
+        :param Password: Sub-user's console login password. If no password rules have been set, the password must have a minimum of 8 characters containing uppercase letters, lowercase letters, digits, and special characters by default. This parameter will be valid only when the sub-user is allowed to log in to the console. If it is not specified and console login is allowed, the system will automatically generate a random 32-character password that contains uppercase letters, lowercase letters, digits, and special characters.
+        :type Password: str
+        :param NeedResetPassword: If the sub-user needs to reset their password when they next log in to the console. 0: No; 1: Yes.
+        :type NeedResetPassword: int
+        :param PhoneNum: Mobile number
+        :type PhoneNum: str
+        :param CountryCode: Country/Area Code
+        :type CountryCode: str
+        :param Email: Email
+        :type Email: str
         """
-        :param Name: Sub-user username\n        :type Name: str\n        :param Remark: Sub-user remarks\n        :type Remark: str\n        :param ConsoleLogin: Whether or not the sub-user is allowed to log in to the console. 0: No; 1: Yes.\n        :type ConsoleLogin: int\n        :param UseApi: Whether or not to generate keys for sub-users. 0: No; 1: Yes.\n        :type UseApi: int\n        :param Password: Sub-user's console login password. If no password rules have been set, the password must have a minimum of 8 characters containing uppercase letters, lowercase letters, digits, and special characters by default. This parameter will be valid only when the sub-user is allowed to log in to the console. If it is not specified and console login is allowed, the system will automatically generate a random 32-character password that contains uppercase letters, lowercase letters, digits, and special characters.\n        :type Password: str\n        :param NeedResetPassword: If the sub-user needs to reset their password when they next log in to the console. 0: No; 1: Yes.\n        :type NeedResetPassword: int\n        :param PhoneNum: Mobile number\n        :type PhoneNum: str\n        :param CountryCode: Country/Area Code\n        :type CountryCode: str\n        :param Email: Email\n        :type Email: str\n        """
         self.Name = None
         self.Remark = None
         self.ConsoleLogin = None
@@ -88,8 +112,22 @@ class AddUserResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Uin: Sub-user UIN
+        :type Uin: int
+        :param Name: Sub-user username
+        :type Name: str
+        :param Password: If the combination of input parameters indicates that a random password should be generated, the generated password is returned
+        :type Password: str
+        :param SecretId: Sub-user's key ID
+        :type SecretId: str
+        :param SecretKey: Sub-user's secret key
+        :type SecretKey: str
+        :param Uid: Sub-user UID
+        :type Uid: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Uin: Sub-user UIN\n        :type Uin: int\n        :param Name: Sub-user username\n        :type Name: str\n        :param Password: If the combination of input parameters indicates that a random password should be generated, the generated password is returned\n        :type Password: str\n        :param SecretId: Sub-user's key ID\n        :type SecretId: str\n        :param SecretKey: Sub-user's secret key\n        :type SecretKey: str\n        :param Uid: Sub-user UID\n        :type Uid: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Uin = None
         self.Name = None
         self.Password = None
@@ -115,8 +153,10 @@ class AddUserToGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Info: How sub-user UIDs are associated with the ID of the user group they are added to.
+        :type Info: list of GroupIdOfUidInfo
         """
-        :param Info: How sub-user UIDs are associated with the ID of the user group they are added to.\n        :type Info: list of GroupIdOfUidInfo\n        """
         self.Info = None
 
 
@@ -142,8 +182,10 @@ class AddUserToGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -157,11 +199,21 @@ class AttachEntityOfPolicy(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: Entity ID
+        :type Id: str
+        :param Name: Entity Name
+Note: This field may return null, indicating that no valid value was found.
+        :type Name: str
+        :param Uin: Entity UIN
+Note: This field may return null, indicating that no valid value was found.
+        :type Uin: int
+        :param RelatedType: Type of entity association. 1: Associate by users; 2: Associate by User Groups
+        :type RelatedType: int
+        :param AttachmentTime: Policy association time
+Note: this field may return `null`, indicating that no valid value was found.
+        :type AttachmentTime: str
         """
-        :param Id: Entity ID\n        :type Id: str\n        :param Name: Entity Name
-Note: This field may return null, indicating that no valid value was found.\n        :type Name: str\n        :param Uin: Entity UIN
-Note: This field may return null, indicating that no valid value was found.\n        :type Uin: int\n        :param RelatedType: Type of entity association. 1: Associate by users; 2: Associate by User Groups\n        :type RelatedType: int\n        :param AttachmentTime: Policy association time
-Note: this field may return `null`, indicating that no valid value was found.\n        :type AttachmentTime: str\n        """
         self.Id = None
         self.Name = None
         self.Uin = None
@@ -190,8 +242,12 @@ class AttachGroupPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyId: Policy ID
+        :type PolicyId: int
+        :param AttachGroupId: User Group ID
+        :type AttachGroupId: int
         """
-        :param PolicyId: Policy ID\n        :type PolicyId: int\n        :param AttachGroupId: User Group ID\n        :type AttachGroupId: int\n        """
         self.PolicyId = None
         self.AttachGroupId = None
 
@@ -214,8 +270,10 @@ class AttachGroupPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -229,15 +287,37 @@ class AttachPolicyInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyId: Policy ID
+        :type PolicyId: int
+        :param PolicyName: Policy name
+Note: This field may return null, indicating that no valid value was found.
+        :type PolicyName: str
+        :param AddTime: Time created
+Note: This field may return null, indicating that no valid value was found.
+        :type AddTime: str
+        :param CreateMode: How the policy was created: 1: Via console; 2: Via syntax
+Note: This field may return null, indicating that no valid value was found.
+        :type CreateMode: int
+        :param PolicyType: Valid values: `user` and `QCS`
+Note: This field may return null, indicating that no valid value was found.
+        :type PolicyType: str
+        :param Remark: Policy remarks
+        :type Remark: str
+        :param OperateOwnerUin: Root account of the operator associating the policy
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type OperateOwnerUin: str
+        :param OperateUin: The ID of the account associating the policy. If `UinType` is 0, this indicates that this is a sub-account `UIN`. If `UinType` is 1, this indicates this is a role ID
+        :type OperateUin: str
+        :param OperateUinType: If `UinType` is 0, `OperateUin` indicates that this is a sub-account `UIN`. If `UinType` is 1, `OperateUin` indicates that this is a role ID
+        :type OperateUinType: int
+        :param Deactived: Queries if the policy has been deactivated
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Deactived: int
+        :param DeactivedDetail: List of deprecated products
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DeactivedDetail: list of str
         """
-        :param PolicyId: Policy ID\n        :type PolicyId: int\n        :param PolicyName: Policy name
-Note: This field may return null, indicating that no valid value was found.\n        :type PolicyName: str\n        :param AddTime: Time created
-Note: This field may return null, indicating that no valid value was found.\n        :type AddTime: str\n        :param CreateMode: How the policy was created: 1: Via console; 2: Via syntax
-Note: This field may return null, indicating that no valid value was found.\n        :type CreateMode: int\n        :param PolicyType: Valid values: `user` and `QCS`
-Note: This field may return null, indicating that no valid value was found.\n        :type PolicyType: str\n        :param Remark: Policy remarks\n        :type Remark: str\n        :param OperateOwnerUin: Root account of the operator associating the policy
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type OperateOwnerUin: str\n        :param OperateUin: The ID of the account associating the policy. If `UinType` is 0, this indicates that this is a sub-account `UIN`. If `UinType` is 1, this indicates this is a role ID\n        :type OperateUin: str\n        :param OperateUinType: If `UinType` is 0, `OperateUin` indicates that this is a sub-account `UIN`. If `UinType` is 1, `OperateUin` indicates that this is a role ID\n        :type OperateUinType: int\n        :param Deactived: Queries if the policy has been deactivated
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Deactived: int\n        :param DeactivedDetail: List of deprecated products
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DeactivedDetail: list of str\n        """
         self.PolicyId = None
         self.PolicyName = None
         self.AddTime = None
@@ -278,8 +358,16 @@ class AttachRolePolicyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyId: Policy ID. Either `PolicyId` or `PolicyName` must be entered
+        :type PolicyId: int
+        :param AttachRoleId: Role ID, used to specify a role. Input either `AttachRoleId` or `AttachRoleName`
+        :type AttachRoleId: str
+        :param AttachRoleName: Role name, used to specify a role. Input either `AttachRoleId` or `AttachRoleName`
+        :type AttachRoleName: str
+        :param PolicyName: Policy name. Either `PolicyId` or `PolicyName` must be entered
+        :type PolicyName: str
         """
-        :param PolicyId: Policy ID. Either `PolicyId` or `PolicyName` must be entered\n        :type PolicyId: int\n        :param AttachRoleId: Role ID, used to specify a role. Input either `AttachRoleId` or `AttachRoleName`\n        :type AttachRoleId: str\n        :param AttachRoleName: Role name, used to specify a role. Input either `AttachRoleId` or `AttachRoleName`\n        :type AttachRoleName: str\n        :param PolicyName: Policy name. Either `PolicyId` or `PolicyName` must be entered\n        :type PolicyName: str\n        """
         self.PolicyId = None
         self.AttachRoleId = None
         self.AttachRoleName = None
@@ -306,8 +394,10 @@ class AttachRolePolicyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -321,8 +411,12 @@ class AttachUserPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyId: Policy ID
+        :type PolicyId: int
+        :param AttachUin: Sub-account UIN
+        :type AttachUin: int
         """
-        :param PolicyId: Policy ID\n        :type PolicyId: int\n        :param AttachUin: Sub-account UIN\n        :type AttachUin: int\n        """
         self.PolicyId = None
         self.AttachUin = None
 
@@ -345,8 +439,10 @@ class AttachUserPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -360,12 +456,28 @@ class AttachedPolicyOfRole(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyId: Policy ID
+        :type PolicyId: int
+        :param PolicyName: Policy name
+        :type PolicyName: str
+        :param AddTime: Time of association
+        :type AddTime: str
+        :param PolicyType: Policy type. `User` indicates custom policy; `QCS` indicates preset policy
+Note: This field may return null, indicating that no valid value was found.
+        :type PolicyType: str
+        :param CreateMode: Policy creation method. 1: indicates the policy was created based on product function or item permission; other values indicate the policy was created based on the policy syntax
+        :type CreateMode: int
+        :param Deactived: Whether the product has been deprecated (0: no; 1: yes)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Deactived: int
+        :param DeactivedDetail: List of deprecated products
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DeactivedDetail: list of str
+        :param Description: Policy description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Description: str
         """
-        :param PolicyId: Policy ID\n        :type PolicyId: int\n        :param PolicyName: Policy name\n        :type PolicyName: str\n        :param AddTime: Time of association\n        :type AddTime: str\n        :param PolicyType: Policy type. `User` indicates custom policy; `QCS` indicates preset policy
-Note: This field may return null, indicating that no valid value was found.\n        :type PolicyType: str\n        :param CreateMode: Policy creation method. 1: indicates the policy was created based on product function or item permission; other values indicate the policy was created based on the policy syntax\n        :type CreateMode: int\n        :param Deactived: Whether the product has been deprecated (0: no; 1: yes)
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Deactived: int\n        :param DeactivedDetail: List of deprecated products
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DeactivedDetail: list of str\n        :param Description: Policy description
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Description: str\n        """
         self.PolicyId = None
         self.PolicyName = None
         self.AddTime = None
@@ -400,8 +512,10 @@ class ConsumeCustomMFATokenRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MFAToken: Custom multi-factor verification Token
+        :type MFAToken: str
         """
-        :param MFAToken: Custom multi-factor verification Token\n        :type MFAToken: str\n        """
         self.MFAToken = None
 
 
@@ -422,8 +536,10 @@ class ConsumeCustomMFATokenResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -437,8 +553,12 @@ class CreateGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupName: User Group name
+        :type GroupName: str
+        :param Remark: User Group description
+        :type Remark: str
         """
-        :param GroupName: User Group name\n        :type GroupName: str\n        :param Remark: User Group description\n        :type Remark: str\n        """
         self.GroupName = None
         self.Remark = None
 
@@ -461,8 +581,12 @@ class CreateGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: User Group ID
+        :type GroupId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param GroupId: User Group ID\n        :type GroupId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.GroupId = None
         self.RequestId = None
 
@@ -478,8 +602,14 @@ class CreatePolicyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyName: Policy name
+        :type PolicyName: str
+        :param PolicyDocument: Policy document, such as `{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}`, where `principal` is used to specify the resources that the role is authorized to access. For more information on this parameter, please see the `RoleInfo` output parameter of the [GetRole](https://intl.cloud.tencent.com/document/product/598/36221?from_cn_redirect=1) API
+        :type PolicyDocument: str
+        :param Description: Policy description
+        :type Description: str
         """
-        :param PolicyName: Policy name\n        :type PolicyName: str\n        :param PolicyDocument: Policy document, such as `{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}`, where `principal` is used to specify the resources that the role is authorized to access. For more information on this parameter, please see the `RoleInfo` output parameter of the [GetRole](https://intl.cloud.tencent.com/document/product/598/36221?from_cn_redirect=1) API\n        :type PolicyDocument: str\n        :param Description: Policy description\n        :type Description: str\n        """
         self.PolicyName = None
         self.PolicyDocument = None
         self.Description = None
@@ -504,8 +634,12 @@ class CreatePolicyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyId: ID of newly added policy
+        :type PolicyId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param PolicyId: ID of newly added policy\n        :type PolicyId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PolicyId = None
         self.RequestId = None
 
@@ -521,8 +655,14 @@ class CreatePolicyVersionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyId: Policy ID
+        :type PolicyId: int
+        :param PolicyDocument: The policy document to use as the content for the new version
+        :type PolicyDocument: str
+        :param SetAsDefault: Specifies whether to set this version as the default version
+        :type SetAsDefault: bool
         """
-        :param PolicyId: Policy ID\n        :type PolicyId: int\n        :param PolicyDocument: The policy document to use as the content for the new version\n        :type PolicyDocument: str\n        :param SetAsDefault: Specifies whether to set this version as the default version\n        :type SetAsDefault: bool\n        """
         self.PolicyId = None
         self.PolicyDocument = None
         self.SetAsDefault = None
@@ -547,9 +687,13 @@ class CreatePolicyVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VersionId: Policy version ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type VersionId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type VersionId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.VersionId = None
         self.RequestId = None
 
@@ -565,8 +709,18 @@ class CreateRoleRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RoleName: Role name
+        :type RoleName: str
+        :param PolicyDocument: Policy document
+        :type PolicyDocument: str
+        :param Description: Role description
+        :type Description: str
+        :param ConsoleLogin: Whether login is allowed. 1: yes, 0: no
+        :type ConsoleLogin: int
+        :param SessionDuration: The maximum validity period of the temporary key for creating a role (range: 0-43200)
+        :type SessionDuration: int
         """
-        :param RoleName: Role name\n        :type RoleName: str\n        :param PolicyDocument: Policy document\n        :type PolicyDocument: str\n        :param Description: Role description\n        :type Description: str\n        :param ConsoleLogin: Whether login is allowed. 1: yes, 0: no\n        :type ConsoleLogin: int\n        :param SessionDuration: The maximum validity period of the temporary key for creating a role (range: 0-43200)\n        :type SessionDuration: int\n        """
         self.RoleName = None
         self.PolicyDocument = None
         self.Description = None
@@ -595,9 +749,13 @@ class CreateRoleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RoleId: Role ID
-Note: This field may return null, indicating that no valid value was found.\n        :type RoleId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: This field may return null, indicating that no valid value was found.
+        :type RoleId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.RoleId = None
         self.RequestId = None
 
@@ -613,8 +771,14 @@ class CreateSAMLProviderRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: SAML identity provider name
+        :type Name: str
+        :param Description: SAML identity provider description
+        :type Description: str
+        :param SAMLMetadataDocument: SAML identity provider metadata document (Base64)
+        :type SAMLMetadataDocument: str
         """
-        :param Name: SAML identity provider name\n        :type Name: str\n        :param Description: SAML identity provider description\n        :type Description: str\n        :param SAMLMetadataDocument: SAML identity provider metadata document (Base64)\n        :type SAMLMetadataDocument: str\n        """
         self.Name = None
         self.Description = None
         self.SAMLMetadataDocument = None
@@ -639,8 +803,12 @@ class CreateSAMLProviderResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProviderArn: SAML identity provider resource descriptor
+        :type ProviderArn: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param ProviderArn: SAML identity provider resource descriptor\n        :type ProviderArn: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ProviderArn = None
         self.RequestId = None
 
@@ -656,8 +824,14 @@ class CreateServiceLinkedRoleRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param QCSServiceName: Authorized service, i.e., Tencent Cloud service entity with this role attached.
+        :type QCSServiceName: list of str
+        :param CustomSuffix: Custom suffix. A string you provide, which is combined with the service-provided prefix to form the complete role name.
+        :type CustomSuffix: str
+        :param Description: Role description.
+        :type Description: str
         """
-        :param QCSServiceName: Authorized service, i.e., Tencent Cloud service entity with this role attached.\n        :type QCSServiceName: list of str\n        :param CustomSuffix: Custom suffix. A string you provide, which is combined with the service-provided prefix to form the complete role name.\n        :type CustomSuffix: str\n        :param Description: Role description.\n        :type Description: str\n        """
         self.QCSServiceName = None
         self.CustomSuffix = None
         self.Description = None
@@ -682,8 +856,12 @@ class CreateServiceLinkedRoleResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RoleId: Role ID
+        :type RoleId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RoleId: Role ID\n        :type RoleId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RoleId = None
         self.RequestId = None
 
@@ -699,8 +877,10 @@ class DeleteGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: User Group ID
+        :type GroupId: int
         """
-        :param GroupId: User Group ID\n        :type GroupId: int\n        """
         self.GroupId = None
 
 
@@ -721,8 +901,10 @@ class DeleteGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -736,8 +918,10 @@ class DeletePolicyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyId: Array. Array elements are policy IDs. Policies can be deleted in a batch
+        :type PolicyId: list of int non-negative
         """
-        :param PolicyId: Array. Array elements are policy IDs. Policies can be deleted in a batch\n        :type PolicyId: list of int non-negative\n        """
         self.PolicyId = None
 
 
@@ -758,8 +942,10 @@ class DeletePolicyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -773,8 +959,12 @@ class DeletePolicyVersionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyId: Policy ID
+        :type PolicyId: int
+        :param VersionId: Policy version ID
+        :type VersionId: list of int non-negative
         """
-        :param PolicyId: Policy ID\n        :type PolicyId: int\n        :param VersionId: Policy version ID\n        :type VersionId: list of int non-negative\n        """
         self.PolicyId = None
         self.VersionId = None
 
@@ -797,8 +987,10 @@ class DeletePolicyVersionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -812,8 +1004,12 @@ class DeleteRolePermissionsBoundaryRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RoleId: Role ID (either it or the role name must be entered)
+        :type RoleId: str
+        :param RoleName: Role name (either it or the role ID must be entered)
+        :type RoleName: str
         """
-        :param RoleId: Role ID (either it or the role name must be entered)\n        :type RoleId: str\n        :param RoleName: Role name (either it or the role ID must be entered)\n        :type RoleName: str\n        """
         self.RoleId = None
         self.RoleName = None
 
@@ -836,8 +1032,10 @@ class DeleteRolePermissionsBoundaryResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -851,8 +1049,12 @@ class DeleteRoleRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RoleId: Role ID, used to specify a role. Input either `RoleId` or `RoleName`
+        :type RoleId: str
+        :param RoleName: Role name, used to specify a role. Input either `RoleId` or `RoleName`
+        :type RoleName: str
         """
-        :param RoleId: Role ID, used to specify a role. Input either `RoleId` or `RoleName`\n        :type RoleId: str\n        :param RoleName: Role name, used to specify a role. Input either `RoleId` or `RoleName`\n        :type RoleName: str\n        """
         self.RoleId = None
         self.RoleName = None
 
@@ -875,8 +1077,10 @@ class DeleteRoleResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -890,8 +1094,10 @@ class DeleteSAMLProviderRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: SAML identity provider name
+        :type Name: str
         """
-        :param Name: SAML identity provider name\n        :type Name: str\n        """
         self.Name = None
 
 
@@ -912,8 +1118,10 @@ class DeleteSAMLProviderResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -927,8 +1135,10 @@ class DeleteServiceLinkedRoleRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RoleName: Name of the service-linked role to be deleted.
+        :type RoleName: str
         """
-        :param RoleName: Name of the service-linked role to be deleted.\n        :type RoleName: str\n        """
         self.RoleName = None
 
 
@@ -949,8 +1159,12 @@ class DeleteServiceLinkedRoleResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DeletionTaskId: Deletion task identifier, which can be used to check the status of a service-linked role deletion.
+        :type DeletionTaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param DeletionTaskId: Deletion task identifier, which can be used to check the status of a service-linked role deletion.\n        :type DeletionTaskId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DeletionTaskId = None
         self.RequestId = None
 
@@ -966,8 +1180,10 @@ class DeleteUserPermissionsBoundaryRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TargetUin: Sub-account `Uin`
+        :type TargetUin: int
         """
-        :param TargetUin: Sub-account `Uin`\n        :type TargetUin: int\n        """
         self.TargetUin = None
 
 
@@ -988,8 +1204,10 @@ class DeleteUserPermissionsBoundaryResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1003,8 +1221,12 @@ class DeleteUserRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: Sub-user username
+        :type Name: str
+        :param Force: Whether to forcibly delete the sub-user. The default input parameter is `0`. `0`: do not delete the user if the user has undeleted API keys; `1`: first delete the API keys then delete the user if the user has undeleted API keys. To delete API keys, you need to have cam:DeleteApiKey permission, which enables you to delete both enabled and disabled API keys. If you do not have this permission, you will not be able to delete API keys and the user.
+        :type Force: int
         """
-        :param Name: Sub-user username\n        :type Name: str\n        :param Force: Whether to forcibly delete the sub-user. The default input parameter is `0`. `0`: do not delete the user if the user has undeleted API keys; `1`: first delete the API keys then delete the user if the user has undeleted API keys. To delete API keys, you need to have cam:DeleteApiKey permission, which enables you to delete both enabled and disabled API keys. If you do not have this permission, you will not be able to delete API keys and the user.\n        :type Force: int\n        """
         self.Name = None
         self.Force = None
 
@@ -1027,8 +1249,10 @@ class DeleteUserResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1042,8 +1266,12 @@ class DescribeRoleListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Page: Page number, beginning from 1
+        :type Page: int
+        :param Rp: Number of lines per page, no greater than 200
+        :type Rp: int
         """
-        :param Page: Page number, beginning from 1\n        :type Page: int\n        :param Rp: Number of lines per page, no greater than 200\n        :type Rp: int\n        """
         self.Page = None
         self.Rp = None
 
@@ -1066,9 +1294,15 @@ class DescribeRoleListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param List: Role details list
-Note: This field may return null, indicating that no valid value was found.\n        :type List: list of RoleInfo\n        :param TotalNum: Total number of roles\n        :type TotalNum: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: This field may return null, indicating that no valid value was found.
+        :type List: list of RoleInfo
+        :param TotalNum: Total number of roles
+        :type TotalNum: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.List = None
         self.TotalNum = None
         self.RequestId = None
@@ -1091,8 +1325,10 @@ class DescribeSafeAuthFlagCollRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SubUin: Sub-account
+        :type SubUin: int
         """
-        :param SubUin: Sub-account\n        :type SubUin: int\n        """
         self.SubUin = None
 
 
@@ -1113,8 +1349,16 @@ class DescribeSafeAuthFlagCollResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LoginFlag: Login protection settings
+        :type LoginFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
+        :param ActionFlag: Sensitive operation protection settings
+        :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
+        :param OffsiteFlag: Suspicious login location protection settings
+        :type OffsiteFlag: :class:`tencentcloud.cam.v20190116.models.OffsiteFlag`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param LoginFlag: Login protection settings\n        :type LoginFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`\n        :param ActionFlag: Sensitive operation protection settings\n        :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`\n        :param OffsiteFlag: Suspicious login location protection settings\n        :type OffsiteFlag: :class:`tencentcloud.cam.v20190116.models.OffsiteFlag`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.LoginFlag = None
         self.ActionFlag = None
         self.OffsiteFlag = None
@@ -1146,8 +1390,16 @@ class DescribeSafeAuthFlagIntlResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LoginFlag: Login protection settings
+        :type LoginFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlagIntl`
+        :param ActionFlag: Sensitive operation protection settings
+        :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlagIntl`
+        :param OffsiteFlag: Suspicious login location protection settings
+        :type OffsiteFlag: :class:`tencentcloud.cam.v20190116.models.OffsiteFlag`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param LoginFlag: Login protection settings\n        :type LoginFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlagIntl`\n        :param ActionFlag: Sensitive operation protection settings\n        :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlagIntl`\n        :param OffsiteFlag: Suspicious login location protection settings\n        :type OffsiteFlag: :class:`tencentcloud.cam.v20190116.models.OffsiteFlag`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.LoginFlag = None
         self.ActionFlag = None
         self.OffsiteFlag = None
@@ -1179,8 +1431,16 @@ class DescribeSafeAuthFlagResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LoginFlag: Login protection settings
+        :type LoginFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
+        :param ActionFlag: Sensitive operation protection settings
+        :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
+        :param OffsiteFlag: Suspicious login location protection settings
+        :type OffsiteFlag: :class:`tencentcloud.cam.v20190116.models.OffsiteFlag`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param LoginFlag: Login protection settings\n        :type LoginFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`\n        :param ActionFlag: Sensitive operation protection settings\n        :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`\n        :param OffsiteFlag: Suspicious login location protection settings\n        :type OffsiteFlag: :class:`tencentcloud.cam.v20190116.models.OffsiteFlag`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.LoginFlag = None
         self.ActionFlag = None
         self.OffsiteFlag = None
@@ -1206,8 +1466,10 @@ class DescribeSubAccountsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FilterSubAccountUin: List of sub-user UINs. Up to 50 UINs are supported.
+        :type FilterSubAccountUin: list of int non-negative
         """
-        :param FilterSubAccountUin: List of sub-user UINs. Up to 50 UINs are supported.\n        :type FilterSubAccountUin: list of int non-negative\n        """
         self.FilterSubAccountUin = None
 
 
@@ -1228,8 +1490,12 @@ class DescribeSubAccountsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SubAccounts: Sub-user list
+        :type SubAccounts: list of SubAccountUser
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param SubAccounts: Sub-user list\n        :type SubAccounts: list of SubAccountUser\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.SubAccounts = None
         self.RequestId = None
 
@@ -1250,8 +1516,12 @@ class DetachGroupPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyId: Policy ID
+        :type PolicyId: int
+        :param DetachGroupId: User Group ID
+        :type DetachGroupId: int
         """
-        :param PolicyId: Policy ID\n        :type PolicyId: int\n        :param DetachGroupId: User Group ID\n        :type DetachGroupId: int\n        """
         self.PolicyId = None
         self.DetachGroupId = None
 
@@ -1274,8 +1544,10 @@ class DetachGroupPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1289,8 +1561,16 @@ class DetachRolePolicyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyId: Policy ID. Either `PolicyId` or `PolicyName` must be entered
+        :type PolicyId: int
+        :param DetachRoleId: Role ID, used to specify a role. Input either `AttachRoleId` or `AttachRoleName`
+        :type DetachRoleId: str
+        :param DetachRoleName: Role name, used to specify a role. Input either `AttachRoleId` or `AttachRoleName`
+        :type DetachRoleName: str
+        :param PolicyName: Policy name. Either `PolicyId` or `PolicyName` must be entered
+        :type PolicyName: str
         """
-        :param PolicyId: Policy ID. Either `PolicyId` or `PolicyName` must be entered\n        :type PolicyId: int\n        :param DetachRoleId: Role ID, used to specify a role. Input either `AttachRoleId` or `AttachRoleName`\n        :type DetachRoleId: str\n        :param DetachRoleName: Role name, used to specify a role. Input either `AttachRoleId` or `AttachRoleName`\n        :type DetachRoleName: str\n        :param PolicyName: Policy name. Either `PolicyId` or `PolicyName` must be entered\n        :type PolicyName: str\n        """
         self.PolicyId = None
         self.DetachRoleId = None
         self.DetachRoleName = None
@@ -1317,8 +1597,10 @@ class DetachRolePolicyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1332,8 +1614,12 @@ class DetachUserPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyId: Policy ID
+        :type PolicyId: int
+        :param DetachUin: Sub-account UIN
+        :type DetachUin: int
         """
-        :param PolicyId: Policy ID\n        :type PolicyId: int\n        :param DetachUin: Sub-account UIN\n        :type DetachUin: int\n        """
         self.PolicyId = None
         self.DetachUin = None
 
@@ -1356,8 +1642,10 @@ class DetachUserPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1377,8 +1665,22 @@ class GetAccountSummaryResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Policies: Number of policies
+        :type Policies: int
+        :param Roles: Number of roles
+        :type Roles: int
+        :param Idps: Number of identity providers
+        :type Idps: int
+        :param User: Number of sub-accounts
+        :type User: int
+        :param Group: Number of groups
+        :type Group: int
+        :param Member: Total number of grouped users
+        :type Member: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Policies: Number of policies\n        :type Policies: int\n        :param Roles: Number of roles\n        :type Roles: int\n        :param Idps: Number of identity providers\n        :type Idps: int\n        :param User: Number of sub-accounts\n        :type User: int\n        :param Group: Number of groups\n        :type Group: int\n        :param Member: Total number of grouped users\n        :type Member: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Policies = None
         self.Roles = None
         self.Idps = None
@@ -1404,8 +1706,10 @@ class GetCustomMFATokenInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MFAToken: Custom multi-factor verification Token
+        :type MFAToken: str
         """
-        :param MFAToken: Custom multi-factor verification Token\n        :type MFAToken: str\n        """
         self.MFAToken = None
 
 
@@ -1426,8 +1730,12 @@ class GetCustomMFATokenInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Uin: Account ID corresponding to the custom multi-factor verification Token
+        :type Uin: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Uin: Account ID corresponding to the custom multi-factor verification Token\n        :type Uin: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Uin = None
         self.RequestId = None
 
@@ -1443,8 +1751,10 @@ class GetGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: User Group ID
+        :type GroupId: int
         """
-        :param GroupId: User Group ID\n        :type GroupId: int\n        """
         self.GroupId = None
 
 
@@ -1465,8 +1775,22 @@ class GetGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: User Group ID
+        :type GroupId: int
+        :param GroupName: User Group name
+        :type GroupName: str
+        :param GroupNum: Number of members in the User Group
+        :type GroupNum: int
+        :param Remark: User Group description
+        :type Remark: str
+        :param CreateTime: Time User Group created
+        :type CreateTime: str
+        :param UserInfo: User Group member information
+        :type UserInfo: list of GroupMemberInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param GroupId: User Group ID\n        :type GroupId: int\n        :param GroupName: User Group name\n        :type GroupName: str\n        :param GroupNum: Number of members in the User Group\n        :type GroupNum: int\n        :param Remark: User Group description\n        :type Remark: str\n        :param CreateTime: Time User Group created\n        :type CreateTime: str\n        :param UserInfo: User Group member information\n        :type UserInfo: list of GroupMemberInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.GroupId = None
         self.GroupName = None
         self.GroupNum = None
@@ -1497,8 +1821,10 @@ class GetPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyId: Policy ID
+        :type PolicyId: int
         """
-        :param PolicyId: Policy ID\n        :type PolicyId: int\n        """
         self.PolicyId = None
 
 
@@ -1519,16 +1845,34 @@ class GetPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyName: Policy name
-Note: This field may return null, indicating that no valid value was found.\n        :type PolicyName: str\n        :param Description: Policy description
-Note: This field may return null, indicating that no valid value was found.\n        :type Description: str\n        :param Type: 1: Custom policy; 2: Preset policy
-Note: This field may return null, indicating that no valid value was found.\n        :type Type: int\n        :param AddTime: Time created
-Note: This field may return null, indicating that no valid value was found.\n        :type AddTime: str\n        :param UpdateTime: Time of latest update
-Note: This field may return null, indicating that no valid value was found.\n        :type UpdateTime: str\n        :param PolicyDocument: Policy document
-Note: This field may return null, indicating that no valid value was found.\n        :type PolicyDocument: str\n        :param PresetAlias: Remarks
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type PresetAlias: str\n        :param IsServiceLinkedRolePolicy: Whether it is a service-linked policy
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type IsServiceLinkedRolePolicy: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: This field may return null, indicating that no valid value was found.
+        :type PolicyName: str
+        :param Description: Policy description
+Note: This field may return null, indicating that no valid value was found.
+        :type Description: str
+        :param Type: 1: Custom policy; 2: Preset policy
+Note: This field may return null, indicating that no valid value was found.
+        :type Type: int
+        :param AddTime: Time created
+Note: This field may return null, indicating that no valid value was found.
+        :type AddTime: str
+        :param UpdateTime: Time of latest update
+Note: This field may return null, indicating that no valid value was found.
+        :type UpdateTime: str
+        :param PolicyDocument: Policy document
+Note: This field may return null, indicating that no valid value was found.
+        :type PolicyDocument: str
+        :param PresetAlias: Remarks
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PresetAlias: str
+        :param IsServiceLinkedRolePolicy: Whether it is a service-linked policy
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IsServiceLinkedRolePolicy: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.PolicyName = None
         self.Description = None
         self.Type = None
@@ -1558,8 +1902,12 @@ class GetPolicyVersionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyId: Policy ID
+        :type PolicyId: int
+        :param VersionId: Policy version ID
+        :type VersionId: int
         """
-        :param PolicyId: Policy ID\n        :type PolicyId: int\n        :param VersionId: Policy version ID\n        :type VersionId: int\n        """
         self.PolicyId = None
         self.VersionId = None
 
@@ -1582,9 +1930,13 @@ class GetPolicyVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyVersion: Policy version details
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type PolicyVersion: :class:`tencentcloud.cam.v20190116.models.PolicyVersionDetail`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PolicyVersion: :class:`tencentcloud.cam.v20190116.models.PolicyVersionDetail`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.PolicyVersion = None
         self.RequestId = None
 
@@ -1602,8 +1954,12 @@ class GetRoleRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RoleId: Role ID, used to specify role. Input either `RoleId` or `RoleName`
+        :type RoleId: str
+        :param RoleName: Role name, used to specify role. Input either `RoleId` or `RoleName`
+        :type RoleName: str
         """
-        :param RoleId: Role ID, used to specify role. Input either `RoleId` or `RoleName`\n        :type RoleId: str\n        :param RoleName: Role name, used to specify role. Input either `RoleId` or `RoleName`\n        :type RoleName: str\n        """
         self.RoleId = None
         self.RoleName = None
 
@@ -1626,8 +1982,12 @@ class GetRoleResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RoleInfo: Role details
+        :type RoleInfo: :class:`tencentcloud.cam.v20190116.models.RoleInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RoleInfo: Role details\n        :type RoleInfo: :class:`tencentcloud.cam.v20190116.models.RoleInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RoleInfo = None
         self.RequestId = None
 
@@ -1645,8 +2005,10 @@ class GetSAMLProviderRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: SAML identity provider name
+        :type Name: str
         """
-        :param Name: SAML identity provider name\n        :type Name: str\n        """
         self.Name = None
 
 
@@ -1667,8 +2029,20 @@ class GetSAMLProviderResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: SAML identity provider name
+        :type Name: str
+        :param Description: SAML identity provider description
+        :type Description: str
+        :param CreateTime: Time SAML identity provider created
+        :type CreateTime: str
+        :param ModifyTime: Time SAML identity provider last modified
+        :type ModifyTime: str
+        :param SAMLMetadata: SAML identity provider metadata document
+        :type SAMLMetadata: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Name: SAML identity provider name\n        :type Name: str\n        :param Description: SAML identity provider description\n        :type Description: str\n        :param CreateTime: Time SAML identity provider created\n        :type CreateTime: str\n        :param ModifyTime: Time SAML identity provider last modified\n        :type ModifyTime: str\n        :param SAMLMetadata: SAML identity provider metadata document\n        :type SAMLMetadata: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Name = None
         self.Description = None
         self.CreateTime = None
@@ -1692,8 +2066,10 @@ class GetSecurityLastUsedRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SecretIdList: A parameter used to query the key ID list.
+        :type SecretIdList: list of str
         """
-        :param SecretIdList: A parameter used to query the key ID list.\n        :type SecretIdList: list of str\n        """
         self.SecretIdList = None
 
 
@@ -1714,8 +2090,12 @@ class GetSecurityLastUsedResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SecretIdLastUsedRows: List of key ID’s recent usage records.
+        :type SecretIdLastUsedRows: list of SecretIdLastUsed
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param SecretIdLastUsedRows: List of key ID’s recent usage records.\n        :type SecretIdLastUsedRows: list of SecretIdLastUsed\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.SecretIdLastUsedRows = None
         self.RequestId = None
 
@@ -1736,8 +2116,10 @@ class GetServiceLinkedRoleDeletionStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DeletionTaskId: Deletion task ID
+        :type DeletionTaskId: str
         """
-        :param DeletionTaskId: Deletion task ID\n        :type DeletionTaskId: str\n        """
         self.DeletionTaskId = None
 
 
@@ -1758,10 +2140,20 @@ class GetServiceLinkedRoleDeletionStatusResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Status: NOT_STARTED, IN_PROGRESS, SUCCEEDED, FAILED
+        :type Status: str
+        :param Reason: Reasons why the deletion failed.
+        :type Reason: str
+        :param ServiceType: Service type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ServiceType: str
+        :param ServiceName: Service name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ServiceName: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Status: Status: NOT_STARTED, IN_PROGRESS, SUCCEEDED, FAILED\n        :type Status: str\n        :param Reason: Reasons why the deletion failed.\n        :type Reason: str\n        :param ServiceType: Service type
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ServiceType: str\n        :param ServiceName: Service name
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ServiceName: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Status = None
         self.Reason = None
         self.ServiceType = None
@@ -1783,8 +2175,10 @@ class GetUserRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: Sub-user username
+        :type Name: str
         """
-        :param Name: Sub-user username\n        :type Name: str\n        """
         self.Name = None
 
 
@@ -1805,8 +2199,26 @@ class GetUserResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Uin: Sub-user UIN
+        :type Uin: int
+        :param Name: Sub-user username
+        :type Name: str
+        :param Uid: Sub-user UID
+        :type Uid: int
+        :param Remark: Sub-user remarks
+        :type Remark: str
+        :param ConsoleLogin: If sub-user can log in to the Console
+        :type ConsoleLogin: int
+        :param PhoneNum: Mobile number
+        :type PhoneNum: str
+        :param CountryCode: Country/Area code
+        :type CountryCode: str
+        :param Email: Email
+        :type Email: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Uin: Sub-user UIN\n        :type Uin: int\n        :param Name: Sub-user username\n        :type Name: str\n        :param Uid: Sub-user UID\n        :type Uid: int\n        :param Remark: Sub-user remarks\n        :type Remark: str\n        :param ConsoleLogin: If sub-user can log in to the Console\n        :type ConsoleLogin: int\n        :param PhoneNum: Mobile number\n        :type PhoneNum: str\n        :param CountryCode: Country/Area code\n        :type CountryCode: str\n        :param Email: Email\n        :type Email: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Uin = None
         self.Name = None
         self.Uid = None
@@ -1836,8 +2248,12 @@ class GroupIdOfUidInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Uid: Sub-user UID
+        :type Uid: int
+        :param GroupId: User Group ID
+        :type GroupId: int
         """
-        :param Uid: Sub-user UID\n        :type Uid: int\n        :param GroupId: User Group ID\n        :type GroupId: int\n        """
         self.Uid = None
         self.GroupId = None
 
@@ -1860,8 +2276,16 @@ class GroupInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: User group ID
+        :type GroupId: int
+        :param GroupName: User Group name
+        :type GroupName: str
+        :param CreateTime: Time User Group created
+        :type CreateTime: str
+        :param Remark: User Group description
+        :type Remark: str
         """
-        :param GroupId: User group ID\n        :type GroupId: int\n        :param GroupName: User Group name\n        :type GroupName: str\n        :param CreateTime: Time User Group created\n        :type CreateTime: str\n        :param Remark: User Group description\n        :type Remark: str\n        """
         self.GroupId = None
         self.GroupName = None
         self.CreateTime = None
@@ -1888,8 +2312,30 @@ class GroupMemberInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Uid: Sub-user UID
+        :type Uid: int
+        :param Uin: Sub-user UIN
+        :type Uin: int
+        :param Name: Sub-user name
+        :type Name: str
+        :param PhoneNum: Mobile number
+        :type PhoneNum: str
+        :param CountryCode: Mobile number country/area code
+        :type CountryCode: str
+        :param PhoneFlag: If mobile number has been verified
+        :type PhoneFlag: int
+        :param Email: Email address
+        :type Email: str
+        :param EmailFlag: If email has been verified
+        :type EmailFlag: int
+        :param UserType: User type
+        :type UserType: int
+        :param CreateTime: Time policy created
+        :type CreateTime: str
+        :param IsReceiverOwner: If the user is the main message recipient
+        :type IsReceiverOwner: int
         """
-        :param Uid: Sub-user UID\n        :type Uid: int\n        :param Uin: Sub-user UIN\n        :type Uin: int\n        :param Name: Sub-user name\n        :type Name: str\n        :param PhoneNum: Mobile number\n        :type PhoneNum: str\n        :param CountryCode: Mobile number country/area code\n        :type CountryCode: str\n        :param PhoneFlag: If mobile number has been verified\n        :type PhoneFlag: int\n        :param Email: Email address\n        :type Email: str\n        :param EmailFlag: If email has been verified\n        :type EmailFlag: int\n        :param UserType: User type\n        :type UserType: int\n        :param CreateTime: Time policy created\n        :type CreateTime: str\n        :param IsReceiverOwner: If the user is the main message recipient\n        :type IsReceiverOwner: int\n        """
         self.Uid = None
         self.Uin = None
         self.Name = None
@@ -1930,8 +2376,10 @@ class ListAccessKeysRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TargetUin: `UIN` of the specified user. If this parameter is left empty, access keys of the current user will be listed by default
+        :type TargetUin: int
         """
-        :param TargetUin: `UIN` of the specified user. If this parameter is left empty, access keys of the current user will be listed by default\n        :type TargetUin: int\n        """
         self.TargetUin = None
 
 
@@ -1952,9 +2400,13 @@ class ListAccessKeysResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessKeys: Access key list
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type AccessKeys: list of AccessKey\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AccessKeys: list of AccessKey
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.AccessKeys = None
         self.RequestId = None
 
@@ -1975,8 +2427,14 @@ class ListAttachedGroupPoliciesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TargetGroupId: User group ID
+        :type TargetGroupId: int
+        :param Page: Page number, which starts from 1. Default is 1
+        :type Page: int
+        :param Rp: Number of entries per page; 20 by default
+        :type Rp: int
         """
-        :param TargetGroupId: User group ID\n        :type TargetGroupId: int\n        :param Page: Page number, which starts from 1. Default is 1\n        :type Page: int\n        :param Rp: Number of entries per page; 20 by default\n        :type Rp: int\n        """
         self.TargetGroupId = None
         self.Page = None
         self.Rp = None
@@ -2001,8 +2459,14 @@ class ListAttachedGroupPoliciesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalNum: Total number of policies
+        :type TotalNum: int
+        :param List: Policy list
+        :type List: list of AttachPolicyInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalNum: Total number of policies\n        :type TotalNum: int\n        :param List: Policy list\n        :type List: list of AttachPolicyInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalNum = None
         self.List = None
         self.RequestId = None
@@ -2025,8 +2489,18 @@ class ListAttachedRolePoliciesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Page: Page number, beginning from 1
+        :type Page: int
+        :param Rp: Number of lines per page, no more than 200
+        :type Rp: int
+        :param RoleId: Role ID, used to specify a role. Input either `RoleId` or `RoleName`
+        :type RoleId: str
+        :param RoleName: Role name, used to specify a role. Input either `RoleId` or `RoleName`
+        :type RoleName: str
+        :param PolicyType: Filter according to policy type. `User` indicates querying custom policies only. `QCS` indicates querying preset policies only
+        :type PolicyType: str
         """
-        :param Page: Page number, beginning from 1\n        :type Page: int\n        :param Rp: Number of lines per page, no more than 200\n        :type Rp: int\n        :param RoleId: Role ID, used to specify a role. Input either `RoleId` or `RoleName`\n        :type RoleId: str\n        :param RoleName: Role name, used to specify a role. Input either `RoleId` or `RoleName`\n        :type RoleName: str\n        :param PolicyType: Filter according to policy type. `User` indicates querying custom policies only. `QCS` indicates querying preset policies only\n        :type PolicyType: str\n        """
         self.Page = None
         self.Rp = None
         self.RoleId = None
@@ -2055,8 +2529,14 @@ class ListAttachedRolePoliciesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param List: List of policies associated with the role
+        :type List: list of AttachedPolicyOfRole
+        :param TotalNum: Total number of policies associated with the role
+        :type TotalNum: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param List: List of policies associated with the role\n        :type List: list of AttachedPolicyOfRole\n        :param TotalNum: Total number of policies associated with the role\n        :type TotalNum: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.List = None
         self.TotalNum = None
         self.RequestId = None
@@ -2079,8 +2559,14 @@ class ListAttachedUserPoliciesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TargetUin: Sub-account UIN
+        :type TargetUin: int
+        :param Page: Page number, which starts from 1. Default is 1
+        :type Page: int
+        :param Rp: Number of entries per page; 20 by default
+        :type Rp: int
         """
-        :param TargetUin: Sub-account UIN\n        :type TargetUin: int\n        :param Page: Page number, which starts from 1. Default is 1\n        :type Page: int\n        :param Rp: Number of entries per page; 20 by default\n        :type Rp: int\n        """
         self.TargetUin = None
         self.Page = None
         self.Rp = None
@@ -2105,8 +2591,14 @@ class ListAttachedUserPoliciesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalNum: Total number of policies
+        :type TotalNum: int
+        :param List: Policy list
+        :type List: list of AttachPolicyInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalNum: Total number of policies\n        :type TotalNum: int\n        :param List: Policy list\n        :type List: list of AttachPolicyInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalNum = None
         self.List = None
         self.RequestId = None
@@ -2129,8 +2621,12 @@ class ListCollaboratorsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Limit: Number of entries per page. Default value: 20
+        :type Limit: int
+        :param Offset: Pagination start value. Default value: 0
+        :type Offset: int
         """
-        :param Limit: Number of entries per page. Default value: 20\n        :type Limit: int\n        :param Offset: Pagination start value. Default value: 0\n        :type Offset: int\n        """
         self.Limit = None
         self.Offset = None
 
@@ -2153,8 +2649,14 @@ class ListCollaboratorsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalNum: Total number
+        :type TotalNum: int
+        :param Data: Collaborator information
+        :type Data: list of SubAccountInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalNum: Total number\n        :type TotalNum: int\n        :param Data: Collaborator information\n        :type Data: list of SubAccountInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalNum = None
         self.Data = None
         self.RequestId = None
@@ -2177,8 +2679,16 @@ class ListEntitiesForPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyId: Policy ID
+        :type PolicyId: int
+        :param Page: Page number, which starts from 1. Default is 1
+        :type Page: int
+        :param Rp: Number of entries per page; 20 by default
+        :type Rp: int
+        :param EntityFilter: Valid values: `All`, `User`, `Group`, and `Role`. `All` means all entity types will be returned; `User` means only sub-accounts will be returned; `Group` means only User Groups will be returned; `Role` means only roles will be returned. `All` is the default value.
+        :type EntityFilter: str
         """
-        :param PolicyId: Policy ID\n        :type PolicyId: int\n        :param Page: Page number, which starts from 1. Default is 1\n        :type Page: int\n        :param Rp: Number of entries per page; 20 by default\n        :type Rp: int\n        :param EntityFilter: Valid values: `All`, `User`, `Group`, and `Role`. `All` means all entity types will be returned; `User` means only sub-accounts will be returned; `Group` means only User Groups will be returned; `Role` means only roles will be returned. `All` is the default value.\n        :type EntityFilter: str\n        """
         self.PolicyId = None
         self.Page = None
         self.Rp = None
@@ -2205,10 +2715,16 @@ class ListEntitiesForPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalNum: Number of entities
-Note: This field may return null, indicating that no valid value was found.\n        :type TotalNum: int\n        :param List: Entity list
-Note: This field may return null, indicating that no valid value was found.\n        :type List: list of AttachEntityOfPolicy\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: This field may return null, indicating that no valid value was found.
+        :type TotalNum: int
+        :param List: Entity list
+Note: This field may return null, indicating that no valid value was found.
+        :type List: list of AttachEntityOfPolicy
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.TotalNum = None
         self.List = None
         self.RequestId = None
@@ -2231,8 +2747,16 @@ class ListGroupsForUserRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Uid: Sub-user UID
+        :type Uid: int
+        :param Rp: Number of entries per page; default is 20
+        :type Rp: int
+        :param Page: Page number; default is 1
+        :type Page: int
+        :param SubUin: Sub-account UIN
+        :type SubUin: int
         """
-        :param Uid: Sub-user UID\n        :type Uid: int\n        :param Rp: Number of entries per page; default is 20\n        :type Rp: int\n        :param Page: Page number; default is 1\n        :type Page: int\n        :param SubUin: Sub-account UIN\n        :type SubUin: int\n        """
         self.Uid = None
         self.Rp = None
         self.Page = None
@@ -2259,8 +2783,14 @@ class ListGroupsForUserResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalNum: Total number of User Groups to which the sub-user has been added
+        :type TotalNum: int
+        :param GroupInfo: User Group information
+        :type GroupInfo: list of GroupInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalNum: Total number of User Groups to which the sub-user has been added\n        :type TotalNum: int\n        :param GroupInfo: User Group information\n        :type GroupInfo: list of GroupInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalNum = None
         self.GroupInfo = None
         self.RequestId = None
@@ -2283,8 +2813,14 @@ class ListGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Page: Page number; default is 1
+        :type Page: int
+        :param Rp: Number of entries per page; default is 20
+        :type Rp: int
+        :param Keyword: Filter by User Group name
+        :type Keyword: str
         """
-        :param Page: Page number; default is 1\n        :type Page: int\n        :param Rp: Number of entries per page; default is 20\n        :type Rp: int\n        :param Keyword: Filter by User Group name\n        :type Keyword: str\n        """
         self.Page = None
         self.Rp = None
         self.Keyword = None
@@ -2309,8 +2845,14 @@ class ListGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalNum: Total number of User Groups
+        :type TotalNum: int
+        :param GroupInfo: User group information array
+        :type GroupInfo: list of GroupInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalNum: Total number of User Groups\n        :type TotalNum: int\n        :param GroupInfo: User group information array\n        :type GroupInfo: list of GroupInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalNum = None
         self.GroupInfo = None
         self.RequestId = None
@@ -2333,8 +2875,16 @@ class ListPoliciesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Rp: Number of entries per page: must be greater than 0 and no greater than 200. Default is 20
+        :type Rp: int
+        :param Page: Page number. Starts from 1 and cannot be greater than 200. Default is 1
+        :type Page: int
+        :param Scope: Valid values: `All`, `QCS`, and `Local`. `All` means all policies will be returned; `QCS` means only preset policies will be returned; `Local` means only custom policies will be returned. `All` is the default value
+        :type Scope: str
+        :param Keyword: Filter by policy name
+        :type Keyword: str
         """
-        :param Rp: Number of entries per page: must be greater than 0 and no greater than 200. Default is 20\n        :type Rp: int\n        :param Page: Page number. Starts from 1 and cannot be greater than 200. Default is 1\n        :type Page: int\n        :param Scope: Valid values: `All`, `QCS`, and `Local`. `All` means all policies will be returned; `QCS` means only preset policies will be returned; `Local` means only custom policies will be returned. `All` is the default value\n        :type Scope: str\n        :param Keyword: Filter by policy name\n        :type Keyword: str\n        """
         self.Rp = None
         self.Page = None
         self.Scope = None
@@ -2361,8 +2911,10 @@ class ListPoliciesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param TotalNum: Total number of policies\n        :type TotalNum: int\n        :param List: Policy array. Each array contains fields including `policyId`, `policyName`, `addTime`, `type`, `description`, and `createMode`. 
+        r"""
+        :param TotalNum: Total number of policies
+        :type TotalNum: int
+        :param List: Policy array. Each array contains fields including `policyId`, `policyName`, `addTime`, `type`, `description`, and `createMode`. 
 policyId: policy ID 
 policyName: policy name
 addTime: policy creation time
@@ -2371,8 +2923,14 @@ description: policy description
 createMode: 1 indicates a policy created based on business permissions, while other values indicate that the policy syntax can be viewed and the policy can be updated using the policy syntax
 Attachments: number of associated users
 ServiceType: the product the policy is associated with
-IsAttached: this value should not be null when querying if a marked entity has been associated with a policy. 0 indicates that no policy has been associated, and 1 indicates that a policy has been associated\n        :type List: list of StrategyInfo\n        :param ServiceTypeList: Reserved field
-Note: This field may return null, indicating that no valid value was found.\n        :type ServiceTypeList: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+IsAttached: this value should not be null when querying if a marked entity has been associated with a policy. 0 indicates that no policy has been associated, and 1 indicates that a policy has been associated
+        :type List: list of StrategyInfo
+        :param ServiceTypeList: Reserved field
+Note: This field may return null, indicating that no valid value was found.
+        :type ServiceTypeList: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.TotalNum = None
         self.List = None
         self.ServiceTypeList = None
@@ -2397,8 +2955,10 @@ class ListPolicyVersionsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyId: Policy ID
+        :type PolicyId: int
         """
-        :param PolicyId: Policy ID\n        :type PolicyId: int\n        """
         self.PolicyId = None
 
 
@@ -2419,9 +2979,13 @@ class ListPolicyVersionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Versions: Policy version list
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Versions: list of PolicyVersionItem\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Versions: list of PolicyVersionItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.Versions = None
         self.RequestId = None
 
@@ -2448,8 +3012,14 @@ class ListSAMLProvidersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of SAML identity providers
+        :type TotalCount: int
+        :param SAMLProviderSet: List of SAML identity providers
+        :type SAMLProviderSet: list of SAMLProviderInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of SAML identity providers\n        :type TotalCount: int\n        :param SAMLProviderSet: List of SAML identity providers\n        :type SAMLProviderSet: list of SAMLProviderInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.SAMLProviderSet = None
         self.RequestId = None
@@ -2472,8 +3042,14 @@ class ListUsersForGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: User group ID
+        :type GroupId: int
+        :param Page: Page number; default is 1
+        :type Page: int
+        :param Rp: Number of entries per page; default is 20
+        :type Rp: int
         """
-        :param GroupId: User group ID\n        :type GroupId: int\n        :param Page: Page number; default is 1\n        :type Page: int\n        :param Rp: Number of entries per page; default is 20\n        :type Rp: int\n        """
         self.GroupId = None
         self.Page = None
         self.Rp = None
@@ -2498,8 +3074,14 @@ class ListUsersForGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalNum: Total number of users associated with the User Group
+        :type TotalNum: int
+        :param UserInfo: Sub-user information
+        :type UserInfo: list of GroupMemberInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalNum: Total number of users associated with the User Group\n        :type TotalNum: int\n        :param UserInfo: Sub-user information\n        :type UserInfo: list of GroupMemberInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalNum = None
         self.UserInfo = None
         self.RequestId = None
@@ -2528,8 +3110,12 @@ class ListUsersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: Sub-user information
+        :type Data: list of SubAccountInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Data: Sub-user information\n        :type Data: list of SubAccountInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -2550,8 +3136,18 @@ class LoginActionFlag(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Phone: Phone
+        :type Phone: int
+        :param Token: Hard token
+        :type Token: int
+        :param Stoken: Soft token
+        :type Stoken: int
+        :param Wechat: WeChat
+        :type Wechat: int
+        :param Custom: Custom
+        :type Custom: int
         """
-        :param Phone: Phone\n        :type Phone: int\n        :param Token: Hard token\n        :type Token: int\n        :param Stoken: Soft token\n        :type Stoken: int\n        :param Wechat: WeChat\n        :type Wechat: int\n        :param Custom: Custom\n        :type Custom: int\n        """
         self.Phone = None
         self.Token = None
         self.Stoken = None
@@ -2580,8 +3176,20 @@ class LoginActionFlagIntl(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Phone: Mobile number
+        :type Phone: int
+        :param Token: Hard token
+        :type Token: int
+        :param Stoken: Soft token
+        :type Stoken: int
+        :param Wechat: WeChat
+        :type Wechat: int
+        :param Custom: Custom
+        :type Custom: int
+        :param Mail: Email
+        :type Mail: int
         """
-        :param Phone: Mobile number\n        :type Phone: int\n        :param Token: Hard token\n        :type Token: int\n        :param Stoken: Soft token\n        :type Stoken: int\n        :param Wechat: WeChat\n        :type Wechat: int\n        :param Custom: Custom\n        :type Custom: int\n        :param Mail: Email\n        :type Mail: int\n        """
         self.Phone = None
         self.Token = None
         self.Stoken = None
@@ -2612,8 +3220,14 @@ class LoginActionMfaFlag(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Phone: Mobile phone
+        :type Phone: int
+        :param Stoken: Soft token
+        :type Stoken: int
+        :param Wechat: WeChat
+        :type Wechat: int
         """
-        :param Phone: Mobile phone\n        :type Phone: int\n        :param Stoken: Soft token\n        :type Stoken: int\n        :param Wechat: WeChat\n        :type Wechat: int\n        """
         self.Phone = None
         self.Stoken = None
         self.Wechat = None
@@ -2638,8 +3252,18 @@ class OffsiteFlag(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param VerifyFlag: Verification flag
+        :type VerifyFlag: int
+        :param NotifyPhone: Phone notification
+        :type NotifyPhone: int
+        :param NotifyEmail: Email notification
+        :type NotifyEmail: int
+        :param NotifyWechat: WeChat notification
+        :type NotifyWechat: int
+        :param Tips: Alert
+        :type Tips: int
         """
-        :param VerifyFlag: Verification flag\n        :type VerifyFlag: int\n        :param NotifyPhone: Phone notification\n        :type NotifyPhone: int\n        :param NotifyEmail: Email notification\n        :type NotifyEmail: int\n        :param NotifyWechat: WeChat notification\n        :type NotifyWechat: int\n        :param Tips: Alert\n        :type Tips: int\n        """
         self.VerifyFlag = None
         self.NotifyPhone = None
         self.NotifyEmail = None
@@ -2668,12 +3292,20 @@ class PolicyVersionDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VersionId: Policy version ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type VersionId: int\n        :param CreateDate: Policy version creation time
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type CreateDate: str\n        :param IsDefaultVersion: Whether it is the operative version. 0: no, 1: yes
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type IsDefaultVersion: int\n        :param Document: Policy syntax text
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Document: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type VersionId: int
+        :param CreateDate: Policy version creation time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CreateDate: str
+        :param IsDefaultVersion: Whether it is the operative version. 0: no, 1: yes
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IsDefaultVersion: int
+        :param Document: Policy syntax text
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Document: str
+        """
         self.VersionId = None
         self.CreateDate = None
         self.IsDefaultVersion = None
@@ -2700,11 +3332,17 @@ class PolicyVersionItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VersionId: Policy version ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type VersionId: int\n        :param CreateDate: Policy version creation time
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type CreateDate: str\n        :param IsDefaultVersion: Whether it is the operative version. 0: no, 1: yes
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type IsDefaultVersion: int\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type VersionId: int
+        :param CreateDate: Policy version creation time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CreateDate: str
+        :param IsDefaultVersion: Whether it is the operative version. 0: no, 1: yes
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IsDefaultVersion: int
+        """
         self.VersionId = None
         self.CreateDate = None
         self.IsDefaultVersion = None
@@ -2729,8 +3367,14 @@ class PutRolePermissionsBoundaryRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyId: Policy ID
+        :type PolicyId: int
+        :param RoleId: Role ID (either it or the role name must be entered)
+        :type RoleId: str
+        :param RoleName: Role name (either it or the role ID must be entered)
+        :type RoleName: str
         """
-        :param PolicyId: Policy ID\n        :type PolicyId: int\n        :param RoleId: Role ID (either it or the role name must be entered)\n        :type RoleId: str\n        :param RoleName: Role name (either it or the role ID must be entered)\n        :type RoleName: str\n        """
         self.PolicyId = None
         self.RoleId = None
         self.RoleName = None
@@ -2755,8 +3399,10 @@ class PutRolePermissionsBoundaryResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2770,8 +3416,12 @@ class PutUserPermissionsBoundaryRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TargetUin: Sub-account `Uin`
+        :type TargetUin: int
+        :param PolicyId: Policy ID
+        :type PolicyId: int
         """
-        :param TargetUin: Sub-account `Uin`\n        :type TargetUin: int\n        :param PolicyId: Policy ID\n        :type PolicyId: int\n        """
         self.TargetUin = None
         self.PolicyId = None
 
@@ -2794,8 +3444,10 @@ class PutUserPermissionsBoundaryResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2809,8 +3461,10 @@ class RemoveUserFromGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Info: The UID of the user to be deleted and an array corresponding to the User Group IDs
+        :type Info: list of GroupIdOfUidInfo
         """
-        :param Info: The UID of the user to be deleted and an array corresponding to the User Group IDs\n        :type Info: list of GroupIdOfUidInfo\n        """
         self.Info = None
 
 
@@ -2836,8 +3490,10 @@ class RemoveUserFromGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2851,11 +3507,31 @@ class RoleInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RoleId: Role ID
+        :type RoleId: str
+        :param RoleName: Role name
+        :type RoleName: str
+        :param PolicyDocument: Role policy document
+        :type PolicyDocument: str
+        :param Description: Role description
+        :type Description: str
+        :param AddTime: Time role created
+        :type AddTime: str
+        :param UpdateTime: Time role last updated
+        :type UpdateTime: str
+        :param ConsoleLogin: If login is allowed for the role
+        :type ConsoleLogin: int
+        :param RoleType: User role. Valid values: `user`, `system`, `service_linked`
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RoleType: str
+        :param SessionDuration: Valid period
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SessionDuration: int
+        :param DeletionTaskId: Task identifier for deleting a service-linked role 
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DeletionTaskId: str
         """
-        :param RoleId: Role ID\n        :type RoleId: str\n        :param RoleName: Role name\n        :type RoleName: str\n        :param PolicyDocument: Role policy document\n        :type PolicyDocument: str\n        :param Description: Role description\n        :type Description: str\n        :param AddTime: Time role created\n        :type AddTime: str\n        :param UpdateTime: Time role last updated\n        :type UpdateTime: str\n        :param ConsoleLogin: If login is allowed for the role\n        :type ConsoleLogin: int\n        :param RoleType: User role. Valid values: `user`, `system`, `service_linked`
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type RoleType: str\n        :param SessionDuration: Valid period
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type SessionDuration: int\n        :param DeletionTaskId: Task identifier for deleting a service-linked role 
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DeletionTaskId: str\n        """
         self.RoleId = None
         self.RoleName = None
         self.PolicyDocument = None
@@ -2894,8 +3570,16 @@ class SAMLProviderInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: SAML identity provider name
+        :type Name: str
+        :param Description: SAML identity provider description
+        :type Description: str
+        :param CreateTime: Time SAML identity provider created
+        :type CreateTime: str
+        :param ModifyTime: Time SAML identity provider last modified
+        :type ModifyTime: str
         """
-        :param Name: SAML identity provider name\n        :type Name: str\n        :param Description: SAML identity provider description\n        :type Description: str\n        :param CreateTime: Time SAML identity provider created\n        :type CreateTime: str\n        :param ModifyTime: Time SAML identity provider last modified\n        :type ModifyTime: str\n        """
         self.Name = None
         self.Description = None
         self.CreateTime = None
@@ -2922,9 +3606,13 @@ class SecretIdLastUsed(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SecretId: Key ID.
+        :type SecretId: str
+        :param LastUsedDate: The date when the key ID was last used (the value is obtained one day later).
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type LastUsedDate: str
         """
-        :param SecretId: Key ID.\n        :type SecretId: str\n        :param LastUsedDate: The date when the key ID was last used (the value is obtained one day later).
-Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type LastUsedDate: str\n        """
         self.SecretId = None
         self.LastUsedDate = None
 
@@ -2947,8 +3635,12 @@ class SetDefaultPolicyVersionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyId: Policy ID
+        :type PolicyId: int
+        :param VersionId: Policy version ID
+        :type VersionId: int
         """
-        :param PolicyId: Policy ID\n        :type PolicyId: int\n        :param VersionId: Policy version ID\n        :type VersionId: int\n        """
         self.PolicyId = None
         self.VersionId = None
 
@@ -2971,8 +3663,10 @@ class SetDefaultPolicyVersionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2986,8 +3680,14 @@ class SetMfaFlagRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OpUin: Sets user UIN
+        :type OpUin: int
+        :param LoginFlag: Sets login protection
+        :type LoginFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionMfaFlag`
+        :param ActionFlag: Sets operation protection
+        :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionMfaFlag`
         """
-        :param OpUin: Sets user UIN\n        :type OpUin: int\n        :param LoginFlag: Sets login protection\n        :type LoginFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionMfaFlag`\n        :param ActionFlag: Sets operation protection\n        :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionMfaFlag`\n        """
         self.OpUin = None
         self.LoginFlag = None
         self.ActionFlag = None
@@ -3016,8 +3716,10 @@ class SetMfaFlagResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3031,17 +3733,47 @@ class StrategyInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyId: Policy ID
+        :type PolicyId: int
+        :param PolicyName: Policy name
+        :type PolicyName: str
+        :param AddTime: Time policy created
+Note: This field may return null, indicating that no valid value was found.
+        :type AddTime: str
+        :param Type: Policy type. 1: Custom policy; 2: Preset policy
+        :type Type: int
+        :param Description: Policy description
+Note: This field may return null, indicating that no valid value was found.
+        :type Description: str
+        :param CreateMode: How the policy was created: 1: Via console; 2: Via syntax
+        :type CreateMode: int
+        :param Attachments: Number of associated users
+        :type Attachments: int
+        :param ServiceType: Product associated with the policy
+Note: This field may return null, indicating that no valid value was found.
+        :type ServiceType: str
+        :param IsAttached: This value should not be null when querying whether a marked entity has been associated with a policy. 0 indicates that no policy has been associated, while 1 indicates that a policy has been associated
+        :type IsAttached: int
+        :param Deactived: Queries if the policy has been deactivated
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Deactived: int
+        :param DeactivedDetail: List of deprecated products
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DeactivedDetail: list of str
+        :param IsServiceLinkedPolicy: The deletion task identifier used to check the deletion status of the service-linked role
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IsServiceLinkedPolicy: int
+        :param AttachEntityCount: The number of entities associated with the policy.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AttachEntityCount: int
+        :param AttachEntityBoundaryCount: The number of entities associated with the permission boundary.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AttachEntityBoundaryCount: int
+        :param UpdateTime: The last edited time.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type UpdateTime: str
         """
-        :param PolicyId: Policy ID\n        :type PolicyId: int\n        :param PolicyName: Policy name\n        :type PolicyName: str\n        :param AddTime: Time policy created
-Note: This field may return null, indicating that no valid value was found.\n        :type AddTime: str\n        :param Type: Policy type. 1: Custom policy; 2: Preset policy\n        :type Type: int\n        :param Description: Policy description
-Note: This field may return null, indicating that no valid value was found.\n        :type Description: str\n        :param CreateMode: How the policy was created: 1: Via console; 2: Via syntax\n        :type CreateMode: int\n        :param Attachments: Number of associated users\n        :type Attachments: int\n        :param ServiceType: Product associated with the policy
-Note: This field may return null, indicating that no valid value was found.\n        :type ServiceType: str\n        :param IsAttached: This value should not be null when querying whether a marked entity has been associated with a policy. 0 indicates that no policy has been associated, while 1 indicates that a policy has been associated\n        :type IsAttached: int\n        :param Deactived: Queries if the policy has been deactivated
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Deactived: int\n        :param DeactivedDetail: List of deprecated products
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DeactivedDetail: list of str\n        :param IsServiceLinkedPolicy: The deletion task identifier used to check the deletion status of the service-linked role
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type IsServiceLinkedPolicy: int\n        :param AttachEntityCount: The number of entities associated with the policy.
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type AttachEntityCount: int\n        :param AttachEntityBoundaryCount: The number of entities associated with the permission boundary.
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type AttachEntityBoundaryCount: int\n        :param UpdateTime: The last edited time.
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type UpdateTime: str\n        """
         self.PolicyId = None
         self.PolicyName = None
         self.AddTime = None
@@ -3090,9 +3822,27 @@ class SubAccountInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Uin: Sub-user user ID
+        :type Uin: int
+        :param Name: Sub-user username
+        :type Name: str
+        :param Uid: Sub-user UID
+        :type Uid: int
+        :param Remark: Sub-user remarks
+        :type Remark: str
+        :param ConsoleLogin: If sub-user can log in to the console
+        :type ConsoleLogin: int
+        :param PhoneNum: Mobile number
+        :type PhoneNum: str
+        :param CountryCode: Country/Area code
+        :type CountryCode: str
+        :param Email: Email
+        :type Email: str
+        :param CreateTime: Creation time
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type CreateTime: str
         """
-        :param Uin: Sub-user user ID\n        :type Uin: int\n        :param Name: Sub-user username\n        :type Name: str\n        :param Uid: Sub-user UID\n        :type Uid: int\n        :param Remark: Sub-user remarks\n        :type Remark: str\n        :param ConsoleLogin: If sub-user can log in to the console\n        :type ConsoleLogin: int\n        :param PhoneNum: Mobile number\n        :type PhoneNum: str\n        :param CountryCode: Country/Area code\n        :type CountryCode: str\n        :param Email: Email\n        :type Email: str\n        :param CreateTime: Creation time
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type CreateTime: str\n        """
         self.Uin = None
         self.Name = None
         self.Uid = None
@@ -3129,9 +3879,25 @@ class SubAccountUser(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Uin: Sub-user ID
+        :type Uin: int
+        :param Name: Sub-user name
+        :type Name: str
+        :param Uid: Sub-user UID
+        :type Uid: int
+        :param Remark: Sub-user remarks
+        :type Remark: str
+        :param CreateTime: Creation time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: str
+        :param UserType: User type (1: root account; 2: sub-user; 3: WeCom sub-user; 4: collaborator; 5: message recipient)
+        :type UserType: int
+        :param LastLoginIp: 
+        :type LastLoginIp: str
+        :param LastLoginTime: 
+        :type LastLoginTime: str
         """
-        :param Uin: Sub-user ID\n        :type Uin: int\n        :param Name: Sub-user name\n        :type Name: str\n        :param Uid: Sub-user UID\n        :type Uid: int\n        :param Remark: Sub-user remarks\n        :type Remark: str\n        :param CreateTime: Creation time
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type CreateTime: str\n        :param UserType: User type (1: root account; 2: sub-user; 3: WeCom sub-user; 4: collaborator; 5: message recipient)\n        :type UserType: int\n        :param LastLoginIp: \n        :type LastLoginIp: str\n        :param LastLoginTime: \n        :type LastLoginTime: str\n        """
         self.Uin = None
         self.Name = None
         self.Uid = None
@@ -3166,8 +3932,14 @@ class UpdateAssumeRolePolicyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyDocument: Policy document
+        :type PolicyDocument: str
+        :param RoleId: Role ID, used to specify a role. Input either `RoleId` or `RoleName`
+        :type RoleId: str
+        :param RoleName: Role name, used to specify a role. Input either `RoleId` or `RoleName`
+        :type RoleName: str
         """
-        :param PolicyDocument: Policy document\n        :type PolicyDocument: str\n        :param RoleId: Role ID, used to specify a role. Input either `RoleId` or `RoleName`\n        :type RoleId: str\n        :param RoleName: Role name, used to specify a role. Input either `RoleId` or `RoleName`\n        :type RoleName: str\n        """
         self.PolicyDocument = None
         self.RoleId = None
         self.RoleName = None
@@ -3192,8 +3964,10 @@ class UpdateAssumeRolePolicyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3207,8 +3981,14 @@ class UpdateGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: User Group ID
+        :type GroupId: int
+        :param GroupName: User Group name
+        :type GroupName: str
+        :param Remark: User Group description
+        :type Remark: str
         """
-        :param GroupId: User Group ID\n        :type GroupId: int\n        :param GroupName: User Group name\n        :type GroupName: str\n        :param Remark: User Group description\n        :type Remark: str\n        """
         self.GroupId = None
         self.GroupName = None
         self.Remark = None
@@ -3233,8 +4013,10 @@ class UpdateGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3248,8 +4030,18 @@ class UpdatePolicyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyId: Policy ID. Either `PolicyId` or `PolicyName` must be entered
+        :type PolicyId: int
+        :param PolicyName: Policy name. Either `PolicyName` or `PolicyId` must be entered
+        :type PolicyName: str
+        :param Description: Policy description
+        :type Description: str
+        :param PolicyDocument: Policy documentation, for example: `{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}`, where `principal` is used to specify the service that is authorized to use the role. For more information about this parameter, see **RoleInfo** under **Output Parameters** in the [GetRole](https://intl.cloud.tencent.com/document/product/598/36221?from_cn_redirect=1).
+        :type PolicyDocument: str
+        :param Alias: Preset policy remark
+        :type Alias: str
         """
-        :param PolicyId: Policy ID. Either `PolicyId` or `PolicyName` must be entered\n        :type PolicyId: int\n        :param PolicyName: Policy name. Either `PolicyName` or `PolicyId` must be entered\n        :type PolicyName: str\n        :param Description: Policy description\n        :type Description: str\n        :param PolicyDocument: Policy documentation, for example: `{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}`, where `principal` is used to specify the service that is authorized to use the role. For more information about this parameter, see **RoleInfo** under **Output Parameters** in the [GetRole](https://intl.cloud.tencent.com/document/product/598/36221?from_cn_redirect=1).\n        :type PolicyDocument: str\n        :param Alias: Preset policy remark\n        :type Alias: str\n        """
         self.PolicyId = None
         self.PolicyName = None
         self.Description = None
@@ -3278,9 +4070,13 @@ class UpdatePolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: Policy ID, which will be returned only if the input parameter is `PolicyName`
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type PolicyId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PolicyId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.PolicyId = None
         self.RequestId = None
 
@@ -3296,8 +4092,14 @@ class UpdateRoleConsoleLoginRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ConsoleLogin: Whether login is allowed. 1: yes, 0: no
+        :type ConsoleLogin: int
+        :param RoleId: Role ID
+        :type RoleId: int
+        :param RoleName: Role name
+        :type RoleName: str
         """
-        :param ConsoleLogin: Whether login is allowed. 1: yes, 0: no\n        :type ConsoleLogin: int\n        :param RoleId: Role ID\n        :type RoleId: int\n        :param RoleName: Role name\n        :type RoleName: str\n        """
         self.ConsoleLogin = None
         self.RoleId = None
         self.RoleName = None
@@ -3322,8 +4124,10 @@ class UpdateRoleConsoleLoginResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3337,8 +4141,14 @@ class UpdateRoleDescriptionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Description: Role description
+        :type Description: str
+        :param RoleId: Role ID, used to specify a role. Input either `RoleId` or `RoleName`
+        :type RoleId: str
+        :param RoleName: Role name, used to specify a role. Input either `RoleId` or `RoleName`
+        :type RoleName: str
         """
-        :param Description: Role description\n        :type Description: str\n        :param RoleId: Role ID, used to specify a role. Input either `RoleId` or `RoleName`\n        :type RoleId: str\n        :param RoleName: Role name, used to specify a role. Input either `RoleId` or `RoleName`\n        :type RoleName: str\n        """
         self.Description = None
         self.RoleId = None
         self.RoleName = None
@@ -3363,8 +4173,10 @@ class UpdateRoleDescriptionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3378,8 +4190,14 @@ class UpdateSAMLProviderRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: SAML identity provider name
+        :type Name: str
+        :param Description: SAML identity provider description
+        :type Description: str
+        :param SAMLMetadataDocument: SAML identity provider metadata document (Base64)
+        :type SAMLMetadataDocument: str
         """
-        :param Name: SAML identity provider name\n        :type Name: str\n        :param Description: SAML identity provider description\n        :type Description: str\n        :param SAMLMetadataDocument: SAML identity provider metadata document (Base64)\n        :type SAMLMetadataDocument: str\n        """
         self.Name = None
         self.Description = None
         self.SAMLMetadataDocument = None
@@ -3404,8 +4222,10 @@ class UpdateSAMLProviderResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3419,8 +4239,24 @@ class UpdateUserRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: Sub-user username
+        :type Name: str
+        :param Remark: Sub-user remarks
+        :type Remark: str
+        :param ConsoleLogin: Whether or not the sub-user is allowed to log in to the console. 0: No; 1: Yes.
+        :type ConsoleLogin: int
+        :param Password: Sub-user's console login password. If no password rules have been set, the password must have a minimum of 8 characters containing uppercase letters, lowercase letters, digits, and special characters by default. This parameter will be valid only when the sub-user is allowed to log in to the console. If it is not specified and console login is allowed, the system will automatically generate a random 32-character password that contains uppercase letters, lowercase letters, digits, and special characters.
+        :type Password: str
+        :param NeedResetPassword: If the sub-user needs to reset their password when they next log in to the console. 0: No; 1: Yes.
+        :type NeedResetPassword: int
+        :param PhoneNum: Mobile number
+        :type PhoneNum: str
+        :param CountryCode: Country/Area Code
+        :type CountryCode: str
+        :param Email: Email
+        :type Email: str
         """
-        :param Name: Sub-user username\n        :type Name: str\n        :param Remark: Sub-user remarks\n        :type Remark: str\n        :param ConsoleLogin: Whether or not the sub-user is allowed to log in to the console. 0: No; 1: Yes.\n        :type ConsoleLogin: int\n        :param Password: Sub-user's console login password. If no password rules have been set, the password must have a minimum of 8 characters containing uppercase letters, lowercase letters, digits, and special characters by default. This parameter will be valid only when the sub-user is allowed to log in to the console. If it is not specified and console login is allowed, the system will automatically generate a random 32-character password that contains uppercase letters, lowercase letters, digits, and special characters.\n        :type Password: str\n        :param NeedResetPassword: If the sub-user needs to reset their password when they next log in to the console. 0: No; 1: Yes.\n        :type NeedResetPassword: int\n        :param PhoneNum: Mobile number\n        :type PhoneNum: str\n        :param CountryCode: Country/Area Code\n        :type CountryCode: str\n        :param Email: Email\n        :type Email: str\n        """
         self.Name = None
         self.Remark = None
         self.ConsoleLogin = None
@@ -3455,8 +4291,10 @@ class UpdateUserResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 

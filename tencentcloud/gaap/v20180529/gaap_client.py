@@ -251,6 +251,34 @@ class GaapClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCustomHeader(self, request):
+        """This API is used to create a custom header of the HTTP/HTTPS listener. When client requests reach the listener, they will be forwarded to the origin with this custom hearer.
+
+        :param request: Request instance for CreateCustomHeader.
+        :type request: :class:`tencentcloud.gaap.v20180529.models.CreateCustomHeaderRequest`
+        :rtype: :class:`tencentcloud.gaap.v20180529.models.CreateCustomHeaderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateCustomHeader", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCustomHeaderResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDomain(self, request):
         """This API (CreateDomain) is used to create the access domain name for the HTTP/HTTPS listener. Clients request the backend data by accessing this domain.
         This API only supports connections of version 3.0.
@@ -868,6 +896,34 @@ class GaapClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBlackHeader(self, request):
+        """This API is used to query names of blocked custom headers.
+
+        :param request: Request instance for DescribeBlackHeader.
+        :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeBlackHeaderRequest`
+        :rtype: :class:`tencentcloud.gaap.v20180529.models.DescribeBlackHeaderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBlackHeader", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBlackHeaderResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCertificateDetail(self, request):
         """This API (DescribeCertificateDetail) is used to query certificate details, including the certificate ID, name, type, content, key, and other information.
 
@@ -938,6 +994,34 @@ class GaapClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCountryAreaMappingResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCustomHeader(self, request):
+        """This API is used to query the list of custom headers.
+
+        :param request: Request instance for DescribeCustomHeader.
+        :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeCustomHeaderRequest`
+        :rtype: :class:`tencentcloud.gaap.v20180529.models.DescribeCustomHeaderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCustomHeader", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCustomHeaderResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

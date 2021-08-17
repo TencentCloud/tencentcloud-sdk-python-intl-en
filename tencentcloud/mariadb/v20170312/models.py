@@ -24,8 +24,12 @@ class Account(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param User: Account name
+        :type User: str
+        :param Host: Host address
+        :type Host: str
         """
-        :param User: Account name\n        :type User: str\n        :param Host: Host address\n        :type Host: str\n        """
         self.User = None
         self.Host = None
 
@@ -48,8 +52,14 @@ class AssociateSecurityGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Product: Database engine name. Valid value: `mariadb`.
+        :type Product: str
+        :param SecurityGroupId: ID of the security group to be associated in the format of sg-efil73jd.
+        :type SecurityGroupId: str
+        :param InstanceIds: ID(s) of the instance(s) to be associated in the format of tdsql-lesecurk. You can specify multiple instances.
+        :type InstanceIds: list of str
         """
-        :param Product: Database engine name. Valid value: `mariadb`.\n        :type Product: str\n        :param SecurityGroupId: ID of the security group to be associated in the format of sg-efil73jd.\n        :type SecurityGroupId: str\n        :param InstanceIds: ID(s) of the instance(s) to be associated in the format of tdsql-lesecurk. You can specify multiple instances.\n        :type InstanceIds: list of str\n        """
         self.Product = None
         self.SecurityGroupId = None
         self.InstanceIds = None
@@ -74,8 +84,10 @@ class AssociateSecurityGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -89,8 +101,10 @@ class CancelDcnJobRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Disaster recovery instance ID
+        :type InstanceId: str
         """
-        :param InstanceId: Disaster recovery instance ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -111,8 +125,12 @@ class CancelDcnJobResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: Task ID
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param FlowId: Task ID\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -128,8 +146,20 @@ class CloneAccountRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param SrcUser: Source user account name
+        :type SrcUser: str
+        :param SrcHost: Source user host
+        :type SrcHost: str
+        :param DstUser: Target user account name
+        :type DstUser: str
+        :param DstHost: Target user host
+        :type DstHost: str
+        :param DstDesc: Description of target account
+        :type DstDesc: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param SrcUser: Source user account name\n        :type SrcUser: str\n        :param SrcHost: Source user host\n        :type SrcHost: str\n        :param DstUser: Target user account name\n        :type DstUser: str\n        :param DstHost: Target user host\n        :type DstHost: str\n        :param DstDesc: Description of target account\n        :type DstDesc: str\n        """
         self.InstanceId = None
         self.SrcUser = None
         self.SrcHost = None
@@ -160,8 +190,12 @@ class CloneAccountResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: Async task flow ID.
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param FlowId: Async task flow ID.\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -177,8 +211,12 @@ class CloseDBExtranetAccessRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: ID of instance for which to disable public network access. The ID is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.
+        :type InstanceId: str
+        :param Ipv6Flag: Whether IPv6 is used. Default value: 0
+        :type Ipv6Flag: int
         """
-        :param InstanceId: ID of instance for which to disable public network access. The ID is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.\n        :type InstanceId: str\n        :param Ipv6Flag: Whether IPv6 is used. Default value: 0\n        :type Ipv6Flag: int\n        """
         self.InstanceId = None
         self.Ipv6Flag = None
 
@@ -201,8 +239,12 @@ class CloseDBExtranetAccessResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: Async task ID. The task status can be queried through the `DescribeFlow` API.
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param FlowId: Async task ID. The task status can be queried through the `DescribeFlow` API.\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -218,8 +260,16 @@ class ColumnPrivilege(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Database: Database name
+        :type Database: str
+        :param Table: Table name
+        :type Table: str
+        :param Column: Column name
+        :type Column: str
+        :param Privileges: Permission information
+        :type Privileges: list of str
         """
-        :param Database: Database name\n        :type Database: str\n        :param Table: Table name\n        :type Table: str\n        :param Column: Column name\n        :type Column: str\n        :param Privileges: Permission information\n        :type Privileges: list of str\n        """
         self.Database = None
         self.Table = None
         self.Column = None
@@ -246,8 +296,12 @@ class ConstraintRange(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Min: Minimum value when constraint type is `section`
+        :type Min: str
+        :param Max: Maximum value when constraint type is `section`
+        :type Max: str
         """
-        :param Min: Minimum value when constraint type is `section`\n        :type Min: str\n        :param Max: Maximum value when constraint type is `section`\n        :type Max: str\n        """
         self.Min = None
         self.Max = None
 
@@ -270,8 +324,22 @@ class CopyAccountPrivilegesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.
+        :type InstanceId: str
+        :param SrcUserName: Source username
+        :type SrcUserName: str
+        :param SrcHost: Access host allowed for source user
+        :type SrcHost: str
+        :param DstUserName: Target username
+        :type DstUserName: str
+        :param DstHost: Access host allowed for target user
+        :type DstHost: str
+        :param SrcReadOnly: `ReadOnly` attribute of source account
+        :type SrcReadOnly: str
+        :param DstReadOnly: `ReadOnly` attribute of target account
+        :type DstReadOnly: str
         """
-        :param InstanceId: Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.\n        :type InstanceId: str\n        :param SrcUserName: Source username\n        :type SrcUserName: str\n        :param SrcHost: Access host allowed for source user\n        :type SrcHost: str\n        :param DstUserName: Target username\n        :type DstUserName: str\n        :param DstHost: Access host allowed for target user\n        :type DstHost: str\n        :param SrcReadOnly: `ReadOnly` attribute of source account\n        :type SrcReadOnly: str\n        :param DstReadOnly: `ReadOnly` attribute of target account\n        :type DstReadOnly: str\n        """
         self.InstanceId = None
         self.SrcUserName = None
         self.SrcHost = None
@@ -304,8 +372,10 @@ class CopyAccountPrivilegesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -319,8 +389,22 @@ class CreateAccountRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.
+        :type InstanceId: str
+        :param UserName: Login username, which can contain 1-32 letters, digits, underscores, and hyphens.
+        :type UserName: str
+        :param Host: Host that can be logged in to, which is in the same format as the host of the MySQL account and supports wildcards, such as %, 10.%, and 10.20.%.
+        :type Host: str
+        :param Password: Account password, which can contain 6-32 letters, digits, and common symbols but not semicolons, single quotation marks, and double quotation marks.
+        :type Password: str
+        :param ReadOnly: Whether to create a read-only account. 0: no; 1: for the account's SQL requests, the secondary will be used first, and if it is unavailable, the primary will be used; 2: the secondary will be used first, and if it is unavailable, the operation will fail.
+        :type ReadOnly: int
+        :param Description: Account remarks, which can contain 0-256 letters, digits, and common symbols.
+        :type Description: str
+        :param DelayThresh: Determines whether the secondary is unavailable based on the passed-in time
+        :type DelayThresh: int
         """
-        :param InstanceId: Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.\n        :type InstanceId: str\n        :param UserName: Login username, which can contain 1-32 letters, digits, underscores, and hyphens.\n        :type UserName: str\n        :param Host: Host that can be logged in to, which is in the same format as the host of the MySQL account and supports wildcards, such as %, 10.%, and 10.20.%.\n        :type Host: str\n        :param Password: Account password, which can contain 6-32 letters, digits, and common symbols but not semicolons, single quotation marks, and double quotation marks.\n        :type Password: str\n        :param ReadOnly: Whether to create a read-only account. 0: no; 1: for the account's SQL requests, the secondary will be used first, and if it is unavailable, the primary will be used; 2: the secondary will be used first, and if it is unavailable, the operation will fail.\n        :type ReadOnly: int\n        :param Description: Account remarks, which can contain 0-256 letters, digits, and common symbols.\n        :type Description: str\n        :param DelayThresh: Determines whether the secondary is unavailable based on the passed-in time\n        :type DelayThresh: int\n        """
         self.InstanceId = None
         self.UserName = None
         self.Host = None
@@ -353,8 +437,18 @@ class CreateAccountResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID, which is passed through from the input parameters.
+        :type InstanceId: str
+        :param UserName: Username, which is passed through from the input parameters.
+        :type UserName: str
+        :param Host: Host allowed for access, which is passed through from the input parameters.
+        :type Host: str
+        :param ReadOnly: Passed through from the input parameters.
+        :type ReadOnly: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param InstanceId: Instance ID, which is passed through from the input parameters.\n        :type InstanceId: str\n        :param UserName: Username, which is passed through from the input parameters.\n        :type UserName: str\n        :param Host: Host allowed for access, which is passed through from the input parameters.\n        :type Host: str\n        :param ReadOnly: Passed through from the input parameters.\n        :type ReadOnly: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.UserName = None
         self.Host = None
@@ -376,9 +470,23 @@ class DBAccount(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param UserName: Username
+        :type UserName: str
+        :param Host: Host from which a user can log in (corresponding to the `host` field for a MySQL user; a user is uniquely identified by username and host; this parameter is in IP format and ends with % for IP range; % can be entered; if this parameter is left empty, % will be used by default)
+        :type Host: str
+        :param Description: User remarks
+        :type Description: str
+        :param CreateTime: Creation time
+        :type CreateTime: str
+        :param UpdateTime: Last updated time
+        :type UpdateTime: str
+        :param ReadOnly: Read-only flag. 0: no; 1: for the account's SQL requests, the secondary will be used first, and if it is unavailable, the primary will be used; 2: the secondary will be used first, and if it is unavailable, the operation will fail.
+        :type ReadOnly: int
+        :param DelayThresh: This field is meaningful for read-only accounts, indicating to select a secondary where the primary/secondary delay is below this value
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DelayThresh: int
         """
-        :param UserName: Username\n        :type UserName: str\n        :param Host: Host from which a user can log in (corresponding to the `host` field for a MySQL user; a user is uniquely identified by username and host; this parameter is in IP format and ends with % for IP range; % can be entered; if this parameter is left empty, % will be used by default)\n        :type Host: str\n        :param Description: User remarks\n        :type Description: str\n        :param CreateTime: Creation time\n        :type CreateTime: str\n        :param UpdateTime: Last updated time\n        :type UpdateTime: str\n        :param ReadOnly: Read-only flag. 0: no; 1: for the account's SQL requests, the secondary will be used first, and if it is unavailable, the primary will be used; 2: the secondary will be used first, and if it is unavailable, the operation will fail.\n        :type ReadOnly: int\n        :param DelayThresh: This field is meaningful for read-only accounts, indicating to select a secondary where the primary/secondary delay is below this value
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DelayThresh: int\n        """
         self.UserName = None
         self.Host = None
         self.Description = None
@@ -411,8 +519,14 @@ class DBBackupTimeConfig(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param StartBackupTime: Start time of daily backup window in the format of `mm:ss`, such as 22:00
+        :type StartBackupTime: str
+        :param EndBackupTime: End time of daily backup window in the format of `mm:ss`, such as 23:00
+        :type EndBackupTime: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param StartBackupTime: Start time of daily backup window in the format of `mm:ss`, such as 22:00\n        :type StartBackupTime: str\n        :param EndBackupTime: End time of daily backup window in the format of `mm:ss`, such as 23:00\n        :type EndBackupTime: str\n        """
         self.InstanceId = None
         self.StartBackupTime = None
         self.EndBackupTime = None
@@ -437,22 +551,122 @@ class DBInstance(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID, which uniquely identifies a TDSQL instance
+        :type InstanceId: str
+        :param InstanceName: Customizable instance name
+        :type InstanceName: str
+        :param AppId: Application ID of instance
+        :type AppId: int
+        :param ProjectId: Project ID of instance
+        :type ProjectId: int
+        :param Region: Instance region name, such as ap-shanghai
+        :type Region: str
+        :param Zone: Instance AZ name, such as ap-guangzhou-1
+        :type Zone: str
+        :param VpcId: VPC ID, which is 0 if the basic network is used
+        :type VpcId: int
+        :param SubnetId: Subnet ID, which is 0 if the basic network is used
+        :type SubnetId: int
+        :param Status: Instance status. Valid values: `0` (creating), `1` (running task), `2` (running), `3` (uninitialized), `-1` (isolated), `4` (initializing), `5` (eliminating), `6` (restarting), `7` (migrating data)
+        :type Status: int
+        :param Vip: Private IP address
+        :type Vip: str
+        :param Vport: Private network port
+        :type Vport: int
+        :param WanDomain: Domain name for public network access, which can be resolved by the public network
+        :type WanDomain: str
+        :param WanVip: Public IP address, which can be accessed over the public network
+        :type WanVip: str
+        :param WanPort: Public network port
+        :type WanPort: int
+        :param CreateTime: Instance creation time in the format of `2006-01-02 15:04:05`
+        :type CreateTime: str
+        :param UpdateTime: Last updated time of instance in the format of `2006-01-02 15:04:05`
+        :type UpdateTime: str
+        :param AutoRenewFlag: Auto-renewal flag. 0: no, 1: yes
+        :type AutoRenewFlag: int
+        :param PeriodEndTime: Instance expiration time in the format of `2006-01-02 15:04:05`
+        :type PeriodEndTime: str
+        :param Uin: Instance account
+        :type Uin: str
+        :param TdsqlVersion: TDSQL version information
+        :type TdsqlVersion: str
+        :param Memory: Instance memory size in GB
+        :type Memory: int
+        :param Storage: Instance storage capacity in GB
+        :type Storage: int
+        :param UniqueVpcId: VPC ID in string type
+        :type UniqueVpcId: str
+        :param UniqueSubnetId: VPC subnet ID in string type
+        :type UniqueSubnetId: str
+        :param OriginSerialId: Original ID of instance (this field is obsolete and should not be depended on)
+        :type OriginSerialId: str
+        :param NodeCount: Number of nodes. 2: one master and one slave, 3: one master and two slaves
+        :type NodeCount: int
+        :param IsTmp: Whether it is a temp instance. 0: no, non-zero value: yes
+        :type IsTmp: int
+        :param ExclusterId: Dedicated cluster ID. If this parameter is empty, the instance is a general instance
+        :type ExclusterId: str
+        :param Id: Numeric ID of instance (this field is obsolete and should not be depended on)
+        :type Id: int
+        :param Pid: Product type ID
+        :type Pid: int
+        :param Qps: Maximum QPS value
+        :type Qps: int
+        :param Paymode: Billing mode
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Paymode: str
+        :param Locker: Async task flow ID when an async task is in progress on an instance
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Locker: int
+        :param StatusDesc: Current instance running status description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type StatusDesc: str
+        :param WanStatus: Public network access status. 0: not enabled, 1: enabled, 2: disabled, 3: enabling
+        :type WanStatus: int
+        :param IsAuditSupported: Whether the instance supports audit. 1: yes, 0: no
+        :type IsAuditSupported: int
+        :param Machine: Model
+        :type Machine: str
+        :param IsEncryptSupported: Whether data encryption is supported. 1: yes, 0: no
+        :type IsEncryptSupported: int
+        :param Cpu: Number of CPU cores of instance
+        :type Cpu: int
+        :param Ipv6Flag: Indicates whether the instance uses IPv6
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Ipv6Flag: int
+        :param Vipv6: Private network IPv6 address
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Vipv6: str
+        :param WanVipv6: Public network IPv6 address
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type WanVipv6: str
+        :param WanPortIpv6: Public network IPv6 port
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type WanPortIpv6: int
+        :param WanStatusIpv6: Public network IPv6 status
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type WanStatusIpv6: int
+        :param DbEngine: Database engine
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DbEngine: str
+        :param DbVersion: Database version
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DbVersion: str
+        :param DcnFlag: DCN type. Valid values: 0 (null), 1 (primary instance), 2 (disaster recovery instance)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DcnFlag: int
+        :param DcnStatus: DCN status. Valid values: 0 (null), 1 (creating), 2 (syncing), 3 (disconnected)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DcnStatus: int
+        :param DcnDstNum: The number of DCN disaster recovery instances
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DcnDstNum: int
+        :param InstanceType: Instance type. Valid values: `1` (dedicated primary instance), `2` (primary instance), `3` (disaster recovery instance), and `4` (dedicated disaster recovery instance).
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type InstanceType: int
         """
-        :param InstanceId: Instance ID, which uniquely identifies a TDSQL instance\n        :type InstanceId: str\n        :param InstanceName: Customizable instance name\n        :type InstanceName: str\n        :param AppId: Application ID of instance\n        :type AppId: int\n        :param ProjectId: Project ID of instance\n        :type ProjectId: int\n        :param Region: Instance region name, such as ap-shanghai\n        :type Region: str\n        :param Zone: Instance AZ name, such as ap-guangzhou-1\n        :type Zone: str\n        :param VpcId: VPC ID, which is 0 if the basic network is used\n        :type VpcId: int\n        :param SubnetId: Subnet ID, which is 0 if the basic network is used\n        :type SubnetId: int\n        :param Status: Instance status. Valid values: `0` (creating), `1` (running task), `2` (running), `3` (uninitialized), `-1` (isolated), `4` (initializing), `5` (eliminating), `6` (restarting), `7` (migrating data)\n        :type Status: int\n        :param Vip: Private IP address\n        :type Vip: str\n        :param Vport: Private network port\n        :type Vport: int\n        :param WanDomain: Domain name for public network access, which can be resolved by the public network\n        :type WanDomain: str\n        :param WanVip: Public IP address, which can be accessed over the public network\n        :type WanVip: str\n        :param WanPort: Public network port\n        :type WanPort: int\n        :param CreateTime: Instance creation time in the format of `2006-01-02 15:04:05`\n        :type CreateTime: str\n        :param UpdateTime: Last updated time of instance in the format of `2006-01-02 15:04:05`\n        :type UpdateTime: str\n        :param AutoRenewFlag: Auto-renewal flag. 0: no, 1: yes\n        :type AutoRenewFlag: int\n        :param PeriodEndTime: Instance expiration time in the format of `2006-01-02 15:04:05`\n        :type PeriodEndTime: str\n        :param Uin: Instance account\n        :type Uin: str\n        :param TdsqlVersion: TDSQL version information\n        :type TdsqlVersion: str\n        :param Memory: Instance memory size in GB\n        :type Memory: int\n        :param Storage: Instance storage capacity in GB\n        :type Storage: int\n        :param UniqueVpcId: VPC ID in string type\n        :type UniqueVpcId: str\n        :param UniqueSubnetId: VPC subnet ID in string type\n        :type UniqueSubnetId: str\n        :param OriginSerialId: Original ID of instance (this field is obsolete and should not be depended on)\n        :type OriginSerialId: str\n        :param NodeCount: Number of nodes. 2: one master and one slave, 3: one master and two slaves\n        :type NodeCount: int\n        :param IsTmp: Whether it is a temp instance. 0: no, non-zero value: yes\n        :type IsTmp: int\n        :param ExclusterId: Dedicated cluster ID. If this parameter is empty, the instance is a general instance\n        :type ExclusterId: str\n        :param Id: Numeric ID of instance (this field is obsolete and should not be depended on)\n        :type Id: int\n        :param Pid: Product type ID\n        :type Pid: int\n        :param Qps: Maximum QPS value\n        :type Qps: int\n        :param Paymode: Billing mode
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Paymode: str\n        :param Locker: Async task flow ID when an async task is in progress on an instance
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Locker: int\n        :param StatusDesc: Current instance running status description
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type StatusDesc: str\n        :param WanStatus: Public network access status. 0: not enabled, 1: enabled, 2: disabled, 3: enabling\n        :type WanStatus: int\n        :param IsAuditSupported: Whether the instance supports audit. 1: yes, 0: no\n        :type IsAuditSupported: int\n        :param Machine: Model\n        :type Machine: str\n        :param IsEncryptSupported: Whether data encryption is supported. 1: yes, 0: no\n        :type IsEncryptSupported: int\n        :param Cpu: Number of CPU cores of instance\n        :type Cpu: int\n        :param Ipv6Flag: Indicates whether the instance uses IPv6
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Ipv6Flag: int\n        :param Vipv6: Private network IPv6 address
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Vipv6: str\n        :param WanVipv6: Public network IPv6 address
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type WanVipv6: str\n        :param WanPortIpv6: Public network IPv6 port
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type WanPortIpv6: int\n        :param WanStatusIpv6: Public network IPv6 status
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type WanStatusIpv6: int\n        :param DbEngine: Database engine
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DbEngine: str\n        :param DbVersion: Database version
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DbVersion: str\n        :param DcnFlag: DCN type. Valid values: 0 (null), 1 (primary instance), 2 (disaster recovery instance)
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DcnFlag: int\n        :param DcnStatus: DCN status. Valid values: 0 (null), 1 (creating), 2 (syncing), 3 (disconnected)
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DcnStatus: int\n        :param DcnDstNum: The number of DCN disaster recovery instances
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DcnDstNum: int\n        :param InstanceType: Instance type. Valid values: `1` (dedicated primary instance), `2` (primary instance), `3` (disaster recovery instance), and `4` (dedicated disaster recovery instance).
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type InstanceType: int\n        """
         self.InstanceId = None
         self.InstanceName = None
         self.AppId = None
@@ -571,8 +785,12 @@ class DBParamValue(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Param: Parameter name
+        :type Param: str
+        :param Value: Parameter value
+        :type Value: str
         """
-        :param Param: Parameter name\n        :type Param: str\n        :param Value: Parameter value\n        :type Value: str\n        """
         self.Param = None
         self.Value = None
 
@@ -595,8 +813,10 @@ class Database(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DbName: Database name
+        :type DbName: str
         """
-        :param DbName: Database name\n        :type DbName: str\n        """
         self.DbName = None
 
 
@@ -617,8 +837,12 @@ class DatabasePrivilege(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Privileges: Permission information
+        :type Privileges: list of str
+        :param Database: Database name
+        :type Database: str
         """
-        :param Privileges: Permission information\n        :type Privileges: list of str\n        :param Database: Database name\n        :type Database: str\n        """
         self.Privileges = None
         self.Database = None
 
@@ -641,8 +865,44 @@ class DcnDetailItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        :param Region: Region where the instance resides
+        :type Region: str
+        :param Zone: Availability zone where the instance resides
+        :type Zone: str
+        :param Vip: Instance IP address
+        :type Vip: str
+        :param Vipv6: Instance IPv6 address
+        :type Vipv6: str
+        :param Vport: Instance port
+        :type Vport: int
+        :param Status: Instance status
+        :type Status: int
+        :param StatusDesc: Instance status description
+        :type StatusDesc: str
+        :param DcnFlag: DCN flag. Valid values: `1` (primary), `2` (disaster recovery)
+        :type DcnFlag: int
+        :param DcnStatus: DCN status. Valid values: `0` (none), `1` (creating), `2` (syncing), `3` (disconnected)
+        :type DcnStatus: int
+        :param Cpu: Number of CPU cores of the instance
+        :type Cpu: int
+        :param Memory: Instance memory capacity in GB
+        :type Memory: int
+        :param Storage: Instance storage capacity in GB
+        :type Storage: int
+        :param PayMode: Billing mode
+        :type PayMode: int
+        :param CreateTime: Creation time of the instance in the format of 2006-01-02 15:04:05
+        :type CreateTime: str
+        :param PeriodEndTime: Expiration time of the instance in the format of 2006-01-02 15:04:05
+        :type PeriodEndTime: str
+        :param InstanceType: Instance type. Valid values: `1` (dedicated primary instance), `2` (non-dedicated primary instance), `3` (non-dedicated disaster recovery instance), `4` (dedicated disaster recovery instance)
+        :type InstanceType: int
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param InstanceName: Instance name\n        :type InstanceName: str\n        :param Region: Region where the instance resides\n        :type Region: str\n        :param Zone: Availability zone where the instance resides\n        :type Zone: str\n        :param Vip: Instance IP address\n        :type Vip: str\n        :param Vipv6: Instance IPv6 address\n        :type Vipv6: str\n        :param Vport: Instance port\n        :type Vport: int\n        :param Status: Instance status\n        :type Status: int\n        :param StatusDesc: Instance status description\n        :type StatusDesc: str\n        :param DcnFlag: DCN flag. Valid values: `1` (primary), `2` (disaster recovery)\n        :type DcnFlag: int\n        :param DcnStatus: DCN status. Valid values: `0` (none), `1` (creating), `2` (syncing), `3` (disconnected)\n        :type DcnStatus: int\n        :param Cpu: Number of CPU cores of the instance\n        :type Cpu: int\n        :param Memory: Instance memory capacity in GB\n        :type Memory: int\n        :param Storage: Instance storage capacity in GB\n        :type Storage: int\n        :param PayMode: Billing mode\n        :type PayMode: int\n        :param CreateTime: Creation time of the instance in the format of 2006-01-02 15:04:05\n        :type CreateTime: str\n        :param PeriodEndTime: Expiration time of the instance in the format of 2006-01-02 15:04:05\n        :type PeriodEndTime: str\n        :param InstanceType: Instance type. Valid values: `1` (dedicated primary instance), `2` (non-dedicated primary instance), `3` (non-dedicated disaster recovery instance), `4` (dedicated disaster recovery instance)\n        :type InstanceType: int\n        """
         self.InstanceId = None
         self.InstanceName = None
         self.Region = None
@@ -697,8 +957,14 @@ class DeleteAccountRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.
+        :type InstanceId: str
+        :param UserName: Username
+        :type UserName: str
+        :param Host: Access host allowed for user
+        :type Host: str
         """
-        :param InstanceId: Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.\n        :type InstanceId: str\n        :param UserName: Username\n        :type UserName: str\n        :param Host: Access host allowed for user\n        :type Host: str\n        """
         self.InstanceId = None
         self.UserName = None
         self.Host = None
@@ -723,8 +989,10 @@ class DeleteAccountResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -738,8 +1006,22 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.
+        :type InstanceId: str
+        :param UserName: Login username.
+        :type UserName: str
+        :param Host: Access host allowed for user. An account is uniquely identified by username and host.
+        :type Host: str
+        :param DbName: Database name. `\*` indicates that global permissions will be queried (i.e., `\*.\*`), in which case the `Type` and `Object ` parameters will be ignored
+        :type DbName: str
+        :param Type: Type. Valid values: table, view, proc, func, \*. If `DbName` is a specific database name and `Type` is `\*`, the permissions of the database will be queried (i.e., `db.\*`), in which case the `Object` parameter will be ignored
+        :type Type: str
+        :param Object: Type name. For example, if `Type` is `table`, `Object` indicates a specific table name; if both `DbName` and `Type` are specific names, it indicates a specific object name and cannot be `\*` or empty
+        :type Object: str
+        :param ColName: If `Type` is `table` and `ColName` is `\*`, the permissions of the table will be queried; if `ColName` is a specific field name, the permissions of the corresponding field will be queried
+        :type ColName: str
         """
-        :param InstanceId: Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.\n        :type InstanceId: str\n        :param UserName: Login username.\n        :type UserName: str\n        :param Host: Access host allowed for user. An account is uniquely identified by username and host.\n        :type Host: str\n        :param DbName: Database name. `\*` indicates that global permissions will be queried (i.e., `\*.\*`), in which case the `Type` and `Object ` parameters will be ignored\n        :type DbName: str\n        :param Type: Type. Valid values: table, view, proc, func, \*. If `DbName` is a specific database name and `Type` is `\*`, the permissions of the database will be queried (i.e., `db.\*`), in which case the `Object` parameter will be ignored\n        :type Type: str\n        :param Object: Type name. For example, if `Type` is `table`, `Object` indicates a specific table name; if both `DbName` and `Type` are specific names, it indicates a specific object name and cannot be `\*` or empty\n        :type Object: str\n        :param ColName: If `Type` is `table` and `ColName` is `\*`, the permissions of the table will be queried; if `ColName` is a specific field name, the permissions of the corresponding field will be queried\n        :type ColName: str\n        """
         self.InstanceId = None
         self.UserName = None
         self.Host = None
@@ -772,8 +1054,18 @@ class DescribeAccountPrivilegesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Privileges: Permission list.
+        :type Privileges: list of str
+        :param UserName: Database account username
+        :type UserName: str
+        :param Host: Database account host
+        :type Host: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param Privileges: Permission list.\n        :type Privileges: list of str\n        :param UserName: Database account username\n        :type UserName: str\n        :param Host: Database account host\n        :type Host: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.Privileges = None
         self.UserName = None
@@ -795,8 +1087,10 @@ class DescribeAccountsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.
+        :type InstanceId: str
         """
-        :param InstanceId: Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -817,8 +1111,14 @@ class DescribeAccountsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID, which is passed through from the input parameters.
+        :type InstanceId: str
+        :param Users: Instance user list.
+        :type Users: list of DBAccount
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param InstanceId: Instance ID, which is passed through from the input parameters.\n        :type InstanceId: str\n        :param Users: Instance user list.\n        :type Users: list of DBAccount\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.Users = None
         self.RequestId = None
@@ -841,8 +1141,10 @@ class DescribeBackupTimeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceIds: Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.
+        :type InstanceIds: list of str
         """
-        :param InstanceIds: Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.\n        :type InstanceIds: list of str\n        """
         self.InstanceIds = None
 
 
@@ -863,9 +1165,15 @@ class DescribeBackupTimeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of returned configurations
+        :type TotalCount: int
+        :param Items: Instance backup time configuration information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Items: list of DBBackupTimeConfig
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of returned configurations\n        :type TotalCount: int\n        :param Items: Instance backup time configuration information
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Items: list of DBBackupTimeConfig\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Items = None
         self.RequestId = None
@@ -888,8 +1196,46 @@ class DescribeDBInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceIds: Queries by instance ID or IDs. Instance ID is in the format of `tdsql-ow728lmc`. Up to 100 instances can be queried in one request.
+        :type InstanceIds: list of str
+        :param SearchName: Search field name. Valid values: instancename (search by instance name), vip (search by private IP), all (search by instance ID, instance name, and private IP).
+        :type SearchName: str
+        :param SearchKey: Search keyword. Fuzzy search is supported. Multiple keywords should be separated by line breaks (`\n`).
+        :type SearchKey: str
+        :param ProjectIds: Queries by project ID
+        :type ProjectIds: list of int
+        :param IsFilterVpc: Whether to search by VPC
+        :type IsFilterVpc: bool
+        :param VpcId: VPC ID, which is valid when `IsFilterVpc` is 1
+        :type VpcId: str
+        :param SubnetId: VPC subnet ID, which is valid when `IsFilterVpc` is 1
+        :type SubnetId: str
+        :param OrderBy: Sort by field. Valid values: projectId, createtime, instancename
+        :type OrderBy: str
+        :param OrderByType: Sorting order. Valid values: desc, asc
+        :type OrderByType: str
+        :param Offset: Offset. Default value: 0
+        :type Offset: int
+        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        :param OriginSerialIds: Queries by `OriginSerialId`
+        :type OriginSerialIds: list of str
+        :param IsFilterExcluster: Identifies whether to use the `ExclusterType` field. false: no, true: yes
+        :type IsFilterExcluster: bool
+        :param ExclusterType: Instance cluster type. 1: non-dedicated cluster, 2: dedicated cluster, 0: all
+        :type ExclusterType: int
+        :param ExclusterIds: Filters instances by dedicated cluster ID in the format of `dbdc-4ih6uct9`
+        :type ExclusterIds: list of str
+        :param TagKeys: Tag key used in queries
+        :type TagKeys: list of str
+        :param FilterInstanceType: Instance types used in filtering. Valid values: 1 (dedicated instance), 2 (primary instance), 3 (disaster recovery instance). Multiple values should be separated by commas.
+        :type FilterInstanceType: str
+        :param Status: Use this filter to include instances in specific statuses
+        :type Status: list of int
+        :param ExcludeStatus: Use this filter to exclude instances in specific statuses
+        :type ExcludeStatus: list of int
         """
-        :param InstanceIds: Queries by instance ID or IDs. Instance ID is in the format of `tdsql-ow728lmc`. Up to 100 instances can be queried in one request.\n        :type InstanceIds: list of str\n        :param SearchName: Search field name. Valid values: instancename (search by instance name), vip (search by private IP), all (search by instance ID, instance name, and private IP).\n        :type SearchName: str\n        :param SearchKey: Search keyword. Fuzzy search is supported. Multiple keywords should be separated by line breaks (`\n`).\n        :type SearchKey: str\n        :param ProjectIds: Queries by project ID\n        :type ProjectIds: list of int\n        :param IsFilterVpc: Whether to search by VPC\n        :type IsFilterVpc: bool\n        :param VpcId: VPC ID, which is valid when `IsFilterVpc` is 1\n        :type VpcId: str\n        :param SubnetId: VPC subnet ID, which is valid when `IsFilterVpc` is 1\n        :type SubnetId: str\n        :param OrderBy: Sort by field. Valid values: projectId, createtime, instancename\n        :type OrderBy: str\n        :param OrderByType: Sorting order. Valid values: desc, asc\n        :type OrderByType: str\n        :param Offset: Offset. Default value: 0\n        :type Offset: int\n        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.\n        :type Limit: int\n        :param OriginSerialIds: Queries by `OriginSerialId`\n        :type OriginSerialIds: list of str\n        :param IsFilterExcluster: Identifies whether to use the `ExclusterType` field. false: no, true: yes\n        :type IsFilterExcluster: bool\n        :param ExclusterType: Instance cluster type. 1: non-dedicated cluster, 2: dedicated cluster, 0: all\n        :type ExclusterType: int\n        :param ExclusterIds: Filters instances by dedicated cluster ID in the format of `dbdc-4ih6uct9`\n        :type ExclusterIds: list of str\n        :param TagKeys: Tag key used in queries\n        :type TagKeys: list of str\n        :param FilterInstanceType: Instance types used in filtering. Valid values: 1 (dedicated instance), 2 (primary instance), 3 (disaster recovery instance). Multiple values should be separated by commas.\n        :type FilterInstanceType: str\n        :param Status: Use this filter to include instances in specific statuses\n        :type Status: list of int\n        :param ExcludeStatus: Use this filter to exclude instances in specific statuses\n        :type ExcludeStatus: list of int\n        """
         self.InstanceIds = None
         self.SearchName = None
         self.SearchKey = None
@@ -946,8 +1292,14 @@ class DescribeDBInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of eligible instances
+        :type TotalCount: int
+        :param Instances: Instance details list
+        :type Instances: list of DBInstance
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of eligible instances\n        :type TotalCount: int\n        :param Instances: Instance details list\n        :type Instances: list of DBInstance\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Instances = None
         self.RequestId = None
@@ -970,8 +1322,12 @@ class DescribeDBLogFilesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.
+        :type InstanceId: str
+        :param Type: Requested log type. Valid values: 1 (binlog), 2 (cold backup), 3 (errlog), 4 (slowlog).
+        :type Type: int
         """
-        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.\n        :type InstanceId: str\n        :param Type: Requested log type. Valid values: 1 (binlog), 2 (cold backup), 3 (errlog), 4 (slowlog).\n        :type Type: int\n        """
         self.InstanceId = None
         self.Type = None
 
@@ -994,8 +1350,22 @@ class DescribeDBLogFilesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.
+        :type InstanceId: str
+        :param Type: Requested log type. Valid values: 1 (binlog), 2 (cold backup), 3 (errlog), 4 (slowlog).
+        :type Type: int
+        :param Total: Total number of requested logs
+        :type Total: int
+        :param Files: Information such as `uri`, `length`, and `mtime` (modification time)
+        :type Files: list of LogFileInfo
+        :param VpcPrefix: For an instance in a VPC, this prefix plus URI can be used as the download address
+        :type VpcPrefix: str
+        :param NormalPrefix: For an instance in a common network, this prefix plus URI can be used as the download address
+        :type NormalPrefix: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.\n        :type InstanceId: str\n        :param Type: Requested log type. Valid values: 1 (binlog), 2 (cold backup), 3 (errlog), 4 (slowlog).\n        :type Type: int\n        :param Total: Total number of requested logs\n        :type Total: int\n        :param Files: Information such as `uri`, `length`, and `mtime` (modification time)\n        :type Files: list of LogFileInfo\n        :param VpcPrefix: For an instance in a VPC, this prefix plus URI can be used as the download address\n        :type VpcPrefix: str\n        :param NormalPrefix: For an instance in a common network, this prefix plus URI can be used as the download address\n        :type NormalPrefix: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.Type = None
         self.Total = None
@@ -1026,8 +1396,10 @@ class DescribeDBParametersRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.
+        :type InstanceId: str
         """
-        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1048,8 +1420,14 @@ class DescribeDBParametersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.
+        :type InstanceId: str
+        :param Params: Requests the current parameter values of database
+        :type Params: list of ParamDesc
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.\n        :type InstanceId: str\n        :param Params: Requests the current parameter values of database\n        :type Params: list of ParamDesc\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.Params = None
         self.RequestId = None
@@ -1072,8 +1450,16 @@ class DescribeDBPerformanceDetailsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.
+        :type InstanceId: str
+        :param StartTime: Start date in the format of `yyyy-mm-dd`
+        :type StartTime: str
+        :param EndTime: End date in the format of `yyyy-mm-dd`
+        :type EndTime: str
+        :param MetricName: Name of pulled metric. Valid values: long_query, select_total, update_total, insert_total, delete_total, mem_hit_rate, disk_iops, conn_active, is_master_switched, slave_delay
+        :type MetricName: str
         """
-        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.\n        :type InstanceId: str\n        :param StartTime: Start date in the format of `yyyy-mm-dd`\n        :type StartTime: str\n        :param EndTime: End date in the format of `yyyy-mm-dd`\n        :type EndTime: str\n        :param MetricName: Name of pulled metric. Valid values: long_query, select_total, update_total, insert_total, delete_total, mem_hit_rate, disk_iops, conn_active, is_master_switched, slave_delay\n        :type MetricName: str\n        """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
@@ -1100,10 +1486,18 @@ class DescribeDBPerformanceDetailsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Master: Master node performance monitoring data
+        :type Master: :class:`tencentcloud.mariadb.v20170312.models.PerformanceMonitorSet`
+        :param Slave1: Slave 1 performance monitoring data
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Slave1: :class:`tencentcloud.mariadb.v20170312.models.PerformanceMonitorSet`
+        :param Slave2: Slave 2 performance monitoring data. If the instance is one-primary-one-secondary, it does not have this field
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Slave2: :class:`tencentcloud.mariadb.v20170312.models.PerformanceMonitorSet`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Master: Master node performance monitoring data\n        :type Master: :class:`tencentcloud.mariadb.v20170312.models.PerformanceMonitorSet`\n        :param Slave1: Slave 1 performance monitoring data
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Slave1: :class:`tencentcloud.mariadb.v20170312.models.PerformanceMonitorSet`\n        :param Slave2: Slave 2 performance monitoring data. If the instance is one-primary-one-secondary, it does not have this field
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Slave2: :class:`tencentcloud.mariadb.v20170312.models.PerformanceMonitorSet`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Master = None
         self.Slave1 = None
         self.Slave2 = None
@@ -1129,8 +1523,16 @@ class DescribeDBPerformanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.
+        :type InstanceId: str
+        :param StartTime: Start date in the format of `yyyy-mm-dd`
+        :type StartTime: str
+        :param EndTime: End date in the format of `yyyy-mm-dd`
+        :type EndTime: str
+        :param MetricName: Name of pulled metric. Valid values: long_query, select_total, update_total, insert_total, delete_total, mem_hit_rate, disk_iops, conn_active, is_master_switched, slave_delay
+        :type MetricName: str
         """
-        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.\n        :type InstanceId: str\n        :param StartTime: Start date in the format of `yyyy-mm-dd`\n        :type StartTime: str\n        :param EndTime: End date in the format of `yyyy-mm-dd`\n        :type EndTime: str\n        :param MetricName: Name of pulled metric. Valid values: long_query, select_total, update_total, insert_total, delete_total, mem_hit_rate, disk_iops, conn_active, is_master_switched, slave_delay\n        :type MetricName: str\n        """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
@@ -1157,8 +1559,30 @@ class DescribeDBPerformanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LongQuery: Number of slow queries
+        :type LongQuery: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param SelectTotal: Number of SELECT operations
+        :type SelectTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param UpdateTotal: Number of UPDATE operations
+        :type UpdateTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param InsertTotal: Number of INSERT operations
+        :type InsertTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param DeleteTotal: Number of DELETE operations
+        :type DeleteTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param MemHitRate: Cache hit rate
+        :type MemHitRate: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param DiskIops: Number of disk IOs per second
+        :type DiskIops: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param ConnActive: Number of active connections
+        :type ConnActive: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param IsMasterSwitched: Whether primary/secondary switch occurred. 1: yes, 0: no
+        :type IsMasterSwitched: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param SlaveDelay: primary/secondary delay
+        :type SlaveDelay: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param LongQuery: Number of slow queries\n        :type LongQuery: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param SelectTotal: Number of SELECT operations\n        :type SelectTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param UpdateTotal: Number of UPDATE operations\n        :type UpdateTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param InsertTotal: Number of INSERT operations\n        :type InsertTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param DeleteTotal: Number of DELETE operations\n        :type DeleteTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param MemHitRate: Cache hit rate\n        :type MemHitRate: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param DiskIops: Number of disk IOs per second\n        :type DiskIops: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param ConnActive: Number of active connections\n        :type ConnActive: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param IsMasterSwitched: Whether primary/secondary switch occurred. 1: yes, 0: no\n        :type IsMasterSwitched: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param SlaveDelay: primary/secondary delay\n        :type SlaveDelay: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.LongQuery = None
         self.SelectTotal = None
         self.UpdateTotal = None
@@ -1212,8 +1636,16 @@ class DescribeDBResourceUsageDetailsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.
+        :type InstanceId: str
+        :param StartTime: Start date in the format of `yyyy-mm-dd`
+        :type StartTime: str
+        :param EndTime: End date in the format of `yyyy-mm-dd`
+        :type EndTime: str
+        :param MetricName: Name of pulled metric. Valid values: data_disk_available, binlog_disk_available, mem_available, cpu_usage_rate
+        :type MetricName: str
         """
-        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.\n        :type InstanceId: str\n        :param StartTime: Start date in the format of `yyyy-mm-dd`\n        :type StartTime: str\n        :param EndTime: End date in the format of `yyyy-mm-dd`\n        :type EndTime: str\n        :param MetricName: Name of pulled metric. Valid values: data_disk_available, binlog_disk_available, mem_available, cpu_usage_rate\n        :type MetricName: str\n        """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
@@ -1240,10 +1672,18 @@ class DescribeDBResourceUsageDetailsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Master: Master node resource usage monitoring node
+        :type Master: :class:`tencentcloud.mariadb.v20170312.models.ResourceUsageMonitorSet`
+        :param Slave1: Slave 1 resource usage monitoring node
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Slave1: :class:`tencentcloud.mariadb.v20170312.models.ResourceUsageMonitorSet`
+        :param Slave2: Slave 2 resource usage monitoring node
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Slave2: :class:`tencentcloud.mariadb.v20170312.models.ResourceUsageMonitorSet`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Master: Master node resource usage monitoring node\n        :type Master: :class:`tencentcloud.mariadb.v20170312.models.ResourceUsageMonitorSet`\n        :param Slave1: Slave 1 resource usage monitoring node
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Slave1: :class:`tencentcloud.mariadb.v20170312.models.ResourceUsageMonitorSet`\n        :param Slave2: Slave 2 resource usage monitoring node
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Slave2: :class:`tencentcloud.mariadb.v20170312.models.ResourceUsageMonitorSet`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Master = None
         self.Slave1 = None
         self.Slave2 = None
@@ -1269,8 +1709,16 @@ class DescribeDBResourceUsageRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.
+        :type InstanceId: str
+        :param StartTime: Start date in the format of `yyyy-mm-dd`
+        :type StartTime: str
+        :param EndTime: End date in the format of `yyyy-mm-dd`
+        :type EndTime: str
+        :param MetricName: Name of pulled metric. Valid values: data_disk_available, binlog_disk_available, mem_available, cpu_usage_rate
+        :type MetricName: str
         """
-        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.\n        :type InstanceId: str\n        :param StartTime: Start date in the format of `yyyy-mm-dd`\n        :type StartTime: str\n        :param EndTime: End date in the format of `yyyy-mm-dd`\n        :type EndTime: str\n        :param MetricName: Name of pulled metric. Valid values: data_disk_available, binlog_disk_available, mem_available, cpu_usage_rate\n        :type MetricName: str\n        """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
@@ -1297,8 +1745,18 @@ class DescribeDBResourceUsageResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BinlogDiskAvailable: Available capacity of binlog disk in GB
+        :type BinlogDiskAvailable: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param DataDiskAvailable: Available disk capacity in GB
+        :type DataDiskAvailable: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param CpuUsageRate: CPU utilization
+        :type CpuUsageRate: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param MemAvailable: Available memory size in GB
+        :type MemAvailable: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param BinlogDiskAvailable: Available capacity of binlog disk in GB\n        :type BinlogDiskAvailable: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param DataDiskAvailable: Available disk capacity in GB\n        :type DataDiskAvailable: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param CpuUsageRate: CPU utilization\n        :type CpuUsageRate: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param MemAvailable: Available memory size in GB\n        :type MemAvailable: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.BinlogDiskAvailable = None
         self.DataDiskAvailable = None
         self.CpuUsageRate = None
@@ -1328,8 +1786,12 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Product: Database engine name. Valid value: `mariadb`.
+        :type Product: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
         """
-        :param Product: Database engine name. Valid value: `mariadb`.\n        :type Product: str\n        :param InstanceId: Instance ID\n        :type InstanceId: str\n        """
         self.Product = None
         self.InstanceId = None
 
@@ -1352,10 +1814,18 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Groups: Security group details
+        :type Groups: list of SecurityGroup
+        :param VIP: Instance VIP
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type VIP: str
+        :param VPort: Instance port
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type VPort: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Groups: Security group details\n        :type Groups: list of SecurityGroup\n        :param VIP: Instance VIP
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type VIP: str\n        :param VPort: Instance port
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type VPort: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Groups = None
         self.VIP = None
         self.VPort = None
@@ -1380,8 +1850,26 @@ class DescribeDBSlowLogsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.
+        :type InstanceId: str
+        :param Offset: Data entry number starting from which to return results
+        :type Offset: int
+        :param Limit: Number of results to be returned
+        :type Limit: int
+        :param StartTime: Query start time in the format of `2016-07-23 14:55:20`
+        :type StartTime: str
+        :param EndTime: Query end time in the format of `2016-08-22 14:55:20`
+        :type EndTime: str
+        :param Db: Specific name of database to be queried
+        :type Db: str
+        :param OrderBy: Sort by metric. Valid values: query_time_sum, query_count
+        :type OrderBy: str
+        :param OrderByType: Sorting order. Valid values: desc, asc
+        :type OrderByType: str
+        :param Slave: Whether to query slow queries of the secondary. 0: primary, 1: secondary
+        :type Slave: int
         """
-        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.\n        :type InstanceId: str\n        :param Offset: Data entry number starting from which to return results\n        :type Offset: int\n        :param Limit: Number of results to be returned\n        :type Limit: int\n        :param StartTime: Query start time in the format of `2016-07-23 14:55:20`\n        :type StartTime: str\n        :param EndTime: Query end time in the format of `2016-08-22 14:55:20`\n        :type EndTime: str\n        :param Db: Specific name of database to be queried\n        :type Db: str\n        :param OrderBy: Sort by metric. Valid values: query_time_sum, query_count\n        :type OrderBy: str\n        :param OrderByType: Sorting order. Valid values: desc, asc\n        :type OrderByType: str\n        :param Slave: Whether to query slow queries of the secondary. 0: primary, 1: secondary\n        :type Slave: int\n        """
         self.InstanceId = None
         self.Offset = None
         self.Limit = None
@@ -1418,8 +1906,20 @@ class DescribeDBSlowLogsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: Slow query log data
+        :type Data: list of SlowLogData
+        :param LockTimeSum: Sum of all statement lock durations
+        :type LockTimeSum: float
+        :param QueryCount: Total number of statement queries
+        :type QueryCount: int
+        :param Total: Total number of results
+        :type Total: int
+        :param QueryTimeSum: Sum of all statement query durations
+        :type QueryTimeSum: float
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Data: Slow query log data\n        :type Data: list of SlowLogData\n        :param LockTimeSum: Sum of all statement lock durations\n        :type LockTimeSum: float\n        :param QueryCount: Total number of statement queries\n        :type QueryCount: int\n        :param Total: Total number of results\n        :type Total: int\n        :param QueryTimeSum: Sum of all statement query durations\n        :type QueryTimeSum: float\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Data = None
         self.LockTimeSum = None
         self.QueryCount = None
@@ -1448,8 +1948,10 @@ class DescribeDatabasesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `dcdbt-ow7t8lmc`.
+        :type InstanceId: str
         """
-        :param InstanceId: Instance ID in the format of `dcdbt-ow7t8lmc`.\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1470,8 +1972,14 @@ class DescribeDatabasesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Databases: List of databases on instance.
+        :type Databases: list of Database
+        :param InstanceId: Passed through from the input parameters.
+        :type InstanceId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Databases: List of databases on instance.\n        :type Databases: list of Database\n        :param InstanceId: Passed through from the input parameters.\n        :type InstanceId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Databases = None
         self.InstanceId = None
         self.RequestId = None
@@ -1494,8 +2002,10 @@ class DescribeDcnDetailRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1516,8 +2026,12 @@ class DescribeDcnDetailResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DcnDetails: DCN synchronization details
+        :type DcnDetails: list of DcnDetailItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param DcnDetails: DCN synchronization details\n        :type DcnDetails: list of DcnDetailItem\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DcnDetails = None
         self.RequestId = None
 
@@ -1538,8 +2052,10 @@ class DescribeFlowRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: Flow ID returned by async request API.
+        :type FlowId: int
         """
-        :param FlowId: Flow ID returned by async request API.\n        :type FlowId: int\n        """
         self.FlowId = None
 
 
@@ -1560,8 +2076,12 @@ class DescribeFlowResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Flow status. 0: succeeded, 1: failed, 2: running
+        :type Status: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Status: Flow status. 0: succeeded, 1: failed, 2: running\n        :type Status: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Status = None
         self.RequestId = None
 
@@ -1577,8 +2097,14 @@ class DescribeInstanceNodeInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID, such as tdsql-6ltok4u9
+        :type InstanceId: str
+        :param Limit: The maximum number of results returned at a time. By default, there is no upper limit to this value, that is, all results can be returned.
+        :type Limit: int
+        :param Offset: Offset of the returned results. Default value: `0`.
+        :type Offset: int
         """
-        :param InstanceId: Instance ID, such as tdsql-6ltok4u9\n        :type InstanceId: str\n        :param Limit: The maximum number of results returned at a time. By default, there is no upper limit to this value, that is, all results can be returned.\n        :type Limit: int\n        :param Offset: Offset of the returned results. Default value: `0`.\n        :type Offset: int\n        """
         self.InstanceId = None
         self.Limit = None
         self.Offset = None
@@ -1603,8 +2129,14 @@ class DescribeInstanceNodeInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of nodes
+        :type TotalCount: int
+        :param NodesInfo: Node information
+        :type NodesInfo: list of NodeInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of nodes\n        :type TotalCount: int\n        :param NodesInfo: Node information\n        :type NodesInfo: list of NodeInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.NodesInfo = None
         self.RequestId = None
@@ -1627,8 +2159,10 @@ class DescribeLogFileRetentionPeriodRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.
+        :type InstanceId: str
         """
-        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1649,8 +2183,14 @@ class DescribeLogFileRetentionPeriodResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.
+        :type InstanceId: str
+        :param Days: Backup log retention days
+        :type Days: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.\n        :type InstanceId: str\n        :param Days: Backup log retention days\n        :type Days: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.Days = None
         self.RequestId = None
@@ -1668,8 +2208,12 @@ class DescribeProjectSecurityGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Product: Database engine name. Valid value: `mariadb`.
+        :type Product: str
+        :param ProjectId: Project ID
+        :type ProjectId: int
         """
-        :param Product: Database engine name. Valid value: `mariadb`.\n        :type Product: str\n        :param ProjectId: Project ID\n        :type ProjectId: int\n        """
         self.Product = None
         self.ProjectId = None
 
@@ -1692,8 +2236,12 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Groups: Security group details
+        :type Groups: list of SecurityGroup
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Groups: Security group details\n        :type Groups: list of SecurityGroup\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Groups = None
         self.RequestId = None
 
@@ -1714,8 +2262,10 @@ class DestroyHourDBInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of tdsql-avw0207d. It is the same as the instance ID displayed in the TencentDB console.
+        :type InstanceId: str
         """
-        :param InstanceId: Instance ID in the format of tdsql-avw0207d. It is the same as the instance ID displayed in the TencentDB console.\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1736,8 +2286,14 @@ class DestroyHourDBInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: Async task ID, which can be used in the [DescribeFlow](https://intl.cloud.tencent.com/document/product/237/16177?from_cn_redirect=1) API to query the async task result.
+        :type FlowId: int
+        :param InstanceId: Instance ID, which is the same as the request parameter `InstanceId`.
+        :type InstanceId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param FlowId: Async task ID, which can be used in the [DescribeFlow](https://intl.cloud.tencent.com/document/product/237/16177?from_cn_redirect=1) API to query the async task result.\n        :type FlowId: int\n        :param InstanceId: Instance ID, which is the same as the request parameter `InstanceId`.\n        :type InstanceId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.InstanceId = None
         self.RequestId = None
@@ -1755,8 +2311,14 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Product: Database engine name. Valid value: `mariadb`.
+        :type Product: str
+        :param SecurityGroupId: Security group ID
+        :type SecurityGroupId: str
+        :param InstanceIds: Instance ID list, which is an array of one or more instance IDs.
+        :type InstanceIds: list of str
         """
-        :param Product: Database engine name. Valid value: `mariadb`.\n        :type Product: str\n        :param SecurityGroupId: Security group ID\n        :type SecurityGroupId: str\n        :param InstanceIds: Instance ID list, which is an array of one or more instance IDs.\n        :type InstanceIds: list of str\n        """
         self.Product = None
         self.SecurityGroupId = None
         self.InstanceIds = None
@@ -1781,8 +2343,10 @@ class DisassociateSecurityGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1796,8 +2360,14 @@ class FunctionPrivilege(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Database: Database name
+        :type Database: str
+        :param FunctionName: Function name
+        :type FunctionName: str
+        :param Privileges: Permission information
+        :type Privileges: list of str
         """
-        :param Database: Database name\n        :type Database: str\n        :param FunctionName: Function name\n        :type FunctionName: str\n        :param Privileges: Permission information\n        :type Privileges: list of str\n        """
         self.Database = None
         self.FunctionName = None
         self.Privileges = None
@@ -1822,12 +2392,28 @@ class GrantAccountPrivilegesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param InstanceId: Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.\n        :type InstanceId: str\n        :param UserName: Login username.\n        :type UserName: str\n        :param Host: Access host allowed for user. An account is uniquely identified by username and host.\n        :type Host: str\n        :param DbName: Database name. `\*` indicates that global permissions will be set (i.e., `\*.\*`), in which case the `Type` and `Object ` parameters will be ignored. If `DbName` is not `\*`, the input parameter `Type` is required.\n        :type DbName: str\n        :param Privileges: Global permission. Valid values: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, INDEX, ALTER, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, EVENT, TRIGGER, SHOW DATABASES 
+        r"""
+        :param InstanceId: Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.
+        :type InstanceId: str
+        :param UserName: Login username.
+        :type UserName: str
+        :param Host: Access host allowed for user. An account is uniquely identified by username and host.
+        :type Host: str
+        :param DbName: Database name. `\*` indicates that global permissions will be set (i.e., `\*.\*`), in which case the `Type` and `Object ` parameters will be ignored. If `DbName` is not `\*`, the input parameter `Type` is required.
+        :type DbName: str
+        :param Privileges: Global permission. Valid values: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, INDEX, ALTER, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, EVENT, TRIGGER, SHOW DATABASES 
 Database permission. Valid values: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, INDEX, ALTER, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, EVENT, TRIGGER 
 Table/view permission. Valid values: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, INDEX, ALTER, CREATE VIEW, SHOW VIEW, TRIGGER 
 Stored procedure/function permission. Valid values: ALTER ROUTINE, EXECUTE 
-Field permission. Valid values: INSERT, REFERENCES, SELECT, UPDATE\n        :type Privileges: list of str\n        :param Type: Type. Valid values: table, view, proc, func, \*. If `DbName` is a specific database name and `Type` is `\*`, the permissions of the database will be set (i.e., `db.\*`), in which case the `Object` parameter will be ignored\n        :type Type: str\n        :param Object: Type name. For example, if `Type` is `table`, `Object` indicates a specific table name; if both `DbName` and `Type` are specific names, it indicates a specific object name and cannot be `\*` or empty\n        :type Object: str\n        :param ColName: If `Type` is `table` and `ColName` is `\*`, the permissions will be granted to the table; if `ColName` is a specific field name, the permissions will be granted to the field\n        :type ColName: str\n        """
+Field permission. Valid values: INSERT, REFERENCES, SELECT, UPDATE
+        :type Privileges: list of str
+        :param Type: Type. Valid values: table, view, proc, func, \*. If `DbName` is a specific database name and `Type` is `\*`, the permissions of the database will be set (i.e., `db.\*`), in which case the `Object` parameter will be ignored
+        :type Type: str
+        :param Object: Type name. For example, if `Type` is `table`, `Object` indicates a specific table name; if both `DbName` and `Type` are specific names, it indicates a specific object name and cannot be `\*` or empty
+        :type Object: str
+        :param ColName: If `Type` is `table` and `ColName` is `\*`, the permissions will be granted to the table; if `ColName` is a specific field name, the permissions will be granted to the field
+        :type ColName: str
+        """
         self.InstanceId = None
         self.UserName = None
         self.Host = None
@@ -1862,8 +2448,10 @@ class GrantAccountPrivilegesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1877,8 +2465,12 @@ class InitDBInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceIds: List of IDs of instances to be initialized. The ID is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.
+        :type InstanceIds: list of str
+        :param Params: Parameter list. Valid values: character_set_server (character set; required); lower_case_table_names (table name case sensitivity; required; 0: case-sensitive, 1: case-insensitive); innodb_page_size (InnoDB data page; default size: 16 KB); sync_mode (sync mode; 0: async; 1: strong sync; 2: downgradable strong sync; default value: strong sync).
+        :type Params: list of DBParamValue
         """
-        :param InstanceIds: List of IDs of instances to be initialized. The ID is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.\n        :type InstanceIds: list of str\n        :param Params: Parameter list. Valid values: character_set_server (character set; required); lower_case_table_names (table name case sensitivity; required; 0: case-sensitive, 1: case-insensitive); innodb_page_size (InnoDB data page; default size: 16 KB); sync_mode (sync mode; 0: async; 1: strong sync; 2: downgradable strong sync; default value: strong sync).\n        :type Params: list of DBParamValue\n        """
         self.InstanceIds = None
         self.Params = None
 
@@ -1906,8 +2498,14 @@ class InitDBInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: Async task ID. The task status can be queried through the `DescribeFlow` API.
+        :type FlowId: int
+        :param InstanceIds: Passed through from the input parameters.
+        :type InstanceIds: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param FlowId: Async task ID. The task status can be queried through the `DescribeFlow` API.\n        :type FlowId: int\n        :param InstanceIds: Passed through from the input parameters.\n        :type InstanceIds: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.InstanceIds = None
         self.RequestId = None
@@ -1925,8 +2523,16 @@ class LogFileInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Mtime: Last modified time of log
+        :type Mtime: int
+        :param Length: File length
+        :type Length: int
+        :param Uri: Uniform resource identifier (URI) used during log download
+        :type Uri: str
+        :param FileName: Filename
+        :type FileName: str
         """
-        :param Mtime: Last modified time of log\n        :type Mtime: int\n        :param Length: File length\n        :type Length: int\n        :param Uri: Uniform resource identifier (URI) used during log download\n        :type Uri: str\n        :param FileName: Filename\n        :type FileName: str\n        """
         self.Mtime = None
         self.Length = None
         self.Uri = None
@@ -1953,8 +2559,16 @@ class ModifyAccountDescriptionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.
+        :type InstanceId: str
+        :param UserName: Login username.
+        :type UserName: str
+        :param Host: Access host allowed for user. An account is uniquely identified by username and host.
+        :type Host: str
+        :param Description: New account remarks, which can contain 0-256 characters.
+        :type Description: str
         """
-        :param InstanceId: Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.\n        :type InstanceId: str\n        :param UserName: Login username.\n        :type UserName: str\n        :param Host: Access host allowed for user. An account is uniquely identified by username and host.\n        :type Host: str\n        :param Description: New account remarks, which can contain 0-256 characters.\n        :type Description: str\n        """
         self.InstanceId = None
         self.UserName = None
         self.Host = None
@@ -1981,8 +2595,10 @@ class ModifyAccountDescriptionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1996,15 +2612,33 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of tdsql-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
+        :type InstanceId: str
+        :param Accounts: Database account, including username and host address.
+        :type Accounts: list of Account
+        :param GlobalPrivileges: Global permission. Valid values of `GlobalPrivileges`: `"SELECT"`, `"INSERT"`, `"UPDATE"`, `"DELETE"`, `"CREATE"`, `"PROCESS"`, `"DROP"`, `"REFERENCES"`, `"INDEX"`, `"ALTER"`, `"SHOW DATABASES"`, `"CREATE TEMPORARY TABLES"`, `"LOCK TABLES"`, `"EXECUTE"`, `"CREATE VIEW"`, `"SHOW VIEW"`, `"CREATE ROUTINE"`, `"ALTER ROUTINE"`, `"EVENT"`, `"TRIGGER"`.
+Note: if the parameter is left empty, no change will be made to the granted global permissions. To clear the granted global permissions, set the parameter to an empty array.
+        :type GlobalPrivileges: list of str
+        :param DatabasePrivileges: Database permission. Valid values of `Privileges`: `"SELECT"`, `"INSERT"`, `"UPDATE"`, `"DELETE"`, `"CREATE"`, `"DROP"`, `"REFERENCES"`, `"INDEX"`, `"ALTER"`, `"CREATE TEMPORARY TABLES"`, `"LOCK TABLES"`, `"EXECUTE"`, `"CREATE VIEW"`, `"SHOW VIEW"`, `"CREATE ROUTINE"`, `"ALTER ROUTINE"`, `"EVENT"`, `"TRIGGER"`.
+Note: if the parameter is left empty, no change will be made to the granted database permissions. To clear the granted database permissions, set `Privileges` to an empty array.
+        :type DatabasePrivileges: list of DatabasePrivilege
+        :param TablePrivileges: Table permission. Valid values of `Privileges`: `"SELECT"`, `"INSERT"`, `"UPDATE"`, `"DELETE"`, `"CREATE"`, `"DROP"`, `"REFERENCES"`, `"INDEX"`, `"ALTER"`, `"CREATE VIEW"`, `"SHOW VIEW"`, `"TRIGGER"`.
+Note: if the parameter is left empty, no change will be made to the granted table permissions. To clear the granted table permissions, set `Privileges` to an empty array.
+        :type TablePrivileges: list of TablePrivilege
+        :param ColumnPrivileges: Column permission. Valid values of `Privileges`: `"SELECT"`, `"INSERT"`, `"UPDATE"`, `"REFERENCES"`.
+Note: if the parameter is left empty, no change will be made to the granted column permissions. To clear the granted column permissions, set `Privileges` to an empty array.
+        :type ColumnPrivileges: list of ColumnPrivilege
+        :param ViewPrivileges: View permission. Valid values of `Privileges`: `"SELECT"`, `"INSERT"`, `"UPDATE"`, `"DELETE"`, `"CREATE"`, `"DROP"`, `"REFERENCES"`, `"INDEX"`, `"ALTER"`, `"CREATE VIEW"`, `"SHOW VIEW"`, `"TRIGGER"`.
+Note: if the parameter is left empty, no change will be made to the granted view permissions. To clear the granted view permissions, set `Privileges` to an empty array.
+        :type ViewPrivileges: list of ViewPrivileges
+        :param FunctionPrivileges: Function permissions. Valid values of `Privileges`: `"ALTER ROUTINE"`, `"EXECUTE"`.
+Note: if the parameter is left empty, no change will be made to the granted function permissions. To clear the granted function permissions, set `Privileges` to an empty array.
+        :type FunctionPrivileges: list of FunctionPrivilege
+        :param ProcedurePrivileges: Stored procedure permission. Valid values of `Privileges`: `"ALTER ROUTINE"`, `"EXECUTE"`.
+Note: if the parameter is left empty, no change will be made to the granted stored procedure permissions. To clear the granted stored procedure permissions, set `Privileges` to an empty array.
+        :type ProcedurePrivileges: list of ProcedurePrivilege
         """
-        :param InstanceId: Instance ID in the format of tdsql-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.\n        :type InstanceId: str\n        :param Accounts: Database account, including username and host address.\n        :type Accounts: list of Account\n        :param GlobalPrivileges: Global permission. Valid values of `GlobalPrivileges`: `"SELECT"`, `"INSERT"`, `"UPDATE"`, `"DELETE"`, `"CREATE"`, `"PROCESS"`, `"DROP"`, `"REFERENCES"`, `"INDEX"`, `"ALTER"`, `"SHOW DATABASES"`, `"CREATE TEMPORARY TABLES"`, `"LOCK TABLES"`, `"EXECUTE"`, `"CREATE VIEW"`, `"SHOW VIEW"`, `"CREATE ROUTINE"`, `"ALTER ROUTINE"`, `"EVENT"`, `"TRIGGER"`.
-Note: if the parameter is left empty, no change will be made to the granted global permissions. To clear the granted global permissions, set the parameter to an empty array.\n        :type GlobalPrivileges: list of str\n        :param DatabasePrivileges: Database permission. Valid values of `Privileges`: `"SELECT"`, `"INSERT"`, `"UPDATE"`, `"DELETE"`, `"CREATE"`, `"DROP"`, `"REFERENCES"`, `"INDEX"`, `"ALTER"`, `"CREATE TEMPORARY TABLES"`, `"LOCK TABLES"`, `"EXECUTE"`, `"CREATE VIEW"`, `"SHOW VIEW"`, `"CREATE ROUTINE"`, `"ALTER ROUTINE"`, `"EVENT"`, `"TRIGGER"`.
-Note: if the parameter is left empty, no change will be made to the granted database permissions. To clear the granted database permissions, set `Privileges` to an empty array.\n        :type DatabasePrivileges: list of DatabasePrivilege\n        :param TablePrivileges: Table permission. Valid values of `Privileges`: `"SELECT"`, `"INSERT"`, `"UPDATE"`, `"DELETE"`, `"CREATE"`, `"DROP"`, `"REFERENCES"`, `"INDEX"`, `"ALTER"`, `"CREATE VIEW"`, `"SHOW VIEW"`, `"TRIGGER"`.
-Note: if the parameter is left empty, no change will be made to the granted table permissions. To clear the granted table permissions, set `Privileges` to an empty array.\n        :type TablePrivileges: list of TablePrivilege\n        :param ColumnPrivileges: Column permission. Valid values of `Privileges`: `"SELECT"`, `"INSERT"`, `"UPDATE"`, `"REFERENCES"`.
-Note: if the parameter is left empty, no change will be made to the granted column permissions. To clear the granted column permissions, set `Privileges` to an empty array.\n        :type ColumnPrivileges: list of ColumnPrivilege\n        :param ViewPrivileges: View permission. Valid values of `Privileges`: `"SELECT"`, `"INSERT"`, `"UPDATE"`, `"DELETE"`, `"CREATE"`, `"DROP"`, `"REFERENCES"`, `"INDEX"`, `"ALTER"`, `"CREATE VIEW"`, `"SHOW VIEW"`, `"TRIGGER"`.
-Note: if the parameter is left empty, no change will be made to the granted view permissions. To clear the granted view permissions, set `Privileges` to an empty array.\n        :type ViewPrivileges: list of ViewPrivileges\n        :param FunctionPrivileges: Function permissions. Valid values of `Privileges`: `"ALTER ROUTINE"`, `"EXECUTE"`.
-Note: if the parameter is left empty, no change will be made to the granted function permissions. To clear the granted function permissions, set `Privileges` to an empty array.\n        :type FunctionPrivileges: list of FunctionPrivilege\n        :param ProcedurePrivileges: Stored procedure permission. Valid values of `Privileges`: `"ALTER ROUTINE"`, `"EXECUTE"`.
-Note: if the parameter is left empty, no change will be made to the granted stored procedure permissions. To clear the granted stored procedure permissions, set `Privileges` to an empty array.\n        :type ProcedurePrivileges: list of ProcedurePrivilege\n        """
         self.InstanceId = None
         self.Accounts = None
         self.GlobalPrivileges = None
@@ -2076,8 +2710,12 @@ class ModifyAccountPrivilegesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: Async task ID, which can be used in the [DescribeFlow](https://intl.cloud.tencent.com/document/product/237/16177?from_cn_redirect=1) API to query the async task result.
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param FlowId: Async task ID, which can be used in the [DescribeFlow](https://intl.cloud.tencent.com/document/product/237/16177?from_cn_redirect=1) API to query the async task result.\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -2093,8 +2731,14 @@ class ModifyBackupTimeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.
+        :type InstanceId: str
+        :param StartBackupTime: Start time of daily backup window in the format of `mm:ss`, such as 22:00
+        :type StartBackupTime: str
+        :param EndBackupTime: End time of daily backup window in the format of `mm:ss`, such as 23:59
+        :type EndBackupTime: str
         """
-        :param InstanceId: Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.\n        :type InstanceId: str\n        :param StartBackupTime: Start time of daily backup window in the format of `mm:ss`, such as 22:00\n        :type StartBackupTime: str\n        :param EndBackupTime: End time of daily backup window in the format of `mm:ss`, such as 23:59\n        :type EndBackupTime: str\n        """
         self.InstanceId = None
         self.StartBackupTime = None
         self.EndBackupTime = None
@@ -2119,8 +2763,12 @@ class ModifyBackupTimeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Setting status. 0: success
+        :type Status: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Status: Setting status. 0: success\n        :type Status: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Status = None
         self.RequestId = None
 
@@ -2136,8 +2784,12 @@ class ModifyDBInstanceNameRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: ID of instance to be modified, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.
+        :type InstanceId: str
+        :param InstanceName: New name of instance, which can contain letters, digits, underscores, and hyphens.
+        :type InstanceName: str
         """
-        :param InstanceId: ID of instance to be modified, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.\n        :type InstanceId: str\n        :param InstanceName: New name of instance, which can contain letters, digits, underscores, and hyphens.\n        :type InstanceName: str\n        """
         self.InstanceId = None
         self.InstanceName = None
 
@@ -2160,8 +2812,12 @@ class ModifyDBInstanceNameResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.RequestId = None
 
@@ -2177,8 +2833,14 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Product: Database engine name. Valid value: `mariadb`.
+        :type Product: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param SecurityGroupIds: List of IDs of security groups to be modified, which is an array of one or more security group IDs.
+        :type SecurityGroupIds: list of str
         """
-        :param Product: Database engine name. Valid value: `mariadb`.\n        :type Product: str\n        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param SecurityGroupIds: List of IDs of security groups to be modified, which is an array of one or more security group IDs.\n        :type SecurityGroupIds: list of str\n        """
         self.Product = None
         self.InstanceId = None
         self.SecurityGroupIds = None
@@ -2203,8 +2865,10 @@ class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2218,8 +2882,12 @@ class ModifyDBInstancesProjectRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceIds: List of IDs of instances to be modified. The ID is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.
+        :type InstanceIds: list of str
+        :param ProjectId: ID of the project to be assigned, which can be obtained through the `DescribeProjects` API.
+        :type ProjectId: int
         """
-        :param InstanceIds: List of IDs of instances to be modified. The ID is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.\n        :type InstanceIds: list of str\n        :param ProjectId: ID of the project to be assigned, which can be obtained through the `DescribeProjects` API.\n        :type ProjectId: int\n        """
         self.InstanceIds = None
         self.ProjectId = None
 
@@ -2242,8 +2910,10 @@ class ModifyDBInstancesProjectResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2257,8 +2927,12 @@ class ModifyDBParametersRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.
+        :type InstanceId: str
+        :param Params: Parameter list. Each element is a combination of `Param` and `Value`.
+        :type Params: list of DBParamValue
         """
-        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.\n        :type InstanceId: str\n        :param Params: Parameter list. Each element is a combination of `Param` and `Value`.\n        :type Params: list of DBParamValue\n        """
         self.InstanceId = None
         self.Params = None
 
@@ -2286,8 +2960,14 @@ class ModifyDBParametersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.
+        :type InstanceId: str
+        :param Result: Parameter modification result
+        :type Result: list of ParamModifyResult
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.\n        :type InstanceId: str\n        :param Result: Parameter modification result\n        :type Result: list of ParamModifyResult\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.Result = None
         self.RequestId = None
@@ -2310,8 +2990,12 @@ class ModifyLogFileRetentionPeriodRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.
+        :type InstanceId: str
+        :param Days: Retention days up to 30
+        :type Days: int
         """
-        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.\n        :type InstanceId: str\n        :param Days: Retention days up to 30\n        :type Days: int\n        """
         self.InstanceId = None
         self.Days = None
 
@@ -2334,8 +3018,12 @@ class ModifyLogFileRetentionPeriodResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.
+        :type InstanceId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.\n        :type InstanceId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.RequestId = None
 
@@ -2351,8 +3039,14 @@ class MonitorData(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StartTime: Start time in the format of `2018-03-24 23:59:59`
+        :type StartTime: str
+        :param EndTime: End time in the format of `2018-03-24 23:59:59`
+        :type EndTime: str
+        :param Data: Monitoring data
+        :type Data: list of float
         """
-        :param StartTime: Start time in the format of `2018-03-24 23:59:59`\n        :type StartTime: str\n        :param EndTime: End time in the format of `2018-03-24 23:59:59`\n        :type EndTime: str\n        :param Data: Monitoring data\n        :type Data: list of float\n        """
         self.StartTime = None
         self.EndTime = None
         self.Data = None
@@ -2377,8 +3071,12 @@ class NodeInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NodeId: Node ID
+        :type NodeId: str
+        :param Role: Node role. Valid values: `master`, `slave`
+        :type Role: str
         """
-        :param NodeId: Node ID\n        :type NodeId: str\n        :param Role: Node role. Valid values: `master`, `slave`\n        :type Role: str\n        """
         self.NodeId = None
         self.Role = None
 
@@ -2401,8 +3099,12 @@ class OpenDBExtranetAccessRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: ID of instance for which to enable public network access. The ID is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.
+        :type InstanceId: str
+        :param Ipv6Flag: Whether IPv6 is used. Default value: 0
+        :type Ipv6Flag: int
         """
-        :param InstanceId: ID of instance for which to enable public network access. The ID is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.\n        :type InstanceId: str\n        :param Ipv6Flag: Whether IPv6 is used. Default value: 0\n        :type Ipv6Flag: int\n        """
         self.InstanceId = None
         self.Ipv6Flag = None
 
@@ -2425,8 +3127,12 @@ class OpenDBExtranetAccessResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: Async task ID. The task status can be queried through the `DescribeFlow` API.
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param FlowId: Async task ID. The task status can be queried through the `DescribeFlow` API.\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -2442,9 +3148,17 @@ class ParamConstraint(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Type: Constraint type, such as `enum` and `section`
+        :type Type: str
+        :param Enum: List of valid values when constraint type is `enum`
+        :type Enum: str
+        :param Range: Range when constraint type is `section`
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Range: :class:`tencentcloud.mariadb.v20170312.models.ConstraintRange`
+        :param String: List of valid values when constraint type is `string`
+        :type String: str
         """
-        :param Type: Constraint type, such as `enum` and `section`\n        :type Type: str\n        :param Enum: List of valid values when constraint type is `enum`\n        :type Enum: str\n        :param Range: Range when constraint type is `section`
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Range: :class:`tencentcloud.mariadb.v20170312.models.ConstraintRange`\n        :param String: List of valid values when constraint type is `string`\n        :type String: str\n        """
         self.Type = None
         self.Enum = None
         self.Range = None
@@ -2473,9 +3187,21 @@ class ParamDesc(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Param: Parameter name
+        :type Param: str
+        :param Value: Current parameter value
+        :type Value: str
+        :param SetValue: Previously set value, which is the same as `value` after the parameter takes effect.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SetValue: str
+        :param Default: Default value
+        :type Default: str
+        :param Constraint: Parameter constraint
+        :type Constraint: :class:`tencentcloud.mariadb.v20170312.models.ParamConstraint`
+        :param HaveSetValue: Whether a value has been set. false: no, true: yes
+        :type HaveSetValue: bool
         """
-        :param Param: Parameter name\n        :type Param: str\n        :param Value: Current parameter value\n        :type Value: str\n        :param SetValue: Previously set value, which is the same as `value` after the parameter takes effect.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type SetValue: str\n        :param Default: Default value\n        :type Default: str\n        :param Constraint: Parameter constraint\n        :type Constraint: :class:`tencentcloud.mariadb.v20170312.models.ParamConstraint`\n        :param HaveSetValue: Whether a value has been set. false: no, true: yes\n        :type HaveSetValue: bool\n        """
         self.Param = None
         self.Value = None
         self.SetValue = None
@@ -2508,8 +3234,12 @@ class ParamModifyResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Param: Renames a parameter
+        :type Param: str
+        :param Code: Result of parameter modification. 0: success, -1: failure, -2: invalid parameter value
+        :type Code: int
         """
-        :param Param: Renames a parameter\n        :type Param: str\n        :param Code: Result of parameter modification. 0: success, -1: failure, -2: invalid parameter value\n        :type Code: int\n        """
         self.Param = None
         self.Code = None
 
@@ -2532,8 +3262,28 @@ class PerformanceMonitorSet(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param UpdateTotal: Number of UPDATE operations
+        :type UpdateTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param DiskIops: Number of disk IOs per second
+        :type DiskIops: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param ConnActive: Number of active connections
+        :type ConnActive: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param MemHitRate: Cache hit rate
+        :type MemHitRate: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param SlaveDelay: Primary/Secondary delay
+        :type SlaveDelay: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param SelectTotal: Number of SELECT operations
+        :type SelectTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param LongQuery: Number of slow queries
+        :type LongQuery: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param DeleteTotal: Number of DELETE operations
+        :type DeleteTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param InsertTotal: Number of INSERT operations
+        :type InsertTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param IsMasterSwitched: Whether primary/Secondary switch occurred. 1: yes, 0: no
+        :type IsMasterSwitched: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
         """
-        :param UpdateTotal: Number of UPDATE operations\n        :type UpdateTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param DiskIops: Number of disk IOs per second\n        :type DiskIops: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param ConnActive: Number of active connections\n        :type ConnActive: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param MemHitRate: Cache hit rate\n        :type MemHitRate: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param SlaveDelay: Primary/Secondary delay\n        :type SlaveDelay: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param SelectTotal: Number of SELECT operations\n        :type SelectTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param LongQuery: Number of slow queries\n        :type LongQuery: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param DeleteTotal: Number of DELETE operations\n        :type DeleteTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param InsertTotal: Number of INSERT operations\n        :type InsertTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param IsMasterSwitched: Whether primary/Secondary switch occurred. 1: yes, 0: no\n        :type IsMasterSwitched: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        """
         self.UpdateTotal = None
         self.DiskIops = None
         self.ConnActive = None
@@ -2592,8 +3342,14 @@ class ProcedurePrivilege(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Database: Database name
+        :type Database: str
+        :param Procedure: Stored procedure name
+        :type Procedure: str
+        :param Privileges: Permission information
+        :type Privileges: list of str
         """
-        :param Database: Database name\n        :type Database: str\n        :param Procedure: Stored procedure name\n        :type Procedure: str\n        :param Privileges: Permission information\n        :type Privileges: list of str\n        """
         self.Database = None
         self.Procedure = None
         self.Privileges = None
@@ -2618,8 +3374,16 @@ class ResetAccountPasswordRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.
+        :type InstanceId: str
+        :param UserName: Login username.
+        :type UserName: str
+        :param Host: Access host allowed for user. An account is uniquely identified by username and host.
+        :type Host: str
+        :param Password: New password, which can contain 6-32 letters, digits, and common symbols but not semicolons, single quotation marks, and double quotation marks.
+        :type Password: str
         """
-        :param InstanceId: Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.\n        :type InstanceId: str\n        :param UserName: Login username.\n        :type UserName: str\n        :param Host: Access host allowed for user. An account is uniquely identified by username and host.\n        :type Host: str\n        :param Password: New password, which can contain 6-32 letters, digits, and common symbols but not semicolons, single quotation marks, and double quotation marks.\n        :type Password: str\n        """
         self.InstanceId = None
         self.UserName = None
         self.Host = None
@@ -2646,8 +3410,10 @@ class ResetAccountPasswordResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2661,8 +3427,16 @@ class ResourceUsageMonitorSet(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BinlogDiskAvailable: Available capacity of binlog disk in GB
+        :type BinlogDiskAvailable: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param CpuUsageRate: CPU utilization
+        :type CpuUsageRate: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param MemAvailable: Available memory size in GB
+        :type MemAvailable: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param DataDiskAvailable: Available disk capacity in GB
+        :type DataDiskAvailable: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
         """
-        :param BinlogDiskAvailable: Available capacity of binlog disk in GB\n        :type BinlogDiskAvailable: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param CpuUsageRate: CPU utilization\n        :type CpuUsageRate: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param MemAvailable: Available memory size in GB\n        :type MemAvailable: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param DataDiskAvailable: Available disk capacity in GB\n        :type DataDiskAvailable: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        """
         self.BinlogDiskAvailable = None
         self.CpuUsageRate = None
         self.MemAvailable = None
@@ -2697,8 +3471,22 @@ class SecurityGroup(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProjectId: Project ID
+        :type ProjectId: int
+        :param CreateTime: Creation time in the format of yyyy-mm-dd hh:mm:ss
+        :type CreateTime: str
+        :param SecurityGroupId: Security group ID
+        :type SecurityGroupId: str
+        :param SecurityGroupName: Security group name
+        :type SecurityGroupName: str
+        :param SecurityGroupRemark: Security group remarks
+        :type SecurityGroupRemark: str
+        :param Inbound: Inbound rule
+        :type Inbound: list of SecurityGroupBound
+        :param Outbound: Outbound rule
+        :type Outbound: list of SecurityGroupBound
         """
-        :param ProjectId: Project ID\n        :type ProjectId: int\n        :param CreateTime: Creation time in the format of yyyy-mm-dd hh:mm:ss\n        :type CreateTime: str\n        :param SecurityGroupId: Security group ID\n        :type SecurityGroupId: str\n        :param SecurityGroupName: Security group name\n        :type SecurityGroupName: str\n        :param SecurityGroupRemark: Security group remarks\n        :type SecurityGroupRemark: str\n        :param Inbound: Inbound rule\n        :type Inbound: list of SecurityGroupBound\n        :param Outbound: Outbound rule\n        :type Outbound: list of SecurityGroupBound\n        """
         self.ProjectId = None
         self.CreateTime = None
         self.SecurityGroupId = None
@@ -2741,8 +3529,16 @@ class SecurityGroupBound(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Action: Policy, which can be `ACCEPT` or `DROP`
+        :type Action: str
+        :param CidrIp: Source IP or source IP range, such as 192.168.0.0/16
+        :type CidrIp: str
+        :param PortRange: Port
+        :type PortRange: str
+        :param IpProtocol: Network protocol. UDP and TCP are supported.
+        :type IpProtocol: str
         """
-        :param Action: Policy, which can be `ACCEPT` or `DROP`\n        :type Action: str\n        :param CidrIp: Source IP or source IP range, such as 192.168.0.0/16\n        :type CidrIp: str\n        :param PortRange: Port\n        :type PortRange: str\n        :param IpProtocol: Network protocol. UDP and TCP are supported.\n        :type IpProtocol: str\n        """
         self.Action = None
         self.CidrIp = None
         self.PortRange = None
@@ -2769,9 +3565,45 @@ class SlowLogData(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CheckSum: Statement checksum for querying details
+        :type CheckSum: str
+        :param Db: Database name
+        :type Db: str
+        :param FingerPrint: Abstracted SQL statement
+        :type FingerPrint: str
+        :param LockTimeAvg: Average lock duration
+        :type LockTimeAvg: str
+        :param LockTimeMax: Maximum lock duration
+        :type LockTimeMax: str
+        :param LockTimeMin: Minimum lock duration
+        :type LockTimeMin: str
+        :param LockTimeSum: Sum of lock durations
+        :type LockTimeSum: str
+        :param QueryCount: Number of queries
+        :type QueryCount: str
+        :param QueryTimeAvg: Average query duration
+        :type QueryTimeAvg: str
+        :param QueryTimeMax: Maximum query duration
+        :type QueryTimeMax: str
+        :param QueryTimeMin: Minimum query duration
+        :type QueryTimeMin: str
+        :param QueryTimeSum: Sum of query durations
+        :type QueryTimeSum: str
+        :param RowsExaminedSum: Number of scanned rows
+        :type RowsExaminedSum: str
+        :param RowsSentSum: Number of sent rows
+        :type RowsSentSum: str
+        :param TsMax: Last execution time
+        :type TsMax: str
+        :param TsMin: First execution time
+        :type TsMin: str
+        :param User: Account
+        :type User: str
+        :param ExampleSql: Sample SQL
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ExampleSql: str
         """
-        :param CheckSum: Statement checksum for querying details\n        :type CheckSum: str\n        :param Db: Database name\n        :type Db: str\n        :param FingerPrint: Abstracted SQL statement\n        :type FingerPrint: str\n        :param LockTimeAvg: Average lock duration\n        :type LockTimeAvg: str\n        :param LockTimeMax: Maximum lock duration\n        :type LockTimeMax: str\n        :param LockTimeMin: Minimum lock duration\n        :type LockTimeMin: str\n        :param LockTimeSum: Sum of lock durations\n        :type LockTimeSum: str\n        :param QueryCount: Number of queries\n        :type QueryCount: str\n        :param QueryTimeAvg: Average query duration\n        :type QueryTimeAvg: str\n        :param QueryTimeMax: Maximum query duration\n        :type QueryTimeMax: str\n        :param QueryTimeMin: Minimum query duration\n        :type QueryTimeMin: str\n        :param QueryTimeSum: Sum of query durations\n        :type QueryTimeSum: str\n        :param RowsExaminedSum: Number of scanned rows\n        :type RowsExaminedSum: str\n        :param RowsSentSum: Number of sent rows\n        :type RowsSentSum: str\n        :param TsMax: Last execution time\n        :type TsMax: str\n        :param TsMin: First execution time\n        :type TsMin: str\n        :param User: Account\n        :type User: str\n        :param ExampleSql: Sample SQL
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ExampleSql: str\n        """
         self.CheckSum = None
         self.Db = None
         self.FingerPrint = None
@@ -2826,8 +3658,14 @@ class TablePrivilege(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Database: Database name
+        :type Database: str
+        :param Table: Table name
+        :type Table: str
+        :param Privileges: Permission information
+        :type Privileges: list of str
         """
-        :param Database: Database name\n        :type Database: str\n        :param Table: Table name\n        :type Table: str\n        :param Privileges: Permission information\n        :type Privileges: list of str\n        """
         self.Database = None
         self.Table = None
         self.Privileges = None
@@ -2852,8 +3690,14 @@ class ViewPrivileges(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Database: Database name
+        :type Database: str
+        :param View: View name
+        :type View: str
+        :param Privileges: Permission information
+        :type Privileges: list of str
         """
-        :param Database: Database name\n        :type Database: str\n        :param View: View name\n        :type View: str\n        :param Privileges: Permission information\n        :type Privileges: list of str\n        """
         self.Database = None
         self.View = None
         self.Privileges = None

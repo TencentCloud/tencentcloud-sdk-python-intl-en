@@ -24,10 +24,28 @@ class Account(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Id: Unique ID.\n        :type Id: int\n        :param Uuid: CWP agent `Uuid`\n        :type Uuid: str\n        :param MachineIp: Private IP of server.\n        :type MachineIp: str\n        :param MachineName: Server name.\n        :type MachineName: str\n        :param Username: Account name.\n        :type Username: str\n        :param Groups: Account group.\n        :type Groups: str\n        :param Privilege: Account type.
+        r"""
+        :param Id: Unique ID.
+        :type Id: int
+        :param Uuid: CWP agent `Uuid`
+        :type Uuid: str
+        :param MachineIp: Private IP of server.
+        :type MachineIp: str
+        :param MachineName: Server name.
+        :type MachineName: str
+        :param Username: Account name.
+        :type Username: str
+        :param Groups: Account group.
+        :type Groups: str
+        :param Privilege: Account type.
 <li>ORDINARY: ordinary account</li>
-<li>SUPPER: super admin account</li>\n        :type Privilege: str\n        :param AccountCreateTime: Account creation time.\n        :type AccountCreateTime: str\n        :param LastLoginTime: Account last login time.\n        :type LastLoginTime: str\n        """
+<li>SUPPER: super admin account</li>
+        :type Privilege: str
+        :param AccountCreateTime: Account creation time.
+        :type AccountCreateTime: str
+        :param LastLoginTime: Account last login time.
+        :type LastLoginTime: str
+        """
         self.Id = None
         self.Uuid = None
         self.MachineIp = None
@@ -64,8 +82,12 @@ class AccountStatistics(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Username: Username.
+        :type Username: str
+        :param MachineNum: Number of servers.
+        :type MachineNum: int
         """
-        :param Username: Username.\n        :type Username: str\n        :param MachineNum: Number of servers.\n        :type MachineNum: int\n        """
         self.Username = None
         self.MachineNum = None
 
@@ -88,8 +110,10 @@ class AddLoginWhiteListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Rules: Whitelist rule
+        :type Rules: :class:`tencentcloud.yunjing.v20180228.models.LoginWhiteListsRule`
         """
-        :param Rules: Whitelist rule\n        :type Rules: :class:`tencentcloud.yunjing.v20180228.models.LoginWhiteListsRule`\n        """
         self.Rules = None
 
 
@@ -112,8 +136,10 @@ class AddLoginWhiteListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -127,8 +153,16 @@ class AddMachineTagRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Quuid: Server ID
+        :type Quuid: str
+        :param TagId: Tag ID
+        :type TagId: int
+        :param MRegion: Server region
+        :type MRegion: str
+        :param MArea: Server type (`CVM` or `BM`)
+        :type MArea: str
         """
-        :param Quuid: Server ID\n        :type Quuid: str\n        :param TagId: Tag ID\n        :type TagId: int\n        :param MRegion: Server region\n        :type MRegion: str\n        :param MArea: Server type (`CVM` or `BM`)\n        :type MArea: str\n        """
         self.Quuid = None
         self.TagId = None
         self.MRegion = None
@@ -155,8 +189,10 @@ class AddMachineTagResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -170,14 +206,30 @@ class AgentVul(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Id: Vulnerability ID.\n        :type Id: int\n        :param MachineIp: Server IP.\n        :type MachineIp: str\n        :param VulName: Vulnerability name.\n        :type VulName: str\n        :param VulLevel: Vulnerability severity level.
+        r"""
+        :param Id: Vulnerability ID.
+        :type Id: int
+        :param MachineIp: Server IP.
+        :type MachineIp: str
+        :param VulName: Vulnerability name.
+        :type VulName: str
+        :param VulLevel: Vulnerability severity level.
 <li>HIGH: high</li>
 <li>MIDDLE: medium</li>
 <li>LOW: low</li>
-<li>NOTICE: notice</li>\n        :type VulLevel: str\n        :param LastScanTime: Last scanned time.\n        :type LastScanTime: str\n        :param Description: Vulnerability description.\n        :type Description: str\n        :param VulId: Vulnerability category ID.\n        :type VulId: int\n        :param VulStatus: Vulnerability status.
+<li>NOTICE: notice</li>
+        :type VulLevel: str
+        :param LastScanTime: Last scanned time.
+        :type LastScanTime: str
+        :param Description: Vulnerability description.
+        :type Description: str
+        :param VulId: Vulnerability category ID.
+        :type VulId: int
+        :param VulStatus: Vulnerability status.
 <li>UN_OPERATED: to be processed</li>
-<li>FIXED: fixed</li>\n        :type VulStatus: str\n        """
+<li>FIXED: fixed</li>
+        :type VulStatus: str
+        """
         self.Id = None
         self.MachineIp = None
         self.VulName = None
@@ -212,11 +264,41 @@ class BruteAttack(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Id: Event ID.\n        :type Id: int\n        :param MachineIp: Server IP.\n        :type MachineIp: str\n        :param Status: Brute force attack event status
+        r"""
+        :param Id: Event ID.
+        :type Id: int
+        :param MachineIp: Server IP.
+        :type MachineIp: str
+        :param Status: Brute force attack event status
 <li>BRUTEATTACK_FAIL_ACCOUNT: brute force attack event - failure (the account exists)</li>
 <li>BRUTEATTACK_FAIL_NOACCOUNT: brute force attack event - failure (the account does not exist)</li>
-<li>BRUTEATTACK_SUCCESS: brute force attack event - success </li>\n        :type Status: str\n        :param UserName: Username.\n        :type UserName: str\n        :param City: City ID.\n        :type City: int\n        :param Country: Country/Region ID.\n        :type Country: int\n        :param Province: Province/State ID.\n        :type Province: int\n        :param SrcIp: Source IP.\n        :type SrcIp: str\n        :param Count: Number of attempts.\n        :type Count: int\n        :param CreateTime: Occurrence time.\n        :type CreateTime: str\n        :param MachineName: Server name.\n        :type MachineName: str\n        :param Uuid: CWP agent `UUID`.\n        :type Uuid: str\n        :param IsProVersion: Whether the server enables CWP Pro.\n        :type IsProVersion: bool\n        :param BanStatus: Whether the server is banned.\n        :type BanStatus: str\n        :param Quuid: Server `UUID`\n        :type Quuid: str\n        """
+<li>BRUTEATTACK_SUCCESS: brute force attack event - success </li>
+        :type Status: str
+        :param UserName: Username.
+        :type UserName: str
+        :param City: City ID.
+        :type City: int
+        :param Country: Country/Region ID.
+        :type Country: int
+        :param Province: Province/State ID.
+        :type Province: int
+        :param SrcIp: Source IP.
+        :type SrcIp: str
+        :param Count: Number of attempts.
+        :type Count: int
+        :param CreateTime: Occurrence time.
+        :type CreateTime: str
+        :param MachineName: Server name.
+        :type MachineName: str
+        :param Uuid: CWP agent `UUID`.
+        :type Uuid: str
+        :param IsProVersion: Whether the server enables CWP Pro.
+        :type IsProVersion: bool
+        :param BanStatus: Whether the server is banned.
+        :type BanStatus: str
+        :param Quuid: Server `UUID`
+        :type Quuid: str
+        """
         self.Id = None
         self.MachineIp = None
         self.Status = None
@@ -265,9 +347,11 @@ class CloseProVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Quuid: Server `Uuid`.
-`InstanceId` for BM or `Uuid` for CVM\n        :type Quuid: str\n        """
+`InstanceId` for BM or `Uuid` for CVM
+        :type Quuid: str
+        """
         self.Quuid = None
 
 
@@ -288,8 +372,10 @@ class CloseProVersionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -303,10 +389,26 @@ class Component(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Id: Unique ID.\n        :type Id: int\n        :param Uuid: CWP agent `Uuid`.\n        :type Uuid: str\n        :param MachineIp: Private IP of server.\n        :type MachineIp: str\n        :param MachineName: Server name.\n        :type MachineName: str\n        :param ComponentVersion: Component version number.\n        :type ComponentVersion: str\n        :param ComponentType: Component type.
+        r"""
+        :param Id: Unique ID.
+        :type Id: int
+        :param Uuid: CWP agent `Uuid`.
+        :type Uuid: str
+        :param MachineIp: Private IP of server.
+        :type MachineIp: str
+        :param MachineName: Server name.
+        :type MachineName: str
+        :param ComponentVersion: Component version number.
+        :type ComponentVersion: str
+        :param ComponentType: Component type.
 <li>SYSTEM: system component</li>
-<li>WEB: web component</li>\n        :type ComponentType: str\n        :param ComponentName: Component name.\n        :type ComponentName: str\n        :param ModifyTime: Component detection update time.\n        :type ModifyTime: str\n        """
+<li>WEB: web component</li>
+        :type ComponentType: str
+        :param ComponentName: Component name.
+        :type ComponentName: str
+        :param ModifyTime: Component detection update time.
+        :type ModifyTime: str
+        """
         self.Id = None
         self.Uuid = None
         self.MachineIp = None
@@ -341,10 +443,20 @@ class ComponentStatistics(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Id: Component ID.\n        :type Id: int\n        :param MachineNum: Number of servers.\n        :type MachineNum: int\n        :param ComponentName: Component name.\n        :type ComponentName: str\n        :param ComponentType: Component type.
+        r"""
+        :param Id: Component ID.
+        :type Id: int
+        :param MachineNum: Number of servers.
+        :type MachineNum: int
+        :param ComponentName: Component name.
+        :type ComponentName: str
+        :param ComponentType: Component type.
 <li>WEB: web component</li>
-<li>SYSTEM: system component</li>\n        :type ComponentType: str\n        :param Description: Component description.\n        :type Description: str\n        """
+<li>SYSTEM: system component</li>
+        :type ComponentType: str
+        :param Description: Component description.
+        :type Description: str
+        """
         self.Id = None
         self.MachineNum = None
         self.ComponentName = None
@@ -373,8 +485,10 @@ class CreateOpenPortTaskRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Uuid: CWP agent `Uuid`.
+        :type Uuid: str
         """
-        :param Uuid: CWP agent `Uuid`.\n        :type Uuid: str\n        """
         self.Uuid = None
 
 
@@ -395,8 +509,10 @@ class CreateOpenPortTaskResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -410,8 +526,10 @@ class CreateProcessTaskRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Uuid: CWP agent `Uuid`.
+        :type Uuid: str
         """
-        :param Uuid: CWP agent `Uuid`.\n        :type Uuid: str\n        """
         self.Uuid = None
 
 
@@ -432,8 +550,10 @@ class CreateProcessTaskResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -447,8 +567,12 @@ class CreateUsualLoginPlacesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Uuids: CWP agent `UUID` array.
+        :type Uuids: list of str
+        :param Places: Login region information array.
+        :type Places: list of Place
         """
-        :param Uuids: CWP agent `UUID` array.\n        :type Uuids: list of str\n        :param Places: Login region information array.\n        :type Places: list of Place\n        """
         self.Uuids = None
         self.Places = None
 
@@ -476,8 +600,10 @@ class CreateUsualLoginPlacesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -491,8 +617,10 @@ class DeleteBruteAttacksRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ids: Brute force attack event ID array.
+        :type Ids: list of int non-negative
         """
-        :param Ids: Brute force attack event ID array.\n        :type Ids: list of int non-negative\n        """
         self.Ids = None
 
 
@@ -513,8 +641,10 @@ class DeleteBruteAttacksResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -528,8 +658,10 @@ class DeleteLoginWhiteListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ids: Whitelist ID
+        :type Ids: list of int non-negative
         """
-        :param Ids: Whitelist ID\n        :type Ids: list of int non-negative\n        """
         self.Ids = None
 
 
@@ -550,8 +682,10 @@ class DeleteLoginWhiteListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -565,8 +699,10 @@ class DeleteMachineRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Uuid: CWP agent `Uuid`.
+        :type Uuid: str
         """
-        :param Uuid: CWP agent `Uuid`.\n        :type Uuid: str\n        """
         self.Uuid = None
 
 
@@ -587,8 +723,10 @@ class DeleteMachineResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -602,8 +740,10 @@ class DeleteMachineTagRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Rid: Associated tag ID
+        :type Rid: int
         """
-        :param Rid: Associated tag ID\n        :type Rid: int\n        """
         self.Rid = None
 
 
@@ -624,8 +764,10 @@ class DeleteMachineTagResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -639,8 +781,10 @@ class DeleteMaliciousRequestsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ids: Malicious request record ID array. Maximum value: 100 entries.
+        :type Ids: list of int non-negative
         """
-        :param Ids: Malicious request record ID array. Maximum value: 100 entries.\n        :type Ids: list of int non-negative\n        """
         self.Ids = None
 
 
@@ -661,8 +805,10 @@ class DeleteMaliciousRequestsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -676,8 +822,10 @@ class DeleteMalwaresRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ids: Trojan record ID array
+        :type Ids: list of int non-negative
         """
-        :param Ids: Trojan record ID array\n        :type Ids: list of int non-negative\n        """
         self.Ids = None
 
 
@@ -698,8 +846,10 @@ class DeleteMalwaresResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -713,8 +863,10 @@ class DeleteNonlocalLoginPlacesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ids: Unusual login location event ID array.
+        :type Ids: list of int non-negative
         """
-        :param Ids: Unusual login location event ID array.\n        :type Ids: list of int non-negative\n        """
         self.Ids = None
 
 
@@ -735,8 +887,10 @@ class DeleteNonlocalLoginPlacesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -750,8 +904,12 @@ class DeleteUsualLoginPlacesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Uuid: CWP agent `Uuid`
+        :type Uuid: str
+        :param CityIds: Added usual login city ID array
+        :type CityIds: list of int non-negative
         """
-        :param Uuid: CWP agent `Uuid`\n        :type Uuid: str\n        :param CityIds: Added usual login city ID array\n        :type CityIds: list of int non-negative\n        """
         self.Uuid = None
         self.CityIds = None
 
@@ -774,8 +932,10 @@ class DeleteUsualLoginPlacesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -789,9 +949,15 @@ class DescribeAccountStatisticsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Filters: Filter.
+<li>Username - String - Required: No - Account username</li>
+        :type Filters: list of Filter
         """
-        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        :param Filters: Filter.
-<li>Username - String - Required: No - Account username</li>\n        :type Filters: list of Filter\n        """
         self.Limit = None
         self.Offset = None
         self.Filters = None
@@ -821,8 +987,14 @@ class DescribeAccountStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of records in account statistics list.
+        :type TotalCount: int
+        :param AccountStatistics: Account statistics list.
+        :type AccountStatistics: list of AccountStatistics
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of records in account statistics list.\n        :type TotalCount: int\n        :param AccountStatistics: Account statistics list.\n        :type AccountStatistics: list of AccountStatistics\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.AccountStatistics = None
         self.RequestId = None
@@ -845,11 +1017,21 @@ class DescribeAccountsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Uuid: CWP agent `Uuid`. Either `Username` or `Uuid` must be specified. If `Uuid` is specified, it indicates to query the information list under the specified server.\n        :type Uuid: str\n        :param Username: CWP agent `Uuid`. Either `Username` or `Uuid` must be specified. If `Username` is specified, it indicates to query the information list under the specified username.\n        :type Username: str\n        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        :param Filters: Filter.
+        r"""
+        :param Uuid: CWP agent `Uuid`. Either `Username` or `Uuid` must be specified. If `Uuid` is specified, it indicates to query the information list under the specified server.
+        :type Uuid: str
+        :param Username: CWP agent `Uuid`. Either `Username` or `Uuid` must be specified. If `Username` is specified, it indicates to query the information list under the specified username.
+        :type Username: str
+        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Filters: Filter.
 <li>Username - String - Required: No - Account name</li>
 <li>Privilege - String - Required: No - Account name (ORDINARY: ordinary account, SUPPER: super admin account)</li>
-<li>MachineIp - String - Required: No - Private IP of server</li>\n        :type Filters: list of Filter\n        """
+<li>MachineIp - String - Required: No - Private IP of server</li>
+        :type Filters: list of Filter
+        """
         self.Uuid = None
         self.Username = None
         self.Limit = None
@@ -883,8 +1065,14 @@ class DescribeAccountsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of records in account list.
+        :type TotalCount: int
+        :param Accounts: Account data list.
+        :type Accounts: list of Account
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of records in account list.\n        :type TotalCount: int\n        :param Accounts: Account data list.\n        :type Accounts: list of Account\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Accounts = None
         self.RequestId = None
@@ -907,12 +1095,22 @@ class DescribeAgentVulsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VulType: Vulnerability type.
 <li>WEB: web application vulnerability</li>
 <li>SYSTEM: system component vulnerability</li>
-<li>BASELINE: security baseline</li>\n        :type VulType: str\n        :param Uuid: Agent `UUID`.\n        :type Uuid: str\n        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        :param Filters: Filter.
-<li>Status - String - Required: No - Filter by status (UN_OPERATED: to be processed, FIXED: fixed)\n        :type Filters: list of Filter\n        """
+<li>BASELINE: security baseline</li>
+        :type VulType: str
+        :param Uuid: Agent `UUID`.
+        :type Uuid: str
+        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Filters: Filter.
+<li>Status - String - Required: No - Filter by status (UN_OPERATED: to be processed, FIXED: fixed)
+        :type Filters: list of Filter
+        """
         self.VulType = None
         self.Uuid = None
         self.Limit = None
@@ -946,8 +1144,14 @@ class DescribeAgentVulsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of records
+        :type TotalCount: int
+        :param AgentVuls: Server vulnerability information
+        :type AgentVuls: list of AgentVul
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of records\n        :type TotalCount: int\n        :param AgentVuls: Server vulnerability information\n        :type AgentVuls: list of AgentVul\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.AgentVuls = None
         self.RequestId = None
@@ -976,16 +1180,26 @@ class DescribeAlarmAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offline: CWP deactivation alarm status:
 <li>OPEN: alarm enabled</li>
-<li>CLOSE: alarm disabled</li>\n        :type Offline: str\n        :param Malware: Trojan discovery alarm status:
+<li>CLOSE: alarm disabled</li>
+        :type Offline: str
+        :param Malware: Trojan discovery alarm status:
 <li>OPEN: alarm enabled</li>
-<li>CLOSE: alarm disabled</li>\n        :type Malware: str\n        :param NonlocalLogin: Unusual login location discovery alarm status:
+<li>CLOSE: alarm disabled</li>
+        :type Malware: str
+        :param NonlocalLogin: Unusual login location discovery alarm status:
 <li>OPEN: alarm enabled</li>
-<li>CLOSE: alarm disabled</li>\n        :type NonlocalLogin: str\n        :param CrackSuccess: Brute force attack success alarm status:
+<li>CLOSE: alarm disabled</li>
+        :type NonlocalLogin: str
+        :param CrackSuccess: Brute force attack success alarm status:
 <li>OPEN: alarm enabled</li>
-<li>CLOSE: alarm disabled</li>\n        :type CrackSuccess: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+<li>CLOSE: alarm disabled</li>
+        :type CrackSuccess: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.Offline = None
         self.Malware = None
         self.NonlocalLogin = None
@@ -1007,10 +1221,18 @@ class DescribeBruteAttacksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Uuid: Agent `Uuid`.\n        :type Uuid: str\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        :param Filters: Filter.
+        r"""
+        :param Uuid: Agent `Uuid`.
+        :type Uuid: str
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Filters: Filter.
 <li>Keywords - String - Required: No - Query keywords</li>
-<li>Status - String - Required: No - Query status (FAILED: brute force attack failed, SUCCESS: brute force attack succeeded)</li>\n        :type Filters: list of Filter\n        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        """
+<li>Status - String - Required: No - Query status (FAILED: brute force attack failed, SUCCESS: brute force attack succeeded)</li>
+        :type Filters: list of Filter
+        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        """
         self.Uuid = None
         self.Offset = None
         self.Filters = None
@@ -1042,8 +1264,14 @@ class DescribeBruteAttacksResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of events
+        :type TotalCount: int
+        :param BruteAttacks: Brute force attack event list
+        :type BruteAttacks: list of BruteAttack
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of events\n        :type TotalCount: int\n        :param BruteAttacks: Brute force attack event list\n        :type BruteAttacks: list of BruteAttack\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.BruteAttacks = None
         self.RequestId = None
@@ -1066,8 +1294,10 @@ class DescribeComponentInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ComponentId: Component ID.
+        :type ComponentId: int
         """
-        :param ComponentId: Component ID.\n        :type ComponentId: int\n        """
         self.ComponentId = None
 
 
@@ -1088,10 +1318,22 @@ class DescribeComponentInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Id: Component ID.\n        :type Id: int\n        :param ComponentName: Component name.\n        :type ComponentName: str\n        :param ComponentType: Component type.
+        r"""
+        :param Id: Component ID.
+        :type Id: int
+        :param ComponentName: Component name.
+        :type ComponentName: str
+        :param ComponentType: Component type.
 <li>WEB: web component</li>
-<li>SYSTEM: system component</li>\n        :type ComponentType: str\n        :param Homepage: Component's official website.\n        :type Homepage: str\n        :param Description: Component description.\n        :type Description: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+<li>SYSTEM: system component</li>
+        :type ComponentType: str
+        :param Homepage: Component's official website.
+        :type Homepage: str
+        :param Description: Component description.
+        :type Description: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.Id = None
         self.ComponentName = None
         self.ComponentType = None
@@ -1115,9 +1357,15 @@ class DescribeComponentStatisticsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Filters: Filter.
+ComponentName - String - Required: No - Component name
+        :type Filters: list of Filter
         """
-        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        :param Filters: Filter.
-ComponentName - String - Required: No - Component name\n        :type Filters: list of Filter\n        """
         self.Limit = None
         self.Offset = None
         self.Filters = None
@@ -1147,8 +1395,14 @@ class DescribeComponentStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of records in component statistics list.
+        :type TotalCount: int
+        :param ComponentStatistics: Component statistics list data array.
+        :type ComponentStatistics: list of ComponentStatistics
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of records in component statistics list.\n        :type TotalCount: int\n        :param ComponentStatistics: Component statistics list data array.\n        :type ComponentStatistics: list of ComponentStatistics\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ComponentStatistics = None
         self.RequestId = None
@@ -1171,10 +1425,20 @@ class DescribeComponentsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Uuid: CWP agent `Uuid`. Either `Uuid` or `ComponentId` must be specified. If `Uuid` is specified, it indicates to query the information list under the specified server.\n        :type Uuid: str\n        :param ComponentId: Component ID. Either `Uuid` or `ComponentId` must be specified. If `ComponentId` is specified, it indicates to query the information list under the specified component.\n        :type ComponentId: int\n        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        :param Filters: Filter.
+        r"""
+        :param Uuid: CWP agent `Uuid`. Either `Uuid` or `ComponentId` must be specified. If `Uuid` is specified, it indicates to query the information list under the specified server.
+        :type Uuid: str
+        :param ComponentId: Component ID. Either `Uuid` or `ComponentId` must be specified. If `ComponentId` is specified, it indicates to query the information list under the specified component.
+        :type ComponentId: int
+        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Filters: Filter.
 <li>ComponentVersion - String - Required: No - Component version number</li>
-<li>MachineIp - String - Required: No - Private IP of server</li>\n        :type Filters: list of Filter\n        """
+<li>MachineIp - String - Required: No - Private IP of server</li>
+        :type Filters: list of Filter
+        """
         self.Uuid = None
         self.ComponentId = None
         self.Limit = None
@@ -1208,8 +1472,14 @@ class DescribeComponentsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of records in component list.
+        :type TotalCount: int
+        :param Components: Component list data.
+        :type Components: list of Component
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of records in component list.\n        :type TotalCount: int\n        :param Components: Component list data.\n        :type Components: list of Component\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Components = None
         self.RequestId = None
@@ -1232,9 +1502,17 @@ class DescribeHistoryAccountsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Uuid: CWP agent `Uuid`.
+        :type Uuid: str
+        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Filters: Filter.
+<li>Username - String - Required: No - Account name</li>
+        :type Filters: list of Filter
         """
-        :param Uuid: CWP agent `Uuid`.\n        :type Uuid: str\n        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        :param Filters: Filter.
-<li>Username - String - Required: No - Account name</li>\n        :type Filters: list of Filter\n        """
         self.Uuid = None
         self.Limit = None
         self.Offset = None
@@ -1266,8 +1544,14 @@ class DescribeHistoryAccountsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of records in account change history list.
+        :type TotalCount: int
+        :param HistoryAccounts: Account change history data array.
+        :type HistoryAccounts: list of HistoryAccount
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of records in account change history list.\n        :type TotalCount: int\n        :param HistoryAccounts: Account change history data array.\n        :type HistoryAccounts: list of HistoryAccount\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.HistoryAccounts = None
         self.RequestId = None
@@ -1290,9 +1574,17 @@ class DescribeImpactedHostsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param VulId: Vulnerability category ID.
+        :type VulId: int
+        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Filters: Filter.
+<li>Status - String - Required: No - Filter by status (UN_OPERATED: to be processed, FIXED: fixed)</li>
+        :type Filters: list of Filter
         """
-        :param VulId: Vulnerability category ID.\n        :type VulId: int\n        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        :param Filters: Filter.
-<li>Status - String - Required: No - Filter by status (UN_OPERATED: to be processed, FIXED: fixed)</li>\n        :type Filters: list of Filter\n        """
         self.VulId = None
         self.Limit = None
         self.Offset = None
@@ -1324,8 +1616,14 @@ class DescribeImpactedHostsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of records
+        :type TotalCount: int
+        :param ImpactedHosts: Affected server list array
+        :type ImpactedHosts: list of ImpactedHost
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of records\n        :type TotalCount: int\n        :param ImpactedHosts: Affected server list array\n        :type ImpactedHosts: list of ImpactedHost\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ImpactedHosts = None
         self.RequestId = None
@@ -1348,9 +1646,15 @@ class DescribeLoginWhiteListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Filters: Filter.
+<li>Keywords - String - Required: No - Query keywords</li>
+        :type Filters: list of Filter
         """
-        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        :param Filters: Filter.
-<li>Keywords - String - Required: No - Query keywords</li>\n        :type Filters: list of Filter\n        """
         self.Limit = None
         self.Offset = None
         self.Filters = None
@@ -1380,8 +1684,14 @@ class DescribeLoginWhiteListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of records
+        :type TotalCount: int
+        :param LoginWhiteLists: Login allowlist array
+        :type LoginWhiteLists: list of LoginWhiteLists
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of records\n        :type TotalCount: int\n        :param LoginWhiteLists: Login allowlist array\n        :type LoginWhiteLists: list of LoginWhiteLists\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.LoginWhiteLists = None
         self.RequestId = None
@@ -1404,8 +1714,10 @@ class DescribeMachineInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Uuid: CWP agent `Uuid`.
+        :type Uuid: str
         """
-        :param Uuid: CWP agent `Uuid`.\n        :type Uuid: str\n        """
         self.Uuid = None
 
 
@@ -1426,15 +1738,49 @@ class DescribeMachineInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param MachineIp: Server IP.\n        :type MachineIp: str\n        :param ProtectDays: Days under protection by CWP\n        :type ProtectDays: int\n        :param MachineOs: OS.\n        :type MachineOs: str\n        :param MachineName: Server name.\n        :type MachineName: str\n        :param MachineStatus: Status.
+        r"""
+        :param MachineIp: Server IP.
+        :type MachineIp: str
+        :param ProtectDays: Days under protection by CWP
+        :type ProtectDays: int
+        :param MachineOs: OS.
+        :type MachineOs: str
+        :param MachineName: Server name.
+        :type MachineName: str
+        :param MachineStatus: Status.
 <li>ONLINE: online</li>
-<li>OFFLINE: offline</li>\n        :type MachineStatus: str\n        :param InstanceId: Unique ID of CVM or BM instance.\n        :type InstanceId: str\n        :param MachineWanIp: Public IP of server.\n        :type MachineWanIp: str\n        :param Quuid: CVM or BM instance `Uuid`.\n        :type Quuid: str\n        :param Uuid: CWP agent `Uuid`.\n        :type Uuid: str\n        :param IsProVersion: Whether CWP Pro is activated.
+<li>OFFLINE: offline</li>
+        :type MachineStatus: str
+        :param InstanceId: Unique ID of CVM or BM instance.
+        :type InstanceId: str
+        :param MachineWanIp: Public IP of server.
+        :type MachineWanIp: str
+        :param Quuid: CVM or BM instance `Uuid`.
+        :type Quuid: str
+        :param Uuid: CWP agent `Uuid`.
+        :type Uuid: str
+        :param IsProVersion: Whether CWP Pro is activated.
 <li>true: yes</li>
-<li>false: no</li>\n        :type IsProVersion: bool\n        :param ProVersionOpenDate: CWP Pro activation time.\n        :type ProVersionOpenDate: str\n        :param MachineType: Server type.
+<li>false: no</li>
+        :type IsProVersion: bool
+        :param ProVersionOpenDate: CWP Pro activation time.
+        :type ProVersionOpenDate: str
+        :param MachineType: Server type.
 <li>CVM: CVM</li>
-<li>BM: BM</li>\n        :type MachineType: str\n        :param MachineRegion: Server region, such as ap-guangzhou or ap-shanghai\n        :type MachineRegion: str\n        :param PayMode: Server status.
-<li>POSTPAY: post-paid, i.e., pay-as-you-go </li>\n        :type PayMode: str\n        :param FreeMalwaresLeft: Number of trojans left for free scan.\n        :type FreeMalwaresLeft: int\n        :param FreeVulsLeft: Number of vulnerability left for free scan.\n        :type FreeVulsLeft: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+<li>BM: BM</li>
+        :type MachineType: str
+        :param MachineRegion: Server region, such as ap-guangzhou or ap-shanghai
+        :type MachineRegion: str
+        :param PayMode: Server status.
+<li>POSTPAY: post-paid, i.e., pay-as-you-go </li>
+        :type PayMode: str
+        :param FreeMalwaresLeft: Number of trojans left for free scan.
+        :type FreeMalwaresLeft: int
+        :param FreeVulsLeft: Number of vulnerability left for free scan.
+        :type FreeVulsLeft: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.MachineIp = None
         self.ProtectDays = None
         self.MachineOs = None
@@ -1480,14 +1826,24 @@ class DescribeMachinesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineType: Server type.
 <li>CVM: CVM</li>
-<li>BM: BM</li>\n        :type MachineType: str\n        :param MachineRegion: Server region, such as ap-guangzhou or ap-shanghai\n        :type MachineRegion: str\n        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        :param Filters: Filter.
+<li>BM: BM</li>
+        :type MachineType: str
+        :param MachineRegion: Server region, such as ap-guangzhou or ap-shanghai
+        :type MachineRegion: str
+        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Filters: Filter.
 <li>Keywords - String - Required: no - Query keywords </li>
 <li>Status - String - Required: no - CWP client status (valid values: OFFLINE, ONLINE, UNINSTALLED)</li>
 <li>Version - String - Required: no - Current CWP version (valid values: PRO_VERSION, BASIC_VERSION)</li>
-Each filter can have only one value but does not support "OR" queries with multiple values\n        :type Filters: list of Filter\n        """
+Each filter can have only one value but does not support "OR" queries with multiple values
+        :type Filters: list of Filter
+        """
         self.MachineType = None
         self.MachineRegion = None
         self.Limit = None
@@ -1521,8 +1877,14 @@ class DescribeMachinesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Machines: Server list
+        :type Machines: list of Machine
+        :param TotalCount: Number of servers
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Machines: Server list\n        :type Machines: list of Machine\n        :param TotalCount: Number of servers\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Machines = None
         self.TotalCount = None
         self.RequestId = None
@@ -1545,11 +1907,19 @@ class DescribeMaliciousRequestsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        :param Filters: Filter.
+        r"""
+        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Filters: Filter.
 <li>Status - String - Required: No - Filter by status (UN_OPERATED: to be processed, TRUSTED: trusted, UN_TRUSTED: untrusted)</li>
 <li>Domain - String - Required: No - Malicious request domain name</li>
-<li>MachineIp - String - Required: No - Private IP of server</li>\n        :type Filters: list of Filter\n        :param Uuid: CWP agent `UUID`.\n        :type Uuid: str\n        """
+<li>MachineIp - String - Required: No - Private IP of server</li>
+        :type Filters: list of Filter
+        :param Uuid: CWP agent `UUID`.
+        :type Uuid: str
+        """
         self.Limit = None
         self.Offset = None
         self.Filters = None
@@ -1581,8 +1951,14 @@ class DescribeMaliciousRequestsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of records.
+        :type TotalCount: int
+        :param MaliciousRequests: Malicious request record array.
+        :type MaliciousRequests: list of MaliciousRequest
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of records.\n        :type TotalCount: int\n        :param MaliciousRequests: Malicious request record array.\n        :type MaliciousRequests: list of MaliciousRequest\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.MaliciousRequests = None
         self.RequestId = None
@@ -1605,11 +1981,19 @@ class DescribeMalwaresRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Uuid: Agent `Uuid`.\n        :type Uuid: str\n        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        :param Filters: Filter.
+        r"""
+        :param Uuid: Agent `Uuid`.
+        :type Uuid: str
+        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Filters: Filter.
 <li>Keywords - String - Required: No - Query keywords</li>
 <li>Status - String - Required: No - Trojan status (UN_OPERATED: not processed, SEGREGATED: isolated, TRUSTED: trusted)</li>
-Each filter supports only one value. Query with multiple values in "OR" relationship is not supported for the time being.\n        :type Filters: list of Filter\n        """
+Each filter supports only one value. Query with multiple values in "OR" relationship is not supported for the time being.
+        :type Filters: list of Filter
+        """
         self.Uuid = None
         self.Limit = None
         self.Offset = None
@@ -1641,8 +2025,14 @@ class DescribeMalwaresResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of trojans.
+        :type TotalCount: int
+        :param Malwares: Malware array.
+        :type Malwares: list of Malware
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of trojans.\n        :type TotalCount: int\n        :param Malwares: Malware array.\n        :type Malwares: list of Malware\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Malwares = None
         self.RequestId = None
@@ -1665,10 +2055,18 @@ class DescribeNonlocalLoginPlacesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Uuid: Agent `Uuid`.\n        :type Uuid: str\n        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        :param Filters: Filter.
+        r"""
+        :param Uuid: Agent `Uuid`.
+        :type Uuid: str
+        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Filters: Filter.
 <li>Keywords - String - Required: No - Query keywords</li>
-<li>Status - String - Required: No - Login status (NON_LOCAL_LOGIN: unusual login location, NORMAL_LOGIN: intended login)</li>\n        :type Filters: list of Filter\n        """
+<li>Status - String - Required: No - Login status (NON_LOCAL_LOGIN: unusual login location, NORMAL_LOGIN: intended login)</li>
+        :type Filters: list of Filter
+        """
         self.Uuid = None
         self.Limit = None
         self.Offset = None
@@ -1700,8 +2098,14 @@ class DescribeNonlocalLoginPlacesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of records.
+        :type TotalCount: int
+        :param NonLocalLoginPlaces: Unusual login location information array.
+        :type NonLocalLoginPlaces: list of NonLocalLoginPlace
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of records.\n        :type TotalCount: int\n        :param NonLocalLoginPlaces: Unusual login location information array.\n        :type NonLocalLoginPlaces: list of NonLocalLoginPlace\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.NonLocalLoginPlaces = None
         self.RequestId = None
@@ -1724,9 +2128,15 @@ class DescribeOpenPortStatisticsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Filters: Filter.
+<li>Port - Uint64 - Required: No - Port number</li>
+        :type Filters: list of Filter
         """
-        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        :param Filters: Filter.
-<li>Port - Uint64 - Required: No - Port number</li>\n        :type Filters: list of Filter\n        """
         self.Limit = None
         self.Offset = None
         self.Filters = None
@@ -1756,8 +2166,14 @@ class DescribeOpenPortStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of records in port statistics list
+        :type TotalCount: int
+        :param OpenPortStatistics: Port statistics list
+        :type OpenPortStatistics: list of OpenPortStatistics
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of records in port statistics list\n        :type TotalCount: int\n        :param OpenPortStatistics: Port statistics list\n        :type OpenPortStatistics: list of OpenPortStatistics\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.OpenPortStatistics = None
         self.RequestId = None
@@ -1780,8 +2196,10 @@ class DescribeOpenPortTaskStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Uuid: CWP agent `Uuid`.
+        :type Uuid: str
         """
-        :param Uuid: CWP agent `Uuid`.\n        :type Uuid: str\n        """
         self.Uuid = None
 
 
@@ -1802,12 +2220,16 @@ class DescribeOpenPortTaskStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: Task status.
 <li>COMPLETE: completed (at this point, you can call the `DescribeOpenPorts` API to get the list of real-time processes) </li>
 <li>AGENT_OFFLINE: CWP agent is offline</li>
 <li>COLLECTING: getting port</li>
-<li>FAILED: failed to get processes</li>\n        :type Status: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+<li>FAILED: failed to get processes</li>
+        :type Status: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.Status = None
         self.RequestId = None
 
@@ -1823,11 +2245,21 @@ class DescribeOpenPortsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Uuid: CWP agent `Uuid`. Either `Port` or `Uuid` must be specified. If `Uuid` is specified, it indicates to query the information list under the specified server.\n        :type Uuid: str\n        :param Port: Open port number. Either `Port` or `Uuid` must be specified. If `Port` is specified, it indicates to query the information list under the specified port.\n        :type Port: int\n        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        :param Filters: Filter.
+        r"""
+        :param Uuid: CWP agent `Uuid`. Either `Port` or `Uuid` must be specified. If `Uuid` is specified, it indicates to query the information list under the specified server.
+        :type Uuid: str
+        :param Port: Open port number. Either `Port` or `Uuid` must be specified. If `Port` is specified, it indicates to query the information list under the specified port.
+        :type Port: int
+        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Filters: Filter.
 <li>Port - Uint64 - Required: No - Port number</li>
 <li>ProcessName - String - Required: No - Process name</li>
-<li>MachineIp - String - Required: No - Private IP of server</li>\n        :type Filters: list of Filter\n        """
+<li>MachineIp - String - Required: No - Private IP of server</li>
+        :type Filters: list of Filter
+        """
         self.Uuid = None
         self.Port = None
         self.Limit = None
@@ -1861,8 +2293,14 @@ class DescribeOpenPortsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of records in port list.
+        :type TotalCount: int
+        :param OpenPorts: Port list.
+        :type OpenPorts: list of OpenPort
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of records in port list.\n        :type TotalCount: int\n        :param OpenPorts: Port list.\n        :type OpenPorts: list of OpenPort\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.OpenPorts = None
         self.RequestId = None
@@ -1891,8 +2329,24 @@ class DescribeOverviewStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OnlineMachineNum: Number of online servers.
+        :type OnlineMachineNum: int
+        :param ProVersionMachineNum: Number of servers activated CWP Pro.
+        :type ProVersionMachineNum: int
+        :param MalwareNum: Number of trojan files.
+        :type MalwareNum: int
+        :param NonlocalLoginNum: Number of unusual login locations.
+        :type NonlocalLoginNum: int
+        :param BruteAttackSuccessNum: Number of successful brute force attacks.
+        :type BruteAttackSuccessNum: int
+        :param VulNum: Number of vulnerabilities.
+        :type VulNum: int
+        :param BaseLineNum: Security baseline number
+        :type BaseLineNum: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param OnlineMachineNum: Number of online servers.\n        :type OnlineMachineNum: int\n        :param ProVersionMachineNum: Number of servers activated CWP Pro.\n        :type ProVersionMachineNum: int\n        :param MalwareNum: Number of trojan files.\n        :type MalwareNum: int\n        :param NonlocalLoginNum: Number of unusual login locations.\n        :type NonlocalLoginNum: int\n        :param BruteAttackSuccessNum: Number of successful brute force attacks.\n        :type BruteAttackSuccessNum: int\n        :param VulNum: Number of vulnerabilities.\n        :type VulNum: int\n        :param BaseLineNum: Security baseline number\n        :type BaseLineNum: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.OnlineMachineNum = None
         self.ProVersionMachineNum = None
         self.MalwareNum = None
@@ -1926,8 +2380,16 @@ class DescribeProVersionInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PostPayCost: Fee on yesterday (pay-as-you-go)
+        :type PostPayCost: int
+        :param IsAutoOpenProVersion: Whether CWP Pro is activated for new servers
+        :type IsAutoOpenProVersion: bool
+        :param ProVersionNum: Number of servers on CWP Pro
+        :type ProVersionNum: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param PostPayCost: Fee on yesterday (pay-as-you-go)\n        :type PostPayCost: int\n        :param IsAutoOpenProVersion: Whether CWP Pro is activated for new servers\n        :type IsAutoOpenProVersion: bool\n        :param ProVersionNum: Number of servers on CWP Pro\n        :type ProVersionNum: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PostPayCost = None
         self.IsAutoOpenProVersion = None
         self.ProVersionNum = None
@@ -1947,9 +2409,15 @@ class DescribeProcessStatisticsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Filters: Filter.
+<li>ProcessName - String - Required: No - Process name</li>
+        :type Filters: list of Filter
         """
-        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        :param Filters: Filter.
-<li>ProcessName - String - Required: No - Process name</li>\n        :type Filters: list of Filter\n        """
         self.Limit = None
         self.Offset = None
         self.Filters = None
@@ -1979,8 +2447,14 @@ class DescribeProcessStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of records in process statistics list.
+        :type TotalCount: int
+        :param ProcessStatistics: Process statistics list array.
+        :type ProcessStatistics: list of ProcessStatistics
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of records in process statistics list.\n        :type TotalCount: int\n        :param ProcessStatistics: Process statistics list array.\n        :type ProcessStatistics: list of ProcessStatistics\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ProcessStatistics = None
         self.RequestId = None
@@ -2003,8 +2477,10 @@ class DescribeProcessTaskStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Uuid: CWP agent `Uuid`.
+        :type Uuid: str
         """
-        :param Uuid: CWP agent `Uuid`.\n        :type Uuid: str\n        """
         self.Uuid = None
 
 
@@ -2025,12 +2501,16 @@ class DescribeProcessTaskStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: Task status.
 <li>COMPLETE: completed (at this point, you can call the `DescribeProcesses` API to get the list of real-time processes)</li>
 <li>AGENT_OFFLINE: CWP agent is offline</li>
 <li>COLLECTING: getting process</li>
-<li>FAILED: failed to get processes</li>\n        :type Status: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+<li>FAILED: failed to get processes</li>
+        :type Status: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.Status = None
         self.RequestId = None
 
@@ -2046,10 +2526,20 @@ class DescribeProcessesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Uuid: CWP agent `Uuid`. Either `Uuid` or `ProcessName` must be specified. If `Uuid` is specified, it indicates to query the information list under the specified server.\n        :type Uuid: str\n        :param ProcessName: Process name. Either `Uuid` or `ProcessName` must be specified. If `ProcessName` is specified, it indicates to query the information list under the specified process.\n        :type ProcessName: str\n        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        :param Filters: Filter.
+        r"""
+        :param Uuid: CWP agent `Uuid`. Either `Uuid` or `ProcessName` must be specified. If `Uuid` is specified, it indicates to query the information list under the specified server.
+        :type Uuid: str
+        :param ProcessName: Process name. Either `Uuid` or `ProcessName` must be specified. If `ProcessName` is specified, it indicates to query the information list under the specified process.
+        :type ProcessName: str
+        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Filters: Filter.
 <li>ProcessName - String - Required: No - Process name</li>
-<li>MachineIp - String - Required: No - Private IP of server</li>\n        :type Filters: list of Filter\n        """
+<li>MachineIp - String - Required: No - Private IP of server</li>
+        :type Filters: list of Filter
+        """
         self.Uuid = None
         self.ProcessName = None
         self.Limit = None
@@ -2083,8 +2573,14 @@ class DescribeProcessesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of records in process list.
+        :type TotalCount: int
+        :param Processes: Process list data array.
+        :type Processes: list of Process
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of records in process list.\n        :type TotalCount: int\n        :param Processes: Process list data array.\n        :type Processes: list of Process\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Processes = None
         self.RequestId = None
@@ -2107,8 +2603,12 @@ class DescribeSecurityDynamicsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
         """
-        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        """
         self.Limit = None
         self.Offset = None
 
@@ -2131,8 +2631,14 @@ class DescribeSecurityDynamicsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SecurityDynamics: Security event message array.
+        :type SecurityDynamics: list of SecurityDynamic
+        :param TotalCount: Total number of records.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param SecurityDynamics: Security event message array.\n        :type SecurityDynamics: list of SecurityDynamic\n        :param TotalCount: Total number of records.\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.SecurityDynamics = None
         self.TotalCount = None
         self.RequestId = None
@@ -2155,8 +2661,12 @@ class DescribeSecurityTrendsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BeginDate: Start time.
+        :type BeginDate: str
+        :param EndDate: End time.
+        :type EndDate: str
         """
-        :param BeginDate: Start time.\n        :type BeginDate: str\n        :param EndDate: End time.\n        :type EndDate: str\n        """
         self.BeginDate = None
         self.EndDate = None
 
@@ -2179,8 +2689,30 @@ class DescribeSecurityTrendsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Malwares: Trojan event statistics array.
+        :type Malwares: list of SecurityTrend
+        :param NonLocalLoginPlaces: Unusual login location event statistics array.
+        :type NonLocalLoginPlaces: list of SecurityTrend
+        :param BruteAttacks: Brute force attack event statistics array.
+        :type BruteAttacks: list of SecurityTrend
+        :param Vuls: Vulnerability statistics array.
+        :type Vuls: list of SecurityTrend
+        :param BaseLines: Baseline statistics array.
+        :type BaseLines: list of SecurityTrend
+        :param MaliciousRequests: Statistics array of malicious requests.
+        :type MaliciousRequests: list of SecurityTrend
+        :param HighRiskBashs: Statistics array of high-risk commands.
+        :type HighRiskBashs: list of SecurityTrend
+        :param ReverseShells: Statistics array of reverse shells.
+        :type ReverseShells: list of SecurityTrend
+        :param PrivilegeEscalations: Statistics array of local privilege escalations.
+        :type PrivilegeEscalations: list of SecurityTrend
+        :param CyberAttacks: Statistics array of network attacks.
+        :type CyberAttacks: list of SecurityTrend
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Malwares: Trojan event statistics array.\n        :type Malwares: list of SecurityTrend\n        :param NonLocalLoginPlaces: Unusual login location event statistics array.\n        :type NonLocalLoginPlaces: list of SecurityTrend\n        :param BruteAttacks: Brute force attack event statistics array.\n        :type BruteAttacks: list of SecurityTrend\n        :param Vuls: Vulnerability statistics array.\n        :type Vuls: list of SecurityTrend\n        :param BaseLines: Baseline statistics array.\n        :type BaseLines: list of SecurityTrend\n        :param MaliciousRequests: Statistics array of malicious requests.\n        :type MaliciousRequests: list of SecurityTrend\n        :param HighRiskBashs: Statistics array of high-risk commands.\n        :type HighRiskBashs: list of SecurityTrend\n        :param ReverseShells: Statistics array of reverse shells.\n        :type ReverseShells: list of SecurityTrend\n        :param PrivilegeEscalations: Statistics array of local privilege escalations.\n        :type PrivilegeEscalations: list of SecurityTrend\n        :param CyberAttacks: Statistics array of network attacks.\n        :type CyberAttacks: list of SecurityTrend\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Malwares = None
         self.NonLocalLoginPlaces = None
         self.BruteAttacks = None
@@ -2264,8 +2796,10 @@ class DescribeTagMachinesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: Tag ID
+        :type Id: int
         """
-        :param Id: Tag ID\n        :type Id: int\n        """
         self.Id = None
 
 
@@ -2286,8 +2820,12 @@ class DescribeTagMachinesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param List: List data
+        :type List: list of TagMachine
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param List: List data\n        :type List: list of TagMachine\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.List = None
         self.RequestId = None
 
@@ -2308,10 +2846,14 @@ class DescribeTagsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineType: CVM instance type.
 <li>CVM: CVM</li>
-<li>BM: CPM</li>\n        :type MachineType: str\n        :param MachineRegion: Server region, such as `ap-guangzhou` and `ap-shanghai`\n        :type MachineRegion: str\n        """
+<li>BM: CPM</li>
+        :type MachineType: str
+        :param MachineRegion: Server region, such as `ap-guangzhou` and `ap-shanghai`
+        :type MachineRegion: str
+        """
         self.MachineType = None
         self.MachineRegion = None
 
@@ -2334,8 +2876,12 @@ class DescribeTagsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param List: List information
+        :type List: list of Tag
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param List: List information\n        :type List: list of Tag\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.List = None
         self.RequestId = None
 
@@ -2356,8 +2902,10 @@ class DescribeUsualLoginPlacesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Uuid: CWP agent `UUID`
+        :type Uuid: str
         """
-        :param Uuid: CWP agent `UUID`\n        :type Uuid: str\n        """
         self.Uuid = None
 
 
@@ -2378,8 +2926,12 @@ class DescribeUsualLoginPlacesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param UsualLoginPlaces: Usual login location array
+        :type UsualLoginPlaces: list of UsualPlace
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param UsualLoginPlaces: Usual login location array\n        :type UsualLoginPlaces: list of UsualPlace\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.UsualLoginPlaces = None
         self.RequestId = None
 
@@ -2400,8 +2952,10 @@ class DescribeVulInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param VulId: Vulnerability category ID.
+        :type VulId: int
         """
-        :param VulId: Vulnerability category ID.\n        :type VulId: int\n        """
         self.VulId = None
 
 
@@ -2422,8 +2976,26 @@ class DescribeVulInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param VulId: Vulnerability category ID.
+        :type VulId: int
+        :param VulName: Vulnerability name.
+        :type VulName: str
+        :param VulLevel: Vulnerability level.
+        :type VulLevel: str
+        :param VulType: Vulnerability type.
+        :type VulType: str
+        :param Description: Vulnerability description.
+        :type Description: str
+        :param RepairPlan: Repair plan.
+        :type RepairPlan: str
+        :param CveId: Vulnerability CVE.
+        :type CveId: str
+        :param Reference: Reference link.
+        :type Reference: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param VulId: Vulnerability category ID.\n        :type VulId: int\n        :param VulName: Vulnerability name.\n        :type VulName: str\n        :param VulLevel: Vulnerability level.\n        :type VulLevel: str\n        :param VulType: Vulnerability type.\n        :type VulType: str\n        :param Description: Vulnerability description.\n        :type Description: str\n        :param RepairPlan: Repair plan.\n        :type RepairPlan: str\n        :param CveId: Vulnerability CVE.\n        :type CveId: str\n        :param Reference: Reference link.\n        :type Reference: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.VulId = None
         self.VulName = None
         self.VulLevel = None
@@ -2459,8 +3031,20 @@ class DescribeVulScanResultResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param VulNum: Number of vulnerabilities.
+        :type VulNum: int
+        :param ProVersionNum: Number of servers activated CWP Pro
+        :type ProVersionNum: int
+        :param ImpactedHostNum: Number of affected activated CWP Pro.
+        :type ImpactedHostNum: int
+        :param HostNum: Total number of servers.
+        :type HostNum: int
+        :param BasicVersionNum: Number of servers on CWP Basic.
+        :type BasicVersionNum: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param VulNum: Number of vulnerabilities.\n        :type VulNum: int\n        :param ProVersionNum: Number of servers activated CWP Pro\n        :type ProVersionNum: int\n        :param ImpactedHostNum: Number of affected activated CWP Pro.\n        :type ImpactedHostNum: int\n        :param HostNum: Total number of servers.\n        :type HostNum: int\n        :param BasicVersionNum: Number of servers on CWP Basic.\n        :type BasicVersionNum: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.VulNum = None
         self.ProVersionNum = None
         self.ImpactedHostNum = None
@@ -2484,14 +3068,22 @@ class DescribeVulsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VulType: Vulnerability type.
 <li>WEB: web application vulnerability</li>
 <li>SYSTEM: system component vulnerability</li>
-<li>BASELINE: security baseline</li>\n        :type VulType: str\n        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        :param Filters: Filter.
+<li>BASELINE: security baseline</li>
+        :type VulType: str
+        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Filters: Filter.
 <li>Status - String - Required: No - Filter by status (UN_OPERATED: to be processed, FIXED: fixed)
 
-Only one value is allowed for the `Status` filter, and "OR" logic is not supported.\n        :type Filters: list of Filter\n        """
+Only one value is allowed for the `Status` filter, and "OR" logic is not supported.
+        :type Filters: list of Filter
+        """
         self.VulType = None
         self.Limit = None
         self.Offset = None
@@ -2523,8 +3115,14 @@ class DescribeVulsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of vulnerabilities.
+        :type TotalCount: int
+        :param Vuls: Vulnerability list array.
+        :type Vuls: list of Vul
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of vulnerabilities.\n        :type TotalCount: int\n        :param Vuls: Vulnerability list array.\n        :type Vuls: list of Vul\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Vuls = None
         self.RequestId = None
@@ -2547,8 +3145,14 @@ class DescribeWeeklyReportBruteAttacksRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BeginDate: Weekly CWP Pro report start time.
+        :type BeginDate: str
+        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
         """
-        :param BeginDate: Weekly CWP Pro report start time.\n        :type BeginDate: str\n        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        """
         self.BeginDate = None
         self.Limit = None
         self.Offset = None
@@ -2573,8 +3177,14 @@ class DescribeWeeklyReportBruteAttacksResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param WeeklyReportBruteAttacks: Brute force attack array in weekly CWP Pro report.
+        :type WeeklyReportBruteAttacks: list of WeeklyReportBruteAttack
+        :param TotalCount: Total number of records.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param WeeklyReportBruteAttacks: Brute force attack array in weekly CWP Pro report.\n        :type WeeklyReportBruteAttacks: list of WeeklyReportBruteAttack\n        :param TotalCount: Total number of records.\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.WeeklyReportBruteAttacks = None
         self.TotalCount = None
         self.RequestId = None
@@ -2597,8 +3207,10 @@ class DescribeWeeklyReportInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BeginDate: Weekly CWP Pro report start time.
+        :type BeginDate: str
         """
-        :param BeginDate: Weekly CWP Pro report start time.\n        :type BeginDate: str\n        """
         self.BeginDate = None
 
 
@@ -2619,11 +3231,39 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param CompanyName: Account owner name.\n        :type CompanyName: str\n        :param MachineNum: Total number of servers.\n        :type MachineNum: int\n        :param OnlineMachineNum: Number of online CWP agents\n        :type OnlineMachineNum: int\n        :param OfflineMachineNum: Number of offline CWP agents.\n        :type OfflineMachineNum: int\n        :param ProVersionMachineNum: Number of servers on CWP Pro.\n        :type ProVersionMachineNum: int\n        :param BeginDate: Weekly report start time\n        :type BeginDate: str\n        :param EndDate: Weekly report end time\n        :type EndDate: str\n        :param Level: Security level
+        r"""
+        :param CompanyName: Account owner name.
+        :type CompanyName: str
+        :param MachineNum: Total number of servers.
+        :type MachineNum: int
+        :param OnlineMachineNum: Number of online CWP agents
+        :type OnlineMachineNum: int
+        :param OfflineMachineNum: Number of offline CWP agents.
+        :type OfflineMachineNum: int
+        :param ProVersionMachineNum: Number of servers on CWP Pro.
+        :type ProVersionMachineNum: int
+        :param BeginDate: Weekly report start time
+        :type BeginDate: str
+        :param EndDate: Weekly report end time
+        :type EndDate: str
+        :param Level: Security level
 <li>HIGH: high</li>
 <li>MIDDLE: medium</li>
-<li>LOW: low</li>\n        :type Level: str\n        :param MalwareNum: Number of trojan records.\n        :type MalwareNum: int\n        :param NonlocalLoginNum: Number of unusual login locations.\n        :type NonlocalLoginNum: int\n        :param BruteAttackSuccessNum: Number of successful brute force attacks.\n        :type BruteAttackSuccessNum: int\n        :param VulNum: Number of vulnerabilities.\n        :type VulNum: int\n        :param DownloadUrl: Download address for exported file.\n        :type DownloadUrl: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+<li>LOW: low</li>
+        :type Level: str
+        :param MalwareNum: Number of trojan records.
+        :type MalwareNum: int
+        :param NonlocalLoginNum: Number of unusual login locations.
+        :type NonlocalLoginNum: int
+        :param BruteAttackSuccessNum: Number of successful brute force attacks.
+        :type BruteAttackSuccessNum: int
+        :param VulNum: Number of vulnerabilities.
+        :type VulNum: int
+        :param DownloadUrl: Download address for exported file.
+        :type DownloadUrl: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.CompanyName = None
         self.MachineNum = None
         self.OnlineMachineNum = None
@@ -2663,8 +3303,14 @@ class DescribeWeeklyReportMalwaresRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BeginDate: Weekly CWP Pro report start time.
+        :type BeginDate: str
+        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
         """
-        :param BeginDate: Weekly CWP Pro report start time.\n        :type BeginDate: str\n        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        """
         self.BeginDate = None
         self.Limit = None
         self.Offset = None
@@ -2689,8 +3335,14 @@ class DescribeWeeklyReportMalwaresResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param WeeklyReportMalwares: Trojan data in weekly CWP Pro report.
+        :type WeeklyReportMalwares: list of WeeklyReportMalware
+        :param TotalCount: Total number of records.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param WeeklyReportMalwares: Trojan data in weekly CWP Pro report.\n        :type WeeklyReportMalwares: list of WeeklyReportMalware\n        :param TotalCount: Total number of records.\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.WeeklyReportMalwares = None
         self.TotalCount = None
         self.RequestId = None
@@ -2713,8 +3365,14 @@ class DescribeWeeklyReportNonlocalLoginPlacesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BeginDate: Weekly CWP Pro report start time.
+        :type BeginDate: str
+        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
         """
-        :param BeginDate: Weekly CWP Pro report start time.\n        :type BeginDate: str\n        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        """
         self.BeginDate = None
         self.Limit = None
         self.Offset = None
@@ -2739,8 +3397,14 @@ class DescribeWeeklyReportNonlocalLoginPlacesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param WeeklyReportNonlocalLoginPlaces: Unusual login location data in weekly CWP Pro report
+        :type WeeklyReportNonlocalLoginPlaces: list of WeeklyReportNonlocalLoginPlace
+        :param TotalCount: Total number of records.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param WeeklyReportNonlocalLoginPlaces: Unusual login location data in weekly CWP Pro report\n        :type WeeklyReportNonlocalLoginPlaces: list of WeeklyReportNonlocalLoginPlace\n        :param TotalCount: Total number of records.\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.WeeklyReportNonlocalLoginPlaces = None
         self.TotalCount = None
         self.RequestId = None
@@ -2763,8 +3427,14 @@ class DescribeWeeklyReportVulsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BeginDate: Weekly CWP Pro report start time.
+        :type BeginDate: str
+        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
         """
-        :param BeginDate: Weekly CWP Pro report start time.\n        :type BeginDate: str\n        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        """
         self.BeginDate = None
         self.Limit = None
         self.Offset = None
@@ -2789,8 +3459,14 @@ class DescribeWeeklyReportVulsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param WeeklyReportVuls: Vulnerability data array in weekly CWP Pro report.
+        :type WeeklyReportVuls: list of WeeklyReportVul
+        :param TotalCount: Total number of records.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param WeeklyReportVuls: Vulnerability data array in weekly CWP Pro report.\n        :type WeeklyReportVuls: list of WeeklyReportVul\n        :param TotalCount: Total number of records.\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.WeeklyReportVuls = None
         self.TotalCount = None
         self.RequestId = None
@@ -2813,8 +3489,12 @@ class DescribeWeeklyReportsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
         """
-        :param Limit: Number of results to be returned. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        """
         self.Limit = None
         self.Offset = None
 
@@ -2837,8 +3517,14 @@ class DescribeWeeklyReportsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param WeeklyReports: Weekly CWP Pro report list array.
+        :type WeeklyReports: list of WeeklyReport
+        :param TotalCount: Total number of records.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param WeeklyReports: Weekly CWP Pro report list array.\n        :type WeeklyReports: list of WeeklyReport\n        :param TotalCount: Total number of records.\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.WeeklyReports = None
         self.TotalCount = None
         self.RequestId = None
@@ -2861,8 +3547,14 @@ class EditTagsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: Tag name
+        :type Name: str
+        :param Id: Tag ID
+        :type Id: int
+        :param Quuids: CVM instance ID
+        :type Quuids: list of str
         """
-        :param Name: Tag name\n        :type Name: str\n        :param Id: Tag ID\n        :type Id: int\n        :param Quuids: CVM instance ID\n        :type Quuids: list of str\n        """
         self.Name = None
         self.Id = None
         self.Quuids = None
@@ -2887,8 +3579,10 @@ class EditTagsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2908,8 +3602,12 @@ class ExportBruteAttacksResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DownloadUrl: Download address for exported file.
+        :type DownloadUrl: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param DownloadUrl: Download address for exported file.\n        :type DownloadUrl: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DownloadUrl = None
         self.RequestId = None
 
@@ -2931,8 +3629,12 @@ class ExportMaliciousRequestsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DownloadUrl: Download address for exported file.
+        :type DownloadUrl: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param DownloadUrl: Download address for exported file.\n        :type DownloadUrl: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DownloadUrl = None
         self.RequestId = None
 
@@ -2954,8 +3656,12 @@ class ExportMalwaresResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DownloadUrl: Download address for exported file.
+        :type DownloadUrl: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param DownloadUrl: Download address for exported file.\n        :type DownloadUrl: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DownloadUrl = None
         self.RequestId = None
 
@@ -2977,8 +3683,14 @@ class ExportNonlocalLoginPlacesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DownloadUrl: Download address for exported file.
+        :type DownloadUrl: str
+        :param TaskId: Export task ID
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param DownloadUrl: Download address for exported file.\n        :type DownloadUrl: str\n        :param TaskId: Export task ID\n        :type TaskId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DownloadUrl = None
         self.TaskId = None
         self.RequestId = None
@@ -3002,8 +3714,12 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: Filter key name.
+        :type Name: str
+        :param Values: One or more filter values.
+        :type Values: list of str
         """
-        :param Name: Filter key name.\n        :type Name: str\n        :param Values: One or more filter values.\n        :type Values: list of str\n        """
         self.Name = None
         self.Values = None
 
@@ -3026,11 +3742,25 @@ class HistoryAccount(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Id: Unique ID.\n        :type Id: int\n        :param Uuid: CWP agent `Uuid`.\n        :type Uuid: str\n        :param MachineIp: Private IP of server.\n        :type MachineIp: str\n        :param MachineName: Server name.\n        :type MachineName: str\n        :param Username: Account name.\n        :type Username: str\n        :param ModifyType: Account change type.
+        r"""
+        :param Id: Unique ID.
+        :type Id: int
+        :param Uuid: CWP agent `Uuid`.
+        :type Uuid: str
+        :param MachineIp: Private IP of server.
+        :type MachineIp: str
+        :param MachineName: Server name.
+        :type MachineName: str
+        :param Username: Account name.
+        :type Username: str
+        :param ModifyType: Account change type.
 <li>CREATE: creates account</li>
 <li>MODIFY: modifies account</li>
-<li>DELETE: deletes account</li>\n        :type ModifyType: str\n        :param ModifyTime: Change time.\n        :type ModifyTime: str\n        """
+<li>DELETE: deletes account</li>
+        :type ModifyType: str
+        :param ModifyTime: Change time.
+        :type ModifyTime: str
+        """
         self.Id = None
         self.Uuid = None
         self.MachineIp = None
@@ -3063,8 +3793,10 @@ class IgnoreImpactedHostsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ids: Vulnerability ID array.
+        :type Ids: list of int non-negative
         """
-        :param Ids: Vulnerability ID array.\n        :type Ids: list of int non-negative\n        """
         self.Ids = None
 
 
@@ -3085,8 +3817,10 @@ class IgnoreImpactedHostsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3100,11 +3834,29 @@ class ImpactedHost(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Id: Vulnerability ID.\n        :type Id: int\n        :param MachineIp: Server IP.\n        :type MachineIp: str\n        :param MachineName: Server name.\n        :type MachineName: str\n        :param LastScanTime: Last detection time.\n        :type LastScanTime: str\n        :param VulStatus: Vulnerability status.
+        r"""
+        :param Id: Vulnerability ID.
+        :type Id: int
+        :param MachineIp: Server IP.
+        :type MachineIp: str
+        :param MachineName: Server name.
+        :type MachineName: str
+        :param LastScanTime: Last detection time.
+        :type LastScanTime: str
+        :param VulStatus: Vulnerability status.
 <li>UN_OPERATED: to be processed</li>
 <li>SCANING: scanning</li>
-<li>FIXED: fixed</li>\n        :type VulStatus: str\n        :param Uuid: CWP agent `UUID`.\n        :type Uuid: str\n        :param Description: Vulnerability description.\n        :type Description: str\n        :param VulId: Vulnerability category ID.\n        :type VulId: int\n        :param IsProVersion: Whether it is the CWP Pro.\n        :type IsProVersion: bool\n        """
+<li>FIXED: fixed</li>
+        :type VulStatus: str
+        :param Uuid: CWP agent `UUID`.
+        :type Uuid: str
+        :param Description: Vulnerability description.
+        :type Description: str
+        :param VulId: Vulnerability category ID.
+        :type VulId: int
+        :param IsProVersion: Whether it is the CWP Pro.
+        :type IsProVersion: bool
+        """
         self.Id = None
         self.MachineIp = None
         self.MachineName = None
@@ -3141,8 +3893,32 @@ class LoginWhiteLists(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: Record ID
+        :type Id: int
+        :param Uuid: CWP agent ID
+        :type Uuid: str
+        :param Places: Whitelisted location
+        :type Places: list of Place
+        :param UserName: Whitelisted users (separated by commas)
+        :type UserName: str
+        :param SrcIp: Whitelisted IPs (separated by commas)
+        :type SrcIp: str
+        :param IsGlobal: Whether this rule is applied to all servers under the current account
+        :type IsGlobal: bool
+        :param CreateTime: Whitelist creation time
+        :type CreateTime: str
+        :param ModifyTime: Whitelist modification time
+        :type ModifyTime: str
+        :param MachineName: Server name
+        :type MachineName: str
+        :param HostIp: Server IP
+        :type HostIp: str
+        :param StartTime: Start time
+        :type StartTime: str
+        :param EndTime: End time
+        :type EndTime: str
         """
-        :param Id: Record ID\n        :type Id: int\n        :param Uuid: CWP agent ID\n        :type Uuid: str\n        :param Places: Whitelisted location\n        :type Places: list of Place\n        :param UserName: Whitelisted users (separated by commas)\n        :type UserName: str\n        :param SrcIp: Whitelisted IPs (separated by commas)\n        :type SrcIp: str\n        :param IsGlobal: Whether this rule is applied to all servers under the current account\n        :type IsGlobal: bool\n        :param CreateTime: Whitelist creation time\n        :type CreateTime: str\n        :param ModifyTime: Whitelist modification time\n        :type ModifyTime: str\n        :param MachineName: Server name\n        :type MachineName: str\n        :param HostIp: Server IP\n        :type HostIp: str\n        :param StartTime: Start time\n        :type StartTime: str\n        :param EndTime: End time\n        :type EndTime: str\n        """
         self.Id = None
         self.Uuid = None
         self.Places = None
@@ -3190,8 +3966,24 @@ class LoginWhiteListsRule(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Places: Whitelisted location
+        :type Places: list of Place
+        :param SrcIp: Whitelisted IPs (separated by commas). This parameter can be an IP range.
+        :type SrcIp: str
+        :param UserName: Whitelisted usernames (separated by commas)
+        :type UserName: str
+        :param IsGlobal: Whether this rule is applied to all servers under the current account
+        :type IsGlobal: bool
+        :param HostIp: Server for which the allowlist takes effect
+        :type HostIp: str
+        :param Id: Rule ID, used for rule updating
+        :type Id: int
+        :param StartTime: Start time
+        :type StartTime: str
+        :param EndTime: End time
+        :type EndTime: str
         """
-        :param Places: Whitelisted location\n        :type Places: list of Place\n        :param SrcIp: Whitelisted IPs (separated by commas). This parameter can be an IP range.\n        :type SrcIp: str\n        :param UserName: Whitelisted usernames (separated by commas)\n        :type UserName: str\n        :param IsGlobal: Whether this rule is applied to all servers under the current account\n        :type IsGlobal: bool\n        :param HostIp: Server for which the allowlist takes effect\n        :type HostIp: str\n        :param Id: Rule ID, used for rule updating\n        :type Id: int\n        :param StartTime: Start time\n        :type StartTime: str\n        :param EndTime: End time\n        :type EndTime: str\n        """
         self.Places = None
         self.SrcIp = None
         self.UserName = None
@@ -3231,17 +4023,51 @@ class Machine(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param MachineName: Server name.\n        :type MachineName: str\n        :param MachineOs: Server OS.\n        :type MachineOs: str\n        :param MachineStatus: Server status.
+        r"""
+        :param MachineName: Server name.
+        :type MachineName: str
+        :param MachineOs: Server OS.
+        :type MachineOs: str
+        :param MachineStatus: Server status.
 <li>OFFLINE: offline</li>
 <li>ONLINE: online</li>
-<li>MACHINE_STOPPED: shut down</li>\n        :type MachineStatus: str\n        :param Uuid: CWP agent `Uuid`. If the agent is offline for a long time, a null character will be returned.\n        :type Uuid: str\n        :param Quuid: CVM or BM instance `Uuid`.\n        :type Quuid: str\n        :param VulNum: Number of vulnerabilities.\n        :type VulNum: int\n        :param MachineIp: Server IP.\n        :type MachineIp: str\n        :param IsProVersion: Whether the server has enabled CWP Pro.
+<li>MACHINE_STOPPED: shut down</li>
+        :type MachineStatus: str
+        :param Uuid: CWP agent `Uuid`. If the agent is offline for a long time, a null character will be returned.
+        :type Uuid: str
+        :param Quuid: CVM or BM instance `Uuid`.
+        :type Quuid: str
+        :param VulNum: Number of vulnerabilities.
+        :type VulNum: int
+        :param MachineIp: Server IP.
+        :type MachineIp: str
+        :param IsProVersion: Whether the server has enabled CWP Pro.
 <li>true: yes</li>
-<li>false: no</li>\n        :type IsProVersion: bool\n        :param MachineWanIp: Public IP of server.\n        :type MachineWanIp: str\n        :param PayMode: Server status.
-<li>POSTPAY: post-paid, i.e., pay-as-you-go </li>\n        :type PayMode: str\n        :param MalwareNum: Number of trojans.\n        :type MalwareNum: int\n        :param Tag: Tag information\n        :type Tag: list of MachineTag\n        :param BaselineNum: Number of baseline risks.\n        :type BaselineNum: int\n        :param CyberAttackNum: Number of network risks.\n        :type CyberAttackNum: int\n        :param SecurityStatus: Risk status.
+<li>false: no</li>
+        :type IsProVersion: bool
+        :param MachineWanIp: Public IP of server.
+        :type MachineWanIp: str
+        :param PayMode: Server status.
+<li>POSTPAY: post-paid, i.e., pay-as-you-go </li>
+        :type PayMode: str
+        :param MalwareNum: Number of trojans.
+        :type MalwareNum: int
+        :param Tag: Tag information
+        :type Tag: list of MachineTag
+        :param BaselineNum: Number of baseline risks.
+        :type BaselineNum: int
+        :param CyberAttackNum: Number of network risks.
+        :type CyberAttackNum: int
+        :param SecurityStatus: Risk status.
 <li>SAFE: safe</li>
 <li>RISK: at risk</li>
-<li>UNKNOWN: unknown</li>\n        :type SecurityStatus: str\n        :param InvasionNum: Number of intrusions\n        :type InvasionNum: int\n        :param RegionInfo: Region information\n        :type RegionInfo: :class:`tencentcloud.yunjing.v20180228.models.RegionInfo`\n        """
+<li>UNKNOWN: unknown</li>
+        :type SecurityStatus: str
+        :param InvasionNum: Number of intrusions
+        :type InvasionNum: int
+        :param RegionInfo: Region information
+        :type RegionInfo: :class:`tencentcloud.yunjing.v20180228.models.RegionInfo`
+        """
         self.MachineName = None
         self.MachineOs = None
         self.MachineStatus = None
@@ -3301,8 +4127,14 @@ class MachineTag(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Rid: Associated tag ID
+        :type Rid: int
+        :param Name: Tag name
+        :type Name: str
+        :param TagId: Tag ID
+        :type TagId: int
         """
-        :param Rid: Associated tag ID\n        :type Rid: int\n        :param Name: Tag name\n        :type Name: str\n        :param TagId: Tag ID\n        :type TagId: int\n        """
         self.Rid = None
         self.Name = None
         self.TagId = None
@@ -3327,12 +4159,42 @@ class MaliciousRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Id: Record ID.\n        :type Id: int\n        :param Uuid: CWP agent `UUID`.\n        :type Uuid: str\n        :param MachineIp: Private IP of server.\n        :type MachineIp: str\n        :param MachineName: Server name.\n        :type MachineName: str\n        :param Domain: Malicious request domain name.\n        :type Domain: str\n        :param Count: Number of malicious requests.\n        :type Count: int\n        :param ProcessName: Process name.\n        :type ProcessName: str\n        :param Status: Record status.
+        r"""
+        :param Id: Record ID.
+        :type Id: int
+        :param Uuid: CWP agent `UUID`.
+        :type Uuid: str
+        :param MachineIp: Private IP of server.
+        :type MachineIp: str
+        :param MachineName: Server name.
+        :type MachineName: str
+        :param Domain: Malicious request domain name.
+        :type Domain: str
+        :param Count: Number of malicious requests.
+        :type Count: int
+        :param ProcessName: Process name.
+        :type ProcessName: str
+        :param Status: Record status.
 <li>UN_OPERATED: to be processed</li>
 <li>TRUSTED: trusted</li>
-<li>UN_TRUSTED: untrusted</li>\n        :type Status: str\n        :param Description: Malicious request domain name description.\n        :type Description: str\n        :param Reference: Reference address.\n        :type Reference: str\n        :param CreateTime: Discovery time.\n        :type CreateTime: str\n        :param MergeTime: Record merge time.\n        :type MergeTime: str\n        :param ProcessMd5: Process MD5
-Value.\n        :type ProcessMd5: str\n        :param CmdLine: Executed command line.\n        :type CmdLine: str\n        :param Pid: Process `PID`.\n        :type Pid: int\n        """
+<li>UN_TRUSTED: untrusted</li>
+        :type Status: str
+        :param Description: Malicious request domain name description.
+        :type Description: str
+        :param Reference: Reference address.
+        :type Reference: str
+        :param CreateTime: Discovery time.
+        :type CreateTime: str
+        :param MergeTime: Record merge time.
+        :type MergeTime: str
+        :param ProcessMd5: Process MD5
+Value.
+        :type ProcessMd5: str
+        :param CmdLine: Executed command line.
+        :type CmdLine: str
+        :param Pid: Process `PID`.
+        :type Pid: int
+        """
         self.Id = None
         self.Uuid = None
         self.MachineIp = None
@@ -3381,10 +4243,28 @@ class Malware(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Id: Event ID.\n        :type Id: int\n        :param MachineIp: Server IP.\n        :type MachineIp: str\n        :param Status: Current trojan status.
+        r"""
+        :param Id: Event ID.
+        :type Id: int
+        :param MachineIp: Server IP.
+        :type MachineIp: str
+        :param Status: Current trojan status.
 <li>UN_OPERATED: not processed</li><li>SEGREGATED: isolated</li><li>TRUSTED: trusted</li>
-<li>SEPARATING: isolating</li><li>RECOVERING: recovering</li>\n        :type Status: str\n        :param FilePath: Trojan path.\n        :type FilePath: str\n        :param Description: Trojan description.\n        :type Description: str\n        :param MachineName: Server name.\n        :type MachineName: str\n        :param FileCreateTime: Trojan file creation time.\n        :type FileCreateTime: str\n        :param ModifyTime: Trojan file modification time.\n        :type ModifyTime: str\n        :param Uuid: CWP agent `UUID`.\n        :type Uuid: str\n        """
+<li>SEPARATING: isolating</li><li>RECOVERING: recovering</li>
+        :type Status: str
+        :param FilePath: Trojan path.
+        :type FilePath: str
+        :param Description: Trojan description.
+        :type Description: str
+        :param MachineName: Server name.
+        :type MachineName: str
+        :param FileCreateTime: Trojan file creation time.
+        :type FileCreateTime: str
+        :param ModifyTime: Trojan file modification time.
+        :type ModifyTime: str
+        :param Uuid: CWP agent `UUID`.
+        :type Uuid: str
+        """
         self.Id = None
         self.MachineIp = None
         self.Status = None
@@ -3421,8 +4301,10 @@ class MisAlarmNonlocalLoginPlacesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ids: Unusual login location event ID array.
+        :type Ids: list of int non-negative
         """
-        :param Ids: Unusual login location event ID array.\n        :type Ids: list of int non-negative\n        """
         self.Ids = None
 
 
@@ -3443,8 +4325,10 @@ class MisAlarmNonlocalLoginPlacesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3458,14 +4342,18 @@ class ModifyAlarmAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Attribute: Alarm item.
 <li>Offline: CWP is offline</li>
 <li>Malware: trojan event</li>
 <li>NonlocalLogin: unusual login location discovered</li>
-<li>CrackSuccess: brute force attack succeeded</li>\n        :type Attribute: str\n        :param Value: Alarm item attributes.
+<li>CrackSuccess: brute force attack succeeded</li>
+        :type Attribute: str
+        :param Value: Alarm item attributes.
 <li>CLOSE: disabled</li>
-<li>OPEN: enabled</li>\n        :type Value: str\n        """
+<li>OPEN: enabled</li>
+        :type Value: str
+        """
         self.Attribute = None
         self.Value = None
 
@@ -3488,8 +4376,10 @@ class ModifyAlarmAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3503,10 +4393,12 @@ class ModifyAutoOpenProVersionConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: Auto-Activation status.
 <li>CLOSE: disabled</li>
-<li>OPEN: enabled</li>\n        :type Status: str\n        """
+<li>OPEN: enabled</li>
+        :type Status: str
+        """
         self.Status = None
 
 
@@ -3527,8 +4419,10 @@ class ModifyAutoOpenProVersionConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3542,8 +4436,10 @@ class ModifyLoginWhiteListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Rules: Whitelist rule
+        :type Rules: :class:`tencentcloud.yunjing.v20180228.models.LoginWhiteListsRule`
         """
-        :param Rules: Whitelist rule\n        :type Rules: :class:`tencentcloud.yunjing.v20180228.models.LoginWhiteListsRule`\n        """
         self.Rules = None
 
 
@@ -3566,8 +4462,10 @@ class ModifyLoginWhiteListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3581,11 +4479,15 @@ class ModifyProVersionRenewFlagRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RenewFlag: Auto-renewal flag. Valid values:
 <li>NOTIFY_AND_AUTO_RENEW: notifies of expiration and auto-renews</li>
 <li>NOTIFY_AND_MANUAL_RENEW: notifies of expiration but does not auto-renew</li>
-<li>DISABLE_NOTIFY_AND_MANUAL_RENEW: does not notify of expiration or auto-renew</li>\n        :type RenewFlag: str\n        :param Quuid: Unique server ID, corresponding to `uuid` for CVM or `instanceId` for BM.\n        :type Quuid: str\n        """
+<li>DISABLE_NOTIFY_AND_MANUAL_RENEW: does not notify of expiration or auto-renew</li>
+        :type RenewFlag: str
+        :param Quuid: Unique server ID, corresponding to `uuid` for CVM or `instanceId` for BM.
+        :type Quuid: str
+        """
         self.RenewFlag = None
         self.Quuid = None
 
@@ -3608,8 +4510,10 @@ class ModifyProVersionRenewFlagResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3623,10 +4527,32 @@ class NonLocalLoginPlace(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Id: Event ID.\n        :type Id: int\n        :param MachineIp: Server IP.\n        :type MachineIp: str\n        :param Status: Login status
+        r"""
+        :param Id: Event ID.
+        :type Id: int
+        :param MachineIp: Server IP.
+        :type MachineIp: str
+        :param Status: Login status
 <li>NON_LOCAL_LOGIN: unusual login location</li>
-<li>NORMAL_LOGIN: intended login</li>\n        :type Status: str\n        :param UserName: Username.\n        :type UserName: str\n        :param City: City ID.\n        :type City: int\n        :param Country: Country/Region ID.\n        :type Country: int\n        :param Province: Province/State ID.\n        :type Province: int\n        :param SrcIp: Login IP.\n        :type SrcIp: str\n        :param MachineName: Server name.\n        :type MachineName: str\n        :param LoginTime: Login time.\n        :type LoginTime: str\n        :param Uuid: CWP agent `Uuid`.\n        :type Uuid: str\n        """
+<li>NORMAL_LOGIN: intended login</li>
+        :type Status: str
+        :param UserName: Username.
+        :type UserName: str
+        :param City: City ID.
+        :type City: int
+        :param Country: Country/Region ID.
+        :type Country: int
+        :param Province: Province/State ID.
+        :type Province: int
+        :param SrcIp: Login IP.
+        :type SrcIp: str
+        :param MachineName: Server name.
+        :type MachineName: str
+        :param LoginTime: Login time.
+        :type LoginTime: str
+        :param Uuid: CWP agent `Uuid`.
+        :type Uuid: str
+        """
         self.Id = None
         self.MachineIp = None
         self.Status = None
@@ -3667,8 +4593,26 @@ class OpenPort(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: Unique ID.
+        :type Id: int
+        :param Uuid: CWP agent `UUID`.
+        :type Uuid: str
+        :param Port: Open port number.
+        :type Port: int
+        :param MachineIp: Server IP.
+        :type MachineIp: str
+        :param MachineName: Server name.
+        :type MachineName: str
+        :param ProcessName: Process name corresponding to port.
+        :type ProcessName: str
+        :param Pid: Process `Pid` corresponding to port.
+        :type Pid: int
+        :param CreateTime: Record creation time.
+        :type CreateTime: str
+        :param ModifyTime: Record update time.
+        :type ModifyTime: str
         """
-        :param Id: Unique ID.\n        :type Id: int\n        :param Uuid: CWP agent `UUID`.\n        :type Uuid: str\n        :param Port: Open port number.\n        :type Port: int\n        :param MachineIp: Server IP.\n        :type MachineIp: str\n        :param MachineName: Server name.\n        :type MachineName: str\n        :param ProcessName: Process name corresponding to port.\n        :type ProcessName: str\n        :param Pid: Process `Pid` corresponding to port.\n        :type Pid: int\n        :param CreateTime: Record creation time.\n        :type CreateTime: str\n        :param ModifyTime: Record update time.\n        :type ModifyTime: str\n        """
         self.Id = None
         self.Uuid = None
         self.Port = None
@@ -3705,8 +4649,12 @@ class OpenPortStatistics(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Port: Port number
+        :type Port: int
+        :param MachineNum: Number of servers
+        :type MachineNum: int
         """
-        :param Port: Port number\n        :type Port: int\n        :param MachineNum: Number of servers\n        :type MachineNum: int\n        """
         self.Port = None
         self.MachineNum = None
 
@@ -3729,12 +4677,20 @@ class OpenProVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineType: Server type.
 <li>CVM: CVM</li>
-<li>BM: BM</li>\n        :type MachineType: str\n        :param MachineRegion: Server region
-Examples: ap-guangzhou, ap-shanghai\n        :type MachineRegion: str\n        :param Quuids: Server `Uuid` array.
-`InstanceId` for BM or `Uuid` for CVM\n        :type Quuids: list of str\n        :param ActivityId: Event ID.\n        :type ActivityId: int\n        """
+<li>BM: BM</li>
+        :type MachineType: str
+        :param MachineRegion: Server region
+Examples: ap-guangzhou, ap-shanghai
+        :type MachineRegion: str
+        :param Quuids: Server `Uuid` array.
+`InstanceId` for BM or `Uuid` for CVM
+        :type Quuids: list of str
+        :param ActivityId: Event ID.
+        :type ActivityId: int
+        """
         self.MachineType = None
         self.MachineRegion = None
         self.Quuids = None
@@ -3761,8 +4717,10 @@ class OpenProVersionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3776,8 +4734,14 @@ class Place(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CityId: City ID.
+        :type CityId: int
+        :param ProvinceId: Province/State ID.
+        :type ProvinceId: int
+        :param CountryId: Country/Region ID. Currently, only `1` (Mainland China) is supported.
+        :type CountryId: int
         """
-        :param CityId: City ID.\n        :type CityId: int\n        :param ProvinceId: Province/State ID.\n        :type ProvinceId: int\n        :param CountryId: Country/Region ID. Currently, only `1` (Mainland China) is supported.\n        :type CountryId: int\n        """
         self.CityId = None
         self.ProvinceId = None
         self.CountryId = None
@@ -3802,12 +4766,34 @@ class Process(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Id: Unique ID.\n        :type Id: int\n        :param Uuid: CWP agent `UUID`.\n        :type Uuid: str\n        :param MachineIp: Private IP of server.\n        :type MachineIp: str\n        :param MachineName: Server name.\n        :type MachineName: str\n        :param Pid: Process `Pid`.\n        :type Pid: int\n        :param Ppid: Process `Ppid`.\n        :type Ppid: int\n        :param ProcessName: Process name.\n        :type ProcessName: str\n        :param Username: Process username.\n        :type Username: str\n        :param Platform: OS.
+        r"""
+        :param Id: Unique ID.
+        :type Id: int
+        :param Uuid: CWP agent `UUID`.
+        :type Uuid: str
+        :param MachineIp: Private IP of server.
+        :type MachineIp: str
+        :param MachineName: Server name.
+        :type MachineName: str
+        :param Pid: Process `Pid`.
+        :type Pid: int
+        :param Ppid: Process `Ppid`.
+        :type Ppid: int
+        :param ProcessName: Process name.
+        :type ProcessName: str
+        :param Username: Process username.
+        :type Username: str
+        :param Platform: OS.
 <li>WIN32: Windows 32-bit</li>
 <li>WIN64: Windows 64-bit</li>
 <li>LINUX32: Linux 32-bit</li>
-<li>LINUX64: Linux 64-bit</li>\n        :type Platform: str\n        :param FullPath: Process path.\n        :type FullPath: str\n        :param CreateTime: Creation time.\n        :type CreateTime: str\n        """
+<li>LINUX64: Linux 64-bit</li>
+        :type Platform: str
+        :param FullPath: Process path.
+        :type FullPath: str
+        :param CreateTime: Creation time.
+        :type CreateTime: str
+        """
         self.Id = None
         self.Uuid = None
         self.MachineIp = None
@@ -3848,8 +4834,12 @@ class ProcessStatistics(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProcessName: Process name.
+        :type ProcessName: str
+        :param MachineNum: Number of servers.
+        :type MachineNum: int
         """
-        :param ProcessName: Process name.\n        :type ProcessName: str\n        :param MachineNum: Number of servers.\n        :type MachineNum: int\n        """
         self.ProcessName = None
         self.MachineNum = None
 
@@ -3872,8 +4862,10 @@ class RecoverMalwaresRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ids: Trojan ID array. Up to 200 IDs can be deleted at a time
+        :type Ids: list of int non-negative
         """
-        :param Ids: Trojan ID array. Up to 200 IDs can be deleted at a time\n        :type Ids: list of int non-negative\n        """
         self.Ids = None
 
 
@@ -3894,8 +4886,14 @@ class RecoverMalwaresResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SuccessIds: Array of IDs of successfully recovered trojans.
+        :type SuccessIds: list of int non-negative
+        :param FailedIds: Array of IDs of trojans failed to be recovered.
+        :type FailedIds: list of int non-negative
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param SuccessIds: Array of IDs of successfully recovered trojans.\n        :type SuccessIds: list of int non-negative\n        :param FailedIds: Array of IDs of trojans failed to be recovered.\n        :type FailedIds: list of int non-negative\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.SuccessIds = None
         self.FailedIds = None
         self.RequestId = None
@@ -3913,8 +4911,16 @@ class RegionInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Region: Region, such as `ap-guangzhou`, `ap-shanghai` and `ap-beijing`
+        :type Region: str
+        :param RegionName: Region name, such as `South China (Guangzhou)`, `East China (Shanghai)`, and `North China (Beijing)`
+        :type RegionName: str
+        :param RegionId: Region ID
+        :type RegionId: int
+        :param RegionCode: Region code, such as `gz`, `sh`, and `bj`
+        :type RegionCode: str
         """
-        :param Region: Region, such as `ap-guangzhou`, `ap-shanghai` and `ap-beijing`\n        :type Region: str\n        :param RegionName: Region name, such as `South China (Guangzhou)`, `East China (Shanghai)`, and `North China (Beijing)`\n        :type RegionName: str\n        :param RegionId: Region ID\n        :type RegionId: int\n        :param RegionCode: Region code, such as `gz`, `sh`, and `bj`\n        :type RegionCode: str\n        """
         self.Region = None
         self.RegionName = None
         self.RegionId = None
@@ -3941,8 +4947,10 @@ class RescanImpactedHostRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: Vulnerability ID.
+        :type Id: int
         """
-        :param Id: Vulnerability ID.\n        :type Id: int\n        """
         self.Id = None
 
 
@@ -3963,8 +4971,10 @@ class RescanImpactedHostResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3978,17 +4988,27 @@ class SecurityDynamic(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Uuid: CWP agent `UUID`.\n        :type Uuid: str\n        :param EventTime: Security event occurrence time.\n        :type EventTime: str\n        :param EventType: Security event type.
+        r"""
+        :param Uuid: CWP agent `UUID`.
+        :type Uuid: str
+        :param EventTime: Security event occurrence time.
+        :type EventTime: str
+        :param EventType: Security event type.
 <li>MALWARE: trojan event</li>
 <li>NON_LOCAL_LOGIN: unusual login location</li>
 <li>BRUTEATTACK_SUCCESS: brute force attack succeeded</li>
 <li>VUL: vulnerability</li>
-<li>BASELINE: security baseline</li>\n        :type EventType: str\n        :param Message: Security event message.\n        :type Message: str\n        :param SecurityLevel: Security event level.
+<li>BASELINE: security baseline</li>
+        :type EventType: str
+        :param Message: Security event message.
+        :type Message: str
+        :param SecurityLevel: Security event level.
 <li>RISK: severe</li>
 <li>HIGH: high</li>
 <li>NORMAL: medium</li>
-<li>LOW: low</li>\n        :type SecurityLevel: str\n        """
+<li>LOW: low</li>
+        :type SecurityLevel: str
+        """
         self.Uuid = None
         self.EventTime = None
         self.EventType = None
@@ -4017,8 +5037,12 @@ class SecurityTrend(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Date: Event time.
+        :type Date: str
+        :param EventNum: Number of events.
+        :type EventNum: int
         """
-        :param Date: Event time.\n        :type Date: str\n        :param EventNum: Number of events.\n        :type EventNum: int\n        """
         self.Date = None
         self.EventNum = None
 
@@ -4041,8 +5065,10 @@ class SeparateMalwaresRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ids: Trojan event ID array.
+        :type Ids: list of int non-negative
         """
-        :param Ids: Trojan event ID array.\n        :type Ids: list of int non-negative\n        """
         self.Ids = None
 
 
@@ -4063,8 +5089,14 @@ class SeparateMalwaresResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SuccessIds: Array of IDs of successfully isolated trojans.
+        :type SuccessIds: list of int non-negative
+        :param FailedIds: Array of IDs of trojans failed to be isolated.
+        :type FailedIds: list of int non-negative
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param SuccessIds: Array of IDs of successfully isolated trojans.\n        :type SuccessIds: list of int non-negative\n        :param FailedIds: Array of IDs of trojans failed to be isolated.\n        :type FailedIds: list of int non-negative\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.SuccessIds = None
         self.FailedIds = None
         self.RequestId = None
@@ -4082,8 +5114,14 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: Tag ID
+        :type Id: int
+        :param Name: Tag name
+        :type Name: str
+        :param Count: Number of servers
+        :type Count: int
         """
-        :param Id: Tag ID\n        :type Id: int\n        :param Name: Tag name\n        :type Name: str\n        :param Count: Number of servers\n        :type Count: int\n        """
         self.Id = None
         self.Name = None
         self.Count = None
@@ -4108,8 +5146,22 @@ class TagMachine(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: ID
+        :type Id: str
+        :param Quuid: Server ID
+        :type Quuid: str
+        :param MachineName: Server name
+        :type MachineName: str
+        :param MachineIp: Private IP of server
+        :type MachineIp: str
+        :param MachineWanIp: Public IP of server
+        :type MachineWanIp: str
+        :param MachineRegion: Server region
+        :type MachineRegion: str
+        :param MachineType: Server region type
+        :type MachineType: str
         """
-        :param Id: ID\n        :type Id: str\n        :param Quuid: Server ID\n        :type Quuid: str\n        :param MachineName: Server name\n        :type MachineName: str\n        :param MachineIp: Private IP of server\n        :type MachineIp: str\n        :param MachineWanIp: Public IP of server\n        :type MachineWanIp: str\n        :param MachineRegion: Server region\n        :type MachineRegion: str\n        :param MachineType: Server region type\n        :type MachineType: str\n        """
         self.Id = None
         self.Quuid = None
         self.MachineName = None
@@ -4142,8 +5194,10 @@ class TrustMaliciousRequestRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: Malicious request record ID.
+        :type Id: int
         """
-        :param Id: Malicious request record ID.\n        :type Id: int\n        """
         self.Id = None
 
 
@@ -4164,8 +5218,10 @@ class TrustMaliciousRequestResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4179,8 +5235,10 @@ class TrustMalwaresRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ids: Trojan ID array.
+        :type Ids: list of int non-negative
         """
-        :param Ids: Trojan ID array.\n        :type Ids: list of int non-negative\n        """
         self.Ids = None
 
 
@@ -4201,8 +5259,10 @@ class TrustMalwaresResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4216,8 +5276,10 @@ class UntrustMaliciousRequestRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: Trusted record ID.
+        :type Id: int
         """
-        :param Id: Trusted record ID.\n        :type Id: int\n        """
         self.Id = None
 
 
@@ -4238,8 +5300,10 @@ class UntrustMaliciousRequestResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4253,8 +5317,10 @@ class UntrustMalwaresRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ids: Trojan event ID array. Up to 200 IDs can be processed at a time.
+        :type Ids: list of int non-negative
         """
-        :param Ids: Trojan event ID array. Up to 200 IDs can be processed at a time.\n        :type Ids: list of int non-negative\n        """
         self.Ids = None
 
 
@@ -4275,8 +5341,10 @@ class UntrustMalwaresResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4290,8 +5358,18 @@ class UsualPlace(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: ID.
+        :type Id: int
+        :param Uuid: CWP agent `UUID`.
+        :type Uuid: str
+        :param CountryId: Country/Region ID.
+        :type CountryId: int
+        :param ProvinceId: Province/State ID.
+        :type ProvinceId: int
+        :param CityId: City ID.
+        :type CityId: int
         """
-        :param Id: ID.\n        :type Id: int\n        :param Uuid: CWP agent `UUID`.\n        :type Uuid: str\n        :param CountryId: Country/Region ID.\n        :type CountryId: int\n        :param ProvinceId: Province/State ID.\n        :type ProvinceId: int\n        :param CityId: City ID.\n        :type CityId: int\n        """
         self.Id = None
         self.Uuid = None
         self.CountryId = None
@@ -4320,14 +5398,26 @@ class Vul(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param VulId: Vulnerability category ID\n        :type VulId: int\n        :param VulName: Vulnerability name\n        :type VulName: str\n        :param VulLevel: Vulnerability severity level:
+        r"""
+        :param VulId: Vulnerability category ID
+        :type VulId: int
+        :param VulName: Vulnerability name
+        :type VulName: str
+        :param VulLevel: Vulnerability severity level:
 HIGH: high
 MIDDLE: medium
 LOW: low
-NOTICE: notice\n        :type VulLevel: str\n        :param LastScanTime: Last scanned time\n        :type LastScanTime: str\n        :param ImpactedHostNum: Number of affected servers\n        :type ImpactedHostNum: int\n        :param VulStatus: Vulnerability status
+NOTICE: notice
+        :type VulLevel: str
+        :param LastScanTime: Last scanned time
+        :type LastScanTime: str
+        :param ImpactedHostNum: Number of affected servers
+        :type ImpactedHostNum: int
+        :param VulStatus: Vulnerability status
 * UN_OPERATED: to be processed
-* FIXED: fixed\n        :type VulStatus: str\n        """
+* FIXED: fixed
+        :type VulStatus: str
+        """
         self.VulId = None
         self.VulName = None
         self.VulLevel = None
@@ -4358,8 +5448,12 @@ class WeeklyReport(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BeginDate: Weekly report start time.
+        :type BeginDate: str
+        :param EndDate: Weekly report end time.
+        :type EndDate: str
         """
-        :param BeginDate: Weekly report start time.\n        :type BeginDate: str\n        :param EndDate: Weekly report end time.\n        :type EndDate: str\n        """
         self.BeginDate = None
         self.EndDate = None
 
@@ -4382,8 +5476,18 @@ class WeeklyReportBruteAttack(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MachineIp: Server IP.
+        :type MachineIp: str
+        :param Username: Hacked username.
+        :type Username: str
+        :param SrcIp: Source IP.
+        :type SrcIp: str
+        :param Count: Number of attempts.
+        :type Count: int
+        :param AttackTime: Attack time.
+        :type AttackTime: str
         """
-        :param MachineIp: Server IP.\n        :type MachineIp: str\n        :param Username: Hacked username.\n        :type Username: str\n        :param SrcIp: Source IP.\n        :type SrcIp: str\n        :param Count: Number of attempts.\n        :type Count: int\n        :param AttackTime: Attack time.\n        :type AttackTime: str\n        """
         self.MachineIp = None
         self.Username = None
         self.SrcIp = None
@@ -4412,13 +5516,23 @@ class WeeklyReportMalware(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param MachineIp: Server IP.\n        :type MachineIp: str\n        :param FilePath: Trojan file path.\n        :type FilePath: str\n        :param Md5: Trojan file MD5 value.\n        :type Md5: str\n        :param FindTime: Trojan discovery time.\n        :type FindTime: str\n        :param Status: Current trojan status.
+        r"""
+        :param MachineIp: Server IP.
+        :type MachineIp: str
+        :param FilePath: Trojan file path.
+        :type FilePath: str
+        :param Md5: Trojan file MD5 value.
+        :type Md5: str
+        :param FindTime: Trojan discovery time.
+        :type FindTime: str
+        :param Status: Current trojan status.
 <li>UN_OPERATED: not processed</li>
 <li>SEGREGATED: isolated</li>
 <li>TRUSTED: trusted</li>
 <li>SEPARATING: isolating</li>
-<li>RECOVERING: recovering</li>\n        :type Status: str\n        """
+<li>RECOVERING: recovering</li>
+        :type Status: str
+        """
         self.MachineIp = None
         self.FilePath = None
         self.Md5 = None
@@ -4447,8 +5561,22 @@ class WeeklyReportNonlocalLoginPlace(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MachineIp: Server IP.
+        :type MachineIp: str
+        :param Username: Username.
+        :type Username: str
+        :param SrcIp: Source IP.
+        :type SrcIp: str
+        :param Country: Country/Region ID.
+        :type Country: int
+        :param Province: Province/State ID.
+        :type Province: int
+        :param City: City ID.
+        :type City: int
+        :param LoginTime: Login time.
+        :type LoginTime: str
         """
-        :param MachineIp: Server IP.\n        :type MachineIp: str\n        :param Username: Username.\n        :type Username: str\n        :param SrcIp: Source IP.\n        :type SrcIp: str\n        :param Country: Country/Region ID.\n        :type Country: int\n        :param Province: Province/State ID.\n        :type Province: int\n        :param City: City ID.\n        :type City: int\n        :param LoginTime: Login time.\n        :type LoginTime: str\n        """
         self.MachineIp = None
         self.Username = None
         self.SrcIp = None
@@ -4481,14 +5609,26 @@ class WeeklyReportVul(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param MachineIp: Private IP of server.\n        :type MachineIp: str\n        :param VulName: Vulnerability name.\n        :type VulName: str\n        :param VulType: Vulnerability type.
+        r"""
+        :param MachineIp: Private IP of server.
+        :type MachineIp: str
+        :param VulName: Vulnerability name.
+        :type VulName: str
+        :param VulType: Vulnerability type.
 <li> WEB: web vulnerability</li>
 <li> SYSTEM: system component vulnerability</li>
-<li> BASELINE: security baseline</li>\n        :type VulType: str\n        :param Description: Vulnerability description.\n        :type Description: str\n        :param VulStatus: Vulnerability status.
+<li> BASELINE: security baseline</li>
+        :type VulType: str
+        :param Description: Vulnerability description.
+        :type Description: str
+        :param VulStatus: Vulnerability status.
 <li> UN_OPERATED: to be processed</li>
 <li> SCANING: scanning</li>
-<li> FIXED: fixed</li>\n        :type VulStatus: str\n        :param LastScanTime: Last scanned time.\n        :type LastScanTime: str\n        """
+<li> FIXED: fixed</li>
+        :type VulStatus: str
+        :param LastScanTime: Last scanned time.
+        :type LastScanTime: str
+        """
         self.MachineIp = None
         self.VulName = None
         self.VulType = None

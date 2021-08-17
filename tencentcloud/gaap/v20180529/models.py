@@ -24,8 +24,14 @@ class AccessConfiguration(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AccessRegion: Acceleration region.
+        :type AccessRegion: str
+        :param Bandwidth: Connection bandwidth upper limit in Mbps.
+        :type Bandwidth: int
+        :param Concurrent: Concurrent connection upper limit in 10,000 connections, which indicates the allowed number of concurrently online connections.
+        :type Concurrent: int
         """
-        :param AccessRegion: Acceleration region.\n        :type AccessRegion: str\n        :param Bandwidth: Connection bandwidth upper limit in Mbps.\n        :type Bandwidth: int\n        :param Concurrent: Concurrent connection upper limit in 10,000 connections, which indicates the allowed number of concurrently online connections.\n        :type Concurrent: int\n        """
         self.AccessRegion = None
         self.Bandwidth = None
         self.Concurrent = None
@@ -50,8 +56,16 @@ class AccessRegionDetial(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegionId: Region ID
+        :type RegionId: str
+        :param RegionName: Region name in Chinese or English
+        :type RegionName: str
+        :param ConcurrentList: Value array of the available concurrence
+        :type ConcurrentList: list of int
+        :param BandwidthList: Value array of the available bandwidth
+        :type BandwidthList: list of int
         """
-        :param RegionId: Region ID\n        :type RegionId: str\n        :param RegionName: Region name in Chinese or English\n        :type RegionName: str\n        :param ConcurrentList: Value array of the available concurrence\n        :type ConcurrentList: list of int\n        :param BandwidthList: Value array of the available bandwidth\n        :type BandwidthList: list of int\n        """
         self.RegionId = None
         self.RegionName = None
         self.ConcurrentList = None
@@ -78,8 +92,12 @@ class AccessRegionDomainConf(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegionId: Region ID.
+        :type RegionId: str
+        :param NationCountryInnerList: Region/country code for the nearest access, which can be obtained via the DescribeCountryAreaMapping API.
+        :type NationCountryInnerList: list of str
         """
-        :param RegionId: Region ID.\n        :type RegionId: str\n        :param NationCountryInnerList: Region/country code for the nearest access, which can be obtained via the DescribeCountryAreaMapping API.\n        :type NationCountryInnerList: list of str\n        """
         self.RegionId = None
         self.NationCountryInnerList = None
 
@@ -102,8 +120,16 @@ class AddRealServersRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProjectId: Project ID corresponding to origin server
+        :type ProjectId: int
+        :param RealServerIP: IP or domain name corresponding to origin server
+        :type RealServerIP: list of str
+        :param RealServerName: Origin server name
+        :type RealServerName: str
+        :param TagSet: Tag list
+        :type TagSet: list of TagPair
         """
-        :param ProjectId: Project ID corresponding to origin server\n        :type ProjectId: int\n        :param RealServerIP: IP or domain name corresponding to origin server\n        :type RealServerIP: list of str\n        :param RealServerName: Origin server name\n        :type RealServerName: str\n        :param TagSet: Tag list\n        :type TagSet: list of TagPair\n        """
         self.ProjectId = None
         self.RealServerIP = None
         self.RealServerName = None
@@ -135,8 +161,12 @@ class AddRealServersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RealServerSet: Origin server information list
+        :type RealServerSet: list of NewRealServer
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RealServerSet: Origin server information list\n        :type RealServerSet: list of NewRealServer\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RealServerSet = None
         self.RequestId = None
 
@@ -157,8 +187,14 @@ class BandwidthPriceGradient(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BandwidthRange: Bandwidth range.
+        :type BandwidthRange: list of int
+        :param BandwidthUnitPrice: Bandwidth unit price within the bandwidth range. Unit: CNY/Mbps/day.
+        :type BandwidthUnitPrice: float
+        :param DiscountBandwidthUnitPrice: Discounted bandwidth price in CNY/Mbps/day.
+        :type DiscountBandwidthUnitPrice: float
         """
-        :param BandwidthRange: Bandwidth range.\n        :type BandwidthRange: list of int\n        :param BandwidthUnitPrice: Bandwidth unit price within the bandwidth range. Unit: CNY/Mbps/day.\n        :type BandwidthUnitPrice: float\n        :param DiscountBandwidthUnitPrice: Discounted bandwidth price in CNY/Mbps/day.\n        :type DiscountBandwidthUnitPrice: float\n        """
         self.BandwidthRange = None
         self.BandwidthUnitPrice = None
         self.DiscountBandwidthUnitPrice = None
@@ -183,8 +219,12 @@ class BindListenerRealServersRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ListenerId: Listener ID
+        :type ListenerId: str
+        :param RealServerBindSet: List of origin servers to be bound. If the origin server scheduling policy type of this listener is weighted round robin, you need to enter the `RealServerWeight`, i.e., the origin server weight. If this field is left empty or for other scheduling types, the default origin server weight is 1.
+        :type RealServerBindSet: list of RealServerBindSetReq
         """
-        :param ListenerId: Listener ID\n        :type ListenerId: str\n        :param RealServerBindSet: List of origin servers to be bound. If the origin server scheduling policy type of this listener is weighted round robin, you need to enter the `RealServerWeight`, i.e., the origin server weight. If this field is left empty or for other scheduling types, the default origin server weight is 1.\n        :type RealServerBindSet: list of RealServerBindSetReq\n        """
         self.ListenerId = None
         self.RealServerBindSet = None
 
@@ -212,8 +252,10 @@ class BindListenerRealServersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -227,13 +269,25 @@ class BindRealServer(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param RealServerId: Origin server ID\n        :type RealServerId: str\n        :param RealServerIP: Origin server IP or domain name\n        :type RealServerIP: str\n        :param RealServerWeight: Origin server weight\n        :type RealServerWeight: int\n        :param RealServerStatus: Origin server health check status. Valid values:
+        r"""
+        :param RealServerId: Origin server ID
+        :type RealServerId: str
+        :param RealServerIP: Origin server IP or domain name
+        :type RealServerIP: str
+        :param RealServerWeight: Origin server weight
+        :type RealServerWeight: int
+        :param RealServerStatus: Origin server health check status. Valid values:
 0: normal;
 1: exceptional.
 If health check is not enabled, this status will always be normal.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type RealServerStatus: int\n        :param RealServerPort: Origin server port number
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type RealServerPort: int\n        :param DownIPList: If the origin server is a domain name, the domain name will be resolved to one or multiple IPs. This field indicates the exceptional IP list.\n        :type DownIPList: list of str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RealServerStatus: int
+        :param RealServerPort: Origin server port number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RealServerPort: int
+        :param DownIPList: If the origin server is a domain name, the domain name will be resolved to one or multiple IPs. This field indicates the exceptional IP list.
+        :type DownIPList: list of str
+        """
         self.RealServerId = None
         self.RealServerIP = None
         self.RealServerWeight = None
@@ -264,9 +318,19 @@ class BindRealServerInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RealServerIP: Origin server IP or domain name
+        :type RealServerIP: str
+        :param RealServerId: Origin server ID
+        :type RealServerId: str
+        :param RealServerName: Origin server name
+        :type RealServerName: str
+        :param ProjectId: Project ID
+        :type ProjectId: int
+        :param TagSet: Tag list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TagSet: list of TagPair
         """
-        :param RealServerIP: Origin server IP or domain name\n        :type RealServerIP: str\n        :param RealServerId: Origin server ID\n        :type RealServerId: str\n        :param RealServerName: Origin server name\n        :type RealServerName: str\n        :param ProjectId: Project ID\n        :type ProjectId: int\n        :param TagSet: Tag list
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type TagSet: list of TagPair\n        """
         self.RealServerIP = None
         self.RealServerId = None
         self.RealServerName = None
@@ -300,11 +364,15 @@ class BindRuleRealServersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param RuleId: Forwarding rule ID\n        :type RuleId: str\n        :param RealServerBindSet: An information list of the origin servers to bind.
+        r"""
+        :param RuleId: Forwarding rule ID
+        :type RuleId: str
+        :param RealServerBindSet: An information list of the origin servers to bind.
 If there are origin servers bound already, they will be replaced by this new origin server list.
 If this field is empty, it indicates unbinding all origin servers of this rule.
-If the origin server scheduling policy type of this rule is weighted round robin, you need to enter `RealServerWeight`, i.e., the origin server weight. If this field is left empty or for other scheduling types, the default origin server weight is 1.\n        :type RealServerBindSet: list of RealServerBindSetReq\n        """
+If the origin server scheduling policy type of this rule is weighted round robin, you need to enter `RealServerWeight`, i.e., the origin server weight. If this field is left empty or for other scheduling types, the default origin server weight is 1.
+        :type RealServerBindSet: list of RealServerBindSetReq
+        """
         self.RuleId = None
         self.RealServerBindSet = None
 
@@ -332,8 +400,10 @@ class BindRuleRealServersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -347,13 +417,31 @@ class Certificate(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CertificateId: Certificate ID
+        :type CertificateId: str
+        :param CertificateName: Certificate name; It's an old parameter, please switch to CertificateAlias.
+        :type CertificateName: str
+        :param CertificateType: Certificate type.
+        :type CertificateType: int
+        :param CertificateAlias: Certificate name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CertificateAlias: str
+        :param CreateTime: Certificate creation time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
+        :type CreateTime: int
+        :param BeginTime: Certificate effective time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BeginTime: int
+        :param EndTime: Certificate expiration time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EndTime: int
+        :param IssuerCN: Common name of the certificate issuer.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IssuerCN: str
+        :param SubjectCN: Common name of the certificate subject.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubjectCN: str
         """
-        :param CertificateId: Certificate ID\n        :type CertificateId: str\n        :param CertificateName: Certificate name; It's an old parameter, please switch to CertificateAlias.\n        :type CertificateName: str\n        :param CertificateType: Certificate type.\n        :type CertificateType: int\n        :param CertificateAlias: Certificate name.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type CertificateAlias: str\n        :param CreateTime: Certificate creation time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).\n        :type CreateTime: int\n        :param BeginTime: Certificate effective time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type BeginTime: int\n        :param EndTime: Certificate expiration time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type EndTime: int\n        :param IssuerCN: Common name of the certificate issuer.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type IssuerCN: str\n        :param SubjectCN: Common name of the certificate subject.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type SubjectCN: str\n        """
         self.CertificateId = None
         self.CertificateName = None
         self.CertificateType = None
@@ -390,8 +478,12 @@ class CertificateAliasInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CertificateId: Certificate ID.
+        :type CertificateId: str
+        :param CertificateAlias: Certificate alias.
+        :type CertificateAlias: str
         """
-        :param CertificateId: Certificate ID.\n        :type CertificateId: str\n        :param CertificateAlias: Certificate alias.\n        :type CertificateAlias: str\n        """
         self.CertificateId = None
         self.CertificateAlias = None
 
@@ -414,15 +506,35 @@ class CertificateDetail(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CertificateId: Certificate ID.
+        :type CertificateId: str
+        :param CertificateType: Certificate type.
+        :type CertificateType: int
+        :param CertificateAlias: Certificate name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CertificateAlias: str
+        :param CertificateContent: Certificate content.
+        :type CertificateContent: str
+        :param CertificateKey: Key content. This field will be returned if the certificate type is the SSL certificate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CertificateKey: str
+        :param CreateTime: Creation time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: int
+        :param BeginTime: Certificate effective time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BeginTime: int
+        :param EndTime: Certificate expiration time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EndTime: int
+        :param IssuerCN: Common name of the certificate's issuer.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IssuerCN: str
+        :param SubjectCN: Common name of the certificate subject.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubjectCN: str
         """
-        :param CertificateId: Certificate ID.\n        :type CertificateId: str\n        :param CertificateType: Certificate type.\n        :type CertificateType: int\n        :param CertificateAlias: Certificate name.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type CertificateAlias: str\n        :param CertificateContent: Certificate content.\n        :type CertificateContent: str\n        :param CertificateKey: Key content. This field will be returned if the certificate type is the SSL certificate.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type CertificateKey: str\n        :param CreateTime: Creation time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type CreateTime: int\n        :param BeginTime: Certificate effective time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type BeginTime: int\n        :param EndTime: Certificate expiration time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type EndTime: int\n        :param IssuerCN: Common name of the certificate's issuer.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type IssuerCN: str\n        :param SubjectCN: Common name of the certificate subject.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type SubjectCN: str\n        """
         self.CertificateId = None
         self.CertificateType = None
         self.CertificateAlias = None
@@ -461,8 +573,20 @@ class CheckProxyCreateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AccessRegion: Access (acceleration) region of the connection. The value can be obtained via the DescribeAccessRegionsByDestRegion API.
+        :type AccessRegion: str
+        :param RealServerRegion: Origin server region of the connection. The value can be obtained via the DescribeDestRegions API.
+        :type RealServerRegion: str
+        :param Bandwidth: Connection bandwidth cap. Unit: Mbps.
+        :type Bandwidth: int
+        :param Concurrent: Connection concurrence cap, which indicates the maximum number of simultaneous online connections. Unit: 10,000 connections.
+        :type Concurrent: int
+        :param GroupId: Connection group ID that needs to be entered when a connection is created in a connection group
+        :type GroupId: str
+        :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.
+        :type IPAddressVersion: str
         """
-        :param AccessRegion: Access (acceleration) region of the connection. The value can be obtained via the DescribeAccessRegionsByDestRegion API.\n        :type AccessRegion: str\n        :param RealServerRegion: Origin server region of the connection. The value can be obtained via the DescribeDestRegions API.\n        :type RealServerRegion: str\n        :param Bandwidth: Connection bandwidth cap. Unit: Mbps.\n        :type Bandwidth: int\n        :param Concurrent: Connection concurrence cap, which indicates the maximum number of simultaneous online connections. Unit: 10,000 connections.\n        :type Concurrent: int\n        :param GroupId: Connection group ID that needs to be entered when a connection is created in a connection group\n        :type GroupId: str\n        :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.\n        :type IPAddressVersion: str\n        """
         self.AccessRegion = None
         self.RealServerRegion = None
         self.Bandwidth = None
@@ -493,8 +617,12 @@ class CheckProxyCreateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CheckFlag: Queries whether a connection with the specified configuration can be created. 1: yes; 0: no.
+        :type CheckFlag: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param CheckFlag: Queries whether a connection with the specified configuration can be created. 1: yes; 0: no.\n        :type CheckFlag: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.CheckFlag = None
         self.RequestId = None
 
@@ -510,9 +638,15 @@ class CloseProxiesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceIds: Connection instance ID; It's an old parameter, please switch to ProxyIds.
+        :type InstanceIds: list of str
+        :param ClientToken: A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
+For more information, please see How to Ensure Idempotence.
+        :type ClientToken: str
+        :param ProxyIds: Connection instance ID; It's a new parameter.
+        :type ProxyIds: list of str
         """
-        :param InstanceIds: Connection instance ID; It's an old parameter, please switch to ProxyIds.\n        :type InstanceIds: list of str\n        :param ClientToken: A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
-For more information, please see How to Ensure Idempotence.\n        :type ClientToken: str\n        :param ProxyIds: Connection instance ID; It's a new parameter.\n        :type ProxyIds: list of str\n        """
         self.InstanceIds = None
         self.ClientToken = None
         self.ProxyIds = None
@@ -537,8 +671,14 @@ class CloseProxiesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InvalidStatusInstanceSet: Only the running connection instance ID lists can be enabled.
+        :type InvalidStatusInstanceSet: list of str
+        :param OperationFailedInstanceSet: ID list of connection instances failed to be enabled.
+        :type OperationFailedInstanceSet: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param InvalidStatusInstanceSet: Only the running connection instance ID lists can be enabled.\n        :type InvalidStatusInstanceSet: list of str\n        :param OperationFailedInstanceSet: ID list of connection instances failed to be enabled.\n        :type OperationFailedInstanceSet: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InvalidStatusInstanceSet = None
         self.OperationFailedInstanceSet = None
         self.RequestId = None
@@ -556,8 +696,10 @@ class CloseProxyGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: Connection group instance ID.
+        :type GroupId: str
         """
-        :param GroupId: Connection group instance ID.\n        :type GroupId: str\n        """
         self.GroupId = None
 
 
@@ -578,8 +720,14 @@ class CloseProxyGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InvalidStatusInstanceSet: List of IDs of the connection instances that are not running, which cannot be enabled.
+        :type InvalidStatusInstanceSet: list of str
+        :param OperationFailedInstanceSet: List of IDs of the connection instances failed to be enabled.
+        :type OperationFailedInstanceSet: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param InvalidStatusInstanceSet: List of IDs of the connection instances that are not running, which cannot be enabled.\n        :type InvalidStatusInstanceSet: list of str\n        :param OperationFailedInstanceSet: List of IDs of the connection instances failed to be enabled.\n        :type OperationFailedInstanceSet: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InvalidStatusInstanceSet = None
         self.OperationFailedInstanceSet = None
         self.RequestId = None
@@ -597,8 +745,12 @@ class CloseSecurityPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProxyId: Connection ID
+        :type ProxyId: str
+        :param PolicyId: Security group policy ID
+        :type PolicyId: str
         """
-        :param ProxyId: Connection ID\n        :type ProxyId: str\n        :param PolicyId: Security group policy ID\n        :type PolicyId: str\n        """
         self.ProxyId = None
         self.PolicyId = None
 
@@ -621,8 +773,12 @@ class CloseSecurityPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Async Process ID. Using DescribeAsyncTaskStatus to query process and status.
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskId: Async Process ID. Using DescribeAsyncTaskStatus to query process and status.\n        :type TaskId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -638,8 +794,20 @@ class CountryAreaMap(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NationCountryName: Country name.
+        :type NationCountryName: str
+        :param NationCountryInnerCode: Country code.
+        :type NationCountryInnerCode: str
+        :param GeographicalZoneName: Region name.
+        :type GeographicalZoneName: str
+        :param GeographicalZoneInnerCode: Region code.
+        :type GeographicalZoneInnerCode: str
+        :param ContinentName: Continent name.
+        :type ContinentName: str
+        :param ContinentInnerCode: Continent code.
+        :type ContinentInnerCode: str
         """
-        :param NationCountryName: Country name.\n        :type NationCountryName: str\n        :param NationCountryInnerCode: Country code.\n        :type NationCountryInnerCode: str\n        :param GeographicalZoneName: Region name.\n        :type GeographicalZoneName: str\n        :param GeographicalZoneInnerCode: Region code.\n        :type GeographicalZoneInnerCode: str\n        :param ContinentName: Continent name.\n        :type ContinentName: str\n        :param ContinentInnerCode: Continent code.\n        :type ContinentInnerCode: str\n        """
         self.NationCountryName = None
         self.NationCountryInnerCode = None
         self.GeographicalZoneName = None
@@ -670,15 +838,23 @@ class CreateCertificateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateType: Certificate type. Where:
 0: basic authentication configuration;
 1: indicates client CA certificate;
 2: server SSL certificate;
 3: origin server CA certificate;
-4: connection SSL certificate.\n        :type CertificateType: int\n        :param CertificateContent: Certificate content. URL encoding. Where:
+4: connection SSL certificate.
+        :type CertificateType: int
+        :param CertificateContent: Certificate content. URL encoding. Where:
 If the certificate type is basic authentication, enter username/password pair for this parameter. Format: 'username:password', for example, root:FSGdT. The password is `htpasswd` or `openssl`, for example, openssl passwd -crypt 123456.
-When the certificate type is CA/SSL certificate, enter the certificate content for this parameter in the format of `pem`.\n        :type CertificateContent: str\n        :param CertificateAlias: Certificate name\n        :type CertificateAlias: str\n        :param CertificateKey: Key content. URL encoding. This parameter is required only when the certificate type is SSL certificate. The format is `pem`.\n        :type CertificateKey: str\n        """
+When the certificate type is CA/SSL certificate, enter the certificate content for this parameter in the format of `pem`.
+        :type CertificateContent: str
+        :param CertificateAlias: Certificate name
+        :type CertificateAlias: str
+        :param CertificateKey: Key content. URL encoding. This parameter is required only when the certificate type is SSL certificate. The format is `pem`.
+        :type CertificateKey: str
+        """
         self.CertificateType = None
         self.CertificateContent = None
         self.CertificateAlias = None
@@ -705,8 +881,12 @@ class CreateCertificateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CertificateId: Certificate ID
+        :type CertificateId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param CertificateId: Certificate ID\n        :type CertificateId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.CertificateId = None
         self.RequestId = None
 
@@ -716,14 +896,78 @@ class CreateCertificateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateCustomHeaderRequest(AbstractModel):
+    """CreateCustomHeader request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: Rule ID
+        :type RuleId: str
+        :param Headers: Custom header name and content list. `‘’$remote_addr‘’` will be resolved and replaced with the client IP. Other values will be directly passed to the origin server.
+        :type Headers: list of HttpHeaderParam
+        """
+        self.RuleId = None
+        self.Headers = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        if params.get("Headers") is not None:
+            self.Headers = []
+            for item in params.get("Headers"):
+                obj = HttpHeaderParam()
+                obj._deserialize(item)
+                self.Headers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCustomHeaderResponse(AbstractModel):
+    """CreateCustomHeader response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateDomainErrorPageInfoRequest(AbstractModel):
     """CreateDomainErrorPageInfo request structure.
 
     """
 
     def __init__(self):
+        r"""
+        :param ListenerId: Listener ID
+        :type ListenerId: str
+        :param Domain: Domain name
+        :type Domain: str
+        :param ErrorNos: Original error code
+        :type ErrorNos: list of int
+        :param Body: New response packet
+        :type Body: str
+        :param NewErrorNo: New error code
+        :type NewErrorNo: int
+        :param ClearHeaders: Response header to be deleted
+        :type ClearHeaders: list of str
+        :param SetHeaders: Response header to be set
+        :type SetHeaders: list of HttpHeaderParam
         """
-        :param ListenerId: Listener ID\n        :type ListenerId: str\n        :param Domain: Domain name\n        :type Domain: str\n        :param ErrorNos: Original error code\n        :type ErrorNos: list of int\n        :param Body: New response packet\n        :type Body: str\n        :param NewErrorNo: New error code\n        :type NewErrorNo: int\n        :param ClearHeaders: Response header to be deleted\n        :type ClearHeaders: list of str\n        :param SetHeaders: Response header to be set\n        :type SetHeaders: list of HttpHeaderParam\n        """
         self.ListenerId = None
         self.Domain = None
         self.ErrorNos = None
@@ -761,8 +1005,12 @@ class CreateDomainErrorPageInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ErrorPageId: Configuration ID of a custom error response
+        :type ErrorPageId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param ErrorPageId: Configuration ID of a custom error response\n        :type ErrorPageId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ErrorPageId = None
         self.RequestId = None
 
@@ -778,10 +1026,20 @@ class CreateDomainRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ListenerId: Listener ID.
+        :type ListenerId: str
+        :param Domain: Domain name to be created. Each listener supports up to 100 domain names.
+        :type Domain: str
+        :param CertificateId: Server certificate, which is used for the HTTPS interaction between client and GAAP.
+        :type CertificateId: str
+        :param ClientCertificateId: Client CA certificate, which is used for the HTTPS interaction between client and GAAP.
+This field is required only when the mutual authentication method is adopted.
+        :type ClientCertificateId: str
+        :param PolyClientCertificateIds: Client CA certificate, which is used for the HTTPS interaction between the client and GAAP.
+This field or the `ClientCertificateId` field is required for mutual authentication only.
+        :type PolyClientCertificateIds: list of str
         """
-        :param ListenerId: Listener ID.\n        :type ListenerId: str\n        :param Domain: Domain name to be created. Each listener supports up to 100 domain names.\n        :type Domain: str\n        :param CertificateId: Server certificate, which is used for the HTTPS interaction between client and GAAP.\n        :type CertificateId: str\n        :param ClientCertificateId: Client CA certificate, which is used for the HTTPS interaction between client and GAAP.
-This field is required only when the mutual authentication method is adopted.\n        :type ClientCertificateId: str\n        :param PolyClientCertificateIds: Client CA certificate, which is used for the HTTPS interaction between the client and GAAP.
-This field or the `ClientCertificateId` field is required for mutual authentication only.\n        :type PolyClientCertificateIds: list of str\n        """
         self.ListenerId = None
         self.Domain = None
         self.CertificateId = None
@@ -810,8 +1068,10 @@ class CreateDomainResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -825,8 +1085,16 @@ class CreateHTTPListenerRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ListenerName: Listener name
+        :type ListenerName: str
+        :param Port: Listener port, which is based on the listeners of same transport layer protocol (TCP or UDP). The port must be unique.
+        :type Port: int
+        :param ProxyId: Connection ID, which cannot be set together with `GroupId` at the same time. A listener will be created for the corresponding connection.
+        :type ProxyId: str
+        :param GroupId: Connection group ID, which cannot be set together with `ProxyId` at the same time. A listener will be created for the corresponding connection group.
+        :type GroupId: str
         """
-        :param ListenerName: Listener name\n        :type ListenerName: str\n        :param Port: Listener port, which is based on the listeners of same transport layer protocol (TCP or UDP). The port must be unique.\n        :type Port: int\n        :param ProxyId: Connection ID, which cannot be set together with `GroupId` at the same time. A listener will be created for the corresponding connection.\n        :type ProxyId: str\n        :param GroupId: Connection group ID, which cannot be set together with `ProxyId` at the same time. A listener will be created for the corresponding connection group.\n        :type GroupId: str\n        """
         self.ListenerName = None
         self.Port = None
         self.ProxyId = None
@@ -853,8 +1121,12 @@ class CreateHTTPListenerResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ListenerId: Created listener ID
+        :type ListenerId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param ListenerId: Created listener ID\n        :type ListenerId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ListenerId = None
         self.RequestId = None
 
@@ -870,11 +1142,29 @@ class CreateHTTPSListenerRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ListenerName: Listener name\n        :type ListenerName: str\n        :param Port: Listener port, which is based on the listeners of same transport layer protocol (TCP or UDP). The port must be unique.\n        :type Port: int\n        :param CertificateId: Server certificate ID\n        :type CertificateId: str\n        :param ForwardProtocol: Protocol types of the forwarding from acceleration connection to origin server: HTTP | HTTPS\n        :type ForwardProtocol: str\n        :param ProxyId: Connection ID, which cannot be set together with `GroupId` at the same time. A listener will be created for the corresponding connection.\n        :type ProxyId: str\n        :param AuthType: Authentication type, where:
+        r"""
+        :param ListenerName: Listener name
+        :type ListenerName: str
+        :param Port: Listener port, which is based on the listeners of same transport layer protocol (TCP or UDP). The port must be unique.
+        :type Port: int
+        :param CertificateId: Server certificate ID
+        :type CertificateId: str
+        :param ForwardProtocol: Protocol types of the forwarding from acceleration connection to origin server: HTTP | HTTPS
+        :type ForwardProtocol: str
+        :param ProxyId: Connection ID, which cannot be set together with `GroupId` at the same time. A listener will be created for the corresponding connection.
+        :type ProxyId: str
+        :param AuthType: Authentication type, where:
 0: one-way authentication;
 1: mutual authentication.
-The one-way authentication is used by default.\n        :type AuthType: int\n        :param ClientCertificateId: Client CA certificate ID, which is required only when the mutual authentication is adopted.\n        :type ClientCertificateId: str\n        :param PolyClientCertificateIds: IDs of multiple new client CA certificates. This field or the `ClientCertificateId` field is required for mutual authentication only.\n        :type PolyClientCertificateIds: list of str\n        :param GroupId: Connection group ID, which cannot be set together with `ProxyId` at the same time. A listener will be created for the corresponding connection group.\n        :type GroupId: str\n        """
+The one-way authentication is used by default.
+        :type AuthType: int
+        :param ClientCertificateId: Client CA certificate ID, which is required only when the mutual authentication is adopted.
+        :type ClientCertificateId: str
+        :param PolyClientCertificateIds: IDs of multiple new client CA certificates. This field or the `ClientCertificateId` field is required for mutual authentication only.
+        :type PolyClientCertificateIds: list of str
+        :param GroupId: Connection group ID, which cannot be set together with `ProxyId` at the same time. A listener will be created for the corresponding connection group.
+        :type GroupId: str
+        """
         self.ListenerName = None
         self.Port = None
         self.CertificateId = None
@@ -911,8 +1201,12 @@ class CreateHTTPSListenerResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ListenerId: Created listener ID
+        :type ListenerId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param ListenerId: Created listener ID\n        :type ListenerId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ListenerId = None
         self.RequestId = None
 
@@ -928,8 +1222,10 @@ class CreateProxyGroupDomainRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: Connection group ID of the domain name to be enabled.
+        :type GroupId: str
         """
-        :param GroupId: Connection group ID of the domain name to be enabled.\n        :type GroupId: str\n        """
         self.GroupId = None
 
 
@@ -950,8 +1246,12 @@ class CreateProxyGroupDomainResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: Connection group ID.
+        :type GroupId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param GroupId: Connection group ID.\n        :type GroupId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.GroupId = None
         self.RequestId = None
 
@@ -967,8 +1267,20 @@ class CreateProxyGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProjectId: Project ID of connection group
+        :type ProjectId: int
+        :param GroupName: Alias of connection group
+        :type GroupName: str
+        :param RealServerRegion: Origin server region; Reference API: DescribeDestRegions; It returnes the `RegionId` of the parameter `RegionDetail`.
+        :type RealServerRegion: str
+        :param TagSet: Tag list
+        :type TagSet: list of TagPair
+        :param AccessRegionSet: List of acceleration regions, including their names, bandwidth, and concurrence configuration.
+        :type AccessRegionSet: list of AccessConfiguration
+        :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.
+        :type IPAddressVersion: str
         """
-        :param ProjectId: Project ID of connection group\n        :type ProjectId: int\n        :param GroupName: Alias of connection group\n        :type GroupName: str\n        :param RealServerRegion: Origin server region; Reference API: DescribeDestRegions; It returnes the `RegionId` of the parameter `RegionDetail`.\n        :type RealServerRegion: str\n        :param TagSet: Tag list\n        :type TagSet: list of TagPair\n        :param AccessRegionSet: List of acceleration regions, including their names, bandwidth, and concurrence configuration.\n        :type AccessRegionSet: list of AccessConfiguration\n        :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.\n        :type IPAddressVersion: str\n        """
         self.ProjectId = None
         self.GroupName = None
         self.RealServerRegion = None
@@ -1009,8 +1321,12 @@ class CreateProxyGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: Connection Group ID
+        :type GroupId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param GroupId: Connection Group ID\n        :type GroupId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.GroupId = None
         self.RequestId = None
 
@@ -1026,10 +1342,34 @@ class CreateProxyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProjectId: Project ID of connection.
+        :type ProjectId: int
+        :param ProxyName: Connection name.
+        :type ProxyName: str
+        :param AccessRegion: Access region.
+        :type AccessRegion: str
+        :param Bandwidth: Connection bandwidth cap. Unit: Mbps.
+        :type Bandwidth: int
+        :param Concurrent: Connection concurrence cap, which indicates the maximum number of simultaneous online connections. Unit: 10,000 connections.
+        :type Concurrent: int
+        :param RealServerRegion: Origin server region. If GroupId exists, the origin server region is the one of connection group, and this field is not required. If GroupId does not exist, this field is reuqired.
+        :type RealServerRegion: str
+        :param ClientToken: A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
+For more information, please see How to Ensure Idempotence.
+        :type ClientToken: str
+        :param GroupId: Connection group ID. This parameter is required when the connection is created in the connection group. Otherwise, this field is ignored.
+        :type GroupId: str
+        :param TagSet: List of tags to be added for connection.
+        :type TagSet: list of TagPair
+        :param ClonedProxyId: ID of the replicated connection. Only a running connection can be replicated.
+The connection is to be replicated if this parameter is set.
+        :type ClonedProxyId: str
+        :param BillingType: Billing mode (0: bill-by-bandwidth, 1: bill-by-traffic. Default value: bill-by-bandwidth)
+        :type BillingType: int
+        :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.
+        :type IPAddressVersion: str
         """
-        :param ProjectId: Project ID of connection.\n        :type ProjectId: int\n        :param ProxyName: Connection name.\n        :type ProxyName: str\n        :param AccessRegion: Access region.\n        :type AccessRegion: str\n        :param Bandwidth: Connection bandwidth cap. Unit: Mbps.\n        :type Bandwidth: int\n        :param Concurrent: Connection concurrence cap, which indicates the maximum number of simultaneous online connections. Unit: 10,000 connections.\n        :type Concurrent: int\n        :param RealServerRegion: Origin server region. If GroupId exists, the origin server region is the one of connection group, and this field is not required. If GroupId does not exist, this field is reuqired.\n        :type RealServerRegion: str\n        :param ClientToken: A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
-For more information, please see How to Ensure Idempotence.\n        :type ClientToken: str\n        :param GroupId: Connection group ID. This parameter is required when the connection is created in the connection group. Otherwise, this field is ignored.\n        :type GroupId: str\n        :param TagSet: List of tags to be added for connection.\n        :type TagSet: list of TagPair\n        :param ClonedProxyId: ID of the replicated connection. Only a running connection can be replicated.
-The connection is to be replicated if this parameter is set.\n        :type ClonedProxyId: str\n        :param BillingType: Billing mode (0: bill-by-bandwidth, 1: bill-by-traffic. Default value: bill-by-bandwidth)\n        :type BillingType: int\n        :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.\n        :type IPAddressVersion: str\n        """
         self.ProjectId = None
         self.ProxyName = None
         self.AccessRegion = None
@@ -1077,8 +1417,12 @@ class CreateProxyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID of connection.
+        :type InstanceId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param InstanceId: Instance ID of connection.\n        :type InstanceId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.RequestId = None
 
@@ -1094,9 +1438,27 @@ class CreateRuleRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ListenerId: Layer-7 listener ID
+        :type ListenerId: str
+        :param Domain: Domain name of the forwarding rule
+        :type Domain: str
+        :param Path: Path of the forwarding rule
+        :type Path: str
+        :param RealServerType: The origin server type of the forwarding rule, which supports IP and DOMAIN types.
+        :type RealServerType: str
+        :param Scheduler: Forwarding rules of origin server, which supports round robin (rr), weighted round robin (wrr), and least connections (lc).
+        :type Scheduler: str
+        :param HealthCheck: Whether the health check is enabled for rules. 1: enabled; 0: disabled.
+        :type HealthCheck: int
+        :param CheckParams: Parameters related to origin server health check
+        :type CheckParams: :class:`tencentcloud.gaap.v20180529.models.RuleCheckParams`
+        :param ForwardProtocol: Protocol types of the forwarding from acceleration connection to origin server, which supports HTTP or HTTPS.
+If this field is not passed in, it indicates that the ForwardProtocol of the corresponding listener will be used.
+        :type ForwardProtocol: str
+        :param ForwardHost: Remote host to which the acceleration connection forwards. If this parameter is not specified, the default host will be used, i.e., the host with which the client initiates HTTP requests.
+        :type ForwardHost: str
         """
-        :param ListenerId: Layer-7 listener ID\n        :type ListenerId: str\n        :param Domain: Domain name of the forwarding rule\n        :type Domain: str\n        :param Path: Path of the forwarding rule\n        :type Path: str\n        :param RealServerType: The origin server type of the forwarding rule, which supports IP and DOMAIN types.\n        :type RealServerType: str\n        :param Scheduler: Forwarding rules of origin server, which supports round robin (rr), weighted round robin (wrr), and least connections (lc).\n        :type Scheduler: str\n        :param HealthCheck: Whether the health check is enabled for rules. 1: enabled; 0: disabled.\n        :type HealthCheck: int\n        :param CheckParams: Parameters related to origin server health check\n        :type CheckParams: :class:`tencentcloud.gaap.v20180529.models.RuleCheckParams`\n        :param ForwardProtocol: Protocol types of the forwarding from acceleration connection to origin server, which supports HTTP or HTTPS.
-If this field is not passed in, it indicates that the ForwardProtocol of the corresponding listener will be used.\n        :type ForwardProtocol: str\n        :param ForwardHost: Remote host to which the acceleration connection forwards. If this parameter is not specified, the default host will be used, i.e., the host with which the client initiates HTTP requests.\n        :type ForwardHost: str\n        """
         self.ListenerId = None
         self.Domain = None
         self.Path = None
@@ -1135,8 +1497,12 @@ class CreateRuleResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RuleId: The ID of the successfully created forwarding rule
+        :type RuleId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RuleId: The ID of the successfully created forwarding rule\n        :type RuleId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RuleId = None
         self.RequestId = None
 
@@ -1152,8 +1518,14 @@ class CreateSecurityPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DefaultAction: Default policy: ACCEPT or DROP
+        :type DefaultAction: str
+        :param ProxyId: Acceleration connection ID
+        :type ProxyId: str
+        :param GroupId: Connection group ID
+        :type GroupId: str
         """
-        :param DefaultAction: Default policy: ACCEPT or DROP\n        :type DefaultAction: str\n        :param ProxyId: Acceleration connection ID\n        :type ProxyId: str\n        :param GroupId: Connection group ID\n        :type GroupId: str\n        """
         self.DefaultAction = None
         self.ProxyId = None
         self.GroupId = None
@@ -1178,8 +1550,12 @@ class CreateSecurityPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyId: Security policy ID
+        :type PolicyId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param PolicyId: Security policy ID\n        :type PolicyId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PolicyId = None
         self.RequestId = None
 
@@ -1195,8 +1571,12 @@ class CreateSecurityRulesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyId: Security policy ID
+        :type PolicyId: str
+        :param RuleList: List of access rules
+        :type RuleList: list of SecurityPolicyRuleIn
         """
-        :param PolicyId: Security policy ID\n        :type PolicyId: str\n        :param RuleList: List of access rules\n        :type RuleList: list of SecurityPolicyRuleIn\n        """
         self.PolicyId = None
         self.RuleList = None
 
@@ -1224,8 +1604,12 @@ class CreateSecurityRulesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RuleIdList: List of rule IDs
+        :type RuleIdList: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RuleIdList: List of rule IDs\n        :type RuleIdList: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RuleIdList = None
         self.RequestId = None
 
@@ -1241,8 +1625,36 @@ class CreateTCPListenersRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ListenerName: Listener name.
+        :type ListenerName: str
+        :param Ports: List of listener ports.
+        :type Ports: list of int non-negative
+        :param Scheduler: Origin server scheduling policy of listeners, which supports round robin (rr), weighted round robin (wrr), and least connections (lc).
+        :type Scheduler: str
+        :param HealthCheck: Whether origin server has the health check enabled. 1: enabled; 0: disabled. UDP listeners do not support health check.
+        :type HealthCheck: int
+        :param RealServerType: The origin server type of listeners, supporting IP or DOMAIN type. The DOMAIN origin servers do not support the weighted round robin.
+        :type RealServerType: str
+        :param ProxyId: Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
+        :type ProxyId: str
+        :param GroupId: Connection group ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
+        :type GroupId: str
+        :param DelayLoop: Time interval of origin server health check (unit: seconds). Value range: [5, 300].
+        :type DelayLoop: int
+        :param ConnectTimeout: Response timeout of origin server health check (unit: seconds). Value range: [2, 60]. The timeout value shall be less than the time interval for health check DelayLoop.
+        :type ConnectTimeout: int
+        :param RealServerPorts: List of origin server ports, which only supports the listeners of version 1.0 and connection group.
+        :type RealServerPorts: list of int non-negative
+        :param ClientIPMethod: Listener methods of getting client IPs. 0: TOA; 1: Proxy Protocol.
+        :type ClientIPMethod: int
+        :param FailoverSwitch: Whether to enable the primary/secondary origin server mode. Valid values: 1 (enable) and 0 (disable). It cannot be enabled for domain name origin servers.
+        :type FailoverSwitch: int
+        :param HealthyThreshold: Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.
+        :type HealthyThreshold: int
+        :param UnhealthyThreshold: Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 - 10.
+        :type UnhealthyThreshold: int
         """
-        :param ListenerName: Listener name.\n        :type ListenerName: str\n        :param Ports: List of listener ports.\n        :type Ports: list of int non-negative\n        :param Scheduler: Origin server scheduling policy of listeners, which supports round robin (rr), weighted round robin (wrr), and least connections (lc).\n        :type Scheduler: str\n        :param HealthCheck: Whether origin server has the health check enabled. 1: enabled; 0: disabled. UDP listeners do not support health check.\n        :type HealthCheck: int\n        :param RealServerType: The origin server type of listeners, supporting IP or DOMAIN type. The DOMAIN origin servers do not support the weighted round robin.\n        :type RealServerType: str\n        :param ProxyId: Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.\n        :type ProxyId: str\n        :param GroupId: Connection group ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.\n        :type GroupId: str\n        :param DelayLoop: Time interval of origin server health check (unit: seconds). Value range: [5, 300].\n        :type DelayLoop: int\n        :param ConnectTimeout: Response timeout of origin server health check (unit: seconds). Value range: [2, 60]. The timeout value shall be less than the time interval for health check DelayLoop.\n        :type ConnectTimeout: int\n        :param RealServerPorts: List of origin server ports, which only supports the listeners of version 1.0 and connection group.\n        :type RealServerPorts: list of int non-negative\n        :param ClientIPMethod: Listener methods of getting client IPs. 0: TOA; 1: Proxy Protocol.\n        :type ClientIPMethod: int\n        :param FailoverSwitch: Whether to enable the primary/secondary origin server mode. Valid values: 1 (enable) and 0 (disable). It cannot be enabled for domain name origin servers.\n        :type FailoverSwitch: int\n        :param HealthyThreshold: Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.\n        :type HealthyThreshold: int\n        :param UnhealthyThreshold: Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 - 10.\n        :type UnhealthyThreshold: int\n        """
         self.ListenerName = None
         self.Ports = None
         self.Scheduler = None
@@ -1289,8 +1701,12 @@ class CreateTCPListenersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ListenerIds: Returns the listener ID
+        :type ListenerIds: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param ListenerIds: Returns the listener ID\n        :type ListenerIds: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ListenerIds = None
         self.RequestId = None
 
@@ -1306,8 +1722,22 @@ class CreateUDPListenersRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ListenerName: Listener name
+        :type ListenerName: str
+        :param Ports: List of listener ports
+        :type Ports: list of int non-negative
+        :param Scheduler: Origin server scheduling policy of listeners, which supports round robin (rr), weighted round robin (wrr), and least connections (lc).
+        :type Scheduler: str
+        :param RealServerType: Origin server type of listeners, which supports IP or DOMAIN type.
+        :type RealServerType: str
+        :param ProxyId: Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
+        :type ProxyId: str
+        :param GroupId: Connection group ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
+        :type GroupId: str
+        :param RealServerPorts: List of origin server ports, which only supports the listeners of version 1.0 and connection group.
+        :type RealServerPorts: list of int non-negative
         """
-        :param ListenerName: Listener name\n        :type ListenerName: str\n        :param Ports: List of listener ports\n        :type Ports: list of int non-negative\n        :param Scheduler: Origin server scheduling policy of listeners, which supports round robin (rr), weighted round robin (wrr), and least connections (lc).\n        :type Scheduler: str\n        :param RealServerType: Origin server type of listeners, which supports IP or DOMAIN type.\n        :type RealServerType: str\n        :param ProxyId: Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.\n        :type ProxyId: str\n        :param GroupId: Connection group ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.\n        :type GroupId: str\n        :param RealServerPorts: List of origin server ports, which only supports the listeners of version 1.0 and connection group.\n        :type RealServerPorts: list of int non-negative\n        """
         self.ListenerName = None
         self.Ports = None
         self.Scheduler = None
@@ -1340,8 +1770,12 @@ class CreateUDPListenersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ListenerIds: Returns the listener ID
+        :type ListenerIds: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param ListenerIds: Returns the listener ID\n        :type ListenerIds: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ListenerIds = None
         self.RequestId = None
 
@@ -1357,8 +1791,10 @@ class DeleteCertificateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CertificateId: ID of the certificate to be deleted.
+        :type CertificateId: str
         """
-        :param CertificateId: ID of the certificate to be deleted.\n        :type CertificateId: str\n        """
         self.CertificateId = None
 
 
@@ -1379,8 +1815,10 @@ class DeleteCertificateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1394,8 +1832,10 @@ class DeleteDomainErrorPageInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ErrorPageId: Unique ID of a custom error page. For more information, please see the response to CreateDomainErrorPageInfo.
+        :type ErrorPageId: str
         """
-        :param ErrorPageId: Unique ID of a custom error page. For more information, please see the response to CreateDomainErrorPageInfo.\n        :type ErrorPageId: str\n        """
         self.ErrorPageId = None
 
 
@@ -1416,8 +1856,10 @@ class DeleteDomainErrorPageInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1431,9 +1873,15 @@ class DeleteDomainRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ListenerId: Listener ID
+        :type ListenerId: str
+        :param Domain: Domain name to be deleted
+        :type Domain: str
+        :param Force: Whether to make a forced deletion of forwarding rules that have been bound to origin servers. 0: no; 1: yes.
+When not making a forced deletion, if there are rules bound to origin servers, they will not be deleted.
+        :type Force: int
         """
-        :param ListenerId: Listener ID\n        :type ListenerId: str\n        :param Domain: Domain name to be deleted\n        :type Domain: str\n        :param Force: Whether to make a forced deletion of forwarding rules that have been bound to origin servers. 0: no; 1: yes.
-When not making a forced deletion, if there are rules bound to origin servers, they will not be deleted.\n        :type Force: int\n        """
         self.ListenerId = None
         self.Domain = None
         self.Force = None
@@ -1458,8 +1906,10 @@ class DeleteDomainResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1473,8 +1923,16 @@ class DeleteListenersRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ListenerIds: ID list of listeners to be deleted
+        :type ListenerIds: list of str
+        :param Force: Whether to allow a forced deletion of listeners that have been bound to origin servers. 1: allowed; 0: not allow.
+        :type Force: int
+        :param GroupId: Connection group ID; Either this parameter or `GroupId` must be set, but you cannot set both.
+        :type GroupId: str
+        :param ProxyId: Connection ID; Either this parameter or `GroupId` must be set, but you cannot set both.
+        :type ProxyId: str
         """
-        :param ListenerIds: ID list of listeners to be deleted\n        :type ListenerIds: list of str\n        :param Force: Whether to allow a forced deletion of listeners that have been bound to origin servers. 1: allowed; 0: not allow.\n        :type Force: int\n        :param GroupId: Connection group ID; Either this parameter or `GroupId` must be set, but you cannot set both.\n        :type GroupId: str\n        :param ProxyId: Connection ID; Either this parameter or `GroupId` must be set, but you cannot set both.\n        :type ProxyId: str\n        """
         self.ListenerIds = None
         self.Force = None
         self.GroupId = None
@@ -1501,8 +1959,16 @@ class DeleteListenersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OperationFailedListenerSet: ID list of listeners failed to be deleted
+        :type OperationFailedListenerSet: list of str
+        :param OperationSucceedListenerSet: ID list of listeners deleted successfully
+        :type OperationSucceedListenerSet: list of str
+        :param InvalidStatusListenerSet: ID list of invalid listeners. For example: the listener does not exist, or the instance corresponding to the listener does not match.
+        :type InvalidStatusListenerSet: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param OperationFailedListenerSet: ID list of listeners failed to be deleted\n        :type OperationFailedListenerSet: list of str\n        :param OperationSucceedListenerSet: ID list of listeners deleted successfully\n        :type OperationSucceedListenerSet: list of str\n        :param InvalidStatusListenerSet: ID list of invalid listeners. For example: the listener does not exist, or the instance corresponding to the listener does not match.\n        :type InvalidStatusListenerSet: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.OperationFailedListenerSet = None
         self.OperationSucceedListenerSet = None
         self.InvalidStatusListenerSet = None
@@ -1522,11 +1988,15 @@ class DeleteProxyGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param GroupId: ID of the connection group to be deleted.\n        :type GroupId: str\n        :param Force: Whether to enable forced deletion. Valid values:
+        r"""
+        :param GroupId: ID of the connection group to be deleted.
+        :type GroupId: str
+        :param Force: Whether to enable forced deletion. Valid values:
 0: no;
 1: yes.
-Default value: 0. If there is a connection or listener/rule bound to an origin server in the connection group and `Force` is 0, the operation will return a failure.\n        :type Force: int\n        """
+Default value: 0. If there is a connection or listener/rule bound to an origin server in the connection group and `Force` is 0, the operation will return a failure.
+        :type Force: int
+        """
         self.GroupId = None
         self.Force = None
 
@@ -1549,8 +2019,10 @@ class DeleteProxyGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1564,8 +2036,14 @@ class DeleteRuleRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ListenerId: Layer-7 listener ID
+        :type ListenerId: str
+        :param RuleId: Forwarding rule ID
+        :type RuleId: str
+        :param Force: Whether to make a forced deletion of forwarding rules that have been bound to origin servers. 0: no; 1: yes.
+        :type Force: int
         """
-        :param ListenerId: Layer-7 listener ID\n        :type ListenerId: str\n        :param RuleId: Forwarding rule ID\n        :type RuleId: str\n        :param Force: Whether to make a forced deletion of forwarding rules that have been bound to origin servers. 0: no; 1: yes.\n        :type Force: int\n        """
         self.ListenerId = None
         self.RuleId = None
         self.Force = None
@@ -1590,8 +2068,10 @@ class DeleteRuleResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1605,8 +2085,10 @@ class DeleteSecurityPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyId: Policy ID
+        :type PolicyId: str
         """
-        :param PolicyId: Policy ID\n        :type PolicyId: str\n        """
         self.PolicyId = None
 
 
@@ -1627,8 +2109,10 @@ class DeleteSecurityPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1642,8 +2126,12 @@ class DeleteSecurityRulesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyId: Security policy ID
+        :type PolicyId: str
+        :param RuleIdList: List of access rule IDs
+        :type RuleIdList: list of str
         """
-        :param PolicyId: Security policy ID\n        :type PolicyId: str\n        :param RuleIdList: List of access rule IDs\n        :type RuleIdList: list of str\n        """
         self.PolicyId = None
         self.RuleIdList = None
 
@@ -1666,8 +2154,10 @@ class DeleteSecurityRulesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1681,8 +2171,12 @@ class DescribeAccessRegionsByDestRegionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DestRegion: Origin server region: the DescribeDestRegions API returns the value of `RegionId` field of `DestRegionSet`.
+        :type DestRegion: str
+        :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.
+        :type IPAddressVersion: str
         """
-        :param DestRegion: Origin server region: the DescribeDestRegions API returns the value of `RegionId` field of `DestRegionSet`.\n        :type DestRegion: str\n        :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.\n        :type IPAddressVersion: str\n        """
         self.DestRegion = None
         self.IPAddressVersion = None
 
@@ -1705,8 +2199,14 @@ class DescribeAccessRegionsByDestRegionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: The number of available acceleration regions
+        :type TotalCount: int
+        :param AccessRegionSet: List of available acceleration region information
+        :type AccessRegionSet: list of AccessRegionDetial
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: The number of available acceleration regions\n        :type TotalCount: int\n        :param AccessRegionSet: List of available acceleration region information\n        :type AccessRegionSet: list of AccessRegionDetial\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.AccessRegionSet = None
         self.RequestId = None
@@ -1735,8 +2235,14 @@ class DescribeAccessRegionsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total quantity of acceleration regions
+        :type TotalCount: int
+        :param AccessRegionSet: Acceleration region details list
+        :type AccessRegionSet: list of RegionDetail
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total quantity of acceleration regions\n        :type TotalCount: int\n        :param AccessRegionSet: Acceleration region details list\n        :type AccessRegionSet: list of RegionDetail\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.AccessRegionSet = None
         self.RequestId = None
@@ -1753,14 +2259,44 @@ class DescribeAccessRegionsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBlackHeaderRequest(AbstractModel):
+    """DescribeBlackHeader request structure.
+
+    """
+
+
+class DescribeBlackHeaderResponse(AbstractModel):
+    """DescribeBlackHeader response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BlackHeaders: List of blocked custom headers
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type BlackHeaders: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.BlackHeaders = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BlackHeaders = params.get("BlackHeaders")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCertificateDetailRequest(AbstractModel):
     """DescribeCertificateDetail request structure.
 
     """
 
     def __init__(self):
+        r"""
+        :param CertificateId: Certificate ID.
+        :type CertificateId: str
         """
-        :param CertificateId: Certificate ID.\n        :type CertificateId: str\n        """
         self.CertificateId = None
 
 
@@ -1781,8 +2317,12 @@ class DescribeCertificateDetailResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CertificateDetail: Certificate Details.
+        :type CertificateDetail: :class:`tencentcloud.gaap.v20180529.models.CertificateDetail`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param CertificateDetail: Certificate Details.\n        :type CertificateDetail: :class:`tencentcloud.gaap.v20180529.models.CertificateDetail`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.CertificateDetail = None
         self.RequestId = None
 
@@ -1800,7 +2340,7 @@ class DescribeCertificatesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateType: Certificate type. Where:
 0: basic authentication configuration;
 1: client CA certificate;
@@ -1808,7 +2348,13 @@ class DescribeCertificatesRequest(AbstractModel):
 3: origin server CA certificate;
 4: connection SSL certificate.
 -1: all types.
-The default value is -1.\n        :type CertificateType: int\n        :param Offset: Offset. The default value is 0.\n        :type Offset: int\n        :param Limit: Quantity limit. The default value is 20.\n        :type Limit: int\n        """
+The default value is -1.
+        :type CertificateType: int
+        :param Offset: Offset. The default value is 0.
+        :type Offset: int
+        :param Limit: Quantity limit. The default value is 20.
+        :type Limit: int
+        """
         self.CertificateType = None
         self.Offset = None
         self.Limit = None
@@ -1833,8 +2379,14 @@ class DescribeCertificatesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CertificateSet: Server certificate list, which includes certificate ID and certificate name.
+        :type CertificateSet: list of Certificate
+        :param TotalCount: Total quantity of server certificates that match the query conditions.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param CertificateSet: Server certificate list, which includes certificate ID and certificate name.\n        :type CertificateSet: list of Certificate\n        :param TotalCount: Total quantity of server certificates that match the query conditions.\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.CertificateSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -1863,8 +2415,12 @@ class DescribeCountryAreaMappingResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CountryAreaMappingList: Country/region code mapping table
+        :type CountryAreaMappingList: list of CountryAreaMap
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param CountryAreaMappingList: Country/region code mapping table\n        :type CountryAreaMappingList: list of CountryAreaMap\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.CountryAreaMappingList = None
         self.RequestId = None
 
@@ -1876,6 +2432,44 @@ class DescribeCountryAreaMappingResponse(AbstractModel):
                 obj = CountryAreaMap()
                 obj._deserialize(item)
                 self.CountryAreaMappingList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCustomHeaderRequest(AbstractModel):
+    """DescribeCustomHeader request structure.
+
+    """
+
+
+class DescribeCustomHeaderResponse(AbstractModel):
+    """DescribeCustomHeader response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: Rule ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RuleId: str
+        :param Headers: List of custom headers
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Headers: list of HttpHeaderParam
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RuleId = None
+        self.Headers = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        if params.get("Headers") is not None:
+            self.Headers = []
+            for item in params.get("Headers"):
+                obj = HttpHeaderParam()
+                obj._deserialize(item)
+                self.Headers.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1891,8 +2485,14 @@ class DescribeDestRegionsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of origin server regions
+        :type TotalCount: int
+        :param DestRegionSet: List of origin server region details
+        :type DestRegionSet: list of RegionDetail
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of origin server regions\n        :type TotalCount: int\n        :param DestRegionSet: List of origin server region details\n        :type DestRegionSet: list of RegionDetail\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.DestRegionSet = None
         self.RequestId = None
@@ -1915,8 +2515,10 @@ class DescribeDomainErrorPageInfoByIdsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ErrorPageIds: List of custom error IDs. Up to 10 IDs are supported
+        :type ErrorPageIds: list of str
         """
-        :param ErrorPageIds: List of custom error IDs. Up to 10 IDs are supported\n        :type ErrorPageIds: list of str\n        """
         self.ErrorPageIds = None
 
 
@@ -1937,9 +2539,13 @@ class DescribeDomainErrorPageInfoByIdsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrorPageSet: Configuration set of custom error responses
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ErrorPageSet: list of DomainErrorPageInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ErrorPageSet: list of DomainErrorPageInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.ErrorPageSet = None
         self.RequestId = None
 
@@ -1960,8 +2566,12 @@ class DescribeDomainErrorPageInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ListenerId: Listener ID
+        :type ListenerId: str
+        :param Domain: Domain name
+        :type Domain: str
         """
-        :param ListenerId: Listener ID\n        :type ListenerId: str\n        :param Domain: Domain name\n        :type Domain: str\n        """
         self.ListenerId = None
         self.Domain = None
 
@@ -1984,9 +2594,13 @@ class DescribeDomainErrorPageInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrorPageSet: Configuration set of a custom error response
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type ErrorPageSet: list of DomainErrorPageInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorPageSet: list of DomainErrorPageInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.ErrorPageSet = None
         self.RequestId = None
 
@@ -2007,8 +2621,10 @@ class DescribeGroupAndStatisticsProxyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProjectId: Project ID
+        :type ProjectId: int
         """
-        :param ProjectId: Project ID\n        :type ProjectId: int\n        """
         self.ProjectId = None
 
 
@@ -2029,8 +2645,14 @@ class DescribeGroupAndStatisticsProxyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupSet: Information of connection groups that the statistics can be derived from
+        :type GroupSet: list of GroupStatisticsInfo
+        :param TotalCount: Connection group quantity
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param GroupSet: Information of connection groups that the statistics can be derived from\n        :type GroupSet: list of GroupStatisticsInfo\n        :param TotalCount: Connection group quantity\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.GroupSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -2053,8 +2675,10 @@ class DescribeGroupDomainConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: Connection group ID.
+        :type GroupId: str
         """
-        :param GroupId: Connection group ID.\n        :type GroupId: str\n        """
         self.GroupId = None
 
 
@@ -2075,8 +2699,18 @@ class DescribeGroupDomainConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AccessRegionList: Nearest access configuration list of domain name resolution.
+        :type AccessRegionList: list of DomainAccessRegionDict
+        :param DefaultDnsIp: Default accesses Ip.
+        :type DefaultDnsIp: str
+        :param GroupId: Connection group ID.
+        :type GroupId: str
+        :param AccessRegionCount: Total number of configuration of access regions.
+        :type AccessRegionCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param AccessRegionList: Nearest access configuration list of domain name resolution.\n        :type AccessRegionList: list of DomainAccessRegionDict\n        :param DefaultDnsIp: Default accesses Ip.\n        :type DefaultDnsIp: str\n        :param GroupId: Connection group ID.\n        :type GroupId: str\n        :param AccessRegionCount: Total number of configuration of access regions.\n        :type AccessRegionCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.AccessRegionList = None
         self.DefaultDnsIp = None
         self.GroupId = None
@@ -2103,8 +2737,24 @@ class DescribeHTTPListenersRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProxyId: Connection ID
+        :type ProxyId: str
+        :param ListenerId: Filter condition. Exact query by listener IDs.
+        :type ListenerId: str
+        :param ListenerName: Filter condition. Exact query by listener names.
+        :type ListenerName: str
+        :param Port: Filter condition. Exact query by listener ports.
+        :type Port: int
+        :param Offset: Offset. The default value is 0.
+        :type Offset: int
+        :param Limit: Quantity limit. The default value is 20.
+        :type Limit: int
+        :param SearchValue: Filter condition. It supports fuzzy query by ports or listener names. This parameter cannot be used with `ListenerName` or `Port`.
+        :type SearchValue: str
+        :param GroupId: Connection group ID
+        :type GroupId: str
         """
-        :param ProxyId: Connection ID\n        :type ProxyId: str\n        :param ListenerId: Filter condition. Exact query by listener IDs.\n        :type ListenerId: str\n        :param ListenerName: Filter condition. Exact query by listener names.\n        :type ListenerName: str\n        :param Port: Filter condition. Exact query by listener ports.\n        :type Port: int\n        :param Offset: Offset. The default value is 0.\n        :type Offset: int\n        :param Limit: Quantity limit. The default value is 20.\n        :type Limit: int\n        :param SearchValue: Filter condition. It supports fuzzy query by ports or listener names. This parameter cannot be used with `ListenerName` or `Port`.\n        :type SearchValue: str\n        :param GroupId: Connection group ID\n        :type GroupId: str\n        """
         self.ProxyId = None
         self.ListenerId = None
         self.ListenerName = None
@@ -2139,8 +2789,14 @@ class DescribeHTTPListenersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Quantity of listeners
+        :type TotalCount: int
+        :param ListenerSet: HTTP listener list
+        :type ListenerSet: list of HTTPListener
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Quantity of listeners\n        :type TotalCount: int\n        :param ListenerSet: HTTP listener list\n        :type ListenerSet: list of HTTPListener\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ListenerSet = None
         self.RequestId = None
@@ -2163,8 +2819,24 @@ class DescribeHTTPSListenersRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProxyId: Filter condition. Connection ID.
+        :type ProxyId: str
+        :param ListenerId: Filter condition. Exact query by listener IDs.
+        :type ListenerId: str
+        :param ListenerName: Filter condition. Exact query by listener names.
+        :type ListenerName: str
+        :param Port: Filter condition. Exact query by listener ports.
+        :type Port: int
+        :param Offset: Offset. The default value is 0
+        :type Offset: int
+        :param Limit: Quantity limit. The default value is 20.
+        :type Limit: int
+        :param SearchValue: Filter condition. It supports fuzzy query by ports or listener names.
+        :type SearchValue: str
+        :param GroupId: Connection group ID as a filter
+        :type GroupId: str
         """
-        :param ProxyId: Filter condition. Connection ID.\n        :type ProxyId: str\n        :param ListenerId: Filter condition. Exact query by listener IDs.\n        :type ListenerId: str\n        :param ListenerName: Filter condition. Exact query by listener names.\n        :type ListenerName: str\n        :param Port: Filter condition. Exact query by listener ports.\n        :type Port: int\n        :param Offset: Offset. The default value is 0\n        :type Offset: int\n        :param Limit: Quantity limit. The default value is 20.\n        :type Limit: int\n        :param SearchValue: Filter condition. It supports fuzzy query by ports or listener names.\n        :type SearchValue: str\n        :param GroupId: Connection group ID as a filter\n        :type GroupId: str\n        """
         self.ProxyId = None
         self.ListenerId = None
         self.ListenerName = None
@@ -2199,8 +2871,14 @@ class DescribeHTTPSListenersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Quantity of listeners
+        :type TotalCount: int
+        :param ListenerSet: HTTPS listener list
+        :type ListenerSet: list of HTTPSListener
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Quantity of listeners\n        :type TotalCount: int\n        :param ListenerSet: HTTPS listener list\n        :type ListenerSet: list of HTTPSListener\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ListenerSet = None
         self.RequestId = None
@@ -2223,8 +2901,10 @@ class DescribeListenerRealServersRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ListenerId: Listener ID
+        :type ListenerId: str
         """
-        :param ListenerId: Listener ID\n        :type ListenerId: str\n        """
         self.ListenerId = None
 
 
@@ -2245,8 +2925,18 @@ class DescribeListenerRealServersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of origin servers that can be bound
+        :type TotalCount: int
+        :param RealServerSet: An information list of origin servers
+        :type RealServerSet: list of RealServer
+        :param BindRealServerTotalCount: Number of bound origin servers
+        :type BindRealServerTotalCount: int
+        :param BindRealServerSet: Information list of bound origin servers
+        :type BindRealServerSet: list of BindRealServer
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of origin servers that can be bound\n        :type TotalCount: int\n        :param RealServerSet: An information list of origin servers\n        :type RealServerSet: list of RealServer\n        :param BindRealServerTotalCount: Number of bound origin servers\n        :type BindRealServerTotalCount: int\n        :param BindRealServerSet: Information list of bound origin servers\n        :type BindRealServerSet: list of BindRealServer\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.RealServerSet = None
         self.BindRealServerTotalCount = None
@@ -2278,11 +2968,21 @@ class DescribeListenerStatisticsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ListenerId: Listener ID\n        :type ListenerId: str\n        :param StartTime: Start time\n        :type StartTime: str\n        :param EndTime: End time\n        :type EndTime: str\n        :param MetricNames: Statistical metric name list. It supports:["InBandwidth", "OutBandwidth", "Concurrent", "InPackets", "OutPackets"]\n        :type MetricNames: list of str\n        :param Granularity: Monitoring granularity. It currently supports: 300, 3,600, and 86,400. Unit: seconds.
+        r"""
+        :param ListenerId: Listener ID
+        :type ListenerId: str
+        :param StartTime: Start time
+        :type StartTime: str
+        :param EndTime: End time
+        :type EndTime: str
+        :param MetricNames: Statistical metric name list. It supports:["InBandwidth", "OutBandwidth", "Concurrent", "InPackets", "OutPackets"]
+        :type MetricNames: list of str
+        :param Granularity: Monitoring granularity. It currently supports: 300, 3,600, and 86,400. Unit: seconds.
 Time range: <= 1 day, supported minimum granularity: 300 seconds;
 Time range: <= 7 days, supported minimum granularity:3,600 seconds;
-Time range: > 7 days, supported minimum granularity:86,400 seconds;\n        :type Granularity: int\n        """
+Time range: > 7 days, supported minimum granularity:86,400 seconds;
+        :type Granularity: int
+        """
         self.ListenerId = None
         self.StartTime = None
         self.EndTime = None
@@ -2311,8 +3011,12 @@ class DescribeListenerStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StatisticsData: Connection group statistics
+        :type StatisticsData: list of MetricStatisticsInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param StatisticsData: Connection group statistics\n        :type StatisticsData: list of MetricStatisticsInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.StatisticsData = None
         self.RequestId = None
 
@@ -2333,17 +3037,31 @@ class DescribeProxiesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param InstanceIds: Queries by one or multiple instance IDs. The upper limit on the number of instances for each request is 100. This parameter does not support specifying InstanceIds and Filters at the same time. It's an old parameter, please switch to ProxyIds.\n        :type InstanceIds: list of str\n        :param Offset: Offset. The default value is 0.\n        :type Offset: int\n        :param Limit: Number of results to be returned. The default value is 20, and the maximum value is 100.\n        :type Limit: int\n        :param Filters: Filter condition   
+        r"""
+        :param InstanceIds: Queries by one or multiple instance IDs. The upper limit on the number of instances for each request is 100. This parameter does not support specifying InstanceIds and Filters at the same time. It's an old parameter, please switch to ProxyIds.
+        :type InstanceIds: list of str
+        :param Offset: Offset. The default value is 0.
+        :type Offset: int
+        :param Limit: Number of results to be returned. The default value is 20, and the maximum value is 100.
+        :type Limit: int
+        :param Filters: Filter condition   
 The upper limit for `Filters` in each request is 10 and 5 for `Filter.Values`. You cannot specify both `InstanceIds` and `Filters` with this parameter. 
 ProjectId - String - Required: No - Filter by project ID.   
 AccessRegion - String - Required: No - Filter by access region.    
 RealServerRegion - String - Required: No - Filter by origin server region.
 GroupId - String - Required: No - Filter by connection group ID.
-IPAddressVersion - String - Required: No - Filter by IP version.\n        :type Filters: list of Filter\n        :param ProxyIds: Queries by one or multiple instance IDs. The upper limit on the number of instances for each request is 100. This parameter does not support specifying InstanceIds and Filters at the same time. It's a new parameter, and replaces InstanceIds.\n        :type ProxyIds: list of str\n        :param TagSet: Tag list. If this field exists, the list of the resources with the tag will be pulled.
-It supports up to 5 tags. If there are two or more tags, the connections tagged any of them will be pulled.\n        :type TagSet: list of TagPair\n        :param Independent: When this field is 1, only not-grouped connections are pulled.
+IPAddressVersion - String - Required: No - Filter by IP version.
+        :type Filters: list of Filter
+        :param ProxyIds: Queries by one or multiple instance IDs. The upper limit on the number of instances for each request is 100. This parameter does not support specifying InstanceIds and Filters at the same time. It's a new parameter, and replaces InstanceIds.
+        :type ProxyIds: list of str
+        :param TagSet: Tag list. If this field exists, the list of the resources with the tag will be pulled.
+It supports up to 5 tags. If there are two or more tags, the connections tagged any of them will be pulled.
+        :type TagSet: list of TagPair
+        :param Independent: When this field is 1, only not-grouped connections are pulled.
 When this field is 0, only grouped connections are pulled.
-When this field does not exist, all connections are pulled, including both not-grouped and grouped connections.\n        :type Independent: int\n        """
+When this field does not exist, all connections are pulled, including both not-grouped and grouped connections.
+        :type Independent: int
+        """
         self.InstanceIds = None
         self.Offset = None
         self.Limit = None
@@ -2386,8 +3104,16 @@ class DescribeProxiesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of connections.
+        :type TotalCount: int
+        :param InstanceSet: Connection instance information list; It's an old parameter, please switch to ProxySet.
+        :type InstanceSet: list of ProxyInfo
+        :param ProxySet: Connection instance information list; It's a new parameter.
+        :type ProxySet: list of ProxyInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of connections.\n        :type TotalCount: int\n        :param InstanceSet: Connection instance information list; It's an old parameter, please switch to ProxySet.\n        :type InstanceSet: list of ProxyInfo\n        :param ProxySet: Connection instance information list; It's a new parameter.\n        :type ProxySet: list of ProxyInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.InstanceSet = None
         self.ProxySet = None
@@ -2417,8 +3143,12 @@ class DescribeProxiesStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceIds: Connection ID list; It's an old parameter, please switch to ProxyIds.
+        :type InstanceIds: list of str
+        :param ProxyIds: Connection ID list; It's a new parameter.
+        :type ProxyIds: list of str
         """
-        :param InstanceIds: Connection ID list; It's an old parameter, please switch to ProxyIds.\n        :type InstanceIds: list of str\n        :param ProxyIds: Connection ID list; It's a new parameter.\n        :type ProxyIds: list of str\n        """
         self.InstanceIds = None
         self.ProxyIds = None
 
@@ -2441,8 +3171,12 @@ class DescribeProxiesStatusResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceStatusSet: Connection status list.
+        :type InstanceStatusSet: list of ProxyStatus
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param InstanceStatusSet: Connection status list.\n        :type InstanceStatusSet: list of ProxyStatus\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InstanceStatusSet = None
         self.RequestId = None
 
@@ -2463,8 +3197,10 @@ class DescribeProxyAndStatisticsListenersRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProjectId: Project ID
+        :type ProjectId: int
         """
-        :param ProjectId: Project ID\n        :type ProjectId: int\n        """
         self.ProjectId = None
 
 
@@ -2485,8 +3221,14 @@ class DescribeProxyAndStatisticsListenersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProxySet: Information of connections that the statistics can be derived from
+        :type ProxySet: list of ProxySimpleInfo
+        :param TotalCount: Quantity of connections
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param ProxySet: Information of connections that the statistics can be derived from\n        :type ProxySet: list of ProxySimpleInfo\n        :param TotalCount: Quantity of connections\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ProxySet = None
         self.TotalCount = None
         self.RequestId = None
@@ -2509,8 +3251,10 @@ class DescribeProxyDetailRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProxyId: Connection ID to be queried.
+        :type ProxyId: str
         """
-        :param ProxyId: Connection ID to be queried.\n        :type ProxyId: str\n        """
         self.ProxyId = None
 
 
@@ -2531,8 +3275,12 @@ class DescribeProxyDetailResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProxyDetail: Connection details
+        :type ProxyDetail: :class:`tencentcloud.gaap.v20180529.models.ProxyInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param ProxyDetail: Connection details\n        :type ProxyDetail: :class:`tencentcloud.gaap.v20180529.models.ProxyInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ProxyDetail = None
         self.RequestId = None
 
@@ -2550,8 +3298,10 @@ class DescribeProxyGroupDetailsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: Connection group ID.
+        :type GroupId: str
         """
-        :param GroupId: Connection group ID.\n        :type GroupId: str\n        """
         self.GroupId = None
 
 
@@ -2572,8 +3322,12 @@ class DescribeProxyGroupDetailsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProxyGroupDetail: Connection group details
+        :type ProxyGroupDetail: :class:`tencentcloud.gaap.v20180529.models.ProxyGroupDetail`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param ProxyGroupDetail: Connection group details\n        :type ProxyGroupDetail: :class:`tencentcloud.gaap.v20180529.models.ProxyGroupDetail`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ProxyGroupDetail = None
         self.RequestId = None
 
@@ -2591,14 +3345,24 @@ class DescribeProxyGroupListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Offset: Offset. The default value is 0.\n        :type Offset: int\n        :param Limit: Number of returned results. The default value is 20. The maximum value is 100.\n        :type Limit: int\n        :param ProjectId: Project ID. Value range:
+        r"""
+        :param Offset: Offset. The default value is 0.
+        :type Offset: int
+        :param Limit: Number of returned results. The default value is 20. The maximum value is 100.
+        :type Limit: int
+        :param ProjectId: Project ID. Value range:
 -1: all projects of this user
 0: default project
-Other values: specified project\n        :type ProjectId: int\n        :param TagSet: Tag list. If this field exists, the list of the resources with the tag will be pulled.
-It supports up to 5 tags. If there are two or more tags, the connection groups tagged any of them will be pulled.\n        :type TagSet: list of TagPair\n        :param Filters: Filter conditions.   
+Other values: specified project
+        :type ProjectId: int
+        :param TagSet: Tag list. If this field exists, the list of the resources with the tag will be pulled.
+It supports up to 5 tags. If there are two or more tags, the connection groups tagged any of them will be pulled.
+        :type TagSet: list of TagPair
+        :param Filters: Filter conditions.   
 The limit on Filter.Values of each request is 5.
-RealServerRegion - String - Required: No - Filter by origin server region; Refer to the RegionId in the results returned by DescribeDestRegions API.\n        :type Filters: list of Filter\n        """
+RealServerRegion - String - Required: No - Filter by origin server region; Refer to the RegionId in the results returned by DescribeDestRegions API.
+        :type Filters: list of Filter
+        """
         self.Offset = None
         self.Limit = None
         self.ProjectId = None
@@ -2637,9 +3401,15 @@ class DescribeProxyGroupListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of connection groups.
+        :type TotalCount: int
+        :param ProxyGroupList: List of connection groups.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProxyGroupList: list of ProxyGroupInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of connection groups.\n        :type TotalCount: int\n        :param ProxyGroupList: List of connection groups.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type ProxyGroupList: list of ProxyGroupInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ProxyGroupList = None
         self.RequestId = None
@@ -2662,11 +3432,21 @@ class DescribeProxyGroupStatisticsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param GroupId: Connection group ID\n        :type GroupId: str\n        :param StartTime: Start time\n        :type StartTime: str\n        :param EndTime: End time\n        :type EndTime: str\n        :param MetricNames: Statistical metric name list. Values: InBandwidth (inbound bandwidth); OutBandwidth (outbound bandwidth); Concurrent (concurrence); InPackets (inbound packets); OutPackets (outbound packets).\n        :type MetricNames: list of str\n        :param Granularity: Monitoring granularity. It currently supports: 60, 300, 3,600, 86,400. Unit: seconds.
+        r"""
+        :param GroupId: Connection group ID
+        :type GroupId: str
+        :param StartTime: Start time
+        :type StartTime: str
+        :param EndTime: End time
+        :type EndTime: str
+        :param MetricNames: Statistical metric name list. Values: InBandwidth (inbound bandwidth); OutBandwidth (outbound bandwidth); Concurrent (concurrence); InPackets (inbound packets); OutPackets (outbound packets).
+        :type MetricNames: list of str
+        :param Granularity: Monitoring granularity. It currently supports: 60, 300, 3,600, 86,400. Unit: seconds.
 Time range: <= 1 day, supported minimum granularity: 60 seconds;
 Time range: <= 7 days, supported minimum granularity: 3,600 seconds;
-Time range: <= 30 days, supported minimum granularity: 86,400 seconds;\n        :type Granularity: int\n        """
+Time range: <= 30 days, supported minimum granularity: 86,400 seconds;
+        :type Granularity: int
+        """
         self.GroupId = None
         self.StartTime = None
         self.EndTime = None
@@ -2695,8 +3475,12 @@ class DescribeProxyGroupStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StatisticsData: Connection group statistics
+        :type StatisticsData: list of MetricStatisticsInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param StatisticsData: Connection group statistics\n        :type StatisticsData: list of MetricStatisticsInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.StatisticsData = None
         self.RequestId = None
 
@@ -2717,11 +3501,21 @@ class DescribeProxyStatisticsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ProxyId: Connection ID\n        :type ProxyId: str\n        :param StartTime: Start time (2019-03-25 12:00:00)\n        :type StartTime: str\n        :param EndTime: End time (2019-03-25 12:00:00)\n        :type EndTime: str\n        :param MetricNames: Statistical metric name list. Valid values: `InBandwidth` (inbound bandwidth); `OutBandwidth` (outbound bandwidth); Concurrent (concurrence); `InPackets` (inbound packets); `OutPackets` (outbound packets); `PacketLoss` (packet loss rate); `Latency` (latency); `HttpQPS` (the number of HTTP requests); `HttpsQPS` (the number of HTTPS requests).\n        :type MetricNames: list of str\n        :param Granularity: Monitoring granularity. It currently supports: 60, 300, 3,600, and 86,400. Unit: seconds.
+        r"""
+        :param ProxyId: Connection ID
+        :type ProxyId: str
+        :param StartTime: Start time (2019-03-25 12:00:00)
+        :type StartTime: str
+        :param EndTime: End time (2019-03-25 12:00:00)
+        :type EndTime: str
+        :param MetricNames: Statistical metric name list. Valid values: `InBandwidth` (inbound bandwidth); `OutBandwidth` (outbound bandwidth); Concurrent (concurrence); `InPackets` (inbound packets); `OutPackets` (outbound packets); `PacketLoss` (packet loss rate); `Latency` (latency); `HttpQPS` (the number of HTTP requests); `HttpsQPS` (the number of HTTPS requests).
+        :type MetricNames: list of str
+        :param Granularity: Monitoring granularity. It currently supports: 60, 300, 3,600, and 86,400. Unit: seconds.
 Time range: <= 1 day, supported minimum granularity: 60 seconds;
 Time range: <= 7 days, supported minimum granularity: 3,600 seconds;
-Time range: <= 30 days, supported minimum granularity: 86,400 seconds;\n        :type Granularity: int\n        """
+Time range: <= 30 days, supported minimum granularity: 86,400 seconds;
+        :type Granularity: int
+        """
         self.ProxyId = None
         self.StartTime = None
         self.EndTime = None
@@ -2750,8 +3544,12 @@ class DescribeProxyStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StatisticsData: Connection statistics
+        :type StatisticsData: list of MetricStatisticsInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param StatisticsData: Connection statistics\n        :type StatisticsData: list of MetricStatisticsInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.StatisticsData = None
         self.RequestId = None
 
@@ -2772,8 +3570,22 @@ class DescribeRealServerStatisticsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RealServerId: Origin server ID
+        :type RealServerId: str
+        :param ListenerId: Listener ID
+        :type ListenerId: str
+        :param RuleId: Layer-7 rule ID
+        :type RuleId: str
+        :param WithinTime: Statistics duration. Unit: hours. It only supports querying statistics for the past 1, 3, 6, 12, and 24 hours.
+        :type WithinTime: int
+        :param StartTime: Statistics start time, such as `2020-08-19 00:00:00`
+        :type StartTime: str
+        :param EndTime: Statistics end time, such as `2020-08-19 23:59:59`
+        :type EndTime: str
+        :param Granularity: Statistics granularity in seconds. Only 1-minute (60-second) and 5-minute (300-second) granularities are supported.
+        :type Granularity: int
         """
-        :param RealServerId: Origin server ID\n        :type RealServerId: str\n        :param ListenerId: Listener ID\n        :type ListenerId: str\n        :param RuleId: Layer-7 rule ID\n        :type RuleId: str\n        :param WithinTime: Statistics duration. Unit: hours. It only supports querying statistics for the past 1, 3, 6, 12, and 24 hours.\n        :type WithinTime: int\n        :param StartTime: Statistics start time, such as `2020-08-19 00:00:00`\n        :type StartTime: str\n        :param EndTime: Statistics end time, such as `2020-08-19 23:59:59`\n        :type EndTime: str\n        :param Granularity: Statistics granularity in seconds. Only 1-minute (60-second) and 5-minute (300-second) granularities are supported.\n        :type Granularity: int\n        """
         self.RealServerId = None
         self.ListenerId = None
         self.RuleId = None
@@ -2806,8 +3618,14 @@ class DescribeRealServerStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StatisticsData: Origin server status statistics of specified listener
+        :type StatisticsData: list of StatisticsDataInfo
+        :param RsStatisticsData: Status statistics of multiple origin servers
+        :type RsStatisticsData: list of MetricStatisticsInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param StatisticsData: Origin server status statistics of specified listener\n        :type StatisticsData: list of StatisticsDataInfo\n        :param RsStatisticsData: Status statistics of multiple origin servers\n        :type RsStatisticsData: list of MetricStatisticsInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.StatisticsData = None
         self.RsStatisticsData = None
         self.RequestId = None
@@ -2835,9 +3653,21 @@ class DescribeRealServersRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProjectId: Queries the project ID to which the origin server belongs. -1: all projects.
+        :type ProjectId: int
+        :param SearchValue: Origin server IP or domain name to be queried. The fuzzy match is supported.
+        :type SearchValue: str
+        :param Offset: Offset, which is 0 by default.
+        :type Offset: int
+        :param Limit: Quantity of values to return. The default value is 20 and the maximum value is 50.
+        :type Limit: int
+        :param TagSet: Tag list. If this field exists, the list of the resources with the tag will be pulled.
+It supports up to 5 tags. If there are two or more tags, the origin servers tagged any of them will be pulled.
+        :type TagSet: list of TagPair
+        :param Filters: Filter conditions. The value of the `name` of the `filter` (RealServerName, RealServerIP)
+        :type Filters: list of Filter
         """
-        :param ProjectId: Queries the project ID to which the origin server belongs. -1: all projects.\n        :type ProjectId: int\n        :param SearchValue: Origin server IP or domain name to be queried. The fuzzy match is supported.\n        :type SearchValue: str\n        :param Offset: Offset, which is 0 by default.\n        :type Offset: int\n        :param Limit: Quantity of values to return. The default value is 20 and the maximum value is 50.\n        :type Limit: int\n        :param TagSet: Tag list. If this field exists, the list of the resources with the tag will be pulled.
-It supports up to 5 tags. If there are two or more tags, the origin servers tagged any of them will be pulled.\n        :type TagSet: list of TagPair\n        :param Filters: Filter conditions. The value of the `name` of the `filter` (RealServerName, RealServerIP)\n        :type Filters: list of Filter\n        """
         self.ProjectId = None
         self.SearchValue = None
         self.Offset = None
@@ -2878,8 +3708,14 @@ class DescribeRealServersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RealServerSet: An information list of origin server
+        :type RealServerSet: list of BindRealServerInfo
+        :param TotalCount: The quantity of origin servers
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RealServerSet: An information list of origin server\n        :type RealServerSet: list of BindRealServerInfo\n        :param TotalCount: The quantity of origin servers\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RealServerSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -2902,8 +3738,10 @@ class DescribeRealServersStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RealServerIds: List of origin server IDs
+        :type RealServerIds: list of str
         """
-        :param RealServerIds: List of origin server IDs\n        :type RealServerIds: list of str\n        """
         self.RealServerIds = None
 
 
@@ -2924,8 +3762,14 @@ class DescribeRealServersStatusResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Quantity of origin server query results returned
+        :type TotalCount: int
+        :param RealServerStatusSet: Binding status list of origin servers
+        :type RealServerStatusSet: list of RealServerStatus
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Quantity of origin server query results returned\n        :type TotalCount: int\n        :param RealServerStatusSet: Binding status list of origin servers\n        :type RealServerStatusSet: list of RealServerStatus\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.RealServerStatusSet = None
         self.RequestId = None
@@ -2948,8 +3792,10 @@ class DescribeRegionAndPriceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.
+        :type IPAddressVersion: str
         """
-        :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.\n        :type IPAddressVersion: str\n        """
         self.IPAddressVersion = None
 
 
@@ -2970,10 +3816,20 @@ class DescribeRegionAndPriceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param TotalCount: Total number of origin server regions\n        :type TotalCount: int\n        :param DestRegionSet: List of origin server region details\n        :type DestRegionSet: list of RegionDetail\n        :param BandwidthUnitPrice: Connection bandwidth price gradient\n        :type BandwidthUnitPrice: list of BandwidthPriceGradient\n        :param Currency: Currency type of bandwidth price:
+        r"""
+        :param TotalCount: Total number of origin server regions
+        :type TotalCount: int
+        :param DestRegionSet: List of origin server region details
+        :type DestRegionSet: list of RegionDetail
+        :param BandwidthUnitPrice: Connection bandwidth price gradient
+        :type BandwidthUnitPrice: list of BandwidthPriceGradient
+        :param Currency: Currency type of bandwidth price:
 CNY (Chinese Yuan)
-USD (United States Dollar)\n        :type Currency: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+USD (United States Dollar)
+        :type Currency: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.TotalCount = None
         self.DestRegionSet = None
         self.BandwidthUnitPrice = None
@@ -3005,12 +3861,18 @@ class DescribeResourcesByTagRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param TagKey: Tag key.\n        :type TagKey: str\n        :param TagValue: Tag value.\n        :type TagValue: str\n        :param ResourceType: Resource type, including:
+        r"""
+        :param TagKey: Tag key.
+        :type TagKey: str
+        :param TagValue: Tag value.
+        :type TagValue: str
+        :param ResourceType: Resource type, including:
 Proxy (connection);
 ProxyGroup (connection group);
 RealServer (origin server).
-If this field is not specified, all resources with the tag will be queried.\n        :type ResourceType: str\n        """
+If this field is not specified, all resources with the tag will be queried.
+        :type ResourceType: str
+        """
         self.TagKey = None
         self.TagValue = None
         self.ResourceType = None
@@ -3035,8 +3897,14 @@ class DescribeResourcesByTagResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total resources
+        :type TotalCount: int
+        :param ResourceSet: Resource list corresponding to the tag
+        :type ResourceSet: list of TagResourceInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total resources\n        :type TotalCount: int\n        :param ResourceSet: Resource list corresponding to the tag\n        :type ResourceSet: list of TagResourceInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ResourceSet = None
         self.RequestId = None
@@ -3059,8 +3927,14 @@ class DescribeRuleRealServersRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RuleId: Forwarding rule ID
+        :type RuleId: str
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of values to be returned. The default value is 20. Maximum is 1000.
+        :type Limit: int
         """
-        :param RuleId: Forwarding rule ID\n        :type RuleId: str\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of values to be returned. The default value is 20. Maximum is 1000.\n        :type Limit: int\n        """
         self.RuleId = None
         self.Offset = None
         self.Limit = None
@@ -3085,8 +3959,18 @@ class DescribeRuleRealServersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Quantity of origin servers that can be bound
+        :type TotalCount: int
+        :param RealServerSet: Information list of origin servers that can be bound
+        :type RealServerSet: list of RealServer
+        :param BindRealServerTotalCount: Quantity of bound origin servers
+        :type BindRealServerTotalCount: int
+        :param BindRealServerSet: Bound origin server information list
+        :type BindRealServerSet: list of BindRealServer
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Quantity of origin servers that can be bound\n        :type TotalCount: int\n        :param RealServerSet: Information list of origin servers that can be bound\n        :type RealServerSet: list of RealServer\n        :param BindRealServerTotalCount: Quantity of bound origin servers\n        :type BindRealServerTotalCount: int\n        :param BindRealServerSet: Bound origin server information list\n        :type BindRealServerSet: list of BindRealServer\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.RealServerSet = None
         self.BindRealServerTotalCount = None
@@ -3118,8 +4002,10 @@ class DescribeRulesByRuleIdsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RuleIds: List of rule IDs. Up to 10 rules are supported.
+        :type RuleIds: list of str
         """
-        :param RuleIds: List of rule IDs. Up to 10 rules are supported.\n        :type RuleIds: list of str\n        """
         self.RuleIds = None
 
 
@@ -3140,8 +4026,14 @@ class DescribeRulesByRuleIdsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: The number of returned rules.
+        :type TotalCount: int
+        :param RuleSet: List of returned rules.
+        :type RuleSet: list of RuleInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: The number of returned rules.\n        :type TotalCount: int\n        :param RuleSet: List of returned rules.\n        :type RuleSet: list of RuleInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.RuleSet = None
         self.RequestId = None
@@ -3164,8 +4056,10 @@ class DescribeRulesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ListenerId: Layer-7 listener ID.
+        :type ListenerId: str
         """
-        :param ListenerId: Layer-7 listener ID.\n        :type ListenerId: str\n        """
         self.ListenerId = None
 
 
@@ -3186,8 +4080,14 @@ class DescribeRulesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DomainRuleSet: Rule information list classified by domain name type
+        :type DomainRuleSet: list of DomainRuleSet
+        :param TotalCount: Total quantity of domain names under this listener
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param DomainRuleSet: Rule information list classified by domain name type\n        :type DomainRuleSet: list of DomainRuleSet\n        :param TotalCount: Total quantity of domain names under this listener\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DomainRuleSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -3210,8 +4110,10 @@ class DescribeSecurityPolicyDetailRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyId: Security policy ID
+        :type PolicyId: str
         """
-        :param PolicyId: Security policy ID\n        :type PolicyId: str\n        """
         self.PolicyId = None
 
 
@@ -3232,13 +4134,25 @@ class DescribeSecurityPolicyDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProxyId: Connection ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ProxyId: str\n        :param Status: Security policy status:
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ProxyId: str
+        :param Status: Security policy status:
 BOUND (security policies enabled)
 UNBIND (security policies disabled)
 BINDING (enabling security policies)
-UNBINDING (disabling security policies)\n        :type Status: str\n        :param DefaultAction: Default policy: ACCEPT or DROP.\n        :type DefaultAction: str\n        :param PolicyId: Policy ID\n        :type PolicyId: str\n        :param RuleList: List of rules\n        :type RuleList: list of SecurityPolicyRuleOut\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+UNBINDING (disabling security policies)
+        :type Status: str
+        :param DefaultAction: Default policy: ACCEPT or DROP.
+        :type DefaultAction: str
+        :param PolicyId: Policy ID
+        :type PolicyId: str
+        :param RuleList: List of rules
+        :type RuleList: list of SecurityPolicyRuleOut
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.ProxyId = None
         self.Status = None
         self.DefaultAction = None
@@ -3267,8 +4181,10 @@ class DescribeSecurityRulesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SecurityRuleIds: List of security rule IDs. Up to 20 security rules are supported.
+        :type SecurityRuleIds: list of str
         """
-        :param SecurityRuleIds: List of security rule IDs. Up to 20 security rules are supported.\n        :type SecurityRuleIds: list of str\n        """
         self.SecurityRuleIds = None
 
 
@@ -3289,8 +4205,14 @@ class DescribeSecurityRulesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: The number of returned security rules.
+        :type TotalCount: int
+        :param SecurityRuleSet: List of returned security rules.
+        :type SecurityRuleSet: list of SecurityPolicyRuleOut
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: The number of returned security rules.\n        :type TotalCount: int\n        :param SecurityRuleSet: List of returned security rules.\n        :type SecurityRuleSet: list of SecurityPolicyRuleOut\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.SecurityRuleSet = None
         self.RequestId = None
@@ -3313,8 +4235,24 @@ class DescribeTCPListenersRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProxyId: Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
+        :type ProxyId: str
+        :param ListenerId: Filter condition. Exact query by listener IDs.
+        :type ListenerId: str
+        :param ListenerName: Filter condition. Exact query by listener names.
+        :type ListenerName: str
+        :param Port: Filter condition. Exact query by listener ports.
+        :type Port: int
+        :param Offset: Offset. The default value is 0.
+        :type Offset: int
+        :param Limit: Quantity limit. The default value is 20.
+        :type Limit: int
+        :param GroupId: Connection group ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
+        :type GroupId: str
+        :param SearchValue: Filter condition. It supports fuzzy query by ports or listener names. This parameter cannot be used with `ListenerName` or `Port`.
+        :type SearchValue: str
         """
-        :param ProxyId: Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.\n        :type ProxyId: str\n        :param ListenerId: Filter condition. Exact query by listener IDs.\n        :type ListenerId: str\n        :param ListenerName: Filter condition. Exact query by listener names.\n        :type ListenerName: str\n        :param Port: Filter condition. Exact query by listener ports.\n        :type Port: int\n        :param Offset: Offset. The default value is 0.\n        :type Offset: int\n        :param Limit: Quantity limit. The default value is 20.\n        :type Limit: int\n        :param GroupId: Connection group ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.\n        :type GroupId: str\n        :param SearchValue: Filter condition. It supports fuzzy query by ports or listener names. This parameter cannot be used with `ListenerName` or `Port`.\n        :type SearchValue: str\n        """
         self.ProxyId = None
         self.ListenerId = None
         self.ListenerName = None
@@ -3349,8 +4287,14 @@ class DescribeTCPListenersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total quantity of listeners that matches the conditions
+        :type TotalCount: int
+        :param ListenerSet: TCP listener list
+        :type ListenerSet: list of TCPListener
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total quantity of listeners that matches the conditions\n        :type TotalCount: int\n        :param ListenerSet: TCP listener list\n        :type ListenerSet: list of TCPListener\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ListenerSet = None
         self.RequestId = None
@@ -3373,8 +4317,24 @@ class DescribeUDPListenersRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProxyId: Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
+        :type ProxyId: str
+        :param ListenerId: Filter condition. Exact query by listener IDs.
+        :type ListenerId: str
+        :param ListenerName: Filter condition. Exact query by listener names.
+        :type ListenerName: str
+        :param Port: Filter condition. Exact query by listener ports.
+        :type Port: int
+        :param Offset: Offset. The default value is 0.
+        :type Offset: int
+        :param Limit: Quantity limit. The default value is 20.
+        :type Limit: int
+        :param GroupId: Connection group ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
+        :type GroupId: str
+        :param SearchValue: Filter condition. It supports fuzzy query by ports or listener names. This parameter cannot be used with `ListenerName` or `Port`.
+        :type SearchValue: str
         """
-        :param ProxyId: Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.\n        :type ProxyId: str\n        :param ListenerId: Filter condition. Exact query by listener IDs.\n        :type ListenerId: str\n        :param ListenerName: Filter condition. Exact query by listener names.\n        :type ListenerName: str\n        :param Port: Filter condition. Exact query by listener ports.\n        :type Port: int\n        :param Offset: Offset. The default value is 0.\n        :type Offset: int\n        :param Limit: Quantity limit. The default value is 20.\n        :type Limit: int\n        :param GroupId: Connection group ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.\n        :type GroupId: str\n        :param SearchValue: Filter condition. It supports fuzzy query by ports or listener names. This parameter cannot be used with `ListenerName` or `Port`.\n        :type SearchValue: str\n        """
         self.ProxyId = None
         self.ListenerId = None
         self.ListenerName = None
@@ -3409,8 +4369,14 @@ class DescribeUDPListenersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Quantity of listeners
+        :type TotalCount: int
+        :param ListenerSet: UDP listener list
+        :type ListenerSet: list of UDPListener
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Quantity of listeners\n        :type TotalCount: int\n        :param ListenerSet: UDP listener list\n        :type ListenerSet: list of UDPListener\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ListenerSet = None
         self.RequestId = None
@@ -3433,12 +4399,20 @@ class DestroyProxiesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Force: The identifier for forced deletion
 1: this connection list is deleted forcibly regardless of whether the origin server has been bound.
 0: this connection list cannot be deleted if the origin server has been bound.
-If this identifier is 0, the deletion can be performed only when all the connections have not been bound to any origin servers.\n        :type Force: int\n        :param InstanceIds: List of connection instance IDs; It's an old parameter, please switch to ProxyIds.\n        :type InstanceIds: list of str\n        :param ClientToken: A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
-For more information, please see How to Ensure Idempotence.\n        :type ClientToken: str\n        :param ProxyIds: List of connection instance IDs; It's a new parameter.\n        :type ProxyIds: list of str\n        """
+If this identifier is 0, the deletion can be performed only when all the connections have not been bound to any origin servers.
+        :type Force: int
+        :param InstanceIds: List of connection instance IDs; It's an old parameter, please switch to ProxyIds.
+        :type InstanceIds: list of str
+        :param ClientToken: A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
+For more information, please see How to Ensure Idempotence.
+        :type ClientToken: str
+        :param ProxyIds: List of connection instance IDs; It's a new parameter.
+        :type ProxyIds: list of str
+        """
         self.Force = None
         self.InstanceIds = None
         self.ClientToken = None
@@ -3465,8 +4439,14 @@ class DestroyProxiesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InvalidStatusInstanceSet: ID list of connection instances that cannot be terminated.
+        :type InvalidStatusInstanceSet: list of str
+        :param OperationFailedInstanceSet: ID list of connection instances that failed to be terminated.
+        :type OperationFailedInstanceSet: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param InvalidStatusInstanceSet: ID list of connection instances that cannot be terminated.\n        :type InvalidStatusInstanceSet: list of str\n        :param OperationFailedInstanceSet: ID list of connection instances that failed to be terminated.\n        :type OperationFailedInstanceSet: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InvalidStatusInstanceSet = None
         self.OperationFailedInstanceSet = None
         self.RequestId = None
@@ -3484,8 +4464,20 @@ class DomainAccessRegionDict(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NationCountryInnerList: Nearest access region
+        :type NationCountryInnerList: list of NationCountryInnerInfo
+        :param ProxyList: Acceleration region connection list
+        :type ProxyList: list of ProxyIdDict
+        :param RegionId: Acceleration region ID
+        :type RegionId: str
+        :param GeographicalZoneInnerCode: Acceleration region internal code
+        :type GeographicalZoneInnerCode: str
+        :param ContinentInnerCode: Internal code of the continent to which the acceleration region belongs
+        :type ContinentInnerCode: str
+        :param RegionName: Acceleration region alias
+        :type RegionName: str
         """
-        :param NationCountryInnerList: Nearest access region\n        :type NationCountryInnerList: list of NationCountryInnerInfo\n        :param ProxyList: Acceleration region connection list\n        :type ProxyList: list of ProxyIdDict\n        :param RegionId: Acceleration region ID\n        :type RegionId: str\n        :param GeographicalZoneInnerCode: Acceleration region internal code\n        :type GeographicalZoneInnerCode: str\n        :param ContinentInnerCode: Internal code of the continent to which the acceleration region belongs\n        :type ContinentInnerCode: str\n        :param RegionName: Acceleration region alias\n        :type RegionName: str\n        """
         self.NationCountryInnerList = None
         self.ProxyList = None
         self.RegionId = None
@@ -3526,13 +4518,31 @@ class DomainErrorPageInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ErrorPageId: Configuration ID of a custom error response
+        :type ErrorPageId: str
+        :param ListenerId: Listener ID
+        :type ListenerId: str
+        :param Domain: Domain name
+        :type Domain: str
+        :param ErrorNos: Original error code
+        :type ErrorNos: list of int
+        :param NewErrorNo: New error code
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NewErrorNo: int
+        :param ClearHeaders: Response header to be cleared
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ClearHeaders: list of str
+        :param SetHeaders: Response header to be set
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SetHeaders: list of HttpHeaderParam
+        :param Body: Configured response body (excluding HTTP header)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Body: str
+        :param Status: Rule status. 0: success
+Note: this field may return null, indicating that no valid value is obtained.
+        :type Status: int
         """
-        :param ErrorPageId: Configuration ID of a custom error response\n        :type ErrorPageId: str\n        :param ListenerId: Listener ID\n        :type ListenerId: str\n        :param Domain: Domain name\n        :type Domain: str\n        :param ErrorNos: Original error code\n        :type ErrorNos: list of int\n        :param NewErrorNo: New error code
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type NewErrorNo: int\n        :param ClearHeaders: Response header to be cleared
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type ClearHeaders: list of str\n        :param SetHeaders: Response header to be set
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type SetHeaders: list of HttpHeaderParam\n        :param Body: Configured response body (excluding HTTP header)
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Body: str\n        :param Status: Rule status. 0: success
-Note: this field may return null, indicating that no valid value is obtained.\n        :type Status: int\n        """
         self.ErrorPageId = None
         self.ListenerId = None
         self.Domain = None
@@ -3574,34 +4584,72 @@ class DomainRuleSet(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Domain: Forwarding rule domain name.\n        :type Domain: str\n        :param RuleSet: Forwarding rule list of the domain name.\n        :type RuleSet: list of RuleInfo\n        :param CertificateId: Server certificate ID of the domain. When it is `default`, it indicates that the default certificate will be used (i.e., the certificate configured for the listener).
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type CertificateId: str\n        :param CertificateAlias: Server certificate name of the domain name.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type CertificateAlias: str\n        :param ClientCertificateId: Client certificate ID of the domain. When it is `default`, it indicates that the default certificate will be used (i.e., the certificate configured for the listener).
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type ClientCertificateId: str\n        :param ClientCertificateAlias: Client certificate name of the domain name.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type ClientCertificateAlias: str\n        :param BasicAuthConfId: Basic authentication configuration ID of the domain name.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type BasicAuthConfId: str\n        :param BasicAuth: Basic authentication status:
+        r"""
+        :param Domain: Forwarding rule domain name.
+        :type Domain: str
+        :param RuleSet: Forwarding rule list of the domain name.
+        :type RuleSet: list of RuleInfo
+        :param CertificateId: Server certificate ID of the domain. When it is `default`, it indicates that the default certificate will be used (i.e., the certificate configured for the listener).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CertificateId: str
+        :param CertificateAlias: Server certificate name of the domain name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CertificateAlias: str
+        :param ClientCertificateId: Client certificate ID of the domain. When it is `default`, it indicates that the default certificate will be used (i.e., the certificate configured for the listener).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ClientCertificateId: str
+        :param ClientCertificateAlias: Client certificate name of the domain name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ClientCertificateAlias: str
+        :param BasicAuthConfId: Basic authentication configuration ID of the domain name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BasicAuthConfId: str
+        :param BasicAuth: Basic authentication status:
 0: disabled;
 1: enabled.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type BasicAuth: int\n        :param BasicAuthConfAlias: Basic authentication configuration name of the domain name.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type BasicAuthConfAlias: str\n        :param RealServerCertificateId: Origin server authentication certificate ID of the domain name.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type RealServerCertificateId: str\n        :param RealServerAuth: Origin server authentication status:
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BasicAuth: int
+        :param BasicAuthConfAlias: Basic authentication configuration name of the domain name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BasicAuthConfAlias: str
+        :param RealServerCertificateId: Origin server authentication certificate ID of the domain name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RealServerCertificateId: str
+        :param RealServerAuth: Origin server authentication status:
 0: disabled;
 1: enabled.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type RealServerAuth: int\n        :param RealServerCertificateAlias: Origin server authentication certificate name of the domain name.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type RealServerCertificateAlias: str\n        :param GaapCertificateId: Connection authentication certificate ID of the domain name.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type GaapCertificateId: str\n        :param GaapAuth: Connection authentication status:
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RealServerAuth: int
+        :param RealServerCertificateAlias: Origin server authentication certificate name of the domain name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RealServerCertificateAlias: str
+        :param GaapCertificateId: Connection authentication certificate ID of the domain name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GaapCertificateId: str
+        :param GaapAuth: Connection authentication status:
 0: disabled;
 1: enabled.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type GaapAuth: int\n        :param GaapCertificateAlias: Connection authentication certificate name of the domain name.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type GaapCertificateAlias: str\n        :param RealServerCertificateDomain: Origin server authentication domain name.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type RealServerCertificateDomain: str\n        :param PolyClientCertificateAliasInfo: Returns IDs and aliases of multiple certificates when there are multiple client certificates.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type PolyClientCertificateAliasInfo: list of CertificateAliasInfo\n        :param PolyRealServerCertificateAliasInfo: Returns IDs and aliases of multiple certificates when there are multiple origin certificates.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type PolyRealServerCertificateAliasInfo: list of CertificateAliasInfo\n        :param DomainStatus: Domain name status.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GaapAuth: int
+        :param GaapCertificateAlias: Connection authentication certificate name of the domain name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GaapCertificateAlias: str
+        :param RealServerCertificateDomain: Origin server authentication domain name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RealServerCertificateDomain: str
+        :param PolyClientCertificateAliasInfo: Returns IDs and aliases of multiple certificates when there are multiple client certificates.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PolyClientCertificateAliasInfo: list of CertificateAliasInfo
+        :param PolyRealServerCertificateAliasInfo: Returns IDs and aliases of multiple certificates when there are multiple origin certificates.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PolyRealServerCertificateAliasInfo: list of CertificateAliasInfo
+        :param DomainStatus: Domain name status.
 0: running;
 1: changing;
 2: deleting.
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type DomainStatus: int\n        """
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DomainStatus: int
+        """
         self.Domain = None
         self.RuleSet = None
         self.CertificateId = None
@@ -3673,8 +4721,12 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: Filter conditions
+        :type Name: str
+        :param Values: Filter values
+        :type Values: list of str
         """
-        :param Name: Filter conditions\n        :type Name: str\n        :param Values: Filter values\n        :type Values: list of str\n        """
         self.Name = None
         self.Values = None
 
@@ -3697,8 +4749,14 @@ class GroupStatisticsInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: Connection group ID
+        :type GroupId: str
+        :param GroupName: Connection group name
+        :type GroupName: str
+        :param ProxySet: List of connections of a connection group
+        :type ProxySet: list of ProxySimpleInfo
         """
-        :param GroupId: Connection group ID\n        :type GroupId: str\n        :param GroupName: Connection group name\n        :type GroupName: str\n        :param ProxySet: List of connections of a connection group\n        :type ProxySet: list of ProxySimpleInfo\n        """
         self.GroupId = None
         self.GroupName = None
         self.ProxySet = None
@@ -3728,13 +4786,25 @@ class HTTPListener(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ListenerId: Listener ID\n        :type ListenerId: str\n        :param ListenerName: Listener name\n        :type ListenerName: str\n        :param Port: Listener port\n        :type Port: int\n        :param CreateTime: Listener creation time; using UNIX timestamp.\n        :type CreateTime: int\n        :param Protocol: Listener protocol. Valid values: HTTP, HTTPS. The value `HTTP` is used for this structure\n        :type Protocol: str\n        :param ListenerStatus: Listener status:
+        r"""
+        :param ListenerId: Listener ID
+        :type ListenerId: str
+        :param ListenerName: Listener name
+        :type ListenerName: str
+        :param Port: Listener port
+        :type Port: int
+        :param CreateTime: Listener creation time; using UNIX timestamp.
+        :type CreateTime: int
+        :param Protocol: Listener protocol. Valid values: HTTP, HTTPS. The value `HTTP` is used for this structure
+        :type Protocol: str
+        :param ListenerStatus: Listener status:
 0: running;
 1: creating;
 2: terminating;
 3: adjusting origin server;
-4: modifying configuration.\n        :type ListenerStatus: int\n        """
+4: modifying configuration.
+        :type ListenerStatus: int
+        """
         self.ListenerId = None
         self.ListenerName = None
         self.Port = None
@@ -3765,20 +4835,46 @@ class HTTPSListener(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ListenerId: Listener ID\n        :type ListenerId: str\n        :param ListenerName: Listener name\n        :type ListenerName: str\n        :param Port: Listener port\n        :type Port: int\n        :param Protocol: Listener protocol. Valid values: HTTP, HTTPS. The value `HTTPS` is used for this structure\n        :type Protocol: str\n        :param ListenerStatus: Listener status:
+        r"""
+        :param ListenerId: Listener ID
+        :type ListenerId: str
+        :param ListenerName: Listener name
+        :type ListenerName: str
+        :param Port: Listener port
+        :type Port: int
+        :param Protocol: Listener protocol. Valid values: HTTP, HTTPS. The value `HTTPS` is used for this structure
+        :type Protocol: str
+        :param ListenerStatus: Listener status:
 0: running;
 1: creating;
 2: terminating;
 3: adjusting origin server;
-4: modifying configuration.\n        :type ListenerStatus: int\n        :param CertificateId: Server SSL certificate ID of the listener\n        :type CertificateId: str\n        :param ForwardProtocol: Protocol used in the forwarding from connections to origin servers\n        :type ForwardProtocol: str\n        :param CreateTime: Listener creation time; using UNIX timestamp.\n        :type CreateTime: int\n        :param CertificateAlias: Server SSL certificate alias
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type CertificateAlias: str\n        :param ClientCertificateId: Client CA certificate ID of the listener
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type ClientCertificateId: str\n        :param AuthType: Listener authentication mode. Valid values:
+4: modifying configuration.
+        :type ListenerStatus: int
+        :param CertificateId: Server SSL certificate ID of the listener
+        :type CertificateId: str
+        :param ForwardProtocol: Protocol used in the forwarding from connections to origin servers
+        :type ForwardProtocol: str
+        :param CreateTime: Listener creation time; using UNIX timestamp.
+        :type CreateTime: int
+        :param CertificateAlias: Server SSL certificate alias
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CertificateAlias: str
+        :param ClientCertificateId: Client CA certificate ID of the listener
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ClientCertificateId: str
+        :param AuthType: Listener authentication mode. Valid values:
 0: one-way authentication;
 1: mutual authentication.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type AuthType: int\n        :param ClientCertificateAlias: Client CA certificate alias
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type ClientCertificateAlias: str\n        :param PolyClientCertificateAliasInfo: Alias information of multiple client CA certificates.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type PolyClientCertificateAliasInfo: list of CertificateAliasInfo\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AuthType: int
+        :param ClientCertificateAlias: Client CA certificate alias
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ClientCertificateAlias: str
+        :param PolyClientCertificateAliasInfo: Alias information of multiple client CA certificates.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PolyClientCertificateAliasInfo: list of CertificateAliasInfo
+        """
         self.ListenerId = None
         self.ListenerName = None
         self.Port = None
@@ -3828,8 +4924,12 @@ class HttpHeaderParam(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param HeaderName: HTTP header name
+        :type HeaderName: str
+        :param HeaderValue: HTTP header value
+        :type HeaderValue: str
         """
-        :param HeaderName: HTTP header name\n        :type HeaderName: str\n        :param HeaderValue: HTTP header value\n        :type HeaderValue: str\n        """
         self.HeaderName = None
         self.HeaderValue = None
 
@@ -3852,8 +4952,24 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AccessRegion: Acceleration region name.
+        :type AccessRegion: str
+        :param Bandwidth: Connection bandwidth cap. Unit: Mbps.
+        :type Bandwidth: int
+        :param DestRegion: Origin server region name. It's an old parameter, please switch to RealServerRegion.
+        :type DestRegion: str
+        :param Concurrency: Upper limit of connection concurrence, which indicates a number of simultaneous online connections. Unit: 10,000 connections. It's an old parameter, please switch to Concurrent.
+        :type Concurrency: int
+        :param RealServerRegion: Origin server region name; It's a new parameter.
+        :type RealServerRegion: str
+        :param Concurrent: Upper limit of connection concurrence, which indicates a number of simultaneous online connections. Unit: 10,000 connections. It's a new parameter.
+        :type Concurrent: int
+        :param BillingType: Billing mode. Valid values: 0: bill-by-bandwidth (default value); 1: bill-by-traffic.
+        :type BillingType: int
+        :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.
+        :type IPAddressVersion: str
         """
-        :param AccessRegion: Acceleration region name.\n        :type AccessRegion: str\n        :param Bandwidth: Connection bandwidth cap. Unit: Mbps.\n        :type Bandwidth: int\n        :param DestRegion: Origin server region name. It's an old parameter, please switch to RealServerRegion.\n        :type DestRegion: str\n        :param Concurrency: Upper limit of connection concurrence, which indicates a number of simultaneous online connections. Unit: 10,000 connections. It's an old parameter, please switch to Concurrent.\n        :type Concurrency: int\n        :param RealServerRegion: Origin server region name; It's a new parameter.\n        :type RealServerRegion: str\n        :param Concurrent: Upper limit of connection concurrence, which indicates a number of simultaneous online connections. Unit: 10,000 connections. It's a new parameter.\n        :type Concurrent: int\n        :param BillingType: Billing mode. Valid values: 0: bill-by-bandwidth (default value); 1: bill-by-traffic.\n        :type BillingType: int\n        :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.\n        :type IPAddressVersion: str\n        """
         self.AccessRegion = None
         self.Bandwidth = None
         self.DestRegion = None
@@ -3888,11 +5004,25 @@ class InquiryPriceCreateProxyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProxyDailyPrice: Basic price of connection in USD/day.
+        :type ProxyDailyPrice: float
+        :param BandwidthUnitPrice: Tiered price of connection bandwidth.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type BandwidthUnitPrice: list of BandwidthPriceGradient
+        :param DiscountProxyDailyPrice: Discounted basic price of connection in USD/day.
+        :type DiscountProxyDailyPrice: float
+        :param Currency: Currency, which supports CNY, USD, etc.
+        :type Currency: str
+        :param FlowUnitPrice: Connection traffic price in USD/GB.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FlowUnitPrice: float
+        :param DiscountFlowUnitPrice: Discounted connection traffic price in USD/GB.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DiscountFlowUnitPrice: float
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param ProxyDailyPrice: Basic price of connection in USD/day.\n        :type ProxyDailyPrice: float\n        :param BandwidthUnitPrice: Tiered price of connection bandwidth.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type BandwidthUnitPrice: list of BandwidthPriceGradient\n        :param DiscountProxyDailyPrice: Discounted basic price of connection in USD/day.\n        :type DiscountProxyDailyPrice: float\n        :param Currency: Currency, which supports CNY, USD, etc.\n        :type Currency: str\n        :param FlowUnitPrice: Connection traffic price in USD/GB.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type FlowUnitPrice: float\n        :param DiscountFlowUnitPrice: Discounted connection traffic price in USD/GB.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DiscountFlowUnitPrice: float\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ProxyDailyPrice = None
         self.BandwidthUnitPrice = None
         self.DiscountProxyDailyPrice = None
@@ -3923,8 +5053,16 @@ class ListenerInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ListenerId: Listener ID
+        :type ListenerId: str
+        :param ListenerName: Listener name
+        :type ListenerName: str
+        :param Port: Listening port
+        :type Port: int
+        :param Protocol: Listener protocol type
+        :type Protocol: str
         """
-        :param ListenerId: Listener ID\n        :type ListenerId: str\n        :param ListenerName: Listener name\n        :type ListenerName: str\n        :param Port: Listening port\n        :type Port: int\n        :param Protocol: Listener protocol type\n        :type Protocol: str\n        """
         self.ListenerId = None
         self.ListenerName = None
         self.Port = None
@@ -3951,8 +5089,12 @@ class MetricStatisticsInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MetricName: Metric name
+        :type MetricName: str
+        :param MetricData: Metric statistics
+        :type MetricData: list of StatisticsDataInfo
         """
-        :param MetricName: Metric name\n        :type MetricName: str\n        :param MetricData: Metric statistics\n        :type MetricData: list of StatisticsDataInfo\n        """
         self.MetricName = None
         self.MetricData = None
 
@@ -3980,8 +5122,12 @@ class ModifyCertificateAttributesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CertificateId: Certificate ID.
+        :type CertificateId: str
+        :param CertificateAlias: Certificate name. Up to 50 characters.
+        :type CertificateAlias: str
         """
-        :param CertificateId: Certificate ID.\n        :type CertificateId: str\n        :param CertificateAlias: Certificate name. Up to 50 characters.\n        :type CertificateAlias: str\n        """
         self.CertificateId = None
         self.CertificateAlias = None
 
@@ -4004,8 +5150,10 @@ class ModifyCertificateAttributesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4019,12 +5167,22 @@ class ModifyCertificateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ListenerId: Listener instance ID\n        :type ListenerId: str\n        :param Domain: Domain name whose certificate needs to be modified\n        :type Domain: str\n        :param CertificateId: New server certificate ID:
-If CertificateId=default, using the listener certificate.\n        :type CertificateId: str\n        :param ClientCertificateId: New client certificate ID:
+        r"""
+        :param ListenerId: Listener instance ID
+        :type ListenerId: str
+        :param Domain: Domain name whose certificate needs to be modified
+        :type Domain: str
+        :param CertificateId: New server certificate ID:
+If CertificateId=default, using the listener certificate.
+        :type CertificateId: str
+        :param ClientCertificateId: New client certificate ID:
 If ClientCertificateId=default, using the listener certificate.
-This parameter is required only when the mutual authentication is adopted.\n        :type ClientCertificateId: str\n        :param PolyClientCertificateIds: List of new IDs of multiple client certificates, where:
-This parameter or the `ClientCertificateId` parameter is required for mutual authentication only.\n        :type PolyClientCertificateIds: list of str\n        """
+This parameter is required only when the mutual authentication is adopted.
+        :type ClientCertificateId: str
+        :param PolyClientCertificateIds: List of new IDs of multiple client certificates, where:
+This parameter or the `ClientCertificateId` parameter is required for mutual authentication only.
+        :type PolyClientCertificateIds: list of str
+        """
         self.ListenerId = None
         self.Domain = None
         self.CertificateId = None
@@ -4053,8 +5211,10 @@ class ModifyCertificateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4068,17 +5228,29 @@ class ModifyDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ListenerId: Layer-7 listener ID\n        :type ListenerId: str\n        :param OldDomain: Original domain name information\n        :type OldDomain: str\n        :param NewDomain: New domain name information\n        :type NewDomain: str\n        :param CertificateId: Server SSL certificate ID. It's only applicable to the connections of version 3.0:
+        r"""
+        :param ListenerId: Layer-7 listener ID
+        :type ListenerId: str
+        :param OldDomain: Original domain name information
+        :type OldDomain: str
+        :param NewDomain: New domain name information
+        :type NewDomain: str
+        :param CertificateId: Server SSL certificate ID. It's only applicable to the connections of version 3.0:
 If this field is not passed in, the original certificate will be used;
 If this field is passed in, and CertificateId=default, the listener certificate will be used;
-For other cases, the certificate specified by CertificateId will be used.\n        :type CertificateId: str\n        :param ClientCertificateId: Client CA certificate ID. It's only applicable to the connections of version 3.0:
+For other cases, the certificate specified by CertificateId will be used.
+        :type CertificateId: str
+        :param ClientCertificateId: Client CA certificate ID. It's only applicable to the connections of version 3.0:
 If this field is not passed in, the original certificate will be used;
 If this field is passed in, and ClientCertificateId=default, the listener certificate will be used;
-For other cases, the certificate specified by ClientCertificateId will be used.\n        :type ClientCertificateId: str\n        :param PolyClientCertificateIds: Client CA certificate ID. It is only applicable to connections on version 3.0, where:
+For other cases, the certificate specified by ClientCertificateId will be used.
+        :type ClientCertificateId: str
+        :param PolyClientCertificateIds: Client CA certificate ID. It is only applicable to connections on version 3.0, where:
 If this field and `ClientCertificateId` are not included, the original certificate will be used;
 If this field is included, and ClientCertificateId=default, then the listener certificate will be used;
-In other cases, the certificate specified by `ClientCertificateId` or `PolyClientCertificateIds` will be used.\n        :type PolyClientCertificateIds: list of str\n        """
+In other cases, the certificate specified by `ClientCertificateId` or `PolyClientCertificateIds` will be used.
+        :type PolyClientCertificateIds: list of str
+        """
         self.ListenerId = None
         self.OldDomain = None
         self.NewDomain = None
@@ -4109,8 +5281,10 @@ class ModifyDomainResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4124,8 +5298,14 @@ class ModifyGroupDomainConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: Connection group ID.
+        :type GroupId: str
+        :param DefaultDnsIp: Default access IP or domain name of domain name resolution
+        :type DefaultDnsIp: str
+        :param AccessRegionList: Nearest access region configuration.
+        :type AccessRegionList: list of AccessRegionDomainConf
         """
-        :param GroupId: Connection group ID.\n        :type GroupId: str\n        :param DefaultDnsIp: Default access IP or domain name of domain name resolution\n        :type DefaultDnsIp: str\n        :param AccessRegionList: Nearest access region configuration.\n        :type AccessRegionList: list of AccessRegionDomainConf\n        """
         self.GroupId = None
         self.DefaultDnsIp = None
         self.AccessRegionList = None
@@ -4155,8 +5335,10 @@ class ModifyGroupDomainConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4170,8 +5352,14 @@ class ModifyHTTPListenerAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ListenerId: Listener ID to be modified
+        :type ListenerId: str
+        :param ListenerName: New listener name
+        :type ListenerName: str
+        :param ProxyId: Connection ID
+        :type ProxyId: str
         """
-        :param ListenerId: Listener ID to be modified\n        :type ListenerId: str\n        :param ListenerName: New listener name\n        :type ListenerName: str\n        :param ProxyId: Connection ID\n        :type ProxyId: str\n        """
         self.ListenerId = None
         self.ListenerName = None
         self.ProxyId = None
@@ -4196,8 +5384,10 @@ class ModifyHTTPListenerAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4211,8 +5401,22 @@ class ModifyHTTPSListenerAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ListenerId: Listener ID
+        :type ListenerId: str
+        :param ProxyId: Connection ID. This field is required if using a single connection listener.
+        :type ProxyId: str
+        :param ListenerName: New listener name
+        :type ListenerName: str
+        :param ForwardProtocol: Type of the protocol used in the forwarding from connections to origin servers
+        :type ForwardProtocol: str
+        :param CertificateId: New listener server certificate ID
+        :type CertificateId: str
+        :param ClientCertificateId: New listener client certificate ID
+        :type ClientCertificateId: str
+        :param PolyClientCertificateIds: Client certificate ID of the listener after modification, which is a new field.
+        :type PolyClientCertificateIds: list of str
         """
-        :param ListenerId: Listener ID\n        :type ListenerId: str\n        :param ProxyId: Connection ID. This field is required if using a single connection listener.\n        :type ProxyId: str\n        :param ListenerName: New listener name\n        :type ListenerName: str\n        :param ForwardProtocol: Type of the protocol used in the forwarding from connections to origin servers\n        :type ForwardProtocol: str\n        :param CertificateId: New listener server certificate ID\n        :type CertificateId: str\n        :param ClientCertificateId: New listener client certificate ID\n        :type ClientCertificateId: str\n        :param PolyClientCertificateIds: Client certificate ID of the listener after modification, which is a new field.\n        :type PolyClientCertificateIds: list of str\n        """
         self.ListenerId = None
         self.ProxyId = None
         self.ListenerName = None
@@ -4245,8 +5449,10 @@ class ModifyHTTPSListenerAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4260,9 +5466,17 @@ class ModifyProxiesAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceIds: ID of one or multiple connections to be operated; It's an old parameter, please switch to ProxyIds.
+        :type InstanceIds: list of str
+        :param ProxyName: Connection name. Up to 30 characters.
+        :type ProxyName: str
+        :param ClientToken: A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
+For more information, please see How to Ensure Idempotence.
+        :type ClientToken: str
+        :param ProxyIds: ID of one or multiple connections to be operated; It's a new parameter.
+        :type ProxyIds: list of str
         """
-        :param InstanceIds: ID of one or multiple connections to be operated; It's an old parameter, please switch to ProxyIds.\n        :type InstanceIds: list of str\n        :param ProxyName: Connection name. Up to 30 characters.\n        :type ProxyName: str\n        :param ClientToken: A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
-For more information, please see How to Ensure Idempotence.\n        :type ClientToken: str\n        :param ProxyIds: ID of one or multiple connections to be operated; It's a new parameter.\n        :type ProxyIds: list of str\n        """
         self.InstanceIds = None
         self.ProxyName = None
         self.ClientToken = None
@@ -4289,8 +5503,10 @@ class ModifyProxiesAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4304,9 +5520,17 @@ class ModifyProxiesProjectRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProjectId: The target project ID.
+        :type ProjectId: int
+        :param InstanceIds: ID of one or multiple connections to be operated; It's an old parameter, please switch to ProxyIds.
+        :type InstanceIds: list of str
+        :param ClientToken: A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
+For more information, please see How to Ensure Idempotence.
+        :type ClientToken: str
+        :param ProxyIds: ID of one or multiple connections to be operated; It's a new parameter.
+        :type ProxyIds: list of str
         """
-        :param ProjectId: The target project ID.\n        :type ProjectId: int\n        :param InstanceIds: ID of one or multiple connections to be operated; It's an old parameter, please switch to ProxyIds.\n        :type InstanceIds: list of str\n        :param ClientToken: A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
-For more information, please see How to Ensure Idempotence.\n        :type ClientToken: str\n        :param ProxyIds: ID of one or multiple connections to be operated; It's a new parameter.\n        :type ProxyIds: list of str\n        """
         self.ProjectId = None
         self.InstanceIds = None
         self.ClientToken = None
@@ -4333,8 +5557,10 @@ class ModifyProxiesProjectResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4348,11 +5574,23 @@ class ModifyProxyConfigurationRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Connection instance ID; It's an old parameter, please switch to ProxyId.
+        :type InstanceId: str
+        :param Bandwidth: Target bandwidth. Unit: Mbps.
+Bandwidth or Concurrent must be set. Use the DescribeAccessRegionsByDestRegion API to obtain the value range.
+        :type Bandwidth: int
+        :param Concurrent: Target concurrence value. Unit: 10,000 connections.
+Bandwidth or Concurrent must be set. Use the DescribeAccessRegionsByDestRegion API to obtain the value range.
+        :type Concurrent: int
+        :param ClientToken: A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
+For more information, please see How to Ensure Idempotence.
+        :type ClientToken: str
+        :param ProxyId: Connection instance ID; It's a new parameter.
+        :type ProxyId: str
+        :param BillingType: Billing mode (0: bill-by-bandwidth, 1: bill-by-traffic. Default value: bill-by-bandwidth)
+        :type BillingType: int
         """
-        :param InstanceId: Connection instance ID; It's an old parameter, please switch to ProxyId.\n        :type InstanceId: str\n        :param Bandwidth: Target bandwidth. Unit: Mbps.
-Bandwidth or Concurrent must be set. Use the DescribeAccessRegionsByDestRegion API to obtain the value range.\n        :type Bandwidth: int\n        :param Concurrent: Target concurrence value. Unit: 10,000 connections.
-Bandwidth or Concurrent must be set. Use the DescribeAccessRegionsByDestRegion API to obtain the value range.\n        :type Concurrent: int\n        :param ClientToken: A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
-For more information, please see How to Ensure Idempotence.\n        :type ClientToken: str\n        :param ProxyId: Connection instance ID; It's a new parameter.\n        :type ProxyId: str\n        :param BillingType: Billing mode (0: bill-by-bandwidth, 1: bill-by-traffic. Default value: bill-by-bandwidth)\n        :type BillingType: int\n        """
         self.InstanceId = None
         self.Bandwidth = None
         self.Concurrent = None
@@ -4383,8 +5621,10 @@ class ModifyProxyConfigurationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4398,8 +5638,14 @@ class ModifyProxyGroupAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: ID of the connection group to be modified.
+        :type GroupId: str
+        :param GroupName: New connection group name. Up to 30 characters. The extra characters will be truncated.
+        :type GroupName: str
+        :param ProjectId: Project ID
+        :type ProjectId: int
         """
-        :param GroupId: ID of the connection group to be modified.\n        :type GroupId: str\n        :param GroupName: New connection group name. Up to 30 characters. The extra characters will be truncated.\n        :type GroupName: str\n        :param ProjectId: Project ID\n        :type ProjectId: int\n        """
         self.GroupId = None
         self.GroupName = None
         self.ProjectId = None
@@ -4424,8 +5670,10 @@ class ModifyProxyGroupAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4439,8 +5687,12 @@ class ModifyRealServerNameRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RealServerName: Origin server name
+        :type RealServerName: str
+        :param RealServerId: Origin server ID
+        :type RealServerId: str
         """
-        :param RealServerName: Origin server name\n        :type RealServerName: str\n        :param RealServerId: Origin server ID\n        :type RealServerId: str\n        """
         self.RealServerName = None
         self.RealServerId = None
 
@@ -4463,8 +5715,10 @@ class ModifyRealServerNameResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4478,15 +5732,31 @@ class ModifyRuleAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ListenerId: Listener ID\n        :type ListenerId: str\n        :param RuleId: Forwarding rule ID\n        :type RuleId: str\n        :param Scheduler: Scheduling policy:
+        r"""
+        :param ListenerId: Listener ID
+        :type ListenerId: str
+        :param RuleId: Forwarding rule ID
+        :type RuleId: str
+        :param Scheduler: Scheduling policy:
 rr: round robin;
 wrr: weighted round robin;
-lc: least connections.\n        :type Scheduler: str\n        :param HealthCheck: Whether to enable the origin server health check:
+lc: least connections.
+        :type Scheduler: str
+        :param HealthCheck: Whether to enable the origin server health check:
 1: enable;
-0: disable.\n        :type HealthCheck: int\n        :param CheckParams: Health check configuration parameters\n        :type CheckParams: :class:`tencentcloud.gaap.v20180529.models.RuleCheckParams`\n        :param Path: Forwarding rule path\n        :type Path: str\n        :param ForwardProtocol: Protocol types of the forwarding from acceleration connection to origin server, which supports default, HTTP and HTTPS.
-If `ForwardProtocol=default`, the `ForwardProtocol` of the listener will be used.\n        :type ForwardProtocol: str\n        :param ForwardHost: The `host` carried in the request forwarded from the acceleration connection to the origin server.
-If `ForwardHost=default`, the domain name of rule will be used. For other cases, the value set in this field will be used.\n        :type ForwardHost: str\n        """
+0: disable.
+        :type HealthCheck: int
+        :param CheckParams: Health check configuration parameters
+        :type CheckParams: :class:`tencentcloud.gaap.v20180529.models.RuleCheckParams`
+        :param Path: Forwarding rule path
+        :type Path: str
+        :param ForwardProtocol: Protocol types of the forwarding from acceleration connection to origin server, which supports default, HTTP and HTTPS.
+If `ForwardProtocol=default`, the `ForwardProtocol` of the listener will be used.
+        :type ForwardProtocol: str
+        :param ForwardHost: The `host` carried in the request forwarded from the acceleration connection to the origin server.
+If `ForwardHost=default`, the domain name of rule will be used. For other cases, the value set in this field will be used.
+        :type ForwardHost: str
+        """
         self.ListenerId = None
         self.RuleId = None
         self.Scheduler = None
@@ -4523,8 +5793,10 @@ class ModifyRuleAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4538,12 +5810,26 @@ class ModifySecurityRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param RuleId: Rule ID\n        :type RuleId: str\n        :param AliasName: Rule name: up to 30 characters. The extra characters will be truncated.\n        :type AliasName: str\n        :param PolicyId: Security policy ID\n        :type PolicyId: str\n        :param RuleAction: Security rule action\n        :type RuleAction: str\n        :param SourceCidr: A CIDR IP address associated with the rule\n        :type SourceCidr: str\n        :param Protocol: Protocol type\n        :type Protocol: str\n        :param DestPortRange: Port range. Valid values:
+        r"""
+        :param RuleId: Rule ID
+        :type RuleId: str
+        :param AliasName: Rule name: up to 30 characters. The extra characters will be truncated.
+        :type AliasName: str
+        :param PolicyId: Security policy ID
+        :type PolicyId: str
+        :param RuleAction: Security rule action
+        :type RuleAction: str
+        :param SourceCidr: A CIDR IP address associated with the rule
+        :type SourceCidr: str
+        :param Protocol: Protocol type
+        :type Protocol: str
+        :param DestPortRange: Port range. Valid values:
 A single port: 80
 Multiple ports: 80 and 443
 Consecutive ports: 3306-20000
-All ports: ALL\n        :type DestPortRange: str\n        """
+All ports: ALL
+        :type DestPortRange: str
+        """
         self.RuleId = None
         self.AliasName = None
         self.PolicyId = None
@@ -4576,8 +5862,10 @@ class ModifySecurityRuleResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4591,8 +5879,30 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ListenerId: Listener ID
+        :type ListenerId: str
+        :param GroupId: Connection group ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
+        :type GroupId: str
+        :param ProxyId: Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
+        :type ProxyId: str
+        :param ListenerName: Listener name
+        :type ListenerName: str
+        :param Scheduler: Origin server scheduling policy of listeners, which supports round robin (rr), weighted round robin (wrr), and least connections (lc).
+        :type Scheduler: str
+        :param DelayLoop: Time interval of origin server health check (unit: seconds). Value range: [5, 300].
+        :type DelayLoop: int
+        :param ConnectTimeout: Response timeout of origin server health check (unit: seconds). Value range: [2, 60]. The timeout value shall be less than the time interval for health check DelayLoop.
+        :type ConnectTimeout: int
+        :param HealthCheck: Whether to enable health check. 1: enable; 0: disable.
+        :type HealthCheck: int
+        :param FailoverSwitch: Whether to enable the primary/secondary origin server mode. Valid values: 1 (enable) and 0 (disable). It cannot be enabled for domain name origin servers.
+        :type FailoverSwitch: int
+        :param HealthyThreshold: Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.
+        :type HealthyThreshold: int
+        :param UnhealthyThreshold: Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 -10.
+        :type UnhealthyThreshold: int
         """
-        :param ListenerId: Listener ID\n        :type ListenerId: str\n        :param GroupId: Connection group ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.\n        :type GroupId: str\n        :param ProxyId: Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.\n        :type ProxyId: str\n        :param ListenerName: Listener name\n        :type ListenerName: str\n        :param Scheduler: Origin server scheduling policy of listeners, which supports round robin (rr), weighted round robin (wrr), and least connections (lc).\n        :type Scheduler: str\n        :param DelayLoop: Time interval of origin server health check (unit: seconds). Value range: [5, 300].\n        :type DelayLoop: int\n        :param ConnectTimeout: Response timeout of origin server health check (unit: seconds). Value range: [2, 60]. The timeout value shall be less than the time interval for health check DelayLoop.\n        :type ConnectTimeout: int\n        :param HealthCheck: Whether to enable health check. 1: enable; 0: disable.\n        :type HealthCheck: int\n        :param FailoverSwitch: Whether to enable the primary/secondary origin server mode. Valid values: 1 (enable) and 0 (disable). It cannot be enabled for domain name origin servers.\n        :type FailoverSwitch: int\n        :param HealthyThreshold: Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.\n        :type HealthyThreshold: int\n        :param UnhealthyThreshold: Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 -10.\n        :type UnhealthyThreshold: int\n        """
         self.ListenerId = None
         self.GroupId = None
         self.ProxyId = None
@@ -4633,8 +5943,10 @@ class ModifyTCPListenerAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4648,8 +5960,18 @@ class ModifyUDPListenerAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ListenerId: Listener ID
+        :type ListenerId: str
+        :param GroupId: Connection group ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
+        :type GroupId: str
+        :param ProxyId: Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
+        :type ProxyId: str
+        :param ListenerName: Listener name
+        :type ListenerName: str
+        :param Scheduler: Origin server scheduling policy of listeners
+        :type Scheduler: str
         """
-        :param ListenerId: Listener ID\n        :type ListenerId: str\n        :param GroupId: Connection group ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.\n        :type GroupId: str\n        :param ProxyId: Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.\n        :type ProxyId: str\n        :param ListenerName: Listener name\n        :type ListenerName: str\n        :param Scheduler: Origin server scheduling policy of listeners\n        :type Scheduler: str\n        """
         self.ListenerId = None
         self.GroupId = None
         self.ProxyId = None
@@ -4678,8 +6000,10 @@ class ModifyUDPListenerAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4693,8 +6017,12 @@ class NationCountryInnerInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NationCountryName: Country name
+        :type NationCountryName: str
+        :param NationCountryInnerCode: Country internal code
+        :type NationCountryInnerCode: str
         """
-        :param NationCountryName: Country name\n        :type NationCountryName: str\n        :param NationCountryInnerCode: Country internal code\n        :type NationCountryInnerCode: str\n        """
         self.NationCountryName = None
         self.NationCountryInnerCode = None
 
@@ -4717,8 +6045,12 @@ class NewRealServer(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RealServerId: Origin server ID
+        :type RealServerId: str
+        :param RealServerIP: Origin server IP or domain name
+        :type RealServerIP: str
         """
-        :param RealServerId: Origin server ID\n        :type RealServerId: str\n        :param RealServerIP: Origin server IP or domain name\n        :type RealServerIP: str\n        """
         self.RealServerId = None
         self.RealServerIP = None
 
@@ -4741,9 +6073,15 @@ class OpenProxiesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceIds: List of connection instance IDs; It's an old parameter, please switch to ProxyIds.
+        :type InstanceIds: list of str
+        :param ClientToken: A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
+For more information, please see How to Ensure Idempotence.
+        :type ClientToken: str
+        :param ProxyIds: List of connection instance IDs; It's a new parameter.
+        :type ProxyIds: list of str
         """
-        :param InstanceIds: List of connection instance IDs; It's an old parameter, please switch to ProxyIds.\n        :type InstanceIds: list of str\n        :param ClientToken: A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
-For more information, please see How to Ensure Idempotence.\n        :type ClientToken: str\n        :param ProxyIds: List of connection instance IDs; It's a new parameter.\n        :type ProxyIds: list of str\n        """
         self.InstanceIds = None
         self.ClientToken = None
         self.ProxyIds = None
@@ -4768,8 +6106,14 @@ class OpenProxiesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InvalidStatusInstanceSet: The connection instance ID list cannot be enabled if it's not disabled.
+        :type InvalidStatusInstanceSet: list of str
+        :param OperationFailedInstanceSet: ID list of connection instances failed to be enabled.
+        :type OperationFailedInstanceSet: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param InvalidStatusInstanceSet: The connection instance ID list cannot be enabled if it's not disabled.\n        :type InvalidStatusInstanceSet: list of str\n        :param OperationFailedInstanceSet: ID list of connection instances failed to be enabled.\n        :type OperationFailedInstanceSet: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InvalidStatusInstanceSet = None
         self.OperationFailedInstanceSet = None
         self.RequestId = None
@@ -4787,8 +6131,10 @@ class OpenProxyGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: Connection group instance ID
+        :type GroupId: str
         """
-        :param GroupId: Connection group instance ID\n        :type GroupId: str\n        """
         self.GroupId = None
 
 
@@ -4809,8 +6155,14 @@ class OpenProxyGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InvalidStatusInstanceSet: List of IDs of the connection instances that are not disabled, which cannot be enabled.
+        :type InvalidStatusInstanceSet: list of str
+        :param OperationFailedInstanceSet: List of IDs of the connection instances failed to be enabled.
+        :type OperationFailedInstanceSet: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param InvalidStatusInstanceSet: List of IDs of the connection instances that are not disabled, which cannot be enabled.\n        :type InvalidStatusInstanceSet: list of str\n        :param OperationFailedInstanceSet: List of IDs of the connection instances failed to be enabled.\n        :type OperationFailedInstanceSet: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InvalidStatusInstanceSet = None
         self.OperationFailedInstanceSet = None
         self.RequestId = None
@@ -4828,8 +6180,12 @@ class OpenSecurityPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProxyId: ID of the connections requiring enabled security policies.
+        :type ProxyId: str
+        :param PolicyId: Security policy ID
+        :type PolicyId: str
         """
-        :param ProxyId: ID of the connections requiring enabled security policies.\n        :type ProxyId: str\n        :param PolicyId: Security policy ID\n        :type PolicyId: str\n        """
         self.ProxyId = None
         self.PolicyId = None
 
@@ -4852,8 +6208,12 @@ class OpenSecurityPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Async Process ID. Using DescribeAsyncTaskStatus to query process and status.
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskId: Async Process ID. Using DescribeAsyncTaskStatus to query process and status.\n        :type TaskId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -4869,18 +6229,52 @@ class ProxyGroupDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param CreateTime: Creation time\n        :type CreateTime: int\n        :param ProjectId: Project ID\n        :type ProjectId: int\n        :param ProxyNum: Number of connections in connection group\n        :type ProxyNum: int\n        :param Status: Connection group status:
+        r"""
+        :param CreateTime: Creation time
+        :type CreateTime: int
+        :param ProjectId: Project ID
+        :type ProjectId: int
+        :param ProxyNum: Number of connections in connection group
+        :type ProxyNum: int
+        :param Status: Connection group status:
 0: running normally;
 1: creating;
 4: terminating;
-11: migrating;\n        :type Status: int\n        :param OwnerUin: Owner UIN\n        :type OwnerUin: str\n        :param CreateUin: Creation UIN\n        :type CreateUin: str\n        :param GroupName: Connection name\n        :type GroupName: str\n        :param DnsDefaultIp: Default IP of domain name resolution for connection groups\n        :type DnsDefaultIp: str\n        :param Domain: Connection group domain name
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Domain: str\n        :param RealServerRegionInfo: Target region\n        :type RealServerRegionInfo: :class:`tencentcloud.gaap.v20180529.models.RegionDetail`\n        :param IsOldGroup: Whether it is an old connection group, i.e., those created before August 3, 2018.\n        :type IsOldGroup: bool\n        :param GroupId: Connection group ID\n        :type GroupId: str\n        :param TagSet: Tag list
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type TagSet: list of TagPair\n        :param PolicyId: Security policy ID. This field exists if security policies are set.
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type PolicyId: str\n        :param Version: Connection group version
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Version: str\n        :param ClientIPMethod: Describes how the connection obtains client IPs. 0: TOA; 1: Proxy Protocol.
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ClientIPMethod: list of int\n        :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.
-Note: This field may return `null`, indicating that no valid values can be obtained.\n        :type IPAddressVersion: str\n        """
+11: migrating;
+        :type Status: int
+        :param OwnerUin: Owner UIN
+        :type OwnerUin: str
+        :param CreateUin: Creation UIN
+        :type CreateUin: str
+        :param GroupName: Connection name
+        :type GroupName: str
+        :param DnsDefaultIp: Default IP of domain name resolution for connection groups
+        :type DnsDefaultIp: str
+        :param Domain: Connection group domain name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Domain: str
+        :param RealServerRegionInfo: Target region
+        :type RealServerRegionInfo: :class:`tencentcloud.gaap.v20180529.models.RegionDetail`
+        :param IsOldGroup: Whether it is an old connection group, i.e., those created before August 3, 2018.
+        :type IsOldGroup: bool
+        :param GroupId: Connection group ID
+        :type GroupId: str
+        :param TagSet: Tag list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TagSet: list of TagPair
+        :param PolicyId: Security policy ID. This field exists if security policies are set.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type PolicyId: str
+        :param Version: Connection group version
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Version: str
+        :param ClientIPMethod: Describes how the connection obtains client IPs. 0: TOA; 1: Proxy Protocol.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ClientIPMethod: list of int
+        :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type IPAddressVersion: str
+        """
         self.CreateTime = None
         self.ProjectId = None
         self.ProxyNum = None
@@ -4940,18 +6334,38 @@ class ProxyGroupInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param GroupId: Connection group ID\n        :type GroupId: str\n        :param Domain: Connection group domain name
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Domain: str\n        :param GroupName: Connection group name
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type GroupName: str\n        :param ProjectId: Project ID\n        :type ProjectId: int\n        :param RealServerRegionInfo: Target region\n        :type RealServerRegionInfo: :class:`tencentcloud.gaap.v20180529.models.RegionDetail`\n        :param Status: Connection group status.
+        r"""
+        :param GroupId: Connection group ID
+        :type GroupId: str
+        :param Domain: Connection group domain name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Domain: str
+        :param GroupName: Connection group name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GroupName: str
+        :param ProjectId: Project ID
+        :type ProjectId: int
+        :param RealServerRegionInfo: Target region
+        :type RealServerRegionInfo: :class:`tencentcloud.gaap.v20180529.models.RegionDetail`
+        :param Status: Connection group status.
 Where:
 0: running;
 1: creating;
 4: terminating;
-11: connection migrating.\n        :type Status: str\n        :param TagSet: Tag list.\n        :type TagSet: list of TagPair\n        :param Version: Connection group version
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Version: str\n        :param CreateTime: Creation time
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type CreateTime: int\n        :param ProxyType: Whether the connection group contains a Microsoft connection
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ProxyType: int\n        """
+11: connection migrating.
+        :type Status: str
+        :param TagSet: Tag list.
+        :type TagSet: list of TagPair
+        :param Version: Connection group version
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Version: str
+        :param CreateTime: Creation time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: int
+        :param ProxyType: Whether the connection group contains a Microsoft connection
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ProxyType: int
+        """
         self.GroupId = None
         self.Domain = None
         self.GroupName = None
@@ -4997,8 +6411,10 @@ class ProxyIdDict(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProxyId: Connection ID
+        :type ProxyId: str
         """
-        :param ProxyId: Connection ID\n        :type ProxyId: str\n        """
         self.ProxyId = None
 
 
@@ -5019,9 +6435,25 @@ class ProxyInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: Connection instance ID; It's an old parameter, please switch to ProxyId.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type InstanceId: str\n        :param CreateTime: Creation time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).\n        :type CreateTime: int\n        :param ProjectId: Project ID.\n        :type ProjectId: int\n        :param ProxyName: Connection name.\n        :type ProxyName: str\n        :param AccessRegion: Access region.\n        :type AccessRegion: str\n        :param RealServerRegion: Origin server region.\n        :type RealServerRegion: str\n        :param Bandwidth: Bandwidth. Unit: Mbps.\n        :type Bandwidth: int\n        :param Concurrent: Concurrence. Unit: requests/second.\n        :type Concurrent: int\n        :param Status: Connection status:
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param CreateTime: Creation time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
+        :type CreateTime: int
+        :param ProjectId: Project ID.
+        :type ProjectId: int
+        :param ProxyName: Connection name.
+        :type ProxyName: str
+        :param AccessRegion: Access region.
+        :type AccessRegion: str
+        :param RealServerRegion: Origin server region.
+        :type RealServerRegion: str
+        :param Bandwidth: Bandwidth. Unit: Mbps.
+        :type Bandwidth: int
+        :param Concurrent: Concurrence. Unit: requests/second.
+        :type Concurrent: int
+        :param Status: Connection status:
 RUNNING: running;
 CREATING: creating;
 DESTROYING: terminating;
@@ -5031,20 +6463,60 @@ CLOSED: disabled;
 ADJUSTING: adjusting configuration
 ISOLATING: isolating (it's triggered when the account is in arrears);
 ISOLATED: isolated (it's triggered when the account is in arrears);
-UNKNOWN: unknown status.\n        :type Status: str\n        :param Domain: Accessed domain name.\n        :type Domain: str\n        :param IP: Accessed IP.\n        :type IP: str\n        :param Version: Connection versions: 1.0, 2.0, 3.0.\n        :type Version: str\n        :param ProxyId: Connection instance ID; It's a new parameter.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type ProxyId: str\n        :param Scalarable: 1: this connection is expandable; 0: this connection is not expandable.\n        :type Scalarable: int\n        :param SupportProtocols: Supported protocol types.\n        :type SupportProtocols: list of str\n        :param GroupId: Connection group ID. This field exists if a connection belongs to a connection group.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type GroupId: str\n        :param PolicyId: Security policy ID. This field exists if security policies are configured.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type PolicyId: str\n        :param AccessRegionInfo: Access region details, including region ID and region name.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type AccessRegionInfo: :class:`tencentcloud.gaap.v20180529.models.RegionDetail`\n        :param RealServerRegionInfo: Origin server region details, including region ID and region name.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type RealServerRegionInfo: :class:`tencentcloud.gaap.v20180529.models.RegionDetail`\n        :param ForwardIP: Forwarding IP of the connection\n        :type ForwardIP: str\n        :param TagSet: Tag list. This field is an empty list if no tags exist.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type TagSet: list of TagPair\n        :param SupportSecurity: Whether security groups are supported.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type SupportSecurity: int\n        :param BillingType: Billing mode. 0: bill-by-bandwidth; 1: bill-by-traffic.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type BillingType: int\n        :param RelatedGlobalDomains: List of domain names associated with resolution record
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type RelatedGlobalDomains: list of str\n        :param ModifyConfigTime: Configuration change time
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ModifyConfigTime: int\n        :param ProxyType: Connection type. 104: SILVER connection.
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ProxyType: int\n        :param ClientIPMethod: Describes how the connection obtains client IPs. 0: TOA; 1: Proxy Protocol.
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ClientIPMethod: list of int\n        :param IPAddressVersion: IP version. Valid values: `IPv4`, `IPv6`.
-Note: This field may return `null`, indicating that no valid values can be obtained.\n        :type IPAddressVersion: str\n        """
+UNKNOWN: unknown status.
+        :type Status: str
+        :param Domain: Accessed domain name.
+        :type Domain: str
+        :param IP: Accessed IP.
+        :type IP: str
+        :param Version: Connection versions: 1.0, 2.0, 3.0.
+        :type Version: str
+        :param ProxyId: Connection instance ID; It's a new parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProxyId: str
+        :param Scalarable: 1: this connection is expandable; 0: this connection is not expandable.
+        :type Scalarable: int
+        :param SupportProtocols: Supported protocol types.
+        :type SupportProtocols: list of str
+        :param GroupId: Connection group ID. This field exists if a connection belongs to a connection group.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GroupId: str
+        :param PolicyId: Security policy ID. This field exists if security policies are configured.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PolicyId: str
+        :param AccessRegionInfo: Access region details, including region ID and region name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AccessRegionInfo: :class:`tencentcloud.gaap.v20180529.models.RegionDetail`
+        :param RealServerRegionInfo: Origin server region details, including region ID and region name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RealServerRegionInfo: :class:`tencentcloud.gaap.v20180529.models.RegionDetail`
+        :param ForwardIP: Forwarding IP of the connection
+        :type ForwardIP: str
+        :param TagSet: Tag list. This field is an empty list if no tags exist.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TagSet: list of TagPair
+        :param SupportSecurity: Whether security groups are supported.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SupportSecurity: int
+        :param BillingType: Billing mode. 0: bill-by-bandwidth; 1: bill-by-traffic.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type BillingType: int
+        :param RelatedGlobalDomains: List of domain names associated with resolution record
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RelatedGlobalDomains: list of str
+        :param ModifyConfigTime: Configuration change time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ModifyConfigTime: int
+        :param ProxyType: Connection type. 104: SILVER connection.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ProxyType: int
+        :param ClientIPMethod: Describes how the connection obtains client IPs. 0: TOA; 1: Proxy Protocol.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ClientIPMethod: list of int
+        :param IPAddressVersion: IP version. Valid values: `IPv4`, `IPv6`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type IPAddressVersion: str
+        """
         self.InstanceId = None
         self.CreateTime = None
         self.ProjectId = None
@@ -5128,8 +6600,14 @@ class ProxySimpleInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProxyId: Connection ID
+        :type ProxyId: str
+        :param ProxyName: Connection name
+        :type ProxyName: str
+        :param ListenerList: Listener list
+        :type ListenerList: list of ListenerInfo
         """
-        :param ProxyId: Connection ID\n        :type ProxyId: str\n        :param ProxyName: Connection name\n        :type ProxyName: str\n        :param ListenerList: Listener list\n        :type ListenerList: list of ListenerInfo\n        """
         self.ProxyId = None
         self.ProxyName = None
         self.ListenerList = None
@@ -5159,8 +6637,10 @@ class ProxyStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param InstanceId: Connection instance ID.\n        :type InstanceId: str\n        :param Status: Connection status.
+        r"""
+        :param InstanceId: Connection instance ID.
+        :type InstanceId: str
+        :param Status: Connection status.
 Valid values:
 RUNNING: running;
 CREATING: creating;
@@ -5171,7 +6651,9 @@ CLOSED: disabled;
 ADJUSTING: adjusting configuration;
 ISOLATING: isolating;
 ISOLATED: isolated;
-UNKNOWN: unknown status.\n        :type Status: str\n        """
+UNKNOWN: unknown status.
+        :type Status: str
+        """
         self.InstanceId = None
         self.Status = None
 
@@ -5194,8 +6676,16 @@ class RealServer(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RealServerIP: Origin server IP or domain name
+        :type RealServerIP: str
+        :param RealServerId: Origin server ID
+        :type RealServerId: str
+        :param RealServerName: Origin server name
+        :type RealServerName: str
+        :param ProjectId: Project ID
+        :type ProjectId: int
         """
-        :param RealServerIP: Origin server IP or domain name\n        :type RealServerIP: str\n        :param RealServerId: Origin server ID\n        :type RealServerId: str\n        :param RealServerName: Origin server name\n        :type RealServerName: str\n        :param ProjectId: Project ID\n        :type ProjectId: int\n        """
         self.RealServerIP = None
         self.RealServerId = None
         self.RealServerName = None
@@ -5222,8 +6712,18 @@ class RealServerBindSetReq(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RealServerId: Origin server ID
+        :type RealServerId: str
+        :param RealServerPort: Origin server port
+        :type RealServerPort: int
+        :param RealServerIP: Origin server IP
+        :type RealServerIP: str
+        :param RealServerWeight: Origin server weight
+        :type RealServerWeight: int
+        :param RealServerFailoverRole: Origin server role: master (primary origin server); slave (secondary origin server). This parameter is applicable when the primary/secondary origin server mode is enabled for a TCP listener.
+        :type RealServerFailoverRole: str
         """
-        :param RealServerId: Origin server ID\n        :type RealServerId: str\n        :param RealServerPort: Origin server port\n        :type RealServerPort: int\n        :param RealServerIP: Origin server IP\n        :type RealServerIP: str\n        :param RealServerWeight: Origin server weight\n        :type RealServerWeight: int\n        :param RealServerFailoverRole: Origin server role: master (primary origin server); slave (secondary origin server). This parameter is applicable when the primary/secondary origin server mode is enabled for a TCP listener.\n        :type RealServerFailoverRole: str\n        """
         self.RealServerId = None
         self.RealServerPort = None
         self.RealServerIP = None
@@ -5252,8 +6752,14 @@ class RealServerStatus(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RealServerId: Origin server ID.
+        :type RealServerId: str
+        :param BindStatus: 0: not bound, 1: bound to rule or listener.
+        :type BindStatus: int
+        :param ProxyId: ID of the connection bound to this origin server. This string is empty if they are not bound.
+        :type ProxyId: str
         """
-        :param RealServerId: Origin server ID.\n        :type RealServerId: str\n        :param BindStatus: 0: not bound, 1: bound to rule or listener.\n        :type BindStatus: int\n        :param ProxyId: ID of the connection bound to this origin server. This string is empty if they are not bound.\n        :type ProxyId: str\n        """
         self.RealServerId = None
         self.BindStatus = None
         self.ProxyId = None
@@ -5278,8 +6784,12 @@ class RegionDetail(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegionId: Region ID
+        :type RegionId: str
+        :param RegionName: Region name in Chinese or English
+        :type RegionName: str
         """
-        :param RegionId: Region ID\n        :type RegionId: str\n        :param RegionName: Region name in Chinese or English\n        :type RegionName: str\n        """
         self.RegionId = None
         self.RegionName = None
 
@@ -5302,8 +6812,10 @@ class RemoveRealServersRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RealServerIds: List of origin server IDs
+        :type RealServerIds: list of str
         """
-        :param RealServerIds: List of origin server IDs\n        :type RealServerIds: list of str\n        """
         self.RealServerIds = None
 
 
@@ -5324,8 +6836,10 @@ class RemoveRealServersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -5339,12 +6853,30 @@ class RuleCheckParams(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DelayLoop: Time interval of health check
+        :type DelayLoop: int
+        :param ConnectTimeout: Response timeout of health check
+        :type ConnectTimeout: int
+        :param Path: Check path of health check
+        :type Path: str
+        :param Method: Health check method: GET/HEAD
+        :type Method: str
+        :param StatusCode: Return code indicting normal origin servers. Value range: [100, 200, 300, 400, 500]
+        :type StatusCode: list of int non-negative
+        :param Domain: Domain name to be performed health check
+You cannot modify this parameter when calling ModifyRuleAttribute API.
+        :type Domain: str
+        :param FailedCountInter: Origin server failure check frequency
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type FailedCountInter: int
+        :param FailedThreshold: Origin server health check threshold. All requests to the origin server will be blocked once the threshold is exceeded.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type FailedThreshold: int
+        :param BlockInter: Duration to block requests targeting the origin server after a failed health check
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type BlockInter: int
         """
-        :param DelayLoop: Time interval of health check\n        :type DelayLoop: int\n        :param ConnectTimeout: Response timeout of health check\n        :type ConnectTimeout: int\n        :param Path: Check path of health check\n        :type Path: str\n        :param Method: Health check method: GET/HEAD\n        :type Method: str\n        :param StatusCode: Return code indicting normal origin servers. Value range: [100, 200, 300, 400, 500]\n        :type StatusCode: list of int non-negative\n        :param Domain: Domain name to be performed health check
-You cannot modify this parameter when calling ModifyRuleAttribute API.\n        :type Domain: str\n        :param FailedCountInter: Origin server failure check frequency
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type FailedCountInter: int\n        :param FailedThreshold: Origin server health check threshold. All requests to the origin server will be blocked once the threshold is exceeded.
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type FailedThreshold: int\n        :param BlockInter: Duration to block requests targeting the origin server after a failed health check
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type BlockInter: int\n        """
         self.DelayLoop = None
         self.ConnectTimeout = None
         self.Path = None
@@ -5381,11 +6913,35 @@ class RuleInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param RuleId: Rule information\n        :type RuleId: str\n        :param ListenerId: Listener information\n        :type ListenerId: str\n        :param Domain: Rule domain name\n        :type Domain: str\n        :param Path: Rule path\n        :type Path: str\n        :param RealServerType: Origin server type\n        :type RealServerType: str\n        :param Scheduler: Forwarding policy of the origin server\n        :type Scheduler: str\n        :param HealthCheck: Whether health check is enabled. 1: enabled, 0: disabled\n        :type HealthCheck: int\n        :param RuleStatus: Rule status. 0: running, 1: creating, 2: terminating, 3: binding/unbinding origin server, 4: updating configuration\n        :type RuleStatus: int\n        :param CheckParams: Health check parameters\n        :type CheckParams: :class:`tencentcloud.gaap.v20180529.models.RuleCheckParams`\n        :param RealServerSet: Bound origin server information\n        :type RealServerSet: list of BindRealServer\n        :param BindStatus: Origin server service status. 0: exceptional, 1: normal
+        r"""
+        :param RuleId: Rule information
+        :type RuleId: str
+        :param ListenerId: Listener information
+        :type ListenerId: str
+        :param Domain: Rule domain name
+        :type Domain: str
+        :param Path: Rule path
+        :type Path: str
+        :param RealServerType: Origin server type
+        :type RealServerType: str
+        :param Scheduler: Forwarding policy of the origin server
+        :type Scheduler: str
+        :param HealthCheck: Whether health check is enabled. 1: enabled, 0: disabled
+        :type HealthCheck: int
+        :param RuleStatus: Rule status. 0: running, 1: creating, 2: terminating, 3: binding/unbinding origin server, 4: updating configuration
+        :type RuleStatus: int
+        :param CheckParams: Health check parameters
+        :type CheckParams: :class:`tencentcloud.gaap.v20180529.models.RuleCheckParams`
+        :param RealServerSet: Bound origin server information
+        :type RealServerSet: list of BindRealServer
+        :param BindStatus: Origin server service status. 0: exceptional, 1: normal
 If health check is not enabled, this status will always be normal.
-As long as one origin server is exceptional, this status will be exceptional. Please view `RealServerSet` for the status of specific origin servers.\n        :type BindStatus: int\n        :param ForwardHost: The `host` carried in the request forwarded from the connection to the origin server. `default` indicates directly forwarding the received 'host'.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type ForwardHost: str\n        """
+As long as one origin server is exceptional, this status will be exceptional. Please view `RealServerSet` for the status of specific origin servers.
+        :type BindStatus: int
+        :param ForwardHost: The `host` carried in the request forwarded from the connection to the origin server. `default` indicates directly forwarding the received 'host'.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ForwardHost: str
+        """
         self.RuleId = None
         self.ListenerId = None
         self.Domain = None
@@ -5435,12 +6991,22 @@ class SecurityPolicyRuleIn(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param SourceCidr: Source IP or IP range of the request.\n        :type SourceCidr: str\n        :param Action: Policy: Allow (ACCEPT) or reject (DROP).\n        :type Action: str\n        :param AliasName: Rule alias\n        :type AliasName: str\n        :param Protocol: Protocol: TCP or UDP. ALL indicates all protocols.\n        :type Protocol: str\n        :param DestPortRange: Target port. Formatting examples:
+        r"""
+        :param SourceCidr: Source IP or IP range of the request.
+        :type SourceCidr: str
+        :param Action: Policy: Allow (ACCEPT) or reject (DROP).
+        :type Action: str
+        :param AliasName: Rule alias
+        :type AliasName: str
+        :param Protocol: Protocol: TCP or UDP. ALL indicates all protocols.
+        :type Protocol: str
+        :param DestPortRange: Target port. Formatting examples:
 Single port: 80
 Multiple ports: 80, 443
 Consecutive ports: 3306-20000
-All ports: ALL\n        :type DestPortRange: str\n        """
+All ports: ALL
+        :type DestPortRange: str
+        """
         self.SourceCidr = None
         self.Action = None
         self.AliasName = None
@@ -5469,10 +7035,24 @@ class SecurityPolicyRuleOut(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Action: Policy: Allow (ACCEPT) or reject (DROP).
+        :type Action: str
+        :param SourceCidr: Source IP or IP range of the request.
+        :type SourceCidr: str
+        :param AliasName: Rule alias
+        :type AliasName: str
+        :param DestPortRange: Target port range
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DestPortRange: str
+        :param RuleId: Rule ID
+        :type RuleId: str
+        :param Protocol: Protocol type to be matched (TCP/UDP)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Protocol: str
+        :param PolicyId: Security policy ID
+        :type PolicyId: str
         """
-        :param Action: Policy: Allow (ACCEPT) or reject (DROP).\n        :type Action: str\n        :param SourceCidr: Source IP or IP range of the request.\n        :type SourceCidr: str\n        :param AliasName: Rule alias\n        :type AliasName: str\n        :param DestPortRange: Target port range
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type DestPortRange: str\n        :param RuleId: Rule ID\n        :type RuleId: str\n        :param Protocol: Protocol type to be matched (TCP/UDP)
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Protocol: str\n        :param PolicyId: Security policy ID\n        :type PolicyId: str\n        """
         self.Action = None
         self.SourceCidr = None
         self.AliasName = None
@@ -5505,17 +7085,37 @@ class SetAuthenticationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ListenerId: Listener ID.\n        :type ListenerId: str\n        :param Domain: The domain name requiring advanced configuration, i.e., the domain name of the listener's forwarding rules.\n        :type Domain: str\n        :param BasicAuth: Whether to enable the basic authentication:
+        r"""
+        :param ListenerId: Listener ID.
+        :type ListenerId: str
+        :param Domain: The domain name requiring advanced configuration, i.e., the domain name of the listener's forwarding rules.
+        :type Domain: str
+        :param BasicAuth: Whether to enable the basic authentication:
 0: disable basic authentication;
 1: enable basic authentication.
-The default value is 0.\n        :type BasicAuth: int\n        :param GaapAuth: Whether to enable the connection authentication, which is for the origin server to authenticate GAAP.
+The default value is 0.
+        :type BasicAuth: int
+        :param GaapAuth: Whether to enable the connection authentication, which is for the origin server to authenticate GAAP.
 0: disable;
 1: enable.
-The default value is 0.\n        :type GaapAuth: int\n        :param RealServerAuth: Whether to enable the origin server authentication, which is for GAAP to authenticate the server.
+The default value is 0.
+        :type GaapAuth: int
+        :param RealServerAuth: Whether to enable the origin server authentication, which is for GAAP to authenticate the server.
 0: disable;
 1: enable.
-The default value is 0.\n        :type RealServerAuth: int\n        :param BasicAuthConfId: Basic authentication configuration ID, which is obtained from the certificate management page.\n        :type BasicAuthConfId: str\n        :param GaapCertificateId: Connection SSL certificate ID, which is obtained from the certificate management page.\n        :type GaapCertificateId: str\n        :param RealServerCertificateId: CA certificate ID of the origin server, which is obtained from the certificate management page. When authenticating the origin server, enter this parameter or the `RealServerCertificateIds` parameter.\n        :type RealServerCertificateId: str\n        :param RealServerCertificateDomain: Domain name of the origin server certificate.\n        :type RealServerCertificateDomain: str\n        :param PolyRealServerCertificateIds: CA certificate IDs of multiple origin servers, which are obtained from the certificate management page. When authenticating the origin servers, enter this parameter or the `RealServerCertificateId` parameter.\n        :type PolyRealServerCertificateIds: list of str\n        """
+The default value is 0.
+        :type RealServerAuth: int
+        :param BasicAuthConfId: Basic authentication configuration ID, which is obtained from the certificate management page.
+        :type BasicAuthConfId: str
+        :param GaapCertificateId: Connection SSL certificate ID, which is obtained from the certificate management page.
+        :type GaapCertificateId: str
+        :param RealServerCertificateId: CA certificate ID of the origin server, which is obtained from the certificate management page. When authenticating the origin server, enter this parameter or the `RealServerCertificateIds` parameter.
+        :type RealServerCertificateId: str
+        :param RealServerCertificateDomain: Domain name of the origin server certificate.
+        :type RealServerCertificateDomain: str
+        :param PolyRealServerCertificateIds: CA certificate IDs of multiple origin servers, which are obtained from the certificate management page. When authenticating the origin servers, enter this parameter or the `RealServerCertificateId` parameter.
+        :type PolyRealServerCertificateIds: list of str
+        """
         self.ListenerId = None
         self.Domain = None
         self.BasicAuth = None
@@ -5554,8 +7154,10 @@ class SetAuthenticationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -5569,9 +7171,13 @@ class StatisticsDataInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Time: Corresponding time point
+        :type Time: int
+        :param Data: Statistics value
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: float
         """
-        :param Time: Corresponding time point\n        :type Time: int\n        :param Data: Statistics value
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Data: float\n        """
         self.Time = None
         self.Data = None
 
@@ -5594,25 +7200,59 @@ class TCPListener(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ListenerId: Listener ID\n        :type ListenerId: str\n        :param ListenerName: Listener name\n        :type ListenerName: str\n        :param Port: Listener port\n        :type Port: int\n        :param RealServerPort: Origin server port, which is only valid for the connections of version 1.0.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type RealServerPort: int\n        :param RealServerType: Type of the origin server bound to listeners\n        :type RealServerType: str\n        :param Protocol: Listener protocol: TCP.\n        :type Protocol: str\n        :param ListenerStatus: Listener status. Valid values:
+        r"""
+        :param ListenerId: Listener ID
+        :type ListenerId: str
+        :param ListenerName: Listener name
+        :type ListenerName: str
+        :param Port: Listener port
+        :type Port: int
+        :param RealServerPort: Origin server port, which is only valid for the connections of version 1.0.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RealServerPort: int
+        :param RealServerType: Type of the origin server bound to listeners
+        :type RealServerType: str
+        :param Protocol: Listener protocol: TCP.
+        :type Protocol: str
+        :param ListenerStatus: Listener status. Valid values:
 0: running;
 1: creating;
 2: terminating;
 3: adjusting origin server;
-4: adjusting configuration.\n        :type ListenerStatus: int\n        :param Scheduler: Origin server access policy of listener. Valid values:
+4: adjusting configuration.
+        :type ListenerStatus: int
+        :param Scheduler: Origin server access policy of listener. Valid values:
 rr: round robin;
 wrr: weighted round robin;
-lc: least connection.\n        :type Scheduler: str\n        :param ConnectTimeout: Response timeout of origin server health check (unit: seconds).\n        :type ConnectTimeout: int\n        :param DelayLoop: Time interval of origin server health check (unit: seconds).\n        :type DelayLoop: int\n        :param HealthCheck: Whether health check is enabled for listener. Valid values:
+lc: least connection.
+        :type Scheduler: str
+        :param ConnectTimeout: Response timeout of origin server health check (unit: seconds).
+        :type ConnectTimeout: int
+        :param DelayLoop: Time interval of origin server health check (unit: seconds).
+        :type DelayLoop: int
+        :param HealthCheck: Whether health check is enabled for listener. Valid values:
 0: disabled;
-1: enabled\n        :type HealthCheck: int\n        :param BindStatus: Status of origin server bound to listener. Valid values:
+1: enabled
+        :type HealthCheck: int
+        :param BindStatus: Status of origin server bound to listener. Valid values:
 0: exceptional;
-1: normal.\n        :type BindStatus: int\n        :param RealServerSet: Information of the origin server bound to listeners
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type RealServerSet: list of BindRealServer\n        :param CreateTime: Listener creation time; using UNIX timestamp.\n        :type CreateTime: int\n        :param ClientIPMethod: Describes how the listener obtains client IPs. 0: TOA; 1: Proxy Protocol.
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ClientIPMethod: int\n        :param HealthyThreshold: Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.
-Note: This field may return `null`, indicating that no valid values can be obtained.\n        :type HealthyThreshold: int\n        :param UnhealthyThreshold: Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 - 10.
-Note: This field may return `null`, indicating that no valid value can be obtained.\n        :type UnhealthyThreshold: int\n        """
+1: normal.
+        :type BindStatus: int
+        :param RealServerSet: Information of the origin server bound to listeners
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RealServerSet: list of BindRealServer
+        :param CreateTime: Listener creation time; using UNIX timestamp.
+        :type CreateTime: int
+        :param ClientIPMethod: Describes how the listener obtains client IPs. 0: TOA; 1: Proxy Protocol.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ClientIPMethod: int
+        :param HealthyThreshold: Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type HealthyThreshold: int
+        :param UnhealthyThreshold: Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 - 10.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type UnhealthyThreshold: int
+        """
         self.ListenerId = None
         self.ListenerName = None
         self.Port = None
@@ -5670,8 +7310,12 @@ class TagPair(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TagKey: Tag key
+        :type TagKey: str
+        :param TagValue: Tag value
+        :type TagValue: str
         """
-        :param TagKey: Tag key\n        :type TagKey: str\n        :param TagValue: Tag value\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -5694,11 +7338,15 @@ class TagResourceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceType: Resource types:
 `Proxy`: connections;
 `ProxyGroup`: connection groups;
-`RealServer`: origin servers.\n        :type ResourceType: str\n        :param ResourceId: Resource ID\n        :type ResourceId: str\n        """
+`RealServer`: origin servers.
+        :type ResourceType: str
+        :param ResourceId: Resource ID
+        :type ResourceId: str
+        """
         self.ResourceType = None
         self.ResourceId = None
 
@@ -5721,14 +7369,36 @@ class UDPListener(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ListenerId: Listener ID\n        :type ListenerId: str\n        :param ListenerName: Listener name\n        :type ListenerName: str\n        :param Port: Listener port\n        :type Port: int\n        :param RealServerPort: Origin server port, which is only valid for the connections or connection groups of version 1.0.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type RealServerPort: int\n        :param RealServerType: Type of the origin server bound to listeners\n        :type RealServerType: str\n        :param Protocol: Listener protocol: UDP.\n        :type Protocol: str\n        :param ListenerStatus: Listener status. Valid values:
+        r"""
+        :param ListenerId: Listener ID
+        :type ListenerId: str
+        :param ListenerName: Listener name
+        :type ListenerName: str
+        :param Port: Listener port
+        :type Port: int
+        :param RealServerPort: Origin server port, which is only valid for the connections or connection groups of version 1.0.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RealServerPort: int
+        :param RealServerType: Type of the origin server bound to listeners
+        :type RealServerType: str
+        :param Protocol: Listener protocol: UDP.
+        :type Protocol: str
+        :param ListenerStatus: Listener status. Valid values:
 0: running;
 1: creating;
 2: terminating;
 3: adjusting origin server;
-4: adjusting configuration.\n        :type ListenerStatus: int\n        :param Scheduler: Origin server access policy of listeners\n        :type Scheduler: str\n        :param BindStatus: Status of origin server bound to listener. 0: normal, 1: exceptional IP, 2: exceptional domain name resolution\n        :type BindStatus: int\n        :param RealServerSet: Information of the origin server bound to listeners\n        :type RealServerSet: list of BindRealServer\n        :param CreateTime: Listener creation time; using UNIX timestamp.\n        :type CreateTime: int\n        """
+4: adjusting configuration.
+        :type ListenerStatus: int
+        :param Scheduler: Origin server access policy of listeners
+        :type Scheduler: str
+        :param BindStatus: Status of origin server bound to listener. 0: normal, 1: exceptional IP, 2: exceptional domain name resolution
+        :type BindStatus: int
+        :param RealServerSet: Information of the origin server bound to listeners
+        :type RealServerSet: list of BindRealServer
+        :param CreateTime: Listener creation time; using UNIX timestamp.
+        :type CreateTime: int
+        """
         self.ListenerId = None
         self.ListenerName = None
         self.Port = None

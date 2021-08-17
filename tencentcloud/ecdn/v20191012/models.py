@@ -24,8 +24,34 @@ class AddEcdnDomainRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Domain: Domain name.
+        :type Domain: str
+        :param Origin: Origin server configuration.
+        :type Origin: :class:`tencentcloud.ecdn.v20191012.models.Origin`
+        :param Area: Domain name acceleration region. Valid values: mainland (acceleration in Mainland China), overseas (acceleration outside Mainland China), global (global acceleration).
+        :type Area: str
+        :param ProjectId: Project ID. Default value: 0.
+        :type ProjectId: int
+        :param IpFilter: IP block/allowlist configuration.
+        :type IpFilter: :class:`tencentcloud.ecdn.v20191012.models.IpFilter`
+        :param IpFreqLimit: IP access limit configuration.
+        :type IpFreqLimit: :class:`tencentcloud.ecdn.v20191012.models.IpFreqLimit`
+        :param ResponseHeader: Origin server response header configuration.
+        :type ResponseHeader: :class:`tencentcloud.ecdn.v20191012.models.ResponseHeader`
+        :param CacheKey: Node caching configuration.
+        :type CacheKey: :class:`tencentcloud.ecdn.v20191012.models.CacheKey`
+        :param Cache: Caching rule configuration.
+        :type Cache: :class:`tencentcloud.ecdn.v20191012.models.Cache`
+        :param Https: HTTPS configuration.
+        :type Https: :class:`tencentcloud.ecdn.v20191012.models.Https`
+        :param ForceRedirect: Forced access protocol redirection configuration.
+        :type ForceRedirect: :class:`tencentcloud.ecdn.v20191012.models.ForceRedirect`
+        :param Tag: Tag bound to a domain name.
+        :type Tag: list of Tag
+        :param WebSocket: WebSocket configuration.
+        :type WebSocket: :class:`tencentcloud.ecdn.v20191012.models.WebSocket`
         """
-        :param Domain: Domain name.\n        :type Domain: str\n        :param Origin: Origin server configuration.\n        :type Origin: :class:`tencentcloud.ecdn.v20191012.models.Origin`\n        :param Area: Domain name acceleration region. Valid values: mainland (acceleration in Mainland China), overseas (acceleration outside Mainland China), global (global acceleration).\n        :type Area: str\n        :param ProjectId: Project ID. Default value: 0.\n        :type ProjectId: int\n        :param IpFilter: IP block/allowlist configuration.\n        :type IpFilter: :class:`tencentcloud.ecdn.v20191012.models.IpFilter`\n        :param IpFreqLimit: IP access limit configuration.\n        :type IpFreqLimit: :class:`tencentcloud.ecdn.v20191012.models.IpFreqLimit`\n        :param ResponseHeader: Origin server response header configuration.\n        :type ResponseHeader: :class:`tencentcloud.ecdn.v20191012.models.ResponseHeader`\n        :param CacheKey: Node caching configuration.\n        :type CacheKey: :class:`tencentcloud.ecdn.v20191012.models.CacheKey`\n        :param Cache: Caching rule configuration.\n        :type Cache: :class:`tencentcloud.ecdn.v20191012.models.Cache`\n        :param Https: HTTPS configuration.\n        :type Https: :class:`tencentcloud.ecdn.v20191012.models.Https`\n        :param ForceRedirect: Forced access protocol redirection configuration.\n        :type ForceRedirect: :class:`tencentcloud.ecdn.v20191012.models.ForceRedirect`\n        :param Tag: Tag bound to a domain name.\n        :type Tag: list of Tag\n        :param WebSocket: WebSocket configuration.\n        :type WebSocket: :class:`tencentcloud.ecdn.v20191012.models.WebSocket`\n        """
         self.Domain = None
         self.Origin = None
         self.Area = None
@@ -93,8 +119,10 @@ class AddEcdnDomainResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -108,12 +136,16 @@ class Cache(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param CacheRules: Caching configuration rule array.\n        :type CacheRules: list of CacheRule\n        :param FollowOrigin: Whether to follow the `Cache-Control: max-age` configuration on the origin server (this feature is only available to users on the allowlist).
+        r"""
+        :param CacheRules: Caching configuration rule array.
+        :type CacheRules: list of CacheRule
+        :param FollowOrigin: Whether to follow the `Cache-Control: max-age` configuration on the origin server (this feature is only available to users on the allowlist).
 on: enable
 off: disable
 If it is enabled, resources that do not match `CacheRules` will be cached on node according to the `max-age` value returned by the origin server, while resources that match `CacheRules` will be cached on node according to the cache expiration time set in `CacheRules`.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type FollowOrigin: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FollowOrigin: str
+        """
         self.CacheRules = None
         self.FollowOrigin = None
 
@@ -141,8 +173,10 @@ class CacheKey(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FullUrlCache: Whether to enable full path cache. Valid values: on, off.
+        :type FullUrlCache: str
         """
-        :param FullUrlCache: Whether to enable full path cache. Valid values: on, off.\n        :type FullUrlCache: str\n        """
         self.FullUrlCache = None
 
 
@@ -163,8 +197,14 @@ class CacheRule(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CacheType: Cache type. Valid values: all (all files), file (extension type), directory (directory), path (full path), index (homepage).
+        :type CacheType: str
+        :param CacheContents: Cached content list.
+        :type CacheContents: list of str
+        :param CacheTime: Cache time in seconds.
+        :type CacheTime: int
         """
-        :param CacheType: Cache type. Valid values: all (all files), file (extension type), directory (directory), path (full path), index (homepage).\n        :type CacheType: str\n        :param CacheContents: Cached content list.\n        :type CacheContents: list of str\n        :param CacheTime: Cache time in seconds.\n        :type CacheTime: int\n        """
         self.CacheType = None
         self.CacheContents = None
         self.CacheTime = None
@@ -189,12 +229,20 @@ class ClientCert(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Certificate: Client certificate in PEM format.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Certificate: str\n        :param CertName: Client certificate name.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type CertName: str\n        :param ExpireTime: Certificate expiration time.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ExpireTime: str\n        :param DeployTime: Certificate issuance time.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DeployTime: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Certificate: str
+        :param CertName: Client certificate name.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CertName: str
+        :param ExpireTime: Certificate expiration time.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ExpireTime: str
+        :param DeployTime: Certificate issuance time.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DeployTime: str
+        """
         self.Certificate = None
         self.CertName = None
         self.ExpireTime = None
@@ -221,8 +269,10 @@ class DeleteEcdnDomainRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Domain: Domain name to be deleted.
+        :type Domain: str
         """
-        :param Domain: Domain name to be deleted.\n        :type Domain: str\n        """
         self.Domain = None
 
 
@@ -243,8 +293,10 @@ class DeleteEcdnDomainResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -258,8 +310,16 @@ class DescribeDomainsConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: Pagination offset address. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of domain names per page. Default value: 100.
+        :type Limit: int
+        :param Filters: Query filter.
+        :type Filters: list of DomainFilter
+        :param Sort: Query result sorting rule.
+        :type Sort: :class:`tencentcloud.ecdn.v20191012.models.Sort`
         """
-        :param Offset: Pagination offset address. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of domain names per page. Default value: 100.\n        :type Limit: int\n        :param Filters: Query filter.\n        :type Filters: list of DomainFilter\n        :param Sort: Query result sorting rule.\n        :type Sort: :class:`tencentcloud.ecdn.v20191012.models.Sort`\n        """
         self.Offset = None
         self.Limit = None
         self.Filters = None
@@ -293,8 +353,14 @@ class DescribeDomainsConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Domains: Domain name list.
+        :type Domains: list of DomainDetailInfo
+        :param TotalCount: Number of matched domain names. This is used for paginated query.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Domains: Domain name list.\n        :type Domains: list of DomainDetailInfo\n        :param TotalCount: Number of matched domain names. This is used for paginated query.\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Domains = None
         self.TotalCount = None
         self.RequestId = None
@@ -317,8 +383,14 @@ class DescribeDomainsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: Pagination offset address. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of domain names per page. Default value: 100. Maximum value: 1000.
+        :type Limit: int
+        :param Filters: Query filter.
+        :type Filters: list of DomainFilter
         """
-        :param Offset: Pagination offset address. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of domain names per page. Default value: 100. Maximum value: 1000.\n        :type Limit: int\n        :param Filters: Query filter.\n        :type Filters: list of DomainFilter\n        """
         self.Offset = None
         self.Limit = None
         self.Filters = None
@@ -348,8 +420,14 @@ class DescribeDomainsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Domains: Domain name information list.
+        :type Domains: list of DomainBriefInfo
+        :param TotalCount: Total number of domain names.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Domains: Domain name information list.\n        :type Domains: list of DomainBriefInfo\n        :param TotalCount: Total number of domain names.\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Domains = None
         self.TotalCount = None
         self.RequestId = None
@@ -372,8 +450,18 @@ class DescribeEcdnDomainLogsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Domain: Domain name to be queried.
+        :type Domain: str
+        :param StartTime: Log start time, such as 2019-10-01 00:00:00
+        :type StartTime: str
+        :param EndTime: Log end time, such as 2019-10-02 00:00:00. Only logs for the last 30 days can be queried.
+        :type EndTime: str
+        :param Offset: Pagination offset for log link list. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of log links per page. Default value: 100. Maximum value: 1000.
+        :type Limit: int
         """
-        :param Domain: Domain name to be queried.\n        :type Domain: str\n        :param StartTime: Log start time, such as 2019-10-01 00:00:00\n        :type StartTime: str\n        :param EndTime: Log end time, such as 2019-10-02 00:00:00. Only logs for the last 30 days can be queried.\n        :type EndTime: str\n        :param Offset: Pagination offset for log link list. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of log links per page. Default value: 100. Maximum value: 1000.\n        :type Limit: int\n        """
         self.Domain = None
         self.StartTime = None
         self.EndTime = None
@@ -402,9 +490,15 @@ class DescribeEcdnDomainLogsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainLogs: Log link list.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DomainLogs: list of DomainLogs\n        :param TotalCount: Total number of log links.\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DomainLogs: list of DomainLogs
+        :param TotalCount: Total number of log links.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.DomainLogs = None
         self.TotalCount = None
         self.RequestId = None
@@ -427,18 +521,34 @@ class DescribeEcdnDomainStatisticsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: Query start time, such as 2019-12-13 00:00:00.
-The time span cannot exceed 90 days.\n        :type StartTime: str\n        :param EndTime: Query end time, such as 2019-12-13 23:59:59.
-The time span cannot exceed 90 days.\n        :type EndTime: str\n        :param Metrics: Statistical metric names:
+The time span cannot exceed 90 days.
+        :type StartTime: str
+        :param EndTime: Query end time, such as 2019-12-13 23:59:59.
+The time span cannot exceed 90 days.
+        :type EndTime: str
+        :param Metrics: Statistical metric names:
 flux: traffic (in bytes)
 bandwidth: bandwidth (in bps)
-request: number of requests\n        :type Metrics: list of str\n        :param Domains: Specifies the list of domain names to be queried\n        :type Domains: list of str\n        :param Projects: Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)
-If no domain name is entered, the specified project will be queried; otherwise, the domain name will prevail\n        :type Projects: list of int\n        :param Offset: Pagination offset. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of entries per page. Default value: 1000. Maximum value: 3,000.\n        :type Limit: int\n        :param Area: Statistical areas:
+request: number of requests
+        :type Metrics: list of str
+        :param Domains: Specifies the list of domain names to be queried
+        :type Domains: list of str
+        :param Projects: Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)
+If no domain name is entered, the specified project will be queried; otherwise, the domain name will prevail
+        :type Projects: list of int
+        :param Offset: Pagination offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of entries per page. Default value: 1000. Maximum value: 3,000.
+        :type Limit: int
+        :param Area: Statistical areas:
 mainland: Chinese mainland
 oversea: outside the Chinese mainland
 global: global
-Default value: global\n        :type Area: str\n        """
+Default value: global
+        :type Area: str
+        """
         self.StartTime = None
         self.EndTime = None
         self.Metrics = None
@@ -473,8 +583,14 @@ class DescribeEcdnDomainStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: Domain name data
+        :type Data: list of DomainData
+        :param TotalCount: Quantity
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Data: Domain name data\n        :type Data: list of DomainData\n        :param TotalCount: Quantity\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Data = None
         self.TotalCount = None
         self.RequestId = None
@@ -497,26 +613,40 @@ class DescribeEcdnStatisticsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param StartTime: Query start time, such as 2019-12-13 00:00:00\n        :type StartTime: str\n        :param EndTime: Query end time, such as 2019-12-13 23:59:59\n        :type EndTime: str\n        :param Metrics: Specifies the query metric, which can be:
+        r"""
+        :param StartTime: Query start time, such as 2019-12-13 00:00:00
+        :type StartTime: str
+        :param EndTime: Query end time, such as 2019-12-13 23:59:59
+        :type EndTime: str
+        :param Metrics: Specifies the query metric, which can be:
 flux: traffic (in bytes)
 bandwidth: bandwidth (in bps)
 request: number of requests
 2xx: returns the number of 2xx status codes or details of status codes starting with 2
 3xx: returns the number of 3xx status codes or details of status codes starting with 3
 4xx: returns the number of 4xx status codes or details of status codes starting with 4
-5xx: returns the number of 5xx status codes or details of status codes starting with 5\n        :type Metrics: list of str\n        :param Interval: Time granularity, which can be:
+5xx: returns the number of 5xx status codes or details of status codes starting with 5
+        :type Metrics: list of str
+        :param Interval: Time granularity, which can be:
 1 day	 1, 5, 15, 30, 60, 120, 240, 1440 
 2-3 days 15, 30, 60, 120, 240, 1440
 4-7 days 30, 60, 120, 240, 1440
-8-90 days	 60, 120, 240, 1440\n        :type Interval: int\n        :param Domains: Specifies the list of domain names to be queried
+8-90 days	 60, 120, 240, 1440
+        :type Interval: int
+        :param Domains: Specifies the list of domain names to be queried
 
-Up to 30 acceleration domain names can be queried at a time.\n        :type Domains: list of str\n        :param Projects: Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)
-If no domain name is entered, the specified project will be queried; otherwise, the domain name will prevail\n        :type Projects: list of int\n        :param Area: Statistical areas:
+Up to 30 acceleration domain names can be queried at a time.
+        :type Domains: list of str
+        :param Projects: Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)
+If no domain name is entered, the specified project will be queried; otherwise, the domain name will prevail
+        :type Projects: list of int
+        :param Area: Statistical areas:
 mainland: Chinese mainland
 oversea: outside the Chinese mainland
 global: global
-Default value: global\n        :type Area: str\n        """
+Default value: global
+        :type Area: str
+        """
         self.StartTime = None
         self.EndTime = None
         self.Metrics = None
@@ -549,8 +679,12 @@ class DescribeEcdnStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: Returned data details of the specified conditional query
+        :type Data: list of ResourceData
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Data: Returned data details of the specified conditional query\n        :type Data: list of ResourceData\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -571,11 +705,15 @@ class DescribeIpStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Domain: Acceleration domain name\n        :type Domain: str\n        :param Area: Target region of the query:
+        r"""
+        :param Domain: Acceleration domain name
+        :type Domain: str
+        :param Area: Target region of the query:
 mainland: nodes in Mainland China
 overseas: nodes outside Mainland China
-global: global nodes\n        :type Area: str\n        """
+global: global nodes
+        :type Area: str
+        """
         self.Domain = None
         self.Area = None
 
@@ -598,8 +736,14 @@ class DescribeIpStatusResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ips: Node list
+        :type Ips: list of IpStatus
+        :param TotalCount: Total number of nodes
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Ips: Node list\n        :type Ips: list of IpStatus\n        :param TotalCount: Total number of nodes\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Ips = None
         self.TotalCount = None
         self.RequestId = None
@@ -628,8 +772,14 @@ class DescribePurgeQuotaResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param UrlPurge: URL purge usage and quota.
+        :type UrlPurge: :class:`tencentcloud.ecdn.v20191012.models.Quota`
+        :param PathPurge: Directory purge usage and quota.
+        :type PathPurge: :class:`tencentcloud.ecdn.v20191012.models.Quota`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param UrlPurge: URL purge usage and quota.\n        :type UrlPurge: :class:`tencentcloud.ecdn.v20191012.models.Quota`\n        :param PathPurge: Directory purge usage and quota.\n        :type PathPurge: :class:`tencentcloud.ecdn.v20191012.models.Quota`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.UrlPurge = None
         self.PathPurge = None
         self.RequestId = None
@@ -651,8 +801,24 @@ class DescribePurgeTasksRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PurgeType: Purge type to be queried. url: query URL purge records; path: query directory purge records.
+        :type PurgeType: str
+        :param StartTime: Start time, such as 2018-08-08 00:00:00
+        :type StartTime: str
+        :param EndTime: End time, such as 2018-08-08 23:59:59
+        :type EndTime: str
+        :param TaskId: Task ID returned during submission. Either `TaskId` or start time must be specified for a query.
+        :type TaskId: str
+        :param Offset: Pagination offset. Default value: 0 (starting from entry 0).
+        :type Offset: int
+        :param Limit: Pagination limit. Default value: 20.
+        :type Limit: int
+        :param Keyword: Query keyword. Please enter a domain name or full URL beginning with `http(s)://`.
+        :type Keyword: str
+        :param Status: Specified task status to be queried. fail: failed, done: succeeded, process: purging.
+        :type Status: str
         """
-        :param PurgeType: Purge type to be queried. url: query URL purge records; path: query directory purge records.\n        :type PurgeType: str\n        :param StartTime: Start time, such as 2018-08-08 00:00:00\n        :type StartTime: str\n        :param EndTime: End time, such as 2018-08-08 23:59:59\n        :type EndTime: str\n        :param TaskId: Task ID returned during submission. Either `TaskId` or start time must be specified for a query.\n        :type TaskId: str\n        :param Offset: Pagination offset. Default value: 0 (starting from entry 0).\n        :type Offset: int\n        :param Limit: Pagination limit. Default value: 20.\n        :type Limit: int\n        :param Keyword: Query keyword. Please enter a domain name or full URL beginning with `http(s)://`.\n        :type Keyword: str\n        :param Status: Specified task status to be queried. fail: failed, done: succeeded, process: purging.\n        :type Status: str\n        """
         self.PurgeType = None
         self.StartTime = None
         self.EndTime = None
@@ -687,8 +853,14 @@ class DescribePurgeTasksResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PurgeLogs: Purge history.
+        :type PurgeLogs: list of PurgeTask
+        :param TotalCount: Total number of tasks, which is used for pagination.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param PurgeLogs: Purge history.\n        :type PurgeLogs: list of PurgeTask\n        :param TotalCount: Total number of tasks, which is used for pagination.\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PurgeLogs = None
         self.TotalCount = None
         self.RequestId = None
@@ -711,8 +883,12 @@ class DetailData(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: Data type name
+        :type Name: str
+        :param Value: Data value
+        :type Value: float
         """
-        :param Name: Data type name\n        :type Name: str\n        :param Value: Data value\n        :type Value: float\n        """
         self.Name = None
         self.Value = None
 
@@ -735,8 +911,32 @@ class DomainBriefInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceId: Domain name ID.
+        :type ResourceId: str
+        :param AppId: Tencent Cloud account ID.
+        :type AppId: int
+        :param Domain: CDN acceleration domain name.
+        :type Domain: str
+        :param Cname: Domain name CNAME.
+        :type Cname: str
+        :param Status: Domain name status. Valid values: pending (reviewing), rejected (rejected), processing (deploying after approval), online (enabled), offline (disabled), deleted (deleted).
+        :type Status: str
+        :param ProjectId: Project ID.
+        :type ProjectId: int
+        :param CreateTime: Domain name creation time.
+        :type CreateTime: str
+        :param UpdateTime: Domain name update time.
+        :type UpdateTime: str
+        :param Origin: Origin server configuration details.
+        :type Origin: :class:`tencentcloud.ecdn.v20191012.models.Origin`
+        :param Disable: Domain name blockage status. Valid values: normal (normal), overdue (service is suspended due to arrears), quota (trial traffic package is used up), malicious (malicious user), ddos (DDoS attack), idle (no traffic), unlicensed (no ICP filing), capping (bandwidth cap reached), readonly (read-only)
+        :type Disable: str
+        :param Area: Acceleration region. Valid values: mainland, oversea, global.
+        :type Area: str
+        :param Readonly: Domain name lock status. normal: not locked; global: globally locked
+        :type Readonly: str
         """
-        :param ResourceId: Domain name ID.\n        :type ResourceId: str\n        :param AppId: Tencent Cloud account ID.\n        :type AppId: int\n        :param Domain: CDN acceleration domain name.\n        :type Domain: str\n        :param Cname: Domain name CNAME.\n        :type Cname: str\n        :param Status: Domain name status. Valid values: pending (reviewing), rejected (rejected), processing (deploying after approval), online (enabled), offline (disabled), deleted (deleted).\n        :type Status: str\n        :param ProjectId: Project ID.\n        :type ProjectId: int\n        :param CreateTime: Domain name creation time.\n        :type CreateTime: str\n        :param UpdateTime: Domain name update time.\n        :type UpdateTime: str\n        :param Origin: Origin server configuration details.\n        :type Origin: :class:`tencentcloud.ecdn.v20191012.models.Origin`\n        :param Disable: Domain name blockage status. Valid values: normal (normal), overdue (service is suspended due to arrears), quota (trial traffic package is used up), malicious (malicious user), ddos (DDoS attack), idle (no traffic), unlicensed (no ICP filing), capping (bandwidth cap reached), readonly (read-only)\n        :type Disable: str\n        :param Area: Acceleration region. Valid values: mainland, oversea, global.\n        :type Area: str\n        :param Readonly: Domain name lock status. normal: not locked; global: globally locked\n        :type Readonly: str\n        """
         self.ResourceId = None
         self.AppId = None
         self.Domain = None
@@ -781,8 +981,12 @@ class DomainData(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Resource: Domain name
+        :type Resource: str
+        :param DetailData: Result details.
+        :type DetailData: list of DetailData
         """
-        :param Resource: Domain name\n        :type Resource: str\n        :param DetailData: Result details.\n        :type DetailData: list of DetailData\n        """
         self.Resource = None
         self.DetailData = None
 
@@ -810,21 +1014,63 @@ class DomainDetailInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceId: Domain name ID.
+        :type ResourceId: str
+        :param AppId: Tencent Cloud account ID.
+        :type AppId: int
+        :param Domain: Acceleration domain name.
+        :type Domain: str
+        :param Cname: Domain name CNAME.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Cname: str
+        :param Status: Domain name status. Valid values: pending (reviewing), rejected (rejected), processing (deploying after approval), online (enabled), offline (disabled), deleted (deleted).
+        :type Status: str
+        :param ProjectId: Project ID.
+        :type ProjectId: int
+        :param CreateTime: Domain name creation time.
+        :type CreateTime: str
+        :param UpdateTime: Domain name update time.
+        :type UpdateTime: str
+        :param Origin: Origin server configuration.
+        :type Origin: :class:`tencentcloud.ecdn.v20191012.models.Origin`
+        :param IpFilter: IP blocklist/allowlist configuration.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IpFilter: :class:`tencentcloud.ecdn.v20191012.models.IpFilter`
+        :param IpFreqLimit: IP access limit configuration.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IpFreqLimit: :class:`tencentcloud.ecdn.v20191012.models.IpFreqLimit`
+        :param ResponseHeader: Origin server response header configuration.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ResponseHeader: :class:`tencentcloud.ecdn.v20191012.models.ResponseHeader`
+        :param CacheKey: Node caching configuration.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CacheKey: :class:`tencentcloud.ecdn.v20191012.models.CacheKey`
+        :param Cache: Caching rule configuration.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Cache: :class:`tencentcloud.ecdn.v20191012.models.Cache`
+        :param Https: HTTPS configuration.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Https: :class:`tencentcloud.ecdn.v20191012.models.Https`
+        :param Disable: Domain name blockage status. Valid values: normal (normal), overdue (service is suspended due to arrears), quota (trial traffic package is used up), malicious (malicious user), ddos (DDoS attack), idle (no traffic), unlicensed (no ICP filing), capping (bandwidth cap reached), readonly (read-only).
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Disable: str
+        :param ForceRedirect: Forced access protocol redirection configuration.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ForceRedirect: :class:`tencentcloud.ecdn.v20191012.models.ForceRedirect`
+        :param Area: Acceleration region. Valid values: mainland, overseas, global.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Area: str
+        :param Readonly: Domain name lock status. normal: not locked; global: globally locked.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Readonly: str
+        :param Tag: Domain name tag
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type Tag: list of Tag
+        :param WebSocket: WebSocket configuration.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type WebSocket: :class:`tencentcloud.ecdn.v20191012.models.WebSocket`
         """
-        :param ResourceId: Domain name ID.\n        :type ResourceId: str\n        :param AppId: Tencent Cloud account ID.\n        :type AppId: int\n        :param Domain: Acceleration domain name.\n        :type Domain: str\n        :param Cname: Domain name CNAME.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Cname: str\n        :param Status: Domain name status. Valid values: pending (reviewing), rejected (rejected), processing (deploying after approval), online (enabled), offline (disabled), deleted (deleted).\n        :type Status: str\n        :param ProjectId: Project ID.\n        :type ProjectId: int\n        :param CreateTime: Domain name creation time.\n        :type CreateTime: str\n        :param UpdateTime: Domain name update time.\n        :type UpdateTime: str\n        :param Origin: Origin server configuration.\n        :type Origin: :class:`tencentcloud.ecdn.v20191012.models.Origin`\n        :param IpFilter: IP blocklist/allowlist configuration.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type IpFilter: :class:`tencentcloud.ecdn.v20191012.models.IpFilter`\n        :param IpFreqLimit: IP access limit configuration.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type IpFreqLimit: :class:`tencentcloud.ecdn.v20191012.models.IpFreqLimit`\n        :param ResponseHeader: Origin server response header configuration.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ResponseHeader: :class:`tencentcloud.ecdn.v20191012.models.ResponseHeader`\n        :param CacheKey: Node caching configuration.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type CacheKey: :class:`tencentcloud.ecdn.v20191012.models.CacheKey`\n        :param Cache: Caching rule configuration.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Cache: :class:`tencentcloud.ecdn.v20191012.models.Cache`\n        :param Https: HTTPS configuration.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Https: :class:`tencentcloud.ecdn.v20191012.models.Https`\n        :param Disable: Domain name blockage status. Valid values: normal (normal), overdue (service is suspended due to arrears), quota (trial traffic package is used up), malicious (malicious user), ddos (DDoS attack), idle (no traffic), unlicensed (no ICP filing), capping (bandwidth cap reached), readonly (read-only).
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Disable: str\n        :param ForceRedirect: Forced access protocol redirection configuration.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ForceRedirect: :class:`tencentcloud.ecdn.v20191012.models.ForceRedirect`\n        :param Area: Acceleration region. Valid values: mainland, overseas, global.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Area: str\n        :param Readonly: Domain name lock status. normal: not locked; global: globally locked.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Readonly: str\n        :param Tag: Domain name tag
-Note: This field may return `null`, indicating that no valid value can be obtained.\n        :type Tag: list of Tag\n        :param WebSocket: WebSocket configuration.
-Note: This field may return `null`, indicating that no valid values can be obtained.\n        :type WebSocket: :class:`tencentcloud.ecdn.v20191012.models.WebSocket`\n        """
         self.ResourceId = None
         self.AppId = None
         self.Domain = None
@@ -908,7 +1154,7 @@ class DomainFilter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: Filter field name, which can be:
 - origin: primary origin server.
 - domain: domain name.
@@ -919,7 +1165,13 @@ class DomainFilter(AbstractModel):
 - fullUrlCache: full path cache. Valid values: on, off.
 - https: whether to configure HTTPS. Valid values: on, off, processing.
 - originPullProtocol: origin-pull protocol type. Valid values: http, follow, https.
-- area: acceleration region. Valid values: mainland, overseas, global.\n        :type Name: str\n        :param Value: Filter field value.\n        :type Value: list of str\n        :param Fuzzy: Whether to enable fuzzy query, which is supported only for filter fields `origin` and `domain`.\n        :type Fuzzy: bool\n        """
+- area: acceleration region. Valid values: mainland, overseas, global.
+        :type Name: str
+        :param Value: Filter field value.
+        :type Value: list of str
+        :param Fuzzy: Whether to enable fuzzy query, which is supported only for filter fields `origin` and `domain`.
+        :type Fuzzy: bool
+        """
         self.Name = None
         self.Value = None
         self.Fuzzy = None
@@ -944,8 +1196,14 @@ class DomainLogs(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StartTime: Log start time.
+        :type StartTime: str
+        :param EndTime: Log end time.
+        :type EndTime: str
+        :param LogPath: Log download path.
+        :type LogPath: str
         """
-        :param StartTime: Log start time.\n        :type StartTime: str\n        :param EndTime: Log end time.\n        :type EndTime: str\n        :param LogPath: Log download path.\n        :type LogPath: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.LogPath = None
@@ -970,8 +1228,12 @@ class EcdnData(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Metrics: Queries the specified metric. Valid values: Bandwidth, Flux, Request, Delay, status code, LogBandwidth, LogFlux, LogRequest
+        :type Metrics: list of str
+        :param DetailData: Detailed data collection
+        :type DetailData: list of TimestampData
         """
-        :param Metrics: Queries the specified metric. Valid values: Bandwidth, Flux, Request, Delay, status code, LogBandwidth, LogFlux, LogRequest\n        :type Metrics: list of str\n        :param DetailData: Detailed data collection\n        :type DetailData: list of TimestampData\n        """
         self.Metrics = None
         self.DetailData = None
 
@@ -999,11 +1261,17 @@ class ForceRedirect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Forced access protocol redirection configuration switch. Valid values: on, off.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Switch: str\n        :param RedirectType: Access protocol type for forced redirection. Valid values: http (forced redirection to HTTP protocol), https (forced redirection to HTTPS protocol).
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type RedirectType: str\n        :param RedirectStatusCode: HTTP status code returned when forced redirection is enabled. Valid values: 301, 302.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type RedirectStatusCode: int\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Switch: str
+        :param RedirectType: Access protocol type for forced redirection. Valid values: http (forced redirection to HTTP protocol), https (forced redirection to HTTPS protocol).
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RedirectType: str
+        :param RedirectStatusCode: HTTP status code returned when forced redirection is enabled. Valid values: 301, 302.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RedirectStatusCode: int
+        """
         self.Switch = None
         self.RedirectType = None
         self.RedirectStatusCode = None
@@ -1028,10 +1296,16 @@ class Hsts(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Switch: Whether to enable. Valid values: on, off.
+        :type Switch: str
+        :param MaxAge: `MaxAge` value.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MaxAge: int
+        :param IncludeSubDomains: Whether to include subdomain names. Valid values: on, off.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IncludeSubDomains: str
         """
-        :param Switch: Whether to enable. Valid values: on, off.\n        :type Switch: str\n        :param MaxAge: `MaxAge` value.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type MaxAge: int\n        :param IncludeSubDomains: Whether to include subdomain names. Valid values: on, off.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type IncludeSubDomains: str\n        """
         self.Switch = None
         self.MaxAge = None
         self.IncludeSubDomains = None
@@ -1056,14 +1330,24 @@ class HttpHeaderPathRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param HeaderMode: HTTP header setting method. Valid values: add (add header), set (set header), del (delete header).
 Request header currently does not support `set`.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type HeaderMode: str\n        :param HeaderName: HTTP header name.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type HeaderName: str\n        :param HeaderValue: HTTP header value, which is optional when it is `del`.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type HeaderValue: str\n        :param RuleType: Type of effective URL path rule. Valid values: all (all paths), file (file extension), directory (directory), path (absolute path).
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type RuleType: str\n        :param RulePaths: URL path or file type list
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type RulePaths: list of str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type HeaderMode: str
+        :param HeaderName: HTTP header name.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type HeaderName: str
+        :param HeaderValue: HTTP header value, which is optional when it is `del`.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type HeaderValue: str
+        :param RuleType: Type of effective URL path rule. Valid values: all (all paths), file (file extension), directory (directory), path (absolute path).
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RuleType: str
+        :param RulePaths: URL path or file type list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RulePaths: list of str
+        """
         self.HeaderMode = None
         self.HeaderName = None
         self.HeaderValue = None
@@ -1092,17 +1376,35 @@ class Https(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: HTTPS configuration switch. Valid values: on, off. If the domain name with HTTPS configuration enabled is being deployed, this switch will be `off`.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Switch: str\n        :param Http2: Whether to enable HTTP2. Valid values: on, off.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Http2: str\n        :param OcspStapling: Whether to enable the OCSP feature. Valid values: on, off.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type OcspStapling: str\n        :param VerifyClient: Whether to enable the client certificate verification feature. Valid values: on, off. The client certificate information must be uploaded if this feature is enabled.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type VerifyClient: str\n        :param CertInfo: Server certificate configuration information.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type CertInfo: :class:`tencentcloud.ecdn.v20191012.models.ServerCert`\n        :param ClientCertInfo: Client certificate configuration information.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ClientCertInfo: :class:`tencentcloud.ecdn.v20191012.models.ClientCert`\n        :param Spdy: Whether to enable SPDY. Valid values: on, off.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Spdy: str\n        :param SslStatus: HTTPS certificate deployment status. Valid values: closed (disabled), deploying (deploying), deployed (deployment succeeded), failed (deployment failed). This parameter cannot be used as an input parameter.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type SslStatus: str\n        :param Hsts: HSTS configuration
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Hsts: :class:`tencentcloud.ecdn.v20191012.models.Hsts`\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Switch: str
+        :param Http2: Whether to enable HTTP2. Valid values: on, off.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Http2: str
+        :param OcspStapling: Whether to enable the OCSP feature. Valid values: on, off.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type OcspStapling: str
+        :param VerifyClient: Whether to enable the client certificate verification feature. Valid values: on, off. The client certificate information must be uploaded if this feature is enabled.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type VerifyClient: str
+        :param CertInfo: Server certificate configuration information.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CertInfo: :class:`tencentcloud.ecdn.v20191012.models.ServerCert`
+        :param ClientCertInfo: Client certificate configuration information.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ClientCertInfo: :class:`tencentcloud.ecdn.v20191012.models.ClientCert`
+        :param Spdy: Whether to enable SPDY. Valid values: on, off.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Spdy: str
+        :param SslStatus: HTTPS certificate deployment status. Valid values: closed (disabled), deploying (deploying), deployed (deployment succeeded), failed (deployment failed). This parameter cannot be used as an input parameter.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SslStatus: str
+        :param Hsts: HSTS configuration
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Hsts: :class:`tencentcloud.ecdn.v20191012.models.Hsts`
+        """
         self.Switch = None
         self.Http2 = None
         self.OcspStapling = None
@@ -1145,10 +1447,16 @@ class IpFilter(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Switch: IP blocklist/allowlist switch. Valid values: on, off.
+        :type Switch: str
+        :param FilterType: IP blocklist/allowlist type. Valid values: whitelist, blacklist.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FilterType: str
+        :param Filters: IP blocklist/allowlist list.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Filters: list of str
         """
-        :param Switch: IP blocklist/allowlist switch. Valid values: on, off.\n        :type Switch: str\n        :param FilterType: IP blocklist/allowlist type. Valid values: whitelist, blacklist.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type FilterType: str\n        :param Filters: IP blocklist/allowlist list.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Filters: list of str\n        """
         self.Switch = None
         self.FilterType = None
         self.Filters = None
@@ -1173,9 +1481,13 @@ class IpFreqLimit(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Switch: IP access limit switch. Valid values: on, off.
+        :type Switch: str
+        :param Qps: Number of requests per second.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Qps: int
         """
-        :param Switch: IP access limit switch. Valid values: on, off.\n        :type Switch: str\n        :param Qps: Number of requests per second.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Qps: int\n        """
         self.Switch = None
         self.Qps = None
 
@@ -1198,10 +1510,22 @@ class IpStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Ip: Node IP\n        :type Ip: str\n        :param District: Node region\n        :type District: str\n        :param Isp: Node ISP\n        :type Isp: str\n        :param City: Node city\n        :type City: str\n        :param Status: Node status
+        r"""
+        :param Ip: Node IP
+        :type Ip: str
+        :param District: Node region
+        :type District: str
+        :param Isp: Node ISP
+        :type Isp: str
+        :param City: Node city
+        :type City: str
+        :param Status: Node status
 online: the node is online and scheduling normally
-offline: the node is offline\n        :type Status: str\n        :param CreateTime: Node IP creation time\n        :type CreateTime: str\n        """
+offline: the node is offline
+        :type Status: str
+        :param CreateTime: Node IP creation time
+        :type CreateTime: str
+        """
         self.Ip = None
         self.District = None
         self.Isp = None
@@ -1232,15 +1556,27 @@ class Origin(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Origins: Primary origin server list. IP and the domain name of the origin server cannot be entered at the same time. Configure origin server port in the format of ["origin1:port1", "origin2:port2"]. Configure origin-pull weight in the format of ["origin1::weight1", "origin2::weight2"]. Configure both port and weight in the format of ["origin1:port1:weight1", "origin2:port2:weight2"]. Valid range of weight value: 0 - 100.\n        :type Origins: list of str\n        :param OriginType: Primary origin server type. Valid values: domain (domain name origin server), ip (IP origin server).
+        r"""
+        :param Origins: Primary origin server list. IP and the domain name of the origin server cannot be entered at the same time. Configure origin server port in the format of ["origin1:port1", "origin2:port2"]. Configure origin-pull weight in the format of ["origin1::weight1", "origin2::weight2"]. Configure both port and weight in the format of ["origin1:port1:weight1", "origin2:port2:weight2"]. Valid range of weight value: 0 - 100.
+        :type Origins: list of str
+        :param OriginType: Primary origin server type. Valid values: domain (domain name origin server), ip (IP origin server).
 This is required when setting `Origins`.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type OriginType: str\n        :param ServerName: Host header value during origin-pull.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ServerName: str\n        :param OriginPullProtocol: Origin-pull protocol type. Valid values: http (forced HTTP origin-pull), follow (protocol follow), https (HTTPS origin-pull).
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type OriginType: str
+        :param ServerName: Host header value during origin-pull.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ServerName: str
+        :param OriginPullProtocol: Origin-pull protocol type. Valid values: http (forced HTTP origin-pull), follow (protocol follow), https (HTTPS origin-pull).
 If this parameter is left empty, HTTP origin-pull will be used by default.
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type OriginPullProtocol: str\n        :param BackupOrigins: Secondary origin server list.\n        :type BackupOrigins: list of str\n        :param BackupOriginType: Secondary origin server type, which is the same as `OriginType`.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type OriginPullProtocol: str
+        :param BackupOrigins: Secondary origin server list.
+        :type BackupOrigins: list of str
+        :param BackupOriginType: Secondary origin server type, which is the same as `OriginType`.
 This is required when setting `BackupOrigins`.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type BackupOriginType: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type BackupOriginType: str
+        """
         self.Origins = None
         self.OriginType = None
         self.ServerName = None
@@ -1271,8 +1607,12 @@ class PurgePathCacheRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Paths: List of directories to be purged. The protocol header must be included.
+        :type Paths: list of str
+        :param FlushType: Purge type. flush: purges updated resources, delete: purges all resources.
+        :type FlushType: str
         """
-        :param Paths: List of directories to be purged. The protocol header must be included.\n        :type Paths: list of str\n        :param FlushType: Purge type. flush: purges updated resources, delete: purges all resources.\n        :type FlushType: str\n        """
         self.Paths = None
         self.FlushType = None
 
@@ -1295,8 +1635,12 @@ class PurgePathCacheResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Purge task ID. The first ten digits are the UTC time when the task is submitted.
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskId: Purge task ID. The first ten digits are the UTC time when the task is submitted.\n        :type TaskId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -1312,8 +1656,20 @@ class PurgeTask(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Purge task ID.
+        :type TaskId: str
+        :param Url: Purged URL.
+        :type Url: str
+        :param Status: Purge task status. fail: failed, done: succeeded, process: purging.
+        :type Status: str
+        :param PurgeType: Purge type. url: URL purge; path: directory purge.
+        :type PurgeType: str
+        :param FlushType: Resource purge method. flush: purges updated resources, delete: purges all resources.
+        :type FlushType: str
+        :param CreateTime: Purge task submission time
+        :type CreateTime: str
         """
-        :param TaskId: Purge task ID.\n        :type TaskId: str\n        :param Url: Purged URL.\n        :type Url: str\n        :param Status: Purge task status. fail: failed, done: succeeded, process: purging.\n        :type Status: str\n        :param PurgeType: Purge type. url: URL purge; path: directory purge.\n        :type PurgeType: str\n        :param FlushType: Resource purge method. flush: purges updated resources, delete: purges all resources.\n        :type FlushType: str\n        :param CreateTime: Purge task submission time\n        :type CreateTime: str\n        """
         self.TaskId = None
         self.Url = None
         self.Status = None
@@ -1344,8 +1700,10 @@ class PurgeUrlsCacheRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Urls: List of URLs to be purged. The protocol header must be included.
+        :type Urls: list of str
         """
-        :param Urls: List of URLs to be purged. The protocol header must be included.\n        :type Urls: list of str\n        """
         self.Urls = None
 
 
@@ -1366,8 +1724,12 @@ class PurgeUrlsCacheResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Purge task ID. The first ten digits are the UTC time when the task is submitted.
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskId: Purge task ID. The first ten digits are the UTC time when the task is submitted.\n        :type TaskId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -1383,8 +1745,14 @@ class Quota(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Batch: Quota limit for one batch submission request.
+        :type Batch: int
+        :param Total: Daily submission quota limit.
+        :type Total: int
+        :param Available: Remaining daily submission quota.
+        :type Available: int
         """
-        :param Batch: Quota limit for one batch submission request.\n        :type Batch: int\n        :param Total: Daily submission quota limit.\n        :type Total: int\n        :param Available: Remaining daily submission quota.\n        :type Available: int\n        """
         self.Batch = None
         self.Total = None
         self.Available = None
@@ -1409,12 +1777,16 @@ class ResourceData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Resource: Resource name, which is categorized as follows based on different query conditions:
 Specific domain name: indicates the details of the specific domain name
 multiDomains: indicates aggregated details of multiple domain names
 Project ID: displays the ID of the specified project to be queried
-all: details at the account level\n        :type Resource: str\n        :param EcdnData: Data details of resource\n        :type EcdnData: :class:`tencentcloud.ecdn.v20191012.models.EcdnData`\n        """
+all: details at the account level
+        :type Resource: str
+        :param EcdnData: Data details of resource
+        :type EcdnData: :class:`tencentcloud.ecdn.v20191012.models.EcdnData`
+        """
         self.Resource = None
         self.EcdnData = None
 
@@ -1439,9 +1811,13 @@ class ResponseHeader(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Switch: Custom response header switch. Valid values: on, off.
+        :type Switch: str
+        :param HeaderRules: Custom response header rule array.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type HeaderRules: list of HttpHeaderPathRule
         """
-        :param Switch: Custom response header switch. Valid values: on, off.\n        :type Switch: str\n        :param HeaderRules: Custom response header rule array.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type HeaderRules: list of HttpHeaderPathRule\n        """
         self.Switch = None
         self.HeaderRules = None
 
@@ -1469,15 +1845,29 @@ class ServerCert(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertId: Server certificate ID, which is required if the certificate is a Tencent Cloud-hosted certificate.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type CertId: str\n        :param CertName: Server certificate name, which is required if the certificate is a Tencent Cloud-hosted certificate.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type CertName: str\n        :param Certificate: Server certificate information, which is required when uploading your own certificate and must contain complete certificate chain information.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Certificate: str\n        :param PrivateKey: Server key information, which is required when uploading your own certificate.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type PrivateKey: str\n        :param ExpireTime: Certificate expiration time.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ExpireTime: str\n        :param DeployTime: Certificate issuance time.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DeployTime: str\n        :param Message: Certificate remarks.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Message: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CertId: str
+        :param CertName: Server certificate name, which is required if the certificate is a Tencent Cloud-hosted certificate.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CertName: str
+        :param Certificate: Server certificate information, which is required when uploading your own certificate and must contain complete certificate chain information.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Certificate: str
+        :param PrivateKey: Server key information, which is required when uploading your own certificate.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PrivateKey: str
+        :param ExpireTime: Certificate expiration time.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ExpireTime: str
+        :param DeployTime: Certificate issuance time.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DeployTime: str
+        :param Message: Certificate remarks.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Message: str
+        """
         self.CertId = None
         self.CertName = None
         self.Certificate = None
@@ -1510,10 +1900,14 @@ class Sort(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: Sort by field. Valid values:
 createTime: domain name creation time
-certExpireTime: certificate expiration time\n        :type Key: str\n        :param Sequence: asc/desc. Default value: desc.\n        :type Sequence: str\n        """
+certExpireTime: certificate expiration time
+        :type Key: str
+        :param Sequence: asc/desc. Default value: desc.
+        :type Sequence: str
+        """
         self.Key = None
         self.Sequence = None
 
@@ -1536,8 +1930,10 @@ class StartEcdnDomainRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Domain: Domain name to be enabled.
+        :type Domain: str
         """
-        :param Domain: Domain name to be enabled.\n        :type Domain: str\n        """
         self.Domain = None
 
 
@@ -1558,8 +1954,10 @@ class StartEcdnDomainResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1573,8 +1971,10 @@ class StopEcdnDomainRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Domain: Domain name to be disabled.
+        :type Domain: str
         """
-        :param Domain: Domain name to be disabled.\n        :type Domain: str\n        """
         self.Domain = None
 
 
@@ -1595,8 +1995,10 @@ class StopEcdnDomainResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1610,10 +2012,14 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: Tag key.
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type TagKey: str\n        :param TagValue: Tag value.
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type TagValue: str\n        """
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type TagKey: str
+        :param TagValue: Tag value.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type TagValue: str
+        """
         self.TagKey = None
         self.TagValue = None
 
@@ -1636,9 +2042,13 @@ class TimestampData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Time: Statistical time point in forward rounding mode
-Taking the 5-minute granularity as an example, 13:35:00 indicates that the statistical interval is between 13:35:00 and 13:39:59\n        :type Time: str\n        :param Value: Data value\n        :type Value: list of float\n        """
+Taking the 5-minute granularity as an example, 13:35:00 indicates that the statistical interval is between 13:35:00 and 13:39:59
+        :type Time: str
+        :param Value: Data value
+        :type Value: list of float
+        """
         self.Time = None
         self.Value = None
 
@@ -1661,8 +2071,32 @@ class UpdateDomainConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Domain: Domain name.
+        :type Domain: str
+        :param Origin: Origin server configuration.
+        :type Origin: :class:`tencentcloud.ecdn.v20191012.models.Origin`
+        :param ProjectId: Project ID.
+        :type ProjectId: int
+        :param IpFilter: IP blocklist/allowlist configuration.
+        :type IpFilter: :class:`tencentcloud.ecdn.v20191012.models.IpFilter`
+        :param IpFreqLimit: IP access limit configuration.
+        :type IpFreqLimit: :class:`tencentcloud.ecdn.v20191012.models.IpFreqLimit`
+        :param ResponseHeader: Origin server response header configuration.
+        :type ResponseHeader: :class:`tencentcloud.ecdn.v20191012.models.ResponseHeader`
+        :param CacheKey: Node caching configuration.
+        :type CacheKey: :class:`tencentcloud.ecdn.v20191012.models.CacheKey`
+        :param Cache: Caching rule configuration.
+        :type Cache: :class:`tencentcloud.ecdn.v20191012.models.Cache`
+        :param Https: HTTPS configuration.
+        :type Https: :class:`tencentcloud.ecdn.v20191012.models.Https`
+        :param ForceRedirect: Forced access protocol redirection configuration.
+        :type ForceRedirect: :class:`tencentcloud.ecdn.v20191012.models.ForceRedirect`
+        :param Area: Domain name acceleration region. Valid values: mainland (acceleration in Mainland China), overseas (acceleration outside Mainland China), global (global acceleration).
+        :type Area: str
+        :param WebSocket: WebSocket configuration.
+        :type WebSocket: :class:`tencentcloud.ecdn.v20191012.models.WebSocket`
         """
-        :param Domain: Domain name.\n        :type Domain: str\n        :param Origin: Origin server configuration.\n        :type Origin: :class:`tencentcloud.ecdn.v20191012.models.Origin`\n        :param ProjectId: Project ID.\n        :type ProjectId: int\n        :param IpFilter: IP blocklist/allowlist configuration.\n        :type IpFilter: :class:`tencentcloud.ecdn.v20191012.models.IpFilter`\n        :param IpFreqLimit: IP access limit configuration.\n        :type IpFreqLimit: :class:`tencentcloud.ecdn.v20191012.models.IpFreqLimit`\n        :param ResponseHeader: Origin server response header configuration.\n        :type ResponseHeader: :class:`tencentcloud.ecdn.v20191012.models.ResponseHeader`\n        :param CacheKey: Node caching configuration.\n        :type CacheKey: :class:`tencentcloud.ecdn.v20191012.models.CacheKey`\n        :param Cache: Caching rule configuration.\n        :type Cache: :class:`tencentcloud.ecdn.v20191012.models.Cache`\n        :param Https: HTTPS configuration.\n        :type Https: :class:`tencentcloud.ecdn.v20191012.models.Https`\n        :param ForceRedirect: Forced access protocol redirection configuration.\n        :type ForceRedirect: :class:`tencentcloud.ecdn.v20191012.models.ForceRedirect`\n        :param Area: Domain name acceleration region. Valid values: mainland (acceleration in Mainland China), overseas (acceleration outside Mainland China), global (global acceleration).\n        :type Area: str\n        :param WebSocket: WebSocket configuration.\n        :type WebSocket: :class:`tencentcloud.ecdn.v20191012.models.WebSocket`\n        """
         self.Domain = None
         self.Origin = None
         self.ProjectId = None
@@ -1723,8 +2157,10 @@ class UpdateDomainConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1738,9 +2174,13 @@ class WebSocket(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Switch: WebSocket configuration switch, which can be `on` or `off`.
+        :type Switch: str
+        :param Timeout: Sets timeout period in seconds. Maximum value: 65
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Timeout: int
         """
-        :param Switch: WebSocket configuration switch, which can be `on` or `off`.\n        :type Switch: str\n        :param Timeout: Sets timeout period in seconds. Maximum value: 65
-Note: This field may return `null`, indicating that no valid values can be obtained.\n        :type Timeout: int\n        """
         self.Switch = None
         self.Timeout = None
 

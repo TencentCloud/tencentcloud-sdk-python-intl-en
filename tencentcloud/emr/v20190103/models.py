@@ -24,8 +24,14 @@ class COSSettings(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CosSecretId: COS `SecretId`
+        :type CosSecretId: str
+        :param CosSecretKey: COS `SecrectKey`
+        :type CosSecretKey: str
+        :param LogOnCosPath: COS path to log
+        :type LogOnCosPath: str
         """
-        :param CosSecretId: COS `SecretId`\n        :type CosSecretId: str\n        :param CosSecretKey: COS `SecrectKey`\n        :type CosSecretKey: str\n        :param LogOnCosPath: COS path to log\n        :type LogOnCosPath: str\n        """
         self.CosSecretId = None
         self.CosSecretKey = None
         self.LogOnCosPath = None
@@ -50,23 +56,53 @@ class CdbInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceName: Database instance
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type InstanceName: str\n        :param Ip: Database IP
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Ip: str\n        :param Port: Database port
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Port: int\n        :param MemSize: Database memory specification
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type MemSize: int\n        :param Volume: Database disk specification
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Volume: int\n        :param Service: Service flag
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Service: str\n        :param ExpireTime: Expiration time
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ExpireTime: str\n        :param ApplyTime: Application time
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ApplyTime: str\n        :param PayType: Payment type
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type PayType: int\n        :param ExpireFlag: Expiration flag
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ExpireFlag: bool\n        :param Status: Database status
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Status: int\n        :param IsAutoRenew: Renewal flag
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type IsAutoRenew: int\n        :param SerialNo: Database string
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type SerialNo: str\n        :param ZoneId: ZoneId
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ZoneId: int\n        :param RegionId: RegionId
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type RegionId: int\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type InstanceName: str
+        :param Ip: Database IP
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Ip: str
+        :param Port: Database port
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Port: int
+        :param MemSize: Database memory specification
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MemSize: int
+        :param Volume: Database disk specification
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Volume: int
+        :param Service: Service flag
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Service: str
+        :param ExpireTime: Expiration time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ExpireTime: str
+        :param ApplyTime: Application time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ApplyTime: str
+        :param PayType: Payment type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PayType: int
+        :param ExpireFlag: Expiration flag
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ExpireFlag: bool
+        :param Status: Database status
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Status: int
+        :param IsAutoRenew: Renewal flag
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IsAutoRenew: int
+        :param SerialNo: Database string
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SerialNo: str
+        :param ZoneId: ZoneId
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ZoneId: int
+        :param RegionId: RegionId
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RegionId: int
+        """
         self.InstanceName = None
         self.Ip = None
         self.Port = None
@@ -115,19 +151,41 @@ class ClusterInstancesInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Id: int\n        :param ClusterId: Cluster ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ClusterId: str\n        :param Ftitle: Title
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Ftitle: str\n        :param ClusterName: Cluster name
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ClusterName: str\n        :param RegionId: Region ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type RegionId: int\n        :param ZoneId: Region ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ZoneId: int\n        :param AppId: User APPID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type AppId: int\n        :param Uin: User UIN
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Uin: str\n        :param ProjectId: Project ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ProjectId: int\n        :param VpcId: Cluster `VPCID`
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type VpcId: int\n        :param SubnetId: Subnet ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type SubnetId: int\n        :param Status: Instance status code. Value range:
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Id: int
+        :param ClusterId: Cluster ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ClusterId: str
+        :param Ftitle: Title
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Ftitle: str
+        :param ClusterName: Cluster name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ClusterName: str
+        :param RegionId: Region ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RegionId: int
+        :param ZoneId: Region ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ZoneId: int
+        :param AppId: User APPID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AppId: int
+        :param Uin: User UIN
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Uin: str
+        :param ProjectId: Project ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ProjectId: int
+        :param VpcId: Cluster `VPCID`
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type VpcId: int
+        :param SubnetId: Subnet ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SubnetId: int
+        :param Status: Instance status code. Value range:
 <li>2: cluster running</li>
 <li>3: creating cluster.</li>
 <li>4: scaling out cluster.</li>
@@ -155,25 +213,63 @@ Note: this field may return null, indicating that no valid values can be obtaine
 <li>34: refunded.</li>
 <li>301: creation failed.</li>
 <li>302: scale-out failed.</li>
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Status: int\n        :param AddTime: Creation time
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type AddTime: str\n        :param RunTime: Execution duration
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type RunTime: str\n        :param Config: Cluster product configuration information
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Config: :class:`tencentcloud.emr.v20190103.models.EmrProductConfigOutter`\n        :param MasterIp: Public IP of master node
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type MasterIp: str\n        :param EmrVersion: EMR version
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type EmrVersion: str\n        :param ChargeType: Billing mode
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ChargeType: int\n        :param TradeVersion: Transaction version
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TradeVersion: int\n        :param ResourceOrderId: Resource order ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ResourceOrderId: int\n        :param IsTradeCluster: Whether this is a paid cluster
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type IsTradeCluster: int\n        :param AlarmInfo: Alarm information for cluster error
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type AlarmInfo: str\n        :param IsWoodpeckerCluster: Whether the new architecture is used
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type IsWoodpeckerCluster: int\n        :param MetaDb: Metadatabase information
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type MetaDb: str\n        :param Tags: Tag information
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Tags: list of Tag\n        :param HiveMetaDb: Hive metadata
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type HiveMetaDb: str\n        :param ServiceClass: Cluster type: EMR, CLICKHOUSE, DRUID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ServiceClass: str\n        :param AliasInfo: Alias serialization of all nodes in cluster
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type AliasInfo: str\n        :param ProductId: Cluster version ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ProductId: int\n        :param Zone: Availability zone
-Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type Zone: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Status: int
+        :param AddTime: Creation time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AddTime: str
+        :param RunTime: Execution duration
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RunTime: str
+        :param Config: Cluster product configuration information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Config: :class:`tencentcloud.emr.v20190103.models.EmrProductConfigOutter`
+        :param MasterIp: Public IP of master node
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MasterIp: str
+        :param EmrVersion: EMR version
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type EmrVersion: str
+        :param ChargeType: Billing mode
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ChargeType: int
+        :param TradeVersion: Transaction version
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TradeVersion: int
+        :param ResourceOrderId: Resource order ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ResourceOrderId: int
+        :param IsTradeCluster: Whether this is a paid cluster
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IsTradeCluster: int
+        :param AlarmInfo: Alarm information for cluster error
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AlarmInfo: str
+        :param IsWoodpeckerCluster: Whether the new architecture is used
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IsWoodpeckerCluster: int
+        :param MetaDb: Metadatabase information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MetaDb: str
+        :param Tags: Tag information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of Tag
+        :param HiveMetaDb: Hive metadata
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type HiveMetaDb: str
+        :param ServiceClass: Cluster type: EMR, CLICKHOUSE, DRUID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ServiceClass: str
+        :param AliasInfo: Alias serialization of all nodes in cluster
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AliasInfo: str
+        :param ProductId: Cluster version ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ProductId: int
+        :param Zone: Availability zone
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type Zone: str
+        """
         self.Id = None
         self.ClusterId = None
         self.Ftitle = None
@@ -259,7 +355,7 @@ class CreateInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: Product ID. Different product IDs represent different EMR product versions. Valid values:
 <li>1: EMR v1.3.1</li>
 <li>2: EMR v2.0.1</li>
@@ -280,27 +376,81 @@ class CreateInstanceRequest(AbstractModel):
 <li>27: Kafka v1.0.0</li>
 <li>28: EMR v3.2.0</li>
 <li>29: EMR v2.5.1</li>
-<li>30: EMR v2.6.0</li>\n        :type ProductId: int\n        :param VPCSettings: Configuration information of VPC. This parameter is used to specify the VPC ID, subnet ID, etc.\n        :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`\n        :param Software: List of deployed components. The list of component options varies by EMR product ID (i.e., `ProductId`; for specific meanings, please see the `ProductId` input parameter). For more information, please see [Component Version](https://intl.cloud.tencent.com/document/product/589/20279?from_cn_redirect=1).
-Enter an instance value: `hive` or `flink`.\n        :type Software: list of str\n        :param ResourceSpec: Node resource specification.\n        :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`\n        :param SupportHA: Whether to enable high node availability. Valid values:
+<li>30: EMR v2.6.0</li>
+        :type ProductId: int
+        :param VPCSettings: Configuration information of VPC. This parameter is used to specify the VPC ID, subnet ID, etc.
+        :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
+        :param Software: List of deployed components. The list of component options varies by EMR product ID (i.e., `ProductId`; for specific meanings, please see the `ProductId` input parameter). For more information, please see [Component Version](https://intl.cloud.tencent.com/document/product/589/20279?from_cn_redirect=1).
+Enter an instance value: `hive` or `flink`.
+        :type Software: list of str
+        :param ResourceSpec: Node resource specification.
+        :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
+        :param SupportHA: Whether to enable high node availability. Valid values:
 <li>0: does not enable high availability of node.</li>
-<li>1: enables high availability of node.</li>\n        :type SupportHA: int\n        :param InstanceName: Instance name.
+<li>1: enables high availability of node.</li>
+        :type SupportHA: int
+        :param InstanceName: Instance name.
 <li>Length limit: 6-36 characters.</li>
-<li>Only letters, numbers, dashes (-), and underscores (_) are supported.</li>\n        :type InstanceName: str\n        :param PayMode: Instance billing mode. Valid values:
-<li>0: pay-as-you-go.</li>\n        :type PayMode: int\n        :param Placement: Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.\n        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`\n        :param TimeSpan: Purchase duration of instance, which needs to be used together with `TimeUnit`.
+<li>Only letters, numbers, dashes (-), and underscores (_) are supported.</li>
+        :type InstanceName: str
+        :param PayMode: Instance billing mode. Valid values:
+<li>0: pay-as-you-go.</li>
+        :type PayMode: int
+        :param Placement: Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.
+        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
+        :param TimeSpan: Purchase duration of instance, which needs to be used together with `TimeUnit`.
 <li>When `TimeUnit` is `s`, this parameter can only be filled with 3600, indicating a pay-as-you-go instance.</li>
-<li>When `TimeUnit` is `m`, the number entered in this parameter indicates the purchase duration of the monthly-subscription instance; for example, 1 means one month</li>\n        :type TimeSpan: int\n        :param TimeUnit: Time unit of instance purchase duration. Valid values:
+<li>When `TimeUnit` is `m`, the number entered in this parameter indicates the purchase duration of the monthly-subscription instance; for example, 1 means one month</li>
+        :type TimeSpan: int
+        :param TimeUnit: Time unit of instance purchase duration. Valid values:
 <li>s: seconds. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>
-<li>m: month. When `PayMode` is 1, `TimeUnit` can only be `m`.</li>\n        :type TimeUnit: str\n        :param LoginSettings: Instance login settings. This parameter allows you to set the login password or key for your purchased node.
+<li>m: month. When `PayMode` is 1, `TimeUnit` can only be `m`.</li>
+        :type TimeUnit: str
+        :param LoginSettings: Instance login settings. This parameter allows you to set the login password or key for your purchased node.
 <li>If the key is set, the password will be only used for login to the native component WebUI.</li>
-<li>If the key is not set, the password will be used for login to all purchased nodes and the native component WebUI.</li>\n        :type LoginSettings: :class:`tencentcloud.emr.v20190103.models.LoginSettings`\n        :param COSSettings: Parameter required for enabling COS access.\n        :type COSSettings: :class:`tencentcloud.emr.v20190103.models.COSSettings`\n        :param SgId: Security group to which an instance belongs in the format of `sg-xxxxxxxx`. This parameter can be obtained from the `SecurityGroupId` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) API.\n        :type SgId: str\n        :param PreExecutedFileSettings: [Bootstrap action](https://intl.cloud.tencent.com/document/product/589/35656?from_cn_redirect=1) script settings\n        :type PreExecutedFileSettings: list of PreExecuteFileSettings\n        :param AutoRenew: Whether auto-renewal is enabled. Valid values:
+<li>If the key is not set, the password will be used for login to all purchased nodes and the native component WebUI.</li>
+        :type LoginSettings: :class:`tencentcloud.emr.v20190103.models.LoginSettings`
+        :param COSSettings: Parameter required for enabling COS access.
+        :type COSSettings: :class:`tencentcloud.emr.v20190103.models.COSSettings`
+        :param SgId: Security group to which an instance belongs in the format of `sg-xxxxxxxx`. This parameter can be obtained from the `SecurityGroupId` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) API.
+        :type SgId: str
+        :param PreExecutedFileSettings: [Bootstrap action](https://intl.cloud.tencent.com/document/product/589/35656?from_cn_redirect=1) script settings
+        :type PreExecutedFileSettings: list of PreExecuteFileSettings
+        :param AutoRenew: Whether auto-renewal is enabled. Valid values:
 <li>0: auto-renewal not enabled.</li>
-<li>1: auto-renewal enabled.</li>\n        :type AutoRenew: int\n        :param ClientToken: Client token.\n        :type ClientToken: str\n        :param NeedMasterWan: Whether to enable public IP access for master node. Valid values:
+<li>1: auto-renewal enabled.</li>
+        :type AutoRenew: int
+        :param ClientToken: Client token.
+        :type ClientToken: str
+        :param NeedMasterWan: Whether to enable public IP access for master node. Valid values:
 <li>NEED_MASTER_WAN: enables public IP for master node.</li>
-<li>NOT_NEED_MASTER_WAN: does not enable.</li>Public IP is enabled for master node by default.\n        :type NeedMasterWan: str\n        :param RemoteLoginAtCreate: Whether to enable remote public network login, i.e., port 22. When `SgId` is not empty, this parameter does not take effect.\n        :type RemoteLoginAtCreate: int\n        :param CheckSecurity: Whether to enable secure cluster. 0: no; other values: yes.\n        :type CheckSecurity: int\n        :param ExtendFsField: Accesses to external file system.\n        :type ExtendFsField: str\n        :param Tags: Tag description list. This parameter is used to bind a tag to a resource instance.\n        :type Tags: list of Tag\n        :param DisasterRecoverGroupIds: List of spread placement group IDs. Only one can be specified currently.
-This parameter can be obtained in the `SecurityGroupId` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1) API.\n        :type DisasterRecoverGroupIds: list of str\n        :param CbsEncrypt: CBS disk encryption at the cluster level. 0: not encrypted, 1: encrypted\n        :type CbsEncrypt: int\n        :param MetaType: Hive-shared metadatabase type. Valid values:
+<li>NOT_NEED_MASTER_WAN: does not enable.</li>Public IP is enabled for master node by default.
+        :type NeedMasterWan: str
+        :param RemoteLoginAtCreate: Whether to enable remote public network login, i.e., port 22. When `SgId` is not empty, this parameter does not take effect.
+        :type RemoteLoginAtCreate: int
+        :param CheckSecurity: Whether to enable secure cluster. 0: no; other values: yes.
+        :type CheckSecurity: int
+        :param ExtendFsField: Accesses to external file system.
+        :type ExtendFsField: str
+        :param Tags: Tag description list. This parameter is used to bind a tag to a resource instance.
+        :type Tags: list of Tag
+        :param DisasterRecoverGroupIds: List of spread placement group IDs. Only one can be specified currently.
+This parameter can be obtained in the `SecurityGroupId` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1) API.
+        :type DisasterRecoverGroupIds: list of str
+        :param CbsEncrypt: CBS disk encryption at the cluster level. 0: not encrypted, 1: encrypted
+        :type CbsEncrypt: int
+        :param MetaType: Hive-shared metadatabase type. Valid values:
 <li>EMR_DEFAULT_META: the cluster creates one by default.</li>
 <li>EMR_EXIST_META: the cluster uses the specified EMR-MetaDB instance.</li>
-<li>USER_CUSTOM_META: the cluster uses a custom MetaDB instance.</li>\n        :type MetaType: str\n        :param UnifyMetaInstanceId: EMR-MetaDB instance\n        :type UnifyMetaInstanceId: str\n        :param MetaDBInfo: Custom MetaDB instance information\n        :type MetaDBInfo: :class:`tencentcloud.emr.v20190103.models.CustomMetaInfo`\n        :param ApplicationRole: Custom application role.\n        :type ApplicationRole: str\n        """
+<li>USER_CUSTOM_META: the cluster uses a custom MetaDB instance.</li>
+        :type MetaType: str
+        :param UnifyMetaInstanceId: EMR-MetaDB instance
+        :type UnifyMetaInstanceId: str
+        :param MetaDBInfo: Custom MetaDB instance information
+        :type MetaDBInfo: :class:`tencentcloud.emr.v20190103.models.CustomMetaInfo`
+        :param ApplicationRole: Custom application role.
+        :type ApplicationRole: str
+        """
         self.ProductId = None
         self.VPCSettings = None
         self.Software = None
@@ -395,9 +545,13 @@ class CreateInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: Instance ID
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type InstanceId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.InstanceId = None
         self.RequestId = None
 
@@ -413,8 +567,14 @@ class CustomMetaInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MetaDataJdbcUrl: JDBC connection to custom MetaDB instance beginning with `jdbc:mysql://`
+        :type MetaDataJdbcUrl: str
+        :param MetaDataUser: Custom MetaDB instance username
+        :type MetaDataUser: str
+        :param MetaDataPass: Custom MetaDB instance password
+        :type MetaDataPass: str
         """
-        :param MetaDataJdbcUrl: JDBC connection to custom MetaDB instance beginning with `jdbc:mysql://`\n        :type MetaDataJdbcUrl: str\n        :param MetaDataUser: Custom MetaDB instance username\n        :type MetaDataUser: str\n        :param MetaDataPass: Custom MetaDB instance password\n        :type MetaDataPass: str\n        """
         self.MetaDataJdbcUrl = None
         self.MetaDataUser = None
         self.MetaDataPass = None
@@ -439,8 +599,10 @@ class DescribeClusterNodesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param InstanceId: Cluster instance ID in the format of emr-xxxxxxxx\n        :type InstanceId: str\n        :param NodeFlag: Node flag. Valid values:
+        r"""
+        :param InstanceId: Cluster instance ID in the format of emr-xxxxxxxx
+        :type InstanceId: str
+        :param NodeFlag: Node flag. Valid values:
 <li>all: gets the information of nodes in all types except TencentDB information.</li>
 <li>master: gets master node information.</li>
 <li>core: gets core node information.</li>
@@ -448,7 +610,17 @@ class DescribeClusterNodesRequest(AbstractModel):
 <li>common: gets common node information.</li>
 <li>router: gets router node information.</li>
 <li>db: gets TencentDB information in normal status.</li>
-Note: only the above values are supported for the time being. Entering other values will cause errors.\n        :type NodeFlag: str\n        :param Offset: Page number. Default value: 0, indicating the first page.\n        :type Offset: int\n        :param Limit: Number of returned results per page. Default value: 100. Maximum value: 100\n        :type Limit: int\n        :param HardwareResourceType: Resource type. Valid values: all, host, pod. Default value: all\n        :type HardwareResourceType: str\n        :param SearchFields: Searchable field\n        :type SearchFields: list of SearchItem\n        """
+Note: only the above values are supported for the time being. Entering other values will cause errors.
+        :type NodeFlag: str
+        :param Offset: Page number. Default value: 0, indicating the first page.
+        :type Offset: int
+        :param Limit: Number of returned results per page. Default value: 100. Maximum value: 100
+        :type Limit: int
+        :param HardwareResourceType: Resource type. Valid values: all, host, pod. Default value: all
+        :type HardwareResourceType: str
+        :param SearchFields: Searchable field
+        :type SearchFields: list of SearchItem
+        """
         self.InstanceId = None
         self.NodeFlag = None
         self.Offset = None
@@ -484,11 +656,21 @@ class DescribeClusterNodesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCnt: Total number of queried nodes
+        :type TotalCnt: int
+        :param NodeList: List of node details
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type NodeList: list of NodeHardwareInfo
+        :param TagKeys: List of tag keys owned by user
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TagKeys: list of str
+        :param HardwareResourceTypeList: Resource type list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type HardwareResourceTypeList: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCnt: Total number of queried nodes\n        :type TotalCnt: int\n        :param NodeList: List of node details
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type NodeList: list of NodeHardwareInfo\n        :param TagKeys: List of tag keys owned by user
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TagKeys: list of str\n        :param HardwareResourceTypeList: Resource type list
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type HardwareResourceTypeList: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCnt = None
         self.NodeList = None
         self.TagKeys = None
@@ -515,16 +697,30 @@ class DescribeInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DisplayStrategy: Cluster filtering policy. Valid values:
 <li>clusterList: queries the list of clusters except terminated ones.</li>
 <li>monitorManage: queries the list of clusters except those that have been terminated, are being created, or failed to be created.</li>
-<li>cloudHardwareManage/componentManage: reserved fields with the same meaning as `monitorManage`.</li>\n        :type DisplayStrategy: str\n        :param InstanceIds: Queries by one or more instance IDs in the format of `emr-xxxxxxxx`. For the format of this parameter, please see the `id.N` section in [API Overview](https://intl.cloud.tencent.com/document/api/213/15688). If no instance ID is entered, the list of all instances under this `APPID` will be returned.\n        :type InstanceIds: list of str\n        :param Offset: Page number. Default value: 0, indicating the first page.\n        :type Offset: int\n        :param Limit: Number of returned results per page. Default value: 10. Maximum value: 100\n        :type Limit: int\n        :param ProjectId: ID of the project to which the instance belongs. This parameter can be obtained from the `projectId` field in the return value of the `DescribeProject` API. If this value is -1, the list of all instances will be returned.\n        :type ProjectId: int\n        :param OrderField: Sorting field. Valid values:
+<li>cloudHardwareManage/componentManage: reserved fields with the same meaning as `monitorManage`.</li>
+        :type DisplayStrategy: str
+        :param InstanceIds: Queries by one or more instance IDs in the format of `emr-xxxxxxxx`. For the format of this parameter, please see the `id.N` section in [API Overview](https://intl.cloud.tencent.com/document/api/213/15688). If no instance ID is entered, the list of all instances under this `APPID` will be returned.
+        :type InstanceIds: list of str
+        :param Offset: Page number. Default value: 0, indicating the first page.
+        :type Offset: int
+        :param Limit: Number of returned results per page. Default value: 10. Maximum value: 100
+        :type Limit: int
+        :param ProjectId: ID of the project to which the instance belongs. This parameter can be obtained from the `projectId` field in the return value of the `DescribeProject` API. If this value is -1, the list of all instances will be returned.
+        :type ProjectId: int
+        :param OrderField: Sorting field. Valid values:
 <li>clusterId: sorts by cluster ID.</li>
 <li>addTime: sorts by instance creation time.</li>
-<li>status: sorts by instance status code.</li>\n        :type OrderField: str\n        :param Asc: Sorts according to `OrderField` in ascending or descending order. Valid values:
+<li>status: sorts by instance status code.</li>
+        :type OrderField: str
+        :param Asc: Sorts according to `OrderField` in ascending or descending order. Valid values:
 <li>0: descending order.</li>
-<li>1: ascending order.</li>Default value: 0.\n        :type Asc: int\n        """
+<li>1: ascending order.</li>Default value: 0.
+        :type Asc: int
+        """
         self.DisplayStrategy = None
         self.InstanceIds = None
         self.Offset = None
@@ -557,10 +753,18 @@ class DescribeInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCnt: Number of eligible instances.
+        :type TotalCnt: int
+        :param ClusterList: List of EMR instance details.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ClusterList: list of ClusterInstancesInfo
+        :param TagKeys: List of tag keys associated to an instance.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TagKeys: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCnt: Number of eligible instances.\n        :type TotalCnt: int\n        :param ClusterList: List of EMR instance details.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ClusterList: list of ClusterInstancesInfo\n        :param TagKeys: List of tag keys associated to an instance.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TagKeys: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCnt = None
         self.ClusterList = None
         self.TagKeys = None
@@ -585,8 +789,16 @@ class DynamicPodSpec(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestCpu: Minimum number of CPU cores
+        :type RequestCpu: float
+        :param LimitCpu: Maximum number of CPU cores
+        :type LimitCpu: float
+        :param RequestMemory: Minimum memory in MB
+        :type RequestMemory: float
+        :param LimitMemory: Maximum memory in MB
+        :type LimitMemory: float
         """
-        :param RequestCpu: Minimum number of CPU cores\n        :type RequestCpu: float\n        :param LimitCpu: Maximum number of CPU cores\n        :type LimitCpu: float\n        :param RequestMemory: Minimum memory in MB\n        :type RequestMemory: float\n        :param LimitMemory: Maximum memory in MB\n        :type LimitMemory: float\n        """
         self.RequestCpu = None
         self.LimitCpu = None
         self.RequestMemory = None
@@ -613,26 +825,62 @@ class EmrProductConfigOutter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SoftInfo: Software information
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type SoftInfo: list of str\n        :param MasterNodeSize: Number of master nodes
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type MasterNodeSize: int\n        :param CoreNodeSize: Number of core nodes
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type CoreNodeSize: int\n        :param TaskNodeSize: Number of task nodes
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TaskNodeSize: int\n        :param ComNodeSize: Number of common nodes
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ComNodeSize: int\n        :param MasterResource: Master node resource
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type MasterResource: :class:`tencentcloud.emr.v20190103.models.OutterResource`\n        :param CoreResource: Core node resource
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type CoreResource: :class:`tencentcloud.emr.v20190103.models.OutterResource`\n        :param TaskResource: Task node resource
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TaskResource: :class:`tencentcloud.emr.v20190103.models.OutterResource`\n        :param ComResource: Common node resource
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ComResource: :class:`tencentcloud.emr.v20190103.models.OutterResource`\n        :param OnCos: Whether COS is used
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type OnCos: bool\n        :param ChargeType: Billing mode
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ChargeType: int\n        :param RouterNodeSize: Number of router nodes
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type RouterNodeSize: int\n        :param SupportHA: Whether HA is supported
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type SupportHA: bool\n        :param SecurityOn: Whether secure mode is supported
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type SecurityOn: bool\n        :param SecurityGroup: Security group name
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type SecurityGroup: str\n        :param CbsEncrypt: Whether to enable CBS encryption
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type CbsEncrypt: int\n        :param ApplicationRole: Custom application role
-Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type ApplicationRole: str\n        :param SecurityGroups: Security groups
-Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type SecurityGroups: list of str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SoftInfo: list of str
+        :param MasterNodeSize: Number of master nodes
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MasterNodeSize: int
+        :param CoreNodeSize: Number of core nodes
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CoreNodeSize: int
+        :param TaskNodeSize: Number of task nodes
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TaskNodeSize: int
+        :param ComNodeSize: Number of common nodes
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ComNodeSize: int
+        :param MasterResource: Master node resource
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MasterResource: :class:`tencentcloud.emr.v20190103.models.OutterResource`
+        :param CoreResource: Core node resource
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CoreResource: :class:`tencentcloud.emr.v20190103.models.OutterResource`
+        :param TaskResource: Task node resource
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TaskResource: :class:`tencentcloud.emr.v20190103.models.OutterResource`
+        :param ComResource: Common node resource
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ComResource: :class:`tencentcloud.emr.v20190103.models.OutterResource`
+        :param OnCos: Whether COS is used
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type OnCos: bool
+        :param ChargeType: Billing mode
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ChargeType: int
+        :param RouterNodeSize: Number of router nodes
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RouterNodeSize: int
+        :param SupportHA: Whether HA is supported
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SupportHA: bool
+        :param SecurityOn: Whether secure mode is supported
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SecurityOn: bool
+        :param SecurityGroup: Security group name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SecurityGroup: str
+        :param CbsEncrypt: Whether to enable CBS encryption
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CbsEncrypt: int
+        :param ApplicationRole: Custom application role
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type ApplicationRole: str
+        :param SecurityGroups: Security groups
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type SecurityGroups: list of str
+        """
         self.SoftInfo = None
         self.MasterNodeSize = None
         self.CoreNodeSize = None
@@ -695,9 +943,11 @@ class HostVolumeContext(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VolumePath: Directory in the pod for mounting the host, which is the mount point of resources for the host. The specified mount point corresponds to the host path and is used as the data storage directory in the pod.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type VolumePath: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type VolumePath: str
+        """
         self.VolumePath = None
 
 
@@ -718,25 +968,51 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TimeUnit: Time unit of instance purchase duration. Valid values:
-<li>s: seconds. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>\n        :type TimeUnit: str\n        :param TimeSpan: Purchase duration of instance, which needs to be used together with `TimeUnit`.
+<li>s: seconds. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>
+        :type TimeUnit: str
+        :param TimeSpan: Purchase duration of instance, which needs to be used together with `TimeUnit`.
 <li>When `TimeUnit` is `s`, this parameter can only be filled with 3600, indicating a pay-as-you-go instance.</li>
-<li>When `TimeUnit` is `m`, the number entered in this parameter indicates the purchase duration of the monthly-subscription instance; for example, 1 means one month</li>\n        :type TimeSpan: int\n        :param ResourceSpec: Node specification queried for price.\n        :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`\n        :param Currency: Currency.\n        :type Currency: str\n        :param PayMode: Instance billing mode. Valid values:
-<li>0: pay-as-you-go.</li>\n        :type PayMode: int\n        :param SupportHA: Whether to enable high availability of node. Valid values:
+<li>When `TimeUnit` is `m`, the number entered in this parameter indicates the purchase duration of the monthly-subscription instance; for example, 1 means one month</li>
+        :type TimeSpan: int
+        :param ResourceSpec: Node specification queried for price.
+        :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
+        :param Currency: Currency.
+        :type Currency: str
+        :param PayMode: Instance billing mode. Valid values:
+<li>0: pay-as-you-go.</li>
+        :type PayMode: int
+        :param SupportHA: Whether to enable high availability of node. Valid values:
 <li>0: does not enable high availability of node.</li>
-<li>1: enables high availability of node.</li>\n        :type SupportHA: int\n        :param Software: List of deployed components. Different required components need to be selected for different EMR product IDs (i.e., `ProductId`; for specific meanings, please see the `ProductId` field in the input parameter):
+<li>1: enables high availability of node.</li>
+        :type SupportHA: int
+        :param Software: List of deployed components. Different required components need to be selected for different EMR product IDs (i.e., `ProductId`; for specific meanings, please see the `ProductId` field in the input parameter):
 <li>When `ProductId` is 1, the required components include hadoop-2.7.3, knox-1.2.0, and zookeeper-3.4.9</li>
 <li>When `ProductId` is 2, the required components include hadoop-2.7.3, knox-1.2.0, and zookeeper-3.4.9</li>
 <li>When `ProductId` is 4, the required components include hadoop-2.8.4, knox-1.2.0, and zookeeper-3.4.9</li>
-<li>When `ProductId` is 7, the required components include hadoop-3.1.2, knox-1.2.0, and zookeeper-3.4.9</li>\n        :type Software: list of str\n        :param Placement: Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.\n        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`\n        :param VPCSettings: Configuration information of VPC. This parameter is used to specify the VPC ID, subnet ID, etc.\n        :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`\n        :param MetaType: Hive-shared metadatabase type. Valid values:
+<li>When `ProductId` is 7, the required components include hadoop-3.1.2, knox-1.2.0, and zookeeper-3.4.9</li>
+        :type Software: list of str
+        :param Placement: Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.
+        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
+        :param VPCSettings: Configuration information of VPC. This parameter is used to specify the VPC ID, subnet ID, etc.
+        :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
+        :param MetaType: Hive-shared metadatabase type. Valid values:
 <li>EMR_DEFAULT_META: the cluster creates one by default.</li>
 <li>EMR_EXIST_META: the cluster uses the specified EMR-MetaDB instance.</li>
-<li>USER_CUSTOM_META: the cluster uses a custom MetaDB instance.</li>\n        :type MetaType: str\n        :param UnifyMetaInstanceId: EMR-MetaDB instance\n        :type UnifyMetaInstanceId: str\n        :param MetaDBInfo: Custom MetaDB instance information\n        :type MetaDBInfo: :class:`tencentcloud.emr.v20190103.models.CustomMetaInfo`\n        :param ProductId: Product ID. Different product IDs represent different EMR product versions. Valid values:
+<li>USER_CUSTOM_META: the cluster uses a custom MetaDB instance.</li>
+        :type MetaType: str
+        :param UnifyMetaInstanceId: EMR-MetaDB instance
+        :type UnifyMetaInstanceId: str
+        :param MetaDBInfo: Custom MetaDB instance information
+        :type MetaDBInfo: :class:`tencentcloud.emr.v20190103.models.CustomMetaInfo`
+        :param ProductId: Product ID. Different product IDs represent different EMR product versions. Valid values:
 <li>1: EMR v1.3.1.</li>
 <li>2: EMR v2.0.1.</li>
 <li>4: EMR v2.1.0.</li>
-<li>7: EMR v3.0.0.</li>\n        :type ProductId: int\n        """
+<li>7: EMR v3.0.0.</li>
+        :type ProductId: int
+        """
         self.TimeUnit = None
         self.TimeSpan = None
         self.ResourceSpec = None
@@ -789,13 +1065,23 @@ class InquiryPriceCreateInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OriginalCost: Original price.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type OriginalCost: float\n        :param DiscountCost: Discounted price.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DiscountCost: float\n        :param TimeUnit: Time unit of instance purchase duration. Valid values:
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type OriginalCost: float
+        :param DiscountCost: Discounted price.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DiscountCost: float
+        :param TimeUnit: Time unit of instance purchase duration. Valid values:
 <li>s: seconds.</li>
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TimeUnit: str\n        :param TimeSpan: Purchase duration of instance.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TimeSpan: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TimeUnit: str
+        :param TimeSpan: Purchase duration of instance.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TimeSpan: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.OriginalCost = None
         self.DiscountCost = None
         self.TimeUnit = None
@@ -817,8 +1103,22 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TimeSpan: How long the instance will be renewed for, which needs to be used together with `TimeUnit`.
+        :type TimeSpan: int
+        :param ResourceIds: List of resource IDs of the node to be renewed. The resource ID is in the format of `emr-vm-xxxxxxxx`. A valid resource ID can be queried in the [console](https://console.cloud.tencent.com/emr/static/hardware).
+        :type ResourceIds: list of str
+        :param Placement: Location of the instance. This parameter is used to specify the AZ, project, and other attributes of the instance.
+        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
+        :param PayMode: Instance billing mode.
+        :type PayMode: int
+        :param TimeUnit: Unit of time for instance renewal.
+        :type TimeUnit: str
+        :param Currency: Currency.
+        :type Currency: str
+        :param ModifyPayMode: Whether to change from pay-as-you-go billing to monthly subscription billing. `0`: no; `1`: yes
+        :type ModifyPayMode: int
         """
-        :param TimeSpan: How long the instance will be renewed for, which needs to be used together with `TimeUnit`.\n        :type TimeSpan: int\n        :param ResourceIds: List of resource IDs of the node to be renewed. The resource ID is in the format of `emr-vm-xxxxxxxx`. A valid resource ID can be queried in the [console](https://console.cloud.tencent.com/emr/static/hardware).\n        :type ResourceIds: list of str\n        :param Placement: Location of the instance. This parameter is used to specify the AZ, project, and other attributes of the instance.\n        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`\n        :param PayMode: Instance billing mode.\n        :type PayMode: int\n        :param TimeUnit: Unit of time for instance renewal.\n        :type TimeUnit: str\n        :param Currency: Currency.\n        :type Currency: str\n        :param ModifyPayMode: Whether to change from pay-as-you-go billing to monthly subscription billing. `0`: no; `1`: yes\n        :type ModifyPayMode: int\n        """
         self.TimeSpan = None
         self.ResourceIds = None
         self.Placement = None
@@ -853,12 +1153,22 @@ class InquiryPriceRenewInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OriginalCost: Original price.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type OriginalCost: float\n        :param DiscountCost: Discounted price.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DiscountCost: float\n        :param TimeUnit: Unit of time for instance renewal.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TimeUnit: str\n        :param TimeSpan: How long the instance will be renewed for.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TimeSpan: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type OriginalCost: float
+        :param DiscountCost: Discounted price.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DiscountCost: float
+        :param TimeUnit: Unit of time for instance renewal.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TimeUnit: str
+        :param TimeSpan: How long the instance will be renewed for.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TimeSpan: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.OriginalCost = None
         self.DiscountCost = None
         self.TimeUnit = None
@@ -880,11 +1190,31 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TimeUnit: Time unit of scale-out. Valid values:
-<li>s: seconds. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>\n        :type TimeUnit: str\n        :param TimeSpan: Duration of scale-out, which needs to be used together with `TimeUnit`.
-<li>When `PayMode` is 0, `TimeSpan` can only be 3,600.</li>\n        :type TimeSpan: int\n        :param ZoneId: ID of the AZ where an instance resides.\n        :type ZoneId: int\n        :param PayMode: Instance billing mode. Valid values:
-<li>0: pay-as-you-go.</li>\n        :type PayMode: int\n        :param InstanceId: Instance ID.\n        :type InstanceId: str\n        :param CoreCount: Number of core nodes added.\n        :type CoreCount: int\n        :param TaskCount: Number of task nodes added.\n        :type TaskCount: int\n        :param Currency: Currency.\n        :type Currency: str\n        :param RouterCount: Number of router nodes added.\n        :type RouterCount: int\n        :param MasterCount: Number of master nodes to add\n        :type MasterCount: int\n        """
+<li>s: seconds. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>
+        :type TimeUnit: str
+        :param TimeSpan: Duration of scale-out, which needs to be used together with `TimeUnit`.
+<li>When `PayMode` is 0, `TimeSpan` can only be 3,600.</li>
+        :type TimeSpan: int
+        :param ZoneId: ID of the AZ where an instance resides.
+        :type ZoneId: int
+        :param PayMode: Instance billing mode. Valid values:
+<li>0: pay-as-you-go.</li>
+        :type PayMode: int
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param CoreCount: Number of core nodes added.
+        :type CoreCount: int
+        :param TaskCount: Number of task nodes added.
+        :type TaskCount: int
+        :param Currency: Currency.
+        :type Currency: str
+        :param RouterCount: Number of router nodes added.
+        :type RouterCount: int
+        :param MasterCount: Number of master nodes to add
+        :type MasterCount: int
+        """
         self.TimeUnit = None
         self.TimeSpan = None
         self.ZoneId = None
@@ -923,13 +1253,23 @@ class InquiryPriceScaleOutInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OriginalCost: Original price.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type OriginalCost: str\n        :param DiscountCost: Discounted price.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DiscountCost: str\n        :param Unit: Time unit of scale-out. Valid values:
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type OriginalCost: str
+        :param DiscountCost: Discounted price.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DiscountCost: str
+        :param Unit: Time unit of scale-out. Valid values:
 <li>s: seconds.</li>
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Unit: str\n        :param PriceSpec: Node specification queried for price.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type PriceSpec: :class:`tencentcloud.emr.v20190103.models.PriceResource`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Unit: str
+        :param PriceSpec: Node specification queried for price.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PriceSpec: :class:`tencentcloud.emr.v20190103.models.PriceResource`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.OriginalCost = None
         self.DiscountCost = None
         self.Unit = None
@@ -953,11 +1293,23 @@ class InquiryPriceUpdateInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TimeUnit: Time unit of scaling. Valid values:
-<li>s: seconds. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>\n        :type TimeUnit: str\n        :param TimeSpan: Duration of scaling, which needs to be used together with `TimeUnit`.
-<li>When `PayMode` is 0, `TimeSpan` can only be 3,600.</li>\n        :type TimeSpan: int\n        :param UpdateSpec: Target node specification.\n        :type UpdateSpec: :class:`tencentcloud.emr.v20190103.models.UpdateInstanceSettings`\n        :param PayMode: Instance billing mode. Valid values:
-<li>0: pay-as-you-go.</li>\n        :type PayMode: int\n        :param Placement: Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.\n        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`\n        :param Currency: Currency.\n        :type Currency: str\n        """
+<li>s: seconds. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>
+        :type TimeUnit: str
+        :param TimeSpan: Duration of scaling, which needs to be used together with `TimeUnit`.
+<li>When `PayMode` is 0, `TimeSpan` can only be 3,600.</li>
+        :type TimeSpan: int
+        :param UpdateSpec: Target node specification.
+        :type UpdateSpec: :class:`tencentcloud.emr.v20190103.models.UpdateInstanceSettings`
+        :param PayMode: Instance billing mode. Valid values:
+<li>0: pay-as-you-go.</li>
+        :type PayMode: int
+        :param Placement: Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.
+        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
+        :param Currency: Currency.
+        :type Currency: str
+        """
         self.TimeUnit = None
         self.TimeSpan = None
         self.UpdateSpec = None
@@ -992,13 +1344,23 @@ class InquiryPriceUpdateInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OriginalCost: Original price.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type OriginalCost: float\n        :param DiscountCost: Discounted price.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DiscountCost: float\n        :param TimeUnit: Time unit of scaling. Valid values:
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type OriginalCost: float
+        :param DiscountCost: Discounted price.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DiscountCost: float
+        :param TimeUnit: Time unit of scaling. Valid values:
 <li>s: seconds.</li>
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TimeUnit: str\n        :param TimeSpan: Duration of scaling.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TimeSpan: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TimeUnit: str
+        :param TimeSpan: Duration of scaling.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TimeSpan: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.OriginalCost = None
         self.DiscountCost = None
         self.TimeUnit = None
@@ -1020,8 +1382,12 @@ class LoginSettings(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Password: Password
+        :type Password: str
+        :param PublicKeyId: Public Key
+        :type PublicKeyId: str
         """
-        :param Password: Password\n        :type Password: str\n        :param PublicKeyId: Public Key\n        :type PublicKeyId: str\n        """
         self.Password = None
         self.PublicKeyId = None
 
@@ -1044,11 +1410,17 @@ class MultiDisk(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskType: Cloud disk type
 <li>`CLOUD_SSD`: SSD</li>
 <li>`CLOUD_PREMIUM`: Premium Cloud Storage</li>
-<li>`CLOUD_HSSD`: Enhanced SSD</li>\n        :type DiskType: str\n        :param Volume: Cloud disk size\n        :type Volume: int\n        :param Count: Number of cloud disks of this type\n        :type Count: int\n        """
+<li>`CLOUD_HSSD`: Enhanced SSD</li>
+        :type DiskType: str
+        :param Volume: Cloud disk size
+        :type Volume: int
+        :param Count: Number of cloud disks of this type
+        :type Count: int
+        """
         self.DiskType = None
         self.Volume = None
         self.Count = None
@@ -1073,11 +1445,17 @@ class MultiDiskMC(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Count: Number of cloud disks in this type
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Count: int\n        :param Type: Disk type
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Type: int\n        :param Volume: Cloud disk size
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Volume: int\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Count: int
+        :param Type: Disk type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Type: int
+        :param Volume: Cloud disk size
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Volume: int
+        """
         self.Count = None
         self.Type = None
         self.Volume = None
@@ -1102,8 +1480,24 @@ class NewResourceSpec(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MasterResourceSpec: Describes master node resource
+        :type MasterResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`
+        :param CoreResourceSpec: Describes core node resource
+        :type CoreResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`
+        :param TaskResourceSpec: Describes task node resource
+        :type TaskResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`
+        :param MasterCount: Number of master nodes
+        :type MasterCount: int
+        :param CoreCount: Number of core nodes
+        :type CoreCount: int
+        :param TaskCount: Number of task nodes
+        :type TaskCount: int
+        :param CommonResourceSpec: Describes common node resource
+        :type CommonResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`
+        :param CommonCount: Number of common nodes
+        :type CommonCount: int
         """
-        :param MasterResourceSpec: Describes master node resource\n        :type MasterResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`\n        :param CoreResourceSpec: Describes core node resource\n        :type CoreResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`\n        :param TaskResourceSpec: Describes task node resource\n        :type TaskResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`\n        :param MasterCount: Number of master nodes\n        :type MasterCount: int\n        :param CoreCount: Number of core nodes\n        :type CoreCount: int\n        :param TaskCount: Number of task nodes\n        :type TaskCount: int\n        :param CommonResourceSpec: Describes common node resource\n        :type CommonResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`\n        :param CommonCount: Number of common nodes\n        :type CommonCount: int\n        """
         self.MasterResourceSpec = None
         self.CoreResourceSpec = None
         self.TaskResourceSpec = None
@@ -1146,48 +1540,128 @@ class NodeHardwareInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AppId: User `APPID`
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type AppId: int\n        :param SerialNo: Serial number
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type SerialNo: str\n        :param OrderNo: Machine instance ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type OrderNo: str\n        :param WanIp: Public IP bound to master node
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type WanIp: str\n        :param Flag: Node type. 0: common node; 1: master node;
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AppId: int
+        :param SerialNo: Serial number
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SerialNo: str
+        :param OrderNo: Machine instance ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type OrderNo: str
+        :param WanIp: Public IP bound to master node
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type WanIp: str
+        :param Flag: Node type. 0: common node; 1: master node;
 2: core node; 3: task node
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Flag: int\n        :param Spec: Node specification
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Spec: str\n        :param CpuNum: Number of node cores
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type CpuNum: int\n        :param MemSize: Node memory size
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type MemSize: int\n        :param MemDesc: Node memory description
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type MemDesc: str\n        :param RegionId: Node region
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type RegionId: int\n        :param ZoneId: Node AZ
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ZoneId: int\n        :param ApplyTime: Application time
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ApplyTime: str\n        :param FreeTime: Release time
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type FreeTime: str\n        :param DiskSize: Disk size
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DiskSize: str\n        :param NameTag: Node description
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type NameTag: str\n        :param Services: Services deployed on node
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Services: str\n        :param StorageType: Disk type
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type StorageType: int\n        :param RootSize: System disk size
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type RootSize: int\n        :param ChargeType: Payment type
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ChargeType: int\n        :param CdbIp: Database IP
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type CdbIp: str\n        :param CdbPort: Database port
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type CdbPort: int\n        :param HwDiskSize: Disk capacity
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type HwDiskSize: int\n        :param HwDiskSizeDesc: Disk capacity description
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type HwDiskSizeDesc: str\n        :param HwMemSize: Memory capacity
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type HwMemSize: int\n        :param HwMemSizeDesc: Memory capacity description
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type HwMemSizeDesc: str\n        :param ExpireTime: Expiration time
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ExpireTime: str\n        :param EmrResourceId: Node resource ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type EmrResourceId: str\n        :param IsAutoRenew: Renewal flag
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type IsAutoRenew: int\n        :param DeviceClass: Device flag
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DeviceClass: str\n        :param Mutable: Support for configuration adjustment
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Mutable: int\n        :param MCMultiDisk: Multi-cloud disk
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type MCMultiDisk: list of MultiDiskMC\n        :param CdbNodeInfo: Database information
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type CdbNodeInfo: :class:`tencentcloud.emr.v20190103.models.CdbInfo`\n        :param Ip: Private IP
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Ip: str\n        :param Destroyable: Whether this node can be terminated. 1: yes, 0: no
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Destroyable: int\n        :param Tags: Tags bound to node
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Tags: list of Tag\n        :param AutoFlag: Wether the node is auto-scaling. 0 means common node. 1 means auto-scaling node.\n        :type AutoFlag: int\n        :param HardwareResourceType: Resource type. Valid values: host, pod
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type HardwareResourceType: str\n        :param IsDynamicSpec: Whether floating specification is used. `1`: yes; `0`: no
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type IsDynamicSpec: int\n        :param DynamicPodSpec: Floating specification in JSON string
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type DynamicPodSpec: str\n        :param SupportModifyPayMode: Whether to support billing mode change. `0`: no; `1`: yes
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type SupportModifyPayMode: int\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Flag: int
+        :param Spec: Node specification
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Spec: str
+        :param CpuNum: Number of node cores
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CpuNum: int
+        :param MemSize: Node memory size
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MemSize: int
+        :param MemDesc: Node memory description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MemDesc: str
+        :param RegionId: Node region
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RegionId: int
+        :param ZoneId: Node AZ
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ZoneId: int
+        :param ApplyTime: Application time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ApplyTime: str
+        :param FreeTime: Release time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FreeTime: str
+        :param DiskSize: Disk size
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DiskSize: str
+        :param NameTag: Node description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type NameTag: str
+        :param Services: Services deployed on node
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Services: str
+        :param StorageType: Disk type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type StorageType: int
+        :param RootSize: System disk size
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RootSize: int
+        :param ChargeType: Payment type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ChargeType: int
+        :param CdbIp: Database IP
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CdbIp: str
+        :param CdbPort: Database port
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CdbPort: int
+        :param HwDiskSize: Disk capacity
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type HwDiskSize: int
+        :param HwDiskSizeDesc: Disk capacity description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type HwDiskSizeDesc: str
+        :param HwMemSize: Memory capacity
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type HwMemSize: int
+        :param HwMemSizeDesc: Memory capacity description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type HwMemSizeDesc: str
+        :param ExpireTime: Expiration time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ExpireTime: str
+        :param EmrResourceId: Node resource ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type EmrResourceId: str
+        :param IsAutoRenew: Renewal flag
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IsAutoRenew: int
+        :param DeviceClass: Device flag
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DeviceClass: str
+        :param Mutable: Support for configuration adjustment
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Mutable: int
+        :param MCMultiDisk: Multi-cloud disk
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MCMultiDisk: list of MultiDiskMC
+        :param CdbNodeInfo: Database information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CdbNodeInfo: :class:`tencentcloud.emr.v20190103.models.CdbInfo`
+        :param Ip: Private IP
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Ip: str
+        :param Destroyable: Whether this node can be terminated. 1: yes, 0: no
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Destroyable: int
+        :param Tags: Tags bound to node
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of Tag
+        :param AutoFlag: Wether the node is auto-scaling. 0 means common node. 1 means auto-scaling node.
+        :type AutoFlag: int
+        :param HardwareResourceType: Resource type. Valid values: host, pod
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type HardwareResourceType: str
+        :param IsDynamicSpec: Whether floating specification is used. `1`: yes; `0`: no
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type IsDynamicSpec: int
+        :param DynamicPodSpec: Floating specification in JSON string
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DynamicPodSpec: str
+        :param SupportModifyPayMode: Whether to support billing mode change. `0`: no; `1`: yes
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SupportModifyPayMode: int
+        """
         self.AppId = None
         self.SerialNo = None
         self.OrderNo = None
@@ -1298,17 +1772,35 @@ class OutterResource(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Spec: Specification
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Spec: str\n        :param SpecName: Specification name
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type SpecName: str\n        :param StorageType: Disk type
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type StorageType: int\n        :param DiskType: Disk type
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DiskType: str\n        :param RootSize: System disk size
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type RootSize: int\n        :param MemSize: Memory size
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type MemSize: int\n        :param Cpu: Number of CPUs
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Cpu: int\n        :param DiskSize: Disk size
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DiskSize: int\n        :param InstanceType: Specification
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type InstanceType: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Spec: str
+        :param SpecName: Specification name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SpecName: str
+        :param StorageType: Disk type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type StorageType: int
+        :param DiskType: Disk type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DiskType: str
+        :param RootSize: System disk size
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RootSize: int
+        :param MemSize: Memory size
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MemSize: int
+        :param Cpu: Number of CPUs
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Cpu: int
+        :param DiskSize: Disk size
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DiskSize: int
+        :param InstanceType: Specification
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type InstanceType: str
+        """
         self.Spec = None
         self.SpecName = None
         self.StorageType = None
@@ -1345,11 +1837,17 @@ class PersistentVolumeContext(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskSize: Disk size in GB
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DiskSize: int\n        :param DiskType: Disk type. Valid values: CLOUD_PREMIUM, CLOUD_SSD
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DiskType: str\n        :param DiskNum: Number of disks
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DiskNum: int\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DiskSize: int
+        :param DiskType: Disk type. Valid values: CLOUD_PREMIUM, CLOUD_SSD
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DiskType: str
+        :param DiskNum: Number of disks
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DiskNum: int
+        """
         self.DiskSize = None
         self.DiskType = None
         self.DiskNum = None
@@ -1374,8 +1872,12 @@ class Placement(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProjectId: ID of the project to which the instance belongs. This parameter can be obtained from the `projectId` field in the return value of the `DescribeProject` API. If 0 is entered, the default project will be used.
+        :type ProjectId: int
+        :param Zone: AZ where the instance resides, such as ap-guangzhou-1. You can call the `DescribeZones` API and see the `Zone` field to get the value of this parameter.
+        :type Zone: str
         """
-        :param ProjectId: ID of the project to which the instance belongs. This parameter can be obtained from the `projectId` field in the return value of the `DescribeProject` API. If 0 is entered, the default project will be used.\n        :type ProjectId: int\n        :param Zone: AZ where the instance resides, such as ap-guangzhou-1. You can call the `DescribeZones` API and see the `Zone` field to get the value of this parameter.\n        :type Zone: str\n        """
         self.ProjectId = None
         self.Zone = None
 
@@ -1398,8 +1900,10 @@ class PodParameter(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ClusterId: TKE or EKS cluster ID\n        :type ClusterId: str\n        :param Config: Custom permission
+        r"""
+        :param ClusterId: TKE or EKS cluster ID
+        :type ClusterId: str
+        :param Config: Custom permission
 Example:
 {
   "apiVersion": "v1",
@@ -1433,7 +1937,9 @@ Example:
       }
     }
   ]
-}\n        :type Config: str\n        :param Parameter: Custom parameter
+}
+        :type Config: str
+        :param Parameter: Custom parameter
 Example:
 {
     "apiVersion": "apps/v1",
@@ -1507,7 +2013,9 @@ Example:
         }
       }
     }
-  }\n        :type Parameter: str\n        """
+  }
+        :type Parameter: str
+        """
         self.ClusterId = None
         self.Config = None
         self.Parameter = None
@@ -1532,11 +2040,35 @@ class PodSpec(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceProviderIdentifier: Identifier of external resource provider, such as "cls-a1cd23fa".
+        :type ResourceProviderIdentifier: str
+        :param ResourceProviderType: Type of external resource provider, such as "tke". Currently, only "tke" is supported.
+        :type ResourceProviderType: str
+        :param NodeType: Purpose of the resource, i.e., node type, which currently can only be "TASK".
+        :type NodeType: str
+        :param Cpu: Number of CPU cores.
+        :type Cpu: int
+        :param Memory: Memory size in GB.
+        :type Memory: int
+        :param DataVolumes: Mount point of resources for the host. The specified mount point corresponds to the host path and is used as the data storage directory in the pod. (This parameter has been disused)
+        :type DataVolumes: list of str
+        :param CpuType: EKS cluster - CPU type. Valid values: "intel", "amd"
+        :type CpuType: str
+        :param PodVolumes: Pod node data directory mounting information.
+        :type PodVolumes: list of PodVolume
+        :param IsDynamicSpec: Whether floating specification is used. `1`: yes; `0`: no
+        :type IsDynamicSpec: int
+        :param DynamicPodSpec: Floating specification
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DynamicPodSpec: :class:`tencentcloud.emr.v20190103.models.DynamicPodSpec`
+        :param VpcId: Unique VPC ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type VpcId: str
+        :param SubnetId: Unique VPC subnet ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SubnetId: str
         """
-        :param ResourceProviderIdentifier: Identifier of external resource provider, such as "cls-a1cd23fa".\n        :type ResourceProviderIdentifier: str\n        :param ResourceProviderType: Type of external resource provider, such as "tke". Currently, only "tke" is supported.\n        :type ResourceProviderType: str\n        :param NodeType: Purpose of the resource, i.e., node type, which currently can only be "TASK".\n        :type NodeType: str\n        :param Cpu: Number of CPU cores.\n        :type Cpu: int\n        :param Memory: Memory size in GB.\n        :type Memory: int\n        :param DataVolumes: Mount point of resources for the host. The specified mount point corresponds to the host path and is used as the data storage directory in the pod. (This parameter has been disused)\n        :type DataVolumes: list of str\n        :param CpuType: EKS cluster - CPU type. Valid values: "intel", "amd"\n        :type CpuType: str\n        :param PodVolumes: Pod node data directory mounting information.\n        :type PodVolumes: list of PodVolume\n        :param IsDynamicSpec: Whether floating specification is used. `1`: yes; `0`: no\n        :type IsDynamicSpec: int\n        :param DynamicPodSpec: Floating specification
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type DynamicPodSpec: :class:`tencentcloud.emr.v20190103.models.DynamicPodSpec`\n        :param VpcId: Unique VPC ID
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type VpcId: str\n        :param SubnetId: Unique VPC subnet ID
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type SubnetId: str\n        """
         self.ResourceProviderIdentifier = None
         self.ResourceProviderType = None
         self.NodeType = None
@@ -1586,11 +2118,17 @@ class PodVolume(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VolumeType: Storage type. Valid values: "pvc", "hostpath".
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type VolumeType: str\n        :param PVCVolume: This field will take effect if `VolumeType` is `pvc`.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type PVCVolume: :class:`tencentcloud.emr.v20190103.models.PersistentVolumeContext`\n        :param HostVolume: This field will take effect if `VolumeType` is `hostpath`.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type HostVolume: :class:`tencentcloud.emr.v20190103.models.HostVolumeContext`\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type VolumeType: str
+        :param PVCVolume: This field will take effect if `VolumeType` is `pvc`.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PVCVolume: :class:`tencentcloud.emr.v20190103.models.PersistentVolumeContext`
+        :param HostVolume: This field will take effect if `VolumeType` is `hostpath`.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type HostVolume: :class:`tencentcloud.emr.v20190103.models.HostVolumeContext`
+        """
         self.VolumeType = None
         self.PVCVolume = None
         self.HostVolume = None
@@ -1619,8 +2157,32 @@ class PreExecuteFileSettings(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Path: COS path to script, which has been disused
+        :type Path: str
+        :param Args: Execution script parameter
+        :type Args: list of str
+        :param Bucket: COS bucket name, which has been disused
+        :type Bucket: str
+        :param Region: COS region name, which has been disused
+        :type Region: str
+        :param Domain: COS domain data, which has been disused
+        :type Domain: str
+        :param RunOrder: Execution sequence
+        :type RunOrder: int
+        :param WhenRun: `resourceAfter` or `clusterAfter`
+        :type WhenRun: str
+        :param CosFileName: Script name, which has been disused
+        :type CosFileName: str
+        :param CosFileURI: COS address of script
+        :type CosFileURI: str
+        :param CosSecretId: COS `SecretId`
+        :type CosSecretId: str
+        :param CosSecretKey: COS `SecretKey`
+        :type CosSecretKey: str
+        :param AppId: COS `appid`, which has been disused
+        :type AppId: str
         """
-        :param Path: COS path to script, which has been disused\n        :type Path: str\n        :param Args: Execution script parameter\n        :type Args: list of str\n        :param Bucket: COS bucket name, which has been disused\n        :type Bucket: str\n        :param Region: COS region name, which has been disused\n        :type Region: str\n        :param Domain: COS domain data, which has been disused\n        :type Domain: str\n        :param RunOrder: Execution sequence\n        :type RunOrder: int\n        :param WhenRun: `resourceAfter` or `clusterAfter`\n        :type WhenRun: str\n        :param CosFileName: Script name, which has been disused\n        :type CosFileName: str\n        :param CosFileURI: COS address of script\n        :type CosFileURI: str\n        :param CosSecretId: COS `SecretId`\n        :type CosSecretId: str\n        :param CosSecretKey: COS `SecretKey`\n        :type CosSecretKey: str\n        :param AppId: COS `appid`, which has been disused\n        :type AppId: str\n        """
         self.Path = None
         self.Args = None
         self.Bucket = None
@@ -1663,21 +2225,47 @@ class PriceResource(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Spec: Target specification
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Spec: str\n        :param StorageType: Disk type
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type StorageType: int\n        :param DiskType: Disk type
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DiskType: str\n        :param RootSize: System disk size
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type RootSize: int\n        :param MemSize: Memory size
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type MemSize: int\n        :param Cpu: Number of cores
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Cpu: int\n        :param DiskSize: Disk size
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DiskSize: int\n        :param MultiDisks: List of cloud disks
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type MultiDisks: list of MultiDisk\n        :param DiskCnt: Number of disks
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DiskCnt: int\n        :param InstanceType: Specification
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type InstanceType: str\n        :param Tags: Tag
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Tags: list of Tag\n        :param DiskNum: Number of disks
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DiskNum: int\n        :param LocalDiskNum: Number of local disks
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type LocalDiskNum: int\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Spec: str
+        :param StorageType: Disk type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type StorageType: int
+        :param DiskType: Disk type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DiskType: str
+        :param RootSize: System disk size
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RootSize: int
+        :param MemSize: Memory size
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MemSize: int
+        :param Cpu: Number of cores
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Cpu: int
+        :param DiskSize: Disk size
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DiskSize: int
+        :param MultiDisks: List of cloud disks
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MultiDisks: list of MultiDisk
+        :param DiskCnt: Number of disks
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DiskCnt: int
+        :param InstanceType: Specification
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type InstanceType: str
+        :param Tags: Tag
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of Tag
+        :param DiskNum: Number of disks
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DiskNum: int
+        :param LocalDiskNum: Number of local disks
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type LocalDiskNum: int
+        """
         self.Spec = None
         self.StorageType = None
         self.DiskType = None
@@ -1732,30 +2320,54 @@ class Resource(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Spec: Node specification description, such as CVM.SA2
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Spec: str\n        :param StorageType: Storage type
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Spec: str
+        :param StorageType: Storage type
 Valid values:
 <li>4: SSD</li>
 <li>5: Premium Cloud Storage</li>
 <li>6: Enhanced SSD</li>
 <li>11: High-Throughput cloud disk</li>
 <li>12: Tremendous SSD</li>
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type StorageType: int\n        :param DiskType: Disk type
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type StorageType: int
+        :param DiskType: Disk type
 Valid values:
 <li>`CLOUD_SSD`: SSD</li>
 <li>`CLOUD_PREMIUM`: Premium Cloud Storage</li>
 <li>`CLOUD_BASIC`: HDD</li>
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type DiskType: str\n        :param MemSize: Memory capacity in MB
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type MemSize: int\n        :param Cpu: Number of CPU cores
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Cpu: int\n        :param DiskSize: Data disk capacity
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DiskSize: int\n        :param RootSize: System disk capacity
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type RootSize: int\n        :param MultiDisks: List of cloud disks. When the data disk is a cloud disk, `DiskType` and `DiskSize` are used directly; `MultiDisks` will be used for the excessive part
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type MultiDisks: list of MultiDisk\n        :param Tags: List of tags to be bound
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Tags: list of Tag\n        :param InstanceType: Specification type, such as S2.MEDIUM8
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type InstanceType: str\n        :param LocalDiskNum: Number of local disks. This field has been disused.
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type LocalDiskNum: int\n        :param DiskNum: Number of local disks, such as 2
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type DiskNum: int\n        """
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DiskType: str
+        :param MemSize: Memory capacity in MB
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MemSize: int
+        :param Cpu: Number of CPU cores
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Cpu: int
+        :param DiskSize: Data disk capacity
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DiskSize: int
+        :param RootSize: System disk capacity
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RootSize: int
+        :param MultiDisks: List of cloud disks. When the data disk is a cloud disk, `DiskType` and `DiskSize` are used directly; `MultiDisks` will be used for the excessive part
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MultiDisks: list of MultiDisk
+        :param Tags: List of tags to be bound
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of Tag
+        :param InstanceType: Specification type, such as S2.MEDIUM8
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type InstanceType: str
+        :param LocalDiskNum: Number of local disks. This field has been disused.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type LocalDiskNum: int
+        :param DiskNum: Number of local disks, such as 2
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DiskNum: int
+        """
         self.Spec = None
         self.StorageType = None
         self.DiskType = None
@@ -1808,16 +2420,60 @@ class ScaleOutInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TimeUnit: Time unit of scale-out. Valid values:
 <li>s: seconds. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>
-<li>m: month. When `PayMode` is 1, `TimeUnit` can only be `m`.</li>\n        :type TimeUnit: str\n        :param TimeSpan: Duration of scale-out, which needs to be used together with `TimeUnit`.\n        :type TimeSpan: int\n        :param InstanceId: Instance ID.\n        :type InstanceId: str\n        :param PayMode: Instance billing mode. Valid values:
-<li>0: pay-as-you-go.</li>\n        :type PayMode: int\n        :param ClientToken: Client token.\n        :type ClientToken: str\n        :param PreExecutedFileSettings: Bootstrap script settings.\n        :type PreExecutedFileSettings: list of PreExecuteFileSettings\n        :param TaskCount: Number of task nodes added.\n        :type TaskCount: int\n        :param CoreCount: Number of core nodes added.\n        :type CoreCount: int\n        :param UnNecessaryNodeList: Process not required during scale-out.\n        :type UnNecessaryNodeList: list of int non-negative\n        :param RouterCount: Number of router nodes added.\n        :type RouterCount: int\n        :param SoftDeployInfo: Deployed service.
+<li>m: month. When `PayMode` is 1, `TimeUnit` can only be `m`.</li>
+        :type TimeUnit: str
+        :param TimeSpan: Duration of scale-out, which needs to be used together with `TimeUnit`.
+        :type TimeSpan: int
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param PayMode: Instance billing mode. Valid values:
+<li>0: pay-as-you-go.</li>
+        :type PayMode: int
+        :param ClientToken: Client token.
+        :type ClientToken: str
+        :param PreExecutedFileSettings: Bootstrap script settings.
+        :type PreExecutedFileSettings: list of PreExecuteFileSettings
+        :param TaskCount: Number of task nodes added.
+        :type TaskCount: int
+        :param CoreCount: Number of core nodes added.
+        :type CoreCount: int
+        :param UnNecessaryNodeList: Process not required during scale-out.
+        :type UnNecessaryNodeList: list of int non-negative
+        :param RouterCount: Number of router nodes added.
+        :type RouterCount: int
+        :param SoftDeployInfo: Deployed service.
 <li>`SoftDeployInfo` and `ServiceNodeInfo` are in the same group and mutually exclusive with `UnNecessaryNodeList`.</li>
-<li>The combination of `SoftDeployInfo` and `ServiceNodeInfo` is recommended.</li>\n        :type SoftDeployInfo: list of int non-negative\n        :param ServiceNodeInfo: Started process.\n        :type ServiceNodeInfo: list of int non-negative\n        :param DisasterRecoverGroupIds: List of spread placement group IDs. Only one can be specified currently.\n        :type DisasterRecoverGroupIds: list of str\n        :param Tags: List of tags bound to added nodes.\n        :type Tags: list of Tag\n        :param HardwareResourceType: Resource type selected for scaling. Valid values: `host` (general CVM resource), `pod` (resource provided by TKE or EKS cluster)\n        :type HardwareResourceType: str\n        :param PodSpec: Specified information such as pod specification and source for expansion with pod resources\n        :type PodSpec: :class:`tencentcloud.emr.v20190103.models.PodSpec`\n        :param ClickHouseClusterName: Machine group name selected for ClickHouse cluster scaling-out\n        :type ClickHouseClusterName: str\n        :param ClickHouseClusterType: Machine group type selected for ClickHouse cluster scaling-out. new: creates a group; old: selects an existing group\n        :type ClickHouseClusterType: str\n        :param YarnNodeLabel: YARN node label specified for rule-based scaling-out\n        :type YarnNodeLabel: str\n        :param PodParameter: Custom pod permission and parameter\n        :type PodParameter: :class:`tencentcloud.emr.v20190103.models.PodParameter`\n        :param MasterCount: Number of master nodes to be added
+<li>The combination of `SoftDeployInfo` and `ServiceNodeInfo` is recommended.</li>
+        :type SoftDeployInfo: list of int non-negative
+        :param ServiceNodeInfo: Started process.
+        :type ServiceNodeInfo: list of int non-negative
+        :param DisasterRecoverGroupIds: List of spread placement group IDs. Only one can be specified currently.
+        :type DisasterRecoverGroupIds: list of str
+        :param Tags: List of tags bound to added nodes.
+        :type Tags: list of Tag
+        :param HardwareResourceType: Resource type selected for scaling. Valid values: `host` (general CVM resource), `pod` (resource provided by TKE or EKS cluster)
+        :type HardwareResourceType: str
+        :param PodSpec: Specified information such as pod specification and source for expansion with pod resources
+        :type PodSpec: :class:`tencentcloud.emr.v20190103.models.PodSpec`
+        :param ClickHouseClusterName: Machine group name selected for ClickHouse cluster scaling-out
+        :type ClickHouseClusterName: str
+        :param ClickHouseClusterType: Machine group type selected for ClickHouse cluster scaling-out. new: creates a group; old: selects an existing group
+        :type ClickHouseClusterType: str
+        :param YarnNodeLabel: YARN node label specified for rule-based scaling-out
+        :type YarnNodeLabel: str
+        :param PodParameter: Custom pod permission and parameter
+        :type PodParameter: :class:`tencentcloud.emr.v20190103.models.PodParameter`
+        :param MasterCount: Number of master nodes to be added
 When a ClickHouse cluster is scaled, this parameter does not take effect.
 When a Kafka cluster is scaled, this parameter does not take effect.
-When `HardwareResourceType` is `pod`, this parameter does not take effect.\n        :type MasterCount: int\n        :param StartServiceAfterScaleOut: Whether to start the service after scaling. `true`: yes; `false`: no\n        :type StartServiceAfterScaleOut: str\n        """
+When `HardwareResourceType` is `pod`, this parameter does not take effect.
+        :type MasterCount: int
+        :param StartServiceAfterScaleOut: Whether to start the service after scaling. `true`: yes; `false`: no
+        :type StartServiceAfterScaleOut: str
+        """
         self.TimeUnit = None
         self.TimeSpan = None
         self.InstanceId = None
@@ -1894,12 +2550,24 @@ class ScaleOutInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param DealNames: Order number.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DealNames: list of str
+        :param ClientToken: Client token.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ClientToken: str
+        :param FlowId: Scaling workflow ID.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FlowId: int
+        :param BillId: Big order number.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type BillId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param InstanceId: Instance ID.\n        :type InstanceId: str\n        :param DealNames: Order number.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DealNames: list of str\n        :param ClientToken: Client token.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ClientToken: str\n        :param FlowId: Scaling workflow ID.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type FlowId: int\n        :param BillId: Big order number.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type BillId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.DealNames = None
         self.ClientToken = None
@@ -1923,8 +2591,12 @@ class SearchItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SearchType: Searchable type
+        :type SearchType: str
+        :param SearchValue: Searchable value
+        :type SearchValue: str
         """
-        :param SearchType: Searchable type\n        :type SearchType: str\n        :param SearchValue: Searchable value\n        :type SearchValue: str\n        """
         self.SearchType = None
         self.SearchValue = None
 
@@ -1947,8 +2619,12 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TagKey: Tag key
+        :type TagKey: str
+        :param TagValue: Tag value
+        :type TagValue: str
         """
-        :param TagKey: Tag key\n        :type TagKey: str\n        :param TagValue: Tag value\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -1971,8 +2647,12 @@ class TerminateInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param ResourceIds: ID of terminated node. This parameter is reserved and does not need to be configured.
+        :type ResourceIds: list of str
         """
-        :param InstanceId: Instance ID.\n        :type InstanceId: str\n        :param ResourceIds: ID of terminated node. This parameter is reserved and does not need to be configured.\n        :type ResourceIds: list of str\n        """
         self.InstanceId = None
         self.ResourceIds = None
 
@@ -1995,8 +2675,10 @@ class TerminateInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2010,8 +2692,12 @@ class TerminateTasksRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param ResourceIds: List of resource IDs of the node to be terminated. The resource ID is in the format of `emr-vm-xxxxxxxx`. A valid resource ID can be queried in the [console](https://console.cloud.tencent.com/emr/static/hardware).
+        :type ResourceIds: list of str
         """
-        :param InstanceId: Instance ID.\n        :type InstanceId: str\n        :param ResourceIds: List of resource IDs of the node to be terminated. The resource ID is in the format of `emr-vm-xxxxxxxx`. A valid resource ID can be queried in the [console](https://console.cloud.tencent.com/emr/static/hardware).\n        :type ResourceIds: list of str\n        """
         self.InstanceId = None
         self.ResourceIds = None
 
@@ -2034,8 +2720,10 @@ class TerminateTasksResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2049,8 +2737,16 @@ class UpdateInstanceSettings(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Memory: Memory capacity in GB
+        :type Memory: int
+        :param CPUCores: Number of CPU cores
+        :type CPUCores: int
+        :param ResourceId: Machine resource ID (EMR resource identifier)
+        :type ResourceId: str
+        :param InstanceType: Target machine specification
+        :type InstanceType: str
         """
-        :param Memory: Memory capacity in GB\n        :type Memory: int\n        :param CPUCores: Number of CPU cores\n        :type CPUCores: int\n        :param ResourceId: Machine resource ID (EMR resource identifier)\n        :type ResourceId: str\n        :param InstanceType: Target machine specification\n        :type InstanceType: str\n        """
         self.Memory = None
         self.CPUCores = None
         self.ResourceId = None
@@ -2077,8 +2773,12 @@ class VPCSettings(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param SubnetId: Subnet ID
+        :type SubnetId: str
         """
-        :param VpcId: VPC ID\n        :type VpcId: str\n        :param SubnetId: Subnet ID\n        :type SubnetId: str\n        """
         self.VpcId = None
         self.SubnetId = None
 

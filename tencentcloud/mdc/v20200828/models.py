@@ -24,8 +24,20 @@ class CreateInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InputName: Input name, which can contain 1 to 32 letters, digits, and underscores.
+        :type InputName: str
+        :param Protocol: Input protocol. Valid values: SRT, RTP.
+        :type Protocol: str
+        :param Description: Input description. Length: [0, 255].
+        :type Description: str
+        :param AllowIpList: Allowlist of input IPs in CIDR format.
+        :type AllowIpList: list of str
+        :param SRTSettings: SRT configuration information of input.
+        :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputSRTSettings`
+        :param RTPSettings: RTP configuration information of input.
+        :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTPSettings`
         """
-        :param InputName: Input name, which can contain 1 to 32 letters, digits, and underscores.\n        :type InputName: str\n        :param Protocol: Input protocol. Valid values: SRT, RTP.\n        :type Protocol: str\n        :param Description: Input description. Length: [0, 255].\n        :type Description: str\n        :param AllowIpList: Allowlist of input IPs in CIDR format.\n        :type AllowIpList: list of str\n        :param SRTSettings: SRT configuration information of input.\n        :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputSRTSettings`\n        :param RTPSettings: RTP configuration information of input.\n        :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTPSettings`\n        """
         self.InputName = None
         self.Protocol = None
         self.Description = None
@@ -60,8 +72,12 @@ class CreateInputRTPSettings(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FEC: Default value: none. Valid values: ['none'].
+        :type FEC: str
+        :param IdleTimeout: Idle timeout period in ms. Default value: 5000. Value range: [1000, 10000].
+        :type IdleTimeout: int
         """
-        :param FEC: Default value: none. Valid values: ['none'].\n        :type FEC: str\n        :param IdleTimeout: Idle timeout period in ms. Default value: 5000. Value range: [1000, 10000].\n        :type IdleTimeout: int\n        """
         self.FEC = None
         self.IdleTimeout = None
 
@@ -84,8 +100,22 @@ class CreateInputSRTSettings(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StreamId: Stream ID, which can contain 0 to 512 letters, digits, and special characters (.#!:&,=_-).
+        :type StreamId: str
+        :param Latency: Latency in ms. Default value: 0. Value range: [0, 3000].
+        :type Latency: int
+        :param RecvLatency: Receive latency in ms. Default value: 120. Value range: [0, 3000].
+        :type RecvLatency: int
+        :param PeerLatency: Peer latency in ms. Default value: 0. Value range: [0, 3000].
+        :type PeerLatency: int
+        :param PeerIdleTimeout: Peer timeout period in ms. Default value: 5000. Value range: [1000, 10000].
+        :type PeerIdleTimeout: int
+        :param Passphrase: Decryption key, which is empty by default, indicating not to encrypt. Only ASCII codes can be filled. Length: [10, 79].
+        :type Passphrase: str
+        :param PbKeyLen: Key length. Default value: 0. Valid values: 0, 16, 24, 32.
+        :type PbKeyLen: int
         """
-        :param StreamId: Stream ID, which can contain 0 to 512 letters, digits, and special characters (.#!:&,=_-).\n        :type StreamId: str\n        :param Latency: Latency in ms. Default value: 0. Value range: [0, 3000].\n        :type Latency: int\n        :param RecvLatency: Receive latency in ms. Default value: 120. Value range: [0, 3000].\n        :type RecvLatency: int\n        :param PeerLatency: Peer latency in ms. Default value: 0. Value range: [0, 3000].\n        :type PeerLatency: int\n        :param PeerIdleTimeout: Peer timeout period in ms. Default value: 5000. Value range: [1000, 10000].\n        :type PeerIdleTimeout: int\n        :param Passphrase: Decryption key, which is empty by default, indicating not to encrypt. Only ASCII codes can be filled. Length: [10, 79].\n        :type Passphrase: str\n        :param PbKeyLen: Key length. Default value: 0. Valid values: 0, 16, 24, 32.\n        :type PbKeyLen: int\n        """
         self.StreamId = None
         self.Latency = None
         self.RecvLatency = None
@@ -118,8 +148,14 @@ class CreateMediaConnectFlowRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowName: Flow name.
+        :type FlowName: str
+        :param MaxBandwidth: Maximum bandwidth in bps. Valid values: 10000000, 20000000, 50000000.
+        :type MaxBandwidth: int
+        :param InputGroup: Flow input group.
+        :type InputGroup: list of CreateInput
         """
-        :param FlowName: Flow name.\n        :type FlowName: str\n        :param MaxBandwidth: Maximum bandwidth in bps. Valid values: 10000000, 20000000, 50000000.\n        :type MaxBandwidth: int\n        :param InputGroup: Flow input group.\n        :type InputGroup: list of CreateInput\n        """
         self.FlowName = None
         self.MaxBandwidth = None
         self.InputGroup = None
@@ -149,8 +185,12 @@ class CreateMediaConnectFlowResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Info: Information of the created flow.
+        :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeFlow`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Info: Information of the created flow.\n        :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeFlow`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Info = None
         self.RequestId = None
 
@@ -168,8 +208,12 @@ class CreateMediaConnectOutputRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: Flow ID.
+        :type FlowId: str
+        :param Output: Output configuration of a flow.
+        :type Output: :class:`tencentcloud.mdc.v20200828.models.CreateOutput`
         """
-        :param FlowId: Flow ID.\n        :type FlowId: str\n        :param Output: Output configuration of a flow.\n        :type Output: :class:`tencentcloud.mdc.v20200828.models.CreateOutput`\n        """
         self.FlowId = None
         self.Output = None
 
@@ -194,8 +238,12 @@ class CreateMediaConnectOutputResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Info: Information of the created output.
+        :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeOutput`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Info: Information of the created output.\n        :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeOutput`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Info = None
         self.RequestId = None
 
@@ -213,8 +261,22 @@ class CreateOutput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OutputName: Output name.
+        :type OutputName: str
+        :param Description: Output description.
+        :type Description: str
+        :param Protocol: Output protocol.
+        :type Protocol: str
+        :param OutputRegion: Output region.
+        :type OutputRegion: str
+        :param SRTSettings: SRT configuration of output.
+        :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputSrtSettings`
+        :param RTPSettings: RTP configuration of output.
+        :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTPSettings`
+        :param RTMPSettings: RTMP configuration of output.
+        :type RTMPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputRTMPSettings`
         """
-        :param OutputName: Output name.\n        :type OutputName: str\n        :param Description: Output description.\n        :type Description: str\n        :param Protocol: Output protocol.\n        :type Protocol: str\n        :param OutputRegion: Output region.\n        :type OutputRegion: str\n        :param SRTSettings: SRT configuration of output.\n        :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputSrtSettings`\n        :param RTPSettings: RTP configuration of output.\n        :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTPSettings`\n        :param RTMPSettings: RTMP configuration of output.\n        :type RTMPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputRTMPSettings`\n        """
         self.OutputName = None
         self.Description = None
         self.Protocol = None
@@ -253,8 +315,12 @@ class CreateOutputRTMPSettings(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Destinations: Push destination address. You can enter one or two addresses.
+        :type Destinations: list of CreateOutputRtmpSettingsDestinations
+        :param ChunkSize: RTMP chunk size. Value range: [4096, 40960].
+        :type ChunkSize: int
         """
-        :param Destinations: Push destination address. You can enter one or two addresses.\n        :type Destinations: list of CreateOutputRtmpSettingsDestinations\n        :param ChunkSize: RTMP chunk size. Value range: [4096, 40960].\n        :type ChunkSize: int\n        """
         self.Destinations = None
         self.ChunkSize = None
 
@@ -282,8 +348,14 @@ class CreateOutputRTPSettings(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Destinations: Push destination address. You can enter one or two addresses.
+        :type Destinations: :class:`tencentcloud.mdc.v20200828.models.CreateOutputRTPSettingsDestinations`
+        :param FEC: Only `none` can be entered.
+        :type FEC: str
+        :param IdleTimeout: Idle timeout period.
+        :type IdleTimeout: int
         """
-        :param Destinations: Push destination address. You can enter one or two addresses.\n        :type Destinations: :class:`tencentcloud.mdc.v20200828.models.CreateOutputRTPSettingsDestinations`\n        :param FEC: Only `none` can be entered.\n        :type FEC: str\n        :param IdleTimeout: Idle timeout period.\n        :type IdleTimeout: int\n        """
         self.Destinations = None
         self.FEC = None
         self.IdleTimeout = None
@@ -310,8 +382,12 @@ class CreateOutputRTPSettingsDestinations(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ip: Push destination IP.
+        :type Ip: str
+        :param Port: Push destination port.
+        :type Port: int
         """
-        :param Ip: Push destination IP.\n        :type Ip: str\n        :param Port: Push destination port.\n        :type Port: int\n        """
         self.Ip = None
         self.Port = None
 
@@ -334,8 +410,12 @@ class CreateOutputRtmpSettingsDestinations(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Url: Push URL in the format of `rtmp://domain/live`.
+        :type Url: str
+        :param StreamKey: Push `StreamKey` in the format of `stream?key=value`.
+        :type StreamKey: str
         """
-        :param Url: Push URL in the format of `rtmp://domain/live`.\n        :type Url: str\n        :param StreamKey: Push `StreamKey` in the format of `stream?key=value`.\n        :type StreamKey: str\n        """
         self.Url = None
         self.StreamKey = None
 
@@ -358,8 +438,24 @@ class CreateOutputSrtSettings(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Destinations: Push destination address. Please configure one or two addresses.
+        :type Destinations: list of CreateOutputSrtSettingsDestinations
+        :param StreamId: Stream ID of SRT push.
+        :type StreamId: str
+        :param Latency: Total latency of SRT push.
+        :type Latency: int
+        :param RecvLatency: Receive latency of SRT push.
+        :type RecvLatency: int
+        :param PeerLatency: Peer latency of SRT push.
+        :type PeerLatency: int
+        :param PeerIdleTimeout: Peer idle timeout period of SRT push.
+        :type PeerIdleTimeout: int
+        :param Passphrase: Encryption key of SRT push.
+        :type Passphrase: str
+        :param PbKeyLen: Key length of SRT push.
+        :type PbKeyLen: int
         """
-        :param Destinations: Push destination address. Please configure one or two addresses.\n        :type Destinations: list of CreateOutputSrtSettingsDestinations\n        :param StreamId: Stream ID of SRT push.\n        :type StreamId: str\n        :param Latency: Total latency of SRT push.\n        :type Latency: int\n        :param RecvLatency: Receive latency of SRT push.\n        :type RecvLatency: int\n        :param PeerLatency: Peer latency of SRT push.\n        :type PeerLatency: int\n        :param PeerIdleTimeout: Peer idle timeout period of SRT push.\n        :type PeerIdleTimeout: int\n        :param Passphrase: Encryption key of SRT push.\n        :type Passphrase: str\n        :param PbKeyLen: Key length of SRT push.\n        :type PbKeyLen: int\n        """
         self.Destinations = None
         self.StreamId = None
         self.Latency = None
@@ -399,8 +495,12 @@ class CreateOutputSrtSettingsDestinations(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ip: Output IP.
+        :type Ip: str
+        :param Port: Output port.
+        :type Port: int
         """
-        :param Ip: Output IP.\n        :type Ip: str\n        :param Port: Output port.\n        :type Port: int\n        """
         self.Ip = None
         self.Port = None
 
@@ -423,8 +523,10 @@ class DeleteMediaConnectFlowRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: Flow ID.
+        :type FlowId: str
         """
-        :param FlowId: Flow ID.\n        :type FlowId: str\n        """
         self.FlowId = None
 
 
@@ -445,8 +547,10 @@ class DeleteMediaConnectFlowResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -460,8 +564,12 @@ class DeleteMediaConnectOutputRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: Flow ID.
+        :type FlowId: str
+        :param OutputId: Output ID.
+        :type OutputId: str
         """
-        :param FlowId: Flow ID.\n        :type FlowId: str\n        :param OutputId: Output ID.\n        :type OutputId: str\n        """
         self.FlowId = None
         self.OutputId = None
 
@@ -484,8 +592,10 @@ class DeleteMediaConnectOutputResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -499,9 +609,21 @@ class DescribeFlow(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: Flow ID.
+        :type FlowId: str
+        :param FlowName: Flow name.
+        :type FlowName: str
+        :param State: Flow status.
+        :type State: str
+        :param MaxBandwidth: Maximum bandwidth value.
+        :type MaxBandwidth: int
+        :param InputGroup: Input group.
+        :type InputGroup: list of DescribeInput
+        :param OutputGroup: Output group.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type OutputGroup: list of DescribeOutput
         """
-        :param FlowId: Flow ID.\n        :type FlowId: str\n        :param FlowName: Flow name.\n        :type FlowName: str\n        :param State: Flow status.\n        :type State: str\n        :param MaxBandwidth: Maximum bandwidth value.\n        :type MaxBandwidth: int\n        :param InputGroup: Input group.\n        :type InputGroup: list of DescribeInput\n        :param OutputGroup: Output group.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type OutputGroup: list of DescribeOutput\n        """
         self.FlowId = None
         self.FlowName = None
         self.State = None
@@ -542,11 +664,29 @@ class DescribeInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InputId: Input ID.
+        :type InputId: str
+        :param InputName: Input name.
+        :type InputName: str
+        :param Description: Input description.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Description: str
+        :param Protocol: Input protocol.
+        :type Protocol: str
+        :param InputAddressList: Input address list.
+        :type InputAddressList: list of InputAddress
+        :param AllowIpList: Input IP allowlist.
+        :type AllowIpList: list of str
+        :param SRTSettings: SRT configuration information of input.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputSRTSettings`
+        :param RTPSettings: RTP configuration information of input.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTPSettings`
+        :param InputRegion: Input region.
+        :type InputRegion: str
         """
-        :param InputId: Input ID.\n        :type InputId: str\n        :param InputName: Input name.\n        :type InputName: str\n        :param Description: Input description.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Description: str\n        :param Protocol: Input protocol.\n        :type Protocol: str\n        :param InputAddressList: Input address list.\n        :type InputAddressList: list of InputAddress\n        :param AllowIpList: Input IP allowlist.\n        :type AllowIpList: list of str\n        :param SRTSettings: SRT configuration information of input.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputSRTSettings`\n        :param RTPSettings: RTP configuration information of input.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTPSettings`\n        :param InputRegion: Input region.\n        :type InputRegion: str\n        """
         self.InputId = None
         self.InputName = None
         self.Description = None
@@ -592,8 +732,12 @@ class DescribeInputRTPSettings(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FEC: Whether it is FEC.
+        :type FEC: str
+        :param IdleTimeout: Idle timeout period.
+        :type IdleTimeout: int
         """
-        :param FEC: Whether it is FEC.\n        :type FEC: str\n        :param IdleTimeout: Idle timeout period.\n        :type IdleTimeout: int\n        """
         self.FEC = None
         self.IdleTimeout = None
 
@@ -616,8 +760,22 @@ class DescribeInputSRTSettings(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StreamId: Stream ID.
+        :type StreamId: str
+        :param Latency: Latency.
+        :type Latency: int
+        :param RecvLatency: Receive latency.
+        :type RecvLatency: int
+        :param PeerLatency: Peer latency.
+        :type PeerLatency: int
+        :param PeerIdleTimeout: Peer idle timeout period.
+        :type PeerIdleTimeout: int
+        :param Passphrase: Decryption key.
+        :type Passphrase: str
+        :param PbKeyLen: Key length.
+        :type PbKeyLen: int
         """
-        :param StreamId: Stream ID.\n        :type StreamId: str\n        :param Latency: Latency.\n        :type Latency: int\n        :param RecvLatency: Receive latency.\n        :type RecvLatency: int\n        :param PeerLatency: Peer latency.\n        :type PeerLatency: int\n        :param PeerIdleTimeout: Peer idle timeout period.\n        :type PeerIdleTimeout: int\n        :param Passphrase: Decryption key.\n        :type Passphrase: str\n        :param PbKeyLen: Key length.\n        :type PbKeyLen: int\n        """
         self.StreamId = None
         self.Latency = None
         self.RecvLatency = None
@@ -650,8 +808,10 @@ class DescribeMediaConnectFlowRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: Flow ID.
+        :type FlowId: str
         """
-        :param FlowId: Flow ID.\n        :type FlowId: str\n        """
         self.FlowId = None
 
 
@@ -672,8 +832,12 @@ class DescribeMediaConnectFlowResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Info: Configuration information of a flow.
+        :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeFlow`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Info: Configuration information of a flow.\n        :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeFlow`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Info = None
         self.RequestId = None
 
@@ -691,8 +855,12 @@ class DescribeMediaConnectFlowsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PageNum: Number of current pages. Default value: 1.
+        :type PageNum: int
+        :param PageSize: Number of entries per page. Default value: 10.
+        :type PageSize: int
         """
-        :param PageNum: Number of current pages. Default value: 1.\n        :type PageNum: int\n        :param PageSize: Number of entries per page. Default value: 10.\n        :type PageSize: int\n        """
         self.PageNum = None
         self.PageSize = None
 
@@ -715,8 +883,20 @@ class DescribeMediaConnectFlowsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Infos: Configuration information list of a flow.
+        :type Infos: list of DescribeFlow
+        :param PageNum: Number of current pages.
+        :type PageNum: int
+        :param PageSize: Number of entries per page.
+        :type PageSize: int
+        :param TotalNum: Total number.
+        :type TotalNum: int
+        :param TotalPage: Total number of pages.
+        :type TotalPage: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Infos: Configuration information list of a flow.\n        :type Infos: list of DescribeFlow\n        :param PageNum: Number of current pages.\n        :type PageNum: int\n        :param PageSize: Number of entries per page.\n        :type PageSize: int\n        :param TotalNum: Total number.\n        :type TotalNum: int\n        :param TotalPage: Total number of pages.\n        :type TotalPage: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Infos = None
         self.PageNum = None
         self.PageSize = None
@@ -745,13 +925,33 @@ class DescribeOutput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OutputId: Output ID.
+        :type OutputId: str
+        :param OutputName: Output name.
+        :type OutputName: str
+        :param OutputType: Output type.
+        :type OutputType: str
+        :param Description: Output description.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Description: str
+        :param Protocol: Output protocol.
+        :type Protocol: str
+        :param OutputAddressList: Output destination address information list.
+        :type OutputAddressList: list of OutputAddress
+        :param OutputRegion: Output region.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type OutputRegion: str
+        :param SRTSettings: SRT configuration information of output.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputSRTSettings`
+        :param RTPSettings: RTP configuration information of output.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRTPSettings`
+        :param RTMPSettings: RTMP configuration information of output.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RTMPSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRTMPSettings`
         """
-        :param OutputId: Output ID.\n        :type OutputId: str\n        :param OutputName: Output name.\n        :type OutputName: str\n        :param OutputType: Output type.\n        :type OutputType: str\n        :param Description: Output description.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Description: str\n        :param Protocol: Output protocol.\n        :type Protocol: str\n        :param OutputAddressList: Output destination address information list.\n        :type OutputAddressList: list of OutputAddress\n        :param OutputRegion: Output region.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type OutputRegion: str\n        :param SRTSettings: SRT configuration information of output.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputSRTSettings`\n        :param RTPSettings: RTP configuration information of output.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRTPSettings`\n        :param RTMPSettings: RTMP configuration information of output.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type RTMPSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRTMPSettings`\n        """
         self.OutputId = None
         self.OutputName = None
         self.OutputType = None
@@ -801,11 +1001,17 @@ class DescribeOutputRTMPSettings(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IdleTimeout: Idle timeout period.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type IdleTimeout: int\n        :param ChunkSize: Chunk size.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ChunkSize: int\n        :param Destinations: Destination address information list of RTMP push.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Destinations: list of RTMPAddressDestination\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IdleTimeout: int
+        :param ChunkSize: Chunk size.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ChunkSize: int
+        :param Destinations: Destination address information list of RTMP push.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Destinations: list of RTMPAddressDestination
+        """
         self.IdleTimeout = None
         self.ChunkSize = None
         self.Destinations = None
@@ -835,11 +1041,17 @@ class DescribeOutputRTPSettings(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Destinations: Destination address information list of RTP push.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Destinations: list of RTPAddressDestination\n        :param FEC: Whether it is FEC.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type FEC: str\n        :param IdleTimeout: Idle timeout period.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type IdleTimeout: int\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Destinations: list of RTPAddressDestination
+        :param FEC: Whether it is FEC.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FEC: str
+        :param IdleTimeout: Idle timeout period.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IdleTimeout: int
+        """
         self.Destinations = None
         self.FEC = None
         self.IdleTimeout = None
@@ -869,16 +1081,32 @@ class DescribeOutputSRTSettings(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Destinations: Push destination address information list.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Destinations: list of SRTAddressDestination\n        :param StreamId: Stream ID.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type StreamId: str\n        :param Latency: Latency.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Latency: int\n        :param RecvLatency: Receive latency.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type RecvLatency: int\n        :param PeerLatency: Peer latency.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type PeerLatency: int\n        :param PeerIdleTimeout: Peer idle timeout period.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type PeerIdleTimeout: int\n        :param Passphrase: Encryption key.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Passphrase: str\n        :param PbKeyLen: Encryption key length.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type PbKeyLen: int\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Destinations: list of SRTAddressDestination
+        :param StreamId: Stream ID.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type StreamId: str
+        :param Latency: Latency.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Latency: int
+        :param RecvLatency: Receive latency.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RecvLatency: int
+        :param PeerLatency: Peer latency.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PeerLatency: int
+        :param PeerIdleTimeout: Peer idle timeout period.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PeerIdleTimeout: int
+        :param Passphrase: Encryption key.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Passphrase: str
+        :param PbKeyLen: Encryption key length.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PbKeyLen: int
+        """
         self.Destinations = None
         self.StreamId = None
         self.Latency = None
@@ -918,8 +1146,12 @@ class InputAddress(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ip: Input address IP.
+        :type Ip: str
+        :param Port: Input address port.
+        :type Port: int
         """
-        :param Ip: Input address IP.\n        :type Ip: str\n        :param Port: Input address port.\n        :type Port: int\n        """
         self.Ip = None
         self.Port = None
 
@@ -942,8 +1174,20 @@ class ModifyInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InputId: Input ID.
+        :type InputId: str
+        :param InputName: Input name.
+        :type InputName: str
+        :param Description: Input description.
+        :type Description: str
+        :param AllowIpList: Allowed push IP in CIDR format.
+        :type AllowIpList: list of str
+        :param SRTSettings: SRT configuration information.
+        :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputSRTSettings`
+        :param RTPSettings: RTP configuration information.
+        :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTPSettings`
         """
-        :param InputId: Input ID.\n        :type InputId: str\n        :param InputName: Input name.\n        :type InputName: str\n        :param Description: Input description.\n        :type Description: str\n        :param AllowIpList: Allowed push IP in CIDR format.\n        :type AllowIpList: list of str\n        :param SRTSettings: SRT configuration information.\n        :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputSRTSettings`\n        :param RTPSettings: RTP configuration information.\n        :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTPSettings`\n        """
         self.InputId = None
         self.InputName = None
         self.Description = None
@@ -978,8 +1222,12 @@ class ModifyMediaConnectFlowRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: Flow ID.
+        :type FlowId: str
+        :param FlowName: Name of the flow to be modified.
+        :type FlowName: str
         """
-        :param FlowId: Flow ID.\n        :type FlowId: str\n        :param FlowName: Name of the flow to be modified.\n        :type FlowName: str\n        """
         self.FlowId = None
         self.FlowName = None
 
@@ -1002,8 +1250,10 @@ class ModifyMediaConnectFlowResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1017,8 +1267,12 @@ class ModifyMediaConnectInputRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: Flow ID.
+        :type FlowId: str
+        :param Input: Information of the input to be modified.
+        :type Input: :class:`tencentcloud.mdc.v20200828.models.ModifyInput`
         """
-        :param FlowId: Flow ID.\n        :type FlowId: str\n        :param Input: Information of the input to be modified.\n        :type Input: :class:`tencentcloud.mdc.v20200828.models.ModifyInput`\n        """
         self.FlowId = None
         self.Input = None
 
@@ -1043,8 +1297,12 @@ class ModifyMediaConnectInputResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Info: Input information after modification.
+        :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeInput`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Info: Input information after modification.\n        :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeInput`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Info = None
         self.RequestId = None
 
@@ -1062,8 +1320,12 @@ class ModifyMediaConnectOutputRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: Flow ID.
+        :type FlowId: str
+        :param Output: Configuration of the output to be modified.
+        :type Output: :class:`tencentcloud.mdc.v20200828.models.ModifyOutput`
         """
-        :param FlowId: Flow ID.\n        :type FlowId: str\n        :param Output: Configuration of the output to be modified.\n        :type Output: :class:`tencentcloud.mdc.v20200828.models.ModifyOutput`\n        """
         self.FlowId = None
         self.Output = None
 
@@ -1088,8 +1350,12 @@ class ModifyMediaConnectOutputResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Info: Output configuration after modification.
+        :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeOutput`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Info: Output configuration after modification.\n        :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeOutput`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Info = None
         self.RequestId = None
 
@@ -1107,8 +1373,22 @@ class ModifyOutput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OutputId: ID of the output to be modified.
+        :type OutputId: str
+        :param OutputName: Output name.
+        :type OutputName: str
+        :param Description: Output description.
+        :type Description: str
+        :param Protocol: Output push protocol. Valid values: SRT, RTMP.
+        :type Protocol: str
+        :param SRTSettings: Configuration of SRT push.
+        :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputSrtSettings`
+        :param RTPSettings: Configuration of RTP push.
+        :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputRTPSettings`
+        :param RTMPSettings: Configuration of RTMP push.
+        :type RTMPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputRTMPSettings`
         """
-        :param OutputId: ID of the output to be modified.\n        :type OutputId: str\n        :param OutputName: Output name.\n        :type OutputName: str\n        :param Description: Output description.\n        :type Description: str\n        :param Protocol: Output push protocol. Valid values: SRT, RTMP.\n        :type Protocol: str\n        :param SRTSettings: Configuration of SRT push.\n        :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputSrtSettings`\n        :param RTPSettings: Configuration of RTP push.\n        :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputRTPSettings`\n        :param RTMPSettings: Configuration of RTMP push.\n        :type RTMPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputRTMPSettings`\n        """
         self.OutputId = None
         self.OutputName = None
         self.Description = None
@@ -1147,8 +1427,10 @@ class OutputAddress(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ip: Output destination IP.
+        :type Ip: str
         """
-        :param Ip: Output destination IP.\n        :type Ip: str\n        """
         self.Ip = None
 
 
@@ -1169,8 +1451,12 @@ class RTMPAddressDestination(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Url: Destination URL of RTMP push in the format of 'rtmp://domain/live'.
+        :type Url: str
+        :param StreamKey: Destination `StreamKey` of RTMP push in the format of 'streamid?key=value'.
+        :type StreamKey: str
         """
-        :param Url: Destination URL of RTMP push in the format of 'rtmp://domain/live'.\n        :type Url: str\n        :param StreamKey: Destination `StreamKey` of RTMP push in the format of 'streamid?key=value'.\n        :type StreamKey: str\n        """
         self.Url = None
         self.StreamKey = None
 
@@ -1193,8 +1479,12 @@ class RTPAddressDestination(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ip: Push destination address IP.
+        :type Ip: str
+        :param Port: Push destination address port.
+        :type Port: int
         """
-        :param Ip: Push destination address IP.\n        :type Ip: str\n        :param Port: Push destination address port.\n        :type Port: int\n        """
         self.Ip = None
         self.Port = None
 
@@ -1217,8 +1507,12 @@ class SRTAddressDestination(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ip: Destination address IP.
+        :type Ip: str
+        :param Port: Destination address port.
+        :type Port: int
         """
-        :param Ip: Destination address IP.\n        :type Ip: str\n        :param Port: Destination address port.\n        :type Port: int\n        """
         self.Ip = None
         self.Port = None
 
@@ -1241,8 +1535,10 @@ class StartMediaConnectFlowRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: Flow ID.
+        :type FlowId: str
         """
-        :param FlowId: Flow ID.\n        :type FlowId: str\n        """
         self.FlowId = None
 
 
@@ -1263,8 +1559,10 @@ class StartMediaConnectFlowResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1278,8 +1576,10 @@ class StopMediaConnectFlowRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: Flow ID.
+        :type FlowId: str
         """
-        :param FlowId: Flow ID.\n        :type FlowId: str\n        """
         self.FlowId = None
 
 
@@ -1300,8 +1600,10 @@ class StopMediaConnectFlowResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 

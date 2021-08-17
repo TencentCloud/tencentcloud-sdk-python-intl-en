@@ -24,8 +24,12 @@ class Canvas(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LayoutParams: Width and height of the mixed stream canvas
+        :type LayoutParams: :class:`tencentcloud.tiw.v20190919.models.LayoutParams`
+        :param BackgroundColor: Background color, which is black by default. Its format is RGB. for example, "#FF0000" for the red color.
+        :type BackgroundColor: str
         """
-        :param LayoutParams: Width and height of the mixed stream canvas\n        :type LayoutParams: :class:`tencentcloud.tiw.v20190919.models.LayoutParams`\n        :param BackgroundColor: Background color, which is black by default. Its format is RGB. for example, "#FF0000" for the red color.\n        :type BackgroundColor: str\n        """
         self.LayoutParams = None
         self.BackgroundColor = None
 
@@ -50,9 +54,13 @@ class Concat(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Enabled: Whether to enable the video splicing feature
-If the video splicing feature is enabled, the real-time recording service will splice multiple video clips resulting from the pause into one video.\n        :type Enabled: bool\n        :param Image: Download address of the padding image used during video splicing. If it is not specified, a pure black image is used by default.\n        :type Image: str\n        """
+If the video splicing feature is enabled, the real-time recording service will splice multiple video clips resulting from the pause into one video.
+        :type Enabled: bool
+        :param Image: Download address of the padding image used during video splicing. If it is not specified, a pure black image is used by default.
+        :type Image: str
+        """
         self.Enabled = None
         self.Image = None
 
@@ -75,16 +83,28 @@ class CreateTranscodeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param SdkAppId: SdkAppId of the customer\n        :type SdkAppId: int\n        :param Url: Address of the file for transcoding\n        :type Url: str\n        :param IsStaticPPT: Whether the PowerPoint file is static. The default value is False.
-If IsStaticPPT is False, documents with the .ppt or .pptx extension will be dynamically transcoded to HTML5 pages, and documents with other extensions will be statically transcoded to images. If IsStaticPPT is True, documents with any extensions will be statically transcoded to images.\n        :type IsStaticPPT: bool\n        :param MinResolution: Minimum resolution of the transcoded document. If no value or null is specified for it or the resolution format is invalid, the original document resolution is used.
+        r"""
+        :param SdkAppId: SdkAppId of the customer
+        :type SdkAppId: int
+        :param Url: Address of the file for transcoding
+        :type Url: str
+        :param IsStaticPPT: Whether the PowerPoint file is static. The default value is False.
+If IsStaticPPT is False, documents with the .ppt or .pptx extension will be dynamically transcoded to HTML5 pages, and documents with other extensions will be statically transcoded to images. If IsStaticPPT is True, documents with any extensions will be statically transcoded to images.
+        :type IsStaticPPT: bool
+        :param MinResolution: Minimum resolution of the transcoded document. If no value or null is specified for it or the resolution format is invalid, the original document resolution is used.
 
- \n        :type MinResolution: str\n        :param ThumbnailResolution: Resolution of the thumbnail generated for the dynamically transcoded PowerPoint file. If no value or null is specified for it or the resolution format is invalid, no thumbnail will be generated. The resolution format is the same as that of MinResolution.
+ 
+        :type MinResolution: str
+        :param ThumbnailResolution: Resolution of the thumbnail generated for the dynamically transcoded PowerPoint file. If no value or null is specified for it or the resolution format is invalid, no thumbnail will be generated. The resolution format is the same as that of MinResolution.
 
-For static transcoding, this parameter does not work.\n        :type ThumbnailResolution: str\n        :param CompressFileType: Compression format of the transcoded file. If no value or null is specified for it or the specified format is invalid, no compression file will be generated. Currently, the following compression formats are supported:
+For static transcoding, this parameter does not work.
+        :type ThumbnailResolution: str
+        :param CompressFileType: Compression format of the transcoded file. If no value or null is specified for it or the specified format is invalid, no compression file will be generated. Currently, the following compression formats are supported:
 
 `zip`: generates a .zip compression package.
-`tar.gz: generates a .tar.gz compression package.\n        :type CompressFileType: str\n        """
+`tar.gz: generates a .tar.gz compression package.
+        :type CompressFileType: str
+        """
         self.SdkAppId = None
         self.Url = None
         self.IsStaticPPT = None
@@ -115,8 +135,12 @@ class CreateTranscodeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Unique ID of the document transcoding task, which is used to query the task progress and transcoding result
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskId: Unique ID of the document transcoding task, which is used to query the task progress and transcoding result\n        :type TaskId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -132,8 +156,12 @@ class CustomLayout(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Canvas: Mixed stream canvas parameter
+        :type Canvas: :class:`tencentcloud.tiw.v20190919.models.Canvas`
+        :param InputStreamList: Stream layout. The layout of each stream cannot exceed the canvas area.
+        :type InputStreamList: list of StreamLayout
         """
-        :param Canvas: Mixed stream canvas parameter\n        :type Canvas: :class:`tencentcloud.tiw.v20190919.models.Canvas`\n        :param InputStreamList: Stream layout. The layout of each stream cannot exceed the canvas area.\n        :type InputStreamList: list of StreamLayout\n        """
         self.Canvas = None
         self.InputStreamList = None
 
@@ -163,8 +191,10 @@ class DescribeOnlineRecordCallbackRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SdkAppId: SdkAppId of the application
+        :type SdkAppId: int
         """
-        :param SdkAppId: SdkAppId of the application\n        :type SdkAppId: int\n        """
         self.SdkAppId = None
 
 
@@ -185,8 +215,14 @@ class DescribeOnlineRecordCallbackResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Callback: Callback address of the real-time recording event. If no callback address is set, this field is null.
+        :type Callback: str
+        :param CallbackKey: Authentication key of the real-time recording callback
+        :type CallbackKey: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Callback: Callback address of the real-time recording event. If no callback address is set, this field is null.\n        :type Callback: str\n        :param CallbackKey: Authentication key of the real-time recording callback\n        :type CallbackKey: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Callback = None
         self.CallbackKey = None
         self.RequestId = None
@@ -204,8 +240,12 @@ class DescribeOnlineRecordRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SdkAppId: SdkAppId of the customer
+        :type SdkAppId: int
+        :param TaskId: ID of the real-time recording task
+        :type TaskId: str
         """
-        :param SdkAppId: SdkAppId of the customer\n        :type SdkAppId: int\n        :param TaskId: ID of the real-time recording task\n        :type TaskId: str\n        """
         self.SdkAppId = None
         self.TaskId = None
 
@@ -228,16 +268,42 @@ class DescribeOnlineRecordResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FinishReason: Recording stop reason
 - AUTO: recording automatically stops because no upstream audio/video or whiteboard operation occurs in the room for a long time.
 - USER_CALL: the API for stopping recording is called.
-- EXCEPTION: an exception occurred during recording.\n        :type FinishReason: str\n        :param TaskId: ID of the recording task to be queried.\n        :type TaskId: str\n        :param Status: Recording task status
+- EXCEPTION: an exception occurred during recording.
+        :type FinishReason: str
+        :param TaskId: ID of the recording task to be queried.
+        :type TaskId: str
+        :param Status: Recording task status
 - PREPARED: preparing
 - RECORDING: recording
 - PAUSED: recording is paused.
 - STOPPED: recording is stopped, and the recorded video is being processed and uploaded.
-- FINISHED: the recorded video has been processed and uploaded, and the recording result is generated.\n        :type Status: str\n        :param RoomId: Room ID\n        :type RoomId: int\n        :param GroupId: Group ID of the whiteboard\n        :type GroupId: str\n        :param RecordUserId: ID of the recording user\n        :type RecordUserId: str\n        :param RecordStartTime: Actual recording start time, which is a UNIX timestamp in seconds\n        :type RecordStartTime: int\n        :param RecordStopTime: Actual recording stop time, which is a UNIX timestamp in seconds\n        :type RecordStopTime: int\n        :param TotalTime: Total video playback duration, in milliseconds\n        :type TotalTime: int\n        :param ExceptionCnt: Number of exceptions during recording\n        :type ExceptionCnt: int\n        :param OmittedDurations: Duration to be deleted in the spliced video. This parameter is valid only when the video splicing feature is enabled.\n        :type OmittedDurations: list of OmittedDuration\n        :param VideoInfos: List of recorded videos\n        :type VideoInfos: list of VideoInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+- FINISHED: the recorded video has been processed and uploaded, and the recording result is generated.
+        :type Status: str
+        :param RoomId: Room ID
+        :type RoomId: int
+        :param GroupId: Group ID of the whiteboard
+        :type GroupId: str
+        :param RecordUserId: ID of the recording user
+        :type RecordUserId: str
+        :param RecordStartTime: Actual recording start time, which is a UNIX timestamp in seconds
+        :type RecordStartTime: int
+        :param RecordStopTime: Actual recording stop time, which is a UNIX timestamp in seconds
+        :type RecordStopTime: int
+        :param TotalTime: Total video playback duration, in milliseconds
+        :type TotalTime: int
+        :param ExceptionCnt: Number of exceptions during recording
+        :type ExceptionCnt: int
+        :param OmittedDurations: Duration to be deleted in the spliced video. This parameter is valid only when the video splicing feature is enabled.
+        :type OmittedDurations: list of OmittedDuration
+        :param VideoInfos: List of recorded videos
+        :type VideoInfos: list of VideoInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.FinishReason = None
         self.TaskId = None
         self.Status = None
@@ -285,8 +351,10 @@ class DescribeTranscodeCallbackRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SdkAppId: SdkAppId of the application
+        :type SdkAppId: int
         """
-        :param SdkAppId: SdkAppId of the application\n        :type SdkAppId: int\n        """
         self.SdkAppId = None
 
 
@@ -307,8 +375,14 @@ class DescribeTranscodeCallbackResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Callback: Document transcoding callback address
+        :type Callback: str
+        :param CallbackKey: Authentication key of the document transcoding callback
+        :type CallbackKey: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Callback: Document transcoding callback address\n        :type Callback: str\n        :param CallbackKey: Authentication key of the document transcoding callback\n        :type CallbackKey: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Callback = None
         self.CallbackKey = None
         self.RequestId = None
@@ -326,8 +400,12 @@ class DescribeTranscodeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SdkAppId: SdkAppId of the customer
+        :type SdkAppId: int
+        :param TaskId: Unique ID of the document transcoding task
+        :type TaskId: str
         """
-        :param SdkAppId: SdkAppId of the customer\n        :type SdkAppId: int\n        :param TaskId: Unique ID of the document transcoding task\n        :type TaskId: str\n        """
         self.SdkAppId = None
         self.TaskId = None
 
@@ -350,17 +428,39 @@ class DescribeTranscodeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Pages: Total number of document pages\n        :type Pages: int\n        :param Progress: Transcoding progress. Value range: 0 to 100\n        :type Progress: int\n        :param Resolution: Document resolution\n        :type Resolution: str\n        :param ResultUrl: URL of the transcoding result
+        r"""
+        :param Pages: Total number of document pages
+        :type Pages: int
+        :param Progress: Transcoding progress. Value range: 0 to 100
+        :type Progress: int
+        :param Resolution: Document resolution
+        :type Resolution: str
+        :param ResultUrl: URL of the transcoding result
 Dynamic transcoding: link of the HTML5 page transcoded from a PowerPoint file
 Static transcoding: URL prefix of the image transcoded for each document page. For example, if the URL prefix is `http://example.com/g0jb42ps49vtebjshilb/`, the image URL of the first page is
-`http://example.com/g0jb42ps49vtebjshilb/1.jpg`, and so on.\n        :type ResultUrl: str\n        :param Status: Current task state
+`http://example.com/g0jb42ps49vtebjshilb/1.jpg`, and so on.
+        :type ResultUrl: str
+        :param Status: Current task state
 - QUEUED: queuing for transcoding
 - PROCESSING: transcoding is in progress
-- FINISHED: transcoded\n        :type Status: str\n        :param TaskId: Unique ID of the transcoding task\n        :type TaskId: str\n        :param Title: Document name\n        :type Title: str\n        :param ThumbnailUrl: URL prefix of the thumbnail. If the URL prefix is `http://example.com/g0jb42ps49vtebjshilb/ `, the thumbnail URL for the first page of the dynamically transcoded PowerPoint file is
+- FINISHED: transcoded
+        :type Status: str
+        :param TaskId: Unique ID of the transcoding task
+        :type TaskId: str
+        :param Title: Document name
+        :type Title: str
+        :param ThumbnailUrl: URL prefix of the thumbnail. If the URL prefix is `http://example.com/g0jb42ps49vtebjshilb/ `, the thumbnail URL for the first page of the dynamically transcoded PowerPoint file is
 `http://example.com/g0jb42ps49vtebjshilb/1.jpg`, and so on.
 
-If the document transcoding request carries the ThumbnailResolution parameter and the transcoding type is dynamic transcoding, this parameter is not null. In other cases, this parameter is null.\n        :type ThumbnailUrl: str\n        :param ThumbnailResolution: Resolution of the thumbnail generated for dynamic transcoding\n        :type ThumbnailResolution: str\n        :param CompressFileUrl: URL for downloading the transcoded and compressed file. If `CompressFileType` carried in the document transcoding request is null or is not a supported compression format, this parameter is null.\n        :type CompressFileUrl: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+If the document transcoding request carries the ThumbnailResolution parameter and the transcoding type is dynamic transcoding, this parameter is not null. In other cases, this parameter is null.
+        :type ThumbnailUrl: str
+        :param ThumbnailResolution: Resolution of the thumbnail generated for dynamic transcoding
+        :type ThumbnailResolution: str
+        :param CompressFileUrl: URL for downloading the transcoded and compressed file. If `CompressFileType` carried in the document transcoding request is null or is not a supported compression format, this parameter is null.
+        :type CompressFileUrl: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.Pages = None
         self.Progress = None
         self.Resolution = None
@@ -394,9 +494,19 @@ class LayoutParams(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Width: Stream image width. Value range: [2,3000]
+        :type Width: int
+        :param Height: Stream image height. Value range: [2,3000]
+        :type Height: int
+        :param X: Offset of the top point in the upper-left corner of the current image to the X axis of the top point in the upper-left corner of the canvas. Default value: 0. Value range: [0,3000].
+        :type X: int
+        :param Y: Offset of the top point in the upper-left corner of the current image to the Y axis of the top point in the upper-left corner of the canvas. Default value: 0. Value range: [0,3000].
+        :type Y: int
+        :param ZOrder: Z-axis position of the image. The default value is 0.
+The Z axis determines the overlap sequence of images. The image with the largest z-axis value is at the top layer.
+        :type ZOrder: int
         """
-        :param Width: Stream image width. Value range: [2,3000]\n        :type Width: int\n        :param Height: Stream image height. Value range: [2,3000]\n        :type Height: int\n        :param X: Offset of the top point in the upper-left corner of the current image to the X axis of the top point in the upper-left corner of the canvas. Default value: 0. Value range: [0,3000].\n        :type X: int\n        :param Y: Offset of the top point in the upper-left corner of the current image to the Y axis of the top point in the upper-left corner of the canvas. Default value: 0. Value range: [0,3000].\n        :type Y: int\n        :param ZOrder: Z-axis position of the image. The default value is 0.
-The Z axis determines the overlap sequence of images. The image with the largest z-axis value is at the top layer.\n        :type ZOrder: int\n        """
         self.Width = None
         self.Height = None
         self.X = None
@@ -425,12 +535,22 @@ class MixStream(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Enabled: Whether stream mixing is enabled\n        :type Enabled: bool\n        :param DisableAudio: Whether audio stream mixing is disabled\n        :type DisableAudio: bool\n        :param ModelId: ID of the embedded mixed stream layout template. Valid values: 1 and 2. For more information on the differences of both values, see the sample embedded mixed stream layout template.
-If the Custom field is not specified, ModelId is required.\n        :type ModelId: int\n        :param TeacherId: ID of a teacher account
+        r"""
+        :param Enabled: Whether stream mixing is enabled
+        :type Enabled: bool
+        :param DisableAudio: Whether audio stream mixing is disabled
+        :type DisableAudio: bool
+        :param ModelId: ID of the embedded mixed stream layout template. Valid values: 1 and 2. For more information on the differences of both values, see the sample embedded mixed stream layout template.
+If the Custom field is not specified, ModelId is required.
+        :type ModelId: int
+        :param TeacherId: ID of a teacher account
 This field is valid only when ModelId is specified.
-If you specify TeacherID for a user, the user's video stream will be displayed in the first image of the embedded template.\n        :type TeacherId: str\n        :param Custom: Custom mixed stream layout parameter
-If this parameter is available, the ModelId and TeacherId fields will be ignored.\n        :type Custom: :class:`tencentcloud.tiw.v20190919.models.CustomLayout`\n        """
+If you specify TeacherID for a user, the user's video stream will be displayed in the first image of the embedded template.
+        :type TeacherId: str
+        :param Custom: Custom mixed stream layout parameter
+If this parameter is available, the ModelId and TeacherId fields will be ignored.
+        :type Custom: :class:`tencentcloud.tiw.v20190919.models.CustomLayout`
+        """
         self.Enabled = None
         self.DisableAudio = None
         self.ModelId = None
@@ -461,8 +581,14 @@ class OmittedDuration(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param VideoTime: Offset of the paused time in the spliced video, in milliseconds
+        :type VideoTime: int
+        :param PauseTime: Recording pause timestamp, in milliseconds
+        :type PauseTime: int
+        :param ResumeTime: Recording resumption timestamp, in milliseconds
+        :type ResumeTime: int
         """
-        :param VideoTime: Offset of the paused time in the spliced video, in milliseconds\n        :type VideoTime: int\n        :param PauseTime: Recording pause timestamp, in milliseconds\n        :type PauseTime: int\n        :param ResumeTime: Recording resumption timestamp, in milliseconds\n        :type ResumeTime: int\n        """
         self.VideoTime = None
         self.PauseTime = None
         self.ResumeTime = None
@@ -487,8 +613,12 @@ class PauseOnlineRecordRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SdkAppId: SdkAppId of the customer
+        :type SdkAppId: int
+        :param TaskId: ID of the real-time recording task
+        :type TaskId: str
         """
-        :param SdkAppId: SdkAppId of the customer\n        :type SdkAppId: int\n        :param TaskId: ID of the real-time recording task\n        :type TaskId: str\n        """
         self.SdkAppId = None
         self.TaskId = None
 
@@ -511,8 +641,10 @@ class PauseOnlineRecordResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -526,23 +658,33 @@ class RecordControl(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Enabled: It specifies whether to enable RecordControl. Valid values: true (yes); false (no).\n        :type Enabled: bool\n        :param DisableRecord: A global parameter generally used in conjunction with `StreamControls` that specifies whether to disable recording. Valid values:
+        r"""
+        :param Enabled: It specifies whether to enable RecordControl. Valid values: true (yes); false (no).
+        :type Enabled: bool
+        :param DisableRecord: A global parameter generally used in conjunction with `StreamControls` that specifies whether to disable recording. Valid values:
 
 true: no stream is recorded.
 false: all streams are recorded. Default value: false.
 
-The setting in this parameter is applied to all streams. However, if `StreamControls` is passed in, the parameters in `StreamControls` will take precedence.\n        :type DisableRecord: bool\n        :param DisableAudio: A global parameter generally used in conjunction with `StreamControls` that specifies whether to disable audio recording over all streams. Valid values:
+The setting in this parameter is applied to all streams. However, if `StreamControls` is passed in, the parameters in `StreamControls` will take precedence.
+        :type DisableRecord: bool
+        :param DisableAudio: A global parameter generally used in conjunction with `StreamControls` that specifies whether to disable audio recording over all streams. Valid values:
 
 true: no audio recording of any streams.
 false: audio recording of all streams. Default value: false.
 
-The setting in this parameter is applied to all streams. However, if `StreamControls` is passed in, the parameters in `StreamControls` will take precedence.\n        :type DisableAudio: bool\n        :param PullSmallVideo: A global parameter generally used in conjunction with `StreamControls` that specifies whether to record low-resolution videos only. Valid values:
+The setting in this parameter is applied to all streams. However, if `StreamControls` is passed in, the parameters in `StreamControls` will take precedence.
+        :type DisableAudio: bool
+        :param PullSmallVideo: A global parameter generally used in conjunction with `StreamControls` that specifies whether to record low-resolution videos only. Valid values:
 
 true: only records low-resolution videos for all streams. Please ensure that the up-streaming end pushes the low-resolution videos. Otherwise, the recorded video may be black.
 false: high-resolution video recording of all streams. Default value: false.
 
-The setting in this parameter is applied to all streams. However, if `StreamControls` is passed in, the parameters in `StreamControls` will take precedence.\n        :type PullSmallVideo: bool\n        :param StreamControls: Parameters over specific streams, which take priority over global configurations. If it’s empty, all streams are recorded according to the global configurations. \n        :type StreamControls: list of StreamControl\n        """
+The setting in this parameter is applied to all streams. However, if `StreamControls` is passed in, the parameters in `StreamControls` will take precedence.
+        :type PullSmallVideo: bool
+        :param StreamControls: Parameters over specific streams, which take priority over global configurations. If it’s empty, all streams are recorded according to the global configurations. 
+        :type StreamControls: list of StreamControl
+        """
         self.Enabled = None
         self.DisableRecord = None
         self.DisableAudio = None
@@ -576,8 +718,12 @@ class ResumeOnlineRecordRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SdkAppId: SdkAppId of the customer
+        :type SdkAppId: int
+        :param TaskId: ID of the resumed real-time recording task
+        :type TaskId: str
         """
-        :param SdkAppId: SdkAppId of the customer\n        :type SdkAppId: int\n        :param TaskId: ID of the resumed real-time recording task\n        :type TaskId: str\n        """
         self.SdkAppId = None
         self.TaskId = None
 
@@ -600,8 +746,10 @@ class ResumeOnlineRecordResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -615,8 +763,12 @@ class SetOnlineRecordCallbackKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SdkAppId: SdkAppId of the application
+        :type SdkAppId: int
+        :param CallbackKey: Authentication key for the real-time recording callback. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key will be deleted. For more information, please [see here](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).
+        :type CallbackKey: str
         """
-        :param SdkAppId: SdkAppId of the application\n        :type SdkAppId: int\n        :param CallbackKey: Authentication key for the real-time recording callback. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key will be deleted. For more information, please [see here](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).\n        :type CallbackKey: str\n        """
         self.SdkAppId = None
         self.CallbackKey = None
 
@@ -639,8 +791,10 @@ class SetOnlineRecordCallbackKeyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -654,8 +808,12 @@ class SetOnlineRecordCallbackRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SdkAppId: SdkAppId of the customer
+        :type SdkAppId: int
+        :param Callback: Callback address of the real-time recording task result. If an empty string is passed in, the existing callback address will be deleted. The callback address only supports the HTTP or HTTPS protocol, so the callback address must start with `http://` or `https://`. For the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40258?from_cn_redirect=1).
+        :type Callback: str
         """
-        :param SdkAppId: SdkAppId of the customer\n        :type SdkAppId: int\n        :param Callback: Callback address of the real-time recording task result. If an empty string is passed in, the existing callback address will be deleted. The callback address only supports the HTTP or HTTPS protocol, so the callback address must start with `http://` or `https://`. For the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40258?from_cn_redirect=1).\n        :type Callback: str\n        """
         self.SdkAppId = None
         self.Callback = None
 
@@ -678,8 +836,10 @@ class SetOnlineRecordCallbackResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -693,8 +853,12 @@ class SetTranscodeCallbackKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SdkAppId: SdkAppId of the application
+        :type SdkAppId: int
+        :param CallbackKey: Authentication key for the document transcoding callback. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key will be deleted. For more information about callback authentication, please [see here](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).
+        :type CallbackKey: str
         """
-        :param SdkAppId: SdkAppId of the application\n        :type SdkAppId: int\n        :param CallbackKey: Authentication key for the document transcoding callback. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key will be deleted. For more information about callback authentication, please [see here](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).\n        :type CallbackKey: str\n        """
         self.SdkAppId = None
         self.CallbackKey = None
 
@@ -717,8 +881,10 @@ class SetTranscodeCallbackKeyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -732,9 +898,13 @@ class SetTranscodeCallbackRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SdkAppId: SdkAppId of the customer
+        :type SdkAppId: int
+        :param Callback: Callback address for the document transcoding progress. If an empty string is passed in, the existing callback address will be deleted. The callback address only supports the HTTP or HTTPS protocol, so the callback address must start with `http://` or `https://`.
+For more information about the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40260?from_cn_redirect=1).
+        :type Callback: str
         """
-        :param SdkAppId: SdkAppId of the customer\n        :type SdkAppId: int\n        :param Callback: Callback address for the document transcoding progress. If an empty string is passed in, the existing callback address will be deleted. The callback address only supports the HTTP or HTTPS protocol, so the callback address must start with `http://` or `https://`.
-For more information about the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40260?from_cn_redirect=1).\n        :type Callback: str\n        """
         self.SdkAppId = None
         self.Callback = None
 
@@ -757,8 +927,10 @@ class SetTranscodeCallbackResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -772,14 +944,36 @@ class StartOnlineRecordRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param SdkAppId: SdkAppId of the customer\n        :type SdkAppId: int\n        :param RoomId: ID of the room for recording. Value range: (1, 4294967295)\n        :type RoomId: int\n        :param RecordUserId: User ID used by the real-time recording service for entering a room. Its format is `tic_record_user_${RoomId}_${Random}`, where `${RoomId}` indicates the ID of the room for recording and `${Random}` is a random string.
-The ID must be an unused ID in the SDK. The real-time recording service uses the user ID to enter the room for audio, video, and whiteboard recording. If this ID is already used in the SDK, the SDK and recording service will conflict, affecting the recording operation.\n        :type RecordUserId: str\n        :param RecordUserSig: Signature corresponding to RecordUserId\n        :type RecordUserSig: str\n        :param GroupId: (Disused) IM group ID of the whiteboard. By default, it is the same as the room ID.\n        :type GroupId: str\n        :param Concat: Real-time recording video splicing parameter\n        :type Concat: :class:`tencentcloud.tiw.v20190919.models.Concat`\n        :param Whiteboard: Real-time recording whiteboard parameter, such as the whiteboard width and height\n        :type Whiteboard: :class:`tencentcloud.tiw.v20190919.models.Whiteboard`\n        :param MixStream: Real-time recording stream mixing parameter
+        r"""
+        :param SdkAppId: SdkAppId of the customer
+        :type SdkAppId: int
+        :param RoomId: ID of the room for recording. Value range: (1, 4294967295)
+        :type RoomId: int
+        :param RecordUserId: User ID used by the real-time recording service for entering a room. Its format is `tic_record_user_${RoomId}_${Random}`, where `${RoomId}` indicates the ID of the room for recording and `${Random}` is a random string.
+The ID must be an unused ID in the SDK. The real-time recording service uses the user ID to enter the room for audio, video, and whiteboard recording. If this ID is already used in the SDK, the SDK and recording service will conflict, affecting the recording operation.
+        :type RecordUserId: str
+        :param RecordUserSig: Signature corresponding to RecordUserId
+        :type RecordUserSig: str
+        :param GroupId: (Disused) IM group ID of the whiteboard. By default, it is the same as the room ID.
+        :type GroupId: str
+        :param Concat: Real-time recording video splicing parameter
+        :type Concat: :class:`tencentcloud.tiw.v20190919.models.Concat`
+        :param Whiteboard: Real-time recording whiteboard parameter, such as the whiteboard width and height
+        :type Whiteboard: :class:`tencentcloud.tiw.v20190919.models.Whiteboard`
+        :param MixStream: Real-time recording stream mixing parameter
 Notes:
 1. The stream mixing feature needs to be enabled separately. If you need the feature, contact TIW customer service.
-2. To use the stream mixing feature, the Extras parameter is required and must contain "MIX_STREAM".\n        :type MixStream: :class:`tencentcloud.tiw.v20190919.models.MixStream`\n        :param Extras: List of advanced features used
+2. To use the stream mixing feature, the Extras parameter is required and must contain "MIX_STREAM".
+        :type MixStream: :class:`tencentcloud.tiw.v20190919.models.MixStream`
+        :param Extras: List of advanced features used
 List of possible values:
-MIX_STREAM - Stream mixing feature\n        :type Extras: list of str\n        :param AudioFileNeeded: Whether to return the audio-only recording file of different streams in the result callback. The file format is mp3.\n        :type AudioFileNeeded: bool\n        :param RecordControl: A group of real-time recording parameters. It specifies the streams to be recorded, whether to disable the audio recording, and whether to record only low-resolution videos, etc.\n        :type RecordControl: :class:`tencentcloud.tiw.v20190919.models.RecordControl`\n        """
+MIX_STREAM - Stream mixing feature
+        :type Extras: list of str
+        :param AudioFileNeeded: Whether to return the audio-only recording file of different streams in the result callback. The file format is mp3.
+        :type AudioFileNeeded: bool
+        :param RecordControl: A group of real-time recording parameters. It specifies the streams to be recorded, whether to disable the audio recording, and whether to record only low-resolution videos, etc.
+        :type RecordControl: :class:`tencentcloud.tiw.v20190919.models.RecordControl`
+        """
         self.SdkAppId = None
         self.RoomId = None
         self.RecordUserId = None
@@ -828,8 +1022,12 @@ class StartOnlineRecordResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: ID of the real-time recording task
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskId: ID of the real-time recording task\n        :type TaskId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -845,8 +1043,12 @@ class StopOnlineRecordRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SdkAppId: SdkAppId of the customer
+        :type SdkAppId: int
+        :param TaskId: ID of the recording task to stop
+        :type TaskId: str
         """
-        :param SdkAppId: SdkAppId of the customer\n        :type SdkAppId: int\n        :param TaskId: ID of the recording task to stop\n        :type TaskId: str\n        """
         self.SdkAppId = None
         self.TaskId = None
 
@@ -869,8 +1071,10 @@ class StopOnlineRecordResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -884,29 +1088,37 @@ class StreamControl(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StreamId: Video stream ID
 Description of the possible video stream ID values:
 1. `tic_record_user`: the whiteboard video stream
 2. `tic_substream`: the auxiliary video stream
 3. Specific user ID: the video stream of the specified user
 
-The actual recording uses the prefix match of the video stream ID. The real stream becomes the specified stream once its ID prefix matches with the stream ID.\n        :type StreamId: str\n        :param DisableRecord: Whether to disable recording over the stream.
+The actual recording uses the prefix match of the video stream ID. The real stream becomes the specified stream once its ID prefix matches with the stream ID.
+        :type StreamId: str
+        :param DisableRecord: Whether to disable recording over the stream.
 
 true: does not record this stream. This stream will not be included in the final recording file.
 false: records this stream. This stream will be included in the final recording file.
 
-Default value: false\n        :type DisableRecord: bool\n        :param DisableAudio: Whether to disable the audio recording of the stream.
+Default value: false
+        :type DisableRecord: bool
+        :param DisableAudio: Whether to disable the audio recording of the stream.
 
 true: does not record the audio of the stream. In the final recording file, this stream will be soundless.
 false: the stream has both video and audio recording.
 
-Default value: false\n        :type DisableAudio: bool\n        :param PullSmallVideo: Whether to only record low-resolution stream videos.
+Default value: false
+        :type DisableAudio: bool
+        :param PullSmallVideo: Whether to only record low-resolution stream videos.
 
 true: records only low-resolution videos. In this case, please make sure that the client pushes low-resolution videos upstream. Otherwise, the recorded video may be black. 
 false: records only high-resolution videos.
 
-Default value: false\n        :type PullSmallVideo: bool\n        """
+Default value: false
+        :type PullSmallVideo: bool
+        """
         self.StreamId = None
         self.DisableRecord = None
         self.DisableAudio = None
@@ -933,16 +1145,24 @@ class StreamLayout(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param LayoutParams: Stream layout configuration\n        :type LayoutParams: :class:`tencentcloud.tiw.v20190919.models.LayoutParams`\n        :param InputStreamId: Video stream ID
+        r"""
+        :param LayoutParams: Stream layout configuration
+        :type LayoutParams: :class:`tencentcloud.tiw.v20190919.models.LayoutParams`
+        :param InputStreamId: Video stream ID
 Description of the possible video stream ID values:
 1. tic_record_user: the current picture is used to display the whiteboard video stream.
 2. tic_substream: the current picture is used to display the auxiliary video stream.
 3. Specific user ID: the current picture is used to display the video stream of a specific user.
-4.Left empty: the current picture is vacant for new video stream.\n        :type InputStreamId: str\n        :param BackgroundColor: Background color in RGB format, such as "#FF0000" for red. The default color is black. \n        :type BackgroundColor: str\n        :param FillMode: Video filling mode.
+4.Left empty: the current picture is vacant for new video stream.
+        :type InputStreamId: str
+        :param BackgroundColor: Background color in RGB format, such as "#FF0000" for red. The default color is black. 
+        :type BackgroundColor: str
+        :param FillMode: Video filling mode.
 
 0: self-adaption mode. Scales the video proportionally to completely display it in the specified area. In this mode, there may be black bars.
-1: full-screen mode. Scales the video to make it fill the entire specified area. In this mode, no black bars will appear, but the video may not be displayed fully.\n        :type FillMode: int\n        """
+1: full-screen mode. Scales the video to make it fill the entire specified area. In this mode, no black bars will appear, but the video may not be displayed fully.
+        :type FillMode: int
+        """
         self.LayoutParams = None
         self.InputStreamId = None
         self.BackgroundColor = None
@@ -971,8 +1191,28 @@ class VideoInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param VideoPlayTime: Video playback start time, in milliseconds
+        :type VideoPlayTime: int
+        :param VideoSize: Video size, in bytes
+        :type VideoSize: int
+        :param VideoFormat: Video format
+        :type VideoFormat: str
+        :param VideoDuration: Video playback duration, in milliseconds
+        :type VideoDuration: int
+        :param VideoUrl: Video file URL
+        :type VideoUrl: str
+        :param VideoId: Video file ID
+        :type VideoId: str
+        :param VideoType: Video stream type - 0: camera video - 1: screen-sharing video - 2: whiteboard video - 3: mixed stream video - 4: audio-only (mp3)
+        :type VideoType: int
+        :param UserId: ID of the user to which the camera video or screen-sharing video belongs (whiteboard video: null, mixed stream video: tic_mixstream_<Room ID>_<Mixed stream layout type>, auxiliary video: tic_substream_user ID)
+        :type UserId: str
+        :param Width: Width of the video resolution.
+        :type Width: int
+        :param Height: Height of the video resolution.
+        :type Height: int
         """
-        :param VideoPlayTime: Video playback start time, in milliseconds\n        :type VideoPlayTime: int\n        :param VideoSize: Video size, in bytes\n        :type VideoSize: int\n        :param VideoFormat: Video format\n        :type VideoFormat: str\n        :param VideoDuration: Video playback duration, in milliseconds\n        :type VideoDuration: int\n        :param VideoUrl: Video file URL\n        :type VideoUrl: str\n        :param VideoId: Video file ID\n        :type VideoId: str\n        :param VideoType: Video stream type - 0: camera video - 1: screen-sharing video - 2: whiteboard video - 3: mixed stream video - 4: audio-only (mp3)\n        :type VideoType: int\n        :param UserId: ID of the user to which the camera video or screen-sharing video belongs (whiteboard video: null, mixed stream video: tic_mixstream_<Room ID>_<Mixed stream layout type>, auxiliary video: tic_substream_user ID)\n        :type UserId: str\n        :param Width: Width of the video resolution.\n        :type Width: int\n        :param Height: Height of the video resolution.\n        :type Height: int\n        """
         self.VideoPlayTime = None
         self.VideoSize = None
         self.VideoFormat = None
@@ -1011,8 +1251,14 @@ class Whiteboard(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Width: Whiteboard video width in the real-time recording result. The default value is 1280.
+        :type Width: int
+        :param Height: Whiteboard video height in the real-time recording result. The default value is 960.
+        :type Height: int
+        :param InitParam: Whiteboard initialization parameter, which is passed through to the whiteboard SDK
+        :type InitParam: str
         """
-        :param Width: Whiteboard video width in the real-time recording result. The default value is 1280.\n        :type Width: int\n        :param Height: Whiteboard video height in the real-time recording result. The default value is 960.\n        :type Height: int\n        :param InitParam: Whiteboard initialization parameter, which is passed through to the whiteboard SDK\n        :type InitParam: str\n        """
         self.Width = None
         self.Height = None
         self.InitParam = None

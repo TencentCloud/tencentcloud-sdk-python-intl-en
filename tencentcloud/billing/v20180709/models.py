@@ -24,8 +24,24 @@ class ActionSummaryOverviewItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ActionType: Transaction type
+        :type ActionType: str
+        :param ActionTypeName: Transaction type name
+        :type ActionTypeName: str
+        :param RealTotalCost: Actual cost
+        :type RealTotalCost: str
+        :param RealTotalCostRatio: Cost ratio, to two decimal points
+        :type RealTotalCostRatio: str
+        :param CashPayAmount: Cash amount
+        :type CashPayAmount: str
+        :param IncentivePayAmount: Trial credit amount
+        :type IncentivePayAmount: str
+        :param VoucherPayAmount: Voucher amount
+        :type VoucherPayAmount: str
+        :param BillMonth: Billing month, e.g. `2019-08`
+        :type BillMonth: str
         """
-        :param ActionType: Transaction type\n        :type ActionType: str\n        :param ActionTypeName: Transaction type name\n        :type ActionTypeName: str\n        :param RealTotalCost: Actual cost\n        :type RealTotalCost: str\n        :param RealTotalCostRatio: Cost ratio, to two decimal points\n        :type RealTotalCostRatio: str\n        :param CashPayAmount: Cash amount\n        :type CashPayAmount: str\n        :param IncentivePayAmount: Trial credit amount\n        :type IncentivePayAmount: str\n        :param VoucherPayAmount: Voucher amount\n        :type VoucherPayAmount: str\n        :param BillMonth: Billing month, e.g. `2019-08`\n        :type BillMonth: str\n        """
         self.ActionType = None
         self.ActionTypeName = None
         self.RealTotalCost = None
@@ -60,11 +76,59 @@ class BillDetail(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BusinessCodeName: Product name: major categories of Tencent Cloud services, e.g. CVM and TencentDB for MySQL
+        :type BusinessCodeName: str
+        :param ProductCodeName: Sub-product name: sub-categories of Tencent Cloud services, such as CVM-Standard S1
+        :type ProductCodeName: str
+        :param PayModeName: Billing mode
+        :type PayModeName: str
+        :param ProjectName: Project: project of a resource
+        :type ProjectName: str
+        :param RegionName: Region: region of a resource, e.g. South China (Guangzhou)
+        :type RegionName: str
+        :param ZoneName: Availability zone: availability zone of a resource, e.g. Guangzhou Zone 3
+        :type ZoneName: str
+        :param ResourceId: Instance ID
+        :type ResourceId: str
+        :param ResourceName: Instance name
+        :type ResourceName: str
+        :param ActionTypeName: Transaction type
+        :type ActionTypeName: str
+        :param OrderId: Order ID
+        :type OrderId: str
+        :param BillId: Transaction ID
+        :type BillId: str
+        :param PayTime: Payment time
+        :type PayTime: str
+        :param FeeBeginTime: Service start time
+        :type FeeBeginTime: str
+        :param FeeEndTime: Service end time
+        :type FeeEndTime: str
+        :param ComponentSet: Component list
+        :type ComponentSet: list of BillDetailComponent
+        :param PayerUin: Payer's UIN
+        :type PayerUin: str
+        :param OwnerUin: User's UIN
+        :type OwnerUin: str
+        :param OperateUin: Operator's UIN
+        :type OperateUin: str
+        :param Tags: Tag information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of BillTagInfo
+        :param BusinessCode: Product code
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type BusinessCode: str
+        :param ProductCode: Subproduct code
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ProductCode: str
+        :param ActionType: Transaction type/code (optional)
+        :type ActionType: str
+        :param RegionId: 
+        :type RegionId: str
+        :param ProjectId: Project ID: ID of the project to which the resource belongs
+        :type ProjectId: int
         """
-        :param BusinessCodeName: Product name: major categories of Tencent Cloud services, e.g. CVM and TencentDB for MySQL\n        :type BusinessCodeName: str\n        :param ProductCodeName: Sub-product name: sub-categories of Tencent Cloud services, such as CVM-Standard S1\n        :type ProductCodeName: str\n        :param PayModeName: Billing mode\n        :type PayModeName: str\n        :param ProjectName: Project: project of a resource\n        :type ProjectName: str\n        :param RegionName: Region: region of a resource, e.g. South China (Guangzhou)\n        :type RegionName: str\n        :param ZoneName: Availability zone: availability zone of a resource, e.g. Guangzhou Zone 3\n        :type ZoneName: str\n        :param ResourceId: Instance ID\n        :type ResourceId: str\n        :param ResourceName: Instance name\n        :type ResourceName: str\n        :param ActionTypeName: Transaction type\n        :type ActionTypeName: str\n        :param OrderId: Order ID\n        :type OrderId: str\n        :param BillId: Transaction ID\n        :type BillId: str\n        :param PayTime: Payment time\n        :type PayTime: str\n        :param FeeBeginTime: Service start time\n        :type FeeBeginTime: str\n        :param FeeEndTime: Service end time\n        :type FeeEndTime: str\n        :param ComponentSet: Component list\n        :type ComponentSet: list of BillDetailComponent\n        :param PayerUin: Payer's UIN\n        :type PayerUin: str\n        :param OwnerUin: User's UIN\n        :type OwnerUin: str\n        :param OperateUin: Operator's UIN\n        :type OperateUin: str\n        :param Tags: Tag information
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Tags: list of BillTagInfo\n        :param BusinessCode: Product code
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type BusinessCode: str\n        :param ProductCode: Subproduct code
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ProductCode: str\n        :param ActionType: Transaction type/code (optional)\n        :type ActionType: str\n        :param RegionId: \n        :type RegionId: str\n        :param ProjectId: Project ID: ID of the project to which the resource belongs\n        :type ProjectId: int\n        """
         self.BusinessCodeName = None
         self.ProductCodeName = None
         self.PayModeName = None
@@ -141,10 +205,48 @@ class BillDetailComponent(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ComponentCodeName: Component type: type of a resource component, e.g. memory, disk, etc.
+        :type ComponentCodeName: str
+        :param ItemCodeName: Component name: name of a resource component, e.g. TencentDB for MySQL-memory
+        :type ItemCodeName: str
+        :param SinglePrice: Component published price: original price of a resource component with the original granularity
+        :type SinglePrice: str
+        :param SpecifiedPrice: Specified price of the component
+        :type SpecifiedPrice: str
+        :param PriceUnit: Price unit
+        :type PriceUnit: str
+        :param UsedAmount: Component usage
+        :type UsedAmount: str
+        :param UsedAmountUnit: Component usage unit
+        :type UsedAmountUnit: str
+        :param TimeSpan: Usage period
+        :type TimeSpan: str
+        :param TimeUnitName: Time unit
+        :type TimeUnitName: str
+        :param Cost: Original price of the component
+        :type Cost: str
+        :param Discount: Discount rate
+        :type Discount: str
+        :param ReduceType: Offer type
+        :type ReduceType: str
+        :param RealCost: Total discounted price
+        :type RealCost: str
+        :param VoucherPayAmount: Amount paid in voucher
+        :type VoucherPayAmount: str
+        :param CashPayAmount: Amount paid in cash
+        :type CashPayAmount: str
+        :param IncentivePayAmount: Amount paid in trial credit
+        :type IncentivePayAmount: str
+        :param ItemCode: Component type code
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ItemCode: str
+        :param ComponentCode: Component code
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ComponentCode: str
+        :param ContractPrice: Contract price
+        :type ContractPrice: str
         """
-        :param ComponentCodeName: Component type: type of a resource component, e.g. memory, disk, etc.\n        :type ComponentCodeName: str\n        :param ItemCodeName: Component name: name of a resource component, e.g. TencentDB for MySQL-memory\n        :type ItemCodeName: str\n        :param SinglePrice: Component published price: original price of a resource component with the original granularity\n        :type SinglePrice: str\n        :param SpecifiedPrice: Specified price of the component\n        :type SpecifiedPrice: str\n        :param PriceUnit: Price unit\n        :type PriceUnit: str\n        :param UsedAmount: Component usage\n        :type UsedAmount: str\n        :param UsedAmountUnit: Component usage unit\n        :type UsedAmountUnit: str\n        :param TimeSpan: Usage period\n        :type TimeSpan: str\n        :param TimeUnitName: Time unit\n        :type TimeUnitName: str\n        :param Cost: Original price of the component\n        :type Cost: str\n        :param Discount: Discount rate\n        :type Discount: str\n        :param ReduceType: Offer type\n        :type ReduceType: str\n        :param RealCost: Total discounted price\n        :type RealCost: str\n        :param VoucherPayAmount: Amount paid in voucher\n        :type VoucherPayAmount: str\n        :param CashPayAmount: Amount paid in cash\n        :type CashPayAmount: str\n        :param IncentivePayAmount: Amount paid in trial credit\n        :type IncentivePayAmount: str\n        :param ItemCode: Component type code
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ItemCode: str\n        :param ComponentCode: Component code
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ComponentCode: str\n        :param ContractPrice: Contract price\n        :type ContractPrice: str\n        """
         self.ComponentCodeName = None
         self.ItemCodeName = None
         self.SinglePrice = None
@@ -201,9 +303,75 @@ class BillResourceSummary(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BusinessCodeName: Product name: major categories of Tencent Cloud services, e.g. CVM and TencentDB for MySQL
+        :type BusinessCodeName: str
+        :param ProductCodeName: Sub-product name: sub-categories of Tencent Cloud services, such as CVM-Standard S1; if no subproduct name is obtained, '-' is returned.
+        :type ProductCodeName: str
+        :param PayModeName: Billing mode
+        :type PayModeName: str
+        :param ProjectName: Project
+        :type ProjectName: str
+        :param RegionName: Region
+        :type RegionName: str
+        :param ZoneName: Availability zone
+        :type ZoneName: str
+        :param ResourceId: Instance ID
+        :type ResourceId: str
+        :param ResourceName: Resource instance namDeduction timee
+        :type ResourceName: str
+        :param ActionTypeName: Transaction type
+        :type ActionTypeName: str
+        :param OrderId: Order ID
+        :type OrderId: str
+        :param PayTime: Payment time
+        :type PayTime: str
+        :param FeeBeginTime: Service start time
+        :type FeeBeginTime: str
+        :param FeeEndTime: Service end time
+        :type FeeEndTime: str
+        :param ConfigDesc: Configuration description
+        :type ConfigDesc: str
+        :param ExtendField1: Extension field 1
+        :type ExtendField1: str
+        :param ExtendField2: Extension field 2
+        :type ExtendField2: str
+        :param TotalCost: Cost, in USD
+        :type TotalCost: str
+        :param Discount: Discount rate
+        :type Discount: str
+        :param ReduceType: Offer type
+        :type ReduceType: str
+        :param RealTotalCost: Total cost after discount, in USD
+        :type RealTotalCost: str
+        :param VoucherPayAmount: Amount paid in voucher, in USD
+        :type VoucherPayAmount: str
+        :param CashPayAmount: Amount paid in cash, in USD
+        :type CashPayAmount: str
+        :param IncentivePayAmount: Amount paid in trial credit, in USD
+        :type IncentivePayAmount: str
+        :param ExtendField3: Extension field 3
+        :type ExtendField3: str
+        :param ExtendField4: Extension field 4
+        :type ExtendField4: str
+        :param ExtendField5: Extension field 5
+        :type ExtendField5: str
+        :param Tags: Tag information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of BillTagInfo
+        :param PayerUin: Payer UIN
+        :type PayerUin: str
+        :param OwnerUin: Resource owner UIN; '-' is returned if no value is obtained
+        :type OwnerUin: str
+        :param OperateUin: Operator UIN; '-' is returned if no value is obtained
+        :type OperateUin: str
+        :param BusinessCode: 
+        :type BusinessCode: str
+        :param ProductCode: 
+        :type ProductCode: str
+        :param RegionId: 
+        :type RegionId: int
         """
-        :param BusinessCodeName: Product name: major categories of Tencent Cloud services, e.g. CVM and TencentDB for MySQL\n        :type BusinessCodeName: str\n        :param ProductCodeName: Sub-product name: sub-categories of Tencent Cloud services, such as CVM-Standard S1; if no subproduct name is obtained, '-' is returned.\n        :type ProductCodeName: str\n        :param PayModeName: Billing mode\n        :type PayModeName: str\n        :param ProjectName: Project\n        :type ProjectName: str\n        :param RegionName: Region\n        :type RegionName: str\n        :param ZoneName: Availability zone\n        :type ZoneName: str\n        :param ResourceId: Instance ID\n        :type ResourceId: str\n        :param ResourceName: Resource instance namDeduction timee\n        :type ResourceName: str\n        :param ActionTypeName: Transaction type\n        :type ActionTypeName: str\n        :param OrderId: Order ID\n        :type OrderId: str\n        :param PayTime: Payment time\n        :type PayTime: str\n        :param FeeBeginTime: Service start time\n        :type FeeBeginTime: str\n        :param FeeEndTime: Service end time\n        :type FeeEndTime: str\n        :param ConfigDesc: Configuration description\n        :type ConfigDesc: str\n        :param ExtendField1: Extension field 1\n        :type ExtendField1: str\n        :param ExtendField2: Extension field 2\n        :type ExtendField2: str\n        :param TotalCost: Cost, in USD\n        :type TotalCost: str\n        :param Discount: Discount rate\n        :type Discount: str\n        :param ReduceType: Offer type\n        :type ReduceType: str\n        :param RealTotalCost: Total cost after discount, in USD\n        :type RealTotalCost: str\n        :param VoucherPayAmount: Amount paid in voucher, in USD\n        :type VoucherPayAmount: str\n        :param CashPayAmount: Amount paid in cash, in USD\n        :type CashPayAmount: str\n        :param IncentivePayAmount: Amount paid in trial credit, in USD\n        :type IncentivePayAmount: str\n        :param ExtendField3: Extension field 3\n        :type ExtendField3: str\n        :param ExtendField4: Extension field 4\n        :type ExtendField4: str\n        :param ExtendField5: Extension field 5\n        :type ExtendField5: str\n        :param Tags: Tag information
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Tags: list of BillTagInfo\n        :param PayerUin: Payer UIN\n        :type PayerUin: str\n        :param OwnerUin: Resource owner UIN; '-' is returned if no value is obtained\n        :type OwnerUin: str\n        :param OperateUin: Operator UIN; '-' is returned if no value is obtained\n        :type OperateUin: str\n        :param BusinessCode: \n        :type BusinessCode: str\n        :param ProductCode: \n        :type ProductCode: str\n        :param RegionId: \n        :type RegionId: int\n        """
         self.BusinessCodeName = None
         self.ProductCodeName = None
         self.PayModeName = None
@@ -293,8 +461,12 @@ class BillTagInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TagKey: Cost allocation tag key
+        :type TagKey: str
+        :param TagValue: Tag value
+        :type TagValue: str
         """
-        :param TagKey: Cost allocation tag key\n        :type TagKey: str\n        :param TagValue: Tag value\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -317,9 +489,25 @@ class BusinessSummaryOverviewItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BusinessCode: Product code
-Note: This field may return null, indicating that no valid value was found.\n        :type BusinessCode: str\n        :param BusinessCodeName: Product name: major categories of Tencent Cloud services, e.g. CVM and TencentDB for MySQL\n        :type BusinessCodeName: str\n        :param RealTotalCost: Actual cost\n        :type RealTotalCost: str\n        :param RealTotalCostRatio: Cost ratio, to two decimal points\n        :type RealTotalCostRatio: str\n        :param CashPayAmount: Cash amount\n        :type CashPayAmount: str\n        :param IncentivePayAmount: Trial credit amount\n        :type IncentivePayAmount: str\n        :param VoucherPayAmount: Voucher amount\n        :type VoucherPayAmount: str\n        :param BillMonth: Billing month, e.g. `2019-08`\n        :type BillMonth: str\n        """
+Note: This field may return null, indicating that no valid value was found.
+        :type BusinessCode: str
+        :param BusinessCodeName: Product name: major categories of Tencent Cloud services, e.g. CVM and TencentDB for MySQL
+        :type BusinessCodeName: str
+        :param RealTotalCost: Actual cost
+        :type RealTotalCost: str
+        :param RealTotalCostRatio: Cost ratio, to two decimal points
+        :type RealTotalCostRatio: str
+        :param CashPayAmount: Cash amount
+        :type CashPayAmount: str
+        :param IncentivePayAmount: Trial credit amount
+        :type IncentivePayAmount: str
+        :param VoucherPayAmount: Voucher amount
+        :type VoucherPayAmount: str
+        :param BillMonth: Billing month, e.g. `2019-08`
+        :type BillMonth: str
+        """
         self.BusinessCode = None
         self.BusinessCodeName = None
         self.RealTotalCost = None
@@ -354,8 +542,16 @@ class BusinessSummaryTotal(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RealTotalCost: Total cost
+        :type RealTotalCost: str
+        :param VoucherPayAmount: Voucher amount
+        :type VoucherPayAmount: str
+        :param IncentivePayAmount: Trial credit amount
+        :type IncentivePayAmount: str
+        :param CashPayAmount: Cash amount
+        :type CashPayAmount: str
         """
-        :param RealTotalCost: Total cost\n        :type RealTotalCost: str\n        :param VoucherPayAmount: Voucher amount\n        :type VoucherPayAmount: str\n        :param IncentivePayAmount: Trial credit amount\n        :type IncentivePayAmount: str\n        :param CashPayAmount: Cash amount\n        :type CashPayAmount: str\n        """
         self.RealTotalCost = None
         self.VoucherPayAmount = None
         self.IncentivePayAmount = None
@@ -382,9 +578,33 @@ class DescribeBillDetailRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: Offset
+        :type Offset: int
+        :param Limit: Quantity, maximum is 100
+        :type Limit: int
+        :param PeriodType: The period type. byUsedTime: By usage period; byPayTime: By payment period. Must be the same as the period of the current monthly bill of the Billing Center. You can check your bill statistics period type at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page. 
+        :type PeriodType: str
+        :param Month: Month; format: yyyy-mm. You only have to enter either Month or BeginTime and EndTime. When you enter values for BeginTime and EndTime, Month becomes invalid. This value must be no earlier than the month when Bill 2.0 is activated; last 24 months data are available.
+        :type Month: str
+        :param BeginTime: The start time of the period; format: Y-m-d H:i:s. You only have to enter either Month or BeginTime and EndTime. When you enter values for BeginTime and EndTime, Month becomes invalid. BeginTime and EndTime must be inputted as a pair. This value must be no earlier than the month when Bill 2.0 is activated; last 24 months data are available.
+        :type BeginTime: str
+        :param EndTime: The end time of the period; format: Y-m-d H:i:s. You only have to enter either Month or BeginTime and EndTime. When you enter values for BeginTime and EndTime, Month becomes invalid. BeginTime and EndTime must be inputted as a pair. This value must be no earlier than the month when Bill 2.0 is activated; last 24 months data are available.
+        :type EndTime: str
+        :param NeedRecordNum: Indicates whether or not the total number of records of accessing the list is required, used for frontend pages.
+1 = yes, 0 = no
+        :type NeedRecordNum: int
+        :param ProductCode: Queries information on a specified product
+        :type ProductCode: str
+        :param PayMode: Billing mode: prePay/postPay
+        :type PayMode: str
+        :param ResourceId: Queries information on a specified resource
+        :type ResourceId: str
+        :param ActionType: 
+        :type ActionType: str
+        :param ProjectId: Project ID: ID of the project to which the resource belongs
+        :type ProjectId: int
         """
-        :param Offset: Offset\n        :type Offset: int\n        :param Limit: Quantity, maximum is 100\n        :type Limit: int\n        :param PeriodType: The period type. byUsedTime: By usage period; byPayTime: By payment period. Must be the same as the period of the current monthly bill of the Billing Center. You can check your bill statistics period type at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page. \n        :type PeriodType: str\n        :param Month: Month; format: yyyy-mm. You only have to enter either Month or BeginTime and EndTime. When you enter values for BeginTime and EndTime, Month becomes invalid. This value must be no earlier than the month when Bill 2.0 is activated; last 24 months data are available.\n        :type Month: str\n        :param BeginTime: The start time of the period; format: Y-m-d H:i:s. You only have to enter either Month or BeginTime and EndTime. When you enter values for BeginTime and EndTime, Month becomes invalid. BeginTime and EndTime must be inputted as a pair. This value must be no earlier than the month when Bill 2.0 is activated; last 24 months data are available.\n        :type BeginTime: str\n        :param EndTime: The end time of the period; format: Y-m-d H:i:s. You only have to enter either Month or BeginTime and EndTime. When you enter values for BeginTime and EndTime, Month becomes invalid. BeginTime and EndTime must be inputted as a pair. This value must be no earlier than the month when Bill 2.0 is activated; last 24 months data are available.\n        :type EndTime: str\n        :param NeedRecordNum: Indicates whether or not the total number of records of accessing the list is required, used for frontend pages.
-1 = yes, 0 = no\n        :type NeedRecordNum: int\n        :param ProductCode: Queries information on a specified product\n        :type ProductCode: str\n        :param PayMode: Billing mode: prePay/postPay\n        :type PayMode: str\n        :param ResourceId: Queries information on a specified resource\n        :type ResourceId: str\n        :param ActionType: \n        :type ActionType: str\n        :param ProjectId: Project ID: ID of the project to which the resource belongs\n        :type ProjectId: int\n        """
         self.Offset = None
         self.Limit = None
         self.PeriodType = None
@@ -427,9 +647,15 @@ class DescribeBillDetailResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DetailSet: Details list
+        :type DetailSet: list of BillDetail
+        :param Total: Total number of records
+Note: This field may return null, indicating that no valid value was found.
+        :type Total: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param DetailSet: Details list\n        :type DetailSet: list of BillDetail\n        :param Total: Total number of records
-Note: This field may return null, indicating that no valid value was found.\n        :type Total: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DetailSet = None
         self.Total = None
         self.RequestId = None
@@ -452,9 +678,25 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: Offset
+        :type Offset: int
+        :param Limit: Quantity, maximum is 1000
+        :type Limit: int
+        :param PeriodType: The period type. byUsedTime: By usage period; byPayTime: by payment period. Must be the same as the period of the current monthly bill of the Billing Center. You can check your bill statistics period type at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page.
+        :type PeriodType: str
+        :param Month: Month; format: yyyy-mm. This value cannot be earlier than the month when Bill 2.0 is enabled. Last 24 months data are available.
+        :type Month: str
+        :param NeedRecordNum: Indicates whether or not the total number of records of accessing the list is required, used for frontend pages.
+1 = yes, 0 = no
+        :type NeedRecordNum: int
+        :param ActionType: 
+        :type ActionType: str
+        :param ResourceId: ID of the instance to be queried
+        :type ResourceId: str
+        :param PayMode: Billing mode. Valid values: `prePay` (prepaid), `postPay` (postpaid)
+        :type PayMode: str
         """
-        :param Offset: Offset\n        :type Offset: int\n        :param Limit: Quantity, maximum is 1000\n        :type Limit: int\n        :param PeriodType: The period type. byUsedTime: By usage period; byPayTime: by payment period. Must be the same as the period of the current monthly bill of the Billing Center. You can check your bill statistics period type at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page.\n        :type PeriodType: str\n        :param Month: Month; format: yyyy-mm. This value cannot be earlier than the month when Bill 2.0 is enabled. Last 24 months data are available.\n        :type Month: str\n        :param NeedRecordNum: Indicates whether or not the total number of records of accessing the list is required, used for frontend pages.
-1 = yes, 0 = no\n        :type NeedRecordNum: int\n        :param ActionType: \n        :type ActionType: str\n        :param ResourceId: ID of the instance to be queried\n        :type ResourceId: str\n        :param PayMode: Billing mode. Valid values: `prePay` (prepaid), `postPay` (postpaid)\n        :type PayMode: str\n        """
         self.Offset = None
         self.Limit = None
         self.PeriodType = None
@@ -489,9 +731,15 @@ class DescribeBillResourceSummaryResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceSummarySet: Resource summary list
+        :type ResourceSummarySet: list of BillResourceSummary
+        :param Total: Total number of resource summary lists
+Note: This field may return null, indicating that no valid value was found.
+        :type Total: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param ResourceSummarySet: Resource summary list\n        :type ResourceSummarySet: list of BillResourceSummary\n        :param Total: Total number of resource summary lists
-Note: This field may return null, indicating that no valid value was found.\n        :type Total: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ResourceSummarySet = None
         self.Total = None
         self.RequestId = None
@@ -514,8 +762,14 @@ class DescribeBillSummaryByPayModeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BeginTime: The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        :type BeginTime: str
+        :param EndTime: The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        :type EndTime: str
+        :param PayerUin: Query bill data user's UIN
+        :type PayerUin: str
         """
-        :param BeginTime: The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.\n        :type BeginTime: str\n        :param EndTime: The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.\n        :type EndTime: str\n        :param PayerUin: Query bill data user's UIN\n        :type PayerUin: str\n        """
         self.BeginTime = None
         self.EndTime = None
         self.PayerUin = None
@@ -540,9 +794,15 @@ class DescribeBillSummaryByPayModeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ready: Indicates whether or not the data is ready. 0 = not ready, 1 = ready.
+        :type Ready: int
+        :param SummaryOverview: Detailed cost distribution for all billing modes
+Note: This field may return null, indicating that no valid value was found.
+        :type SummaryOverview: list of PayModeSummaryOverviewItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Ready: Indicates whether or not the data is ready. 0 = not ready, 1 = ready.\n        :type Ready: int\n        :param SummaryOverview: Detailed cost distribution for all billing modes
-Note: This field may return null, indicating that no valid value was found.\n        :type SummaryOverview: list of PayModeSummaryOverviewItem\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Ready = None
         self.SummaryOverview = None
         self.RequestId = None
@@ -565,8 +825,14 @@ class DescribeBillSummaryByProductRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BeginTime: The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        :type BeginTime: str
+        :param EndTime: The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        :type EndTime: str
+        :param PayerUin: Queries bill data user's UIN
+        :type PayerUin: str
         """
-        :param BeginTime: The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.\n        :type BeginTime: str\n        :param EndTime: The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.\n        :type EndTime: str\n        :param PayerUin: Queries bill data user's UIN\n        :type PayerUin: str\n        """
         self.BeginTime = None
         self.EndTime = None
         self.PayerUin = None
@@ -591,10 +857,18 @@ class DescribeBillSummaryByProductResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ready: Indicates whether or not the data is ready. 0 = not ready, 1 = ready.
+        :type Ready: int
+        :param SummaryTotal: Total cost details
+Note: This field may return null, indicating that no valid value was found.
+        :type SummaryTotal: :class:`tencentcloud.billing.v20180709.models.BusinessSummaryTotal`
+        :param SummaryOverview: Cost distribution of all products
+Note: This field may return null, indicating that no valid value was found.
+        :type SummaryOverview: list of BusinessSummaryOverviewItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Ready: Indicates whether or not the data is ready. 0 = not ready, 1 = ready.\n        :type Ready: int\n        :param SummaryTotal: Total cost details
-Note: This field may return null, indicating that no valid value was found.\n        :type SummaryTotal: :class:`tencentcloud.billing.v20180709.models.BusinessSummaryTotal`\n        :param SummaryOverview: Cost distribution of all products
-Note: This field may return null, indicating that no valid value was found.\n        :type SummaryOverview: list of BusinessSummaryOverviewItem\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Ready = None
         self.SummaryTotal = None
         self.SummaryOverview = None
@@ -621,8 +895,14 @@ class DescribeBillSummaryByProjectRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BeginTime: The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        :type BeginTime: str
+        :param EndTime: The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        :type EndTime: str
+        :param PayerUin: Queries bill data user's UIN
+        :type PayerUin: str
         """
-        :param BeginTime: The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.\n        :type BeginTime: str\n        :param EndTime: The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.\n        :type EndTime: str\n        :param PayerUin: Queries bill data user's UIN\n        :type PayerUin: str\n        """
         self.BeginTime = None
         self.EndTime = None
         self.PayerUin = None
@@ -647,9 +927,15 @@ class DescribeBillSummaryByProjectResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ready: Indicates whether or not the data is ready. 0 = not ready, 1 = ready.
+        :type Ready: int
+        :param SummaryOverview: Detailed cost distribution for all projects
+Note: This field may return null, indicating that no valid value was found.
+        :type SummaryOverview: list of ProjectSummaryOverviewItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Ready: Indicates whether or not the data is ready. 0 = not ready, 1 = ready.\n        :type Ready: int\n        :param SummaryOverview: Detailed cost distribution for all projects
-Note: This field may return null, indicating that no valid value was found.\n        :type SummaryOverview: list of ProjectSummaryOverviewItem\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Ready = None
         self.SummaryOverview = None
         self.RequestId = None
@@ -672,8 +958,14 @@ class DescribeBillSummaryByRegionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BeginTime: The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        :type BeginTime: str
+        :param EndTime: The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        :type EndTime: str
+        :param PayerUin: Queries bill data user's UIN
+        :type PayerUin: str
         """
-        :param BeginTime: The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.\n        :type BeginTime: str\n        :param EndTime: The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.\n        :type EndTime: str\n        :param PayerUin: Queries bill data user's UIN\n        :type PayerUin: str\n        """
         self.BeginTime = None
         self.EndTime = None
         self.PayerUin = None
@@ -698,9 +990,15 @@ class DescribeBillSummaryByRegionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ready: Indicates whether or not the data is ready. 0 = not ready, 1 = ready.
+        :type Ready: int
+        :param SummaryOverview: Detailed cost distribution for all regions
+Note: This field may return null, indicating that no valid value was found.
+        :type SummaryOverview: list of RegionSummaryOverviewItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Ready: Indicates whether or not the data is ready. 0 = not ready, 1 = ready.\n        :type Ready: int\n        :param SummaryOverview: Detailed cost distribution for all regions
-Note: This field may return null, indicating that no valid value was found.\n        :type SummaryOverview: list of RegionSummaryOverviewItem\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Ready = None
         self.SummaryOverview = None
         self.RequestId = None
@@ -723,8 +1021,16 @@ class DescribeBillSummaryByTagRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BeginTime: The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        :type BeginTime: str
+        :param EndTime: The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        :type EndTime: str
+        :param TagKey: Cost allocation tag key
+        :type TagKey: str
+        :param PayerUin: Payer UIN
+        :type PayerUin: str
         """
-        :param BeginTime: The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.\n        :type BeginTime: str\n        :param EndTime: The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.\n        :type EndTime: str\n        :param TagKey: Cost allocation tag key\n        :type TagKey: str\n        :param PayerUin: Payer UIN\n        :type PayerUin: str\n        """
         self.BeginTime = None
         self.EndTime = None
         self.TagKey = None
@@ -751,9 +1057,15 @@ class DescribeBillSummaryByTagResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ready: Indicates whether or not the data is ready. `0`: not ready; `1`: ready.
+        :type Ready: int
+        :param SummaryOverview: Details about cost distribution over different tags
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SummaryOverview: list of TagSummaryOverviewItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Ready: Indicates whether or not the data is ready. `0`: not ready; `1`: ready.\n        :type Ready: int\n        :param SummaryOverview: Details about cost distribution over different tags
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type SummaryOverview: list of TagSummaryOverviewItem\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Ready = None
         self.SummaryOverview = None
         self.RequestId = None
@@ -776,8 +1088,24 @@ class PayModeSummaryOverviewItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PayMode: Billing mode
+        :type PayMode: str
+        :param PayModeName: Billing mode name
+        :type PayModeName: str
+        :param RealTotalCost: Actual cost
+        :type RealTotalCost: str
+        :param RealTotalCostRatio: Cost ratio, to two decimal points
+        :type RealTotalCostRatio: str
+        :param Detail: Detailed summary of purchases by transaction type
+        :type Detail: list of ActionSummaryOverviewItem
+        :param CashPayAmount: Cash amount
+        :type CashPayAmount: str
+        :param IncentivePayAmount: Trial credit amount
+        :type IncentivePayAmount: str
+        :param VoucherPayAmount: Voucher amount
+        :type VoucherPayAmount: str
         """
-        :param PayMode: Billing mode\n        :type PayMode: str\n        :param PayModeName: Billing mode name\n        :type PayModeName: str\n        :param RealTotalCost: Actual cost\n        :type RealTotalCost: str\n        :param RealTotalCostRatio: Cost ratio, to two decimal points\n        :type RealTotalCostRatio: str\n        :param Detail: Detailed summary of purchases by transaction type\n        :type Detail: list of ActionSummaryOverviewItem\n        :param CashPayAmount: Cash amount\n        :type CashPayAmount: str\n        :param IncentivePayAmount: Trial credit amount\n        :type IncentivePayAmount: str\n        :param VoucherPayAmount: Voucher amount\n        :type VoucherPayAmount: str\n        """
         self.PayMode = None
         self.PayModeName = None
         self.RealTotalCost = None
@@ -817,8 +1145,24 @@ class ProjectSummaryOverviewItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProjectId: Project ID
+        :type ProjectId: str
+        :param ProjectName: Project name
+        :type ProjectName: str
+        :param RealTotalCost: Actual cost
+        :type RealTotalCost: str
+        :param RealTotalCostRatio: Cost ratio, to two decimal points
+        :type RealTotalCostRatio: str
+        :param CashPayAmount: Cash amount
+        :type CashPayAmount: str
+        :param IncentivePayAmount: Trial credit amount
+        :type IncentivePayAmount: str
+        :param VoucherPayAmount: Voucher amount
+        :type VoucherPayAmount: str
+        :param BillMonth: Billing month, e.g. `2019-08`
+        :type BillMonth: str
         """
-        :param ProjectId: Project ID\n        :type ProjectId: str\n        :param ProjectName: Project name\n        :type ProjectName: str\n        :param RealTotalCost: Actual cost\n        :type RealTotalCost: str\n        :param RealTotalCostRatio: Cost ratio, to two decimal points\n        :type RealTotalCostRatio: str\n        :param CashPayAmount: Cash amount\n        :type CashPayAmount: str\n        :param IncentivePayAmount: Trial credit amount\n        :type IncentivePayAmount: str\n        :param VoucherPayAmount: Voucher amount\n        :type VoucherPayAmount: str\n        :param BillMonth: Billing month, e.g. `2019-08`\n        :type BillMonth: str\n        """
         self.ProjectId = None
         self.ProjectName = None
         self.RealTotalCost = None
@@ -853,9 +1197,25 @@ class RegionSummaryOverviewItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RegionId: Region ID
-Note: This field may return null, indicating that no valid value was found.\n        :type RegionId: str\n        :param RegionName: Region name\n        :type RegionName: str\n        :param RealTotalCost: Actual cost\n        :type RealTotalCost: str\n        :param RealTotalCostRatio: Cost ratio, to two decimal points\n        :type RealTotalCostRatio: str\n        :param CashPayAmount: Cash amount\n        :type CashPayAmount: str\n        :param IncentivePayAmount: Trial credit amount\n        :type IncentivePayAmount: str\n        :param VoucherPayAmount: Voucher amount\n        :type VoucherPayAmount: str\n        :param BillMonth: Billing month, e.g. `2019-08`\n        :type BillMonth: str\n        """
+Note: This field may return null, indicating that no valid value was found.
+        :type RegionId: str
+        :param RegionName: Region name
+        :type RegionName: str
+        :param RealTotalCost: Actual cost
+        :type RealTotalCost: str
+        :param RealTotalCostRatio: Cost ratio, to two decimal points
+        :type RealTotalCostRatio: str
+        :param CashPayAmount: Cash amount
+        :type CashPayAmount: str
+        :param IncentivePayAmount: Trial credit amount
+        :type IncentivePayAmount: str
+        :param VoucherPayAmount: Voucher amount
+        :type VoucherPayAmount: str
+        :param BillMonth: Billing month, e.g. `2019-08`
+        :type BillMonth: str
+        """
         self.RegionId = None
         self.RegionName = None
         self.RealTotalCost = None
@@ -890,11 +1250,17 @@ class TagSummaryOverviewItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagValue: Tag value
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type TagValue: str\n        :param RealTotalCost: Actual cost
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type RealTotalCost: str\n        :param RealTotalCostRatio: Cost percentage rounded to two decimal places
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type RealTotalCostRatio: str\n        """
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TagValue: str
+        :param RealTotalCost: Actual cost
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RealTotalCost: str
+        :param RealTotalCostRatio: Cost percentage rounded to two decimal places
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RealTotalCostRatio: str
+        """
         self.TagValue = None
         self.RealTotalCost = None
         self.RealTotalCostRatio = None

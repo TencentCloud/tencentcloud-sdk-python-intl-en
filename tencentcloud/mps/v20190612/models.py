@@ -24,8 +24,26 @@ class AIAnalysisTemplateItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Unique ID of intelligent analysis template.
+        :type Definition: int
+        :param Name: Intelligent analysis template name.
+        :type Name: str
+        :param Comment: Intelligent analysis template description.
+        :type Comment: str
+        :param ClassificationConfigure: Control parameter of intelligent categorization task.
+        :type ClassificationConfigure: :class:`tencentcloud.mps.v20190612.models.ClassificationConfigureInfo`
+        :param TagConfigure: Control parameter of intelligent tagging task.
+        :type TagConfigure: :class:`tencentcloud.mps.v20190612.models.TagConfigureInfo`
+        :param CoverConfigure: Control parameter of intelligent cover generating task.
+        :type CoverConfigure: :class:`tencentcloud.mps.v20190612.models.CoverConfigureInfo`
+        :param FrameTagConfigure: Control parameter of intelligent frame-specific tagging task.
+        :type FrameTagConfigure: :class:`tencentcloud.mps.v20190612.models.FrameTagConfigureInfo`
+        :param CreateTime: Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        :type CreateTime: str
+        :param UpdateTime: Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        :type UpdateTime: str
         """
-        :param Definition: Unique ID of intelligent analysis template.\n        :type Definition: int\n        :param Name: Intelligent analysis template name.\n        :type Name: str\n        :param Comment: Intelligent analysis template description.\n        :type Comment: str\n        :param ClassificationConfigure: Control parameter of intelligent categorization task.\n        :type ClassificationConfigure: :class:`tencentcloud.mps.v20190612.models.ClassificationConfigureInfo`\n        :param TagConfigure: Control parameter of intelligent tagging task.\n        :type TagConfigure: :class:`tencentcloud.mps.v20190612.models.TagConfigureInfo`\n        :param CoverConfigure: Control parameter of intelligent cover generating task.\n        :type CoverConfigure: :class:`tencentcloud.mps.v20190612.models.CoverConfigureInfo`\n        :param FrameTagConfigure: Control parameter of intelligent frame-specific tagging task.\n        :type FrameTagConfigure: :class:`tencentcloud.mps.v20190612.models.FrameTagConfigureInfo`\n        :param CreateTime: Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).\n        :type CreateTime: str\n        :param UpdateTime: Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).\n        :type UpdateTime: str\n        """
         self.Definition = None
         self.Name = None
         self.Comment = None
@@ -70,13 +88,33 @@ class AIRecognitionTemplateItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Unique ID of a video content recognition template.
+        :type Definition: int
+        :param Name: Name of a video content recognition template.
+        :type Name: str
+        :param Comment: Description of a video content recognition template.
+        :type Comment: str
+        :param FaceConfigure: Face recognition control parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FaceConfigure: :class:`tencentcloud.mps.v20190612.models.FaceConfigureInfo`
+        :param OcrFullTextConfigure: Full text recognition control parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OcrFullTextConfigure: :class:`tencentcloud.mps.v20190612.models.OcrFullTextConfigureInfo`
+        :param OcrWordsConfigure: Text keyword recognition control parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OcrWordsConfigure: :class:`tencentcloud.mps.v20190612.models.OcrWordsConfigureInfo`
+        :param AsrFullTextConfigure: Full speech recognition control parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AsrFullTextConfigure: :class:`tencentcloud.mps.v20190612.models.AsrFullTextConfigureInfo`
+        :param AsrWordsConfigure: Speech keyword recognition control parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AsrWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrWordsConfigureInfo`
+        :param CreateTime: Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type CreateTime: str
+        :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type UpdateTime: str
         """
-        :param Definition: Unique ID of a video content recognition template.\n        :type Definition: int\n        :param Name: Name of a video content recognition template.\n        :type Name: str\n        :param Comment: Description of a video content recognition template.\n        :type Comment: str\n        :param FaceConfigure: Face recognition control parameter.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type FaceConfigure: :class:`tencentcloud.mps.v20190612.models.FaceConfigureInfo`\n        :param OcrFullTextConfigure: Full text recognition control parameter.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type OcrFullTextConfigure: :class:`tencentcloud.mps.v20190612.models.OcrFullTextConfigureInfo`\n        :param OcrWordsConfigure: Text keyword recognition control parameter.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type OcrWordsConfigure: :class:`tencentcloud.mps.v20190612.models.OcrWordsConfigureInfo`\n        :param AsrFullTextConfigure: Full speech recognition control parameter.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type AsrFullTextConfigure: :class:`tencentcloud.mps.v20190612.models.AsrFullTextConfigureInfo`\n        :param AsrWordsConfigure: Speech keyword recognition control parameter.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type AsrWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrWordsConfigureInfo`\n        :param CreateTime: Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type CreateTime: str\n        :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type UpdateTime: str\n        """
         self.Definition = None
         self.Name = None
         self.Comment = None
@@ -125,8 +163,16 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Adaptive bitrate streaming specification.
+        :type Definition: int
+        :param Package: Container format. Valid values: HLS, MPEG-DASH.
+        :type Package: str
+        :param Path: Playback address.
+        :type Path: str
+        :param Storage: Storage location of adaptive bitrate streaming files.
+        :type Storage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
-        :param Definition: Adaptive bitrate streaming specification.\n        :type Definition: int\n        :param Package: Container format. Valid values: HLS, MPEG-DASH.\n        :type Package: str\n        :param Path: Playback address.\n        :type Path: str\n        :param Storage: Storage location of adaptive bitrate streaming files.\n        :type Storage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`\n        """
         self.Definition = None
         self.Package = None
         self.Path = None
@@ -155,9 +201,21 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Adaptive bitrate streaming template ID.
+        :type Definition: int
+        :param WatermarkSet: List of up to 10 image or text watermarks.
+        :type WatermarkSet: list of WatermarkInput
+        :param OutputStorage: Target bucket of an output file after being transcoded to adaptive bitrate streaming. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param OutputObjectPath: The relative or absolute output path of the manifest file after being transcoded to adaptive bitrate streaming. If this parameter is left empty, a relative path in the following format will be used by default: `{inputName}_adaptiveDynamicStreaming_{definition}.{format}`.
+        :type OutputObjectPath: str
+        :param SubStreamObjectName: The relative output path of the substream file after being transcoded to adaptive bitrate streaming. If this parameter is left empty, a relative path in the following format will be used by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}`.
+        :type SubStreamObjectName: str
+        :param SegmentObjectName: The relative output path of the segment file after being transcoded to adaptive bitrate streaming (in HLS format only). If this parameter is left empty, a relative path in the following format will be used by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}`.
+        :type SegmentObjectName: str
         """
-        :param Definition: Adaptive bitrate streaming template ID.\n        :type Definition: int\n        :param WatermarkSet: List of up to 10 image or text watermarks.\n        :type WatermarkSet: list of WatermarkInput\n        :param OutputStorage: Target bucket of an output file after being transcoded to adaptive bitrate streaming. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`\n        :param OutputObjectPath: The relative or absolute output path of the manifest file after being transcoded to adaptive bitrate streaming. If this parameter is left empty, a relative path in the following format will be used by default: `{inputName}_adaptiveDynamicStreaming_{definition}.{format}`.\n        :type OutputObjectPath: str\n        :param SubStreamObjectName: The relative output path of the substream file after being transcoded to adaptive bitrate streaming. If this parameter is left empty, a relative path in the following format will be used by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}`.\n        :type SubStreamObjectName: str\n        :param SegmentObjectName: The relative output path of the segment file after being transcoded to adaptive bitrate streaming (in HLS format only). If this parameter is left empty, a relative path in the following format will be used by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}`.\n        :type SegmentObjectName: str\n        """
         self.Definition = None
         self.WatermarkSet = None
         self.OutputStorage = None
@@ -195,16 +253,36 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Definition: Unique ID of an adaptive bitrate streaming template.\n        :type Definition: int\n        :param Type: Template type. Valid values:
+        r"""
+        :param Definition: Unique ID of an adaptive bitrate streaming template.
+        :type Definition: int
+        :param Type: Template type. Valid values:
 <li>Preset: preset template;</li>
-<li>Custom: custom template.</li>\n        :type Type: str\n        :param Name: Name of an adaptive bitrate streaming template.\n        :type Name: str\n        :param Comment: Description of an adaptive bitrate streaming template.\n        :type Comment: str\n        :param Format: Adaptive bitrate streaming format. Valid values:
+<li>Custom: custom template.</li>
+        :type Type: str
+        :param Name: Name of an adaptive bitrate streaming template.
+        :type Name: str
+        :param Comment: Description of an adaptive bitrate streaming template.
+        :type Comment: str
+        :param Format: Adaptive bitrate streaming format. Valid values:
 <li>HLS;</li>
-<li>MPEG-DASH.</li>\n        :type Format: str\n        :param StreamInfos: Parameter information of input streams for transcoding to adaptive bitrate streaming. Up to 10 streams can be input.\n        :type StreamInfos: list of AdaptiveStreamTemplate\n        :param DisableHigherVideoBitrate: Whether to prohibit transcoding from low bitrate to high bitrate. Valid values:
+<li>MPEG-DASH.</li>
+        :type Format: str
+        :param StreamInfos: Parameter information of input streams for transcoding to adaptive bitrate streaming. Up to 10 streams can be input.
+        :type StreamInfos: list of AdaptiveStreamTemplate
+        :param DisableHigherVideoBitrate: Whether to prohibit transcoding from low bitrate to high bitrate. Valid values:
 <li>0: no,</li>
-<li>1: yes.</li>\n        :type DisableHigherVideoBitrate: int\n        :param DisableHigherVideoResolution: Whether to prohibit transcoding from low resolution to high resolution. Valid values:
+<li>1: yes.</li>
+        :type DisableHigherVideoBitrate: int
+        :param DisableHigherVideoResolution: Whether to prohibit transcoding from low resolution to high resolution. Valid values:
 <li>0: no,</li>
-<li>1: yes.</li>\n        :type DisableHigherVideoResolution: int\n        :param CreateTime: Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).\n        :type CreateTime: str\n        :param UpdateTime: Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).\n        :type UpdateTime: str\n        """
+<li>1: yes.</li>
+        :type DisableHigherVideoResolution: int
+        :param CreateTime: Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
+        :type CreateTime: str
+        :param UpdateTime: Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
+        :type UpdateTime: str
+        """
         self.Definition = None
         self.Type = None
         self.Name = None
@@ -248,12 +326,20 @@ class AdaptiveStreamTemplate(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Video: Video parameter information.
+        :type Video: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
+        :param Audio: Audio parameter information.
+        :type Audio: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
+        :param RemoveAudio: Whether to remove audio stream. Valid values:
+<li>0: no,</li>
+<li>1: yes.</li>
+        :type RemoveAudio: int
+        :param RemoveVideo: Whether to remove video stream. Valid values:
+<li>0: no,</li>
+<li>1: yes.</li>
+        :type RemoveVideo: int
         """
-        :param Video: Video parameter information.\n        :type Video: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`\n        :param Audio: Audio parameter information.\n        :type Audio: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`\n        :param RemoveAudio: Whether to remove audio stream. Valid values:
-<li>0: no,</li>
-<li>1: yes.</li>\n        :type RemoveAudio: int\n        :param RemoveVideo: Whether to remove video stream. Valid values:
-<li>0: no,</li>
-<li>1: yes.</li>\n        :type RemoveVideo: int\n        """
         self.Video = None
         self.Audio = None
         self.RemoveAudio = None
@@ -284,13 +370,23 @@ class AiAnalysisResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: Task type. Valid values:
 <li>Classification: intelligent categorization</li>
 <li>Cover: intelligent cover generating</li>
 <li>Tag: intelligent tagging</li>
 <li>FrameTag: intelligent frame-specific tagging</li>
-<li>Highlight: intelligent highlight generating</li>\n        :type Type: str\n        :param ClassificationTask: Query result of intelligent categorization task in video content analysis, which is valid if task type is `Classification`.\n        :type ClassificationTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationResult`\n        :param CoverTask: Query result of intelligent cover generating task in video content analysis, which is valid if task type is `Cover`.\n        :type CoverTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverResult`\n        :param TagTask: Query result of intelligent tagging task in video content analysis, which is valid if task type is `Tag`.\n        :type TagTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagResult`\n        :param FrameTagTask: Query result of intelligent frame-specific tagging task in video content analysis, which is valid if task type is `FrameTag`.\n        :type FrameTagTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagResult`\n        """
+<li>Highlight: intelligent highlight generating</li>
+        :type Type: str
+        :param ClassificationTask: Query result of intelligent categorization task in video content analysis, which is valid if task type is `Classification`.
+        :type ClassificationTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationResult`
+        :param CoverTask: Query result of intelligent cover generating task in video content analysis, which is valid if task type is `Cover`.
+        :type CoverTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverResult`
+        :param TagTask: Query result of intelligent tagging task in video content analysis, which is valid if task type is `Tag`.
+        :type TagTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagResult`
+        :param FrameTagTask: Query result of intelligent frame-specific tagging task in video content analysis, which is valid if task type is `FrameTag`.
+        :type FrameTagTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagResult`
+        """
         self.Type = None
         self.ClassificationTask = None
         self.CoverTask = None
@@ -327,8 +423,10 @@ class AiAnalysisTaskClassificationInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Intelligent video categorization template ID.
+        :type Definition: int
         """
-        :param Definition: Intelligent video categorization template ID.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -349,8 +447,10 @@ class AiAnalysisTaskClassificationOutput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClassificationSet: List of intelligently generated video categories.
+        :type ClassificationSet: list of MediaAiAnalysisClassificationItem
         """
-        :param ClassificationSet: List of intelligently generated video categories.\n        :type ClassificationSet: list of MediaAiAnalysisClassificationItem\n        """
         self.ClassificationSet = None
 
 
@@ -376,8 +476,20 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input of intelligent categorization task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationInput`
+        :param Output: Output of intelligent categorization task.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationOutput`
         """
-        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.\n        :type Status: str\n        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).\n        :type ErrCodeExt: str\n        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.\n        :type ErrCode: int\n        :param Message: Error message.\n        :type Message: str\n        :param Input: Input of intelligent categorization task.\n        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationInput`\n        :param Output: Output of intelligent categorization task.\n        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -412,8 +524,10 @@ class AiAnalysisTaskCoverInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Intelligent video cover generating template ID.
+        :type Definition: int
         """
-        :param Definition: Intelligent video cover generating template ID.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -434,8 +548,12 @@ class AiAnalysisTaskCoverOutput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CoverSet: List of intelligently generated covers.
+        :type CoverSet: list of MediaAiAnalysisCoverItem
+        :param OutputStorage: Storage location of intelligently generated cover.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
-        :param CoverSet: List of intelligently generated covers.\n        :type CoverSet: list of MediaAiAnalysisCoverItem\n        :param OutputStorage: Storage location of intelligently generated cover.\n        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`\n        """
         self.CoverSet = None
         self.OutputStorage = None
 
@@ -465,8 +583,20 @@ class AiAnalysisTaskCoverResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input of intelligent cover generating task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverInput`
+        :param Output: Output of intelligent cover generating task.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverOutput`
         """
-        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.\n        :type Status: str\n        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).\n        :type ErrCodeExt: str\n        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.\n        :type ErrCode: int\n        :param Message: Error message.\n        :type Message: str\n        :param Input: Input of intelligent cover generating task.\n        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverInput`\n        :param Output: Output of intelligent cover generating task.\n        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -501,8 +631,10 @@ class AiAnalysisTaskFrameTagInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Intelligent frame-specific video tagging template ID.
+        :type Definition: int
         """
-        :param Definition: Intelligent frame-specific video tagging template ID.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -523,8 +655,10 @@ class AiAnalysisTaskFrameTagOutput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SegmentSet: List of frame-specific video tags.
+        :type SegmentSet: list of MediaAiAnalysisFrameTagSegmentItem
         """
-        :param SegmentSet: List of frame-specific video tags.\n        :type SegmentSet: list of MediaAiAnalysisFrameTagSegmentItem\n        """
         self.SegmentSet = None
 
 
@@ -550,8 +684,20 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input of intelligent frame-specific tagging task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagInput`
+        :param Output: Output of intelligent frame-specific tagging task.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagOutput`
         """
-        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.\n        :type Status: str\n        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).\n        :type ErrCodeExt: str\n        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.\n        :type ErrCode: int\n        :param Message: Error message.\n        :type Message: str\n        :param Input: Input of intelligent frame-specific tagging task.\n        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagInput`\n        :param Output: Output of intelligent frame-specific tagging task.\n        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -586,8 +732,10 @@ class AiAnalysisTaskInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Video content analysis template ID.
+        :type Definition: int
         """
-        :param Definition: Video content analysis template ID.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -608,8 +756,10 @@ class AiAnalysisTaskTagInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Intelligent video tagging template ID.
+        :type Definition: int
         """
-        :param Definition: Intelligent video tagging template ID.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -630,8 +780,10 @@ class AiAnalysisTaskTagOutput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TagSet: List of intelligently generated video tags.
+        :type TagSet: list of MediaAiAnalysisTagItem
         """
-        :param TagSet: List of intelligently generated video tags.\n        :type TagSet: list of MediaAiAnalysisTagItem\n        """
         self.TagSet = None
 
 
@@ -657,8 +809,20 @@ class AiAnalysisTaskTagResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input of intelligent tagging task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagInput`
+        :param Output: Output of intelligent tagging task.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagOutput`
         """
-        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.\n        :type Status: str\n        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).\n        :type ErrCodeExt: str\n        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.\n        :type ErrCode: int\n        :param Message: Error message.\n        :type Message: str\n        :param Input: Input of intelligent tagging task.\n        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagInput`\n        :param Output: Output of intelligent tagging task.\n        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -693,7 +857,7 @@ class AiContentReviewResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: Task type. Valid values:
 <li>Porn: Porn information detection in image</li>
 <li>Terrorism: Terrorism information detection in image</li>
@@ -702,14 +866,40 @@ class AiContentReviewResult(AbstractModel):
 <li>Porn.Ocr: OCR-based porn information detection in text</li>
 <li>Porn.Voice: Porn information detection in speech</li>
 <li>Political.Asr: ASR-based politically sensitive information detection in text</li>
-<li>Political.Ocr: OCR-based politically sensitive information detection in text</li>\n        :type Type: str\n        :param SampleRate: Sample rate, which indicates the number of video frames captured per second for audit\n        :type SampleRate: float\n        :param Duration: Audited video duration in seconds.\n        :type Duration: float\n        :param PornTask: Query result of an intelligent porn information detection in image task in video content audit, which is valid when task type is `Porn`.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type PornTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPornResult`\n        :param TerrorismTask: Query result of an intelligent terrorism information detection in image task in video content audit, which is valid when task type is `Terrorism`.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type TerrorismTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskTerrorismResult`\n        :param PoliticalTask: Query result of an intelligent politically sensitive information detection in image task in video content audit, which is valid when task type is `Political`.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type PoliticalTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalResult`\n        :param PornAsrTask: Query result of an ASR-based porn information detection in text task in video content audit, which is valid when task type is `Porn.Asr`.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type PornAsrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPornAsrResult`\n        :param PornOcrTask: Query result of an OCR-based porn information detection in text task in video content audit, which is valid when task type is `Porn.Ocr`.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type PornOcrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPornOcrResult`\n        :param PoliticalAsrTask: Query result of an ASR-based politically sensitive information detection in text task in video content audit, which is valid when task type is `Political.Asr`.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type PoliticalAsrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalAsrResult`\n        :param PoliticalOcrTask: Query result of an OCR-based politically sensitive information detection in text task in video content audit, which is valid when task type is `Political.Ocr`.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type PoliticalOcrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalOcrResult`\n        :param TerrorismOcrTask: Query result of OCR-based terrorism information detection in text task in video content audit, which is valid if task type is `Terrorism.Ocr`.\n        :type TerrorismOcrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskTerrorismOcrResult`\n        :param ProhibitedAsrTask: Query result of ASR-based prohibited information detection in speech task in video content audit, which is valid if task type is `Prohibited.Asr`.\n        :type ProhibitedAsrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskProhibitedAsrResult`\n        :param ProhibitedOcrTask: Query result of OCR-based prohibited information detection in text task in video content audit, which is valid if task type is `Prohibited.Ocr`.\n        :type ProhibitedOcrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskProhibitedOcrResult`\n        """
+<li>Political.Ocr: OCR-based politically sensitive information detection in text</li>
+        :type Type: str
+        :param SampleRate: Sample rate, which indicates the number of video frames captured per second for audit
+        :type SampleRate: float
+        :param Duration: Audited video duration in seconds.
+        :type Duration: float
+        :param PornTask: Query result of an intelligent porn information detection in image task in video content audit, which is valid when task type is `Porn`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PornTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPornResult`
+        :param TerrorismTask: Query result of an intelligent terrorism information detection in image task in video content audit, which is valid when task type is `Terrorism`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TerrorismTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskTerrorismResult`
+        :param PoliticalTask: Query result of an intelligent politically sensitive information detection in image task in video content audit, which is valid when task type is `Political`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PoliticalTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalResult`
+        :param PornAsrTask: Query result of an ASR-based porn information detection in text task in video content audit, which is valid when task type is `Porn.Asr`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PornAsrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPornAsrResult`
+        :param PornOcrTask: Query result of an OCR-based porn information detection in text task in video content audit, which is valid when task type is `Porn.Ocr`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PornOcrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPornOcrResult`
+        :param PoliticalAsrTask: Query result of an ASR-based politically sensitive information detection in text task in video content audit, which is valid when task type is `Political.Asr`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PoliticalAsrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalAsrResult`
+        :param PoliticalOcrTask: Query result of an OCR-based politically sensitive information detection in text task in video content audit, which is valid when task type is `Political.Ocr`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PoliticalOcrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalOcrResult`
+        :param TerrorismOcrTask: Query result of OCR-based terrorism information detection in text task in video content audit, which is valid if task type is `Terrorism.Ocr`.
+        :type TerrorismOcrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskTerrorismOcrResult`
+        :param ProhibitedAsrTask: Query result of ASR-based prohibited information detection in speech task in video content audit, which is valid if task type is `Prohibited.Asr`.
+        :type ProhibitedAsrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskProhibitedAsrResult`
+        :param ProhibitedOcrTask: Query result of OCR-based prohibited information detection in text task in video content audit, which is valid if task type is `Prohibited.Ocr`.
+        :type ProhibitedOcrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskProhibitedOcrResult`
+        """
         self.Type = None
         self.SampleRate = None
         self.Duration = None
@@ -774,8 +964,10 @@ class AiContentReviewTaskInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Video content audit template ID.
+        :type Definition: int
         """
-        :param Definition: Video content audit template ID.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -796,7 +988,7 @@ class AiRecognitionResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: Task type. Valid values:
 <li>FaceRecognition: Face recognition,</li>
 <li>AsrWordsRecognition: Speech keyword recognition,</li>
@@ -804,17 +996,29 @@ class AiRecognitionResult(AbstractModel):
 <li>AsrFullTextRecognition: Full speech recognition,</li>
 <li>OcrFullTextRecognition: Full text recognition,</li>
 <li>HeadTailRecognition: Video opening and ending credits recognition,</li>
-<li>ObjectRecognition: Object recognition.</li>\n        :type Type: str\n        :param FaceTask: Face recognition result, which is valid when `Type` is 
+<li>ObjectRecognition: Object recognition.</li>
+        :type Type: str
+        :param FaceTask: Face recognition result, which is valid when `Type` is 
  `FaceRecognition`.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type FaceTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskFaceResult`\n        :param AsrWordsTask: Speech keyword recognition result, which is valid when `Type` is
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FaceTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskFaceResult`
+        :param AsrWordsTask: Speech keyword recognition result, which is valid when `Type` is
  `AsrWordsRecognition`.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type AsrWordsTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrWordsResult`\n        :param AsrFullTextTask: Full speech recognition result, which is valid when `Type` is
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AsrWordsTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrWordsResult`
+        :param AsrFullTextTask: Full speech recognition result, which is valid when `Type` is
  `AsrFullTextRecognition`.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type AsrFullTextTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrFullTextResult`\n        :param OcrWordsTask: Text keyword recognition result, which is valid when `Type` is
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AsrFullTextTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrFullTextResult`
+        :param OcrWordsTask: Text keyword recognition result, which is valid when `Type` is
  `OcrWordsRecognition`.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type OcrWordsTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrWordsResult`\n        :param OcrFullTextTask: Full text recognition result, which is valid when `Type` is
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OcrWordsTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrWordsResult`
+        :param OcrFullTextTask: Full text recognition result, which is valid when `Type` is
  `OcrFullTextRecognition`.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type OcrFullTextTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrFullTextResult`\n        """
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OcrFullTextTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrFullTextResult`
+        """
         self.Type = None
         self.FaceTask = None
         self.AsrWordsTask = None
@@ -855,9 +1059,21 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input information of a full speech recognition task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrFullTextResultInput`
+        :param Output: Output information of a full speech recognition task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrFullTextResultOutput`
         """
-        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.\n        :type Status: str\n        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).\n        :type ErrCodeExt: str\n        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.\n        :type ErrCode: int\n        :param Message: Error message.\n        :type Message: str\n        :param Input: Input information of a full speech recognition task.\n        :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrFullTextResultInput`\n        :param Output: Output information of a full speech recognition task.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrFullTextResultOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -892,8 +1108,10 @@ class AiRecognitionTaskAsrFullTextResultInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Full speech recognition template ID.
+        :type Definition: int
         """
-        :param Definition: Full speech recognition template ID.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -914,8 +1132,14 @@ class AiRecognitionTaskAsrFullTextResultOutput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SegmentSet: List of full speech recognition segments.
+        :type SegmentSet: list of AiRecognitionTaskAsrFullTextSegmentItem
+        :param SubtitlePath: Subtitles file address.
+        :type SubtitlePath: str
+        :param OutputStorage: Subtitles file storage location.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
-        :param SegmentSet: List of full speech recognition segments.\n        :type SegmentSet: list of AiRecognitionTaskAsrFullTextSegmentItem\n        :param SubtitlePath: Subtitles file address.\n        :type SubtitlePath: str\n        :param OutputStorage: Subtitles file storage location.\n        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`\n        """
         self.SegmentSet = None
         self.SubtitlePath = None
         self.OutputStorage = None
@@ -947,8 +1171,16 @@ class AiRecognitionTaskAsrFullTextSegmentItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Confidence: Confidence of a recognition segment. Value range: 0-100.
+        :type Confidence: float
+        :param StartTimeOffset: Start time offset of a recognition segment in seconds.
+        :type StartTimeOffset: float
+        :param EndTimeOffset: End time offset of a recognition segment in seconds.
+        :type EndTimeOffset: float
+        :param Text: Recognized text.
+        :type Text: str
         """
-        :param Confidence: Confidence of a recognition segment. Value range: 0-100.\n        :type Confidence: float\n        :param StartTimeOffset: Start time offset of a recognition segment in seconds.\n        :type StartTimeOffset: float\n        :param EndTimeOffset: End time offset of a recognition segment in seconds.\n        :type EndTimeOffset: float\n        :param Text: Recognized text.\n        :type Text: str\n        """
         self.Confidence = None
         self.StartTimeOffset = None
         self.EndTimeOffset = None
@@ -975,9 +1207,21 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input information of a speech keyword recognition task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrWordsResultInput`
+        :param Output: Output information of a speech keyword recognition task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrWordsResultOutput`
         """
-        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.\n        :type Status: str\n        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).\n        :type ErrCodeExt: str\n        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.\n        :type ErrCode: int\n        :param Message: Error message.\n        :type Message: str\n        :param Input: Input information of a speech keyword recognition task.\n        :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrWordsResultInput`\n        :param Output: Output information of a speech keyword recognition task.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrWordsResultOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -1012,8 +1256,10 @@ class AiRecognitionTaskAsrWordsResultInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Speech keyword recognition template ID.
+        :type Definition: int
         """
-        :param Definition: Speech keyword recognition template ID.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -1034,8 +1280,12 @@ class AiRecognitionTaskAsrWordsResultItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Word: Speech keyword.
+        :type Word: str
+        :param SegmentSet: List of time segments that contain the speech keyword.
+        :type SegmentSet: list of AiRecognitionTaskAsrWordsSegmentItem
         """
-        :param Word: Speech keyword.\n        :type Word: str\n        :param SegmentSet: List of time segments that contain the speech keyword.\n        :type SegmentSet: list of AiRecognitionTaskAsrWordsSegmentItem\n        """
         self.Word = None
         self.SegmentSet = None
 
@@ -1063,8 +1313,10 @@ class AiRecognitionTaskAsrWordsResultOutput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResultSet: Speech keyword recognition result set.
+        :type ResultSet: list of AiRecognitionTaskAsrWordsResultItem
         """
-        :param ResultSet: Speech keyword recognition result set.\n        :type ResultSet: list of AiRecognitionTaskAsrWordsResultItem\n        """
         self.ResultSet = None
 
 
@@ -1090,8 +1342,14 @@ class AiRecognitionTaskAsrWordsSegmentItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StartTimeOffset: Start time offset of a recognition segment in seconds.
+        :type StartTimeOffset: float
+        :param EndTimeOffset: End time offset of a recognition segment in seconds.
+        :type EndTimeOffset: float
+        :param Confidence: Confidence of a recognition segment. Value range: 0-100.
+        :type Confidence: float
         """
-        :param StartTimeOffset: Start time offset of a recognition segment in seconds.\n        :type StartTimeOffset: float\n        :param EndTimeOffset: End time offset of a recognition segment in seconds.\n        :type EndTimeOffset: float\n        :param Confidence: Confidence of a recognition segment. Value range: 0-100.\n        :type Confidence: float\n        """
         self.StartTimeOffset = None
         self.EndTimeOffset = None
         self.Confidence = None
@@ -1116,9 +1374,21 @@ class AiRecognitionTaskFaceResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input information of a face recognition task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskFaceResultInput`
+        :param Output: Output information of a face recognition task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskFaceResultOutput`
         """
-        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.\n        :type Status: str\n        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).\n        :type ErrCodeExt: str\n        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.\n        :type ErrCode: int\n        :param Message: Error message.\n        :type Message: str\n        :param Input: Input information of a face recognition task.\n        :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskFaceResultInput`\n        :param Output: Output information of a face recognition task.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskFaceResultOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -1153,8 +1423,10 @@ class AiRecognitionTaskFaceResultInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Face recognition template ID.
+        :type Definition: int
         """
-        :param Definition: Face recognition template ID.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -1175,10 +1447,18 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Id: Unique ID of a figure.\n        :type Id: str\n        :param Type: Figure library type, indicating to which figure library the recognized figure belongs:
+        r"""
+        :param Id: Unique ID of a figure.
+        :type Id: str
+        :param Type: Figure library type, indicating to which figure library the recognized figure belongs:
 <li>Default: Default figure library;</li>
-<li>UserDefine: Custom figure library.</li>\n        :type Type: str\n        :param Name: Name of a figure.\n        :type Name: str\n        :param SegmentSet: Result set of segments that contain a figure.\n        :type SegmentSet: list of AiRecognitionTaskFaceSegmentItem\n        """
+<li>UserDefine: Custom figure library.</li>
+        :type Type: str
+        :param Name: Name of a figure.
+        :type Name: str
+        :param SegmentSet: Result set of segments that contain a figure.
+        :type SegmentSet: list of AiRecognitionTaskFaceSegmentItem
+        """
         self.Id = None
         self.Type = None
         self.Name = None
@@ -1210,8 +1490,10 @@ class AiRecognitionTaskFaceResultOutput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResultSet: Intelligent face recognition result set.
+        :type ResultSet: list of AiRecognitionTaskFaceResultItem
         """
-        :param ResultSet: Intelligent face recognition result set.\n        :type ResultSet: list of AiRecognitionTaskFaceResultItem\n        """
         self.ResultSet = None
 
 
@@ -1237,8 +1519,16 @@ class AiRecognitionTaskFaceSegmentItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StartTimeOffset: Start time offset of a recognition segment in seconds.
+        :type StartTimeOffset: float
+        :param EndTimeOffset: End time offset of a recognition segment in seconds.
+        :type EndTimeOffset: float
+        :param Confidence: Confidence of a recognition segment. Value range: 0-100.
+        :type Confidence: float
+        :param AreaCoordSet: Zone coordinates of a recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
+        :type AreaCoordSet: list of int
         """
-        :param StartTimeOffset: Start time offset of a recognition segment in seconds.\n        :type StartTimeOffset: float\n        :param EndTimeOffset: End time offset of a recognition segment in seconds.\n        :type EndTimeOffset: float\n        :param Confidence: Confidence of a recognition segment. Value range: 0-100.\n        :type Confidence: float\n        :param AreaCoordSet: Zone coordinates of a recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.\n        :type AreaCoordSet: list of int\n        """
         self.StartTimeOffset = None
         self.EndTimeOffset = None
         self.Confidence = None
@@ -1265,8 +1555,10 @@ class AiRecognitionTaskInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Intelligent video recognition template ID.
+        :type Definition: int
         """
-        :param Definition: Intelligent video recognition template ID.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -1287,9 +1579,21 @@ class AiRecognitionTaskOcrFullTextResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input information of a full text recognition task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrFullTextResultInput`
+        :param Output: Output information of a full text recognition task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrFullTextResultOutput`
         """
-        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.\n        :type Status: str\n        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).\n        :type ErrCodeExt: str\n        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.\n        :type ErrCode: int\n        :param Message: Error message.\n        :type Message: str\n        :param Input: Input information of a full text recognition task.\n        :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrFullTextResultInput`\n        :param Output: Output information of a full text recognition task.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrFullTextResultOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -1324,8 +1628,10 @@ class AiRecognitionTaskOcrFullTextResultInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Full text recognition template ID.
+        :type Definition: int
         """
-        :param Definition: Full text recognition template ID.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -1346,8 +1652,10 @@ class AiRecognitionTaskOcrFullTextResultOutput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SegmentSet: Full text recognition result set.
+        :type SegmentSet: list of AiRecognitionTaskOcrFullTextSegmentItem
         """
-        :param SegmentSet: Full text recognition result set.\n        :type SegmentSet: list of AiRecognitionTaskOcrFullTextSegmentItem\n        """
         self.SegmentSet = None
 
 
@@ -1373,8 +1681,14 @@ class AiRecognitionTaskOcrFullTextSegmentItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StartTimeOffset: Start time offset of a recognition segment in seconds.
+        :type StartTimeOffset: float
+        :param EndTimeOffset: End time offset of a recognition segment in seconds.
+        :type EndTimeOffset: float
+        :param TextSet: Recognition segment result set.
+        :type TextSet: list of AiRecognitionTaskOcrFullTextSegmentTextItem
         """
-        :param StartTimeOffset: Start time offset of a recognition segment in seconds.\n        :type StartTimeOffset: float\n        :param EndTimeOffset: End time offset of a recognition segment in seconds.\n        :type EndTimeOffset: float\n        :param TextSet: Recognition segment result set.\n        :type TextSet: list of AiRecognitionTaskOcrFullTextSegmentTextItem\n        """
         self.StartTimeOffset = None
         self.EndTimeOffset = None
         self.TextSet = None
@@ -1404,8 +1718,14 @@ class AiRecognitionTaskOcrFullTextSegmentTextItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Confidence: Confidence of a recognition segment. Value range: 0-100.
+        :type Confidence: float
+        :param AreaCoordSet: Zone coordinates of a recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
+        :type AreaCoordSet: list of int
+        :param Text: Recognized text.
+        :type Text: str
         """
-        :param Confidence: Confidence of a recognition segment. Value range: 0-100.\n        :type Confidence: float\n        :param AreaCoordSet: Zone coordinates of a recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.\n        :type AreaCoordSet: list of int\n        :param Text: Recognized text.\n        :type Text: str\n        """
         self.Confidence = None
         self.AreaCoordSet = None
         self.Text = None
@@ -1430,9 +1750,21 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input information of a text keyword recognition task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrWordsResultInput`
+        :param Output: Output information of a text keyword recognition task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrWordsResultOutput`
         """
-        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.\n        :type Status: str\n        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).\n        :type ErrCodeExt: str\n        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.\n        :type ErrCode: int\n        :param Message: Error message.\n        :type Message: str\n        :param Input: Input information of a text keyword recognition task.\n        :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrWordsResultInput`\n        :param Output: Output information of a text keyword recognition task.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrWordsResultOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -1467,8 +1799,10 @@ class AiRecognitionTaskOcrWordsResultInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Text keyword recognition template ID.
+        :type Definition: int
         """
-        :param Definition: Text keyword recognition template ID.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -1489,8 +1823,12 @@ class AiRecognitionTaskOcrWordsResultItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Word: Text keyword.
+        :type Word: str
+        :param SegmentSet: List of segments that contain a text keyword.
+        :type SegmentSet: list of AiRecognitionTaskOcrWordsSegmentItem
         """
-        :param Word: Text keyword.\n        :type Word: str\n        :param SegmentSet: List of segments that contain a text keyword.\n        :type SegmentSet: list of AiRecognitionTaskOcrWordsSegmentItem\n        """
         self.Word = None
         self.SegmentSet = None
 
@@ -1518,8 +1856,10 @@ class AiRecognitionTaskOcrWordsResultOutput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResultSet: Text keyword recognition result set.
+        :type ResultSet: list of AiRecognitionTaskOcrWordsResultItem
         """
-        :param ResultSet: Text keyword recognition result set.\n        :type ResultSet: list of AiRecognitionTaskOcrWordsResultItem\n        """
         self.ResultSet = None
 
 
@@ -1545,8 +1885,16 @@ class AiRecognitionTaskOcrWordsSegmentItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StartTimeOffset: Start time offset of a recognition segment in seconds.
+        :type StartTimeOffset: float
+        :param EndTimeOffset: End time offset of a recognition segment in seconds.
+        :type EndTimeOffset: float
+        :param Confidence: Confidence of a recognition segment. Value range: 0-100.
+        :type Confidence: float
+        :param AreaCoordSet: Zone coordinates of a recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
+        :type AreaCoordSet: list of int
         """
-        :param StartTimeOffset: Start time offset of a recognition segment in seconds.\n        :type StartTimeOffset: float\n        :param EndTimeOffset: End time offset of a recognition segment in seconds.\n        :type EndTimeOffset: float\n        :param Confidence: Confidence of a recognition segment. Value range: 0-100.\n        :type Confidence: float\n        :param AreaCoordSet: Zone coordinates of a recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.\n        :type AreaCoordSet: list of int\n        """
         self.StartTimeOffset = None
         self.EndTimeOffset = None
         self.Confidence = None
@@ -1573,8 +1921,10 @@ class AiReviewPoliticalAsrTaskInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: ID of a politically sensitive information detection template.
+        :type Definition: int
         """
-        :param Definition: ID of a politically sensitive information detection template.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -1595,11 +1945,17 @@ class AiReviewPoliticalAsrTaskOutput(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Confidence: Score of the ASR-detected politically sensitive information in text from 0 to 100.\n        :type Confidence: float\n        :param Suggestion: Suggestion for the ASR-detected politically sensitive information in text. Valid values:
+        r"""
+        :param Confidence: Score of the ASR-detected politically sensitive information in text from 0 to 100.
+        :type Confidence: float
+        :param Suggestion: Suggestion for the ASR-detected politically sensitive information in text. Valid values:
 <li>pass.</li>
 <li>review.</li>
-<li>block.</li>\n        :type Suggestion: str\n        :param SegmentSet: List of video segments that contain ASR-detected politically sensitive information in text.\n        :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem\n        """
+<li>block.</li>
+        :type Suggestion: str
+        :param SegmentSet: List of video segments that contain ASR-detected politically sensitive information in text.
+        :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
+        """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
@@ -1629,8 +1985,10 @@ class AiReviewPoliticalOcrTaskInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: ID of a politically sensitive information detection template.
+        :type Definition: int
         """
-        :param Definition: ID of a politically sensitive information detection template.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -1651,11 +2009,17 @@ class AiReviewPoliticalOcrTaskOutput(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Confidence: Score of the OCR-detected politically sensitive information in text from 0 to 100.\n        :type Confidence: float\n        :param Suggestion: Suggestion for the OCR-detected politically sensitive information in text. Valid values:
+        r"""
+        :param Confidence: Score of the OCR-detected politically sensitive information in text from 0 to 100.
+        :type Confidence: float
+        :param Suggestion: Suggestion for the OCR-detected politically sensitive information in text. Valid values:
 <li>pass.</li>
 <li>review.</li>
-<li>block.</li>\n        :type Suggestion: str\n        :param SegmentSet: List of video segments that contain OCR-detected politically sensitive information in text.\n        :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem\n        """
+<li>block.</li>
+        :type Suggestion: str
+        :param SegmentSet: List of video segments that contain OCR-detected politically sensitive information in text.
+        :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
+        """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
@@ -1685,8 +2049,10 @@ class AiReviewPoliticalTaskInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: ID of a politically sensitive information detection template.
+        :type Definition: int
         """
-        :param Definition: ID of a politically sensitive information detection template.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -1707,15 +2073,23 @@ class AiReviewPoliticalTaskOutput(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Confidence: Score of the detected politically sensitive information in video from 0 to 100.\n        :type Confidence: float\n        :param Suggestion: Suggestion for the detected politically sensitive information. Valid values:
+        r"""
+        :param Confidence: Score of the detected politically sensitive information in video from 0 to 100.
+        :type Confidence: float
+        :param Suggestion: Suggestion for the detected politically sensitive information. Valid values:
 <li>pass.</li>
 <li>review.</li>
-<li>block.</li>\n        :type Suggestion: str\n        :param Label: Tags for the results of video politically sensitive information detection. The relationship between the `LabelSet` parameter in the content audit template [controlling tasks of video politically sensitive information detection](https://intl.cloud.tencent.com/document/api/862/37615?from_cn_redirect=1#AiReviewPoliticalTaskOutput) and this parameter is as follows:
+<li>block.</li>
+        :type Suggestion: str
+        :param Label: Tags for the results of video politically sensitive information detection. The relationship between the `LabelSet` parameter in the content audit template [controlling tasks of video politically sensitive information detection](https://intl.cloud.tencent.com/document/api/862/37615?from_cn_redirect=1#AiReviewPoliticalTaskOutput) and this parameter is as follows:
 violation_photo:
 <li>violation_photo: violating photo.</li>
 Other values (politician/entertainment/sport/entrepreneur/scholar/celebrity/military):
-<li>politician: political figure.</li>\n        :type Label: str\n        :param SegmentSet: List of video segments that contain the detected politically sensitive information.\n        :type SegmentSet: list of MediaContentReviewPoliticalSegmentItem\n        """
+<li>politician: political figure.</li>
+        :type Label: str
+        :param SegmentSet: List of video segments that contain the detected politically sensitive information.
+        :type SegmentSet: list of MediaContentReviewPoliticalSegmentItem
+        """
         self.Confidence = None
         self.Suggestion = None
         self.Label = None
@@ -1747,8 +2121,10 @@ class AiReviewPornAsrTaskInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: ID of a porn information detection template.
+        :type Definition: int
         """
-        :param Definition: ID of a porn information detection template.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -1769,11 +2145,17 @@ class AiReviewPornAsrTaskOutput(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Confidence: Score of the ASR-detected porn information in text from 0 to 100.\n        :type Confidence: float\n        :param Suggestion: Suggestion for the ASR-detected porn information in text. Valid values:
+        r"""
+        :param Confidence: Score of the ASR-detected porn information in text from 0 to 100.
+        :type Confidence: float
+        :param Suggestion: Suggestion for the ASR-detected porn information in text. Valid values:
 <li>pass.</li>
 <li>review.</li>
-<li>block.</li>\n        :type Suggestion: str\n        :param SegmentSet: List of video segments that contain the ASR-detected porn information in text.\n        :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem\n        """
+<li>block.</li>
+        :type Suggestion: str
+        :param SegmentSet: List of video segments that contain the ASR-detected porn information in text.
+        :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
+        """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
@@ -1803,8 +2185,10 @@ class AiReviewPornOcrTaskInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: ID of a porn information detection template.
+        :type Definition: int
         """
-        :param Definition: ID of a porn information detection template.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -1825,11 +2209,17 @@ class AiReviewPornOcrTaskOutput(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Confidence: Score of the OCR-detected porn information in text from 0 to 100.\n        :type Confidence: float\n        :param Suggestion: Suggestion for the OCR-detected porn information in text. Valid values:
+        r"""
+        :param Confidence: Score of the OCR-detected porn information in text from 0 to 100.
+        :type Confidence: float
+        :param Suggestion: Suggestion for the OCR-detected porn information in text. Valid values:
 <li>pass.</li>
 <li>review.</li>
-<li>block.</li>\n        :type Suggestion: str\n        :param SegmentSet: List of video segments that contain the OCR-detected porn information in text.\n        :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem\n        """
+<li>block.</li>
+        :type Suggestion: str
+        :param SegmentSet: List of video segments that contain the OCR-detected porn information in text.
+        :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
+        """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
@@ -1859,8 +2249,10 @@ class AiReviewPornTaskInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: ID of a porn information detection template.
+        :type Definition: int
         """
-        :param Definition: ID of a porn information detection template.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -1881,15 +2273,23 @@ class AiReviewPornTaskOutput(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Confidence: Score of the detected porn information in video from 0 to 100.\n        :type Confidence: float\n        :param Suggestion: Suggestion for the detected porn information. Valid values:
+        r"""
+        :param Confidence: Score of the detected porn information in video from 0 to 100.
+        :type Confidence: float
+        :param Suggestion: Suggestion for the detected porn information. Valid values:
 <li>pass.</li>
 <li>review.</li>
-<li>block.</li>\n        :type Suggestion: str\n        :param Label: Tag of the detected porn information in video. Valid values:
+<li>block.</li>
+        :type Suggestion: str
+        :param Label: Tag of the detected porn information in video. Valid values:
 <li>porn: Porn.</li>
 <li>sexy: Sexiness.</li>
 <li>vulgar: Vulgarity.</li>
-<li>intimacy: Intimacy.</li>\n        :type Label: str\n        :param SegmentSet: List of video segments that contain the detected porn information.\n        :type SegmentSet: list of MediaContentReviewSegmentItem\n        """
+<li>intimacy: Intimacy.</li>
+        :type Label: str
+        :param SegmentSet: List of video segments that contain the detected porn information.
+        :type SegmentSet: list of MediaContentReviewSegmentItem
+        """
         self.Confidence = None
         self.Suggestion = None
         self.Label = None
@@ -1921,8 +2321,10 @@ class AiReviewProhibitedAsrTaskInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Prohibited information detection template ID.
+        :type Definition: int
         """
-        :param Definition: Prohibited information detection template ID.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -1943,11 +2345,17 @@ class AiReviewProhibitedAsrTaskOutput(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Confidence: Score of ASR-detected prohibited information in speech between 0 and 100.\n        :type Confidence: float\n        :param Suggestion: Suggestion for ASR-detected prohibited information in speech. Valid values:
+        r"""
+        :param Confidence: Score of ASR-detected prohibited information in speech between 0 and 100.
+        :type Confidence: float
+        :param Suggestion: Suggestion for ASR-detected prohibited information in speech. Valid values:
 <li>pass.</li>
 <li>review.</li>
-<li>block.</li>\n        :type Suggestion: str\n        :param SegmentSet: List of video segments that contain the ASR-detected prohibited information in speech.\n        :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem\n        """
+<li>block.</li>
+        :type Suggestion: str
+        :param SegmentSet: List of video segments that contain the ASR-detected prohibited information in speech.
+        :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
+        """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
@@ -1977,8 +2385,10 @@ class AiReviewProhibitedOcrTaskInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Prohibited information detection template ID.
+        :type Definition: int
         """
-        :param Definition: Prohibited information detection template ID.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -1999,11 +2409,17 @@ class AiReviewProhibitedOcrTaskOutput(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Confidence: Score of OCR-detected prohibited information in text between 0 and 100.\n        :type Confidence: float\n        :param Suggestion: Suggestion for OCR-detected prohibited information in text. Valid values:
+        r"""
+        :param Confidence: Score of OCR-detected prohibited information in text between 0 and 100.
+        :type Confidence: float
+        :param Suggestion: Suggestion for OCR-detected prohibited information in text. Valid values:
 <li>pass.</li>
 <li>review.</li>
-<li>block.</li>\n        :type Suggestion: str\n        :param SegmentSet: List of video segments that contain the OCR-detected prohibited information in text.\n        :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem\n        """
+<li>block.</li>
+        :type Suggestion: str
+        :param SegmentSet: List of video segments that contain the OCR-detected prohibited information in text.
+        :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
+        """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
@@ -2033,9 +2449,21 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see the list of [Error Codes](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input for an ASR-based politically sensitive information detection in text task during content audit.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalAsrTaskInput`
+        :param Output: Output of an ASR-based politically sensitive information detection in text task during content audit.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalAsrTaskOutput`
         """
-        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.\n        :type Status: str\n        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see the list of [Error Codes](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).\n        :type ErrCodeExt: str\n        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.\n        :type ErrCode: int\n        :param Message: Error message.\n        :type Message: str\n        :param Input: Input for an ASR-based politically sensitive information detection in text task during content audit.\n        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalAsrTaskInput`\n        :param Output: Output of an ASR-based politically sensitive information detection in text task during content audit.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalAsrTaskOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -2070,10 +2498,22 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :type ErrCode: int
+        :param Message: Error message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Message: str
+        :param Input: Input for an OCR-based politically sensitive information detection in text task during content audit.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalOcrTaskInput`
+        :param Output: Output of an OCR-based politically sensitive information detection in text task during content audit.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalOcrTaskOutput`
         """
-        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.\n        :type Status: str\n        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).\n        :type ErrCodeExt: str\n        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.\n        :type ErrCode: int\n        :param Message: Error message.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Message: str\n        :param Input: Input for an OCR-based politically sensitive information detection in text task during content audit.\n        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalOcrTaskInput`\n        :param Output: Output of an OCR-based politically sensitive information detection in text task during content audit.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalOcrTaskOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -2108,9 +2548,21 @@ class AiReviewTaskPoliticalResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input for a politically sensitive information detection task during content audit.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalTaskInput`
+        :param Output: Output of a politically sensitive information detection task during content audit.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalTaskOutput`
         """
-        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.\n        :type Status: str\n        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).\n        :type ErrCodeExt: str\n        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.\n        :type ErrCode: int\n        :param Message: Error message.\n        :type Message: str\n        :param Input: Input for a politically sensitive information detection task during content audit.\n        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalTaskInput`\n        :param Output: Output of a politically sensitive information detection task during content audit.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalTaskOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -2145,9 +2597,21 @@ class AiReviewTaskPornAsrResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input for an ASR-based porn information detection in text task during content audit.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPornAsrTaskInput`
+        :param Output: Output of an ASR-based porn information detection in text task during content audit.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPornAsrTaskOutput`
         """
-        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.\n        :type Status: str\n        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).\n        :type ErrCodeExt: str\n        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.\n        :type ErrCode: int\n        :param Message: Error message.\n        :type Message: str\n        :param Input: Input for an ASR-based porn information detection in text task during content audit.\n        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPornAsrTaskInput`\n        :param Output: Output of an ASR-based porn information detection in text task during content audit.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPornAsrTaskOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -2182,9 +2646,21 @@ class AiReviewTaskPornOcrResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input for an OCR-based porn information detection in text task during content audit.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPornOcrTaskInput`
+        :param Output: Output of an OCR-based porn information detection in text task during content audit.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPornOcrTaskOutput`
         """
-        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.\n        :type Status: str\n        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).\n        :type ErrCodeExt: str\n        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.\n        :type ErrCode: int\n        :param Message: Error message.\n        :type Message: str\n        :param Input: Input for an OCR-based porn information detection in text task during content audit.\n        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPornOcrTaskInput`\n        :param Output: Output of an OCR-based porn information detection in text task during content audit.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPornOcrTaskOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -2219,10 +2695,22 @@ class AiReviewTaskPornResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :type ErrCode: int
+        :param Message: Error message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Message: str
+        :param Input: Input for a porn information detection task during content audit.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPornTaskInput`
+        :param Output: Output of a porn information detection task during content audit.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPornTaskOutput`
         """
-        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.\n        :type Status: str\n        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).\n        :type ErrCodeExt: str\n        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.\n        :type ErrCode: int\n        :param Message: Error message.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Message: str\n        :param Input: Input for a porn information detection task during content audit.\n        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPornTaskInput`\n        :param Output: Output of a porn information detection task during content audit.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPornTaskOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -2257,11 +2745,23 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.\n        :type Status: str\n        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).\n        :type ErrCodeExt: str\n        :param ErrCode: Error code. 0: success; other values: failure.
+        r"""
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0: success; other values: failure.
 <li>40000: invalid input parameter. Please check it;</li>
 <li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: internal service error. Please try again.</li>\n        :type ErrCode: int\n        :param Message: Error message.\n        :type Message: str\n        :param Input: Input of ASR-based prohibited information detection in speech task in content audit\n        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedAsrTaskInput`\n        :param Output: Output of ASR-based prohibited information detection in speech task in content audit\n        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedAsrTaskOutput`\n        """
+<li>70000: internal service error. Please try again.</li>
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input of ASR-based prohibited information detection in speech task in content audit
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedAsrTaskInput`
+        :param Output: Output of ASR-based prohibited information detection in speech task in content audit
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedAsrTaskOutput`
+        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -2296,11 +2796,23 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.\n        :type Status: str\n        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).\n        :type ErrCodeExt: str\n        :param ErrCode: Error code. 0: success; other values: failure.
+        r"""
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0: success; other values: failure.
 <li>40000: invalid input parameter. Please check it;</li>
 <li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: internal service error. Please try again.</li>\n        :type ErrCode: int\n        :param Message: Error message.\n        :type Message: str\n        :param Input: Input of OCR-based prohibited information detection in text task in content audit\n        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedOcrTaskInput`\n        :param Output: Output of OCR-based prohibited information detection in text task in content audit\n        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedOcrTaskOutput`\n        """
+<li>70000: internal service error. Please try again.</li>
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input of OCR-based prohibited information detection in text task in content audit
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedOcrTaskInput`
+        :param Output: Output of OCR-based prohibited information detection in text task in content audit
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedOcrTaskOutput`
+        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -2335,11 +2847,23 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.\n        :type Status: str\n        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).\n        :type ErrCodeExt: str\n        :param ErrCode: Error code. 0: success; other values: failure.
+        r"""
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0: success; other values: failure.
 <li>40000: invalid input parameter. Please check it;</li>
 <li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: internal service error. Please try again.</li>\n        :type ErrCode: int\n        :param Message: Error message.\n        :type Message: str\n        :param Input: Input of OCR-based terrorism information detection in text task in content audit.\n        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismOcrTaskInput`\n        :param Output: Output of OCR-based terrorism information detection in text task in content audit.\n        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismOcrTaskOutput`\n        """
+<li>70000: internal service error. Please try again.</li>
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input of OCR-based terrorism information detection in text task in content audit.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismOcrTaskInput`
+        :param Output: Output of OCR-based terrorism information detection in text task in content audit.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismOcrTaskOutput`
+        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -2374,9 +2898,21 @@ class AiReviewTaskTerrorismResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input for a terrorism information detection task during content audit.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismTaskInput`
+        :param Output: Output of a terrorism information detection task during content audit.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismTaskOutput`
         """
-        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.\n        :type Status: str\n        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).\n        :type ErrCodeExt: str\n        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.\n        :type ErrCode: int\n        :param Message: Error message.\n        :type Message: str\n        :param Input: Input for a terrorism information detection task during content audit.\n        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismTaskInput`\n        :param Output: Output of a terrorism information detection task during content audit.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismTaskOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -2411,8 +2947,10 @@ class AiReviewTerrorismOcrTaskInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Terrorism information detection template ID.
+        :type Definition: int
         """
-        :param Definition: Terrorism information detection template ID.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -2433,11 +2971,17 @@ class AiReviewTerrorismOcrTaskOutput(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Confidence: Score of OCR-detected terrorism information in text between 0 and 100.\n        :type Confidence: float\n        :param Suggestion: Suggestion for OCR-detected terrorism information in text. Valid values:
+        r"""
+        :param Confidence: Score of OCR-detected terrorism information in text between 0 and 100.
+        :type Confidence: float
+        :param Suggestion: Suggestion for OCR-detected terrorism information in text. Valid values:
 <li>pass.</li>
 <li>review.</li>
-<li>block.</li>\n        :type Suggestion: str\n        :param SegmentSet: List of video segments that contain OCR-detected terrorism information in text.\n        :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem\n        """
+<li>block.</li>
+        :type Suggestion: str
+        :param SegmentSet: List of video segments that contain OCR-detected terrorism information in text.
+        :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
+        """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
@@ -2467,8 +3011,10 @@ class AiReviewTerrorismTaskInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: ID of a terrorism information detection template.
+        :type Definition: int
         """
-        :param Definition: ID of a terrorism information detection template.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -2489,11 +3035,15 @@ class AiReviewTerrorismTaskOutput(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Confidence: Score of the detected terrorism information in a video from 0 to 100.\n        :type Confidence: float\n        :param Suggestion: Suggestion for the detected terrorism information. Valid values:
+        r"""
+        :param Confidence: Score of the detected terrorism information in a video from 0 to 100.
+        :type Confidence: float
+        :param Suggestion: Suggestion for the detected terrorism information. Valid values:
 <li>pass.</li>
 <li>review.</li>
-<li>block.</li>\n        :type Suggestion: str\n        :param Label: Tags for detected terrorism information in a video. Valid values:
+<li>block.</li>
+        :type Suggestion: str
+        :param Label: Tags for detected terrorism information in a video. Valid values:
 <li>`guns`: weapons and guns</li>
 <li>`crowd`: crowds</li>
 <li>`police`: police forces</li>
@@ -2502,7 +3052,11 @@ class AiReviewTerrorismTaskOutput(AbstractModel):
 <li>`militant`: militants</li>
 <li>`explosion`: explosions and fires</li>
 <li>`terrorists`: terrorists</li>
-<li>`scenario`: terrorism images</li>\n        :type Label: str\n        :param SegmentSet: List of video segments that contain the detected terrorism information.\n        :type SegmentSet: list of MediaContentReviewSegmentItem\n        """
+<li>`scenario`: terrorism images</li>
+        :type Label: str
+        :param SegmentSet: List of video segments that contain the detected terrorism information.
+        :type SegmentSet: list of MediaContentReviewSegmentItem
+        """
         self.Confidence = None
         self.Suggestion = None
         self.Label = None
@@ -2534,8 +3088,12 @@ class AiSampleFaceInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FaceId: Face image ID.
+        :type FaceId: str
+        :param Url: Face image address.
+        :type Url: str
         """
-        :param FaceId: Face image ID.\n        :type FaceId: str\n        :param Url: Face image address.\n        :type Url: str\n        """
         self.FaceId = None
         self.Url = None
 
@@ -2558,11 +3116,17 @@ class AiSampleFaceOperation(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Type: Operation type. Valid values: add, delete, reset. The `reset` operation will clear the existing face data of a figure and add `FaceContents` as the specified face data.\n        :type Type: str\n        :param FaceIds: Face ID set. This field is required when `Type` is `delete`.\n        :type FaceIds: list of str\n        :param FaceContents: String set generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) the face image.
+        r"""
+        :param Type: Operation type. Valid values: add, delete, reset. The `reset` operation will clear the existing face data of a figure and add `FaceContents` as the specified face data.
+        :type Type: str
+        :param FaceIds: Face ID set. This field is required when `Type` is `delete`.
+        :type FaceIds: list of str
+        :param FaceContents: String set generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) the face image.
 <li>This field is required when `Type` is `add` or `reset`;</li>
 <li>Array length limit: 5 images.</li>
-Note: The image must be a relatively clear full-face photo of a figure in at least 200 * 200 px.\n        :type FaceContents: list of str\n        """
+Note: The image must be a relatively clear full-face photo of a figure in at least 200 * 200 px.
+        :type FaceContents: list of str
+        """
         self.Type = None
         self.FaceIds = None
         self.FaceContents = None
@@ -2587,10 +3151,16 @@ class AiSampleFailFaceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Index: Corresponds to incorrect image subscripts in the `FaceContents` input parameter, starting from 0.\n        :type Index: int\n        :param ErrCode: Error code. Valid values:
+        r"""
+        :param Index: Corresponds to incorrect image subscripts in the `FaceContents` input parameter, starting from 0.
+        :type Index: int
+        :param ErrCode: Error code. Valid values:
 <li>0: Succeeded;</li>
-<li>Other values: Failed.</li>\n        :type ErrCode: int\n        :param Message: Error description.\n        :type Message: str\n        """
+<li>Other values: Failed.</li>
+        :type ErrCode: int
+        :param Message: Error description.
+        :type Message: str
+        """
         self.Index = None
         self.ErrCode = None
         self.Message = None
@@ -2615,8 +3185,24 @@ class AiSamplePerson(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PersonId: Figure ID.
+        :type PersonId: str
+        :param Name: Name of a figure.
+        :type Name: str
+        :param Description: Figure description.
+        :type Description: str
+        :param FaceInfoSet: Face information.
+        :type FaceInfoSet: list of AiSampleFaceInfo
+        :param TagSet: Figure tag.
+        :type TagSet: list of str
+        :param UsageSet: Use case.
+        :type UsageSet: list of str
+        :param CreateTime: Creation time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type CreateTime: str
+        :param UpdateTime: Last modified time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type UpdateTime: str
         """
-        :param PersonId: Figure ID.\n        :type PersonId: str\n        :param Name: Name of a figure.\n        :type Name: str\n        :param Description: Figure description.\n        :type Description: str\n        :param FaceInfoSet: Face information.\n        :type FaceInfoSet: list of AiSampleFaceInfo\n        :param TagSet: Figure tag.\n        :type TagSet: list of str\n        :param UsageSet: Use case.\n        :type UsageSet: list of str\n        :param CreateTime: Creation time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type CreateTime: str\n        :param UpdateTime: Last modified time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type UpdateTime: str\n        """
         self.PersonId = None
         self.Name = None
         self.Description = None
@@ -2656,8 +3242,12 @@ class AiSampleTagOperation(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Type: Operation type. Valid values: add, delete, reset.
+        :type Type: str
+        :param Tags: Tag. Length limit: 128 characters.
+        :type Tags: list of str
         """
-        :param Type: Operation type. Valid values: add, delete, reset.\n        :type Type: str\n        :param Tags: Tag. Length limit: 128 characters.\n        :type Tags: list of str\n        """
         self.Type = None
         self.Tags = None
 
@@ -2680,8 +3270,18 @@ class AiSampleWord(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Keyword: Keyword.
+        :type Keyword: str
+        :param TagSet: Keyword tag.
+        :type TagSet: list of str
+        :param UsageSet: Keyword use case.
+        :type UsageSet: list of str
+        :param CreateTime: Creation time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type CreateTime: str
+        :param UpdateTime: Last modified time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type UpdateTime: str
         """
-        :param Keyword: Keyword.\n        :type Keyword: str\n        :param TagSet: Keyword tag.\n        :type TagSet: list of str\n        :param UsageSet: Keyword use case.\n        :type UsageSet: list of str\n        :param CreateTime: Creation time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type CreateTime: str\n        :param UpdateTime: Last modified time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type UpdateTime: str\n        """
         self.Keyword = None
         self.TagSet = None
         self.UsageSet = None
@@ -2710,10 +3310,14 @@ class AiSampleWordInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Keyword: Keyword. Length limit: 20 characters.\n        :type Keyword: str\n        :param Tags: Keyword tag
+        r"""
+        :param Keyword: Keyword. Length limit: 20 characters.
+        :type Keyword: str
+        :param Tags: Keyword tag
 <li>Array length limit: 20 tags;</li>
-<li>Tag length limit: 128 characters.</li>\n        :type Tags: list of str\n        """
+<li>Tag length limit: 128 characters.</li>
+        :type Tags: list of str
+        """
         self.Keyword = None
         self.Tags = None
 
@@ -2736,9 +3340,19 @@ class AnimatedGraphicTaskInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Animated image generating template ID.
+        :type Definition: int
+        :param StartTimeOffset: Start time of an animated image in a video in seconds.
+        :type StartTimeOffset: float
+        :param EndTimeOffset: End time of an animated image in a video in seconds.
+        :type EndTimeOffset: float
+        :param OutputStorage: Target bucket of a generated animated image file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param OutputObjectPath: Output path to a generated animated image file, which can be a relative path or an absolute path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_animatedGraphic_{definition}.{format}`.
+        :type OutputObjectPath: str
         """
-        :param Definition: Animated image generating template ID.\n        :type Definition: int\n        :param StartTimeOffset: Start time of an animated image in a video in seconds.\n        :type StartTimeOffset: float\n        :param EndTimeOffset: End time of an animated image in a video in seconds.\n        :type EndTimeOffset: float\n        :param OutputStorage: Target bucket of a generated animated image file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`\n        :param OutputObjectPath: Output path to a generated animated image file, which can be a relative path or an absolute path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_animatedGraphic_{definition}.{format}`.\n        :type OutputObjectPath: str\n        """
         self.Definition = None
         self.StartTimeOffset = None
         self.EndTimeOffset = None
@@ -2769,23 +3383,47 @@ class AnimatedGraphicsTemplate(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Definition: Unique ID of an animated image generating template.\n        :type Definition: int\n        :param Type: Template type. Valid values:
+        r"""
+        :param Definition: Unique ID of an animated image generating template.
+        :type Definition: int
+        :param Type: Template type. Valid values:
 <li>Preset: Preset template;</li>
-<li>Custom: Custom template.</li>\n        :type Type: str\n        :param Name: Name of an animated image generating template.\n        :type Name: str\n        :param Comment: Description of an animated image generating template.\n        :type Comment: str\n        :param Width: Maximum value of the width (or long side) of an animated image in px. Value range: 0 and [128, 4,096].
+<li>Custom: Custom template.</li>
+        :type Type: str
+        :param Name: Name of an animated image generating template.
+        :type Name: str
+        :param Comment: Description of an animated image generating template.
+        :type Comment: str
+        :param Width: Maximum value of the width (or long side) of an animated image in px. Value range: 0 and [128, 4,096].
 <li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
 <li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
 <li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
 <li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
-Default value: 0.\n        :type Width: int\n        :param Height: Maximum value of the height (or short side) of an animated image in px. Value range: 0 and [128, 4,096].
+Default value: 0.
+        :type Width: int
+        :param Height: Maximum value of the height (or short side) of an animated image in px. Value range: 0 and [128, 4,096].
 <li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
 <li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
 <li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
 <li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
-Default value: 0.\n        :type Height: int\n        :param ResolutionAdaptive: Resolution adaption. Valid values:
+Default value: 0.
+        :type Height: int
+        :param ResolutionAdaptive: Resolution adaption. Valid values:
 <li>open: Enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
 <li>close: Disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
-Default value: open.\n        :type ResolutionAdaptive: str\n        :param Format: Animated image format.\n        :type Format: str\n        :param Fps: Frame rate.\n        :type Fps: int\n        :param Quality: Image quality.\n        :type Quality: float\n        :param CreateTime: Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type CreateTime: str\n        :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type UpdateTime: str\n        """
+Default value: open.
+        :type ResolutionAdaptive: str
+        :param Format: Animated image format.
+        :type Format: str
+        :param Fps: Frame rate.
+        :type Fps: int
+        :param Quality: Image quality.
+        :type Quality: float
+        :param CreateTime: Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type CreateTime: str
+        :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type UpdateTime: str
+        """
         self.Definition = None
         self.Type = None
         self.Name = None
@@ -2828,11 +3466,15 @@ class AsrFullTextConfigureInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a full speech recognition task. Valid values:
 <li>ON: Enables an intelligent full speech recognition task;</li>
-<li>OFF: Disables an intelligent full speech recognition task.</li>\n        :type Switch: str\n        :param SubtitleFormat: Format of the generated subtitles file. If this parameter is left empty or an empty string is entered, no subtitles files will be generated. Valid value:
-<li>vtt: Generates a WebVTT subtitles file.</li>\n        :type SubtitleFormat: str\n        """
+<li>OFF: Disables an intelligent full speech recognition task.</li>
+        :type Switch: str
+        :param SubtitleFormat: Format of the generated subtitles file. If this parameter is left empty or an empty string is entered, no subtitles files will be generated. Valid value:
+<li>vtt: Generates a WebVTT subtitles file.</li>
+        :type SubtitleFormat: str
+        """
         self.Switch = None
         self.SubtitleFormat = None
 
@@ -2855,11 +3497,15 @@ class AsrFullTextConfigureInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a full speech recognition task. Valid values:
 <li>ON: Enables an intelligent full speech recognition task;</li>
-<li>OFF: Disables an intelligent full speech recognition task.</li>\n        :type Switch: str\n        :param SubtitleFormat: Format of the generated subtitles file. If an empty string is entered, no subtitles files will be generated. Valid value:
-<li>vtt: Generates a WebVTT subtitles file.</li>\n        :type SubtitleFormat: str\n        """
+<li>OFF: Disables an intelligent full speech recognition task.</li>
+        :type Switch: str
+        :param SubtitleFormat: Format of the generated subtitles file. If an empty string is entered, no subtitles files will be generated. Valid value:
+<li>vtt: Generates a WebVTT subtitles file.</li>
+        :type SubtitleFormat: str
+        """
         self.Switch = None
         self.SubtitleFormat = None
 
@@ -2882,11 +3528,15 @@ class AsrWordsConfigureInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a speech keyword recognition task. Valid values:
 <li>ON: Enables a speech keyword recognition task;</li>
-<li>OFF: Disables a speech keyword recognition task.</li>\n        :type Switch: str\n        :param LabelSet: Keyword filter tag, which specifies the keyword tag that needs to be returned. If this parameter is left empty, all results will be returned.
-There can be up to 10 tags, each with a length limit of 16 characters.\n        :type LabelSet: list of str\n        """
+<li>OFF: Disables a speech keyword recognition task.</li>
+        :type Switch: str
+        :param LabelSet: Keyword filter tag, which specifies the keyword tag that needs to be returned. If this parameter is left empty, all results will be returned.
+There can be up to 10 tags, each with a length limit of 16 characters.
+        :type LabelSet: list of str
+        """
         self.Switch = None
         self.LabelSet = None
 
@@ -2909,11 +3559,15 @@ class AsrWordsConfigureInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a speech keyword recognition task. Valid values:
 <li>ON: Enables a speech keyword recognition task;</li>
-<li>OFF: Disables a speech keyword recognition task.</li>\n        :type Switch: str\n        :param LabelSet: Keyword filter tag, which specifies the keyword tag that needs to be returned. If this parameter is left empty, all results will be returned.
-There can be up to 10 tags, each with a length limit of 16 characters.\n        :type LabelSet: list of str\n        """
+<li>OFF: Disables a speech keyword recognition task.</li>
+        :type Switch: str
+        :param LabelSet: Keyword filter tag, which specifies the keyword tag that needs to be returned. If this parameter is left empty, all results will be returned.
+There can be up to 10 tags, each with a length limit of 16 characters.
+        :type LabelSet: list of str
+        """
         self.Switch = None
         self.LabelSet = None
 
@@ -2936,7 +3590,7 @@ class AudioTemplateInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Codec: Audio stream codec.
 When the outer `Container` parameter is `mp3`, the valid value is:
 <li>libmp3lame.</li>
@@ -2951,17 +3605,25 @@ When the outer `Container` parameter is `mp4` or `flv`, the valid values include
 <li>libmp3lame: more suitable for flv.</li>
 When the outer `Container` parameter is `hls`, the valid values include:
 <li>libfdk_aac;</li>
-<li>libmp3lame.</li>\n        :type Codec: str\n        :param Bitrate: Audio stream bitrate in Kbps. Value range: 0 and [26, 256].
-If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.\n        :type Bitrate: int\n        :param SampleRate: Audio stream sample rate. Valid values:
+<li>libmp3lame.</li>
+        :type Codec: str
+        :param Bitrate: Audio stream bitrate in Kbps. Value range: 0 and [26, 256].
+If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.
+        :type Bitrate: int
+        :param SampleRate: Audio stream sample rate. Valid values:
 <li>32,000</li>
 <li>44,100</li>
 <li>48,000</li>
-In Hz.\n        :type SampleRate: int\n        :param AudioChannel: Audio channel system. Valid values:
+In Hz.
+        :type SampleRate: int
+        :param AudioChannel: Audio channel system. Valid values:
 <li>1: Mono</li>
 <li>2: Dual</li>
 <li>6: Stereo</li>
 When the media is packaged in audio format (FLAC, OGG, MP3, M4A), the sound channel cannot be set to stereo.
-Default value: 2\n        :type AudioChannel: int\n        """
+Default value: 2
+        :type AudioChannel: int
+        """
         self.Codec = None
         self.Bitrate = None
         self.SampleRate = None
@@ -2988,7 +3650,7 @@ class AudioTemplateInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Codec: Audio stream codec.
 When the outer `Container` parameter is `mp3`, the valid value is:
 <li>libmp3lame.</li>
@@ -3004,15 +3666,23 @@ When the outer `Container` parameter is `mp4` or `flv`, the valid values include
 <li>mp2.</li>
 When the outer `Container` parameter is `hls`, the valid values include:
 <li>libfdk_aac;</li>
-<li>libmp3lame.</li>\n        :type Codec: str\n        :param Bitrate: Audio stream bitrate in Kbps. Value range: 0 and [26, 256]. If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.\n        :type Bitrate: int\n        :param SampleRate: Audio stream sample rate. Valid values:
+<li>libmp3lame.</li>
+        :type Codec: str
+        :param Bitrate: Audio stream bitrate in Kbps. Value range: 0 and [26, 256]. If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.
+        :type Bitrate: int
+        :param SampleRate: Audio stream sample rate. Valid values:
 <li>32,000</li>
 <li>44,100</li>
 <li>48,000</li>
-In Hz.\n        :type SampleRate: int\n        :param AudioChannel: Audio channel system. Valid values:
+In Hz.
+        :type SampleRate: int
+        :param AudioChannel: Audio channel system. Valid values:
 <li>1: Mono</li>
 <li>2: Dual</li>
 <li>6: Stereo</li>
-When the media is packaged in audio format (FLAC, OGG, MP3, M4A), the sound channel cannot be set to stereo.\n        :type AudioChannel: int\n        """
+When the media is packaged in audio format (FLAC, OGG, MP3, M4A), the sound channel cannot be set to stereo.
+        :type AudioChannel: int
+        """
         self.Codec = None
         self.Bitrate = None
         self.SampleRate = None
@@ -3039,10 +3709,12 @@ class ClassificationConfigureInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of intelligent categorization task. Valid values:
 <li>ON: enables intelligent categorization task;</li>
-<li>OFF: disables intelligent categorization task.</li>\n        :type Switch: str\n        """
+<li>OFF: disables intelligent categorization task.</li>
+        :type Switch: str
+        """
         self.Switch = None
 
 
@@ -3063,10 +3735,12 @@ class ClassificationConfigureInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of intelligent categorization task. Valid values:
 <li>ON: enables intelligent categorization task;</li>
-<li>OFF: disables intelligent categorization task.</li>\n        :type Switch: str\n        """
+<li>OFF: disables intelligent categorization task.</li>
+        :type Switch: str
+        """
         self.Switch = None
 
 
@@ -3087,15 +3761,35 @@ class ContentReviewTemplateItem(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Definition: Unique ID of a content audit template.\n        :type Definition: int\n        :param Name: Name of a content audit template. Length limit: 64 characters.\n        :type Name: str\n        :param Comment: Description of a content audit template. Length limit: 256 characters.\n        :type Comment: str\n        :param PornConfigure: Porn information detection control parameter.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type PornConfigure: :class:`tencentcloud.mps.v20190612.models.PornConfigureInfo`\n        :param TerrorismConfigure: Terrorism information detection control parameter.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type TerrorismConfigure: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfo`\n        :param PoliticalConfigure: Politically sensitive information detection control parameter.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type PoliticalConfigure: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfo`\n        :param ProhibitedConfigure: Control parameter of prohibited information detection. Prohibited information includes:
+        r"""
+        :param Definition: Unique ID of a content audit template.
+        :type Definition: int
+        :param Name: Name of a content audit template. Length limit: 64 characters.
+        :type Name: str
+        :param Comment: Description of a content audit template. Length limit: 256 characters.
+        :type Comment: str
+        :param PornConfigure: Porn information detection control parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PornConfigure: :class:`tencentcloud.mps.v20190612.models.PornConfigureInfo`
+        :param TerrorismConfigure: Terrorism information detection control parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TerrorismConfigure: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfo`
+        :param PoliticalConfigure: Politically sensitive information detection control parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PoliticalConfigure: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfo`
+        :param ProhibitedConfigure: Control parameter of prohibited information detection. Prohibited information includes:
 <li>Abusive;</li>
 <li>Drug-related.</li>
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ProhibitedConfigure: :class:`tencentcloud.mps.v20190612.models.ProhibitedConfigureInfo`\n        :param UserDefineConfigure: Custom content audit control parameter.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type UserDefineConfigure: :class:`tencentcloud.mps.v20190612.models.UserDefineConfigureInfo`\n        :param CreateTime: Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type CreateTime: str\n        :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type UpdateTime: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ProhibitedConfigure: :class:`tencentcloud.mps.v20190612.models.ProhibitedConfigureInfo`
+        :param UserDefineConfigure: Custom content audit control parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UserDefineConfigure: :class:`tencentcloud.mps.v20190612.models.UserDefineConfigureInfo`
+        :param CreateTime: Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type CreateTime: str
+        :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type UpdateTime: str
+        """
         self.Definition = None
         self.Name = None
         self.Comment = None
@@ -3144,8 +3838,16 @@ class CosFileUploadTrigger(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Bucket: Name of the COS bucket bound to a workflow, such as `TopRankVideo-125xxx88`.
+        :type Bucket: str
+        :param Region: Region of the COS bucket bound to a workflow, such as `ap-chongiqng`.
+        :type Region: str
+        :param Dir: Input path directory bound to a workflow, such as `/movie/201907/`. If this parameter is left empty, the `/` root directory will be used.
+        :type Dir: str
+        :param Formats: Format list of files that can trigger a workflow, such as ["mp4", "flv", "mov"]. If this parameter is left empty, files in all formats can trigger the workflow.
+        :type Formats: list of str
         """
-        :param Bucket: Name of the COS bucket bound to a workflow, such as `TopRankVideo-125xxx88`.\n        :type Bucket: str\n        :param Region: Region of the COS bucket bound to a workflow, such as `ap-chongiqng`.\n        :type Region: str\n        :param Dir: Input path directory bound to a workflow, such as `/movie/201907/`. If this parameter is left empty, the `/` root directory will be used.\n        :type Dir: str\n        :param Formats: Format list of files that can trigger a workflow, such as ["mp4", "flv", "mov"]. If this parameter is left empty, files in all formats can trigger the workflow.\n        :type Formats: list of str\n        """
         self.Bucket = None
         self.Region = None
         self.Dir = None
@@ -3172,8 +3874,14 @@ class CosInputInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Bucket: Name of the COS bucket where a video processing object file is located, such as `TopRankVideo-125xxx88`.
+        :type Bucket: str
+        :param Region: Region of the COS bucket where a video processing object file is located, such as `ap-chongqing`.
+        :type Region: str
+        :param Object: Path to an input object file for video processing, such as `/movie/201907/WildAnimal.mov`.
+        :type Object: str
         """
-        :param Bucket: Name of the COS bucket where a video processing object file is located, such as `TopRankVideo-125xxx88`.\n        :type Bucket: str\n        :param Region: Region of the COS bucket where a video processing object file is located, such as `ap-chongqing`.\n        :type Region: str\n        :param Object: Path to an input object file for video processing, such as `/movie/201907/WildAnimal.mov`.\n        :type Object: str\n        """
         self.Bucket = None
         self.Region = None
         self.Object = None
@@ -3198,8 +3906,12 @@ class CosOutputStorage(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Bucket: Name of the target bucket of a video processing output file, such as `TopRankVideo-125xxx88`. If this parameter is left empty, the parameter of the upper folder will be inherited.
+        :type Bucket: str
+        :param Region: Region of the target bucket of a video processing output file, such as `ap-chongqing`. If this parameter is left empty, the parameter of the upper folder will be inherited.
+        :type Region: str
         """
-        :param Bucket: Name of the target bucket of a video processing output file, such as `TopRankVideo-125xxx88`. If this parameter is left empty, the parameter of the upper folder will be inherited.\n        :type Bucket: str\n        :param Region: Region of the target bucket of a video processing output file, such as `ap-chongqing`. If this parameter is left empty, the parameter of the upper folder will be inherited.\n        :type Region: str\n        """
         self.Bucket = None
         self.Region = None
 
@@ -3222,10 +3934,12 @@ class CoverConfigureInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of intelligent cover generating task. Valid values:
 <li>ON: enables intelligent cover generating task;</li>
-<li>OFF: disables intelligent cover generating task.</li>\n        :type Switch: str\n        """
+<li>OFF: disables intelligent cover generating task.</li>
+        :type Switch: str
+        """
         self.Switch = None
 
 
@@ -3246,10 +3960,12 @@ class CoverConfigureInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of intelligent cover generating task. Valid values:
 <li>ON: enables intelligent cover generating task;</li>
-<li>OFF: disables intelligent cover generating task.</li>\n        :type Switch: str\n        """
+<li>OFF: disables intelligent cover generating task.</li>
+        :type Switch: str
+        """
         self.Switch = None
 
 
@@ -3270,8 +3986,20 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: Video content analysis template name. Length limit: 64 characters.
+        :type Name: str
+        :param Comment: Video content analysis template description. Length limit: 256 characters.
+        :type Comment: str
+        :param ClassificationConfigure: Control parameter of intelligent categorization task.
+        :type ClassificationConfigure: :class:`tencentcloud.mps.v20190612.models.ClassificationConfigureInfo`
+        :param TagConfigure: Control parameter of intelligent tagging task.
+        :type TagConfigure: :class:`tencentcloud.mps.v20190612.models.TagConfigureInfo`
+        :param CoverConfigure: Control parameter of intelligent cover generating task.
+        :type CoverConfigure: :class:`tencentcloud.mps.v20190612.models.CoverConfigureInfo`
+        :param FrameTagConfigure: Control parameter of intelligent frame-specific tagging task.
+        :type FrameTagConfigure: :class:`tencentcloud.mps.v20190612.models.FrameTagConfigureInfo`
         """
-        :param Name: Video content analysis template name. Length limit: 64 characters.\n        :type Name: str\n        :param Comment: Video content analysis template description. Length limit: 256 characters.\n        :type Comment: str\n        :param ClassificationConfigure: Control parameter of intelligent categorization task.\n        :type ClassificationConfigure: :class:`tencentcloud.mps.v20190612.models.ClassificationConfigureInfo`\n        :param TagConfigure: Control parameter of intelligent tagging task.\n        :type TagConfigure: :class:`tencentcloud.mps.v20190612.models.TagConfigureInfo`\n        :param CoverConfigure: Control parameter of intelligent cover generating task.\n        :type CoverConfigure: :class:`tencentcloud.mps.v20190612.models.CoverConfigureInfo`\n        :param FrameTagConfigure: Control parameter of intelligent frame-specific tagging task.\n        :type FrameTagConfigure: :class:`tencentcloud.mps.v20190612.models.FrameTagConfigureInfo`\n        """
         self.Name = None
         self.Comment = None
         self.ClassificationConfigure = None
@@ -3310,8 +4038,12 @@ class CreateAIAnalysisTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Unique ID of video content analysis template.
+        :type Definition: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Definition: Unique ID of video content analysis template.\n        :type Definition: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Definition = None
         self.RequestId = None
 
@@ -3327,8 +4059,22 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: Name of a video content recognition template. Length limit: 64 characters.
+        :type Name: str
+        :param Comment: Description of a video content recognition template. Length limit: 256 characters.
+        :type Comment: str
+        :param FaceConfigure: Face recognition control parameter.
+        :type FaceConfigure: :class:`tencentcloud.mps.v20190612.models.FaceConfigureInfo`
+        :param OcrFullTextConfigure: Full text recognition control parameter.
+        :type OcrFullTextConfigure: :class:`tencentcloud.mps.v20190612.models.OcrFullTextConfigureInfo`
+        :param OcrWordsConfigure: Text keyword recognition control parameter.
+        :type OcrWordsConfigure: :class:`tencentcloud.mps.v20190612.models.OcrWordsConfigureInfo`
+        :param AsrFullTextConfigure: Full speech recognition control parameter.
+        :type AsrFullTextConfigure: :class:`tencentcloud.mps.v20190612.models.AsrFullTextConfigureInfo`
+        :param AsrWordsConfigure: Speech keyword recognition control parameter.
+        :type AsrWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrWordsConfigureInfo`
         """
-        :param Name: Name of a video content recognition template. Length limit: 64 characters.\n        :type Name: str\n        :param Comment: Description of a video content recognition template. Length limit: 256 characters.\n        :type Comment: str\n        :param FaceConfigure: Face recognition control parameter.\n        :type FaceConfigure: :class:`tencentcloud.mps.v20190612.models.FaceConfigureInfo`\n        :param OcrFullTextConfigure: Full text recognition control parameter.\n        :type OcrFullTextConfigure: :class:`tencentcloud.mps.v20190612.models.OcrFullTextConfigureInfo`\n        :param OcrWordsConfigure: Text keyword recognition control parameter.\n        :type OcrWordsConfigure: :class:`tencentcloud.mps.v20190612.models.OcrWordsConfigureInfo`\n        :param AsrFullTextConfigure: Full speech recognition control parameter.\n        :type AsrFullTextConfigure: :class:`tencentcloud.mps.v20190612.models.AsrFullTextConfigureInfo`\n        :param AsrWordsConfigure: Speech keyword recognition control parameter.\n        :type AsrWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrWordsConfigureInfo`\n        """
         self.Name = None
         self.Comment = None
         self.FaceConfigure = None
@@ -3371,8 +4117,12 @@ class CreateAIRecognitionTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Unique ID of a video content recognition template.
+        :type Definition: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Definition: Unique ID of a video content recognition template.\n        :type Definition: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Definition = None
         self.RequestId = None
 
@@ -3388,17 +4138,29 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Format: Adaptive bitrate streaming format. Valid values:
 <li>HLS,</li>
-<li>MPEG-DASH.</li>\n        :type Format: str\n        :param StreamInfos: Parameter information of output substreams for transcoding to adaptive bitrate streaming. Up to 10 substreams can be output.
-Note: the frame rate of each substream must be consistent; otherwise, the frame rate of the first substream is used as the output frame rate.\n        :type StreamInfos: list of AdaptiveStreamTemplate\n        :param Name: Template name. Length limit: 64 characters.\n        :type Name: str\n        :param DisableHigherVideoBitrate: Whether to prohibit transcoding from low bitrate to high bitrate. Valid values:
+<li>MPEG-DASH.</li>
+        :type Format: str
+        :param StreamInfos: Parameter information of output substreams for transcoding to adaptive bitrate streaming. Up to 10 substreams can be output.
+Note: the frame rate of each substream must be consistent; otherwise, the frame rate of the first substream is used as the output frame rate.
+        :type StreamInfos: list of AdaptiveStreamTemplate
+        :param Name: Template name. Length limit: 64 characters.
+        :type Name: str
+        :param DisableHigherVideoBitrate: Whether to prohibit transcoding from low bitrate to high bitrate. Valid values:
 <li>0: no,</li>
 <li>1: yes.</li>
-Default value: 0.\n        :type DisableHigherVideoBitrate: int\n        :param DisableHigherVideoResolution: Whether to prohibit transcoding from low resolution to high resolution. Valid values:
+Default value: 0.
+        :type DisableHigherVideoBitrate: int
+        :param DisableHigherVideoResolution: Whether to prohibit transcoding from low resolution to high resolution. Valid values:
 <li>0: no,</li>
 <li>1: yes.</li>
-Default value: 0.\n        :type DisableHigherVideoResolution: int\n        :param Comment: Template description. Length limit: 256 characters.\n        :type Comment: str\n        """
+Default value: 0.
+        :type DisableHigherVideoResolution: int
+        :param Comment: Template description. Length limit: 256 characters.
+        :type Comment: str
+        """
         self.Format = None
         self.StreamInfos = None
         self.Name = None
@@ -3434,8 +4196,12 @@ class CreateAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Unique ID of an adaptive bitrate streaming template.
+        :type Definition: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Definition: Unique ID of an adaptive bitrate streaming template.\n        :type Definition: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Definition = None
         self.RequestId = None
 
@@ -3451,21 +4217,37 @@ class CreateAnimatedGraphicsTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Fps: Video frame rate in Hz. Value range: [1, 30].\n        :type Fps: int\n        :param Width: Maximum value of the width (or long side) of an animated image in px. Value range: 0 and [128, 4,096].
+        r"""
+        :param Fps: Video frame rate in Hz. Value range: [1, 30].
+        :type Fps: int
+        :param Width: Maximum value of the width (or long side) of an animated image in px. Value range: 0 and [128, 4,096].
 <li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
 <li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
 <li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
 <li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
-Default value: 0.\n        :type Width: int\n        :param Height: Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].
+Default value: 0.
+        :type Width: int
+        :param Height: Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].
 <li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
 <li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
 <li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
 <li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
-Default value: 0.\n        :type Height: int\n        :param ResolutionAdaptive: Resolution adaption. Valid values:
+Default value: 0.
+        :type Height: int
+        :param ResolutionAdaptive: Resolution adaption. Valid values:
 <li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
 <li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
-Default value: open.\n        :type ResolutionAdaptive: str\n        :param Format: Animated image format. Valid values: gif; webp. Default value: gif.\n        :type Format: str\n        :param Quality: Image quality. Value range: [1, 100]. Default value: 75.\n        :type Quality: float\n        :param Name: Name of an animated image generating template. Length limit: 64 characters.\n        :type Name: str\n        :param Comment: Template description. Length limit: 256 characters.\n        :type Comment: str\n        """
+Default value: open.
+        :type ResolutionAdaptive: str
+        :param Format: Animated image format. Valid values: gif; webp. Default value: gif.
+        :type Format: str
+        :param Quality: Image quality. Value range: [1, 100]. Default value: 75.
+        :type Quality: float
+        :param Name: Name of an animated image generating template. Length limit: 64 characters.
+        :type Name: str
+        :param Comment: Template description. Length limit: 256 characters.
+        :type Comment: str
+        """
         self.Fps = None
         self.Width = None
         self.Height = None
@@ -3500,8 +4282,12 @@ class CreateAnimatedGraphicsTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Unique ID of an animated image generating template.
+        :type Definition: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Definition: Unique ID of an animated image generating template.\n        :type Definition: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Definition = None
         self.RequestId = None
 
@@ -3517,11 +4303,25 @@ class CreateContentReviewTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Name: Name of an intelligent content recognition template. Length limit: 64 characters\n        :type Name: str\n        :param Comment: Description of an intelligent content recognition template. Length limit: 256 characters\n        :type Comment: str\n        :param PornConfigure: Control parameter for porn information\n        :type PornConfigure: :class:`tencentcloud.mps.v20190612.models.PornConfigureInfo`\n        :param TerrorismConfigure: Control parameter for terrorism information\n        :type TerrorismConfigure: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfo`\n        :param PoliticalConfigure: Control parameter for politically sensitive information\n        :type PoliticalConfigure: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfo`\n        :param ProhibitedConfigure: Control parameter of prohibited information detection. Prohibited information includes:
+        r"""
+        :param Name: Name of an intelligent content recognition template. Length limit: 64 characters
+        :type Name: str
+        :param Comment: Description of an intelligent content recognition template. Length limit: 256 characters
+        :type Comment: str
+        :param PornConfigure: Control parameter for porn information
+        :type PornConfigure: :class:`tencentcloud.mps.v20190612.models.PornConfigureInfo`
+        :param TerrorismConfigure: Control parameter for terrorism information
+        :type TerrorismConfigure: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfo`
+        :param PoliticalConfigure: Control parameter for politically sensitive information
+        :type PoliticalConfigure: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfo`
+        :param ProhibitedConfigure: Control parameter of prohibited information detection. Prohibited information includes:
 <li>Abusive;</li>
 <li>Drug-related.</li>
-Note: this parameter is not supported yet.\n        :type ProhibitedConfigure: :class:`tencentcloud.mps.v20190612.models.ProhibitedConfigureInfo`\n        :param UserDefineConfigure: Control parameter for custom intelligent content recognition tasks\n        :type UserDefineConfigure: :class:`tencentcloud.mps.v20190612.models.UserDefineConfigureInfo`\n        """
+Note: this parameter is not supported yet.
+        :type ProhibitedConfigure: :class:`tencentcloud.mps.v20190612.models.ProhibitedConfigureInfo`
+        :param UserDefineConfigure: Control parameter for custom intelligent content recognition tasks
+        :type UserDefineConfigure: :class:`tencentcloud.mps.v20190612.models.UserDefineConfigureInfo`
+        """
         self.Name = None
         self.Comment = None
         self.PornConfigure = None
@@ -3564,8 +4364,12 @@ class CreateContentReviewTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Unique ID of an intelligent content recognition template
+        :type Definition: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Definition: Unique ID of an intelligent content recognition template\n        :type Definition: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Definition = None
         self.RequestId = None
 
@@ -3581,18 +4385,38 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SampleType: Sampling type. Valid values:
 <li>Percent: By percent.</li>
-<li>Time: By time interval.</li>\n        :type SampleType: str\n        :param SampleInterval: Sampling interval.
+<li>Time: By time interval.</li>
+        :type SampleType: str
+        :param SampleInterval: Sampling interval.
 <li>If `SampleType` is `Percent`, sampling will be performed at an interval of the specified percentage.</li>
-<li>If `SampleType` is `Time`, sampling will be performed at the specified time interval in seconds.</li>\n        :type SampleInterval: int\n        :param RowCount: Subimage row count of an image sprite.\n        :type RowCount: int\n        :param ColumnCount: Subimage column count of an image sprite.\n        :type ColumnCount: int\n        :param Name: Name of an image sprite generating template. Length limit: 64 characters.\n        :type Name: str\n        :param Width: Subimage width of an image sprite in px. Value range: [128, 4,096].\n        :type Width: int\n        :param Height: Subimage height of an image sprite in px. Value range: [128, 4,096].\n        :type Height: int\n        :param ResolutionAdaptive: Resolution adaption. Valid values:
+<li>If `SampleType` is `Time`, sampling will be performed at the specified time interval in seconds.</li>
+        :type SampleInterval: int
+        :param RowCount: Subimage row count of an image sprite.
+        :type RowCount: int
+        :param ColumnCount: Subimage column count of an image sprite.
+        :type ColumnCount: int
+        :param Name: Name of an image sprite generating template. Length limit: 64 characters.
+        :type Name: str
+        :param Width: Subimage width of an image sprite in px. Value range: [128, 4,096].
+        :type Width: int
+        :param Height: Subimage height of an image sprite in px. Value range: [128, 4,096].
+        :type Height: int
+        :param ResolutionAdaptive: Resolution adaption. Valid values:
 <li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
 <li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
-Default value: open.\n        :type ResolutionAdaptive: str\n        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
+Default value: open.
+        :type ResolutionAdaptive: str
+        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
 <li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
-Default value: black.\n        :type FillType: str\n        :param Comment: Template description. Length limit: 256 characters.\n        :type Comment: str\n        """
+Default value: black.
+        :type FillType: str
+        :param Comment: Template description. Length limit: 256 characters.
+        :type Comment: str
+        """
         self.SampleType = None
         self.SampleInterval = None
         self.RowCount = None
@@ -3631,8 +4455,12 @@ class CreateImageSpriteTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Unique ID of an image sprite generating template.
+        :type Definition: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Definition: Unique ID of an image sprite generating template.\n        :type Definition: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Definition = None
         self.RequestId = None
 
@@ -3648,14 +4476,24 @@ class CreatePersonSampleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Name: Name of an image. Length limit: 20 characters\n        :type Name: str\n        :param Usages: Image usage. Valid values:
+        r"""
+        :param Name: Name of an image. Length limit: 20 characters
+        :type Name: str
+        :param Usages: Image usage. Valid values:
 1. Recognition: used for content recognition; equivalent to `Recognition.Face`
 2. Review: used for inappropriate information recognition; equivalent to `Review.Face`
-3. All: equivalent to 1+2\n        :type Usages: list of str\n        :param Description: Image description. Length limit: 1,024 characters\n        :type Description: str\n        :param FaceContents: [Base64](https://tools.ietf.org/html/rfc4648) string converted from an image. Only JPEG and PNG images are supported. Array length limit: 5 images
-Note: the image must be a relatively clear facial feature photo of one person with a size of at least 200 x 200 pixels.\n        :type FaceContents: list of str\n        :param Tags: Image tag
+3. All: equivalent to 1+2
+        :type Usages: list of str
+        :param Description: Image description. Length limit: 1,024 characters
+        :type Description: str
+        :param FaceContents: [Base64](https://tools.ietf.org/html/rfc4648) string converted from an image. Only JPEG and PNG images are supported. Array length limit: 5 images
+Note: the image must be a relatively clear facial feature photo of one person with a size of at least 200 x 200 pixels.
+        :type FaceContents: list of str
+        :param Tags: Image tag
 <li>Array length limit: 20 tags</li>
-<li>Tag length limit: 128 characters</li>\n        :type Tags: list of str\n        """
+<li>Tag length limit: 128 characters</li>
+        :type Tags: list of str
+        """
         self.Name = None
         self.Usages = None
         self.Description = None
@@ -3684,8 +4522,14 @@ class CreatePersonSampleResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Person: Image information
+        :type Person: :class:`tencentcloud.mps.v20190612.models.AiSamplePerson`
+        :param FailFaceInfoSet: Information of images that failed the verification by facial feature positioning
+        :type FailFaceInfoSet: list of AiSampleFailFaceInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Person: Image information\n        :type Person: :class:`tencentcloud.mps.v20190612.models.AiSamplePerson`\n        :param FailFaceInfoSet: Information of images that failed the verification by facial feature positioning\n        :type FailFaceInfoSet: list of AiSampleFailFaceInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Person = None
         self.FailFaceInfoSet = None
         self.RequestId = None
@@ -3710,20 +4554,38 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SampleType: Sampled screencapturing type. Valid values:
 <li>Percent: By percent.</li>
-<li>Time: By time interval.</li>\n        :type SampleType: str\n        :param SampleInterval: Sampling interval.
+<li>Time: By time interval.</li>
+        :type SampleType: str
+        :param SampleInterval: Sampling interval.
 <li>If `SampleType` is `Percent`, sampling will be performed at an interval of the specified percentage.</li>
-<li>If `SampleType` is `Time`, sampling will be performed at the specified time interval in seconds.</li>\n        :type SampleInterval: int\n        :param Name: Name of a sampled screencapturing template. Length limit: 64 characters.\n        :type Name: str\n        :param Width: Image width in px. Value range: [128, 4,096].\n        :type Width: int\n        :param Height: Image height in px. Value range: [128, 4,096].\n        :type Height: int\n        :param ResolutionAdaptive: Resolution adaption. Valid values:
+<li>If `SampleType` is `Time`, sampling will be performed at the specified time interval in seconds.</li>
+        :type SampleInterval: int
+        :param Name: Name of a sampled screencapturing template. Length limit: 64 characters.
+        :type Name: str
+        :param Width: Image width in px. Value range: [128, 4,096].
+        :type Width: int
+        :param Height: Image height in px. Value range: [128, 4,096].
+        :type Height: int
+        :param ResolutionAdaptive: Resolution adaption. Valid values:
 <li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
 <li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
-Default value: open.\n        :type ResolutionAdaptive: str\n        :param Format: Image format. Valid values: jpg; png. Default value: jpg.\n        :type Format: str\n        :param Comment: Template description. Length limit: 256 characters.\n        :type Comment: str\n        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
+Default value: open.
+        :type ResolutionAdaptive: str
+        :param Format: Image format. Valid values: jpg; png. Default value: jpg.
+        :type Format: str
+        :param Comment: Template description. Length limit: 256 characters.
+        :type Comment: str
+        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
 <li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
 <li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>
 <li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>
-Default value: black.\n        :type FillType: str\n        """
+Default value: black.
+        :type FillType: str
+        """
         self.SampleType = None
         self.SampleInterval = None
         self.Name = None
@@ -3760,8 +4622,12 @@ class CreateSampleSnapshotTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Unique ID of a sampled screencapturing template.
+        :type Definition: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Definition: Unique ID of a sampled screencapturing template.\n        :type Definition: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Definition = None
         self.RequestId = None
 
@@ -3777,16 +4643,30 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Name: Name of a time point screencapturing template. Length limit: 64 characters.\n        :type Name: str\n        :param Width: Image width in px. Value range: [128, 4,096].\n        :type Width: int\n        :param Height: Image height in px. Value range: [128, 4,096].\n        :type Height: int\n        :param ResolutionAdaptive: Resolution adaption. Valid values:
+        r"""
+        :param Name: Name of a time point screencapturing template. Length limit: 64 characters.
+        :type Name: str
+        :param Width: Image width in px. Value range: [128, 4,096].
+        :type Width: int
+        :param Height: Image height in px. Value range: [128, 4,096].
+        :type Height: int
+        :param ResolutionAdaptive: Resolution adaption. Valid values:
 <li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
 <li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
-Default value: open.\n        :type ResolutionAdaptive: str\n        :param Format: Image format. Valid values: jpg; png. Default value: jpg.\n        :type Format: str\n        :param Comment: Template description. Length limit: 256 characters.\n        :type Comment: str\n        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
+Default value: open.
+        :type ResolutionAdaptive: str
+        :param Format: Image format. Valid values: jpg; png. Default value: jpg.
+        :type Format: str
+        :param Comment: Template description. Length limit: 256 characters.
+        :type Comment: str
+        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
 <li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
 <li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>
 <li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>
-Default value: black.\n        :type FillType: str\n        """
+Default value: black.
+        :type FillType: str
+        """
         self.Name = None
         self.Width = None
         self.Height = None
@@ -3819,8 +4699,12 @@ class CreateSnapshotByTimeOffsetTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Unique ID of a time point screencapturing template.
+        :type Definition: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Definition: Unique ID of a time point screencapturing template.\n        :type Definition: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Definition = None
         self.RequestId = None
 
@@ -3836,14 +4720,30 @@ class CreateTranscodeTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Container: Container format. Valid values: mp4; flv; hls; mp3; flac; ogg; m4a. Among them, mp3, flac, ogg, and m4a are for audio files.
+        :type Container: str
+        :param Name: Name of a transcoding template. Length limit: 64 characters.
+        :type Name: str
+        :param Comment: Template description. Length limit: 256 characters.
+        :type Comment: str
+        :param RemoveVideo: Whether to remove video data. Valid values:
+<li>0: Retain</li>
+<li>1: Remove</li>
+Default value: 0.
+        :type RemoveVideo: int
+        :param RemoveAudio: Whether to remove audio data. Valid values:
+<li>0: Retain</li>
+<li>1: Remove</li>
+Default value: 0.
+        :type RemoveAudio: int
+        :param VideoTemplate: Video stream configuration parameter. This field is required when `RemoveVideo` is 0.
+        :type VideoTemplate: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
+        :param AudioTemplate: Audio stream configuration parameter. This field is required when `RemoveAudio` is 0.
+        :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
+        :param TEHDConfig: TESHD transcoding parameter. To enable it, please contact your Tencent Cloud sales rep.
+        :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
         """
-        :param Container: Container format. Valid values: mp4; flv; hls; mp3; flac; ogg; m4a. Among them, mp3, flac, ogg, and m4a are for audio files.\n        :type Container: str\n        :param Name: Name of a transcoding template. Length limit: 64 characters.\n        :type Name: str\n        :param Comment: Template description. Length limit: 256 characters.\n        :type Comment: str\n        :param RemoveVideo: Whether to remove video data. Valid values:
-<li>0: Retain</li>
-<li>1: Remove</li>
-Default value: 0.\n        :type RemoveVideo: int\n        :param RemoveAudio: Whether to remove audio data. Valid values:
-<li>0: Retain</li>
-<li>1: Remove</li>
-Default value: 0.\n        :type RemoveAudio: int\n        :param VideoTemplate: Video stream configuration parameter. This field is required when `RemoveVideo` is 0.\n        :type VideoTemplate: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`\n        :param AudioTemplate: Audio stream configuration parameter. This field is required when `RemoveAudio` is 0.\n        :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`\n        :param TEHDConfig: TESHD transcoding parameter. To enable it, please contact your Tencent Cloud sales rep.\n        :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`\n        """
         self.Container = None
         self.Name = None
         self.Comment = None
@@ -3884,8 +4784,12 @@ class CreateTranscodeTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Unique ID of a transcoding template.
+        :type Definition: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Definition: Unique ID of a transcoding template.\n        :type Definition: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Definition = None
         self.RequestId = None
 
@@ -3901,22 +4805,40 @@ class CreateWatermarkTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: Watermarking type. Valid values:
 <li>image: Image watermark;</li>
 <li>text: Text watermark;</li>
-<li>svg: SVG watermark.</li>\n        :type Type: str\n        :param Name: Watermarking template name. Length limit: 64 characters.\n        :type Name: str\n        :param Comment: Template description. Length limit: 256 characters.\n        :type Comment: str\n        :param CoordinateOrigin: Origin position. Valid values:
+<li>svg: SVG watermark.</li>
+        :type Type: str
+        :param Name: Watermarking template name. Length limit: 64 characters.
+        :type Name: str
+        :param Comment: Template description. Length limit: 256 characters.
+        :type Comment: str
+        :param CoordinateOrigin: Origin position. Valid values:
 <li>TopLeft: The origin of coordinates is in the top-left corner of the video, and the origin of the watermark is in the top-left corner of the image or text;</li>
 <li>TopRight: The origin of coordinates is in the top-right corner of the video, and the origin of the watermark is in the top-right corner of the image or text;</li>
 <li>BottomLeft: The origin of coordinates is in the bottom-left corner of the video, and the origin of the watermark is in the bottom-left corner of the image or text;</li>
 <li>BottomRight: The origin of coordinates is in the bottom-right corner of the video, and the origin of the watermark is in the bottom-right corner of the image or text.</li>
-Default value: TopLeft.\n        :type CoordinateOrigin: str\n        :param XPos: The horizontal position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:
+Default value: TopLeft.
+        :type CoordinateOrigin: str
+        :param XPos: The horizontal position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:
 <li>If the string ends in %, the `XPos` of the watermark will be the specified percentage of the video width; for example, `10%` means that `XPos` is 10% of the video width;</li>
 <li>If the string ends in px, the `XPos` of the watermark will be the specified px; for example, `100px` means that `XPos` is 100 px.</li>
-Default value: 0 px.\n        :type XPos: str\n        :param YPos: The vertical position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:
+Default value: 0 px.
+        :type XPos: str
+        :param YPos: The vertical position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:
 <li>If the string ends in %, the `YPos` of the watermark will be the specified percentage of the video height; for example, `10%` means that `YPos` is 10% of the video height;</li>
 <li>If the string ends in px, the `YPos` of the watermark will be the specified px; for example, `100px` means that `YPos` is 100 px.</li>
-Default value: 0 px.\n        :type YPos: str\n        :param ImageTemplate: Image watermarking template. This field is required and valid only when `Type` is `image`.\n        :type ImageTemplate: :class:`tencentcloud.mps.v20190612.models.ImageWatermarkInput`\n        :param TextTemplate: Text watermarking template. This field is required and valid only when `Type` is `text`.\n        :type TextTemplate: :class:`tencentcloud.mps.v20190612.models.TextWatermarkTemplateInput`\n        :param SvgTemplate: SVG watermarking template. This field is required and valid only when `Type` is `svg`.\n        :type SvgTemplate: :class:`tencentcloud.mps.v20190612.models.SvgWatermarkInput`\n        """
+Default value: 0 px.
+        :type YPos: str
+        :param ImageTemplate: Image watermarking template. This field is required and valid only when `Type` is `image`.
+        :type ImageTemplate: :class:`tencentcloud.mps.v20190612.models.ImageWatermarkInput`
+        :param TextTemplate: Text watermarking template. This field is required and valid only when `Type` is `text`.
+        :type TextTemplate: :class:`tencentcloud.mps.v20190612.models.TextWatermarkTemplateInput`
+        :param SvgTemplate: SVG watermarking template. This field is required and valid only when `Type` is `svg`.
+        :type SvgTemplate: :class:`tencentcloud.mps.v20190612.models.SvgWatermarkInput`
+        """
         self.Type = None
         self.Name = None
         self.Comment = None
@@ -3959,8 +4881,14 @@ class CreateWatermarkTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Unique ID of a watermarking template.
+        :type Definition: int
+        :param ImageUrl: Watermark image address. This field is valid only when `Type` is `image`.
+        :type ImageUrl: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Definition: Unique ID of a watermarking template.\n        :type Definition: int\n        :param ImageUrl: Watermark image address. This field is valid only when `Type` is `image`.\n        :type ImageUrl: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Definition = None
         self.ImageUrl = None
         self.RequestId = None
@@ -3978,7 +4906,7 @@ class CreateWordSamplesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Usages: <b>Keyword usage. Valid values:</b>
 1. Recognition.Ocr: OCR-based content recognition
 2. Recognition.Asr: ASR-based content recognition
@@ -3987,7 +4915,11 @@ class CreateWordSamplesRequest(AbstractModel):
 <b>Valid values can also be:</b>
 5. Recognition: ASR- and OCR-based content recognition; equivalent to 1+2
 6. Review: ASR- and OCR-based inappropriate information recognition; equivalent to 3+4
-7. All: ASR- and OCR-based content recognition and inappropriate information detection; equivalent to 1+2+3+4\n        :type Usages: list of str\n        :param Words: Keyword. Array length limit: 100.\n        :type Words: list of AiSampleWordInfo\n        """
+7. All: ASR- and OCR-based content recognition and inappropriate information detection; equivalent to 1+2+3+4
+        :type Usages: list of str
+        :param Words: Keyword. Array length limit: 100.
+        :type Words: list of AiSampleWordInfo
+        """
         self.Usages = None
         self.Words = None
 
@@ -4015,8 +4947,10 @@ class CreateWordSamplesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4030,8 +4964,28 @@ class CreateWorkflowRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param WorkflowName: Workflow name of up to 128 characters, which must be unique for the same user.
+        :type WorkflowName: str
+        :param Trigger: Triggering rule bound to a workflow. If an uploaded video hits the rule for the object, the workflow will be triggered.
+        :type Trigger: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
+        :param OutputStorage: Storage location of a video processing output file. If this parameter is left empty, the storage location in `Trigger` will be inherited.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param OutputDir: Target directory of a video processing output file, such as `/movie/201907/`. If this parameter is left empty, the file will be outputted to the same directory where the source file is located.
+        :type OutputDir: str
+        :param MediaProcessTask: Parameter of a video processing task.
+        :type MediaProcessTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
+        :param AiContentReviewTask: Type parameter of a video content audit task.
+        :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        :param AiAnalysisTask: Video content analysis task parameter.
+        :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
+        :param AiRecognitionTask: Type parameter of a video content recognition task.
+        :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        :param TaskNotifyConfig: Event notification configuration for a task. If this parameter is left empty, no event notifications will be obtained.
+        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        :param TaskPriority: Workflow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.
+        :type TaskPriority: int
         """
-        :param WorkflowName: Workflow name of up to 128 characters, which must be unique for the same user.\n        :type WorkflowName: str\n        :param Trigger: Triggering rule bound to a workflow. If an uploaded video hits the rule for the object, the workflow will be triggered.\n        :type Trigger: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`\n        :param OutputStorage: Storage location of a video processing output file. If this parameter is left empty, the storage location in `Trigger` will be inherited.\n        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`\n        :param OutputDir: Target directory of a video processing output file, such as `/movie/201907/`. If this parameter is left empty, the file will be outputted to the same directory where the source file is located.\n        :type OutputDir: str\n        :param MediaProcessTask: Parameter of a video processing task.\n        :type MediaProcessTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`\n        :param AiContentReviewTask: Type parameter of a video content audit task.\n        :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`\n        :param AiAnalysisTask: Video content analysis task parameter.\n        :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`\n        :param AiRecognitionTask: Type parameter of a video content recognition task.\n        :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`\n        :param TaskNotifyConfig: Event notification configuration for a task. If this parameter is left empty, no event notifications will be obtained.\n        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`\n        :param TaskPriority: Workflow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.\n        :type TaskPriority: int\n        """
         self.WorkflowName = None
         self.Trigger = None
         self.OutputStorage = None
@@ -4084,8 +5038,12 @@ class CreateWorkflowResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param WorkflowId: Workflow ID.
+        :type WorkflowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param WorkflowId: Workflow ID.\n        :type WorkflowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.WorkflowId = None
         self.RequestId = None
 
@@ -4101,8 +5059,10 @@ class DeleteAIAnalysisTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Unique ID of video content analysis template.
+        :type Definition: int
         """
-        :param Definition: Unique ID of video content analysis template.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -4123,8 +5083,10 @@ class DeleteAIAnalysisTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4138,8 +5100,10 @@ class DeleteAIRecognitionTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Unique ID of a video content recognition template.
+        :type Definition: int
         """
-        :param Definition: Unique ID of a video content recognition template.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -4160,8 +5124,10 @@ class DeleteAIRecognitionTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4175,8 +5141,10 @@ class DeleteAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Unique ID of an adaptive bitrate streaming template.
+        :type Definition: int
         """
-        :param Definition: Unique ID of an adaptive bitrate streaming template.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -4197,8 +5165,10 @@ class DeleteAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4212,8 +5182,10 @@ class DeleteAnimatedGraphicsTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Unique ID of an animated image generating template.
+        :type Definition: int
         """
-        :param Definition: Unique ID of an animated image generating template.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -4234,8 +5206,10 @@ class DeleteAnimatedGraphicsTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4249,8 +5223,10 @@ class DeleteContentReviewTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Unique ID of an intelligent content recognition template
+        :type Definition: int
         """
-        :param Definition: Unique ID of an intelligent content recognition template\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -4271,8 +5247,10 @@ class DeleteContentReviewTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4286,8 +5264,10 @@ class DeleteImageSpriteTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Unique ID of an image sprite generating template.
+        :type Definition: int
         """
-        :param Definition: Unique ID of an image sprite generating template.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -4308,8 +5288,10 @@ class DeleteImageSpriteTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4323,8 +5305,10 @@ class DeletePersonSampleRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PersonId: Image ID
+        :type PersonId: str
         """
-        :param PersonId: Image ID\n        :type PersonId: str\n        """
         self.PersonId = None
 
 
@@ -4345,8 +5329,10 @@ class DeletePersonSampleResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4360,8 +5346,10 @@ class DeleteSampleSnapshotTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Unique ID of a sampled screencapturing template.
+        :type Definition: int
         """
-        :param Definition: Unique ID of a sampled screencapturing template.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -4382,8 +5370,10 @@ class DeleteSampleSnapshotTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4397,8 +5387,10 @@ class DeleteSnapshotByTimeOffsetTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Unique ID of a time point screencapturing template.
+        :type Definition: int
         """
-        :param Definition: Unique ID of a time point screencapturing template.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -4419,8 +5411,10 @@ class DeleteSnapshotByTimeOffsetTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4434,8 +5428,10 @@ class DeleteTranscodeTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Unique ID of a transcoding template.
+        :type Definition: int
         """
-        :param Definition: Unique ID of a transcoding template.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -4456,8 +5452,10 @@ class DeleteTranscodeTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4471,8 +5469,10 @@ class DeleteWatermarkTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Unique ID of a watermarking template.
+        :type Definition: int
         """
-        :param Definition: Unique ID of a watermarking template.\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -4493,8 +5493,10 @@ class DeleteWatermarkTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4508,8 +5510,10 @@ class DeleteWordSamplesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Keywords: Keyword. Array length limit: 100 words.
+        :type Keywords: list of str
         """
-        :param Keywords: Keyword. Array length limit: 100 words.\n        :type Keywords: list of str\n        """
         self.Keywords = None
 
 
@@ -4530,8 +5534,10 @@ class DeleteWordSamplesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4545,8 +5551,10 @@ class DeleteWorkflowRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param WorkflowId: Workflow ID.
+        :type WorkflowId: int
         """
-        :param WorkflowId: Workflow ID.\n        :type WorkflowId: int\n        """
         self.WorkflowId = None
 
 
@@ -4567,8 +5575,10 @@ class DeleteWorkflowResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4582,8 +5592,14 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definitions: Unique ID filter of video content analysis templates. Array length limit: 10.
+        :type Definitions: list of int
+        :param Offset: Pagination offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
+        :type Limit: int
         """
-        :param Definitions: Unique ID filter of video content analysis templates. Array length limit: 10.\n        :type Definitions: list of int\n        :param Offset: Pagination offset. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        """
         self.Definitions = None
         self.Offset = None
         self.Limit = None
@@ -4608,8 +5624,14 @@ class DescribeAIAnalysisTemplatesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of eligible entries.
+        :type TotalCount: int
+        :param AIAnalysisTemplateSet: List of video content analysis template details.
+        :type AIAnalysisTemplateSet: list of AIAnalysisTemplateItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of eligible entries.\n        :type TotalCount: int\n        :param AIAnalysisTemplateSet: List of video content analysis template details.\n        :type AIAnalysisTemplateSet: list of AIAnalysisTemplateItem\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.AIAnalysisTemplateSet = None
         self.RequestId = None
@@ -4632,8 +5654,14 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definitions: Unique ID filter of video content recognition templates. Array length limit: 10.
+        :type Definitions: list of int
+        :param Offset: Paging offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned entries. Default value: 10. Maximum value: 50.
+        :type Limit: int
         """
-        :param Definitions: Unique ID filter of video content recognition templates. Array length limit: 10.\n        :type Definitions: list of int\n        :param Offset: Paging offset. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of returned entries. Default value: 10. Maximum value: 50.\n        :type Limit: int\n        """
         self.Definitions = None
         self.Offset = None
         self.Limit = None
@@ -4658,8 +5686,14 @@ class DescribeAIRecognitionTemplatesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of eligible entries.
+        :type TotalCount: int
+        :param AIRecognitionTemplateSet: List of video content recognition template details.
+        :type AIRecognitionTemplateSet: list of AIRecognitionTemplateItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of eligible entries.\n        :type TotalCount: int\n        :param AIRecognitionTemplateSet: List of video content recognition template details.\n        :type AIRecognitionTemplateSet: list of AIRecognitionTemplateItem\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.AIRecognitionTemplateSet = None
         self.RequestId = None
@@ -4682,10 +5716,18 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Definitions: Unique ID filter of adaptive bitrate streaming templates. Array length limit: 100.\n        :type Definitions: list of int non-negative\n        :param Offset: Pagination offset. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Type: Template type filter. Valid values:
+        r"""
+        :param Definitions: Unique ID filter of adaptive bitrate streaming templates. Array length limit: 100.
+        :type Definitions: list of int non-negative
+        :param Offset: Pagination offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Type: Template type filter. Valid values:
 <li>Preset: preset template;</li>
-<li>Custom: custom template.</li>\n        :type Type: str\n        """
+<li>Custom: custom template.</li>
+        :type Type: str
+        """
         self.Definitions = None
         self.Offset = None
         self.Limit = None
@@ -4712,8 +5754,14 @@ class DescribeAdaptiveDynamicStreamingTemplatesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of eligible entries.
+        :type TotalCount: int
+        :param AdaptiveDynamicStreamingTemplateSet: List of adaptive bitrate streaming template details.
+        :type AdaptiveDynamicStreamingTemplateSet: list of AdaptiveDynamicStreamingTemplate
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of eligible entries.\n        :type TotalCount: int\n        :param AdaptiveDynamicStreamingTemplateSet: List of adaptive bitrate streaming template details.\n        :type AdaptiveDynamicStreamingTemplateSet: list of AdaptiveDynamicStreamingTemplate\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.AdaptiveDynamicStreamingTemplateSet = None
         self.RequestId = None
@@ -4736,10 +5784,18 @@ class DescribeAnimatedGraphicsTemplatesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Definitions: Unique ID filter of animated image generating templates. Array length limit: 100.\n        :type Definitions: list of int non-negative\n        :param Offset: Paging offset. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Type: Template type filter. Valid values:
+        r"""
+        :param Definitions: Unique ID filter of animated image generating templates. Array length limit: 100.
+        :type Definitions: list of int non-negative
+        :param Offset: Paging offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Type: Template type filter. Valid values:
 <li>Preset: Preset template;</li>
-<li>Custom: Custom template.</li>\n        :type Type: str\n        """
+<li>Custom: Custom template.</li>
+        :type Type: str
+        """
         self.Definitions = None
         self.Offset = None
         self.Limit = None
@@ -4766,8 +5822,14 @@ class DescribeAnimatedGraphicsTemplatesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of eligible entries.
+        :type TotalCount: int
+        :param AnimatedGraphicsTemplateSet: List of animated image generating template details.
+        :type AnimatedGraphicsTemplateSet: list of AnimatedGraphicsTemplate
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of eligible entries.\n        :type TotalCount: int\n        :param AnimatedGraphicsTemplateSet: List of animated image generating template details.\n        :type AnimatedGraphicsTemplateSet: list of AnimatedGraphicsTemplate\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.AnimatedGraphicsTemplateSet = None
         self.RequestId = None
@@ -4790,8 +5852,14 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definitions: Unique ID of intelligent content recognition templates as the filter. Array length limit: 50
+        :type Definitions: list of int
+        :param Offset: Paging offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned entries. Default value: 10. Maximum value: 50.
+        :type Limit: int
         """
-        :param Definitions: Unique ID of intelligent content recognition templates as the filter. Array length limit: 50\n        :type Definitions: list of int\n        :param Offset: Paging offset. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of returned entries. Default value: 10. Maximum value: 50.\n        :type Limit: int\n        """
         self.Definitions = None
         self.Offset = None
         self.Limit = None
@@ -4816,8 +5884,14 @@ class DescribeContentReviewTemplatesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of eligible entries.
+        :type TotalCount: int
+        :param ContentReviewTemplateSet: List of content audit template details.
+        :type ContentReviewTemplateSet: list of ContentReviewTemplateItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of eligible entries.\n        :type TotalCount: int\n        :param ContentReviewTemplateSet: List of content audit template details.\n        :type ContentReviewTemplateSet: list of ContentReviewTemplateItem\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ContentReviewTemplateSet = None
         self.RequestId = None
@@ -4840,10 +5914,18 @@ class DescribeImageSpriteTemplatesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Definitions: Unique ID filter of image sprite generating templates. Array length limit: 100.\n        :type Definitions: list of int non-negative\n        :param Offset: Paging offset. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Type: Template type filter. Valid values:
+        r"""
+        :param Definitions: Unique ID filter of image sprite generating templates. Array length limit: 100.
+        :type Definitions: list of int non-negative
+        :param Offset: Paging offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Type: Template type filter. Valid values:
 <li>Preset: Preset template;</li>
-<li>Custom: Custom template.</li>\n        :type Type: str\n        """
+<li>Custom: Custom template.</li>
+        :type Type: str
+        """
         self.Definitions = None
         self.Offset = None
         self.Limit = None
@@ -4870,8 +5952,14 @@ class DescribeImageSpriteTemplatesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of eligible entries.
+        :type TotalCount: int
+        :param ImageSpriteTemplateSet: List of image sprite generating template details.
+        :type ImageSpriteTemplateSet: list of ImageSpriteTemplate
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of eligible entries.\n        :type TotalCount: int\n        :param ImageSpriteTemplateSet: List of image sprite generating template details.\n        :type ImageSpriteTemplateSet: list of ImageSpriteTemplate\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ImageSpriteTemplateSet = None
         self.RequestId = None
@@ -4894,8 +5982,10 @@ class DescribeMediaMetaDataRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InputInfo: Input information of file for metadata getting.
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         """
-        :param InputInfo: Input information of file for metadata getting.\n        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`\n        """
         self.InputInfo = None
 
 
@@ -4918,8 +6008,12 @@ class DescribeMediaMetaDataResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MetaData: Media metadata.
+        :type MetaData: :class:`tencentcloud.mps.v20190612.models.MediaMetaData`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param MetaData: Media metadata.\n        :type MetaData: :class:`tencentcloud.mps.v20190612.models.MediaMetaData`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.MetaData = None
         self.RequestId = None
 
@@ -4937,13 +6031,25 @@ class DescribePersonSamplesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: Type of images to pull. Valid values:
 <li>UserDefine: custom image library</li>
 <li>Default: default image library</li>
 
 Default value: UserDefine. Samples in the custom image library will be pulled.
-Note: you can pull the default image library only using the image name or a combination of the image name and ID, and only one face image is returned.\n        :type Type: str\n        :param PersonIds: Image ID. Array length limit: 100\n        :type PersonIds: list of str\n        :param Names: Image name. Array length limit: 20\n        :type Names: list of str\n        :param Tags: Image tag. Array length limit: 20\n        :type Tags: list of str\n        :param Offset: Paging offset. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of returned entries. Default value: 100. Maximum value: 100.\n        :type Limit: int\n        """
+Note: you can pull the default image library only using the image name or a combination of the image name and ID, and only one face image is returned.
+        :type Type: str
+        :param PersonIds: Image ID. Array length limit: 100
+        :type PersonIds: list of str
+        :param Names: Image name. Array length limit: 20
+        :type Names: list of str
+        :param Tags: Image tag. Array length limit: 20
+        :type Tags: list of str
+        :param Offset: Paging offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned entries. Default value: 100. Maximum value: 100.
+        :type Limit: int
+        """
         self.Type = None
         self.PersonIds = None
         self.Names = None
@@ -4974,8 +6080,14 @@ class DescribePersonSamplesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of eligible entries.
+        :type TotalCount: int
+        :param PersonSet: Image information
+        :type PersonSet: list of AiSamplePerson
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of eligible entries.\n        :type TotalCount: int\n        :param PersonSet: Image information\n        :type PersonSet: list of AiSamplePerson\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.PersonSet = None
         self.RequestId = None
@@ -4998,10 +6110,18 @@ class DescribeSampleSnapshotTemplatesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Definitions: Unique ID filter of sampled screencapturing templates. Array length limit: 100.\n        :type Definitions: list of int non-negative\n        :param Offset: Paging offset. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Type: Template type filter. Valid values:
+        r"""
+        :param Definitions: Unique ID filter of sampled screencapturing templates. Array length limit: 100.
+        :type Definitions: list of int non-negative
+        :param Offset: Paging offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Type: Template type filter. Valid values:
 <li>Preset: Preset template;</li>
-<li>Custom: Custom template.</li>\n        :type Type: str\n        """
+<li>Custom: Custom template.</li>
+        :type Type: str
+        """
         self.Definitions = None
         self.Offset = None
         self.Limit = None
@@ -5028,8 +6148,14 @@ class DescribeSampleSnapshotTemplatesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of eligible entries.
+        :type TotalCount: int
+        :param SampleSnapshotTemplateSet: List of sampled screencapturing template details.
+        :type SampleSnapshotTemplateSet: list of SampleSnapshotTemplate
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of eligible entries.\n        :type TotalCount: int\n        :param SampleSnapshotTemplateSet: List of sampled screencapturing template details.\n        :type SampleSnapshotTemplateSet: list of SampleSnapshotTemplate\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.SampleSnapshotTemplateSet = None
         self.RequestId = None
@@ -5052,10 +6178,18 @@ class DescribeSnapshotByTimeOffsetTemplatesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Definitions: Unique ID filter of time point screencapturing templates. Array length limit: 100.\n        :type Definitions: list of int non-negative\n        :param Offset: Paging offset. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param Type: Template type filter. Valid values:
+        r"""
+        :param Definitions: Unique ID filter of time point screencapturing templates. Array length limit: 100.
+        :type Definitions: list of int non-negative
+        :param Offset: Paging offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Type: Template type filter. Valid values:
 <li>Preset: Preset template;</li>
-<li>Custom: Custom template.</li>\n        :type Type: str\n        """
+<li>Custom: Custom template.</li>
+        :type Type: str
+        """
         self.Definitions = None
         self.Offset = None
         self.Limit = None
@@ -5082,8 +6216,14 @@ class DescribeSnapshotByTimeOffsetTemplatesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of eligible entries.
+        :type TotalCount: int
+        :param SnapshotByTimeOffsetTemplateSet: List of time point screencapturing template details.
+        :type SnapshotByTimeOffsetTemplateSet: list of SnapshotByTimeOffsetTemplate
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of eligible entries.\n        :type TotalCount: int\n        :param SnapshotByTimeOffsetTemplateSet: List of time point screencapturing template details.\n        :type SnapshotByTimeOffsetTemplateSet: list of SnapshotByTimeOffsetTemplate\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.SnapshotByTimeOffsetTemplateSet = None
         self.RequestId = None
@@ -5106,8 +6246,10 @@ class DescribeTaskDetailRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Video processing task ID.
+        :type TaskId: str
         """
-        :param TaskId: Video processing task ID.\n        :type TaskId: str\n        """
         self.TaskId = None
 
 
@@ -5128,16 +6270,44 @@ class DescribeTaskDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskType: Task type. Currently valid values:
 <li>WorkflowTask: Video workflow processing task.</li>
-<li>LiveStreamProcessTask: Live stream processing task.</li>\n        :type TaskType: str\n        :param Status: Task status. Valid values:
+<li>LiveStreamProcessTask: Live stream processing task.</li>
+        :type TaskType: str
+        :param Status: Task status. Valid values:
 <li>WAITING: Waiting;</li>
 <li>PROCESSING: Processing;</li>
-<li>FINISH: Completed.</li>\n        :type Status: str\n        :param CreateTime: Creation time of a task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type CreateTime: str\n        :param BeginProcessTime: Start time of task execution in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type BeginProcessTime: str\n        :param FinishTime: End time of task execution in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type FinishTime: str\n        :param WorkflowTask: Information of a video processing task. This field has a value only when `TaskType` is `WorkflowTask`.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type WorkflowTask: :class:`tencentcloud.mps.v20190612.models.WorkflowTask`\n        :param EditMediaTask: Video editing task information. This field has a value only when `TaskType` is `EditMediaTask`.\n        :type EditMediaTask: :class:`tencentcloud.mps.v20190612.models.EditMediaTask`\n        :param LiveStreamProcessTask: Information of a live stream processing task. This field has a value only when `TaskType` is `LiveStreamProcessTask`.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type LiveStreamProcessTask: :class:`tencentcloud.mps.v20190612.models.LiveStreamProcessTask`\n        :param TaskNotifyConfig: Event notification information of a task.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`\n        :param TasksPriority: Task flow priority. Value range: [-10, 10].\n        :type TasksPriority: int\n        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.\n        :type SessionId: str\n        :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.\n        :type SessionContext: str\n        :param ExtInfo: Extended information field, used in specific scenarios.\n        :type ExtInfo: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+<li>FINISH: Completed.</li>
+        :type Status: str
+        :param CreateTime: Creation time of a task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type CreateTime: str
+        :param BeginProcessTime: Start time of task execution in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type BeginProcessTime: str
+        :param FinishTime: End time of task execution in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type FinishTime: str
+        :param WorkflowTask: Information of a video processing task. This field has a value only when `TaskType` is `WorkflowTask`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WorkflowTask: :class:`tencentcloud.mps.v20190612.models.WorkflowTask`
+        :param EditMediaTask: Video editing task information. This field has a value only when `TaskType` is `EditMediaTask`.
+        :type EditMediaTask: :class:`tencentcloud.mps.v20190612.models.EditMediaTask`
+        :param LiveStreamProcessTask: Information of a live stream processing task. This field has a value only when `TaskType` is `LiveStreamProcessTask`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LiveStreamProcessTask: :class:`tencentcloud.mps.v20190612.models.LiveStreamProcessTask`
+        :param TaskNotifyConfig: Event notification information of a task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        :param TasksPriority: Task flow priority. Value range: [-10, 10].
+        :type TasksPriority: int
+        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.
+        :type SessionId: str
+        :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
+        :type SessionContext: str
+        :param ExtInfo: Extended information field, used in specific scenarios.
+        :type ExtInfo: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.TaskType = None
         self.Status = None
         self.CreateTime = None
@@ -5185,8 +6355,14 @@ class DescribeTasksRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Filter: Task status. Valid values: WAITING (waiting), PROCESSING (processing), FINISH (completed).
+        :type Status: str
+        :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param ScrollToken: Scrolling identifier which is used for pulling in batches. If a single request cannot pull all the data entries, the API will return `ScrollToken`, and if the next request carries it, the next pull will start from the next entry.
+        :type ScrollToken: str
         """
-        :param Status: Filter: Task status. Valid values: WAITING (waiting), PROCESSING (processing), FINISH (completed).\n        :type Status: str\n        :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        :param ScrollToken: Scrolling identifier which is used for pulling in batches. If a single request cannot pull all the data entries, the API will return `ScrollToken`, and if the next request carries it, the next pull will start from the next entry.\n        :type ScrollToken: str\n        """
         self.Status = None
         self.Limit = None
         self.ScrollToken = None
@@ -5211,8 +6387,14 @@ class DescribeTasksResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskSet: Task overview list.
+        :type TaskSet: list of TaskSimpleInfo
+        :param ScrollToken: Scrolling identifier. If a request does not return all the data entries, this field indicates the ID of the next entry. If this field is an empty string, there is no more data.
+        :type ScrollToken: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskSet: Task overview list.\n        :type TaskSet: list of TaskSimpleInfo\n        :param ScrollToken: Scrolling identifier. If a request does not return all the data entries, this field indicates the ID of the next entry. If this field is an empty string, there is no more data.\n        :type ScrollToken: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskSet = None
         self.ScrollToken = None
         self.RequestId = None
@@ -5235,14 +6417,26 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Definitions: Unique ID filter of transcoding templates. Array length limit: 100.\n        :type Definitions: list of int\n        :param Type: Template type filter. Valid values:
+        r"""
+        :param Definitions: Unique ID filter of transcoding templates. Array length limit: 100.
+        :type Definitions: list of int
+        :param Type: Template type filter. Valid values:
 <li>Preset: Preset template;</li>
-<li>Custom: Custom template.</li>\n        :type Type: str\n        :param ContainerType: Container format filter. Valid values:
+<li>Custom: Custom template.</li>
+        :type Type: str
+        :param ContainerType: Container format filter. Valid values:
 <li>Video: Video container format that can contain both video stream and audio stream;</li>
-<li>PureAudio: Audio container format that can contain only audio stream.</li>\n        :type ContainerType: str\n        :param TEHDType: TESHD filter, which is used to filter common transcoding or ultra-fast HD transcoding templates. Valid values:
+<li>PureAudio: Audio container format that can contain only audio stream.</li>
+        :type ContainerType: str
+        :param TEHDType: TESHD filter, which is used to filter common transcoding or ultra-fast HD transcoding templates. Valid values:
 <li>Common: Common transcoding template;</li>
-<li>TEHD: TESHD template.</li>\n        :type TEHDType: str\n        :param Offset: Paging offset. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        """
+<li>TEHD: TESHD template.</li>
+        :type TEHDType: str
+        :param Offset: Paging offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        """
         self.Definitions = None
         self.Type = None
         self.ContainerType = None
@@ -5273,8 +6467,14 @@ class DescribeTranscodeTemplatesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of eligible entries.
+        :type TotalCount: int
+        :param TranscodeTemplateSet: List of transcoding template details.
+        :type TranscodeTemplateSet: list of TranscodeTemplate
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of eligible entries.\n        :type TotalCount: int\n        :param TranscodeTemplateSet: List of transcoding template details.\n        :type TranscodeTemplateSet: list of TranscodeTemplate\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TranscodeTemplateSet = None
         self.RequestId = None
@@ -5297,12 +6497,20 @@ class DescribeWatermarkTemplatesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Definitions: Unique ID filter of watermarking templates. Array length limit: 100.\n        :type Definitions: list of int\n        :param Type: Watermark type filter. Valid values:
+        r"""
+        :param Definitions: Unique ID filter of watermarking templates. Array length limit: 100.
+        :type Definitions: list of int
+        :param Type: Watermark type filter. Valid values:
 <li>image: Image watermark;</li>
-<li>text: Text watermark.</li>\n        :type Type: str\n        :param Offset: Paging offset. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of returned entries
+<li>text: Text watermark.</li>
+        :type Type: str
+        :param Offset: Paging offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned entries
 <li>Default value: 10;</li>
-<li>Maximum value: 100.</li>\n        :type Limit: int\n        """
+<li>Maximum value: 100.</li>
+        :type Limit: int
+        """
         self.Definitions = None
         self.Type = None
         self.Offset = None
@@ -5329,8 +6537,14 @@ class DescribeWatermarkTemplatesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of eligible entries.
+        :type TotalCount: int
+        :param WatermarkTemplateSet: List of watermarking template details.
+        :type WatermarkTemplateSet: list of WatermarkTemplate
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of eligible entries.\n        :type TotalCount: int\n        :param WatermarkTemplateSet: List of watermarking template details.\n        :type WatermarkTemplateSet: list of WatermarkTemplate\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.WatermarkTemplateSet = None
         self.RequestId = None
@@ -5353,8 +6567,10 @@ class DescribeWordSamplesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Keywords: Keyword filter. Array length limit: 100 words.\n        :type Keywords: list of str\n        :param Usages: <b>Keyword usage. Valid values:</b>
+        r"""
+        :param Keywords: Keyword filter. Array length limit: 100 words.
+        :type Keywords: list of str
+        :param Usages: <b>Keyword usage. Valid values:</b>
 1. Recognition.Ocr: OCR-based content recognition
 2. Recognition.Asr: ASR-based content recognition
 3. Review.Ocr: OCR-based inappropriate information recognition
@@ -5362,7 +6578,15 @@ class DescribeWordSamplesRequest(AbstractModel):
 <b>Valid values can also be:</b>
 5. Recognition: ASR- and OCR-based content recognition; equivalent to 1+2
 6. Review: ASR- and OCR-based inappropriate information recognition; equivalent to 3+4
-You can select multiple elements, which are connected by OR logic. If a usage contains any element in this parameter, the keyword sample will be used.\n        :type Usages: list of str\n        :param Tags: Tag filter. Array length limit: 20 words.\n        :type Tags: list of str\n        :param Offset: Paging offset. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of returned entries. Default value: 100. Maximum value: 100.\n        :type Limit: int\n        """
+You can select multiple elements, which are connected by OR logic. If a usage contains any element in this parameter, the keyword sample will be used.
+        :type Usages: list of str
+        :param Tags: Tag filter. Array length limit: 20 words.
+        :type Tags: list of str
+        :param Offset: Paging offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned entries. Default value: 100. Maximum value: 100.
+        :type Limit: int
+        """
         self.Keywords = None
         self.Usages = None
         self.Tags = None
@@ -5391,10 +6615,16 @@ class DescribeWordSamplesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: Number of eligible entries.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type TotalCount: int\n        :param WordSet: Keyword information.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type WordSet: list of AiSampleWord\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalCount: int
+        :param WordSet: Keyword information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WordSet: list of AiSampleWord
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.TotalCount = None
         self.WordSet = None
         self.RequestId = None
@@ -5417,11 +6647,19 @@ class DescribeWorkflowsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param WorkflowIds: Workflow ID filter. Array length limit: 100.\n        :type WorkflowIds: list of int\n        :param Status: Workflow status. Valid values:
+        r"""
+        :param WorkflowIds: Workflow ID filter. Array length limit: 100.
+        :type WorkflowIds: list of int
+        :param Status: Workflow status. Valid values:
 <li>Enabled: Enabled,</li>
 <li>Disabled: Disabled.</li>
-If this parameter is left empty, the workflow status will not be distinguished.\n        :type Status: str\n        :param Offset: Paging offset. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        """
+If this parameter is left empty, the workflow status will not be distinguished.
+        :type Status: str
+        :param Offset: Paging offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        """
         self.WorkflowIds = None
         self.Status = None
         self.Offset = None
@@ -5448,8 +6686,14 @@ class DescribeWorkflowsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of eligible entries.
+        :type TotalCount: int
+        :param WorkflowInfoSet: Workflow information array.
+        :type WorkflowInfoSet: list of WorkflowInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of eligible entries.\n        :type TotalCount: int\n        :param WorkflowInfoSet: Workflow information array.\n        :type WorkflowInfoSet: list of WorkflowInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.WorkflowInfoSet = None
         self.RequestId = None
@@ -5472,8 +6716,10 @@ class DisableWorkflowRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param WorkflowId: Workflow ID.
+        :type WorkflowId: int
         """
-        :param WorkflowId: Workflow ID.\n        :type WorkflowId: int\n        """
         self.WorkflowId = None
 
 
@@ -5494,8 +6740,10 @@ class DisableWorkflowResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -5509,8 +6757,14 @@ class EditMediaFileInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InputInfo: Video input information.
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param StartTimeOffset: Start time offset of video clipping in seconds.
+        :type StartTimeOffset: float
+        :param EndTimeOffset: End time offset of video clipping in seconds.
+        :type EndTimeOffset: float
         """
-        :param InputInfo: Video input information.\n        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`\n        :param StartTimeOffset: Start time offset of video clipping in seconds.\n        :type StartTimeOffset: float\n        :param EndTimeOffset: End time offset of video clipping in seconds.\n        :type EndTimeOffset: float\n        """
         self.InputInfo = None
         self.StartTimeOffset = None
         self.EndTimeOffset = None
@@ -5537,8 +6791,10 @@ class EditMediaOutputConfig(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Container: Format. Valid values: `mp4` (default), `hls`, `mov`, `flv`, `avi`
+        :type Container: str
         """
-        :param Container: Format. Valid values: `mp4` (default), `hls`, `mov`, `flv`, `avi`\n        :type Container: str\n        """
         self.Container = None
 
 
@@ -5559,8 +6815,24 @@ class EditMediaRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FileInfos: Information of input video file.
+        :type FileInfos: list of EditMediaFileInfo
+        :param OutputStorage: Target storage of video processing output file.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param OutputObjectPath: Target path of video processing output file.
+        :type OutputObjectPath: str
+        :param OutputConfig: Configuration for output files of video editing
+        :type OutputConfig: :class:`tencentcloud.mps.v20190612.models.EditMediaOutputConfig`
+        :param TaskNotifyConfig: Event notification information of task. If this parameter is left empty, no event notifications will be obtained.
+        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        :param TasksPriority: Task priority. The higher the value, the higher the priority. Value range: -10–10. If this parameter is left empty, 0 will be used.
+        :type TasksPriority: int
+        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.
+        :type SessionId: str
+        :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
+        :type SessionContext: str
         """
-        :param FileInfos: Information of input video file.\n        :type FileInfos: list of EditMediaFileInfo\n        :param OutputStorage: Target storage of video processing output file.\n        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`\n        :param OutputObjectPath: Target path of video processing output file.\n        :type OutputObjectPath: str\n        :param OutputConfig: Configuration for output files of video editing\n        :type OutputConfig: :class:`tencentcloud.mps.v20190612.models.EditMediaOutputConfig`\n        :param TaskNotifyConfig: Event notification information of task. If this parameter is left empty, no event notifications will be obtained.\n        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`\n        :param TasksPriority: Task priority. The higher the value, the higher the priority. Value range: -10–10. If this parameter is left empty, 0 will be used.\n        :type TasksPriority: int\n        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.\n        :type SessionId: str\n        :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.\n        :type SessionContext: str\n        """
         self.FileInfos = None
         self.OutputStorage = None
         self.OutputObjectPath = None
@@ -5606,8 +6878,12 @@ class EditMediaResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Video editing task ID, which can be used to query the status of an editing task.
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskId: Video editing task ID, which can be used to query the status of an editing task.\n        :type TaskId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -5623,12 +6899,24 @@ class EditMediaTask(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param TaskId: Task ID.\n        :type TaskId: str\n        :param Status: Task status. Valid values:
+        r"""
+        :param TaskId: Task ID.
+        :type TaskId: str
+        :param Status: Task status. Valid values:
 <li>PROCESSING: processing;</li>
-<li>FINISH: completed.</li>\n        :type Status: str\n        :param ErrCode: Error code
+<li>FINISH: completed.</li>
+        :type Status: str
+        :param ErrCode: Error code
 <li>0: success;</li>
-<li>Other values: failure.</li>\n        :type ErrCode: int\n        :param Message: Error message.\n        :type Message: str\n        :param Input: Input of video editing task.\n        :type Input: :class:`tencentcloud.mps.v20190612.models.EditMediaTaskInput`\n        :param Output: Output of video editing task.\n        :type Output: :class:`tencentcloud.mps.v20190612.models.EditMediaTaskOutput`\n        """
+<li>Other values: failure.</li>
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input of video editing task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.EditMediaTaskInput`
+        :param Output: Output of video editing task.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.EditMediaTaskOutput`
+        """
         self.TaskId = None
         self.Status = None
         self.ErrCode = None
@@ -5663,8 +6951,10 @@ class EditMediaTaskInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FileInfoSet: Information of input video file.
+        :type FileInfoSet: list of EditMediaFileInfo
         """
-        :param FileInfoSet: Information of input video file.\n        :type FileInfoSet: list of EditMediaFileInfo\n        """
         self.FileInfoSet = None
 
 
@@ -5690,8 +6980,12 @@ class EditMediaTaskOutput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OutputStorage: Target storage of edited file.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param Path: Path of edited video file.
+        :type Path: str
         """
-        :param OutputStorage: Target storage of edited file.\n        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`\n        :param Path: Path of edited video file.\n        :type Path: str\n        """
         self.OutputStorage = None
         self.Path = None
 
@@ -5716,8 +7010,10 @@ class EnableWorkflowRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param WorkflowId: Workflow ID.
+        :type WorkflowId: int
         """
-        :param WorkflowId: Workflow ID.\n        :type WorkflowId: int\n        """
         self.WorkflowId = None
 
 
@@ -5738,8 +7034,10 @@ class EnableWorkflowResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -5753,8 +7051,12 @@ class ExecuteFunctionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FunctionName: Name of called backend API.
+        :type FunctionName: str
+        :param FunctionArg: API parameter. Parameter format will depend on the actual function definition.
+        :type FunctionArg: str
         """
-        :param FunctionName: Name of called backend API.\n        :type FunctionName: str\n        :param FunctionArg: API parameter. Parameter format will depend on the actual function definition.\n        :type FunctionArg: str\n        """
         self.FunctionName = None
         self.FunctionArg = None
 
@@ -5777,8 +7079,12 @@ class ExecuteFunctionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: Packed string, which will vary according to the custom API.
+        :type Result: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Result: Packed string, which will vary according to the custom API.\n        :type Result: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -5794,18 +7100,28 @@ class FaceConfigureInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a face recognition task. Valid values:
 <li>ON: Enables an intelligent face recognition task;</li>
-<li>OFF: Disables an intelligent face recognition task.</li>\n        :type Switch: str\n        :param Score: Face recognition filter score. If this score is reached or exceeded, a recognition result will be returned. Value range: 0-100. Default value: 95.\n        :type Score: float\n        :param DefaultLibraryLabelSet: Default figure filter tag, which specifies the default figure tag that needs to be returned. If this parameter is left empty or an empty value is entered, all results of the default figures will be returned. Valid values:
+<li>OFF: Disables an intelligent face recognition task.</li>
+        :type Switch: str
+        :param Score: Face recognition filter score. If this score is reached or exceeded, a recognition result will be returned. Value range: 0-100. Default value: 95.
+        :type Score: float
+        :param DefaultLibraryLabelSet: Default figure filter tag, which specifies the default figure tag that needs to be returned. If this parameter is left empty or an empty value is entered, all results of the default figures will be returned. Valid values:
 <li>entertainment: Entertainment celebrity;</li>
 <li>sport: Sports celebrity;</li>
-<li>politician: Politically sensitive figure.</li>\n        :type DefaultLibraryLabelSet: list of str\n        :param UserDefineLibraryLabelSet: Custom face tags for filter, which specify the face recognition results to return. If this parameter is not specified or left empty, the recognition results for all custom face tags are returned.
-Up to 100 tags are allowed, each containing no more than 16 characters.\n        :type UserDefineLibraryLabelSet: list of str\n        :param FaceLibrary: Figure library. Valid values:
+<li>politician: Politically sensitive figure.</li>
+        :type DefaultLibraryLabelSet: list of str
+        :param UserDefineLibraryLabelSet: Custom face tags for filter, which specify the face recognition results to return. If this parameter is not specified or left empty, the recognition results for all custom face tags are returned.
+Up to 100 tags are allowed, each containing no more than 16 characters.
+        :type UserDefineLibraryLabelSet: list of str
+        :param FaceLibrary: Figure library. Valid values:
 <li>Default: Default figure library;</li>
 <li>UserDefine: Custom figure library.</li>
 <li>All: Both default and custom figure libraries will be used.</li>
-Default value: All (both default and custom figure libraries will be used.)\n        :type FaceLibrary: str\n        """
+Default value: All (both default and custom figure libraries will be used.)
+        :type FaceLibrary: str
+        """
         self.Switch = None
         self.Score = None
         self.DefaultLibraryLabelSet = None
@@ -5834,17 +7150,27 @@ class FaceConfigureInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a face recognition task. Valid values:
 <li>ON: Enables an intelligent face recognition task;</li>
-<li>OFF: Disables an intelligent face recognition task.</li>\n        :type Switch: str\n        :param Score: Face recognition filter score. If this score is reached or exceeded, a recognition result will be returned. Value range: 0-100.\n        :type Score: float\n        :param DefaultLibraryLabelSet: Default figure filter tag, which specifies the default figure tag that needs to be returned. If this parameter is left empty or an empty value is entered, all results of the default figures will be returned. Valid values:
+<li>OFF: Disables an intelligent face recognition task.</li>
+        :type Switch: str
+        :param Score: Face recognition filter score. If this score is reached or exceeded, a recognition result will be returned. Value range: 0-100.
+        :type Score: float
+        :param DefaultLibraryLabelSet: Default figure filter tag, which specifies the default figure tag that needs to be returned. If this parameter is left empty or an empty value is entered, all results of the default figures will be returned. Valid values:
 <li>entertainment: Entertainment celebrity;</li>
 <li>sport: Sports celebrity;</li>
-<li>politician: Politically sensitive figure.</li>\n        :type DefaultLibraryLabelSet: list of str\n        :param UserDefineLibraryLabelSet: Custom face tags for filter, which specify the face recognition results to return. If this parameter is not specified or left empty, the recognition results for all custom face tags are returned.
-Up to 100 tags are allowed, each containing no more than 16 characters.\n        :type UserDefineLibraryLabelSet: list of str\n        :param FaceLibrary: Figure library. Valid values:
+<li>politician: Politically sensitive figure.</li>
+        :type DefaultLibraryLabelSet: list of str
+        :param UserDefineLibraryLabelSet: Custom face tags for filter, which specify the face recognition results to return. If this parameter is not specified or left empty, the recognition results for all custom face tags are returned.
+Up to 100 tags are allowed, each containing no more than 16 characters.
+        :type UserDefineLibraryLabelSet: list of str
+        :param FaceLibrary: Figure library. Valid values:
 <li>Default: Default figure library;</li>
 <li>UserDefine: Custom figure library.</li>
-<li>All: Both default and custom figure libraries will be used.</li>\n        :type FaceLibrary: str\n        """
+<li>All: Both default and custom figure libraries will be used.</li>
+        :type FaceLibrary: str
+        """
         self.Switch = None
         self.Score = None
         self.DefaultLibraryLabelSet = None
@@ -5873,10 +7199,12 @@ class FrameTagConfigureInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of intelligent frame-specific tagging task. Valid values:
 <li>ON: enables intelligent frame-specific tagging task;</li>
-<li>OFF: disables intelligent frame-specific tagging task.</li>\n        :type Switch: str\n        """
+<li>OFF: disables intelligent frame-specific tagging task.</li>
+        :type Switch: str
+        """
         self.Switch = None
 
 
@@ -5897,10 +7225,12 @@ class FrameTagConfigureInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of intelligent frame-specific tagging task. Valid values:
 <li>ON: enables intelligent frame-specific tagging task;</li>
-<li>OFF: disables intelligent frame-specific tagging task.</li>\n        :type Switch: str\n        """
+<li>OFF: disables intelligent frame-specific tagging task.</li>
+        :type Switch: str
+        """
         self.Switch = None
 
 
@@ -5921,8 +7251,12 @@ class HeadTailParameter(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param HeadSet: Opening credits list
+        :type HeadSet: list of MediaInputInfo
+        :param TailSet: Closing credits list
+        :type TailSet: list of MediaInputInfo
         """
-        :param HeadSet: Opening credits list\n        :type HeadSet: list of MediaInputInfo\n        :param TailSet: Closing credits list\n        :type TailSet: list of MediaInputInfo\n        """
         self.HeadSet = None
         self.TailSet = None
 
@@ -5955,10 +7289,20 @@ class ImageSpriteTaskInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: ID of an image sprite generating template.
+        :type Definition: int
+        :param OutputStorage: Target bucket of a generated image sprite. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param OutputObjectPath: Output path to a generated image sprite file, which can be a relative path or an absolute path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_imageSprite_{definition}_{number}.{format}`.
+        :type OutputObjectPath: str
+        :param WebVttObjectName: Output path to the WebVTT file after an image sprite is generated, which can only be a relative path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_imageSprite_{definition}.{format}`.
+        :type WebVttObjectName: str
+        :param ObjectNumberFormat: Rule of the `{number}` variable in the image sprite output path.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ObjectNumberFormat: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
         """
-        :param Definition: ID of an image sprite generating template.\n        :type Definition: int\n        :param OutputStorage: Target bucket of a generated image sprite. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`\n        :param OutputObjectPath: Output path to a generated image sprite file, which can be a relative path or an absolute path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_imageSprite_{definition}_{number}.{format}`.\n        :type OutputObjectPath: str\n        :param WebVttObjectName: Output path to the WebVTT file after an image sprite is generated, which can only be a relative path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_imageSprite_{definition}.{format}`.\n        :type WebVttObjectName: str\n        :param ObjectNumberFormat: Rule of the `{number}` variable in the image sprite output path.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type ObjectNumberFormat: :class:`tencentcloud.mps.v20190612.models.NumberFormat`\n        """
         self.Definition = None
         self.OutputStorage = None
         self.OutputObjectPath = None
@@ -5991,16 +7335,44 @@ class ImageSpriteTemplate(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Definition: Unique ID of an image sprite generating template.\n        :type Definition: int\n        :param Type: Template type. Valid values:
+        r"""
+        :param Definition: Unique ID of an image sprite generating template.
+        :type Definition: int
+        :param Type: Template type. Valid values:
 <li>Preset: Preset template;</li>
-<li>Custom: Custom template.</li>\n        :type Type: str\n        :param Name: Name of an image sprite generating template.\n        :type Name: str\n        :param Width: Subimage width of an image sprite.\n        :type Width: int\n        :param Height: Subimage height of an image sprite.\n        :type Height: int\n        :param ResolutionAdaptive: Resolution adaption. Valid values:
+<li>Custom: Custom template.</li>
+        :type Type: str
+        :param Name: Name of an image sprite generating template.
+        :type Name: str
+        :param Width: Subimage width of an image sprite.
+        :type Width: int
+        :param Height: Subimage height of an image sprite.
+        :type Height: int
+        :param ResolutionAdaptive: Resolution adaption. Valid values:
 <li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
 <li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
-Default value: open.\n        :type ResolutionAdaptive: str\n        :param SampleType: Sampling type.\n        :type SampleType: str\n        :param SampleInterval: Sampling interval.\n        :type SampleInterval: int\n        :param RowCount: Subimage row count of an image sprite.\n        :type RowCount: int\n        :param ColumnCount: Subimage column count of an image sprite.\n        :type ColumnCount: int\n        :param CreateTime: Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type CreateTime: str\n        :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type UpdateTime: str\n        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
+Default value: open.
+        :type ResolutionAdaptive: str
+        :param SampleType: Sampling type.
+        :type SampleType: str
+        :param SampleInterval: Sampling interval.
+        :type SampleInterval: int
+        :param RowCount: Subimage row count of an image sprite.
+        :type RowCount: int
+        :param ColumnCount: Subimage column count of an image sprite.
+        :type ColumnCount: int
+        :param CreateTime: Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type CreateTime: str
+        :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type UpdateTime: str
+        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: Stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
 <li>black: Fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
-Default value: black.\n        :type FillType: str\n        :param Comment: Template description.\n        :type Comment: str\n        """
+Default value: black.
+        :type FillType: str
+        :param Comment: Template description.
+        :type Comment: str
+        """
         self.Definition = None
         self.Type = None
         self.Name = None
@@ -6047,17 +7419,25 @@ class ImageWatermarkInput(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ImageContent: String generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) a watermark image. JPEG and PNG images are supported.\n        :type ImageContent: str\n        :param Width: Watermark width. % and px formats are supported:
+        r"""
+        :param ImageContent: String generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) a watermark image. JPEG and PNG images are supported.
+        :type ImageContent: str
+        :param Width: Watermark width. % and px formats are supported:
 <li>If the string ends in %, the `Width` of the watermark will be the specified percentage of the video width. For example, `10%` means that `Width` is 10% of the video width;</li>
 <li>If the string ends in px, the `Width` of the watermark will be in pixels. For example, `100px` means that `Width` is 100 pixels. Value range: [8, 4096].</li>
-Default value: 10%.\n        :type Width: str\n        :param Height: Watermark height. % and px formats are supported:
+Default value: 10%.
+        :type Width: str
+        :param Height: Watermark height. % and px formats are supported:
 <li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height. For example, `10%` means that `Height` is 10% of the video height;</li>
 <li>If the string ends in px, the `Height` of the watermark will be in pixels. For example, `100px` means that `Height` is 100 pixels. Value range: 0 or [8, 4096].</li>
-Default value: 0px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.\n        :type Height: str\n        :param RepeatType: Repeat type of an animated watermark. Valid values:
+Default value: 0px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.
+        :type Height: str
+        :param RepeatType: Repeat type of an animated watermark. Valid values:
 <li>once: no longer appears after watermark playback ends.</li>
 <li>repeat_last_frame: stays on the last frame after watermark playback ends.</li>
-<li>repeat (default): repeats the playback until the video ends.</li>\n        :type RepeatType: str\n        """
+<li>repeat (default): repeats the playback until the video ends.</li>
+        :type RepeatType: str
+        """
         self.ImageContent = None
         self.Width = None
         self.Height = None
@@ -6084,16 +7464,24 @@ class ImageWatermarkInputForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ImageContent: String generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) a watermark image. JPEG and PNG images are supported.\n        :type ImageContent: str\n        :param Width: Watermark width. % and px formats are supported:
+        r"""
+        :param ImageContent: String generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) a watermark image. JPEG and PNG images are supported.
+        :type ImageContent: str
+        :param Width: Watermark width. % and px formats are supported:
 <li>If the string ends in %, the `Width` of the watermark will be the specified percentage of the video width. For example, `10%` means that `Width` is 10% of the video width;</li>
-<li>If the string ends in px, the `Width` of the watermark will be in pixels. For example, `100px` means that `Width` is 100 pixels. Value range: [8, 4096].</li>\n        :type Width: str\n        :param Height: Watermark height. % and px formats are supported:
+<li>If the string ends in px, the `Width` of the watermark will be in pixels. For example, `100px` means that `Width` is 100 pixels. Value range: [8, 4096].</li>
+        :type Width: str
+        :param Height: Watermark height. % and px formats are supported:
 <li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height. For example, `10%` means that `Height` is 10% of the video height;</li>
 <li>If the string ends in px, the `Height` of the watermark will be in pixels. For example, `100px` means that `Height` is 100 pixels. Value range: 0 or [8, 4096].</li>
-Default value: 0px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.\n        :type Height: str\n        :param RepeatType: Repeat type of an animated watermark. Valid values:
+Default value: 0px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.
+        :type Height: str
+        :param RepeatType: Repeat type of an animated watermark. Valid values:
 <li>once: no longer appears after watermark playback ends.</li>
 <li>repeat_last_frame: stays on the last frame after watermark playback ends.</li>
-<li>repeat (default): repeats the playback until the video ends.</li>\n        :type RepeatType: str\n        """
+<li>repeat (default): repeats the playback until the video ends.</li>
+        :type RepeatType: str
+        """
         self.ImageContent = None
         self.Width = None
         self.Height = None
@@ -6120,16 +7508,24 @@ class ImageWatermarkTemplate(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ImageUrl: Watermark image address.\n        :type ImageUrl: str\n        :param Width: Watermark width. % and px formats are supported:
+        r"""
+        :param ImageUrl: Watermark image address.
+        :type ImageUrl: str
+        :param Width: Watermark width. % and px formats are supported:
 <li>If the string ends in %, the `Width` of the watermark will be the specified percentage of the video width; for example, `10%` means that `Width` is 10% of the video width;</li>
-<li>If the string ends in px, the `Width` of the watermark will be in px; for example, `100px` means that `Width` is 100 px.</li>\n        :type Width: str\n        :param Height: Watermark height. % and px formats are supported:
+<li>If the string ends in px, the `Width` of the watermark will be in px; for example, `100px` means that `Width` is 100 px.</li>
+        :type Width: str
+        :param Height: Watermark height. % and px formats are supported:
 <li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height. For example, `10%` means that `Height` is 10% of the video height;</li>
 <li>If the string ends in px, the `Height` of the watermark will be in pixels. For example, `100px` means that `Height` is 100 pixels.</li>
-`0px` means that `Height` will be proportionally scaled according to the video width.\n        :type Height: str\n        :param RepeatType: Repeat type of an animated watermark. Valid values:
+`0px` means that `Height` will be proportionally scaled according to the video width.
+        :type Height: str
+        :param RepeatType: Repeat type of an animated watermark. Valid values:
 <li>once: no longer appears after watermark playback ends.</li>
 <li>repeat_last_frame: stays on the last frame after watermark playback ends.</li>
-<li>repeat (default): repeats the playback until the video ends.</li>\n        :type RepeatType: str\n        """
+<li>repeat (default): repeats the playback until the video ends.</li>
+        :type RepeatType: str
+        """
         self.ImageUrl = None
         self.Width = None
         self.Height = None
@@ -6156,8 +7552,10 @@ class LiveStreamAiRecognitionResultInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResultSet: Content recognition result list.
+        :type ResultSet: list of LiveStreamAiRecognitionResultItem
         """
-        :param ResultSet: Content recognition result list.\n        :type ResultSet: list of LiveStreamAiRecognitionResultItem\n        """
         self.ResultSet = None
 
 
@@ -6183,18 +7581,30 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: Result type. Valid values:
 <li>FaceRecognition: face recognition,</li>
 <li>AsrWordsRecognition: speech keyword recognition,</li>
 <li>OcrWordsRecognition: text keyword recognition,</li>
 <li>AsrFullTextRecognition: full speech recognition,</li>
-<li>OcrFullTextRecognition: full text recognition.</li>\n        :type Type: str\n        :param FaceRecognitionResultSet: Face recognition result, which is valid when `Type` is
-`FaceRecognition`.\n        :type FaceRecognitionResultSet: list of LiveStreamFaceRecognitionResult\n        :param AsrWordsRecognitionResultSet: Speech keyword recognition result, which is valid when `Type` is
-`AsrWordsRecognition`.\n        :type AsrWordsRecognitionResultSet: list of LiveStreamAsrWordsRecognitionResult\n        :param OcrWordsRecognitionResultSet: Text keyword recognition result, which is valid when `Type` is
-`OcrWordsRecognition`.\n        :type OcrWordsRecognitionResultSet: list of LiveStreamOcrWordsRecognitionResult\n        :param AsrFullTextRecognitionResultSet: Full speech recognition result, which is valid when `Type` is
-`AsrFullTextRecognition`.\n        :type AsrFullTextRecognitionResultSet: list of LiveStreamAsrFullTextRecognitionResult\n        :param OcrFullTextRecognitionResultSet: Full text recognition result, which is valid when `Type` is
-`OcrFullTextRecognition`.\n        :type OcrFullTextRecognitionResultSet: list of LiveStreamOcrFullTextRecognitionResult\n        """
+<li>OcrFullTextRecognition: full text recognition.</li>
+        :type Type: str
+        :param FaceRecognitionResultSet: Face recognition result, which is valid when `Type` is
+`FaceRecognition`.
+        :type FaceRecognitionResultSet: list of LiveStreamFaceRecognitionResult
+        :param AsrWordsRecognitionResultSet: Speech keyword recognition result, which is valid when `Type` is
+`AsrWordsRecognition`.
+        :type AsrWordsRecognitionResultSet: list of LiveStreamAsrWordsRecognitionResult
+        :param OcrWordsRecognitionResultSet: Text keyword recognition result, which is valid when `Type` is
+`OcrWordsRecognition`.
+        :type OcrWordsRecognitionResultSet: list of LiveStreamOcrWordsRecognitionResult
+        :param AsrFullTextRecognitionResultSet: Full speech recognition result, which is valid when `Type` is
+`AsrFullTextRecognition`.
+        :type AsrFullTextRecognitionResultSet: list of LiveStreamAsrFullTextRecognitionResult
+        :param OcrFullTextRecognitionResultSet: Full text recognition result, which is valid when `Type` is
+`OcrFullTextRecognition`.
+        :type OcrFullTextRecognitionResultSet: list of LiveStreamOcrFullTextRecognitionResult
+        """
         self.Type = None
         self.FaceRecognitionResultSet = None
         self.AsrWordsRecognitionResultSet = None
@@ -6250,14 +7660,32 @@ class LiveStreamAiReviewImagePoliticalResult(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param StartPtsTime: Start PTS time of a suspected segment in seconds.\n        :type StartPtsTime: float\n        :param EndPtsTime: End PTS time of a suspected segment in seconds.\n        :type EndPtsTime: float\n        :param Confidence: Score of a suspected politically sensitive segment.\n        :type Confidence: float\n        :param Suggestion: Suggestion for porn information detection of a suspected segment. Valid values:
+        r"""
+        :param StartPtsTime: Start PTS time of a suspected segment in seconds.
+        :type StartPtsTime: float
+        :param EndPtsTime: End PTS time of a suspected segment in seconds.
+        :type EndPtsTime: float
+        :param Confidence: Score of a suspected politically sensitive segment.
+        :type Confidence: float
+        :param Suggestion: Suggestion for porn information detection of a suspected segment. Valid values:
 <li>pass</li>
 <li>review</li>
-<li>block</li>\n        :type Suggestion: str\n        :param Label: Tag of the detected politically sensitive information in video. Valid values:
+<li>block</li>
+        :type Suggestion: str
+        :param Label: Tag of the detected politically sensitive information in video. Valid values:
 <li>politician: Politically sensitive figure.</li>
-<li>violation_photo: Violating photo.</li>\n        :type Label: str\n        :param Name: Name of a politically sensitive figure or violating photo.\n        :type Name: str\n        :param AreaCoordSet: Zone coordinates (at the pixel level) of a politically sensitive figure or violating photo: [x1, y1, x2, y2], i.e., the coordinates of the top-left and bottom-right corners.\n        :type AreaCoordSet: list of int\n        :param Url: URL of a suspected image (which will not be permanently stored
-and will be deleted after `PicUrlExpireTime`).\n        :type Url: str\n        :param PicUrlExpireTime: Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type PicUrlExpireTime: str\n        """
+<li>violation_photo: Violating photo.</li>
+        :type Label: str
+        :param Name: Name of a politically sensitive figure or violating photo.
+        :type Name: str
+        :param AreaCoordSet: Zone coordinates (at the pixel level) of a politically sensitive figure or violating photo: [x1, y1, x2, y2], i.e., the coordinates of the top-left and bottom-right corners.
+        :type AreaCoordSet: list of int
+        :param Url: URL of a suspected image (which will not be permanently stored
+and will be deleted after `PicUrlExpireTime`).
+        :type Url: str
+        :param PicUrlExpireTime: Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type PicUrlExpireTime: str
+        """
         self.StartPtsTime = None
         self.EndPtsTime = None
         self.Confidence = None
@@ -6294,16 +7722,30 @@ class LiveStreamAiReviewImagePornResult(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param StartPtsTime: Start PTS time of a suspected segment in seconds.\n        :type StartPtsTime: float\n        :param EndPtsTime: End PTS time of a suspected segment in seconds.\n        :type EndPtsTime: float\n        :param Confidence: Score of a suspected porn segment.\n        :type Confidence: float\n        :param Suggestion: Suggestion for porn information detection of a suspected segment. Valid values:
+        r"""
+        :param StartPtsTime: Start PTS time of a suspected segment in seconds.
+        :type StartPtsTime: float
+        :param EndPtsTime: End PTS time of a suspected segment in seconds.
+        :type EndPtsTime: float
+        :param Confidence: Score of a suspected porn segment.
+        :type Confidence: float
+        :param Suggestion: Suggestion for porn information detection of a suspected segment. Valid values:
 <li>pass</li>
 <li>review</li>
-<li>block</li>\n        :type Suggestion: str\n        :param Label: Tag of the detected porn information in video. Valid values:
+<li>block</li>
+        :type Suggestion: str
+        :param Label: Tag of the detected porn information in video. Valid values:
 <li>porn: Porn.</li>
 <li>sexy: Sexiness.</li>
 <li>vulgar: Vulgarity.</li>
-<li>intimacy: Intimacy.</li>\n        :type Label: str\n        :param Url: URL of a suspected image (which will not be permanently stored
-and will be deleted after `PicUrlExpireTime`).\n        :type Url: str\n        :param PicUrlExpireTime: Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type PicUrlExpireTime: str\n        """
+<li>intimacy: Intimacy.</li>
+        :type Label: str
+        :param Url: URL of a suspected image (which will not be permanently stored
+and will be deleted after `PicUrlExpireTime`).
+        :type Url: str
+        :param PicUrlExpireTime: Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type PicUrlExpireTime: str
+        """
         self.StartPtsTime = None
         self.EndPtsTime = None
         self.Confidence = None
@@ -6336,11 +7778,19 @@ class LiveStreamAiReviewImageTerrorismResult(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param StartPtsTime: Start PTS time of a suspected segment in seconds.\n        :type StartPtsTime: float\n        :param EndPtsTime: End PTS time of a suspected segment in seconds.\n        :type EndPtsTime: float\n        :param Confidence: Score of a suspected terrorism segment.\n        :type Confidence: float\n        :param Suggestion: Suggestion for terrorism information detection of a suspected segment. Valid values:
+        r"""
+        :param StartPtsTime: Start PTS time of a suspected segment in seconds.
+        :type StartPtsTime: float
+        :param EndPtsTime: End PTS time of a suspected segment in seconds.
+        :type EndPtsTime: float
+        :param Confidence: Score of a suspected terrorism segment.
+        :type Confidence: float
+        :param Suggestion: Suggestion for terrorism information detection of a suspected segment. Valid values:
 <li>pass</li>
 <li>review</li>
-<li>block</li>\n        :type Suggestion: str\n        :param Label: Tag of the detected terrorism information in a video. Valid values:
+<li>block</li>
+        :type Suggestion: str
+        :param Label: Tag of the detected terrorism information in a video. Valid values:
 <li>guns: Weapons and guns.</li>
 <li>crowd: Crowd.</li>
 <li>police: Police force.</li>
@@ -6348,8 +7798,14 @@ class LiveStreamAiReviewImageTerrorismResult(AbstractModel):
 <li>banners: Terrorism flags.</li>
 <li>militant: Militants.</li>
 <li>explosion: Explosions and fires.</li>
-<li>terrorists: Terrorists.</li>\n        :type Label: str\n        :param Url: URL of a suspected image (which will not be permanently stored
-and will be deleted after `PicUrlExpireTime`).\n        :type Url: str\n        :param PicUrlExpireTime: Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type PicUrlExpireTime: str\n        """
+<li>terrorists: Terrorists.</li>
+        :type Label: str
+        :param Url: URL of a suspected image (which will not be permanently stored
+and will be deleted after `PicUrlExpireTime`).
+        :type Url: str
+        :param PicUrlExpireTime: Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type PicUrlExpireTime: str
+        """
         self.StartPtsTime = None
         self.EndPtsTime = None
         self.Confidence = None
@@ -6382,8 +7838,10 @@ class LiveStreamAiReviewResultInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResultSet: List of content audit results.
+        :type ResultSet: list of LiveStreamAiReviewResultItem
         """
-        :param ResultSet: List of content audit results.\n        :type ResultSet: list of LiveStreamAiReviewResultItem\n        """
         self.ResultSet = None
 
 
@@ -6409,12 +7867,22 @@ class LiveStreamAiReviewResultItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: Content audit type. Valid values:
 <li>ImagePorn: Porn information detection in image</li>
 <li>ImageTerrorism: Terrorism information detection in image</li>
 <li>ImagePolitical: Politically sensitive information detection in image</li>
-<li>PornVoice: Porn information detection in speech</li>\n        :type Type: str\n        :param ImagePornResultSet: Result of porn information detection in image, which is valid when `Type` is `ImagePorn`.\n        :type ImagePornResultSet: list of LiveStreamAiReviewImagePornResult\n        :param ImageTerrorismResultSet: Result of terrorism information detection in image, which is valid when `Type` is `ImageTerrorism`.\n        :type ImageTerrorismResultSet: list of LiveStreamAiReviewImageTerrorismResult\n        :param ImagePoliticalResultSet: Result of politically sensitive information detection in image, which is valid when `Type` is `ImagePolitical`.\n        :type ImagePoliticalResultSet: list of LiveStreamAiReviewImagePoliticalResult\n        :param VoicePornResultSet: Result of porn information detection in speech, which is valid when `Type` is `PornVoice`.\n        :type VoicePornResultSet: list of LiveStreamAiReviewVoicePornResult\n        """
+<li>PornVoice: Porn information detection in speech</li>
+        :type Type: str
+        :param ImagePornResultSet: Result of porn information detection in image, which is valid when `Type` is `ImagePorn`.
+        :type ImagePornResultSet: list of LiveStreamAiReviewImagePornResult
+        :param ImageTerrorismResultSet: Result of terrorism information detection in image, which is valid when `Type` is `ImageTerrorism`.
+        :type ImageTerrorismResultSet: list of LiveStreamAiReviewImageTerrorismResult
+        :param ImagePoliticalResultSet: Result of politically sensitive information detection in image, which is valid when `Type` is `ImagePolitical`.
+        :type ImagePoliticalResultSet: list of LiveStreamAiReviewImagePoliticalResult
+        :param VoicePornResultSet: Result of porn information detection in speech, which is valid when `Type` is `PornVoice`.
+        :type VoicePornResultSet: list of LiveStreamAiReviewVoicePornResult
+        """
         self.Type = None
         self.ImagePornResultSet = None
         self.ImageTerrorismResultSet = None
@@ -6463,12 +7931,22 @@ class LiveStreamAiReviewVoicePornResult(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param StartPtsTime: Start PTS time of a suspected segment in seconds.\n        :type StartPtsTime: float\n        :param EndPtsTime: End PTS time of a suspected segment in seconds.\n        :type EndPtsTime: float\n        :param Confidence: Score of a suspected porn segment.\n        :type Confidence: float\n        :param Suggestion: Suggestion for porn information detection of a suspected segment. Valid values:
+        r"""
+        :param StartPtsTime: Start PTS time of a suspected segment in seconds.
+        :type StartPtsTime: float
+        :param EndPtsTime: End PTS time of a suspected segment in seconds.
+        :type EndPtsTime: float
+        :param Confidence: Score of a suspected porn segment.
+        :type Confidence: float
+        :param Suggestion: Suggestion for porn information detection of a suspected segment. Valid values:
 <li>pass</li>
 <li>review</li>
-<li>block</li>\n        :type Suggestion: str\n        :param Label: Tag of the detected porn information in video. Valid values:
-<li>sexual_moan: Sexual moans.</li>\n        :type Label: str\n        """
+<li>block</li>
+        :type Suggestion: str
+        :param Label: Tag of the detected porn information in video. Valid values:
+<li>sexual_moan: Sexual moans.</li>
+        :type Label: str
+        """
         self.StartPtsTime = None
         self.EndPtsTime = None
         self.Confidence = None
@@ -6497,8 +7975,16 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Text: Recognized text.
+        :type Text: str
+        :param StartPtsTime: Start PTS time of recognized segment in seconds.
+        :type StartPtsTime: float
+        :param EndPtsTime: End PTS time of recognized segment in seconds.
+        :type EndPtsTime: float
+        :param Confidence: Confidence of recognized segment. Value range: 0–100.
+        :type Confidence: float
         """
-        :param Text: Recognized text.\n        :type Text: str\n        :param StartPtsTime: Start PTS time of recognized segment in seconds.\n        :type StartPtsTime: float\n        :param EndPtsTime: End PTS time of recognized segment in seconds.\n        :type EndPtsTime: float\n        :param Confidence: Confidence of recognized segment. Value range: 0–100.\n        :type Confidence: float\n        """
         self.Text = None
         self.StartPtsTime = None
         self.EndPtsTime = None
@@ -6525,8 +8011,16 @@ class LiveStreamAsrWordsRecognitionResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Word: Speech keyword.
+        :type Word: str
+        :param StartPtsTime: Start PTS time of recognized segment in seconds.
+        :type StartPtsTime: float
+        :param EndPtsTime: End PTS time of recognized segment in seconds.
+        :type EndPtsTime: float
+        :param Confidence: Confidence of recognized segment. Value range: 0–100.
+        :type Confidence: float
         """
-        :param Word: Speech keyword.\n        :type Word: str\n        :param StartPtsTime: Start PTS time of recognized segment in seconds.\n        :type StartPtsTime: float\n        :param EndPtsTime: End PTS time of recognized segment in seconds.\n        :type EndPtsTime: float\n        :param Confidence: Confidence of recognized segment. Value range: 0–100.\n        :type Confidence: float\n        """
         self.Word = None
         self.StartPtsTime = None
         self.EndPtsTime = None
@@ -6553,9 +8047,23 @@ class LiveStreamFaceRecognitionResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: Unique ID of figure.
+        :type Id: str
+        :param Name: Figure name.
+        :type Name: str
+        :param Type: Figure library type, indicating to which figure library the recognized figure belongs:
+<li>Default: default figure library</li><li>UserDefine: custom figure library</li>
+        :type Type: str
+        :param StartPtsTime: Start PTS time of recognized segment in seconds.
+        :type StartPtsTime: float
+        :param EndPtsTime: End PTS time of recognized segment in seconds.
+        :type EndPtsTime: float
+        :param Confidence: Confidence of recognized segment. Value range: 0–100.
+        :type Confidence: float
+        :param AreaCoordSet: Zone coordinates of recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
+        :type AreaCoordSet: list of int
         """
-        :param Id: Unique ID of figure.\n        :type Id: str\n        :param Name: Figure name.\n        :type Name: str\n        :param Type: Figure library type, indicating to which figure library the recognized figure belongs:
-<li>Default: default figure library</li><li>UserDefine: custom figure library</li>\n        :type Type: str\n        :param StartPtsTime: Start PTS time of recognized segment in seconds.\n        :type StartPtsTime: float\n        :param EndPtsTime: End PTS time of recognized segment in seconds.\n        :type EndPtsTime: float\n        :param Confidence: Confidence of recognized segment. Value range: 0–100.\n        :type Confidence: float\n        :param AreaCoordSet: Zone coordinates of recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.\n        :type AreaCoordSet: list of int\n        """
         self.Id = None
         self.Name = None
         self.Type = None
@@ -6588,8 +8096,18 @@ class LiveStreamOcrFullTextRecognitionResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Text: Speech text.
+        :type Text: str
+        :param StartPtsTime: Start PTS time of recognized segment in seconds.
+        :type StartPtsTime: float
+        :param EndPtsTime: End PTS time of recognized segment in seconds.
+        :type EndPtsTime: float
+        :param Confidence: Confidence of recognized segment. Value range: 0–100.
+        :type Confidence: float
+        :param AreaCoordSet: Zone coordinates of recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
+        :type AreaCoordSet: list of int
         """
-        :param Text: Speech text.\n        :type Text: str\n        :param StartPtsTime: Start PTS time of recognized segment in seconds.\n        :type StartPtsTime: float\n        :param EndPtsTime: End PTS time of recognized segment in seconds.\n        :type EndPtsTime: float\n        :param Confidence: Confidence of recognized segment. Value range: 0–100.\n        :type Confidence: float\n        :param AreaCoordSet: Zone coordinates of recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.\n        :type AreaCoordSet: list of int\n        """
         self.Text = None
         self.StartPtsTime = None
         self.EndPtsTime = None
@@ -6618,8 +8136,18 @@ class LiveStreamOcrWordsRecognitionResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Word: Text keyword.
+        :type Word: str
+        :param StartPtsTime: Start PTS time of recognized segment in seconds.
+        :type StartPtsTime: float
+        :param EndPtsTime: End PTS time of recognized segment in seconds.
+        :type EndPtsTime: float
+        :param Confidence: Confidence of recognized segment. Value range: 0–100.
+        :type Confidence: float
+        :param AreaCoords: Zone coordinates of recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
+        :type AreaCoords: list of int
         """
-        :param Word: Text keyword.\n        :type Word: str\n        :param StartPtsTime: Start PTS time of recognized segment in seconds.\n        :type StartPtsTime: float\n        :param EndPtsTime: End PTS time of recognized segment in seconds.\n        :type EndPtsTime: float\n        :param Confidence: Confidence of recognized segment. Value range: 0–100.\n        :type Confidence: float\n        :param AreaCoords: Zone coordinates of recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.\n        :type AreaCoords: list of int\n        """
         self.Word = None
         self.StartPtsTime = None
         self.EndPtsTime = None
@@ -6648,10 +8176,14 @@ class LiveStreamProcessErrorInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrCode: Error code:
 <li>0: No error;</li>
-<li>If this parameter is not 0, an error has occurred. Please see the error message (`Message`).</li>\n        :type ErrCode: int\n        :param Message: Error message.\n        :type Message: str\n        """
+<li>If this parameter is not 0, an error has occurred. Please see the error message (`Message`).</li>
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        """
         self.ErrCode = None
         self.Message = None
 
@@ -6674,10 +8206,20 @@ class LiveStreamProcessTask(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param TaskId: Video processing task ID.\n        :type TaskId: str\n        :param Status: Task flow status. Valid values:
+        r"""
+        :param TaskId: Video processing task ID.
+        :type TaskId: str
+        :param Status: Task flow status. Valid values:
 <li>PROCESSING: Processing;</li>
-<li>FINISH: Completed.</li>\n        :type Status: str\n        :param ErrCode: Error code. 0: success; other values: failure.\n        :type ErrCode: int\n        :param Message: Error message.\n        :type Message: str\n        :param Url: Live stream URL.\n        :type Url: str\n        """
+<li>FINISH: Completed.</li>
+        :type Status: str
+        :param ErrCode: Error code. 0: success; other values: failure.
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Url: Live stream URL.
+        :type Url: str
+        """
         self.TaskId = None
         self.Status = None
         self.ErrCode = None
@@ -6706,8 +8248,16 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CmqModel: CMQ model. There are two types: `Queue` and `Topic`. Currently, only `Queue` is supported.
+        :type CmqModel: str
+        :param CmqRegion: CMQ region, such as `sh` and `bj`.
+        :type CmqRegion: str
+        :param QueueName: This parameter is valid when the model is `Queue`, indicating the name of the CMQ queue for receiving event notifications.
+        :type QueueName: str
+        :param TopicName: This parameter is valid when the model is `Topic`, indicating the name of the CMQ topic for receiving event notifications.
+        :type TopicName: str
         """
-        :param CmqModel: CMQ model. There are two types: `Queue` and `Topic`. Currently, only `Queue` is supported.\n        :type CmqModel: str\n        :param CmqRegion: CMQ region, such as `sh` and `bj`.\n        :type CmqRegion: str\n        :param QueueName: This parameter is valid when the model is `Queue`, indicating the name of the CMQ queue for receiving event notifications.\n        :type QueueName: str\n        :param TopicName: This parameter is valid when the model is `Topic`, indicating the name of the CMQ topic for receiving event notifications.\n        :type TopicName: str\n        """
         self.CmqModel = None
         self.CmqRegion = None
         self.QueueName = None
@@ -6734,13 +8284,17 @@ class ManageTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OperationType: Operation type. Valid values:
 <ul>
 <li>Abort: task termination. Description:
 <ul><li>If the [task type](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is live stream processing (`LiveStreamProcessTask`), tasks whose [task status](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is `WAITING` or `PROCESSING` can be terminated.</li>
 <li>For other [task types](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0), only tasks whose [task status](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is `WAITING` can be terminated.</li></ul>
-</li></ul>\n        :type OperationType: str\n        :param TaskId: Video processing task ID.\n        :type TaskId: str\n        """
+</li></ul>
+        :type OperationType: str
+        :param TaskId: Video processing task ID.
+        :type TaskId: str
+        """
         self.OperationType = None
         self.TaskId = None
 
@@ -6763,8 +8317,10 @@ class ManageTaskResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -6778,8 +8334,12 @@ class MediaAiAnalysisClassificationItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Classification: Name of intelligently generated category.
+        :type Classification: str
+        :param Confidence: Confidence of intelligently generated category between 0 and 100.
+        :type Confidence: float
         """
-        :param Classification: Name of intelligently generated category.\n        :type Classification: str\n        :param Confidence: Confidence of intelligently generated category between 0 and 100.\n        :type Confidence: float\n        """
         self.Classification = None
         self.Confidence = None
 
@@ -6802,8 +8362,12 @@ class MediaAiAnalysisCoverItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CoverPath: Storage path of intelligently generated cover.
+        :type CoverPath: str
+        :param Confidence: Confidence of intelligently generated cover between 0 and 100.
+        :type Confidence: float
         """
-        :param CoverPath: Storage path of intelligently generated cover.\n        :type CoverPath: str\n        :param Confidence: Confidence of intelligently generated cover between 0 and 100.\n        :type Confidence: float\n        """
         self.CoverPath = None
         self.Confidence = None
 
@@ -6826,8 +8390,14 @@ class MediaAiAnalysisFrameTagItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Tag: Frame-specific tag name.
+        :type Tag: str
+        :param CategorySet: 
+        :type CategorySet: list of str
+        :param Confidence: Confidence of intelligently generated frame-specific tag between 0 and 100.
+        :type Confidence: float
         """
-        :param Tag: Frame-specific tag name.\n        :type Tag: str\n        :param CategorySet: \n        :type CategorySet: list of str\n        :param Confidence: Confidence of intelligently generated frame-specific tag between 0 and 100.\n        :type Confidence: float\n        """
         self.Tag = None
         self.CategorySet = None
         self.Confidence = None
@@ -6852,8 +8422,14 @@ class MediaAiAnalysisFrameTagSegmentItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StartTimeOffset: Start time offset of frame-specific tag.
+        :type StartTimeOffset: float
+        :param EndTimeOffset: End time offset of frame-specific tag.
+        :type EndTimeOffset: float
+        :param TagSet: List of tags in time period.
+        :type TagSet: list of MediaAiAnalysisFrameTagItem
         """
-        :param StartTimeOffset: Start time offset of frame-specific tag.\n        :type StartTimeOffset: float\n        :param EndTimeOffset: End time offset of frame-specific tag.\n        :type EndTimeOffset: float\n        :param TagSet: List of tags in time period.\n        :type TagSet: list of MediaAiAnalysisFrameTagItem\n        """
         self.StartTimeOffset = None
         self.EndTimeOffset = None
         self.TagSet = None
@@ -6883,8 +8459,12 @@ class MediaAiAnalysisTagItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Tag: Tag name.
+        :type Tag: str
+        :param Confidence: Confidence of tag between 0 and 100.
+        :type Confidence: float
         """
-        :param Tag: Tag name.\n        :type Tag: str\n        :param Confidence: Confidence of tag between 0 and 100.\n        :type Confidence: float\n        """
         self.Tag = None
         self.Confidence = None
 
@@ -6907,8 +8487,30 @@ class MediaAnimatedGraphicsItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Storage: Storage location of a generated animated image file.
+        :type Storage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param Path: Path to a generated animated image file.
+        :type Path: str
+        :param Definition: ID of an animated image generating template. For more information, please see [Animated Image Generating Parameter Template](https://intl.cloud.tencent.com/document/product/266/33481?from_cn_redirect=1#.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        :type Definition: int
+        :param Container: Animated image format, such as gif.
+        :type Container: str
+        :param Height: Height of an animated image in px.
+        :type Height: int
+        :param Width: Width of an animated image in px.
+        :type Width: int
+        :param Bitrate: Bitrate of an animated image in bps.
+        :type Bitrate: int
+        :param Size: Size of an animated image in bytes.
+        :type Size: int
+        :param Md5: MD5 value of an animated image.
+        :type Md5: str
+        :param StartTimeOffset: Start time offset of an animated image in the video in seconds.
+        :type StartTimeOffset: float
+        :param EndTimeOffset: End time offset of an animated image in the video in seconds.
+        :type EndTimeOffset: float
         """
-        :param Storage: Storage location of a generated animated image file.\n        :type Storage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`\n        :param Path: Path to a generated animated image file.\n        :type Path: str\n        :param Definition: ID of an animated image generating template. For more information, please see [Animated Image Generating Parameter Template](https://intl.cloud.tencent.com/document/product/266/33481?from_cn_redirect=1#.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF).\n        :type Definition: int\n        :param Container: Animated image format, such as gif.\n        :type Container: str\n        :param Height: Height of an animated image in px.\n        :type Height: int\n        :param Width: Width of an animated image in px.\n        :type Width: int\n        :param Bitrate: Bitrate of an animated image in bps.\n        :type Bitrate: int\n        :param Size: Size of an animated image in bytes.\n        :type Size: int\n        :param Md5: MD5 value of an animated image.\n        :type Md5: str\n        :param StartTimeOffset: Start time offset of an animated image in the video in seconds.\n        :type StartTimeOffset: float\n        :param EndTimeOffset: End time offset of an animated image in the video in seconds.\n        :type EndTimeOffset: float\n        """
         self.Storage = None
         self.Path = None
         self.Definition = None
@@ -6951,11 +8553,17 @@ class MediaAudioStreamItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Bitrate: Bitrate of an audio stream in bps.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Bitrate: int\n        :param SamplingRate: Sample rate of an audio stream in Hz.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type SamplingRate: int\n        :param Codec: Audio stream codec, such as aac.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Codec: str\n        """
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Bitrate: int
+        :param SamplingRate: Sample rate of an audio stream in Hz.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SamplingRate: int
+        :param Codec: Audio stream codec, such as aac.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Codec: str
+        """
         self.Bitrate = None
         self.SamplingRate = None
         self.Codec = None
@@ -6980,11 +8588,21 @@ class MediaContentReviewAsrTextSegmentItem(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param StartTimeOffset: Start time offset of a suspected segment in seconds.\n        :type StartTimeOffset: float\n        :param EndTimeOffset: End time offset of a suspected segment in seconds.\n        :type EndTimeOffset: float\n        :param Confidence: Confidence of a suspected segment.\n        :type Confidence: float\n        :param Suggestion: Suggestion for suspected segment audit. Valid values:
+        r"""
+        :param StartTimeOffset: Start time offset of a suspected segment in seconds.
+        :type StartTimeOffset: float
+        :param EndTimeOffset: End time offset of a suspected segment in seconds.
+        :type EndTimeOffset: float
+        :param Confidence: Confidence of a suspected segment.
+        :type Confidence: float
+        :param Suggestion: Suggestion for suspected segment audit. Valid values:
 <li>pass.</li>
 <li>review.</li>
-<li>block.</li>\n        :type Suggestion: str\n        :param KeywordSet: List of suspected keywords.\n        :type KeywordSet: list of str\n        """
+<li>block.</li>
+        :type Suggestion: str
+        :param KeywordSet: List of suspected keywords.
+        :type KeywordSet: list of str
+        """
         self.StartTimeOffset = None
         self.EndTimeOffset = None
         self.Confidence = None
@@ -7013,12 +8631,28 @@ class MediaContentReviewOcrTextSegmentItem(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param StartTimeOffset: Start time offset of a suspected segment in seconds.\n        :type StartTimeOffset: float\n        :param EndTimeOffset: End time offset of a suspected segment in seconds.\n        :type EndTimeOffset: float\n        :param Confidence: Confidence of a suspected segment.\n        :type Confidence: float\n        :param Suggestion: Suggestion for suspected segment audit. Valid values:
+        r"""
+        :param StartTimeOffset: Start time offset of a suspected segment in seconds.
+        :type StartTimeOffset: float
+        :param EndTimeOffset: End time offset of a suspected segment in seconds.
+        :type EndTimeOffset: float
+        :param Confidence: Confidence of a suspected segment.
+        :type Confidence: float
+        :param Suggestion: Suggestion for suspected segment audit. Valid values:
 <li>pass.</li>
 <li>review.</li>
-<li>block.</li>\n        :type Suggestion: str\n        :param KeywordSet: List of suspected keywords.\n        :type KeywordSet: list of str\n        :param AreaCoordSet: Zone coordinates (at the pixel level) of suspected text: [x1, y1, x2, y2], i.e., the coordinates of the top-left and bottom-right corners.\n        :type AreaCoordSet: list of int\n        :param Url: URL of a suspected image (which will not be permanently stored
-and will be deleted after `PicUrlExpireTime`).\n        :type Url: str\n        :param PicUrlExpireTime: Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type PicUrlExpireTime: str\n        """
+<li>block.</li>
+        :type Suggestion: str
+        :param KeywordSet: List of suspected keywords.
+        :type KeywordSet: list of str
+        :param AreaCoordSet: Zone coordinates (at the pixel level) of suspected text: [x1, y1, x2, y2], i.e., the coordinates of the top-left and bottom-right corners.
+        :type AreaCoordSet: list of int
+        :param Url: URL of a suspected image (which will not be permanently stored
+and will be deleted after `PicUrlExpireTime`).
+        :type Url: str
+        :param PicUrlExpireTime: Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type PicUrlExpireTime: str
+        """
         self.StartTimeOffset = None
         self.EndTimeOffset = None
         self.Confidence = None
@@ -7053,11 +8687,21 @@ class MediaContentReviewPoliticalSegmentItem(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param StartTimeOffset: Start time offset of a suspected segment in seconds.\n        :type StartTimeOffset: float\n        :param EndTimeOffset: End time offset of a suspected segment in seconds.\n        :type EndTimeOffset: float\n        :param Confidence: Score of a suspected politically sensitive segment.\n        :type Confidence: float\n        :param Suggestion: Suggestion for politically sensitive information detection of a suspected segment. Valid values:
+        r"""
+        :param StartTimeOffset: Start time offset of a suspected segment in seconds.
+        :type StartTimeOffset: float
+        :param EndTimeOffset: End time offset of a suspected segment in seconds.
+        :type EndTimeOffset: float
+        :param Confidence: Score of a suspected politically sensitive segment.
+        :type Confidence: float
+        :param Suggestion: Suggestion for politically sensitive information detection of a suspected segment. Valid values:
 <li>pass.</li>
 <li>review.</li>
-<li>block.</li>\n        :type Suggestion: str\n        :param Name: Name of a politically sensitive figure or violating photo.\n        :type Name: str\n        :param Label: Tags for the results of politically sensitive information detection of suspected video segments. The relationship between the `LabelSet` parameter in the content audit template [controlling tasks of video politically sensitive information detection](https://intl.cloud.tencent.com/document/api/862/37615?from_cn_redirect=1#PoliticalImgReviewTemplateInfo) and this parameter is as follows:
+<li>block.</li>
+        :type Suggestion: str
+        :param Name: Name of a politically sensitive figure or violating photo.
+        :type Name: str
+        :param Label: Tags for the results of politically sensitive information detection of suspected video segments. The relationship between the `LabelSet` parameter in the content audit template [controlling tasks of video politically sensitive information detection](https://intl.cloud.tencent.com/document/api/862/37615?from_cn_redirect=1#PoliticalImgReviewTemplateInfo) and this parameter is as follows:
 violation_photo:
 <li>violation_photo: violating photo.</li>
 politician:
@@ -7080,8 +8724,16 @@ celebrity:
 <li>sensitive_celebrity: sensitive well-known figure;</li>
 <li>historical_celebrity: well-known historical figure.</li>
 military:
-<li>sensitive_military: militarily sensitive figure.</li>\n        :type Label: str\n        :param Url: URL of a suspected image (which will not be permanently stored
- and will be deleted after `PicUrlExpireTime`).\n        :type Url: str\n        :param AreaCoordSet: Zone coordinates (at the pixel level) of a politically sensitive figure or violating photo: [x1, y1, x2, y2], i.e., the coordinates of the top-left and bottom-right corners.\n        :type AreaCoordSet: list of int\n        :param PicUrlExpireTime: Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type PicUrlExpireTime: str\n        """
+<li>sensitive_military: militarily sensitive figure.</li>
+        :type Label: str
+        :param Url: URL of a suspected image (which will not be permanently stored
+ and will be deleted after `PicUrlExpireTime`).
+        :type Url: str
+        :param AreaCoordSet: Zone coordinates (at the pixel level) of a politically sensitive figure or violating photo: [x1, y1, x2, y2], i.e., the coordinates of the top-left and bottom-right corners.
+        :type AreaCoordSet: list of int
+        :param PicUrlExpireTime: Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type PicUrlExpireTime: str
+        """
         self.StartTimeOffset = None
         self.EndTimeOffset = None
         self.Confidence = None
@@ -7118,12 +8770,26 @@ class MediaContentReviewSegmentItem(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param StartTimeOffset: Start time offset of a suspected segment in seconds.\n        :type StartTimeOffset: float\n        :param EndTimeOffset: End time offset of a suspected segment in seconds.\n        :type EndTimeOffset: float\n        :param Confidence: Score of a suspected porn segment.\n        :type Confidence: float\n        :param Label: Tag of porn information detection result of a suspected segment.\n        :type Label: str\n        :param Suggestion: Suggestion for porn information detection of a suspected segment. Valid values:
+        r"""
+        :param StartTimeOffset: Start time offset of a suspected segment in seconds.
+        :type StartTimeOffset: float
+        :param EndTimeOffset: End time offset of a suspected segment in seconds.
+        :type EndTimeOffset: float
+        :param Confidence: Score of a suspected porn segment.
+        :type Confidence: float
+        :param Label: Tag of porn information detection result of a suspected segment.
+        :type Label: str
+        :param Suggestion: Suggestion for porn information detection of a suspected segment. Valid values:
 <li>pass.</li>
 <li>review.</li>
-<li>block.</li>\n        :type Suggestion: str\n        :param Url: URL of a suspected image (which will not be permanently stored
- and will be deleted after `PicUrlExpireTime`).\n        :type Url: str\n        :param PicUrlExpireTime: Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type PicUrlExpireTime: str\n        """
+<li>block.</li>
+        :type Suggestion: str
+        :param Url: URL of a suspected image (which will not be permanently stored
+ and will be deleted after `PicUrlExpireTime`).
+        :type Url: str
+        :param PicUrlExpireTime: Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type PicUrlExpireTime: str
+        """
         self.StartTimeOffset = None
         self.EndTimeOffset = None
         self.Confidence = None
@@ -7156,8 +8822,22 @@ class MediaImageSpriteItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Image sprite specification. For more information, please see [Image Sprite Parameter Template](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        :type Definition: int
+        :param Height: Subimage height of an image sprite.
+        :type Height: int
+        :param Width: Subimage width of an image sprite.
+        :type Width: int
+        :param TotalCount: Total number of subimages in each image sprite.
+        :type TotalCount: int
+        :param ImagePathSet: Path to each image sprite.
+        :type ImagePathSet: list of str
+        :param WebVttPath: Path to a WebVtt file for the position-time relationship among subimages in an image sprite. The WebVtt file indicates the corresponding time points of each subimage and their coordinates in the image sprite, which is typically used by the player for implementing preview.
+        :type WebVttPath: str
+        :param Storage: Storage location of an image sprite file.
+        :type Storage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
-        :param Definition: Image sprite specification. For more information, please see [Image Sprite Parameter Template](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF).\n        :type Definition: int\n        :param Height: Subimage height of an image sprite.\n        :type Height: int\n        :param Width: Subimage width of an image sprite.\n        :type Width: int\n        :param TotalCount: Total number of subimages in each image sprite.\n        :type TotalCount: int\n        :param ImagePathSet: Path to each image sprite.\n        :type ImagePathSet: list of str\n        :param WebVttPath: Path to a WebVtt file for the position-time relationship among subimages in an image sprite. The WebVtt file indicates the corresponding time points of each subimage and their coordinates in the image sprite, which is typically used by the player for implementing preview.\n        :type WebVttPath: str\n        :param Storage: Storage location of an image sprite file.\n        :type Storage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`\n        """
         self.Definition = None
         self.Height = None
         self.Width = None
@@ -7192,9 +8872,15 @@ class MediaInputInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Type: The type of video processing input object, which supports COS and URL.
+        :type Type: str
+        :param CosInputInfo: This parameter is required and valid when `Type` is `COS`, indicating the information of a COS object for video processing.
+        :type CosInputInfo: :class:`tencentcloud.mps.v20190612.models.CosInputInfo`
+        :param UrlInputInfo: This parameter is required and valid when `Type` is `URL`, indicating the information of a URL object for video processing.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type UrlInputInfo: :class:`tencentcloud.mps.v20190612.models.UrlInputInfo`
         """
-        :param Type: The type of video processing input object, which supports COS and URL.\n        :type Type: str\n        :param CosInputInfo: This parameter is required and valid when `Type` is `COS`, indicating the information of a COS object for video processing.\n        :type CosInputInfo: :class:`tencentcloud.mps.v20190612.models.CosInputInfo`\n        :param UrlInputInfo: This parameter is required and valid when `Type` is `URL`, indicating the information of a URL object for video processing.
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type UrlInputInfo: :class:`tencentcloud.mps.v20190612.models.UrlInputInfo`\n        """
         self.Type = None
         self.CosInputInfo = None
         self.UrlInputInfo = None
@@ -7223,19 +8909,41 @@ class MediaMetaData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Size: Size of an uploaded media file in bytes (which is the sum of size of m3u8 and ts files if the video is in HLS format).
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Size: int\n        :param Container: Container, such as m4a and mp4.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Container: str\n        :param Bitrate: Sum of the average bitrate of a video stream and that of an audio stream in bps.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Bitrate: int\n        :param Height: Maximum value of the height of a video stream in px.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Height: int\n        :param Width: Maximum value of the width of a video stream in px.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Width: int\n        :param Duration: Video duration in seconds.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Duration: float\n        :param Rotate: Selected angle during video recording in degrees.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Rotate: int\n        :param VideoStreamSet: Video stream information.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type VideoStreamSet: list of MediaVideoStreamItem\n        :param AudioStreamSet: Audio stream information.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type AudioStreamSet: list of MediaAudioStreamItem\n        :param VideoDuration: Video duration in seconds.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type VideoDuration: float\n        :param AudioDuration: Audio duration in seconds.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type AudioDuration: float\n        """
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Size: int
+        :param Container: Container, such as m4a and mp4.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Container: str
+        :param Bitrate: Sum of the average bitrate of a video stream and that of an audio stream in bps.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Bitrate: int
+        :param Height: Maximum value of the height of a video stream in px.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Height: int
+        :param Width: Maximum value of the width of a video stream in px.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Width: int
+        :param Duration: Video duration in seconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Duration: float
+        :param Rotate: Selected angle during video recording in degrees.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Rotate: int
+        :param VideoStreamSet: Video stream information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VideoStreamSet: list of MediaVideoStreamItem
+        :param AudioStreamSet: Audio stream information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AudioStreamSet: list of MediaAudioStreamItem
+        :param VideoDuration: Video duration in seconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VideoDuration: float
+        :param AudioDuration: Audio duration in seconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AudioDuration: float
+        """
         self.Size = None
         self.Container = None
         self.Bitrate = None
@@ -7286,9 +8994,21 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input of an adaptive bitrate streaming task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AdaptiveDynamicStreamingTaskInput`
+        :param Output: Output of an adaptive bitrate streaming task.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AdaptiveDynamicStreamingInfoItem`
         """
-        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.\n        :type Status: str\n        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).\n        :type ErrCodeExt: str\n        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.\n        :type ErrCode: int\n        :param Message: Error message.\n        :type Message: str\n        :param Input: Input of an adaptive bitrate streaming task.\n        :type Input: :class:`tencentcloud.mps.v20190612.models.AdaptiveDynamicStreamingTaskInput`\n        :param Output: Output of an adaptive bitrate streaming task.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Output: :class:`tencentcloud.mps.v20190612.models.AdaptiveDynamicStreamingInfoItem`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -7323,9 +9043,21 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input for an animated image generating task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AnimatedGraphicTaskInput`
+        :param Output: Output of an animated image generating task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.MediaAnimatedGraphicsItem`
         """
-        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.\n        :type Status: str\n        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).\n        :type ErrCodeExt: str\n        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.\n        :type ErrCode: int\n        :param Message: Error message.\n        :type Message: str\n        :param Input: Input for an animated image generating task.\n        :type Input: :class:`tencentcloud.mps.v20190612.models.AnimatedGraphicTaskInput`\n        :param Output: Output of an animated image generating task.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Output: :class:`tencentcloud.mps.v20190612.models.MediaAnimatedGraphicsItem`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -7360,9 +9092,21 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input for an image sprite generating task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.ImageSpriteTaskInput`
+        :param Output: Output of an image sprite generating task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.MediaImageSpriteItem`
         """
-        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.\n        :type Status: str\n        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).\n        :type ErrCodeExt: str\n        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.\n        :type ErrCode: int\n        :param Message: Error message.\n        :type Message: str\n        :param Input: Input for an image sprite generating task.\n        :type Input: :class:`tencentcloud.mps.v20190612.models.ImageSpriteTaskInput`\n        :param Output: Output of an image sprite generating task.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Output: :class:`tencentcloud.mps.v20190612.models.MediaImageSpriteItem`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -7397,8 +9141,20 @@ class MediaProcessTaskInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TranscodeTaskSet: List of transcoding tasks.
+        :type TranscodeTaskSet: list of TranscodeTaskInput
+        :param AnimatedGraphicTaskSet: List of animated image generating tasks.
+        :type AnimatedGraphicTaskSet: list of AnimatedGraphicTaskInput
+        :param SnapshotByTimeOffsetTaskSet: List of time point screencapturing tasks.
+        :type SnapshotByTimeOffsetTaskSet: list of SnapshotByTimeOffsetTaskInput
+        :param SampleSnapshotTaskSet: List of sampled screencapturing tasks.
+        :type SampleSnapshotTaskSet: list of SampleSnapshotTaskInput
+        :param ImageSpriteTaskSet: List of image sprite generating tasks.
+        :type ImageSpriteTaskSet: list of ImageSpriteTaskInput
+        :param AdaptiveDynamicStreamingTaskSet: List of adaptive bitrate streaming tasks.
+        :type AdaptiveDynamicStreamingTaskSet: list of AdaptiveDynamicStreamingTaskInput
         """
-        :param TranscodeTaskSet: List of transcoding tasks.\n        :type TranscodeTaskSet: list of TranscodeTaskInput\n        :param AnimatedGraphicTaskSet: List of animated image generating tasks.\n        :type AnimatedGraphicTaskSet: list of AnimatedGraphicTaskInput\n        :param SnapshotByTimeOffsetTaskSet: List of time point screencapturing tasks.\n        :type SnapshotByTimeOffsetTaskSet: list of SnapshotByTimeOffsetTaskInput\n        :param SampleSnapshotTaskSet: List of sampled screencapturing tasks.\n        :type SampleSnapshotTaskSet: list of SampleSnapshotTaskInput\n        :param ImageSpriteTaskSet: List of image sprite generating tasks.\n        :type ImageSpriteTaskSet: list of ImageSpriteTaskInput\n        :param AdaptiveDynamicStreamingTaskSet: List of adaptive bitrate streaming tasks.\n        :type AdaptiveDynamicStreamingTaskSet: list of AdaptiveDynamicStreamingTaskInput\n        """
         self.TranscodeTaskSet = None
         self.AnimatedGraphicTaskSet = None
         self.SnapshotByTimeOffsetTaskSet = None
@@ -7459,7 +9215,7 @@ class MediaProcessTaskResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: Task type. Valid values:
 <li>Transcode: Transcoding</li>
 <li>AnimatedGraphics: Animated image generating</li>
@@ -7467,13 +9223,27 @@ class MediaProcessTaskResult(AbstractModel):
 <li>SampleSnapshot: Sampled screencapturing</li>
 <li>ImageSprites: Image sprite generating</li>
 <li>CoverBySnapshot: Screencapturing for cover image</li>
-<li>AdaptiveDynamicStreaming: Adaptive bitrate streaming</li>\n        :type Type: str\n        :param TranscodeTask: Query result of a transcoding task, which is valid when task type is `Transcode`.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type TranscodeTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskTranscodeResult`\n        :param AnimatedGraphicTask: Query result of an animated image generating task, which is valid when task type is `AnimatedGraphics`.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type AnimatedGraphicTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAnimatedGraphicResult`\n        :param SnapshotByTimeOffsetTask: Query result of a time point screencapturing task, which is valid when task type is `SnapshotByTimeOffset`.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type SnapshotByTimeOffsetTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSnapshotByTimeOffsetResult`\n        :param SampleSnapshotTask: Query result of a sampled screencapturing task, which is valid when task type is `SampleSnapshot`.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type SampleSnapshotTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSampleSnapshotResult`\n        :param ImageSpriteTask: Query result of an image sprite generating task, which is valid when task type is `ImageSprite`.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type ImageSpriteTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskImageSpriteResult`\n        :param AdaptiveDynamicStreamingTask: Query result of an adaptive bitrate streaming task, which is valid if the task type is `AdaptiveDynamicStreaming`.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type AdaptiveDynamicStreamingTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAdaptiveDynamicStreamingResult`\n        """
+<li>AdaptiveDynamicStreaming: Adaptive bitrate streaming</li>
+        :type Type: str
+        :param TranscodeTask: Query result of a transcoding task, which is valid when task type is `Transcode`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TranscodeTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskTranscodeResult`
+        :param AnimatedGraphicTask: Query result of an animated image generating task, which is valid when task type is `AnimatedGraphics`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AnimatedGraphicTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAnimatedGraphicResult`
+        :param SnapshotByTimeOffsetTask: Query result of a time point screencapturing task, which is valid when task type is `SnapshotByTimeOffset`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SnapshotByTimeOffsetTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSnapshotByTimeOffsetResult`
+        :param SampleSnapshotTask: Query result of a sampled screencapturing task, which is valid when task type is `SampleSnapshot`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SampleSnapshotTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSampleSnapshotResult`
+        :param ImageSpriteTask: Query result of an image sprite generating task, which is valid when task type is `ImageSprite`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ImageSpriteTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskImageSpriteResult`
+        :param AdaptiveDynamicStreamingTask: Query result of an adaptive bitrate streaming task, which is valid if the task type is `AdaptiveDynamicStreaming`.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AdaptiveDynamicStreamingTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAdaptiveDynamicStreamingResult`
+        """
         self.Type = None
         self.TranscodeTask = None
         self.AnimatedGraphicTask = None
@@ -7518,10 +9288,22 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :type ErrCode: int
+        :param Message: Error message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Message: str
+        :param Input: Input for a sampled screencapturing task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.SampleSnapshotTaskInput`
+        :param Output: Output of a sampled screencapturing task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.MediaSampleSnapshotItem`
         """
-        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.\n        :type Status: str\n        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).\n        :type ErrCodeExt: str\n        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.\n        :type ErrCode: int\n        :param Message: Error message.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Message: str\n        :param Input: Input for a sampled screencapturing task.\n        :type Input: :class:`tencentcloud.mps.v20190612.models.SampleSnapshotTaskInput`\n        :param Output: Output of a sampled screencapturing task.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Output: :class:`tencentcloud.mps.v20190612.models.MediaSampleSnapshotItem`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -7556,9 +9338,21 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input for a time point screencapturing task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.SnapshotByTimeOffsetTaskInput`
+        :param Output: Output of a time point screencapturing task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.MediaSnapshotByTimeOffsetItem`
         """
-        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.\n        :type Status: str\n        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).\n        :type ErrCodeExt: str\n        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.\n        :type ErrCode: int\n        :param Message: Error message.\n        :type Message: str\n        :param Input: Input for a time point screencapturing task.\n        :type Input: :class:`tencentcloud.mps.v20190612.models.SnapshotByTimeOffsetTaskInput`\n        :param Output: Output of a time point screencapturing task.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Output: :class:`tencentcloud.mps.v20190612.models.MediaSnapshotByTimeOffsetItem`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -7593,9 +9387,21 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input for a transcoding task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.TranscodeTaskInput`
+        :param Output: Output of a transcoding task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.MediaTranscodeItem`
         """
-        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.\n        :type Status: str\n        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).\n        :type ErrCodeExt: str\n        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.\n        :type ErrCode: int\n        :param Message: Error message.\n        :type Message: str\n        :param Input: Input for a transcoding task.\n        :type Input: :class:`tencentcloud.mps.v20190612.models.TranscodeTaskInput`\n        :param Output: Output of a transcoding task.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Output: :class:`tencentcloud.mps.v20190612.models.MediaTranscodeItem`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -7630,12 +9436,24 @@ class MediaSampleSnapshotItem(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Definition: Sampled screenshot specification ID. For more information, please see [Sampled Screencapturing Parameter Template](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).\n        :type Definition: int\n        :param SampleType: Sample type. Valid values:
+        r"""
+        :param Definition: Sampled screenshot specification ID. For more information, please see [Sampled Screencapturing Parameter Template](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        :type Definition: int
+        :param SampleType: Sample type. Valid values:
 <li>Percent: Samples at the specified percentage interval.</li>
-<li>Time: Samples at the specified time interval.</li>\n        :type SampleType: str\n        :param Interval: Sampling interval
+<li>Time: Samples at the specified time interval.</li>
+        :type SampleType: str
+        :param Interval: Sampling interval
 <li>If `SampleType` is `Percent`, this value means taking a screenshot at an interval of the specified percentage.</li>
-<li>If `SampleType` is `Time`, this value means taking a screenshot at an interval of the specified time (in seconds). The first screenshot is always the first video frame.</li>\n        :type Interval: int\n        :param Storage: Storage location of a generated screenshot file.\n        :type Storage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`\n        :param ImagePathSet: List of paths to generated screenshots.\n        :type ImagePathSet: list of str\n        :param WaterMarkDefinition: List of watermarking template IDs if the screenshots are watermarked.\n        :type WaterMarkDefinition: list of int\n        """
+<li>If `SampleType` is `Time`, this value means taking a screenshot at an interval of the specified time (in seconds). The first screenshot is always the first video frame.</li>
+        :type Interval: int
+        :param Storage: Storage location of a generated screenshot file.
+        :type Storage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param ImagePathSet: List of paths to generated screenshots.
+        :type ImagePathSet: list of str
+        :param WaterMarkDefinition: List of watermarking template IDs if the screenshots are watermarked.
+        :type WaterMarkDefinition: list of int
+        """
         self.Definition = None
         self.SampleType = None
         self.Interval = None
@@ -7668,8 +9486,14 @@ class MediaSnapshotByTimeOffsetItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Specification of a time point screenshot. For more information, please see [Parameter Template for Time Point Screencapturing](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E6.97.B6.E9.97.B4.E7.82.B9.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        :type Definition: int
+        :param PicInfoSet: Information set of screenshots of the same specification. Each element represents a screenshot.
+        :type PicInfoSet: list of MediaSnapshotByTimePicInfoItem
+        :param Storage: Location of a time point screenshot file.
+        :type Storage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
-        :param Definition: Specification of a time point screenshot. For more information, please see [Parameter Template for Time Point Screencapturing](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E6.97.B6.E9.97.B4.E7.82.B9.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).\n        :type Definition: int\n        :param PicInfoSet: Information set of screenshots of the same specification. Each element represents a screenshot.\n        :type PicInfoSet: list of MediaSnapshotByTimePicInfoItem\n        :param Storage: Location of a time point screenshot file.\n        :type Storage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`\n        """
         self.Definition = None
         self.PicInfoSet = None
         self.Storage = None
@@ -7701,8 +9525,14 @@ class MediaSnapshotByTimePicInfoItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TimeOffset: Time offset corresponding to the screenshot in the video in <font color=red>milliseconds</font>.
+        :type TimeOffset: float
+        :param Path: Path to the screenshot.
+        :type Path: str
+        :param WaterMarkDefinition: List of watermarking template IDs if the screenshots are watermarked.
+        :type WaterMarkDefinition: list of int
         """
-        :param TimeOffset: Time offset corresponding to the screenshot in the video in <font color=red>milliseconds</font>.\n        :type TimeOffset: float\n        :param Path: Path to the screenshot.\n        :type Path: str\n        :param WaterMarkDefinition: List of watermarking template IDs if the screenshots are watermarked.\n        :type WaterMarkDefinition: list of int\n        """
         self.TimeOffset = None
         self.Path = None
         self.WaterMarkDefinition = None
@@ -7727,10 +9557,34 @@ class MediaTranscodeItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OutputStorage: Target bucket of an output file.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param Path: Path to an output video file.
+        :type Path: str
+        :param Definition: Transcoding specification ID. For more information, please see [Transcoding Parameter Template](https://intl.cloud.tencent.com/document/product/266/33478?from_cn_redirect=1#.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF).
+        :type Definition: int
+        :param Bitrate: Sum of the average bitrate of a video stream and that of an audio stream in bps.
+        :type Bitrate: int
+        :param Height: Maximum value of the height of a video stream in px.
+        :type Height: int
+        :param Width: Maximum value of the width of a video stream in px.
+        :type Width: int
+        :param Size: Total size of a media file in bytes (which is the sum of size of m3u8 and ts files if the video is in HLS format).
+        :type Size: int
+        :param Duration: Video duration in seconds.
+        :type Duration: float
+        :param Container: Container, such as m4a and mp4.
+        :type Container: str
+        :param Md5: MD5 value of a video.
+        :type Md5: str
+        :param AudioStreamSet: Audio stream information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AudioStreamSet: list of MediaAudioStreamItem
+        :param VideoStreamSet: Video stream information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VideoStreamSet: list of MediaVideoStreamItem
         """
-        :param OutputStorage: Target bucket of an output file.\n        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`\n        :param Path: Path to an output video file.\n        :type Path: str\n        :param Definition: Transcoding specification ID. For more information, please see [Transcoding Parameter Template](https://intl.cloud.tencent.com/document/product/266/33478?from_cn_redirect=1#.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF).\n        :type Definition: int\n        :param Bitrate: Sum of the average bitrate of a video stream and that of an audio stream in bps.\n        :type Bitrate: int\n        :param Height: Maximum value of the height of a video stream in px.\n        :type Height: int\n        :param Width: Maximum value of the width of a video stream in px.\n        :type Width: int\n        :param Size: Total size of a media file in bytes (which is the sum of size of m3u8 and ts files if the video is in HLS format).\n        :type Size: int\n        :param Duration: Video duration in seconds.\n        :type Duration: float\n        :param Container: Container, such as m4a and mp4.\n        :type Container: str\n        :param Md5: MD5 value of a video.\n        :type Md5: str\n        :param AudioStreamSet: Audio stream information.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type AudioStreamSet: list of MediaAudioStreamItem\n        :param VideoStreamSet: Video stream information.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type VideoStreamSet: list of MediaVideoStreamItem\n        """
         self.OutputStorage = None
         self.Path = None
         self.Definition = None
@@ -7785,13 +9639,23 @@ class MediaVideoStreamItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Bitrate: Bitrate of a video stream in bps.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Bitrate: int\n        :param Height: Height of a video stream in px.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Height: int\n        :param Width: Width of a video stream in px.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Width: int\n        :param Codec: Video stream codec, such as h264.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Codec: str\n        :param Fps: Frame rate in Hz.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Fps: int\n        """
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Bitrate: int
+        :param Height: Height of a video stream in px.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Height: int
+        :param Width: Width of a video stream in px.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Width: int
+        :param Codec: Video stream codec, such as h264.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Codec: str
+        :param Fps: Frame rate in Hz.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Fps: int
+        """
         self.Bitrate = None
         self.Height = None
         self.Width = None
@@ -7820,8 +9684,22 @@ class ModifyAIAnalysisTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Unique ID of video content analysis template.
+        :type Definition: int
+        :param Name: Video content analysis template name. Length limit: 64 characters.
+        :type Name: str
+        :param Comment: Video content analysis template description. Length limit: 256 characters.
+        :type Comment: str
+        :param ClassificationConfigure: Control parameter of intelligent categorization task.
+        :type ClassificationConfigure: :class:`tencentcloud.mps.v20190612.models.ClassificationConfigureInfoForUpdate`
+        :param TagConfigure: Control parameter of intelligent tagging task.
+        :type TagConfigure: :class:`tencentcloud.mps.v20190612.models.TagConfigureInfoForUpdate`
+        :param CoverConfigure: Control parameter of intelligent cover generating task.
+        :type CoverConfigure: :class:`tencentcloud.mps.v20190612.models.CoverConfigureInfoForUpdate`
+        :param FrameTagConfigure: Control parameter of intelligent frame-specific tagging task.
+        :type FrameTagConfigure: :class:`tencentcloud.mps.v20190612.models.FrameTagConfigureInfoForUpdate`
         """
-        :param Definition: Unique ID of video content analysis template.\n        :type Definition: int\n        :param Name: Video content analysis template name. Length limit: 64 characters.\n        :type Name: str\n        :param Comment: Video content analysis template description. Length limit: 256 characters.\n        :type Comment: str\n        :param ClassificationConfigure: Control parameter of intelligent categorization task.\n        :type ClassificationConfigure: :class:`tencentcloud.mps.v20190612.models.ClassificationConfigureInfoForUpdate`\n        :param TagConfigure: Control parameter of intelligent tagging task.\n        :type TagConfigure: :class:`tencentcloud.mps.v20190612.models.TagConfigureInfoForUpdate`\n        :param CoverConfigure: Control parameter of intelligent cover generating task.\n        :type CoverConfigure: :class:`tencentcloud.mps.v20190612.models.CoverConfigureInfoForUpdate`\n        :param FrameTagConfigure: Control parameter of intelligent frame-specific tagging task.\n        :type FrameTagConfigure: :class:`tencentcloud.mps.v20190612.models.FrameTagConfigureInfoForUpdate`\n        """
         self.Definition = None
         self.Name = None
         self.Comment = None
@@ -7862,8 +9740,10 @@ class ModifyAIAnalysisTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7877,8 +9757,24 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Unique ID of a video content recognition template.
+        :type Definition: int
+        :param Name: Name of a video content recognition template. Length limit: 64 characters.
+        :type Name: str
+        :param Comment: Description of a video content recognition template. Length limit: 256 characters.
+        :type Comment: str
+        :param FaceConfigure: Face recognition control parameter.
+        :type FaceConfigure: :class:`tencentcloud.mps.v20190612.models.FaceConfigureInfoForUpdate`
+        :param OcrFullTextConfigure: Full text recognition control parameter.
+        :type OcrFullTextConfigure: :class:`tencentcloud.mps.v20190612.models.OcrFullTextConfigureInfoForUpdate`
+        :param OcrWordsConfigure: Text keyword recognition control parameter.
+        :type OcrWordsConfigure: :class:`tencentcloud.mps.v20190612.models.OcrWordsConfigureInfoForUpdate`
+        :param AsrFullTextConfigure: Full speech recognition control parameter.
+        :type AsrFullTextConfigure: :class:`tencentcloud.mps.v20190612.models.AsrFullTextConfigureInfoForUpdate`
+        :param AsrWordsConfigure: Speech keyword recognition control parameter.
+        :type AsrWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrWordsConfigureInfoForUpdate`
         """
-        :param Definition: Unique ID of a video content recognition template.\n        :type Definition: int\n        :param Name: Name of a video content recognition template. Length limit: 64 characters.\n        :type Name: str\n        :param Comment: Description of a video content recognition template. Length limit: 256 characters.\n        :type Comment: str\n        :param FaceConfigure: Face recognition control parameter.\n        :type FaceConfigure: :class:`tencentcloud.mps.v20190612.models.FaceConfigureInfoForUpdate`\n        :param OcrFullTextConfigure: Full text recognition control parameter.\n        :type OcrFullTextConfigure: :class:`tencentcloud.mps.v20190612.models.OcrFullTextConfigureInfoForUpdate`\n        :param OcrWordsConfigure: Text keyword recognition control parameter.\n        :type OcrWordsConfigure: :class:`tencentcloud.mps.v20190612.models.OcrWordsConfigureInfoForUpdate`\n        :param AsrFullTextConfigure: Full speech recognition control parameter.\n        :type AsrFullTextConfigure: :class:`tencentcloud.mps.v20190612.models.AsrFullTextConfigureInfoForUpdate`\n        :param AsrWordsConfigure: Speech keyword recognition control parameter.\n        :type AsrWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrWordsConfigureInfoForUpdate`\n        """
         self.Definition = None
         self.Name = None
         self.Comment = None
@@ -7923,8 +9819,10 @@ class ModifyAIRecognitionTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7938,15 +9836,29 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Definition: Unique ID of an adaptive bitrate streaming template.\n        :type Definition: int\n        :param Name: Template name. Length limit: 64 characters.\n        :type Name: str\n        :param Format: Adaptive bitrate streaming format. Valid values:
+        r"""
+        :param Definition: Unique ID of an adaptive bitrate streaming template.
+        :type Definition: int
+        :param Name: Template name. Length limit: 64 characters.
+        :type Name: str
+        :param Format: Adaptive bitrate streaming format. Valid values:
 <li>HLS,</li>
-<li>MPEG-DASH.</li>\n        :type Format: str\n        :param DisableHigherVideoBitrate: Whether to prohibit transcoding from low bitrate to high bitrate. Valid values:
+<li>MPEG-DASH.</li>
+        :type Format: str
+        :param DisableHigherVideoBitrate: Whether to prohibit transcoding from low bitrate to high bitrate. Valid values:
 <li>0: no,</li>
-<li>1: yes.</li>\n        :type DisableHigherVideoBitrate: int\n        :param DisableHigherVideoResolution: Whether to prohibit transcoding from low resolution to high resolution. Valid values:
+<li>1: yes.</li>
+        :type DisableHigherVideoBitrate: int
+        :param DisableHigherVideoResolution: Whether to prohibit transcoding from low resolution to high resolution. Valid values:
 <li>0: no,</li>
-<li>1: yes.</li>\n        :type DisableHigherVideoResolution: int\n        :param StreamInfos: Parameter information of input streams for transcoding to adaptive bitrate streaming. Up to 10 streams can be input.
-Note: the frame rate of each stream must be consistent; otherwise, the frame rate of the first stream is used as the output frame rate.\n        :type StreamInfos: list of AdaptiveStreamTemplate\n        :param Comment: Template description. Length limit: 256 characters.\n        :type Comment: str\n        """
+<li>1: yes.</li>
+        :type DisableHigherVideoResolution: int
+        :param StreamInfos: Parameter information of input streams for transcoding to adaptive bitrate streaming. Up to 10 streams can be input.
+Note: the frame rate of each stream must be consistent; otherwise, the frame rate of the first stream is used as the output frame rate.
+        :type StreamInfos: list of AdaptiveStreamTemplate
+        :param Comment: Template description. Length limit: 256 characters.
+        :type Comment: str
+        """
         self.Definition = None
         self.Name = None
         self.Format = None
@@ -7984,8 +9896,10 @@ class ModifyAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7999,21 +9913,39 @@ class ModifyAnimatedGraphicsTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Definition: Unique ID of an animated image generating template.\n        :type Definition: int\n        :param Name: Name of an animated image generating template. Length limit: 64 characters.\n        :type Name: str\n        :param Width: Maximum value of the width (or long side) of an animated image in px. Value range: 0 and [128, 4,096].
+        r"""
+        :param Definition: Unique ID of an animated image generating template.
+        :type Definition: int
+        :param Name: Name of an animated image generating template. Length limit: 64 characters.
+        :type Name: str
+        :param Width: Maximum value of the width (or long side) of an animated image in px. Value range: 0 and [128, 4,096].
 <li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
 <li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
 <li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
 <li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
-Default value: 0.\n        :type Width: int\n        :param Height: Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].
+Default value: 0.
+        :type Width: int
+        :param Height: Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].
 <li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
 <li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
 <li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
 <li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
-Default value: 0.\n        :type Height: int\n        :param ResolutionAdaptive: Resolution adaption. Valid values:
+Default value: 0.
+        :type Height: int
+        :param ResolutionAdaptive: Resolution adaption. Valid values:
 <li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
 <li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
-Default value: open.\n        :type ResolutionAdaptive: str\n        :param Format: Animated image format. Valid values: gif, webp.\n        :type Format: str\n        :param Fps: Video frame rate in Hz. Value range: [1, 30].\n        :type Fps: int\n        :param Quality: Image quality. Value range: [1, 100]. Default value: 75.\n        :type Quality: float\n        :param Comment: Template description. Length limit: 256 characters.\n        :type Comment: str\n        """
+Default value: open.
+        :type ResolutionAdaptive: str
+        :param Format: Animated image format. Valid values: gif, webp.
+        :type Format: str
+        :param Fps: Video frame rate in Hz. Value range: [1, 30].
+        :type Fps: int
+        :param Quality: Image quality. Value range: [1, 100]. Default value: 75.
+        :type Quality: float
+        :param Comment: Template description. Length limit: 256 characters.
+        :type Comment: str
+        """
         self.Definition = None
         self.Name = None
         self.Width = None
@@ -8050,8 +9982,10 @@ class ModifyAnimatedGraphicsTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -8065,11 +9999,27 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Definition: Unique ID of an intelligent content recognition template\n        :type Definition: int\n        :param Name: Name of an intelligent content recognition template. Length limit: 64 characters\n        :type Name: str\n        :param Comment: Description of an intelligent content recognition template. Length limit: 256 characters\n        :type Comment: str\n        :param PornConfigure: Control parameter for porn information\n        :type PornConfigure: :class:`tencentcloud.mps.v20190612.models.PornConfigureInfoForUpdate`\n        :param TerrorismConfigure: Control parameter for terrorism information\n        :type TerrorismConfigure: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfoForUpdate`\n        :param PoliticalConfigure: Control parameter for politically sensitive information\n        :type PoliticalConfigure: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfoForUpdate`\n        :param ProhibitedConfigure: Control parameter of prohibited information detection. Prohibited information includes:
+        r"""
+        :param Definition: Unique ID of an intelligent content recognition template
+        :type Definition: int
+        :param Name: Name of an intelligent content recognition template. Length limit: 64 characters
+        :type Name: str
+        :param Comment: Description of an intelligent content recognition template. Length limit: 256 characters
+        :type Comment: str
+        :param PornConfigure: Control parameter for porn information
+        :type PornConfigure: :class:`tencentcloud.mps.v20190612.models.PornConfigureInfoForUpdate`
+        :param TerrorismConfigure: Control parameter for terrorism information
+        :type TerrorismConfigure: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfoForUpdate`
+        :param PoliticalConfigure: Control parameter for politically sensitive information
+        :type PoliticalConfigure: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfoForUpdate`
+        :param ProhibitedConfigure: Control parameter of prohibited information detection. Prohibited information includes:
 <li>Abusive;</li>
 <li>Drug-related.</li>
-Note: this parameter is not supported yet.\n        :type ProhibitedConfigure: :class:`tencentcloud.mps.v20190612.models.ProhibitedConfigureInfoForUpdate`\n        :param UserDefineConfigure: Control parameter for custom intelligent content recognition tasks\n        :type UserDefineConfigure: :class:`tencentcloud.mps.v20190612.models.UserDefineConfigureInfoForUpdate`\n        """
+Note: this parameter is not supported yet.
+        :type ProhibitedConfigure: :class:`tencentcloud.mps.v20190612.models.ProhibitedConfigureInfoForUpdate`
+        :param UserDefineConfigure: Control parameter for custom intelligent content recognition tasks
+        :type UserDefineConfigure: :class:`tencentcloud.mps.v20190612.models.UserDefineConfigureInfoForUpdate`
+        """
         self.Definition = None
         self.Name = None
         self.Comment = None
@@ -8114,8 +10064,10 @@ class ModifyContentReviewTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -8129,18 +10081,40 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Definition: Unique ID of an image sprite generating template.\n        :type Definition: int\n        :param Name: Name of an image sprite generating template. Length limit: 64 characters.\n        :type Name: str\n        :param Width: Subimage width of an image sprite in px. Value range: [128, 4,096].\n        :type Width: int\n        :param Height: Subimage height of an image sprite in px. Value range: [128, 4,096].\n        :type Height: int\n        :param ResolutionAdaptive: Resolution adaption. Valid values:
+        r"""
+        :param Definition: Unique ID of an image sprite generating template.
+        :type Definition: int
+        :param Name: Name of an image sprite generating template. Length limit: 64 characters.
+        :type Name: str
+        :param Width: Subimage width of an image sprite in px. Value range: [128, 4,096].
+        :type Width: int
+        :param Height: Subimage height of an image sprite in px. Value range: [128, 4,096].
+        :type Height: int
+        :param ResolutionAdaptive: Resolution adaption. Valid values:
 <li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
 <li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
-Default value: open.\n        :type ResolutionAdaptive: str\n        :param SampleType: Sampling type. Valid values:
+Default value: open.
+        :type ResolutionAdaptive: str
+        :param SampleType: Sampling type. Valid values:
 <li>Percent: By percent.</li>
-<li>Time: By time interval.</li>\n        :type SampleType: str\n        :param SampleInterval: Sampling interval.
+<li>Time: By time interval.</li>
+        :type SampleType: str
+        :param SampleInterval: Sampling interval.
 <li>If `SampleType` is `Percent`, sampling will be performed at an interval of the specified percentage.</li>
-<li>If `SampleType` is `Time`, sampling will be performed at the specified time interval in seconds.</li>\n        :type SampleInterval: int\n        :param RowCount: Subimage row count of an image sprite.\n        :type RowCount: int\n        :param ColumnCount: Subimage column count of an image sprite.\n        :type ColumnCount: int\n        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
+<li>If `SampleType` is `Time`, sampling will be performed at the specified time interval in seconds.</li>
+        :type SampleInterval: int
+        :param RowCount: Subimage row count of an image sprite.
+        :type RowCount: int
+        :param ColumnCount: Subimage column count of an image sprite.
+        :type ColumnCount: int
+        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
 <li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
-Default value: black.\n        :type FillType: str\n        :param Comment: Template description. Length limit: 256 characters.\n        :type Comment: str\n        """
+Default value: black.
+        :type FillType: str
+        :param Comment: Template description. Length limit: 256 characters.
+        :type Comment: str
+        """
         self.Definition = None
         self.Name = None
         self.Width = None
@@ -8181,8 +10155,10 @@ class ModifyImageSpriteTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -8196,11 +10172,23 @@ class ModifyPersonSampleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param PersonId: Image ID\n        :type PersonId: str\n        :param Name: Name. Length limit: 128 characters.\n        :type Name: str\n        :param Description: Description. Length limit: 1,024 characters.\n        :type Description: str\n        :param Usages: Image usage. Valid values:
+        r"""
+        :param PersonId: Image ID
+        :type PersonId: str
+        :param Name: Name. Length limit: 128 characters.
+        :type Name: str
+        :param Description: Description. Length limit: 1,024 characters.
+        :type Description: str
+        :param Usages: Image usage. Valid values:
 1. Recognition: used for content recognition; equivalent to `Recognition.Face`
 2. Review: used for inappropriate information recognition; equivalent to `Review.Face`
-3. All: used for content recognition and inappropriate information recognition; equivalent to 1+2\n        :type Usages: list of str\n        :param FaceOperationInfo: Information of operations on facial features\n        :type FaceOperationInfo: :class:`tencentcloud.mps.v20190612.models.AiSampleFaceOperation`\n        :param TagOperationInfo: Tag operation information.\n        :type TagOperationInfo: :class:`tencentcloud.mps.v20190612.models.AiSampleTagOperation`\n        """
+3. All: used for content recognition and inappropriate information recognition; equivalent to 1+2
+        :type Usages: list of str
+        :param FaceOperationInfo: Information of operations on facial features
+        :type FaceOperationInfo: :class:`tencentcloud.mps.v20190612.models.AiSampleFaceOperation`
+        :param TagOperationInfo: Tag operation information.
+        :type TagOperationInfo: :class:`tencentcloud.mps.v20190612.models.AiSampleTagOperation`
+        """
         self.PersonId = None
         self.Name = None
         self.Description = None
@@ -8235,9 +10223,15 @@ class ModifyPersonSampleResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Person: Image information
+        :type Person: :class:`tencentcloud.mps.v20190612.models.AiSamplePerson`
+        :param FailFaceInfoSet: Information of images that failed the verification by facial feature positioning.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type FailFaceInfoSet: list of AiSampleFailFaceInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Person: Image information\n        :type Person: :class:`tencentcloud.mps.v20190612.models.AiSamplePerson`\n        :param FailFaceInfoSet: Information of images that failed the verification by facial feature positioning.
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type FailFaceInfoSet: list of AiSampleFailFaceInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Person = None
         self.FailFaceInfoSet = None
         self.RequestId = None
@@ -8262,20 +10256,40 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Definition: Unique ID of a sampled screencapturing template.\n        :type Definition: int\n        :param Name: Name of a sampled screencapturing template. Length limit: 64 characters.\n        :type Name: str\n        :param Width: Image width in px. Value range: [128, 4,096].\n        :type Width: int\n        :param Height: Image height in px. Value range: [128, 4,096].\n        :type Height: int\n        :param ResolutionAdaptive: Resolution adaption. Valid values:
+        r"""
+        :param Definition: Unique ID of a sampled screencapturing template.
+        :type Definition: int
+        :param Name: Name of a sampled screencapturing template. Length limit: 64 characters.
+        :type Name: str
+        :param Width: Image width in px. Value range: [128, 4,096].
+        :type Width: int
+        :param Height: Image height in px. Value range: [128, 4,096].
+        :type Height: int
+        :param ResolutionAdaptive: Resolution adaption. Valid values:
 <li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
 <li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
-Default value: open.\n        :type ResolutionAdaptive: str\n        :param SampleType: Sampled screencapturing type. Valid values:
+Default value: open.
+        :type ResolutionAdaptive: str
+        :param SampleType: Sampled screencapturing type. Valid values:
 <li>Percent: By percent.</li>
-<li>Time: By time interval.</li>\n        :type SampleType: str\n        :param SampleInterval: Sampling interval.
+<li>Time: By time interval.</li>
+        :type SampleType: str
+        :param SampleInterval: Sampling interval.
 <li>If `SampleType` is `Percent`, sampling will be performed at an interval of the specified percentage.</li>
-<li>If `SampleType` is `Time`, sampling will be performed at the specified time interval in seconds.</li>\n        :type SampleInterval: int\n        :param Format: Image format. Valid values: jpg; png.\n        :type Format: str\n        :param Comment: Template description. Length limit: 256 characters.\n        :type Comment: str\n        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
+<li>If `SampleType` is `Time`, sampling will be performed at the specified time interval in seconds.</li>
+        :type SampleInterval: int
+        :param Format: Image format. Valid values: jpg; png.
+        :type Format: str
+        :param Comment: Template description. Length limit: 256 characters.
+        :type Comment: str
+        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
 <li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
 <li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>
 <li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>
-Default value: black.\n        :type FillType: str\n        """
+Default value: black.
+        :type FillType: str
+        """
         self.Definition = None
         self.Name = None
         self.Width = None
@@ -8314,8 +10328,10 @@ class ModifySampleSnapshotTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -8329,16 +10345,32 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Definition: Unique ID of a time point screencapturing template.\n        :type Definition: int\n        :param Name: Name of a time point screencapturing template. Length limit: 64 characters.\n        :type Name: str\n        :param Width: Image width in px. Value range: [128, 4,096].\n        :type Width: int\n        :param Height: Image height in px. Value range: [128, 4,096].\n        :type Height: int\n        :param ResolutionAdaptive: Resolution adaption. Valid values:
+        r"""
+        :param Definition: Unique ID of a time point screencapturing template.
+        :type Definition: int
+        :param Name: Name of a time point screencapturing template. Length limit: 64 characters.
+        :type Name: str
+        :param Width: Image width in px. Value range: [128, 4,096].
+        :type Width: int
+        :param Height: Image height in px. Value range: [128, 4,096].
+        :type Height: int
+        :param ResolutionAdaptive: Resolution adaption. Valid values:
 <li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
 <li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
-Default value: open.\n        :type ResolutionAdaptive: str\n        :param Format: Image format. Valid values: jpg, png.\n        :type Format: str\n        :param Comment: Template description. Length limit: 256 characters.\n        :type Comment: str\n        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
+Default value: open.
+        :type ResolutionAdaptive: str
+        :param Format: Image format. Valid values: jpg, png.
+        :type Format: str
+        :param Comment: Template description. Length limit: 256 characters.
+        :type Comment: str
+        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
 <li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
 <li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>
 <li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>
-Default value: black.\n        :type FillType: str\n        """
+Default value: black.
+        :type FillType: str
+        """
         self.Definition = None
         self.Name = None
         self.Width = None
@@ -8373,8 +10405,10 @@ class ModifySnapshotByTimeOffsetTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -8388,12 +10422,30 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Unique ID of a transcoding template.
+        :type Definition: int
+        :param Container: Container format. Valid values: mp4; flv; hls; mp3; flac; ogg; m4a. Among them, mp3, flac, ogg, and m4a are for audio files.
+        :type Container: str
+        :param Name: Name of a transcoding template. Length limit: 64 characters.
+        :type Name: str
+        :param Comment: Template description. Length limit: 256 characters.
+        :type Comment: str
+        :param RemoveVideo: Whether to remove video data. Valid values:
+<li>0: Retain</li>
+<li>1: Remove</li>
+        :type RemoveVideo: int
+        :param RemoveAudio: Whether to remove audio data. Valid values:
+<li>0: Retain</li>
+<li>1: Remove</li>
+        :type RemoveAudio: int
+        :param VideoTemplate: Video stream configuration parameter.
+        :type VideoTemplate: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfoForUpdate`
+        :param AudioTemplate: Audio stream configuration parameter.
+        :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfoForUpdate`
+        :param TEHDConfig: TESHD transcoding parameter. To enable it, please contact your Tencent Cloud sales rep.
+        :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`
         """
-        :param Definition: Unique ID of a transcoding template.\n        :type Definition: int\n        :param Container: Container format. Valid values: mp4; flv; hls; mp3; flac; ogg; m4a. Among them, mp3, flac, ogg, and m4a are for audio files.\n        :type Container: str\n        :param Name: Name of a transcoding template. Length limit: 64 characters.\n        :type Name: str\n        :param Comment: Template description. Length limit: 256 characters.\n        :type Comment: str\n        :param RemoveVideo: Whether to remove video data. Valid values:
-<li>0: Retain</li>
-<li>1: Remove</li>\n        :type RemoveVideo: int\n        :param RemoveAudio: Whether to remove audio data. Valid values:
-<li>0: Retain</li>
-<li>1: Remove</li>\n        :type RemoveAudio: int\n        :param VideoTemplate: Video stream configuration parameter.\n        :type VideoTemplate: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfoForUpdate`\n        :param AudioTemplate: Audio stream configuration parameter.\n        :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfoForUpdate`\n        :param TEHDConfig: TESHD transcoding parameter. To enable it, please contact your Tencent Cloud sales rep.\n        :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`\n        """
         self.Definition = None
         self.Container = None
         self.Name = None
@@ -8436,8 +10488,10 @@ class ModifyTranscodeTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -8451,16 +10505,34 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Definition: Unique ID of a watermarking template.\n        :type Definition: int\n        :param Name: Watermarking template name. Length limit: 64 characters.\n        :type Name: str\n        :param Comment: Template description. Length limit: 256 characters.\n        :type Comment: str\n        :param CoordinateOrigin: Origin position. Valid values:
+        r"""
+        :param Definition: Unique ID of a watermarking template.
+        :type Definition: int
+        :param Name: Watermarking template name. Length limit: 64 characters.
+        :type Name: str
+        :param Comment: Template description. Length limit: 256 characters.
+        :type Comment: str
+        :param CoordinateOrigin: Origin position. Valid values:
 <li>TopLeft: The origin of coordinates is in the top-left corner of the video, and the origin of the watermark is in the top-left corner of the image or text;</li>
 <li>TopRight: The origin of coordinates is in the top-right corner of the video, and the origin of the watermark is in the top-right corner of the image or text;</li>
 <li>BottomLeft: The origin of coordinates is in the bottom-left corner of the video, and the origin of the watermark is in the bottom-left corner of the image or text;</li>
-<li>BottomRight: The origin of coordinates is in the bottom-right corner of the video, and the origin of the watermark is in the bottom-right corner of the image or text.</li>\n        :type CoordinateOrigin: str\n        :param XPos: The horizontal position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:
+<li>BottomRight: The origin of coordinates is in the bottom-right corner of the video, and the origin of the watermark is in the bottom-right corner of the image or text.</li>
+        :type CoordinateOrigin: str
+        :param XPos: The horizontal position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:
 <li>If the string ends in %, the `XPos` of the watermark will be the specified percentage of the video width; for example, `10%` means that `XPos` is 10% of the video width;</li>
-<li>If the string ends in px, the `XPos` of the watermark will be the specified px; for example, `100px` means that `XPos` is 100 px.</li>\n        :type XPos: str\n        :param YPos: The vertical position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:
+<li>If the string ends in px, the `XPos` of the watermark will be the specified px; for example, `100px` means that `XPos` is 100 px.</li>
+        :type XPos: str
+        :param YPos: The vertical position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:
 <li>If the string ends in %, the `YPos` of the watermark will be the specified percentage of the video height; for example, `10%` means that `YPos` is 10% of the video height;</li>
-<li>If the string ends in px, the `YPos` of the watermark will be the specified px; for example, `100px` means that `YPos` is 100 px.</li>\n        :type YPos: str\n        :param ImageTemplate: Image watermarking template. This field is valid only for image watermarking templates.\n        :type ImageTemplate: :class:`tencentcloud.mps.v20190612.models.ImageWatermarkInputForUpdate`\n        :param TextTemplate: Text watermarking template. This field is valid only for text watermarking templates.\n        :type TextTemplate: :class:`tencentcloud.mps.v20190612.models.TextWatermarkTemplateInputForUpdate`\n        :param SvgTemplate: SVG watermarking template. This field is required when `Type` is `svg` and is invalid when `Type` is `image` or `text`.\n        :type SvgTemplate: :class:`tencentcloud.mps.v20190612.models.SvgWatermarkInputForUpdate`\n        """
+<li>If the string ends in px, the `YPos` of the watermark will be the specified px; for example, `100px` means that `YPos` is 100 px.</li>
+        :type YPos: str
+        :param ImageTemplate: Image watermarking template. This field is valid only for image watermarking templates.
+        :type ImageTemplate: :class:`tencentcloud.mps.v20190612.models.ImageWatermarkInputForUpdate`
+        :param TextTemplate: Text watermarking template. This field is valid only for text watermarking templates.
+        :type TextTemplate: :class:`tencentcloud.mps.v20190612.models.TextWatermarkTemplateInputForUpdate`
+        :param SvgTemplate: SVG watermarking template. This field is required when `Type` is `svg` and is invalid when `Type` is `image` or `text`.
+        :type SvgTemplate: :class:`tencentcloud.mps.v20190612.models.SvgWatermarkInputForUpdate`
+        """
         self.Definition = None
         self.Name = None
         self.Comment = None
@@ -8503,8 +10575,12 @@ class ModifyWatermarkTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ImageUrl: Image watermark address. This field is valid only when `ImageTemplate.ImageContent` is non-empty.
+        :type ImageUrl: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param ImageUrl: Image watermark address. This field is valid only when `ImageTemplate.ImageContent` is non-empty.\n        :type ImageUrl: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ImageUrl = None
         self.RequestId = None
 
@@ -8520,8 +10596,10 @@ class ModifyWordSampleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Keyword: Keyword. Length limit: 128 characters.\n        :type Keyword: str\n        :param Usages: <b>Keyword usage. Valid values:</b>
+        r"""
+        :param Keyword: Keyword. Length limit: 128 characters.
+        :type Keyword: str
+        :param Usages: <b>Keyword usage. Valid values:</b>
 1. Recognition.Ocr: OCR-based content recognition
 2. Recognition.Asr: ASR-based content recognition
 3. Review.Ocr: OCR-based inappropriate information recognition
@@ -8529,7 +10607,11 @@ class ModifyWordSampleRequest(AbstractModel):
 <b>Valid values can also be:</b>
 5. Recognition: ASR- and OCR-based content recognition; equivalent to 1+2
 6. Review: ASR- and OCR-based inappropriate information recognition; equivalent to 3+4
-7. All: equivalent to 1+2+3+4\n        :type Usages: list of str\n        :param TagOperationInfo: Tag operation information.\n        :type TagOperationInfo: :class:`tencentcloud.mps.v20190612.models.AiSampleTagOperation`\n        """
+7. All: equivalent to 1+2+3+4
+        :type Usages: list of str
+        :param TagOperationInfo: Tag operation information.
+        :type TagOperationInfo: :class:`tencentcloud.mps.v20190612.models.AiSampleTagOperation`
+        """
         self.Keyword = None
         self.Usages = None
         self.TagOperationInfo = None
@@ -8556,8 +10638,10 @@ class ModifyWordSampleResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -8571,28 +10655,42 @@ class MosaicInput(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CoordinateOrigin: Origin position, which currently can only be:
 <li>TopLeft: the origin of coordinates is in the top-left corner of the video, and the origin of the blur is in the top-left corner of the image or text.</li>
-Default value: TopLeft.\n        :type CoordinateOrigin: str\n        :param XPos: The horizontal position of the origin of the blur relative to the origin of coordinates of the video. % and px formats are supported:
+Default value: TopLeft.
+        :type CoordinateOrigin: str
+        :param XPos: The horizontal position of the origin of the blur relative to the origin of coordinates of the video. % and px formats are supported:
 <li>If the string ends in %, the `XPos` of the blur will be the specified percentage of the video width; for example, `10%` means that `XPos` is 10% of the video width;</li>
 <li>If the string ends in px, the `XPos` of the blur will be the specified px; for example, `100px` means that `XPos` is 100 px.</li>
-Default value: 0 px.\n        :type XPos: str\n        :param YPos: Vertical position of the origin of blur relative to the origin of coordinates of video. % and px formats are supported:
+Default value: 0 px.
+        :type XPos: str
+        :param YPos: Vertical position of the origin of blur relative to the origin of coordinates of video. % and px formats are supported:
 <li>If the string ends in %, the `YPos` of the blur will be the specified percentage of the video height; for example, `10%` means that `YPos` is 10% of the video height;</li>
 <li>If the string ends in px, the `YPos` of the blur will be the specified px; for example, `100px` means that `YPos` is 100 px.</li>
-Default value: 0 px.\n        :type YPos: str\n        :param Width: Blur width. % and px formats are supported:
+Default value: 0 px.
+        :type YPos: str
+        :param Width: Blur width. % and px formats are supported:
 <li>If the string ends in %, the `Width` of the blur will be the specified percentage of the video width; for example, `10%` means that `Width` is 10% of the video width;</li>
 <li>If the string ends in px, the `Width` of the blur will be in px; for example, `100px` means that `Width` is 100 px.</li>
-Default value: 10%.\n        :type Width: str\n        :param Height: Blur height. % and px formats are supported:
+Default value: 10%.
+        :type Width: str
+        :param Height: Blur height. % and px formats are supported:
 <li>If the string ends in %, the `Height` of the blur will be the specified percentage of the video height; for example, `10%` means that `Height` is 10% of the video height;</li>
 <li>If the string ends in px, the `Height` of the blur will be in px; for example, `100px` means that `Height` is 100 px.</li>
-Default value: 10%.\n        :type Height: str\n        :param StartTimeOffset: Start time offset of blur in seconds. If this parameter is left empty or 0 is entered, the blur will appear upon the first video frame.
+Default value: 10%.
+        :type Height: str
+        :param StartTimeOffset: Start time offset of blur in seconds. If this parameter is left empty or 0 is entered, the blur will appear upon the first video frame.
 <li>If this parameter is left empty or 0 is entered, the blur will appear upon the first video frame;</li>
 <li>If this value is greater than 0 (e.g., n), the blur will appear at second n after the first video frame;</li>
-<li>If this value is smaller than 0 (e.g., -n), the blur will appear at second n before the last video frame.</li>\n        :type StartTimeOffset: float\n        :param EndTimeOffset: End time offset of blur in seconds.
+<li>If this value is smaller than 0 (e.g., -n), the blur will appear at second n before the last video frame.</li>
+        :type StartTimeOffset: float
+        :param EndTimeOffset: End time offset of blur in seconds.
 <li>If this parameter is left empty or 0 is entered, the blur will exist till the last video frame;</li>
 <li>If this value is greater than 0 (e.g., n), the blur will exist till second n;</li>
-<li>If this value is smaller than 0 (e.g., -n), the blur will exist till second n before the last video frame.</li>\n        :type EndTimeOffset: float\n        """
+<li>If this value is smaller than 0 (e.g., -n), the blur will exist till second n before the last video frame.</li>
+        :type EndTimeOffset: float
+        """
         self.CoordinateOrigin = None
         self.XPos = None
         self.YPos = None
@@ -8625,8 +10723,16 @@ class NumberFormat(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InitialValue: Start value of the `{number}` variable. Default value: 0.
+        :type InitialValue: int
+        :param Increment: Increment of the `{number}` variable. Default value: 1.
+        :type Increment: int
+        :param MinLength: Minimum length of the `{number}` variable. A placeholder will be used if the variable length is below the minimum requirement. Default value: 1.
+        :type MinLength: int
+        :param PlaceHolder: Placeholder used when the `{number}` variable length is below the minimum requirement. Default value: 0.
+        :type PlaceHolder: str
         """
-        :param InitialValue: Start value of the `{number}` variable. Default value: 0.\n        :type InitialValue: int\n        :param Increment: Increment of the `{number}` variable. Default value: 1.\n        :type Increment: int\n        :param MinLength: Minimum length of the `{number}` variable. A placeholder will be used if the variable length is below the minimum requirement. Default value: 1.\n        :type MinLength: int\n        :param PlaceHolder: Placeholder used when the `{number}` variable length is below the minimum requirement. Default value: 0.\n        :type PlaceHolder: str\n        """
         self.InitialValue = None
         self.Increment = None
         self.MinLength = None
@@ -8653,10 +10759,12 @@ class OcrFullTextConfigureInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a full text recognition task. Valid values:
 <li>ON: Enables an intelligent full text recognition task;</li>
-<li>OFF: Disables an intelligent full text recognition task.</li>\n        :type Switch: str\n        """
+<li>OFF: Disables an intelligent full text recognition task.</li>
+        :type Switch: str
+        """
         self.Switch = None
 
 
@@ -8677,10 +10785,12 @@ class OcrFullTextConfigureInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a full text recognition task. Valid values:
 <li>ON: Enables an intelligent full text recognition task;</li>
-<li>OFF: Disables an intelligent full text recognition task.</li>\n        :type Switch: str\n        """
+<li>OFF: Disables an intelligent full text recognition task.</li>
+        :type Switch: str
+        """
         self.Switch = None
 
 
@@ -8701,11 +10811,15 @@ class OcrWordsConfigureInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a text keyword recognition task. Valid values:
 <li>ON: Enables a text keyword recognition task;</li>
-<li>OFF: Disables a text keyword recognition task.</li>\n        :type Switch: str\n        :param LabelSet: Keyword filter tag, which specifies the keyword tag that needs to be returned. If this parameter is left empty, all results will be returned.
-There can be up to 10 tags, each with a length limit of 16 characters.\n        :type LabelSet: list of str\n        """
+<li>OFF: Disables a text keyword recognition task.</li>
+        :type Switch: str
+        :param LabelSet: Keyword filter tag, which specifies the keyword tag that needs to be returned. If this parameter is left empty, all results will be returned.
+There can be up to 10 tags, each with a length limit of 16 characters.
+        :type LabelSet: list of str
+        """
         self.Switch = None
         self.LabelSet = None
 
@@ -8728,11 +10842,15 @@ class OcrWordsConfigureInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a text keyword recognition task. Valid values:
 <li>ON: Enables a text keyword recognition task;</li>
-<li>OFF: Disables a text keyword recognition task.</li>\n        :type Switch: str\n        :param LabelSet: Keyword filter tag, which specifies the keyword tag that needs to be returned. If this parameter is left empty, all results will be returned.
-There can be up to 10 tags, each with a length limit of 16 characters.\n        :type LabelSet: list of str\n        """
+<li>OFF: Disables a text keyword recognition task.</li>
+        :type Switch: str
+        :param LabelSet: Keyword filter tag, which specifies the keyword tag that needs to be returned. If this parameter is left empty, all results will be returned.
+There can be up to 10 tags, each with a length limit of 16 characters.
+        :type LabelSet: list of str
+        """
         self.Switch = None
         self.LabelSet = None
 
@@ -8755,12 +10873,24 @@ class OverrideTranscodeParameter(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Container: Container format. Valid values: mp4, flv, hls, mp3, flac, ogg, and m4a; mp3, flac, ogg, and m4a are formats of audio files.
+        :type Container: str
+        :param RemoveVideo: Whether to remove video data. Valid values:
+<li>0: retain</li>
+<li>1: remove</li>
+        :type RemoveVideo: int
+        :param RemoveAudio: Whether to remove audio data. Valid values:
+<li>0: retain</li>
+<li>1: remove</li>
+        :type RemoveAudio: int
+        :param VideoTemplate: Video stream configuration parameter.
+        :type VideoTemplate: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfoForUpdate`
+        :param AudioTemplate: Audio stream configuration parameter.
+        :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfoForUpdate`
+        :param TEHDConfig: TESHD transcoding parameter.
+        :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`
         """
-        :param Container: Container format. Valid values: mp4, flv, hls, mp3, flac, ogg, and m4a; mp3, flac, ogg, and m4a are formats of audio files.\n        :type Container: str\n        :param RemoveVideo: Whether to remove video data. Valid values:
-<li>0: retain</li>
-<li>1: remove</li>\n        :type RemoveVideo: int\n        :param RemoveAudio: Whether to remove audio data. Valid values:
-<li>0: retain</li>
-<li>1: remove</li>\n        :type RemoveAudio: int\n        :param VideoTemplate: Video stream configuration parameter.\n        :type VideoTemplate: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfoForUpdate`\n        :param AudioTemplate: Audio stream configuration parameter.\n        :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfoForUpdate`\n        :param TEHDConfig: TESHD transcoding parameter.\n        :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`\n        """
         self.Container = None
         self.RemoveVideo = None
         self.RemoveAudio = None
@@ -8797,8 +10927,10 @@ class ParseLiveStreamProcessNotificationRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Content: Live stream event notification obtained from CMQ.
+        :type Content: str
         """
-        :param Content: Live stream event notification obtained from CMQ.\n        :type Content: str\n        """
         self.Content = None
 
 
@@ -8819,12 +10951,28 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NotificationType: Result type of live stream processing. Valid values:
 <li>AiReviewResult: Content audit result;</li>
-<li>ProcessEof: Live stream processing has been completed.</li>\n        :type NotificationType: str\n        :param TaskId: Video processing task ID.\n        :type TaskId: str\n        :param ProcessEofInfo: Information of a live stream processing error, which is valid when `NotificationType` is `ProcessEof`.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type ProcessEofInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamProcessErrorInfo`\n        :param AiReviewResultInfo: Content audit result, which is valid when `NotificationType` is `AiReviewResult`.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type AiReviewResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiReviewResultInfo`\n        :param AiRecognitionResultInfo: Content recognition result, which is valid if `NotificationType` is `AiRecognitionResult`.\n        :type AiRecognitionResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiRecognitionResultInfo`\n        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.\n        :type SessionId: str\n        :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.\n        :type SessionContext: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+<li>ProcessEof: Live stream processing has been completed.</li>
+        :type NotificationType: str
+        :param TaskId: Video processing task ID.
+        :type TaskId: str
+        :param ProcessEofInfo: Information of a live stream processing error, which is valid when `NotificationType` is `ProcessEof`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProcessEofInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamProcessErrorInfo`
+        :param AiReviewResultInfo: Content audit result, which is valid when `NotificationType` is `AiReviewResult`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AiReviewResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiReviewResultInfo`
+        :param AiRecognitionResultInfo: Content recognition result, which is valid if `NotificationType` is `AiRecognitionResult`.
+        :type AiRecognitionResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiRecognitionResultInfo`
+        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.
+        :type SessionId: str
+        :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
+        :type SessionContext: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.NotificationType = None
         self.TaskId = None
         self.ProcessEofInfo = None
@@ -8858,8 +11006,10 @@ class ParseNotificationRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Content: Event notification obtained from CMQ.
+        :type Content: str
         """
-        :param Content: Event notification obtained from CMQ.\n        :type Content: str\n        """
         self.Content = None
 
 
@@ -8880,10 +11030,22 @@ class ParseNotificationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EventType: Supported event type. Valid values:
-<li>WorkflowTask: Video workflow processing task.</li>\n        :type EventType: str\n        :param WorkflowTaskEvent: Information of a video processing task. This field has a value only when `TaskType` is `WorkflowTask`.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type WorkflowTaskEvent: :class:`tencentcloud.mps.v20190612.models.WorkflowTask`\n        :param EditMediaTaskEvent: Video editing task information. This field has a value only when `TaskType` is `EditMediaTask`.\n        :type EditMediaTaskEvent: :class:`tencentcloud.mps.v20190612.models.EditMediaTask`\n        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.\n        :type SessionId: str\n        :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.\n        :type SessionContext: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+<li>WorkflowTask: Video workflow processing task.</li>
+        :type EventType: str
+        :param WorkflowTaskEvent: Information of a video processing task. This field has a value only when `TaskType` is `WorkflowTask`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WorkflowTaskEvent: :class:`tencentcloud.mps.v20190612.models.WorkflowTask`
+        :param EditMediaTaskEvent: Video editing task information. This field has a value only when `TaskType` is `EditMediaTask`.
+        :type EditMediaTaskEvent: :class:`tencentcloud.mps.v20190612.models.EditMediaTask`
+        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.
+        :type SessionId: str
+        :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
+        :type SessionContext: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.EventType = None
         self.WorkflowTaskEvent = None
         self.EditMediaTaskEvent = None
@@ -8911,10 +11073,16 @@ class PoliticalAsrReviewTemplateInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a politically sensitive information detection in speech task. Valid values:
 <li>ON: Enables a politically sensitive information detection in speech task;</li>
-<li>OFF: Disables a politically sensitive information detection in speech task.</li>\n        :type Switch: str\n        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.\n        :type BlockConfidence: int\n        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.\n        :type ReviewConfidence: int\n        """
+<li>OFF: Disables a politically sensitive information detection in speech task.</li>
+        :type Switch: str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -8939,10 +11107,16 @@ class PoliticalAsrReviewTemplateInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a politically sensitive information detection in speech task. Valid values:
 <li>ON: Enables a politically sensitive information detection in speech task;</li>
-<li>OFF: Disables a politically sensitive information detection in speech task.</li>\n        :type Switch: str\n        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.\n        :type BlockConfidence: int\n        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.\n        :type ReviewConfidence: int\n        """
+<li>OFF: Disables a politically sensitive information detection in speech task.</li>
+        :type Switch: str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -8967,11 +11141,17 @@ class PoliticalConfigureInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImgReviewInfo: Control parameter of politically sensitive information detection in image.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.PoliticalImgReviewTemplateInfo`\n        :param AsrReviewInfo: Control parameter of politically sensitive information detection in speech.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type AsrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PoliticalAsrReviewTemplateInfo`\n        :param OcrReviewInfo: Control parameter of politically sensitive information detection in text.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PoliticalOcrReviewTemplateInfo`\n        """
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.PoliticalImgReviewTemplateInfo`
+        :param AsrReviewInfo: Control parameter of politically sensitive information detection in speech.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AsrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PoliticalAsrReviewTemplateInfo`
+        :param OcrReviewInfo: Control parameter of politically sensitive information detection in text.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PoliticalOcrReviewTemplateInfo`
+        """
         self.ImgReviewInfo = None
         self.AsrReviewInfo = None
         self.OcrReviewInfo = None
@@ -9002,8 +11182,14 @@ class PoliticalConfigureInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ImgReviewInfo: Control parameter of politically sensitive information detection in image.
+        :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.PoliticalImgReviewTemplateInfoForUpdate`
+        :param AsrReviewInfo: Control parameter of politically sensitive information detection in speech.
+        :type AsrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PoliticalAsrReviewTemplateInfoForUpdate`
+        :param OcrReviewInfo: Control parameter of politically sensitive information detection in text.
+        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PoliticalOcrReviewTemplateInfoForUpdate`
         """
-        :param ImgReviewInfo: Control parameter of politically sensitive information detection in image.\n        :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.PoliticalImgReviewTemplateInfoForUpdate`\n        :param AsrReviewInfo: Control parameter of politically sensitive information detection in speech.\n        :type AsrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PoliticalAsrReviewTemplateInfoForUpdate`\n        :param OcrReviewInfo: Control parameter of politically sensitive information detection in text.\n        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PoliticalOcrReviewTemplateInfoForUpdate`\n        """
         self.ImgReviewInfo = None
         self.AsrReviewInfo = None
         self.OcrReviewInfo = None
@@ -9034,10 +11220,12 @@ class PoliticalImgReviewTemplateInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a politically sensitive information detection in image task. Valid values:
 <li>ON: Enables a politically sensitive information detection in image task;</li>
-<li>OFF: Disables a politically sensitive information detection in image task.</li>\n        :type Switch: str\n        :param LabelSet: Filter tags for politically sensitive information detection of video images. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
+<li>OFF: Disables a politically sensitive information detection in image task.</li>
+        :type Switch: str
+        :param LabelSet: Filter tags for politically sensitive information detection of video images. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
 <li>violation_photo: violating photo;</li>
 <li>politician: political figure;</li>
 <li>entertainment: entertainment celebrity;</li>
@@ -9045,7 +11233,13 @@ class PoliticalImgReviewTemplateInfo(AbstractModel):
 <li>entrepreneur: business figure;</li>
 <li>scholar: educator;</li>
 <li>celebrity: well-known figure;</li>
-<li>military: military figure.</li>\n        :type LabelSet: list of str\n        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 97 will be used by default. Value range: 0-100.\n        :type BlockConfidence: int\n        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 95 will be used by default. Value range: 0-100.\n        :type ReviewConfidence: int\n        """
+<li>military: military figure.</li>
+        :type LabelSet: list of str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 97 will be used by default. Value range: 0-100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 95 will be used by default. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
         self.Switch = None
         self.LabelSet = None
         self.BlockConfidence = None
@@ -9072,10 +11266,12 @@ class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a politically sensitive information detection in image task. Valid values:
 <li>ON: Enables a politically sensitive information detection in image task;</li>
-<li>OFF: Disables a politically sensitive information detection in image task.</li>\n        :type Switch: str\n        :param LabelSet: Filter tags for politically sensitive information detection of video images. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
+<li>OFF: Disables a politically sensitive information detection in image task.</li>
+        :type Switch: str
+        :param LabelSet: Filter tags for politically sensitive information detection of video images. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
 <li>violation_photo: violating photo;</li>
 <li>politician: political figure;</li>
 <li>entertainment: entertainment celebrity;</li>
@@ -9083,7 +11279,13 @@ class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
 <li>entrepreneur: business figure;</li>
 <li>scholar: educator;</li>
 <li>celebrity: well-known figure;</li>
-<li>military: military figure.</li>\n        :type LabelSet: list of str\n        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.\n        :type BlockConfidence: int\n        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.\n        :type ReviewConfidence: int\n        """
+<li>military: military figure.</li>
+        :type LabelSet: list of str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
         self.Switch = None
         self.LabelSet = None
         self.BlockConfidence = None
@@ -9110,10 +11312,16 @@ class PoliticalOcrReviewTemplateInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a politically sensitive information detection in text task. Valid values:
 <li>ON: Enables a politically sensitive information detection in text task;</li>
-<li>OFF: Disables a politically sensitive information detection in text task.</li>\n        :type Switch: str\n        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.\n        :type BlockConfidence: int\n        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.\n        :type ReviewConfidence: int\n        """
+<li>OFF: Disables a politically sensitive information detection in text task.</li>
+        :type Switch: str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -9138,10 +11346,16 @@ class PoliticalOcrReviewTemplateInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a politically sensitive information detection in text task. Valid values:
 <li>ON: Enables a politically sensitive information detection in text task;</li>
-<li>OFF: Disables a politically sensitive information detection in text task.</li>\n        :type Switch: str\n        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.\n        :type BlockConfidence: int\n        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.\n        :type ReviewConfidence: int\n        """
+<li>OFF: Disables a politically sensitive information detection in text task.</li>
+        :type Switch: str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -9166,10 +11380,16 @@ class PornAsrReviewTemplateInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a porn information detection in speech task. Valid values:
 <li>ON: Enables a porn information detection in speech task;</li>
-<li>OFF: Disables a porn information detection in speech task.</li>\n        :type Switch: str\n        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.\n        :type BlockConfidence: int\n        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.\n        :type ReviewConfidence: int\n        """
+<li>OFF: Disables a porn information detection in speech task.</li>
+        :type Switch: str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -9194,10 +11414,16 @@ class PornAsrReviewTemplateInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a porn information detection in speech task. Valid values:
 <li>ON: Enables a porn information detection in speech task;</li>
-<li>OFF: Disables a porn information detection in speech task.</li>\n        :type Switch: str\n        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.\n        :type BlockConfidence: int\n        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.\n        :type ReviewConfidence: int\n        """
+<li>OFF: Disables a porn information detection in speech task.</li>
+        :type Switch: str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -9222,11 +11448,17 @@ class PornConfigureInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImgReviewInfo: Control parameter of porn information detection in image.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.PornImgReviewTemplateInfo`\n        :param AsrReviewInfo: Control parameter of porn information detection in speech.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type AsrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PornAsrReviewTemplateInfo`\n        :param OcrReviewInfo: Control parameter of porn information detection in text.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PornOcrReviewTemplateInfo`\n        """
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.PornImgReviewTemplateInfo`
+        :param AsrReviewInfo: Control parameter of porn information detection in speech.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AsrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PornAsrReviewTemplateInfo`
+        :param OcrReviewInfo: Control parameter of porn information detection in text.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PornOcrReviewTemplateInfo`
+        """
         self.ImgReviewInfo = None
         self.AsrReviewInfo = None
         self.OcrReviewInfo = None
@@ -9257,8 +11489,14 @@ class PornConfigureInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ImgReviewInfo: Control parameter of porn information detection in image.
+        :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.PornImgReviewTemplateInfoForUpdate`
+        :param AsrReviewInfo: Control parameter of porn information detection in speech.
+        :type AsrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PornAsrReviewTemplateInfoForUpdate`
+        :param OcrReviewInfo: Control parameter of porn information detection in text.
+        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PornOcrReviewTemplateInfoForUpdate`
         """
-        :param ImgReviewInfo: Control parameter of porn information detection in image.\n        :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.PornImgReviewTemplateInfoForUpdate`\n        :param AsrReviewInfo: Control parameter of porn information detection in speech.\n        :type AsrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PornAsrReviewTemplateInfoForUpdate`\n        :param OcrReviewInfo: Control parameter of porn information detection in text.\n        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PornOcrReviewTemplateInfoForUpdate`\n        """
         self.ImgReviewInfo = None
         self.AsrReviewInfo = None
         self.OcrReviewInfo = None
@@ -9289,14 +11527,22 @@ class PornImgReviewTemplateInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a porn information detection in image task. Valid values:
 <li>ON: Enables a porn information detection in image task;</li>
-<li>OFF: Disables a porn information detection in image task.</li>\n        :type Switch: str\n        :param LabelSet: Filter tag for porn information detection in image. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
+<li>OFF: Disables a porn information detection in image task.</li>
+        :type Switch: str
+        :param LabelSet: Filter tag for porn information detection in image. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
 <li>porn: Porn;</li>
 <li>vulgar: Vulgarity;</li>
 <li>intimacy: Intimacy;</li>
-<li>sexy: Sexiness.</li>\n        :type LabelSet: list of str\n        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 90 will be used by default. Value range: 0-100.\n        :type BlockConfidence: int\n        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 0 will be used by default. Value range: 0-100.\n        :type ReviewConfidence: int\n        """
+<li>sexy: Sexiness.</li>
+        :type LabelSet: list of str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 90 will be used by default. Value range: 0-100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 0 will be used by default. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
         self.Switch = None
         self.LabelSet = None
         self.BlockConfidence = None
@@ -9323,14 +11569,22 @@ class PornImgReviewTemplateInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a porn information detection in image task. Valid values:
 <li>ON: Enables a porn information detection in image task;</li>
-<li>OFF: Disables a porn information detection in image task.</li>\n        :type Switch: str\n        :param LabelSet: Filter tag for porn information detection in image. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
+<li>OFF: Disables a porn information detection in image task.</li>
+        :type Switch: str
+        :param LabelSet: Filter tag for porn information detection in image. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
 <li>porn: Porn;</li>
 <li>vulgar: Vulgarity;</li>
 <li>intimacy: Intimacy;</li>
-<li>sexy: Sexiness.</li>\n        :type LabelSet: list of str\n        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.\n        :type BlockConfidence: int\n        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.\n        :type ReviewConfidence: int\n        """
+<li>sexy: Sexiness.</li>
+        :type LabelSet: list of str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
         self.Switch = None
         self.LabelSet = None
         self.BlockConfidence = None
@@ -9357,10 +11611,16 @@ class PornOcrReviewTemplateInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a porn information detection in text task. Valid values:
 <li>ON: Enables a porn information detection in text task;</li>
-<li>OFF: Disables a porn information detection in text task.</li>\n        :type Switch: str\n        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.\n        :type BlockConfidence: int\n        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.\n        :type ReviewConfidence: int\n        """
+<li>OFF: Disables a porn information detection in text task.</li>
+        :type Switch: str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -9385,10 +11645,16 @@ class PornOcrReviewTemplateInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a porn information detection in text task. Valid values:
 <li>ON: Enables a porn information detection in text task;</li>
-<li>OFF: Disables a porn information detection in text task.</li>\n        :type Switch: str\n        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.\n        :type BlockConfidence: int\n        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.\n        :type ReviewConfidence: int\n        """
+<li>OFF: Disables a porn information detection in text task.</li>
+        :type Switch: str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -9413,8 +11679,24 @@ class ProcessLiveStreamRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Url: Live stream URL, which must be a live stream file address. RTMP, HLS, and FLV are supported.
+        :type Url: str
+        :param TaskNotifyConfig: Event notification information of a task, which is used to specify the live stream processing result.
+        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.LiveStreamTaskNotifyConfig`
+        :param OutputStorage: Target bucket of a live stream processing output file. This parameter is required if a file will be output.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param OutputDir: Target directory of a live stream processing output file, such as `/movie/201909/`. If this parameter is left empty, the `/` directory will be used.
+        :type OutputDir: str
+        :param AiContentReviewTask: Type parameter of a video content audit task.
+        :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        :param AiRecognitionTask: Type parameter of video content recognition task.
+        :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.
+        :type SessionId: str
+        :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
+        :type SessionContext: str
         """
-        :param Url: Live stream URL, which must be a live stream file address. RTMP, HLS, and FLV are supported.\n        :type Url: str\n        :param TaskNotifyConfig: Event notification information of a task, which is used to specify the live stream processing result.\n        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.LiveStreamTaskNotifyConfig`\n        :param OutputStorage: Target bucket of a live stream processing output file. This parameter is required if a file will be output.\n        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`\n        :param OutputDir: Target directory of a live stream processing output file, such as `/movie/201909/`. If this parameter is left empty, the `/` directory will be used.\n        :type OutputDir: str\n        :param AiContentReviewTask: Type parameter of a video content audit task.\n        :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`\n        :param AiRecognitionTask: Type parameter of video content recognition task.\n        :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`\n        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.\n        :type SessionId: str\n        :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.\n        :type SessionContext: str\n        """
         self.Url = None
         self.TaskNotifyConfig = None
         self.OutputStorage = None
@@ -9457,8 +11739,12 @@ class ProcessLiveStreamResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Task ID
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskId: Task ID\n        :type TaskId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -9474,8 +11760,30 @@ class ProcessMediaRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InputInfo: Input information of a file for video processing.
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param OutputStorage: Target bucket of a video processing output file. If this parameter is left empty, the storage location in `InputInfo` will be inherited.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param OutputDir: Target directory of a video processing output file, such as `/movie/201907/`. If this parameter is left empty, the file will be outputted to the same directory as that in `InputInfo`.
+        :type OutputDir: str
+        :param MediaProcessTask: Parameter of a video processing task.
+        :type MediaProcessTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
+        :param AiContentReviewTask: Type parameter of a video content audit task.
+        :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        :param AiAnalysisTask: Video content analysis task parameter.
+        :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
+        :param AiRecognitionTask: Type parameter of a video content recognition task.
+        :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        :param TaskNotifyConfig: Event notification information of a task. If this parameter is left empty, no event notifications will be obtained.
+        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        :param TasksPriority: Task flow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.
+        :type TasksPriority: int
+        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.
+        :type SessionId: str
+        :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
+        :type SessionContext: str
         """
-        :param InputInfo: Input information of a file for video processing.\n        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`\n        :param OutputStorage: Target bucket of a video processing output file. If this parameter is left empty, the storage location in `InputInfo` will be inherited.\n        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`\n        :param OutputDir: Target directory of a video processing output file, such as `/movie/201907/`. If this parameter is left empty, the file will be outputted to the same directory as that in `InputInfo`.\n        :type OutputDir: str\n        :param MediaProcessTask: Parameter of a video processing task.\n        :type MediaProcessTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`\n        :param AiContentReviewTask: Type parameter of a video content audit task.\n        :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`\n        :param AiAnalysisTask: Video content analysis task parameter.\n        :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`\n        :param AiRecognitionTask: Type parameter of a video content recognition task.\n        :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`\n        :param TaskNotifyConfig: Event notification information of a task. If this parameter is left empty, no event notifications will be obtained.\n        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`\n        :param TasksPriority: Task flow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.\n        :type TasksPriority: int\n        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.\n        :type SessionId: str\n        :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.\n        :type SessionContext: str\n        """
         self.InputInfo = None
         self.OutputStorage = None
         self.OutputDir = None
@@ -9530,8 +11838,12 @@ class ProcessMediaResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Task ID.
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskId: Task ID.\n        :type TaskId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -9547,10 +11859,16 @@ class ProhibitedAsrReviewTemplateInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of prohibited information detection in speech task. Valid values:
 <li>ON: enables prohibited information detection in speech task;</li>
-<li>OFF: disables prohibited information detection in speech task.</li>\n        :type Switch: str\n        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.\n        :type BlockConfidence: int\n        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.\n        :type ReviewConfidence: int\n        """
+<li>OFF: disables prohibited information detection in speech task.</li>
+        :type Switch: str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
+        :type ReviewConfidence: int
+        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -9575,10 +11893,16 @@ class ProhibitedAsrReviewTemplateInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of prohibited information detection in speech task. Valid values:
 <li>ON: enables prohibited information detection in speech task;</li>
-<li>OFF: disables prohibited information detection in speech task.</li>\n        :type Switch: str\n        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.\n        :type BlockConfidence: int\n        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.\n        :type ReviewConfidence: int\n        """
+<li>OFF: disables prohibited information detection in speech task.</li>
+        :type Switch: str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
+        :type ReviewConfidence: int
+        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -9603,8 +11927,12 @@ class ProhibitedConfigureInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AsrReviewInfo: Control parameter of prohibited information detection in speech.
+        :type AsrReviewInfo: :class:`tencentcloud.mps.v20190612.models.ProhibitedAsrReviewTemplateInfo`
+        :param OcrReviewInfo: Control parameter of prohibited information detection in text.
+        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.ProhibitedOcrReviewTemplateInfo`
         """
-        :param AsrReviewInfo: Control parameter of prohibited information detection in speech.\n        :type AsrReviewInfo: :class:`tencentcloud.mps.v20190612.models.ProhibitedAsrReviewTemplateInfo`\n        :param OcrReviewInfo: Control parameter of prohibited information detection in text.\n        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.ProhibitedOcrReviewTemplateInfo`\n        """
         self.AsrReviewInfo = None
         self.OcrReviewInfo = None
 
@@ -9631,8 +11959,12 @@ class ProhibitedConfigureInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AsrReviewInfo: Control parameter of prohibited information detection in speech.
+        :type AsrReviewInfo: :class:`tencentcloud.mps.v20190612.models.ProhibitedAsrReviewTemplateInfoForUpdate`
+        :param OcrReviewInfo: Control parameter of prohibited information detection in text.
+        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.ProhibitedOcrReviewTemplateInfoForUpdate`
         """
-        :param AsrReviewInfo: Control parameter of prohibited information detection in speech.\n        :type AsrReviewInfo: :class:`tencentcloud.mps.v20190612.models.ProhibitedAsrReviewTemplateInfoForUpdate`\n        :param OcrReviewInfo: Control parameter of prohibited information detection in text.\n        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.ProhibitedOcrReviewTemplateInfoForUpdate`\n        """
         self.AsrReviewInfo = None
         self.OcrReviewInfo = None
 
@@ -9659,10 +11991,16 @@ class ProhibitedOcrReviewTemplateInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of prohibited information detection in text task. Valid values:
 <li>ON: enables prohibited information detection in text task;</li>
-<li>OFF: disables prohibited information detection in text task.</li>\n        :type Switch: str\n        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.\n        :type BlockConfidence: int\n        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.\n        :type ReviewConfidence: int\n        """
+<li>OFF: disables prohibited information detection in text task.</li>
+        :type Switch: str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
+        :type ReviewConfidence: int
+        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -9687,10 +12025,16 @@ class ProhibitedOcrReviewTemplateInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of prohibited information detection in text task. Valid values:
 <li>ON: enables prohibited information detection in text task;</li>
-<li>OFF: disables prohibited information detection in text task.</li>\n        :type Switch: str\n        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.\n        :type BlockConfidence: int\n        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.\n        :type ReviewConfidence: int\n        """
+<li>OFF: disables prohibited information detection in text task.</li>
+        :type Switch: str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
+        :type ReviewConfidence: int
+        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -9715,17 +12059,25 @@ class RawImageWatermarkInput(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ImageContent: Input content of watermark image. JPEG and PNG images are supported.\n        :type ImageContent: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`\n        :param Width: Watermark width. % and px formats are supported:
+        r"""
+        :param ImageContent: Input content of watermark image. JPEG and PNG images are supported.
+        :type ImageContent: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param Width: Watermark width. % and px formats are supported:
 <li>If the string ends in %, the `Width` of the watermark will be the specified percentage of the video width; for example, `10%` means that `Width` is 10% of the video width;</li>
 <li>If the string ends in px, the `Width` of the watermark will be in px; for example, `100px` means that `Width` is 100 px.</li>
-Default value: 10%.\n        :type Width: str\n        :param Height: Watermark height. % and px formats are supported:
+Default value: 10%.
+        :type Width: str
+        :param Height: Watermark height. % and px formats are supported:
 <li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height; for example, `10%` means that `Height` is 10% of the video height;</li>
 <li>If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px.</li>
-Default value: 0 px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.\n        :type Height: str\n        :param RepeatType: Repeat type of an animated watermark. Valid values:
+Default value: 0 px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.
+        :type Height: str
+        :param RepeatType: Repeat type of an animated watermark. Valid values:
 <li>`once`: no longer appears after watermark playback ends.</li>
 <li>`repeat_last_frame`: stays on the last frame after watermark playback ends.</li>
-<li>`repeat` (default): repeats the playback until the video ends.</li>\n        :type RepeatType: str\n        """
+<li>`repeat` (default): repeats the playback until the video ends.</li>
+        :type RepeatType: str
+        """
         self.ImageContent = None
         self.Width = None
         self.Height = None
@@ -9754,14 +12106,26 @@ class RawTranscodeParameter(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Container: Container. Valid values: mp4; flv; hls; mp3; flac; ogg; m4a. Among them, mp3, flac, ogg, and m4a are for audio files.
+        :type Container: str
+        :param RemoveVideo: Whether to remove video data. Valid values:
+<li>0: retain;</li>
+<li>1: remove.</li>
+Default value: 0.
+        :type RemoveVideo: int
+        :param RemoveAudio: Whether to remove audio data. Valid values:
+<li>0: retain;</li>
+<li>1: remove.</li>
+Default value: 0.
+        :type RemoveAudio: int
+        :param VideoTemplate: Video stream configuration parameter. This field is required when `RemoveVideo` is 0.
+        :type VideoTemplate: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
+        :param AudioTemplate: Audio stream configuration parameter. This field is required when `RemoveAudio` is 0.
+        :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
+        :param TEHDConfig: TESHD transcoding parameter.
+        :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
         """
-        :param Container: Container. Valid values: mp4; flv; hls; mp3; flac; ogg; m4a. Among them, mp3, flac, ogg, and m4a are for audio files.\n        :type Container: str\n        :param RemoveVideo: Whether to remove video data. Valid values:
-<li>0: retain;</li>
-<li>1: remove.</li>
-Default value: 0.\n        :type RemoveVideo: int\n        :param RemoveAudio: Whether to remove audio data. Valid values:
-<li>0: retain;</li>
-<li>1: remove.</li>
-Default value: 0.\n        :type RemoveAudio: int\n        :param VideoTemplate: Video stream configuration parameter. This field is required when `RemoveVideo` is 0.\n        :type VideoTemplate: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`\n        :param AudioTemplate: Audio stream configuration parameter. This field is required when `RemoveAudio` is 0.\n        :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`\n        :param TEHDConfig: TESHD transcoding parameter.\n        :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`\n        """
         self.Container = None
         self.RemoveVideo = None
         self.RemoveAudio = None
@@ -9798,17 +12162,27 @@ class RawWatermarkParameter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: Watermark type. Valid values:
-<li>image: image watermark.</li>\n        :type Type: str\n        :param CoordinateOrigin: Origin position, which currently can only be:
+<li>image: image watermark.</li>
+        :type Type: str
+        :param CoordinateOrigin: Origin position, which currently can only be:
 <li>TopLeft: the origin of coordinates is in the top-left corner of the video, and the origin of the watermark is in the top-left corner of the image or text.</li>
-Default value: TopLeft.\n        :type CoordinateOrigin: str\n        :param XPos: The horizontal position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:
+Default value: TopLeft.
+        :type CoordinateOrigin: str
+        :param XPos: The horizontal position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:
 <li>If the string ends in %, the `XPos` of the watermark will be the specified percentage of the video width; for example, `10%` means that `XPos` is 10% of the video width;</li>
 <li>If the string ends in px, the `XPos` of the watermark will be the specified px; for example, `100px` means that `XPos` is 100 px.</li>
-Default value: 0 px.\n        :type XPos: str\n        :param YPos: The vertical position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:
+Default value: 0 px.
+        :type XPos: str
+        :param YPos: The vertical position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:
 <li>If the string ends in %, the `YPos` of the watermark will be the specified percentage of the video height; for example, `10%` means that `YPos` is 10% of the video height;</li>
 <li>If the string ends in px, the `YPos` of the watermark will be the specified px; for example, `100px` means that `YPos` is 100 px.</li>
-Default value: 0 px.\n        :type YPos: str\n        :param ImageTemplate: Image watermark template. This field is required when `Type` is `image` and is invalid when `Type` is `text`.\n        :type ImageTemplate: :class:`tencentcloud.mps.v20190612.models.RawImageWatermarkInput`\n        """
+Default value: 0 px.
+        :type YPos: str
+        :param ImageTemplate: Image watermark template. This field is required when `Type` is `image` and is invalid when `Type` is `text`.
+        :type ImageTemplate: :class:`tencentcloud.mps.v20190612.models.RawImageWatermarkInput`
+        """
         self.Type = None
         self.CoordinateOrigin = None
         self.XPos = None
@@ -9839,8 +12213,30 @@ class ResetWorkflowRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param WorkflowId: Workflow ID.
+        :type WorkflowId: int
+        :param WorkflowName: Workflow name of up to 128 characters, which must be unique for the same user.
+        :type WorkflowName: str
+        :param Trigger: Triggering rule bound to a workflow. If an uploaded video hits the rule for the object, the workflow will be triggered.
+        :type Trigger: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
+        :param OutputStorage: Output configuration of a video processing output file. If this parameter is left empty, the storage location in `Trigger` will be inherited.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param OutputDir: Target directory of a video processing output file, such as `/movie/201907/`. If this parameter is left empty, the file will be outputted to the same directory where the source file is located, i.e.; `{inputDir}`.
+        :type OutputDir: str
+        :param MediaProcessTask: Parameter of a video processing task.
+        :type MediaProcessTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
+        :param AiContentReviewTask: Type parameter of a video content audit task.
+        :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        :param AiAnalysisTask: Video content analysis task parameter.
+        :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
+        :param AiRecognitionTask: Type parameter of a video content recognition task.
+        :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        :param TaskPriority: Workflow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.
+        :type TaskPriority: int
+        :param TaskNotifyConfig: Event notification information of a task. If this parameter is left empty, no event notifications will be obtained.
+        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
         """
-        :param WorkflowId: Workflow ID.\n        :type WorkflowId: int\n        :param WorkflowName: Workflow name of up to 128 characters, which must be unique for the same user.\n        :type WorkflowName: str\n        :param Trigger: Triggering rule bound to a workflow. If an uploaded video hits the rule for the object, the workflow will be triggered.\n        :type Trigger: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`\n        :param OutputStorage: Output configuration of a video processing output file. If this parameter is left empty, the storage location in `Trigger` will be inherited.\n        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`\n        :param OutputDir: Target directory of a video processing output file, such as `/movie/201907/`. If this parameter is left empty, the file will be outputted to the same directory where the source file is located, i.e.; `{inputDir}`.\n        :type OutputDir: str\n        :param MediaProcessTask: Parameter of a video processing task.\n        :type MediaProcessTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`\n        :param AiContentReviewTask: Type parameter of a video content audit task.\n        :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`\n        :param AiAnalysisTask: Video content analysis task parameter.\n        :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`\n        :param AiRecognitionTask: Type parameter of a video content recognition task.\n        :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`\n        :param TaskPriority: Workflow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.\n        :type TaskPriority: int\n        :param TaskNotifyConfig: Event notification information of a task. If this parameter is left empty, no event notifications will be obtained.\n        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`\n        """
         self.WorkflowId = None
         self.WorkflowName = None
         self.Trigger = None
@@ -9895,8 +12291,10 @@ class ResetWorkflowResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -9910,11 +12308,21 @@ class SampleSnapshotTaskInput(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Definition: Sampled screencapturing template ID.
+        :type Definition: int
+        :param WatermarkSet: List of up to 10 image or text watermarks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WatermarkSet: list of WatermarkInput
+        :param OutputStorage: Target bucket of a sampled screenshot. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param OutputObjectPath: Output path to a generated sampled screenshot, which can be a relative path or an absolute path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_sampleSnapshot_{definition}_{number}.{format}`.
+        :type OutputObjectPath: str
+        :param ObjectNumberFormat: Rule of the `{number}` variable in the sampled screenshot output path.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ObjectNumberFormat: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
         """
-        :param Definition: Sampled screencapturing template ID.\n        :type Definition: int\n        :param WatermarkSet: List of up to 10 image or text watermarks.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type WatermarkSet: list of WatermarkInput\n        :param OutputStorage: Target bucket of a sampled screenshot. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`\n        :param OutputObjectPath: Output path to a generated sampled screenshot, which can be a relative path or an absolute path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_sampleSnapshot_{definition}_{number}.{format}`.\n        :type OutputObjectPath: str\n        :param ObjectNumberFormat: Rule of the `{number}` variable in the sampled screenshot output path.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type ObjectNumberFormat: :class:`tencentcloud.mps.v20190612.models.NumberFormat`\n        """
         self.Definition = None
         self.WatermarkSet = None
         self.OutputStorage = None
@@ -9952,28 +12360,54 @@ class SampleSnapshotTemplate(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Definition: Unique ID of a sampled screencapturing template.\n        :type Definition: int\n        :param Type: Template type. Valid values:
+        r"""
+        :param Definition: Unique ID of a sampled screencapturing template.
+        :type Definition: int
+        :param Type: Template type. Valid values:
 <li>Preset: Preset template;</li>
-<li>Custom: Custom template.</li>\n        :type Type: str\n        :param Name: Name of a sampled screencapturing template.\n        :type Name: str\n        :param Comment: Template description.\n        :type Comment: str\n        :param Width: Maximum value of the width (or long side) of a screenshot in px. Value range: 0 and [128, 4,096].
+<li>Custom: Custom template.</li>
+        :type Type: str
+        :param Name: Name of a sampled screencapturing template.
+        :type Name: str
+        :param Comment: Template description.
+        :type Comment: str
+        :param Width: Maximum value of the width (or long side) of a screenshot in px. Value range: 0 and [128, 4,096].
 <li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
 <li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
 <li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
 <li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
-Default value: 0.\n        :type Width: int\n        :param Height: Maximum value of the height (or short side) of a screenshot in px. Value range: 0 and [128, 4,096].
+Default value: 0.
+        :type Width: int
+        :param Height: Maximum value of the height (or short side) of a screenshot in px. Value range: 0 and [128, 4,096].
 <li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
 <li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
 <li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
 <li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
-Default value: 0.\n        :type Height: int\n        :param ResolutionAdaptive: Resolution adaption. Valid values:
+Default value: 0.
+        :type Height: int
+        :param ResolutionAdaptive: Resolution adaption. Valid values:
 <li>open: Enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
 <li>close: Disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
-Default value: open.\n        :type ResolutionAdaptive: str\n        :param Format: Image format.\n        :type Format: str\n        :param SampleType: Sampled screencapturing type.\n        :type SampleType: str\n        :param SampleInterval: Sampling interval.\n        :type SampleInterval: int\n        :param CreateTime: Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type CreateTime: str\n        :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type UpdateTime: str\n        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
+Default value: open.
+        :type ResolutionAdaptive: str
+        :param Format: Image format.
+        :type Format: str
+        :param SampleType: Sampled screencapturing type.
+        :type SampleType: str
+        :param SampleInterval: Sampling interval.
+        :type SampleInterval: int
+        :param CreateTime: Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type CreateTime: str
+        :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type UpdateTime: str
+        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: Stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
 <li>black: Fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
 <li>white: Fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>
 <li>gauss: Fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>
-Default value: black.\n        :type FillType: str\n        """
+Default value: black.
+        :type FillType: str
+        """
         self.Definition = None
         self.Type = None
         self.Name = None
@@ -10018,13 +12452,27 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Definition: ID of a time point screencapturing template.\n        :type Definition: int\n        :param ExtTimeOffsetSet: List of screenshot time points in the format of `s` or `%`:
+        r"""
+        :param Definition: ID of a time point screencapturing template.
+        :type Definition: int
+        :param ExtTimeOffsetSet: List of screenshot time points in the format of `s` or `%`:
 <li>If the string ends in `s`, it means that the time point is in seconds; for example, `3.5s` means that the time point is the 3.5th second;</li>
-<li>If the string ends in `%`, it means that the time point is the specified percentage of the video duration; for example, `10%` means that the time point is 10% of the video duration.</li>\n        :type ExtTimeOffsetSet: list of str\n        :param TimeOffsetSet: List of time points of screenshots in <font color=red>seconds</font>.\n        :type TimeOffsetSet: list of float\n        :param WatermarkSet: List of up to 10 image or text watermarks.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type WatermarkSet: list of WatermarkInput\n        :param OutputStorage: Target bucket of a generated time point screenshot file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`\n        :param OutputObjectPath: Output path to a generated time point screenshot, which can be a relative path or an absolute path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_snapshotByTimeOffset_{definition}_{number}.{format}`.\n        :type OutputObjectPath: str\n        :param ObjectNumberFormat: Rule of the `{number}` variable in the time point screenshot output path.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type ObjectNumberFormat: :class:`tencentcloud.mps.v20190612.models.NumberFormat`\n        """
+<li>If the string ends in `%`, it means that the time point is the specified percentage of the video duration; for example, `10%` means that the time point is 10% of the video duration.</li>
+        :type ExtTimeOffsetSet: list of str
+        :param TimeOffsetSet: List of time points of screenshots in <font color=red>seconds</font>.
+        :type TimeOffsetSet: list of float
+        :param WatermarkSet: List of up to 10 image or text watermarks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WatermarkSet: list of WatermarkInput
+        :param OutputStorage: Target bucket of a generated time point screenshot file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param OutputObjectPath: Output path to a generated time point screenshot, which can be a relative path or an absolute path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_snapshotByTimeOffset_{definition}_{number}.{format}`.
+        :type OutputObjectPath: str
+        :param ObjectNumberFormat: Rule of the `{number}` variable in the time point screenshot output path.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ObjectNumberFormat: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
+        """
         self.Definition = None
         self.ExtTimeOffsetSet = None
         self.TimeOffsetSet = None
@@ -10066,28 +12514,50 @@ class SnapshotByTimeOffsetTemplate(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Definition: Unique ID of a time point screencapturing template.\n        :type Definition: int\n        :param Type: Template type. Valid values:
+        r"""
+        :param Definition: Unique ID of a time point screencapturing template.
+        :type Definition: int
+        :param Type: Template type. Valid values:
 <li>Preset: Preset template;</li>
-<li>Custom: Custom template.</li>\n        :type Type: str\n        :param Name: Name of a time point screencapturing template.\n        :type Name: str\n        :param Comment: Template description.\n        :type Comment: str\n        :param Width: Maximum value of the width (or long side) of a screenshot in px. Value range: 0 and [128, 4,096].
+<li>Custom: Custom template.</li>
+        :type Type: str
+        :param Name: Name of a time point screencapturing template.
+        :type Name: str
+        :param Comment: Template description.
+        :type Comment: str
+        :param Width: Maximum value of the width (or long side) of a screenshot in px. Value range: 0 and [128, 4,096].
 <li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
 <li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
 <li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
 <li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
-Default value: 0.\n        :type Width: int\n        :param Height: Maximum value of the height (or short side) of a screenshot in px. Value range: 0 and [128, 4,096].
+Default value: 0.
+        :type Width: int
+        :param Height: Maximum value of the height (or short side) of a screenshot in px. Value range: 0 and [128, 4,096].
 <li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
 <li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
 <li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
 <li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
-Default value: 0.\n        :type Height: int\n        :param ResolutionAdaptive: Resolution adaption. Valid values:
+Default value: 0.
+        :type Height: int
+        :param ResolutionAdaptive: Resolution adaption. Valid values:
 <li>open: Enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
 <li>close: Disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
-Default value: open.\n        :type ResolutionAdaptive: str\n        :param Format: Image format.\n        :type Format: str\n        :param CreateTime: Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type CreateTime: str\n        :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type UpdateTime: str\n        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
+Default value: open.
+        :type ResolutionAdaptive: str
+        :param Format: Image format.
+        :type Format: str
+        :param CreateTime: Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type CreateTime: str
+        :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type UpdateTime: str
+        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: Stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
 <li>black: Fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
 <li>white: Fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>
 <li>gauss: Fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>
-Default value: black.\n        :type FillType: str\n        """
+Default value: black.
+        :type FillType: str
+        """
         self.Definition = None
         self.Type = None
         self.Name = None
@@ -10128,7 +12598,7 @@ class SvgWatermarkInput(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Width: Watermark width, which supports six formats of px, %, W%, H%, S%, and L%:
 <li>If the string ends in px, the `Width` of the watermark will be in px; for example, `100px` means that `Width` is 100 px; if `0px` is entered
  and `Height` is not `0px`, the watermark width will be proportionally scaled based on the source SVG image; if `0px` is entered for both `Width` and `Height`, the watermark width will be the width of the source SVG image;</li>
@@ -10137,7 +12607,9 @@ class SvgWatermarkInput(AbstractModel):
 <li>If the string ends in `S%`, the `Width` of the watermark will be the specified percentage of the short side of the video; for example, `10S%` means that `Width` is 10% of the short side of the video;</li>
 <li>If the string ends in `L%`, the `Width` of the watermark will be the specified percentage of the long side of the video; for example, `10L%` means that `Width` is 10% of the long side of the video;</li>
 <li>If the string ends in %, the meaning is the same as `W%`.</li>
-Default value: 10W%.\n        :type Width: str\n        :param Height: Watermark height, which supports six formats of px, %, W%, H%, S%, and L%:
+Default value: 10W%.
+        :type Width: str
+        :param Height: Watermark height, which supports six formats of px, %, W%, H%, S%, and L%:
 <li>If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px; if `0px` is entered
  and `Width` is not `0px`, the watermark height will be proportionally scaled based on the source SVG image; if `0px` is entered for both `Width` and `Height`, the watermark height will be the height of the source SVG image;</li>
 <li>If the string ends in `W%`, the `Height` of the watermark will be the specified percentage of the video width; for example, `10W%` means that `Height` is 10% of the video width;</li>
@@ -10145,7 +12617,9 @@ Default value: 10W%.\n        :type Width: str\n        :param Height: Watermark
 <li>If the string ends in `S%`, the `Height` of the watermark will be the specified percentage of the short side of the video; for example, `10S%` means that `Height` is 10% of the short side of the video;</li>
 <li>If the string ends in `L%`, the `Height` of the watermark will be the specified percentage of the long side of the video; for example, `10L%` means that `Height` is 10% of the long side of the video;</li>
 <li>If the string ends in %, the meaning is the same as `H%`.</li>
-Default value: 0 px.\n        :type Height: str\n        """
+Default value: 0 px.
+        :type Height: str
+        """
         self.Width = None
         self.Height = None
 
@@ -10168,7 +12642,7 @@ class SvgWatermarkInputForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Width: Watermark width, which supports six formats of px, %, W%, H%, S%, and L%:
 <li>If the string ends in px, the `Width` of the watermark will be in px; for example, `100px` means that `Width` is 100 px; if `0px` is entered
  and `Height` is not `0px`, the watermark width will be proportionally scaled based on the source SVG image; if `0px` is entered for both `Width` and `Height`, the watermark width will be the width of the source SVG image;</li>
@@ -10177,7 +12651,9 @@ class SvgWatermarkInputForUpdate(AbstractModel):
 <li>If the string ends in `S%`, the `Width` of the watermark will be the specified percentage of the short side of the video; for example, `10S%` means that `Width` is 10% of the short side of the video;</li>
 <li>If the string ends in `L%`, the `Width` of the watermark will be the specified percentage of the long side of the video; for example, `10L%` means that `Width` is 10% of the long side of the video;</li>
 <li>If the string ends in %, the meaning is the same as `W%`.</li>
-Default value: 10W%.\n        :type Width: str\n        :param Height: Watermark height, which supports six formats of px, %, W%, H%, S%, and L%:
+Default value: 10W%.
+        :type Width: str
+        :param Height: Watermark height, which supports six formats of px, %, W%, H%, S%, and L%:
 <li>If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px; if `0px` is entered
  and `Width` is not `0px`, the watermark height will be proportionally scaled based on the source SVG image; if `0px` is entered for both `Width` and `Height`, the watermark height will be the height of the source SVG image;</li>
 <li>If the string ends in `W%`, the `Height` of the watermark will be the specified percentage of the video width; for example, `10W%` means that `Height` is 10% of the video width;</li>
@@ -10185,7 +12661,9 @@ Default value: 10W%.\n        :type Width: str\n        :param Height: Watermark
 <li>If the string ends in `S%`, the `Height` of the watermark will be the specified percentage of the short side of the video; for example, `10S%` means that `Height` is 10% of the short side of the video;</li>
 <li>If the string ends in `L%`, the `Height` of the watermark will be the specified percentage of the long side of the video; for example, `10L%` means that `Height` is 10% of the long side of the video;</li>
 <li>If the string ends in %, the meaning is the same as `H%`.
-Default value: 0 px.\n        :type Height: str\n        """
+Default value: 0 px.
+        :type Height: str
+        """
         self.Width = None
         self.Height = None
 
@@ -10208,11 +12686,15 @@ class TEHDConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: TESHD type. Valid values:
 <li>TEHD-100: TESHD-100.</li>
-If this parameter is left empty, TESHD will not be enabled.\n        :type Type: str\n        :param MaxVideoBitrate: Maximum bitrate, which is valid when `Type` is `TESHD`.
-If this parameter is left empty or 0 is entered, there will be no upper limit for bitrate.\n        :type MaxVideoBitrate: int\n        """
+If this parameter is left empty, TESHD will not be enabled.
+        :type Type: str
+        :param MaxVideoBitrate: Maximum bitrate, which is valid when `Type` is `TESHD`.
+If this parameter is left empty or 0 is entered, there will be no upper limit for bitrate.
+        :type MaxVideoBitrate: int
+        """
         self.Type = None
         self.MaxVideoBitrate = None
 
@@ -10235,10 +12717,14 @@ class TEHDConfigForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: TESHD type. Valid values:
 <li>TEHD-100: TESHD-100.</li>
-If this parameter is left blank, no modification will be made.\n        :type Type: str\n        :param MaxVideoBitrate: Maximum bitrate. If this parameter is left empty, no modification will be made.\n        :type MaxVideoBitrate: int\n        """
+If this parameter is left blank, no modification will be made.
+        :type Type: str
+        :param MaxVideoBitrate: Maximum bitrate. If this parameter is left empty, no modification will be made.
+        :type MaxVideoBitrate: int
+        """
         self.Type = None
         self.MaxVideoBitrate = None
 
@@ -10261,10 +12747,12 @@ class TagConfigureInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of intelligent tagging task. Valid values:
 <li>ON: enables intelligent tagging task;</li>
-<li>OFF: disables intelligent tagging task.</li>\n        :type Switch: str\n        """
+<li>OFF: disables intelligent tagging task.</li>
+        :type Switch: str
+        """
         self.Switch = None
 
 
@@ -10285,10 +12773,12 @@ class TagConfigureInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of intelligent tagging task. Valid values:
 <li>ON: enables intelligent tagging task;</li>
-<li>OFF: disables intelligent tagging task.</li>\n        :type Switch: str\n        """
+<li>OFF: disables intelligent tagging task.</li>
+        :type Switch: str
+        """
         self.Switch = None
 
 
@@ -10309,8 +12799,22 @@ class TaskNotifyConfig(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CmqModel: CMQ model. There are two types: `Queue` and `Topic`. Currently, only `Queue` is supported.
+        :type CmqModel: str
+        :param CmqRegion: CMQ region, such as `sh` and `bj`.
+        :type CmqRegion: str
+        :param QueueName: This parameter is valid when the model is `Queue`, indicating the name of the CMQ queue for receiving event notifications.
+        :type QueueName: str
+        :param TopicName: This parameter is valid when the model is `Topic`, indicating the name of the CMQ topic for receiving event notifications.
+        :type TopicName: str
+        :param NotifyMode: Workflow notification method. Valid values: Finish, Change. If this parameter is left empty, `Finish` will be used.
+        :type NotifyMode: str
+        :param NotifyType: Notification type, `CMQ` by default. If `URL` is passed in, HTTP callbacks are sent to the URL specified by `NotifyUrl`.
+        :type NotifyType: str
+        :param NotifyUrl: HTTP callback URL, required if `NotifyType` is set to `URL`
+        :type NotifyUrl: str
         """
-        :param CmqModel: CMQ model. There are two types: `Queue` and `Topic`. Currently, only `Queue` is supported.\n        :type CmqModel: str\n        :param CmqRegion: CMQ region, such as `sh` and `bj`.\n        :type CmqRegion: str\n        :param QueueName: This parameter is valid when the model is `Queue`, indicating the name of the CMQ queue for receiving event notifications.\n        :type QueueName: str\n        :param TopicName: This parameter is valid when the model is `Topic`, indicating the name of the CMQ topic for receiving event notifications.\n        :type TopicName: str\n        :param NotifyMode: Workflow notification method. Valid values: Finish, Change. If this parameter is left empty, `Finish` will be used.\n        :type NotifyMode: str\n        :param NotifyType: Notification type, `CMQ` by default. If `URL` is passed in, HTTP callbacks are sent to the URL specified by `NotifyUrl`.\n        :type NotifyType: str\n        :param NotifyUrl: HTTP callback URL, required if `NotifyType` is set to `URL`\n        :type NotifyUrl: str\n        """
         self.CmqModel = None
         self.CmqRegion = None
         self.QueueName = None
@@ -10343,9 +12847,13 @@ class TaskOutputStorage(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Type: Storage location type of a video processing output object. Only COS is supported currently.
+        :type Type: str
+        :param CosOutputStorage: This parameter is valid and required when `Type` is COS, indicating the location of an output COS object after video processing.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CosOutputStorage: :class:`tencentcloud.mps.v20190612.models.CosOutputStorage`
         """
-        :param Type: Storage location type of a video processing output object. Only COS is supported currently.\n        :type Type: str\n        :param CosOutputStorage: This parameter is valid and required when `Type` is COS, indicating the location of an output COS object after video processing.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type CosOutputStorage: :class:`tencentcloud.mps.v20190612.models.CosOutputStorage`\n        """
         self.Type = None
         self.CosOutputStorage = None
 
@@ -10370,10 +12878,20 @@ class TaskSimpleInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param TaskId: Task ID.\n        :type TaskId: str\n        :param TaskType: Task type. Valid values:
+        r"""
+        :param TaskId: Task ID.
+        :type TaskId: str
+        :param TaskType: Task type. Valid values:
 <li> WorkflowTask: Workflow processing task;</li>
-<li> LiveProcessTask: Live stream processing task.</li>\n        :type TaskType: str\n        :param CreateTime: Creation time of a task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type CreateTime: str\n        :param BeginProcessTime: Start time of task execution in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). If the task has not been started yet, this field will be `0000-00-00T00:00:00Z`.\n        :type BeginProcessTime: str\n        :param FinishTime: End time of a task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). If the task has not been completed yet, this field will be `0000-00-00T00:00:00Z`.\n        :type FinishTime: str\n        """
+<li> LiveProcessTask: Live stream processing task.</li>
+        :type TaskType: str
+        :param CreateTime: Creation time of a task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type CreateTime: str
+        :param BeginProcessTime: Start time of task execution in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). If the task has not been started yet, this field will be `0000-00-00T00:00:00Z`.
+        :type BeginProcessTime: str
+        :param FinishTime: End time of a task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). If the task has not been completed yet, this field will be `0000-00-00T00:00:00Z`.
+        :type FinishTime: str
+        """
         self.TaskId = None
         self.TaskType = None
         self.CreateTime = None
@@ -10402,9 +12920,13 @@ class TerrorismConfigureInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImgReviewInfo: Control parameter of a terrorism information detection in image task.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismImgReviewTemplateInfo`\n        :param OcrReviewInfo: Control parameter of terrorism information detection in text task.\n        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismOcrReviewTemplateInfo`\n        """
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismImgReviewTemplateInfo`
+        :param OcrReviewInfo: Control parameter of terrorism information detection in text task.
+        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismOcrReviewTemplateInfo`
+        """
         self.ImgReviewInfo = None
         self.OcrReviewInfo = None
 
@@ -10431,8 +12953,12 @@ class TerrorismConfigureInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ImgReviewInfo: Control parameter of a terrorism information detection in image task.
+        :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismImgReviewTemplateInfoForUpdate`
+        :param OcrReviewInfo: Control parameter of terrorism information detection in text task.
+        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismOcrReviewTemplateInfoForUpdate`
         """
-        :param ImgReviewInfo: Control parameter of a terrorism information detection in image task.\n        :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismImgReviewTemplateInfoForUpdate`\n        :param OcrReviewInfo: Control parameter of terrorism information detection in text task.\n        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismOcrReviewTemplateInfoForUpdate`\n        """
         self.ImgReviewInfo = None
         self.OcrReviewInfo = None
 
@@ -10459,10 +12985,12 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a terrorism information detection in image task. Valid values:
 <li>ON: Enables a terrorism information detection in image task;</li>
-<li>OFF: Disables a terrorism information detection in image task.</li>\n        :type Switch: str\n        :param LabelSet: Filter tags for terrorism information detection in images. If a specified tag is detected, the tag is returned. If no filter tag is specified, all detected tags are returned. Valid values:
+<li>OFF: Disables a terrorism information detection in image task.</li>
+        :type Switch: str
+        :param LabelSet: Filter tags for terrorism information detection in images. If a specified tag is detected, the tag is returned. If no filter tag is specified, all detected tags are returned. Valid values:
 <li>`guns`: weapons and guns</li>
 <li>`crowd`: crowds</li>
 <li>`bloody`: bloodiness</li>
@@ -10471,7 +12999,13 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 <li>`militant`: militants</li>
 <li>`explosion`: explosions and fires</li>
 <li>`terrorists`: terrorists</li>
-<li>`scenario`: terrorism images</li>\n        :type LabelSet: list of str\n        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 90 will be used by default. Value range: 0-100.\n        :type BlockConfidence: int\n        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 80 will be used by default. Value range: 0-100.\n        :type ReviewConfidence: int\n        """
+<li>`scenario`: terrorism images</li>
+        :type LabelSet: list of str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 90 will be used by default. Value range: 0-100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 80 will be used by default. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
         self.Switch = None
         self.LabelSet = None
         self.BlockConfidence = None
@@ -10498,10 +13032,12 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a terrorism information detection in image task. Valid values:
 <li>ON: Enables a terrorism information detection in image task;</li>
-<li>OFF: Disables a terrorism information detection in image task.</li>\n        :type Switch: str\n        :param LabelSet: Filter tags for terrorism information detection in images. If a specified tag is detected, the tag is returned. If no filter tag is specified, all detected tags are returned. Valid values:
+<li>OFF: Disables a terrorism information detection in image task.</li>
+        :type Switch: str
+        :param LabelSet: Filter tags for terrorism information detection in images. If a specified tag is detected, the tag is returned. If no filter tag is specified, all detected tags are returned. Valid values:
 <li>`guns`: weapons and guns</li>
 <li>`crowd`: crowds</li>
 <li>`bloody`: bloodiness</li>
@@ -10510,7 +13046,13 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
 <li>`militant`: militants</li>
 <li>`explosion`: explosions and fires</li>
 <li>`terrorists`: terrorists</li>
-<li>`scenario`: terrorism images</li>\n        :type LabelSet: list of str\n        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.\n        :type BlockConfidence: int\n        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.\n        :type ReviewConfidence: int\n        """
+<li>`scenario`: terrorism images</li>
+        :type LabelSet: list of str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
         self.Switch = None
         self.LabelSet = None
         self.BlockConfidence = None
@@ -10537,10 +13079,16 @@ class TerrorismOcrReviewTemplateInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of terrorism information detection in text task. Valid values:
 <li>ON: enables terrorism information detection in text task;</li>
-<li>OFF: disables terrorism information detection in text task.</li>\n        :type Switch: str\n        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.\n        :type BlockConfidence: int\n        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.\n        :type ReviewConfidence: int\n        """
+<li>OFF: disables terrorism information detection in text task.</li>
+        :type Switch: str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
+        :type ReviewConfidence: int
+        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -10565,10 +13113,16 @@ class TerrorismOcrReviewTemplateInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of terrorism information detection in text task. Valid values:
 <li>ON: enables terrorism information detection in text task;</li>
-<li>OFF: disables terrorism information detection in text task.</li>\n        :type Switch: str\n        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.\n        :type BlockConfidence: int\n        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.\n        :type ReviewConfidence: int\n        """
+<li>OFF: disables terrorism information detection in text task.</li>
+        :type Switch: str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
+        :type ReviewConfidence: int
+        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -10593,13 +13147,21 @@ class TextWatermarkTemplateInput(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FontType: Font type. Currently, two types are supported:
 <li>simkai.ttf: Both Chinese and English are supported;</li>
-<li>arial.ttf: Only English is supported.</li>\n        :type FontType: str\n        :param FontSize: Font size in Npx format where N is a numeric value.\n        :type FontSize: str\n        :param FontColor: Font color in 0xRRGGBB format. Default value: 0xFFFFFF (white).\n        :type FontColor: str\n        :param FontAlpha: Text transparency. Value range: (0, 1]
+<li>arial.ttf: Only English is supported.</li>
+        :type FontType: str
+        :param FontSize: Font size in Npx format where N is a numeric value.
+        :type FontSize: str
+        :param FontColor: Font color in 0xRRGGBB format. Default value: 0xFFFFFF (white).
+        :type FontColor: str
+        :param FontAlpha: Text transparency. Value range: (0, 1]
 <li>0: Completely transparent</li>
 <li>1: Completely opaque</li>
-Default value: 1.\n        :type FontAlpha: float\n        """
+Default value: 1.
+        :type FontAlpha: float
+        """
         self.FontType = None
         self.FontSize = None
         self.FontColor = None
@@ -10626,12 +13188,20 @@ class TextWatermarkTemplateInputForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FontType: Font type. Currently, two types are supported:
 <li>simkai.ttf: Both Chinese and English are supported;</li>
-<li>arial.ttf: Only English is supported.</li>\n        :type FontType: str\n        :param FontSize: Font size in Npx format where N is a numeric value.\n        :type FontSize: str\n        :param FontColor: Font color in 0xRRGGBB format. Default value: 0xFFFFFF (white).\n        :type FontColor: str\n        :param FontAlpha: Text transparency. Value range: (0, 1]
+<li>arial.ttf: Only English is supported.</li>
+        :type FontType: str
+        :param FontSize: Font size in Npx format where N is a numeric value.
+        :type FontSize: str
+        :param FontColor: Font color in 0xRRGGBB format. Default value: 0xFFFFFF (white).
+        :type FontColor: str
+        :param FontAlpha: Text transparency. Value range: (0, 1]
 <li>0: Completely transparent</li>
-<li>1: Completely opaque</li>\n        :type FontAlpha: float\n        """
+<li>1: Completely opaque</li>
+        :type FontAlpha: float
+        """
         self.FontType = None
         self.FontSize = None
         self.FontColor = None
@@ -10658,22 +13228,46 @@ class TranscodeTaskInput(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Definition: ID of a video transcoding template.\n        :type Definition: int\n        :param RawParameter: Custom video transcoding parameter, which is valid if `Definition` is 0.
-This parameter is used in highly customized scenarios. We recommend you use `Definition` to specify the transcoding parameter preferably.\n        :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawTranscodeParameter`\n        :param OverrideParameter: Video transcoding custom parameter, which is valid when `Definition` is not 0.
+        r"""
+        :param Definition: ID of a video transcoding template.
+        :type Definition: int
+        :param RawParameter: Custom video transcoding parameter, which is valid if `Definition` is 0.
+This parameter is used in highly customized scenarios. We recommend you use `Definition` to specify the transcoding parameter preferably.
+        :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawTranscodeParameter`
+        :param OverrideParameter: Video transcoding custom parameter, which is valid when `Definition` is not 0.
 When any parameters in this structure are entered, they will be used to override corresponding parameters in templates.
 This parameter is used in highly customized scenarios. We recommend you only use `Definition` to specify the transcoding parameter.
-Note: this field may return `null`, indicating that no valid value was found.\n        :type OverrideParameter: :class:`tencentcloud.mps.v20190612.models.OverrideTranscodeParameter`\n        :param WatermarkSet: List of up to 10 image or text watermarks.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type WatermarkSet: list of WatermarkInput\n        :param MosaicSet: List of blurs. Up to 10 ones can be supported.\n        :type MosaicSet: list of MosaicInput\n        :param StartTimeOffset: Start time offset of a transcoded video, in seconds.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type OverrideParameter: :class:`tencentcloud.mps.v20190612.models.OverrideTranscodeParameter`
+        :param WatermarkSet: List of up to 10 image or text watermarks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WatermarkSet: list of WatermarkInput
+        :param MosaicSet: List of blurs. Up to 10 ones can be supported.
+        :type MosaicSet: list of MosaicInput
+        :param StartTimeOffset: Start time offset of a transcoded video, in seconds.
 <li>If this parameter is left empty or set to 0, the transcoded video will start at the same time as the original video.</li>
 <li>If this parameter is set to a positive number (n for example), the transcoded video will start at the nth second of the original video.</li>
-<li>If this parameter is set to a negative number (-n for example), the transcoded video will start at the nth second before the end of the original video.</li>\n        :type StartTimeOffset: float\n        :param EndTimeOffset: End time offset of a transcoded video, in seconds.
+<li>If this parameter is set to a negative number (-n for example), the transcoded video will start at the nth second before the end of the original video.</li>
+        :type StartTimeOffset: float
+        :param EndTimeOffset: End time offset of a transcoded video, in seconds.
 <li>If this parameter is left empty or set to 0, the transcoded video will end at the same time as the original video.</li>
 <li>If this parameter is set to a positive number (n for example), the transcoded video will end at the nth second of the original video.</li>
-<li>If this parameter is set to a negative number (-n for example), the transcoded video will end at the nth second before the end of the original video.</li>\n        :type EndTimeOffset: float\n        :param OutputStorage: Target bucket of an output file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`\n        :param OutputObjectPath: Path to a primary output file, which can be a relative path or an absolute path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_transcode_{definition}.{format}`.\n        :type OutputObjectPath: str\n        :param SegmentObjectName: Path to an output file part (the path to ts during transcoding to HLS), which can only be a relative path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_transcode_{definition}_{number}.{format}`.\n        :type SegmentObjectName: str\n        :param ObjectNumberFormat: Rule of the `{number}` variable in the output path after transcoding.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type ObjectNumberFormat: :class:`tencentcloud.mps.v20190612.models.NumberFormat`\n        :param HeadTailParameter: Opening and closing credits parameters
-Note: this field may return `null`, indicating that no valid value was found.\n        :type HeadTailParameter: :class:`tencentcloud.mps.v20190612.models.HeadTailParameter`\n        """
+<li>If this parameter is set to a negative number (-n for example), the transcoded video will end at the nth second before the end of the original video.</li>
+        :type EndTimeOffset: float
+        :param OutputStorage: Target bucket of an output file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param OutputObjectPath: Path to a primary output file, which can be a relative path or an absolute path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_transcode_{definition}.{format}`.
+        :type OutputObjectPath: str
+        :param SegmentObjectName: Path to an output file part (the path to ts during transcoding to HLS), which can only be a relative path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_transcode_{definition}_{number}.{format}`.
+        :type SegmentObjectName: str
+        :param ObjectNumberFormat: Rule of the `{number}` variable in the output path after transcoding.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ObjectNumberFormat: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
+        :param HeadTailParameter: Opening and closing credits parameters
+Note: this field may return `null`, indicating that no valid value was found.
+        :type HeadTailParameter: :class:`tencentcloud.mps.v20190612.models.HeadTailParameter`
+        """
         self.Definition = None
         self.RawParameter = None
         self.OverrideParameter = None
@@ -10736,21 +13330,47 @@ class TranscodeTemplate(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Definition: Unique ID of a transcoding template.\n        :type Definition: str\n        :param Container: Container format. Valid values: mp4, flv, hls, mp3, flac, ogg.\n        :type Container: str\n        :param Name: Name of a transcoding template.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Name: str\n        :param Comment: Template description.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Comment: str\n        :param Type: Template type. Valid values:
+        r"""
+        :param Definition: Unique ID of a transcoding template.
+        :type Definition: str
+        :param Container: Container format. Valid values: mp4, flv, hls, mp3, flac, ogg.
+        :type Container: str
+        :param Name: Name of a transcoding template.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
+        :param Comment: Template description.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Comment: str
+        :param Type: Template type. Valid values:
 <li>Preset: Preset template;</li>
-<li>Custom: Custom template.</li>\n        :type Type: str\n        :param RemoveVideo: Whether to remove video data. Valid values:
+<li>Custom: Custom template.</li>
+        :type Type: str
+        :param RemoveVideo: Whether to remove video data. Valid values:
 <li>0: Retain;</li>
-<li>1: Remove.</li>\n        :type RemoveVideo: int\n        :param RemoveAudio: Whether to remove audio data. Valid values:
+<li>1: Remove.</li>
+        :type RemoveVideo: int
+        :param RemoveAudio: Whether to remove audio data. Valid values:
 <li>0: Retain;</li>
-<li>1: Remove.</li>\n        :type RemoveAudio: int\n        :param VideoTemplate: Video stream configuration parameter. This field is valid only when `RemoveVideo` is 0.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type VideoTemplate: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`\n        :param AudioTemplate: Audio stream configuration parameter. This field is valid only when `RemoveAudio` is 0.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`\n        :param TEHDConfig: TESHD transcoding parameter. To enable it, please contact your Tencent Cloud sales rep.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`\n        :param ContainerType: Container format filter. Valid values:
+<li>1: Remove.</li>
+        :type RemoveAudio: int
+        :param VideoTemplate: Video stream configuration parameter. This field is valid only when `RemoveVideo` is 0.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VideoTemplate: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
+        :param AudioTemplate: Audio stream configuration parameter. This field is valid only when `RemoveAudio` is 0.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
+        :param TEHDConfig: TESHD transcoding parameter. To enable it, please contact your Tencent Cloud sales rep.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
+        :param ContainerType: Container format filter. Valid values:
 <li>Video: Video container format that can contain both video stream and audio stream;</li>
-<li>PureAudio: Audio container format that can contain only audio stream.</li>\n        :type ContainerType: str\n        :param CreateTime: Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type CreateTime: str\n        :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type UpdateTime: str\n        """
+<li>PureAudio: Audio container format that can contain only audio stream.</li>
+        :type ContainerType: str
+        :param CreateTime: Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type CreateTime: str
+        :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type UpdateTime: str
+        """
         self.Definition = None
         self.Container = None
         self.Name = None
@@ -10801,8 +13421,10 @@ class UrlInputInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Url: URL of a video.
+        :type Url: str
         """
-        :param Url: URL of a video.\n        :type Url: str\n        """
         self.Url = None
 
 
@@ -10823,11 +13445,19 @@ class UserDefineAsrTextReviewTemplateInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a custom speech audit task. Valid values:
 <li>ON: Enables a custom speech audit task;</li>
-<li>OFF: Disables a custom speech audit task.</li>\n        :type Switch: str\n        :param LabelSet: Custom speech filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom speech keywords.
-There can be up to 10 tags, each with a length limit of 16 characters.\n        :type LabelSet: list of str\n        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.\n        :type BlockConfidence: int\n        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.\n        :type ReviewConfidence: int\n        """
+<li>OFF: Disables a custom speech audit task.</li>
+        :type Switch: str
+        :param LabelSet: Custom speech filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom speech keywords.
+There can be up to 10 tags, each with a length limit of 16 characters.
+        :type LabelSet: list of str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
         self.Switch = None
         self.LabelSet = None
         self.BlockConfidence = None
@@ -10854,11 +13484,19 @@ class UserDefineAsrTextReviewTemplateInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a custom speech audit task. Valid values:
 <li>ON: Enables a custom speech audit task;</li>
-<li>OFF: Disables a custom speech audit task.</li>\n        :type Switch: str\n        :param LabelSet: Custom speech filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom speech keywords.
-There can be up to 10 tags, each with a length limit of 16 characters.\n        :type LabelSet: list of str\n        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.\n        :type BlockConfidence: int\n        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.\n        :type ReviewConfidence: int\n        """
+<li>OFF: Disables a custom speech audit task.</li>
+        :type Switch: str
+        :param LabelSet: Custom speech filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom speech keywords.
+There can be up to 10 tags, each with a length limit of 16 characters.
+        :type LabelSet: list of str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
         self.Switch = None
         self.LabelSet = None
         self.BlockConfidence = None
@@ -10885,11 +13523,17 @@ class UserDefineConfigureInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FaceReviewInfo: Control parameter of custom figure audit.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type FaceReviewInfo: :class:`tencentcloud.mps.v20190612.models.UserDefineFaceReviewTemplateInfo`\n        :param AsrReviewInfo: Control parameter of custom speech audit.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type AsrReviewInfo: :class:`tencentcloud.mps.v20190612.models.UserDefineAsrTextReviewTemplateInfo`\n        :param OcrReviewInfo: Control parameter of custom text audit.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.UserDefineOcrTextReviewTemplateInfo`\n        """
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FaceReviewInfo: :class:`tencentcloud.mps.v20190612.models.UserDefineFaceReviewTemplateInfo`
+        :param AsrReviewInfo: Control parameter of custom speech audit.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AsrReviewInfo: :class:`tencentcloud.mps.v20190612.models.UserDefineAsrTextReviewTemplateInfo`
+        :param OcrReviewInfo: Control parameter of custom text audit.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.UserDefineOcrTextReviewTemplateInfo`
+        """
         self.FaceReviewInfo = None
         self.AsrReviewInfo = None
         self.OcrReviewInfo = None
@@ -10920,8 +13564,14 @@ class UserDefineConfigureInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FaceReviewInfo: Control parameter of custom figure audit.
+        :type FaceReviewInfo: :class:`tencentcloud.mps.v20190612.models.UserDefineFaceReviewTemplateInfoForUpdate`
+        :param AsrReviewInfo: Control parameter of custom speech audit.
+        :type AsrReviewInfo: :class:`tencentcloud.mps.v20190612.models.UserDefineAsrTextReviewTemplateInfoForUpdate`
+        :param OcrReviewInfo: Control parameter of custom text audit.
+        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.UserDefineOcrTextReviewTemplateInfoForUpdate`
         """
-        :param FaceReviewInfo: Control parameter of custom figure audit.\n        :type FaceReviewInfo: :class:`tencentcloud.mps.v20190612.models.UserDefineFaceReviewTemplateInfoForUpdate`\n        :param AsrReviewInfo: Control parameter of custom speech audit.\n        :type AsrReviewInfo: :class:`tencentcloud.mps.v20190612.models.UserDefineAsrTextReviewTemplateInfoForUpdate`\n        :param OcrReviewInfo: Control parameter of custom text audit.\n        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.UserDefineOcrTextReviewTemplateInfoForUpdate`\n        """
         self.FaceReviewInfo = None
         self.AsrReviewInfo = None
         self.OcrReviewInfo = None
@@ -10952,11 +13602,19 @@ class UserDefineFaceReviewTemplateInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a custom figure audit task. Valid values:
 <li>ON: Enables a custom figure audit task;</li>
-<li>OFF: Disables a custom figure audit task.</li>\n        :type Switch: str\n        :param LabelSet: Custom figure filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for the custom figure library.
-There can be up to 10 tags, each with a length limit of 16 characters.\n        :type LabelSet: list of str\n        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 97 will be used by default. Value range: 0-100.\n        :type BlockConfidence: int\n        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 95 will be used by default. Value range: 0-100.\n        :type ReviewConfidence: int\n        """
+<li>OFF: Disables a custom figure audit task.</li>
+        :type Switch: str
+        :param LabelSet: Custom figure filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for the custom figure library.
+There can be up to 10 tags, each with a length limit of 16 characters.
+        :type LabelSet: list of str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 97 will be used by default. Value range: 0-100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 95 will be used by default. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
         self.Switch = None
         self.LabelSet = None
         self.BlockConfidence = None
@@ -10983,11 +13641,19 @@ class UserDefineFaceReviewTemplateInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a custom figure audit task. Valid values:
 <li>ON: Enables a custom figure audit task;</li>
-<li>OFF: Disables a custom figure audit task.</li>\n        :type Switch: str\n        :param LabelSet: Custom figure filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for the custom figure library.
-There can be up to 10 tags, each with a length limit of 16 characters.\n        :type LabelSet: list of str\n        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.\n        :type BlockConfidence: int\n        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.\n        :type ReviewConfidence: int\n        """
+<li>OFF: Disables a custom figure audit task.</li>
+        :type Switch: str
+        :param LabelSet: Custom figure filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for the custom figure library.
+There can be up to 10 tags, each with a length limit of 16 characters.
+        :type LabelSet: list of str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
         self.Switch = None
         self.LabelSet = None
         self.BlockConfidence = None
@@ -11014,11 +13680,19 @@ class UserDefineOcrTextReviewTemplateInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a custom text audit task. Valid values:
 <li>ON: Enables a custom text audit task;</li>
-<li>OFF: Disables a custom text audit task.</li>\n        :type Switch: str\n        :param LabelSet: Custom text filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom text keywords.
-There can be up to 10 tags, each with a length limit of 16 characters.\n        :type LabelSet: list of str\n        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.\n        :type BlockConfidence: int\n        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.\n        :type ReviewConfidence: int\n        """
+<li>OFF: Disables a custom text audit task.</li>
+        :type Switch: str
+        :param LabelSet: Custom text filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom text keywords.
+There can be up to 10 tags, each with a length limit of 16 characters.
+        :type LabelSet: list of str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
         self.Switch = None
         self.LabelSet = None
         self.BlockConfidence = None
@@ -11045,11 +13719,19 @@ class UserDefineOcrTextReviewTemplateInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: Switch of a custom text audit task. Valid values:
 <li>ON: Enables a custom text audit task;</li>
-<li>OFF: Disables a custom text audit task.</li>\n        :type Switch: str\n        :param LabelSet: Custom text filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom text keywords.
-There can be up to 10 tags, each with a length limit of 16 characters.\n        :type LabelSet: str\n        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.\n        :type BlockConfidence: int\n        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.\n        :type ReviewConfidence: int\n        """
+<li>OFF: Disables a custom text audit task.</li>
+        :type Switch: str
+        :param LabelSet: Custom text filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom text keywords.
+There can be up to 10 tags, each with a length limit of 16 characters.
+        :type LabelSet: str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
         self.Switch = None
         self.LabelSet = None
         self.BlockConfidence = None
@@ -11076,34 +13758,52 @@ class VideoTemplateInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Codec: Video stream codec. Valid values:
 <li>libx264: H.264</li>
 <li>libx265: H.265</li>
-Currently, a resolution within 640*480p must be specified for H.265.\n        :type Codec: str\n        :param Fps: Video frame rate in Hz. Value range: [0, 100].
-If the value is 0, the frame rate will be the same as that of the source video.\n        :type Fps: int\n        :param Bitrate: Bitrate of a video stream in Kbps. Value range: 0 and [128, 35,000].
-If the value is 0, the bitrate of the video will be the same as that of the source video.\n        :type Bitrate: int\n        :param ResolutionAdaptive: Resolution adaption. Valid values:
+Currently, a resolution within 640*480p must be specified for H.265.
+        :type Codec: str
+        :param Fps: Video frame rate in Hz. Value range: [0, 100].
+If the value is 0, the frame rate will be the same as that of the source video.
+        :type Fps: int
+        :param Bitrate: Bitrate of a video stream in Kbps. Value range: 0 and [128, 35,000].
+If the value is 0, the bitrate of the video will be the same as that of the source video.
+        :type Bitrate: int
+        :param ResolutionAdaptive: Resolution adaption. Valid values:
 <li>open: Enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
 <li>close: Disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
-Default value: open.\n        :type ResolutionAdaptive: str\n        :param Width: Maximum value of the width (or long side) of a video stream in px. Value range: 0 and [128, 4,096].
+Default value: open.
+        :type ResolutionAdaptive: str
+        :param Width: Maximum value of the width (or long side) of a video stream in px. Value range: 0 and [128, 4,096].
 <li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
 <li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
 <li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
 <li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
-Default value: 0.\n        :type Width: int\n        :param Height: Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].
+Default value: 0.
+        :type Width: int
+        :param Height: Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].
 <li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
 <li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
 <li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
 <li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
-Default value: 0.\n        :type Height: int\n        :param Gop: Frame interval between I keyframes. Value range: 0 and [1,100000].
-If this parameter is 0 or left empty, the system will automatically set the GOP length.\n        :type Gop: int\n        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
+Default value: 0.
+        :type Height: int
+        :param Gop: Frame interval between I keyframes. Value range: 0 and [1,100000].
+If this parameter is 0 or left empty, the system will automatically set the GOP length.
+        :type Gop: int
+        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
 <li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
 <li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>
 <li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>
-Default value: black.\n        :type FillType: str\n        :param Vcrf: The control factor of video constant bitrate. Value range: [1, 51]
+Default value: black.
+        :type FillType: str
+        :param Vcrf: The control factor of video constant bitrate. Value range: [1, 51]
 If this parameter is specified, CRF (a bitrate control method) will be used for transcoding. (Video bitrate will no longer take effect.)
-It is not recommended to specify this parameter if there are no special requirements.\n        :type Vcrf: int\n        """
+It is not recommended to specify this parameter if there are no special requirements.
+        :type Vcrf: int
+        """
         self.Codec = None
         self.Fps = None
         self.Bitrate = None
@@ -11140,24 +13840,42 @@ class VideoTemplateInfoForUpdate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Codec: Video stream codec. Valid values:
 <li>libx264: H.264</li>
 <li>libx265: H.265</li>
-Currently, a resolution within 640*480p must be specified for H.265.\n        :type Codec: str\n        :param Fps: Video frame rate in Hz. Value range: [0, 100].
-If the value is 0, the frame rate will be the same as that of the source video.\n        :type Fps: int\n        :param Bitrate: Bitrate of a video stream in Kbps. Value range: 0 and [128, 35,000].
-If the value is 0, the bitrate of the video will be the same as that of the source video.\n        :type Bitrate: int\n        :param ResolutionAdaptive: Resolution adaption. Valid values:
+Currently, a resolution within 640*480p must be specified for H.265.
+        :type Codec: str
+        :param Fps: Video frame rate in Hz. Value range: [0, 100].
+If the value is 0, the frame rate will be the same as that of the source video.
+        :type Fps: int
+        :param Bitrate: Bitrate of a video stream in Kbps. Value range: 0 and [128, 35,000].
+If the value is 0, the bitrate of the video will be the same as that of the source video.
+        :type Bitrate: int
+        :param ResolutionAdaptive: Resolution adaption. Valid values:
 <li>open: Enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
-<li>close: Disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>\n        :type ResolutionAdaptive: str\n        :param Width: Maximum value of the width (or long side) of a video stream in px. Value range: 0 and [128, 4,096].
+<li>close: Disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
+        :type ResolutionAdaptive: str
+        :param Width: Maximum value of the width (or long side) of a video stream in px. Value range: 0 and [128, 4,096].
 <li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
 <li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
 <li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
-<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\n        :type Width: int\n        :param Height: Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].\n        :type Height: int\n        :param Gop: Frame interval between I keyframes. Value range: 0 and [1,100000]. If this parameter is 0, the system will automatically set the GOP length.\n        :type Gop: int\n        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
+<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
+        :type Width: int
+        :param Height: Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].
+        :type Height: int
+        :param Gop: Frame interval between I keyframes. Value range: 0 and [1,100000]. If this parameter is 0, the system will automatically set the GOP length.
+        :type Gop: int
+        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
 <li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
 <li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>
-<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>\n        :type FillType: str\n        :param Vcrf: The control factor of video constant bitrate. Value range: [0, 51]. This parameter will be disabled if you enter `0`.
-It is not recommended to specify this parameter if there are no special requirements.\n        :type Vcrf: int\n        """
+<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>
+        :type FillType: str
+        :param Vcrf: The control factor of video constant bitrate. Value range: [0, 51]. This parameter will be disabled if you enter `0`.
+It is not recommended to specify this parameter if there are no special requirements.
+        :type Vcrf: int
+        """
         self.Codec = None
         self.Fps = None
         self.Bitrate = None
@@ -11194,18 +13912,30 @@ class WatermarkInput(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Definition: ID of a watermarking template.\n        :type Definition: int\n        :param RawParameter: Custom watermark parameter, which is valid if `Definition` is 0.
+        r"""
+        :param Definition: ID of a watermarking template.
+        :type Definition: int
+        :param RawParameter: Custom watermark parameter, which is valid if `Definition` is 0.
 This parameter is used in highly customized scenarios. We recommend you use `Definition` to specify the watermark parameter preferably.
-Custom watermark parameter is not available for screenshot.\n        :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawWatermarkParameter`\n        :param TextContent: Text content of up to 100 characters. This field is required only when the watermark type is text.
-Text watermark is not available for screenshot.\n        :type TextContent: str\n        :param SvgContent: SVG content of up to 2,000,000 characters. This field is required only when the watermark type is `SVG`.
-SVG watermark is not available for screenshot.\n        :type SvgContent: str\n        :param StartTimeOffset: Start time offset of a watermark in seconds. If this parameter is left empty or 0 is entered, the watermark will appear upon the first video frame.
+Custom watermark parameter is not available for screenshot.
+        :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawWatermarkParameter`
+        :param TextContent: Text content of up to 100 characters. This field is required only when the watermark type is text.
+Text watermark is not available for screenshot.
+        :type TextContent: str
+        :param SvgContent: SVG content of up to 2,000,000 characters. This field is required only when the watermark type is `SVG`.
+SVG watermark is not available for screenshot.
+        :type SvgContent: str
+        :param StartTimeOffset: Start time offset of a watermark in seconds. If this parameter is left empty or 0 is entered, the watermark will appear upon the first video frame.
 <li>If this parameter is left empty or 0 is entered, the watermark will appear upon the first video frame;</li>
 <li>If this value is greater than 0 (e.g., n), the watermark will appear at second n after the first video frame;</li>
-<li>If this value is smaller than 0 (e.g., -n), the watermark will appear at second n before the last video frame.</li>\n        :type StartTimeOffset: float\n        :param EndTimeOffset: End time offset of a watermark in seconds.
+<li>If this value is smaller than 0 (e.g., -n), the watermark will appear at second n before the last video frame.</li>
+        :type StartTimeOffset: float
+        :param EndTimeOffset: End time offset of a watermark in seconds.
 <li>If this parameter is left empty or 0 is entered, the watermark will exist till the last video frame;</li>
 <li>If this value is greater than 0 (e.g., n), the watermark will exist till second n;</li>
-<li>If this value is smaller than 0 (e.g., -n), the watermark will exist till second n before the last video frame.</li>\n        :type EndTimeOffset: float\n        """
+<li>If this value is smaller than 0 (e.g., -n), the watermark will exist till second n before the last video frame.</li>
+        :type EndTimeOffset: float
+        """
         self.Definition = None
         self.RawParameter = None
         self.TextContent = None
@@ -11238,21 +13968,45 @@ class WatermarkTemplate(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Definition: Unique ID of a watermarking template.\n        :type Definition: int\n        :param Type: Watermark type. Valid values:
+        r"""
+        :param Definition: Unique ID of a watermarking template.
+        :type Definition: int
+        :param Type: Watermark type. Valid values:
 <li>image: Image watermark;</li>
-<li>text: Text watermark.</li>\n        :type Type: str\n        :param Name: Name of a watermarking template.\n        :type Name: str\n        :param Comment: Template description.\n        :type Comment: str\n        :param XPos: Horizontal position of the origin of the watermark image relative to the origin of the video.
+<li>text: Text watermark.</li>
+        :type Type: str
+        :param Name: Name of a watermarking template.
+        :type Name: str
+        :param Comment: Template description.
+        :type Comment: str
+        :param XPos: Horizontal position of the origin of the watermark image relative to the origin of the video.
 <li>If the string ends in %, the `Left` edge of the watermark will be at the position of the specified percentage of the video width; for example, `10%` means that the `Left` edge is at 10% of the video width;</li>
-<li>If the string ends in px, the `Left` edge of the watermark will be at the position of the specified px of the video width; for example, `100px` means that the `Left` edge is at the position of 100 px.</li>\n        :type XPos: str\n        :param YPos: Vertical position of the origin of the watermark image relative to the origin of the video.
+<li>If the string ends in px, the `Left` edge of the watermark will be at the position of the specified px of the video width; for example, `100px` means that the `Left` edge is at the position of 100 px.</li>
+        :type XPos: str
+        :param YPos: Vertical position of the origin of the watermark image relative to the origin of the video.
 <li>If the string ends in %, the `Top` edge of the watermark will beat the position of the specified percentage of the video height; for example, `10%` means that the `Top` edge is at 10% of the video height;</li>
-<li>If the string ends in px, the `Top` edge of the watermark will be at the position of the specified px of the video height; for example, `100px` means that the `Top` edge is at the position of 100 px.</li>\n        :type YPos: str\n        :param ImageTemplate: Image watermarking template. This field is valid only when `Type` is `image`.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type ImageTemplate: :class:`tencentcloud.mps.v20190612.models.ImageWatermarkTemplate`\n        :param TextTemplate: Text watermarking template. This field is valid only when `Type` is `text`.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type TextTemplate: :class:`tencentcloud.mps.v20190612.models.TextWatermarkTemplateInput`\n        :param SvgTemplate: SVG watermarking template. This field is valid when `Type` is `svg`.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type SvgTemplate: :class:`tencentcloud.mps.v20190612.models.SvgWatermarkInput`\n        :param CreateTime: Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type CreateTime: str\n        :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type UpdateTime: str\n        :param CoordinateOrigin: Origin position. Valid values:
+<li>If the string ends in px, the `Top` edge of the watermark will be at the position of the specified px of the video height; for example, `100px` means that the `Top` edge is at the position of 100 px.</li>
+        :type YPos: str
+        :param ImageTemplate: Image watermarking template. This field is valid only when `Type` is `image`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ImageTemplate: :class:`tencentcloud.mps.v20190612.models.ImageWatermarkTemplate`
+        :param TextTemplate: Text watermarking template. This field is valid only when `Type` is `text`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TextTemplate: :class:`tencentcloud.mps.v20190612.models.TextWatermarkTemplateInput`
+        :param SvgTemplate: SVG watermarking template. This field is valid when `Type` is `svg`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SvgTemplate: :class:`tencentcloud.mps.v20190612.models.SvgWatermarkInput`
+        :param CreateTime: Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type CreateTime: str
+        :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type UpdateTime: str
+        :param CoordinateOrigin: Origin position. Valid values:
 <li>topLeft: The origin of coordinates is in the top-left corner of the video, and the origin of the watermark is in the top-left corner of the image or text;</li>
 <li>topRight: The origin of coordinates is in the top-right corner of the video, and the origin of the watermark is in the top-right corner of the image or text;</li>
 <li>bottomLeft: The origin of coordinates is in the bottom-left corner of the video, and the origin of the watermark is in the bottom-left corner of the image or text;</li>
-<li>bottomRight: The origin of coordinates is in the bottom-right corner of the video, and the origin of the watermark is in the bottom-right corner of the image or text.</li>\n        :type CoordinateOrigin: str\n        """
+<li>bottomRight: The origin of coordinates is in the bottom-right corner of the video, and the origin of the watermark is in the bottom-right corner of the image or text.</li>
+        :type CoordinateOrigin: str
+        """
         self.Definition = None
         self.Type = None
         self.Name = None
@@ -11301,15 +14055,43 @@ class WorkflowInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param WorkflowId: Workflow ID.\n        :type WorkflowId: int\n        :param WorkflowName: Workflow name.\n        :type WorkflowName: str\n        :param Status: Workflow status. Valid values:
+        r"""
+        :param WorkflowId: Workflow ID.
+        :type WorkflowId: int
+        :param WorkflowName: Workflow name.
+        :type WorkflowName: str
+        :param Status: Workflow status. Valid values:
 <li>Enabled: Enabled,</li>
-<li>Disabled: Disabled.</li>\n        :type Status: str\n        :param Trigger: Input rule bound to a workflow. If an uploaded video hits the rule for the object, the workflow will be triggered.\n        :type Trigger: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`\n        :param OutputStorage: Target storage of a video processing output file.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`\n        :param MediaProcessTask: Parameter of a video processing task.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type MediaProcessTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`\n        :param AiContentReviewTask: Type parameter of a video content audit task.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`\n        :param AiAnalysisTask: Video content analysis task parameter.\n        :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`\n        :param AiRecognitionTask: Type parameter of a video content recognition task.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`\n        :param TaskNotifyConfig: Event notification information of a task. If this parameter is left empty, no event notifications will be obtained.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`\n        :param TaskPriority: Task flow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.\n        :type TaskPriority: int\n        :param OutputDir: Target directory of a video processing output file, such as `/movie/201907/`.\n        :type OutputDir: str\n        :param CreateTime: Creation time of a workflow in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type CreateTime: str\n        :param UpdateTime: Last modified time of a workflow in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type UpdateTime: str\n        """
+<li>Disabled: Disabled.</li>
+        :type Status: str
+        :param Trigger: Input rule bound to a workflow. If an uploaded video hits the rule for the object, the workflow will be triggered.
+        :type Trigger: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
+        :param OutputStorage: Target storage of a video processing output file.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param MediaProcessTask: Parameter of a video processing task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MediaProcessTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
+        :param AiContentReviewTask: Type parameter of a video content audit task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        :param AiAnalysisTask: Video content analysis task parameter.
+        :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
+        :param AiRecognitionTask: Type parameter of a video content recognition task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        :param TaskNotifyConfig: Event notification information of a task. If this parameter is left empty, no event notifications will be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        :param TaskPriority: Task flow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.
+        :type TaskPriority: int
+        :param OutputDir: Target directory of a video processing output file, such as `/movie/201907/`.
+        :type OutputDir: str
+        :param CreateTime: Creation time of a workflow in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type CreateTime: str
+        :param UpdateTime: Last modified time of a workflow in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type UpdateTime: str
+        """
         self.WorkflowId = None
         self.WorkflowName = None
         self.Status = None
@@ -11370,12 +14152,32 @@ class WorkflowTask(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param TaskId: Video processing task ID.\n        :type TaskId: str\n        :param Status: Task flow status. Valid values:
+        r"""
+        :param TaskId: Video processing task ID.
+        :type TaskId: str
+        :param Status: Task flow status. Valid values:
 <li>PROCESSING: Processing;</li>
-<li>FINISH: Completed.</li>\n        :type Status: str\n        :param ErrCode: Disused. Please use `ErrCode` of each specific task.\n        :type ErrCode: int\n        :param Message: Disused. Please use `Message` of each specific task.\n        :type Message: str\n        :param InputInfo: Information of a target file of video processing.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`\n        :param MetaData: Metadata of a source video.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type MetaData: :class:`tencentcloud.mps.v20190612.models.MediaMetaData`\n        :param MediaProcessResultSet: Execution status and result of a video processing task.\n        :type MediaProcessResultSet: list of MediaProcessTaskResult\n        :param AiContentReviewResultSet: Execution status and result of a video content audit task.\n        :type AiContentReviewResultSet: list of AiContentReviewResult\n        :param AiAnalysisResultSet: Execution status and result of video content analysis task.\n        :type AiAnalysisResultSet: list of AiAnalysisResult\n        :param AiRecognitionResultSet: Execution status and result of a video content recognition task.\n        :type AiRecognitionResultSet: list of AiRecognitionResult\n        """
+<li>FINISH: Completed.</li>
+        :type Status: str
+        :param ErrCode: Disused. Please use `ErrCode` of each specific task.
+        :type ErrCode: int
+        :param Message: Disused. Please use `Message` of each specific task.
+        :type Message: str
+        :param InputInfo: Information of a target file of video processing.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param MetaData: Metadata of a source video.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MetaData: :class:`tencentcloud.mps.v20190612.models.MediaMetaData`
+        :param MediaProcessResultSet: Execution status and result of a video processing task.
+        :type MediaProcessResultSet: list of MediaProcessTaskResult
+        :param AiContentReviewResultSet: Execution status and result of a video content audit task.
+        :type AiContentReviewResultSet: list of AiContentReviewResult
+        :param AiAnalysisResultSet: Execution status and result of video content analysis task.
+        :type AiAnalysisResultSet: list of AiAnalysisResult
+        :param AiRecognitionResultSet: Execution status and result of a video content recognition task.
+        :type AiRecognitionResultSet: list of AiRecognitionResult
+        """
         self.TaskId = None
         self.Status = None
         self.ErrCode = None
@@ -11438,9 +14240,13 @@ class WorkflowTrigger(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Type: Trigger type. Only `CosFileUpload` is supported currently.
+        :type Type: str
+        :param CosFileUploadTrigger: This parameter is required and valid when `Type` is `CosFileUpload`, indicating the COS trigger rule.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CosFileUploadTrigger: :class:`tencentcloud.mps.v20190612.models.CosFileUploadTrigger`
         """
-        :param Type: Trigger type. Only `CosFileUpload` is supported currently.\n        :type Type: str\n        :param CosFileUploadTrigger: This parameter is required and valid when `Type` is `CosFileUpload`, indicating the COS trigger rule.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type CosFileUploadTrigger: :class:`tencentcloud.mps.v20190612.models.CosFileUploadTrigger`\n        """
         self.Type = None
         self.CosFileUploadTrigger = None
 

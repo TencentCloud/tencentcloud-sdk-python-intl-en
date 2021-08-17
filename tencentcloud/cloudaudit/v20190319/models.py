@@ -24,13 +24,39 @@ class ConfigurationItems(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ConfigurationItemCaptureTime: Time of getting a configuration item
+        :type ConfigurationItemCaptureTime: str
+        :param Relationships: Resource relationship list
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Relationships: str
+        :param LastItemInfo: This parameter takes effect only when `DiffMode` is set to `true`. When the input parameter `ChronologicalOrder` of the `GetConfigurationItems` API is set to `Forward`, details of the configuration item before the first one (if not a creation configuration item) will be returned. When this parameter is set to `Reverse`, details of the configuration item after the last one (if not a resource deletion configuration item) will be returned.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type LastItemInfo: str
+        :param RelatedEvents: List of events associated with the configuration changes
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RelatedEvents: list of RelatedEvent
+        :param ResourceType: Resource type
+        :type ResourceType: str
+        :param ResourceId: Resource ID
+        :type ResourceId: str
+        :param ConfigurationStateId: Configuration item ID
+        :type ConfigurationStateId: str
+        :param ResourceCreateTime: Resource creation time
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ResourceCreateTime: str
+        :param Version: CFA version
+        :type Version: str
+        :param ResourceRegion: Resource region
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ResourceRegion: str
+        :param Configuration: 
+        :type Configuration: str
+        :param ResourceAlias: Resource name
+        :type ResourceAlias: str
+        :param ConfigurationItemStatus: Configuration item status. Valid values: OK, ResourceDiscovered, ResourceNotRecorded, ResourceDeleted, ResourceDeletedNotRecorded.
+        :type ConfigurationItemStatus: str
         """
-        :param ConfigurationItemCaptureTime: Time of getting a configuration item\n        :type ConfigurationItemCaptureTime: str\n        :param Relationships: Resource relationship list
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Relationships: str\n        :param LastItemInfo: This parameter takes effect only when `DiffMode` is set to `true`. When the input parameter `ChronologicalOrder` of the `GetConfigurationItems` API is set to `Forward`, details of the configuration item before the first one (if not a creation configuration item) will be returned. When this parameter is set to `Reverse`, details of the configuration item after the last one (if not a resource deletion configuration item) will be returned.
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type LastItemInfo: str\n        :param RelatedEvents: List of events associated with the configuration changes
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type RelatedEvents: list of RelatedEvent\n        :param ResourceType: Resource type\n        :type ResourceType: str\n        :param ResourceId: Resource ID\n        :type ResourceId: str\n        :param ConfigurationStateId: Configuration item ID\n        :type ConfigurationStateId: str\n        :param ResourceCreateTime: Resource creation time
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ResourceCreateTime: str\n        :param Version: CFA version\n        :type Version: str\n        :param ResourceRegion: Resource region
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ResourceRegion: str\n        :param Configuration: \n        :type Configuration: str\n        :param ResourceAlias: Resource name\n        :type ResourceAlias: str\n        :param ConfigurationItemStatus: Configuration item status. Valid values: OK, ResourceDiscovered, ResourceNotRecorded, ResourceDeleted, ResourceDeletedNotRecorded.\n        :type ConfigurationItemStatus: str\n        """
         self.ConfigurationItemCaptureTime = None
         self.Relationships = None
         self.LastItemInfo = None
@@ -80,8 +106,16 @@ class CreateRecorderRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Role: Role name authorized to CFA
+        :type Role: str
+        :param AllSupported: Whether to select all supported resource types. Valid values: true (default), false.
+        :type AllSupported: bool
+        :param Enable: Whether to enable the resource recorder. Valid values: true (default), false.
+        :type Enable: bool
+        :param Name: Resource recorder name. Default name: default.
+        :type Name: str
         """
-        :param Role: Role name authorized to CFA\n        :type Role: str\n        :param AllSupported: Whether to select all supported resource types. Valid values: true (default), false.\n        :type AllSupported: bool\n        :param Enable: Whether to enable the resource recorder. Valid values: true (default), false.\n        :type Enable: bool\n        :param Name: Resource recorder name. Default name: default.\n        :type Name: str\n        """
         self.Role = None
         self.AllSupported = None
         self.Enable = None
@@ -108,8 +142,12 @@ class CreateRecorderResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IsSuccess: Whether the recorder was created successfully
+        :type IsSuccess: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param IsSuccess: Whether the recorder was created successfully\n        :type IsSuccess: bool\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.IsSuccess = None
         self.RequestId = None
 
@@ -131,8 +169,12 @@ class DeleteRecorderResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IsSuccess: Whether the recorder was deleted successfully
+        :type IsSuccess: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param IsSuccess: Whether the recorder was deleted successfully\n        :type IsSuccess: bool\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.IsSuccess = None
         self.RequestId = None
 
@@ -148,8 +190,10 @@ class DescribeDiscoveredResourceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceId: Request ID
+        :type ResourceId: str
         """
-        :param ResourceId: Request ID\n        :type ResourceId: str\n        """
         self.ResourceId = None
 
 
@@ -170,12 +214,30 @@ class DescribeDiscoveredResourceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LastUpdateTime: Last update time
+        :type LastUpdateTime: str
+        :param ResourceType: Resource type
+        :type ResourceType: str
+        :param ResourceId: Resource ID
+        :type ResourceId: str
+        :param CreateTime: Resource creation time
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type CreateTime: str
+        :param Tag: Tag details
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Tag: str
+        :param ResourceInfo: Current resource configuration details
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ResourceInfo: str
+        :param ResourceRegion: Resource region
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ResourceRegion: str
+        :param ResourceAlias: Resource alias
+        :type ResourceAlias: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param LastUpdateTime: Last update time\n        :type LastUpdateTime: str\n        :param ResourceType: Resource type\n        :type ResourceType: str\n        :param ResourceId: Resource ID\n        :type ResourceId: str\n        :param CreateTime: Resource creation time
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type CreateTime: str\n        :param Tag: Tag details
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Tag: str\n        :param ResourceInfo: Current resource configuration details
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ResourceInfo: str\n        :param ResourceRegion: Resource region
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ResourceRegion: str\n        :param ResourceAlias: Resource alias\n        :type ResourceAlias: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.LastUpdateTime = None
         self.ResourceType = None
         self.ResourceId = None
@@ -211,9 +273,33 @@ class DescribeRecorderResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Enable: Whether to enable the recorder. Valid values: true (enable), false (disable).
+        :type Enable: bool
+        :param Name: Recorder name
+        :type Name: str
+        :param LastErrorMessage: Last error message of the recorder, which corresponds to `LastErrorCode`.
+        :type LastErrorMessage: str
+        :param LastStatus: The status of the recorder when it recorded information last time. Valid values: PENDING, OK, FAILED.
+        :type LastStatus: str
+        :param ResourceTypes: List of the resource types monitored by the recorder
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ResourceTypes: list of RecordResourceType
+        :param LastStartTime: Time when the recorder was enabled last time
+        :type LastStartTime: str
+        :param LastErrorCode: Last error code of the recorder
+        :type LastErrorCode: str
+        :param LastStopTime: Time when the recorder was disabled last time
+        :type LastStopTime: str
+        :param AllSupported: Whether to monitor all currently supported resource types. Valid values: true (yes), false (no).
+        :type AllSupported: bool
+        :param CreateTime: Recorder creation time
+        :type CreateTime: str
+        :param Role: Role name authorized to CFA
+        :type Role: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Enable: Whether to enable the recorder. Valid values: true (enable), false (disable).\n        :type Enable: bool\n        :param Name: Recorder name\n        :type Name: str\n        :param LastErrorMessage: Last error message of the recorder, which corresponds to `LastErrorCode`.\n        :type LastErrorMessage: str\n        :param LastStatus: The status of the recorder when it recorded information last time. Valid values: PENDING, OK, FAILED.\n        :type LastStatus: str\n        :param ResourceTypes: List of the resource types monitored by the recorder
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ResourceTypes: list of RecordResourceType\n        :param LastStartTime: Time when the recorder was enabled last time\n        :type LastStartTime: str\n        :param LastErrorCode: Last error code of the recorder\n        :type LastErrorCode: str\n        :param LastStopTime: Time when the recorder was disabled last time\n        :type LastStopTime: str\n        :param AllSupported: Whether to monitor all currently supported resource types. Valid values: true (yes), false (no).\n        :type AllSupported: bool\n        :param CreateTime: Recorder creation time\n        :type CreateTime: str\n        :param Role: Role name authorized to CFA\n        :type Role: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Enable = None
         self.Name = None
         self.LastErrorMessage = None
@@ -254,8 +340,22 @@ class GetConfigurationItemsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceId: Resource ID
+        :type ResourceId: str
+        :param ChronologicalOrder: Chronological order. Valid values: Reverse, Forward (default).
+        :type ChronologicalOrder: str
+        :param StartTime: Start time
+        :type StartTime: str
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param DiffMode: Whether to enable `DiffMode`. Valid values: true, false (default).
+        :type DiffMode: bool
+        :param Limit: Returned number. default: 10, maximum: 100.
+        :type Limit: int
+        :param EndTime: End time
+        :type EndTime: str
         """
-        :param ResourceId: Resource ID\n        :type ResourceId: str\n        :param ChronologicalOrder: Chronological order. Valid values: Reverse, Forward (default).\n        :type ChronologicalOrder: str\n        :param StartTime: Start time\n        :type StartTime: str\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        :param DiffMode: Whether to enable `DiffMode`. Valid values: true, false (default).\n        :type DiffMode: bool\n        :param Limit: Returned number. default: 10, maximum: 100.\n        :type Limit: int\n        :param EndTime: End time\n        :type EndTime: str\n        """
         self.ResourceId = None
         self.ChronologicalOrder = None
         self.StartTime = None
@@ -288,9 +388,15 @@ class GetConfigurationItemsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ConfigurationItems: Resource configuration item list
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ConfigurationItems: list of ConfigurationItems\n        :param TotalCount: Total number\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ConfigurationItems: list of ConfigurationItems
+        :param TotalCount: Total number
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.ConfigurationItems = None
         self.TotalCount = None
         self.RequestId = None
@@ -313,8 +419,20 @@ class ListDiscoveredResourcesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceType: Resource type
+        :type ResourceType: str
+        :param ResourceId: Resource ID
+        :type ResourceId: str
+        :param Limit: Returned number. default: 20, maximum: 200.
+        :type Limit: int
+        :param ResourceRegion: Resource region
+        :type ResourceRegion: str
+        :param Offset: Offset. Default: 0.
+        :type Offset: int
+        :param IsDeleted: Whether the resource is deleted
+        :type IsDeleted: bool
         """
-        :param ResourceType: Resource type\n        :type ResourceType: str\n        :param ResourceId: Resource ID\n        :type ResourceId: str\n        :param Limit: Returned number. default: 20, maximum: 200.\n        :type Limit: int\n        :param ResourceRegion: Resource region\n        :type ResourceRegion: str\n        :param Offset: Offset. Default: 0.\n        :type Offset: int\n        :param IsDeleted: Whether the resource is deleted\n        :type IsDeleted: bool\n        """
         self.ResourceType = None
         self.ResourceId = None
         self.Limit = None
@@ -345,9 +463,15 @@ class ListDiscoveredResourcesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number
+        :type TotalCount: int
+        :param Resources: Resource list
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Resources: list of Resources
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number\n        :type TotalCount: int\n        :param Resources: Resource list
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Resources: list of Resources\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Resources = None
         self.RequestId = None
@@ -376,8 +500,12 @@ class ListSupportResourceTypesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceTypes: List of supported resource types
+        :type ResourceTypes: list of SupportResourceType
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param ResourceTypes: List of supported resource types\n        :type ResourceTypes: list of SupportResourceType\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ResourceTypes = None
         self.RequestId = None
 
@@ -398,8 +526,20 @@ class RecordResourceType(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyName: CAM policy name
+        :type PolicyName: str
+        :param UpdateTime: Modification time of resource types for monitoring
+        :type UpdateTime: str
+        :param Service: Service
+        :type Service: str
+        :param ResourceType: Resource type
+        :type ResourceType: str
+        :param ServiceName: Service name
+        :type ServiceName: str
+        :param ResourceTypeName: Resource type name
+        :type ResourceTypeName: str
         """
-        :param PolicyName: CAM policy name\n        :type PolicyName: str\n        :param UpdateTime: Modification time of resource types for monitoring\n        :type UpdateTime: str\n        :param Service: Service\n        :type Service: str\n        :param ResourceType: Resource type\n        :type ResourceType: str\n        :param ServiceName: Service name\n        :type ServiceName: str\n        :param ResourceTypeName: Resource type name\n        :type ResourceTypeName: str\n        """
         self.PolicyName = None
         self.UpdateTime = None
         self.Service = None
@@ -430,8 +570,16 @@ class RelatedEvent(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EventName: Event name
+        :type EventName: str
+        :param EventTime: Operation time
+        :type EventTime: str
+        :param OperateUin: ID of the operator account
+        :type OperateUin: int
+        :param EventReqId: CloudAudit event ID
+        :type EventReqId: str
         """
-        :param EventName: Event name\n        :type EventName: str\n        :param EventTime: Operation time\n        :type EventTime: str\n        :param OperateUin: ID of the operator account\n        :type OperateUin: int\n        :param EventReqId: CloudAudit event ID\n        :type EventReqId: str\n        """
         self.EventName = None
         self.EventTime = None
         self.OperateUin = None
@@ -458,8 +606,20 @@ class Resources(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceType: Resource type
+        :type ResourceType: str
+        :param ResourceId: Resource ID
+        :type ResourceId: str
+        :param CreateTime: Resource creation time
+        :type CreateTime: str
+        :param ResourceRegion: Resource region
+        :type ResourceRegion: str
+        :param ResourceAlias: Resource alias
+        :type ResourceAlias: str
+        :param IsDeleted: Whether the resource is deleted
+        :type IsDeleted: bool
         """
-        :param ResourceType: Resource type\n        :type ResourceType: str\n        :param ResourceId: Resource ID\n        :type ResourceId: str\n        :param CreateTime: Resource creation time\n        :type CreateTime: str\n        :param ResourceRegion: Resource region\n        :type ResourceRegion: str\n        :param ResourceAlias: Resource alias\n        :type ResourceAlias: str\n        :param IsDeleted: Whether the resource is deleted\n        :type IsDeleted: bool\n        """
         self.ResourceType = None
         self.ResourceId = None
         self.CreateTime = None
@@ -490,8 +650,18 @@ class SupportResourceType(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceType: Resource type
+        :type ResourceType: str
+        :param PolicyName: CAM policy name
+        :type PolicyName: str
+        :param ServiceName: Service name
+        :type ServiceName: str
+        :param ResourceTypeName: Resource type name in Chinese
+        :type ResourceTypeName: str
+        :param Service: Service
+        :type Service: str
         """
-        :param ResourceType: Resource type\n        :type ResourceType: str\n        :param PolicyName: CAM policy name\n        :type PolicyName: str\n        :param ServiceName: Service name\n        :type ServiceName: str\n        :param ResourceTypeName: Resource type name in Chinese\n        :type ResourceTypeName: str\n        :param Service: Service\n        :type Service: str\n        """
         self.ResourceType = None
         self.PolicyName = None
         self.ServiceName = None
@@ -520,8 +690,14 @@ class UpdateRecorderRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AllSupported: Whether to select all currently supported resource types
+        :type AllSupported: bool
+        :param Enable: Whether to enable the recorder. Valid values: true (enable), false (disable).
+        :type Enable: bool
+        :param Name: Recorder name after modification
+        :type Name: str
         """
-        :param AllSupported: Whether to select all currently supported resource types\n        :type AllSupported: bool\n        :param Enable: Whether to enable the recorder. Valid values: true (enable), false (disable).\n        :type Enable: bool\n        :param Name: Recorder name after modification\n        :type Name: str\n        """
         self.AllSupported = None
         self.Enable = None
         self.Name = None
@@ -546,8 +722,12 @@ class UpdateRecorderResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IsSuccess: Whether the modification is successful
+        :type IsSuccess: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param IsSuccess: Whether the modification is successful\n        :type IsSuccess: bool\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.IsSuccess = None
         self.RequestId = None
 

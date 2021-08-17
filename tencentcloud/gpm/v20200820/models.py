@@ -24,8 +24,12 @@ class AttributeMap(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Key: Map key, supporting [a-zA-Z0-9-\.]*
+        :type Key: str
+        :param Value: Map value
+        :type Value: int
         """
-        :param Key: Map key, supporting [a-zA-Z0-9-\.]*\n        :type Key: str\n        :param Value: Map value\n        :type Value: int\n        """
         self.Key = None
         self.Value = None
 
@@ -48,8 +52,12 @@ class CancelMatchingRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MatchCode: MatchCode
+        :type MatchCode: str
+        :param MatchTicketId: The MatchTicket ID of the matchmaking to cancel
+        :type MatchTicketId: str
         """
-        :param MatchCode: MatchCode\n        :type MatchCode: str\n        :param MatchTicketId: The MatchTicket ID of the matchmaking to cancel\n        :type MatchTicketId: str\n        """
         self.MatchCode = None
         self.MatchTicketId = None
 
@@ -72,8 +80,12 @@ class CancelMatchingResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ErrCode: Error code
+        :type ErrCode: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param ErrCode: Error code\n        :type ErrCode: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ErrCode = None
         self.RequestId = None
 
@@ -89,8 +101,34 @@ class CreateMatchRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MatchName: Match name. It can contain up to 128 bytes, supporting [a-zA-Z0-9-\.]*.
+        :type MatchName: str
+        :param RuleCode: RuleCode
+        :type RuleCode: str
+        :param Timeout: Timeout period in seconds. Value range: 1 600
+        :type Timeout: int
+        :param ServerType: Whether to request server resources for the matchmaking results. 0: no, 1: request GSE resources
+        :type ServerType: int
+        :param MatchDesc: Matchmaking description. Up to 1024 bytes are allowed.
+        :type MatchDesc: str
+        :param NotifyUrl: Only HTTP and HTTPS protocols are supported.
+        :type NotifyUrl: str
+        :param ServerRegion: Region of the game server queue
+        :type ServerRegion: str
+        :param ServerQueue: Game server queue
+        :type ServerQueue: str
+        :param CustomPushData: Custom push data
+        :type CustomPushData: str
+        :param ServerSessionData: Game server session data
+        :type ServerSessionData: str
+        :param GameProperties: Game attribute. It is an array of key-value structure.
+        :type GameProperties: list of StringKV
+        :param LogSwitch: Enable or disable the log. 0: disable, 1: enable
+        :type LogSwitch: int
+        :param Tags: Tag. It is an array of key-value structure.
+        :type Tags: list of StringKV
         """
-        :param MatchName: Match name. It can contain up to 128 bytes, supporting [a-zA-Z0-9-\.]*.\n        :type MatchName: str\n        :param RuleCode: RuleCode\n        :type RuleCode: str\n        :param Timeout: Timeout period in seconds. Value range: 1 600\n        :type Timeout: int\n        :param ServerType: Whether to request server resources for the matchmaking results. 0: no, 1: request GSE resources\n        :type ServerType: int\n        :param MatchDesc: Matchmaking description. Up to 1024 bytes are allowed.\n        :type MatchDesc: str\n        :param NotifyUrl: Only HTTP and HTTPS protocols are supported.\n        :type NotifyUrl: str\n        :param ServerRegion: Region of the game server queue\n        :type ServerRegion: str\n        :param ServerQueue: Game server queue\n        :type ServerQueue: str\n        :param CustomPushData: Custom push data\n        :type CustomPushData: str\n        :param ServerSessionData: Game server session data\n        :type ServerSessionData: str\n        :param GameProperties: Game attribute. It is an array of key-value structure.\n        :type GameProperties: list of StringKV\n        :param LogSwitch: Enable or disable the log. 0: disable, 1: enable\n        :type LogSwitch: int\n        :param Tags: Tag. It is an array of key-value structure.\n        :type Tags: list of StringKV\n        """
         self.MatchName = None
         self.RuleCode = None
         self.Timeout = None
@@ -145,8 +183,12 @@ class CreateMatchResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MatchInfo: Matchmaking information
+        :type MatchInfo: :class:`tencentcloud.gpm.v20200820.models.MatchInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param MatchInfo: Matchmaking information\n        :type MatchInfo: :class:`tencentcloud.gpm.v20200820.models.MatchInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.MatchInfo = None
         self.RequestId = None
 
@@ -164,8 +206,16 @@ class CreateRuleRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RuleName: Rule name. It can contain up to 128 bytes, supporting [a-zA-Z0-9-\.]*.
+        :type RuleName: str
+        :param RuleScript: Rule script. Up to 65535 bytes are allowed.
+        :type RuleScript: str
+        :param RuleDesc: Rule description. Up to 1024 bytes are allowed.
+        :type RuleDesc: str
+        :param Tags: Tag. It is an array of key-value structure. Up to 50 tags can be associated.
+        :type Tags: list of StringKV
         """
-        :param RuleName: Rule name. It can contain up to 128 bytes, supporting [a-zA-Z0-9-\.]*.\n        :type RuleName: str\n        :param RuleScript: Rule script. Up to 65535 bytes are allowed.\n        :type RuleScript: str\n        :param RuleDesc: Rule description. Up to 1024 bytes are allowed.\n        :type RuleDesc: str\n        :param Tags: Tag. It is an array of key-value structure. Up to 50 tags can be associated.\n        :type Tags: list of StringKV\n        """
         self.RuleName = None
         self.RuleScript = None
         self.RuleDesc = None
@@ -197,8 +247,12 @@ class CreateRuleResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RuleInfo: Rule information
+        :type RuleInfo: :class:`tencentcloud.gpm.v20200820.models.RuleInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RuleInfo: Rule information\n        :type RuleInfo: :class:`tencentcloud.gpm.v20200820.models.RuleInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RuleInfo = None
         self.RequestId = None
 
@@ -216,8 +270,10 @@ class DeleteMatchRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MatchCode: MatchCode
+        :type MatchCode: str
         """
-        :param MatchCode: MatchCode\n        :type MatchCode: str\n        """
         self.MatchCode = None
 
 
@@ -238,8 +294,10 @@ class DeleteMatchResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -253,8 +311,10 @@ class DeleteRuleRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RuleCode: RuleCode
+        :type RuleCode: str
         """
-        :param RuleCode: RuleCode\n        :type RuleCode: str\n        """
         self.RuleCode = None
 
 
@@ -275,8 +335,10 @@ class DeleteRuleResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -290,8 +352,16 @@ class DescribeDataRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StartTime: Start time in seconds
+        :type StartTime: int
+        :param EndTime: End time in seconds
+        :type EndTime: int
+        :param TimeType: Time granularity. Valid values: 1: 1 day, 2: 1 hour, 3: 1 minute, 4: 10 minutes, 5: 30 minutes
+        :type TimeType: int
+        :param MatchCode: MatchCode
+        :type MatchCode: str
         """
-        :param StartTime: Start time in seconds\n        :type StartTime: int\n        :param EndTime: End time in seconds\n        :type EndTime: int\n        :param TimeType: Time granularity. Valid values: 1: 1 day, 2: 1 hour, 3: 1 minute, 4: 10 minutes, 5: 30 minutes\n        :type TimeType: int\n        :param MatchCode: MatchCode\n        :type MatchCode: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.TimeType = None
@@ -318,10 +388,16 @@ class DescribeDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OverviewData: Matchmaking statistics overview
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type OverviewData: :class:`tencentcloud.gpm.v20200820.models.ReportOverviewData`\n        :param TrendData: Trend data of the number of matchmaking requests
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type TrendData: :class:`tencentcloud.gpm.v20200820.models.ReportTrendData`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type OverviewData: :class:`tencentcloud.gpm.v20200820.models.ReportOverviewData`
+        :param TrendData: Trend data of the number of matchmaking requests
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type TrendData: :class:`tencentcloud.gpm.v20200820.models.ReportTrendData`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.OverviewData = None
         self.TrendData = None
         self.RequestId = None
@@ -343,8 +419,14 @@ class DescribeMatchCodesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: Offset, number of pages.
+        :type Offset: int
+        :param Limit: The number of MatchCodes per page
+        :type Limit: int
+        :param MatchCode: Query by the MatchCode value (a string).
+        :type MatchCode: str
         """
-        :param Offset: Offset, number of pages.\n        :type Offset: int\n        :param Limit: The number of MatchCodes per page\n        :type Limit: int\n        :param MatchCode: Query by the MatchCode value (a string).\n        :type MatchCode: str\n        """
         self.Offset = None
         self.Limit = None
         self.MatchCode = None
@@ -369,10 +451,16 @@ class DescribeMatchCodesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchCodes: MatchCode
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type MatchCodes: list of MatchCodeAttr\n        :param TotalCount: The total number of queried MatchCodes
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type MatchCodes: list of MatchCodeAttr
+        :param TotalCount: The total number of queried MatchCodes
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.MatchCodes = None
         self.TotalCount = None
         self.RequestId = None
@@ -395,8 +483,10 @@ class DescribeMatchRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MatchCode: MatchCode
+        :type MatchCode: str
         """
-        :param MatchCode: MatchCode\n        :type MatchCode: str\n        """
         self.MatchCode = None
 
 
@@ -417,9 +507,13 @@ class DescribeMatchResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchInfo: Matchmaking information
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type MatchInfo: :class:`tencentcloud.gpm.v20200820.models.MatchInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type MatchInfo: :class:`tencentcloud.gpm.v20200820.models.MatchInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.MatchInfo = None
         self.RequestId = None
 
@@ -437,8 +531,18 @@ class DescribeMatchesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PageNumber: The current page number. If this parameter is left empty, all queried matches will be obtained.
+        :type PageNumber: int
+        :param PageSize: Number of matchmaking lists per page. If this parameter is left empty, all queried matches will be obtained.
+        :type PageSize: int
+        :param SearchType: Query type (optional). Valid values: match (query by matchCode or matchName), rule (query by ruleCode or ruleName), and other types (not filtered)
+        :type SearchType: str
+        :param Keyword: Keyword. Enter a keyword about SearchType to query.
+        :type Keyword: str
+        :param Tags: Tags. Enter a tag for querying.
+        :type Tags: list of Tag
         """
-        :param PageNumber: The current page number. If this parameter is left empty, all queried matches will be obtained.\n        :type PageNumber: int\n        :param PageSize: Number of matchmaking lists per page. If this parameter is left empty, all queried matches will be obtained.\n        :type PageSize: int\n        :param SearchType: Query type (optional). Valid values: match (query by matchCode or matchName), rule (query by ruleCode or ruleName), and other types (not filtered)\n        :type SearchType: str\n        :param Keyword: Keyword. Enter a keyword about SearchType to query.\n        :type Keyword: str\n        :param Tags: Tags. Enter a tag for querying.\n        :type Tags: list of Tag\n        """
         self.PageNumber = None
         self.PageSize = None
         self.SearchType = None
@@ -472,9 +576,23 @@ class DescribeMatchesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchInfoList: Matchmaking information list
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type MatchInfoList: list of MatchInfo\n        :param TotalCount: Total number of results\n        :type TotalCount: int\n        :param PageNumber: The current page number. The first page will be returned by default if this parameter is left empty.\n        :type PageNumber: int\n        :param PageSize: The number of matches per page. If this parameter is left empty, 30 matches are displayed per page by default. Maximum value: 30\n        :type PageSize: int\n        :param SearchType: Query type (optional). Valid values: matchName (query by match name), matchCode (query by matchCode), ruleName (query by rule name), and tag (query by tag key/value)\n        :type SearchType: str\n        :param Keyword: Keyword for querying (optional)\n        :type Keyword: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type MatchInfoList: list of MatchInfo
+        :param TotalCount: Total number of results
+        :type TotalCount: int
+        :param PageNumber: The current page number. The first page will be returned by default if this parameter is left empty.
+        :type PageNumber: int
+        :param PageSize: The number of matches per page. If this parameter is left empty, 30 matches are displayed per page by default. Maximum value: 30
+        :type PageSize: int
+        :param SearchType: Query type (optional). Valid values: matchName (query by match name), matchCode (query by matchCode), ruleName (query by rule name), and tag (query by tag key/value)
+        :type SearchType: str
+        :param Keyword: Keyword for querying (optional)
+        :type Keyword: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.MatchInfoList = None
         self.TotalCount = None
         self.PageNumber = None
@@ -505,8 +623,10 @@ class DescribeMatchingProgressRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MatchTicketIds: List of MatchTicket IDs. It can contain up to 12 IDs.
+        :type MatchTicketIds: list of MTicket
         """
-        :param MatchTicketIds: List of MatchTicket IDs. It can contain up to 12 IDs.\n        :type MatchTicketIds: list of MTicket\n        """
         self.MatchTicketIds = None
 
 
@@ -532,10 +652,16 @@ class DescribeMatchingProgressResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchTickets: MatchTicket list
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type MatchTickets: list of MatchTicket\n        :param ErrCode: Error code
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type ErrCode: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type MatchTickets: list of MatchTicket
+        :param ErrCode: Error code
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type ErrCode: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.MatchTickets = None
         self.ErrCode = None
         self.RequestId = None
@@ -558,8 +684,10 @@ class DescribeRuleRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RuleCode: RuleCode
+        :type RuleCode: str
         """
-        :param RuleCode: RuleCode\n        :type RuleCode: str\n        """
         self.RuleCode = None
 
 
@@ -580,9 +708,13 @@ class DescribeRuleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleInfo: Rule information
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type RuleInfo: :class:`tencentcloud.gpm.v20200820.models.RuleInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type RuleInfo: :class:`tencentcloud.gpm.v20200820.models.RuleInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.RuleInfo = None
         self.RequestId = None
 
@@ -600,8 +732,18 @@ class DescribeRulesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PageNumber: The current page number. The first page will be returned if this parameter is left empty.
+        :type PageNumber: int
+        :param PageSize: The number of rules per page. If this parameter is left empty, 30 rules are displayed per page by default. Maximum value: 30
+        :type PageSize: int
+        :param SearchType: Query type (optional). Valid values: match (query by matchCode or matchName), rule (query by ruleCode or ruleName), and other types (not filtered)
+        :type SearchType: str
+        :param Keyword: Keyword. Enter a keyword about SearchType to query.
+        :type Keyword: str
+        :param Tags: Tags. Enter a tag for querying.
+        :type Tags: list of Tag
         """
-        :param PageNumber: The current page number. The first page will be returned if this parameter is left empty.\n        :type PageNumber: int\n        :param PageSize: The number of rules per page. If this parameter is left empty, 30 rules are displayed per page by default. Maximum value: 30\n        :type PageSize: int\n        :param SearchType: Query type (optional). Valid values: match (query by matchCode or matchName), rule (query by ruleCode or ruleName), and other types (not filtered)\n        :type SearchType: str\n        :param Keyword: Keyword. Enter a keyword about SearchType to query.\n        :type Keyword: str\n        :param Tags: Tags. Enter a tag for querying.\n        :type Tags: list of Tag\n        """
         self.PageNumber = None
         self.PageSize = None
         self.SearchType = None
@@ -635,9 +777,23 @@ class DescribeRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleInfoList: Rule information list
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type RuleInfoList: list of RuleBriefInfo\n        :param TotalCount: Total number of results\n        :type TotalCount: int\n        :param PageNumber: The current page number\n        :type PageNumber: int\n        :param PageSize: Number of rules per page\n        :type PageSize: int\n        :param SearchType: Query type (optional). Valid values: matchName (query by match name), matchCode (query by matchCode), ruleName (query by rule name), and tag (query by tag key/value)\n        :type SearchType: str\n        :param Keyword: Keyword for querying (optional)\n        :type Keyword: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type RuleInfoList: list of RuleBriefInfo
+        :param TotalCount: Total number of results
+        :type TotalCount: int
+        :param PageNumber: The current page number
+        :type PageNumber: int
+        :param PageSize: Number of rules per page
+        :type PageSize: int
+        :param SearchType: Query type (optional). Valid values: matchName (query by match name), matchCode (query by matchCode), ruleName (query by rule name), and tag (query by tag key/value)
+        :type SearchType: str
+        :param Keyword: Keyword for querying (optional)
+        :type Keyword: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.RuleInfoList = None
         self.TotalCount = None
         self.PageNumber = None
@@ -668,8 +824,10 @@ class DescribeTokenRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MatchCode: MatchCode
+        :type MatchCode: str
         """
-        :param MatchCode: MatchCode\n        :type MatchCode: str\n        """
         self.MatchCode = None
 
 
@@ -690,10 +848,16 @@ class DescribeTokenResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchToken: The token corresponding to the current MatchCode. If the current MatchCode does not have a token, this parameter may not obtain a valid value.
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type MatchToken: str\n        :param CompatibleSpan: The time period during which GPM will continuously push the original token in seconds when the token is replaced.
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type CompatibleSpan: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type MatchToken: str
+        :param CompatibleSpan: The time period during which GPM will continuously push the original token in seconds when the token is replaced.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type CompatibleSpan: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.MatchToken = None
         self.CompatibleSpan = None
         self.RequestId = None
@@ -711,8 +875,12 @@ class MTicket(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MatchCode: MatchCode
+        :type MatchCode: str
+        :param MatchTicketId: MatchTicket ID
+        :type MatchTicketId: str
         """
-        :param MatchCode: MatchCode\n        :type MatchCode: str\n        :param MatchTicketId: MatchTicket ID\n        :type MatchTicketId: str\n        """
         self.MatchCode = None
         self.MatchTicketId = None
 
@@ -735,8 +903,20 @@ class MatchAttribute(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: Attribute name. It can contain up to 128 characters, supporting [a-zA-Z0-9-\.]*.
+        :type Name: str
+        :param Type: Attribute type. 0: number, 1: string. Default value: 0
+        :type Type: int
+        :param NumberValue: Numeric attribute value. Default value: 0.0
+        :type NumberValue: float
+        :param StringValue: String attribute value. Up to 128 characters are allowed. Default value: ""
+        :type StringValue: str
+        :param ListValue: List attribute value
+        :type ListValue: list of str
+        :param MapValue: Map attribute value
+        :type MapValue: list of AttributeMap
         """
-        :param Name: Attribute name. It can contain up to 128 characters, supporting [a-zA-Z0-9-\.]*.\n        :type Name: str\n        :param Type: Attribute type. 0: number, 1: string. Default value: 0\n        :type Type: int\n        :param NumberValue: Numeric attribute value. Default value: 0.0\n        :type NumberValue: float\n        :param StringValue: String attribute value. Up to 128 characters are allowed. Default value: ""\n        :type StringValue: str\n        :param ListValue: List attribute value\n        :type ListValue: list of str\n        :param MapValue: Map attribute value\n        :type MapValue: list of AttributeMap\n        """
         self.Name = None
         self.Type = None
         self.NumberValue = None
@@ -772,9 +952,11 @@ class MatchCodeAttr(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchCode: MatchCode
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type MatchCode: str\n        """
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type MatchCode: str
+        """
         self.MatchCode = None
 
 
@@ -795,25 +977,75 @@ class MatchInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MatchCode: MatchCode
+        :type MatchCode: str
+        :param MatchName: Match name
+        :type MatchName: str
+        :param MatchDesc: Matchmaking description
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type MatchDesc: str
+        :param RuleCode: RuleCode
+        :type RuleCode: str
+        :param CreateTime: Creation time
+        :type CreateTime: str
+        :param Timeout: Timeout period
+        :type Timeout: int
+        :param NotifyUrl: Receiving notification address
+        :type NotifyUrl: str
+        :param ServerType: Whether to request server resources for the match results. 0: no, 1: request GSE resources
+        :type ServerType: int
+        :param ServerRegion: Region of the server queue
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type ServerRegion: str
+        :param ServerQueue: Server queue
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type ServerQueue: str
+        :param CustomPushData: Custom push data
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type CustomPushData: str
+        :param ServerSessionData: Game server session data
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type ServerSessionData: str
+        :param GameProperties: Game attributes
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type GameProperties: list of StringKV
+        :param LogSwitch: Enable or disable the log. 0: disable, 1: enable
+        :type LogSwitch: int
+        :param LogsetId: Logset ID
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type LogsetId: str
+        :param LogsetName: Logset name
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type LogsetName: str
+        :param LogTopicId: Log topic ID
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type LogTopicId: str
+        :param LogTopicName: Log topic name
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type LogTopicName: str
+        :param Tags: Tag
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type Tags: list of StringKV
+        :param Region: Region
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type Region: str
+        :param AppId: User AppId
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type AppId: str
+        :param Uin: User root account UIN
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type Uin: str
+        :param CreateUin: Create user account UIN
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type CreateUin: str
+        :param RuleName: Rule Name
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type RuleName: str
+        :param LogStatus: Log status. 0: normal, 1: the log set does not exist, 2: the log topic does not exist, 3: neither the log set nor the log topic exists.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type LogStatus: int
         """
-        :param MatchCode: MatchCode\n        :type MatchCode: str\n        :param MatchName: Match name\n        :type MatchName: str\n        :param MatchDesc: Matchmaking description
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type MatchDesc: str\n        :param RuleCode: RuleCode\n        :type RuleCode: str\n        :param CreateTime: Creation time\n        :type CreateTime: str\n        :param Timeout: Timeout period\n        :type Timeout: int\n        :param NotifyUrl: Receiving notification address\n        :type NotifyUrl: str\n        :param ServerType: Whether to request server resources for the match results. 0: no, 1: request GSE resources\n        :type ServerType: int\n        :param ServerRegion: Region of the server queue
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type ServerRegion: str\n        :param ServerQueue: Server queue
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type ServerQueue: str\n        :param CustomPushData: Custom push data
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type CustomPushData: str\n        :param ServerSessionData: Game server session data
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type ServerSessionData: str\n        :param GameProperties: Game attributes
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type GameProperties: list of StringKV\n        :param LogSwitch: Enable or disable the log. 0: disable, 1: enable\n        :type LogSwitch: int\n        :param LogsetId: Logset ID
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type LogsetId: str\n        :param LogsetName: Logset name
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type LogsetName: str\n        :param LogTopicId: Log topic ID
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type LogTopicId: str\n        :param LogTopicName: Log topic name
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type LogTopicName: str\n        :param Tags: Tag
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type Tags: list of StringKV\n        :param Region: Region
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type Region: str\n        :param AppId: User AppId
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type AppId: str\n        :param Uin: User root account UIN
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type Uin: str\n        :param CreateUin: Create user account UIN
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type CreateUin: str\n        :param RuleName: Rule Name
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type RuleName: str\n        :param LogStatus: Log status. 0: normal, 1: the log set does not exist, 2: the log topic does not exist, 3: neither the log set nor the log topic exists.
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type LogStatus: int\n        """
         self.MatchCode = None
         self.MatchName = None
         self.MatchDesc = None
@@ -892,13 +1124,33 @@ class MatchTicket(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: MatchTicket ID. It can contain up to 128 characters, supporting [a-zA-Z0-9-\.]*.
+        :type Id: str
+        :param MatchCode: MatchCode
+        :type MatchCode: str
+        :param MatchResult: Different structure serialized results will be returned according to the MatchType.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type MatchResult: str
+        :param MatchType: Matchmaking type. Valid values: NORMAL, GSE
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type MatchType: str
+        :param Players: Player information list
+        :type Players: list of Player
+        :param Status: Matching status. Valid values: SEARCHING (matching), PLACING (pending match), COMPLETED (match completed), CANCELLED (match cancelled), TIMEDOUT (match timeouts), FAILED (match failed)
+        :type Status: str
+        :param StatusMessage: Matching status descriptions
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type StatusMessage: str
+        :param StatusReason: Reason for the matching status
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type StatusReason: str
+        :param StartTime: The time when the GPM received the matchmaking request, for example "2020-08-17T08:14:38.077Z".
+        :type StartTime: str
+        :param EndTime: The time when the matchmaking request stopped executing due to the completion, failure, timeout, or cancellation, for example "2020-08-17T08:14:38.077Z".
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type EndTime: str
         """
-        :param Id: MatchTicket ID. It can contain up to 128 characters, supporting [a-zA-Z0-9-\.]*.\n        :type Id: str\n        :param MatchCode: MatchCode\n        :type MatchCode: str\n        :param MatchResult: Different structure serialized results will be returned according to the MatchType.
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type MatchResult: str\n        :param MatchType: Matchmaking type. Valid values: NORMAL, GSE
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type MatchType: str\n        :param Players: Player information list\n        :type Players: list of Player\n        :param Status: Matching status. Valid values: SEARCHING (matching), PLACING (pending match), COMPLETED (match completed), CANCELLED (match cancelled), TIMEDOUT (match timeouts), FAILED (match failed)\n        :type Status: str\n        :param StatusMessage: Matching status descriptions
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type StatusMessage: str\n        :param StatusReason: Reason for the matching status
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type StatusReason: str\n        :param StartTime: The time when the GPM received the matchmaking request, for example "2020-08-17T08:14:38.077Z".\n        :type StartTime: str\n        :param EndTime: The time when the matchmaking request stopped executing due to the completion, failure, timeout, or cancellation, for example "2020-08-17T08:14:38.077Z".
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type EndTime: str\n        """
         self.Id = None
         self.MatchCode = None
         self.MatchResult = None
@@ -942,8 +1194,36 @@ class ModifyMatchRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MatchName: Match name. It can contain up to 128 bytes, supporting [a-zA-Z0-9-\.]*.
+        :type MatchName: str
+        :param RuleCode: RuleCode
+        :type RuleCode: str
+        :param Timeout: Timeout period in seconds. Value range: 1 600
+        :type Timeout: int
+        :param ServerType: Whether to request server resources for the matchmaking results. 0: no, 1: request GSE resources
+        :type ServerType: int
+        :param MatchCode: MatchCode
+        :type MatchCode: str
+        :param MatchDesc: Matchmaking description. Up to 1024 bytes are allowed.
+        :type MatchDesc: str
+        :param NotifyUrl: Only HTTP and HTTPS protocols are supported.
+        :type NotifyUrl: str
+        :param ServerRegion: Region of the game server queue
+        :type ServerRegion: str
+        :param ServerQueue: Game server queue
+        :type ServerQueue: str
+        :param CustomPushData: Custom push data
+        :type CustomPushData: str
+        :param ServerSessionData: Game server session data
+        :type ServerSessionData: str
+        :param GameProperties: Game attribute. It is an array of key-value structure.
+        :type GameProperties: list of StringKV
+        :param LogSwitch: Enable or disable the log. 0: disable, 1: enable
+        :type LogSwitch: int
+        :param Tags: Tag. It is an array of key-value structure.
+        :type Tags: list of StringKV
         """
-        :param MatchName: Match name. It can contain up to 128 bytes, supporting [a-zA-Z0-9-\.]*.\n        :type MatchName: str\n        :param RuleCode: RuleCode\n        :type RuleCode: str\n        :param Timeout: Timeout period in seconds. Value range: 1 600\n        :type Timeout: int\n        :param ServerType: Whether to request server resources for the matchmaking results. 0: no, 1: request GSE resources\n        :type ServerType: int\n        :param MatchCode: MatchCode\n        :type MatchCode: str\n        :param MatchDesc: Matchmaking description. Up to 1024 bytes are allowed.\n        :type MatchDesc: str\n        :param NotifyUrl: Only HTTP and HTTPS protocols are supported.\n        :type NotifyUrl: str\n        :param ServerRegion: Region of the game server queue\n        :type ServerRegion: str\n        :param ServerQueue: Game server queue\n        :type ServerQueue: str\n        :param CustomPushData: Custom push data\n        :type CustomPushData: str\n        :param ServerSessionData: Game server session data\n        :type ServerSessionData: str\n        :param GameProperties: Game attribute. It is an array of key-value structure.\n        :type GameProperties: list of StringKV\n        :param LogSwitch: Enable or disable the log. 0: disable, 1: enable\n        :type LogSwitch: int\n        :param Tags: Tag. It is an array of key-value structure.\n        :type Tags: list of StringKV\n        """
         self.MatchName = None
         self.RuleCode = None
         self.Timeout = None
@@ -1000,8 +1280,12 @@ class ModifyMatchResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MatchInfo: Matchmaking information
+        :type MatchInfo: :class:`tencentcloud.gpm.v20200820.models.MatchInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param MatchInfo: Matchmaking information\n        :type MatchInfo: :class:`tencentcloud.gpm.v20200820.models.MatchInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.MatchInfo = None
         self.RequestId = None
 
@@ -1019,8 +1303,16 @@ class ModifyRuleRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RuleCode: RuleCode
+        :type RuleCode: str
+        :param RuleName: Rule name. It can only contain numbers, letters, ".", and "-".
+        :type RuleName: str
+        :param RuleDesc: Rule description. Up to 1024 bytes are allowed.
+        :type RuleDesc: str
+        :param Tags: Tag. It is an array of key-value structure. Up to 50 tags can be associated.
+        :type Tags: list of StringKV
         """
-        :param RuleCode: RuleCode\n        :type RuleCode: str\n        :param RuleName: Rule name. It can only contain numbers, letters, ".", and "-".\n        :type RuleName: str\n        :param RuleDesc: Rule description. Up to 1024 bytes are allowed.\n        :type RuleDesc: str\n        :param Tags: Tag. It is an array of key-value structure. Up to 50 tags can be associated.\n        :type Tags: list of StringKV\n        """
         self.RuleCode = None
         self.RuleName = None
         self.RuleDesc = None
@@ -1052,8 +1344,12 @@ class ModifyRuleResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RuleInfo: Rule information
+        :type RuleInfo: :class:`tencentcloud.gpm.v20200820.models.RuleInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RuleInfo: Rule information\n        :type RuleInfo: :class:`tencentcloud.gpm.v20200820.models.RuleInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RuleInfo = None
         self.RequestId = None
 
@@ -1071,8 +1367,14 @@ class ModifyTokenRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MatchCode: MatchCode
+        :type MatchCode: str
+        :param CompatibleSpan: The time period during which GPM will continuously push the original token in seconds to the user when the token is replaced. Value range: 0 - 1800. Within the CompatibleSpan time period, user will receive the current and original token in the event notification.
+        :type CompatibleSpan: int
+        :param MatchToken: Token. It can contain 0 - 64 characters, supporting [a-zA-Z0-9-_.]. If this parameter is left empty, the token will be randomly generated by GPM.
+        :type MatchToken: str
         """
-        :param MatchCode: MatchCode\n        :type MatchCode: str\n        :param CompatibleSpan: The time period during which GPM will continuously push the original token in seconds to the user when the token is replaced. Value range: 0 - 1800. Within the CompatibleSpan time period, user will receive the current and original token in the event notification.\n        :type CompatibleSpan: int\n        :param MatchToken: Token. It can contain 0 - 64 characters, supporting [a-zA-Z0-9-_.]. If this parameter is left empty, the token will be randomly generated by GPM.\n        :type MatchToken: str\n        """
         self.MatchCode = None
         self.CompatibleSpan = None
         self.MatchToken = None
@@ -1097,9 +1399,15 @@ class ModifyTokenResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MatchToken: Token that has been set successfully.
+        :type MatchToken: str
+        :param CompatibleSpan: The time period during which GPM will continuously push the original token in seconds to the user when the token is replaced.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type CompatibleSpan: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param MatchToken: Token that has been set successfully.\n        :type MatchToken: str\n        :param CompatibleSpan: The time period during which GPM will continuously push the original token in seconds to the user when the token is replaced.
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type CompatibleSpan: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.MatchToken = None
         self.CompatibleSpan = None
         self.RequestId = None
@@ -1117,8 +1425,22 @@ class Player(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: Player ID. It can contain up to 128 characters, supporting [a-zA-Z\d-\._]*.
+        :type Id: str
+        :param Name: Player nickname. Up to 128 characters are allowed.
+        :type Name: str
+        :param MatchAttributes: Player attribute for matching. Up to 10 attributes are supported.
+        :type MatchAttributes: list of MatchAttribute
+        :param Team: Team name. A player can pass in a different team name, which can contain up to 128 characters, and support [a-zA-Z0-9-\.]*.
+        :type Team: str
+        :param CustomPlayerStatus: Custom player status. This parameter will be passed through. Value range: [0, 99999]
+        :type CustomPlayerStatus: int
+        :param CustomProfile: Custom player information. Up to 1024 characters are allowed. This parameter will be passed through.
+        :type CustomProfile: str
+        :param RegionLatencies: Number of delays in each area. Up to 20 delays are supported.
+        :type RegionLatencies: list of RegionLatency
         """
-        :param Id: Player ID. It can contain up to 128 characters, supporting [a-zA-Z\d-\._]*.\n        :type Id: str\n        :param Name: Player nickname. Up to 128 characters are allowed.\n        :type Name: str\n        :param MatchAttributes: Player attribute for matching. Up to 10 attributes are supported.\n        :type MatchAttributes: list of MatchAttribute\n        :param Team: Team name. A player can pass in a different team name, which can contain up to 128 characters, and support [a-zA-Z0-9-\.]*.\n        :type Team: str\n        :param CustomPlayerStatus: Custom player status. This parameter will be passed through. Value range: [0, 99999]\n        :type CustomPlayerStatus: int\n        :param CustomProfile: Custom player information. Up to 1024 characters are allowed. This parameter will be passed through.\n        :type CustomProfile: str\n        :param RegionLatencies: Number of delays in each area. Up to 20 delays are supported.\n        :type RegionLatencies: list of RegionLatency\n        """
         self.Id = None
         self.Name = None
         self.MatchAttributes = None
@@ -1161,7 +1483,7 @@ class RegionLatency(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Region: Region
 ap-beijing          North China (Beijing)
 ap-chengdu          Southwest China (Chengdu)
@@ -1177,7 +1499,11 @@ ap-mumbai           Asia Pacific (Mumbai)
 na-ashburn          Eastern US (Virginia)
 ap-bangkok           Asia Pacific (Bangkok)
 eu-moscow           Europe (Moscow)
-ap-tokyo           Asia Pacific (Tokyo)\n        :type Region: str\n        :param Latency: Delay time in ms. Value range: 0 - 999999\n        :type Latency: int\n        """
+ap-tokyo           Asia Pacific (Tokyo)
+        :type Region: str
+        :param Latency: Delay time in ms. Value range: 0 - 999999
+        :type Latency: int
+        """
         self.Region = None
         self.Latency = None
 
@@ -1200,8 +1526,18 @@ class ReportOverviewData(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalTimes: Total count
+        :type TotalTimes: str
+        :param SuccessPercent: Success rate
+        :type SuccessPercent: float
+        :param TimeoutPercent: Timeout rate
+        :type TimeoutPercent: float
+        :param FailPercent: Failure rate
+        :type FailPercent: float
+        :param AverageSec: Average matching time
+        :type AverageSec: float
         """
-        :param TotalTimes: Total count\n        :type TotalTimes: str\n        :param SuccessPercent: Success rate\n        :type SuccessPercent: float\n        :param TimeoutPercent: Timeout rate\n        :type TimeoutPercent: float\n        :param FailPercent: Failure rate\n        :type FailPercent: float\n        :param AverageSec: Average matching time\n        :type AverageSec: float\n        """
         self.TotalTimes = None
         self.SuccessPercent = None
         self.TimeoutPercent = None
@@ -1230,8 +1566,20 @@ class ReportTrendData(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalList: Total count
+        :type TotalList: list of str
+        :param CancelList: Number of requests cancelled
+        :type CancelList: list of str
+        :param SuccessList: Number of successes
+        :type SuccessList: list of str
+        :param FailList: Number of failures
+        :type FailList: list of str
+        :param TimeoutList: Number of request timeout
+        :type TimeoutList: list of str
+        :param TimeList: Time array in seconds
+        :type TimeList: list of str
         """
-        :param TotalList: Total count\n        :type TotalList: list of str\n        :param CancelList: Number of requests cancelled\n        :type CancelList: list of str\n        :param SuccessList: Number of successes\n        :type SuccessList: list of str\n        :param FailList: Number of failures\n        :type FailList: list of str\n        :param TimeoutList: Number of request timeout\n        :type TimeoutList: list of str\n        :param TimeList: Time array in seconds\n        :type TimeList: list of str\n        """
         self.TotalList = None
         self.CancelList = None
         self.SuccessList = None
@@ -1262,8 +1610,16 @@ class RuleBriefInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RuleName: Rule name. It supports [a-zA-Z\d-\.]*.
+        :type RuleName: str
+        :param MatchCodeList: The associated match
+        :type MatchCodeList: list of StringKV
+        :param CreateTime: Creation time
+        :type CreateTime: str
+        :param RuleCode: RuleCode
+        :type RuleCode: str
         """
-        :param RuleName: Rule name. It supports [a-zA-Z\d-\.]*.\n        :type RuleName: str\n        :param MatchCodeList: The associated match\n        :type MatchCodeList: list of StringKV\n        :param CreateTime: Creation time\n        :type CreateTime: str\n        :param RuleCode: RuleCode\n        :type RuleCode: str\n        """
         self.RuleName = None
         self.MatchCodeList = None
         self.CreateTime = None
@@ -1295,15 +1651,37 @@ class RuleInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RuleName: Rule name. It supports [a-zA-Z0-9-\.]*.
+        :type RuleName: str
+        :param CreateTime: Creation time
+        :type CreateTime: str
+        :param RuleDesc: Rule description
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type RuleDesc: str
+        :param RuleScript: Rule script
+        :type RuleScript: str
+        :param Tags: Tag
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type Tags: list of StringKV
+        :param MatchCodeList: The associated match
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type MatchCodeList: list of StringKV
+        :param RuleCode: RuleCode
+        :type RuleCode: str
+        :param Region: Region
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type Region: str
+        :param AppId: User AppId
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type AppId: str
+        :param Uin: User UIN
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type Uin: str
+        :param CreateUin: User OwnerUin
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type CreateUin: str
         """
-        :param RuleName: Rule name. It supports [a-zA-Z0-9-\.]*.\n        :type RuleName: str\n        :param CreateTime: Creation time\n        :type CreateTime: str\n        :param RuleDesc: Rule description
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type RuleDesc: str\n        :param RuleScript: Rule script\n        :type RuleScript: str\n        :param Tags: Tag
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type Tags: list of StringKV\n        :param MatchCodeList: The associated match
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type MatchCodeList: list of StringKV\n        :param RuleCode: RuleCode\n        :type RuleCode: str\n        :param Region: Region
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type Region: str\n        :param AppId: User AppId
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type AppId: str\n        :param Uin: User UIN
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type Uin: str\n        :param CreateUin: User OwnerUin
-Note: this field may return `null`, indicating that no valid value is obtained.\n        :type CreateUin: str\n        """
         self.RuleName = None
         self.CreateTime = None
         self.RuleDesc = None
@@ -1354,8 +1732,16 @@ class StartMatchingBackfillRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MatchCode: MatchCode
+        :type MatchCode: str
+        :param Players: Player information
+        :type Players: list of Player
+        :param GameServerSessionId: Game server session ID. It should contain 1 to 256 ASCII characters.
+        :type GameServerSessionId: str
+        :param MatchTicketId: MatchTicket ID, which can contain 1 to 128 characters. This parameter is left empty by default, and in this case, MatchTicket ID will be automatically generated by GPM.
+        :type MatchTicketId: str
         """
-        :param MatchCode: MatchCode\n        :type MatchCode: str\n        :param Players: Player information\n        :type Players: list of Player\n        :param GameServerSessionId: Game server session ID. It should contain 1 to 256 ASCII characters.\n        :type GameServerSessionId: str\n        :param MatchTicketId: MatchTicket ID, which can contain 1 to 128 characters. This parameter is left empty by default, and in this case, MatchTicket ID will be automatically generated by GPM.\n        :type MatchTicketId: str\n        """
         self.MatchCode = None
         self.Players = None
         self.GameServerSessionId = None
@@ -1387,9 +1773,13 @@ class StartMatchingBackfillResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchTicket: MatchTicket
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type MatchTicket: :class:`tencentcloud.gpm.v20200820.models.MatchTicket`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type MatchTicket: :class:`tencentcloud.gpm.v20200820.models.MatchTicket`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.MatchTicket = None
         self.RequestId = None
 
@@ -1407,8 +1797,14 @@ class StartMatchingRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MatchCode: MatchCode
+        :type MatchCode: str
+        :param Players: Player information. Up to 200 entries can be entered.
+        :type Players: list of Player
+        :param MatchTicketId: MatchTicket ID, which can contain up to 128 characters and can only contain numbers, letters, “.”, and “-”. This parameter is left empty by default. When it is empty, the MatchTicket ID will be automatically generated by GPM.
+        :type MatchTicketId: str
         """
-        :param MatchCode: MatchCode\n        :type MatchCode: str\n        :param Players: Player information. Up to 200 entries can be entered.\n        :type Players: list of Player\n        :param MatchTicketId: MatchTicket ID, which can contain up to 128 characters and can only contain numbers, letters, “.”, and “-”. This parameter is left empty by default. When it is empty, the MatchTicket ID will be automatically generated by GPM.\n        :type MatchTicketId: str\n        """
         self.MatchCode = None
         self.Players = None
         self.MatchTicketId = None
@@ -1438,8 +1834,14 @@ class StartMatchingResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ErrCode: Error code
+        :type ErrCode: int
+        :param MatchTicketId: MatchTicket ID. Up to 128 characters are allowed.
+        :type MatchTicketId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param ErrCode: Error code\n        :type ErrCode: int\n        :param MatchTicketId: MatchTicket ID. Up to 128 characters are allowed.\n        :type MatchTicketId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ErrCode = None
         self.MatchTicketId = None
         self.RequestId = None
@@ -1457,8 +1859,12 @@ class StringKV(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Key: Key
+        :type Key: str
+        :param Value: Value
+        :type Value: str
         """
-        :param Key: Key\n        :type Key: str\n        :param Value: Value\n        :type Value: str\n        """
         self.Key = None
         self.Value = None
 
@@ -1481,8 +1887,12 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TagKey: Tag key
+        :type TagKey: str
+        :param TagValue: Tag value
+        :type TagValue: str
         """
-        :param TagKey: Tag key\n        :type TagKey: str\n        :param TagValue: Tag value\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 

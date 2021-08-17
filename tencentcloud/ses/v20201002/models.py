@@ -24,8 +24,12 @@ class Attachment(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FileName: Attachment name, which cannot exceed 255 characters. Some attachment types are not supported. For details, see [Attachment Types](https://intl.cloud.tencent.com/document/product/1288/51951?from_cn_redirect=1).
+        :type FileName: str
+        :param Content: Attachment content after base64 encoding. A single attachment cannot exceed 5 MB. Note: Tencent Cloud APIs require that a request packet should not exceed 10 MB. If you are sending multiple attachments, the total size of these attachments cannot exceed 10 MB.
+        :type Content: str
         """
-        :param FileName: Attachment name, which cannot exceed 255 characters. Some attachment types are not supported. For details, see [Attachment Types](https://intl.cloud.tencent.com/document/product/1288/51951?from_cn_redirect=1).\n        :type FileName: str\n        :param Content: Attachment content after base64 encoding. A single attachment cannot exceed 5 MB. Note: Tencent Cloud APIs require that a request packet should not exceed 10 MB. If you are sending multiple attachments, the total size of these attachments cannot exceed 10 MB.\n        :type Content: str\n        """
         self.FileName = None
         self.Content = None
 
@@ -48,8 +52,12 @@ class BlackEmailAddress(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BounceTime: Time when the email address is blocklisted.
+        :type BounceTime: str
+        :param EmailAddress: Blocklisted email address.
+        :type EmailAddress: str
         """
-        :param BounceTime: Time when the email address is blocklisted.\n        :type BounceTime: str\n        :param EmailAddress: Blocklisted email address.\n        :type EmailAddress: str\n        """
         self.BounceTime = None
         self.EmailAddress = None
 
@@ -72,8 +80,12 @@ class CreateEmailAddressRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EmailAddress: Your sender address. (You can create up to 10 sender addresses for each domain.)
+        :type EmailAddress: str
+        :param EmailSenderName: Sender name.
+        :type EmailSenderName: str
         """
-        :param EmailAddress: Your sender address. (You can create up to 10 sender addresses for each domain.)\n        :type EmailAddress: str\n        :param EmailSenderName: Sender name.\n        :type EmailSenderName: str\n        """
         self.EmailAddress = None
         self.EmailSenderName = None
 
@@ -96,8 +108,10 @@ class CreateEmailAddressResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -111,8 +125,10 @@ class CreateEmailIdentityRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EmailIdentity: Your sender domain. You are advised to use a third-level domain, for example, mail.qcloud.com.
+        :type EmailIdentity: str
         """
-        :param EmailIdentity: Your sender domain. You are advised to use a third-level domain, for example, mail.qcloud.com.\n        :type EmailIdentity: str\n        """
         self.EmailIdentity = None
 
 
@@ -133,8 +149,16 @@ class CreateEmailIdentityResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IdentityType: Verification type. The value is fixed to `DOMAIN`.
+        :type IdentityType: str
+        :param VerifiedForSendingStatus: Verification passed or not.
+        :type VerifiedForSendingStatus: bool
+        :param Attributes: DNS information that needs to be configured.
+        :type Attributes: list of DNSAttributes
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param IdentityType: Verification type. The value is fixed to `DOMAIN`.\n        :type IdentityType: str\n        :param VerifiedForSendingStatus: Verification passed or not.\n        :type VerifiedForSendingStatus: bool\n        :param Attributes: DNS information that needs to be configured.\n        :type Attributes: list of DNSAttributes\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.IdentityType = None
         self.VerifiedForSendingStatus = None
         self.Attributes = None
@@ -159,8 +183,12 @@ class CreateEmailTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TemplateName: Template name.
+        :type TemplateName: str
+        :param TemplateContent: Template content.
+        :type TemplateContent: :class:`tencentcloud.ses.v20201002.models.TemplateContent`
         """
-        :param TemplateName: Template name.\n        :type TemplateName: str\n        :param TemplateContent: Template content.\n        :type TemplateContent: :class:`tencentcloud.ses.v20201002.models.TemplateContent`\n        """
         self.TemplateName = None
         self.TemplateContent = None
 
@@ -185,8 +213,10 @@ class CreateEmailTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -200,8 +230,18 @@ class DNSAttributes(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Type: Record types: CNAME, A, TXT, and MX.
+        :type Type: str
+        :param SendDomain: Domain name.
+        :type SendDomain: str
+        :param ExpectedValue: Expected value.
+        :type ExpectedValue: str
+        :param CurrentValue: Currently configured value.
+        :type CurrentValue: str
+        :param Status: Approved or not. The default value is `false`.
+        :type Status: bool
         """
-        :param Type: Record types: CNAME, A, TXT, and MX.\n        :type Type: str\n        :param SendDomain: Domain name.\n        :type SendDomain: str\n        :param ExpectedValue: Expected value.\n        :type ExpectedValue: str\n        :param CurrentValue: Currently configured value.\n        :type CurrentValue: str\n        :param Status: Approved or not. The default value is `false`.\n        :type Status: bool\n        """
         self.Type = None
         self.SendDomain = None
         self.ExpectedValue = None
@@ -230,8 +270,10 @@ class DeleteBlackListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EmailAddressList: List of email addresses to be unblocklisted. Enter at least one address.
+        :type EmailAddressList: list of str
         """
-        :param EmailAddressList: List of email addresses to be unblocklisted. Enter at least one address.\n        :type EmailAddressList: list of str\n        """
         self.EmailAddressList = None
 
 
@@ -252,8 +294,10 @@ class DeleteBlackListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -267,8 +311,10 @@ class DeleteEmailAddressRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EmailAddress: Sender address.
+        :type EmailAddress: str
         """
-        :param EmailAddress: Sender address.\n        :type EmailAddress: str\n        """
         self.EmailAddress = None
 
 
@@ -289,8 +335,10 @@ class DeleteEmailAddressResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -304,8 +352,10 @@ class DeleteEmailIdentityRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EmailIdentity: Sender domain.
+        :type EmailIdentity: str
         """
-        :param EmailIdentity: Sender domain.\n        :type EmailIdentity: str\n        """
         self.EmailIdentity = None
 
 
@@ -326,8 +376,10 @@ class DeleteEmailIdentityResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -341,8 +393,10 @@ class DeleteEmailTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TemplateID: Template ID
+        :type TemplateID: int
         """
-        :param TemplateID: Template ID\n        :type TemplateID: int\n        """
         self.TemplateID = None
 
 
@@ -363,8 +417,10 @@ class DeleteEmailTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -378,8 +434,14 @@ class EmailIdentity(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IdentityName: Sender domain.
+        :type IdentityName: str
+        :param IdentityType: Verification type. The value is fixed to `DOMAIN`.
+        :type IdentityType: str
+        :param SendingEnabled: Verification passed or not.
+        :type SendingEnabled: bool
         """
-        :param IdentityName: Sender domain.\n        :type IdentityName: str\n        :param IdentityType: Verification type. The value is fixed to `DOMAIN`.\n        :type IdentityType: str\n        :param SendingEnabled: Verification passed or not.\n        :type SendingEnabled: bool\n        """
         self.IdentityName = None
         self.IdentityType = None
         self.SendingEnabled = None
@@ -404,10 +466,16 @@ class EmailSender(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EmailAddress: Sender address.
+        :type EmailAddress: str
+        :param EmailSenderName: Sender name.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type EmailSenderName: str
+        :param CreatedTimestamp: Creation time.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type CreatedTimestamp: int
         """
-        :param EmailAddress: Sender address.\n        :type EmailAddress: str\n        :param EmailSenderName: Sender name.
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type EmailSenderName: str\n        :param CreatedTimestamp: Creation time.
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type CreatedTimestamp: int\n        """
         self.EmailAddress = None
         self.EmailSenderName = None
         self.CreatedTimestamp = None
@@ -432,8 +500,10 @@ class GetEmailIdentityRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EmailIdentity: Sender domain.
+        :type EmailIdentity: str
         """
-        :param EmailIdentity: Sender domain.\n        :type EmailIdentity: str\n        """
         self.EmailIdentity = None
 
 
@@ -454,8 +524,16 @@ class GetEmailIdentityResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IdentityType: Verification type. The value is fixed to `DOMAIN`.
+        :type IdentityType: str
+        :param VerifiedForSendingStatus: Verification passed or not.
+        :type VerifiedForSendingStatus: bool
+        :param Attributes: DNS configuration details.
+        :type Attributes: list of DNSAttributes
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param IdentityType: Verification type. The value is fixed to `DOMAIN`.\n        :type IdentityType: str\n        :param VerifiedForSendingStatus: Verification passed or not.\n        :type VerifiedForSendingStatus: bool\n        :param Attributes: DNS configuration details.\n        :type Attributes: list of DNSAttributes\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.IdentityType = None
         self.VerifiedForSendingStatus = None
         self.Attributes = None
@@ -480,8 +558,10 @@ class GetEmailTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TemplateID: Template ID.
+        :type TemplateID: int
         """
-        :param TemplateID: Template ID.\n        :type TemplateID: int\n        """
         self.TemplateID = None
 
 
@@ -502,8 +582,12 @@ class GetEmailTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TemplateContent: Template content.
+        :type TemplateContent: :class:`tencentcloud.ses.v20201002.models.TemplateContent`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TemplateContent: Template content.\n        :type TemplateContent: :class:`tencentcloud.ses.v20201002.models.TemplateContent`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TemplateContent = None
         self.RequestId = None
 
@@ -521,8 +605,18 @@ class GetSendEmailStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestDate: Sent date. This parameter is required. You can only query the sending status for a single date at a time.
+        :type RequestDate: str
+        :param Offset: Offset. Default value: `0`
+        :type Offset: int
+        :param Limit: Maximum number of pulled entries. The maximum value is `100`.
+        :type Limit: int
+        :param MessageId: `MessageId` field returned by the `SendMail` API
+        :type MessageId: str
+        :param ToEmailAddress: Recipient email address
+        :type ToEmailAddress: str
         """
-        :param RequestDate: Sent date. This parameter is required. You can only query the sending status for a single date at a time.\n        :type RequestDate: str\n        :param Offset: Offset. Default value: `0`\n        :type Offset: int\n        :param Limit: Maximum number of pulled entries. The maximum value is `100`.\n        :type Limit: int\n        :param MessageId: `MessageId` field returned by the `SendMail` API\n        :type MessageId: str\n        :param ToEmailAddress: Recipient email address\n        :type ToEmailAddress: str\n        """
         self.RequestDate = None
         self.Offset = None
         self.Limit = None
@@ -551,8 +645,12 @@ class GetSendEmailStatusResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EmailStatusList: Email sending status list
+        :type EmailStatusList: list of SendEmailStatus
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param EmailStatusList: Email sending status list\n        :type EmailStatusList: list of SendEmailStatus\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.EmailStatusList = None
         self.RequestId = None
 
@@ -573,8 +671,16 @@ class GetStatisticsReportRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StartDate: Start date.
+        :type StartDate: str
+        :param EndDate: End date.
+        :type EndDate: str
+        :param Domain: Sender domain.
+        :type Domain: str
+        :param ReceivingMailboxType: Recipient address type, for example, gmail.com.
+        :type ReceivingMailboxType: str
         """
-        :param StartDate: Start date.\n        :type StartDate: str\n        :param EndDate: End date.\n        :type EndDate: str\n        :param Domain: Sender domain.\n        :type Domain: str\n        :param ReceivingMailboxType: Recipient address type, for example, gmail.com.\n        :type ReceivingMailboxType: str\n        """
         self.StartDate = None
         self.EndDate = None
         self.Domain = None
@@ -601,8 +707,14 @@ class GetStatisticsReportResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DailyVolumes: Daily email sending statistics.
+        :type DailyVolumes: list of Volume
+        :param OverallVolume: Overall email sending statistics.
+        :type OverallVolume: :class:`tencentcloud.ses.v20201002.models.Volume`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param DailyVolumes: Daily email sending statistics.\n        :type DailyVolumes: list of Volume\n        :param OverallVolume: Overall email sending statistics.\n        :type OverallVolume: :class:`tencentcloud.ses.v20201002.models.Volume`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DailyVolumes = None
         self.OverallVolume = None
         self.RequestId = None
@@ -627,8 +739,20 @@ class ListBlackEmailAddressRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StartDate: Start date in the format of `YYYY-MM-DD`
+        :type StartDate: str
+        :param EndDate: End date in the format of `YYYY-MM-DD`
+        :type EndDate: str
+        :param Limit: Common parameter. It must be used with `Offset`.
+        :type Limit: int
+        :param Offset: Common parameter. It must be used with `Limit`. Maximum value of `Limit`: `100`.
+        :type Offset: int
+        :param EmailAddress: You can specify an email address to query.
+        :type EmailAddress: str
+        :param TaskID: You can specify a task ID to query.
+        :type TaskID: str
         """
-        :param StartDate: Start date in the format of `YYYY-MM-DD`\n        :type StartDate: str\n        :param EndDate: End date in the format of `YYYY-MM-DD`\n        :type EndDate: str\n        :param Limit: Common parameter. It must be used with `Offset`.\n        :type Limit: int\n        :param Offset: Common parameter. It must be used with `Limit`. Maximum value of `Limit`: `100`.\n        :type Offset: int\n        :param EmailAddress: You can specify an email address to query.\n        :type EmailAddress: str\n        :param TaskID: You can specify a task ID to query.\n        :type TaskID: str\n        """
         self.StartDate = None
         self.EndDate = None
         self.Limit = None
@@ -659,8 +783,14 @@ class ListBlackEmailAddressResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BlackList: List of blocklisted addresses.
+        :type BlackList: list of BlackEmailAddress
+        :param TotalCount: Total number of blocklisted addresses.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param BlackList: List of blocklisted addresses.\n        :type BlackList: list of BlackEmailAddress\n        :param TotalCount: Total number of blocklisted addresses.\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.BlackList = None
         self.TotalCount = None
         self.RequestId = None
@@ -689,9 +819,13 @@ class ListEmailAddressResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EmailSenders: Details of sender addresses.
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type EmailSenders: list of EmailSender\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type EmailSenders: list of EmailSender
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.EmailSenders = None
         self.RequestId = None
 
@@ -718,8 +852,12 @@ class ListEmailIdentitiesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EmailIdentities: List of sender domains.
+        :type EmailIdentities: list of EmailIdentity
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param EmailIdentities: List of sender domains.\n        :type EmailIdentities: list of EmailIdentity\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.EmailIdentities = None
         self.RequestId = None
 
@@ -740,8 +878,12 @@ class ListEmailTemplatesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Limit: Number of templates to get. This parameter is used for pagination.
+        :type Limit: int
+        :param Offset: Template offset to get. This parameter is used for pagination.
+        :type Offset: int
         """
-        :param Limit: Number of templates to get. This parameter is used for pagination.\n        :type Limit: int\n        :param Offset: Template offset to get. This parameter is used for pagination.\n        :type Offset: int\n        """
         self.Limit = None
         self.Offset = None
 
@@ -764,8 +906,14 @@ class ListEmailTemplatesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TemplatesMetadata: List of email templates.
+        :type TemplatesMetadata: list of TemplatesMetadata
+        :param TotalCount: Total number of templates.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TemplatesMetadata: List of email templates.\n        :type TemplatesMetadata: list of TemplatesMetadata\n        :param TotalCount: Total number of templates.\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TemplatesMetadata = None
         self.TotalCount = None
         self.RequestId = None
@@ -788,10 +936,24 @@ class SendEmailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FromEmailAddress: Sender address. Enter a sender address, for example, noreply@mail.qcloud.com. To display the sender name, enter the address in the following format:  
 sender &lt;email address&gt;. For example: 
-Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;\n        :type FromEmailAddress: str\n        :param Destination: Recipient email addresses. You can send an email to up to 50 recipients at a time. Note: the email content will display all recipient addresses. To send one-to-one emails to several recipients, please call the API multiple times to send the emails.\n        :type Destination: list of str\n        :param Subject: Email subject.\n        :type Subject: str\n        :param ReplyToAddresses: Reply-to address. You can enter a valid personal email address that can receive emails. If this field is left empty, reply emails will be sent to Tencent Cloud.\n        :type ReplyToAddresses: str\n        :param Template: Template when sending emails using a template.\n        :type Template: :class:`tencentcloud.ses.v20201002.models.Template`\n        :param Simple: Email content when sending emails by calling the API.\n        :type Simple: :class:`tencentcloud.ses.v20201002.models.Simple`\n        :param Attachments: Email attachments\n        :type Attachments: list of Attachment\n        """
+Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
+        :type FromEmailAddress: str
+        :param Destination: Recipient email addresses. You can send an email to up to 50 recipients at a time. Note: the email content will display all recipient addresses. To send one-to-one emails to several recipients, please call the API multiple times to send the emails.
+        :type Destination: list of str
+        :param Subject: Email subject.
+        :type Subject: str
+        :param ReplyToAddresses: Reply-to address. You can enter a valid personal email address that can receive emails. If this field is left empty, reply emails will be sent to Tencent Cloud.
+        :type ReplyToAddresses: str
+        :param Template: Template when sending emails using a template.
+        :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
+        :param Simple: Email content when sending emails by calling the API.
+        :type Simple: :class:`tencentcloud.ses.v20201002.models.Simple`
+        :param Attachments: Email attachments
+        :type Attachments: list of Attachment
+        """
         self.FromEmailAddress = None
         self.Destination = None
         self.Subject = None
@@ -833,8 +995,12 @@ class SendEmailResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MessageId: Unique ID generated when receiving the message
+        :type MessageId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param MessageId: Unique ID generated when receiving the message\n        :type MessageId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.MessageId = None
         self.RequestId = None
 
@@ -850,8 +1016,14 @@ class SendEmailStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param MessageId: `MessageId` field returned by the `SendEmail` API\n        :type MessageId: str\n        :param ToEmailAddress: Recipient email address\n        :type ToEmailAddress: str\n        :param FromEmailAddress: Sender email address\n        :type FromEmailAddress: str\n        :param SendStatus: Tencent Cloud processing status:
+        r"""
+        :param MessageId: `MessageId` field returned by the `SendEmail` API
+        :type MessageId: str
+        :param ToEmailAddress: Recipient email address
+        :type ToEmailAddress: str
+        :param FromEmailAddress: Sender email address
+        :type FromEmailAddress: str
+        :param SendStatus: Tencent Cloud processing status:
 0: successful.
 1001: internal system exception.
 1002: internal system exception.
@@ -873,12 +1045,30 @@ class SendEmailStatus(AbstractModel):
 3020: the recipient email address is in the blocklist.
 3024: failed to pre-check the email address format.
 3030: email sending is restricted temporarily due to high bounce rate.
-3033: the account has insufficient balance or overdue payment.\n        :type SendStatus: int\n        :param DeliverStatus: Recipient processing status:
+3033: the account has insufficient balance or overdue payment.
+        :type SendStatus: int
+        :param DeliverStatus: Recipient processing status:
 0: Tencent Cloud has accepted the request and added it to the send queue.
 1: the email is delivered successfully, `DeliverTime` indicates the time when the email is delivered successfully.
 2: the email is discarded. `DeliverMessage` indicates the reason for discarding.
 3: the recipient's ESP rejects the email, probably because the email address does not exist or due to other reasons.
-8: the email is delayed by the ESP. `DeliverMessage` indicates the reason for delay.\n        :type DeliverStatus: int\n        :param DeliverMessage: Description of the recipient processing status\n        :type DeliverMessage: str\n        :param RequestTime: Timestamp when the request arrives at Tencent Cloud\n        :type RequestTime: int\n        :param DeliverTime: Timestamp when Tencent Cloud delivers the email\n        :type DeliverTime: int\n        :param UserOpened: Whether the recipient has opened the email\n        :type UserOpened: bool\n        :param UserClicked: Whether the recipient has clicked the links in the email\n        :type UserClicked: bool\n        :param UserUnsubscribed: Whether the recipient has unsubscribed from emails sent by the sender\n        :type UserUnsubscribed: bool\n        :param UserComplainted: Whether the recipient has reported the sender\n        :type UserComplainted: bool\n        """
+8: the email is delayed by the ESP. `DeliverMessage` indicates the reason for delay.
+        :type DeliverStatus: int
+        :param DeliverMessage: Description of the recipient processing status
+        :type DeliverMessage: str
+        :param RequestTime: Timestamp when the request arrives at Tencent Cloud
+        :type RequestTime: int
+        :param DeliverTime: Timestamp when Tencent Cloud delivers the email
+        :type DeliverTime: int
+        :param UserOpened: Whether the recipient has opened the email
+        :type UserOpened: bool
+        :param UserClicked: Whether the recipient has clicked the links in the email
+        :type UserClicked: bool
+        :param UserUnsubscribed: Whether the recipient has unsubscribed from emails sent by the sender
+        :type UserUnsubscribed: bool
+        :param UserComplainted: Whether the recipient has reported the sender
+        :type UserComplainted: bool
+        """
         self.MessageId = None
         self.ToEmailAddress = None
         self.FromEmailAddress = None
@@ -921,8 +1111,12 @@ class Simple(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Html: HTML code after base64 encoding. To ensure correct display, this parameter should include all code information and cannot contain external CSS.
+        :type Html: str
+        :param Text: Plain text content after base64 encoding. If HTML is not involved, the plain text will be displayed in the email. Otherwise, this parameter represents the plain text style of the email.
+        :type Text: str
         """
-        :param Html: HTML code after base64 encoding. To ensure correct display, this parameter should include all code information and cannot contain external CSS.\n        :type Html: str\n        :param Text: Plain text content after base64 encoding. If HTML is not involved, the plain text will be displayed in the email. Otherwise, this parameter represents the plain text style of the email.\n        :type Text: str\n        """
         self.Html = None
         self.Text = None
 
@@ -945,8 +1139,12 @@ class Template(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TemplateID: Template ID. If you don’t have any template, please create one.
+        :type TemplateID: int
+        :param TemplateData: Variable parameters in the template. Please use `json.dump` to format the JSON object into a string type. The object is a set of key-value pairs. Each key denotes a variable, which is represented by {{key}}. The key will be replaced with the corresponding value (represented by {{value}}) when sending the email.
+        :type TemplateData: str
         """
-        :param TemplateID: Template ID. If you don’t have any template, please create one.\n        :type TemplateID: int\n        :param TemplateData: Variable parameters in the template. Please use `json.dump` to format the JSON object into a string type. The object is a set of key-value pairs. Each key denotes a variable, which is represented by {{key}}. The key will be replaced with the corresponding value (represented by {{value}}) when sending the email.\n        :type TemplateData: str\n        """
         self.TemplateID = None
         self.TemplateData = None
 
@@ -969,8 +1167,12 @@ class TemplateContent(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Html: HTML code after base64 encoding.
+        :type Html: str
+        :param Text: Text content after base64 encoding.
+        :type Text: str
         """
-        :param Html: HTML code after base64 encoding.\n        :type Html: str\n        :param Text: Text content after base64 encoding.\n        :type Text: str\n        """
         self.Html = None
         self.Text = None
 
@@ -993,8 +1195,18 @@ class TemplatesMetadata(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CreatedTimestamp: Creation time.
+        :type CreatedTimestamp: int
+        :param TemplateName: Template name.
+        :type TemplateName: str
+        :param TemplateStatus: Template status. 1: under review; 0: approved; 2: rejected; other values: unavailable.
+        :type TemplateStatus: int
+        :param TemplateID: Template ID.
+        :type TemplateID: int
+        :param ReviewReason: Review reply
+        :type ReviewReason: str
         """
-        :param CreatedTimestamp: Creation time.\n        :type CreatedTimestamp: int\n        :param TemplateName: Template name.\n        :type TemplateName: str\n        :param TemplateStatus: Template status. 1: under review; 0: approved; 2: rejected; other values: unavailable.\n        :type TemplateStatus: int\n        :param TemplateID: Template ID.\n        :type TemplateID: int\n        :param ReviewReason: Review reply\n        :type ReviewReason: str\n        """
         self.CreatedTimestamp = None
         self.TemplateName = None
         self.TemplateStatus = None
@@ -1023,8 +1235,10 @@ class UpdateEmailIdentityRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EmailIdentity: Domain to be verified.
+        :type EmailIdentity: str
         """
-        :param EmailIdentity: Domain to be verified.\n        :type EmailIdentity: str\n        """
         self.EmailIdentity = None
 
 
@@ -1045,8 +1259,16 @@ class UpdateEmailIdentityResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IdentityType: Verification type. The value is fixed to `DOMAIN`.
+        :type IdentityType: str
+        :param VerifiedForSendingStatus: Verification passed or not.
+        :type VerifiedForSendingStatus: bool
+        :param Attributes: DNS information that needs to be configured.
+        :type Attributes: list of DNSAttributes
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param IdentityType: Verification type. The value is fixed to `DOMAIN`.\n        :type IdentityType: str\n        :param VerifiedForSendingStatus: Verification passed or not.\n        :type VerifiedForSendingStatus: bool\n        :param Attributes: DNS information that needs to be configured.\n        :type Attributes: list of DNSAttributes\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.IdentityType = None
         self.VerifiedForSendingStatus = None
         self.Attributes = None
@@ -1071,8 +1293,14 @@ class UpdateEmailTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TemplateContent: Template content.
+        :type TemplateContent: :class:`tencentcloud.ses.v20201002.models.TemplateContent`
+        :param TemplateID: Template ID.
+        :type TemplateID: int
+        :param TemplateName: Template name.
+        :type TemplateName: str
         """
-        :param TemplateContent: Template content.\n        :type TemplateContent: :class:`tencentcloud.ses.v20201002.models.TemplateContent`\n        :param TemplateID: Template ID.\n        :type TemplateID: int\n        :param TemplateName: Template name.\n        :type TemplateName: str\n        """
         self.TemplateContent = None
         self.TemplateID = None
         self.TemplateName = None
@@ -1099,8 +1327,10 @@ class UpdateEmailTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1114,10 +1344,26 @@ class Volume(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SendDate: Date
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type SendDate: str\n        :param RequestCount: Number of email requests.\n        :type RequestCount: int\n        :param AcceptedCount: Number of email requests accepted by Tencent Cloud.\n        :type AcceptedCount: int\n        :param DeliveredCount: Number of delivered emails.\n        :type DeliveredCount: int\n        :param OpenedCount: Number of users (deduplicated) who opened emails.\n        :type OpenedCount: int\n        :param ClickedCount: Number of recipients who clicked on links in emails.\n        :type ClickedCount: int\n        :param BounceCount: Number of bounced emails.\n        :type BounceCount: int\n        :param UnsubscribeCount: Number of users who canceled subscriptions.
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type UnsubscribeCount: int\n        """
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SendDate: str
+        :param RequestCount: Number of email requests.
+        :type RequestCount: int
+        :param AcceptedCount: Number of email requests accepted by Tencent Cloud.
+        :type AcceptedCount: int
+        :param DeliveredCount: Number of delivered emails.
+        :type DeliveredCount: int
+        :param OpenedCount: Number of users (deduplicated) who opened emails.
+        :type OpenedCount: int
+        :param ClickedCount: Number of recipients who clicked on links in emails.
+        :type ClickedCount: int
+        :param BounceCount: Number of bounced emails.
+        :type BounceCount: int
+        :param UnsubscribeCount: Number of users who canceled subscriptions.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type UnsubscribeCount: int
+        """
         self.SendDate = None
         self.RequestCount = None
         self.AcceptedCount = None

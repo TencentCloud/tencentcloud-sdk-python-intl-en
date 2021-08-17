@@ -24,8 +24,16 @@ class ChannelInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: Channel ID.
+        :type Id: str
+        :param Name: Channel name.
+        :type Name: str
+        :param Protocol: Channel protocol.
+        :type Protocol: str
+        :param Points: Channel input and output.
+        :type Points: :class:`tencentcloud.mdp.v20200527.models.PointInfo`
         """
-        :param Id: Channel ID.\n        :type Id: str\n        :param Name: Channel name.\n        :type Name: str\n        :param Protocol: Channel protocol.\n        :type Protocol: str\n        :param Points: Channel input and output.\n        :type Points: :class:`tencentcloud.mdp.v20200527.models.PointInfo`\n        """
         self.Id = None
         self.Name = None
         self.Protocol = None
@@ -54,8 +62,14 @@ class CreateMediaPackageChannelEndpointRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: Channel ID.
+        :type Id: str
+        :param Name: Channel name.
+        :type Name: str
+        :param AuthInfo: Authentication information.
+        :type AuthInfo: :class:`tencentcloud.mdp.v20200527.models.EndpointAuthInfo`
         """
-        :param Id: Channel ID.\n        :type Id: str\n        :param Name: Channel name.\n        :type Name: str\n        :param AuthInfo: Authentication information.\n        :type AuthInfo: :class:`tencentcloud.mdp.v20200527.models.EndpointAuthInfo`\n        """
         self.Id = None
         self.Name = None
         self.AuthInfo = None
@@ -82,8 +96,12 @@ class CreateMediaPackageChannelEndpointResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Info: The information of the created channel endpoint.
+        :type Info: :class:`tencentcloud.mdp.v20200527.models.EndpointInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Info: The information of the created channel endpoint.\n        :type Info: :class:`tencentcloud.mdp.v20200527.models.EndpointInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Info = None
         self.RequestId = None
 
@@ -101,8 +119,12 @@ class CreateMediaPackageChannelRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: Channel name.
+        :type Name: str
+        :param Protocol: Channel protocol. Valid values: HLS, DASH.
+        :type Protocol: str
         """
-        :param Name: Channel name.\n        :type Name: str\n        :param Protocol: Channel protocol. Valid values: HLS, DASH.\n        :type Protocol: str\n        """
         self.Name = None
         self.Protocol = None
 
@@ -125,8 +147,12 @@ class CreateMediaPackageChannelResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Info: Channel information.
+        :type Info: :class:`tencentcloud.mdp.v20200527.models.ChannelInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Info: Channel information.\n        :type Info: :class:`tencentcloud.mdp.v20200527.models.ChannelInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Info = None
         self.RequestId = None
 
@@ -144,8 +170,12 @@ class DeleteMediaPackageChannelEndpointsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: Channel ID.
+        :type Id: str
+        :param Urls: The list of endpoint URLs.
+        :type Urls: list of str
         """
-        :param Id: Channel ID.\n        :type Id: str\n        :param Urls: The list of endpoint URLs.\n        :type Urls: list of str\n        """
         self.Id = None
         self.Urls = None
 
@@ -168,8 +198,10 @@ class DeleteMediaPackageChannelEndpointsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -183,8 +215,10 @@ class DeleteMediaPackageChannelsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ids: The ID list of channels to be deleted.
+        :type Ids: list of str
         """
-        :param Ids: The ID list of channels to be deleted.\n        :type Ids: list of str\n        """
         self.Ids = None
 
 
@@ -205,8 +239,14 @@ class DeleteMediaPackageChannelsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SuccessInfos: The information list of channels that have been deleted.
+        :type SuccessInfos: list of ChannelInfo
+        :param FailInfos: The information list of channels that failed to be deleted.
+        :type FailInfos: list of ChannelInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param SuccessInfos: The information list of channels that have been deleted.\n        :type SuccessInfos: list of ChannelInfo\n        :param FailInfos: The information list of channels that failed to be deleted.\n        :type FailInfos: list of ChannelInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.SuccessInfos = None
         self.FailInfos = None
         self.RequestId = None
@@ -234,8 +274,10 @@ class DescribeMediaPackageChannelRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: Channel ID.
+        :type Id: str
         """
-        :param Id: Channel ID.\n        :type Id: str\n        """
         self.Id = None
 
 
@@ -256,8 +298,12 @@ class DescribeMediaPackageChannelResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Info: Channel information.
+        :type Info: :class:`tencentcloud.mdp.v20200527.models.ChannelInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Info: Channel information.\n        :type Info: :class:`tencentcloud.mdp.v20200527.models.ChannelInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Info = None
         self.RequestId = None
 
@@ -275,8 +321,12 @@ class DescribeMediaPackageChannelsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PageNum: Page number. Value range: [1, 1000].
+        :type PageNum: int
+        :param PageSize: The size of each page. Value range: [1, 1000].
+        :type PageSize: int
         """
-        :param PageNum: Page number. Value range: [1, 1000].\n        :type PageNum: int\n        :param PageSize: The size of each page. Value range: [1, 1000].\n        :type PageSize: int\n        """
         self.PageNum = None
         self.PageSize = None
 
@@ -299,9 +349,21 @@ class DescribeMediaPackageChannelsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Infos: The list of channel outputs.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Infos: list of ChannelInfo\n        :param PageNum: Page number.\n        :type PageNum: int\n        :param PageSize: The size of each page.\n        :type PageSize: int\n        :param TotalNum: Total number.\n        :type TotalNum: int\n        :param TotalPage: Total number of pages.\n        :type TotalPage: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Infos: list of ChannelInfo
+        :param PageNum: Page number.
+        :type PageNum: int
+        :param PageSize: The size of each page.
+        :type PageSize: int
+        :param TotalNum: Total number.
+        :type TotalNum: int
+        :param TotalPage: Total number of pages.
+        :type TotalPage: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.Infos = None
         self.PageNum = None
         self.PageSize = None
@@ -330,11 +392,17 @@ class EndpointAuthInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param WhiteIpList: The security group allowlist in CIDR format.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type WhiteIpList: list of str\n        :param BlackIpList: The security group blocklist in CIDR format.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type BlackIpList: list of str\n        :param AuthKey: The authentication key. Its value is same as `X-TENCENT-PACKAGE` set in the HTTP request header.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type AuthKey: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type WhiteIpList: list of str
+        :param BlackIpList: The security group blocklist in CIDR format.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type BlackIpList: list of str
+        :param AuthKey: The authentication key. Its value is same as `X-TENCENT-PACKAGE` set in the HTTP request header.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AuthKey: str
+        """
         self.WhiteIpList = None
         self.BlackIpList = None
         self.AuthKey = None
@@ -359,8 +427,14 @@ class EndpointInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: Endpoint name.
+        :type Name: str
+        :param Url: Endpoint URL.
+        :type Url: str
+        :param AuthInfo: Endpoint authentication information.
+        :type AuthInfo: :class:`tencentcloud.mdp.v20200527.models.EndpointAuthInfo`
         """
-        :param Name: Endpoint name.\n        :type Name: str\n        :param Url: Endpoint URL.\n        :type Url: str\n        :param AuthInfo: Endpoint authentication information.\n        :type AuthInfo: :class:`tencentcloud.mdp.v20200527.models.EndpointAuthInfo`\n        """
         self.Name = None
         self.Url = None
         self.AuthInfo = None
@@ -387,10 +461,14 @@ class InputAuthInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Username: Username.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Username: str\n        :param Password: Password.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Password: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Username: str
+        :param Password: Password.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Password: str
+        """
         self.Username = None
         self.Password = None
 
@@ -413,9 +491,13 @@ class InputInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Url: Channel input URL.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Url: str\n        :param AuthInfo: Channel input authentication information.\n        :type AuthInfo: :class:`tencentcloud.mdp.v20200527.models.InputAuthInfo`\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Url: str
+        :param AuthInfo: Channel input authentication information.
+        :type AuthInfo: :class:`tencentcloud.mdp.v20200527.models.InputAuthInfo`
+        """
         self.Url = None
         self.AuthInfo = None
 
@@ -440,8 +522,16 @@ class ModifyMediaPackageChannelEndpointRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: Channel ID.
+        :type Id: str
+        :param Url: Channel endpoint URL.
+        :type Url: str
+        :param Name: The channel name after modification.
+        :type Name: str
+        :param AuthInfo: The channel authentication after modification.
+        :type AuthInfo: :class:`tencentcloud.mdp.v20200527.models.EndpointAuthInfo`
         """
-        :param Id: Channel ID.\n        :type Id: str\n        :param Url: Channel endpoint URL.\n        :type Url: str\n        :param Name: The channel name after modification.\n        :type Name: str\n        :param AuthInfo: The channel authentication after modification.\n        :type AuthInfo: :class:`tencentcloud.mdp.v20200527.models.EndpointAuthInfo`\n        """
         self.Id = None
         self.Url = None
         self.Name = None
@@ -470,8 +560,10 @@ class ModifyMediaPackageChannelEndpointResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -485,10 +577,16 @@ class ModifyMediaPackageChannelInputAuthInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Id: Channel ID.\n        :type Id: str\n        :param Url: Channel input URL.\n        :type Url: str\n        :param ActionType: Authentication configuration type. Valid values: CLOSE, UPDATE.
+        r"""
+        :param Id: Channel ID.
+        :type Id: str
+        :param Url: Channel input URL.
+        :type Url: str
+        :param ActionType: Authentication configuration type. Valid values: CLOSE, UPDATE.
 CLOSE: disable authentication.
-UPDATE: update authentication.\n        :type ActionType: str\n        """
+UPDATE: update authentication.
+        :type ActionType: str
+        """
         self.Id = None
         self.Url = None
         self.ActionType = None
@@ -513,8 +611,12 @@ class ModifyMediaPackageChannelInputAuthInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AuthInfo: Channel input authentication information.
+        :type AuthInfo: :class:`tencentcloud.mdp.v20200527.models.InputAuthInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param AuthInfo: Channel input authentication information.\n        :type AuthInfo: :class:`tencentcloud.mdp.v20200527.models.InputAuthInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.AuthInfo = None
         self.RequestId = None
 
@@ -532,8 +634,14 @@ class ModifyMediaPackageChannelRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: Channel ID.
+        :type Id: str
+        :param Name: The channel name after modification.
+        :type Name: str
+        :param Protocol: The channel protocol after modification. Valid values: HLS, DASH.
+        :type Protocol: str
         """
-        :param Id: Channel ID.\n        :type Id: str\n        :param Name: The channel name after modification.\n        :type Name: str\n        :param Protocol: The channel protocol after modification. Valid values: HLS, DASH.\n        :type Protocol: str\n        """
         self.Id = None
         self.Name = None
         self.Protocol = None
@@ -558,8 +666,10 @@ class ModifyMediaPackageChannelResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -573,9 +683,13 @@ class PointInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Inputs: Channel input list.
+        :type Inputs: list of InputInfo
+        :param Endpoints: Channel output list.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Endpoints: list of EndpointInfo
         """
-        :param Inputs: Channel input list.\n        :type Inputs: list of InputInfo\n        :param Endpoints: Channel output list.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Endpoints: list of EndpointInfo\n        """
         self.Inputs = None
         self.Endpoints = None
 

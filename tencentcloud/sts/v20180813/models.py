@@ -24,12 +24,20 @@ class AssumeRoleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param RoleArn: Role resource description, such as qcs::cam::uin/12345678:role/4611686018427397919, qcs::cam::uin/12345678:roleName/testRoleName\n        :type RoleArn: str\n        :param RoleSessionName: User-defined temporary session name\n        :type RoleSessionName: str\n        :param DurationSeconds: Specifies the validity period of credentials in seconds. Default value: 7200. Maximum value: 43200\n        :type DurationSeconds: int\n        :param Policy: Policy description
+        r"""
+        :param RoleArn: Role resource description, such as qcs::cam::uin/12345678:role/4611686018427397919, qcs::cam::uin/12345678:roleName/testRoleName
+        :type RoleArn: str
+        :param RoleSessionName: User-defined temporary session name
+        :type RoleSessionName: str
+        :param DurationSeconds: Specifies the validity period of credentials in seconds. Default value: 7200. Maximum value: 43200
+        :type DurationSeconds: int
+        :param Policy: Policy description
 Note:
 1. The policy needs to be URL-encoded (if you request a TencentCloud API through the GET method, all parameters must be URL-encoded again in accordance with [Signature v3](https://cloud.tencent.com/document/api/598/33159#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2) before the request is sent).
 2. For the policy syntax, please see CAM’s [Syntax Logic](https://cloud.tencent.com/document/product/598/10603).
-3. The policy cannot contain the `principal` element.\n        :type Policy: str\n        """
+3. The policy cannot contain the `principal` element.
+        :type Policy: str
+        """
         self.RoleArn = None
         self.RoleSessionName = None
         self.DurationSeconds = None
@@ -56,8 +64,16 @@ class AssumeRoleResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Credentials: Temporary security credentials
+        :type Credentials: :class:`tencentcloud.sts.v20180813.models.Credentials`
+        :param ExpiredTime: Credentials expiration time. A Unix timestamp will be returned which is accurate to the second
+        :type ExpiredTime: int
+        :param Expiration: Credentials expiration time in UTC time in ISO 8601 format.
+        :type Expiration: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Credentials: Temporary security credentials\n        :type Credentials: :class:`tencentcloud.sts.v20180813.models.Credentials`\n        :param ExpiredTime: Credentials expiration time. A Unix timestamp will be returned which is accurate to the second\n        :type ExpiredTime: int\n        :param Expiration: Credentials expiration time in UTC time in ISO 8601 format.\n        :type Expiration: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Credentials = None
         self.ExpiredTime = None
         self.Expiration = None
@@ -79,8 +95,18 @@ class AssumeRoleWithSAMLRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SAMLAssertion: Base64-encoded SAML assertion
+        :type SAMLAssertion: str
+        :param PrincipalArn: Principal access description name
+        :type PrincipalArn: str
+        :param RoleArn: Role access description name
+        :type RoleArn: str
+        :param RoleSessionName: Session name
+        :type RoleSessionName: str
+        :param DurationSeconds: Specifies the validity period of credentials in seconds. Default value: 7200. Maximum value: 7200
+        :type DurationSeconds: int
         """
-        :param SAMLAssertion: Base64-encoded SAML assertion\n        :type SAMLAssertion: str\n        :param PrincipalArn: Principal access description name\n        :type PrincipalArn: str\n        :param RoleArn: Role access description name\n        :type RoleArn: str\n        :param RoleSessionName: Session name\n        :type RoleSessionName: str\n        :param DurationSeconds: Specifies the validity period of credentials in seconds. Default value: 7200. Maximum value: 7200\n        :type DurationSeconds: int\n        """
         self.SAMLAssertion = None
         self.PrincipalArn = None
         self.RoleArn = None
@@ -109,8 +135,16 @@ class AssumeRoleWithSAMLResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Credentials: An object consists of the `Token`, `TmpSecretId`, and `TmpSecretId`
+        :type Credentials: :class:`tencentcloud.sts.v20180813.models.Credentials`
+        :param ExpiredTime: Credentials expiration time. A Unix timestamp will be returned which is accurate to the second
+        :type ExpiredTime: int
+        :param Expiration: Credentials expiration time in UTC time in ISO 8601 format.
+        :type Expiration: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Credentials: An object consists of the `Token`, `TmpSecretId`, and `TmpSecretId`\n        :type Credentials: :class:`tencentcloud.sts.v20180813.models.Credentials`\n        :param ExpiredTime: Credentials expiration time. A Unix timestamp will be returned which is accurate to the second\n        :type ExpiredTime: int\n        :param Expiration: Credentials expiration time in UTC time in ISO 8601 format.\n        :type Expiration: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Credentials = None
         self.ExpiredTime = None
         self.Expiration = None
@@ -132,8 +166,14 @@ class Credentials(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Token: token
+        :type Token: str
+        :param TmpSecretId: Temporary credentials secret ID
+        :type TmpSecretId: str
+        :param TmpSecretKey: Temporary credentials secret key
+        :type TmpSecretKey: str
         """
-        :param Token: token\n        :type Token: str\n        :param TmpSecretId: Temporary credentials secret ID\n        :type TmpSecretId: str\n        :param TmpSecretKey: Temporary credentials secret key\n        :type TmpSecretKey: str\n        """
         self.Token = None
         self.TmpSecretId = None
         self.TmpSecretKey = None
@@ -158,12 +198,18 @@ class GetFederationTokenRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Name: The customizable name of the caller, consisting of letters\n        :type Name: str\n        :param Policy: Policy description
+        r"""
+        :param Name: The customizable name of the caller, consisting of letters
+        :type Name: str
+        :param Policy: Policy description
 Note:
 1. The policy needs to be URL-encoded (if you request a TencentCloud API through the GET method, all parameters must be URL-encoded again in accordance with [Signature v3](https://cloud.tencent.com/document/api/598/33159#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2) before the request is sent).
 2. For the policy syntax, please see CAM’s [Syntax Logic](https://cloud.tencent.com/document/product/598/10603).
-3. The policy cannot contain the `principal` element.\n        :type Policy: str\n        :param DurationSeconds: Specifies the validity period of credentials in seconds. Default value: 1800. Maximum value: 7200\n        :type DurationSeconds: int\n        """
+3. The policy cannot contain the `principal` element.
+        :type Policy: str
+        :param DurationSeconds: Specifies the validity period of credentials in seconds. Default value: 1800. Maximum value: 7200
+        :type DurationSeconds: int
+        """
         self.Name = None
         self.Policy = None
         self.DurationSeconds = None
@@ -188,9 +234,17 @@ class GetFederationTokenResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Credentials: Temporary credentials
+        :type Credentials: :class:`tencentcloud.sts.v20180813.models.Credentials`
+        :param ExpiredTime: Temporary credentials expiration time. A Unix timestamp will be returned which is accurate to the second
+        :type ExpiredTime: int
+        :param Expiration: Credentials expiration time in UTC time in ISO 8601 format.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Expiration: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Credentials: Temporary credentials\n        :type Credentials: :class:`tencentcloud.sts.v20180813.models.Credentials`\n        :param ExpiredTime: Temporary credentials expiration time. A Unix timestamp will be returned which is accurate to the second\n        :type ExpiredTime: int\n        :param Expiration: Credentials expiration time in UTC time in ISO 8601 format.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Expiration: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Credentials = None
         self.ExpiredTime = None
         self.Expiration = None

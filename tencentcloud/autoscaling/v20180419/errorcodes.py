@@ -164,7 +164,7 @@ INVALIDPARAMETERVALUE_INVALIDINSTANCEID = 'InvalidParameterValue.InvalidInstance
 # Invalid instance type.
 INVALIDPARAMETERVALUE_INVALIDINSTANCETYPE = 'InvalidParameterValue.InvalidInstanceType'
 
-# 
+# Invalid launch configuration
 INVALIDPARAMETERVALUE_INVALIDLAUNCHCONFIGURATION = 'InvalidParameterValue.InvalidLaunchConfiguration'
 
 # Invalid launch configuration ID.
@@ -269,7 +269,7 @@ LIMITEXCEEDED_DESIREDCAPACITYLIMITEXCEEDED = 'LimitExceeded.DesiredCapacityLimit
 # Too many values for the specified filter
 LIMITEXCEEDED_FILTERVALUESTOOLONG = 'LimitExceeded.FilterValuesTooLong'
 
-# 
+# You are short of the launch configuration quota.
 LIMITEXCEEDED_LAUNCHCONFIGURATIONQUOTANOTENOUGH = 'LimitExceeded.LaunchConfigurationQuotaNotEnough'
 
 # The maximum number of instances exceeds the limit.

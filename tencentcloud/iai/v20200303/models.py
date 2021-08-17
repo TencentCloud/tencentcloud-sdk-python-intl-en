@@ -24,17 +24,27 @@ class AnalyzeFaceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Mode: Detection mode. 0: detect all faces that appear; 1: detect the largest face. Default value: 0. The facial feature localization information (facial keypoints) of up to 10 faces can be returned.\n        :type Mode: int\n        :param Image: Base64-encoded image data, which cannot exceed 5 MB.
+        r"""
+        :param Mode: Detection mode. 0: detect all faces that appear; 1: detect the largest face. Default value: 0. The facial feature localization information (facial keypoints) of up to 10 faces can be returned.
+        :type Mode: int
+        :param Image: Base64-encoded image data, which cannot exceed 5 MB.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.\n        :type Image: str\n        :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type Image: str
+        :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  
 We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
 The download speed and stability of non-Tencent Cloud URLs may be low.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.\n        :type Url: str\n        :param FaceModelVersion: Algorithm model version used by the Face Recognition service. Valid values: 2.0, 3.0.  
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type Url: str
+        :param FaceModelVersion: Algorithm model version used by the Face Recognition service. Valid values: 2.0, 3.0.  
 This parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API previously, `2.0` will be used by default.  
-Different algorithm model versions correspond to different face recognition algorithms. The new version has a better overall effect than the legacy version and is thus recommended.\n        :type FaceModelVersion: str\n        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.\n        :type NeedRotateDetection: int\n        """
+Different algorithm model versions correspond to different face recognition algorithms. The new version has a better overall effect than the legacy version and is thus recommended.
+        :type FaceModelVersion: str
+        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        :type NeedRotateDetection: int
+        """
         self.Mode = None
         self.Image = None
         self.Url = None
@@ -63,8 +73,18 @@ class AnalyzeFaceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ImageWidth: Width of requested image.
+        :type ImageWidth: int
+        :param ImageHeight: Height of requested image.
+        :type ImageHeight: int
+        :param FaceShapeSet: Specific information of facial feature localization (facial keypoints).
+        :type FaceShapeSet: list of FaceShape
+        :param FaceModelVersion: Algorithm model version used for face recognition.
+        :type FaceModelVersion: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param ImageWidth: Width of requested image.\n        :type ImageWidth: int\n        :param ImageHeight: Height of requested image.\n        :type ImageHeight: int\n        :param FaceShapeSet: Specific information of facial feature localization (facial keypoints).\n        :type FaceShapeSet: list of FaceShape\n        :param FaceModelVersion: Algorithm model version used for face recognition.\n        :type FaceModelVersion: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ImageWidth = None
         self.ImageHeight = None
         self.FaceShapeSet = None
@@ -91,17 +111,29 @@ class Candidate(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param PersonId: Person ID\n        :type PersonId: str\n        :param FaceId: Face ID\n        :type FaceId: str\n        :param Score: Match score of candidate. 
+        r"""
+        :param PersonId: Person ID
+        :type PersonId: str
+        :param FaceId: Face ID
+        :type FaceId: str
+        :param Score: Match score of candidate. 
 
 In a face base library containing 10,000 faces, the 1%, 0.1%, and 0.01% FARs correspond to scores of 70, 80, and 90, respectively;
 In a face base library containing 100,000 faces, the 1%, 0.1%, and 0.01% FARs correspond to scores of 80, 90, and 100, respectively;
 In a face base library containing 300,000 faces, the 1% and 0.1% FARs correspond to scores of 85 and 95, respectively.
 
-Generally, the score of 80 is suitable for most scenarios. We recommend choosing an appropriate score based on the actual situation, preferably no more than 90.\n        :type Score: float\n        :param PersonName: Person name
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type PersonName: str\n        :param Gender: Person gender
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Gender: int\n        :param PersonGroupInfos: List of groups containing this person and their description fields
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type PersonGroupInfos: list of PersonGroupInfo\n        """
+Generally, the score of 80 is suitable for most scenarios. We recommend choosing an appropriate score based on the actual situation, preferably no more than 90.
+        :type Score: float
+        :param PersonName: Person name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PersonName: str
+        :param Gender: Person gender
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Gender: int
+        :param PersonGroupInfos: List of groups containing this person and their description fields
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PersonGroupInfos: list of PersonGroupInfo
+        """
         self.PersonId = None
         self.FaceId = None
         self.Score = None
@@ -137,35 +169,49 @@ class CompareFaceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageA: Base64-encoded data of image A, which cannot exceed 5 MB.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 If there are multiple faces in the image, only the face with the largest size will be selected.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.\n        :type ImageA: str\n        :param ImageB: Base64-encoded data of image B, which cannot exceed 5 MB.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type ImageA: str
+        :param ImageB: Base64-encoded data of image B, which cannot exceed 5 MB.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 If there are multiple faces in the image, only the face with the largest size will be selected.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.\n        :type ImageB: str\n        :param UrlA: URL of image A. The image cannot exceed 5 MB in size after being Base64-encoded.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type ImageB: str
+        :param UrlA: URL of image A. The image cannot exceed 5 MB in size after being Base64-encoded.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` of image A must be provided; if both are provided, only `Url` will be used. 
 We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
 The download speed and stability of non-Tencent Cloud URLs may be low.
 If there are multiple faces in the image, only the face with the largest size will be selected.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.\n        :type UrlA: str\n        :param UrlB: URL of image B. The image cannot exceed 5 MB in size after being Base64-encoded.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type UrlA: str
+        :param UrlB: URL of image B. The image cannot exceed 5 MB in size after being Base64-encoded.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` of image B must be provided; if both are provided, only `Url` will be used. 
 We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
 The download speed and stability of non-Tencent Cloud URLs may be low.
 If there are multiple faces in the image, only the face with the largest size will be selected.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.\n        :type UrlB: str\n        :param FaceModelVersion: Algorithm model version used by the Face Recognition service. Valid values: 2.0, 3.0. 
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type UrlB: str
+        :param FaceModelVersion: Algorithm model version used by the Face Recognition service. Valid values: 2.0, 3.0. 
 This parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API previously, `2.0` will be used by default. 
-Different algorithm model versions correspond to different face recognition algorithms. The 3.0 version has a better overall effect than the legacy version and is thus recommended.\n        :type FaceModelVersion: str\n        :param QualityControl: Image quality control. 
+Different algorithm model versions correspond to different face recognition algorithms. The 3.0 version has a better overall effect than the legacy version and is thus recommended.
+        :type FaceModelVersion: str
+        :param QualityControl: Image quality control. 
 0: no control. 
 1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
 2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
 3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
 4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
 Default value: 0. 
-If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.\n        :type QualityControl: int\n        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.\n        :type NeedRotateDetection: int\n        """
+If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.
+        :type QualityControl: int
+        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        :type NeedRotateDetection: int
+        """
         self.ImageA = None
         self.ImageB = None
         self.UrlA = None
@@ -198,12 +244,18 @@ class CompareFaceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Score: Face similarity score between two images.
 The returned similarity score varies by algorithm version. 
 If you need to verify whether the faces in the two images are the same person, then the 0.1%, 0.01%, and 0.001% FARs on v3.0 correspond to scores of 40, 50, and 60, respectively. Generally, if the score is above 50, it can be judged that they are the same person. 
 The 0.1%, 0.01%, and 0.001% FARs on v2.0 correspond to scores of 70, 80, and 90, respectively. Generally, if the score is above 80, it can be judged that they are the same person. 
-If you need to verify whether the faces in the two images are the same person, we recommend using the `VerifyFace` API.\n        :type Score: float\n        :param FaceModelVersion: Algorithm model version used for face recognition.\n        :type FaceModelVersion: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+If you need to verify whether the faces in the two images are the same person, we recommend using the `VerifyFace` API.
+        :type Score: float
+        :param FaceModelVersion: Algorithm model version used for face recognition.
+        :type FaceModelVersion: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.Score = None
         self.FaceModelVersion = None
         self.RequestId = None
@@ -221,8 +273,12 @@ class CopyPersonRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.
+        :type PersonId: str
+        :param GroupIds: List of groups to join. The array element value is the `GroupId` in the `CreateGroup` API.
+        :type GroupIds: list of str
         """
-        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.\n        :type PersonId: str\n        :param GroupIds: List of groups to join. The array element value is the `GroupId` in the `CreateGroup` API.\n        :type GroupIds: list of str\n        """
         self.PersonId = None
         self.GroupIds = None
 
@@ -245,8 +301,14 @@ class CopyPersonResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SucGroupNum: Number of groups successfully added to.
+        :type SucGroupNum: int
+        :param SucGroupIds: List of groups successfully added to.
+        :type SucGroupIds: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param SucGroupNum: Number of groups successfully added to.\n        :type SucGroupNum: int\n        :param SucGroupIds: List of groups successfully added to.\n        :type SucGroupIds: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.SucGroupNum = None
         self.SucGroupIds = None
         self.RequestId = None
@@ -264,27 +326,39 @@ class CreateFaceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.\n        :type PersonId: str\n        :param Images: Base64-encoded image data, which cannot exceed 5 MB.
+        r"""
+        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.
+        :type PersonId: str
+        :param Images: Base64-encoded image data, which cannot exceed 5 MB.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 A person can have up to 5 face images.
 If there are multiple faces in the image, only the face with the largest size will be selected.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.\n        :type Images: list of str\n        :param Urls: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type Images: list of str
+        :param Urls: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  
 We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
 The download speed and stability of non-Tencent Cloud URLs may be low.
 PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 A person can have up to 5 face images.
-If there are multiple faces in the image, only the face with the largest size will be selected.\n        :type Urls: list of str\n        :param FaceMatchThreshold: Only faces whose similarity to an existing face of the person is above the value of `FaceMatchThreshold` can be added successfully. 
-Default value: 60. Value range: [0,100].\n        :type FaceMatchThreshold: float\n        :param QualityControl: Image quality control. 
+If there are multiple faces in the image, only the face with the largest size will be selected.
+        :type Urls: list of str
+        :param FaceMatchThreshold: Only faces whose similarity to an existing face of the person is above the value of `FaceMatchThreshold` can be added successfully. 
+Default value: 60. Value range: [0,100].
+        :type FaceMatchThreshold: float
+        :param QualityControl: Image quality control. 
 0: no control. 
 1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
 2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
 3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
 4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
 Default value: 0. 
-If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.\n        :type QualityControl: int\n        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.\n        :type NeedRotateDetection: int\n        """
+If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.
+        :type QualityControl: int
+        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        :type NeedRotateDetection: int
+        """
         self.PersonId = None
         self.Images = None
         self.Urls = None
@@ -315,12 +389,26 @@ class CreateFaceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param SucFaceNum: Number of successfully added faces\n        :type SucFaceNum: int\n        :param SucFaceIds: List of IDs of successfully added faces\n        :type SucFaceIds: list of str\n        :param RetCode: Adding result for each face image. -1101: no face detected; -1102: image decoding failed; 
+        r"""
+        :param SucFaceNum: Number of successfully added faces
+        :type SucFaceNum: int
+        :param SucFaceIds: List of IDs of successfully added faces
+        :type SucFaceIds: list of str
+        :param RetCode: Adding result for each face image. -1101: no face detected; -1102: image decoding failed; 
 -1601: the image quality control requirement is not met; -1604: the face similarity is not above `FaceMatchThreshold`. 
 Other non-zero values: algorithm service exception. 
-The order of `RetCode` values is the same as the order of `Images` or `Urls` in the input parameter.\n        :type RetCode: list of int\n        :param SucIndexes: Indexes of successfully added faces. The order of indexes is the same as the order of `Images` or `Urls` in the input parameter. 
-For example, if there are 3 URLs in `Urls`, and the second URL fails, then the value of `SucIndexes` will be [0,2].\n        :type SucIndexes: list of int non-negative\n        :param SucFaceRects: Frame positions of successfully added faces. The order is the same as the order of `Images` or `Urls` in the input parameter.\n        :type SucFaceRects: list of FaceRect\n        :param FaceModelVersion: Algorithm model version used for face recognition.\n        :type FaceModelVersion: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+The order of `RetCode` values is the same as the order of `Images` or `Urls` in the input parameter.
+        :type RetCode: list of int
+        :param SucIndexes: Indexes of successfully added faces. The order of indexes is the same as the order of `Images` or `Urls` in the input parameter. 
+For example, if there are 3 URLs in `Urls`, and the second URL fails, then the value of `SucIndexes` will be [0,2].
+        :type SucIndexes: list of int non-negative
+        :param SucFaceRects: Frame positions of successfully added faces. The order is the same as the order of `Images` or `Urls` in the input parameter.
+        :type SucFaceRects: list of FaceRect
+        :param FaceModelVersion: Algorithm model version used for face recognition.
+        :type FaceModelVersion: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.SucFaceNum = None
         self.SucFaceIds = None
         self.RetCode = None
@@ -351,16 +439,26 @@ class CreateGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param GroupName: Group name, which is modifiable, must be unique, and can contain 1 to 60 characters.\n        :type GroupName: str\n        :param GroupId: Group ID, which is unmodifiable, must be unique, and can contain letters, digits, and special symbols (-%@#&_) of up to 64 B.\n        :type GroupId: str\n        :param GroupExDescriptions: Custom group description field that describes the person attributes in the group, which will be applied to all persons in the group. 
+        r"""
+        :param GroupName: Group name, which is modifiable, must be unique, and can contain 1 to 60 characters.
+        :type GroupName: str
+        :param GroupId: Group ID, which is unmodifiable, must be unique, and can contain letters, digits, and special symbols (-%@#&_) of up to 64 B.
+        :type GroupId: str
+        :param GroupExDescriptions: Custom group description field that describes the person attributes in the group, which will be applied to all persons in the group. 
 Up to 5 ones can be created. 
 Each custom description field can contain 1 to 30 characters. 
 The custom description field must be unique in the group. 
 Example: if you set the "custom description field" of a group to ["student ID","employee ID","mobile number"], 
 then all the persons in the group will have description fields named "student ID", "employee ID", and "mobile number". 
-You can enter content in the corresponding field to register a person's student ID, employee ID, and mobile number.\n        :type GroupExDescriptions: list of str\n        :param Tag: Group remarks, which can contain 0 to 40 characters.\n        :type Tag: str\n        :param FaceModelVersion: Algorithm model version used by the Face Recognition service. Valid values: 2.0, 3.0.
+You can enter content in the corresponding field to register a person's student ID, employee ID, and mobile number.
+        :type GroupExDescriptions: list of str
+        :param Tag: Group remarks, which can contain 0 to 40 characters.
+        :type Tag: str
+        :param FaceModelVersion: Algorithm model version used by the Face Recognition service. Valid values: 2.0, 3.0.
 This parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API previously, `2.0` will be used by default. 
-Different algorithm model versions correspond to different face recognition algorithms. The 3.0 version has a better overall effect than the legacy version and is thus recommended.\n        :type FaceModelVersion: str\n        """
+Different algorithm model versions correspond to different face recognition algorithms. The 3.0 version has a better overall effect than the legacy version and is thus recommended.
+        :type FaceModelVersion: str
+        """
         self.GroupName = None
         self.GroupId = None
         self.GroupExDescriptions = None
@@ -389,8 +487,12 @@ class CreateGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FaceModelVersion: Algorithm model version used for face recognition.
+        :type FaceModelVersion: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param FaceModelVersion: Algorithm model version used for face recognition.\n        :type FaceModelVersion: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FaceModelVersion = None
         self.RequestId = None
 
@@ -406,15 +508,29 @@ class CreatePersonRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param GroupId: ID of the group to join, which is the `GroupId` in the `CreateGroup` API.\n        :type GroupId: str\n        :param PersonName: Person name, which can contain 1 to 60 characters and is modifiable and repeatable.\n        :type PersonName: str\n        :param PersonId: Person ID, which is unmodifiable, must be unique under a Tencent Cloud account, and can contain letters, digits, and special symbols (-%@#&_) of up to 64 B.\n        :type PersonId: str\n        :param Gender: 0: empty; 1: male; 2: female.\n        :type Gender: int\n        :param PersonExDescriptionInfos: Content of person description field, which is a `key-value` pair, can contain 0 to 60 characters, and is modifiable and repeatable.\n        :type PersonExDescriptionInfos: list of PersonExDescriptionInfo\n        :param Image: Base64-encoded image data, which cannot exceed 5 MB.
+        r"""
+        :param GroupId: ID of the group to join, which is the `GroupId` in the `CreateGroup` API.
+        :type GroupId: str
+        :param PersonName: Person name, which can contain 1 to 60 characters and is modifiable and repeatable.
+        :type PersonName: str
+        :param PersonId: Person ID, which is unmodifiable, must be unique under a Tencent Cloud account, and can contain letters, digits, and special symbols (-%@#&_) of up to 64 B.
+        :type PersonId: str
+        :param Gender: 0: empty; 1: male; 2: female.
+        :type Gender: int
+        :param PersonExDescriptionInfos: Content of person description field, which is a `key-value` pair, can contain 0 to 60 characters, and is modifiable and repeatable.
+        :type PersonExDescriptionInfos: list of PersonExDescriptionInfo
+        :param Image: Base64-encoded image data, which cannot exceed 5 MB.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.\n        :type Image: str\n        :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type Image: str
+        :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  
 We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
 The download speed and stability of non-Tencent Cloud URLs may be low.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.\n        :type Url: str\n        :param UniquePersonControl: This parameter is used to control the judgment whether the face contained in the image in `Image` or `Url` corresponds to an existing person in the group. 
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type Url: str
+        :param UniquePersonControl: This parameter is used to control the judgment whether the face contained in the image in `Image` or `Url` corresponds to an existing person in the group. 
 If it is judged that a duplicate person exists in the group, no new person will be created, and information of the suspected duplicate person will be returned. 
 Otherwise, the new person will be created. 
 0: do not judge, i.e., the person will be created no matter whether a duplicate person exists in the group. 
@@ -423,14 +539,20 @@ Otherwise, the new person will be created.
 3: high duplicate person judgment requirement (0.01% FAR); 
 4: very high duplicate person judgment requirement (0.001% FAR). 
 Default value: 0.  
-Note: the higher the requirement, the lower the probability of duplicate person. The FARs corresponding to different requirements are for reference only and can be adjusted as needed.\n        :type UniquePersonControl: int\n        :param QualityControl: Image quality control. 
+Note: the higher the requirement, the lower the probability of duplicate person. The FARs corresponding to different requirements are for reference only and can be adjusted as needed.
+        :type UniquePersonControl: int
+        :param QualityControl: Image quality control. 
 0: no control. 
 1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
 2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
 3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
 4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
 Default value: 0. 
-If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.\n        :type QualityControl: int\n        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.\n        :type NeedRotateDetection: int\n        """
+If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.
+        :type QualityControl: int
+        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        :type NeedRotateDetection: int
+        """
         self.GroupId = None
         self.PersonName = None
         self.PersonId = None
@@ -474,10 +596,20 @@ class CreatePersonResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FaceId: Unique ID of face image.
+        :type FaceId: str
+        :param FaceRect: Position of detected face frame.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FaceRect: :class:`tencentcloud.iai.v20200303.models.FaceRect`
+        :param SimilarPersonId: `PersonId` of suspected duplicate person. 
+This parameter is meaningful only if the `UniquePersonControl` parameter is not 0 and there is a suspected duplicate person in the group.
+        :type SimilarPersonId: str
+        :param FaceModelVersion: Algorithm model version used for face recognition.
+        :type FaceModelVersion: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param FaceId: Unique ID of face image.\n        :type FaceId: str\n        :param FaceRect: Position of detected face frame.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type FaceRect: :class:`tencentcloud.iai.v20200303.models.FaceRect`\n        :param SimilarPersonId: `PersonId` of suspected duplicate person. 
-This parameter is meaningful only if the `UniquePersonControl` parameter is not 0 and there is a suspected duplicate person in the group.\n        :type SimilarPersonId: str\n        :param FaceModelVersion: Algorithm model version used for face recognition.\n        :type FaceModelVersion: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FaceId = None
         self.FaceRect = None
         self.SimilarPersonId = None
@@ -501,8 +633,12 @@ class DeleteFaceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.
+        :type PersonId: str
+        :param FaceIds: List of IDs of the faces to be deleted. The array element value is the `FaceId` returned by the `CreateFace` API.
+        :type FaceIds: list of str
         """
-        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.\n        :type PersonId: str\n        :param FaceIds: List of IDs of the faces to be deleted. The array element value is the `FaceId` returned by the `CreateFace` API.\n        :type FaceIds: list of str\n        """
         self.PersonId = None
         self.FaceIds = None
 
@@ -525,8 +661,14 @@ class DeleteFaceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SucDeletedNum: Number of successfully deleted faces
+        :type SucDeletedNum: int
+        :param SucFaceIds: List of IDs of successfully deleted faces
+        :type SucFaceIds: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param SucDeletedNum: Number of successfully deleted faces\n        :type SucDeletedNum: int\n        :param SucFaceIds: List of IDs of successfully deleted faces\n        :type SucFaceIds: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.SucDeletedNum = None
         self.SucFaceIds = None
         self.RequestId = None
@@ -544,8 +686,10 @@ class DeleteGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API.
+        :type GroupId: str
         """
-        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API.\n        :type GroupId: str\n        """
         self.GroupId = None
 
 
@@ -566,8 +710,10 @@ class DeleteGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -581,8 +727,12 @@ class DeletePersonFromGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.
+        :type PersonId: str
+        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API.
+        :type GroupId: str
         """
-        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.\n        :type PersonId: str\n        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API.\n        :type GroupId: str\n        """
         self.PersonId = None
         self.GroupId = None
 
@@ -605,8 +755,10 @@ class DeletePersonFromGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -620,8 +772,10 @@ class DeletePersonRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.
+        :type PersonId: str
         """
-        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.\n        :type PersonId: str\n        """
         self.PersonId = None
 
 
@@ -642,8 +796,10 @@ class DeletePersonResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -657,26 +813,42 @@ class DetectFaceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MaxFaceNum: Maximum number of processable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 120. 
-This parameter is used to control the number of faces in the image to be detected. The smaller the value, the faster the processing.\n        :type MaxFaceNum: int\n        :param MinFaceSize: Minimum height and width of face in px.
+This parameter is used to control the number of faces in the image to be detected. The smaller the value, the faster the processing.
+        :type MaxFaceNum: int
+        :param MinFaceSize: Minimum height and width of face in px.
 Default value: 34. We recommend keeping it at or above 34.
-Faces below the `MinFaceSize` value will not be detected.\n        :type MinFaceSize: int\n        :param Image: Base64-encoded image data, which cannot exceed 5 MB.
+Faces below the `MinFaceSize` value will not be detected.
+        :type MinFaceSize: int
+        :param Image: Base64-encoded image data, which cannot exceed 5 MB.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.\n        :type Image: str\n        :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type Image: str
+        :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  
 We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
 The download speed and stability of non-Tencent Cloud URLs may be low.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.\n        :type Url: str\n        :param NeedFaceAttributes: Whether the face attribute information (FaceAttributesInfo) needs to be returned. 0: no; 1: yes. Default value: 0. 
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type Url: str
+        :param NeedFaceAttributes: Whether the face attribute information (FaceAttributesInfo) needs to be returned. 0: no; 1: yes. Default value: 0. 
 If the value is not 1, it will be deemed as no need to return, and `FaceAttributesInfo` is meaningless in this case.  
 The face attribute information of up to 5 largest faces in the image will be returned, and `FaceAttributesInfo` of the 6th and rest faces is meaningless.  
-Extracting face attribute information is quite time-consuming. If face attribute information is not required, we recommend disabling this feature to speed up face detection.\n        :type NeedFaceAttributes: int\n        :param NeedQualityDetection: Whether to enable quality detection. 0: no; 1: yes. Default value: 0. 
+Extracting face attribute information is quite time-consuming. If face attribute information is not required, we recommend disabling this feature to speed up face detection.
+        :type NeedFaceAttributes: int
+        :param NeedQualityDetection: Whether to enable quality detection. 0: no; 1: yes. Default value: 0. 
 If the value is not 1, it will be deemed not to perform quality detection.
 The face quality score information of up to 30 largest faces in the image will be returned, and `FaceQualityInfo` of the 31st and rest faces is meaningless.  
-We recommend enabling this feature for the face adding operation.\n        :type NeedQualityDetection: int\n        :param FaceModelVersion: Algorithm model version used by the Face Recognition service. Valid values: 2.0, 3.0.  
+We recommend enabling this feature for the face adding operation.
+        :type NeedQualityDetection: int
+        :param FaceModelVersion: Algorithm model version used by the Face Recognition service. Valid values: 2.0, 3.0.  
 This parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API previously, `2.0` will be used by default. 
-Different algorithm model versions correspond to different face recognition algorithms. The 3.0 version has a better overall effect than the legacy version and is thus recommended.\n        :type FaceModelVersion: str\n        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.\n        :type NeedRotateDetection: int\n        """
+Different algorithm model versions correspond to different face recognition algorithms. The 3.0 version has a better overall effect than the legacy version and is thus recommended.
+        :type FaceModelVersion: str
+        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        :type NeedRotateDetection: int
+        """
         self.MaxFaceNum = None
         self.MinFaceSize = None
         self.Image = None
@@ -711,8 +883,18 @@ class DetectFaceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ImageWidth: Width of requested image.
+        :type ImageWidth: int
+        :param ImageHeight: Height of requested image.
+        :type ImageHeight: int
+        :param FaceInfos: Face information list, including face coordinate information, attribute information (if needed), and quality score information (if needed).
+        :type FaceInfos: list of FaceInfo
+        :param FaceModelVersion: Algorithm model version used for face recognition.
+        :type FaceModelVersion: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param ImageWidth: Width of requested image.\n        :type ImageWidth: int\n        :param ImageHeight: Height of requested image.\n        :type ImageHeight: int\n        :param FaceInfos: Face information list, including face coordinate information, attribute information (if needed), and quality score information (if needed).\n        :type FaceInfos: list of FaceInfo\n        :param FaceModelVersion: Algorithm model version used for face recognition.\n        :type FaceModelVersion: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ImageWidth = None
         self.ImageHeight = None
         self.FaceInfos = None
@@ -739,18 +921,24 @@ class DetectLiveFaceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Image: Base64-encoded image data, which cannot exceed 5 MB.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats (the aspect ratio of the image should be close to 3:4 (width:height); otherwise, the score returned for the image will be meaningless).
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.\n        :type Image: str\n        :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type Image: str
+        :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used. 
 (The aspect ratio of the image should be close to 3:4 (width:height); otherwise, the score returned for the image will be meaningless.) 
 We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
 The download speed and stability of non-Tencent Cloud URLs may be low.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.\n        :type Url: str\n        :param FaceModelVersion: Algorithm model version used by the Face Recognition service. Valid values: 2.0, 3.0.  
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type Url: str
+        :param FaceModelVersion: Algorithm model version used by the Face Recognition service. Valid values: 2.0, 3.0.  
 This parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API previously, `2.0` will be used by default. 
-Different algorithm model versions correspond to different face recognition algorithms. The 3.0 version has a better overall effect than the legacy version and is thus recommended.\n        :type FaceModelVersion: str\n        """
+Different algorithm model versions correspond to different face recognition algorithms. The 3.0 version has a better overall effect than the legacy version and is thus recommended.
+        :type FaceModelVersion: str
+        """
         self.Image = None
         self.Url = None
         self.FaceModelVersion = None
@@ -775,10 +963,18 @@ class DetectLiveFaceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Score: Liveness score. Value range: [0,100]. The score is generally between 80 and 100, but 0 is also a common value. As a recommendation, when the score is greater than 87, it can be judged that the person in the image is alive. You can adjust the threshold according to your specific scenario.
-This field is meaningful only if `FaceModelVersion` is 2.0.\n        :type Score: float\n        :param FaceModelVersion: Algorithm model version used for face recognition.\n        :type FaceModelVersion: str\n        :param IsLiveness: Whether liveness detection is passed.
-This field is meaningful only if `FaceModelVersion` is 3.0.\n        :type IsLiveness: bool\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+This field is meaningful only if `FaceModelVersion` is 2.0.
+        :type Score: float
+        :param FaceModelVersion: Algorithm model version used for face recognition.
+        :type FaceModelVersion: str
+        :param IsLiveness: Whether liveness detection is passed.
+This field is meaningful only if `FaceModelVersion` is 3.0.
+        :type IsLiveness: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.Score = None
         self.FaceModelVersion = None
         self.IsLiveness = None
@@ -799,15 +995,39 @@ class FaceAttributesInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Gender: Gender. The gender is female for the value range [0,49] and male for the value range [50,100]. The closer the value to 0 or 100, the higher the confidence. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        :type Gender: int
+        :param Age: Age. Value range: [0,100]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        :type Age: int
+        :param Expression: Expression. Value range: [0 (normal)–50 (smile)–100 (laugh)]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        :type Expression: int
+        :param Glass: Whether glasses are present. Valid values: true, false. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        :type Glass: bool
+        :param Pitch: Vertical offset in degrees. Value range: [-30,30]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless. 
+We recommend selecting images in the [-10,10] range for adding faces.
+        :type Pitch: int
+        :param Yaw: Horizontal offset in degrees. Value range: [-30,30]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless. 
+We recommend selecting images in the [-10,10] range for adding faces.
+        :type Yaw: int
+        :param Roll: Horizontal rotation in degrees. Value range: [-180,180]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.  
+We recommend selecting images in the [-20,20] range for adding faces.
+        :type Roll: int
+        :param Beauty: Beauty. Value range: [0,100]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        :type Beauty: int
+        :param Hat: Whether hat is present. Valid values: true, false. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Hat: bool
+        :param Mask: Whether mask is present. Valid values: true, false. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Mask: bool
+        :param Hair: Hair information, including length, bang, and color. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Hair: :class:`tencentcloud.iai.v20200303.models.FaceHairAttributesInfo`
+        :param EyeOpen: Whether the eyes are open. Valid values: true, false. As long as there is more than one eye closed, `false` will be returned. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type EyeOpen: bool
         """
-        :param Gender: Gender. The gender is female for the value range [0,49] and male for the value range [50,100]. The closer the value to 0 or 100, the higher the confidence. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.\n        :type Gender: int\n        :param Age: Age. Value range: [0,100]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.\n        :type Age: int\n        :param Expression: Expression. Value range: [0 (normal)–50 (smile)–100 (laugh)]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.\n        :type Expression: int\n        :param Glass: Whether glasses are present. Valid values: true, false. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.\n        :type Glass: bool\n        :param Pitch: Vertical offset in degrees. Value range: [-30,30]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless. 
-We recommend selecting images in the [-10,10] range for adding faces.\n        :type Pitch: int\n        :param Yaw: Horizontal offset in degrees. Value range: [-30,30]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless. 
-We recommend selecting images in the [-10,10] range for adding faces.\n        :type Yaw: int\n        :param Roll: Horizontal rotation in degrees. Value range: [-180,180]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.  
-We recommend selecting images in the [-20,20] range for adding faces.\n        :type Roll: int\n        :param Beauty: Beauty. Value range: [0,100]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.\n        :type Beauty: int\n        :param Hat: Whether hat is present. Valid values: true, false. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Hat: bool\n        :param Mask: Whether mask is present. Valid values: true, false. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Mask: bool\n        :param Hair: Hair information, including length, bang, and color. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Hair: :class:`tencentcloud.iai.v20200303.models.FaceHairAttributesInfo`\n        :param EyeOpen: Whether the eyes are open. Valid values: true, false. As long as there is more than one eye closed, `false` will be returned. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type EyeOpen: bool\n        """
         self.Gender = None
         self.Age = None
         self.Expression = None
@@ -852,11 +1072,17 @@ class FaceHairAttributesInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Length: 0: shaved head, 1: short hair, 2: medium hair, 3: long hair, 4: braid
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Length: int\n        :param Bang: 0: with bangs, 1: no bangs
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Bang: int\n        :param Color: 0: black, 1: golden, 2: brown, 3: gray
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Color: int\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Length: int
+        :param Bang: 0: with bangs, 1: no bangs
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Bang: int
+        :param Color: 0: black, 1: golden, 2: brown, 3: gray
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Color: int
+        """
         self.Length = None
         self.Bang = None
         self.Color = None
@@ -881,14 +1107,26 @@ class FaceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param X: Horizontal coordinate of the top-left vertex of the face frame.
 The face frame encompasses the facial features and is extended accordingly. If it is larger than the image, the coordinates will be negative. 
-If you want to capture a complete face, you can set the negative coordinates to 0 if the `completeness` score meets the requirement.\n        :type X: int\n        :param Y: Vertical coordinate of the top-left vertex of the face frame. 
+If you want to capture a complete face, you can set the negative coordinates to 0 if the `completeness` score meets the requirement.
+        :type X: int
+        :param Y: Vertical coordinate of the top-left vertex of the face frame. 
 The face frame encompasses the facial features and is extended accordingly. If it is larger than the image, the coordinates will be negative. 
-If you want to capture a complete face, you can set the negative coordinates to 0 if the `completeness` score meets the requirement.\n        :type Y: int\n        :param Width: Face frame width.\n        :type Width: int\n        :param Height: Face frame height.\n        :type Height: int\n        :param FaceAttributesInfo: Face attributes, including gender, age, expression, 
-beauty, glass, mask, hair, and pose (pitch, roll, yaw). Valid information will be returned only if `NeedFaceAttributes` is set to 1.\n        :type FaceAttributesInfo: :class:`tencentcloud.iai.v20200303.models.FaceAttributesInfo`\n        :param FaceQualityInfo: Face quality information, including score, sharpness, brightness, and completeness. Valid information will be returned only if `NeedFaceDetection` is set to 1.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type FaceQualityInfo: :class:`tencentcloud.iai.v20200303.models.FaceQualityInfo`\n        """
+If you want to capture a complete face, you can set the negative coordinates to 0 if the `completeness` score meets the requirement.
+        :type Y: int
+        :param Width: Face frame width.
+        :type Width: int
+        :param Height: Face frame height.
+        :type Height: int
+        :param FaceAttributesInfo: Face attributes, including gender, age, expression, 
+beauty, glass, mask, hair, and pose (pitch, roll, yaw). Valid information will be returned only if `NeedFaceAttributes` is set to 1.
+        :type FaceAttributesInfo: :class:`tencentcloud.iai.v20200303.models.FaceAttributesInfo`
+        :param FaceQualityInfo: Face quality information, including score, sharpness, brightness, and completeness. Valid information will be returned only if `NeedFaceDetection` is set to 1.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FaceQualityInfo: :class:`tencentcloud.iai.v20200303.models.FaceQualityInfo`
+        """
         self.X = None
         self.Y = None
         self.Width = None
@@ -923,20 +1161,32 @@ class FaceQualityCompleteness(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Eyebrow: Eyebrow completeness. Value range: [0,100]. The higher the score, the higher the completeness. 
 Reference range: [0,80], which means incomplete.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Eyebrow: int\n        :param Eye: Eye completeness. Value range: [0,100]. The higher the score, the higher the completeness. 
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Eyebrow: int
+        :param Eye: Eye completeness. Value range: [0,100]. The higher the score, the higher the completeness. 
 Reference range: [0,80], which means incomplete.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Eye: int\n        :param Nose: Nose completeness. Value range: [0,100]. The higher the score, the higher the completeness. 
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Eye: int
+        :param Nose: Nose completeness. Value range: [0,100]. The higher the score, the higher the completeness. 
 Reference range: [0,60], which means incomplete.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Nose: int\n        :param Cheek: Cheek completeness. Value range: [0,100]. The higher the score, the higher the completeness. 
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Nose: int
+        :param Cheek: Cheek completeness. Value range: [0,100]. The higher the score, the higher the completeness. 
 Reference range: [0,70], which means incomplete.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Cheek: int\n        :param Mouth: Mouth completeness. Value range: [0,100]. The higher the score, the higher the completeness. 
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Cheek: int
+        :param Mouth: Mouth completeness. Value range: [0,100]. The higher the score, the higher the completeness. 
 Reference range: [0,50], which means incomplete.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Mouth: int\n        :param Chin: Chin completeness. Value range: [0,100]. The higher the score, the higher the completeness. 
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Mouth: int
+        :param Chin: Chin completeness. Value range: [0,100]. The higher the score, the higher the completeness. 
 Reference range: [0,70], which means incomplete.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Chin: int\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Chin: int
+        """
         self.Eyebrow = None
         self.Eye = None
         self.Nose = None
@@ -967,19 +1217,27 @@ class FaceQualityInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Score: Quality score. Value range: [0,100]. It comprehensively evaluates whether the image quality is suitable for face recognition; the higher the score, the higher the quality. 
 In normal cases, you only need to use `Score` as the overall quality standard score. Specific item scores such as `Sharpness`, `Brightness`, `Completeness` are for reference only.
 Reference range: [0,40]: poor; [40,60]: fine; [60,80]: good; [80,100]: excellent. 
 We recommend selecting images with a score above 70 for adding faces.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Score: int\n        :param Sharpness: Sharpness. Value range: [0,100]. It evaluates the sharpness of the image. The higher the score, the sharper the image. 
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Score: int
+        :param Sharpness: Sharpness. Value range: [0,100]. It evaluates the sharpness of the image. The higher the score, the sharper the image. 
 Reference range: [0,40]: very blurry; [40,60]: blurry; [60,80]: fine; [80,100]: sharp. 
 We recommend selecting images with a score above 80 for adding faces.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Sharpness: int\n        :param Brightness: Brightness. Value range: [0,100]. The brighter the image, the higher the score. 
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Sharpness: int
+        :param Brightness: Brightness. Value range: [0,100]. The brighter the image, the higher the score. 
 Reference range: [0,30]: dark; [30,70]: normal; [70,100]: bright. 
 We recommend selecting images in the [30,70] range for adding faces.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Brightness: int\n        :param Completeness: Completeness of facial features, which assesses the completeness of the eyebrows, eyes, nose, cheeks, mouth, and chin.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Completeness: :class:`tencentcloud.iai.v20200303.models.FaceQualityCompleteness`\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Brightness: int
+        :param Completeness: Completeness of facial features, which assesses the completeness of the eyebrows, eyes, nose, cheeks, mouth, and chin.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Completeness: :class:`tencentcloud.iai.v20200303.models.FaceQualityCompleteness`
+        """
         self.Score = None
         self.Sharpness = None
         self.Brightness = None
@@ -1008,12 +1266,20 @@ class FaceRect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param X: Horizontal coordinate of the top-left vertex of face frame. 
 The face frame encompasses the facial features and is extended accordingly. If it is larger than the image, the coordinates will be negative. 
-If you want to capture a complete face, you can set the negative coordinates to 0 if the completeness score meets the requirement.\n        :type X: int\n        :param Y: Vertical coordinate of the top-left vertex of face frame. 
+If you want to capture a complete face, you can set the negative coordinates to 0 if the completeness score meets the requirement.
+        :type X: int
+        :param Y: Vertical coordinate of the top-left vertex of face frame. 
 The face frame encompasses the facial features and is extended accordingly. If it is larger than the image, the coordinates will be negative. 
-If you want to capture a complete face, you can set the negative coordinates to 0 if the completeness score meets the requirement.\n        :type Y: int\n        :param Width: Face width\n        :type Width: int\n        :param Height: Face height\n        :type Height: int\n        """
+If you want to capture a complete face, you can set the negative coordinates to 0 if the completeness score meets the requirement.
+        :type Y: int
+        :param Width: Face width
+        :type Width: int
+        :param Height: Face height
+        :type Height: int
+        """
         self.X = None
         self.Y = None
         self.Width = None
@@ -1040,8 +1306,26 @@ class FaceShape(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FaceProfile: 21 points that describe the face contour.
+        :type FaceProfile: list of Point
+        :param LeftEye: 8 points that describe the left eye.
+        :type LeftEye: list of Point
+        :param RightEye: 8 points that describe the right eye.
+        :type RightEye: list of Point
+        :param LeftEyeBrow: 8 points that describe the left eyebrow.
+        :type LeftEyeBrow: list of Point
+        :param RightEyeBrow: 8 points that describe the right eyebrow.
+        :type RightEyeBrow: list of Point
+        :param Mouth: 22 points that describe the mouth.
+        :type Mouth: list of Point
+        :param Nose: 13 points that describe the nose.
+        :type Nose: list of Point
+        :param LeftPupil: 1 point that describes the left pupil.
+        :type LeftPupil: list of Point
+        :param RightPupil: 1 point that describes the right pupil.
+        :type RightPupil: list of Point
         """
-        :param FaceProfile: 21 points that describe the face contour.\n        :type FaceProfile: list of Point\n        :param LeftEye: 8 points that describe the left eye.\n        :type LeftEye: list of Point\n        :param RightEye: 8 points that describe the right eye.\n        :type RightEye: list of Point\n        :param LeftEyeBrow: 8 points that describe the left eyebrow.\n        :type LeftEyeBrow: list of Point\n        :param RightEyeBrow: 8 points that describe the right eyebrow.\n        :type RightEyeBrow: list of Point\n        :param Mouth: 22 points that describe the mouth.\n        :type Mouth: list of Point\n        :param Nose: 13 points that describe the nose.\n        :type Nose: list of Point\n        :param LeftPupil: 1 point that describes the left pupil.\n        :type LeftPupil: list of Point\n        :param RightPupil: 1 point that describes the right pupil.\n        :type RightPupil: list of Point\n        """
         self.FaceProfile = None
         self.LeftEye = None
         self.RightEye = None
@@ -1123,8 +1407,10 @@ class GetGroupInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API.
+        :type GroupId: str
         """
-        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API.\n        :type GroupId: str\n        """
         self.GroupId = None
 
 
@@ -1145,8 +1431,22 @@ class GetGroupInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupName: Group name
+        :type GroupName: str
+        :param GroupId: Group ID
+        :type GroupId: str
+        :param GroupExDescriptions: Custom group description field
+        :type GroupExDescriptions: list of str
+        :param Tag: Group remarks
+        :type Tag: str
+        :param FaceModelVersion: Algorithm model version used for face recognition.
+        :type FaceModelVersion: str
+        :param CreationTimestamp: Group creation time and date (`CreationTimestamp`), whose value is the number of milliseconds between the UNIX epoch time and the group creation time.
+        :type CreationTimestamp: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param GroupName: Group name\n        :type GroupName: str\n        :param GroupId: Group ID\n        :type GroupId: str\n        :param GroupExDescriptions: Custom group description field\n        :type GroupExDescriptions: list of str\n        :param Tag: Group remarks\n        :type Tag: str\n        :param FaceModelVersion: Algorithm model version used for face recognition.\n        :type FaceModelVersion: str\n        :param CreationTimestamp: Group creation time and date (`CreationTimestamp`), whose value is the number of milliseconds between the UNIX epoch time and the group creation time.\n        :type CreationTimestamp: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.GroupName = None
         self.GroupId = None
         self.GroupExDescriptions = None
@@ -1172,8 +1472,12 @@ class GetGroupListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: Starting number. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned results. Default value: 10. Maximum value: 1000.
+        :type Limit: int
         """
-        :param Offset: Starting number. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of returned results. Default value: 10. Maximum value: 1000.\n        :type Limit: int\n        """
         self.Offset = None
         self.Limit = None
 
@@ -1196,9 +1500,15 @@ class GetGroupListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupInfos: Returned group information
+        :type GroupInfos: list of GroupInfo
+        :param GroupNum: Total number of groups
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type GroupNum: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param GroupInfos: Returned group information\n        :type GroupInfos: list of GroupInfo\n        :param GroupNum: Total number of groups
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type GroupNum: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.GroupInfos = None
         self.GroupNum = None
         self.RequestId = None
@@ -1221,8 +1531,10 @@ class GetPersonBaseInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.
+        :type PersonId: str
         """
-        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.\n        :type PersonId: str\n        """
         self.PersonId = None
 
 
@@ -1243,8 +1555,16 @@ class GetPersonBaseInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PersonName: Person name
+        :type PersonName: str
+        :param Gender: Person gender. 0: empty; 1: male; 2: female.
+        :type Gender: int
+        :param FaceIds: List of the IDs of included faces
+        :type FaceIds: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param PersonName: Person name\n        :type PersonName: str\n        :param Gender: Person gender. 0: empty; 1: male; 2: female.\n        :type Gender: int\n        :param FaceIds: List of the IDs of included faces\n        :type FaceIds: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PersonName = None
         self.Gender = None
         self.FaceIds = None
@@ -1264,8 +1584,14 @@ class GetPersonGroupInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.
+        :type PersonId: str
+        :param Offset: Starting number. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned results. Default value: 10. Maximum value: 100.
+        :type Limit: int
         """
-        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.\n        :type PersonId: str\n        :param Offset: Starting number. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of returned results. Default value: 10. Maximum value: 100.\n        :type Limit: int\n        """
         self.PersonId = None
         self.Offset = None
         self.Limit = None
@@ -1290,10 +1616,18 @@ class GetPersonGroupInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PersonGroupInfos: List of groups containing this person and their description fields
+        :type PersonGroupInfos: list of PersonGroupInfo
+        :param GroupNum: Total number of groups
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type GroupNum: int
+        :param FaceModelVersion: Algorithm model version used by the Face Recognition service.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FaceModelVersion: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param PersonGroupInfos: List of groups containing this person and their description fields\n        :type PersonGroupInfos: list of PersonGroupInfo\n        :param GroupNum: Total number of groups
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type GroupNum: int\n        :param FaceModelVersion: Algorithm model version used by the Face Recognition service.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type FaceModelVersion: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PersonGroupInfos = None
         self.GroupNum = None
         self.FaceModelVersion = None
@@ -1318,8 +1652,10 @@ class GetPersonListNumRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API.
+        :type GroupId: str
         """
-        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API.\n        :type GroupId: str\n        """
         self.GroupId = None
 
 
@@ -1340,8 +1676,14 @@ class GetPersonListNumResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PersonNum: Number of persons
+        :type PersonNum: int
+        :param FaceNum: Number of faces
+        :type FaceNum: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param PersonNum: Number of persons\n        :type PersonNum: int\n        :param FaceNum: Number of faces\n        :type FaceNum: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PersonNum = None
         self.FaceNum = None
         self.RequestId = None
@@ -1359,8 +1701,14 @@ class GetPersonListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API.
+        :type GroupId: str
+        :param Offset: Starting number. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned results. Default value: 10. Maximum value: 1000.
+        :type Limit: int
         """
-        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API.\n        :type GroupId: str\n        :param Offset: Starting number. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of returned results. Default value: 10. Maximum value: 1000.\n        :type Limit: int\n        """
         self.GroupId = None
         self.Offset = None
         self.Limit = None
@@ -1385,11 +1733,21 @@ class GetPersonListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PersonInfos: Returned person information
+        :type PersonInfos: list of PersonInfo
+        :param PersonNum: Number of persons in the group
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PersonNum: int
+        :param FaceNum: Number of faces in the group
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FaceNum: int
+        :param FaceModelVersion: Algorithm model version used for face recognition.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FaceModelVersion: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param PersonInfos: Returned person information\n        :type PersonInfos: list of PersonInfo\n        :param PersonNum: Number of persons in the group
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type PersonNum: int\n        :param FaceNum: Number of faces in the group
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type FaceNum: int\n        :param FaceModelVersion: Algorithm model version used for face recognition.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type FaceModelVersion: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PersonInfos = None
         self.PersonNum = None
         self.FaceNum = None
@@ -1416,8 +1774,12 @@ class GroupCandidate(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: Group ID.
+        :type GroupId: str
+        :param Candidates: Most matching candidate recognized
+        :type Candidates: list of Candidate
         """
-        :param GroupId: Group ID.\n        :type GroupId: str\n        :param Candidates: Most matching candidate recognized\n        :type Candidates: list of Candidate\n        """
         self.GroupId = None
         self.Candidates = None
 
@@ -1445,9 +1807,13 @@ class GroupExDescriptionInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupExDescriptionIndex: Custom group description field index, whose value starts from 0.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type GroupExDescriptionIndex: int\n        :param GroupExDescription: Content of the custom group description field to be updated\n        :type GroupExDescription: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type GroupExDescriptionIndex: int
+        :param GroupExDescription: Content of the custom group description field to be updated
+        :type GroupExDescription: str
+        """
         self.GroupExDescriptionIndex = None
         self.GroupExDescription = None
 
@@ -1470,13 +1836,25 @@ class GroupInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param GroupName: Group name\n        :type GroupName: str\n        :param GroupId: Group ID\n        :type GroupId: str\n        :param GroupExDescriptions: Custom group description field
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type GroupExDescriptions: list of str\n        :param Tag: Group remarks
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Tag: str\n        :param FaceModelVersion: Algorithm model version used for face recognition.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type FaceModelVersion: str\n        :param CreationTimestamp: Group creation time and date (`CreationTimestamp`), whose value is the number of milliseconds between the UNIX epoch time and the group creation time. 
+        r"""
+        :param GroupName: Group name
+        :type GroupName: str
+        :param GroupId: Group ID
+        :type GroupId: str
+        :param GroupExDescriptions: Custom group description field
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type GroupExDescriptions: list of str
+        :param Tag: Group remarks
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Tag: str
+        :param FaceModelVersion: Algorithm model version used for face recognition.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FaceModelVersion: str
+        :param CreationTimestamp: Group creation time and date (`CreationTimestamp`), whose value is the number of milliseconds between the UNIX epoch time and the group creation time. 
 The UNIX epoch time is 00:00:00, Thursday, January 1, 1970, Coordinated Universal Time (UTC). For more information, please see the UNIX time document.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type CreationTimestamp: int\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CreationTimestamp: int
+        """
         self.GroupName = None
         self.GroupId = None
         self.GroupExDescriptions = None
@@ -1507,8 +1885,16 @@ class ModifyGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API.
+        :type GroupId: str
+        :param GroupName: Group name
+        :type GroupName: str
+        :param GroupExDescriptionInfos: Custom description field of the group to be modified, which is a `key-value` pair.
+        :type GroupExDescriptionInfos: list of GroupExDescriptionInfo
+        :param Tag: Group remarks
+        :type Tag: str
         """
-        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API.\n        :type GroupId: str\n        :param GroupName: Group name\n        :type GroupName: str\n        :param GroupExDescriptionInfos: Custom description field of the group to be modified, which is a `key-value` pair.\n        :type GroupExDescriptionInfos: list of GroupExDescriptionInfo\n        :param Tag: Group remarks\n        :type Tag: str\n        """
         self.GroupId = None
         self.GroupName = None
         self.GroupExDescriptionInfos = None
@@ -1540,8 +1926,10 @@ class ModifyGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1555,8 +1943,14 @@ class ModifyPersonBaseInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.
+        :type PersonId: str
+        :param PersonName: Name of the person to be modified
+        :type PersonName: str
+        :param Gender: Gender of the person to be modified. 1: male; 2: female.
+        :type Gender: int
         """
-        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.\n        :type PersonId: str\n        :param PersonName: Name of the person to be modified\n        :type PersonName: str\n        :param Gender: Gender of the person to be modified. 1: male; 2: female.\n        :type Gender: int\n        """
         self.PersonId = None
         self.PersonName = None
         self.Gender = None
@@ -1581,8 +1975,10 @@ class ModifyPersonBaseInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1596,8 +1992,14 @@ class ModifyPersonGroupInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API.
+        :type GroupId: str
+        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.
+        :type PersonId: str
+        :param PersonExDescriptionInfos: Custom description field of the person to be modified, which is a `key-value` pair.
+        :type PersonExDescriptionInfos: list of PersonExDescriptionInfo
         """
-        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API.\n        :type GroupId: str\n        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.\n        :type PersonId: str\n        :param PersonExDescriptionInfos: Custom description field of the person to be modified, which is a `key-value` pair.\n        :type PersonExDescriptionInfos: list of PersonExDescriptionInfo\n        """
         self.GroupId = None
         self.PersonId = None
         self.PersonExDescriptionInfos = None
@@ -1627,8 +2029,10 @@ class ModifyPersonGroupInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1642,9 +2046,13 @@ class PersonExDescriptionInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PersonExDescriptionIndex: Person description field index, whose value starts from 0.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type PersonExDescriptionIndex: int\n        :param PersonExDescription: Content of the person description field to be updated\n        :type PersonExDescription: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PersonExDescriptionIndex: int
+        :param PersonExDescription: Content of the person description field to be updated
+        :type PersonExDescription: str
+        """
         self.PersonExDescriptionIndex = None
         self.PersonExDescription = None
 
@@ -1667,8 +2075,12 @@ class PersonGroupInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: ID of the group that contains this person
+        :type GroupId: str
+        :param PersonExDescriptions: Content of person description field
+        :type PersonExDescriptions: list of str
         """
-        :param GroupId: ID of the group that contains this person\n        :type GroupId: str\n        :param PersonExDescriptions: Content of person description field\n        :type PersonExDescriptions: list of str\n        """
         self.GroupId = None
         self.PersonExDescriptions = None
 
@@ -1691,9 +2103,21 @@ class PersonInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PersonName: Person name
+        :type PersonName: str
+        :param PersonId: Person ID
+        :type PersonId: str
+        :param Gender: Person gender
+        :type Gender: int
+        :param PersonExDescriptions: Content of person description field
+        :type PersonExDescriptions: list of str
+        :param FaceIds: List of contained face images
+        :type FaceIds: list of str
+        :param CreationTimestamp: Person creation time and date (`CreationTimestamp`), whose value is the number of milliseconds between the UNIX epoch time and the group creation time. 
+The UNIX epoch time is 00:00:00, Thursday, January 1, 1970, Coordinated Universal Time (UTC). For more information, please see the UNIX time document.
+        :type CreationTimestamp: int
         """
-        :param PersonName: Person name\n        :type PersonName: str\n        :param PersonId: Person ID\n        :type PersonId: str\n        :param Gender: Person gender\n        :type Gender: int\n        :param PersonExDescriptions: Content of person description field\n        :type PersonExDescriptions: list of str\n        :param FaceIds: List of contained face images\n        :type FaceIds: list of str\n        :param CreationTimestamp: Person creation time and date (`CreationTimestamp`), whose value is the number of milliseconds between the UNIX epoch time and the group creation time. 
-The UNIX epoch time is 00:00:00, Thursday, January 1, 1970, Coordinated Universal Time (UTC). For more information, please see the UNIX time document.\n        :type CreationTimestamp: int\n        """
         self.PersonName = None
         self.PersonId = None
         self.Gender = None
@@ -1724,8 +2148,12 @@ class Point(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param X: X coordinate
+        :type X: int
+        :param Y: Y coordinate
+        :type Y: int
         """
-        :param X: X coordinate\n        :type X: int\n        :param Y: Y coordinate\n        :type Y: int\n        """
         self.X = None
         self.Y = None
 
@@ -1748,9 +2176,15 @@ class Result(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Candidates: Most matching candidate recognized
+        :type Candidates: list of Candidate
+        :param FaceRect: Position of detected face frame
+        :type FaceRect: :class:`tencentcloud.iai.v20200303.models.FaceRect`
+        :param RetCode: Status return code of detected face image. 0: normal. 
+-1601: the image quality control requirement is not met; in this case, `Candidate` is empty.
+        :type RetCode: int
         """
-        :param Candidates: Most matching candidate recognized\n        :type Candidates: list of Candidate\n        :param FaceRect: Position of detected face frame\n        :type FaceRect: :class:`tencentcloud.iai.v20200303.models.FaceRect`\n        :param RetCode: Status return code of detected face image. 0: normal. 
--1601: the image quality control requirement is not met; in this case, `Candidate` is empty.\n        :type RetCode: int\n        """
         self.Candidates = None
         self.FaceRect = None
         self.RetCode = None
@@ -1782,9 +2216,15 @@ class ResultsReturnsByGroup(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FaceRect: Position of detected face frame
+        :type FaceRect: :class:`tencentcloud.iai.v20200303.models.FaceRect`
+        :param GroupCandidates: Recognition result.
+        :type GroupCandidates: list of GroupCandidate
+        :param RetCode: Status return code of detected face image. 0: normal. 
+-1601: the image quality control requirement is not met; in this case, `Candidate` is empty.
+        :type RetCode: int
         """
-        :param FaceRect: Position of detected face frame\n        :type FaceRect: :class:`tencentcloud.iai.v20200303.models.FaceRect`\n        :param GroupCandidates: Recognition result.\n        :type GroupCandidates: list of GroupCandidate\n        :param RetCode: Status return code of detected face image. 0: normal. 
--1601: the image quality control requirement is not met; in this case, `Candidate` is empty.\n        :type RetCode: int\n        """
         self.FaceRect = None
         self.GroupCandidates = None
         self.RetCode = None
@@ -1816,26 +2256,46 @@ class SearchFacesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param GroupIds: List of groups to be searched in (up to 100). The array element value is the `GroupId` in the `CreateGroup` API.\n        :type GroupIds: list of str\n        :param Image: Base64-encoded image data, which cannot exceed 5 MB.
+        r"""
+        :param GroupIds: List of groups to be searched in (up to 100). The array element value is the `GroupId` in the `CreateGroup` API.
+        :type GroupIds: list of str
+        :param Image: Base64-encoded image data, which cannot exceed 5 MB.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.\n        :type Image: str\n        :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type Image: str
+        :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  
 We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
 The download speed and stability of non-Tencent Cloud URLs may be low.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.\n        :type Url: str\n        :param MaxFaceNum: Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10. 
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type Url: str
+        :param MaxFaceNum: Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10. 
 `MaxFaceNum` is used to control the number of faces to be searched for if there are multiple faces in the input image to be recognized. 
-For example, if the input image in `Image` or `Url` contains multiple faces and `MaxFaceNum` is 5, top 5 faces with the largest size in the image will be recognized.\n        :type MaxFaceNum: int\n        :param MinFaceSize: Minimum height and width of face in px. Default value: 34. Face images whose value is below 34 cannot be recognized. We recommend setting this parameter to 80.\n        :type MinFaceSize: int\n        :param MaxPersonNum: Number of the most similar persons returned for one single recognized face image. Default value: 5. Maximum value: 100. 
+For example, if the input image in `Image` or `Url` contains multiple faces and `MaxFaceNum` is 5, top 5 faces with the largest size in the image will be recognized.
+        :type MaxFaceNum: int
+        :param MinFaceSize: Minimum height and width of face in px. Default value: 34. Face images whose value is below 34 cannot be recognized. We recommend setting this parameter to 80.
+        :type MinFaceSize: int
+        :param MaxPersonNum: Number of the most similar persons returned for one single recognized face image. Default value: 5. Maximum value: 100. 
 For example, if `MaxFaceNum` is 1 and `MaxPersonNum` is 8, information of the top 8 most similar persons will be returned.
-The greater the value, the longer the processing time. We recommend setting a value below 10.\n        :type MaxPersonNum: int\n        :param NeedPersonInfo: Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.\n        :type NeedPersonInfo: int\n        :param QualityControl: Image quality control. 
+The greater the value, the longer the processing time. We recommend setting a value below 10.
+        :type MaxPersonNum: int
+        :param NeedPersonInfo: Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.
+        :type NeedPersonInfo: int
+        :param QualityControl: Image quality control. 
 0: no control. 
 1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
 2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
 3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
 4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
 Default value: 0. 
-If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.\n        :type QualityControl: int\n        :param FaceMatchThreshold: In the output parameter `Score`, the result will be returned only if the result value is above the `FaceMatchThreshold` value. Default value: 0.\n        :type FaceMatchThreshold: float\n        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.\n        :type NeedRotateDetection: int\n        """
+If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.
+        :type QualityControl: int
+        :param FaceMatchThreshold: In the output parameter `Score`, the result will be returned only if the result value is above the `FaceMatchThreshold` value. Default value: 0.
+        :type FaceMatchThreshold: float
+        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        :type NeedRotateDetection: int
+        """
         self.GroupIds = None
         self.Image = None
         self.Url = None
@@ -1874,8 +2334,16 @@ class SearchFacesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Results: Recognition result.
+        :type Results: list of Result
+        :param FaceNum: Number of faces included in searched groups.
+        :type FaceNum: int
+        :param FaceModelVersion: Algorithm model version used for face recognition.
+        :type FaceModelVersion: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Results: Recognition result.\n        :type Results: list of Result\n        :param FaceNum: Number of faces included in searched groups.\n        :type FaceNum: int\n        :param FaceModelVersion: Algorithm model version used for face recognition.\n        :type FaceModelVersion: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Results = None
         self.FaceNum = None
         self.FaceModelVersion = None
@@ -1900,27 +2368,47 @@ class SearchFacesReturnsByGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param GroupIds: List of groups to be searched in (up to 60). The array element value is the `GroupId` in the `CreateGroup` API.\n        :type GroupIds: list of str\n        :param Image: Base64-encoded image data, which cannot exceed 5 MB.
+        r"""
+        :param GroupIds: List of groups to be searched in (up to 60). The array element value is the `GroupId` in the `CreateGroup` API.
+        :type GroupIds: list of str
+        :param Image: Base64-encoded image data, which cannot exceed 5 MB.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.\n        :type Image: str\n        :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type Image: str
+        :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.
 We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
 The download speed and stability of non-Tencent Cloud URLs may be low.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.\n        :type Url: str\n        :param MaxFaceNum: Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type Url: str
+        :param MaxFaceNum: Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10.
 `MaxFaceNum` is used to control the number of faces to be searched for if there are multiple faces in the input image to be recognized.
-For example, if the input image in `Image` or `Url` contains multiple faces and `MaxFaceNum` is 5, top 5 faces with the largest size in the image will be recognized.\n        :type MaxFaceNum: int\n        :param MinFaceSize: Minimum height and width of face in px. Default value: 34. A value below 34 will affect the search accuracy. We recommend setting this parameter to 80.\n        :type MinFaceSize: int\n        :param MaxPersonNumPerGroup: Detected faces, which is corresponding to the maximum number of returned most matching persons. Default value: 5. Maximum value: 10.  
-For example, if `MaxFaceNum` is 3 and `MaxPersonNum` is 5, up to 15 (3 * 5) persons will be returned.\n        :type MaxPersonNumPerGroup: int\n        :param NeedPersonInfo: Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.\n        :type NeedPersonInfo: int\n        :param QualityControl: Image quality control. 
+For example, if the input image in `Image` or `Url` contains multiple faces and `MaxFaceNum` is 5, top 5 faces with the largest size in the image will be recognized.
+        :type MaxFaceNum: int
+        :param MinFaceSize: Minimum height and width of face in px. Default value: 34. A value below 34 will affect the search accuracy. We recommend setting this parameter to 80.
+        :type MinFaceSize: int
+        :param MaxPersonNumPerGroup: Detected faces, which is corresponding to the maximum number of returned most matching persons. Default value: 5. Maximum value: 10.  
+For example, if `MaxFaceNum` is 3 and `MaxPersonNum` is 5, up to 15 (3 * 5) persons will be returned.
+        :type MaxPersonNumPerGroup: int
+        :param NeedPersonInfo: Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.
+        :type NeedPersonInfo: int
+        :param QualityControl: Image quality control. 
 0: no control. 
 1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
 2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
 3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
 4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
 Default value: 0. 
-If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.\n        :type QualityControl: int\n        :param FaceMatchThreshold: In the output parameter `Score`, the result will be returned only if the result value is greater than or equal to the `FaceMatchThreshold` value.
+If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.
+        :type QualityControl: int
+        :param FaceMatchThreshold: In the output parameter `Score`, the result will be returned only if the result value is greater than or equal to the `FaceMatchThreshold` value.
 Default value: 0.
-Value range: [0.0,100.0).\n        :type FaceMatchThreshold: float\n        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.\n        :type NeedRotateDetection: int\n        """
+Value range: [0.0,100.0).
+        :type FaceMatchThreshold: float
+        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        :type NeedRotateDetection: int
+        """
         self.GroupIds = None
         self.Image = None
         self.Url = None
@@ -1959,8 +2447,16 @@ class SearchFacesReturnsByGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FaceNum: Number of faces included in searched groups.
+        :type FaceNum: int
+        :param ResultsReturnsByGroup: Recognition result.
+        :type ResultsReturnsByGroup: list of ResultsReturnsByGroup
+        :param FaceModelVersion: Algorithm model version used for face recognition.
+        :type FaceModelVersion: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param FaceNum: Number of faces included in searched groups.\n        :type FaceNum: int\n        :param ResultsReturnsByGroup: Recognition result.\n        :type ResultsReturnsByGroup: list of ResultsReturnsByGroup\n        :param FaceModelVersion: Algorithm model version used for face recognition.\n        :type FaceModelVersion: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FaceNum = None
         self.ResultsReturnsByGroup = None
         self.FaceModelVersion = None
@@ -1985,27 +2481,47 @@ class SearchPersonsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param GroupIds: List of groups to be searched in (up to 100). The array element value is the `GroupId` in the `CreateGroup` API.\n        :type GroupIds: list of str\n        :param Image: Base64-encoded image data, which cannot exceed 5 MB.
+        r"""
+        :param GroupIds: List of groups to be searched in (up to 100). The array element value is the `GroupId` in the `CreateGroup` API.
+        :type GroupIds: list of str
+        :param Image: Base64-encoded image data, which cannot exceed 5 MB.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 If there are multiple faces in the image, only the face with the largest size will be selected.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.\n        :type Image: str\n        :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type Image: str
+        :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.
 We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
 The download speed and stability of non-Tencent Cloud URLs may be low.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.\n        :type Url: str\n        :param MaxFaceNum: Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type Url: str
+        :param MaxFaceNum: Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10.
 `MaxFaceNum` is used to control the number of faces to be searched for if there are multiple faces in the input image to be recognized.
-For example, if the input image in `Image` or `Url` contains multiple faces and `MaxFaceNum` is 5, top 5 faces with the largest size in the image will be recognized.\n        :type MaxFaceNum: int\n        :param MinFaceSize: Minimum height and width of face in px. Default value: 34. A value below 34 will affect the search accuracy. We recommend setting this parameter to 80.\n        :type MinFaceSize: int\n        :param MaxPersonNum: Number of the most similar persons returned for one single recognized face image. Default value: 5. Maximum value: 100.
+For example, if the input image in `Image` or `Url` contains multiple faces and `MaxFaceNum` is 5, top 5 faces with the largest size in the image will be recognized.
+        :type MaxFaceNum: int
+        :param MinFaceSize: Minimum height and width of face in px. Default value: 34. A value below 34 will affect the search accuracy. We recommend setting this parameter to 80.
+        :type MinFaceSize: int
+        :param MaxPersonNum: Number of the most similar persons returned for one single recognized face image. Default value: 5. Maximum value: 100.
 For example, if `MaxFaceNum` is 1 and `MaxPersonNum` is 8, information of the top 8 most similar persons will be returned.
-The greater the value, the longer the processing time. We recommend setting a value below 10.\n        :type MaxPersonNum: int\n        :param QualityControl: Image quality control. 
+The greater the value, the longer the processing time. We recommend setting a value below 10.
+        :type MaxPersonNum: int
+        :param QualityControl: Image quality control. 
 0: no control. 
 1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
 2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
 3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
 4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
 Default value: 0. 
-If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.\n        :type QualityControl: int\n        :param FaceMatchThreshold: In the output parameter `Score`, the result will be returned only if the result value is greater than or equal to the `FaceMatchThreshold` value. Default value: 0. Value range: [0.0,100.0).\n        :type FaceMatchThreshold: float\n        :param NeedPersonInfo: Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.\n        :type NeedPersonInfo: int\n        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.\n        :type NeedRotateDetection: int\n        """
+If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.
+        :type QualityControl: int
+        :param FaceMatchThreshold: In the output parameter `Score`, the result will be returned only if the result value is greater than or equal to the `FaceMatchThreshold` value. Default value: 0. Value range: [0.0,100.0).
+        :type FaceMatchThreshold: float
+        :param NeedPersonInfo: Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.
+        :type NeedPersonInfo: int
+        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        :type NeedRotateDetection: int
+        """
         self.GroupIds = None
         self.Image = None
         self.Url = None
@@ -2044,9 +2560,17 @@ class SearchPersonsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Results: Recognition result.
+        :type Results: list of Result
+        :param PersonNum: Number of the persons included in searched groups. If the quality of all faces in the input image does not meet the requirement, 0 will be returned.
+        :type PersonNum: int
+        :param FaceModelVersion: Algorithm model version used for face recognition.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FaceModelVersion: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Results: Recognition result.\n        :type Results: list of Result\n        :param PersonNum: Number of the persons included in searched groups. If the quality of all faces in the input image does not meet the requirement, 0 will be returned.\n        :type PersonNum: int\n        :param FaceModelVersion: Algorithm model version used for face recognition.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type FaceModelVersion: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Results = None
         self.PersonNum = None
         self.FaceModelVersion = None
@@ -2071,25 +2595,45 @@ class SearchPersonsReturnsByGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param GroupIds: List of groups to be searched in (up to 60). The array element value is the `GroupId` in the `CreateGroup` API.\n        :type GroupIds: list of str\n        :param Image: Base64-encoded image data, which cannot exceed 5 MB.
+        r"""
+        :param GroupIds: List of groups to be searched in (up to 60). The array element value is the `GroupId` in the `CreateGroup` API.
+        :type GroupIds: list of str
+        :param Image: Base64-encoded image data, which cannot exceed 5 MB.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.\n        :type Image: str\n        :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type Image: str
+        :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.
 We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
 The download speed and stability of non-Tencent Cloud URLs may be low.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.\n        :type Url: str\n        :param MaxFaceNum: Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type Url: str
+        :param MaxFaceNum: Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10.
 `MaxFaceNum` is used to control the number of faces to be searched for if there are multiple faces in the input image to be recognized.
-For example, if the input image in `Image` or `Url` contains multiple faces and `MaxFaceNum` is 5, top 5 faces with the largest size in the image will be recognized.\n        :type MaxFaceNum: int\n        :param MinFaceSize: Minimum height and width of face in px. Default value: 34. A value below 34 will affect the search accuracy. We recommend setting this parameter to 80.\n        :type MinFaceSize: int\n        :param MaxPersonNumPerGroup: Detected faces, which is corresponding to the maximum number of returned most matching persons. Default value: 5. Maximum value: 10.  
-For example, if `MaxFaceNum` is 3, `MaxPersonNumPerGroup` is 5, and the `GroupIds` length is 3, up to 45 (3 * 5 * 3) persons will be returned.\n        :type MaxPersonNumPerGroup: int\n        :param QualityControl: Image quality control. 
+For example, if the input image in `Image` or `Url` contains multiple faces and `MaxFaceNum` is 5, top 5 faces with the largest size in the image will be recognized.
+        :type MaxFaceNum: int
+        :param MinFaceSize: Minimum height and width of face in px. Default value: 34. A value below 34 will affect the search accuracy. We recommend setting this parameter to 80.
+        :type MinFaceSize: int
+        :param MaxPersonNumPerGroup: Detected faces, which is corresponding to the maximum number of returned most matching persons. Default value: 5. Maximum value: 10.  
+For example, if `MaxFaceNum` is 3, `MaxPersonNumPerGroup` is 5, and the `GroupIds` length is 3, up to 45 (3 * 5 * 3) persons will be returned.
+        :type MaxPersonNumPerGroup: int
+        :param QualityControl: Image quality control. 
 0: no control. 
 1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
 2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
 3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
 4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
 Default value: 0. 
-If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.\n        :type QualityControl: int\n        :param FaceMatchThreshold: In the output parameter `Score`, the result will be returned only if the result value is above the `FaceMatchThreshold` value. Default value: 0.\n        :type FaceMatchThreshold: float\n        :param NeedPersonInfo: Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.\n        :type NeedPersonInfo: int\n        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.\n        :type NeedRotateDetection: int\n        """
+If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.
+        :type QualityControl: int
+        :param FaceMatchThreshold: In the output parameter `Score`, the result will be returned only if the result value is above the `FaceMatchThreshold` value. Default value: 0.
+        :type FaceMatchThreshold: float
+        :param NeedPersonInfo: Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.
+        :type NeedPersonInfo: int
+        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        :type NeedRotateDetection: int
+        """
         self.GroupIds = None
         self.Image = None
         self.Url = None
@@ -2128,8 +2672,16 @@ class SearchPersonsReturnsByGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PersonNum: Number of the persons included in searched groups. If the quality of all faces in the input image does not meet the requirement, 0 will be returned.
+        :type PersonNum: int
+        :param ResultsReturnsByGroup: Recognition result.
+        :type ResultsReturnsByGroup: list of ResultsReturnsByGroup
+        :param FaceModelVersion: Algorithm model version used for face recognition.
+        :type FaceModelVersion: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param PersonNum: Number of the persons included in searched groups. If the quality of all faces in the input image does not meet the requirement, 0 will be returned.\n        :type PersonNum: int\n        :param ResultsReturnsByGroup: Recognition result.\n        :type ResultsReturnsByGroup: list of ResultsReturnsByGroup\n        :param FaceModelVersion: Algorithm model version used for face recognition.\n        :type FaceModelVersion: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PersonNum = None
         self.ResultsReturnsByGroup = None
         self.FaceModelVersion = None
@@ -2154,24 +2706,34 @@ class VerifyFaceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param PersonId: ID of the person to be verified. For more information on `PersonId`, please see the group management APIs.\n        :type PersonId: str\n        :param Image: Base64-encoded image data, which cannot exceed 5 MB.
+        r"""
+        :param PersonId: ID of the person to be verified. For more information on `PersonId`, please see the group management APIs.
+        :type PersonId: str
+        :param Image: Base64-encoded image data, which cannot exceed 5 MB.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 If there are multiple faces in the image, only the face with the largest size will be selected.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.\n        :type Image: str\n        :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type Image: str
+        :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  
 We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
 The download speed and stability of non-Tencent Cloud URLs may be low.
 If there are multiple faces in the image, only the face with the largest size will be selected.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.\n        :type Url: str\n        :param QualityControl: Image quality control. 
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type Url: str
+        :param QualityControl: Image quality control. 
 0: no control. 
 1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
 2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
 3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
 4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
 Default value: 0. 
-If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.\n        :type QualityControl: int\n        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.\n        :type NeedRotateDetection: int\n        """
+If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.
+        :type QualityControl: int
+        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        :type NeedRotateDetection: int
+        """
         self.PersonId = None
         self.Image = None
         self.Url = None
@@ -2200,12 +2762,20 @@ class VerifyFaceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Score: Similarity between given face image and `PersonId`. If there are multiple faces under the `PersonId`, the score of the highest similarity will be returned.
 
 The returned similarity score varies by algorithm version.
 If you need to verify whether the faces in the two images are the same person, then the 0.1%, 0.01%, and 0.001% FARs on v3.0 correspond to scores of 40, 50, and 60, respectively. Generally, if the score is above 50, it can be judged that they are the same person.
-The 0.1%, 0.01%, and 0.001% FARs on v2.0 correspond to scores of 70, 80, and 90, respectively. Generally, if the score is above 80, it can be judged that they are the same person.\n        :type Score: float\n        :param IsMatch: Whether the person in the image matches the `PersonId`.\n        :type IsMatch: bool\n        :param FaceModelVersion: Algorithm model version used for face recognition in the group where the `Person` is, which is set when the group is created. For more information, please see [Algorithm Model Version](https://intl.cloud.tencent.com/document/product/867/40042?from_cn_redirect=1)\n        :type FaceModelVersion: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+The 0.1%, 0.01%, and 0.001% FARs on v2.0 correspond to scores of 70, 80, and 90, respectively. Generally, if the score is above 80, it can be judged that they are the same person.
+        :type Score: float
+        :param IsMatch: Whether the person in the image matches the `PersonId`.
+        :type IsMatch: bool
+        :param FaceModelVersion: Algorithm model version used for face recognition in the group where the `Person` is, which is set when the group is created. For more information, please see [Algorithm Model Version](https://intl.cloud.tencent.com/document/product/867/40042?from_cn_redirect=1)
+        :type FaceModelVersion: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.Score = None
         self.IsMatch = None
         self.FaceModelVersion = None
@@ -2225,24 +2795,34 @@ class VerifyPersonRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param PersonId: ID of the person to be verified. For more information on `PersonId`, please see the group management APIs.\n        :type PersonId: str\n        :param Image: Base64-encoded data of the image.
+        r"""
+        :param PersonId: ID of the person to be verified. For more information on `PersonId`, please see the group management APIs.
+        :type PersonId: str
+        :param Image: Base64-encoded data of the image.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 If there are multiple faces in the image, only the face with the largest size will be selected.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.\n        :type Image: str\n        :param Url: Image URL 
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type Image: str
+        :param Url: Image URL 
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
  Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used. 
 We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
 The download speed and stability of non-Tencent Cloud URLs may be low.
 If there are multiple faces in the image, only the face with the largest size will be selected.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.\n        :type Url: str\n        :param QualityControl: Image quality control. 
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type Url: str
+        :param QualityControl: Image quality control. 
 0: no control. 
 1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
 2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
 3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
 4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
 Default value: 0. 
-If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.\n        :type QualityControl: int\n        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.\n        :type NeedRotateDetection: int\n        """
+If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.
+        :type QualityControl: int
+        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        :type NeedRotateDetection: int
+        """
         self.PersonId = None
         self.Image = None
         self.Url = None
@@ -2271,8 +2851,16 @@ class VerifyPersonResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Score: Similarity between given face image and `PersonId`. If there are multiple faces under the `PersonId`, their information will be fused for verification.
+        :type Score: float
+        :param IsMatch: Whether the person in the image matches the `PersonId`.
+        :type IsMatch: bool
+        :param FaceModelVersion: Algorithm model version used for face recognition in the group where the `Person` is, which is set when the group is created. For more information, please see [Algorithm Model Version](https://intl.cloud.tencent.com/document/product/867/40042?from_cn_redirect=1)
+        :type FaceModelVersion: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Score: Similarity between given face image and `PersonId`. If there are multiple faces under the `PersonId`, their information will be fused for verification.\n        :type Score: float\n        :param IsMatch: Whether the person in the image matches the `PersonId`.\n        :type IsMatch: bool\n        :param FaceModelVersion: Algorithm model version used for face recognition in the group where the `Person` is, which is set when the group is created. For more information, please see [Algorithm Model Version](https://intl.cloud.tencent.com/document/product/867/40042?from_cn_redirect=1)\n        :type FaceModelVersion: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Score = None
         self.IsMatch = None
         self.FaceModelVersion = None

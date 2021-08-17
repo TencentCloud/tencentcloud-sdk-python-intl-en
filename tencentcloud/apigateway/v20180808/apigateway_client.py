@@ -26,6 +26,62 @@ class ApigatewayClient(AbstractClient):
     _service = 'apigateway'
 
 
+    def AttachPlugin(self, request):
+        """This API is used to bind a plugin to an API.
+
+        :param request: Request instance for AttachPlugin.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.AttachPluginRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.AttachPluginResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AttachPlugin", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AttachPluginResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def BindApiApp(self, request):
+        """This API is used to bind an application to an API.
+
+        :param request: Request instance for BindApiApp.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.BindApiAppRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.BindApiAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BindApiApp", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BindApiAppResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def BindEnvironment(self, request):
         """This API is used to bind a usage plan to a service or API.
         After you publish a service to an environment, if the API requires authentication and can be called only when it is bound to a usage plan, you can use this API to bind a usage plan to the specified environment.
@@ -226,6 +282,34 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateApiApp(self, request):
+        """This API is used to create an application.
+
+        :param request: Request instance for CreateApiApp.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.CreateApiAppRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.CreateApiAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateApiApp", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateApiAppResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateApiKey(self, request):
         """This API is used to create an API key pair.
 
@@ -268,6 +352,34 @@ class ApigatewayClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateIPStrategyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreatePlugin(self, request):
+        """This API is used to create an API Gateway plugin.
+
+        :param request: Request instance for CreatePlugin.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.CreatePluginRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.CreatePluginResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreatePlugin", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePluginResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -396,6 +508,34 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteApiApp(self, request):
+        """This API is used to delete a created application.
+
+        :param request: Request instance for DeleteApiApp.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DeleteApiAppRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DeleteApiAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteApiApp", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteApiAppResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteApiKey(self, request):
         """This API is used to delete an API key pair.
 
@@ -438,6 +578,34 @@ class ApigatewayClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteIPStrategyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeletePlugin(self, request):
+        """This API is used to delete an API Gateway plugin.
+
+        :param request: Request instance for DeletePlugin.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DeletePluginRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DeletePluginResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeletePlugin", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeletePluginResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -623,6 +791,34 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAllPluginApis(self, request):
+        """This API is used to list all APIs that can use this plugin, no matter whether the API is bound with the plugin.
+
+        :param request: Request instance for DescribeAllPluginApis.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeAllPluginApisRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeAllPluginApisResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAllPluginApis", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAllPluginApisResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeApi(self, request):
         """This API (`DescribeApi`) is used to query the details of the APIs users manage via Tencent Cloud API Gateway.
 
@@ -651,6 +847,118 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeApiApp(self, request):
+        """This API is used to search for an application by application ID.
+
+        :param request: Request instance for DescribeApiApp.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiAppRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeApiApp", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApiAppResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeApiAppBindApisStatus(self, request):
+        """This API is used to query the list of APIs bound to an application.
+
+        :param request: Request instance for DescribeApiAppBindApisStatus.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiAppBindApisStatusRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiAppBindApisStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeApiAppBindApisStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApiAppBindApisStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeApiAppsStatus(self, request):
+        """This API is used to query the application list.
+
+        :param request: Request instance for DescribeApiAppsStatus.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiAppsStatusRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiAppsStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeApiAppsStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApiAppsStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeApiBindApiAppsStatus(self, request):
+        """This API is used to query the list of applications bound to an API.
+
+        :param request: Request instance for DescribeApiBindApiAppsStatus.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiBindApiAppsStatusRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiBindApiAppsStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeApiBindApiAppsStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApiBindApiAppsStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeApiEnvironmentStrategy(self, request):
         """This API is used to display the throttling policies bound to an API.
 
@@ -665,6 +973,34 @@ class ApigatewayClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApiEnvironmentStrategyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeApiForApiApp(self, request):
+        """This API is used to query the details of an API deployed at API Gateway.
+
+        :param request: Request instance for DescribeApiForApiApp.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiForApiAppRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiForApiAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeApiForApiApp", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApiForApiAppResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -906,6 +1242,62 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePlugin(self, request):
+        """This API is used to query the plugin details by plugin ID.
+
+        :param request: Request instance for DescribePlugin.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribePluginRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribePluginResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePlugin", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePluginResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePluginApis(self, request):
+        """This API is used to query APIs bound with a specified plugin.
+
+        :param request: Request instance for DescribePluginApis.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribePluginApisRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribePluginApisResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePluginApis", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePluginApisResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeService(self, request):
         """This API is used to query the details of a service, such as its description, domain name, protocol, creation time, and releases.
 
@@ -1005,6 +1397,34 @@ class ApigatewayClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeServiceEnvironmentStrategyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeServiceForApiApp(self, request):
+        """This API is used to query the details of a service, such as its description, domain name, and protocol.
+
+        :param request: Request instance for DescribeServiceForApiApp.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeServiceForApiAppRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeServiceForApiAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeServiceForApiApp", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeServiceForApiAppResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1277,6 +1697,34 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DetachPlugin(self, request):
+        """This API is used to unbind an API from the plugin.
+
+        :param request: Request instance for DetachPlugin.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DetachPluginRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DetachPluginResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DetachPlugin", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DetachPluginResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DisableApiKey(self, request):
         """This API is used to disable an API key.
 
@@ -1417,6 +1865,34 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyApiApp(self, request):
+        """This API is used to modify a created API.
+
+        :param request: Request instance for ModifyApiApp.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.ModifyApiAppRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.ModifyApiAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyApiApp", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyApiAppResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyApiEnvironmentStrategy(self, request):
         """This API is used to modify an API throttling policy.
 
@@ -1487,6 +1963,34 @@ class ApigatewayClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyIPStrategyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyPlugin(self, request):
+        """This API is used to modify a plugin.
+
+        :param request: Request instance for ModifyPlugin.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.ModifyPluginRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.ModifyPluginResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyPlugin", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyPluginResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1798,6 +2302,62 @@ class ApigatewayClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnReleaseServiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnbindApiApp(self, request):
+        """This API is used to unbind an application from an API.
+
+        :param request: Request instance for UnbindApiApp.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.UnbindApiAppRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.UnbindApiAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UnbindApiApp", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnbindApiAppResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateApiAppKey(self, request):
+        """This API is used to update an application key.
+
+        :param request: Request instance for UpdateApiAppKey.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.UpdateApiAppKeyRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.UpdateApiAppKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateApiAppKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateApiAppKeyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

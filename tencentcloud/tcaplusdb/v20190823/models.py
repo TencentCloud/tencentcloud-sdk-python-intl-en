@@ -24,15 +24,49 @@ class Application(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApplicationId: Application ID
+        :type ApplicationId: str
+        :param ApplicationType: Application type
+        :type ApplicationType: int
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param ClusterName: Cluster name
+        :type ClusterName: str
+        :param TableGroupName: Table group name
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type TableGroupName: str
+        :param TableName: Table name
+        :type TableName: str
+        :param Applicant: Applicant
+        :type Applicant: str
+        :param CreatedTime: The creation time of the application
+        :type CreatedTime: str
+        :param ApplicationStatus: Status. Valid values: `-1` (canceled), `0` (pending approval), `1` (application approved and task submitted), `2` (rejected)
+        :type ApplicationStatus: int
+        :param TableGroupId: Table group ID
+        :type TableGroupId: str
+        :param TaskId: ID of the submitted task (if the application is not approved, this parameter is `0`)
+        :type TaskId: str
+        :param TableInstanceId: Globally unique table ID
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type TableInstanceId: str
+        :param UpdateTime: Update time
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type UpdateTime: str
+        :param ExecuteUser: Approver
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type ExecuteUser: str
+        :param ExecuteStatus: Execution status
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type ExecuteStatus: str
+        :param CanCensor: Whether the application can be approved by the API caller
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type CanCensor: bool
+        :param CanWithdrawal: Whether the application can be canceled by the API caller
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type CanWithdrawal: bool
         """
-        :param ApplicationId: Application ID\n        :type ApplicationId: str\n        :param ApplicationType: Application type\n        :type ApplicationType: int\n        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param ClusterName: Cluster name\n        :type ClusterName: str\n        :param TableGroupName: Table group name
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type TableGroupName: str\n        :param TableName: Table name\n        :type TableName: str\n        :param Applicant: Applicant\n        :type Applicant: str\n        :param CreatedTime: The creation time of the application\n        :type CreatedTime: str\n        :param ApplicationStatus: Status. Valid values: `-1` (canceled), `0` (pending approval), `1` (application approved and task submitted), `2` (rejected)\n        :type ApplicationStatus: int\n        :param TableGroupId: Table group ID\n        :type TableGroupId: str\n        :param TaskId: ID of the submitted task (if the application is not approved, this parameter is `0`)\n        :type TaskId: str\n        :param TableInstanceId: Globally unique table ID
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type TableInstanceId: str\n        :param UpdateTime: Update time
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type UpdateTime: str\n        :param ExecuteUser: Approver
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type ExecuteUser: str\n        :param ExecuteStatus: Execution status
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type ExecuteStatus: str\n        :param CanCensor: Whether the application can be approved by the API caller
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type CanCensor: bool\n        :param CanWithdrawal: Whether the application can be canceled by the API caller
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type CanWithdrawal: bool\n        """
         self.ApplicationId = None
         self.ApplicationType = None
         self.ClusterId = None
@@ -85,11 +119,21 @@ class ApplyResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApplicationId: Application ID
+        :type ApplicationId: str
+        :param ApplicationType: Application type
+        :type ApplicationType: int
+        :param ApplicationStatus: Status. Valid values: `0` (pending approval), `1` (application approved and task submitted), `2` (rejected)
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type ApplicationStatus: int
+        :param TaskId: ID of the submitted task
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type TaskId: str
+        :param Error: Error information
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
-        :param ApplicationId: Application ID\n        :type ApplicationId: str\n        :param ApplicationType: Application type\n        :type ApplicationType: int\n        :param ApplicationStatus: Status. Valid values: `0` (pending approval), `1` (application approved and task submitted), `2` (rejected)
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type ApplicationStatus: int\n        :param TaskId: ID of the submitted task
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type TaskId: str\n        :param Error: Error information
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`\n        """
         self.ApplicationId = None
         self.ApplicationType = None
         self.ApplicationStatus = None
@@ -120,8 +164,16 @@ class ApplyStatus(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApplicationId: Value format: cluster ID-application ID
+        :type ApplicationId: str
+        :param ApplicationStatus: Status. Valid values: `-1` (canceled), `0` (pending approval), `1` (application approved and task submitted), `2` (rejected). Only applications in the pending approval status can be updated.
+        :type ApplicationStatus: int
+        :param ApplicationType: Application type
+        :type ApplicationType: int
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
         """
-        :param ApplicationId: Value format: cluster ID-application ID\n        :type ApplicationId: str\n        :param ApplicationStatus: Status. Valid values: `-1` (canceled), `0` (pending approval), `1` (application approved and task submitted), `2` (rejected). Only applications in the pending approval status can be updated.\n        :type ApplicationStatus: int\n        :param ApplicationType: Application type\n        :type ApplicationType: int\n        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        """
         self.ApplicationId = None
         self.ApplicationStatus = None
         self.ApplicationType = None
@@ -148,8 +200,12 @@ class ClearTablesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: ID of the cluster instance where a table resides
+        :type ClusterId: str
+        :param SelectedTables: List of information of tables to be cleared
+        :type SelectedTables: list of SelectedTableInfoNew
         """
-        :param ClusterId: ID of the cluster instance where a table resides\n        :type ClusterId: str\n        :param SelectedTables: List of information of tables to be cleared\n        :type SelectedTables: list of SelectedTableInfoNew\n        """
         self.ClusterId = None
         self.SelectedTables = None
 
@@ -177,8 +233,14 @@ class ClearTablesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of cleared tables
+        :type TotalCount: int
+        :param TableResults: List of table clearing results
+        :type TableResults: list of TableResultNew
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of cleared tables\n        :type TotalCount: int\n        :param TableResults: List of table clearing results\n        :type TableResults: list of TableResultNew\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TableResults = None
         self.RequestId = None
@@ -201,18 +263,66 @@ class ClusterInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterName: Cluster name
+        :type ClusterName: str
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param Region: Cluster region
+        :type Region: str
+        :param IdlType: Cluster data description language type, such as `PROTO`, `TDR`, or `MIX`
+        :type IdlType: str
+        :param NetworkType: Network type
+        :type NetworkType: str
+        :param VpcId: ID of the VPC instance with which a cluster is associated
+        :type VpcId: str
+        :param SubnetId: ID of the subnet instance with which a cluster is associated
+        :type SubnetId: str
+        :param CreatedTime: Creation time
+        :type CreatedTime: str
+        :param Password: Cluster password
+        :type Password: str
+        :param PasswordStatus: Password status
+        :type PasswordStatus: str
+        :param ApiAccessId: TcaplusDB SDK connection parameter: access ID
+        :type ApiAccessId: str
+        :param ApiAccessIp: TcaplusDB SDK connection parameter: access address
+        :type ApiAccessIp: str
+        :param ApiAccessPort: TcaplusDB SDK connection parameter: access port
+        :type ApiAccessPort: int
+        :param OldPasswordExpireTime: If `PasswordStatus` is `unmodifiable`, the old password has not expired, and this field will display its expiration time; otherwise, this field will be empty
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type OldPasswordExpireTime: str
+        :param ApiAccessIpv6: TcaplusDB SDK connection parameter for accessing IPv6 addresses
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ApiAccessIpv6: str
+        :param ClusterType: Cluster type
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ClusterType: int
+        :param ClusterStatus: Cluster status
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ClusterStatus: int
+        :param ReadCapacityUnit: Read CU
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ReadCapacityUnit: int
+        :param WriteCapacityUnit: Write CU
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type WriteCapacityUnit: int
+        :param DiskVolume: Disk capacity
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DiskVolume: int
+        :param ServerList: Information of the machine at the storage layer (tcapsvr) in a dedicated cluster
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ServerList: list of ServerDetailInfo
+        :param ProxyList: Information of the machine at the access layer (tcaproxy) in a dedicated cluster
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ProxyList: list of ProxyDetailInfo
+        :param Censorship: Whether the cluster operation approval feature is enabled. Valid values: `0` (disabled), `1` (enabled)
+        :type Censorship: int
+        :param DbaUins: Approver UIN list
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type DbaUins: list of str
         """
-        :param ClusterName: Cluster name\n        :type ClusterName: str\n        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param Region: Cluster region\n        :type Region: str\n        :param IdlType: Cluster data description language type, such as `PROTO`, `TDR`, or `MIX`\n        :type IdlType: str\n        :param NetworkType: Network type\n        :type NetworkType: str\n        :param VpcId: ID of the VPC instance with which a cluster is associated\n        :type VpcId: str\n        :param SubnetId: ID of the subnet instance with which a cluster is associated\n        :type SubnetId: str\n        :param CreatedTime: Creation time\n        :type CreatedTime: str\n        :param Password: Cluster password\n        :type Password: str\n        :param PasswordStatus: Password status\n        :type PasswordStatus: str\n        :param ApiAccessId: TcaplusDB SDK connection parameter: access ID\n        :type ApiAccessId: str\n        :param ApiAccessIp: TcaplusDB SDK connection parameter: access address\n        :type ApiAccessIp: str\n        :param ApiAccessPort: TcaplusDB SDK connection parameter: access port\n        :type ApiAccessPort: int\n        :param OldPasswordExpireTime: If `PasswordStatus` is `unmodifiable`, the old password has not expired, and this field will display its expiration time; otherwise, this field will be empty
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type OldPasswordExpireTime: str\n        :param ApiAccessIpv6: TcaplusDB SDK connection parameter for accessing IPv6 addresses
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ApiAccessIpv6: str\n        :param ClusterType: Cluster type
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ClusterType: int\n        :param ClusterStatus: Cluster status
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ClusterStatus: int\n        :param ReadCapacityUnit: Read CU
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ReadCapacityUnit: int\n        :param WriteCapacityUnit: Write CU
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type WriteCapacityUnit: int\n        :param DiskVolume: Disk capacity
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type DiskVolume: int\n        :param ServerList: Information of the machine at the storage layer (tcapsvr) in a dedicated cluster
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ServerList: list of ServerDetailInfo\n        :param ProxyList: Information of the machine at the access layer (tcaproxy) in a dedicated cluster
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ProxyList: list of ProxyDetailInfo\n        :param Censorship: Whether the cluster operation approval feature is enabled. Valid values: `0` (disabled), `1` (enabled)\n        :type Censorship: int\n        :param DbaUins: Approver UIN list
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type DbaUins: list of str\n        """
         self.ClusterName = None
         self.ClusterId = None
         self.Region = None
@@ -289,8 +399,16 @@ class CompareIdlFilesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: ID of the cluster where the table to be modified resides
+        :type ClusterId: str
+        :param SelectedTables: List of tables to be modified
+        :type SelectedTables: list of SelectedTableInfoNew
+        :param ExistingIdlFiles: Selected list of uploaded IDL files. Either this parameter or `NewIdlFiles` must be selected
+        :type ExistingIdlFiles: list of IdlFileInfo
+        :param NewIdlFiles: List of IDL files to be uploaded. Either this parameter or `ExistingIdlFiles` must be selected
+        :type NewIdlFiles: list of IdlFileInfo
         """
-        :param ClusterId: ID of the cluster where the table to be modified resides\n        :type ClusterId: str\n        :param SelectedTables: List of tables to be modified\n        :type SelectedTables: list of SelectedTableInfoNew\n        :param ExistingIdlFiles: Selected list of uploaded IDL files. Either this parameter or `NewIdlFiles` must be selected\n        :type ExistingIdlFiles: list of IdlFileInfo\n        :param NewIdlFiles: List of IDL files to be uploaded. Either this parameter or `ExistingIdlFiles` must be selected\n        :type NewIdlFiles: list of IdlFileInfo\n        """
         self.ClusterId = None
         self.SelectedTables = None
         self.ExistingIdlFiles = None
@@ -332,8 +450,16 @@ class CompareIdlFilesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IdlFiles: Information list of all IDL files uploaded and verified in this request
+        :type IdlFiles: list of IdlFileInfo
+        :param TotalCount: Number of tables verified to be valid in this request
+        :type TotalCount: int
+        :param TableInfos: Verification result parsed from the selected table after the IDL description file is read
+        :type TableInfos: list of ParsedTableInfoNew
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param IdlFiles: Information list of all IDL files uploaded and verified in this request\n        :type IdlFiles: list of IdlFileInfo\n        :param TotalCount: Number of tables verified to be valid in this request\n        :type TotalCount: int\n        :param TableInfos: Verification result parsed from the selected table after the IDL description file is read\n        :type TableInfos: list of ParsedTableInfoNew\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.IdlFiles = None
         self.TotalCount = None
         self.TableInfos = None
@@ -363,8 +489,24 @@ class CompareTablesInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SrcTableClusterId: Cluster ID of the source table
+        :type SrcTableClusterId: str
+        :param SrcTableGroupId: Table group ID of the source table
+        :type SrcTableGroupId: str
+        :param SrcTableName: Source table name
+        :type SrcTableName: str
+        :param DstTableClusterId: Cluster ID of the target table
+        :type DstTableClusterId: str
+        :param DstTableGroupId: Table group ID of the target table
+        :type DstTableGroupId: str
+        :param DstTableName: Target table name
+        :type DstTableName: str
+        :param SrcTableInstanceId: Source table ID
+        :type SrcTableInstanceId: str
+        :param DstTableInstanceId: Target table ID
+        :type DstTableInstanceId: str
         """
-        :param SrcTableClusterId: Cluster ID of the source table\n        :type SrcTableClusterId: str\n        :param SrcTableGroupId: Table group ID of the source table\n        :type SrcTableGroupId: str\n        :param SrcTableName: Source table name\n        :type SrcTableName: str\n        :param DstTableClusterId: Cluster ID of the target table\n        :type DstTableClusterId: str\n        :param DstTableGroupId: Table group ID of the target table\n        :type DstTableGroupId: str\n        :param DstTableName: Target table name\n        :type DstTableName: str\n        :param SrcTableInstanceId: Source table ID\n        :type SrcTableInstanceId: str\n        :param DstTableInstanceId: Target table ID\n        :type DstTableInstanceId: str\n        """
         self.SrcTableClusterId = None
         self.SrcTableGroupId = None
         self.SrcTableName = None
@@ -399,8 +541,14 @@ class CreateBackupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: ID of the cluster where the table to be backed up resides
+        :type ClusterId: str
+        :param SelectedTables: Information list of tables to be backed up
+        :type SelectedTables: list of SelectedTableInfoNew
+        :param Remark: Remarks
+        :type Remark: str
         """
-        :param ClusterId: ID of the cluster where the table to be backed up resides\n        :type ClusterId: str\n        :param SelectedTables: Information list of tables to be backed up\n        :type SelectedTables: list of SelectedTableInfoNew\n        :param Remark: Remarks\n        :type Remark: str\n        """
         self.ClusterId = None
         self.SelectedTables = None
         self.Remark = None
@@ -430,10 +578,16 @@ class CreateBackupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskIds: List of backup creation task IDs
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type TaskIds: list of str\n        :param ApplicationIds: List of backup creation application IDs
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type ApplicationIds: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type TaskIds: list of str
+        :param ApplicationIds: List of backup creation application IDs
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type ApplicationIds: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.TaskIds = None
         self.ApplicationIds = None
         self.RequestId = None
@@ -451,8 +605,28 @@ class CreateClusterRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IdlType: Cluster data description language type, such as `PROTO`, `TDR`, or `MIX`
+        :type IdlType: str
+        :param ClusterName: Cluster name, which can contain up to 32 letters and digits
+        :type ClusterName: str
+        :param VpcId: ID of the VPC instance bound to a cluster in the format of `vpc-f49l6u0z`
+        :type VpcId: str
+        :param SubnetId: ID of the subnet instance bound to a cluster in the format of `subnet-pxir56ns`
+        :type SubnetId: str
+        :param Password: Cluster access password, which must contain lowercase letters (a-z), uppercase letters (A-Z), and digits (0-9).
+        :type Password: str
+        :param ResourceTags: Cluster tag list
+        :type ResourceTags: list of TagInfoUnit
+        :param Ipv6Enable: Whether to enable IPv6 address access for clusters
+        :type Ipv6Enable: int
+        :param ServerList: Information of the machine at the storage layer (tcapsvr) in a dedicated cluster
+        :type ServerList: list of MachineInfo
+        :param ProxyList: Information of the machine at the access layer (tcaproxy) in a dedicated cluster
+        :type ProxyList: list of MachineInfo
+        :param ClusterType: Cluster type. Valid values: `1` (standard), `2` (dedicated)
+        :type ClusterType: int
         """
-        :param IdlType: Cluster data description language type, such as `PROTO`, `TDR`, or `MIX`\n        :type IdlType: str\n        :param ClusterName: Cluster name, which can contain up to 32 letters and digits\n        :type ClusterName: str\n        :param VpcId: ID of the VPC instance bound to a cluster in the format of `vpc-f49l6u0z`\n        :type VpcId: str\n        :param SubnetId: ID of the subnet instance bound to a cluster in the format of `subnet-pxir56ns`\n        :type SubnetId: str\n        :param Password: Cluster access password, which must contain lowercase letters (a-z), uppercase letters (A-Z), and digits (0-9).\n        :type Password: str\n        :param ResourceTags: Cluster tag list\n        :type ResourceTags: list of TagInfoUnit\n        :param Ipv6Enable: Whether to enable IPv6 address access for clusters\n        :type Ipv6Enable: int\n        :param ServerList: Information of the machine at the storage layer (tcapsvr) in a dedicated cluster\n        :type ServerList: list of MachineInfo\n        :param ProxyList: Information of the machine at the access layer (tcaproxy) in a dedicated cluster\n        :type ProxyList: list of MachineInfo\n        :param ClusterType: Cluster type. Valid values: `1` (standard), `2` (dedicated)\n        :type ClusterType: int\n        """
         self.IdlType = None
         self.ClusterName = None
         self.VpcId = None
@@ -506,8 +680,12 @@ class CreateClusterResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ClusterId = None
         self.RequestId = None
 
@@ -523,8 +701,12 @@ class CreateSnapshotsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: The ID of the cluster where the table resides
+        :type ClusterId: str
+        :param SelectedTables: Snapshot list
+        :type SelectedTables: list of SnapshotInfo
         """
-        :param ClusterId: The ID of the cluster where the table resides\n        :type ClusterId: str\n        :param SelectedTables: Snapshot list\n        :type SelectedTables: list of SnapshotInfo\n        """
         self.ClusterId = None
         self.SelectedTables = None
 
@@ -552,8 +734,14 @@ class CreateSnapshotsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: The number of snapshots created in batches
+        :type TotalCount: int
+        :param TableResults: The result list of snapshots created in batches
+        :type TableResults: list of SnapshotResult
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: The number of snapshots created in batches\n        :type TotalCount: int\n        :param TableResults: The result list of snapshots created in batches\n        :type TableResults: list of SnapshotResult\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TableResults = None
         self.RequestId = None
@@ -576,8 +764,16 @@ class CreateTableGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: ID of the cluster where a table group resides
+        :type ClusterId: str
+        :param TableGroupName: Table group name, which can contain up to 32 letters and digits
+        :type TableGroupName: str
+        :param TableGroupId: Table group ID, which can be customized but must be unique in one cluster. If it is not specified, the auto-increment mode will be used.
+        :type TableGroupId: str
+        :param ResourceTags: Table group tag list
+        :type ResourceTags: list of TagInfoUnit
         """
-        :param ClusterId: ID of the cluster where a table group resides\n        :type ClusterId: str\n        :param TableGroupName: Table group name, which can contain up to 32 letters and digits\n        :type TableGroupName: str\n        :param TableGroupId: Table group ID, which can be customized but must be unique in one cluster. If it is not specified, the auto-increment mode will be used.\n        :type TableGroupId: str\n        :param ResourceTags: Table group tag list\n        :type ResourceTags: list of TagInfoUnit\n        """
         self.ClusterId = None
         self.TableGroupName = None
         self.TableGroupId = None
@@ -609,8 +805,12 @@ class CreateTableGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TableGroupId: ID of table group successfully created
+        :type TableGroupId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TableGroupId: ID of table group successfully created\n        :type TableGroupId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TableGroupId = None
         self.RequestId = None
 
@@ -626,8 +826,16 @@ class CreateTablesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: ID of the cluster where to create a table
+        :type ClusterId: str
+        :param IdlFiles: Table creation IDL file list selected by user
+        :type IdlFiles: list of IdlFileInfo
+        :param SelectedTables: Information list of tables to be created
+        :type SelectedTables: list of SelectedTableInfoNew
+        :param ResourceTags: Table tag list
+        :type ResourceTags: list of TagInfoUnit
         """
-        :param ClusterId: ID of the cluster where to create a table\n        :type ClusterId: str\n        :param IdlFiles: Table creation IDL file list selected by user\n        :type IdlFiles: list of IdlFileInfo\n        :param SelectedTables: Information list of tables to be created\n        :type SelectedTables: list of SelectedTableInfoNew\n        :param ResourceTags: Table tag list\n        :type ResourceTags: list of TagInfoUnit\n        """
         self.ClusterId = None
         self.IdlFiles = None
         self.SelectedTables = None
@@ -669,8 +877,14 @@ class CreateTablesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of tables created in batches
+        :type TotalCount: int
+        :param TableResults: List of tables created in batches
+        :type TableResults: list of TableResultNew
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of tables created in batches\n        :type TotalCount: int\n        :param TableResults: List of tables created in batches\n        :type TableResults: list of TableResultNew\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TableResults = None
         self.RequestId = None
@@ -693,8 +907,10 @@ class DeleteClusterRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: ID of cluster to be deleted
+        :type ClusterId: str
         """
-        :param ClusterId: ID of cluster to be deleted\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -715,8 +931,12 @@ class DeleteClusterResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Task ID generated by cluster deletion
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskId: Task ID generated by cluster deletion\n        :type TaskId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -732,8 +952,12 @@ class DeleteIdlFilesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: ID of the cluster where IDL resides
+        :type ClusterId: str
+        :param IdlFiles: List of information of IDL files to be deleted
+        :type IdlFiles: list of IdlFileInfo
         """
-        :param ClusterId: ID of the cluster where IDL resides\n        :type ClusterId: str\n        :param IdlFiles: List of information of IDL files to be deleted\n        :type IdlFiles: list of IdlFileInfo\n        """
         self.ClusterId = None
         self.IdlFiles = None
 
@@ -761,8 +985,14 @@ class DeleteIdlFilesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of returned results
+        :type TotalCount: int
+        :param IdlFileInfos: Deletion result
+        :type IdlFileInfos: list of IdlFileInfoWithoutContent
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of returned results\n        :type TotalCount: int\n        :param IdlFileInfos: Deletion result\n        :type IdlFileInfos: list of IdlFileInfoWithoutContent\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.IdlFileInfos = None
         self.RequestId = None
@@ -785,8 +1015,12 @@ class DeleteSnapshotsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: The ID of the cluster where the table resides
+        :type ClusterId: str
+        :param SelectedTables: The list of snapshots to delete
+        :type SelectedTables: list of SnapshotInfoNew
         """
-        :param ClusterId: The ID of the cluster where the table resides\n        :type ClusterId: str\n        :param SelectedTables: The list of snapshots to delete\n        :type SelectedTables: list of SnapshotInfoNew\n        """
         self.ClusterId = None
         self.SelectedTables = None
 
@@ -814,8 +1048,14 @@ class DeleteSnapshotsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: The number of snapshots deleted in batches
+        :type TotalCount: int
+        :param TableResults: The result list of snapshots deleted in batches
+        :type TableResults: list of SnapshotResult
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: The number of snapshots deleted in batches\n        :type TotalCount: int\n        :param TableResults: The result list of snapshots deleted in batches\n        :type TableResults: list of SnapshotResult\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TableResults = None
         self.RequestId = None
@@ -838,8 +1078,12 @@ class DeleteTableGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: ID of the cluster where a table group resides
+        :type ClusterId: str
+        :param TableGroupId: Table group ID
+        :type TableGroupId: str
         """
-        :param ClusterId: ID of the cluster where a table group resides\n        :type ClusterId: str\n        :param TableGroupId: Table group ID\n        :type TableGroupId: str\n        """
         self.ClusterId = None
         self.TableGroupId = None
 
@@ -862,8 +1106,12 @@ class DeleteTableGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Task ID generated by table group deletion
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskId: Task ID generated by table group deletion\n        :type TaskId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -879,8 +1127,12 @@ class DeleteTableIndexRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: ID of the cluster where the table resides
+        :type ClusterId: str
+        :param SelectedTables: The list of tables whose global indexes need to be deleted
+        :type SelectedTables: list of SelectedTableInfoNew
         """
-        :param ClusterId: ID of the cluster where the table resides\n        :type ClusterId: str\n        :param SelectedTables: The list of tables whose global indexes need to be deleted\n        :type SelectedTables: list of SelectedTableInfoNew\n        """
         self.ClusterId = None
         self.SelectedTables = None
 
@@ -908,8 +1160,14 @@ class DeleteTableIndexResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: The number of tables whose global indexes are deleted
+        :type TotalCount: int
+        :param TableResults: The list of global index deletion results
+        :type TableResults: list of TableResultNew
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: The number of tables whose global indexes are deleted\n        :type TotalCount: int\n        :param TableResults: The list of global index deletion results\n        :type TableResults: list of TableResultNew\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TableResults = None
         self.RequestId = None
@@ -932,8 +1190,12 @@ class DeleteTablesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: ID of the cluster where the table to be dropped resides
+        :type ClusterId: str
+        :param SelectedTables: List of information of tables to be dropped
+        :type SelectedTables: list of SelectedTableInfoNew
         """
-        :param ClusterId: ID of the cluster where the table to be dropped resides\n        :type ClusterId: str\n        :param SelectedTables: List of information of tables to be dropped\n        :type SelectedTables: list of SelectedTableInfoNew\n        """
         self.ClusterId = None
         self.SelectedTables = None
 
@@ -961,8 +1223,14 @@ class DeleteTablesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of dropped tables
+        :type TotalCount: int
+        :param TableResults: List of details of dropped tables
+        :type TableResults: list of TableResultNew
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of dropped tables\n        :type TotalCount: int\n        :param TableResults: List of details of dropped tables\n        :type TableResults: list of TableResultNew\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TableResults = None
         self.RequestId = None
@@ -985,8 +1253,24 @@ class DescribeApplicationsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: ID of the cluster whose applications will be queried
+        :type ClusterId: str
+        :param Limit: The maximum number of results returned per page
+        :type Limit: int
+        :param Offset: Pagination offset
+        :type Offset: int
+        :param CensorStatus: Application status used as a filter condition
+        :type CensorStatus: int
+        :param TableGroupId: Table group ID used as a filter condition
+        :type TableGroupId: str
+        :param TableName: Table name used as a filter condition
+        :type TableName: str
+        :param Applicant: Applicant UIN used as a filter condition
+        :type Applicant: str
+        :param ApplyType: Application type used as a filter condition
+        :type ApplyType: int
         """
-        :param ClusterId: ID of the cluster whose applications will be queried\n        :type ClusterId: str\n        :param Limit: The maximum number of results returned per page\n        :type Limit: int\n        :param Offset: Pagination offset\n        :type Offset: int\n        :param CensorStatus: Application status used as a filter condition\n        :type CensorStatus: int\n        :param TableGroupId: Table group ID used as a filter condition\n        :type TableGroupId: str\n        :param TableName: Table name used as a filter condition\n        :type TableName: str\n        :param Applicant: Applicant UIN used as a filter condition\n        :type Applicant: str\n        :param ApplyType: Application type used as a filter condition\n        :type ApplyType: int\n        """
         self.ClusterId = None
         self.Limit = None
         self.Offset = None
@@ -1021,8 +1305,14 @@ class DescribeApplicationsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Applications: Application list
+        :type Applications: list of Application
+        :param TotalCount: Total number of applications
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Applications: Application list\n        :type Applications: list of Application\n        :param TotalCount: Total number of applications\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Applications = None
         self.TotalCount = None
         self.RequestId = None
@@ -1045,8 +1335,10 @@ class DescribeClusterTagsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterIds: The list of cluster IDs
+        :type ClusterIds: list of str
         """
-        :param ClusterIds: The list of cluster IDs\n        :type ClusterIds: list of str\n        """
         self.ClusterIds = None
 
 
@@ -1067,8 +1359,14 @@ class DescribeClusterTagsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Rows: The information list of cluster tags
+        :type Rows: list of TagsInfoOfCluster
+        :param TotalCount: The number of returned results
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Rows: The information list of cluster tags\n        :type Rows: list of TagsInfoOfCluster\n        :param TotalCount: The number of returned results\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Rows = None
         self.TotalCount = None
         self.RequestId = None
@@ -1091,8 +1389,18 @@ class DescribeClustersRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterIds: List of IDs of clusters to be queried
+        :type ClusterIds: list of str
+        :param Filters: Query filter
+        :type Filters: list of Filter
+        :param Offset: Query list offset
+        :type Offset: int
+        :param Limit: Number of returned results in query list. Default value: 20
+        :type Limit: int
+        :param Ipv6Enable: Whether to enable IPv6 address access
+        :type Ipv6Enable: int
         """
-        :param ClusterIds: List of IDs of clusters to be queried\n        :type ClusterIds: list of str\n        :param Filters: Query filter\n        :type Filters: list of Filter\n        :param Offset: Query list offset\n        :type Offset: int\n        :param Limit: Number of returned results in query list. Default value: 20\n        :type Limit: int\n        :param Ipv6Enable: Whether to enable IPv6 address access\n        :type Ipv6Enable: int\n        """
         self.ClusterIds = None
         self.Filters = None
         self.Offset = None
@@ -1126,8 +1434,14 @@ class DescribeClustersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of cluster instances
+        :type TotalCount: int
+        :param Clusters: Cluster instance list
+        :type Clusters: list of ClusterInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of cluster instances\n        :type TotalCount: int\n        :param Clusters: Cluster instance list\n        :type Clusters: list of ClusterInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Clusters = None
         self.RequestId = None
@@ -1150,8 +1464,18 @@ class DescribeIdlFileInfosRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: ID of the cluster where a file resides
+        :type ClusterId: str
+        :param TableGroupIds: ID of the table group where a file resides
+        :type TableGroupIds: list of str
+        :param IdlFileIds: File ID list
+        :type IdlFileIds: list of str
+        :param Offset: Query list offset
+        :type Offset: int
+        :param Limit: Number of returned results in query list
+        :type Limit: int
         """
-        :param ClusterId: ID of the cluster where a file resides\n        :type ClusterId: str\n        :param TableGroupIds: ID of the table group where a file resides\n        :type TableGroupIds: list of str\n        :param IdlFileIds: File ID list\n        :type IdlFileIds: list of str\n        :param Offset: Query list offset\n        :type Offset: int\n        :param Limit: Number of returned results in query list\n        :type Limit: int\n        """
         self.ClusterId = None
         self.TableGroupIds = None
         self.IdlFileIds = None
@@ -1180,8 +1504,14 @@ class DescribeIdlFileInfosResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of files
+        :type TotalCount: int
+        :param IdlFileInfos: List of file details
+        :type IdlFileInfos: list of IdlFileInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of files\n        :type TotalCount: int\n        :param IdlFileInfos: List of file details\n        :type IdlFileInfos: list of IdlFileInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.IdlFileInfos = None
         self.RequestId = None
@@ -1204,8 +1534,10 @@ class DescribeMachineRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ipv6Enable: If this parameter is not `0`, machines supporting IPv6 will be queried.
+        :type Ipv6Enable: int
         """
-        :param Ipv6Enable: If this parameter is not `0`, machines supporting IPv6 will be queried.\n        :type Ipv6Enable: int\n        """
         self.Ipv6Enable = None
 
 
@@ -1226,8 +1558,12 @@ class DescribeMachineResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PoolList: The list of dedicated machine resources
+        :type PoolList: list of PoolInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param PoolList: The list of dedicated machine resources\n        :type PoolList: list of PoolInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PoolList = None
         self.RequestId = None
 
@@ -1254,8 +1590,14 @@ class DescribeRegionsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of queried AZs
+        :type TotalCount: int
+        :param RegionInfos: List of AZ query results
+        :type RegionInfos: list of RegionInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of queried AZs\n        :type TotalCount: int\n        :param RegionInfos: List of AZ query results\n        :type RegionInfos: list of RegionInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.RegionInfos = None
         self.RequestId = None
@@ -1278,8 +1620,16 @@ class DescribeSnapshotsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: The ID of the cluster where the table resides
+        :type ClusterId: str
+        :param TableGroupId: The ID of the table group where the table resides
+        :type TableGroupId: str
+        :param TableName: Table name
+        :type TableName: str
+        :param SnapshotName: Snapshot name
+        :type SnapshotName: str
         """
-        :param ClusterId: The ID of the cluster where the table resides\n        :type ClusterId: str\n        :param TableGroupId: The ID of the table group where the table resides\n        :type TableGroupId: str\n        :param TableName: Table name\n        :type TableName: str\n        :param SnapshotName: Snapshot name\n        :type SnapshotName: str\n        """
         self.ClusterId = None
         self.TableGroupId = None
         self.TableName = None
@@ -1306,8 +1656,14 @@ class DescribeSnapshotsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: The number of snapshots
+        :type TotalCount: int
+        :param TableResults: The result list of snapshots
+        :type TableResults: list of SnapshotResult
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: The number of snapshots\n        :type TotalCount: int\n        :param TableResults: The result list of snapshots\n        :type TableResults: list of SnapshotResult\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TableResults = None
         self.RequestId = None
@@ -1330,8 +1686,12 @@ class DescribeTableGroupTagsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: The ID of the cluster where table group tags need to be queried
+        :type ClusterId: str
+        :param TableGroupIds: The list of IDs of the table groups whose tags need to be queried
+        :type TableGroupIds: list of str
         """
-        :param ClusterId: The ID of the cluster where table group tags need to be queried\n        :type ClusterId: str\n        :param TableGroupIds: The list of IDs of the table groups whose tags need to be queried\n        :type TableGroupIds: list of str\n        """
         self.ClusterId = None
         self.TableGroupIds = None
 
@@ -1354,8 +1714,14 @@ class DescribeTableGroupTagsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Rows: The information list of table group tags
+        :type Rows: list of TagsInfoOfTableGroup
+        :param TotalCount: The number of returned results
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Rows: The information list of table group tags\n        :type Rows: list of TagsInfoOfTableGroup\n        :param TotalCount: The number of returned results\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Rows = None
         self.TotalCount = None
         self.RequestId = None
@@ -1378,8 +1744,18 @@ class DescribeTableGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: ID of the cluster where a table group resides
+        :type ClusterId: str
+        :param TableGroupIds: Table group ID list
+        :type TableGroupIds: list of str
+        :param Filters: Filter. Valid values: TableGroupName, TableGroupId
+        :type Filters: list of Filter
+        :param Offset: Query list offset
+        :type Offset: int
+        :param Limit: Number of returned results in query list
+        :type Limit: int
         """
-        :param ClusterId: ID of the cluster where a table group resides\n        :type ClusterId: str\n        :param TableGroupIds: Table group ID list\n        :type TableGroupIds: list of str\n        :param Filters: Filter. Valid values: TableGroupName, TableGroupId\n        :type Filters: list of Filter\n        :param Offset: Query list offset\n        :type Offset: int\n        :param Limit: Number of returned results in query list\n        :type Limit: int\n        """
         self.ClusterId = None
         self.TableGroupIds = None
         self.Filters = None
@@ -1413,8 +1789,14 @@ class DescribeTableGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of table groups
+        :type TotalCount: int
+        :param TableGroups: Table group information list
+        :type TableGroups: list of TableGroupInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of table groups\n        :type TotalCount: int\n        :param TableGroups: Table group information list\n        :type TableGroups: list of TableGroupInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TableGroups = None
         self.RequestId = None
@@ -1437,8 +1819,12 @@ class DescribeTableTagsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: The ID of the cluster where a table resides
+        :type ClusterId: str
+        :param SelectedTables: Table list
+        :type SelectedTables: list of SelectedTableInfoNew
         """
-        :param ClusterId: The ID of the cluster where a table resides\n        :type ClusterId: str\n        :param SelectedTables: Table list\n        :type SelectedTables: list of SelectedTableInfoNew\n        """
         self.ClusterId = None
         self.SelectedTables = None
 
@@ -1466,8 +1852,14 @@ class DescribeTableTagsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: The total number of returned results
+        :type TotalCount: int
+        :param Rows: The information list of table tags
+        :type Rows: list of TagsInfoOfTable
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: The total number of returned results\n        :type TotalCount: int\n        :param Rows: The information list of table tags\n        :type Rows: list of TagsInfoOfTable\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Rows = None
         self.RequestId = None
@@ -1490,8 +1882,18 @@ class DescribeTablesInRecycleRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: ID of the cluster where the table to be queried resides
+        :type ClusterId: str
+        :param TableGroupIds: List of IDs of the table groups where the table to be queried resides
+        :type TableGroupIds: list of str
+        :param Filters: Filter. Valid values: TableName, TableInstanceId
+        :type Filters: list of Filter
+        :param Offset: Query result offset
+        :type Offset: int
+        :param Limit: Number of returned query results
+        :type Limit: int
         """
-        :param ClusterId: ID of the cluster where the table to be queried resides\n        :type ClusterId: str\n        :param TableGroupIds: List of IDs of the table groups where the table to be queried resides\n        :type TableGroupIds: list of str\n        :param Filters: Filter. Valid values: TableName, TableInstanceId\n        :type Filters: list of Filter\n        :param Offset: Query result offset\n        :type Offset: int\n        :param Limit: Number of returned query results\n        :type Limit: int\n        """
         self.ClusterId = None
         self.TableGroupIds = None
         self.Filters = None
@@ -1525,8 +1927,14 @@ class DescribeTablesInRecycleResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of tables
+        :type TotalCount: int
+        :param TableInfos: Table details result list
+        :type TableInfos: list of TableInfoNew
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of tables\n        :type TotalCount: int\n        :param TableInfos: Table details result list\n        :type TableInfos: list of TableInfoNew\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TableInfos = None
         self.RequestId = None
@@ -1549,8 +1957,20 @@ class DescribeTablesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: ID of the cluster where the table to be queried resides
+        :type ClusterId: str
+        :param TableGroupIds: List of IDs of the table groups where the table to be queried resides
+        :type TableGroupIds: list of str
+        :param SelectedTables: Information list of tables to be queried
+        :type SelectedTables: list of SelectedTableInfoNew
+        :param Filters: Filter. Valid values: TableName, TableInstanceId
+        :type Filters: list of Filter
+        :param Offset: Query result offset
+        :type Offset: int
+        :param Limit: Number of returned query results
+        :type Limit: int
         """
-        :param ClusterId: ID of the cluster where the table to be queried resides\n        :type ClusterId: str\n        :param TableGroupIds: List of IDs of the table groups where the table to be queried resides\n        :type TableGroupIds: list of str\n        :param SelectedTables: Information list of tables to be queried\n        :type SelectedTables: list of SelectedTableInfoNew\n        :param Filters: Filter. Valid values: TableName, TableInstanceId\n        :type Filters: list of Filter\n        :param Offset: Query result offset\n        :type Offset: int\n        :param Limit: Number of returned query results\n        :type Limit: int\n        """
         self.ClusterId = None
         self.TableGroupIds = None
         self.SelectedTables = None
@@ -1591,8 +2011,14 @@ class DescribeTablesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of tables
+        :type TotalCount: int
+        :param TableInfos: Table details result list
+        :type TableInfos: list of TableInfoNew
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of tables\n        :type TotalCount: int\n        :param TableInfos: Table details result list\n        :type TableInfos: list of TableInfoNew\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TableInfos = None
         self.RequestId = None
@@ -1615,8 +2041,18 @@ class DescribeTasksRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterIds: List of IDs of clusters where the tasks to be queried reside
+        :type ClusterIds: list of str
+        :param TaskIds: List of IDs of tasks to be queried
+        :type TaskIds: list of str
+        :param Filters: Filter. Valid values: Content, TaskType, Operator, Time
+        :type Filters: list of Filter
+        :param Offset: Query list offset
+        :type Offset: int
+        :param Limit: Number of returned results in query list
+        :type Limit: int
         """
-        :param ClusterIds: List of IDs of clusters where the tasks to be queried reside\n        :type ClusterIds: list of str\n        :param TaskIds: List of IDs of tasks to be queried\n        :type TaskIds: list of str\n        :param Filters: Filter. Valid values: Content, TaskType, Operator, Time\n        :type Filters: list of Filter\n        :param Offset: Query list offset\n        :type Offset: int\n        :param Limit: Number of returned results in query list\n        :type Limit: int\n        """
         self.ClusterIds = None
         self.TaskIds = None
         self.Filters = None
@@ -1650,8 +2086,14 @@ class DescribeTasksResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of tasks
+        :type TotalCount: int
+        :param TaskInfos: List of details of queried tasks
+        :type TaskInfos: list of TaskInfoNew
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of tasks\n        :type TotalCount: int\n        :param TaskInfos: List of details of queried tasks\n        :type TaskInfos: list of TaskInfoNew\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TaskInfos = None
         self.RequestId = None
@@ -1680,8 +2122,12 @@ class DescribeUinInWhitelistResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: Query result. FALSE: yes, TRUE: no
+        :type Result: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Result: Query result. FALSE: yes, TRUE: no\n        :type Result: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -1697,8 +2143,10 @@ class DisableRestProxyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: The value is the same as `appid`.
+        :type ClusterId: str
         """
-        :param ClusterId: The value is the same as `appid`.\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -1719,8 +2167,14 @@ class DisableRestProxyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RestProxyStatus: RestProxy status. Valid values: 0 (disabled), 1 (enabling), 2 (enabled), 3 (disabling).
+        :type RestProxyStatus: int
+        :param TaskId: `TaskId` is in the format of `AppInstanceId-taskId`, used to identify tasks of different clusters.
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RestProxyStatus: RestProxy status. Valid values: 0 (disabled), 1 (enabling), 2 (enabled), 3 (disabling).\n        :type RestProxyStatus: int\n        :param TaskId: `TaskId` is in the format of `AppInstanceId-taskId`, used to identify tasks of different clusters.\n        :type TaskId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RestProxyStatus = None
         self.TaskId = None
         self.RequestId = None
@@ -1738,8 +2192,10 @@ class EnableRestProxyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: The value is the same as `appid`.
+        :type ClusterId: str
         """
-        :param ClusterId: The value is the same as `appid`.\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -1760,8 +2216,14 @@ class EnableRestProxyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RestProxyStatus: RestProxy status. Valid values: 0 (disabled), 1 (enabling), 2 (enabled), 3 (disabling).
+        :type RestProxyStatus: int
+        :param TaskId: `TaskId` is in the format of `AppInstanceId-taskId`, used to identify tasks of different clusters.
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RestProxyStatus: RestProxy status. Valid values: 0 (disabled), 1 (enabling), 2 (enabled), 3 (disabling).\n        :type RestProxyStatus: int\n        :param TaskId: `TaskId` is in the format of `AppInstanceId-taskId`, used to identify tasks of different clusters.\n        :type TaskId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RestProxyStatus = None
         self.TaskId = None
         self.RequestId = None
@@ -1779,8 +2241,12 @@ class ErrorInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Code: Error code
+        :type Code: str
+        :param Message: Error message
+        :type Message: str
         """
-        :param Code: Error code\n        :type Code: str\n        :param Message: Error message\n        :type Message: str\n        """
         self.Code = None
         self.Message = None
 
@@ -1803,8 +2269,16 @@ class FieldInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FieldName: Table field name
+        :type FieldName: str
+        :param IsPrimaryKey: Whether it is a primary key field
+        :type IsPrimaryKey: str
+        :param FieldType: Field type
+        :type FieldType: str
+        :param FieldSize: Field length
+        :type FieldSize: int
         """
-        :param FieldName: Table field name\n        :type FieldName: str\n        :param IsPrimaryKey: Whether it is a primary key field\n        :type IsPrimaryKey: str\n        :param FieldType: Field type\n        :type FieldType: str\n        :param FieldSize: Field length\n        :type FieldSize: int\n        """
         self.FieldName = None
         self.IsPrimaryKey = None
         self.FieldType = None
@@ -1831,8 +2305,14 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: Filter field name
+        :type Name: str
+        :param Value: Filter field value
+        :type Value: str
+        :param Values: Filter field value
+        :type Values: list of str
         """
-        :param Name: Filter field name\n        :type Name: str\n        :param Value: Filter field value\n        :type Value: str\n        :param Values: Filter field value\n        :type Values: list of str\n        """
         self.Name = None
         self.Value = None
         self.Values = None
@@ -1857,10 +2337,22 @@ class IdlFileInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FileName: Filename excluding extension
+        :type FileName: str
+        :param FileType: Data interface description language (IDL) type
+        :type FileType: str
+        :param FileExtType: File extension
+        :type FileExtType: str
+        :param FileSize: File size in bytes
+        :type FileSize: int
+        :param FileId: File ID, which is meaningful for files already uploaded
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FileId: int
+        :param FileContent: File content, which is meaningful for files to be uploaded in this request
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FileContent: str
         """
-        :param FileName: Filename excluding extension\n        :type FileName: str\n        :param FileType: Data interface description language (IDL) type\n        :type FileType: str\n        :param FileExtType: File extension\n        :type FileExtType: str\n        :param FileSize: File size in bytes\n        :type FileSize: int\n        :param FileId: File ID, which is meaningful for files already uploaded
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type FileId: int\n        :param FileContent: File content, which is meaningful for files to be uploaded in this request
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type FileContent: str\n        """
         self.FileName = None
         self.FileType = None
         self.FileExtType = None
@@ -1891,14 +2383,26 @@ class IdlFileInfoWithoutContent(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileName: Filename excluding extension
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type FileName: str\n        :param FileType: Data interface description language (IDL) type
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type FileType: str\n        :param FileExtType: File extension
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type FileExtType: str\n        :param FileSize: File size in bytes
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type FileSize: int\n        :param FileId: File ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type FileId: int\n        :param Error: Error message
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FileName: str
+        :param FileType: Data interface description language (IDL) type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FileType: str
+        :param FileExtType: File extension
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FileExtType: str
+        :param FileSize: File size in bytes
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FileSize: int
+        :param FileId: File ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FileId: int
+        :param Error: Error message
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        """
         self.FileName = None
         self.FileType = None
         self.FileExtType = None
@@ -1931,8 +2435,22 @@ class ImportSnapshotsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: The ID of the cluster where the original table (from which the snapshot was created) resides
+        :type ClusterId: str
+        :param Snapshots: The information of the snapshot to import
+        :type Snapshots: :class:`tencentcloud.tcaplusdb.v20190823.models.SnapshotInfo`
+        :param ImportSpecialKey: Whether to import partial data of the snapshot. Valid values: `TRUE` (import partial data), `FALSE` (import all data).
+        :type ImportSpecialKey: str
+        :param ImportOriginTable: Whether to import to the original table. Valid values: `TRUE` (import to the original table), `FALSE` (import to a new table).
+        :type ImportOriginTable: str
+        :param KeyFile: The file of the keys of the partial data
+        :type KeyFile: :class:`tencentcloud.tcaplusdb.v20190823.models.KeyFile`
+        :param NewTableGroupId: The ID of the table group where the new table resides, which is valid only when `ImportOriginTable` is set to `FALSE`
+        :type NewTableGroupId: str
+        :param NewTableName: The name of the new table, which is valid only when `ImportOriginTable` is set to `FALSE`. TcaplusDB will automatically create a table named `NewTableName` of the same structure as that of the original table.
+        :type NewTableName: str
         """
-        :param ClusterId: The ID of the cluster where the original table (from which the snapshot was created) resides\n        :type ClusterId: str\n        :param Snapshots: The information of the snapshot to import\n        :type Snapshots: :class:`tencentcloud.tcaplusdb.v20190823.models.SnapshotInfo`\n        :param ImportSpecialKey: Whether to import partial data of the snapshot. Valid values: `TRUE` (import partial data), `FALSE` (import all data).\n        :type ImportSpecialKey: str\n        :param ImportOriginTable: Whether to import to the original table. Valid values: `TRUE` (import to the original table), `FALSE` (import to a new table).\n        :type ImportOriginTable: str\n        :param KeyFile: The file of the keys of the partial data\n        :type KeyFile: :class:`tencentcloud.tcaplusdb.v20190823.models.KeyFile`\n        :param NewTableGroupId: The ID of the table group where the new table resides, which is valid only when `ImportOriginTable` is set to `FALSE`\n        :type NewTableGroupId: str\n        :param NewTableName: The name of the new table, which is valid only when `ImportOriginTable` is set to `FALSE`. TcaplusDB will automatically create a table named `NewTableName` of the same structure as that of the original table.\n        :type NewTableName: str\n        """
         self.ClusterId = None
         self.Snapshots = None
         self.ImportSpecialKey = None
@@ -1969,9 +2487,13 @@ class ImportSnapshotsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: `TaskId` is in the format of `AppInstanceId-taskId`, used to identify tasks of different clusters.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type TaskId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.TaskId = None
         self.RequestId = None
 
@@ -1987,8 +2509,16 @@ class KeyFile(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FileName: Key file name
+        :type FileName: str
+        :param FileExtType: Key file extension
+        :type FileExtType: str
+        :param FileContent: Key file content
+        :type FileContent: str
+        :param FileSize: Key file size
+        :type FileSize: int
         """
-        :param FileName: Key file name\n        :type FileName: str\n        :param FileExtType: Key file extension\n        :type FileExtType: str\n        :param FileContent: Key file content\n        :type FileContent: str\n        :param FileSize: Key file size\n        :type FileSize: int\n        """
         self.FileName = None
         self.FileExtType = None
         self.FileContent = None
@@ -2015,8 +2545,12 @@ class MachineInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MachineType: Machine type
+        :type MachineType: str
+        :param MachineNum: Machine quantity
+        :type MachineNum: int
         """
-        :param MachineType: Machine type\n        :type MachineType: str\n        :param MachineNum: Machine quantity\n        :type MachineNum: int\n        """
         self.MachineType = None
         self.MachineNum = None
 
@@ -2039,11 +2573,19 @@ class MergeTableResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: Task ID
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type TaskId: str\n        :param Error: If table merging is successful, `null` will be returned
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`\n        :param Table: Comparison results of tables\n        :type Table: :class:`tencentcloud.tcaplusdb.v20190823.models.CompareTablesInfo`\n        :param ApplicationId: Application ID
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type ApplicationId: str\n        """
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type TaskId: str
+        :param Error: If table merging is successful, `null` will be returned
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        :param Table: Comparison results of tables
+        :type Table: :class:`tencentcloud.tcaplusdb.v20190823.models.CompareTablesInfo`
+        :param ApplicationId: Application ID
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type ApplicationId: str
+        """
         self.TaskId = None
         self.Error = None
         self.Table = None
@@ -2074,8 +2616,12 @@ class MergeTablesDataRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SelectedTables: Tables to be merged
+        :type SelectedTables: list of MergeTablesInfo
+        :param IsOnlyCompare: Valid values: `true` (only compare), `false` (compare and merge)
+        :type IsOnlyCompare: bool
         """
-        :param SelectedTables: Tables to be merged\n        :type SelectedTables: list of MergeTablesInfo\n        :param IsOnlyCompare: Valid values: `true` (only compare), `false` (compare and merge)\n        :type IsOnlyCompare: bool\n        """
         self.SelectedTables = None
         self.IsOnlyCompare = None
 
@@ -2103,8 +2649,12 @@ class MergeTablesDataResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Results: Table merging results
+        :type Results: list of MergeTableResult
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Results: Table merging results\n        :type Results: list of MergeTableResult\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Results = None
         self.RequestId = None
 
@@ -2125,8 +2675,12 @@ class MergeTablesInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MergeTables: Information of tables to be merged
+        :type MergeTables: :class:`tencentcloud.tcaplusdb.v20190823.models.CompareTablesInfo`
+        :param CheckIndex: Whether to check indexes
+        :type CheckIndex: bool
         """
-        :param MergeTables: Information of tables to be merged\n        :type MergeTables: :class:`tencentcloud.tcaplusdb.v20190823.models.CompareTablesInfo`\n        :param CheckIndex: Whether to check indexes\n        :type CheckIndex: bool\n        """
         self.MergeTables = None
         self.CheckIndex = None
 
@@ -2151,8 +2705,14 @@ class ModifyCensorshipRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param Censorship: Whether to enable the operation approval feature for this cluster. Valid values: `0` (disable), `1` (enable)
+        :type Censorship: int
+        :param Uins: Approver UIN list
+        :type Uins: list of str
         """
-        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param Censorship: Whether to enable the operation approval feature for this cluster. Valid values: `0` (disable), `1` (enable)\n        :type Censorship: int\n        :param Uins: Approver UIN list\n        :type Uins: list of str\n        """
         self.ClusterId = None
         self.Censorship = None
         self.Uins = None
@@ -2177,9 +2737,17 @@ class ModifyCensorshipResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param Uins: Approver UIN list
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type Uins: list of str
+        :param Censorship: Whether the operation approval feature is enabled for this cluster. Valid values: `0` (disabled), `1` (enabled)
+        :type Censorship: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param Uins: Approver UIN list
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type Uins: list of str\n        :param Censorship: Whether the operation approval feature is enabled for this cluster. Valid values: `0` (disabled), `1` (enabled)\n        :type Censorship: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ClusterId = None
         self.Uins = None
         self.Censorship = None
@@ -2199,8 +2767,16 @@ class ModifyClusterMachineRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param ServerList: Information of the machines at the storage layer (tcapsvr)
+        :type ServerList: list of MachineInfo
+        :param ProxyList: Information of the machines at the access layer (tcaproxy)
+        :type ProxyList: list of MachineInfo
+        :param ClusterType: Cluster type. Valid values: `1` (standard), `2` (dedicated)
+        :type ClusterType: int
         """
-        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param ServerList: Information of the machines at the storage layer (tcapsvr)\n        :type ServerList: list of MachineInfo\n        :param ProxyList: Information of the machines at the access layer (tcaproxy)\n        :type ProxyList: list of MachineInfo\n        :param ClusterType: Cluster type. Valid values: `1` (standard), `2` (dedicated)\n        :type ClusterType: int\n        """
         self.ClusterId = None
         self.ServerList = None
         self.ProxyList = None
@@ -2237,8 +2813,12 @@ class ModifyClusterMachineResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ClusterId = None
         self.RequestId = None
 
@@ -2254,8 +2834,12 @@ class ModifyClusterNameRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: ID of the cluster to be renamed
+        :type ClusterId: str
+        :param ClusterName: Cluster name to be changed to, which can contain up to 32 letters and digits
+        :type ClusterName: str
         """
-        :param ClusterId: ID of the cluster to be renamed\n        :type ClusterId: str\n        :param ClusterName: Cluster name to be changed to, which can contain up to 32 letters and digits\n        :type ClusterName: str\n        """
         self.ClusterId = None
         self.ClusterName = None
 
@@ -2278,8 +2862,10 @@ class ModifyClusterNameResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2293,8 +2879,18 @@ class ModifyClusterPasswordRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: ID of the cluster for which to modify the password
+        :type ClusterId: str
+        :param OldPassword: Old cluster password
+        :type OldPassword: str
+        :param OldPasswordExpireTime: Expected expiration time of old cluster password
+        :type OldPasswordExpireTime: str
+        :param NewPassword: New cluster password, which must contain lowercase letters (a-z), uppercase letters (A-Z), and digits (0-9).
+        :type NewPassword: str
+        :param Mode: Update mode. 1: updates password, 2: updates old password expiration time. Default value: 1
+        :type Mode: str
         """
-        :param ClusterId: ID of the cluster for which to modify the password\n        :type ClusterId: str\n        :param OldPassword: Old cluster password\n        :type OldPassword: str\n        :param OldPasswordExpireTime: Expected expiration time of old cluster password\n        :type OldPasswordExpireTime: str\n        :param NewPassword: New cluster password, which must contain lowercase letters (a-z), uppercase letters (A-Z), and digits (0-9).\n        :type NewPassword: str\n        :param Mode: Update mode. 1: updates password, 2: updates old password expiration time. Default value: 1\n        :type Mode: str\n        """
         self.ClusterId = None
         self.OldPassword = None
         self.OldPasswordExpireTime = None
@@ -2323,8 +2919,10 @@ class ModifyClusterPasswordResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2338,8 +2936,14 @@ class ModifyClusterTagsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: The ID of the cluster whose tags need to be modified
+        :type ClusterId: str
+        :param ReplaceTags: The list of tags to add or modify
+        :type ReplaceTags: list of TagInfoUnit
+        :param DeleteTags: Tags to delete
+        :type DeleteTags: list of TagInfoUnit
         """
-        :param ClusterId: The ID of the cluster whose tags need to be modified\n        :type ClusterId: str\n        :param ReplaceTags: The list of tags to add or modify\n        :type ReplaceTags: list of TagInfoUnit\n        :param DeleteTags: Tags to delete\n        :type DeleteTags: list of TagInfoUnit\n        """
         self.ClusterId = None
         self.ReplaceTags = None
         self.DeleteTags = None
@@ -2374,8 +2978,12 @@ class ModifyClusterTagsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Task ID
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskId: Task ID\n        :type TaskId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -2391,8 +2999,12 @@ class ModifySnapshotsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: The ID of the cluster where the table resides
+        :type ClusterId: str
+        :param SelectedTables: Snapshot list
+        :type SelectedTables: list of SnapshotInfoNew
         """
-        :param ClusterId: The ID of the cluster where the table resides\n        :type ClusterId: str\n        :param SelectedTables: Snapshot list\n        :type SelectedTables: list of SnapshotInfoNew\n        """
         self.ClusterId = None
         self.SelectedTables = None
 
@@ -2420,8 +3032,14 @@ class ModifySnapshotsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: The number of snapshots modified in batches
+        :type TotalCount: int
+        :param TableResults: The result list of snapshots modified in batches
+        :type TableResults: list of SnapshotResult
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: The number of snapshots modified in batches\n        :type TotalCount: int\n        :param TableResults: The result list of snapshots modified in batches\n        :type TableResults: list of SnapshotResult\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TableResults = None
         self.RequestId = None
@@ -2444,8 +3062,14 @@ class ModifyTableGroupNameRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: ID of the cluster where a table group resides
+        :type ClusterId: str
+        :param TableGroupId: ID of the table group to be renamed
+        :type TableGroupId: str
+        :param TableGroupName: New table group name, which can contain letters and symbols
+        :type TableGroupName: str
         """
-        :param ClusterId: ID of the cluster where a table group resides\n        :type ClusterId: str\n        :param TableGroupId: ID of the table group to be renamed\n        :type TableGroupId: str\n        :param TableGroupName: New table group name, which can contain letters and symbols\n        :type TableGroupName: str\n        """
         self.ClusterId = None
         self.TableGroupId = None
         self.TableGroupName = None
@@ -2470,8 +3094,10 @@ class ModifyTableGroupNameResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2485,8 +3111,16 @@ class ModifyTableGroupTagsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: The ID of the cluster where table group tags need to be modified
+        :type ClusterId: str
+        :param TableGroupId: The ID of the table group whose tags need to be modified
+        :type TableGroupId: str
+        :param ReplaceTags: The list of tags to add or modify
+        :type ReplaceTags: list of TagInfoUnit
+        :param DeleteTags: Tags to delete
+        :type DeleteTags: list of TagInfoUnit
         """
-        :param ClusterId: The ID of the cluster where table group tags need to be modified\n        :type ClusterId: str\n        :param TableGroupId: The ID of the table group whose tags need to be modified\n        :type TableGroupId: str\n        :param ReplaceTags: The list of tags to add or modify\n        :type ReplaceTags: list of TagInfoUnit\n        :param DeleteTags: Tags to delete\n        :type DeleteTags: list of TagInfoUnit\n        """
         self.ClusterId = None
         self.TableGroupId = None
         self.ReplaceTags = None
@@ -2523,8 +3157,12 @@ class ModifyTableGroupTagsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Task ID
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskId: Task ID\n        :type TaskId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -2540,8 +3178,12 @@ class ModifyTableMemosRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: ID of the cluster instance where a table resides
+        :type ClusterId: str
+        :param TableMemos: List of details of selected tables
+        :type TableMemos: list of SelectedTableInfoNew
         """
-        :param ClusterId: ID of the cluster instance where a table resides\n        :type ClusterId: str\n        :param TableMemos: List of details of selected tables\n        :type TableMemos: list of SelectedTableInfoNew\n        """
         self.ClusterId = None
         self.TableMemos = None
 
@@ -2569,8 +3211,14 @@ class ModifyTableMemosResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of tables modified for remarks
+        :type TotalCount: int
+        :param TableResults: List of table remarks modification results
+        :type TableResults: list of TableResultNew
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of tables modified for remarks\n        :type TotalCount: int\n        :param TableResults: List of table remarks modification results\n        :type TableResults: list of TableResultNew\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TableResults = None
         self.RequestId = None
@@ -2593,8 +3241,12 @@ class ModifyTableQuotasRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: ID of the cluster where the table to be scaled resides
+        :type ClusterId: str
+        :param TableQuotas: List of quotas of tables selected for modification
+        :type TableQuotas: list of SelectedTableInfoNew
         """
-        :param ClusterId: ID of the cluster where the table to be scaled resides\n        :type ClusterId: str\n        :param TableQuotas: List of quotas of tables selected for modification\n        :type TableQuotas: list of SelectedTableInfoNew\n        """
         self.ClusterId = None
         self.TableQuotas = None
 
@@ -2622,8 +3274,14 @@ class ModifyTableQuotasResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of scaled tables
+        :type TotalCount: int
+        :param TableResults: List of table scaling results
+        :type TableResults: list of TableResultNew
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of scaled tables\n        :type TotalCount: int\n        :param TableResults: List of table scaling results\n        :type TableResults: list of TableResultNew\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TableResults = None
         self.RequestId = None
@@ -2646,8 +3304,16 @@ class ModifyTableTagsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: The ID of the cluster where table tags need to be modified
+        :type ClusterId: str
+        :param SelectedTables: The list of tables whose tags need to be modified
+        :type SelectedTables: list of SelectedTableInfoNew
+        :param ReplaceTags: The list of tags to add or modify
+        :type ReplaceTags: list of TagInfoUnit
+        :param DeleteTags: The list of tags to delete
+        :type DeleteTags: list of TagInfoUnit
         """
-        :param ClusterId: The ID of the cluster where table tags need to be modified\n        :type ClusterId: str\n        :param SelectedTables: The list of tables whose tags need to be modified\n        :type SelectedTables: list of SelectedTableInfoNew\n        :param ReplaceTags: The list of tags to add or modify\n        :type ReplaceTags: list of TagInfoUnit\n        :param DeleteTags: The list of tags to delete\n        :type DeleteTags: list of TagInfoUnit\n        """
         self.ClusterId = None
         self.SelectedTables = None
         self.ReplaceTags = None
@@ -2689,8 +3355,14 @@ class ModifyTableTagsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: The total number of returned results
+        :type TotalCount: int
+        :param TableResults: Returned results
+        :type TableResults: list of TableResultNew
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: The total number of returned results\n        :type TotalCount: int\n        :param TableResults: Returned results\n        :type TableResults: list of TableResultNew\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TableResults = None
         self.RequestId = None
@@ -2713,8 +3385,14 @@ class ModifyTablesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: ID of the cluster where the table to be modified resides
+        :type ClusterId: str
+        :param IdlFiles: Selected table modification IDL files
+        :type IdlFiles: list of IdlFileInfo
+        :param SelectedTables: List of tables to be modified
+        :type SelectedTables: list of SelectedTableInfoNew
         """
-        :param ClusterId: ID of the cluster where the table to be modified resides\n        :type ClusterId: str\n        :param IdlFiles: Selected table modification IDL files\n        :type IdlFiles: list of IdlFileInfo\n        :param SelectedTables: List of tables to be modified\n        :type SelectedTables: list of SelectedTableInfoNew\n        """
         self.ClusterId = None
         self.IdlFiles = None
         self.SelectedTables = None
@@ -2749,8 +3427,14 @@ class ModifyTablesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of modified tables
+        :type TotalCount: int
+        :param TableResults: List of table modification results
+        :type TableResults: list of TableResultNew
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of modified tables\n        :type TotalCount: int\n        :param TableResults: List of table modification results\n        :type TableResults: list of TableResultNew\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TableResults = None
         self.RequestId = None
@@ -2773,26 +3457,62 @@ class ParsedTableInfoNew(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TableIdlType: Table description language type. Valid values: PROTO, TDR
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TableIdlType: str\n        :param TableInstanceId: Table instance ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TableInstanceId: str\n        :param TableName: Table name
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TableName: str\n        :param TableType: Table data structure type. Valid values: GENERIC, LIST
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TableType: str\n        :param KeyFields: Primary key field information
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type KeyFields: str\n        :param OldKeyFields: Old primary key field information, which is valid during verification of table modification
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type OldKeyFields: str\n        :param ValueFields: Non-primary key field information
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ValueFields: str\n        :param OldValueFields: Old non-primary key field information, which is valid during verification of table modification
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type OldValueFields: str\n        :param TableGroupId: Table group ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TableGroupId: str\n        :param SumKeyFieldSize: Total size of primary key field
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type SumKeyFieldSize: int\n        :param SumValueFieldSize: Total size of non-primary key fields
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type SumValueFieldSize: int\n        :param IndexKeySet: Index key set
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type IndexKeySet: str\n        :param ShardingKeySet: Shardkey set
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ShardingKeySet: str\n        :param TdrVersion: TDR version number
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TdrVersion: int\n        :param Error: Error message
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`\n        :param ListElementNum: Number of LIST-type table elements
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ListElementNum: int\n        :param SortFieldNum: Number of SORTLIST-type table sort fields
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type SortFieldNum: int\n        :param SortRule: Sort order of SORTLIST-type tables
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type SortRule: int\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TableIdlType: str
+        :param TableInstanceId: Table instance ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TableInstanceId: str
+        :param TableName: Table name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TableName: str
+        :param TableType: Table data structure type. Valid values: GENERIC, LIST
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TableType: str
+        :param KeyFields: Primary key field information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type KeyFields: str
+        :param OldKeyFields: Old primary key field information, which is valid during verification of table modification
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type OldKeyFields: str
+        :param ValueFields: Non-primary key field information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ValueFields: str
+        :param OldValueFields: Old non-primary key field information, which is valid during verification of table modification
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type OldValueFields: str
+        :param TableGroupId: Table group ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TableGroupId: str
+        :param SumKeyFieldSize: Total size of primary key field
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SumKeyFieldSize: int
+        :param SumValueFieldSize: Total size of non-primary key fields
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SumValueFieldSize: int
+        :param IndexKeySet: Index key set
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IndexKeySet: str
+        :param ShardingKeySet: Shardkey set
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ShardingKeySet: str
+        :param TdrVersion: TDR version number
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TdrVersion: int
+        :param Error: Error message
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        :param ListElementNum: Number of LIST-type table elements
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ListElementNum: int
+        :param SortFieldNum: Number of SORTLIST-type table sort fields
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SortFieldNum: int
+        :param SortRule: Sort order of SORTLIST-type tables
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SortRule: int
+        """
         self.TableIdlType = None
         self.TableInstanceId = None
         self.TableName = None
@@ -2849,8 +3569,18 @@ class PoolInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PoolUid: Unique ID
+        :type PoolUid: int
+        :param Ipv6Enable: Whether IPv6 is supported
+        :type Ipv6Enable: int
+        :param AvailableAppCount: Remaining available cluster resources
+        :type AvailableAppCount: int
+        :param ServerList: The list of machines at the storage layer (tcapsvr)
+        :type ServerList: list of ServerMachineInfo
+        :param ProxyList: The list of machines at the access layer (tcaproxy)
+        :type ProxyList: list of ProxyMachineInfo
         """
-        :param PoolUid: Unique ID\n        :type PoolUid: int\n        :param Ipv6Enable: Whether IPv6 is supported\n        :type Ipv6Enable: int\n        :param AvailableAppCount: Remaining available cluster resources\n        :type AvailableAppCount: int\n        :param ServerList: The list of machines at the storage layer (tcapsvr)\n        :type ServerList: list of ServerMachineInfo\n        :param ProxyList: The list of machines at the access layer (tcaproxy)\n        :type ProxyList: list of ProxyMachineInfo\n        """
         self.PoolUid = None
         self.Ipv6Enable = None
         self.AvailableAppCount = None
@@ -2889,8 +3619,18 @@ class ProxyDetailInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProxyUid: The unique ID of the access layer (tcaproxy)
+        :type ProxyUid: str
+        :param MachineType: Machine type
+        :type MachineType: str
+        :param ProcessSpeed: The speed of processing request packets
+        :type ProcessSpeed: int
+        :param AverageProcessDelay: Request packet delay
+        :type AverageProcessDelay: int
+        :param SlowProcessSpeed: The speed of processing delayed request packets
+        :type SlowProcessSpeed: int
         """
-        :param ProxyUid: The unique ID of the access layer (tcaproxy)\n        :type ProxyUid: str\n        :param MachineType: Machine type\n        :type MachineType: str\n        :param ProcessSpeed: The speed of processing request packets\n        :type ProcessSpeed: int\n        :param AverageProcessDelay: Request packet delay\n        :type AverageProcessDelay: int\n        :param SlowProcessSpeed: The speed of processing delayed request packets\n        :type SlowProcessSpeed: int\n        """
         self.ProxyUid = None
         self.MachineType = None
         self.ProcessSpeed = None
@@ -2919,8 +3659,12 @@ class ProxyMachineInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProxyUid: Unique ID
+        :type ProxyUid: str
+        :param MachineType: Machine type
+        :type MachineType: str
         """
-        :param ProxyUid: Unique ID\n        :type ProxyUid: str\n        :param MachineType: Machine type\n        :type MachineType: str\n        """
         self.ProxyUid = None
         self.MachineType = None
 
@@ -2943,8 +3687,12 @@ class RecoverRecycleTablesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: ID of the cluster where a table resides
+        :type ClusterId: str
+        :param SelectedTables: Information of tables to be recovered
+        :type SelectedTables: list of SelectedTableInfoNew
         """
-        :param ClusterId: ID of the cluster where a table resides\n        :type ClusterId: str\n        :param SelectedTables: Information of tables to be recovered\n        :type SelectedTables: list of SelectedTableInfoNew\n        """
         self.ClusterId = None
         self.SelectedTables = None
 
@@ -2972,8 +3720,14 @@ class RecoverRecycleTablesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of recovered tables
+        :type TotalCount: int
+        :param TableResults: List of information of recovered tables
+        :type TableResults: list of TableResultNew
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of recovered tables\n        :type TotalCount: int\n        :param TableResults: List of information of recovered tables\n        :type TableResults: list of TableResultNew\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TableResults = None
         self.RequestId = None
@@ -2996,8 +3750,16 @@ class RegionInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegionName: Region `Ap-code`
+        :type RegionName: str
+        :param RegionAbbr: Region abbreviation
+        :type RegionAbbr: str
+        :param RegionId: Region ID
+        :type RegionId: int
+        :param Ipv6Enable: Whether to support IPv6 address access. Valid values: 0 (support), 1 (not support)
+        :type Ipv6Enable: int
         """
-        :param RegionName: Region `Ap-code`\n        :type RegionName: str\n        :param RegionAbbr: Region abbreviation\n        :type RegionAbbr: str\n        :param RegionId: Region ID\n        :type RegionId: int\n        :param Ipv6Enable: Whether to support IPv6 address access. Valid values: 0 (support), 1 (not support)\n        :type Ipv6Enable: int\n        """
         self.RegionName = None
         self.RegionAbbr = None
         self.RegionId = None
@@ -3024,8 +3786,16 @@ class RollbackTablesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: ID of the cluster where the table to be rolled back resides
+        :type ClusterId: str
+        :param SelectedTables: List of tables to be rolled back
+        :type SelectedTables: list of SelectedTableInfoNew
+        :param RollbackTime: Time to roll back to
+        :type RollbackTime: str
+        :param Mode: Rollback mode. `KEYS` is supported
+        :type Mode: str
         """
-        :param ClusterId: ID of the cluster where the table to be rolled back resides\n        :type ClusterId: str\n        :param SelectedTables: List of tables to be rolled back\n        :type SelectedTables: list of SelectedTableInfoNew\n        :param RollbackTime: Time to roll back to\n        :type RollbackTime: str\n        :param Mode: Rollback mode. `KEYS` is supported\n        :type Mode: str\n        """
         self.ClusterId = None
         self.SelectedTables = None
         self.RollbackTime = None
@@ -3057,8 +3827,14 @@ class RollbackTablesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of table rollback task results
+        :type TotalCount: int
+        :param TableResults: Table rollback task result list
+        :type TableResults: list of TableRollbackResultNew
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of table rollback task results\n        :type TotalCount: int\n        :param TableResults: Table rollback task result list\n        :type TableResults: list of TableRollbackResultNew\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TableResults = None
         self.RequestId = None
@@ -3081,8 +3857,36 @@ class SelectedTableInfoNew(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TableGroupId: ID of the table group where a table resides
+        :type TableGroupId: str
+        :param TableName: Table name
+        :type TableName: str
+        :param TableInstanceId: Table instance ID
+        :type TableInstanceId: str
+        :param TableIdlType: Table description language type. Valid values: PROTO, TDR
+        :type TableIdlType: str
+        :param TableType: Table data structure type. Valid values: GENERIC, LIST
+        :type TableType: str
+        :param ListElementNum: Number of LIST-type table elements
+        :type ListElementNum: int
+        :param ReservedVolume: Reserved table capacity in GB
+        :type ReservedVolume: int
+        :param ReservedReadQps: Reserved table read QPS
+        :type ReservedReadQps: int
+        :param ReservedWriteQps: Reserved table write QPS
+        :type ReservedWriteQps: int
+        :param Memo: Table remarks
+        :type Memo: str
+        :param FileName: Key rollback filename, which is only used for rollback
+        :type FileName: str
+        :param FileExtType: Key rollback file extension, which is only used for rollback
+        :type FileExtType: str
+        :param FileSize: Key rollback file size, which is only used for rollback
+        :type FileSize: int
+        :param FileContent: Key rollback file content, which is only used for rollback
+        :type FileContent: str
         """
-        :param TableGroupId: ID of the table group where a table resides\n        :type TableGroupId: str\n        :param TableName: Table name\n        :type TableName: str\n        :param TableInstanceId: Table instance ID\n        :type TableInstanceId: str\n        :param TableIdlType: Table description language type. Valid values: PROTO, TDR\n        :type TableIdlType: str\n        :param TableType: Table data structure type. Valid values: GENERIC, LIST\n        :type TableType: str\n        :param ListElementNum: Number of LIST-type table elements\n        :type ListElementNum: int\n        :param ReservedVolume: Reserved table capacity in GB\n        :type ReservedVolume: int\n        :param ReservedReadQps: Reserved table read QPS\n        :type ReservedReadQps: int\n        :param ReservedWriteQps: Reserved table write QPS\n        :type ReservedWriteQps: int\n        :param Memo: Table remarks\n        :type Memo: str\n        :param FileName: Key rollback filename, which is only used for rollback\n        :type FileName: str\n        :param FileExtType: Key rollback file extension, which is only used for rollback\n        :type FileExtType: str\n        :param FileSize: Key rollback file size, which is only used for rollback\n        :type FileSize: int\n        :param FileContent: Key rollback file content, which is only used for rollback\n        :type FileContent: str\n        """
         self.TableGroupId = None
         self.TableName = None
         self.TableInstanceId = None
@@ -3129,8 +3933,22 @@ class SelectedTableWithField(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TableGroupId: ID of the table group where the table resides
+        :type TableGroupId: str
+        :param TableName: Table name
+        :type TableName: str
+        :param TableInstanceId: Table ID
+        :type TableInstanceId: str
+        :param TableIdlType: Table description language. Valid values: `PROTO`, `TDR`
+        :type TableIdlType: str
+        :param TableType: Table data structure. Valid values: `GENERIC`, `LIST`
+        :type TableType: str
+        :param SelectedFields: The list of fields on which indexes need to be created
+        :type SelectedFields: list of FieldInfo
+        :param ShardNum: The number of index shards
+        :type ShardNum: int
         """
-        :param TableGroupId: ID of the table group where the table resides\n        :type TableGroupId: str\n        :param TableName: Table name\n        :type TableName: str\n        :param TableInstanceId: Table ID\n        :type TableInstanceId: str\n        :param TableIdlType: Table description language. Valid values: `PROTO`, `TDR`\n        :type TableIdlType: str\n        :param TableType: Table data structure. Valid values: `GENERIC`, `LIST`\n        :type TableType: str\n        :param SelectedFields: The list of fields on which indexes need to be created\n        :type SelectedFields: list of FieldInfo\n        :param ShardNum: The number of index shards\n        :type ShardNum: int\n        """
         self.TableGroupId = None
         self.TableName = None
         self.TableInstanceId = None
@@ -3168,8 +3986,20 @@ class ServerDetailInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServerUid: The unique ID of the storage layer (tcapsvr)
+        :type ServerUid: str
+        :param MachineType: Machine type
+        :type MachineType: str
+        :param MemoryRate: Memory utilization
+        :type MemoryRate: int
+        :param DiskRate: Disk utilization
+        :type DiskRate: int
+        :param ReadNum: The number of reads
+        :type ReadNum: int
+        :param WriteNum: The number of writes
+        :type WriteNum: int
         """
-        :param ServerUid: The unique ID of the storage layer (tcapsvr)\n        :type ServerUid: str\n        :param MachineType: Machine type\n        :type MachineType: str\n        :param MemoryRate: Memory utilization\n        :type MemoryRate: int\n        :param DiskRate: Disk utilization\n        :type DiskRate: int\n        :param ReadNum: The number of reads\n        :type ReadNum: int\n        :param WriteNum: The number of writes\n        :type WriteNum: int\n        """
         self.ServerUid = None
         self.MachineType = None
         self.MemoryRate = None
@@ -3200,8 +4030,12 @@ class ServerMachineInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServerUid: The unique ID of the machine
+        :type ServerUid: str
+        :param MachineType: Machine type
+        :type MachineType: str
         """
-        :param ServerUid: The unique ID of the machine\n        :type ServerUid: str\n        :param MachineType: Machine type\n        :type MachineType: str\n        """
         self.ServerUid = None
         self.MachineType = None
 
@@ -3224,8 +4058,12 @@ class SetTableIndexRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: ID of the cluster where the table resides
+        :type ClusterId: str
+        :param SelectedTables: The list of tables that need to create global indexes
+        :type SelectedTables: list of SelectedTableWithField
         """
-        :param ClusterId: ID of the cluster where the table resides\n        :type ClusterId: str\n        :param SelectedTables: The list of tables that need to create global indexes\n        :type SelectedTables: list of SelectedTableWithField\n        """
         self.ClusterId = None
         self.SelectedTables = None
 
@@ -3253,8 +4091,14 @@ class SetTableIndexResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: The number of tables whose global indexes are created
+        :type TotalCount: int
+        :param TableResults: The list of global index creation results
+        :type TableResults: list of TableResultNew
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: The number of tables whose global indexes are created\n        :type TotalCount: int\n        :param TableResults: The list of global index creation results\n        :type TableResults: list of TableResultNew\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TableResults = None
         self.RequestId = None
@@ -3277,8 +4121,18 @@ class SnapshotInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TableGroupId: The ID of the table group where the table resides
+        :type TableGroupId: str
+        :param TableName: Table name
+        :type TableName: str
+        :param SnapshotName: Snapshot name
+        :type SnapshotName: str
+        :param SnapshotTime: The time of the data from which the snapshot was created
+        :type SnapshotTime: str
+        :param SnapshotDeadTime: Snapshot expiration time
+        :type SnapshotDeadTime: str
         """
-        :param TableGroupId: The ID of the table group where the table resides\n        :type TableGroupId: str\n        :param TableName: Table name\n        :type TableName: str\n        :param SnapshotName: Snapshot name\n        :type SnapshotName: str\n        :param SnapshotTime: The time of the data from which the snapshot was created\n        :type SnapshotTime: str\n        :param SnapshotDeadTime: Snapshot expiration time\n        :type SnapshotDeadTime: str\n        """
         self.TableGroupId = None
         self.TableName = None
         self.SnapshotName = None
@@ -3307,8 +4161,16 @@ class SnapshotInfoNew(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TableGroupId: The ID of the table group where the table resides
+        :type TableGroupId: str
+        :param TableName: Table name
+        :type TableName: str
+        :param SnapshotName: Snapshot name
+        :type SnapshotName: str
+        :param SnapshotDeadTime: Snapshot expiration time
+        :type SnapshotDeadTime: str
         """
-        :param TableGroupId: The ID of the table group where the table resides\n        :type TableGroupId: str\n        :param TableName: Table name\n        :type TableName: str\n        :param SnapshotName: Snapshot name\n        :type SnapshotName: str\n        :param SnapshotDeadTime: Snapshot expiration time\n        :type SnapshotDeadTime: str\n        """
         self.TableGroupId = None
         self.TableName = None
         self.SnapshotName = None
@@ -3335,18 +4197,38 @@ class SnapshotResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TableGroupId: The ID of the table group where the table resides
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type TableGroupId: str\n        :param TableName: Table name
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type TableName: str\n        :param TaskId: Task ID, which is valid for the API that creates one task at a time
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type TaskId: str\n        :param Error: Error information
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`\n        :param SnapshotName: Snapshot name
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type SnapshotName: str\n        :param SnapshotTime: The time of the data from which the snapshot was created
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type SnapshotTime: str\n        :param SnapshotDeadTime: When the snapshot expires
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type SnapshotDeadTime: str\n        :param SnapshotCreateTime: When the snapshot was created
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type SnapshotCreateTime: str\n        :param SnapshotSize: Snapshot size
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type SnapshotSize: int\n        :param SnapshotStatus: Snapshot status. Valid values: `0` (creating), `1` (normal), `2` (deleting), `3` (expired), `4` (rolling back).
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type SnapshotStatus: int\n        """
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type TableGroupId: str
+        :param TableName: Table name
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type TableName: str
+        :param TaskId: Task ID, which is valid for the API that creates one task at a time
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type TaskId: str
+        :param Error: Error information
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        :param SnapshotName: Snapshot name
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type SnapshotName: str
+        :param SnapshotTime: The time of the data from which the snapshot was created
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type SnapshotTime: str
+        :param SnapshotDeadTime: When the snapshot expires
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type SnapshotDeadTime: str
+        :param SnapshotCreateTime: When the snapshot was created
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type SnapshotCreateTime: str
+        :param SnapshotSize: Snapshot size
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type SnapshotSize: int
+        :param SnapshotStatus: Snapshot status. Valid values: `0` (creating), `1` (normal), `2` (deleting), `3` (expired), `4` (rolling back).
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type SnapshotStatus: int
+        """
         self.TableGroupId = None
         self.TableName = None
         self.TaskId = None
@@ -3387,8 +4269,18 @@ class TableGroupInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TableGroupId: Table group ID
+        :type TableGroupId: str
+        :param TableGroupName: Table group name
+        :type TableGroupName: str
+        :param CreatedTime: Table group creation time
+        :type CreatedTime: str
+        :param TableCount: Number of tables in table group
+        :type TableCount: int
+        :param TotalSize: Total table storage capacity in MB in table group
+        :type TotalSize: int
         """
-        :param TableGroupId: Table group ID\n        :type TableGroupId: str\n        :param TableGroupName: Table group name\n        :type TableGroupName: str\n        :param CreatedTime: Table group creation time\n        :type CreatedTime: str\n        :param TableCount: Number of tables in table group\n        :type TableCount: int\n        :param TotalSize: Total table storage capacity in MB in table group\n        :type TotalSize: int\n        """
         self.TableGroupId = None
         self.TableGroupName = None
         self.CreatedTime = None
@@ -3417,34 +4309,88 @@ class TableInfoNew(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TableName: Table name
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TableName: str\n        :param TableInstanceId: Table instance ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TableInstanceId: str\n        :param TableType: Table data structure type, such as `GENERIC` or `LIST`
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TableType: str\n        :param TableIdlType: Table data interface description language (IDL) type, such as `PROTO` or `TDR`
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TableIdlType: str\n        :param ClusterId: ID of the cluster where a table resides
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ClusterId: str\n        :param ClusterName: Name of the cluster where a table resides
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ClusterName: str\n        :param TableGroupId: ID of the table group where a table resides
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TableGroupId: str\n        :param TableGroupName: Name of the table group where a table resides
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TableGroupName: str\n        :param KeyStruct: JSON string of table's primary key field structure
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type KeyStruct: str\n        :param ValueStruct: JSON string of table non-primary key field structure
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ValueStruct: str\n        :param ShardingKeySet: Table shardkey set, which is valid for PROTO-type tables
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ShardingKeySet: str\n        :param IndexStruct: Table index key field set, which is valid for PROTO-type tables
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type IndexStruct: str\n        :param ListElementNum: Number of LIST-type table elements
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ListElementNum: int\n        :param IdlFiles: Information list of IDL files associated with table
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type IdlFiles: list of IdlFileInfo\n        :param ReservedVolume: Reserved table capacity in GB
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ReservedVolume: int\n        :param ReservedReadQps: Reserved table read QPS
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ReservedReadQps: int\n        :param ReservedWriteQps: Reserved table write QPS
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ReservedWriteQps: int\n        :param TableSize: Actual table data size in MB
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TableSize: int\n        :param Status: Table status
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Status: str\n        :param CreatedTime: Table creation time
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type CreatedTime: str\n        :param UpdatedTime: Table's last modified time
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type UpdatedTime: str\n        :param Memo: Table remarks
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Memo: str\n        :param Error: Error message
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`\n        :param ApiAccessId: TcaplusDB SDK data access ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ApiAccessId: str\n        :param SortFieldNum: Number of SORTLIST-type table sort fields
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type SortFieldNum: int\n        :param SortRule: Sort order of SORTLIST-type tables
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type SortRule: int\n        :param DbClusterInfoStruct: Distributed index information of table\n        :type DbClusterInfoStruct: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TableName: str
+        :param TableInstanceId: Table instance ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TableInstanceId: str
+        :param TableType: Table data structure type, such as `GENERIC` or `LIST`
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TableType: str
+        :param TableIdlType: Table data interface description language (IDL) type, such as `PROTO` or `TDR`
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TableIdlType: str
+        :param ClusterId: ID of the cluster where a table resides
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ClusterId: str
+        :param ClusterName: Name of the cluster where a table resides
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ClusterName: str
+        :param TableGroupId: ID of the table group where a table resides
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TableGroupId: str
+        :param TableGroupName: Name of the table group where a table resides
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TableGroupName: str
+        :param KeyStruct: JSON string of table's primary key field structure
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type KeyStruct: str
+        :param ValueStruct: JSON string of table non-primary key field structure
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ValueStruct: str
+        :param ShardingKeySet: Table shardkey set, which is valid for PROTO-type tables
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ShardingKeySet: str
+        :param IndexStruct: Table index key field set, which is valid for PROTO-type tables
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IndexStruct: str
+        :param ListElementNum: Number of LIST-type table elements
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ListElementNum: int
+        :param IdlFiles: Information list of IDL files associated with table
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IdlFiles: list of IdlFileInfo
+        :param ReservedVolume: Reserved table capacity in GB
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ReservedVolume: int
+        :param ReservedReadQps: Reserved table read QPS
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ReservedReadQps: int
+        :param ReservedWriteQps: Reserved table write QPS
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ReservedWriteQps: int
+        :param TableSize: Actual table data size in MB
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TableSize: int
+        :param Status: Table status
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Status: str
+        :param CreatedTime: Table creation time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CreatedTime: str
+        :param UpdatedTime: Table's last modified time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type UpdatedTime: str
+        :param Memo: Table remarks
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Memo: str
+        :param Error: Error message
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        :param ApiAccessId: TcaplusDB SDK data access ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ApiAccessId: str
+        :param SortFieldNum: Number of SORTLIST-type table sort fields
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SortFieldNum: int
+        :param SortRule: Sort order of SORTLIST-type tables
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SortRule: int
+        :param DbClusterInfoStruct: Distributed index information of table
+        :type DbClusterInfoStruct: str
+        """
         self.TableName = None
         self.TableInstanceId = None
         self.TableType = None
@@ -3524,17 +4470,35 @@ class TableResultNew(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TableInstanceId: Table instance ID in the format of `tcaplus-3be64cbb`
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TableInstanceId: str\n        :param TaskId: Task ID, which is valid for the API that creates one task
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TaskId: str\n        :param TableName: Table name
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TableName: str\n        :param TableType: Table data structure type, such as `GENERIC` or `LIST`
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TableType: str\n        :param TableIdlType: Table data interface description language (IDL) type, such as `PROTO` or `TDR`
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TableIdlType: str\n        :param TableGroupId: ID of the table group where a table resides
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TableGroupId: str\n        :param Error: Error message
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`\n        :param TaskIds: Task ID list, which is valid for the API that creates multiple tasks
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TaskIds: list of str\n        :param ApplicationId: Cluster operation application ID
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type ApplicationId: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TableInstanceId: str
+        :param TaskId: Task ID, which is valid for the API that creates one task
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TaskId: str
+        :param TableName: Table name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TableName: str
+        :param TableType: Table data structure type, such as `GENERIC` or `LIST`
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TableType: str
+        :param TableIdlType: Table data interface description language (IDL) type, such as `PROTO` or `TDR`
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TableIdlType: str
+        :param TableGroupId: ID of the table group where a table resides
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TableGroupId: str
+        :param Error: Error message
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        :param TaskIds: Task ID list, which is valid for the API that creates multiple tasks
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TaskIds: list of str
+        :param ApplicationId: Cluster operation application ID
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type ApplicationId: str
+        """
         self.TableInstanceId = None
         self.TaskId = None
         self.TableName = None
@@ -3573,19 +4537,41 @@ class TableRollbackResultNew(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TableInstanceId: Table instance ID in the format of `tcaplus-3be64cbb`
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TableInstanceId: str\n        :param TaskId: Task ID, which is valid for the API that creates one task
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TaskId: str\n        :param TableName: Table name
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TableName: str\n        :param TableType: Table data structure type, such as `GENERIC` or `LIST`
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TableType: str\n        :param TableIdlType: Table data interface description language (IDL) type, such as `PROTO` or `TDR`
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TableIdlType: str\n        :param TableGroupId: ID of the table group where a table resides
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TableGroupId: str\n        :param Error: Error message
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`\n        :param TaskIds: Task ID list, which is valid for the API that creates multiple tasks
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TaskIds: list of str\n        :param FileId: ID of uploaded key file
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type FileId: str\n        :param SuccKeyNum: Number of keys successfully verified
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type SuccKeyNum: int\n        :param TotalKeyNum: Total number of keys contained in key file
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TotalKeyNum: int\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TableInstanceId: str
+        :param TaskId: Task ID, which is valid for the API that creates one task
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TaskId: str
+        :param TableName: Table name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TableName: str
+        :param TableType: Table data structure type, such as `GENERIC` or `LIST`
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TableType: str
+        :param TableIdlType: Table data interface description language (IDL) type, such as `PROTO` or `TDR`
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TableIdlType: str
+        :param TableGroupId: ID of the table group where a table resides
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TableGroupId: str
+        :param Error: Error message
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        :param TaskIds: Task ID list, which is valid for the API that creates multiple tasks
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TaskIds: list of str
+        :param FileId: ID of uploaded key file
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FileId: str
+        :param SuccKeyNum: Number of keys successfully verified
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SuccKeyNum: int
+        :param TotalKeyNum: Total number of keys contained in key file
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TotalKeyNum: int
+        """
         self.TableInstanceId = None
         self.TaskId = None
         self.TableName = None
@@ -3628,8 +4614,12 @@ class TagInfoUnit(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TagKey: Tag key
+        :type TagKey: str
+        :param TagValue: Tag value
+        :type TagValue: str
         """
-        :param TagKey: Tag key\n        :type TagKey: str\n        :param TagValue: Tag value\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -3652,8 +4642,14 @@ class TagsInfoOfCluster(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param Tags: Tag information
+        :type Tags: list of TagInfoUnit
+        :param Error: Error message
+        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
-        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param Tags: Tag information\n        :type Tags: list of TagInfoUnit\n        :param Error: Error message\n        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`\n        """
         self.ClusterId = None
         self.Tags = None
         self.Error = None
@@ -3685,8 +4681,18 @@ class TagsInfoOfTable(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TableInstanceId: Table instance ID
+        :type TableInstanceId: str
+        :param TableName: Table name
+        :type TableName: str
+        :param TableGroupId: Table group ID
+        :type TableGroupId: str
+        :param Tags: Tag information
+        :type Tags: list of TagInfoUnit
+        :param Error: Error message
+        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
-        :param TableInstanceId: Table instance ID\n        :type TableInstanceId: str\n        :param TableName: Table name\n        :type TableName: str\n        :param TableGroupId: Table group ID\n        :type TableGroupId: str\n        :param Tags: Tag information\n        :type Tags: list of TagInfoUnit\n        :param Error: Error message\n        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`\n        """
         self.TableInstanceId = None
         self.TableName = None
         self.TableGroupId = None
@@ -3722,8 +4728,16 @@ class TagsInfoOfTableGroup(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param TableGroupId: Table group ID
+        :type TableGroupId: str
+        :param Tags: Tag information
+        :type Tags: list of TagInfoUnit
+        :param Error: Error message
+        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
-        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param TableGroupId: Table group ID\n        :type TableGroupId: str\n        :param Tags: Tag information\n        :type Tags: list of TagInfoUnit\n        :param Error: Error message\n        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`\n        """
         self.ClusterId = None
         self.TableGroupId = None
         self.Tags = None
@@ -3757,8 +4771,28 @@ class TaskInfoNew(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Task ID
+        :type TaskId: str
+        :param TaskType: Task type
+        :type TaskType: str
+        :param TransId: ID of TcaplusDB internal transaction associated with task
+        :type TransId: str
+        :param ClusterId: ID of the cluster where a task resides
+        :type ClusterId: str
+        :param ClusterName: Name of the cluster where a task resides
+        :type ClusterName: str
+        :param Progress: Task progress
+        :type Progress: int
+        :param StartTime: Task creation time
+        :type StartTime: str
+        :param UpdateTime: Task last modified time
+        :type UpdateTime: str
+        :param Operator: Operator
+        :type Operator: str
+        :param Content: Task details
+        :type Content: str
         """
-        :param TaskId: Task ID\n        :type TaskId: str\n        :param TaskType: Task type\n        :type TaskType: str\n        :param TransId: ID of TcaplusDB internal transaction associated with task\n        :type TransId: str\n        :param ClusterId: ID of the cluster where a task resides\n        :type ClusterId: str\n        :param ClusterName: Name of the cluster where a task resides\n        :type ClusterName: str\n        :param Progress: Task progress\n        :type Progress: int\n        :param StartTime: Task creation time\n        :type StartTime: str\n        :param UpdateTime: Task last modified time\n        :type UpdateTime: str\n        :param Operator: Operator\n        :type Operator: str\n        :param Content: Task details\n        :type Content: str\n        """
         self.TaskId = None
         self.TaskType = None
         self.TransId = None
@@ -3797,8 +4831,10 @@ class UpdateApplyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApplyStatus: Application status
+        :type ApplyStatus: list of ApplyStatus
         """
-        :param ApplyStatus: Application status\n        :type ApplyStatus: list of ApplyStatus\n        """
         self.ApplyStatus = None
 
 
@@ -3824,9 +4860,15 @@ class UpdateApplyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ApplyResults: List of updated applications
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type ApplyResults: list of ApplyResult\n        :param TotalCount: Total number of updated applications\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type ApplyResults: list of ApplyResult
+        :param TotalCount: Total number of updated applications
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.ApplyResults = None
         self.TotalCount = None
         self.RequestId = None
@@ -3849,8 +4891,16 @@ class VerifyIdlFilesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: ID of the cluster where to create a table
+        :type ClusterId: str
+        :param TableGroupId: ID of the table group where to create a table
+        :type TableGroupId: str
+        :param ExistingIdlFiles: List of information of uploaded IDL files. Either this parameter or `NewIdlFiles` must be present
+        :type ExistingIdlFiles: list of IdlFileInfo
+        :param NewIdlFiles: List of information of IDL files to be uploaded. Either this parameter or `ExistingIdlFiles` must be present
+        :type NewIdlFiles: list of IdlFileInfo
         """
-        :param ClusterId: ID of the cluster where to create a table\n        :type ClusterId: str\n        :param TableGroupId: ID of the table group where to create a table\n        :type TableGroupId: str\n        :param ExistingIdlFiles: List of information of uploaded IDL files. Either this parameter or `NewIdlFiles` must be present\n        :type ExistingIdlFiles: list of IdlFileInfo\n        :param NewIdlFiles: List of information of IDL files to be uploaded. Either this parameter or `ExistingIdlFiles` must be present\n        :type NewIdlFiles: list of IdlFileInfo\n        """
         self.ClusterId = None
         self.TableGroupId = None
         self.ExistingIdlFiles = None
@@ -3887,8 +4937,16 @@ class VerifyIdlFilesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IdlFiles: Information list of all IDL files uploaded and verified in this request
+        :type IdlFiles: list of IdlFileInfo
+        :param TotalCount: Number of valid tables parsed by reading IDL description file, excluding tables already created
+        :type TotalCount: int
+        :param TableInfos: List of valid tables parsed by reading IDL description file, excluding tables already created
+        :type TableInfos: list of ParsedTableInfoNew
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param IdlFiles: Information list of all IDL files uploaded and verified in this request\n        :type IdlFiles: list of IdlFileInfo\n        :param TotalCount: Number of valid tables parsed by reading IDL description file, excluding tables already created\n        :type TotalCount: int\n        :param TableInfos: List of valid tables parsed by reading IDL description file, excluding tables already created\n        :type TableInfos: list of ParsedTableInfoNew\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.IdlFiles = None
         self.TotalCount = None
         self.TableInfos = None

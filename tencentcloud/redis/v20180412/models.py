@@ -24,14 +24,26 @@ class Account(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: Instance ID
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type InstanceId: str\n        :param AccountName: Account name (`root` for a root account)
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type AccountName: str\n        :param Remark: Account description information
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Remark: str\n        :param Privilege: Read/write policy. r: read-only; w: write-only; rw: read/write
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Privilege: str\n        :param ReadonlyPolicy: Routing policy. master: master node; replication: secondary node
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type ReadonlyPolicy: list of str\n        :param Status: Sub-account status. 1: account is being changed; 2: account is valid; -4: account has been deleted
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Status: int\n        """
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param AccountName: Account name (`root` for a root account)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AccountName: str
+        :param Remark: Account description information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Remark: str
+        :param Privilege: Read/write policy. r: read-only; w: write-only; rw: read/write
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Privilege: str
+        :param ReadonlyPolicy: Routing policy. master: master node; replication: secondary node
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReadonlyPolicy: list of str
+        :param Status: Sub-account status. 1: account is being changed; 2: account is valid; -4: account has been deleted
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: int
+        """
         self.InstanceId = None
         self.AccountName = None
         self.Remark = None
@@ -62,8 +74,14 @@ class AssociateSecurityGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Product: Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc.
+        :type Product: str
+        :param SecurityGroupId: ID of the security group to be associated in the format of sg-efil73jd.
+        :type SecurityGroupId: str
+        :param InstanceIds: ID(s) of the instance(s) to be associated in the format of ins-lesecurk. You can specify multiple instances.
+        :type InstanceIds: list of str
         """
-        :param Product: Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc.\n        :type Product: str\n        :param SecurityGroupId: ID of the security group to be associated in the format of sg-efil73jd.\n        :type SecurityGroupId: str\n        :param InstanceIds: ID(s) of the instance(s) to be associated in the format of ins-lesecurk. You can specify multiple instances.\n        :type InstanceIds: list of str\n        """
         self.Product = None
         self.SecurityGroupId = None
         self.InstanceIds = None
@@ -88,8 +106,10 @@ class AssociateSecurityGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -103,8 +123,18 @@ class BigKeyInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DB: Database
+        :type DB: int
+        :param Key: Big key
+        :type Key: str
+        :param Type: Type
+        :type Type: str
+        :param Size: Size
+        :type Size: int
+        :param Updatetime: Data timestamp
+        :type Updatetime: int
         """
-        :param DB: Database\n        :type DB: int\n        :param Key: Big key\n        :type Key: str\n        :param Type: Type\n        :type Type: str\n        :param Size: Size\n        :type Size: int\n        :param Updatetime: Data timestamp\n        :type Updatetime: int\n        """
         self.DB = None
         self.Key = None
         self.Type = None
@@ -133,8 +163,16 @@ class BigKeyTypeInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Type: Type
+        :type Type: str
+        :param Count: Count
+        :type Count: int
+        :param Size: Size
+        :type Size: int
+        :param Updatetime: Timestamp
+        :type Updatetime: int
         """
-        :param Type: Type\n        :type Type: str\n        :param Count: Count\n        :type Count: int\n        :param Size: Size\n        :type Size: int\n        :param Updatetime: Timestamp\n        :type Updatetime: int\n        """
         self.Type = None
         self.Count = None
         self.Size = None
@@ -161,8 +199,12 @@ class ChangeReplicaToMasterRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param GroupId: Replica ID
+        :type GroupId: int
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param GroupId: Replica ID\n        :type GroupId: int\n        """
         self.InstanceId = None
         self.GroupId = None
 
@@ -185,8 +227,12 @@ class ChangeReplicaToMasterResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Async task ID
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskId: Async task ID\n        :type TaskId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -202,8 +248,10 @@ class CleanUpInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -224,8 +272,12 @@ class CleanUpInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Task ID
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskId: Task ID\n        :type TaskId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -241,8 +293,12 @@ class ClearInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Password: Redis instance password (this parameter is not required for password-free instances but for password-enabled instances)
+        :type Password: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param Password: Redis instance password (this parameter is not required for password-free instances but for password-enabled instances)\n        :type Password: str\n        """
         self.InstanceId = None
         self.Password = None
 
@@ -265,8 +321,12 @@ class ClearInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Task ID
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskId: Task ID\n        :type TaskId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -282,8 +342,12 @@ class CommandTake(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Cmd: Command
+        :type Cmd: str
+        :param Took: Duration
+        :type Took: int
         """
-        :param Cmd: Command\n        :type Cmd: str\n        :param Took: Duration\n        :type Took: int\n        """
         self.Cmd = None
         self.Took = None
 
@@ -306,14 +370,26 @@ class CreateInstanceAccountRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param AccountName: Sub-account name\n        :type AccountName: str\n        :param AccountPassword: 1. The password must contain 8-30 characters. A password of 12 or more characters is recommended.
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param AccountName: Sub-account name
+        :type AccountName: str
+        :param AccountPassword: 1. The password must contain 8-30 characters. A password of 12 or more characters is recommended.
 2. The password cannot start with a slash (/).
 3. The password must contain at least two of the following four types:
     a. Lowercase letters (a-z)
     b. Uppercase letters (A-Z)
     c. Digits (0-9)
-    d. ()`~!@#$%^&*-+=_|{}[]:;<>,.?/\n        :type AccountPassword: str\n        :param ReadonlyPolicy: Routing policy. Enter `master` for primary node or `replication` for secondary node\n        :type ReadonlyPolicy: list of str\n        :param Privilege: Read/write policy. Valid values: r (read-only), rw (read/write).\n        :type Privilege: str\n        :param Remark: Sub-account description information\n        :type Remark: str\n        """
+    d. ()`~!@#$%^&*-+=_|{}[]:;<>,.?/
+        :type AccountPassword: str
+        :param ReadonlyPolicy: Routing policy. Enter `master` for primary node or `replication` for secondary node
+        :type ReadonlyPolicy: list of str
+        :param Privilege: Read/write policy. Valid values: r (read-only), rw (read/write).
+        :type Privilege: str
+        :param Remark: Sub-account description information
+        :type Remark: str
+        """
         self.InstanceId = None
         self.AccountName = None
         self.AccountPassword = None
@@ -344,8 +420,12 @@ class CreateInstanceAccountResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Task ID
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskId: Task ID\n        :type TaskId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -361,10 +441,50 @@ class CreateInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ZoneId: Availability zone ID of the instance. For more information, please see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).\n        :type ZoneId: int\n        :param TypeId: Instance type. Valid values: 2 (Redis 2.8 Memory Edition in standard architecture), 3 (CKV 3.2 Memory Edition in standard architecture), 4 (CKV 3.2 Memory Edition in cluster architecture), 6 (Redis 4.0 Memory Edition in standard architecture), 7 (Redis 4.0 Memory Edition in cluster architecture), 8 (Redis 5.0 Memory Edition in standard architecture), 9 (Redis 5.0 Memory Edition in cluster architecture).\n        :type TypeId: int\n        :param MemSize: Instance capacity in MB. The value should be a multiple of 1,024 and is subject to the specifications returned by the [DescribeProductInfo](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1) API.\n        :type MemSize: int\n        :param GoodsNum: Number of instances. The actual quantity purchasable at a time is subject to the specifications returned by the [DescribeProductInfo](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1) API.\n        :type GoodsNum: int\n        :param Period: Purchased usage period in months. which is required when creating an instance. For pay-as-you-go instances, the valid value is 1; for monthly subscription instances, the value range is [1,2,3,4,5,6,7,8,9,10,11,12,24,36].\n        :type Period: int\n        :param BillingMode: Billing method. 0: pay as you go\n        :type BillingMode: int\n        :param Password: Instance password. If the input parameter `NoAuth` is `true` and a VPC is used, the `Password` is optional; otherwise, it is required.
+        r"""
+        :param ZoneId: Availability zone ID of the instance. For more information, please see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).
+        :type ZoneId: int
+        :param TypeId: Instance type. Valid values: 2 (Redis 2.8 Memory Edition in standard architecture), 3 (CKV 3.2 Memory Edition in standard architecture), 4 (CKV 3.2 Memory Edition in cluster architecture), 6 (Redis 4.0 Memory Edition in standard architecture), 7 (Redis 4.0 Memory Edition in cluster architecture), 8 (Redis 5.0 Memory Edition in standard architecture), 9 (Redis 5.0 Memory Edition in cluster architecture).
+        :type TypeId: int
+        :param MemSize: Instance capacity in MB. The value should be a multiple of 1,024 and is subject to the specifications returned by the [DescribeProductInfo](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1) API.
+        :type MemSize: int
+        :param GoodsNum: Number of instances. The actual quantity purchasable at a time is subject to the specifications returned by the [DescribeProductInfo](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1) API.
+        :type GoodsNum: int
+        :param Period: Purchased usage period in months. which is required when creating an instance. For pay-as-you-go instances, the valid value is 1; for monthly subscription instances, the value range is [1,2,3,4,5,6,7,8,9,10,11,12,24,36].
+        :type Period: int
+        :param BillingMode: Billing method. 0: pay as you go
+        :type BillingMode: int
+        :param Password: Instance password. If the input parameter `NoAuth` is `true` and a VPC is used, the `Password` is optional; otherwise, it is required.
 If the instance type parameter `TypeId` indicates Redis 2.8, 4.0, or 5.0, the password cannot start with "/" and must contain 8-30 characters which are comprised of at least two of the following: lowercase letters, uppercase letters, digits, and special symbols (()`~!@#$%^&*-+=_|{}[]:;<>,.?/).
-If the instance type parameter `TypeId` indicates CKV 3.2, the password contains 8-30 characters which must be comprised of only letters and digits.\n        :type Password: str\n        :param VpcId: VPC ID, such as "vpc-sad23jfdfk". If this parameter is not passed in, the classic network will be selected by default. The parameter value can be queried by the `DescribeVpcs` API.\n        :type VpcId: str\n        :param SubnetId: In a classic network, `subnetId` is invalid. In a VPC subnet, the value can be queried by the `DescribeSubnets` API, such as "subnet-fdj24n34j2".\n        :type SubnetId: str\n        :param ProjectId: Project ID. The value is subject to the `projectId` returned by the `DescribeProject` API.\n        :type ProjectId: int\n        :param AutoRenew: Auto-renewal flag. Valid values: 0 (default status, indicating manual renewal), 1 (auto-renewal enabled), 2 (auto-renewal disabled)\n        :type AutoRenew: int\n        :param SecurityGroupIdList: Array of security group IDs\n        :type SecurityGroupIdList: list of str\n        :param VPort: User-defined port. If this parameter is left empty, 6379 will be used by default. Value range: [1024, 65535].\n        :type VPort: int\n        :param RedisShardNum: Number of shards in an instance. This parameter is required for instances in cluster architecture. Value range: [3,5,8,12,16,24,32,64,96,128].\n        :type RedisShardNum: int\n        :param RedisReplicasNum: Number of replicas in an instance. Redis 2.8 standard edition and CKV standard edition support 1 replica. Standard/cluster edition 4.0 and 5.0 support 1-5 replicas.\n        :type RedisReplicasNum: int\n        :param ReplicasReadonly: Whether to support read-only replicas. Neither Redis 2.8 in standard architecture nor CKV in standard architecture supports read-only replicas. Read/write separation will be automatically enabled for an instance after it enables read-only replicas. Write requests will be directed to the master node and read requests will be distributed on the replica nodes. To enable read-only replicas, we recommend that you create 2 or more replicas.\n        :type ReplicasReadonly: bool\n        :param InstanceName: Instance name. It contains only letters, digits, and symbols (-_) with a length of up to 60 characters.\n        :type InstanceName: str\n        :param NoAuth: Whether to support the password-free feature. Valid values: true (password-free instance), false (password-enabled instance). Default value: false. Only instances in a VPC support the password-free access.\n        :type NoAuth: bool\n        :param NodeSet: Node information of an instance. Currently, information about the node type (master or replica) and node availability zone can be passed in. This parameter is not required for instances deployed in a single availability zone.\n        :type NodeSet: list of RedisNodeInfo\n        :param ResourceTags: The tag bound with the instance to be purchased\n        :type ResourceTags: list of ResourceTag\n        """
+If the instance type parameter `TypeId` indicates CKV 3.2, the password contains 8-30 characters which must be comprised of only letters and digits.
+        :type Password: str
+        :param VpcId: VPC ID, such as "vpc-sad23jfdfk". If this parameter is not passed in, the classic network will be selected by default. The parameter value can be queried by the `DescribeVpcs` API.
+        :type VpcId: str
+        :param SubnetId: In a classic network, `subnetId` is invalid. In a VPC subnet, the value can be queried by the `DescribeSubnets` API, such as "subnet-fdj24n34j2".
+        :type SubnetId: str
+        :param ProjectId: Project ID. The value is subject to the `projectId` returned by the `DescribeProject` API.
+        :type ProjectId: int
+        :param AutoRenew: Auto-renewal flag. Valid values: 0 (default status, indicating manual renewal), 1 (auto-renewal enabled), 2 (auto-renewal disabled)
+        :type AutoRenew: int
+        :param SecurityGroupIdList: Array of security group IDs
+        :type SecurityGroupIdList: list of str
+        :param VPort: User-defined port. If this parameter is left empty, 6379 will be used by default. Value range: [1024, 65535].
+        :type VPort: int
+        :param RedisShardNum: Number of shards in an instance. This parameter is required for instances in cluster architecture. Value range: [3,5,8,12,16,24,32,64,96,128].
+        :type RedisShardNum: int
+        :param RedisReplicasNum: Number of replicas in an instance. Redis 2.8 standard edition and CKV standard edition support 1 replica. Standard/cluster edition 4.0 and 5.0 support 1-5 replicas.
+        :type RedisReplicasNum: int
+        :param ReplicasReadonly: Whether to support read-only replicas. Neither Redis 2.8 in standard architecture nor CKV in standard architecture supports read-only replicas. Read/write separation will be automatically enabled for an instance after it enables read-only replicas. Write requests will be directed to the master node and read requests will be distributed on the replica nodes. To enable read-only replicas, we recommend that you create 2 or more replicas.
+        :type ReplicasReadonly: bool
+        :param InstanceName: Instance name. It contains only letters, digits, and symbols (-_) with a length of up to 60 characters.
+        :type InstanceName: str
+        :param NoAuth: Whether to support the password-free feature. Valid values: true (password-free instance), false (password-enabled instance). Default value: false. Only instances in a VPC support the password-free access.
+        :type NoAuth: bool
+        :param NodeSet: Node information of an instance. Currently, information about the node type (master or replica) and node availability zone can be passed in. This parameter is not required for instances deployed in a single availability zone.
+        :type NodeSet: list of RedisNodeInfo
+        :param ResourceTags: The tag bound with the instance to be purchased
+        :type ResourceTags: list of ResourceTag
+        """
         self.ZoneId = None
         self.TypeId = None
         self.MemSize = None
@@ -433,8 +553,14 @@ class CreateInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DealId: Transaction ID
+        :type DealId: str
+        :param InstanceIds: Instance ID
+        :type InstanceIds: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param DealId: Transaction ID\n        :type DealId: str\n        :param InstanceIds: Instance ID\n        :type InstanceIds: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DealId = None
         self.InstanceIds = None
         self.RequestId = None
@@ -452,14 +578,20 @@ class DelayDistribution(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ladder: Delay distribution. The mapping between delay range and `Ladder` value is as follows:
 [0ms,1ms]: 1;
 [1ms,5ms]: 5;
 [5ms,10ms]: 10;
 [10ms,50ms]: 50;
 [50ms,200ms]: 200;
-[200ms,∞]: -1.\n        :type Ladder: int\n        :param Size: The number of commands whose delay falls within the current delay range\n        :type Size: int\n        :param Updatetime: Modification time\n        :type Updatetime: int\n        """
+[200ms,∞]: -1.
+        :type Ladder: int
+        :param Size: The number of commands whose delay falls within the current delay range
+        :type Size: int
+        :param Updatetime: Modification time
+        :type Updatetime: int
+        """
         self.Ladder = None
         self.Size = None
         self.Updatetime = None
@@ -484,8 +616,12 @@ class DeleteInstanceAccountRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param AccountName: Sub-account name
+        :type AccountName: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param AccountName: Sub-account name\n        :type AccountName: str\n        """
         self.InstanceId = None
         self.AccountName = None
 
@@ -508,8 +644,12 @@ class DeleteInstanceAccountResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Task ID
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskId: Task ID\n        :type TaskId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -525,8 +665,10 @@ class DescribeAutoBackupConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -547,8 +689,16 @@ class DescribeAutoBackupConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AutoBackupType: Backup type. Auto backup type: 1 "scheduled rollback"
+        :type AutoBackupType: int
+        :param WeekDays: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+        :type WeekDays: list of str
+        :param TimePeriod: Time period.
+        :type TimePeriod: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param AutoBackupType: Backup type. Auto backup type: 1 "scheduled rollback"\n        :type AutoBackupType: int\n        :param WeekDays: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.\n        :type WeekDays: list of str\n        :param TimePeriod: Time period.\n        :type TimePeriod: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.AutoBackupType = None
         self.WeekDays = None
         self.TimePeriod = None
@@ -568,8 +718,12 @@ class DescribeBackupUrlRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param BackupId: Backup ID, which can be queried through the `DescribeInstanceBackups` API
+        :type BackupId: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param BackupId: Backup ID, which can be queried through the `DescribeInstanceBackups` API\n        :type BackupId: str\n        """
         self.InstanceId = None
         self.BackupId = None
 
@@ -592,8 +746,14 @@ class DescribeBackupUrlResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DownloadUrl: Download address on the public network (valid for 6 hours)
+        :type DownloadUrl: list of str
+        :param InnerDownloadUrl: Download address on the private network (valid for 6 hours)
+        :type InnerDownloadUrl: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param DownloadUrl: Download address on the public network (valid for 6 hours)\n        :type DownloadUrl: list of str\n        :param InnerDownloadUrl: Download address on the private network (valid for 6 hours)\n        :type InnerDownloadUrl: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DownloadUrl = None
         self.InnerDownloadUrl = None
         self.RequestId = None
@@ -611,8 +771,34 @@ class DescribeCommonDBInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param VpcIds: List of instance VIPs
+        :type VpcIds: list of int
+        :param SubnetIds: List of subnet IDs
+        :type SubnetIds: list of int
+        :param PayMode: List of billing modes. Valid values: `0` (monthly subscription), `1` (pay-as-you-go)
+        :type PayMode: int
+        :param InstanceIds: List of instance IDs
+        :type InstanceIds: list of str
+        :param InstanceNames: List of instance names
+        :type InstanceNames: list of str
+        :param Status: List of instance status
+        :type Status: list of str
+        :param OrderBy: Sort field
+        :type OrderBy: str
+        :param OrderByType: Sort order
+        :type OrderByType: str
+        :param Vips: List of instance VIPs
+        :type Vips: list of str
+        :param UniqVpcIds: List of VPC IDs
+        :type UniqVpcIds: list of str
+        :param UniqSubnetIds: List of unique subnet IDs
+        :type UniqSubnetIds: list of str
+        :param Limit: Quantity limit. The default value `100` is recommended.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0
+        :type Offset: int
         """
-        :param VpcIds: List of instance VIPs\n        :type VpcIds: list of int\n        :param SubnetIds: List of subnet IDs\n        :type SubnetIds: list of int\n        :param PayMode: List of billing modes. Valid values: `0` (monthly subscription), `1` (pay-as-you-go)\n        :type PayMode: int\n        :param InstanceIds: List of instance IDs\n        :type InstanceIds: list of str\n        :param InstanceNames: List of instance names\n        :type InstanceNames: list of str\n        :param Status: List of instance status\n        :type Status: list of str\n        :param OrderBy: Sort field\n        :type OrderBy: str\n        :param OrderByType: Sort order\n        :type OrderByType: str\n        :param Vips: List of instance VIPs\n        :type Vips: list of str\n        :param UniqVpcIds: List of VPC IDs\n        :type UniqVpcIds: list of str\n        :param UniqSubnetIds: List of unique subnet IDs\n        :type UniqSubnetIds: list of str\n        :param Limit: Quantity limit. The default value `100` is recommended.\n        :type Limit: int\n        :param Offset: Offset. Default value: 0\n        :type Offset: int\n        """
         self.VpcIds = None
         self.SubnetIds = None
         self.PayMode = None
@@ -657,8 +843,14 @@ class DescribeCommonDBInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Instance quantity
+        :type TotalCount: int
+        :param InstanceDetails: Instance information
+        :type InstanceDetails: list of RedisCommonInstanceList
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Instance quantity\n        :type TotalCount: int\n        :param InstanceDetails: Instance information\n        :type InstanceDetails: list of RedisCommonInstanceList\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.InstanceDetails = None
         self.RequestId = None
@@ -681,8 +873,12 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Product: Database engine name. For this API, its value is `redis`.
+        :type Product: str
+        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB Console.
+        :type InstanceId: str
         """
-        :param Product: Database engine name. For this API, its value is `redis`.\n        :type Product: str\n        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB Console.\n        :type InstanceId: str\n        """
         self.Product = None
         self.InstanceId = None
 
@@ -705,8 +901,12 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Groups: Security group rules.
+        :type Groups: list of SecurityGroup
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Groups: Security group rules.\n        :type Groups: list of SecurityGroup\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Groups = None
         self.RequestId = None
 
@@ -727,8 +927,14 @@ class DescribeInstanceAccountRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Limit: Number of entries per page
+        :type Limit: int
+        :param Offset: Page offset
+        :type Offset: int
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param Limit: Number of entries per page\n        :type Limit: int\n        :param Offset: Page offset\n        :type Offset: int\n        """
         self.InstanceId = None
         self.Limit = None
         self.Offset = None
@@ -753,10 +959,16 @@ class DescribeInstanceAccountResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Accounts: Account details
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Accounts: list of Account\n        :param TotalCount: Number of accounts
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Accounts: list of Account
+        :param TotalCount: Number of accounts
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.Accounts = None
         self.TotalCount = None
         self.RequestId = None
@@ -779,8 +991,20 @@ class DescribeInstanceBackupsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: ID of the instance to be operated on, which can be obtained through the `InstanceId` field in the return value of the DescribeInstance API.
+        :type InstanceId: str
+        :param Limit: Instance list size. Default value: 20
+        :type Limit: int
+        :param Offset: Offset, which is an integral multiple of `Limit`
+        :type Offset: int
+        :param BeginTime: Start time in the format of yyyy-MM-dd HH:mm:ss, such as 2017-02-08 16:46:34. This parameter is used to query the list of instance backups started during the [beginTime, endTime] range.
+        :type BeginTime: str
+        :param EndTime: End time in the format of yyyy-MM-dd HH:mm:ss, such as 2017-02-08 19:09:26. This parameter is used to query the list of instance backups started during the [beginTime, endTime] range.
+        :type EndTime: str
+        :param Status: 1: backup in process; 2: backing up normally; 3: converting from backup to RDB file; 4: RDB conversion completed; -1: backup expired; -2: backup deleted.
+        :type Status: list of int
         """
-        :param InstanceId: ID of the instance to be operated on, which can be obtained through the `InstanceId` field in the return value of the DescribeInstance API.\n        :type InstanceId: str\n        :param Limit: Instance list size. Default value: 20\n        :type Limit: int\n        :param Offset: Offset, which is an integral multiple of `Limit`\n        :type Offset: int\n        :param BeginTime: Start time in the format of yyyy-MM-dd HH:mm:ss, such as 2017-02-08 16:46:34. This parameter is used to query the list of instance backups started during the [beginTime, endTime] range.\n        :type BeginTime: str\n        :param EndTime: End time in the format of yyyy-MM-dd HH:mm:ss, such as 2017-02-08 19:09:26. This parameter is used to query the list of instance backups started during the [beginTime, endTime] range.\n        :type EndTime: str\n        :param Status: 1: backup in process; 2: backing up normally; 3: converting from backup to RDB file; 4: RDB conversion completed; -1: backup expired; -2: backup deleted.\n        :type Status: list of int\n        """
         self.InstanceId = None
         self.Limit = None
         self.Offset = None
@@ -811,8 +1035,14 @@ class DescribeInstanceBackupsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of backups
+        :type TotalCount: int
+        :param BackupSet: Array of instance backups
+        :type BackupSet: list of RedisBackupSet
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of backups\n        :type TotalCount: int\n        :param BackupSet: Array of instance backups\n        :type BackupSet: list of RedisBackupSet\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.BackupSet = None
         self.RequestId = None
@@ -835,8 +1065,10 @@ class DescribeInstanceDTSInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -857,16 +1089,34 @@ class DescribeInstanceDTSInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: DTS task ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type JobId: str\n        :param JobName: DTS task name
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type JobName: str\n        :param Status: Task status. Valid values: 1 (Creating), 3 (Checking), 4 (CheckPass), 5 (CheckNotPass), 7 (Running), 8 (ReadyComplete), 9 (Success), 10 (Failed), 11 (Stopping), 12 (Completing)
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Status: int\n        :param StatusDesc: Status description
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type StatusDesc: str\n        :param Offset: Synchronization latency in bytes
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Offset: int\n        :param CutDownTime: Disconnection time
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type CutDownTime: str\n        :param SrcInfo: Source instance information
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type SrcInfo: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceDTSInstanceInfo`\n        :param DstInfo: Target instance information
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DstInfo: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceDTSInstanceInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type JobId: str
+        :param JobName: DTS task name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type JobName: str
+        :param Status: Task status. Valid values: 1 (Creating), 3 (Checking), 4 (CheckPass), 5 (CheckNotPass), 7 (Running), 8 (ReadyComplete), 9 (Success), 10 (Failed), 11 (Stopping), 12 (Completing)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Status: int
+        :param StatusDesc: Status description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type StatusDesc: str
+        :param Offset: Synchronization latency in bytes
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Offset: int
+        :param CutDownTime: Disconnection time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CutDownTime: str
+        :param SrcInfo: Source instance information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SrcInfo: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceDTSInstanceInfo`
+        :param DstInfo: Target instance information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DstInfo: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceDTSInstanceInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.JobId = None
         self.JobName = None
         self.Status = None
@@ -900,16 +1150,32 @@ class DescribeInstanceDTSInstanceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RegionId: Region ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type RegionId: int\n        :param InstanceId: Instance ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type InstanceId: str\n        :param SetId: Repository ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type SetId: int\n        :param ZoneId: Availability zone ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ZoneId: int\n        :param Type: Instance type
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Type: int\n        :param InstanceName: Instance name
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type InstanceName: str\n        :param Vip: Instance access address
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Vip: str\n        :param Status: Status
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Status: int\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RegionId: int
+        :param InstanceId: Instance ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param SetId: Repository ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SetId: int
+        :param ZoneId: Availability zone ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ZoneId: int
+        :param Type: Instance type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Type: int
+        :param InstanceName: Instance name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type InstanceName: str
+        :param Vip: Instance access address
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Vip: str
+        :param Status: Status
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Status: int
+        """
         self.RegionId = None
         self.InstanceId = None
         self.SetId = None
@@ -944,8 +1210,10 @@ class DescribeInstanceDealDetailRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DealIds: Array of order IDs. It is the same as the response parameter `DealId` in the [CreateInstances](https://intl.cloud.tencent.com/document/api/239/20026?from_cn_redirect=1) API.
+        :type DealIds: list of str
         """
-        :param DealIds: Array of order IDs. It is the same as the response parameter `DealId` in the [CreateInstances](https://intl.cloud.tencent.com/document/api/239/20026?from_cn_redirect=1) API.\n        :type DealIds: list of str\n        """
         self.DealIds = None
 
 
@@ -966,8 +1234,12 @@ class DescribeInstanceDealDetailResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DealDetails: Order details
+        :type DealDetails: list of TradeDealDetail
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param DealDetails: Order details\n        :type DealDetails: list of TradeDealDetail\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DealDetails = None
         self.RequestId = None
 
@@ -988,8 +1260,14 @@ class DescribeInstanceMonitorBigKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param ReqType: Request type. 1: string type; 2: all types
+        :type ReqType: int
+        :param Date: Time, such as "20190219"
+        :type Date: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param ReqType: Request type. 1: string type; 2: all types\n        :type ReqType: int\n        :param Date: Time, such as "20190219"\n        :type Date: str\n        """
         self.InstanceId = None
         self.ReqType = None
         self.Date = None
@@ -1014,8 +1292,12 @@ class DescribeInstanceMonitorBigKeyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: Big key details
+        :type Data: list of BigKeyInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Data: Big key details\n        :type Data: list of BigKeyInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1036,8 +1318,12 @@ class DescribeInstanceMonitorBigKeySizeDistRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Date: Time, such as "20190219"
+        :type Date: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param Date: Time, such as "20190219"\n        :type Date: str\n        """
         self.InstanceId = None
         self.Date = None
 
@@ -1060,8 +1346,12 @@ class DescribeInstanceMonitorBigKeySizeDistResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: Big key size distribution details
+        :type Data: list of DelayDistribution
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Data: Big key size distribution details\n        :type Data: list of DelayDistribution\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1082,8 +1372,12 @@ class DescribeInstanceMonitorBigKeyTypeDistRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Date: Time, such as "20190219"
+        :type Date: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param Date: Time, such as "20190219"\n        :type Date: str\n        """
         self.InstanceId = None
         self.Date = None
 
@@ -1106,8 +1400,12 @@ class DescribeInstanceMonitorBigKeyTypeDistResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: Big key type distribution details
+        :type Data: list of BigKeyTypeInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Data: Big key type distribution details\n        :type Data: list of BigKeyTypeInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1128,8 +1426,12 @@ class DescribeInstanceMonitorHotKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param SpanType: Time span. 1: real time; 2: past 30 minutes; 3: past 6 hours; 4: past 24 hours
+        :type SpanType: int
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param SpanType: Time span. 1: real time; 2: past 30 minutes; 3: past 6 hours; 4: past 24 hours\n        :type SpanType: int\n        """
         self.InstanceId = None
         self.SpanType = None
 
@@ -1152,8 +1454,12 @@ class DescribeInstanceMonitorHotKeyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: Hot key details
+        :type Data: list of HotKeyInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Data: Hot key details\n        :type Data: list of HotKeyInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1174,8 +1480,10 @@ class DescribeInstanceMonitorSIPRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1196,8 +1504,12 @@ class DescribeInstanceMonitorSIPResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: Access source information
+        :type Data: list of SourceInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Data: Access source information\n        :type Data: list of SourceInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1218,8 +1530,14 @@ class DescribeInstanceMonitorTookDistRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Date: Time, such as "20190219"
+        :type Date: str
+        :param SpanType: Time span. 1: real time; 2: last 30 minutes; 3: last 6 hours; 4: last 24 hours
+        :type SpanType: int
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param Date: Time, such as "20190219"\n        :type Date: str\n        :param SpanType: Time span. 1: real time; 2: last 30 minutes; 3: last 6 hours; 4: last 24 hours\n        :type SpanType: int\n        """
         self.InstanceId = None
         self.Date = None
         self.SpanType = None
@@ -1244,8 +1562,12 @@ class DescribeInstanceMonitorTookDistResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: Latency distribution information
+        :type Data: list of DelayDistribution
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Data: Latency distribution information\n        :type Data: list of DelayDistribution\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1266,8 +1588,12 @@ class DescribeInstanceMonitorTopNCmdRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param SpanType: Time span. 1: real time; 2: last 30 minutes; 3: last 6 hours; 4: last 24 hours
+        :type SpanType: int
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param SpanType: Time span. 1: real time; 2: last 30 minutes; 3: last 6 hours; 4: last 24 hours\n        :type SpanType: int\n        """
         self.InstanceId = None
         self.SpanType = None
 
@@ -1290,8 +1616,12 @@ class DescribeInstanceMonitorTopNCmdResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: Access command information
+        :type Data: list of SourceCommand
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Data: Access command information\n        :type Data: list of SourceCommand\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1312,8 +1642,12 @@ class DescribeInstanceMonitorTopNCmdTookRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param SpanType: Time span. 1: real time; 2: last 30 minutes; 3: last 6 hours; 4: last 24 hours
+        :type SpanType: int
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param SpanType: Time span. 1: real time; 2: last 30 minutes; 3: last 6 hours; 4: last 24 hours\n        :type SpanType: int\n        """
         self.InstanceId = None
         self.SpanType = None
 
@@ -1336,8 +1670,12 @@ class DescribeInstanceMonitorTopNCmdTookResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: Duration details
+        :type Data: list of CommandTake
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Data: Duration details\n        :type Data: list of CommandTake\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1358,8 +1696,14 @@ class DescribeInstanceNodeInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Limit: List size
+        :type Limit: int
+        :param Offset: The offset value
+        :type Offset: int
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param Limit: List size\n        :type Limit: int\n        :param Offset: The offset value\n        :type Offset: int\n        """
         self.InstanceId = None
         self.Limit = None
         self.Offset = None
@@ -1384,11 +1728,25 @@ class DescribeInstanceNodeInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProxyCount: The number of proxy nodes
+        :type ProxyCount: int
+        :param Proxy: Proxy node information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Proxy: list of ProxyNodes
+        :param RedisCount: The number of redis nodes
+        :type RedisCount: int
+        :param Redis: Redis node information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Redis: list of RedisNodes
+        :param TendisCount: The number of tendis nodes
+        :type TendisCount: int
+        :param Tendis: Tendis node information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Tendis: list of TendisNodes
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param ProxyCount: The number of proxy nodes\n        :type ProxyCount: int\n        :param Proxy: Proxy node information
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Proxy: list of ProxyNodes\n        :param RedisCount: The number of redis nodes\n        :type RedisCount: int\n        :param Redis: Redis node information
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Redis: list of RedisNodes\n        :param TendisCount: The number of tendis nodes\n        :type TendisCount: int\n        :param Tendis: Tendis node information
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Tendis: list of TendisNodes\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ProxyCount = None
         self.Proxy = None
         self.RedisCount = None
@@ -1429,8 +1787,14 @@ class DescribeInstanceParamRecordsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Limit: Number of entries per page
+        :type Limit: int
+        :param Offset: Offset, which is an integral multiple of `Limit`
+        :type Offset: int
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param Limit: Number of entries per page\n        :type Limit: int\n        :param Offset: Offset, which is an integral multiple of `Limit`\n        :type Offset: int\n        """
         self.InstanceId = None
         self.Limit = None
         self.Offset = None
@@ -1455,8 +1819,14 @@ class DescribeInstanceParamRecordsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of modifications.
+        :type TotalCount: int
+        :param InstanceParamHistory: Information of modifications.
+        :type InstanceParamHistory: list of InstanceParamHistory
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of modifications.\n        :type TotalCount: int\n        :param InstanceParamHistory: Information of modifications.\n        :type InstanceParamHistory: list of InstanceParamHistory\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.InstanceParamHistory = None
         self.RequestId = None
@@ -1479,8 +1849,10 @@ class DescribeInstanceParamsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1501,8 +1873,20 @@ class DescribeInstanceParamsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of instance parameters
+        :type TotalCount: int
+        :param InstanceEnumParam: Instance parameter in Enum type
+        :type InstanceEnumParam: list of InstanceEnumParam
+        :param InstanceIntegerParam: Instance parameter in Integer type
+        :type InstanceIntegerParam: list of InstanceIntegerParam
+        :param InstanceTextParam: Instance parameter in Char type
+        :type InstanceTextParam: list of InstanceTextParam
+        :param InstanceMultiParam: Instance parameter in Multi type
+        :type InstanceMultiParam: list of InstanceMultiParam
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of instance parameters\n        :type TotalCount: int\n        :param InstanceEnumParam: Instance parameter in Enum type\n        :type InstanceEnumParam: list of InstanceEnumParam\n        :param InstanceIntegerParam: Instance parameter in Integer type\n        :type InstanceIntegerParam: list of InstanceIntegerParam\n        :param InstanceTextParam: Instance parameter in Char type\n        :type InstanceTextParam: list of InstanceTextParam\n        :param InstanceMultiParam: Instance parameter in Multi type\n        :type InstanceMultiParam: list of InstanceMultiParam\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.InstanceEnumParam = None
         self.InstanceIntegerParam = None
@@ -1546,8 +1930,10 @@ class DescribeInstanceSecurityGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceIds: Instance list
+        :type InstanceIds: list of str
         """
-        :param InstanceIds: Instance list\n        :type InstanceIds: list of str\n        """
         self.InstanceIds = None
 
 
@@ -1568,8 +1954,12 @@ class DescribeInstanceSecurityGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceSecurityGroupsDetail: Security group information of an instance
+        :type InstanceSecurityGroupsDetail: list of InstanceSecurityGroupDetail
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param InstanceSecurityGroupsDetail: Security group information of an instance\n        :type InstanceSecurityGroupsDetail: list of InstanceSecurityGroupDetail\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InstanceSecurityGroupsDetail = None
         self.RequestId = None
 
@@ -1590,8 +1980,12 @@ class DescribeInstanceShardsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param FilterSlave: Whether to filter out the secondary node information
+        :type FilterSlave: bool
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param FilterSlave: Whether to filter out the secondary node information\n        :type FilterSlave: bool\n        """
         self.InstanceId = None
         self.FilterSlave = None
 
@@ -1614,8 +2008,14 @@ class DescribeInstanceShardsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceShards: Information list of instance shards
+        :type InstanceShards: list of InstanceClusterShard
+        :param TotalCount: Total number of instance shard nodes
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param InstanceShards: Information list of instance shards\n        :type InstanceShards: list of InstanceClusterShard\n        :param TotalCount: Total number of instance shard nodes\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InstanceShards = None
         self.TotalCount = None
         self.RequestId = None
@@ -1638,8 +2038,10 @@ class DescribeInstanceZoneInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID, such as crs-6ubhgouj
+        :type InstanceId: str
         """
-        :param InstanceId: Instance ID, such as crs-6ubhgouj\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1660,8 +2062,14 @@ class DescribeInstanceZoneInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: The number of instance node groups
+        :type TotalCount: int
+        :param ReplicaGroups: The list of instance node groups
+        :type ReplicaGroups: list of ReplicaGroup
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: The number of instance node groups\n        :type TotalCount: int\n        :param ReplicaGroups: The list of instance node groups\n        :type ReplicaGroups: list of ReplicaGroup\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ReplicaGroups = None
         self.RequestId = None
@@ -1684,8 +2092,52 @@ class DescribeInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Limit: Instance list size. Default value: 20
+        :type Limit: int
+        :param Offset: Offset, which is an integral multiple of `Limit`
+        :type Offset: int
+        :param InstanceId: Instance ID, such as crs-6ubhgouj
+        :type InstanceId: str
+        :param OrderBy: Enumerated values: projectId, createtime, instancename, type, curDeadline
+        :type OrderBy: str
+        :param OrderType: 1: reverse; 0: sequential; reverse by default
+        :type OrderType: int
+        :param VpcIds: Array of VPC IDs such as 47525. The array subscript starts from 0. If this parameter is not passed in, the basic network will be selected by default
+        :type VpcIds: list of str
+        :param SubnetIds: Array of subnet IDs such as 56854. The array subscript starts from 0
+        :type SubnetIds: list of str
+        :param ProjectIds: Array of project IDs. The array subscript starts from 0
+        :type ProjectIds: list of int
+        :param SearchKey: ID of the instance to be searched for.
+        :type SearchKey: str
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        :param UniqVpcIds: Array of VPC IDs such as vpc-sad23jfdfk. The array subscript starts from 0. If this parameter is not passed in, the basic network will be selected by default
+        :type UniqVpcIds: list of str
+        :param UniqSubnetIds: Array of subnet IDs such as subnet-fdj24n34j2. The array subscript starts from 0
+        :type UniqSubnetIds: list of str
+        :param RegionIds: Region ID, which has already been disused. The corresponding region can be queried through the common parameter `Region`
+        :type RegionIds: list of int
+        :param Status: Instance status. 0: to be initialized; 1: in process; 2: running; -2: isolated; -3: to be deleted
+        :type Status: list of int
+        :param TypeVersion: Type edition. 1: standalone edition; 2: primary-secondary edition; 3: cluster edition
+        :type TypeVersion: int
+        :param EngineName: Engine information: Redis-2.8, Redis-4.0, CKV
+        :type EngineName: str
+        :param AutoRenew: Renewal mode. 0: default status (manual renewal); 1: auto-renewal enabled; 2: auto-renewal disabled
+        :type AutoRenew: list of int
+        :param BillingMode: Billing method. postpaid: pay-as-you-go; prepaid: monthly subscription
+        :type BillingMode: str
+        :param Type: Instance type. 1: legacy Redis Cluster Edition, 2: Redis 2.8 Master-Slave Edition, 3: CKV Master-Slave Edition, 4: CKV Cluster Edition, 5: Redis 2.8 Standalone Edition, 6: Redis 4.0 Master-Slave Edition, 7: Redis 4.0 Cluster Edition, 8: Redis 5.0 Master-Slave Edition, 9: Redis 5.0 Cluster Edition,
+        :type Type: int
+        :param SearchKeys: Search keywords, which can be instance ID, instance name, or complete IP
+        :type SearchKeys: list of str
+        :param TypeList: Internal parameter, which can be ignored
+        :type TypeList: list of int
+        :param MonitorVersion: Internal parameter, which can be ignored
+        :type MonitorVersion: str
         """
-        :param Limit: Instance list size. Default value: 20\n        :type Limit: int\n        :param Offset: Offset, which is an integral multiple of `Limit`\n        :type Offset: int\n        :param InstanceId: Instance ID, such as crs-6ubhgouj\n        :type InstanceId: str\n        :param OrderBy: Enumerated values: projectId, createtime, instancename, type, curDeadline\n        :type OrderBy: str\n        :param OrderType: 1: reverse; 0: sequential; reverse by default\n        :type OrderType: int\n        :param VpcIds: Array of VPC IDs such as 47525. The array subscript starts from 0. If this parameter is not passed in, the basic network will be selected by default\n        :type VpcIds: list of str\n        :param SubnetIds: Array of subnet IDs such as 56854. The array subscript starts from 0\n        :type SubnetIds: list of str\n        :param ProjectIds: Array of project IDs. The array subscript starts from 0\n        :type ProjectIds: list of int\n        :param SearchKey: ID of the instance to be searched for.\n        :type SearchKey: str\n        :param InstanceName: Instance name\n        :type InstanceName: str\n        :param UniqVpcIds: Array of VPC IDs such as vpc-sad23jfdfk. The array subscript starts from 0. If this parameter is not passed in, the basic network will be selected by default\n        :type UniqVpcIds: list of str\n        :param UniqSubnetIds: Array of subnet IDs such as subnet-fdj24n34j2. The array subscript starts from 0\n        :type UniqSubnetIds: list of str\n        :param RegionIds: Region ID, which has already been disused. The corresponding region can be queried through the common parameter `Region`\n        :type RegionIds: list of int\n        :param Status: Instance status. 0: to be initialized; 1: in process; 2: running; -2: isolated; -3: to be deleted\n        :type Status: list of int\n        :param TypeVersion: Type edition. 1: standalone edition; 2: primary-secondary edition; 3: cluster edition\n        :type TypeVersion: int\n        :param EngineName: Engine information: Redis-2.8, Redis-4.0, CKV\n        :type EngineName: str\n        :param AutoRenew: Renewal mode. 0: default status (manual renewal); 1: auto-renewal enabled; 2: auto-renewal disabled\n        :type AutoRenew: list of int\n        :param BillingMode: Billing method. postpaid: pay-as-you-go; prepaid: monthly subscription\n        :type BillingMode: str\n        :param Type: Instance type. 1: legacy Redis Cluster Edition, 2: Redis 2.8 Master-Slave Edition, 3: CKV Master-Slave Edition, 4: CKV Cluster Edition, 5: Redis 2.8 Standalone Edition, 6: Redis 4.0 Master-Slave Edition, 7: Redis 4.0 Cluster Edition, 8: Redis 5.0 Master-Slave Edition, 9: Redis 5.0 Cluster Edition,\n        :type Type: int\n        :param SearchKeys: Search keywords, which can be instance ID, instance name, or complete IP\n        :type SearchKeys: list of str\n        :param TypeList: Internal parameter, which can be ignored\n        :type TypeList: list of int\n        :param MonitorVersion: Internal parameter, which can be ignored\n        :type MonitorVersion: str\n        """
         self.Limit = None
         self.Offset = None
         self.InstanceId = None
@@ -1748,8 +2200,14 @@ class DescribeInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of instances
+        :type TotalCount: int
+        :param InstanceSet: List of instance details
+        :type InstanceSet: list of InstanceSet
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of instances\n        :type TotalCount: int\n        :param InstanceSet: List of instance details\n        :type InstanceSet: list of InstanceSet\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.InstanceSet = None
         self.RequestId = None
@@ -1772,8 +2230,10 @@ class DescribeMaintenanceWindowRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1794,8 +2254,14 @@ class DescribeMaintenanceWindowResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StartTime: Start time of the maintenance window, such as 17:00.
+        :type StartTime: str
+        :param EndTime: End time of the maintenance window, such as 19:00.
+        :type EndTime: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param StartTime: Start time of the maintenance window, such as 17:00.\n        :type StartTime: str\n        :param EndTime: End time of the maintenance window, such as 19:00.\n        :type EndTime: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.RequestId = None
@@ -1819,8 +2285,12 @@ class DescribeProductInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegionSet: Sale information of a region
+        :type RegionSet: list of RegionConf
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RegionSet: Sale information of a region\n        :type RegionSet: list of RegionConf\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RegionSet = None
         self.RequestId = None
 
@@ -1841,8 +2311,12 @@ class DescribeProjectSecurityGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProjectId: 0: default project; -1: all projects; >0: specified project
+        :type ProjectId: int
+        :param SecurityGroupId: Security group ID
+        :type SecurityGroupId: str
         """
-        :param ProjectId: 0: default project; -1: all projects; >0: specified project\n        :type ProjectId: int\n        :param SecurityGroupId: Security group ID\n        :type SecurityGroupId: str\n        """
         self.ProjectId = None
         self.SecurityGroupId = None
 
@@ -1865,8 +2339,12 @@ class DescribeProjectSecurityGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SecurityGroupDetails: Security group of a project
+        :type SecurityGroupDetails: list of SecurityGroupDetail
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param SecurityGroupDetails: Security group of a project\n        :type SecurityGroupDetails: list of SecurityGroupDetail\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.SecurityGroupDetails = None
         self.RequestId = None
 
@@ -1887,8 +2365,18 @@ class DescribeProjectSecurityGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Product: Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb.
+        :type Product: str
+        :param ProjectId: Project ID.
+        :type ProjectId: int
+        :param Offset: Offset.
+        :type Offset: int
+        :param Limit: The number of security groups to be pulled.
+        :type Limit: int
+        :param SearchKey: Search criteria. You can enter a security group ID or name.
+        :type SearchKey: str
         """
-        :param Product: Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb.\n        :type Product: str\n        :param ProjectId: Project ID.\n        :type ProjectId: int\n        :param Offset: Offset.\n        :type Offset: int\n        :param Limit: The number of security groups to be pulled.\n        :type Limit: int\n        :param SearchKey: Search criteria. You can enter a security group ID or name.\n        :type SearchKey: str\n        """
         self.Product = None
         self.ProjectId = None
         self.Offset = None
@@ -1917,8 +2405,14 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Groups: Security group rules.
+        :type Groups: list of SecurityGroup
+        :param Total: Total number of the security groups meeting the condition.
+        :type Total: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Groups: Security group rules.\n        :type Groups: list of SecurityGroup\n        :param Total: Total number of the security groups meeting the condition.\n        :type Total: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Groups = None
         self.Total = None
         self.RequestId = None
@@ -1941,8 +2435,20 @@ class DescribeProxySlowLogRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param BeginTime: Start time
+        :type BeginTime: str
+        :param EndTime: End time
+        :type EndTime: str
+        :param MinQueryTime: Slow query threshold in microseconds
+        :type MinQueryTime: int
+        :param Limit: Page size
+        :type Limit: int
+        :param Offset: Offset, which is an integral multiple of `Limit`
+        :type Offset: int
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param BeginTime: Start time\n        :type BeginTime: str\n        :param EndTime: End time\n        :type EndTime: str\n        :param MinQueryTime: Slow query threshold in microseconds\n        :type MinQueryTime: int\n        :param Limit: Page size\n        :type Limit: int\n        :param Offset: Offset, which is an integral multiple of `Limit`\n        :type Offset: int\n        """
         self.InstanceId = None
         self.BeginTime = None
         self.EndTime = None
@@ -1973,8 +2479,14 @@ class DescribeProxySlowLogResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of slow queries
+        :type TotalCount: int
+        :param InstanceProxySlowLogDetail: Slow query details
+        :type InstanceProxySlowLogDetail: list of InstanceProxySlowlogDetail
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of slow queries\n        :type TotalCount: int\n        :param InstanceProxySlowLogDetail: Slow query details\n        :type InstanceProxySlowLogDetail: list of InstanceProxySlowlogDetail\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.InstanceProxySlowLogDetail = None
         self.RequestId = None
@@ -1997,8 +2509,20 @@ class DescribeSlowLogRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param BeginTime: Start time
+        :type BeginTime: str
+        :param EndTime: End time
+        :type EndTime: str
+        :param MinQueryTime: Slow log threshold in microseconds
+        :type MinQueryTime: int
+        :param Limit: Number of entries per page
+        :type Limit: int
+        :param Offset: Offset, which is an integral multiple of `Limit`
+        :type Offset: int
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param BeginTime: Start time\n        :type BeginTime: str\n        :param EndTime: End time\n        :type EndTime: str\n        :param MinQueryTime: Slow log threshold in microseconds\n        :type MinQueryTime: int\n        :param Limit: Number of entries per page\n        :type Limit: int\n        :param Offset: Offset, which is an integral multiple of `Limit`\n        :type Offset: int\n        """
         self.InstanceId = None
         self.BeginTime = None
         self.EndTime = None
@@ -2029,8 +2553,14 @@ class DescribeSlowLogResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of slow logs
+        :type TotalCount: int
+        :param InstanceSlowlogDetail: Slow log details
+        :type InstanceSlowlogDetail: list of InstanceSlowlogDetail
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of slow logs\n        :type TotalCount: int\n        :param InstanceSlowlogDetail: Slow log details\n        :type InstanceSlowlogDetail: list of InstanceSlowlogDetail\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.InstanceSlowlogDetail = None
         self.RequestId = None
@@ -2053,8 +2583,10 @@ class DescribeTaskInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Task ID
+        :type TaskId: int
         """
-        :param TaskId: Task ID\n        :type TaskId: int\n        """
         self.TaskId = None
 
 
@@ -2075,8 +2607,20 @@ class DescribeTaskInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Task status. preparing: to be run; running: running; succeed: succeeded; failed: failed; error: running error.
+        :type Status: str
+        :param StartTime: Task start time
+        :type StartTime: str
+        :param TaskType: Task type
+        :type TaskType: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param TaskMessage: Task message, which is displayed in case of an error. It will be blank if the status is running or succeeded
+        :type TaskMessage: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Status: Task status. preparing: to be run; running: running; succeed: succeeded; failed: failed; error: running error.\n        :type Status: str\n        :param StartTime: Task start time\n        :type StartTime: str\n        :param TaskType: Task type\n        :type TaskType: str\n        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param TaskMessage: Task message, which is displayed in case of an error. It will be blank if the status is running or succeeded\n        :type TaskMessage: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Status = None
         self.StartTime = None
         self.TaskType = None
@@ -2100,8 +2644,26 @@ class DescribeTaskListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        :param Limit: Number of entries per page
+        :type Limit: int
+        :param Offset: Offset, which is an integral multiple of `Limit` (rounded down automatically)
+        :type Offset: int
+        :param ProjectIds: Project ID
+        :type ProjectIds: list of int
+        :param TaskTypes: Task type
+        :type TaskTypes: list of str
+        :param BeginTime: Start time
+        :type BeginTime: str
+        :param EndTime: End time
+        :type EndTime: str
+        :param TaskStatus: Task status
+        :type TaskStatus: list of int
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param InstanceName: Instance name\n        :type InstanceName: str\n        :param Limit: Number of entries per page\n        :type Limit: int\n        :param Offset: Offset, which is an integral multiple of `Limit` (rounded down automatically)\n        :type Offset: int\n        :param ProjectIds: Project ID\n        :type ProjectIds: list of int\n        :param TaskTypes: Task type\n        :type TaskTypes: list of str\n        :param BeginTime: Start time\n        :type BeginTime: str\n        :param EndTime: End time\n        :type EndTime: str\n        :param TaskStatus: Task status\n        :type TaskStatus: list of int\n        """
         self.InstanceId = None
         self.InstanceName = None
         self.Limit = None
@@ -2138,8 +2700,14 @@ class DescribeTaskListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of tasks
+        :type TotalCount: int
+        :param Tasks: Task details
+        :type Tasks: list of TaskInfoDetail
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of tasks\n        :type TotalCount: int\n        :param Tasks: Task details\n        :type Tasks: list of TaskInfoDetail\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Tasks = None
         self.RequestId = None
@@ -2162,8 +2730,10 @@ class DestroyPostpaidInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -2184,8 +2754,12 @@ class DestroyPostpaidInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Task ID
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskId: Task ID\n        :type TaskId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -2201,8 +2775,10 @@ class DestroyPrepaidInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -2223,8 +2799,12 @@ class DestroyPrepaidInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DealId: Order ID
+        :type DealId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param DealId: Order ID\n        :type DealId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DealId = None
         self.RequestId = None
 
@@ -2240,8 +2820,10 @@ class DisableReplicaReadonlyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Serial ID of an instance
+        :type InstanceId: str
         """
-        :param InstanceId: Serial ID of an instance\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -2262,8 +2844,12 @@ class DisableReplicaReadonlyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: ERROR: failure; OK: success
+        :type Status: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Status: ERROR: failure; OK: success\n        :type Status: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Status = None
         self.RequestId = None
 
@@ -2279,8 +2865,14 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Product: Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc.
+        :type Product: str
+        :param SecurityGroupId: Security group ID.
+        :type SecurityGroupId: str
+        :param InstanceIds: Instance ID list, which is an array of one or more instance IDs.
+        :type InstanceIds: list of str
         """
-        :param Product: Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc.\n        :type Product: str\n        :param SecurityGroupId: Security group ID.\n        :type SecurityGroupId: str\n        :param InstanceIds: Instance ID list, which is an array of one or more instance IDs.\n        :type InstanceIds: list of str\n        """
         self.Product = None
         self.SecurityGroupId = None
         self.InstanceIds = None
@@ -2305,8 +2897,10 @@ class DisassociateSecurityGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2320,8 +2914,12 @@ class EnableReplicaReadonlyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Serial ID of an instance
+        :type InstanceId: str
+        :param ReadonlyPolicy: Account routing policy. If `master` or `replication` is entered, it means to route to the primary or secondary node; if this is left blank, it means to write into the primary node and read from the secondary node by default
+        :type ReadonlyPolicy: list of str
         """
-        :param InstanceId: Serial ID of an instance\n        :type InstanceId: str\n        :param ReadonlyPolicy: Account routing policy. If `master` or `replication` is entered, it means to route to the primary or secondary node; if this is left blank, it means to write into the primary node and read from the secondary node by default\n        :type ReadonlyPolicy: list of str\n        """
         self.InstanceId = None
         self.ReadonlyPolicy = None
 
@@ -2344,8 +2942,12 @@ class EnableReplicaReadonlyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: ERROR: erroneous; OK: correct.
+        :type Status: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Status: ERROR: erroneous; OK: correct.\n        :type Status: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Status = None
         self.RequestId = None
 
@@ -2361,8 +2963,14 @@ class HotKeyInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Key: Hot key
+        :type Key: str
+        :param Type: Type
+        :type Type: str
+        :param Count: Count
+        :type Count: int
         """
-        :param Key: Hot key\n        :type Key: str\n        :param Type: Type\n        :type Type: str\n        :param Count: Count\n        :type Count: int\n        """
         self.Key = None
         self.Type = None
         self.Count = None
@@ -2387,8 +2995,24 @@ class Inbound(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Action: Policy. Valid values: ACCEPT, DROP.
+        :type Action: str
+        :param AddressModule: All the addresses that the address group ID represents.
+        :type AddressModule: str
+        :param CidrIp: Source IP or IP address range, such as 192.168.0.0/16.
+        :type CidrIp: str
+        :param Desc: Description.
+        :type Desc: str
+        :param IpProtocol: Network protocol, such as UDP and TCP, etc.
+        :type IpProtocol: str
+        :param PortRange: Port.
+        :type PortRange: str
+        :param ServiceModule: All the protocols and ports that the service group ID represents.
+        :type ServiceModule: str
+        :param Id: All the addresses that the security group ID represents.
+        :type Id: str
         """
-        :param Action: Policy. Valid values: ACCEPT, DROP.\n        :type Action: str\n        :param AddressModule: All the addresses that the address group ID represents.\n        :type AddressModule: str\n        :param CidrIp: Source IP or IP address range, such as 192.168.0.0/16.\n        :type CidrIp: str\n        :param Desc: Description.\n        :type Desc: str\n        :param IpProtocol: Network protocol, such as UDP and TCP, etc.\n        :type IpProtocol: str\n        :param PortRange: Port.\n        :type PortRange: str\n        :param ServiceModule: All the protocols and ports that the service group ID represents.\n        :type ServiceModule: str\n        :param Id: All the addresses that the security group ID represents.\n        :type Id: str\n        """
         self.Action = None
         self.AddressModule = None
         self.CidrIp = None
@@ -2423,8 +3047,34 @@ class InstanceClusterNode(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: Node name
+        :type Name: str
+        :param RunId: ID of the runtime node of an instance
+        :type RunId: str
+        :param Role: Cluster role. 0: primary; 1: secondary
+        :type Role: int
+        :param Status: Node status. 0: readwrite; 1: read; 2: backup
+        :type Status: int
+        :param Connected: Service status. 0: down; 1: on
+        :type Connected: int
+        :param CreateTime: Node creation time
+        :type CreateTime: str
+        :param DownTime: Node deactivation time
+        :type DownTime: str
+        :param Slots: Distribution of node slots
+        :type Slots: str
+        :param Keys: Distribution of node keys
+        :type Keys: int
+        :param Qps: Node QPS
+        :type Qps: int
+        :param QpsSlope: QPS slope of a node
+        :type QpsSlope: float
+        :param Storage: Node storage
+        :type Storage: int
+        :param StorageSlope: Storage slope of a node
+        :type StorageSlope: float
         """
-        :param Name: Node name\n        :type Name: str\n        :param RunId: ID of the runtime node of an instance\n        :type RunId: str\n        :param Role: Cluster role. 0: primary; 1: secondary\n        :type Role: int\n        :param Status: Node status. 0: readwrite; 1: read; 2: backup\n        :type Status: int\n        :param Connected: Service status. 0: down; 1: on\n        :type Connected: int\n        :param CreateTime: Node creation time\n        :type CreateTime: str\n        :param DownTime: Node deactivation time\n        :type DownTime: str\n        :param Slots: Distribution of node slots\n        :type Slots: str\n        :param Keys: Distribution of node keys\n        :type Keys: int\n        :param Qps: Node QPS\n        :type Qps: int\n        :param QpsSlope: QPS slope of a node\n        :type QpsSlope: float\n        :param Storage: Node storage\n        :type Storage: int\n        :param StorageSlope: Storage slope of a node\n        :type StorageSlope: float\n        """
         self.Name = None
         self.RunId = None
         self.Role = None
@@ -2469,8 +3119,26 @@ class InstanceClusterShard(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ShardName: Shard node name
+        :type ShardName: str
+        :param ShardId: Shard node ID
+        :type ShardId: str
+        :param Role: Role
+        :type Role: int
+        :param Keys: Number of keys
+        :type Keys: int
+        :param Slots: Slot information
+        :type Slots: str
+        :param Storage: Storage capacity
+        :type Storage: int
+        :param StorageSlope: Capacity slope
+        :type StorageSlope: float
+        :param Runid: ID of the runtime node of an instance
+        :type Runid: str
+        :param Connected: Service status. 0: down; 1: on
+        :type Connected: int
         """
-        :param ShardName: Shard node name\n        :type ShardName: str\n        :param ShardId: Shard node ID\n        :type ShardId: str\n        :param Role: Role\n        :type Role: int\n        :param Keys: Number of keys\n        :type Keys: int\n        :param Slots: Slot information\n        :type Slots: str\n        :param Storage: Storage capacity\n        :type Storage: int\n        :param StorageSlope: Capacity slope\n        :type StorageSlope: float\n        :param Runid: ID of the runtime node of an instance\n        :type Runid: str\n        :param Connected: Service status. 0: down; 1: on\n        :type Connected: int\n        """
         self.ShardName = None
         self.ShardId = None
         self.Role = None
@@ -2507,8 +3175,24 @@ class InstanceEnumParam(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ParamName: Parameter name
+        :type ParamName: str
+        :param ValueType: Parameter type: Enum
+        :type ValueType: str
+        :param NeedRestart: Whether restart is required after a modification is made. Value range: true, false
+        :type NeedRestart: str
+        :param DefaultValue: Default value of the parameter
+        :type DefaultValue: str
+        :param CurrentValue: Current value of a parameter
+        :type CurrentValue: str
+        :param Tips: Parameter description
+        :type Tips: str
+        :param EnumValue: Value range of a parameter
+        :type EnumValue: list of str
+        :param Status: Parameter status. 1: modifying; 2: modified
+        :type Status: int
         """
-        :param ParamName: Parameter name\n        :type ParamName: str\n        :param ValueType: Parameter type: Enum\n        :type ValueType: str\n        :param NeedRestart: Whether restart is required after a modification is made. Value range: true, false\n        :type NeedRestart: str\n        :param DefaultValue: Default value of the parameter\n        :type DefaultValue: str\n        :param CurrentValue: Current value of a parameter\n        :type CurrentValue: str\n        :param Tips: Parameter description\n        :type Tips: str\n        :param EnumValue: Value range of a parameter\n        :type EnumValue: list of str\n        :param Status: Parameter status. 1: modifying; 2: modified\n        :type Status: int\n        """
         self.ParamName = None
         self.ValueType = None
         self.NeedRestart = None
@@ -2543,9 +3227,29 @@ class InstanceIntegerParam(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ParamName: Parameter name
+        :type ParamName: str
+        :param ValueType: Parameter type: Integer
+        :type ValueType: str
+        :param NeedRestart: Whether restart is required after a modification is made. Value range: true, false
+        :type NeedRestart: str
+        :param DefaultValue: Default value of the parameter
+        :type DefaultValue: str
+        :param CurrentValue: Current value of a parameter
+        :type CurrentValue: str
+        :param Tips: Parameter description
+        :type Tips: str
+        :param Min: Minimum value of a parameter
+        :type Min: str
+        :param Max: Maximum value of a parameter
+        :type Max: str
+        :param Status: Parameter status. 1: modifying; 2: modified
+        :type Status: int
+        :param Unit: Parameter unit
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Unit: str
         """
-        :param ParamName: Parameter name\n        :type ParamName: str\n        :param ValueType: Parameter type: Integer\n        :type ValueType: str\n        :param NeedRestart: Whether restart is required after a modification is made. Value range: true, false\n        :type NeedRestart: str\n        :param DefaultValue: Default value of the parameter\n        :type DefaultValue: str\n        :param CurrentValue: Current value of a parameter\n        :type CurrentValue: str\n        :param Tips: Parameter description\n        :type Tips: str\n        :param Min: Minimum value of a parameter\n        :type Min: str\n        :param Max: Maximum value of a parameter\n        :type Max: str\n        :param Status: Parameter status. 1: modifying; 2: modified\n        :type Status: int\n        :param Unit: Parameter unit
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Unit: str\n        """
         self.ParamName = None
         self.ValueType = None
         self.NeedRestart = None
@@ -2584,8 +3288,24 @@ class InstanceMultiParam(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ParamName: Parameter name
+        :type ParamName: str
+        :param ValueType: Parameter type: Multi
+        :type ValueType: str
+        :param NeedRestart: Whether restart is required after a modification is made. Value range: true, false
+        :type NeedRestart: str
+        :param DefaultValue: Default value of the parameter
+        :type DefaultValue: str
+        :param CurrentValue: Current value of a parameter
+        :type CurrentValue: str
+        :param Tips: Parameter description
+        :type Tips: str
+        :param EnumValue: Parameter description
+        :type EnumValue: list of str
+        :param Status: Parameter status. 1: modifying; 2: modified
+        :type Status: int
         """
-        :param ParamName: Parameter name\n        :type ParamName: str\n        :param ValueType: Parameter type: Multi\n        :type ValueType: str\n        :param NeedRestart: Whether restart is required after a modification is made. Value range: true, false\n        :type NeedRestart: str\n        :param DefaultValue: Default value of the parameter\n        :type DefaultValue: str\n        :param CurrentValue: Current value of a parameter\n        :type CurrentValue: str\n        :param Tips: Parameter description\n        :type Tips: str\n        :param EnumValue: Parameter description\n        :type EnumValue: list of str\n        :param Status: Parameter status. 1: modifying; 2: modified\n        :type Status: int\n        """
         self.ParamName = None
         self.ValueType = None
         self.NeedRestart = None
@@ -2620,8 +3340,12 @@ class InstanceNode(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: Id
+        :type Id: int
+        :param InstanceClusterNode: Node details
+        :type InstanceClusterNode: list of InstanceClusterNode
         """
-        :param Id: Id\n        :type Id: int\n        :param InstanceClusterNode: Node details\n        :type InstanceClusterNode: list of InstanceClusterNode\n        """
         self.Id = None
         self.InstanceClusterNode = None
 
@@ -2649,8 +3373,12 @@ class InstanceParam(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Key: Sets a parameter name
+        :type Key: str
+        :param Value: Sets a parameter value
+        :type Value: str
         """
-        :param Key: Sets a parameter name\n        :type Key: str\n        :param Value: Sets a parameter value\n        :type Value: str\n        """
         self.Key = None
         self.Value = None
 
@@ -2673,8 +3401,18 @@ class InstanceParamHistory(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ParamName: Parameter name
+        :type ParamName: str
+        :param PreValue: Value before modification
+        :type PreValue: str
+        :param NewValue: Value after modification
+        :type NewValue: str
+        :param Status: Status. 1: modifying parameter configuration; 2: parameter configuration modified successfully; 3: failed to modify parameter configuration
+        :type Status: int
+        :param ModifyTime: Modification time
+        :type ModifyTime: str
         """
-        :param ParamName: Parameter name\n        :type ParamName: str\n        :param PreValue: Value before modification\n        :type PreValue: str\n        :param NewValue: Value after modification\n        :type NewValue: str\n        :param Status: Status. 1: modifying parameter configuration; 2: parameter configuration modified successfully; 3: failed to modify parameter configuration\n        :type Status: int\n        :param ModifyTime: Modification time\n        :type ModifyTime: str\n        """
         self.ParamName = None
         self.PreValue = None
         self.NewValue = None
@@ -2703,8 +3441,18 @@ class InstanceProxySlowlogDetail(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Duration: Slow query duration
+        :type Duration: int
+        :param Client: Client address
+        :type Client: str
+        :param Command: Command
+        :type Command: str
+        :param CommandLine: Command line details
+        :type CommandLine: str
+        :param ExecuteTime: Execution duration
+        :type ExecuteTime: str
         """
-        :param Duration: Slow query duration\n        :type Duration: int\n        :param Client: Client address\n        :type Client: str\n        :param Command: Command\n        :type Command: str\n        :param CommandLine: Command line details\n        :type CommandLine: str\n        :param ExecuteTime: Execution duration\n        :type ExecuteTime: str\n        """
         self.Duration = None
         self.Client = None
         self.Command = None
@@ -2733,8 +3481,12 @@ class InstanceSecurityGroupDetail(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param SecurityGroupDetails: Security group information
+        :type SecurityGroupDetails: list of SecurityGroupDetail
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param SecurityGroupDetails: Security group information\n        :type SecurityGroupDetails: list of SecurityGroupDetail\n        """
         self.InstanceId = None
         self.SecurityGroupDetails = None
 
@@ -2762,24 +3514,122 @@ class InstanceSet(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Appid: User's Appid
+        :type Appid: int
+        :param ProjectId: Project ID
+        :type ProjectId: int
+        :param RegionId: Region ID. 1: Guangzhou; 4: Shanghai; 5: Hong Kong, China; 6: Toronto; 7: Shanghai Finance; 8: Beijing; 9: Singapore; 11: Shenzhen Finance; 15: West US (Silicon Valley); 16: Chengdu; 17: Germany; 18: South Korea; 19: Chongqing; 21: India; 22: East US (Virginia); 23: Thailand; 24: Russia; 25: Japan
+        :type RegionId: int
+        :param ZoneId: Region ID
+        :type ZoneId: int
+        :param VpcId: VPC ID, such as 75101
+        :type VpcId: int
+        :param SubnetId: VPC subnet ID, such as 46315
+        :type SubnetId: int
+        :param Status: Current instance status. 0: to be initialized; 1: instance in process; 2: instance running; -2: instance isolated; -3: instance to be deleted
+        :type Status: int
+        :param WanIp: Instance VIP
+        :type WanIp: str
+        :param Port: Port number of an instance
+        :type Port: int
+        :param Createtime: Instance creation time
+        :type Createtime: str
+        :param Size: Instance capacity in MB
+        :type Size: float
+        :param SizeUsed: This field has been disused
+        :type SizeUsed: float
+        :param Type: Instance type. Valid values: 1 (Redis 2.8 Memory Edition in cluster architecture), 2 (Redis 2.8 Memory Edition in standard architecture), 3 (CKV 3.2 Memory Edition in standard architecture), 4 (CKV 3.2 Memory Edition in cluster architecture), 5 (Redis 2.8 Memory Edition in standalone architecture), 6 (Redis 4.0 Memory Edition in standard architecture), 7 (Redis 4.0 Memory Edition in cluster architecture), 8 (Redis 5.0 Memory Edition in standard architecture), 9 (Redis 5.0 Memory Edition in cluster architecture).
+        :type Type: int
+        :param AutoRenewFlag: Whether to set the auto-renewal flag for an instance. 1: auto-renewal set; 0: auto-renewal not set
+        :type AutoRenewFlag: int
+        :param DeadlineTime: Instance expiration time
+        :type DeadlineTime: str
+        :param Engine: Engine: Redis community edition, Tencent Cloud CKV
+        :type Engine: str
+        :param ProductType: Instance type. Valid values: standalone (standard edition), cluster (cluster edition)
+        :type ProductType: str
+        :param UniqVpcId: VPC ID, such as vpc-fk33jsf43kgv
+        :type UniqVpcId: str
+        :param UniqSubnetId: VPC subnet ID, such as subnet-fd3j6l35mm0
+        :type UniqSubnetId: str
+        :param BillingMode: Billing method. 0: pay-as-you-go; 1: monthly subscription
+        :type BillingMode: int
+        :param InstanceTitle: Description of an instance status, such as "instance running"
+        :type InstanceTitle: str
+        :param OfflineTime: Scheduled deactivation time
+        :type OfflineTime: str
+        :param SubStatus: Sub-status returned for an instance in process
+        :type SubStatus: int
+        :param Tags: Anti-affinity tag
+        :type Tags: list of str
+        :param InstanceNode: Instance node information
+        :type InstanceNode: list of InstanceNode
+        :param RedisShardSize: Shard size
+        :type RedisShardSize: int
+        :param RedisShardNum: Number of shards
+        :type RedisShardNum: int
+        :param RedisReplicasNum: Number of replicas
+        :type RedisReplicasNum: int
+        :param PriceId: Billing ID
+        :type PriceId: int
+        :param CloseTime: Isolation time
+        :type CloseTime: str
+        :param SlaveReadWeight: Read weight of a secondary node
+        :type SlaveReadWeight: int
+        :param InstanceTags: Instance tag information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceTags: list of InstanceTagInfo
+        :param ProjectName: Project name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProjectName: str
+        :param NoAuth: Whether an instance is password-free. true: yes; false: no
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NoAuth: bool
+        :param ClientLimit: Number of client connections
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ClientLimit: int
+        :param DtsStatus: DTS status (internal parameter, which can be ignored)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DtsStatus: int
+        :param NetLimit: Upper shard bandwidth limit in MB
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type NetLimit: int
+        :param PasswordFree: Password-free instance flag (internal parameter, which can be ignored)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PasswordFree: int
+        :param ReadOnly: Read-only instance flag (internal parameter, which can be ignored)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ReadOnly: int
+        :param Vip6: Internal parameter, which can be ignored
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Vip6: str
+        :param RemainBandwidthDuration: Internal parameter, which can be ignored
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RemainBandwidthDuration: str
+        :param DiskSize: Disk size of the Tendis instance
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DiskSize: int
+        :param MonitorVersion: Monitoring granularity type. Valid values: 1m (monitoring at 1-minute granularity), 5s (monitoring at 5-second granularity)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MonitorVersion: str
+        :param ClientLimitMin: The minimum value of the range of maximum connections to the client
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ClientLimitMin: int
+        :param ClientLimitMax: The maximum value of the range of maximum connections to the client
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ClientLimitMax: int
+        :param NodeSet: Instance node details
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type NodeSet: list of RedisNodeInfo
+        :param Region: Region where the instance is deployed
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Region: str
         """
-        :param InstanceName: Instance name\n        :type InstanceName: str\n        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param Appid: User's Appid\n        :type Appid: int\n        :param ProjectId: Project ID\n        :type ProjectId: int\n        :param RegionId: Region ID. 1: Guangzhou; 4: Shanghai; 5: Hong Kong, China; 6: Toronto; 7: Shanghai Finance; 8: Beijing; 9: Singapore; 11: Shenzhen Finance; 15: West US (Silicon Valley); 16: Chengdu; 17: Germany; 18: South Korea; 19: Chongqing; 21: India; 22: East US (Virginia); 23: Thailand; 24: Russia; 25: Japan\n        :type RegionId: int\n        :param ZoneId: Region ID\n        :type ZoneId: int\n        :param VpcId: VPC ID, such as 75101\n        :type VpcId: int\n        :param SubnetId: VPC subnet ID, such as 46315\n        :type SubnetId: int\n        :param Status: Current instance status. 0: to be initialized; 1: instance in process; 2: instance running; -2: instance isolated; -3: instance to be deleted\n        :type Status: int\n        :param WanIp: Instance VIP\n        :type WanIp: str\n        :param Port: Port number of an instance\n        :type Port: int\n        :param Createtime: Instance creation time\n        :type Createtime: str\n        :param Size: Instance capacity in MB\n        :type Size: float\n        :param SizeUsed: This field has been disused\n        :type SizeUsed: float\n        :param Type: Instance type. Valid values: 1 (Redis 2.8 Memory Edition in cluster architecture), 2 (Redis 2.8 Memory Edition in standard architecture), 3 (CKV 3.2 Memory Edition in standard architecture), 4 (CKV 3.2 Memory Edition in cluster architecture), 5 (Redis 2.8 Memory Edition in standalone architecture), 6 (Redis 4.0 Memory Edition in standard architecture), 7 (Redis 4.0 Memory Edition in cluster architecture), 8 (Redis 5.0 Memory Edition in standard architecture), 9 (Redis 5.0 Memory Edition in cluster architecture).\n        :type Type: int\n        :param AutoRenewFlag: Whether to set the auto-renewal flag for an instance. 1: auto-renewal set; 0: auto-renewal not set\n        :type AutoRenewFlag: int\n        :param DeadlineTime: Instance expiration time\n        :type DeadlineTime: str\n        :param Engine: Engine: Redis community edition, Tencent Cloud CKV\n        :type Engine: str\n        :param ProductType: Instance type. Valid values: standalone (standard edition), cluster (cluster edition)\n        :type ProductType: str\n        :param UniqVpcId: VPC ID, such as vpc-fk33jsf43kgv\n        :type UniqVpcId: str\n        :param UniqSubnetId: VPC subnet ID, such as subnet-fd3j6l35mm0\n        :type UniqSubnetId: str\n        :param BillingMode: Billing method. 0: pay-as-you-go; 1: monthly subscription\n        :type BillingMode: int\n        :param InstanceTitle: Description of an instance status, such as "instance running"\n        :type InstanceTitle: str\n        :param OfflineTime: Scheduled deactivation time\n        :type OfflineTime: str\n        :param SubStatus: Sub-status returned for an instance in process\n        :type SubStatus: int\n        :param Tags: Anti-affinity tag\n        :type Tags: list of str\n        :param InstanceNode: Instance node information\n        :type InstanceNode: list of InstanceNode\n        :param RedisShardSize: Shard size\n        :type RedisShardSize: int\n        :param RedisShardNum: Number of shards\n        :type RedisShardNum: int\n        :param RedisReplicasNum: Number of replicas\n        :type RedisReplicasNum: int\n        :param PriceId: Billing ID\n        :type PriceId: int\n        :param CloseTime: Isolation time\n        :type CloseTime: str\n        :param SlaveReadWeight: Read weight of a secondary node\n        :type SlaveReadWeight: int\n        :param InstanceTags: Instance tag information
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type InstanceTags: list of InstanceTagInfo\n        :param ProjectName: Project name
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type ProjectName: str\n        :param NoAuth: Whether an instance is password-free. true: yes; false: no
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type NoAuth: bool\n        :param ClientLimit: Number of client connections
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ClientLimit: int\n        :param DtsStatus: DTS status (internal parameter, which can be ignored)
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DtsStatus: int\n        :param NetLimit: Upper shard bandwidth limit in MB
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type NetLimit: int\n        :param PasswordFree: Password-free instance flag (internal parameter, which can be ignored)
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type PasswordFree: int\n        :param ReadOnly: Read-only instance flag (internal parameter, which can be ignored)
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ReadOnly: int\n        :param Vip6: Internal parameter, which can be ignored
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Vip6: str\n        :param RemainBandwidthDuration: Internal parameter, which can be ignored
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type RemainBandwidthDuration: str\n        :param DiskSize: Disk size of the Tendis instance
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DiskSize: int\n        :param MonitorVersion: Monitoring granularity type. Valid values: 1m (monitoring at 1-minute granularity), 5s (monitoring at 5-second granularity)
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type MonitorVersion: str\n        :param ClientLimitMin: The minimum value of the range of maximum connections to the client
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ClientLimitMin: int\n        :param ClientLimitMax: The maximum value of the range of maximum connections to the client
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ClientLimitMax: int\n        :param NodeSet: Instance node details
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type NodeSet: list of RedisNodeInfo\n        :param Region: Region where the instance is deployed
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Region: str\n        """
         self.InstanceName = None
         self.InstanceId = None
         self.Appid = None
@@ -2911,8 +3761,20 @@ class InstanceSlowlogDetail(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Duration: Slow log duration
+        :type Duration: int
+        :param Client: Client address
+        :type Client: str
+        :param Command: Command
+        :type Command: str
+        :param CommandLine: Command line details
+        :type CommandLine: str
+        :param ExecuteTime: Execution duration
+        :type ExecuteTime: str
+        :param Node: Node ID
+        :type Node: str
         """
-        :param Duration: Slow log duration\n        :type Duration: int\n        :param Client: Client address\n        :type Client: str\n        :param Command: Command\n        :type Command: str\n        :param CommandLine: Command line details\n        :type CommandLine: str\n        :param ExecuteTime: Execution duration\n        :type ExecuteTime: str\n        :param Node: Node ID\n        :type Node: str\n        """
         self.Duration = None
         self.Client = None
         self.Command = None
@@ -2943,8 +3805,12 @@ class InstanceTagInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TagKey: Tag key
+        :type TagKey: str
+        :param TagValue: Tag value
+        :type TagValue: str
         """
-        :param TagKey: Tag key\n        :type TagKey: str\n        :param TagValue: Tag value\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -2967,8 +3833,24 @@ class InstanceTextParam(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ParamName: Parameter name
+        :type ParamName: str
+        :param ValueType: Parameter type: Text
+        :type ValueType: str
+        :param NeedRestart: Whether restart is required after a modification is made. Value range: true, false
+        :type NeedRestart: str
+        :param DefaultValue: Default value of the parameter
+        :type DefaultValue: str
+        :param CurrentValue: Current value of a parameter
+        :type CurrentValue: str
+        :param Tips: Parameter description
+        :type Tips: str
+        :param TextValue: Value range of a parameter
+        :type TextValue: list of str
+        :param Status: Parameter status. 1: modifying; 2: modified
+        :type Status: int
         """
-        :param ParamName: Parameter name\n        :type ParamName: str\n        :param ValueType: Parameter type: Text\n        :type ValueType: str\n        :param NeedRestart: Whether restart is required after a modification is made. Value range: true, false\n        :type NeedRestart: str\n        :param DefaultValue: Default value of the parameter\n        :type DefaultValue: str\n        :param CurrentValue: Current value of a parameter\n        :type CurrentValue: str\n        :param Tips: Parameter description\n        :type Tips: str\n        :param TextValue: Value range of a parameter\n        :type TextValue: list of str\n        :param Status: Parameter status. 1: modifying; 2: modified\n        :type Status: int\n        """
         self.ParamName = None
         self.ValueType = None
         self.NeedRestart = None
@@ -3003,14 +3885,18 @@ class KillMasterGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param Password: 1. The password must contain 8-30 characters. A password of 12 or more characters is recommended.
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Password: 1. The password must contain 8-30 characters. A password of 12 or more characters is recommended.
 2. The password cannot start with a slash (/).
 3. The password must contain at least two of the following four types:
     a. Lowercase letters (a-z)
     b. Uppercase letters (A-Z)
     c. Digits (0-9)
-    d. ()`~!@#$%^&*-+=_|{}[]:;<>,.?/\n        :type Password: str\n        """
+    d. ()`~!@#$%^&*-+=_|{}[]:;<>,.?/
+        :type Password: str
+        """
         self.InstanceId = None
         self.Password = None
 
@@ -3033,8 +3919,12 @@ class KillMasterGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Async task ID
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskId: Async task ID\n        :type TaskId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -3050,8 +3940,12 @@ class ManualBackupInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: ID of the instance to be operated on, which can be obtained through the `InstanceId` field in the return value of the DescribeInstance API.
+        :type InstanceId: str
+        :param Remark: Backup remarks
+        :type Remark: str
         """
-        :param InstanceId: ID of the instance to be operated on, which can be obtained through the `InstanceId` field in the return value of the DescribeInstance API.\n        :type InstanceId: str\n        :param Remark: Backup remarks\n        :type Remark: str\n        """
         self.InstanceId = None
         self.Remark = None
 
@@ -3074,8 +3968,12 @@ class ManualBackupInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Task ID
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskId: Task ID\n        :type TaskId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -3091,8 +3989,14 @@ class ModfiyInstancePasswordRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param OldPassword: Old password of an instance
+        :type OldPassword: str
+        :param Password: New password of an instance
+        :type Password: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param OldPassword: Old password of an instance\n        :type OldPassword: str\n        :param Password: New password of an instance\n        :type Password: str\n        """
         self.InstanceId = None
         self.OldPassword = None
         self.Password = None
@@ -3117,8 +4021,12 @@ class ModfiyInstancePasswordResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Task ID
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskId: Task ID\n        :type TaskId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -3134,8 +4042,16 @@ class ModifyAutoBackupConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param WeekDays: Date. Value range: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+        :type WeekDays: list of str
+        :param TimePeriod: Time period. Value range: 00:00-01:00, 01:00-02:00...... 23:00-00:00
+        :type TimePeriod: str
+        :param AutoBackupType: Auto backup type: 1 "scheduled rollback"
+        :type AutoBackupType: int
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param WeekDays: Date. Value range: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday\n        :type WeekDays: list of str\n        :param TimePeriod: Time period. Value range: 00:00-01:00, 01:00-02:00...... 23:00-00:00\n        :type TimePeriod: str\n        :param AutoBackupType: Auto backup type: 1 "scheduled rollback"\n        :type AutoBackupType: int\n        """
         self.InstanceId = None
         self.WeekDays = None
         self.TimePeriod = None
@@ -3162,8 +4078,16 @@ class ModifyAutoBackupConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AutoBackupType: Auto backup type: 1 "scheduled rollback"
+        :type AutoBackupType: int
+        :param WeekDays: Date. Value range: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+        :type WeekDays: list of str
+        :param TimePeriod: Time period. Value range: 00:00-01:00, 01:00-02:00...... 23:00-00:00
+        :type TimePeriod: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param AutoBackupType: Auto backup type: 1 "scheduled rollback"\n        :type AutoBackupType: int\n        :param WeekDays: Date. Value range: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.\n        :type WeekDays: list of str\n        :param TimePeriod: Time period. Value range: 00:00-01:00, 01:00-02:00...... 23:00-00:00\n        :type TimePeriod: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.AutoBackupType = None
         self.WeekDays = None
         self.TimePeriod = None
@@ -3183,8 +4107,14 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Product: Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc.
+        :type Product: str
+        :param SecurityGroupIds: The ID list of the security groups to be modified, which is an array of one or more security group IDs.
+        :type SecurityGroupIds: list of str
+        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB Console.
+        :type InstanceId: str
         """
-        :param Product: Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc.\n        :type Product: str\n        :param SecurityGroupIds: The ID list of the security groups to be modified, which is an array of one or more security group IDs.\n        :type SecurityGroupIds: list of str\n        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB Console.\n        :type InstanceId: str\n        """
         self.Product = None
         self.SecurityGroupIds = None
         self.InstanceId = None
@@ -3209,8 +4139,10 @@ class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3224,8 +4156,22 @@ class ModifyInstanceAccountRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param AccountName: Sub-account name. If the root account is to be modified, enter `root`
+        :type AccountName: str
+        :param AccountPassword: Sub-account password
+        :type AccountPassword: str
+        :param Remark: Sub-account description information
+        :type Remark: str
+        :param ReadonlyPolicy: Sub-account routing policy. Enter `master` to route to the primary node or `slave` to route to the secondary node
+        :type ReadonlyPolicy: list of str
+        :param Privilege: Sub-account read/write policy. Enter `r` for read-only, `w` for write-only, or `rw` for read/write
+        :type Privilege: str
+        :param NoAuth: true: make the root account password-free. This is applicable to root accounts only; sub-accounts cannot be made password-free
+        :type NoAuth: bool
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param AccountName: Sub-account name. If the root account is to be modified, enter `root`\n        :type AccountName: str\n        :param AccountPassword: Sub-account password\n        :type AccountPassword: str\n        :param Remark: Sub-account description information\n        :type Remark: str\n        :param ReadonlyPolicy: Sub-account routing policy. Enter `master` to route to the primary node or `slave` to route to the secondary node\n        :type ReadonlyPolicy: list of str\n        :param Privilege: Sub-account read/write policy. Enter `r` for read-only, `w` for write-only, or `rw` for read/write\n        :type Privilege: str\n        :param NoAuth: true: make the root account password-free. This is applicable to root accounts only; sub-accounts cannot be made password-free\n        :type NoAuth: bool\n        """
         self.InstanceId = None
         self.AccountName = None
         self.AccountPassword = None
@@ -3258,8 +4204,12 @@ class ModifyInstanceAccountResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Task ID
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskId: Task ID\n        :type TaskId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -3275,8 +4225,12 @@ class ModifyInstanceParamsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param InstanceParams: List of instance parameters modified
+        :type InstanceParams: list of InstanceParam
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param InstanceParams: List of instance parameters modified\n        :type InstanceParams: list of InstanceParam\n        """
         self.InstanceId = None
         self.InstanceParams = None
 
@@ -3304,8 +4258,14 @@ class ModifyInstanceParamsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Changed: Whether a modification is successfully made.
+        :type Changed: bool
+        :param TaskId: Task ID
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Changed: Whether a modification is successfully made.\n        :type Changed: bool\n        :param TaskId: Task ID\n        :type TaskId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Changed = None
         self.TaskId = None
         self.RequestId = None
@@ -3323,8 +4283,24 @@ class ModifyInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Operation: Instance modification type. rename: rename an instance; modifyProject: modify the project of an instance; modifyAutoRenew: modify the auto-renewal flag of an instance
+        :type Operation: str
+        :param InstanceIds: Instance ID
+        :type InstanceIds: list of str
+        :param InstanceNames: New name of instance
+        :type InstanceNames: list of str
+        :param ProjectId: Project ID
+        :type ProjectId: int
+        :param AutoRenews: Auto-renewal flag. 0: default status (manual renewal), 1: auto-renewal enabled, 2: auto-renewal disabled
+        :type AutoRenews: list of int
+        :param InstanceId: Disused
+        :type InstanceId: str
+        :param InstanceName: Disused
+        :type InstanceName: str
+        :param AutoRenew: Disused
+        :type AutoRenew: int
         """
-        :param Operation: Instance modification type. rename: rename an instance; modifyProject: modify the project of an instance; modifyAutoRenew: modify the auto-renewal flag of an instance\n        :type Operation: str\n        :param InstanceIds: Instance ID\n        :type InstanceIds: list of str\n        :param InstanceNames: New name of instance\n        :type InstanceNames: list of str\n        :param ProjectId: Project ID\n        :type ProjectId: int\n        :param AutoRenews: Auto-renewal flag. 0: default status (manual renewal), 1: auto-renewal enabled, 2: auto-renewal disabled\n        :type AutoRenews: list of int\n        :param InstanceId: Disused\n        :type InstanceId: str\n        :param InstanceName: Disused\n        :type InstanceName: str\n        :param AutoRenew: Disused\n        :type AutoRenew: int\n        """
         self.Operation = None
         self.InstanceIds = None
         self.InstanceNames = None
@@ -3359,8 +4335,10 @@ class ModifyInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3374,8 +4352,14 @@ class ModifyMaintenanceWindowRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param StartTime: Start time of the maintenance window, such as 17:00
+        :type StartTime: str
+        :param EndTime: End time of the maintenance window, such as 19:00
+        :type EndTime: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param StartTime: Start time of the maintenance window, such as 17:00\n        :type StartTime: str\n        :param EndTime: End time of the maintenance window, such as 19:00\n        :type EndTime: str\n        """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
@@ -3400,8 +4384,12 @@ class ModifyMaintenanceWindowResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Modification status. Valid values: success, failed.
+        :type Status: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Status: Modification status. Valid values: success, failed.\n        :type Status: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Status = None
         self.RequestId = None
 
@@ -3417,8 +4405,18 @@ class ModifyNetworkConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Operation: Operation type. changeVip: modify the VIP of an instance; changeVpc: modify the subnet of an instance; changeBaseToVpc: change from basic network to VPC
+        :type Operation: str
+        :param Vip: VIP address, which is required for the `changeVip` operation. If this parameter is left blank, a random one will be assigned by default
+        :type Vip: str
+        :param VpcId: VPC ID, which is required for `changeVpc` and `changeBaseToVpc` operations
+        :type VpcId: str
+        :param SubnetId: Subnet ID, which is required for `changeVpc` and `changeBaseToVpc` operations
+        :type SubnetId: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param Operation: Operation type. changeVip: modify the VIP of an instance; changeVpc: modify the subnet of an instance; changeBaseToVpc: change from basic network to VPC\n        :type Operation: str\n        :param Vip: VIP address, which is required for the `changeVip` operation. If this parameter is left blank, a random one will be assigned by default\n        :type Vip: str\n        :param VpcId: VPC ID, which is required for `changeVpc` and `changeBaseToVpc` operations\n        :type VpcId: str\n        :param SubnetId: Subnet ID, which is required for `changeVpc` and `changeBaseToVpc` operations\n        :type SubnetId: str\n        """
         self.InstanceId = None
         self.Operation = None
         self.Vip = None
@@ -3447,8 +4445,18 @@ class ModifyNetworkConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: Execution status: true or false
+        :type Status: bool
+        :param SubnetId: Subnet ID
+        :type SubnetId: str
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param Vip: VIP address
+        :type Vip: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Status: Execution status: true or false\n        :type Status: bool\n        :param SubnetId: Subnet ID\n        :type SubnetId: str\n        :param VpcId: VPC ID\n        :type VpcId: str\n        :param Vip: VIP address\n        :type Vip: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Status = None
         self.SubnetId = None
         self.VpcId = None
@@ -3470,8 +4478,24 @@ class Outbound(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Action: Policy. Valid values: ACCEPT, DROP.
+        :type Action: str
+        :param AddressModule: All the addresses that the address group ID represents.
+        :type AddressModule: str
+        :param CidrIp: Source IP or IP address range, such as 192.168.0.0/16.
+        :type CidrIp: str
+        :param Desc: Description.
+        :type Desc: str
+        :param IpProtocol: Network protocol, such as UDP and TCP, etc.
+        :type IpProtocol: str
+        :param PortRange: Port.
+        :type PortRange: str
+        :param ServiceModule: All the protocols and ports that the service group ID represents.
+        :type ServiceModule: str
+        :param Id: All the addresses that the security group ID represents.
+        :type Id: str
         """
-        :param Action: Policy. Valid values: ACCEPT, DROP.\n        :type Action: str\n        :param AddressModule: All the addresses that the address group ID represents.\n        :type AddressModule: str\n        :param CidrIp: Source IP or IP address range, such as 192.168.0.0/16.\n        :type CidrIp: str\n        :param Desc: Description.\n        :type Desc: str\n        :param IpProtocol: Network protocol, such as UDP and TCP, etc.\n        :type IpProtocol: str\n        :param PortRange: Port.\n        :type PortRange: str\n        :param ServiceModule: All the protocols and ports that the service group ID represents.\n        :type ServiceModule: str\n        :param Id: All the addresses that the security group ID represents.\n        :type Id: str\n        """
         self.Action = None
         self.AddressModule = None
         self.CidrIp = None
@@ -3506,8 +4530,34 @@ class ProductConf(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Type: Product type. Valid values: `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `5` (Redis 2.8 Memory Edition in standalone architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture), `10` (Redis 4.0 Hybrid Storage Edition (Tendis)).
+        :type Type: int
+        :param TypeName: Product name: Redis Master-Replica Edition, CKV Master-Replica Edition, CKV Cluster Edition, Redis Standalone Edition, Redis Cluster Edition, Tendis Hybrid Storage Edition
+        :type TypeName: str
+        :param MinBuyNum: Minimum purchasable quantity
+        :type MinBuyNum: int
+        :param MaxBuyNum: Maximum purchasable quantity
+        :type MaxBuyNum: int
+        :param Saleout: Whether a product is sold out
+        :type Saleout: bool
+        :param Engine: Product engine: Tencent Cloud CKV or Redis community edition
+        :type Engine: str
+        :param Version: Compatible version: Redis 2.8, Redis 3.2, or Redis 4.0
+        :type Version: str
+        :param TotalSize: Total capacity in GB
+        :type TotalSize: list of str
+        :param ShardSize: Shard size in GB
+        :type ShardSize: list of str
+        :param ReplicaNum: Number of replicas
+        :type ReplicaNum: list of str
+        :param ShardNum: Number of shards
+        :type ShardNum: list of str
+        :param PayMode: Supported billing method. 1: monthly subscription; 0: pay-as-you-go
+        :type PayMode: str
+        :param EnableRepicaReadOnly: Whether to support read-only replicas
+        :type EnableRepicaReadOnly: bool
         """
-        :param Type: Product type. Valid values: `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `5` (Redis 2.8 Memory Edition in standalone architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture), `10` (Redis 4.0 Hybrid Storage Edition (Tendis)).\n        :type Type: int\n        :param TypeName: Product name: Redis Master-Replica Edition, CKV Master-Replica Edition, CKV Cluster Edition, Redis Standalone Edition, Redis Cluster Edition, Tendis Hybrid Storage Edition\n        :type TypeName: str\n        :param MinBuyNum: Minimum purchasable quantity\n        :type MinBuyNum: int\n        :param MaxBuyNum: Maximum purchasable quantity\n        :type MaxBuyNum: int\n        :param Saleout: Whether a product is sold out\n        :type Saleout: bool\n        :param Engine: Product engine: Tencent Cloud CKV or Redis community edition\n        :type Engine: str\n        :param Version: Compatible version: Redis 2.8, Redis 3.2, or Redis 4.0\n        :type Version: str\n        :param TotalSize: Total capacity in GB\n        :type TotalSize: list of str\n        :param ShardSize: Shard size in GB\n        :type ShardSize: list of str\n        :param ReplicaNum: Number of replicas\n        :type ReplicaNum: list of str\n        :param ShardNum: Number of shards\n        :type ShardNum: list of str\n        :param PayMode: Supported billing method. 1: monthly subscription; 0: pay-as-you-go\n        :type PayMode: str\n        :param EnableRepicaReadOnly: Whether to support read-only replicas\n        :type EnableRepicaReadOnly: bool\n        """
         self.Type = None
         self.TypeName = None
         self.MinBuyNum = None
@@ -3552,9 +4602,11 @@ class ProxyNodes(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NodeId: Node ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type NodeId: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type NodeId: str
+        """
         self.NodeId = None
 
 
@@ -3575,8 +4627,20 @@ class RedisBackupSet(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StartTime: Backup start time
+        :type StartTime: str
+        :param BackupId: Backup ID
+        :type BackupId: str
+        :param BackupType: Backup type. manualBackupInstance: manual backup initiated by user; systemBackupInstance: midnight backup initiated by system
+        :type BackupType: str
+        :param Status: Backup status. 1: backup is locked by another process; 2: backup is normal and not locked by any process; -1: backup has expired; 3: backup is being exported; 4: backup is exported successfully
+        :type Status: int
+        :param Remark: Backup remarks
+        :type Remark: str
+        :param Locked: Whether a backup is locked. 0: no; 1: yes
+        :type Locked: int
         """
-        :param StartTime: Backup start time\n        :type StartTime: str\n        :param BackupId: Backup ID\n        :type BackupId: str\n        :param BackupType: Backup type. manualBackupInstance: manual backup initiated by user; systemBackupInstance: midnight backup initiated by system\n        :type BackupType: str\n        :param Status: Backup status. 1: backup is locked by another process; 2: backup is normal and not locked by any process; -1: backup has expired; 3: backup is being exported; 4: backup is exported successfully\n        :type Status: int\n        :param Remark: Backup remarks\n        :type Remark: str\n        :param Locked: Whether a backup is locked. 0: no; 1: yes\n        :type Locked: int\n        """
         self.StartTime = None
         self.BackupId = None
         self.BackupType = None
@@ -3607,8 +4671,36 @@ class RedisCommonInstanceList(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param AppId: User ID
+        :type AppId: int
+        :param ProjectId: Project ID of the instance
+        :type ProjectId: int
+        :param Region: Instance region
+        :type Region: str
+        :param Zone: Instance availability zone
+        :type Zone: str
+        :param VpcId: Instance network ID
+        :type VpcId: str
+        :param SubnetId: Subnet ID
+        :type SubnetId: str
+        :param Status: Instance status. Valid values: `1` (task running), `2` (instance running), `-2` (instance isolated), `-3` (instance being eliminated), `-4` (instance eliminated)
+        :type Status: str
+        :param Vips: Instance network IP
+        :type Vips: list of str
+        :param Vport: Instance network port
+        :type Vport: int
+        :param Createtime: Instance creation time
+        :type Createtime: str
+        :param PayMode: Billing mode. Valid values: `0` (pay-as-you-go), `1` (monthly subscription)
+        :type PayMode: int
+        :param NetType: Network type. Valid values: `0` (classic network), `1` (VPC)
+        :type NetType: int
         """
-        :param InstanceName: Instance name\n        :type InstanceName: str\n        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param AppId: User ID\n        :type AppId: int\n        :param ProjectId: Project ID of the instance\n        :type ProjectId: int\n        :param Region: Instance region\n        :type Region: str\n        :param Zone: Instance availability zone\n        :type Zone: str\n        :param VpcId: Instance network ID\n        :type VpcId: str\n        :param SubnetId: Subnet ID\n        :type SubnetId: str\n        :param Status: Instance status. Valid values: `1` (task running), `2` (instance running), `-2` (instance isolated), `-3` (instance being eliminated), `-4` (instance eliminated)\n        :type Status: str\n        :param Vips: Instance network IP\n        :type Vips: list of str\n        :param Vport: Instance network port\n        :type Vport: int\n        :param Createtime: Instance creation time\n        :type Createtime: str\n        :param PayMode: Billing mode. Valid values: `0` (pay-as-you-go), `1` (monthly subscription)\n        :type PayMode: int\n        :param NetType: Network type. Valid values: `0` (classic network), `1` (VPC)\n        :type NetType: int\n        """
         self.InstanceName = None
         self.InstanceId = None
         self.AppId = None
@@ -3655,8 +4747,18 @@ class RedisNode(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Keys: The number of keys on a node
+        :type Keys: int
+        :param Slot: Distribution of node slots
+        :type Slot: str
+        :param NodeId: Node ID
+        :type NodeId: str
+        :param Status: Node status
+        :type Status: str
+        :param Role: Node role
+        :type Role: str
         """
-        :param Keys: The number of keys on a node\n        :type Keys: int\n        :param Slot: Distribution of node slots\n        :type Slot: str\n        :param NodeId: Node ID\n        :type NodeId: str\n        :param Status: Node status\n        :type Status: str\n        :param Role: Node role\n        :type Role: str\n        """
         self.Keys = None
         self.Slot = None
         self.NodeId = None
@@ -3685,8 +4787,14 @@ class RedisNodeInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NodeType: Node type. Valid values: `0` (master node), `1` (replica node)
+        :type NodeType: int
+        :param ZoneId: ID of the availability zone of the master or replica node
+        :type ZoneId: int
+        :param NodeId: ID of the master or replica node, which is not required upon creation of the instance
+        :type NodeId: int
         """
-        :param NodeType: Node type. Valid values: `0` (master node), `1` (replica node)\n        :type NodeType: int\n        :param ZoneId: ID of the availability zone of the master or replica node\n        :type ZoneId: int\n        :param NodeId: ID of the master or replica node, which is not required upon creation of the instance\n        :type NodeId: int\n        """
         self.NodeType = None
         self.ZoneId = None
         self.NodeId = None
@@ -3711,8 +4819,16 @@ class RedisNodes(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NodeId: Node ID
+        :type NodeId: str
+        :param NodeRole: Node role
+        :type NodeRole: str
+        :param ClusterId: Shard ID
+        :type ClusterId: int
+        :param ZoneId: AZ ID
+        :type ZoneId: int
         """
-        :param NodeId: Node ID\n        :type NodeId: str\n        :param NodeRole: Node role\n        :type NodeRole: str\n        :param ClusterId: Shard ID\n        :type ClusterId: int\n        :param ZoneId: AZ ID\n        :type ZoneId: int\n        """
         self.NodeId = None
         self.NodeRole = None
         self.ClusterId = None
@@ -3739,8 +4855,18 @@ class RegionConf(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegionId: Region ID
+        :type RegionId: str
+        :param RegionName: Region name
+        :type RegionName: str
+        :param RegionShortName: Region abbreviation
+        :type RegionShortName: str
+        :param Area: Name of the area where a region is located
+        :type Area: str
+        :param ZoneSet: AZ information
+        :type ZoneSet: list of ZoneCapacityConf
         """
-        :param RegionId: Region ID\n        :type RegionId: str\n        :param RegionName: Region name\n        :type RegionName: str\n        :param RegionShortName: Region abbreviation\n        :type RegionShortName: str\n        :param Area: Name of the area where a region is located\n        :type Area: str\n        :param ZoneSet: AZ information\n        :type ZoneSet: list of ZoneCapacityConf\n        """
         self.RegionId = None
         self.RegionName = None
         self.RegionShortName = None
@@ -3774,8 +4900,12 @@ class RenewInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Period: Length of purchase in months
+        :type Period: int
+        :param InstanceId: Instance ID
+        :type InstanceId: str
         """
-        :param Period: Length of purchase in months\n        :type Period: int\n        :param InstanceId: Instance ID\n        :type InstanceId: str\n        """
         self.Period = None
         self.InstanceId = None
 
@@ -3798,8 +4928,12 @@ class RenewInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DealId: Transaction ID
+        :type DealId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param DealId: Transaction ID\n        :type DealId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DealId = None
         self.RequestId = None
 
@@ -3815,8 +4949,18 @@ class ReplicaGroup(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: Node group ID
+        :type GroupId: int
+        :param GroupName: Node group name
+        :type GroupName: str
+        :param ZoneId: Node availability zone ID, such as ap-guangzhou-1
+        :type ZoneId: str
+        :param Role: Node group type. Valid values: `master` (master node group), `replica` (replica node group)
+        :type Role: str
+        :param RedisNodes: The list of nodes in a node group
+        :type RedisNodes: list of RedisNode
         """
-        :param GroupId: Node group ID\n        :type GroupId: int\n        :param GroupName: Node group name\n        :type GroupName: str\n        :param ZoneId: Node availability zone ID, such as ap-guangzhou-1\n        :type ZoneId: str\n        :param Role: Node group type. Valid values: `master` (master node group), `replica` (replica node group)\n        :type Role: str\n        :param RedisNodes: The list of nodes in a node group\n        :type RedisNodes: list of RedisNode\n        """
         self.GroupId = None
         self.GroupName = None
         self.ZoneId = None
@@ -3850,8 +4994,14 @@ class ResetPasswordRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Redis instance ID
+        :type InstanceId: str
+        :param Password: Password reset (this parameter can be left blank when switching to password-free instance mode and is required in other cases)
+        :type Password: str
+        :param NoAuth: Whether to switch to password-free instance mode. false: switch to password-enabled instance mode; true: switch to password-free instance mode. Default value: false
+        :type NoAuth: bool
         """
-        :param InstanceId: Redis instance ID\n        :type InstanceId: str\n        :param Password: Password reset (this parameter can be left blank when switching to password-free instance mode and is required in other cases)\n        :type Password: str\n        :param NoAuth: Whether to switch to password-free instance mode. false: switch to password-enabled instance mode; true: switch to password-free instance mode. Default value: false\n        :type NoAuth: bool\n        """
         self.InstanceId = None
         self.Password = None
         self.NoAuth = None
@@ -3876,8 +5026,12 @@ class ResetPasswordResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Task ID (this parameter is the task ID when changing a password. If you are switching between password-free and password-enabled instance mode, you can leave this parameter alone)
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskId: Task ID (this parameter is the task ID when changing a password. If you are switching between password-free and password-enabled instance mode, you can leave this parameter alone)\n        :type TaskId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -3893,8 +5047,12 @@ class ResourceTag(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TagKey: Tag key
+        :type TagKey: str
+        :param TagValue: Tag value
+        :type TagValue: str
         """
-        :param TagKey: Tag key\n        :type TagKey: str\n        :param TagValue: Tag value\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -3917,8 +5075,14 @@ class RestoreInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: ID of the instance to be operated on, which can be obtained through the `redisId` field in the return value of the DescribeRedis API.
+        :type InstanceId: str
+        :param BackupId: Backup ID, which can be obtained through the `backupId` field in the return value of the GetRedisBackupList API
+        :type BackupId: str
+        :param Password: Instance password, which needs to be validated during instance restoration (this parameter is not required for password-free instances)
+        :type Password: str
         """
-        :param InstanceId: ID of the instance to be operated on, which can be obtained through the `redisId` field in the return value of the DescribeRedis API.\n        :type InstanceId: str\n        :param BackupId: Backup ID, which can be obtained through the `backupId` field in the return value of the GetRedisBackupList API\n        :type BackupId: str\n        :param Password: Instance password, which needs to be validated during instance restoration (this parameter is not required for password-free instances)\n        :type Password: str\n        """
         self.InstanceId = None
         self.BackupId = None
         self.Password = None
@@ -3943,8 +5107,12 @@ class RestoreInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Task ID, which can be used to query the task execution status through the DescribeTaskInfo API
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskId: Task ID, which can be used to query the task execution status through the DescribeTaskInfo API\n        :type TaskId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -3960,8 +5128,22 @@ class SecurityGroup(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CreateTime: Creation time in the format of yyyy-mm-dd hh:mm:ss.
+        :type CreateTime: str
+        :param ProjectId: Project ID.
+        :type ProjectId: int
+        :param SecurityGroupId: Security group ID.
+        :type SecurityGroupId: str
+        :param SecurityGroupName: Security group name.
+        :type SecurityGroupName: str
+        :param SecurityGroupRemark: Security group remarks.
+        :type SecurityGroupRemark: str
+        :param Outbound: Outbound rule.
+        :type Outbound: list of Outbound
+        :param Inbound: Inbound rule.
+        :type Inbound: list of Inbound
         """
-        :param CreateTime: Creation time in the format of yyyy-mm-dd hh:mm:ss.\n        :type CreateTime: str\n        :param ProjectId: Project ID.\n        :type ProjectId: int\n        :param SecurityGroupId: Security group ID.\n        :type SecurityGroupId: str\n        :param SecurityGroupName: Security group name.\n        :type SecurityGroupName: str\n        :param SecurityGroupRemark: Security group remarks.\n        :type SecurityGroupRemark: str\n        :param Outbound: Outbound rule.\n        :type Outbound: list of Outbound\n        :param Inbound: Inbound rule.\n        :type Inbound: list of Inbound\n        """
         self.CreateTime = None
         self.ProjectId = None
         self.SecurityGroupId = None
@@ -4004,8 +5186,22 @@ class SecurityGroupDetail(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProjectId: Project ID
+        :type ProjectId: int
+        :param CreateTime: Creation time
+        :type CreateTime: str
+        :param SecurityGroupId: Security group ID
+        :type SecurityGroupId: str
+        :param SecurityGroupName: Security group name
+        :type SecurityGroupName: str
+        :param SecurityGroupRemark: Security group remarks
+        :type SecurityGroupRemark: str
+        :param InboundRule: Security group inbound rule
+        :type InboundRule: list of SecurityGroupsInboundAndOutbound
+        :param OutboundRule: Security group outbound rule
+        :type OutboundRule: list of SecurityGroupsInboundAndOutbound
         """
-        :param ProjectId: Project ID\n        :type ProjectId: int\n        :param CreateTime: Creation time\n        :type CreateTime: str\n        :param SecurityGroupId: Security group ID\n        :type SecurityGroupId: str\n        :param SecurityGroupName: Security group name\n        :type SecurityGroupName: str\n        :param SecurityGroupRemark: Security group remarks\n        :type SecurityGroupRemark: str\n        :param InboundRule: Security group inbound rule\n        :type InboundRule: list of SecurityGroupsInboundAndOutbound\n        :param OutboundRule: Security group outbound rule\n        :type OutboundRule: list of SecurityGroupsInboundAndOutbound\n        """
         self.ProjectId = None
         self.CreateTime = None
         self.SecurityGroupId = None
@@ -4048,8 +5244,16 @@ class SecurityGroupsInboundAndOutbound(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Action: Action to be executed
+        :type Action: str
+        :param Ip: IP address
+        :type Ip: str
+        :param Port: Port number
+        :type Port: str
+        :param Proto: Protocol type
+        :type Proto: str
         """
-        :param Action: Action to be executed\n        :type Action: str\n        :param Ip: IP address\n        :type Ip: str\n        :param Port: Port number\n        :type Port: str\n        :param Proto: Protocol type\n        :type Proto: str\n        """
         self.Action = None
         self.Ip = None
         self.Port = None
@@ -4076,8 +5280,12 @@ class SourceCommand(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Cmd: Command
+        :type Cmd: str
+        :param Count: Number of executions
+        :type Count: int
         """
-        :param Cmd: Command\n        :type Cmd: str\n        :param Count: Number of executions\n        :type Count: int\n        """
         self.Cmd = None
         self.Count = None
 
@@ -4100,8 +5308,14 @@ class SourceInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ip: Source IP
+        :type Ip: str
+        :param Conn: Number of connections
+        :type Conn: int
+        :param Cmd: Command
+        :type Cmd: int
         """
-        :param Ip: Source IP\n        :type Ip: str\n        :param Conn: Number of connections\n        :type Conn: int\n        :param Cmd: Command\n        :type Cmd: int\n        """
         self.Ip = None
         self.Conn = None
         self.Cmd = None
@@ -4126,8 +5340,10 @@ class StartupInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -4148,8 +5364,12 @@ class StartupInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Task ID
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskId: Task ID\n        :type TaskId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -4165,8 +5385,18 @@ class SwitchInstanceVipRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SrcInstanceId: Source instance ID.
+        :type SrcInstanceId: str
+        :param DstInstanceId: Target instance ID.
+        :type DstInstanceId: str
+        :param TimeDelay: The time that lapses in seconds since DTS is disconnected between the source instance and the target instance. If the DTS disconnection time period is greater than `TimeDelay`, the VIP will not be switched. We recommend setting an acceptable value based on the actual business conditions.
+        :type TimeDelay: int
+        :param ForceSwitch: Whether to force the switch when DTS is disconnected. Valid values: 1 (yes), 0 (no).
+        :type ForceSwitch: int
+        :param SwitchTime: Valid values: now (switch now), syncComplete (switch after sync is completed).
+        :type SwitchTime: str
         """
-        :param SrcInstanceId: Source instance ID.\n        :type SrcInstanceId: str\n        :param DstInstanceId: Target instance ID.\n        :type DstInstanceId: str\n        :param TimeDelay: The time that lapses in seconds since DTS is disconnected between the source instance and the target instance. If the DTS disconnection time period is greater than `TimeDelay`, the VIP will not be switched. We recommend setting an acceptable value based on the actual business conditions.\n        :type TimeDelay: int\n        :param ForceSwitch: Whether to force the switch when DTS is disconnected. Valid values: 1 (yes), 0 (no).\n        :type ForceSwitch: int\n        :param SwitchTime: Valid values: now (switch now), syncComplete (switch after sync is completed).\n        :type SwitchTime: str\n        """
         self.SrcInstanceId = None
         self.DstInstanceId = None
         self.TimeDelay = None
@@ -4195,8 +5425,12 @@ class SwitchInstanceVipResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: Task ID
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TaskId: Task ID\n        :type TaskId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -4212,17 +5446,35 @@ class TaskInfoDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: Task ID
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type TaskId: int\n        :param StartTime: Start time
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type StartTime: str\n        :param TaskType: Task type
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type TaskType: str\n        :param InstanceName: Instance name
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type InstanceName: str\n        :param InstanceId: Instance ID
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type InstanceId: str\n        :param ProjectId: Project ID
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type ProjectId: int\n        :param Progress: Task progress
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Progress: float\n        :param EndTime: End time
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type EndTime: str\n        :param Result: Task status
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Result: int\n        """
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskId: int
+        :param StartTime: Start time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StartTime: str
+        :param TaskType: Task type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskType: str
+        :param InstanceName: Instance name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceName: str
+        :param InstanceId: Instance ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param ProjectId: Project ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProjectId: int
+        :param Progress: Task progress
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Progress: float
+        :param EndTime: End time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EndTime: str
+        :param Result: Task status
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Result: int
+        """
         self.TaskId = None
         self.StartTime = None
         self.TaskType = None
@@ -4259,8 +5511,12 @@ class TendisNodes(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NodeId: Node ID
+        :type NodeId: str
+        :param NodeRole: Node role
+        :type NodeRole: str
         """
-        :param NodeId: Node ID\n        :type NodeId: str\n        :param NodeRole: Node role\n        :type NodeRole: str\n        """
         self.NodeId = None
         self.NodeRole = None
 
@@ -4283,8 +5539,32 @@ class TradeDealDetail(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DealId: Order ID, which is used when a TencentCloud API is called
+        :type DealId: str
+        :param DealName: Long order ID, which is used when an order issue is submitted for assistance
+        :type DealName: str
+        :param ZoneId: AZ ID
+        :type ZoneId: int
+        :param GoodsNum: Number of instances associated with an order
+        :type GoodsNum: int
+        :param Creater: Creates a user uin
+        :type Creater: str
+        :param CreatTime: Order creation time
+        :type CreatTime: str
+        :param OverdueTime: Order timeout period
+        :type OverdueTime: str
+        :param EndTime: Order completion time
+        :type EndTime: str
+        :param Status: Order status. 1: unpaid; 2: paid but not delivered; 3: In delivery; 4: successfully delivered; 5: delivery failed; 6: refunded; 7: order closed; 8: order expired; 9: order invalidated; 10: product invalidated; 11: requested payment rejected; 12: paying
+        :type Status: int
+        :param Description: Order status description
+        :type Description: str
+        :param Price: Actual total price of an order in 0.01 CNY
+        :type Price: int
+        :param InstanceIds: Instance ID
+        :type InstanceIds: list of str
         """
-        :param DealId: Order ID, which is used when a TencentCloud API is called\n        :type DealId: str\n        :param DealName: Long order ID, which is used when an order issue is submitted for assistance\n        :type DealName: str\n        :param ZoneId: AZ ID\n        :type ZoneId: int\n        :param GoodsNum: Number of instances associated with an order\n        :type GoodsNum: int\n        :param Creater: Creates a user uin\n        :type Creater: str\n        :param CreatTime: Order creation time\n        :type CreatTime: str\n        :param OverdueTime: Order timeout period\n        :type OverdueTime: str\n        :param EndTime: Order completion time\n        :type EndTime: str\n        :param Status: Order status. 1: unpaid; 2: paid but not delivered; 3: In delivery; 4: successfully delivered; 5: delivery failed; 6: refunded; 7: order closed; 8: order expired; 9: order invalidated; 10: product invalidated; 11: requested payment rejected; 12: paying\n        :type Status: int\n        :param Description: Order status description\n        :type Description: str\n        :param Price: Actual total price of an order in 0.01 CNY\n        :type Price: int\n        :param InstanceIds: Instance ID\n        :type InstanceIds: list of str\n        """
         self.DealId = None
         self.DealName = None
         self.ZoneId = None
@@ -4327,8 +5607,18 @@ class UpgradeInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param MemSize: Shard size in MB
+        :type MemSize: int
+        :param RedisShardNum: Number of shards. This parameter can be left blank for Redis 2.8 primary-secondary edition, CKV primary-secondary edition, and Redis 2.8 standalone edition
+        :type RedisShardNum: int
+        :param RedisReplicasNum: Number of replicas. This parameter can be left blank for Redis 2.8 primary-secondary edition, CKV primary-secondary edition, and Redis 2.8 standalone edition
+        :type RedisReplicasNum: int
+        :param NodeSet: The information of the replica to be added to a multi-AZ instance, such as replica availability zone and replica type (`NodeType` should be `1`). This parameter is required only when multi-AZ instances add replicas.
+        :type NodeSet: list of RedisNodeInfo
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param MemSize: Shard size in MB\n        :type MemSize: int\n        :param RedisShardNum: Number of shards. This parameter can be left blank for Redis 2.8 primary-secondary edition, CKV primary-secondary edition, and Redis 2.8 standalone edition\n        :type RedisShardNum: int\n        :param RedisReplicasNum: Number of replicas. This parameter can be left blank for Redis 2.8 primary-secondary edition, CKV primary-secondary edition, and Redis 2.8 standalone edition\n        :type RedisReplicasNum: int\n        :param NodeSet: The information of the replica to be added to a multi-AZ instance, such as replica availability zone and replica type (`NodeType` should be `1`). This parameter is required only when multi-AZ instances add replicas.\n        :type NodeSet: list of RedisNodeInfo\n        """
         self.InstanceId = None
         self.MemSize = None
         self.RedisShardNum = None
@@ -4362,8 +5652,12 @@ class UpgradeInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DealId: Order ID
+        :type DealId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param DealId: Order ID\n        :type DealId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DealId = None
         self.RequestId = None
 
@@ -4379,8 +5673,14 @@ class UpgradeInstanceVersionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TargetInstanceType: The target instance type to which the instance will change. It is the same as the `TypeId` parameter in the [CreateInstances](https://intl.cloud.tencent.com/document/api/239/20026?from_cn_redirect=1) API.
+        :type TargetInstanceType: str
+        :param SwitchOption: Switch mode. Valid values: 1 (switch during the maintenance window), 2 (switch immediately).
+        :type SwitchOption: int
+        :param InstanceId: Instance ID
+        :type InstanceId: str
         """
-        :param TargetInstanceType: The target instance type to which the instance will change. It is the same as the `TypeId` parameter in the [CreateInstances](https://intl.cloud.tencent.com/document/api/239/20026?from_cn_redirect=1) API.\n        :type TargetInstanceType: str\n        :param SwitchOption: Switch mode. Valid values: 1 (switch during the maintenance window), 2 (switch immediately).\n        :type SwitchOption: int\n        :param InstanceId: Instance ID\n        :type InstanceId: str\n        """
         self.TargetInstanceType = None
         self.SwitchOption = None
         self.InstanceId = None
@@ -4405,8 +5705,12 @@ class UpgradeInstanceVersionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DealId: Order ID
+        :type DealId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param DealId: Order ID\n        :type DealId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DealId = None
         self.RequestId = None
 
@@ -4422,8 +5726,10 @@ class UpgradeVersionToMultiAvailabilityZonesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -4444,8 +5750,12 @@ class UpgradeVersionToMultiAvailabilityZonesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: Task ID
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param FlowId: Task ID\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -4461,8 +5771,22 @@ class ZoneCapacityConf(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ZoneId: AZ ID, such as ap-guangzhou-3
+        :type ZoneId: str
+        :param ZoneName: AZ name
+        :type ZoneName: str
+        :param IsSaleout: Whether a product is sold out in an AZ
+        :type IsSaleout: bool
+        :param IsDefault: Whether it is a default AZ
+        :type IsDefault: bool
+        :param NetWorkType: Network type. basenet: basic network; vpcnet: VPC
+        :type NetWorkType: list of str
+        :param ProductSet: Information of an AZ, such as product specifications in it
+        :type ProductSet: list of ProductConf
+        :param OldZoneId: AZ ID, such as 100003
+        :type OldZoneId: int
         """
-        :param ZoneId: AZ ID, such as ap-guangzhou-3\n        :type ZoneId: str\n        :param ZoneName: AZ name\n        :type ZoneName: str\n        :param IsSaleout: Whether a product is sold out in an AZ\n        :type IsSaleout: bool\n        :param IsDefault: Whether it is a default AZ\n        :type IsDefault: bool\n        :param NetWorkType: Network type. basenet: basic network; vpcnet: VPC\n        :type NetWorkType: list of str\n        :param ProductSet: Information of an AZ, such as product specifications in it\n        :type ProductSet: list of ProductConf\n        :param OldZoneId: AZ ID, such as 100003\n        :type OldZoneId: int\n        """
         self.ZoneId = None
         self.ZoneName = None
         self.IsSaleout = None

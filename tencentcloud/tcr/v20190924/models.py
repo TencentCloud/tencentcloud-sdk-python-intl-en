@@ -24,8 +24,10 @@ class CheckInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: ID of the instance to be verified.
+        :type RegistryId: str
         """
-        :param RegistryId: ID of the instance to be verified.\n        :type RegistryId: str\n        """
         self.RegistryId = None
 
 
@@ -46,8 +48,14 @@ class CheckInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IsValidated: Verification result. true: valid, false: invalid
+        :type IsValidated: bool
+        :param RegionId: ID of the region where the instance is located.
+        :type RegionId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param IsValidated: Verification result. true: valid, false: invalid\n        :type IsValidated: bool\n        :param RegionId: ID of the region where the instance is located.\n        :type RegionId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.IsValidated = None
         self.RegionId = None
         self.RequestId = None
@@ -65,8 +73,14 @@ class CreateImmutableTagRulesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: Instance ID
+        :type RegistryId: str
+        :param NamespaceName: Namespace
+        :type NamespaceName: str
+        :param Rule: Rule
+        :type Rule: :class:`tencentcloud.tcr.v20190924.models.ImmutableTagRule`
         """
-        :param RegistryId: Instance ID\n        :type RegistryId: str\n        :param NamespaceName: Namespace\n        :type NamespaceName: str\n        :param Rule: Rule\n        :type Rule: :class:`tencentcloud.tcr.v20190924.models.ImmutableTagRule`\n        """
         self.RegistryId = None
         self.NamespaceName = None
         self.Rule = None
@@ -93,8 +107,10 @@ class CreateImmutableTagRulesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -108,8 +124,12 @@ class CreateMultipleSecurityPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: Instance ID
+        :type RegistryId: str
+        :param SecurityGroupPolicySet: Security group policy
+        :type SecurityGroupPolicySet: list of SecurityPolicy
         """
-        :param RegistryId: Instance ID\n        :type RegistryId: str\n        :param SecurityGroupPolicySet: Security group policy\n        :type SecurityGroupPolicySet: list of SecurityPolicy\n        """
         self.RegistryId = None
         self.SecurityGroupPolicySet = None
 
@@ -137,8 +157,12 @@ class CreateMultipleSecurityPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: Instance ID
+        :type RegistryId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RegistryId: Instance ID\n        :type RegistryId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RegistryId = None
         self.RequestId = None
 
@@ -154,8 +178,14 @@ class DeleteImmutableTagRulesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: Instance ID
+        :type RegistryId: str
+        :param NamespaceName: Namespace
+        :type NamespaceName: str
+        :param RuleId: Rule ID
+        :type RuleId: int
         """
-        :param RegistryId: Instance ID\n        :type RegistryId: str\n        :param NamespaceName: Namespace\n        :type NamespaceName: str\n        :param RuleId: Rule ID\n        :type RuleId: int\n        """
         self.RegistryId = None
         self.NamespaceName = None
         self.RuleId = None
@@ -180,8 +210,10 @@ class DeleteImmutableTagRulesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -195,8 +227,12 @@ class DeleteMultipleSecurityPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: Instance ID
+        :type RegistryId: str
+        :param SecurityGroupPolicySet: Security group policy
+        :type SecurityGroupPolicySet: list of SecurityPolicy
         """
-        :param RegistryId: Instance ID\n        :type RegistryId: str\n        :param SecurityGroupPolicySet: Security group policy\n        :type SecurityGroupPolicySet: list of SecurityPolicy\n        """
         self.RegistryId = None
         self.SecurityGroupPolicySet = None
 
@@ -224,8 +260,12 @@ class DeleteMultipleSecurityPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: Instance ID
+        :type RegistryId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RegistryId: Instance ID\n        :type RegistryId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RegistryId = None
         self.RequestId = None
 
@@ -241,8 +281,10 @@ class DescribeImmutableTagRulesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: Instance ID
+        :type RegistryId: str
         """
-        :param RegistryId: Instance ID\n        :type RegistryId: str\n        """
         self.RegistryId = None
 
 
@@ -263,10 +305,18 @@ class DescribeImmutableTagRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Rules: Rule list
-Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type Rules: list of ImmutableTagRule\n        :param EmptyNs: Namespace with no rules created
-Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type EmptyNs: list of str\n        :param Total: Total rules\n        :type Total: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type Rules: list of ImmutableTagRule
+        :param EmptyNs: Namespace with no rules created
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type EmptyNs: list of str
+        :param Total: Total rules
+        :type Total: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.Rules = None
         self.EmptyNs = None
         self.Total = None
@@ -291,8 +341,22 @@ class ImmutableTagRule(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RepositoryPattern: Repository matching rule
+        :type RepositoryPattern: str
+        :param TagPattern: Tag matching rule
+        :type TagPattern: str
+        :param RepositoryDecoration: repoMatches or repoExcludes
+        :type RepositoryDecoration: str
+        :param TagDecoration: matches or excludes
+        :type TagDecoration: str
+        :param Disabled: Disabling rule
+        :type Disabled: bool
+        :param RuleId: Rule ID
+        :type RuleId: int
+        :param NsName: Namespace
+        :type NsName: str
         """
-        :param RepositoryPattern: Repository matching rule\n        :type RepositoryPattern: str\n        :param TagPattern: Tag matching rule\n        :type TagPattern: str\n        :param RepositoryDecoration: repoMatches or repoExcludes\n        :type RepositoryDecoration: str\n        :param TagDecoration: matches or excludes\n        :type TagDecoration: str\n        :param Disabled: Disabling rule\n        :type Disabled: bool\n        :param RuleId: Rule ID\n        :type RuleId: int\n        :param NsName: Namespace\n        :type NsName: str\n        """
         self.RepositoryPattern = None
         self.TagPattern = None
         self.RepositoryDecoration = None
@@ -325,8 +389,16 @@ class ModifyImmutableTagRulesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: Instance ID
+        :type RegistryId: str
+        :param NamespaceName: Namespace
+        :type NamespaceName: str
+        :param RuleId: Rule ID
+        :type RuleId: int
+        :param Rule: Rule
+        :type Rule: :class:`tencentcloud.tcr.v20190924.models.ImmutableTagRule`
         """
-        :param RegistryId: Instance ID\n        :type RegistryId: str\n        :param NamespaceName: Namespace\n        :type NamespaceName: str\n        :param RuleId: Rule ID\n        :type RuleId: int\n        :param Rule: Rule\n        :type Rule: :class:`tencentcloud.tcr.v20190924.models.ImmutableTagRule`\n        """
         self.RegistryId = None
         self.NamespaceName = None
         self.RuleId = None
@@ -355,8 +427,10 @@ class ModifyImmutableTagRulesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -370,8 +444,16 @@ class SecurityPolicy(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyIndex: Policy index
+        :type PolicyIndex: int
+        :param Description: Remarks
+        :type Description: str
+        :param CidrBlock: The public network IP address of the access source
+        :type CidrBlock: str
+        :param PolicyVersion: The version of the security policy
+        :type PolicyVersion: str
         """
-        :param PolicyIndex: Policy index\n        :type PolicyIndex: int\n        :param Description: Remarks\n        :type Description: str\n        :param CidrBlock: The public network IP address of the access source\n        :type CidrBlock: str\n        :param PolicyVersion: The version of the security policy\n        :type PolicyVersion: str\n        """
         self.PolicyIndex = None
         self.Description = None
         self.CidrBlock = None

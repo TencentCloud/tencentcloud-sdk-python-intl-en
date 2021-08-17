@@ -24,8 +24,12 @@ class AlgorithmInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyUsage: Algorithm ID
+        :type KeyUsage: str
+        :param Algorithm: Algorithm name
+        :type Algorithm: str
         """
-        :param KeyUsage: Algorithm ID\n        :type KeyUsage: str\n        :param Algorithm: Algorithm name\n        :type Algorithm: str\n        """
         self.KeyUsage = None
         self.Algorithm = None
 
@@ -48,8 +52,10 @@ class ArchiveKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Unique CMK ID
+        :type KeyId: str
         """
-        :param KeyId: Unique CMK ID\n        :type KeyId: str\n        """
         self.KeyId = None
 
 
@@ -70,8 +76,10 @@ class ArchiveKeyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -85,8 +93,14 @@ class AsymmetricRsaDecryptRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Unique CMK ID
+        :type KeyId: str
+        :param Ciphertext: Base64-encoded ciphertext encrypted with `PublicKey`
+        :type Ciphertext: str
+        :param Algorithm: Corresponding algorithm when a public key is used for encryption. Valid values: RSAES_PKCS1_V1_5, RSAES_OAEP_SHA_1, RSAES_OAEP_SHA_256
+        :type Algorithm: str
         """
-        :param KeyId: Unique CMK ID\n        :type KeyId: str\n        :param Ciphertext: Base64-encoded ciphertext encrypted with `PublicKey`\n        :type Ciphertext: str\n        :param Algorithm: Corresponding algorithm when a public key is used for encryption. Valid values: RSAES_PKCS1_V1_5, RSAES_OAEP_SHA_1, RSAES_OAEP_SHA_256\n        :type Algorithm: str\n        """
         self.KeyId = None
         self.Ciphertext = None
         self.Algorithm = None
@@ -111,8 +125,14 @@ class AsymmetricRsaDecryptResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Unique CMK ID
+        :type KeyId: str
+        :param Plaintext: Base64-encoded plaintext after decryption
+        :type Plaintext: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param KeyId: Unique CMK ID\n        :type KeyId: str\n        :param Plaintext: Base64-encoded plaintext after decryption\n        :type Plaintext: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.KeyId = None
         self.Plaintext = None
         self.RequestId = None
@@ -130,8 +150,12 @@ class AsymmetricSm2DecryptRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Unique CMK ID
+        :type KeyId: str
+        :param Ciphertext: Base64-encoded ciphertext encrypted with `PublicKey`, whose length cannot exceed 256 bytes.
+        :type Ciphertext: str
         """
-        :param KeyId: Unique CMK ID\n        :type KeyId: str\n        :param Ciphertext: Base64-encoded ciphertext encrypted with `PublicKey`, whose length cannot exceed 256 bytes.\n        :type Ciphertext: str\n        """
         self.KeyId = None
         self.Ciphertext = None
 
@@ -154,8 +178,14 @@ class AsymmetricSm2DecryptResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Unique CMK ID
+        :type KeyId: str
+        :param Plaintext: Base64-encoded plaintext after decryption
+        :type Plaintext: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param KeyId: Unique CMK ID\n        :type KeyId: str\n        :param Plaintext: Base64-encoded plaintext after decryption\n        :type Plaintext: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.KeyId = None
         self.Plaintext = None
         self.RequestId = None
@@ -173,8 +203,14 @@ class BindCloudResourceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: CMK ID
+        :type KeyId: str
+        :param ProductId: Unique ID of a Tencent Cloud service
+        :type ProductId: str
+        :param ResourceId: Resource/instance ID, which is stored as a string and defined by the caller based on the Tencent Cloud service’s features.
+        :type ResourceId: str
         """
-        :param KeyId: CMK ID\n        :type KeyId: str\n        :param ProductId: Unique ID of a Tencent Cloud service\n        :type ProductId: str\n        :param ResourceId: Resource/instance ID, which is stored as a string and defined by the caller based on the Tencent Cloud service’s features.\n        :type ResourceId: str\n        """
         self.KeyId = None
         self.ProductId = None
         self.ResourceId = None
@@ -199,8 +235,10 @@ class BindCloudResourceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -214,8 +252,10 @@ class CancelKeyArchiveRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Unique CMK ID
+        :type KeyId: str
         """
-        :param KeyId: Unique CMK ID\n        :type KeyId: str\n        """
         self.KeyId = None
 
 
@@ -236,8 +276,10 @@ class CancelKeyArchiveResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -251,8 +293,10 @@ class CancelKeyDeletionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Unique ID of the CMK for which to cancel schedule deletion
+        :type KeyId: str
         """
-        :param KeyId: Unique ID of the CMK for which to cancel schedule deletion\n        :type KeyId: str\n        """
         self.KeyId = None
 
 
@@ -273,8 +317,12 @@ class CancelKeyDeletionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Unique ID of the CMK for which the schedule deletion is canceled
+        :type KeyId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param KeyId: Unique ID of the CMK for which the schedule deletion is canceled\n        :type KeyId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.KeyId = None
         self.RequestId = None
 
@@ -290,8 +338,18 @@ class CreateKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Alias: Unique alias that makes a key more recognizable and understandable. This parameter cannot be empty, can contain 1-60 letters, digits, `-`, and `_`, and must begin with a letter or digit. The `kms-` prefix is used for Tencent Cloud products.
+        :type Alias: str
+        :param Description: CMK description of up to 1,024 bytes in length
+        :type Description: str
+        :param KeyUsage: Key purpose. Valid values: `ENCRYPT_DECRYPT` (default value; creating a symmetric key for encryption and decryption), `ASYMMETRIC_DECRYPT_RSA_2048` (creating an RSA2048 asymmetric key for encryption and decryption), `ASYMMETRIC_DECRYPT_SM2` (creating an SM2 asymmetric key for encryption and decryption), and `ASYMMETRIC_SIGN_VERIFY_SM2` (creating an SM2 asymmetric key for signature verification).
+        :type KeyUsage: str
+        :param Type: Specifies the key type. Default value: 1. Valid value: 1 - default type, indicating that the CMK is created by KMS; 2 - EXTERNAL type, indicating that you need to import key material. For more information, please see the `GetParametersForImport` and `ImportKeyMaterial` API documents.
+        :type Type: int
+        :param Tags: Tag list
+        :type Tags: list of Tag
         """
-        :param Alias: Unique alias that makes a key more recognizable and understandable. This parameter cannot be empty, can contain 1-60 letters, digits, `-`, and `_`, and must begin with a letter or digit. The `kms-` prefix is used for Tencent Cloud products.\n        :type Alias: str\n        :param Description: CMK description of up to 1,024 bytes in length\n        :type Description: str\n        :param KeyUsage: Key purpose. Valid values: `ENCRYPT_DECRYPT` (default value; creating a symmetric key for encryption and decryption), `ASYMMETRIC_DECRYPT_RSA_2048` (creating an RSA2048 asymmetric key for encryption and decryption), `ASYMMETRIC_DECRYPT_SM2` (creating an SM2 asymmetric key for encryption and decryption), and `ASYMMETRIC_SIGN_VERIFY_SM2` (creating an SM2 asymmetric key for signature verification).\n        :type KeyUsage: str\n        :param Type: Specifies the key type. Default value: 1. Valid value: 1 - default type, indicating that the CMK is created by KMS; 2 - EXTERNAL type, indicating that you need to import key material. For more information, please see the `GetParametersForImport` and `ImportKeyMaterial` API documents.\n        :type Type: int\n        :param Tags: Tag list\n        :type Tags: list of Tag\n        """
         self.Alias = None
         self.Description = None
         self.KeyUsage = None
@@ -325,8 +383,26 @@ class CreateKeyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Globally unique CMK ID
+        :type KeyId: str
+        :param Alias: Alias that makes a key more recognizable and understandable
+        :type Alias: str
+        :param CreateTime: Key creation time in UNIX timestamp format
+        :type CreateTime: int
+        :param Description: CMK description
+        :type Description: str
+        :param KeyState: CMK status
+        :type KeyState: str
+        :param KeyUsage: CMK usage
+        :type KeyUsage: str
+        :param TagCode: Tag operation return code. 0: success; 1: internal error; 2: business processing error
+        :type TagCode: int
+        :param TagMsg: Tag operation return information
+        :type TagMsg: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param KeyId: Globally unique CMK ID\n        :type KeyId: str\n        :param Alias: Alias that makes a key more recognizable and understandable\n        :type Alias: str\n        :param CreateTime: Key creation time in UNIX timestamp format\n        :type CreateTime: int\n        :param Description: CMK description\n        :type Description: str\n        :param KeyState: CMK status\n        :type KeyState: str\n        :param KeyUsage: CMK usage\n        :type KeyUsage: str\n        :param TagCode: Tag operation return code. 0: success; 1: internal error; 2: business processing error\n        :type TagCode: int\n        :param TagMsg: Tag operation return information\n        :type TagMsg: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.KeyId = None
         self.Alias = None
         self.CreateTime = None
@@ -356,8 +432,16 @@ class CreateWhiteBoxKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Alias: Unique alias that makes a key more recognizable and understandable. This parameter should be 1 to 60 letters, digits, `-`, and `_`; it must begin with a letter or digit and cannot be left empty.
+        :type Alias: str
+        :param Algorithm: All algorithm types for creating keys. Valid values: AES_256, SM4
+        :type Algorithm: str
+        :param Description: Key description of up to 1024 bytes
+        :type Description: str
+        :param Tags: Tag list
+        :type Tags: list of Tag
         """
-        :param Alias: Unique alias that makes a key more recognizable and understandable. This parameter should be 1 to 60 letters, digits, `-`, and `_`; it must begin with a letter or digit and cannot be left empty.\n        :type Alias: str\n        :param Algorithm: All algorithm types for creating keys. Valid values: AES_256, SM4\n        :type Algorithm: str\n        :param Description: Key description of up to 1024 bytes\n        :type Description: str\n        :param Tags: Tag list\n        :type Tags: list of Tag\n        """
         self.Alias = None
         self.Algorithm = None
         self.Description = None
@@ -389,8 +473,20 @@ class CreateWhiteBoxKeyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EncryptKey: Base64-encoded encryption key
+        :type EncryptKey: str
+        :param DecryptKey: Base64-encoded decryption key
+        :type DecryptKey: str
+        :param KeyId: Globally unique white-box key ID
+        :type KeyId: str
+        :param TagCode: Tag operation return code. 0: success; 1: internal error; 2: business processing error
+        :type TagCode: int
+        :param TagMsg: Tag operation return message
+        :type TagMsg: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param EncryptKey: Base64-encoded encryption key\n        :type EncryptKey: str\n        :param DecryptKey: Base64-encoded decryption key\n        :type DecryptKey: str\n        :param KeyId: Globally unique white-box key ID\n        :type KeyId: str\n        :param TagCode: Tag operation return code. 0: success; 1: internal error; 2: business processing error\n        :type TagCode: int\n        :param TagMsg: Tag operation return message\n        :type TagMsg: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.EncryptKey = None
         self.DecryptKey = None
         self.KeyId = None
@@ -414,8 +510,12 @@ class DecryptRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CiphertextBlob: The ciphertext data to be decrypted.
+        :type CiphertextBlob: str
+        :param EncryptionContext: JSON string of key-value pair. If this parameter is specified for `Encrypt`, the same parameter needs to be provided when the `Decrypt` API is called. The maximum length is 1,024 bytes.
+        :type EncryptionContext: str
         """
-        :param CiphertextBlob: The ciphertext data to be decrypted.\n        :type CiphertextBlob: str\n        :param EncryptionContext: JSON string of key-value pair. If this parameter is specified for `Encrypt`, the same parameter needs to be provided when the `Decrypt` API is called. The maximum length is 1,024 bytes.\n        :type EncryptionContext: str\n        """
         self.CiphertextBlob = None
         self.EncryptionContext = None
 
@@ -438,8 +538,14 @@ class DecryptResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Globally unique CMK ID
+        :type KeyId: str
+        :param Plaintext: Decrypted plaintext. This field is Base64-encoded. In order to get the original plaintext, the Base64-decoding is needed
+        :type Plaintext: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param KeyId: Globally unique CMK ID\n        :type KeyId: str\n        :param Plaintext: Decrypted plaintext. This field is Base64-encoded. In order to get the original plaintext, the Base64-decoding is needed\n        :type Plaintext: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.KeyId = None
         self.Plaintext = None
         self.RequestId = None
@@ -457,8 +563,10 @@ class DeleteImportedKeyMaterialRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Specifies the EXTERNAL CMK for which to delete the key material.
+        :type KeyId: str
         """
-        :param KeyId: Specifies the EXTERNAL CMK for which to delete the key material.\n        :type KeyId: str\n        """
         self.KeyId = None
 
 
@@ -479,8 +587,10 @@ class DeleteImportedKeyMaterialResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -494,8 +604,10 @@ class DeleteWhiteBoxKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Globally unique white-box key ID
+        :type KeyId: str
         """
-        :param KeyId: Globally unique white-box key ID\n        :type KeyId: str\n        """
         self.KeyId = None
 
 
@@ -516,8 +628,10 @@ class DeleteWhiteBoxKeyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -531,8 +645,10 @@ class DescribeKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Globally unique CMK ID
+        :type KeyId: str
         """
-        :param KeyId: Globally unique CMK ID\n        :type KeyId: str\n        """
         self.KeyId = None
 
 
@@ -553,9 +669,13 @@ class DescribeKeyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param KeyMetadata: Key attribute information
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type KeyMetadata: :class:`tencentcloud.kms.v20190118.models.KeyMetadata`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type KeyMetadata: :class:`tencentcloud.kms.v20190118.models.KeyMetadata`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.KeyMetadata = None
         self.RequestId = None
 
@@ -573,8 +693,10 @@ class DescribeKeysRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyIds: List of IDs of the CMKs to be queried in batches. Up to 100 `KeyId` values are supported in one query.
+        :type KeyIds: list of str
         """
-        :param KeyIds: List of IDs of the CMKs to be queried in batches. Up to 100 `KeyId` values are supported in one query.\n        :type KeyIds: list of str\n        """
         self.KeyIds = None
 
 
@@ -595,9 +717,13 @@ class DescribeKeysResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param KeyMetadatas: List of returned attribute information
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type KeyMetadatas: list of KeyMetadata\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type KeyMetadatas: list of KeyMetadata
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.KeyMetadatas = None
         self.RequestId = None
 
@@ -618,8 +744,10 @@ class DescribeWhiteBoxDecryptKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Globally unique white-box key ID
+        :type KeyId: str
         """
-        :param KeyId: Globally unique white-box key ID\n        :type KeyId: str\n        """
         self.KeyId = None
 
 
@@ -640,8 +768,12 @@ class DescribeWhiteBoxDecryptKeyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DecryptKey: Base64-encoded white-box decryption key
+        :type DecryptKey: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param DecryptKey: Base64-encoded white-box decryption key\n        :type DecryptKey: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DecryptKey = None
         self.RequestId = None
 
@@ -657,8 +789,10 @@ class DescribeWhiteBoxDeviceFingerprintsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: White-box key ID
+        :type KeyId: str
         """
-        :param KeyId: White-box key ID\n        :type KeyId: str\n        """
         self.KeyId = None
 
 
@@ -679,8 +813,12 @@ class DescribeWhiteBoxDeviceFingerprintsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DeviceFingerprints: Device fingerprint list
+        :type DeviceFingerprints: list of DeviceFingerprint
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param DeviceFingerprints: Device fingerprint list\n        :type DeviceFingerprints: list of DeviceFingerprint\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DeviceFingerprints = None
         self.RequestId = None
 
@@ -701,8 +839,16 @@ class DescribeWhiteBoxKeyDetailsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyStatus: Filter: key status. 0: disabled, 1: enabled
+        :type KeyStatus: int
+        :param Offset: This parameter has the same meaning of the `Offset` in an SQL query, indicating that this acquisition starts from the "No. Offset value" element of the array arranged in a certain order. The default value is 0.
+        :type Offset: int
+        :param Limit: This parameter has the same meaning of the `Limit` in an SQL query, indicating that up to `Limit` value elements can be obtained in this request. The default value is 0, indicating not to paginate.
+        :type Limit: int
+        :param TagFilters: Tag filter condition
+        :type TagFilters: list of TagFilter
         """
-        :param KeyStatus: Filter: key status. 0: disabled, 1: enabled\n        :type KeyStatus: int\n        :param Offset: This parameter has the same meaning of the `Offset` in an SQL query, indicating that this acquisition starts from the "No. Offset value" element of the array arranged in a certain order. The default value is 0.\n        :type Offset: int\n        :param Limit: This parameter has the same meaning of the `Limit` in an SQL query, indicating that up to `Limit` value elements can be obtained in this request. The default value is 0, indicating not to paginate.\n        :type Limit: int\n        :param TagFilters: Tag filter condition\n        :type TagFilters: list of TagFilter\n        """
         self.KeyStatus = None
         self.Offset = None
         self.Limit = None
@@ -734,9 +880,15 @@ class DescribeWhiteBoxKeyDetailsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyInfos: White-box key information list
+        :type KeyInfos: list of WhiteboxKeyInfo
+        :param TotalCount: Total number of keys
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param KeyInfos: White-box key information list\n        :type KeyInfos: list of WhiteboxKeyInfo\n        :param TotalCount: Total number of keys
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.KeyInfos = None
         self.TotalCount = None
         self.RequestId = None
@@ -759,8 +911,10 @@ class DescribeWhiteBoxKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Globally unique white-box key ID
+        :type KeyId: str
         """
-        :param KeyId: Globally unique white-box key ID\n        :type KeyId: str\n        """
         self.KeyId = None
 
 
@@ -781,8 +935,12 @@ class DescribeWhiteBoxKeyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyInfo: White-box key information
+        :type KeyInfo: :class:`tencentcloud.kms.v20190118.models.WhiteboxKeyInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param KeyInfo: White-box key information\n        :type KeyInfo: :class:`tencentcloud.kms.v20190118.models.WhiteboxKeyInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.KeyInfo = None
         self.RequestId = None
 
@@ -806,8 +964,12 @@ class DescribeWhiteBoxServiceStatusResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceEnabled: Whether the user's white-box key service is available
+        :type ServiceEnabled: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param ServiceEnabled: Whether the user's white-box key service is available\n        :type ServiceEnabled: bool\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ServiceEnabled = None
         self.RequestId = None
 
@@ -823,9 +985,13 @@ class DeviceFingerprint(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Identity: Fingerprint information collected by device fingerprint collector. Its format must be in the following regular expression: ^[0-9a-f]{8}[\-][0-9a-f]{14}[\-][0-9a-f]{14}[\-][0-9a-f]{14}[\-][0-9a-f]{16}$
+        :type Identity: str
+        :param Description: Description, such as IP and device name. Length limit: 1,024 bytes
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Description: str
         """
-        :param Identity: Fingerprint information collected by device fingerprint collector. Its format must be in the following regular expression: ^[0-9a-f]{8}[\-][0-9a-f]{14}[\-][0-9a-f]{14}[\-][0-9a-f]{14}[\-][0-9a-f]{16}$\n        :type Identity: str\n        :param Description: Description, such as IP and device name. Length limit: 1,024 bytes
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Description: str\n        """
         self.Identity = None
         self.Description = None
 
@@ -848,8 +1014,10 @@ class DisableKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Unique CMK ID
+        :type KeyId: str
         """
-        :param KeyId: Unique CMK ID\n        :type KeyId: str\n        """
         self.KeyId = None
 
 
@@ -870,8 +1038,10 @@ class DisableKeyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -885,8 +1055,10 @@ class DisableKeyRotationRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Unique CMK ID
+        :type KeyId: str
         """
-        :param KeyId: Unique CMK ID\n        :type KeyId: str\n        """
         self.KeyId = None
 
 
@@ -907,8 +1079,10 @@ class DisableKeyRotationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -922,8 +1096,10 @@ class DisableKeysRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyIds: List of IDs of the CMKs to be disabled in batches. Up to 100 CMKs are supported at a time
+        :type KeyIds: list of str
         """
-        :param KeyIds: List of IDs of the CMKs to be disabled in batches. Up to 100 CMKs are supported at a time\n        :type KeyIds: list of str\n        """
         self.KeyIds = None
 
 
@@ -944,8 +1120,10 @@ class DisableKeysResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -959,8 +1137,10 @@ class DisableWhiteBoxKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Globally unique white-box key ID
+        :type KeyId: str
         """
-        :param KeyId: Globally unique white-box key ID\n        :type KeyId: str\n        """
         self.KeyId = None
 
 
@@ -981,8 +1161,10 @@ class DisableWhiteBoxKeyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -996,8 +1178,10 @@ class DisableWhiteBoxKeysRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyIds: List of globally unique white-box key IDs. Note: you should make sure that all provided `KeyId` values are in valid format, unique, and actually exist. Up to 50 ones are allowed.
+        :type KeyIds: list of str
         """
-        :param KeyIds: List of globally unique white-box key IDs. Note: you should make sure that all provided `KeyId` values are in valid format, unique, and actually exist. Up to 50 ones are allowed.\n        :type KeyIds: list of str\n        """
         self.KeyIds = None
 
 
@@ -1018,8 +1202,10 @@ class DisableWhiteBoxKeysResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1033,8 +1219,10 @@ class EnableKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Unique CMK ID
+        :type KeyId: str
         """
-        :param KeyId: Unique CMK ID\n        :type KeyId: str\n        """
         self.KeyId = None
 
 
@@ -1055,8 +1243,10 @@ class EnableKeyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1070,8 +1260,10 @@ class EnableKeyRotationRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Unique CMK ID
+        :type KeyId: str
         """
-        :param KeyId: Unique CMK ID\n        :type KeyId: str\n        """
         self.KeyId = None
 
 
@@ -1092,8 +1284,10 @@ class EnableKeyRotationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1107,8 +1301,10 @@ class EnableKeysRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyIds: List of IDs of the CMKs to be enabled in batches. Up to 100 CMKs are supported at a time
+        :type KeyIds: list of str
         """
-        :param KeyIds: List of IDs of the CMKs to be enabled in batches. Up to 100 CMKs are supported at a time\n        :type KeyIds: list of str\n        """
         self.KeyIds = None
 
 
@@ -1129,8 +1325,10 @@ class EnableKeysResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1144,8 +1342,10 @@ class EnableWhiteBoxKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Globally unique white-box key ID
+        :type KeyId: str
         """
-        :param KeyId: Globally unique white-box key ID\n        :type KeyId: str\n        """
         self.KeyId = None
 
 
@@ -1166,8 +1366,10 @@ class EnableWhiteBoxKeyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1181,8 +1383,10 @@ class EnableWhiteBoxKeysRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyIds: List of globally unique white-box key IDs. Note: you should make sure that all provided `KeyId` values are in valid format, unique, and actually exist. Up to 50 ones are allowed.
+        :type KeyIds: list of str
         """
-        :param KeyIds: List of globally unique white-box key IDs. Note: you should make sure that all provided `KeyId` values are in valid format, unique, and actually exist. Up to 50 ones are allowed.\n        :type KeyIds: list of str\n        """
         self.KeyIds = None
 
 
@@ -1203,8 +1407,10 @@ class EnableWhiteBoxKeysResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1218,8 +1424,14 @@ class EncryptByWhiteBoxRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Globally unique white-box key ID
+        :type KeyId: str
+        :param PlainText: Base64-encoded text to be encrypted. The size of the original text cannot exceed 4 KB.
+        :type PlainText: str
+        :param InitializationVector: Base64-encoded initialization vector of 16 bytes, which will be used by the encryption algorithm. If this parameter is not passed in, the backend service will generate a random one. You should save this value as a parameter for decryption.
+        :type InitializationVector: str
         """
-        :param KeyId: Globally unique white-box key ID\n        :type KeyId: str\n        :param PlainText: Base64-encoded text to be encrypted. The size of the original text cannot exceed 4 KB.\n        :type PlainText: str\n        :param InitializationVector: Base64-encoded initialization vector of 16 bytes, which will be used by the encryption algorithm. If this parameter is not passed in, the backend service will generate a random one. You should save this value as a parameter for decryption.\n        :type InitializationVector: str\n        """
         self.KeyId = None
         self.PlainText = None
         self.InitializationVector = None
@@ -1244,8 +1456,14 @@ class EncryptByWhiteBoxResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InitializationVector: Base64-encoded initialization vector, which will be used by the encryption algorithm. If this parameter is passed in by the caller, it will be returned as-is; otherwise, the backend service will generate a random one and return it.
+        :type InitializationVector: str
+        :param CipherText: Base64-encoded ciphertext after encryption
+        :type CipherText: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param InitializationVector: Base64-encoded initialization vector, which will be used by the encryption algorithm. If this parameter is passed in by the caller, it will be returned as-is; otherwise, the backend service will generate a random one and return it.\n        :type InitializationVector: str\n        :param CipherText: Base64-encoded ciphertext after encryption\n        :type CipherText: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InitializationVector = None
         self.CipherText = None
         self.RequestId = None
@@ -1263,8 +1481,14 @@ class EncryptRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Globally unique ID of the CMK generated by calling the `CreateKey` API
+        :type KeyId: str
+        :param Plaintext: Encrypted plaintext data. This field must be Base64-encoded. The maximum size of the original data is 4 KB
+        :type Plaintext: str
+        :param EncryptionContext: JSON string of key-value pair. If this parameter is specified, the same parameter needs to be provided when the `Decrypt` API is called. It is up to 1,024 characters
+        :type EncryptionContext: str
         """
-        :param KeyId: Globally unique ID of the CMK generated by calling the `CreateKey` API\n        :type KeyId: str\n        :param Plaintext: Encrypted plaintext data. This field must be Base64-encoded. The maximum size of the original data is 4 KB\n        :type Plaintext: str\n        :param EncryptionContext: JSON string of key-value pair. If this parameter is specified, the same parameter needs to be provided when the `Decrypt` API is called. It is up to 1,024 characters\n        :type EncryptionContext: str\n        """
         self.KeyId = None
         self.Plaintext = None
         self.EncryptionContext = None
@@ -1289,8 +1513,14 @@ class EncryptResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CiphertextBlob: Base64-encoded encrypted ciphertext
+        :type CiphertextBlob: str
+        :param KeyId: Globally unique ID of the CMK used for encryption
+        :type KeyId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param CiphertextBlob: Base64-encoded encrypted ciphertext\n        :type CiphertextBlob: str\n        :param KeyId: Globally unique ID of the CMK used for encryption\n        :type KeyId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.CiphertextBlob = None
         self.KeyId = None
         self.RequestId = None
@@ -1308,8 +1538,16 @@ class GenerateDataKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Globally unique CMK ID
+        :type KeyId: str
+        :param KeySpec: Specifies the encryption algorithm and size of the `DataKey`. Valid values: AES_128, AES_256. Either `KeySpec` or `NumberOfBytes` must be specified.
+        :type KeySpec: str
+        :param NumberOfBytes: Length of the `DataKey`. If both `NumberOfBytes` and `KeySpec` are specified, `NumberOfBytes` will prevail. Minimum value: 1; maximum value: 1024. Either `KeySpec` or `NumberOfBytes` must be specified.
+        :type NumberOfBytes: int
+        :param EncryptionContext: JSON string of key-value pair. If this field is used, the same string should be entered when the returned `DataKey` is decrypted.
+        :type EncryptionContext: str
         """
-        :param KeyId: Globally unique CMK ID\n        :type KeyId: str\n        :param KeySpec: Specifies the encryption algorithm and size of the `DataKey`. Valid values: AES_128, AES_256. Either `KeySpec` or `NumberOfBytes` must be specified.\n        :type KeySpec: str\n        :param NumberOfBytes: Length of the `DataKey`. If both `NumberOfBytes` and `KeySpec` are specified, `NumberOfBytes` will prevail. Minimum value: 1; maximum value: 1024. Either `KeySpec` or `NumberOfBytes` must be specified.\n        :type NumberOfBytes: int\n        :param EncryptionContext: JSON string of key-value pair. If this field is used, the same string should be entered when the returned `DataKey` is decrypted.\n        :type EncryptionContext: str\n        """
         self.KeyId = None
         self.KeySpec = None
         self.NumberOfBytes = None
@@ -1336,8 +1574,16 @@ class GenerateDataKeyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Globally unique CMK ID
+        :type KeyId: str
+        :param Plaintext: Plaintext of the generated data key. The plaintext is Base64-encoded and can be used locally after having it Base64-decoded.
+        :type Plaintext: str
+        :param CiphertextBlob: Ciphertext of the data key, which should be kept by yourself. KMS does not host user data keys. You can call the `Decrypt` API to get the plaintext of the data key from `CiphertextBlob`.
+        :type CiphertextBlob: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param KeyId: Globally unique CMK ID\n        :type KeyId: str\n        :param Plaintext: Plaintext of the generated data key. The plaintext is Base64-encoded and can be used locally after having it Base64-decoded.\n        :type Plaintext: str\n        :param CiphertextBlob: Ciphertext of the data key, which should be kept by yourself. KMS does not host user data keys. You can call the `Decrypt` API to get the plaintext of the data key from `CiphertextBlob`.\n        :type CiphertextBlob: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.KeyId = None
         self.Plaintext = None
         self.CiphertextBlob = None
@@ -1357,8 +1603,10 @@ class GenerateRandomRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NumberOfBytes: Length of the random number. Minimum value: 1. Maximum value: 1024
+        :type NumberOfBytes: int
         """
-        :param NumberOfBytes: Length of the random number. Minimum value: 1. Maximum value: 1024\n        :type NumberOfBytes: int\n        """
         self.NumberOfBytes = None
 
 
@@ -1379,8 +1627,12 @@ class GenerateRandomResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Plaintext: Base64-encoded plaintext of the randomly generated number. You need to Base64-decode it to get the plaintext.
+        :type Plaintext: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Plaintext: Base64-encoded plaintext of the randomly generated number. You need to Base64-decode it to get the plaintext.\n        :type Plaintext: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Plaintext = None
         self.RequestId = None
 
@@ -1396,8 +1648,10 @@ class GetKeyRotationStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Unique CMK ID
+        :type KeyId: str
         """
-        :param KeyId: Unique CMK ID\n        :type KeyId: str\n        """
         self.KeyId = None
 
 
@@ -1418,8 +1672,12 @@ class GetKeyRotationStatusResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyRotationEnabled: Whether key rotation is enabled
+        :type KeyRotationEnabled: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param KeyRotationEnabled: Whether key rotation is enabled\n        :type KeyRotationEnabled: bool\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.KeyRotationEnabled = None
         self.RequestId = None
 
@@ -1435,8 +1693,14 @@ class GetParametersForImportRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Unique ID of a CMK. The CMK for which to get the key parameters must be of the `EXTERNAL` type, i.e., Type = 2 when the CMK is created by the `CreateKey` API.
+        :type KeyId: str
+        :param WrappingAlgorithm: Specifies the algorithm for key material encryption. Currently, `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, and `RSAES_OAEP_SHA_256` are supported.
+        :type WrappingAlgorithm: str
+        :param WrappingKeySpec: Specifies the type of wrapping key. Currently, only `RSA_2048` is supported.
+        :type WrappingKeySpec: str
         """
-        :param KeyId: Unique ID of a CMK. The CMK for which to get the key parameters must be of the `EXTERNAL` type, i.e., Type = 2 when the CMK is created by the `CreateKey` API.\n        :type KeyId: str\n        :param WrappingAlgorithm: Specifies the algorithm for key material encryption. Currently, `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, and `RSAES_OAEP_SHA_256` are supported.\n        :type WrappingAlgorithm: str\n        :param WrappingKeySpec: Specifies the type of wrapping key. Currently, only `RSA_2048` is supported.\n        :type WrappingKeySpec: str\n        """
         self.KeyId = None
         self.WrappingAlgorithm = None
         self.WrappingKeySpec = None
@@ -1461,8 +1725,18 @@ class GetParametersForImportResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Unique ID of a CMK, which is used to specify the CMK into which to import key material.
+        :type KeyId: str
+        :param ImportToken: The token required for importing key material, which is used as a parameter for `ImportKeyMaterial`.
+        :type ImportToken: str
+        :param PublicKey: The Base64-encoded RSA public key used to encrypt key material before importing it with `ImportKeyMaterial`.
+        :type PublicKey: str
+        :param ParametersValidTo: Validity period of the token and public key. A token and public key can only be imported when they are valid. If they are expired, you will need to call the `GetParametersForImport` API again to get a new token and public key.
+        :type ParametersValidTo: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param KeyId: Unique ID of a CMK, which is used to specify the CMK into which to import key material.\n        :type KeyId: str\n        :param ImportToken: The token required for importing key material, which is used as a parameter for `ImportKeyMaterial`.\n        :type ImportToken: str\n        :param PublicKey: The Base64-encoded RSA public key used to encrypt key material before importing it with `ImportKeyMaterial`.\n        :type PublicKey: str\n        :param ParametersValidTo: Validity period of the token and public key. A token and public key can only be imported when they are valid. If they are expired, you will need to call the `GetParametersForImport` API again to get a new token and public key.\n        :type ParametersValidTo: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.KeyId = None
         self.ImportToken = None
         self.PublicKey = None
@@ -1484,8 +1758,10 @@ class GetPublicKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Unique CMK ID.
+        :type KeyId: str
         """
-        :param KeyId: Unique CMK ID.\n        :type KeyId: str\n        """
         self.KeyId = None
 
 
@@ -1506,8 +1782,16 @@ class GetPublicKeyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Unique CMK ID.
+        :type KeyId: str
+        :param PublicKey: Base64-encoded public key content.
+        :type PublicKey: str
+        :param PublicKeyPem: Public key content in PEM format.
+        :type PublicKeyPem: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param KeyId: Unique CMK ID.\n        :type KeyId: str\n        :param PublicKey: Base64-encoded public key content.\n        :type PublicKey: str\n        :param PublicKeyPem: Public key content in PEM format.\n        :type PublicKeyPem: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.KeyId = None
         self.PublicKey = None
         self.PublicKeyPem = None
@@ -1533,9 +1817,13 @@ class GetRegionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Regions: The list of supported regions
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Regions: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Regions: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
         self.Regions = None
         self.RequestId = None
 
@@ -1557,11 +1845,25 @@ class GetServiceStatusResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceEnabled: Whether the KMS service has been activated. true: activated
+        :type ServiceEnabled: bool
+        :param InvalidType: Service unavailability type. 0: not purchased; 1: normal; 2: suspended due to arrears; 3: resource released
+        :type InvalidType: int
+        :param UserLevel: 0: Basic Edition, 1: Ultimate Edition
+        :type UserLevel: int
+        :param ProExpireTime: Ultimate Edition expiration time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ProExpireTime: int
+        :param ProRenewFlag: Whether to automatically renew Ultimate Edition. 0: no, 1: yes
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ProRenewFlag: int
+        :param ProResourceId: Unique ID of the Ultimate Edition purchase record. If the Ultimate Edition is not activated, the returned value will be null.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ProResourceId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param ServiceEnabled: Whether the KMS service has been activated. true: activated\n        :type ServiceEnabled: bool\n        :param InvalidType: Service unavailability type. 0: not purchased; 1: normal; 2: suspended due to arrears; 3: resource released\n        :type InvalidType: int\n        :param UserLevel: 0: Basic Edition, 1: Ultimate Edition\n        :type UserLevel: int\n        :param ProExpireTime: Ultimate Edition expiration time
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ProExpireTime: int\n        :param ProRenewFlag: Whether to automatically renew Ultimate Edition. 0: no, 1: yes
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ProRenewFlag: int\n        :param ProResourceId: Unique ID of the Ultimate Edition purchase record. If the Ultimate Edition is not activated, the returned value will be null.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ProResourceId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ServiceEnabled = None
         self.InvalidType = None
         self.UserLevel = None
@@ -1587,8 +1889,16 @@ class ImportKeyMaterialRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EncryptedKeyMaterial: Base64-encoded key material that encrypted with the `PublicKey` returned by `GetParametersForImport`. For the KMS of SM-CRYPTO version, the length of the key material should be 128 bits, while for KMS of FIPS-compliant version, the length should be 256 bits.
+        :type EncryptedKeyMaterial: str
+        :param ImportToken: Import token obtained by calling `GetParametersForImport`.
+        :type ImportToken: str
+        :param KeyId: Specifies the CMK into which to import key material, which must be the same as the one specified by `GetParametersForImport`.
+        :type KeyId: str
+        :param ValidTo: Unix timestamp of the key material's expiration time. If this value is empty or 0, the key material will never expire. To specify the expiration time, it should be later than the current time. Maximum value: 2147443200.
+        :type ValidTo: int
         """
-        :param EncryptedKeyMaterial: Base64-encoded key material that encrypted with the `PublicKey` returned by `GetParametersForImport`. For the KMS of SM-CRYPTO version, the length of the key material should be 128 bits, while for KMS of FIPS-compliant version, the length should be 256 bits.\n        :type EncryptedKeyMaterial: str\n        :param ImportToken: Import token obtained by calling `GetParametersForImport`.\n        :type ImportToken: str\n        :param KeyId: Specifies the CMK into which to import key material, which must be the same as the one specified by `GetParametersForImport`.\n        :type KeyId: str\n        :param ValidTo: Unix timestamp of the key material's expiration time. If this value is empty or 0, the key material will never expire. To specify the expiration time, it should be later than the current time. Maximum value: 2147443200.\n        :type ValidTo: int\n        """
         self.EncryptedKeyMaterial = None
         self.ImportToken = None
         self.KeyId = None
@@ -1615,8 +1925,10 @@ class ImportKeyMaterialResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1630,8 +1942,10 @@ class Key(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Globally unique CMK ID.
+        :type KeyId: str
         """
-        :param KeyId: Globally unique CMK ID.\n        :type KeyId: str\n        """
         self.KeyId = None
 
 
@@ -1652,10 +1966,40 @@ class KeyMetadata(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Globally unique CMK ID
+        :type KeyId: str
+        :param Alias: Alias that makes a key more recognizable and understandable
+        :type Alias: str
+        :param CreateTime: Key creation time
+        :type CreateTime: int
+        :param Description: CMK description
+        :type Description: str
+        :param KeyState: CMK status. Valid values: Enabled, Disabled, PendingDelete, PendingImport, Archived.
+        :type KeyState: str
+        :param KeyUsage: CMK purpose. Valid values: `ENCRYPT_DECRYPT`, `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`, and `ASYMMETRIC_SIGN_VERIFY_SM2`.
+        :type KeyUsage: str
+        :param Type: CMK type. 2: FIPS-compliant; 4: SM-CRYPTO
+        :type Type: int
+        :param CreatorUin: Creator
+        :type CreatorUin: int
+        :param KeyRotationEnabled: Whether key rotation is enabled
+        :type KeyRotationEnabled: bool
+        :param Owner: CMK creator. The value of this parameter is `user` if the CMK is created by the user, or the corresponding service name if it is created automatically by an authorized Tencent Cloud service.
+        :type Owner: str
+        :param NextRotateTime: Time of next rotation if key rotation is enabled
+        :type NextRotateTime: int
+        :param DeletionDate: Scheduled deletion time
+        :type DeletionDate: int
+        :param Origin: CMK key material type. TENCENT_KMS: created by KMS; EXTERNAL: imported by user.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Origin: str
+        :param ValidTo: It's valid when `Origin` is `EXTERNAL`, indicating the expiration date of key material. 0 means valid forever.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ValidTo: int
+        :param ResourceId: Resource ID in the format of `creatorUin/$creatorUin/$keyId`.
+        :type ResourceId: str
         """
-        :param KeyId: Globally unique CMK ID\n        :type KeyId: str\n        :param Alias: Alias that makes a key more recognizable and understandable\n        :type Alias: str\n        :param CreateTime: Key creation time\n        :type CreateTime: int\n        :param Description: CMK description\n        :type Description: str\n        :param KeyState: CMK status. Valid values: Enabled, Disabled, PendingDelete, PendingImport, Archived.\n        :type KeyState: str\n        :param KeyUsage: CMK purpose. Valid values: `ENCRYPT_DECRYPT`, `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`, and `ASYMMETRIC_SIGN_VERIFY_SM2`.\n        :type KeyUsage: str\n        :param Type: CMK type. 2: FIPS-compliant; 4: SM-CRYPTO\n        :type Type: int\n        :param CreatorUin: Creator\n        :type CreatorUin: int\n        :param KeyRotationEnabled: Whether key rotation is enabled\n        :type KeyRotationEnabled: bool\n        :param Owner: CMK creator. The value of this parameter is `user` if the CMK is created by the user, or the corresponding service name if it is created automatically by an authorized Tencent Cloud service.\n        :type Owner: str\n        :param NextRotateTime: Time of next rotation if key rotation is enabled\n        :type NextRotateTime: int\n        :param DeletionDate: Scheduled deletion time\n        :type DeletionDate: int\n        :param Origin: CMK key material type. TENCENT_KMS: created by KMS; EXTERNAL: imported by user.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type Origin: str\n        :param ValidTo: It's valid when `Origin` is `EXTERNAL`, indicating the expiration date of key material. 0 means valid forever.
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type ValidTo: int\n        :param ResourceId: Resource ID in the format of `creatorUin/$creatorUin/$keyId`.\n        :type ResourceId: str\n        """
         self.KeyId = None
         self.Alias = None
         self.CreateTime = None
@@ -1710,8 +2054,16 @@ class ListAlgorithmsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SymmetricAlgorithms: Symmetric encryption algorithms supported in this region
+        :type SymmetricAlgorithms: list of AlgorithmInfo
+        :param AsymmetricAlgorithms: Asymmetric encryption algorithms supported in this region
+        :type AsymmetricAlgorithms: list of AlgorithmInfo
+        :param AsymmetricSignVerifyAlgorithms: Asymmetric signature verification algorithms supported in the current region
+        :type AsymmetricSignVerifyAlgorithms: list of AlgorithmInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param SymmetricAlgorithms: Symmetric encryption algorithms supported in this region\n        :type SymmetricAlgorithms: list of AlgorithmInfo\n        :param AsymmetricAlgorithms: Asymmetric encryption algorithms supported in this region\n        :type AsymmetricAlgorithms: list of AlgorithmInfo\n        :param AsymmetricSignVerifyAlgorithms: Asymmetric signature verification algorithms supported in the current region\n        :type AsymmetricSignVerifyAlgorithms: list of AlgorithmInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.SymmetricAlgorithms = None
         self.AsymmetricAlgorithms = None
         self.AsymmetricSignVerifyAlgorithms = None
@@ -1746,8 +2098,26 @@ class ListKeyDetailRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: This parameter has the same meaning of the `Offset` in an SQL query, indicating that this acquisition starts from the "No. Offset value" element of the array arranged in a certain order. The default value is 0.
+        :type Offset: int
+        :param Limit: This parameter has the same meaning of the `Limit` in an SQL query, indicating that up to `Limit` value elements can be obtained in this request. The default value is 10 and the maximum value is 200.
+        :type Limit: int
+        :param Role: Filters by creator role. 0 (default value): the CMK is created by the user; 1: the CMK is created automatically by an authorized Tencent Cloud service.
+        :type Role: int
+        :param OrderType: Sorts by CMK creation time. 0: descending; 1: ascending
+        :type OrderType: int
+        :param KeyState: Filters by CMK status. 0: all CMKs; 1: CMKs in `Enabled` status only; 2: CMKs in `Disabled` status only; 3: CMKs in `PendingDelete` status only (i.e., keys with schedule deletion enabled); 4: CMKs in `PendingImport` status only; 5: CMKs in `Archived` status only.
+        :type KeyState: int
+        :param SearchKeyAlias: Performs a fuzzy query by `KeyId` or `Alias`
+        :type SearchKeyAlias: str
+        :param Origin: Filters by CMK type. "TENCENT_KMS" indicates to filter CMKs whose key materials are created by KMS; "EXTERNAL" indicates to filter CMKs of `EXTERNAL` type whose key materials are imported by users; "ALL" or empty indicates to filter CMKs of both types. This value is case-sensitive.
+        :type Origin: str
+        :param KeyUsage: Filter by the `KeyUsage` field of CMKs. Valid values: `ALL` (filtering all CMKs), `ENCRYPT_DECRYPT` (it will be used when the parameter is left empty), `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`, and `ASYMMETRIC_SIGN_VERIFY_SM2`.
+        :type KeyUsage: str
+        :param TagFilters: Tag filter condition
+        :type TagFilters: list of TagFilter
         """
-        :param Offset: This parameter has the same meaning of the `Offset` in an SQL query, indicating that this acquisition starts from the "No. Offset value" element of the array arranged in a certain order. The default value is 0.\n        :type Offset: int\n        :param Limit: This parameter has the same meaning of the `Limit` in an SQL query, indicating that up to `Limit` value elements can be obtained in this request. The default value is 10 and the maximum value is 200.\n        :type Limit: int\n        :param Role: Filters by creator role. 0 (default value): the CMK is created by the user; 1: the CMK is created automatically by an authorized Tencent Cloud service.\n        :type Role: int\n        :param OrderType: Sorts by CMK creation time. 0: descending; 1: ascending\n        :type OrderType: int\n        :param KeyState: Filters by CMK status. 0: all CMKs; 1: CMKs in `Enabled` status only; 2: CMKs in `Disabled` status only; 3: CMKs in `PendingDelete` status only (i.e., keys with schedule deletion enabled); 4: CMKs in `PendingImport` status only; 5: CMKs in `Archived` status only.\n        :type KeyState: int\n        :param SearchKeyAlias: Performs a fuzzy query by `KeyId` or `Alias`\n        :type SearchKeyAlias: str\n        :param Origin: Filters by CMK type. "TENCENT_KMS" indicates to filter CMKs whose key materials are created by KMS; "EXTERNAL" indicates to filter CMKs of `EXTERNAL` type whose key materials are imported by users; "ALL" or empty indicates to filter CMKs of both types. This value is case-sensitive.\n        :type Origin: str\n        :param KeyUsage: Filter by the `KeyUsage` field of CMKs. Valid values: `ALL` (filtering all CMKs), `ENCRYPT_DECRYPT` (it will be used when the parameter is left empty), `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`, and `ASYMMETRIC_SIGN_VERIFY_SM2`.\n        :type KeyUsage: str\n        :param TagFilters: Tag filter condition\n        :type TagFilters: list of TagFilter\n        """
         self.Offset = None
         self.Limit = None
         self.Role = None
@@ -1789,9 +2159,15 @@ class ListKeyDetailResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of CMKs
+        :type TotalCount: int
+        :param KeyMetadatas: List of returned attribute information.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type KeyMetadatas: list of KeyMetadata
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of CMKs\n        :type TotalCount: int\n        :param KeyMetadatas: List of returned attribute information.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type KeyMetadatas: list of KeyMetadata\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.KeyMetadatas = None
         self.RequestId = None
@@ -1814,8 +2190,14 @@ class ListKeysRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: This parameter has the same meaning of the `Offset` in an SQL query, indicating that this acquisition starts from the "No. Offset value" element of the array arranged in a certain order. The default value is 0
+        :type Offset: int
+        :param Limit: This parameter has the same meaning of the `Limit` in an SQL query, indicating that up to `Limit` value elements can be obtained in this request. The default value is 10 and the maximum value is 200
+        :type Limit: int
+        :param Role: Filter by creator role. 0 (default value): the CMK is created by the user; 1: the CMK is created automatically by an authorized Tencent Cloud service
+        :type Role: int
         """
-        :param Offset: This parameter has the same meaning of the `Offset` in an SQL query, indicating that this acquisition starts from the "No. Offset value" element of the array arranged in a certain order. The default value is 0\n        :type Offset: int\n        :param Limit: This parameter has the same meaning of the `Limit` in an SQL query, indicating that up to `Limit` value elements can be obtained in this request. The default value is 10 and the maximum value is 200\n        :type Limit: int\n        :param Role: Filter by creator role. 0 (default value): the CMK is created by the user; 1: the CMK is created automatically by an authorized Tencent Cloud service\n        :type Role: int\n        """
         self.Offset = None
         self.Limit = None
         self.Role = None
@@ -1840,8 +2222,14 @@ class ListKeysResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Keys: CMK list array
+        :type Keys: list of Key
+        :param TotalCount: Total number of CMKs
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Keys: CMK list array\n        :type Keys: list of Key\n        :param TotalCount: Total number of CMKs\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Keys = None
         self.TotalCount = None
         self.RequestId = None
@@ -1864,8 +2252,12 @@ class OverwriteWhiteBoxDeviceFingerprintsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: White-box key ID
+        :type KeyId: str
+        :param DeviceFingerprints: Device fingerprint list. If the list is empty, it means to delete all fingerprint information corresponding to the key. There can be up to 200 entries in the list.
+        :type DeviceFingerprints: list of DeviceFingerprint
         """
-        :param KeyId: White-box key ID\n        :type KeyId: str\n        :param DeviceFingerprints: Device fingerprint list. If the list is empty, it means to delete all fingerprint information corresponding to the key. There can be up to 200 entries in the list.\n        :type DeviceFingerprints: list of DeviceFingerprint\n        """
         self.KeyId = None
         self.DeviceFingerprints = None
 
@@ -1893,8 +2285,10 @@ class OverwriteWhiteBoxDeviceFingerprintsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1908,8 +2302,16 @@ class ReEncryptRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CiphertextBlob: Ciphertext to be re-encrypted
+        :type CiphertextBlob: str
+        :param DestinationKeyId: CMK used for re-encryption. If this parameter is empty, the ciphertext will be re-encrypted by using the original CMK (as long as the key is not rotated, the ciphertext will not be refreshed)
+        :type DestinationKeyId: str
+        :param SourceEncryptionContext: JSON string of the key-value pair used during ciphertext encryption by `CiphertextBlob`. If not used during encryption, this parameter will be empty
+        :type SourceEncryptionContext: str
+        :param DestinationEncryptionContext: JSON string of the key-value pair used during re-encryption. If this field is used, the same string should be entered when the returned new ciphertext is decrypted
+        :type DestinationEncryptionContext: str
         """
-        :param CiphertextBlob: Ciphertext to be re-encrypted\n        :type CiphertextBlob: str\n        :param DestinationKeyId: CMK used for re-encryption. If this parameter is empty, the ciphertext will be re-encrypted by using the original CMK (as long as the key is not rotated, the ciphertext will not be refreshed)\n        :type DestinationKeyId: str\n        :param SourceEncryptionContext: JSON string of the key-value pair used during ciphertext encryption by `CiphertextBlob`. If not used during encryption, this parameter will be empty\n        :type SourceEncryptionContext: str\n        :param DestinationEncryptionContext: JSON string of the key-value pair used during re-encryption. If this field is used, the same string should be entered when the returned new ciphertext is decrypted\n        :type DestinationEncryptionContext: str\n        """
         self.CiphertextBlob = None
         self.DestinationKeyId = None
         self.SourceEncryptionContext = None
@@ -1936,8 +2338,18 @@ class ReEncryptResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CiphertextBlob: Re-encrypted ciphertext
+        :type CiphertextBlob: str
+        :param KeyId: CMK used for re-encryption
+        :type KeyId: str
+        :param SourceKeyId: CMK used by ciphertext before re-encryption
+        :type SourceKeyId: str
+        :param ReEncrypted: `true` indicates that the ciphertext has been re-encrypted. When re-encryption is initiated by using the same CMK, as long as the CMK is not rotated, no actual re-encryption will be performed, and the original ciphertext will be returned
+        :type ReEncrypted: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param CiphertextBlob: Re-encrypted ciphertext\n        :type CiphertextBlob: str\n        :param KeyId: CMK used for re-encryption\n        :type KeyId: str\n        :param SourceKeyId: CMK used by ciphertext before re-encryption\n        :type SourceKeyId: str\n        :param ReEncrypted: `true` indicates that the ciphertext has been re-encrypted. When re-encryption is initiated by using the same CMK, as long as the CMK is not rotated, no actual re-encryption will be performed, and the original ciphertext will be returned\n        :type ReEncrypted: bool\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.CiphertextBlob = None
         self.KeyId = None
         self.SourceKeyId = None
@@ -1959,8 +2371,12 @@ class ScheduleKeyDeletionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Unique CMK ID
+        :type KeyId: str
+        :param PendingWindowInDays: Schedule deletion time range. Value range: [7,30]
+        :type PendingWindowInDays: int
         """
-        :param KeyId: Unique CMK ID\n        :type KeyId: str\n        :param PendingWindowInDays: Schedule deletion time range. Value range: [7,30]\n        :type PendingWindowInDays: int\n        """
         self.KeyId = None
         self.PendingWindowInDays = None
 
@@ -1983,8 +2399,14 @@ class ScheduleKeyDeletionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DeletionDate: Schedule deletion execution time
+        :type DeletionDate: int
+        :param KeyId: Unique ID of the CMK scheduled for deletion
+        :type KeyId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param DeletionDate: Schedule deletion execution time\n        :type DeletionDate: int\n        :param KeyId: Unique ID of the CMK scheduled for deletion\n        :type KeyId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DeletionDate = None
         self.KeyId = None
         self.RequestId = None
@@ -2002,8 +2424,16 @@ class SignByAsymmetricKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Algorithm: Signature algorithm. Supported algorithm: SM2DSA.
+        :type Algorithm: str
+        :param Message: The original message or message abstract. For an original message, the length before Base64 encoding can contain up to 4,096 bytes. For a message abstract, the SM2 signature algorithm only supports 32-byte (before Base64 encoding) message abstracts.
+        :type Message: str
+        :param KeyId: Unique ID of a key
+        :type KeyId: str
+        :param MessageType: Message type. Valid values: `RAW` (indicating an original message; used by default if the parameter is not passed in) and `DIGEST`.
+        :type MessageType: str
         """
-        :param Algorithm: Signature algorithm. Supported algorithm: SM2DSA.\n        :type Algorithm: str\n        :param Message: The original message or message abstract. For an original message, the length before Base64 encoding can contain up to 4,096 bytes. For a message abstract, the SM2 signature algorithm only supports 32-byte (before Base64 encoding) message abstracts.\n        :type Message: str\n        :param KeyId: Unique ID of a key\n        :type KeyId: str\n        :param MessageType: Message type. Valid values: `RAW` (indicating an original message; used by default if the parameter is not passed in) and `DIGEST`.\n        :type MessageType: str\n        """
         self.Algorithm = None
         self.Message = None
         self.KeyId = None
@@ -2030,8 +2460,12 @@ class SignByAsymmetricKeyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Signature: Base64-encoded signature
+        :type Signature: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param Signature: Base64-encoded signature\n        :type Signature: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Signature = None
         self.RequestId = None
 
@@ -2047,8 +2481,12 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TagKey: Tag key
+        :type TagKey: str
+        :param TagValue: Tag value
+        :type TagValue: str
         """
-        :param TagKey: Tag key\n        :type TagKey: str\n        :param TagValue: Tag value\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -2071,8 +2509,12 @@ class TagFilter(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TagKey: Tag key
+        :type TagKey: str
+        :param TagValue: Tag value
+        :type TagValue: list of str
         """
-        :param TagKey: Tag key\n        :type TagKey: str\n        :param TagValue: Tag value\n        :type TagValue: list of str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -2095,8 +2537,14 @@ class UnbindCloudResourceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: CMK ID
+        :type KeyId: str
+        :param ProductId: Unique ID of a Tencent Cloud service
+        :type ProductId: str
+        :param ResourceId: Resource/instance ID, which is stored as a string and defined by the caller based on the Tencent Cloud service’s features.
+        :type ResourceId: str
         """
-        :param KeyId: CMK ID\n        :type KeyId: str\n        :param ProductId: Unique ID of a Tencent Cloud service\n        :type ProductId: str\n        :param ResourceId: Resource/instance ID, which is stored as a string and defined by the caller based on the Tencent Cloud service’s features.\n        :type ResourceId: str\n        """
         self.KeyId = None
         self.ProductId = None
         self.ResourceId = None
@@ -2121,8 +2569,10 @@ class UnbindCloudResourceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2136,8 +2586,12 @@ class UpdateAliasRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Alias: New alias containing 1-60 characters or digits
+        :type Alias: str
+        :param KeyId: Globally unique CMK ID
+        :type KeyId: str
         """
-        :param Alias: New alias containing 1-60 characters or digits\n        :type Alias: str\n        :param KeyId: Globally unique CMK ID\n        :type KeyId: str\n        """
         self.Alias = None
         self.KeyId = None
 
@@ -2160,8 +2614,10 @@ class UpdateAliasResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2175,8 +2631,12 @@ class UpdateKeyDescriptionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Description: New description of up to 1,024 bytes in length
+        :type Description: str
+        :param KeyId: ID of the CMK for which to modify the description
+        :type KeyId: str
         """
-        :param Description: New description of up to 1,024 bytes in length\n        :type Description: str\n        :param KeyId: ID of the CMK for which to modify the description\n        :type KeyId: str\n        """
         self.Description = None
         self.KeyId = None
 
@@ -2199,8 +2659,10 @@ class UpdateKeyDescriptionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2214,8 +2676,18 @@ class VerifyByAsymmetricKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Unique ID of a key
+        :type KeyId: str
+        :param SignatureValue: Signature value, which is generated by calling the KMS signature API.
+        :type SignatureValue: str
+        :param Message: The original message or message abstract. For an original message, the length before Base64 encoding can contain up to 4,096 bytes. For a message abstract, the SM2 signature algorithm only supports 32-byte (before Base64 encoding) message abstracts.
+        :type Message: str
+        :param Algorithm: Signature algorithm. Supported algorithm: SM2DSA.
+        :type Algorithm: str
+        :param MessageType: Message type. Valid values: `RAW` (indicating an original message; used by default if the parameter is not passed in) and `DIGEST`.
+        :type MessageType: str
         """
-        :param KeyId: Unique ID of a key\n        :type KeyId: str\n        :param SignatureValue: Signature value, which is generated by calling the KMS signature API.\n        :type SignatureValue: str\n        :param Message: The original message or message abstract. For an original message, the length before Base64 encoding can contain up to 4,096 bytes. For a message abstract, the SM2 signature algorithm only supports 32-byte (before Base64 encoding) message abstracts.\n        :type Message: str\n        :param Algorithm: Signature algorithm. Supported algorithm: SM2DSA.\n        :type Algorithm: str\n        :param MessageType: Message type. Valid values: `RAW` (indicating an original message; used by default if the parameter is not passed in) and `DIGEST`.\n        :type MessageType: str\n        """
         self.KeyId = None
         self.SignatureValue = None
         self.Message = None
@@ -2244,8 +2716,12 @@ class VerifyByAsymmetricKeyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SignatureValid: Whether the signature is valid.
+        :type SignatureValid: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param SignatureValid: Whether the signature is valid.\n        :type SignatureValid: bool\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.SignatureValid = None
         self.RequestId = None
 
@@ -2261,9 +2737,33 @@ class WhiteboxKeyInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyId: Globally unique white-box key ID
+        :type KeyId: str
+        :param Alias: Unique alias that makes a key more recognizable and understandable. This parameter cannot be empty, can contain 1 to 60 letters, digits, hyphens (-), and underscores (_), and must begin with a letter or digit.
+        :type Alias: str
+        :param CreatorUin: Creator
+        :type CreatorUin: int
+        :param Description: Key description information
+        :type Description: str
+        :param CreateTime: Key creation time in Unix timestamp
+        :type CreateTime: int
+        :param Status: White-box key status. Valid values: Enabled, Disabled
+        :type Status: str
+        :param OwnerUin: Creator
+        :type OwnerUin: int
+        :param Algorithm: Key algorithm type
+        :type Algorithm: str
+        :param EncryptKey: Base64-encoded white-box encryption key
+        :type EncryptKey: str
+        :param DecryptKey: Base64-encoded white-box decryption key
+        :type DecryptKey: str
+        :param ResourceId: Resource ID in the format of `creatorUin/$creatorUin/$keyId`
+        :type ResourceId: str
+        :param DeviceFingerprintBind: Whether there is a device fingerprint bound to the current key
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DeviceFingerprintBind: bool
         """
-        :param KeyId: Globally unique white-box key ID\n        :type KeyId: str\n        :param Alias: Unique alias that makes a key more recognizable and understandable. This parameter cannot be empty, can contain 1 to 60 letters, digits, hyphens (-), and underscores (_), and must begin with a letter or digit.\n        :type Alias: str\n        :param CreatorUin: Creator\n        :type CreatorUin: int\n        :param Description: Key description information\n        :type Description: str\n        :param CreateTime: Key creation time in Unix timestamp\n        :type CreateTime: int\n        :param Status: White-box key status. Valid values: Enabled, Disabled\n        :type Status: str\n        :param OwnerUin: Creator\n        :type OwnerUin: int\n        :param Algorithm: Key algorithm type\n        :type Algorithm: str\n        :param EncryptKey: Base64-encoded white-box encryption key\n        :type EncryptKey: str\n        :param DecryptKey: Base64-encoded white-box decryption key\n        :type DecryptKey: str\n        :param ResourceId: Resource ID in the format of `creatorUin/$creatorUin/$keyId`\n        :type ResourceId: str\n        :param DeviceFingerprintBind: Whether there is a device fingerprint bound to the current key
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type DeviceFingerprintBind: bool\n        """
         self.KeyId = None
         self.Alias = None
         self.CreatorUin = None

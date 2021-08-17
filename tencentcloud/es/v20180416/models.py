@@ -24,8 +24,12 @@ class CosBackup(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IsAutoBackup: Whether to enable auto-backup to COS
+        :type IsAutoBackup: bool
+        :param BackupTime: Auto-backup time (accurate down to the hour), such as "22:00"
+        :type BackupTime: str
         """
-        :param IsAutoBackup: Whether to enable auto-backup to COS\n        :type IsAutoBackup: bool\n        :param BackupTime: Auto-backup time (accurate down to the hour), such as "22:00"\n        :type BackupTime: str\n        """
         self.IsAutoBackup = None
         self.BackupTime = None
 
@@ -48,16 +52,74 @@ class CreateInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Zone: Availability Zone
+        :type Zone: str
+        :param EsVersion: Instance version. Valid values: `5.6.4`, `6.4.3`, `6.8.2`, `7.5.1`, `7.10.1`
+        :type EsVersion: str
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param SubnetId: Subnet ID
+        :type SubnetId: str
+        :param Password: Access password, which must contain 8 to 16 characters, and include at least two of the following three types of characters: [a-z,A-Z], [0-9] and [-!@#$%&^*+=_:;,.?]
+        :type Password: str
+        :param InstanceName: Instance name, which can contain 1 to 50 English letters, Chinese characters, digits, dashes (-), or underscores (_)
+        :type InstanceName: str
+        :param NodeNum: This parameter has been disused. Please use `NodeInfoList`
+Number of nodes (2-50)
+        :type NodeNum: int
+        :param ChargeType: Billing mode <li>POSTPAID_BY_HOUR: Pay-as-you-go hourly </li>Default value: POSTPAID_BY_HOUR
+        :type ChargeType: str
+        :param ChargePeriod: This parameter is not used on the global website
+        :type ChargePeriod: int
+        :param RenewFlag: This parameter is not used on the global website
+        :type RenewFlag: str
+        :param NodeType: This parameter has been disused. Please use `NodeInfoList`
+Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
+        :type NodeType: str
+        :param DiskType: This parameter has been disused. Please use `NodeInfoList`
+Node storage type <li>CLOUD_SSD: SSD cloud storage </li><li>CLOUD_PREMIUM: premium cloud storage </li>Default value: CLOUD_SSD
+        :type DiskType: str
+        :param DiskSize: This parameter has been disused. Please use `NodeInfoList`
+Node disk size in GB
+        :type DiskSize: int
+        :param TimeUnit: This parameter is not used on the global website
+        :type TimeUnit: str
+        :param AutoVoucher: Whether to automatically use vouchers <li>0: No </li><li>1: Yes </li>Default value: 0
+        :type AutoVoucher: int
+        :param VoucherIds: List of voucher IDs (only one voucher can be specified at a time currently)
+        :type VoucherIds: list of str
+        :param EnableDedicatedMaster: This parameter has been disused. Please use `NodeInfoList`
+Whether to create a dedicated primary node <li>true: yes </li><li>false: no </li>Default value: false
+        :type EnableDedicatedMaster: bool
+        :param MasterNodeNum: This parameter has been disused. Please use `NodeInfoList`
+Number of dedicated primary nodes (only 3 and 5 are supported. This value must be passed in if `EnableDedicatedMaster` is `true`)
+        :type MasterNodeNum: int
+        :param MasterNodeType: This parameter has been disused. Please use `NodeInfoList`
+Dedicated primary node type, which must be passed in if `EnableDedicatedMaster` is `true` <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
+        :type MasterNodeType: str
+        :param MasterNodeDiskSize: This parameter has been disused. Please use `NodeInfoList`
+Dedicated primary node disk size in GB, which is optional. If passed in, it can only be 50 and cannot be customized currently
+        :type MasterNodeDiskSize: int
+        :param ClusterNameInConf: ClusterName in the cluster configuration file, which is the instance ID by default and currently cannot be customized
+        :type ClusterNameInConf: str
+        :param DeployMode: Cluster deployment mode <li>0: single-AZ deployment </li><li>1: multi-AZ deployment </li>Default value: 0
+        :type DeployMode: int
+        :param MultiZoneInfo: Details of AZs in multi-AZ deployment mode (which is required when DeployMode is 1)
+        :type MultiZoneInfo: list of ZoneDetail
+        :param LicenseType: License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum
+        :type LicenseType: str
+        :param NodeInfoList: Node information list, which is used to describe the specification information of various types of nodes in the cluster, such as node type, node quantity, node specification, disk type, and disk size
+        :type NodeInfoList: list of NodeInfo
+        :param TagList: Node tag information list
+        :type TagList: list of TagInfo
+        :param BasicSecurityType: Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>
+        :type BasicSecurityType: int
+        :param SceneType: Scenario template type. 0: not enabled; 1: general; 2: log; 3: search
+        :type SceneType: int
+        :param WebNodeTypeInfo: Visual node configuration
+        :type WebNodeTypeInfo: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
         """
-        :param Zone: Availability Zone\n        :type Zone: str\n        :param EsVersion: Instance version. Valid values: `5.6.4`, `6.4.3`, `6.8.2`, `7.5.1`, `7.10.1`\n        :type EsVersion: str\n        :param VpcId: VPC ID\n        :type VpcId: str\n        :param SubnetId: Subnet ID\n        :type SubnetId: str\n        :param Password: Access password, which must contain 8 to 16 characters, and include at least two of the following three types of characters: [a-z,A-Z], [0-9] and [-!@#$%&^*+=_:;,.?]\n        :type Password: str\n        :param InstanceName: Instance name, which can contain 1 to 50 English letters, Chinese characters, digits, dashes (-), or underscores (_)\n        :type InstanceName: str\n        :param NodeNum: This parameter has been disused. Please use `NodeInfoList`
-Number of nodes (2-50)\n        :type NodeNum: int\n        :param ChargeType: Billing mode <li>POSTPAID_BY_HOUR: Pay-as-you-go hourly </li>Default value: POSTPAID_BY_HOUR\n        :type ChargeType: str\n        :param ChargePeriod: This parameter is not used on the global website\n        :type ChargePeriod: int\n        :param RenewFlag: This parameter is not used on the global website\n        :type RenewFlag: str\n        :param NodeType: This parameter has been disused. Please use `NodeInfoList`
-Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>\n        :type NodeType: str\n        :param DiskType: This parameter has been disused. Please use `NodeInfoList`
-Node storage type <li>CLOUD_SSD: SSD cloud storage </li><li>CLOUD_PREMIUM: premium cloud storage </li>Default value: CLOUD_SSD\n        :type DiskType: str\n        :param DiskSize: This parameter has been disused. Please use `NodeInfoList`
-Node disk size in GB\n        :type DiskSize: int\n        :param TimeUnit: This parameter is not used on the global website\n        :type TimeUnit: str\n        :param AutoVoucher: Whether to automatically use vouchers <li>0: No </li><li>1: Yes </li>Default value: 0\n        :type AutoVoucher: int\n        :param VoucherIds: List of voucher IDs (only one voucher can be specified at a time currently)\n        :type VoucherIds: list of str\n        :param EnableDedicatedMaster: This parameter has been disused. Please use `NodeInfoList`
-Whether to create a dedicated primary node <li>true: yes </li><li>false: no </li>Default value: false\n        :type EnableDedicatedMaster: bool\n        :param MasterNodeNum: This parameter has been disused. Please use `NodeInfoList`
-Number of dedicated primary nodes (only 3 and 5 are supported. This value must be passed in if `EnableDedicatedMaster` is `true`)\n        :type MasterNodeNum: int\n        :param MasterNodeType: This parameter has been disused. Please use `NodeInfoList`
-Dedicated primary node type, which must be passed in if `EnableDedicatedMaster` is `true` <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>\n        :type MasterNodeType: str\n        :param MasterNodeDiskSize: This parameter has been disused. Please use `NodeInfoList`
-Dedicated primary node disk size in GB, which is optional. If passed in, it can only be 50 and cannot be customized currently\n        :type MasterNodeDiskSize: int\n        :param ClusterNameInConf: ClusterName in the cluster configuration file, which is the instance ID by default and currently cannot be customized\n        :type ClusterNameInConf: str\n        :param DeployMode: Cluster deployment mode <li>0: single-AZ deployment </li><li>1: multi-AZ deployment </li>Default value: 0\n        :type DeployMode: int\n        :param MultiZoneInfo: Details of AZs in multi-AZ deployment mode (which is required when DeployMode is 1)\n        :type MultiZoneInfo: list of ZoneDetail\n        :param LicenseType: License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum\n        :type LicenseType: str\n        :param NodeInfoList: Node information list, which is used to describe the specification information of various types of nodes in the cluster, such as node type, node quantity, node specification, disk type, and disk size\n        :type NodeInfoList: list of NodeInfo\n        :param TagList: Node tag information list\n        :type TagList: list of TagInfo\n        :param BasicSecurityType: Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>\n        :type BasicSecurityType: int\n        :param SceneType: Scenario template type. 0: not enabled; 1: general; 2: log; 3: search\n        :type SceneType: int\n        :param WebNodeTypeInfo: Visual node configuration\n        :type WebNodeTypeInfo: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`\n        """
         self.Zone = None
         self.EsVersion = None
         self.VpcId = None
@@ -151,8 +213,12 @@ class CreateInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.RequestId = None
 
@@ -168,8 +234,10 @@ class DeleteInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -190,8 +258,10 @@ class DeleteInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -205,14 +275,30 @@ class DescribeInstanceLogsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param InstanceId: Cluster instance ID\n        :type InstanceId: str\n        :param LogType: Log type. Default value: 1
+        r"""
+        :param InstanceId: Cluster instance ID
+        :type InstanceId: str
+        :param LogType: Log type. Default value: 1
 <li>1: primary log</li>
 <li>2: search slow log</li>
 <li>3: index slow log</li>
-<li>4: GC log</li>\n        :type LogType: int\n        :param SearchKey: Search keyword, which supports LUCENE syntax, such as `level:WARN`, `ip:1.1.1.1`, and `message:test-index`\n        :type SearchKey: str\n        :param StartTime: Log start time in the format of YYYY-MM-DD HH:MM:SS, such as 2019-01-22 20:15:53\n        :type StartTime: str\n        :param EndTime: Log end time in the format of YYYY-MM-DD HH:MM:SS, such as 2019-01-22 20:15:53\n        :type EndTime: str\n        :param Offset: Pagination start value. Default value: 0\n        :type Offset: int\n        :param Limit: Number of entries per page. Default value: 100. Maximum value: 100\n        :type Limit: int\n        :param OrderByType: Time sorting order. Default value: 0
+<li>4: GC log</li>
+        :type LogType: int
+        :param SearchKey: Search keyword, which supports LUCENE syntax, such as `level:WARN`, `ip:1.1.1.1`, and `message:test-index`
+        :type SearchKey: str
+        :param StartTime: Log start time in the format of YYYY-MM-DD HH:MM:SS, such as 2019-01-22 20:15:53
+        :type StartTime: str
+        :param EndTime: Log end time in the format of YYYY-MM-DD HH:MM:SS, such as 2019-01-22 20:15:53
+        :type EndTime: str
+        :param Offset: Pagination start value. Default value: 0
+        :type Offset: int
+        :param Limit: Number of entries per page. Default value: 100. Maximum value: 100
+        :type Limit: int
+        :param OrderByType: Time sorting order. Default value: 0
 <li>0: descending</li>
-<li>1: ascending</li>\n        :type OrderByType: int\n        """
+<li>1: ascending</li>
+        :type OrderByType: int
+        """
         self.InstanceId = None
         self.LogType = None
         self.SearchKey = None
@@ -247,8 +333,14 @@ class DescribeInstanceLogsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of returned logs
+        :type TotalCount: int
+        :param InstanceLogList: Log details list
+        :type InstanceLogList: list of InstanceLog
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of returned logs\n        :type TotalCount: int\n        :param InstanceLogList: Log details list\n        :type InstanceLogList: list of InstanceLog\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.InstanceLogList = None
         self.RequestId = None
@@ -271,8 +363,18 @@ class DescribeInstanceOperationsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Cluster instance ID
+        :type InstanceId: str
+        :param StartTime: Start time, such as "2019-03-07 16:30:39"
+        :type StartTime: str
+        :param EndTime: End time, such as "2019-03-30 20:18:03"
+        :type EndTime: str
+        :param Offset: Pagination start value
+        :type Offset: int
+        :param Limit: Number of entries per page
+        :type Limit: int
         """
-        :param InstanceId: Cluster instance ID\n        :type InstanceId: str\n        :param StartTime: Start time, such as "2019-03-07 16:30:39"\n        :type StartTime: str\n        :param EndTime: End time, such as "2019-03-30 20:18:03"\n        :type EndTime: str\n        :param Offset: Pagination start value\n        :type Offset: int\n        :param Limit: Number of entries per page\n        :type Limit: int\n        """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
@@ -301,8 +403,14 @@ class DescribeInstanceOperationsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Total number of operation records
+        :type TotalCount: int
+        :param Operations: Operation history
+        :type Operations: list of Operation
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Total number of operation records\n        :type TotalCount: int\n        :param Operations: Operation history\n        :type Operations: list of Operation\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Operations = None
         self.RequestId = None
@@ -325,8 +433,26 @@ class DescribeInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Zone: AZ of the cluster instance. If this is not passed in, all AZs are used by default
+        :type Zone: str
+        :param InstanceIds: List of cluster instance IDs
+        :type InstanceIds: list of str
+        :param InstanceNames: List of cluster instance names
+        :type InstanceNames: list of str
+        :param Offset: Pagination start value. Default value: 0
+        :type Offset: int
+        :param Limit: Number of entries per page. Default value: 20
+        :type Limit: int
+        :param OrderByKey: Sort by field <li>1: instance ID </li><li>2: instance name </li><li>3: AZ </li><li>4: creation time </li>If `orderKey` is not passed in, sort by creation time in descending order
+        :type OrderByKey: int
+        :param OrderByType: Sorting order <li>0: ascending </li><li>1: descending </li>If orderByKey is passed in but orderByType is not, ascending order is used by default
+        :type OrderByType: int
+        :param TagList: Node tag information list
+        :type TagList: list of TagInfo
+        :param IpList: VPC VIP list
+        :type IpList: list of str
         """
-        :param Zone: AZ of the cluster instance. If this is not passed in, all AZs are used by default\n        :type Zone: str\n        :param InstanceIds: List of cluster instance IDs\n        :type InstanceIds: list of str\n        :param InstanceNames: List of cluster instance names\n        :type InstanceNames: list of str\n        :param Offset: Pagination start value. Default value: 0\n        :type Offset: int\n        :param Limit: Number of entries per page. Default value: 20\n        :type Limit: int\n        :param OrderByKey: Sort by field <li>1: instance ID </li><li>2: instance name </li><li>3: AZ </li><li>4: creation time </li>If `orderKey` is not passed in, sort by creation time in descending order\n        :type OrderByKey: int\n        :param OrderByType: Sorting order <li>0: ascending </li><li>1: descending </li>If orderByKey is passed in but orderByType is not, ascending order is used by default\n        :type OrderByType: int\n        :param TagList: Node tag information list\n        :type TagList: list of TagInfo\n        :param IpList: VPC VIP list\n        :type IpList: list of str\n        """
         self.Zone = None
         self.InstanceIds = None
         self.InstanceNames = None
@@ -368,8 +494,14 @@ class DescribeInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: Number of returned instances
+        :type TotalCount: int
+        :param InstanceList: List of instance details
+        :type InstanceList: list of InstanceInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TotalCount: Number of returned instances\n        :type TotalCount: int\n        :param InstanceList: List of instance details\n        :type InstanceList: list of InstanceInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.InstanceList = None
         self.RequestId = None
@@ -392,8 +524,14 @@ class DictInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Key: Dictionary key value
+        :type Key: str
+        :param Name: Dictionary name
+        :type Name: str
+        :param Size: Dictionary size in B
+        :type Size: int
         """
-        :param Key: Dictionary key value\n        :type Key: str\n        :param Name: Dictionary name\n        :type Name: str\n        :param Size: Dictionary size in B\n        :type Size: int\n        """
         self.Key = None
         self.Name = None
         self.Size = None
@@ -418,8 +556,12 @@ class EsAcl(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BlackIpList: Kibana access blocklist
+        :type BlackIpList: list of str
+        :param WhiteIpList: Kibana access allowlist
+        :type WhiteIpList: list of str
         """
-        :param BlackIpList: Kibana access blocklist\n        :type BlackIpList: list of str\n        :param WhiteIpList: Kibana access allowlist\n        :type WhiteIpList: list of str\n        """
         self.BlackIpList = None
         self.WhiteIpList = None
 
@@ -442,8 +584,18 @@ class EsDictionaryInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MainDict: List of non-stop words
+        :type MainDict: list of DictInfo
+        :param Stopwords: List of stop words
+        :type Stopwords: list of DictInfo
+        :param QQDict: QQ dictionary list
+        :type QQDict: list of DictInfo
+        :param Synonym: Synonym dictionary list
+        :type Synonym: list of DictInfo
+        :param UpdateType: Update dictionary type
+        :type UpdateType: str
         """
-        :param MainDict: List of non-stop words\n        :type MainDict: list of DictInfo\n        :param Stopwords: List of stop words\n        :type Stopwords: list of DictInfo\n        :param QQDict: QQ dictionary list\n        :type QQDict: list of DictInfo\n        :param Synonym: Synonym dictionary list\n        :type Synonym: list of DictInfo\n        :param UpdateType: Update dictionary type\n        :type UpdateType: str\n        """
         self.MainDict = None
         self.Stopwords = None
         self.QQDict = None
@@ -492,8 +644,12 @@ class EsPublicAcl(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BlackIpList: Access blocklist
+        :type BlackIpList: list of str
+        :param WhiteIpList: Access allowlist
+        :type WhiteIpList: list of str
         """
-        :param BlackIpList: Access blocklist\n        :type BlackIpList: list of str\n        :param WhiteIpList: Access allowlist\n        :type WhiteIpList: list of str\n        """
         self.BlackIpList = None
         self.WhiteIpList = None
 
@@ -516,8 +672,10 @@ class GetRequestTargetNodeTypesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
         """
-        :param InstanceId: Instance ID.\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -538,8 +696,12 @@ class GetRequestTargetNodeTypesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TargetNodeTypes: A list of node types used to receive requests.
+        :type TargetNodeTypes: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param TargetNodeTypes: A list of node types used to receive requests.\n        :type TargetNodeTypes: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TargetNodeTypes = None
         self.RequestId = None
 
@@ -555,27 +717,137 @@ class InstanceInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        :param Region: Region
+        :type Region: str
+        :param Zone: Availability Zone
+        :type Zone: str
+        :param AppId: User ID
+        :type AppId: int
+        :param Uin: User UIN
+        :type Uin: str
+        :param VpcUid: UID of the VPC where the instance resides
+        :type VpcUid: str
+        :param SubnetUid: UID of the subnet where the instance resides
+        :type SubnetUid: str
+        :param Status: Instance status. 0: processing; 1: normal; -1: stopped; -2: terminating; -3: terminated
+        :type Status: int
+        :param ChargeType: Instance billing method. Valid values: POSTPAID_BY_HOUR (pay-as-you-go hourly); CDHPAID (billed based on CDH, i.e., only CDH is billed but not the instances on CDH)
+        :type ChargeType: str
+        :param ChargePeriod: This parameter is not used on the global website
+        :type ChargePeriod: int
+        :param RenewFlag: This parameter is not used on the global website
+        :type RenewFlag: str
+        :param NodeType: Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
+        :type NodeType: str
+        :param NodeNum: Number of nodes
+        :type NodeNum: int
+        :param CpuNum: Number of CPU cores of the node
+        :type CpuNum: int
+        :param MemSize: Node memory size in GB
+        :type MemSize: int
+        :param DiskType: Node disk type
+        :type DiskType: str
+        :param DiskSize: Node disk size in GB
+        :type DiskSize: int
+        :param EsDomain: ES domain name
+        :type EsDomain: str
+        :param EsVip: ES VIP
+        :type EsVip: str
+        :param EsPort: ES port
+        :type EsPort: int
+        :param KibanaUrl: Kibana access URL
+        :type KibanaUrl: str
+        :param EsVersion: ES version number
+        :type EsVersion: str
+        :param EsConfig: ES configuration item
+        :type EsConfig: str
+        :param EsAcl: Kibana access control configuration
+        :type EsAcl: :class:`tencentcloud.es.v20180416.models.EsAcl`
+        :param CreateTime: Instance creation time
+        :type CreateTime: str
+        :param UpdateTime: Last modified time of the instance
+        :type UpdateTime: str
+        :param Deadline: This parameter is not used on the global website
+        :type Deadline: str
+        :param InstanceType: Instance type (instance type identifier, which can be only 1 or 2 currently)
+        :type InstanceType: int
+        :param IkConfig: IK analyzer configuration
+        :type IkConfig: :class:`tencentcloud.es.v20180416.models.EsDictionaryInfo`
+        :param MasterNodeInfo: Dedicated primary node configuration
+        :type MasterNodeInfo: :class:`tencentcloud.es.v20180416.models.MasterNodeInfo`
+        :param CosBackup: Auto-backup to COS configuration
+        :type CosBackup: :class:`tencentcloud.es.v20180416.models.CosBackup`
+        :param AllowCosBackup: Whether to allow auto-backup to COS
+        :type AllowCosBackup: bool
+        :param TagList: List of tags owned by the instance
+        :type TagList: list of TagInfo
+        :param LicenseType: License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum
+        :type LicenseType: str
+        :param EnableHotWarmMode: Whether it is a hot/warm cluster <li>true: yes </li><li>false: no</li>
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type EnableHotWarmMode: bool
+        :param WarmNodeType: Warm node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WarmNodeType: str
+        :param WarmNodeNum: Number of warm nodes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WarmNodeNum: int
+        :param WarmCpuNum: Number of warm node CPU cores
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WarmCpuNum: int
+        :param WarmMemSize: Warm node memory size in GB
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WarmMemSize: int
+        :param WarmDiskType: Warm node disk type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WarmDiskType: str
+        :param WarmDiskSize: Warm node disk size in GB
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WarmDiskSize: int
+        :param NodeInfoList: Cluster node information list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NodeInfoList: list of NodeInfo
+        :param EsPublicUrl: ES public IP address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EsPublicUrl: str
+        :param MultiZoneInfo: Multi-AZ network information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MultiZoneInfo: list of ZoneDetail
+        :param DeployMode: Deployment mode <li>0: single-AZ </li><li>1: multi-AZ</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DeployMode: int
+        :param PublicAccess: ES public access status <li>OPEN: enabled </li><li>CLOSE: disabled
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PublicAccess: str
+        :param EsPublicAcl: ES public access control configuration
+        :type EsPublicAcl: :class:`tencentcloud.es.v20180416.models.EsAcl`
+        :param KibanaPrivateUrl: Kibana private IP address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type KibanaPrivateUrl: str
+        :param KibanaPublicAccess: Kibana public access status <li>OPEN: enabled </li><li>CLOSE: disabled
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type KibanaPublicAccess: str
+        :param KibanaPrivateAccess: Kibana private access status <li>OPEN: enabled </li><li>CLOSE: disabled
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type KibanaPrivateAccess: str
+        :param SecurityType: Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SecurityType: int
+        :param SceneType: Scenario template type. 0: not enabled; 1: general scenario; 2: log scenario; 3: search scenario
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SceneType: int
+        :param KibanaConfig: Kibana configuration item.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type KibanaConfig: str
+        :param KibanaNodeInfo: Kibana node information
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type KibanaNodeInfo: :class:`tencentcloud.es.v20180416.models.KibanaNodeInfo`
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param InstanceName: Instance name\n        :type InstanceName: str\n        :param Region: Region\n        :type Region: str\n        :param Zone: Availability Zone\n        :type Zone: str\n        :param AppId: User ID\n        :type AppId: int\n        :param Uin: User UIN\n        :type Uin: str\n        :param VpcUid: UID of the VPC where the instance resides\n        :type VpcUid: str\n        :param SubnetUid: UID of the subnet where the instance resides\n        :type SubnetUid: str\n        :param Status: Instance status. 0: processing; 1: normal; -1: stopped; -2: terminating; -3: terminated\n        :type Status: int\n        :param ChargeType: Instance billing method. Valid values: POSTPAID_BY_HOUR (pay-as-you-go hourly); CDHPAID (billed based on CDH, i.e., only CDH is billed but not the instances on CDH)\n        :type ChargeType: str\n        :param ChargePeriod: This parameter is not used on the global website\n        :type ChargePeriod: int\n        :param RenewFlag: This parameter is not used on the global website\n        :type RenewFlag: str\n        :param NodeType: Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>\n        :type NodeType: str\n        :param NodeNum: Number of nodes\n        :type NodeNum: int\n        :param CpuNum: Number of CPU cores of the node\n        :type CpuNum: int\n        :param MemSize: Node memory size in GB\n        :type MemSize: int\n        :param DiskType: Node disk type\n        :type DiskType: str\n        :param DiskSize: Node disk size in GB\n        :type DiskSize: int\n        :param EsDomain: ES domain name\n        :type EsDomain: str\n        :param EsVip: ES VIP\n        :type EsVip: str\n        :param EsPort: ES port\n        :type EsPort: int\n        :param KibanaUrl: Kibana access URL\n        :type KibanaUrl: str\n        :param EsVersion: ES version number\n        :type EsVersion: str\n        :param EsConfig: ES configuration item\n        :type EsConfig: str\n        :param EsAcl: Kibana access control configuration\n        :type EsAcl: :class:`tencentcloud.es.v20180416.models.EsAcl`\n        :param CreateTime: Instance creation time\n        :type CreateTime: str\n        :param UpdateTime: Last modified time of the instance\n        :type UpdateTime: str\n        :param Deadline: This parameter is not used on the global website\n        :type Deadline: str\n        :param InstanceType: Instance type (instance type identifier, which can be only 1 or 2 currently)\n        :type InstanceType: int\n        :param IkConfig: IK analyzer configuration\n        :type IkConfig: :class:`tencentcloud.es.v20180416.models.EsDictionaryInfo`\n        :param MasterNodeInfo: Dedicated primary node configuration\n        :type MasterNodeInfo: :class:`tencentcloud.es.v20180416.models.MasterNodeInfo`\n        :param CosBackup: Auto-backup to COS configuration\n        :type CosBackup: :class:`tencentcloud.es.v20180416.models.CosBackup`\n        :param AllowCosBackup: Whether to allow auto-backup to COS\n        :type AllowCosBackup: bool\n        :param TagList: List of tags owned by the instance\n        :type TagList: list of TagInfo\n        :param LicenseType: License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum\n        :type LicenseType: str\n        :param EnableHotWarmMode: Whether it is a hot/warm cluster <li>true: yes </li><li>false: no</li>
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type EnableHotWarmMode: bool\n        :param WarmNodeType: Warm node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type WarmNodeType: str\n        :param WarmNodeNum: Number of warm nodes
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type WarmNodeNum: int\n        :param WarmCpuNum: Number of warm node CPU cores
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type WarmCpuNum: int\n        :param WarmMemSize: Warm node memory size in GB
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type WarmMemSize: int\n        :param WarmDiskType: Warm node disk type
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type WarmDiskType: str\n        :param WarmDiskSize: Warm node disk size in GB
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type WarmDiskSize: int\n        :param NodeInfoList: Cluster node information list
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type NodeInfoList: list of NodeInfo\n        :param EsPublicUrl: ES public IP address
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type EsPublicUrl: str\n        :param MultiZoneInfo: Multi-AZ network information
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type MultiZoneInfo: list of ZoneDetail\n        :param DeployMode: Deployment mode <li>0: single-AZ </li><li>1: multi-AZ</li>
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type DeployMode: int\n        :param PublicAccess: ES public access status <li>OPEN: enabled </li><li>CLOSE: disabled
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type PublicAccess: str\n        :param EsPublicAcl: ES public access control configuration\n        :type EsPublicAcl: :class:`tencentcloud.es.v20180416.models.EsAcl`\n        :param KibanaPrivateUrl: Kibana private IP address
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type KibanaPrivateUrl: str\n        :param KibanaPublicAccess: Kibana public access status <li>OPEN: enabled </li><li>CLOSE: disabled
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type KibanaPublicAccess: str\n        :param KibanaPrivateAccess: Kibana private access status <li>OPEN: enabled </li><li>CLOSE: disabled
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type KibanaPrivateAccess: str\n        :param SecurityType: Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>
-Note: This field may return null, indicating that no valid values can be obtained.\n        :type SecurityType: int\n        :param SceneType: Scenario template type. 0: not enabled; 1: general scenario; 2: log scenario; 3: search scenario
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type SceneType: int\n        :param KibanaConfig: Kibana configuration item.
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type KibanaConfig: str\n        :param KibanaNodeInfo: Kibana node information
-Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type KibanaNodeInfo: :class:`tencentcloud.es.v20180416.models.KibanaNodeInfo`\n        """
         self.InstanceId = None
         self.InstanceName = None
         self.Region = None
@@ -731,8 +1003,16 @@ class InstanceLog(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Time: Log time
+        :type Time: str
+        :param Level: Log level
+        :type Level: str
+        :param Ip: Cluster node IP
+        :type Ip: str
+        :param Message: Log content
+        :type Message: str
         """
-        :param Time: Log time\n        :type Time: str\n        :param Level: Log level\n        :type Level: str\n        :param Ip: Cluster node IP\n        :type Ip: str\n        :param Message: Log content\n        :type Message: str\n        """
         self.Time = None
         self.Level = None
         self.Ip = None
@@ -759,8 +1039,12 @@ class KeyValue(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Key: Key
+        :type Key: str
+        :param Value: Value
+        :type Value: str
         """
-        :param Key: Key\n        :type Key: str\n        :param Value: Value\n        :type Value: str\n        """
         self.Key = None
         self.Value = None
 
@@ -783,8 +1067,20 @@ class KibanaNodeInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KibanaNodeType: Kibana node specification
+        :type KibanaNodeType: str
+        :param KibanaNodeNum: Number of Kibana nodes
+        :type KibanaNodeNum: int
+        :param KibanaNodeCpuNum: Number of Kibana node's CPUs
+        :type KibanaNodeCpuNum: int
+        :param KibanaNodeMemSize: Kibana node's memory in GB
+        :type KibanaNodeMemSize: int
+        :param KibanaNodeDiskType: Kibana node's disk type
+        :type KibanaNodeDiskType: str
+        :param KibanaNodeDiskSize: Kibana node's disk size
+        :type KibanaNodeDiskSize: int
         """
-        :param KibanaNodeType: Kibana node specification\n        :type KibanaNodeType: str\n        :param KibanaNodeNum: Number of Kibana nodes\n        :type KibanaNodeNum: int\n        :param KibanaNodeCpuNum: Number of Kibana node's CPUs\n        :type KibanaNodeCpuNum: int\n        :param KibanaNodeMemSize: Kibana node's memory in GB\n        :type KibanaNodeMemSize: int\n        :param KibanaNodeDiskType: Kibana node's disk type\n        :type KibanaNodeDiskType: str\n        :param KibanaNodeDiskSize: Kibana node's disk size\n        :type KibanaNodeDiskSize: int\n        """
         self.KibanaNodeType = None
         self.KibanaNodeNum = None
         self.KibanaNodeCpuNum = None
@@ -815,8 +1111,14 @@ class LocalDiskInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LocalDiskType: Local disk type <li>LOCAL_SATA: big data </li><li>NVME_SSD: high IO</li>
+        :type LocalDiskType: str
+        :param LocalDiskSize: Size of a single local disk
+        :type LocalDiskSize: int
+        :param LocalDiskCount: Number of local disks
+        :type LocalDiskCount: int
         """
-        :param LocalDiskType: Local disk type <li>LOCAL_SATA: big data </li><li>NVME_SSD: high IO</li>\n        :type LocalDiskType: str\n        :param LocalDiskSize: Size of a single local disk\n        :type LocalDiskSize: int\n        :param LocalDiskCount: Number of local disks\n        :type LocalDiskCount: int\n        """
         self.LocalDiskType = None
         self.LocalDiskSize = None
         self.LocalDiskCount = None
@@ -841,8 +1143,22 @@ class MasterNodeInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnableDedicatedMaster: Whether to enable the dedicated primary node
+        :type EnableDedicatedMaster: bool
+        :param MasterNodeType: Dedicated primary node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
+        :type MasterNodeType: str
+        :param MasterNodeNum: Number of dedicated primary nodes
+        :type MasterNodeNum: int
+        :param MasterNodeCpuNum: Number of CPU cores of the dedicated primary node
+        :type MasterNodeCpuNum: int
+        :param MasterNodeMemSize: Memory size of the dedicated primary node in GB
+        :type MasterNodeMemSize: int
+        :param MasterNodeDiskSize: Disk size of the dedicated primary node in GB
+        :type MasterNodeDiskSize: int
+        :param MasterNodeDiskType: Disk type of the dedicated primary node
+        :type MasterNodeDiskType: str
         """
-        :param EnableDedicatedMaster: Whether to enable the dedicated primary node\n        :type EnableDedicatedMaster: bool\n        :param MasterNodeType: Dedicated primary node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>\n        :type MasterNodeType: str\n        :param MasterNodeNum: Number of dedicated primary nodes\n        :type MasterNodeNum: int\n        :param MasterNodeCpuNum: Number of CPU cores of the dedicated primary node\n        :type MasterNodeCpuNum: int\n        :param MasterNodeMemSize: Memory size of the dedicated primary node in GB\n        :type MasterNodeMemSize: int\n        :param MasterNodeDiskSize: Disk size of the dedicated primary node in GB\n        :type MasterNodeDiskSize: int\n        :param MasterNodeDiskType: Disk type of the dedicated primary node\n        :type MasterNodeDiskType: str\n        """
         self.EnableDedicatedMaster = None
         self.MasterNodeType = None
         self.MasterNodeNum = None
@@ -875,13 +1191,29 @@ class NodeInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param NodeNum: Number of nodes\n        :type NodeNum: int\n        :param NodeType: Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>\n        :type NodeType: str\n        :param Type: Node type<li>`hotData`: hot data node</li>
+        r"""
+        :param NodeNum: Number of nodes
+        :type NodeNum: int
+        :param NodeType: Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
+        :type NodeType: str
+        :param Type: Node type<li>`hotData`: hot data node</li>
 <li>`warmData`: warm data node</li>
 <li>`dedicatedMaster`: dedicated master node</li>
 <li>`kibana`: Kibana node</li>
-Default value: `hotData`\n        :type Type: str\n        :param DiskType: Node disk type <li>CLOUD_SSD: SSD cloud storage </li><li>CLOUD_PREMIUM: Premium cloud disk </li>Default value: CLOUD_SSD\n        :type DiskType: str\n        :param DiskSize: Node disk size in GB\n        :type DiskSize: int\n        :param LocalDiskInfo: Local disk information
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type LocalDiskInfo: :class:`tencentcloud.es.v20180416.models.LocalDiskInfo`\n        :param DiskCount: Number of node disks\n        :type DiskCount: int\n        :param DiskEncrypt: Whether to encrypt node disk. 0: no (default); 1: yes.\n        :type DiskEncrypt: int\n        """
+Default value: `hotData`
+        :type Type: str
+        :param DiskType: Node disk type <li>CLOUD_SSD: SSD cloud storage </li><li>CLOUD_PREMIUM: Premium cloud disk </li>Default value: CLOUD_SSD
+        :type DiskType: str
+        :param DiskSize: Node disk size in GB
+        :type DiskSize: int
+        :param LocalDiskInfo: Local disk information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type LocalDiskInfo: :class:`tencentcloud.es.v20180416.models.LocalDiskInfo`
+        :param DiskCount: Number of node disks
+        :type DiskCount: int
+        :param DiskEncrypt: Whether to encrypt node disk. 0: no (default); 1: yes.
+        :type DiskEncrypt: int
+        """
         self.NodeNum = None
         self.NodeType = None
         self.Type = None
@@ -918,8 +1250,22 @@ class Operation(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: Unique operation ID
+        :type Id: int
+        :param StartTime: Operation start time
+        :type StartTime: str
+        :param Type: Operation type
+        :type Type: str
+        :param Detail: Operation details
+        :type Detail: :class:`tencentcloud.es.v20180416.models.OperationDetail`
+        :param Result: Operation result
+        :type Result: str
+        :param Tasks: Workflow task information
+        :type Tasks: list of TaskDetail
+        :param Progress: Operation progress
+        :type Progress: float
         """
-        :param Id: Unique operation ID\n        :type Id: int\n        :param StartTime: Operation start time\n        :type StartTime: str\n        :param Type: Operation type\n        :type Type: str\n        :param Detail: Operation details\n        :type Detail: :class:`tencentcloud.es.v20180416.models.OperationDetail`\n        :param Result: Operation result\n        :type Result: str\n        :param Tasks: Workflow task information\n        :type Tasks: list of TaskDetail\n        :param Progress: Operation progress\n        :type Progress: float\n        """
         self.Id = None
         self.StartTime = None
         self.Type = None
@@ -959,8 +1305,12 @@ class OperationDetail(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OldInfo: Original instance configuration information
+        :type OldInfo: list of KeyValue
+        :param NewInfo: Updated instance configuration information
+        :type NewInfo: list of KeyValue
         """
-        :param OldInfo: Original instance configuration information\n        :type OldInfo: list of KeyValue\n        :param NewInfo: Updated instance configuration information\n        :type NewInfo: list of KeyValue\n        """
         self.OldInfo = None
         self.NewInfo = None
 
@@ -993,8 +1343,12 @@ class RestartInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param ForceRestart: Whether to force restart <li>true: Yes </li><li>false: No </li>Default value: false
+        :type ForceRestart: bool
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param ForceRestart: Whether to force restart <li>true: Yes </li><li>false: No </li>Default value: false\n        :type ForceRestart: bool\n        """
         self.InstanceId = None
         self.ForceRestart = None
 
@@ -1017,8 +1371,10 @@ class RestartInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1032,8 +1388,10 @@ class RestartKibanaRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: ES instance ID
+        :type InstanceId: str
         """
-        :param InstanceId: ES instance ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1054,8 +1412,10 @@ class RestartKibanaResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1069,8 +1429,14 @@ class RestartNodesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Cluster instance ID
+        :type InstanceId: str
+        :param NodeNames: Node name list
+        :type NodeNames: list of str
+        :param ForceRestart: Whether to force restart
+        :type ForceRestart: bool
         """
-        :param InstanceId: Cluster instance ID\n        :type InstanceId: str\n        :param NodeNames: Node name list\n        :type NodeNames: list of str\n        :param ForceRestart: Whether to force restart\n        :type ForceRestart: bool\n        """
         self.InstanceId = None
         self.NodeNames = None
         self.ForceRestart = None
@@ -1095,8 +1461,10 @@ class RestartNodesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1110,8 +1478,24 @@ class SubTaskDetail(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: Subtask name
+        :type Name: str
+        :param Result: Subtask result
+        :type Result: bool
+        :param ErrMsg: Subtask error message
+        :type ErrMsg: str
+        :param Type: Subtask type
+        :type Type: str
+        :param Status: Subtask status. 0: processing, 1: succeeded, -1: failed
+        :type Status: int
+        :param FailedIndices: Name of the index for which the check for upgrade failed
+        :type FailedIndices: list of str
+        :param FinishTime: Subtask end time
+        :type FinishTime: str
+        :param Level: Subtask level. 1: warning, 2: failed
+        :type Level: int
         """
-        :param Name: Subtask name\n        :type Name: str\n        :param Result: Subtask result\n        :type Result: bool\n        :param ErrMsg: Subtask error message\n        :type ErrMsg: str\n        :param Type: Subtask type\n        :type Type: str\n        :param Status: Subtask status. 0: processing, 1: succeeded, -1: failed\n        :type Status: int\n        :param FailedIndices: Name of the index for which the check for upgrade failed\n        :type FailedIndices: list of str\n        :param FinishTime: Subtask end time\n        :type FinishTime: str\n        :param Level: Subtask level. 1: warning, 2: failed\n        :type Level: int\n        """
         self.Name = None
         self.Result = None
         self.ErrMsg = None
@@ -1146,8 +1530,12 @@ class TagInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TagKey: Tag key
+        :type TagKey: str
+        :param TagValue: Tag value
+        :type TagValue: str
         """
-        :param TagKey: Tag key\n        :type TagKey: str\n        :param TagValue: Tag value\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -1170,8 +1558,16 @@ class TaskDetail(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: Task name
+        :type Name: str
+        :param Progress: Task progress
+        :type Progress: float
+        :param FinishTime: Task completion time
+        :type FinishTime: str
+        :param SubTasks: Subtask
+        :type SubTasks: list of SubTaskDetail
         """
-        :param Name: Task name\n        :type Name: str\n        :param Progress: Task progress\n        :type Progress: float\n        :param FinishTime: Task completion time\n        :type FinishTime: str\n        :param SubTasks: Subtask\n        :type SubTasks: list of SubTaskDetail\n        """
         self.Name = None
         self.Progress = None
         self.FinishTime = None
@@ -1203,14 +1599,62 @@ class UpdateInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param InstanceName: Instance name, which can contain 1 to 50 English letters, Chinese characters, digits, dashes (-), or underscores (_)
+        :type InstanceName: str
+        :param NodeNum: This parameter has been disused. Please use `NodeInfoList`
+Number of nodes (2-50)
+        :type NodeNum: int
+        :param EsConfig: ES configuration item (JSON string)
+        :type EsConfig: str
+        :param Password: Password of the default user 'elastic', which must contain 8 to 16 characters, including at least two of the following three types of characters: [a-z,A-Z], [0-9] and [-!@#$%&^*+=_:;,.?]
+        :type Password: str
+        :param EsAcl: Access control list
+        :type EsAcl: :class:`tencentcloud.es.v20180416.models.EsAcl`
+        :param DiskSize: This parameter has been disused. Please use `NodeInfoList`
+Disk size in GB
+        :type DiskSize: int
+        :param NodeType: This parameter has been disused. Please use `NodeInfoList`
+Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
+        :type NodeType: str
+        :param MasterNodeNum: This parameter has been disused. Please use `NodeInfoList`
+Number of dedicated primary nodes (only 3 and 5 are supported)
+        :type MasterNodeNum: int
+        :param MasterNodeType: This parameter has been disused. Please use `NodeInfoList`
+Dedicated primary node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
+        :type MasterNodeType: str
+        :param MasterNodeDiskSize: This parameter has been disused. Please use `NodeInfoList`
+Dedicated primary node disk size in GB. This is 50 GB by default and currently cannot be customized
+        :type MasterNodeDiskSize: int
+        :param ForceRestart: Whether to force restart during configuration update <li>true: Yes </li><li>false: No </li>This needs to be set only for EsConfig. Default value: false
+        :type ForceRestart: bool
+        :param CosBackup: Auto-backup to COS
+        :type CosBackup: :class:`tencentcloud.es.v20180416.models.CosBackup`
+        :param NodeInfoList: Node information list. You can pass in only the nodes to be updated and their corresponding specification information. Supported operations include: <li>modifying the number of nodes in the same type </li><li>modifying the specification and disk size of nodes in the same type </li><li>adding a node type (you must also specify the node type, quantity, specification, disk, etc.) </li>The above operations can only be performed one at a time, and the disk type cannot be modified
+        :type NodeInfoList: list of NodeInfo
+        :param PublicAccess: Public network access status
+        :type PublicAccess: str
+        :param EsPublicAcl: Public network ACL
+        :type EsPublicAcl: :class:`tencentcloud.es.v20180416.models.EsPublicAcl`
+        :param KibanaPublicAccess: Public network access status of Kibana
+        :type KibanaPublicAccess: str
+        :param KibanaPrivateAccess: Private network access status of Kibana
+        :type KibanaPrivateAccess: str
+        :param BasicSecurityType: Enables or disables user authentication for ES Basic Edition v6.8 and above
+        :type BasicSecurityType: int
+        :param KibanaPrivatePort: Kibana private port
+        :type KibanaPrivatePort: int
+        :param ScaleType: 0: scaling in blue/green deployment mode without cluster restart (default); 1: scaling by unmounting disk with rolling cluster restart
+        :type ScaleType: int
+        :param MultiZoneInfo: Multi-AZ deployment
+        :type MultiZoneInfo: list of ZoneDetail
+        :param SceneType: Scenario template type. -1: not enabled; 1: general; 2: log; 3: search
+        :type SceneType: int
+        :param KibanaConfig: Kibana configuration item (JSON string)
+        :type KibanaConfig: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param InstanceName: Instance name, which can contain 1 to 50 English letters, Chinese characters, digits, dashes (-), or underscores (_)\n        :type InstanceName: str\n        :param NodeNum: This parameter has been disused. Please use `NodeInfoList`
-Number of nodes (2-50)\n        :type NodeNum: int\n        :param EsConfig: ES configuration item (JSON string)\n        :type EsConfig: str\n        :param Password: Password of the default user 'elastic', which must contain 8 to 16 characters, including at least two of the following three types of characters: [a-z,A-Z], [0-9] and [-!@#$%&^*+=_:;,.?]\n        :type Password: str\n        :param EsAcl: Access control list\n        :type EsAcl: :class:`tencentcloud.es.v20180416.models.EsAcl`\n        :param DiskSize: This parameter has been disused. Please use `NodeInfoList`
-Disk size in GB\n        :type DiskSize: int\n        :param NodeType: This parameter has been disused. Please use `NodeInfoList`
-Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>\n        :type NodeType: str\n        :param MasterNodeNum: This parameter has been disused. Please use `NodeInfoList`
-Number of dedicated primary nodes (only 3 and 5 are supported)\n        :type MasterNodeNum: int\n        :param MasterNodeType: This parameter has been disused. Please use `NodeInfoList`
-Dedicated primary node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>\n        :type MasterNodeType: str\n        :param MasterNodeDiskSize: This parameter has been disused. Please use `NodeInfoList`
-Dedicated primary node disk size in GB. This is 50 GB by default and currently cannot be customized\n        :type MasterNodeDiskSize: int\n        :param ForceRestart: Whether to force restart during configuration update <li>true: Yes </li><li>false: No </li>This needs to be set only for EsConfig. Default value: false\n        :type ForceRestart: bool\n        :param CosBackup: Auto-backup to COS\n        :type CosBackup: :class:`tencentcloud.es.v20180416.models.CosBackup`\n        :param NodeInfoList: Node information list. You can pass in only the nodes to be updated and their corresponding specification information. Supported operations include: <li>modifying the number of nodes in the same type </li><li>modifying the specification and disk size of nodes in the same type </li><li>adding a node type (you must also specify the node type, quantity, specification, disk, etc.) </li>The above operations can only be performed one at a time, and the disk type cannot be modified\n        :type NodeInfoList: list of NodeInfo\n        :param PublicAccess: Public network access status\n        :type PublicAccess: str\n        :param EsPublicAcl: Public network ACL\n        :type EsPublicAcl: :class:`tencentcloud.es.v20180416.models.EsPublicAcl`\n        :param KibanaPublicAccess: Public network access status of Kibana\n        :type KibanaPublicAccess: str\n        :param KibanaPrivateAccess: Private network access status of Kibana\n        :type KibanaPrivateAccess: str\n        :param BasicSecurityType: Enables or disables user authentication for ES Basic Edition v6.8 and above\n        :type BasicSecurityType: int\n        :param KibanaPrivatePort: Kibana private port\n        :type KibanaPrivatePort: int\n        :param ScaleType: 0: scaling in blue/green deployment mode without cluster restart (default); 1: scaling by unmounting disk with rolling cluster restart\n        :type ScaleType: int\n        :param MultiZoneInfo: Multi-AZ deployment\n        :type MultiZoneInfo: list of ZoneDetail\n        :param SceneType: Scenario template type. -1: not enabled; 1: general; 2: log; 3: search\n        :type SceneType: int\n        :param KibanaConfig: Kibana configuration item (JSON string)\n        :type KibanaConfig: str\n        """
         self.InstanceId = None
         self.InstanceName = None
         self.NodeNum = None
@@ -1293,8 +1737,10 @@ class UpdateInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1308,8 +1754,18 @@ class UpdatePluginsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param InstallPluginList: List of names of the plugins to be installed
+        :type InstallPluginList: list of str
+        :param RemovePluginList: List of names of the plugins to be uninstalled
+        :type RemovePluginList: list of str
+        :param ForceRestart: Whether to force restart
+        :type ForceRestart: bool
+        :param ForceUpdate: Whether to reinstall
+        :type ForceUpdate: bool
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param InstallPluginList: List of names of the plugins to be installed\n        :type InstallPluginList: list of str\n        :param RemovePluginList: List of names of the plugins to be uninstalled\n        :type RemovePluginList: list of str\n        :param ForceRestart: Whether to force restart\n        :type ForceRestart: bool\n        :param ForceUpdate: Whether to reinstall\n        :type ForceUpdate: bool\n        """
         self.InstanceId = None
         self.InstallPluginList = None
         self.RemovePluginList = None
@@ -1338,8 +1794,10 @@ class UpdatePluginsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1353,8 +1811,12 @@ class UpdateRequestTargetNodeTypesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param TargetNodeTypes: A list of node types used to receive requests.
+        :type TargetNodeTypes: list of str
         """
-        :param InstanceId: Instance ID.\n        :type InstanceId: str\n        :param TargetNodeTypes: A list of node types used to receive requests.\n        :type TargetNodeTypes: list of str\n        """
         self.InstanceId = None
         self.TargetNodeTypes = None
 
@@ -1377,8 +1839,10 @@ class UpdateRequestTargetNodeTypesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1392,8 +1856,20 @@ class UpgradeInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param EsVersion: Target ES version. Valid values: 6.4.3, 6.8.2, 7.5.1
+        :type EsVersion: str
+        :param CheckOnly: Whether to check for upgrade only. Default value: false
+        :type CheckOnly: bool
+        :param LicenseType: Target X-Pack edition: <li>OSS: Open-source Edition </li><li>basic: Basic Edition </li>Currently only used for v5.6.4 to v6.x upgrade. Default value: basic
+        :type LicenseType: str
+        :param BasicSecurityType: Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>
+        :type BasicSecurityType: int
+        :param UpgradeMode: Upgrade mode. <li>scale: blue/green deployment</li><li>restart: rolling restart</li>Default value: scale
+        :type UpgradeMode: str
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param EsVersion: Target ES version. Valid values: 6.4.3, 6.8.2, 7.5.1\n        :type EsVersion: str\n        :param CheckOnly: Whether to check for upgrade only. Default value: false\n        :type CheckOnly: bool\n        :param LicenseType: Target X-Pack edition: <li>OSS: Open-source Edition </li><li>basic: Basic Edition </li>Currently only used for v5.6.4 to v6.x upgrade. Default value: basic\n        :type LicenseType: str\n        :param BasicSecurityType: Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>\n        :type BasicSecurityType: int\n        :param UpgradeMode: Upgrade mode. <li>scale: blue/green deployment</li><li>restart: rolling restart</li>Default value: scale\n        :type UpgradeMode: str\n        """
         self.InstanceId = None
         self.EsVersion = None
         self.CheckOnly = None
@@ -1424,8 +1900,10 @@ class UpgradeInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1439,8 +1917,20 @@ class UpgradeLicenseRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param LicenseType: License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum
+        :type LicenseType: str
+        :param AutoVoucher: Whether to automatically use vouchers <li>0: No </li><li>1: Yes </li>Default value: 0
+        :type AutoVoucher: int
+        :param VoucherIds: List of voucher IDs (only one voucher can be specified at a time currently)
+        :type VoucherIds: list of str
+        :param BasicSecurityType: Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>
+        :type BasicSecurityType: int
+        :param ForceRestart: Whether to force restart <li>true: yes </li><li>false: no </li>Default value: false
+        :type ForceRestart: bool
         """
-        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param LicenseType: License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum\n        :type LicenseType: str\n        :param AutoVoucher: Whether to automatically use vouchers <li>0: No </li><li>1: Yes </li>Default value: 0\n        :type AutoVoucher: int\n        :param VoucherIds: List of voucher IDs (only one voucher can be specified at a time currently)\n        :type VoucherIds: list of str\n        :param BasicSecurityType: Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>\n        :type BasicSecurityType: int\n        :param ForceRestart: Whether to force restart <li>true: yes </li><li>false: no </li>Default value: false\n        :type ForceRestart: bool\n        """
         self.InstanceId = None
         self.LicenseType = None
         self.AutoVoucher = None
@@ -1471,8 +1961,10 @@ class UpgradeLicenseResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1486,8 +1978,12 @@ class WebNodeTypeInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NodeNum: Number of visual nodes. The value is always `1`.
+        :type NodeNum: int
+        :param NodeType: Visual node specification
+        :type NodeType: str
         """
-        :param NodeNum: Number of visual nodes. The value is always `1`.\n        :type NodeNum: int\n        :param NodeType: Visual node specification\n        :type NodeType: str\n        """
         self.NodeNum = None
         self.NodeType = None
 
@@ -1510,8 +2006,12 @@ class ZoneDetail(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Zone: AZ
+        :type Zone: str
+        :param SubnetId: Subnet ID
+        :type SubnetId: str
         """
-        :param Zone: AZ\n        :type Zone: str\n        :param SubnetId: Subnet ID\n        :type SubnetId: str\n        """
         self.Zone = None
         self.SubnetId = None
 
