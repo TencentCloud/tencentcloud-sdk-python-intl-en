@@ -697,7 +697,7 @@ class CreateAccountsRequest(AbstractModel):
         :type Password: str
         :param Description: Remarks
         :type Description: str
-        :param MaxUserConnections: The maximum number of instance connections supported by the new account
+        :param MaxUserConnections: Maximum connections of the new account. Default value: `10240`. Maximum value: `10240`.
         :type MaxUserConnections: int
         """
         self.InstanceId = None
@@ -5637,7 +5637,7 @@ class ModifyAccountMaxUserConnectionsRequest(AbstractModel):
         :type Accounts: list of Account
         :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
         :type InstanceId: str
-        :param MaxUserConnections: The maximum number of instance connections supported by an account
+        :param MaxUserConnections: Maximum connections of the account. Maximum value: `10240`.
         :type MaxUserConnections: int
         """
         self.Accounts = None
@@ -8823,6 +8823,8 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type DeviceType: str
         :param Cpu: The number of CPU cores after the instance is upgraded. If this parameter is left empty, the number of CPU cores will be automatically filled in according to the `Memory` value.
         :type Cpu: int
+        :param FastUpgrade: Whether to enable QuickChange. Valid values: `0` (no), `1` (yes). After QuickChange is enabled, the required resources will be checked: QuickChange is performed only when the required resources support the feature; otherwise, an error message will be returned.
+        :type FastUpgrade: int
         """
         self.InstanceId = None
         self.Memory = None
@@ -8836,6 +8838,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.InstanceRole = None
         self.DeviceType = None
         self.Cpu = None
+        self.FastUpgrade = None
 
 
     def _deserialize(self, params):
@@ -8851,6 +8854,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.InstanceRole = params.get("InstanceRole")
         self.DeviceType = params.get("DeviceType")
         self.Cpu = params.get("Cpu")
+        self.FastUpgrade = params.get("FastUpgrade")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -26,6 +26,34 @@ class RedisClient(AbstractClient):
     _service = 'redis'
 
 
+    def ApplyParamsTemplate(self, request):
+        """This API is used to apply a parameter template to instances.
+
+        :param request: Request instance for ApplyParamsTemplate.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ApplyParamsTemplateRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ApplyParamsTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ApplyParamsTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ApplyParamsTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AssociateSecurityGroups(self, request):
         """This API is used to associate a security group with instances in batches.
 
@@ -194,6 +222,34 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateParamTemplate(self, request):
+        """This API is used to create a parameter template.
+
+        :param request: Request instance for CreateParamTemplate.
+        :type request: :class:`tencentcloud.redis.v20180412.models.CreateParamTemplateRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.CreateParamTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateParamTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateParamTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteInstanceAccount(self, request):
         """This API is used to delete an instance sub-account.
 
@@ -208,6 +264,34 @@ class RedisClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteInstanceAccountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteParamTemplate(self, request):
+        """This API is used to delete a parameter template.
+
+        :param request: Request instance for DeleteParamTemplate.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DeleteParamTemplateRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DeleteParamTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteParamTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteParamTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -894,6 +978,62 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeParamTemplateInfo(self, request):
+        """This API is used to query parameter template details.
+
+        :param request: Request instance for DescribeParamTemplateInfo.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeParamTemplateInfoRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeParamTemplateInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeParamTemplateInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeParamTemplateInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeParamTemplates(self, request):
+        """This API is used to query the list of parameter templates.
+
+        :param request: Request instance for DescribeParamTemplates.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeParamTemplatesRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeParamTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeParamTemplates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeParamTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeProductInfo(self, request):
         """This API is used to query the purchasable capacity specifications of Redis instances in the specified AZ and instance type. If you are not in the allowlist for the AZ or instance type, you cannot view the details of the capacity specifications. To apply for the eligibility, please submit a ticket.
 
@@ -1090,6 +1230,34 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTendisSlowLog(self, request):
+        """This API is used to query slow queries of a TencentDB for Tendis instance.
+
+        :param request: Request instance for DescribeTendisSlowLog.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeTendisSlowLogRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeTendisSlowLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTendisSlowLog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTendisSlowLogResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DestroyPostpaidInstance(self, request):
         """This API is used to terminate a pay-as-you-go instance.
 
@@ -1216,6 +1384,62 @@ class RedisClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableReplicaReadonlyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def InquiryPriceCreateInstance(self, request):
+        """This API is used to query the price for purchasing an instance.
+
+        :param request: Request instance for InquiryPriceCreateInstance.
+        :type request: :class:`tencentcloud.redis.v20180412.models.InquiryPriceCreateInstanceRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.InquiryPriceCreateInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InquiryPriceCreateInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquiryPriceCreateInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def InquiryPriceUpgradeInstance(self, request):
+        """This API is used to query the price for scaling an instance.
+
+        :param request: Request instance for InquiryPriceUpgradeInstance.
+        :type request: :class:`tencentcloud.redis.v20180412.models.InquiryPriceUpgradeInstanceRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.InquiryPriceUpgradeInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InquiryPriceUpgradeInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquiryPriceUpgradeInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1496,6 +1720,34 @@ class RedisClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyNetworkConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyParamTemplate(self, request):
+        """This API is used to modify a parameter template.
+
+        :param request: Request instance for ModifyParamTemplate.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyParamTemplateRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyParamTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyParamTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyParamTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

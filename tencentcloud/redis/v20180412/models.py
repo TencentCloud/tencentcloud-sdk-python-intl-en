@@ -68,6 +68,55 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class ApplyParamsTemplateRequest(AbstractModel):
+    """ApplyParamsTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: Instance ID list
+        :type InstanceIds: list of str
+        :param TemplateId: The ID of the parameter template to be applied
+        :type TemplateId: str
+        """
+        self.InstanceIds = None
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyParamsTemplateResponse(AbstractModel):
+    """ApplyParamsTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskIds: Task ID
+        :type TaskIds: list of int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskIds = params.get("TaskIds")
+        self.RequestId = params.get("RequestId")
+
+
 class AssociateSecurityGroupsRequest(AbstractModel):
     """AssociateSecurityGroups request structure.
 
@@ -115,6 +164,42 @@ class AssociateSecurityGroupsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class BackupDownloadInfo(AbstractModel):
+    """Backup download information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileName: Backup file name
+        :type FileName: str
+        :param FileSize: Backup file size in bytes. If the parameter value is `0`, the backup file size is unknown.
+        :type FileSize: int
+        :param DownloadUrl: Address (valid for 6 hours) used to download the backup file over a public network
+        :type DownloadUrl: str
+        :param InnerDownloadUrl: Address (valid for 6 hours) used to download the backup file over a private network
+        :type InnerDownloadUrl: str
+        """
+        self.FileName = None
+        self.FileSize = None
+        self.DownloadUrl = None
+        self.InnerDownloadUrl = None
+
+
+    def _deserialize(self, params):
+        self.FileName = params.get("FileName")
+        self.FileSize = params.get("FileSize")
+        self.DownloadUrl = params.get("DownloadUrl")
+        self.InnerDownloadUrl = params.get("InnerDownloadUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class BigKeyInfo(AbstractModel):
@@ -442,8 +527,6 @@ class CreateInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneId: Availability zone ID of the instance. For more information, please see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).
-        :type ZoneId: int
         :param TypeId: Instance type. Valid values: 2 (Redis 2.8 Memory Edition in standard architecture), 3 (CKV 3.2 Memory Edition in standard architecture), 4 (CKV 3.2 Memory Edition in cluster architecture), 6 (Redis 4.0 Memory Edition in standard architecture), 7 (Redis 4.0 Memory Edition in cluster architecture), 8 (Redis 5.0 Memory Edition in standard architecture), 9 (Redis 5.0 Memory Edition in cluster architecture).
         :type TypeId: int
         :param MemSize: Instance capacity in MB. The value should be a multiple of 1,024 and is subject to the specifications returned by the [DescribeProductInfo](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1) API.
@@ -454,6 +537,8 @@ class CreateInstancesRequest(AbstractModel):
         :type Period: int
         :param BillingMode: Billing method. 0: pay as you go
         :type BillingMode: int
+        :param ZoneId: Availability zone ID of the instance. For more information, please see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).
+        :type ZoneId: int
         :param Password: Instance password. If the input parameter `NoAuth` is `true` and a VPC is used, the `Password` is optional; otherwise, it is required.
 If the instance type parameter `TypeId` indicates Redis 2.8, 4.0, or 5.0, the password cannot start with "/" and must contain 8-30 characters which are comprised of at least two of the following: lowercase letters, uppercase letters, digits, and special symbols (()`~!@#$%^&*-+=_|{}[]:;<>,.?/).
 If the instance type parameter `TypeId` indicates CKV 3.2, the password contains 8-30 characters which must be comprised of only letters and digits.
@@ -484,13 +569,17 @@ If the instance type parameter `TypeId` indicates CKV 3.2, the password contains
         :type NodeSet: list of RedisNodeInfo
         :param ResourceTags: The tag bound with the instance to be purchased
         :type ResourceTags: list of ResourceTag
+        :param ZoneName: Name of the AZ where the instance resides. For more information, see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).
+        :type ZoneName: str
+        :param TemplateId: ID of the parameter template applied to the created instance. If this parameter is left blank, the default parameter template will be applied.
+        :type TemplateId: str
         """
-        self.ZoneId = None
         self.TypeId = None
         self.MemSize = None
         self.GoodsNum = None
         self.Period = None
         self.BillingMode = None
+        self.ZoneId = None
         self.Password = None
         self.VpcId = None
         self.SubnetId = None
@@ -505,15 +594,17 @@ If the instance type parameter `TypeId` indicates CKV 3.2, the password contains
         self.NoAuth = None
         self.NodeSet = None
         self.ResourceTags = None
+        self.ZoneName = None
+        self.TemplateId = None
 
 
     def _deserialize(self, params):
-        self.ZoneId = params.get("ZoneId")
         self.TypeId = params.get("TypeId")
         self.MemSize = params.get("MemSize")
         self.GoodsNum = params.get("GoodsNum")
         self.Period = params.get("Period")
         self.BillingMode = params.get("BillingMode")
+        self.ZoneId = params.get("ZoneId")
         self.Password = params.get("Password")
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
@@ -538,6 +629,8 @@ If the instance type parameter `TypeId` indicates CKV 3.2, the password contains
                 obj = ResourceTag()
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
+        self.ZoneName = params.get("ZoneName")
+        self.TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -569,6 +662,72 @@ class CreateInstancesResponse(AbstractModel):
     def _deserialize(self, params):
         self.DealId = params.get("DealId")
         self.InstanceIds = params.get("InstanceIds")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateParamTemplateRequest(AbstractModel):
+    """CreateParamTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Parameter template name.
+        :type Name: str
+        :param Description: Parameter template description.
+        :type Description: str
+        :param ProductType: Instance type. Valid values: `1` (Redis 2.8 memory edition in cluster architecture), `2` (Redis 2.8 memory edition in standard architecture), `3` (CKV 3.2 memory edition in standard architecture), `4` (CKV 3.2 memory edition in cluster architecture), `5` (Redis 2.8 memory edition in standalone architecture), `6` (Redis 4.0 memory edition in standard architecture), `7` (Redis 4.0 memory edition in cluster architecture), `8` (Redis 5.0 memory edition in standard architecture), `9` (Redis 5.0 memory edition in cluster architecture). If `TempateId` is specified, this parameter can be left blank; otherwise, it is required.
+        :type ProductType: int
+        :param TemplateId: ID of the source parameter template. You can create a template by copying the source parameter template.
+        :type TemplateId: str
+        :param ParamList: Parameter list.
+        :type ParamList: list of InstanceParam
+        """
+        self.Name = None
+        self.Description = None
+        self.ProductType = None
+        self.TemplateId = None
+        self.ParamList = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        self.ProductType = params.get("ProductType")
+        self.TemplateId = params.get("TemplateId")
+        if params.get("ParamList") is not None:
+            self.ParamList = []
+            for item in params.get("ParamList"):
+                obj = InstanceParam()
+                obj._deserialize(item)
+                self.ParamList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateParamTemplateResponse(AbstractModel):
+    """CreateParamTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: Parameter template ID.
+        :type TemplateId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TemplateId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
         self.RequestId = params.get("RequestId")
 
 
@@ -656,6 +815,47 @@ class DeleteInstanceAccountResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteParamTemplateRequest(AbstractModel):
+    """DeleteParamTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: Parameter template ID.
+        :type TemplateId: str
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteParamTemplateResponse(AbstractModel):
+    """DeleteParamTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -751,17 +951,32 @@ class DescribeBackupUrlResponse(AbstractModel):
         :type DownloadUrl: list of str
         :param InnerDownloadUrl: Download address on the private network (valid for 6 hours)
         :type InnerDownloadUrl: list of str
+        :param Filenames: File name (only valid for TencentDB for Tendis instances)
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Filenames: list of str
+        :param BackupInfos: List of backup file information
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type BackupInfos: list of BackupDownloadInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.DownloadUrl = None
         self.InnerDownloadUrl = None
+        self.Filenames = None
+        self.BackupInfos = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.DownloadUrl = params.get("DownloadUrl")
         self.InnerDownloadUrl = params.get("InnerDownloadUrl")
+        self.Filenames = params.get("Filenames")
+        if params.get("BackupInfos") is not None:
+            self.BackupInfos = []
+            for item in params.get("BackupInfos"):
+                obj = BackupDownloadInfo()
+                obj._deserialize(item)
+                self.BackupInfos.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2273,6 +2488,138 @@ class DescribeMaintenanceWindowResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeParamTemplateInfoRequest(AbstractModel):
+    """DescribeParamTemplateInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: Parameter template ID.
+        :type TemplateId: str
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeParamTemplateInfoResponse(AbstractModel):
+    """DescribeParamTemplateInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Number of instance parameters
+        :type TotalCount: int
+        :param TemplateId: Parameter template ID
+        :type TemplateId: str
+        :param Name: Parameter template name
+        :type Name: str
+        :param ProductType: Instance type. Valid values: `1` (Redis 2.8 memory edition in cluster architecture), `2` (Redis 2.8 memory edition in standard architecture), `3` (CKV 3.2 memory edition in standard architecture), `4` (CKV 3.2 memory edition in cluster architecture), `5` (Redis 2.8 memory edition in standalone architecture), `6` (Redis 4.0 memory edition in standard architecture), `7` (Redis 4.0 memory edition in cluster architecture), `8` (Redis 5.0 memory edition in standard architecture), `9` (Redis 5.0 memory edition in cluster architecture)
+        :type ProductType: int
+        :param Description: Parameter template description
+        :type Description: str
+        :param Items: Parameter details
+        :type Items: list of ParameterDetail
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TemplateId = None
+        self.Name = None
+        self.ProductType = None
+        self.Description = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.TemplateId = params.get("TemplateId")
+        self.Name = params.get("Name")
+        self.ProductType = params.get("ProductType")
+        self.Description = params.get("Description")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ParameterDetail()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeParamTemplatesRequest(AbstractModel):
+    """DescribeParamTemplates request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductTypes: Array of instance types. Valid values: `1` (Redis 2.8 memory edition in cluster architecture), `2` (Redis 2.8 memory edition in standard architecture), `3` (CKV 3.2 memory edition in standard architecture), `4` (CKV 3.2 memory edition in cluster architecture), `5` (Redis 2.8 memory edition in standalone architecture), `6` (Redis 4.0 memory edition in standard architecture), `7` (Redis 4.0 memory edition in cluster architecture), `8` (Redis 5.0 memory edition in standard architecture), `9` (Redis 5.0 memory edition in cluster architecture).
+        :type ProductTypes: list of int
+        :param TemplateNames: Array of template names.
+        :type TemplateNames: list of str
+        :param TemplateIds: Array of template IDs.
+        :type TemplateIds: list of str
+        """
+        self.ProductTypes = None
+        self.TemplateNames = None
+        self.TemplateIds = None
+
+
+    def _deserialize(self, params):
+        self.ProductTypes = params.get("ProductTypes")
+        self.TemplateNames = params.get("TemplateNames")
+        self.TemplateIds = params.get("TemplateIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeParamTemplatesResponse(AbstractModel):
+    """DescribeParamTemplates response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Number of parameter templates of the user.
+        :type TotalCount: int
+        :param Items: Parameter template details.
+        :type Items: list of ParamTemplateInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ParamTemplateInfo()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeProductInfoRequest(AbstractModel):
     """DescribeProductInfo request structure.
 
@@ -2724,6 +3071,80 @@ class DescribeTaskListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTendisSlowLogRequest(AbstractModel):
+    """DescribeTendisSlowLog request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of crs-ngvou0i1
+        :type InstanceId: str
+        :param BeginTime: Start time in the format of 2019-09-08 12:12:41
+        :type BeginTime: str
+        :param EndTime: End time in the format of 2019-09-09 12:12:41
+        :type EndTime: str
+        :param MinQueryTime: Slow query threshold in ms
+        :type MinQueryTime: int
+        :param Limit: The maximum number of results returned per page. Default value: `20`
+        :type Limit: int
+        :param Offset: Offset, which is an integral multiple of `Limit`
+        :type Offset: int
+        """
+        self.InstanceId = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.MinQueryTime = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.MinQueryTime = params.get("MinQueryTime")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTendisSlowLogResponse(AbstractModel):
+    """DescribeTendisSlowLog response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number of slow queries
+        :type TotalCount: int
+        :param TendisSlowLogDetail: Slow query details
+        :type TendisSlowLogDetail: list of TendisSlowLogDetail
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TendisSlowLogDetail = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TendisSlowLogDetail") is not None:
+            self.TendisSlowLogDetail = []
+            for item in params.get("TendisSlowLogDetail"):
+                obj = TendisSlowLogDetail()
+                obj._deserialize(item)
+                self.TendisSlowLogDetail.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DestroyPostpaidInstanceRequest(AbstractModel):
     """DestroyPostpaidInstance request structure.
 
@@ -3039,6 +3460,147 @@ class Inbound(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class InquiryPriceCreateInstanceRequest(AbstractModel):
+    """InquiryPriceCreateInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TypeId: Instance type. Valid values: `2` (Redis 2.8 memory edition in standard architecture), `3` (CKV 3.2 memory edition in standard architecture), `4` (CKV 3.2 memory edition in cluster architecture), `6` (Redis 4.0 memory edition in standard architecture), `7` (Redis 4.0 memory edition in cluster architecture), `8` (Redis 5.0 memory edition in standard architecture), `9` (Redis 5.0 memory edition in cluster architecture).
+        :type TypeId: int
+        :param MemSize: Memory capacity in MB, which must be a multiple of 1,024. It is subject to the purchasable specifications returned by the [DescribeProductInfo API](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1).
+If `TypeId` indicates the standard architecture, `MemSize` indicates the total memory capacity of an instance; if `TypeId` indicates the cluster architecture, `MemSize` indicates the memory capacity per shard.
+        :type MemSize: int
+        :param GoodsNum: Number of instances. The actual quantity purchasable at a time is subject to the specifications returned by the [DescribeProductInfo API](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1).
+        :type GoodsNum: int
+        :param Period: Length of purchase in months, which is required when creating a monthly-subscribed instance. Value range: [1,2,3,4,5,6,7,8,9,10,11,12,24,36]. For pay-as-you-go instances, set the parameter to `1`.
+        :type Period: int
+        :param BillingMode: Billing mode. Valid values: `0` (pay-as-you-go), `1` (monthly subscription).
+        :type BillingMode: int
+        :param ZoneId: ID of the AZ where the instance resides. For more information, see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).
+        :type ZoneId: int
+        :param RedisShardNum: Number of instance shards. This parameter can be left blank for Redis 2.8 in standard architecture, CKV in standard architecture, Redis 2.8 in standalone architecture, and Redis 4.0 in standard architecture.
+        :type RedisShardNum: int
+        :param RedisReplicasNum: Number of instance replicas. This parameter can be left blank for Redis 2.8 in standard architecture, CKV in standard architecture, and Redis 2.8 in standalone architecture.
+        :type RedisReplicasNum: int
+        :param ReplicasReadonly: Whether to support read-only replicas. This parameter can be left blank for Redis 2.8 in standard architecture, CKV in standard architecture, and Redis 2.8 in standalone architecture.
+        :type ReplicasReadonly: bool
+        :param ZoneName: Name of the AZ where the instance resides. For more information, see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).
+        :type ZoneName: str
+        """
+        self.TypeId = None
+        self.MemSize = None
+        self.GoodsNum = None
+        self.Period = None
+        self.BillingMode = None
+        self.ZoneId = None
+        self.RedisShardNum = None
+        self.RedisReplicasNum = None
+        self.ReplicasReadonly = None
+        self.ZoneName = None
+
+
+    def _deserialize(self, params):
+        self.TypeId = params.get("TypeId")
+        self.MemSize = params.get("MemSize")
+        self.GoodsNum = params.get("GoodsNum")
+        self.Period = params.get("Period")
+        self.BillingMode = params.get("BillingMode")
+        self.ZoneId = params.get("ZoneId")
+        self.RedisShardNum = params.get("RedisShardNum")
+        self.RedisReplicasNum = params.get("RedisReplicasNum")
+        self.ReplicasReadonly = params.get("ReplicasReadonly")
+        self.ZoneName = params.get("ZoneName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryPriceCreateInstanceResponse(AbstractModel):
+    """InquiryPriceCreateInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Price: Price. Unit: USD
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Price: float
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Price = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Price = params.get("Price")
+        self.RequestId = params.get("RequestId")
+
+
+class InquiryPriceUpgradeInstanceRequest(AbstractModel):
+    """InquiryPriceUpgradeInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param MemSize: Shard size in MB.
+        :type MemSize: int
+        :param RedisShardNum: Number of shards. This parameter can be left blank for Redis 2.8 in standard architecture, CKV in standard architecture, and Redis 2.8 in standalone architecture.
+        :type RedisShardNum: int
+        :param RedisReplicasNum: Number of replicas. This parameter can be left blank for Redis 2.8 in standard architecture, CKV in standard architecture, and Redis 2.8 in standalone architecture.
+        :type RedisReplicasNum: int
+        """
+        self.InstanceId = None
+        self.MemSize = None
+        self.RedisShardNum = None
+        self.RedisReplicasNum = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.MemSize = params.get("MemSize")
+        self.RedisShardNum = params.get("RedisShardNum")
+        self.RedisReplicasNum = params.get("RedisReplicasNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryPriceUpgradeInstanceResponse(AbstractModel):
+    """InquiryPriceUpgradeInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Price: Price. Unit: USD
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Price: float
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Price = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Price = params.get("Price")
+        self.RequestId = params.get("RequestId")
 
 
 class InstanceClusterNode(AbstractModel):
@@ -4472,6 +5034,64 @@ class ModifyNetworkConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyParamTemplateRequest(AbstractModel):
+    """ModifyParamTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: ID of the parameter template to be modified.
+        :type TemplateId: str
+        :param Name: New name of the parameter template.
+        :type Name: str
+        :param Description: New description of the parameter template.
+        :type Description: str
+        :param ParamList: List of new parameters.
+        :type ParamList: list of InstanceParam
+        """
+        self.TemplateId = None
+        self.Name = None
+        self.Description = None
+        self.ParamList = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        if params.get("ParamList") is not None:
+            self.ParamList = []
+            for item in params.get("ParamList"):
+                obj = InstanceParam()
+                obj._deserialize(item)
+                self.ParamList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyParamTemplateResponse(AbstractModel):
+    """ModifyParamTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Outbound(AbstractModel):
     """Security group outbound rule
 
@@ -4515,6 +5135,101 @@ class Outbound(AbstractModel):
         self.PortRange = params.get("PortRange")
         self.ServiceModule = params.get("ServiceModule")
         self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParamTemplateInfo(AbstractModel):
+    """Parameter template information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: Parameter template ID
+        :type TemplateId: str
+        :param Name: Parameter template name
+        :type Name: str
+        :param Description: Parameter template description
+        :type Description: str
+        :param ProductType: Instance type. Valid values: `1` (Redis 2.8 memory edition in cluster architecture), `2` (Redis 2.8 memory edition in standard architecture), `3` (CKV 3.2 memory edition in standard architecture), `4` (CKV 3.2 memory edition in cluster architecture), `5` (Redis 2.8 memory edition in standalone architecture), `6` (Redis 4.0 memory edition in standard architecture), `7` (Redis 4.0 memory edition in cluster architecture), `8` (Redis 5.0 memory edition in standard architecture), `9` (Redis 5.0 memory edition in cluster architecture)
+        :type ProductType: int
+        """
+        self.TemplateId = None
+        self.Name = None
+        self.Description = None
+        self.ProductType = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        self.ProductType = params.get("ProductType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParameterDetail(AbstractModel):
+    """Details of the parameters in a parameter template
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Parameter name
+        :type Name: str
+        :param ParamType: Data type of the parameter
+        :type ParamType: str
+        :param Default: Default value of the parameter
+        :type Default: str
+        :param Description: Parameter description
+        :type Description: str
+        :param CurrentValue: Current value of the parameter
+        :type CurrentValue: str
+        :param NeedReboot: Whether the database needs to be restarted for the modified parameter to take effect. Valid values: `0` (no),`1` (yes)
+        :type NeedReboot: int
+        :param Max: Maximum value of the parameter
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Max: str
+        :param Min: Minimum value of the parameter
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Min: str
+        :param EnumValue: Enumerated values of the parameter. It is null if the parameter is non-enumerated
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type EnumValue: list of str
+        """
+        self.Name = None
+        self.ParamType = None
+        self.Default = None
+        self.Description = None
+        self.CurrentValue = None
+        self.NeedReboot = None
+        self.Max = None
+        self.Min = None
+        self.EnumValue = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.ParamType = params.get("ParamType")
+        self.Default = params.get("Default")
+        self.Description = params.get("Description")
+        self.CurrentValue = params.get("CurrentValue")
+        self.NeedReboot = params.get("NeedReboot")
+        self.Max = params.get("Max")
+        self.Min = params.get("Min")
+        self.EnumValue = params.get("EnumValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4790,20 +5505,24 @@ class RedisNodeInfo(AbstractModel):
         r"""
         :param NodeType: Node type. Valid values: `0` (master node), `1` (replica node)
         :type NodeType: int
-        :param ZoneId: ID of the availability zone of the master or replica node
-        :type ZoneId: int
         :param NodeId: ID of the master or replica node, which is not required upon creation of the instance
         :type NodeId: int
+        :param ZoneId: ID of the availability zone of the master or replica node
+        :type ZoneId: int
+        :param ZoneName: ID of the availability zone of the master or replica node
+        :type ZoneName: str
         """
         self.NodeType = None
-        self.ZoneId = None
         self.NodeId = None
+        self.ZoneId = None
+        self.ZoneName = None
 
 
     def _deserialize(self, params):
         self.NodeType = params.get("NodeType")
-        self.ZoneId = params.get("ZoneId")
         self.NodeId = params.get("NodeId")
+        self.ZoneId = params.get("ZoneId")
+        self.ZoneName = params.get("ZoneName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5524,6 +6243,46 @@ class TendisNodes(AbstractModel):
     def _deserialize(self, params):
         self.NodeId = params.get("NodeId")
         self.NodeRole = params.get("NodeRole")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TendisSlowLogDetail(AbstractModel):
+    """Tendis slow query details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ExecuteTime: Execution time
+        :type ExecuteTime: str
+        :param Duration: Duration of the slow query (ms)
+        :type Duration: int
+        :param Command: Command
+        :type Command: str
+        :param CommandLine: Command line details
+        :type CommandLine: str
+        :param Node: Node ID
+        :type Node: str
+        """
+        self.ExecuteTime = None
+        self.Duration = None
+        self.Command = None
+        self.CommandLine = None
+        self.Node = None
+
+
+    def _deserialize(self, params):
+        self.ExecuteTime = params.get("ExecuteTime")
+        self.Duration = params.get("Duration")
+        self.Command = params.get("Command")
+        self.CommandLine = params.get("CommandLine")
+        self.Node = params.get("Node")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

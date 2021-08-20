@@ -317,7 +317,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateParamTemplate(self, request):
-        """This API (CreateParamTemplate) is used to create a parameter template.
+        """This API is used to create a parameter template. The common request parameter `Region` can only be set to `ap-guangzhou`.
 
         :param request: Request instance for CreateParamTemplate.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateParamTemplateRequest`
@@ -457,7 +457,7 @@ class CdbClient(AbstractClient):
 
 
     def DeleteParamTemplate(self, request):
-        """This API (DeleteParamTemplate) is used to delete a parameter template.
+        """This API is used to delete a parameter template. The common request parameter `Region` can only be set to `ap-guangzhou`.
 
         :param request: Request instance for DeleteParamTemplate.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteParamTemplateRequest`
@@ -1357,7 +1357,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeParamTemplateInfo(self, request):
-        """This API (DescribeParamTemplateInfo) is used to query parameter template details.
+        """This API is used to query parameter template details. The common request parameter `Region` can only be set to `ap-guangzhou`.
 
         :param request: Request instance for DescribeParamTemplateInfo.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeParamTemplateInfoRequest`
@@ -2228,7 +2228,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyParamTemplate(self, request):
-        """This API (ModifyParamTemplate) is used to modify a parameter template.
+        """This API is used to modify a parameter template. The common request parameter `Region` can only be set to `ap-guangzhou`.
 
         :param request: Request instance for ModifyParamTemplate.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyParamTemplateRequest`
