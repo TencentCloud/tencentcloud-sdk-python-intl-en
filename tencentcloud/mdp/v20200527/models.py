@@ -18,6 +18,67 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CacheInfo(AbstractModel):
+    """Cache configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Info: List of timeout parameter configuration
+Note: this field may return `null`, indicating that no valid value was found.
+        :type Info: list of CacheInfoInfo
+        """
+        self.Info = None
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self.Info = []
+            for item in params.get("Info"):
+                obj = CacheInfoInfo()
+                obj._deserialize(item)
+                self.Info.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CacheInfoInfo(AbstractModel):
+    """Timeout information for cache configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Timeout: Timeout period (ms), which must be an integer multiple of 1000
+.m3u8/.mpd: [1000, 60000]
+.ts/.m4s/.mp4: [10000, 1800000]
+        :type Timeout: int
+        :param Ext: File extension. Valid values: .m3u8, .ts, .mpd, .m4s, .mp4
+Note: this field may return `null`, indicating that no valid value was found.
+        :type Ext: str
+        """
+        self.Timeout = None
+        self.Ext = None
+
+
+    def _deserialize(self, params):
+        self.Timeout = params.get("Timeout")
+        self.Ext = params.get("Ext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ChannelInfo(AbstractModel):
     """Channel information.
 
@@ -33,11 +94,15 @@ class ChannelInfo(AbstractModel):
         :type Protocol: str
         :param Points: Channel input and output.
         :type Points: :class:`tencentcloud.mdp.v20200527.models.PointInfo`
+        :param CacheInfo: Cache configuration
+Note: this field may return `null`, indicating that no valid value was found.
+        :type CacheInfo: :class:`tencentcloud.mdp.v20200527.models.CacheInfo`
         """
         self.Id = None
         self.Name = None
         self.Protocol = None
         self.Points = None
+        self.CacheInfo = None
 
 
     def _deserialize(self, params):
@@ -47,6 +112,9 @@ class ChannelInfo(AbstractModel):
         if params.get("Points") is not None:
             self.Points = PointInfo()
             self.Points._deserialize(params.get("Points"))
+        if params.get("CacheInfo") is not None:
+            self.CacheInfo = CacheInfo()
+            self.CacheInfo._deserialize(params.get("CacheInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -56,18 +124,18 @@ class ChannelInfo(AbstractModel):
         
 
 
-class CreateMediaPackageChannelEndpointRequest(AbstractModel):
-    """CreateMediaPackageChannelEndpoint request structure.
+class CreateStreamPackageChannelEndpointRequest(AbstractModel):
+    """CreateStreamPackageChannelEndpoint request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Id: Channel ID.
+        :param Id: Channel ID
         :type Id: str
-        :param Name: Channel name.
+        :param Name: Channel name
         :type Name: str
-        :param AuthInfo: Authentication information.
+        :param AuthInfo: Authentication information
         :type AuthInfo: :class:`tencentcloud.mdp.v20200527.models.EndpointAuthInfo`
         """
         self.Id = None
@@ -90,14 +158,14 @@ class CreateMediaPackageChannelEndpointRequest(AbstractModel):
         
 
 
-class CreateMediaPackageChannelEndpointResponse(AbstractModel):
-    """CreateMediaPackageChannelEndpoint response structure.
+class CreateStreamPackageChannelEndpointResponse(AbstractModel):
+    """CreateStreamPackageChannelEndpoint response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Info: The information of the created channel endpoint.
+        :param Info: Information of the created channel endpoint
         :type Info: :class:`tencentcloud.mdp.v20200527.models.EndpointInfo`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -113,25 +181,31 @@ class CreateMediaPackageChannelEndpointResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class CreateMediaPackageChannelRequest(AbstractModel):
-    """CreateMediaPackageChannel request structure.
+class CreateStreamPackageChannelRequest(AbstractModel):
+    """CreateStreamPackageChannel request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Name: Channel name.
+        :param Name: Channel name
         :type Name: str
-        :param Protocol: Channel protocol. Valid values: HLS, DASH.
+        :param Protocol: Channel protocol. Valid values: HLS, DASH
         :type Protocol: str
+        :param CacheInfo: Cache configuration
+        :type CacheInfo: :class:`tencentcloud.mdp.v20200527.models.CacheInfo`
         """
         self.Name = None
         self.Protocol = None
+        self.CacheInfo = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Protocol = params.get("Protocol")
+        if params.get("CacheInfo") is not None:
+            self.CacheInfo = CacheInfo()
+            self.CacheInfo._deserialize(params.get("CacheInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -141,39 +215,33 @@ class CreateMediaPackageChannelRequest(AbstractModel):
         
 
 
-class CreateMediaPackageChannelResponse(AbstractModel):
-    """CreateMediaPackageChannel response structure.
+class CreateStreamPackageChannelResponse(AbstractModel):
+    """CreateStreamPackageChannel response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Info: Channel information.
-        :type Info: :class:`tencentcloud.mdp.v20200527.models.ChannelInfo`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Info = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        if params.get("Info") is not None:
-            self.Info = ChannelInfo()
-            self.Info._deserialize(params.get("Info"))
         self.RequestId = params.get("RequestId")
 
 
-class DeleteMediaPackageChannelEndpointsRequest(AbstractModel):
-    """DeleteMediaPackageChannelEndpoints request structure.
+class DeleteStreamPackageChannelEndpointsRequest(AbstractModel):
+    """DeleteStreamPackageChannelEndpoints request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Id: Channel ID.
+        :param Id: Channel ID
         :type Id: str
-        :param Urls: The list of endpoint URLs.
+        :param Urls: List of the URLs of the endpoints to delete
         :type Urls: list of str
         """
         self.Id = None
@@ -192,8 +260,8 @@ class DeleteMediaPackageChannelEndpointsRequest(AbstractModel):
         
 
 
-class DeleteMediaPackageChannelEndpointsResponse(AbstractModel):
-    """DeleteMediaPackageChannelEndpoints response structure.
+class DeleteStreamPackageChannelEndpointsResponse(AbstractModel):
+    """DeleteStreamPackageChannelEndpoints response structure.
 
     """
 
@@ -209,14 +277,14 @@ class DeleteMediaPackageChannelEndpointsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DeleteMediaPackageChannelsRequest(AbstractModel):
-    """DeleteMediaPackageChannels request structure.
+class DeleteStreamPackageChannelsRequest(AbstractModel):
+    """DeleteStreamPackageChannels request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Ids: The ID list of channels to be deleted.
+        :param Ids: List of the IDs of the channels to delete
         :type Ids: list of str
         """
         self.Ids = None
@@ -233,16 +301,16 @@ class DeleteMediaPackageChannelsRequest(AbstractModel):
         
 
 
-class DeleteMediaPackageChannelsResponse(AbstractModel):
-    """DeleteMediaPackageChannels response structure.
+class DeleteStreamPackageChannelsResponse(AbstractModel):
+    """DeleteStreamPackageChannels response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param SuccessInfos: The information list of channels that have been deleted.
+        :param SuccessInfos: List of the information of successfully deleted channels
         :type SuccessInfos: list of ChannelInfo
-        :param FailInfos: The information list of channels that failed to be deleted.
+        :param FailInfos: List of the information of the channels that failed to be deleted
         :type FailInfos: list of ChannelInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -268,14 +336,14 @@ class DeleteMediaPackageChannelsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeMediaPackageChannelRequest(AbstractModel):
-    """DescribeMediaPackageChannel request structure.
+class DescribeStreamPackageChannelRequest(AbstractModel):
+    """DescribeStreamPackageChannel request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Id: Channel ID.
+        :param Id: Channel ID
         :type Id: str
         """
         self.Id = None
@@ -292,14 +360,14 @@ class DescribeMediaPackageChannelRequest(AbstractModel):
         
 
 
-class DescribeMediaPackageChannelResponse(AbstractModel):
-    """DescribeMediaPackageChannel response structure.
+class DescribeStreamPackageChannelResponse(AbstractModel):
+    """DescribeStreamPackageChannel response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Info: Channel information.
+        :param Info: Channel information
         :type Info: :class:`tencentcloud.mdp.v20200527.models.ChannelInfo`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -315,16 +383,16 @@ class DescribeMediaPackageChannelResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeMediaPackageChannelsRequest(AbstractModel):
-    """DescribeMediaPackageChannels request structure.
+class DescribeStreamPackageChannelsRequest(AbstractModel):
+    """DescribeStreamPackageChannels request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param PageNum: Page number. Value range: [1, 1000].
+        :param PageNum: Page number. Value range: [1, 1000]
         :type PageNum: int
-        :param PageSize: The size of each page. Value range: [1, 1000].
+        :param PageSize: Number of entries per page. Value range: [1, 1000]
         :type PageSize: int
         """
         self.PageNum = None
@@ -343,23 +411,23 @@ class DescribeMediaPackageChannelsRequest(AbstractModel):
         
 
 
-class DescribeMediaPackageChannelsResponse(AbstractModel):
-    """DescribeMediaPackageChannels response structure.
+class DescribeStreamPackageChannelsResponse(AbstractModel):
+    """DescribeStreamPackageChannels response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Infos: The list of channel outputs.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Infos: List of channel information
+Note: this field may return `null`, indicating that no valid value was found.
         :type Infos: list of ChannelInfo
-        :param PageNum: Page number.
+        :param PageNum: Page number
         :type PageNum: int
-        :param PageSize: The size of each page.
+        :param PageSize: Number of entries per page
         :type PageSize: int
-        :param TotalNum: Total number.
+        :param TotalNum: Total number of entries
         :type TotalNum: int
-        :param TotalPage: Total number of pages.
+        :param TotalPage: Total number of pages
         :type TotalPage: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -516,20 +584,20 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
-class ModifyMediaPackageChannelEndpointRequest(AbstractModel):
-    """ModifyMediaPackageChannelEndpoint request structure.
+class ModifyStreamPackageChannelEndpointRequest(AbstractModel):
+    """ModifyStreamPackageChannelEndpoint request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Id: Channel ID.
+        :param Id: Channel ID
         :type Id: str
-        :param Url: Channel endpoint URL.
+        :param Url: Channel endpoint URL
         :type Url: str
-        :param Name: The channel name after modification.
+        :param Name: New endpoint name
         :type Name: str
-        :param AuthInfo: The channel authentication after modification.
+        :param AuthInfo: New channel authentication information
         :type AuthInfo: :class:`tencentcloud.mdp.v20200527.models.EndpointAuthInfo`
         """
         self.Id = None
@@ -554,8 +622,8 @@ class ModifyMediaPackageChannelEndpointRequest(AbstractModel):
         
 
 
-class ModifyMediaPackageChannelEndpointResponse(AbstractModel):
-    """ModifyMediaPackageChannelEndpoint response structure.
+class ModifyStreamPackageChannelEndpointResponse(AbstractModel):
+    """ModifyStreamPackageChannelEndpoint response structure.
 
     """
 
@@ -571,20 +639,20 @@ class ModifyMediaPackageChannelEndpointResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ModifyMediaPackageChannelInputAuthInfoRequest(AbstractModel):
-    """ModifyMediaPackageChannelInputAuthInfo request structure.
+class ModifyStreamPackageChannelInputAuthInfoRequest(AbstractModel):
+    """ModifyStreamPackageChannelInputAuthInfo request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Id: Channel ID.
+        :param Id: Channel ID
         :type Id: str
-        :param Url: Channel input URL.
+        :param Url: Channel input URL
         :type Url: str
-        :param ActionType: Authentication configuration type. Valid values: CLOSE, UPDATE.
-CLOSE: disable authentication.
-UPDATE: update authentication.
+        :param ActionType: Authentication configuration. Valid values: `CLOSE`, `UPDATE`
+`CLOSE`: disable authentication
+`UPDATE`: update authentication information
         :type ActionType: str
         """
         self.Id = None
@@ -605,14 +673,14 @@ UPDATE: update authentication.
         
 
 
-class ModifyMediaPackageChannelInputAuthInfoResponse(AbstractModel):
-    """ModifyMediaPackageChannelInputAuthInfo response structure.
+class ModifyStreamPackageChannelInputAuthInfoResponse(AbstractModel):
+    """ModifyStreamPackageChannelInputAuthInfo response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param AuthInfo: Channel input authentication information.
+        :param AuthInfo: Channel input authentication information
         :type AuthInfo: :class:`tencentcloud.mdp.v20200527.models.InputAuthInfo`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -628,29 +696,35 @@ class ModifyMediaPackageChannelInputAuthInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ModifyMediaPackageChannelRequest(AbstractModel):
-    """ModifyMediaPackageChannel request structure.
+class ModifyStreamPackageChannelRequest(AbstractModel):
+    """ModifyStreamPackageChannel request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Id: Channel ID.
+        :param Id: Channel ID
         :type Id: str
-        :param Name: The channel name after modification.
+        :param Name: New channel name
         :type Name: str
-        :param Protocol: The channel protocol after modification. Valid values: HLS, DASH.
+        :param Protocol: New channel protocol. Valid values: HLS, DASH
         :type Protocol: str
+        :param CacheInfo: Cache configuration
+        :type CacheInfo: :class:`tencentcloud.mdp.v20200527.models.CacheInfo`
         """
         self.Id = None
         self.Name = None
         self.Protocol = None
+        self.CacheInfo = None
 
 
     def _deserialize(self, params):
         self.Id = params.get("Id")
         self.Name = params.get("Name")
         self.Protocol = params.get("Protocol")
+        if params.get("CacheInfo") is not None:
+            self.CacheInfo = CacheInfo()
+            self.CacheInfo._deserialize(params.get("CacheInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -660,8 +734,8 @@ class ModifyMediaPackageChannelRequest(AbstractModel):
         
 
 
-class ModifyMediaPackageChannelResponse(AbstractModel):
-    """ModifyMediaPackageChannel response structure.
+class ModifyStreamPackageChannelResponse(AbstractModel):
+    """ModifyStreamPackageChannel response structure.
 
     """
 

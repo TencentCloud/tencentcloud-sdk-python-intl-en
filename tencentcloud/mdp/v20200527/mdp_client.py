@@ -26,20 +26,20 @@ class MdpClient(AbstractClient):
     _service = 'mdp'
 
 
-    def CreateMediaPackageChannel(self, request):
-        """This API is used to create a media package channel.
+    def CreateStreamPackageChannel(self, request):
+        """This API is used to create a StreamPackage channel.
 
-        :param request: Request instance for CreateMediaPackageChannel.
-        :type request: :class:`tencentcloud.mdp.v20200527.models.CreateMediaPackageChannelRequest`
-        :rtype: :class:`tencentcloud.mdp.v20200527.models.CreateMediaPackageChannelResponse`
+        :param request: Request instance for CreateStreamPackageChannel.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.CreateStreamPackageChannelRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.CreateStreamPackageChannelResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateMediaPackageChannel", params)
+            body = self.call("CreateStreamPackageChannel", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateMediaPackageChannelResponse()
+                model = models.CreateStreamPackageChannelResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -54,20 +54,20 @@ class MdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateMediaPackageChannelEndpoint(self, request):
-        """This API is used to create an endpoint of a media package channel.
+    def CreateStreamPackageChannelEndpoint(self, request):
+        """This API is used to create an endpoint on a StreamPackage channel.
 
-        :param request: Request instance for CreateMediaPackageChannelEndpoint.
-        :type request: :class:`tencentcloud.mdp.v20200527.models.CreateMediaPackageChannelEndpointRequest`
-        :rtype: :class:`tencentcloud.mdp.v20200527.models.CreateMediaPackageChannelEndpointResponse`
+        :param request: Request instance for CreateStreamPackageChannelEndpoint.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.CreateStreamPackageChannelEndpointRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.CreateStreamPackageChannelEndpointResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateMediaPackageChannelEndpoint", params)
+            body = self.call("CreateStreamPackageChannelEndpoint", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateMediaPackageChannelEndpointResponse()
+                model = models.CreateStreamPackageChannelEndpointResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -82,20 +82,20 @@ class MdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteMediaPackageChannelEndpoints(self, request):
-        """This API is used to delete endpoints from a media package channel in batches.
+    def DeleteStreamPackageChannelEndpoints(self, request):
+        """This API is used to delete endpoints from a StreamPackage channel in batches.
 
-        :param request: Request instance for DeleteMediaPackageChannelEndpoints.
-        :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteMediaPackageChannelEndpointsRequest`
-        :rtype: :class:`tencentcloud.mdp.v20200527.models.DeleteMediaPackageChannelEndpointsResponse`
+        :param request: Request instance for DeleteStreamPackageChannelEndpoints.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageChannelEndpointsRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageChannelEndpointsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMediaPackageChannelEndpoints", params)
+            body = self.call("DeleteStreamPackageChannelEndpoints", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteMediaPackageChannelEndpointsResponse()
+                model = models.DeleteStreamPackageChannelEndpointsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -110,20 +110,20 @@ class MdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteMediaPackageChannels(self, request):
-        """This API is used to delete media package channels in batches.
+    def DeleteStreamPackageChannels(self, request):
+        """This API is used to delete StreamPackage channels in batches.
 
-        :param request: Request instance for DeleteMediaPackageChannels.
-        :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteMediaPackageChannelsRequest`
-        :rtype: :class:`tencentcloud.mdp.v20200527.models.DeleteMediaPackageChannelsResponse`
+        :param request: Request instance for DeleteStreamPackageChannels.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageChannelsRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageChannelsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMediaPackageChannels", params)
+            body = self.call("DeleteStreamPackageChannels", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteMediaPackageChannelsResponse()
+                model = models.DeleteStreamPackageChannelsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -138,20 +138,20 @@ class MdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeMediaPackageChannel(self, request):
-        """This API is used to query the information of a media package channel.
+    def DescribeStreamPackageChannel(self, request):
+        """This API is used to query the information of a StreamPackage channel.
 
-        :param request: Request instance for DescribeMediaPackageChannel.
-        :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeMediaPackageChannelRequest`
-        :rtype: :class:`tencentcloud.mdp.v20200527.models.DescribeMediaPackageChannelResponse`
+        :param request: Request instance for DescribeStreamPackageChannel.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageChannelRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageChannelResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMediaPackageChannel", params)
+            body = self.call("DescribeStreamPackageChannel", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeMediaPackageChannelResponse()
+                model = models.DescribeStreamPackageChannelResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -166,20 +166,20 @@ class MdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeMediaPackageChannels(self, request):
-        """This API is used to query the information list of media package channels.
+    def DescribeStreamPackageChannels(self, request):
+        """This API is used to query the information of multiple StreamPackage channels.
 
-        :param request: Request instance for DescribeMediaPackageChannels.
-        :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeMediaPackageChannelsRequest`
-        :rtype: :class:`tencentcloud.mdp.v20200527.models.DescribeMediaPackageChannelsResponse`
+        :param request: Request instance for DescribeStreamPackageChannels.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageChannelsRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageChannelsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMediaPackageChannels", params)
+            body = self.call("DescribeStreamPackageChannels", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeMediaPackageChannelsResponse()
+                model = models.DescribeStreamPackageChannelsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -194,20 +194,20 @@ class MdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyMediaPackageChannel(self, request):
-        """This API is used to modify the information of a media package channel.
+    def ModifyStreamPackageChannel(self, request):
+        """This API is used to modify a StreamPackage channel.
 
-        :param request: Request instance for ModifyMediaPackageChannel.
-        :type request: :class:`tencentcloud.mdp.v20200527.models.ModifyMediaPackageChannelRequest`
-        :rtype: :class:`tencentcloud.mdp.v20200527.models.ModifyMediaPackageChannelResponse`
+        :param request: Request instance for ModifyStreamPackageChannel.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.ModifyStreamPackageChannelRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.ModifyStreamPackageChannelResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMediaPackageChannel", params)
+            body = self.call("ModifyStreamPackageChannel", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyMediaPackageChannelResponse()
+                model = models.ModifyStreamPackageChannelResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -222,20 +222,20 @@ class MdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyMediaPackageChannelEndpoint(self, request):
-        """This API is used to modify an endpoint of a media package channel.
+    def ModifyStreamPackageChannelEndpoint(self, request):
+        """This API is used to modify an endpoint of a StreamPackage channel.
 
-        :param request: Request instance for ModifyMediaPackageChannelEndpoint.
-        :type request: :class:`tencentcloud.mdp.v20200527.models.ModifyMediaPackageChannelEndpointRequest`
-        :rtype: :class:`tencentcloud.mdp.v20200527.models.ModifyMediaPackageChannelEndpointResponse`
+        :param request: Request instance for ModifyStreamPackageChannelEndpoint.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.ModifyStreamPackageChannelEndpointRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.ModifyStreamPackageChannelEndpointResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMediaPackageChannelEndpoint", params)
+            body = self.call("ModifyStreamPackageChannelEndpoint", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyMediaPackageChannelEndpointResponse()
+                model = models.ModifyStreamPackageChannelEndpointResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -250,20 +250,20 @@ class MdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyMediaPackageChannelInputAuthInfo(self, request):
-        """This API is used to modify the input authentication information of a media package channel.
+    def ModifyStreamPackageChannelInputAuthInfo(self, request):
+        """This API is used to modify the input authentication information of a StreamPackage channel.
 
-        :param request: Request instance for ModifyMediaPackageChannelInputAuthInfo.
-        :type request: :class:`tencentcloud.mdp.v20200527.models.ModifyMediaPackageChannelInputAuthInfoRequest`
-        :rtype: :class:`tencentcloud.mdp.v20200527.models.ModifyMediaPackageChannelInputAuthInfoResponse`
+        :param request: Request instance for ModifyStreamPackageChannelInputAuthInfo.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.ModifyStreamPackageChannelInputAuthInfoRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.ModifyStreamPackageChannelInputAuthInfoResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMediaPackageChannelInputAuthInfo", params)
+            body = self.call("ModifyStreamPackageChannelInputAuthInfo", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyMediaPackageChannelInputAuthInfoResponse()
+                model = models.ModifyStreamPackageChannelInputAuthInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -23,6 +23,9 @@ INVALIDPARAMETER_ACTIONTYPE = 'InvalidParameter.ActionType'
 # Incorrect authentication configuration.
 INVALIDPARAMETER_AUTHINFO = 'InvalidParameter.AuthInfo'
 
+# Invalid `CacheInfo` value
+INVALIDPARAMETER_CACHEINFO = 'InvalidParameter.CacheInfo'
+
 # The quantity exceeds the limit.
 INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = 'InvalidParameter.ExceededQuantityLimit'
 
@@ -41,7 +44,7 @@ INVALIDPARAMETER_PAGENUM = 'InvalidParameter.PageNum'
 # Invalid `PageSize`.
 INVALIDPARAMETER_PAGESIZE = 'InvalidParameter.PageSize'
 
-# Endpoint error.
+# Invalid `Points` value
 INVALIDPARAMETER_POINTS = 'InvalidParameter.Points'
 
 # Invalid protocol.

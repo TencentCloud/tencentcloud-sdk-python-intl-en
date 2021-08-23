@@ -26,20 +26,20 @@ class MdlClient(AbstractClient):
     _service = 'mdl'
 
 
-    def CreateMediaLiveChannel(self, request):
-        """This API is used to create a media channel.
+    def CreateStreamLiveChannel(self, request):
+        """This API is used to create a StreamLive channel.
 
-        :param request: Request instance for CreateMediaLiveChannel.
-        :type request: :class:`tencentcloud.mdl.v20200326.models.CreateMediaLiveChannelRequest`
-        :rtype: :class:`tencentcloud.mdl.v20200326.models.CreateMediaLiveChannelResponse`
+        :param request: Request instance for CreateStreamLiveChannel.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.CreateStreamLiveChannelRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.CreateStreamLiveChannelResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateMediaLiveChannel", params)
+            body = self.call("CreateStreamLiveChannel", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateMediaLiveChannelResponse()
+                model = models.CreateStreamLiveChannelResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -54,20 +54,20 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateMediaLiveInput(self, request):
-        """This API is used to create a media input.
+    def CreateStreamLiveInput(self, request):
+        """This API is used to create a StreamLive input.
 
-        :param request: Request instance for CreateMediaLiveInput.
-        :type request: :class:`tencentcloud.mdl.v20200326.models.CreateMediaLiveInputRequest`
-        :rtype: :class:`tencentcloud.mdl.v20200326.models.CreateMediaLiveInputResponse`
+        :param request: Request instance for CreateStreamLiveInput.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.CreateStreamLiveInputRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.CreateStreamLiveInputResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateMediaLiveInput", params)
+            body = self.call("CreateStreamLiveInput", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateMediaLiveInputResponse()
+                model = models.CreateStreamLiveInputResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -82,20 +82,20 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateMediaLiveInputSecurityGroup(self, request):
-        """This API is used to create an input security group. Up to 5 ones can be created.
+    def CreateStreamLiveInputSecurityGroup(self, request):
+        """This API is used to create an input security group. Up to 5 security groups are allowed.
 
-        :param request: Request instance for CreateMediaLiveInputSecurityGroup.
-        :type request: :class:`tencentcloud.mdl.v20200326.models.CreateMediaLiveInputSecurityGroupRequest`
-        :rtype: :class:`tencentcloud.mdl.v20200326.models.CreateMediaLiveInputSecurityGroupResponse`
+        :param request: Request instance for CreateStreamLiveInputSecurityGroup.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.CreateStreamLiveInputSecurityGroupRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.CreateStreamLiveInputSecurityGroupResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateMediaLiveInputSecurityGroup", params)
+            body = self.call("CreateStreamLiveInputSecurityGroup", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateMediaLiveInputSecurityGroupResponse()
+                model = models.CreateStreamLiveInputSecurityGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -110,20 +110,20 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteMediaLiveChannel(self, request):
-        """This API is used to delete a MediaLive channel.
+    def CreateStreamLivePlan(self, request):
+        """This API is used to create an event in the plan.
 
-        :param request: Request instance for DeleteMediaLiveChannel.
-        :type request: :class:`tencentcloud.mdl.v20200326.models.DeleteMediaLiveChannelRequest`
-        :rtype: :class:`tencentcloud.mdl.v20200326.models.DeleteMediaLiveChannelResponse`
+        :param request: Request instance for CreateStreamLivePlan.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.CreateStreamLivePlanRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.CreateStreamLivePlanResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMediaLiveChannel", params)
+            body = self.call("CreateStreamLivePlan", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteMediaLiveChannelResponse()
+                model = models.CreateStreamLivePlanResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -138,20 +138,20 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteMediaLiveInput(self, request):
-        """This API is used to delete a media input.
+    def DeleteStreamLiveChannel(self, request):
+        """This API is used to delete a StreamLive channel.
 
-        :param request: Request instance for DeleteMediaLiveInput.
-        :type request: :class:`tencentcloud.mdl.v20200326.models.DeleteMediaLiveInputRequest`
-        :rtype: :class:`tencentcloud.mdl.v20200326.models.DeleteMediaLiveInputResponse`
+        :param request: Request instance for DeleteStreamLiveChannel.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.DeleteStreamLiveChannelRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.DeleteStreamLiveChannelResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMediaLiveInput", params)
+            body = self.call("DeleteStreamLiveChannel", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteMediaLiveInputResponse()
+                model = models.DeleteStreamLiveChannelResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -166,20 +166,48 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteMediaLiveInputSecurityGroup(self, request):
+    def DeleteStreamLiveInput(self, request):
+        """This API is used to delete a StreamLive input.
+
+        :param request: Request instance for DeleteStreamLiveInput.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.DeleteStreamLiveInputRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.DeleteStreamLiveInputResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteStreamLiveInput", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteStreamLiveInputResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteStreamLiveInputSecurityGroup(self, request):
         """This API is used to delete an input security group.
 
-        :param request: Request instance for DeleteMediaLiveInputSecurityGroup.
-        :type request: :class:`tencentcloud.mdl.v20200326.models.DeleteMediaLiveInputSecurityGroupRequest`
-        :rtype: :class:`tencentcloud.mdl.v20200326.models.DeleteMediaLiveInputSecurityGroupResponse`
+        :param request: Request instance for DeleteStreamLiveInputSecurityGroup.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.DeleteStreamLiveInputSecurityGroupRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.DeleteStreamLiveInputSecurityGroupResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMediaLiveInputSecurityGroup", params)
+            body = self.call("DeleteStreamLiveInputSecurityGroup", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteMediaLiveInputSecurityGroupResponse()
+                model = models.DeleteStreamLiveInputSecurityGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -194,20 +222,20 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeMediaLiveChannel(self, request):
-        """This API is used to query the information of a MediaLive channel.
+    def DescribeStreamLiveChannel(self, request):
+        """This API is used to query a StreamLive channel.
 
-        :param request: Request instance for DescribeMediaLiveChannel.
-        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveChannelRequest`
-        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveChannelResponse`
+        :param request: Request instance for DescribeStreamLiveChannel.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveChannelRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveChannelResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMediaLiveChannel", params)
+            body = self.call("DescribeStreamLiveChannel", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeMediaLiveChannelResponse()
+                model = models.DescribeStreamLiveChannelResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -222,20 +250,20 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeMediaLiveChannelAlerts(self, request):
-        """This API is used to query the channel alarm information.
+    def DescribeStreamLiveChannelAlerts(self, request):
+        """This API is used to query the alarm information of a StreamLive channel.
 
-        :param request: Request instance for DescribeMediaLiveChannelAlerts.
-        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveChannelAlertsRequest`
-        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveChannelAlertsResponse`
+        :param request: Request instance for DescribeStreamLiveChannelAlerts.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveChannelAlertsRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveChannelAlertsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMediaLiveChannelAlerts", params)
+            body = self.call("DescribeStreamLiveChannelAlerts", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeMediaLiveChannelAlertsResponse()
+                model = models.DescribeStreamLiveChannelAlertsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -250,20 +278,20 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeMediaLiveChannelInputStatistics(self, request):
-        """This API is used to query the input statistics.
+    def DescribeStreamLiveChannelInputStatistics(self, request):
+        """This API is used to query input statistics.
 
-        :param request: Request instance for DescribeMediaLiveChannelInputStatistics.
-        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveChannelInputStatisticsRequest`
-        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveChannelInputStatisticsResponse`
+        :param request: Request instance for DescribeStreamLiveChannelInputStatistics.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveChannelInputStatisticsRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveChannelInputStatisticsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMediaLiveChannelInputStatistics", params)
+            body = self.call("DescribeStreamLiveChannelInputStatistics", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeMediaLiveChannelInputStatisticsResponse()
+                model = models.DescribeStreamLiveChannelInputStatisticsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -278,20 +306,20 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeMediaLiveChannelLogs(self, request):
-        """This API is used to query MediaLive channel logs, such as push event logs.
+    def DescribeStreamLiveChannelLogs(self, request):
+        """This API is used to query StreamLive channel logs, such as push event logs.
 
-        :param request: Request instance for DescribeMediaLiveChannelLogs.
-        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveChannelLogsRequest`
-        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveChannelLogsResponse`
+        :param request: Request instance for DescribeStreamLiveChannelLogs.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveChannelLogsRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveChannelLogsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMediaLiveChannelLogs", params)
+            body = self.call("DescribeStreamLiveChannelLogs", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeMediaLiveChannelLogsResponse()
+                model = models.DescribeStreamLiveChannelLogsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -306,20 +334,20 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeMediaLiveChannelOutputStatistics(self, request):
-        """This API is used to query the output statistics of a channel.
+    def DescribeStreamLiveChannelOutputStatistics(self, request):
+        """This API is used to query the output statistics of a StreamLive channel.
 
-        :param request: Request instance for DescribeMediaLiveChannelOutputStatistics.
-        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveChannelOutputStatisticsRequest`
-        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveChannelOutputStatisticsResponse`
+        :param request: Request instance for DescribeStreamLiveChannelOutputStatistics.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveChannelOutputStatisticsRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveChannelOutputStatisticsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMediaLiveChannelOutputStatistics", params)
+            body = self.call("DescribeStreamLiveChannelOutputStatistics", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeMediaLiveChannelOutputStatisticsResponse()
+                model = models.DescribeStreamLiveChannelOutputStatisticsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -334,20 +362,20 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeMediaLiveChannels(self, request):
-        """This API is used to query the information of MediaLive channels in batches.
+    def DescribeStreamLiveChannels(self, request):
+        """This API is used to query StreamLive channels in batches.
 
-        :param request: Request instance for DescribeMediaLiveChannels.
-        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveChannelsRequest`
-        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveChannelsResponse`
+        :param request: Request instance for DescribeStreamLiveChannels.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveChannelsRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveChannelsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMediaLiveChannels", params)
+            body = self.call("DescribeStreamLiveChannels", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeMediaLiveChannelsResponse()
+                model = models.DescribeStreamLiveChannelsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -362,20 +390,20 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeMediaLiveInput(self, request):
-        """This API is used to query a media input.
+    def DescribeStreamLiveInput(self, request):
+        """This API is used to query a StreamLive input.
 
-        :param request: Request instance for DescribeMediaLiveInput.
-        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveInputRequest`
-        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveInputResponse`
+        :param request: Request instance for DescribeStreamLiveInput.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveInputRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveInputResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMediaLiveInput", params)
+            body = self.call("DescribeStreamLiveInput", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeMediaLiveInputResponse()
+                model = models.DescribeStreamLiveInputResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -390,20 +418,20 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeMediaLiveInputSecurityGroup(self, request):
+    def DescribeStreamLiveInputSecurityGroup(self, request):
         """This API is used to query an input security group.
 
-        :param request: Request instance for DescribeMediaLiveInputSecurityGroup.
-        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveInputSecurityGroupRequest`
-        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveInputSecurityGroupResponse`
+        :param request: Request instance for DescribeStreamLiveInputSecurityGroup.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveInputSecurityGroupRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveInputSecurityGroupResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMediaLiveInputSecurityGroup", params)
+            body = self.call("DescribeStreamLiveInputSecurityGroup", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeMediaLiveInputSecurityGroupResponse()
+                model = models.DescribeStreamLiveInputSecurityGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -418,20 +446,20 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeMediaLiveInputSecurityGroups(self, request):
-        """This API is used to query the information of input security groups in batches.
+    def DescribeStreamLiveInputSecurityGroups(self, request):
+        """This API is used to query input security groups in batches.
 
-        :param request: Request instance for DescribeMediaLiveInputSecurityGroups.
-        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveInputSecurityGroupsRequest`
-        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveInputSecurityGroupsResponse`
+        :param request: Request instance for DescribeStreamLiveInputSecurityGroups.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveInputSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveInputSecurityGroupsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMediaLiveInputSecurityGroups", params)
+            body = self.call("DescribeStreamLiveInputSecurityGroups", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeMediaLiveInputSecurityGroupsResponse()
+                model = models.DescribeStreamLiveInputSecurityGroupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -446,20 +474,20 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeMediaLiveInputs(self, request):
-        """This API is used to query the information of media inputs in batches.
+    def DescribeStreamLiveInputs(self, request):
+        """This API is used to query StreamLive inputs in batches.
 
-        :param request: Request instance for DescribeMediaLiveInputs.
-        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveInputsRequest`
-        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveInputsResponse`
+        :param request: Request instance for DescribeStreamLiveInputs.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveInputsRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveInputsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMediaLiveInputs", params)
+            body = self.call("DescribeStreamLiveInputs", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeMediaLiveInputsResponse()
+                model = models.DescribeStreamLiveInputsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -474,20 +502,20 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyMediaLiveChannel(self, request):
-        """This API is used to modify the information of a MediaLive channel.
+    def DescribeStreamLivePlans(self, request):
+        """This API is used to query the events in the plan in batches.
 
-        :param request: Request instance for ModifyMediaLiveChannel.
-        :type request: :class:`tencentcloud.mdl.v20200326.models.ModifyMediaLiveChannelRequest`
-        :rtype: :class:`tencentcloud.mdl.v20200326.models.ModifyMediaLiveChannelResponse`
+        :param request: Request instance for DescribeStreamLivePlans.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLivePlansRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLivePlansResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMediaLiveChannel", params)
+            body = self.call("DescribeStreamLivePlans", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyMediaLiveChannelResponse()
+                model = models.DescribeStreamLivePlansResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -502,20 +530,20 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyMediaLiveInput(self, request):
-        """This API is used to update a media input.
+    def ModifyStreamLiveChannel(self, request):
+        """This API is used to modify a StreamLive channel.
 
-        :param request: Request instance for ModifyMediaLiveInput.
-        :type request: :class:`tencentcloud.mdl.v20200326.models.ModifyMediaLiveInputRequest`
-        :rtype: :class:`tencentcloud.mdl.v20200326.models.ModifyMediaLiveInputResponse`
+        :param request: Request instance for ModifyStreamLiveChannel.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.ModifyStreamLiveChannelRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.ModifyStreamLiveChannelResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMediaLiveInput", params)
+            body = self.call("ModifyStreamLiveChannel", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyMediaLiveInputResponse()
+                model = models.ModifyStreamLiveChannelResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -530,20 +558,20 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyMediaLiveInputSecurityGroup(self, request):
-        """This API is used to update an input security group.
+    def ModifyStreamLiveInput(self, request):
+        """This API is used to modify a StreamLive input.
 
-        :param request: Request instance for ModifyMediaLiveInputSecurityGroup.
-        :type request: :class:`tencentcloud.mdl.v20200326.models.ModifyMediaLiveInputSecurityGroupRequest`
-        :rtype: :class:`tencentcloud.mdl.v20200326.models.ModifyMediaLiveInputSecurityGroupResponse`
+        :param request: Request instance for ModifyStreamLiveInput.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.ModifyStreamLiveInputRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.ModifyStreamLiveInputResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMediaLiveInputSecurityGroup", params)
+            body = self.call("ModifyStreamLiveInput", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyMediaLiveInputSecurityGroupResponse()
+                model = models.ModifyStreamLiveInputResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -558,20 +586,20 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def StartMediaLiveChannel(self, request):
-        """This API is used to start a MediaLive channel.
+    def ModifyStreamLiveInputSecurityGroup(self, request):
+        """This API is used to modify an input security group.
 
-        :param request: Request instance for StartMediaLiveChannel.
-        :type request: :class:`tencentcloud.mdl.v20200326.models.StartMediaLiveChannelRequest`
-        :rtype: :class:`tencentcloud.mdl.v20200326.models.StartMediaLiveChannelResponse`
+        :param request: Request instance for ModifyStreamLiveInputSecurityGroup.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.ModifyStreamLiveInputSecurityGroupRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.ModifyStreamLiveInputSecurityGroupResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("StartMediaLiveChannel", params)
+            body = self.call("ModifyStreamLiveInputSecurityGroup", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.StartMediaLiveChannelResponse()
+                model = models.ModifyStreamLiveInputSecurityGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -586,20 +614,48 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def StopMediaLiveChannel(self, request):
-        """This API is used to stop a MediaLive channel.
+    def StartStreamLiveChannel(self, request):
+        """This API is used to start a StreamLive channel.
 
-        :param request: Request instance for StopMediaLiveChannel.
-        :type request: :class:`tencentcloud.mdl.v20200326.models.StopMediaLiveChannelRequest`
-        :rtype: :class:`tencentcloud.mdl.v20200326.models.StopMediaLiveChannelResponse`
+        :param request: Request instance for StartStreamLiveChannel.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.StartStreamLiveChannelRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.StartStreamLiveChannelResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("StopMediaLiveChannel", params)
+            body = self.call("StartStreamLiveChannel", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.StopMediaLiveChannelResponse()
+                model = models.StartStreamLiveChannelResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopStreamLiveChannel(self, request):
+        """This API is used to stop a StreamLive channel.
+
+        :param request: Request instance for StopStreamLiveChannel.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.StopStreamLiveChannelRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.StopStreamLiveChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopStreamLiveChannel", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopStreamLiveChannelResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

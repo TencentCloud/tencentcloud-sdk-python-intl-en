@@ -18,21 +18,102 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
-class AttachedInputInfo(AbstractModel):
-    """Media input associated with media channel.
+class AVTemplate(AbstractModel):
+    """Audio/Video transcoding template
 
     """
 
     def __init__(self):
         r"""
-        :param Id: Media input ID.
+        :param Name: Name of an audio/video transcoding template, which can contain 1-20 case-sensitive letters and digits
+        :type Name: str
+        :param NeedVideo: Whether video is needed. `0`: not needed; `1`: needed
+        :type NeedVideo: int
+        :param Vcodec: Video codec. Valid values: `H264`, `H265`. If this parameter is left empty, the original video codec will be used.
+        :type Vcodec: str
+        :param Width: Video width. Value range: (0, 3000]. The value must be an integer multiple of 4. If this parameter is left empty, the original video width will be used.
+        :type Width: int
+        :param Height: Video height. Value range: (0, 3000]. The value must be an integer multiple of 4. If this parameter is left empty, the original video height will be used.
+        :type Height: int
+        :param Fps: Video frame rate. Value range: [1, 240]. If this parameter is left empty, the original frame rate will be used.
+        :type Fps: int
+        :param TopSpeed: Whether to enable top speed codec transcoding. Valid values: `CLOSE` (disable), `OPEN` (enable). Default value: `CLOSE`
+        :type TopSpeed: str
+        :param BitrateCompressionRatio: Compression ratio for top speed codec transcoding. Value range: [0, 50]. The lower the compression ratio, the higher the image quality.
+        :type BitrateCompressionRatio: int
+        :param NeedAudio: Whether audio is needed. `0`: not needed; `1`: needed
+        :type NeedAudio: int
+        :param Acodec: Audio codec. Valid value: `AAC` (default)
+        :type Acodec: str
+        :param AudioBitrate: Audio bitrate. If this parameter is left empty, the original bitrate will be used.
+Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000`, `24000`, `28000`, `32000`, `40000`, `48000`, `56000`, `64000`, `80000`, `96000`, `112000`, `128000`, `160000`, `192000`, `224000`, `256000`, `288000`, `320000`, `384000`, `448000`, `512000`, `576000`, `640000`, `768000`, `896000`, `1024000`
+        :type AudioBitrate: int
+        :param VideoBitrate: Video bitrate. Value range: [50000, 40000000]. The value must be an integer multiple of 1000. If this parameter is left empty, the original bitrate will be used.
+        :type VideoBitrate: int
+        :param RateControlMode: Bitrate control mode. Valid values: `CBR`, `ABR` (default)
+        :type RateControlMode: str
+        """
+        self.Name = None
+        self.NeedVideo = None
+        self.Vcodec = None
+        self.Width = None
+        self.Height = None
+        self.Fps = None
+        self.TopSpeed = None
+        self.BitrateCompressionRatio = None
+        self.NeedAudio = None
+        self.Acodec = None
+        self.AudioBitrate = None
+        self.VideoBitrate = None
+        self.RateControlMode = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.NeedVideo = params.get("NeedVideo")
+        self.Vcodec = params.get("Vcodec")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.Fps = params.get("Fps")
+        self.TopSpeed = params.get("TopSpeed")
+        self.BitrateCompressionRatio = params.get("BitrateCompressionRatio")
+        self.NeedAudio = params.get("NeedAudio")
+        self.Acodec = params.get("Acodec")
+        self.AudioBitrate = params.get("AudioBitrate")
+        self.VideoBitrate = params.get("VideoBitrate")
+        self.RateControlMode = params.get("RateControlMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AttachedInput(AbstractModel):
+    """Channel-associated input
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: Input ID
         :type Id: str
-        :param AudioSelectors: Audio selector for media input. Quantity limit: [0,20]
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param AudioSelectors: Audio selector for the input. There can be 0 to 20 audio selectors.
+Note: this field may return `null`, indicating that no valid value was found.
         :type AudioSelectors: list of AudioSelectorInfo
+        :param PullBehavior: Pull mode. If the input type is `HLS_PULL` or `MP4_PULL`, you can set this parameter to `LOOP` or `ONCE`. `LOOP` is the default value.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type PullBehavior: str
+        :param FailOverSettings: Input failover configuration
+Note: this field may return `null`, indicating that no valid value was found.
+        :type FailOverSettings: :class:`tencentcloud.mdl.v20200326.models.FailOverSettings`
         """
         self.Id = None
         self.AudioSelectors = None
+        self.PullBehavior = None
+        self.FailOverSettings = None
 
 
     def _deserialize(self, params):
@@ -43,6 +124,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = AudioSelectorInfo()
                 obj._deserialize(item)
                 self.AudioSelectors.append(obj)
+        self.PullBehavior = params.get("PullBehavior")
+        if params.get("FailOverSettings") is not None:
+            self.FailOverSettings = FailOverSettings()
+            self.FailOverSettings._deserialize(params.get("FailOverSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -217,76 +302,6 @@ class ChannelAlertInfos(AbstractModel):
         
 
 
-class ChannelInfo(AbstractModel):
-    """Channel information.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Id: Channel ID.
-        :type Id: str
-        :param State: Channel status.
-        :type State: str
-        :param AttachedInputs: Information of associated input.
-        :type AttachedInputs: list of AttachedInputInfo
-        :param OutputGroups: Information of output group.
-        :type OutputGroups: list of OutputGroupsInfo
-        :param Name: Channel name.
-        :type Name: str
-        :param AudioTemplates: Audio transcoding template array.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type AudioTemplates: list of AudioTemplateInfo
-        :param VideoTemplates: Video transcoding template array.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type VideoTemplates: list of VideoTemplateInfo
-        """
-        self.Id = None
-        self.State = None
-        self.AttachedInputs = None
-        self.OutputGroups = None
-        self.Name = None
-        self.AudioTemplates = None
-        self.VideoTemplates = None
-
-
-    def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.State = params.get("State")
-        if params.get("AttachedInputs") is not None:
-            self.AttachedInputs = []
-            for item in params.get("AttachedInputs"):
-                obj = AttachedInputInfo()
-                obj._deserialize(item)
-                self.AttachedInputs.append(obj)
-        if params.get("OutputGroups") is not None:
-            self.OutputGroups = []
-            for item in params.get("OutputGroups"):
-                obj = OutputGroupsInfo()
-                obj._deserialize(item)
-                self.OutputGroups.append(obj)
-        self.Name = params.get("Name")
-        if params.get("AudioTemplates") is not None:
-            self.AudioTemplates = []
-            for item in params.get("AudioTemplates"):
-                obj = AudioTemplateInfo()
-                obj._deserialize(item)
-                self.AudioTemplates.append(obj)
-        if params.get("VideoTemplates") is not None:
-            self.VideoTemplates = []
-            for item in params.get("VideoTemplates"):
-                obj = VideoTemplateInfo()
-                obj._deserialize(item)
-                self.VideoTemplates.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class ChannelInputStatistics(AbstractModel):
     """Channel output statistics.
 
@@ -384,29 +399,32 @@ This time is available only after the alarm ends.
         
 
 
-class CreateMediaLiveChannelRequest(AbstractModel):
-    """CreateMediaLiveChannel request structure.
+class CreateStreamLiveChannelRequest(AbstractModel):
+    """CreateStreamLiveChannel request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Name: Channel name, which can contain 1-32 letters, digits, and underscores and must be unique at the region level.
+        :param Name: Channel name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level
         :type Name: str
-        :param AttachedInputs: Associated media input. Quantity limit: [1,1].
-        :type AttachedInputs: list of AttachedInputInfo
-        :param OutputGroups: Configuration information of channel output groups. Quantity limit: [1,10].
-        :type OutputGroups: list of OutputGroupsInfo
-        :param AudioTemplates: Audio transcoding template array. Quantity limit: [1,20].
+        :param AttachedInputs: Inputs to attach. You can attach 1-5 inputs.
+        :type AttachedInputs: list of AttachedInput
+        :param OutputGroups: Configuration information of the channel’s output groups. Quantity: [1, 10]
+        :type OutputGroups: list of StreamLiveOutputGroupsInfo
+        :param AudioTemplates: Audio transcoding templates. Quantity: [1, 20]
         :type AudioTemplates: list of AudioTemplateInfo
-        :param VideoTemplates: Video transcoding template array. Quantity limit: [1,10].
+        :param VideoTemplates: Video transcoding templates. Quantity: [1, 10]
         :type VideoTemplates: list of VideoTemplateInfo
+        :param AVTemplates: Audio/Video transcoding templates. Quantity: [1, 10]
+        :type AVTemplates: list of AVTemplate
         """
         self.Name = None
         self.AttachedInputs = None
         self.OutputGroups = None
         self.AudioTemplates = None
         self.VideoTemplates = None
+        self.AVTemplates = None
 
 
     def _deserialize(self, params):
@@ -414,13 +432,13 @@ class CreateMediaLiveChannelRequest(AbstractModel):
         if params.get("AttachedInputs") is not None:
             self.AttachedInputs = []
             for item in params.get("AttachedInputs"):
-                obj = AttachedInputInfo()
+                obj = AttachedInput()
                 obj._deserialize(item)
                 self.AttachedInputs.append(obj)
         if params.get("OutputGroups") is not None:
             self.OutputGroups = []
             for item in params.get("OutputGroups"):
-                obj = OutputGroupsInfo()
+                obj = StreamLiveOutputGroupsInfo()
                 obj._deserialize(item)
                 self.OutputGroups.append(obj)
         if params.get("AudioTemplates") is not None:
@@ -435,6 +453,12 @@ class CreateMediaLiveChannelRequest(AbstractModel):
                 obj = VideoTemplateInfo()
                 obj._deserialize(item)
                 self.VideoTemplates.append(obj)
+        if params.get("AVTemplates") is not None:
+            self.AVTemplates = []
+            for item in params.get("AVTemplates"):
+                obj = AVTemplate()
+                obj._deserialize(item)
+                self.AVTemplates.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -444,14 +468,14 @@ class CreateMediaLiveChannelRequest(AbstractModel):
         
 
 
-class CreateMediaLiveChannelResponse(AbstractModel):
-    """CreateMediaLiveChannel response structure.
+class CreateStreamLiveChannelResponse(AbstractModel):
+    """CreateStreamLiveChannel response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Id: Channel ID.
+        :param Id: Channel ID
         :type Id: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -465,22 +489,22 @@ class CreateMediaLiveChannelResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class CreateMediaLiveInputRequest(AbstractModel):
-    """CreateMediaLiveInput request structure.
+class CreateStreamLiveInputRequest(AbstractModel):
+    """CreateStreamLiveInput request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Name: Media input name, which can contain 1-32 letters, digits, and underscores and must be unique at the region level.
+        :param Name: Input name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level
         :type Name: str
-        :param Type: Media input type.
-Valid values: RTMP_PUSH/RTP_PUSH/UDP_PUSH/RTMP_PULL/HLS_PULL/MP4_PULL.
+        :param Type: Input type
+Valid values: `RTMP_PUSH`, `RTP_PUSH`, `UDP_PUSH`, `RTMP_PULL`, `HLS_PULL`, `MP4_PULL`
         :type Type: str
-        :param SecurityGroupIds: ID of the input security group to be bound.
-Only one security group can be associated.
+        :param SecurityGroupIds: ID of the input security group to attach
+You can attach only one security group to an input.
         :type SecurityGroupIds: list of str
-        :param InputSettings: Input settings information, one or two sets of which need to be configured for RTMP_PUSH/RTMP_PULL/HLS_PULL/MP4_PULL.
+        :param InputSettings: Input settings. For the type `RTMP_PUSH`, `RTMP_PULL`, `HLS_PULL`, or `MP4_PULL`, 1 or 2 inputs of the corresponding type can be configured.
         :type InputSettings: list of InputSettingInfo
         """
         self.Name = None
@@ -508,14 +532,14 @@ Only one security group can be associated.
         
 
 
-class CreateMediaLiveInputResponse(AbstractModel):
-    """CreateMediaLiveInput response structure.
+class CreateStreamLiveInputResponse(AbstractModel):
+    """CreateStreamLiveInput response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Id: Media input ID.
+        :param Id: Input ID
         :type Id: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -529,16 +553,16 @@ class CreateMediaLiveInputResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class CreateMediaLiveInputSecurityGroupRequest(AbstractModel):
-    """CreateMediaLiveInputSecurityGroup request structure.
+class CreateStreamLiveInputSecurityGroupRequest(AbstractModel):
+    """CreateStreamLiveInputSecurityGroup request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Name: Input security group name, which can contain letters, digits, and underscores and must be unique at the region level.
+        :param Name: Input security group name, which can contain case-sensitive letters, digits, and underscores and must be unique at the region level
         :type Name: str
-        :param Whitelist: List of allowlist entries. Quantity limit: [1,10].
+        :param Whitelist: Allowlist entries. Quantity: [1, 10]
         :type Whitelist: list of str
         """
         self.Name = None
@@ -557,14 +581,14 @@ class CreateMediaLiveInputSecurityGroupRequest(AbstractModel):
         
 
 
-class CreateMediaLiveInputSecurityGroupResponse(AbstractModel):
-    """CreateMediaLiveInputSecurityGroup response structure.
+class CreateStreamLiveInputSecurityGroupResponse(AbstractModel):
+    """CreateStreamLiveInputSecurityGroup response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Id: Security group ID.
+        :param Id: Security group ID
         :type Id: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -575,6 +599,53 @@ class CreateMediaLiveInputSecurityGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Id = params.get("Id")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateStreamLivePlanRequest(AbstractModel):
+    """CreateStreamLivePlan request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelId: ID of the channel for which you want to configure an event
+        :type ChannelId: str
+        :param Plan: Event configuration
+        :type Plan: :class:`tencentcloud.mdl.v20200326.models.PlanReq`
+        """
+        self.ChannelId = None
+        self.Plan = None
+
+
+    def _deserialize(self, params):
+        self.ChannelId = params.get("ChannelId")
+        if params.get("Plan") is not None:
+            self.Plan = PlanReq()
+            self.Plan._deserialize(params.get("Plan"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateStreamLivePlanResponse(AbstractModel):
+    """CreateStreamLivePlan response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -610,14 +681,14 @@ class DashRemuxSettingsInfo(AbstractModel):
         
 
 
-class DeleteMediaLiveChannelRequest(AbstractModel):
-    """DeleteMediaLiveChannel request structure.
+class DeleteStreamLiveChannelRequest(AbstractModel):
+    """DeleteStreamLiveChannel request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Id: Channel ID.
+        :param Id: Channel ID
         :type Id: str
         """
         self.Id = None
@@ -634,8 +705,8 @@ class DeleteMediaLiveChannelRequest(AbstractModel):
         
 
 
-class DeleteMediaLiveChannelResponse(AbstractModel):
-    """DeleteMediaLiveChannel response structure.
+class DeleteStreamLiveChannelResponse(AbstractModel):
+    """DeleteStreamLiveChannel response structure.
 
     """
 
@@ -651,14 +722,14 @@ class DeleteMediaLiveChannelResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DeleteMediaLiveInputRequest(AbstractModel):
-    """DeleteMediaLiveInput request structure.
+class DeleteStreamLiveInputRequest(AbstractModel):
+    """DeleteStreamLiveInput request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Id: Media input ID.
+        :param Id: Input ID
         :type Id: str
         """
         self.Id = None
@@ -675,8 +746,8 @@ class DeleteMediaLiveInputRequest(AbstractModel):
         
 
 
-class DeleteMediaLiveInputResponse(AbstractModel):
-    """DeleteMediaLiveInput response structure.
+class DeleteStreamLiveInputResponse(AbstractModel):
+    """DeleteStreamLiveInput response structure.
 
     """
 
@@ -692,14 +763,14 @@ class DeleteMediaLiveInputResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DeleteMediaLiveInputSecurityGroupRequest(AbstractModel):
-    """DeleteMediaLiveInputSecurityGroup request structure.
+class DeleteStreamLiveInputSecurityGroupRequest(AbstractModel):
+    """DeleteStreamLiveInputSecurityGroup request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Id: Input security group ID.
+        :param Id: Input security group ID
         :type Id: str
         """
         self.Id = None
@@ -716,8 +787,8 @@ class DeleteMediaLiveInputSecurityGroupRequest(AbstractModel):
         
 
 
-class DeleteMediaLiveInputSecurityGroupResponse(AbstractModel):
-    """DeleteMediaLiveInputSecurityGroup response structure.
+class DeleteStreamLiveInputSecurityGroupResponse(AbstractModel):
+    """DeleteStreamLiveInputSecurityGroup response structure.
 
     """
 
@@ -733,14 +804,14 @@ class DeleteMediaLiveInputSecurityGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeMediaLiveChannelAlertsRequest(AbstractModel):
-    """DescribeMediaLiveChannelAlerts request structure.
+class DescribeStreamLiveChannelAlertsRequest(AbstractModel):
+    """DescribeStreamLiveChannelAlerts request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param ChannelId: Channel ID.
+        :param ChannelId: Channel ID
         :type ChannelId: str
         """
         self.ChannelId = None
@@ -757,14 +828,14 @@ class DescribeMediaLiveChannelAlertsRequest(AbstractModel):
         
 
 
-class DescribeMediaLiveChannelAlertsResponse(AbstractModel):
-    """DescribeMediaLiveChannelAlerts response structure.
+class DescribeStreamLiveChannelAlertsResponse(AbstractModel):
+    """DescribeStreamLiveChannelAlerts response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Infos: Alarm information of two pipelines under this channel.
+        :param Infos: Alarm information of the channel’s two pipelines
         :type Infos: :class:`tencentcloud.mdl.v20200326.models.ChannelAlertInfos`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -780,22 +851,22 @@ class DescribeMediaLiveChannelAlertsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeMediaLiveChannelInputStatisticsRequest(AbstractModel):
-    """DescribeMediaLiveChannelInputStatistics request structure.
+class DescribeStreamLiveChannelInputStatisticsRequest(AbstractModel):
+    """DescribeStreamLiveChannelInputStatistics request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param ChannelId: Channel ID.
+        :param ChannelId: Channel ID
         :type ChannelId: str
-        :param StartTime: Statistics start time, which is one hour ago by default. Maximum value: the last 7 days.
-UTC time, such as `2020-01-01T12:00:00Z`.
+        :param StartTime: Start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.
+UTC time, such as `2020-01-01T12:00:00Z`
         :type StartTime: str
-        :param EndTime: Statistics end time, which is one hour after `StartTime` by default.
-UTC time, such as `2020-01-01T12:00:00Z`.
+        :param EndTime: End time for query, which is 1 hour after `StartTime` by default
+UTC time, such as `2020-01-01T12:00:00Z`
         :type EndTime: str
-        :param Period: Data interval. Valid values: 5s, 1min, 5min, 15min. Default value: 1min.
+        :param Period: Data collection interval. Valid values: `5s`, `1min` (default), `5min`, `15min`
         :type Period: str
         """
         self.ChannelId = None
@@ -818,14 +889,14 @@ UTC time, such as `2020-01-01T12:00:00Z`.
         
 
 
-class DescribeMediaLiveChannelInputStatisticsResponse(AbstractModel):
-    """DescribeMediaLiveChannelInputStatistics response structure.
+class DescribeStreamLiveChannelInputStatisticsResponse(AbstractModel):
+    """DescribeStreamLiveChannelInputStatistics response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Infos: Channel input statistics array.
+        :param Infos: Channel input statistics
         :type Infos: list of ChannelInputStatistics
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -844,20 +915,20 @@ class DescribeMediaLiveChannelInputStatisticsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeMediaLiveChannelLogsRequest(AbstractModel):
-    """DescribeMediaLiveChannelLogs request structure.
+class DescribeStreamLiveChannelLogsRequest(AbstractModel):
+    """DescribeStreamLiveChannelLogs request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param ChannelId: Channel ID.
+        :param ChannelId: Channel ID
         :type ChannelId: str
-        :param StartTime: Log start time, which is one hour ago by default. Maximum value: the last 7 days.
-UTC time, such as `2020-01-01T12:00:00Z`.
+        :param StartTime: Start time for query, which is 1 hour ago by default. You can query logs in the last 7 days.
+UTC time, such as `2020-01-01T12:00:00Z`
         :type StartTime: str
-        :param EndTime: Log end time, which is one hour after `StartTime` by default.
-UTC time, such as `2020-01-01T12:00:00Z`.
+        :param EndTime: End time for query, which is 1 hour after `StartTime` by default
+UTC time, such as `2020-01-01T12:00:00Z`
         :type EndTime: str
         """
         self.ChannelId = None
@@ -878,14 +949,14 @@ UTC time, such as `2020-01-01T12:00:00Z`.
         
 
 
-class DescribeMediaLiveChannelLogsResponse(AbstractModel):
-    """DescribeMediaLiveChannelLogs response structure.
+class DescribeStreamLiveChannelLogsResponse(AbstractModel):
+    """DescribeStreamLiveChannelLogs response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Infos: Pipeline push information.
+        :param Infos: Pipeline push information
         :type Infos: :class:`tencentcloud.mdl.v20200326.models.PipelineLogInfo`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -901,22 +972,22 @@ class DescribeMediaLiveChannelLogsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeMediaLiveChannelOutputStatisticsRequest(AbstractModel):
-    """DescribeMediaLiveChannelOutputStatistics request structure.
+class DescribeStreamLiveChannelOutputStatisticsRequest(AbstractModel):
+    """DescribeStreamLiveChannelOutputStatistics request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param ChannelId: Channel ID.
+        :param ChannelId: Channel ID
         :type ChannelId: str
-        :param StartTime: Statistics start time, which is one hour ago by default. Maximum value: the last 7 days.
-UTC time, such as `2020-01-01T12:00:00Z`.
+        :param StartTime: Start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.
+UTC time, such as `2020-01-01T12:00:00Z`
         :type StartTime: str
-        :param EndTime: Statistics end time, which is one hour after `StartTime` by default.
-UTC time, such as `2020-01-01T12:00:00Z`.
+        :param EndTime: End time for query, which is 1 hour after `StartTime` by default
+UTC time, such as `2020-01-01T12:00:00Z`
         :type EndTime: str
-        :param Period: Data interval. Valid values: 5s, 1min, 5min, 15min. Default value: 1min.
+        :param Period: Data collection interval. Valid values: `5s`, `1min` (default), `5min`, `15min`
         :type Period: str
         """
         self.ChannelId = None
@@ -939,14 +1010,14 @@ UTC time, such as `2020-01-01T12:00:00Z`.
         
 
 
-class DescribeMediaLiveChannelOutputStatisticsResponse(AbstractModel):
-    """DescribeMediaLiveChannelOutputStatistics response structure.
+class DescribeStreamLiveChannelOutputStatisticsResponse(AbstractModel):
+    """DescribeStreamLiveChannelOutputStatistics response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Infos: Channel output information.
+        :param Infos: Channel output information
         :type Infos: list of ChannelOutputsStatistics
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -965,14 +1036,14 @@ class DescribeMediaLiveChannelOutputStatisticsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeMediaLiveChannelRequest(AbstractModel):
-    """DescribeMediaLiveChannel request structure.
+class DescribeStreamLiveChannelRequest(AbstractModel):
+    """DescribeStreamLiveChannel request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Id: Channel ID.
+        :param Id: Channel ID
         :type Id: str
         """
         self.Id = None
@@ -989,15 +1060,15 @@ class DescribeMediaLiveChannelRequest(AbstractModel):
         
 
 
-class DescribeMediaLiveChannelResponse(AbstractModel):
-    """DescribeMediaLiveChannel response structure.
+class DescribeStreamLiveChannelResponse(AbstractModel):
+    """DescribeStreamLiveChannel response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Info: Channel information.
-        :type Info: :class:`tencentcloud.mdl.v20200326.models.ChannelInfo`
+        :param Info: Channel information
+        :type Info: :class:`tencentcloud.mdl.v20200326.models.StreamLiveChannelInfo`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -1007,27 +1078,27 @@ class DescribeMediaLiveChannelResponse(AbstractModel):
 
     def _deserialize(self, params):
         if params.get("Info") is not None:
-            self.Info = ChannelInfo()
+            self.Info = StreamLiveChannelInfo()
             self.Info._deserialize(params.get("Info"))
         self.RequestId = params.get("RequestId")
 
 
-class DescribeMediaLiveChannelsRequest(AbstractModel):
-    """DescribeMediaLiveChannels request structure.
+class DescribeStreamLiveChannelsRequest(AbstractModel):
+    """DescribeStreamLiveChannels request structure.
 
     """
 
 
-class DescribeMediaLiveChannelsResponse(AbstractModel):
-    """DescribeMediaLiveChannels response structure.
+class DescribeStreamLiveChannelsResponse(AbstractModel):
+    """DescribeStreamLiveChannels response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Infos: Channel list information.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Infos: list of ChannelInfo
+        :param Infos: List of channel information
+Note: this field may return `null`, indicating that no valid value was found.
+        :type Infos: list of StreamLiveChannelInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -1039,20 +1110,20 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Infos") is not None:
             self.Infos = []
             for item in params.get("Infos"):
-                obj = ChannelInfo()
+                obj = StreamLiveChannelInfo()
                 obj._deserialize(item)
                 self.Infos.append(obj)
         self.RequestId = params.get("RequestId")
 
 
-class DescribeMediaLiveInputRequest(AbstractModel):
-    """DescribeMediaLiveInput request structure.
+class DescribeStreamLiveInputRequest(AbstractModel):
+    """DescribeStreamLiveInput request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Id: Media input ID.
+        :param Id: Input ID
         :type Id: str
         """
         self.Id = None
@@ -1069,14 +1140,14 @@ class DescribeMediaLiveInputRequest(AbstractModel):
         
 
 
-class DescribeMediaLiveInputResponse(AbstractModel):
-    """DescribeMediaLiveInput response structure.
+class DescribeStreamLiveInputResponse(AbstractModel):
+    """DescribeStreamLiveInput response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Info: MediaLive input information.
+        :param Info: Input information
         :type Info: :class:`tencentcloud.mdl.v20200326.models.InputInfo`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1092,14 +1163,14 @@ class DescribeMediaLiveInputResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeMediaLiveInputSecurityGroupRequest(AbstractModel):
-    """DescribeMediaLiveInputSecurityGroup request structure.
+class DescribeStreamLiveInputSecurityGroupRequest(AbstractModel):
+    """DescribeStreamLiveInputSecurityGroup request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Id: Input security group ID.
+        :param Id: Input security group ID
         :type Id: str
         """
         self.Id = None
@@ -1116,14 +1187,14 @@ class DescribeMediaLiveInputSecurityGroupRequest(AbstractModel):
         
 
 
-class DescribeMediaLiveInputSecurityGroupResponse(AbstractModel):
-    """DescribeMediaLiveInputSecurityGroup response structure.
+class DescribeStreamLiveInputSecurityGroupResponse(AbstractModel):
+    """DescribeStreamLiveInputSecurityGroup response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Info: Input security group information.
+        :param Info: Input security group information
         :type Info: :class:`tencentcloud.mdl.v20200326.models.InputSecurityGroupInfo`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1139,20 +1210,20 @@ class DescribeMediaLiveInputSecurityGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeMediaLiveInputSecurityGroupsRequest(AbstractModel):
-    """DescribeMediaLiveInputSecurityGroups request structure.
+class DescribeStreamLiveInputSecurityGroupsRequest(AbstractModel):
+    """DescribeStreamLiveInputSecurityGroups request structure.
 
     """
 
 
-class DescribeMediaLiveInputSecurityGroupsResponse(AbstractModel):
-    """DescribeMediaLiveInputSecurityGroups response structure.
+class DescribeStreamLiveInputSecurityGroupsResponse(AbstractModel):
+    """DescribeStreamLiveInputSecurityGroups response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Infos: Input security group information list.
+        :param Infos: List of input security group information
         :type Infos: list of InputSecurityGroupInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1171,21 +1242,21 @@ class DescribeMediaLiveInputSecurityGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeMediaLiveInputsRequest(AbstractModel):
-    """DescribeMediaLiveInputs request structure.
+class DescribeStreamLiveInputsRequest(AbstractModel):
+    """DescribeStreamLiveInputs request structure.
 
     """
 
 
-class DescribeMediaLiveInputsResponse(AbstractModel):
-    """DescribeMediaLiveInputs response structure.
+class DescribeStreamLiveInputsResponse(AbstractModel):
+    """DescribeStreamLiveInputs response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Infos: MediaLive input information list.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Infos: List of input information
+Note: this field may return `null`, indicating that no valid value was found.
         :type Infos: list of InputInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1199,6 +1270,57 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.Infos = []
             for item in params.get("Infos"):
                 obj = InputInfo()
+                obj._deserialize(item)
+                self.Infos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStreamLivePlansRequest(AbstractModel):
+    """DescribeStreamLivePlans request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelId: ID of the channel whose events you want to query
+        :type ChannelId: str
+        """
+        self.ChannelId = None
+
+
+    def _deserialize(self, params):
+        self.ChannelId = params.get("ChannelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamLivePlansResponse(AbstractModel):
+    """DescribeStreamLivePlans response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Infos: List of event information
+Note: this field may return `null`, indicating that no valid value was found.
+        :type Infos: list of PlanResp
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Infos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self.Infos = []
+            for item in params.get("Infos"):
+                obj = PlanResp()
                 obj._deserialize(item)
                 self.Infos.append(obj)
         self.RequestId = params.get("RequestId")
@@ -1295,36 +1417,123 @@ class DrmSettingsInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param State: Whether to enable DRM encryption. Valid value: CLOSE/OPEN. Default value: CLOSE.
-Currently, this is supported only for HLS/DASH/HLS_ARCHIVE/DASH_ARCHIVE.
+        :param State: Whether to enable DRM encryption. Valid values: `CLOSE` (disable), `OPEN` (enable). Default value: `CLOSE`
+DRM encryption is supported only for HLS, DASH, HLS_ARCHIVE, DASH_ARCHIVE, HLS_MEDIAPACKAGE, and DASH_MEDIAPACKAGE outputs.
         :type State: str
-        :param ContentId: When `Scheme` is set to TencentDRM, this parameter should be set to the `ContentId` of DRM encryption, and if this parameter is left empty, a `ContentId` will be automatically created. For more information, please see [here](https://intl.cloud.tencent.com/document/product/1000/40960?from_cn_redirect=1).
-When `Scheme` is set to CustomDRMKeys, this parameter is required and should be specified by the user.
-        :type ContentId: str
-        :param Scheme: Valid values: TencentDRM, CustomDRMKeys. If this parameter is left empty, TencentDRM will be used by default.
-TencentDRM refers to Tencent digital rights management (DRM) encryption. For more information, please see [here](https://intl.cloud.tencent.com/solution/drm?from_cn_redirect=1).
-CustomDRMKeys refers to an encryption key customized by the user.
+        :param Scheme: This parameter can be set to `CustomDRMKeys` or left empty.
+CustomDRMKeys means encryption keys customized by users.
         :type Scheme: str
+        :param ContentId: If `Scheme` is set to `CustomDRMKeys`, this parameter is required and should be specified by the user.
+        :type ContentId: str
         :param Keys: The key customized by the content user, which is required when `Scheme` is set to CustomDRMKeys.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Keys: list of DrmKey
         """
         self.State = None
-        self.ContentId = None
         self.Scheme = None
+        self.ContentId = None
         self.Keys = None
 
 
     def _deserialize(self, params):
         self.State = params.get("State")
-        self.ContentId = params.get("ContentId")
         self.Scheme = params.get("Scheme")
+        self.ContentId = params.get("ContentId")
         if params.get("Keys") is not None:
             self.Keys = []
             for item in params.get("Keys"):
                 obj = DrmKey()
                 obj._deserialize(item)
                 self.Keys.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventSettingsReq(AbstractModel):
+    """Configuration information of an event in the plan
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventType: Only `INPUT_SWITCH` is supported currently. If you do not specify this parameter, `INPUT_SWITCH` will be used.
+        :type EventType: str
+        :param InputAttachment: ID of the input to attach, which is required if `EventType` is `INPUT_SWITCH`
+        :type InputAttachment: str
+        """
+        self.EventType = None
+        self.InputAttachment = None
+
+
+    def _deserialize(self, params):
+        self.EventType = params.get("EventType")
+        self.InputAttachment = params.get("InputAttachment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventSettingsResp(AbstractModel):
+    """Configuration information of an event in the plan
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventType: Only `INPUT_SWITCH` is supported currently.
+        :type EventType: str
+        :param InputAttachment: ID of the input attached, which is not empty if `EventType` is `INPUT_SWITCH`
+        :type InputAttachment: str
+        """
+        self.EventType = None
+        self.InputAttachment = None
+
+
+    def _deserialize(self, params):
+        self.EventType = params.get("EventType")
+        self.InputAttachment = params.get("InputAttachment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FailOverSettings(AbstractModel):
+    """Input failover settings
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SecondaryInputId: ID of the backup input
+Note: this field may return `null`, indicating that no valid value was found.
+        :type SecondaryInputId: str
+        :param LossThreshold: The wait time (ms) for triggering failover after the primary input becomes unavailable. Value range: [1000, 86400000]. Default value: `3000`
+        :type LossThreshold: int
+        :param RecoverBehavior: Failover policy. Valid values: `CURRENT_PREFERRED` (default), `PRIMARY_PREFERRED`
+        :type RecoverBehavior: str
+        """
+        self.SecondaryInputId = None
+        self.LossThreshold = None
+        self.RecoverBehavior = None
+
+
+    def _deserialize(self, params):
+        self.SecondaryInputId = params.get("SecondaryInputId")
+        self.LossThreshold = params.get("LossThreshold")
+        self.RecoverBehavior = params.get("RecoverBehavior")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1349,11 +1558,14 @@ class HlsRemuxSettingsInfo(AbstractModel):
         :type PdtInsertion: str
         :param PdtDuration: PDT duration in seconds. Value range: (0,3000]. Default value: 600.
         :type PdtDuration: int
+        :param Scheme: Audio/Video packaging scheme. Valid values: `SEPARATE`, `MERGE`
+        :type Scheme: str
         """
         self.SegmentDuration = None
         self.SegmentNumber = None
         self.PdtInsertion = None
         self.PdtDuration = None
+        self.Scheme = None
 
 
     def _deserialize(self, params):
@@ -1361,6 +1573,7 @@ class HlsRemuxSettingsInfo(AbstractModel):
         self.SegmentNumber = params.get("SegmentNumber")
         self.PdtInsertion = params.get("PdtInsertion")
         self.PdtDuration = params.get("PdtDuration")
+        self.Scheme = params.get("Scheme")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1484,11 +1697,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param InputAddress: RTP/UDP input address, which does not need to be entered for the input parameter.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type InputAddress: str
+        :param SourceType: Source type for stream pulling and relaying. To pull content from private-read COS buckets under the current account, set this parameter to `TencentCOS`; otherwise, leave it empty.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type SourceType: str
         """
         self.AppName = None
         self.StreamName = None
         self.SourceUrl = None
         self.InputAddress = None
+        self.SourceType = None
 
 
     def _deserialize(self, params):
@@ -1496,6 +1713,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.StreamName = params.get("StreamName")
         self.SourceUrl = params.get("SourceUrl")
         self.InputAddress = params.get("InputAddress")
+        self.SourceType = params.get("SourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1605,49 +1823,27 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
-class MediaPackageSettingsInfo(AbstractModel):
-    """Configuration information related to associating with the media packaging service.
+class ModifyStreamLiveChannelRequest(AbstractModel):
+    """ModifyStreamLiveChannel request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Id: Media packaging ID.
+        :param Id: Channel ID
         :type Id: str
-        """
-        self.Id = None
-
-
-    def _deserialize(self, params):
-        self.Id = params.get("Id")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyMediaLiveChannelRequest(AbstractModel):
-    """ModifyMediaLiveChannel request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Id: Channel ID.
-        :type Id: str
-        :param Name: Channel name, which can contain 1-32 letters, digits, and underscores and must be unique at the region level.
+        :param Name: Channel name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level
         :type Name: str
-        :param AttachedInputs: Associated media input. Quantity limit: [1,1].
-        :type AttachedInputs: list of AttachedInputInfo
-        :param OutputGroups: Configuration information of channel output groups. Quantity limit: [1,10].
-        :type OutputGroups: list of OutputGroupsInfo
-        :param AudioTemplates: Audio transcoding template array. Quantity limit: [1,20].
+        :param AttachedInputs: Inputs to attach. You can attach 1-5 inputs.
+        :type AttachedInputs: list of AttachedInput
+        :param OutputGroups: Configuration information of the channel’s output groups. Quantity: [1, 10]
+        :type OutputGroups: list of StreamLiveOutputGroupsInfo
+        :param AudioTemplates: Audio transcoding templates. Quantity: [1, 20]
         :type AudioTemplates: list of AudioTemplateInfo
-        :param VideoTemplates: Video transcoding template array. Quantity limit: [1,10].
+        :param VideoTemplates: Video transcoding templates. Quantity: [1, 10]
         :type VideoTemplates: list of VideoTemplateInfo
+        :param AVTemplates: Audio/Video transcoding templates. Quantity: [1, 10]
+        :type AVTemplates: list of AVTemplate
         """
         self.Id = None
         self.Name = None
@@ -1655,6 +1851,7 @@ class ModifyMediaLiveChannelRequest(AbstractModel):
         self.OutputGroups = None
         self.AudioTemplates = None
         self.VideoTemplates = None
+        self.AVTemplates = None
 
 
     def _deserialize(self, params):
@@ -1663,13 +1860,13 @@ class ModifyMediaLiveChannelRequest(AbstractModel):
         if params.get("AttachedInputs") is not None:
             self.AttachedInputs = []
             for item in params.get("AttachedInputs"):
-                obj = AttachedInputInfo()
+                obj = AttachedInput()
                 obj._deserialize(item)
                 self.AttachedInputs.append(obj)
         if params.get("OutputGroups") is not None:
             self.OutputGroups = []
             for item in params.get("OutputGroups"):
-                obj = OutputGroupsInfo()
+                obj = StreamLiveOutputGroupsInfo()
                 obj._deserialize(item)
                 self.OutputGroups.append(obj)
         if params.get("AudioTemplates") is not None:
@@ -1684,6 +1881,12 @@ class ModifyMediaLiveChannelRequest(AbstractModel):
                 obj = VideoTemplateInfo()
                 obj._deserialize(item)
                 self.VideoTemplates.append(obj)
+        if params.get("AVTemplates") is not None:
+            self.AVTemplates = []
+            for item in params.get("AVTemplates"):
+                obj = AVTemplate()
+                obj._deserialize(item)
+                self.AVTemplates.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1693,8 +1896,8 @@ class ModifyMediaLiveChannelRequest(AbstractModel):
         
 
 
-class ModifyMediaLiveChannelResponse(AbstractModel):
-    """ModifyMediaLiveChannel response structure.
+class ModifyStreamLiveChannelResponse(AbstractModel):
+    """ModifyStreamLiveChannel response structure.
 
     """
 
@@ -1710,23 +1913,23 @@ class ModifyMediaLiveChannelResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ModifyMediaLiveInputRequest(AbstractModel):
-    """ModifyMediaLiveInput request structure.
+class ModifyStreamLiveInputRequest(AbstractModel):
+    """ModifyStreamLiveInput request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Id: Media input ID.
+        :param Id: Input ID
         :type Id: str
-        :param Name: Media input name, which can contain 1-32 letters, digits, and underscores and must be unique at the region level.
+        :param Name: Input name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level
         :type Name: str
-        :param SecurityGroupIds: List of IDs of bound security groups.
+        :param SecurityGroupIds: List of the IDs of the security groups to attach
         :type SecurityGroupIds: list of str
-        :param InputSettings: Input settings information.
-One or two sets of settings need to be configured for RTMP_PUSH/RTMP_PULL/HLS_PULL/MP4_PULL.
-This parameter can be left empty for RTP_PUSH and UDP_PUSH.
-Note: if it is left empty or the array is empty, the original `InputSettings` value will be used.
+        :param InputSettings: Input settings
+For the type `RTMP_PUSH`, `RTMP_PULL`, `HLS_PULL`, or `MP4_PULL`, 1 or 2 inputs of the corresponding type can be configured.
+This parameter can be left empty for RTP_PUSH and UDP_PUSH inputs.
+Note: If this parameter is not specified or empty, the original input settings will be used.
         :type InputSettings: list of InputSettingInfo
         """
         self.Id = None
@@ -1754,8 +1957,8 @@ Note: if it is left empty or the array is empty, the original `InputSettings` va
         
 
 
-class ModifyMediaLiveInputResponse(AbstractModel):
-    """ModifyMediaLiveInput response structure.
+class ModifyStreamLiveInputResponse(AbstractModel):
+    """ModifyStreamLiveInput response structure.
 
     """
 
@@ -1771,18 +1974,18 @@ class ModifyMediaLiveInputResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ModifyMediaLiveInputSecurityGroupRequest(AbstractModel):
-    """ModifyMediaLiveInputSecurityGroup request structure.
+class ModifyStreamLiveInputSecurityGroupRequest(AbstractModel):
+    """ModifyStreamLiveInputSecurityGroup request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Id: Input security group ID.
+        :param Id: Input security group ID
         :type Id: str
-        :param Name: Input security group name, which can contain 1-32 letters, digits, and underscores and must be unique at the region level.
+        :param Name: Input security group name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level
         :type Name: str
-        :param Whitelist: List of allowlist entries. Up to 10 entries are allowed.
+        :param Whitelist: Allowlist entries (max: 10)
         :type Whitelist: list of str
         """
         self.Id = None
@@ -1803,8 +2006,8 @@ class ModifyMediaLiveInputSecurityGroupRequest(AbstractModel):
         
 
 
-class ModifyMediaLiveInputSecurityGroupResponse(AbstractModel):
-    """ModifyMediaLiveInputSecurityGroup response structure.
+class ModifyStreamLiveInputSecurityGroupResponse(AbstractModel):
+    """ModifyStreamLiveInputSecurityGroup response structure.
 
     """
 
@@ -1818,79 +2021,6 @@ class ModifyMediaLiveInputSecurityGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
-
-
-class OutputGroupsInfo(AbstractModel):
-    """Channel output group information.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Name: Channel output group name, which can contain 1–32 letters, digits, and underscores and must be unique at the channel level.
-        :type Name: str
-        :param Type: Output protocol type.
-Valid values: HLS, DASH, HLS_ARCHIVE, HLS_MEDIA_PACKAGE, DASH_MEDIA_PACKAGE.
-        :type Type: str
-        :param Outputs: Output information.
-Quantity limit: [1,1] for RTMP/RTP; [1,10] for HLS/DASH.
-        :type Outputs: list of OutputInfo
-        :param Destinations: Relay destination address. Quantity limit: [1,2].
-        :type Destinations: list of DestinationInfo
-        :param HlsRemuxSettings: HLS protocol configuration information, which takes effect only for HLS/HLS_ARCHIVE.
-        :type HlsRemuxSettings: :class:`tencentcloud.mdl.v20200326.models.HlsRemuxSettingsInfo`
-        :param DashRemuxSettings: DASH protocol configuration information, which takes effect only for DASH/DSAH_ARCHIVE.
-        :type DashRemuxSettings: :class:`tencentcloud.mdl.v20200326.models.DashRemuxSettingsInfo`
-        :param DrmSettings: DRM configuration information.
-        :type DrmSettings: :class:`tencentcloud.mdl.v20200326.models.DrmSettingsInfo`
-        :param MediaPackageSettings: Configuration information of media packaging, which is required when `Type` is set to MediaPackage.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type MediaPackageSettings: :class:`tencentcloud.mdl.v20200326.models.MediaPackageSettingsInfo`
-        """
-        self.Name = None
-        self.Type = None
-        self.Outputs = None
-        self.Destinations = None
-        self.HlsRemuxSettings = None
-        self.DashRemuxSettings = None
-        self.DrmSettings = None
-        self.MediaPackageSettings = None
-
-
-    def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Type = params.get("Type")
-        if params.get("Outputs") is not None:
-            self.Outputs = []
-            for item in params.get("Outputs"):
-                obj = OutputInfo()
-                obj._deserialize(item)
-                self.Outputs.append(obj)
-        if params.get("Destinations") is not None:
-            self.Destinations = []
-            for item in params.get("Destinations"):
-                obj = DestinationInfo()
-                obj._deserialize(item)
-                self.Destinations.append(obj)
-        if params.get("HlsRemuxSettings") is not None:
-            self.HlsRemuxSettings = HlsRemuxSettingsInfo()
-            self.HlsRemuxSettings._deserialize(params.get("HlsRemuxSettings"))
-        if params.get("DashRemuxSettings") is not None:
-            self.DashRemuxSettings = DashRemuxSettingsInfo()
-            self.DashRemuxSettings._deserialize(params.get("DashRemuxSettings"))
-        if params.get("DrmSettings") is not None:
-            self.DrmSettings = DrmSettingsInfo()
-            self.DrmSettings._deserialize(params.get("DrmSettings"))
-        if params.get("MediaPackageSettings") is not None:
-            self.MediaPackageSettings = MediaPackageSettingsInfo()
-            self.MediaPackageSettings._deserialize(params.get("MediaPackageSettings"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
 
 
 class OutputInfo(AbstractModel):
@@ -1911,11 +2041,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type VideoTemplateNames: list of str
         :param Scte35Settings: SCTE-35 information configuration.
         :type Scte35Settings: :class:`tencentcloud.mdl.v20200326.models.Scte35SettingsInfo`
+        :param AVTemplateNames: Audio/Video transcoding template name. If `HlsRemuxSettings.Scheme` is `MERGE`, there is 1 audio/video transcoding template. Otherwise, this parameter is empty.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type AVTemplateNames: list of str
         """
         self.Name = None
         self.AudioTemplateNames = None
         self.VideoTemplateNames = None
         self.Scte35Settings = None
+        self.AVTemplateNames = None
 
 
     def _deserialize(self, params):
@@ -1925,6 +2059,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Scte35Settings") is not None:
             self.Scte35Settings = Scte35SettingsInfo()
             self.Scte35Settings._deserialize(params.get("Scte35Settings"))
+        self.AVTemplateNames = params.get("AVTemplateNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2091,6 +2226,78 @@ In seconds, indicating data time.
         
 
 
+class PlanReq(AbstractModel):
+    """Event configuration information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventName: Event name
+        :type EventName: str
+        :param TimingSettings: Event trigger time settings
+        :type TimingSettings: :class:`tencentcloud.mdl.v20200326.models.TimingSettingsReq`
+        :param EventSettings: Event configuration
+        :type EventSettings: :class:`tencentcloud.mdl.v20200326.models.EventSettingsReq`
+        """
+        self.EventName = None
+        self.TimingSettings = None
+        self.EventSettings = None
+
+
+    def _deserialize(self, params):
+        self.EventName = params.get("EventName")
+        if params.get("TimingSettings") is not None:
+            self.TimingSettings = TimingSettingsReq()
+            self.TimingSettings._deserialize(params.get("TimingSettings"))
+        if params.get("EventSettings") is not None:
+            self.EventSettings = EventSettingsReq()
+            self.EventSettings._deserialize(params.get("EventSettings"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PlanResp(AbstractModel):
+    """Event configuration information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventName: Event name
+        :type EventName: str
+        :param TimingSettings: Event trigger time settings
+        :type TimingSettings: :class:`tencentcloud.mdl.v20200326.models.TimingSettingsResp`
+        :param EventSettings: Event configuration
+        :type EventSettings: :class:`tencentcloud.mdl.v20200326.models.EventSettingsResp`
+        """
+        self.EventName = None
+        self.TimingSettings = None
+        self.EventSettings = None
+
+
+    def _deserialize(self, params):
+        self.EventName = params.get("EventName")
+        if params.get("TimingSettings") is not None:
+            self.TimingSettings = TimingSettingsResp()
+            self.TimingSettings._deserialize(params.get("TimingSettings"))
+        if params.get("EventSettings") is not None:
+            self.EventSettings = EventSettingsResp()
+            self.EventSettings._deserialize(params.get("EventSettings"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Scte35SettingsInfo(AbstractModel):
     """SCTE-35 configuration information.
 
@@ -2115,14 +2322,14 @@ class Scte35SettingsInfo(AbstractModel):
         
 
 
-class StartMediaLiveChannelRequest(AbstractModel):
-    """StartMediaLiveChannel request structure.
+class StartStreamLiveChannelRequest(AbstractModel):
+    """StartStreamLiveChannel request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Id: Channel ID.
+        :param Id: Channel ID
         :type Id: str
         """
         self.Id = None
@@ -2139,8 +2346,8 @@ class StartMediaLiveChannelRequest(AbstractModel):
         
 
 
-class StartMediaLiveChannelResponse(AbstractModel):
-    """StartMediaLiveChannel response structure.
+class StartStreamLiveChannelResponse(AbstractModel):
+    """StartStreamLiveChannel response structure.
 
     """
 
@@ -2156,14 +2363,14 @@ class StartMediaLiveChannelResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class StopMediaLiveChannelRequest(AbstractModel):
-    """StopMediaLiveChannel request structure.
+class StopStreamLiveChannelRequest(AbstractModel):
+    """StopStreamLiveChannel request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Id: Channel ID.
+        :param Id: Channel ID
         :type Id: str
         """
         self.Id = None
@@ -2180,8 +2387,8 @@ class StopMediaLiveChannelRequest(AbstractModel):
         
 
 
-class StopMediaLiveChannelResponse(AbstractModel):
-    """StopMediaLiveChannel response structure.
+class StopStreamLiveChannelResponse(AbstractModel):
+    """StopStreamLiveChannel response structure.
 
     """
 
@@ -2293,6 +2500,186 @@ class StreamInfo(AbstractModel):
         
 
 
+class StreamLiveChannelInfo(AbstractModel):
+    """Channel information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: Channel ID
+        :type Id: str
+        :param State: Channel status
+        :type State: str
+        :param AttachedInputs: Information of attached inputs
+        :type AttachedInputs: list of AttachedInput
+        :param OutputGroups: Information of output groups
+        :type OutputGroups: list of StreamLiveOutputGroupsInfo
+        :param Name: Channel name
+        :type Name: str
+        :param AudioTemplates: Audio transcoding templates
+Note: this field may return `null`, indicating that no valid value was found.
+        :type AudioTemplates: list of AudioTemplateInfo
+        :param VideoTemplates: Video transcoding templates
+Note: this field may return `null`, indicating that no valid value was found.
+        :type VideoTemplates: list of VideoTemplateInfo
+        :param AVTemplates: Audio/Video transcoding templates
+Note: this field may return `null`, indicating that no valid value was found.
+        :type AVTemplates: list of AVTemplate
+        """
+        self.Id = None
+        self.State = None
+        self.AttachedInputs = None
+        self.OutputGroups = None
+        self.Name = None
+        self.AudioTemplates = None
+        self.VideoTemplates = None
+        self.AVTemplates = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.State = params.get("State")
+        if params.get("AttachedInputs") is not None:
+            self.AttachedInputs = []
+            for item in params.get("AttachedInputs"):
+                obj = AttachedInput()
+                obj._deserialize(item)
+                self.AttachedInputs.append(obj)
+        if params.get("OutputGroups") is not None:
+            self.OutputGroups = []
+            for item in params.get("OutputGroups"):
+                obj = StreamLiveOutputGroupsInfo()
+                obj._deserialize(item)
+                self.OutputGroups.append(obj)
+        self.Name = params.get("Name")
+        if params.get("AudioTemplates") is not None:
+            self.AudioTemplates = []
+            for item in params.get("AudioTemplates"):
+                obj = AudioTemplateInfo()
+                obj._deserialize(item)
+                self.AudioTemplates.append(obj)
+        if params.get("VideoTemplates") is not None:
+            self.VideoTemplates = []
+            for item in params.get("VideoTemplates"):
+                obj = VideoTemplateInfo()
+                obj._deserialize(item)
+                self.VideoTemplates.append(obj)
+        if params.get("AVTemplates") is not None:
+            self.AVTemplates = []
+            for item in params.get("AVTemplates"):
+                obj = AVTemplate()
+                obj._deserialize(item)
+                self.AVTemplates.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StreamLiveOutputGroupsInfo(AbstractModel):
+    """Channel output group information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Output group name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the channel level
+        :type Name: str
+        :param Type: Output protocol
+Valid values: `HLS`, `DASH`, `HLS_ARCHIVE`, `HLS_STREAM_PACKAGE`, `DASH_STREAM_PACKAGE`
+        :type Type: str
+        :param Outputs: Output information
+If the type is RTMP or RTP, only one output is allowed; if it is HLS or DASH, 1-10 outputs are allowed.
+        :type Outputs: list of OutputInfo
+        :param Destinations: Relay destinations. Quantity: [1, 2]
+        :type Destinations: list of DestinationInfo
+        :param HlsRemuxSettings: HLS protocol configuration information, which takes effect only for HLS/HLS_ARCHIVE outputs
+Note: this field may return `null`, indicating that no valid value was found.
+        :type HlsRemuxSettings: :class:`tencentcloud.mdl.v20200326.models.HlsRemuxSettingsInfo`
+        :param DrmSettings: DRM configuration information
+Note: this field may return `null`, indicating that no valid value was found.
+        :type DrmSettings: :class:`tencentcloud.mdl.v20200326.models.DrmSettingsInfo`
+        :param DashRemuxSettings: DASH protocol configuration information, which takes effect only for DASH/DASH_ARCHIVE outputs
+Note: this field may return `null`, indicating that no valid value was found.
+        :type DashRemuxSettings: :class:`tencentcloud.mdl.v20200326.models.DashRemuxSettingsInfo`
+        :param StreamPackageSettings: StreamPackage configuration information, which is required if the output type is StreamPackage
+Note: this field may return `null`, indicating that no valid value was found.
+        :type StreamPackageSettings: :class:`tencentcloud.mdl.v20200326.models.StreamPackageSettingsInfo`
+        """
+        self.Name = None
+        self.Type = None
+        self.Outputs = None
+        self.Destinations = None
+        self.HlsRemuxSettings = None
+        self.DrmSettings = None
+        self.DashRemuxSettings = None
+        self.StreamPackageSettings = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        if params.get("Outputs") is not None:
+            self.Outputs = []
+            for item in params.get("Outputs"):
+                obj = OutputInfo()
+                obj._deserialize(item)
+                self.Outputs.append(obj)
+        if params.get("Destinations") is not None:
+            self.Destinations = []
+            for item in params.get("Destinations"):
+                obj = DestinationInfo()
+                obj._deserialize(item)
+                self.Destinations.append(obj)
+        if params.get("HlsRemuxSettings") is not None:
+            self.HlsRemuxSettings = HlsRemuxSettingsInfo()
+            self.HlsRemuxSettings._deserialize(params.get("HlsRemuxSettings"))
+        if params.get("DrmSettings") is not None:
+            self.DrmSettings = DrmSettingsInfo()
+            self.DrmSettings._deserialize(params.get("DrmSettings"))
+        if params.get("DashRemuxSettings") is not None:
+            self.DashRemuxSettings = DashRemuxSettingsInfo()
+            self.DashRemuxSettings._deserialize(params.get("DashRemuxSettings"))
+        if params.get("StreamPackageSettings") is not None:
+            self.StreamPackageSettings = StreamPackageSettingsInfo()
+            self.StreamPackageSettings._deserialize(params.get("StreamPackageSettings"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StreamPackageSettingsInfo(AbstractModel):
+    """StreamPackage settings when the output type is StreamPackage
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: Channel ID in StreamPackage
+        :type Id: str
+        """
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StreamScte35Info(AbstractModel):
     """SCTE-35 information.
 
@@ -2368,6 +2755,64 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class TimingSettingsReq(AbstractModel):
+    """Event trigger time settings
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartType: Event trigger type. Valid values: `FIXED_TIME`, `IMMEDIATE`
+        :type StartType: str
+        :param Time: Required if `StartType` is `FIXED_TIME`
+UTC time, such as `2020-01-01T12:00:00Z`
+        :type Time: str
+        """
+        self.StartType = None
+        self.Time = None
+
+
+    def _deserialize(self, params):
+        self.StartType = params.get("StartType")
+        self.Time = params.get("Time")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimingSettingsResp(AbstractModel):
+    """Event trigger time settings
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartType: Event trigger type
+        :type StartType: str
+        :param Time: Not empty if `StartType` is `FIXED_TIME`
+UTC time, such as `2020-01-01T12:00:00Z`
+        :type Time: str
+        """
+        self.StartType = None
+        self.Time = None
+
+
+    def _deserialize(self, params):
+        self.StartType = params.get("StartType")
+        self.Time = params.get("Time")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VideoPipelineInputStatistics(AbstractModel):
     """Pipeline input video statistics.
 
@@ -2423,6 +2868,8 @@ class VideoTemplateInfo(AbstractModel):
         :type TopSpeed: str
         :param BitrateCompressionRatio: Top speed codec compression ratio. Value range: [0,50]. The lower the compression ratio, the higher the image quality.
         :type BitrateCompressionRatio: int
+        :param RateControlMode: Bitrate control mode. Valid values: `CBR`, `ABR` (default)
+        :type RateControlMode: str
         """
         self.Name = None
         self.Vcodec = None
@@ -2432,6 +2879,7 @@ class VideoTemplateInfo(AbstractModel):
         self.Fps = None
         self.TopSpeed = None
         self.BitrateCompressionRatio = None
+        self.RateControlMode = None
 
 
     def _deserialize(self, params):
@@ -2443,6 +2891,7 @@ class VideoTemplateInfo(AbstractModel):
         self.Fps = params.get("Fps")
         self.TopSpeed = params.get("TopSpeed")
         self.BitrateCompressionRatio = params.get("BitrateCompressionRatio")
+        self.RateControlMode = params.get("RateControlMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
