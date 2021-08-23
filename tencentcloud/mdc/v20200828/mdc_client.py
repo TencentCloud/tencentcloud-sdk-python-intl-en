@@ -26,20 +26,20 @@ class MdcClient(AbstractClient):
     _service = 'mdc'
 
 
-    def CreateMediaConnectFlow(self, request):
-        """This API is used to create the configuration of a MediaConnect flow.
+    def CreateStreamLinkFlow(self, request):
+        """This API is used to create a StreamLink flow.
 
-        :param request: Request instance for CreateMediaConnectFlow.
-        :type request: :class:`tencentcloud.mdc.v20200828.models.CreateMediaConnectFlowRequest`
-        :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateMediaConnectFlowResponse`
+        :param request: Request instance for CreateStreamLinkFlow.
+        :type request: :class:`tencentcloud.mdc.v20200828.models.CreateStreamLinkFlowRequest`
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateStreamLinkFlowResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateMediaConnectFlow", params)
+            body = self.call("CreateStreamLinkFlow", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateMediaConnectFlowResponse()
+                model = models.CreateStreamLinkFlowResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -54,20 +54,20 @@ class MdcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateMediaConnectOutput(self, request):
-        """This API is used to create the output information of a MediaConnect flow.
+    def DeleteStreamLinkFlow(self, request):
+        """This API is used to delete a StreamLink flow.
 
-        :param request: Request instance for CreateMediaConnectOutput.
-        :type request: :class:`tencentcloud.mdc.v20200828.models.CreateMediaConnectOutputRequest`
-        :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateMediaConnectOutputResponse`
+        :param request: Request instance for DeleteStreamLinkFlow.
+        :type request: :class:`tencentcloud.mdc.v20200828.models.DeleteStreamLinkFlowRequest`
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.DeleteStreamLinkFlowResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateMediaConnectOutput", params)
+            body = self.call("DeleteStreamLinkFlow", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateMediaConnectOutputResponse()
+                model = models.DeleteStreamLinkFlowResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -82,20 +82,20 @@ class MdcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteMediaConnectFlow(self, request):
-        """This API is used to delete the configuration of a MediaConnect flow.
+    def DeleteStreamLinkOutput(self, request):
+        """This API is used to delete an output of a StreamLink flow.
 
-        :param request: Request instance for DeleteMediaConnectFlow.
-        :type request: :class:`tencentcloud.mdc.v20200828.models.DeleteMediaConnectFlowRequest`
-        :rtype: :class:`tencentcloud.mdc.v20200828.models.DeleteMediaConnectFlowResponse`
+        :param request: Request instance for DeleteStreamLinkOutput.
+        :type request: :class:`tencentcloud.mdc.v20200828.models.DeleteStreamLinkOutputRequest`
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.DeleteStreamLinkOutputResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMediaConnectFlow", params)
+            body = self.call("DeleteStreamLinkOutput", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteMediaConnectFlowResponse()
+                model = models.DeleteStreamLinkOutputResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -110,20 +110,20 @@ class MdcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteMediaConnectOutput(self, request):
-        """This API is used to delete the output configuration of a MediaConnect flow.
+    def DescribeStreamLinkFlow(self, request):
+        """This API is used to query the configuration information of a StreamLink flow.
 
-        :param request: Request instance for DeleteMediaConnectOutput.
-        :type request: :class:`tencentcloud.mdc.v20200828.models.DeleteMediaConnectOutputRequest`
-        :rtype: :class:`tencentcloud.mdc.v20200828.models.DeleteMediaConnectOutputResponse`
+        :param request: Request instance for DescribeStreamLinkFlow.
+        :type request: :class:`tencentcloud.mdc.v20200828.models.DescribeStreamLinkFlowRequest`
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeStreamLinkFlowResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMediaConnectOutput", params)
+            body = self.call("DescribeStreamLinkFlow", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteMediaConnectOutputResponse()
+                model = models.DescribeStreamLinkFlowResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -138,20 +138,20 @@ class MdcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeMediaConnectFlow(self, request):
-        """This API is used to query the configuration information of a MediaConnect flow.
+    def DescribeStreamLinkFlows(self, request):
+        """This API is used to query the configuration information of multiple StreamLink flows in batches.
 
-        :param request: Request instance for DescribeMediaConnectFlow.
-        :type request: :class:`tencentcloud.mdc.v20200828.models.DescribeMediaConnectFlowRequest`
-        :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeMediaConnectFlowResponse`
+        :param request: Request instance for DescribeStreamLinkFlows.
+        :type request: :class:`tencentcloud.mdc.v20200828.models.DescribeStreamLinkFlowsRequest`
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeStreamLinkFlowsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMediaConnectFlow", params)
+            body = self.call("DescribeStreamLinkFlows", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeMediaConnectFlowResponse()
+                model = models.DescribeStreamLinkFlowsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -166,20 +166,20 @@ class MdcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeMediaConnectFlows(self, request):
-        """This API is used to query the configuration information of multiple MediaConnect flows in batches.
+    def ModifyStreamLinkFlow(self, request):
+        """This API is used to modify the configuration information of a StreamLink flow.
 
-        :param request: Request instance for DescribeMediaConnectFlows.
-        :type request: :class:`tencentcloud.mdc.v20200828.models.DescribeMediaConnectFlowsRequest`
-        :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeMediaConnectFlowsResponse`
+        :param request: Request instance for ModifyStreamLinkFlow.
+        :type request: :class:`tencentcloud.mdc.v20200828.models.ModifyStreamLinkFlowRequest`
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.ModifyStreamLinkFlowResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMediaConnectFlows", params)
+            body = self.call("ModifyStreamLinkFlow", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeMediaConnectFlowsResponse()
+                model = models.ModifyStreamLinkFlowResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -194,20 +194,20 @@ class MdcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyMediaConnectFlow(self, request):
-        """This API is used to modify the configuration information of a MediaConnect flow.
+    def StartStreamLinkFlow(self, request):
+        """This API is used to start a StreamLink flow.
 
-        :param request: Request instance for ModifyMediaConnectFlow.
-        :type request: :class:`tencentcloud.mdc.v20200828.models.ModifyMediaConnectFlowRequest`
-        :rtype: :class:`tencentcloud.mdc.v20200828.models.ModifyMediaConnectFlowResponse`
+        :param request: Request instance for StartStreamLinkFlow.
+        :type request: :class:`tencentcloud.mdc.v20200828.models.StartStreamLinkFlowRequest`
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.StartStreamLinkFlowResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMediaConnectFlow", params)
+            body = self.call("StartStreamLinkFlow", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyMediaConnectFlowResponse()
+                model = models.StartStreamLinkFlowResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -222,104 +222,20 @@ class MdcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyMediaConnectInput(self, request):
-        """This API is used to modify the input information of a MediaConnect flow.
+    def StopStreamLinkFlow(self, request):
+        """This API is used to stop a StreamLink flow.
 
-        :param request: Request instance for ModifyMediaConnectInput.
-        :type request: :class:`tencentcloud.mdc.v20200828.models.ModifyMediaConnectInputRequest`
-        :rtype: :class:`tencentcloud.mdc.v20200828.models.ModifyMediaConnectInputResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ModifyMediaConnectInput", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyMediaConnectInputResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ModifyMediaConnectOutput(self, request):
-        """This API is used to modify the output configuration of a MediaConnect flow.
-
-        :param request: Request instance for ModifyMediaConnectOutput.
-        :type request: :class:`tencentcloud.mdc.v20200828.models.ModifyMediaConnectOutputRequest`
-        :rtype: :class:`tencentcloud.mdc.v20200828.models.ModifyMediaConnectOutputResponse`
+        :param request: Request instance for StopStreamLinkFlow.
+        :type request: :class:`tencentcloud.mdc.v20200828.models.StopStreamLinkFlowRequest`
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.StopStreamLinkFlowResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMediaConnectOutput", params)
+            body = self.call("StopStreamLinkFlow", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyMediaConnectOutputResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def StartMediaConnectFlow(self, request):
-        """This API is used to start a MediaConnect flow.
-
-        :param request: Request instance for StartMediaConnectFlow.
-        :type request: :class:`tencentcloud.mdc.v20200828.models.StartMediaConnectFlowRequest`
-        :rtype: :class:`tencentcloud.mdc.v20200828.models.StartMediaConnectFlowResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("StartMediaConnectFlow", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.StartMediaConnectFlowResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def StopMediaConnectFlow(self, request):
-        """This API is used to stop a MediaConnect flow.
-
-        :param request: Request instance for StopMediaConnectFlow.
-        :type request: :class:`tencentcloud.mdc.v20200828.models.StopMediaConnectFlowRequest`
-        :rtype: :class:`tencentcloud.mdc.v20200828.models.StopMediaConnectFlowResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("StopMediaConnectFlow", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.StopMediaConnectFlowResponse()
+                model = models.StopStreamLinkFlowResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

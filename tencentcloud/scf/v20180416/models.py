@@ -109,7 +109,7 @@ class AsyncEvent(AbstractModel):
         :type InvokeType: str
         :param Qualifier: Function version
         :type Qualifier: str
-        :param Status: Event status
+        :param Status: Event status. Values: `RUNNING`; `FINISHED` (invoked successfully); `ABORTED` (invocation ended); `FAILED` (invocation failed)
         :type Status: str
         :param StartTime: Invocation start time in the format of "%Y-%m-%d %H:%M:%S.%f"
         :type StartTime: str
@@ -1915,6 +1915,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param StatusReasons: Cause of function failure
 Note: this field may return null, indicating that no valid values can be obtained.
         :type StatusReasons: list of StatusReason
+        :param AsyncRunEnable: Specifies whether to enable asynchronization 
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AsyncRunEnable: str
+        :param TraceEnable: Specifies whether to enable event tracking
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TraceEnable: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -1958,6 +1964,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Qualifier = None
         self.InitTimeout = None
         self.StatusReasons = None
+        self.AsyncRunEnable = None
+        self.TraceEnable = None
         self.RequestId = None
 
 
@@ -2036,6 +2044,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = StatusReason()
                 obj._deserialize(item)
                 self.StatusReasons.append(obj)
+        self.AsyncRunEnable = params.get("AsyncRunEnable")
+        self.TraceEnable = params.get("TraceEnable")
         self.RequestId = params.get("RequestId")
 
 

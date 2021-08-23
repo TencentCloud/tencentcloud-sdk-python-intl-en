@@ -27,7 +27,7 @@ class CreateInput(AbstractModel):
         r"""
         :param InputName: Input name, which can contain 1 to 32 letters, digits, and underscores.
         :type InputName: str
-        :param Protocol: Input protocol. Valid values: SRT, RTP.
+        :param Protocol: Input protocol. Valid values: `SRT`, `RTP`, `RTMP`
         :type Protocol: str
         :param Description: Input description. Length: [0, 255].
         :type Description: str
@@ -37,6 +37,8 @@ class CreateInput(AbstractModel):
         :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputSRTSettings`
         :param RTPSettings: RTP configuration information of input.
         :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTPSettings`
+        :param FailOver: Input failover. Valid values: `OPEN`, `CLOSE` (default)
+        :type FailOver: str
         """
         self.InputName = None
         self.Protocol = None
@@ -44,6 +46,7 @@ class CreateInput(AbstractModel):
         self.AllowIpList = None
         self.SRTSettings = None
         self.RTPSettings = None
+        self.FailOver = None
 
 
     def _deserialize(self, params):
@@ -57,6 +60,7 @@ class CreateInput(AbstractModel):
         if params.get("RTPSettings") is not None:
             self.RTPSettings = CreateInputRTPSettings()
             self.RTPSettings._deserialize(params.get("RTPSettings"))
+        self.FailOver = params.get("FailOver")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -142,18 +146,18 @@ class CreateInputSRTSettings(AbstractModel):
         
 
 
-class CreateMediaConnectFlowRequest(AbstractModel):
-    """CreateMediaConnectFlow request structure.
+class CreateStreamLinkFlowRequest(AbstractModel):
+    """CreateStreamLinkFlow request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param FlowName: Flow name.
+        :param FlowName: Flow name
         :type FlowName: str
-        :param MaxBandwidth: Maximum bandwidth in bps. Valid values: 10000000, 20000000, 50000000.
+        :param MaxBandwidth: Maximum bandwidth in bps. Valid values: `10000000`, `20000000`, `50000000`
         :type MaxBandwidth: int
-        :param InputGroup: Flow input group.
+        :param InputGroup: Flow input group
         :type InputGroup: list of CreateInput
         """
         self.FlowName = None
@@ -179,14 +183,14 @@ class CreateMediaConnectFlowRequest(AbstractModel):
         
 
 
-class CreateMediaConnectFlowResponse(AbstractModel):
-    """CreateMediaConnectFlow response structure.
+class CreateStreamLinkFlowResponse(AbstractModel):
+    """CreateStreamLinkFlow response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Info: Information of the created flow.
+        :param Info: Information of the created flow
         :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeFlow`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -202,329 +206,14 @@ class CreateMediaConnectFlowResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class CreateMediaConnectOutputRequest(AbstractModel):
-    """CreateMediaConnectOutput request structure.
+class DeleteStreamLinkFlowRequest(AbstractModel):
+    """DeleteStreamLinkFlow request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param FlowId: Flow ID.
-        :type FlowId: str
-        :param Output: Output configuration of a flow.
-        :type Output: :class:`tencentcloud.mdc.v20200828.models.CreateOutput`
-        """
-        self.FlowId = None
-        self.Output = None
-
-
-    def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
-        if params.get("Output") is not None:
-            self.Output = CreateOutput()
-            self.Output._deserialize(params.get("Output"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateMediaConnectOutputResponse(AbstractModel):
-    """CreateMediaConnectOutput response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Info: Information of the created output.
-        :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeOutput`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.Info = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Info") is not None:
-            self.Info = DescribeOutput()
-            self.Info._deserialize(params.get("Info"))
-        self.RequestId = params.get("RequestId")
-
-
-class CreateOutput(AbstractModel):
-    """Configuration information of the created output.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param OutputName: Output name.
-        :type OutputName: str
-        :param Description: Output description.
-        :type Description: str
-        :param Protocol: Output protocol.
-        :type Protocol: str
-        :param OutputRegion: Output region.
-        :type OutputRegion: str
-        :param SRTSettings: SRT configuration of output.
-        :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputSrtSettings`
-        :param RTPSettings: RTP configuration of output.
-        :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTPSettings`
-        :param RTMPSettings: RTMP configuration of output.
-        :type RTMPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputRTMPSettings`
-        """
-        self.OutputName = None
-        self.Description = None
-        self.Protocol = None
-        self.OutputRegion = None
-        self.SRTSettings = None
-        self.RTPSettings = None
-        self.RTMPSettings = None
-
-
-    def _deserialize(self, params):
-        self.OutputName = params.get("OutputName")
-        self.Description = params.get("Description")
-        self.Protocol = params.get("Protocol")
-        self.OutputRegion = params.get("OutputRegion")
-        if params.get("SRTSettings") is not None:
-            self.SRTSettings = CreateOutputSrtSettings()
-            self.SRTSettings._deserialize(params.get("SRTSettings"))
-        if params.get("RTPSettings") is not None:
-            self.RTPSettings = CreateInputRTPSettings()
-            self.RTPSettings._deserialize(params.get("RTPSettings"))
-        if params.get("RTMPSettings") is not None:
-            self.RTMPSettings = CreateOutputRTMPSettings()
-            self.RTMPSettings._deserialize(params.get("RTMPSettings"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateOutputRTMPSettings(AbstractModel):
-    """RTMP configuration of the created MediaConnect flow output.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Destinations: Push destination address. You can enter one or two addresses.
-        :type Destinations: list of CreateOutputRtmpSettingsDestinations
-        :param ChunkSize: RTMP chunk size. Value range: [4096, 40960].
-        :type ChunkSize: int
-        """
-        self.Destinations = None
-        self.ChunkSize = None
-
-
-    def _deserialize(self, params):
-        if params.get("Destinations") is not None:
-            self.Destinations = []
-            for item in params.get("Destinations"):
-                obj = CreateOutputRtmpSettingsDestinations()
-                obj._deserialize(item)
-                self.Destinations.append(obj)
-        self.ChunkSize = params.get("ChunkSize")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateOutputRTPSettings(AbstractModel):
-    """RTP configuration of the created MediaConnect flow output.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Destinations: Push destination address. You can enter one or two addresses.
-        :type Destinations: :class:`tencentcloud.mdc.v20200828.models.CreateOutputRTPSettingsDestinations`
-        :param FEC: Only `none` can be entered.
-        :type FEC: str
-        :param IdleTimeout: Idle timeout period.
-        :type IdleTimeout: int
-        """
-        self.Destinations = None
-        self.FEC = None
-        self.IdleTimeout = None
-
-
-    def _deserialize(self, params):
-        if params.get("Destinations") is not None:
-            self.Destinations = CreateOutputRTPSettingsDestinations()
-            self.Destinations._deserialize(params.get("Destinations"))
-        self.FEC = params.get("FEC")
-        self.IdleTimeout = params.get("IdleTimeout")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateOutputRTPSettingsDestinations(AbstractModel):
-    """RTP destination address of the created MediaConnect flow output.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Ip: Push destination IP.
-        :type Ip: str
-        :param Port: Push destination port.
-        :type Port: int
-        """
-        self.Ip = None
-        self.Port = None
-
-
-    def _deserialize(self, params):
-        self.Ip = params.get("Ip")
-        self.Port = params.get("Port")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateOutputRtmpSettingsDestinations(AbstractModel):
-    """RTMP destination address of the created MediaConnect flow output.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Url: Push URL in the format of `rtmp://domain/live`.
-        :type Url: str
-        :param StreamKey: Push `StreamKey` in the format of `stream?key=value`.
-        :type StreamKey: str
-        """
-        self.Url = None
-        self.StreamKey = None
-
-
-    def _deserialize(self, params):
-        self.Url = params.get("Url")
-        self.StreamKey = params.get("StreamKey")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateOutputSrtSettings(AbstractModel):
-    """SRT configuration of the created MediaConnect flow output.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Destinations: Push destination address. Please configure one or two addresses.
-        :type Destinations: list of CreateOutputSrtSettingsDestinations
-        :param StreamId: Stream ID of SRT push.
-        :type StreamId: str
-        :param Latency: Total latency of SRT push.
-        :type Latency: int
-        :param RecvLatency: Receive latency of SRT push.
-        :type RecvLatency: int
-        :param PeerLatency: Peer latency of SRT push.
-        :type PeerLatency: int
-        :param PeerIdleTimeout: Peer idle timeout period of SRT push.
-        :type PeerIdleTimeout: int
-        :param Passphrase: Encryption key of SRT push.
-        :type Passphrase: str
-        :param PbKeyLen: Key length of SRT push.
-        :type PbKeyLen: int
-        """
-        self.Destinations = None
-        self.StreamId = None
-        self.Latency = None
-        self.RecvLatency = None
-        self.PeerLatency = None
-        self.PeerIdleTimeout = None
-        self.Passphrase = None
-        self.PbKeyLen = None
-
-
-    def _deserialize(self, params):
-        if params.get("Destinations") is not None:
-            self.Destinations = []
-            for item in params.get("Destinations"):
-                obj = CreateOutputSrtSettingsDestinations()
-                obj._deserialize(item)
-                self.Destinations.append(obj)
-        self.StreamId = params.get("StreamId")
-        self.Latency = params.get("Latency")
-        self.RecvLatency = params.get("RecvLatency")
-        self.PeerLatency = params.get("PeerLatency")
-        self.PeerIdleTimeout = params.get("PeerIdleTimeout")
-        self.Passphrase = params.get("Passphrase")
-        self.PbKeyLen = params.get("PbKeyLen")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateOutputSrtSettingsDestinations(AbstractModel):
-    """SRT destination address of the created MediaConnect flow output.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Ip: Output IP.
-        :type Ip: str
-        :param Port: Output port.
-        :type Port: int
-        """
-        self.Ip = None
-        self.Port = None
-
-
-    def _deserialize(self, params):
-        self.Ip = params.get("Ip")
-        self.Port = params.get("Port")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DeleteMediaConnectFlowRequest(AbstractModel):
-    """DeleteMediaConnectFlow request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param FlowId: Flow ID.
+        :param FlowId: Flow ID
         :type FlowId: str
         """
         self.FlowId = None
@@ -541,8 +230,8 @@ class DeleteMediaConnectFlowRequest(AbstractModel):
         
 
 
-class DeleteMediaConnectFlowResponse(AbstractModel):
-    """DeleteMediaConnectFlow response structure.
+class DeleteStreamLinkFlowResponse(AbstractModel):
+    """DeleteStreamLinkFlow response structure.
 
     """
 
@@ -558,16 +247,16 @@ class DeleteMediaConnectFlowResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DeleteMediaConnectOutputRequest(AbstractModel):
-    """DeleteMediaConnectOutput request structure.
+class DeleteStreamLinkOutputRequest(AbstractModel):
+    """DeleteStreamLinkOutput request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param FlowId: Flow ID.
+        :param FlowId: Flow ID
         :type FlowId: str
-        :param OutputId: Output ID.
+        :param OutputId: Output ID
         :type OutputId: str
         """
         self.FlowId = None
@@ -586,8 +275,8 @@ class DeleteMediaConnectOutputRequest(AbstractModel):
         
 
 
-class DeleteMediaConnectOutputResponse(AbstractModel):
-    """DeleteMediaConnectOutput response structure.
+class DeleteStreamLinkOutputResponse(AbstractModel):
+    """DeleteStreamLinkOutput response structure.
 
     """
 
@@ -614,7 +303,7 @@ class DescribeFlow(AbstractModel):
         :type FlowId: str
         :param FlowName: Flow name.
         :type FlowName: str
-        :param State: Flow status.
+        :param State: Flow status. Valid values: `IDLE`, `RUNNING`
         :type State: str
         :param MaxBandwidth: Maximum bandwidth value.
         :type MaxBandwidth: int
@@ -686,6 +375,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTPSettings`
         :param InputRegion: Input region.
         :type InputRegion: str
+        :param RTMPSettings: RTMP configuration information of an input
+        :type RTMPSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTMPSettings`
+        :param FailOver: Input failover
+Note: this field may return `null`, indicating that no valid value was found.
+        :type FailOver: str
         """
         self.InputId = None
         self.InputName = None
@@ -696,6 +390,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.SRTSettings = None
         self.RTPSettings = None
         self.InputRegion = None
+        self.RTMPSettings = None
+        self.FailOver = None
 
 
     def _deserialize(self, params):
@@ -717,6 +413,40 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.RTPSettings = DescribeInputRTPSettings()
             self.RTPSettings._deserialize(params.get("RTPSettings"))
         self.InputRegion = params.get("InputRegion")
+        if params.get("RTMPSettings") is not None:
+            self.RTMPSettings = DescribeInputRTMPSettings()
+            self.RTMPSettings._deserialize(params.get("RTMPSettings"))
+        self.FailOver = params.get("FailOver")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInputRTMPSettings(AbstractModel):
+    """RTMP configuration information of the queried input
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AppName: Path for RTMP stream pushing
+Note: this field may return `null`, indicating that no valid value was found.
+        :type AppName: str
+        :param StreamKey: StreamKey for RTMP stream pushing
+Format of an RTMP stream pushing URL: rtmp://IP address:1935/AppName/StreamKey
+        :type StreamKey: str
+        """
+        self.AppName = None
+        self.StreamKey = None
+
+
+    def _deserialize(self, params):
+        self.AppName = params.get("AppName")
+        self.StreamKey = params.get("StreamKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -800,123 +530,6 @@ class DescribeInputSRTSettings(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
-
-
-class DescribeMediaConnectFlowRequest(AbstractModel):
-    """DescribeMediaConnectFlow request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param FlowId: Flow ID.
-        :type FlowId: str
-        """
-        self.FlowId = None
-
-
-    def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeMediaConnectFlowResponse(AbstractModel):
-    """DescribeMediaConnectFlow response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Info: Configuration information of a flow.
-        :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeFlow`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.Info = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Info") is not None:
-            self.Info = DescribeFlow()
-            self.Info._deserialize(params.get("Info"))
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeMediaConnectFlowsRequest(AbstractModel):
-    """DescribeMediaConnectFlows request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param PageNum: Number of current pages. Default value: 1.
-        :type PageNum: int
-        :param PageSize: Number of entries per page. Default value: 10.
-        :type PageSize: int
-        """
-        self.PageNum = None
-        self.PageSize = None
-
-
-    def _deserialize(self, params):
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeMediaConnectFlowsResponse(AbstractModel):
-    """DescribeMediaConnectFlows response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Infos: Configuration information list of a flow.
-        :type Infos: list of DescribeFlow
-        :param PageNum: Number of current pages.
-        :type PageNum: int
-        :param PageSize: Number of entries per page.
-        :type PageSize: int
-        :param TotalNum: Total number.
-        :type TotalNum: int
-        :param TotalPage: Total number of pages.
-        :type TotalPage: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.Infos = None
-        self.PageNum = None
-        self.PageSize = None
-        self.TotalNum = None
-        self.TotalPage = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Infos") is not None:
-            self.Infos = []
-            for item in params.get("Infos"):
-                obj = DescribeFlow()
-                obj._deserialize(item)
-                self.Infos.append(obj)
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        self.TotalNum = params.get("TotalNum")
-        self.TotalPage = params.get("TotalPage")
-        self.RequestId = params.get("RequestId")
 
 
 class DescribeOutput(AbstractModel):
@@ -1140,6 +753,123 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class DescribeStreamLinkFlowRequest(AbstractModel):
+    """DescribeStreamLinkFlow request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Flow ID
+        :type FlowId: str
+        """
+        self.FlowId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamLinkFlowResponse(AbstractModel):
+    """DescribeStreamLinkFlow response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Info: Configuration information of a flow
+        :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeFlow`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Info = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self.Info = DescribeFlow()
+            self.Info._deserialize(params.get("Info"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStreamLinkFlowsRequest(AbstractModel):
+    """DescribeStreamLinkFlows request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageNum: Number of the current page. Default value: `1`
+        :type PageNum: int
+        :param PageSize: Number of entries per page. Default value: `10`
+        :type PageSize: int
+        """
+        self.PageNum = None
+        self.PageSize = None
+
+
+    def _deserialize(self, params):
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamLinkFlowsResponse(AbstractModel):
+    """DescribeStreamLinkFlows response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Infos: List of the configuration information of the flows
+        :type Infos: list of DescribeFlow
+        :param PageNum: Number of the current page
+        :type PageNum: int
+        :param PageSize: Number of entries per page
+        :type PageSize: int
+        :param TotalNum: Total number of entries
+        :type TotalNum: int
+        :param TotalPage: Total number of pages
+        :type TotalPage: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Infos = None
+        self.PageNum = None
+        self.PageSize = None
+        self.TotalNum = None
+        self.TotalPage = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self.Infos = []
+            for item in params.get("Infos"):
+                obj = DescribeFlow()
+                obj._deserialize(item)
+                self.Infos.append(obj)
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        self.TotalNum = params.get("TotalNum")
+        self.TotalPage = params.get("TotalPage")
+        self.RequestId = params.get("RequestId")
+
+
 class InputAddress(AbstractModel):
     """Input address information.
 
@@ -1168,64 +898,16 @@ class InputAddress(AbstractModel):
         
 
 
-class ModifyInput(AbstractModel):
-    """Parameters of the modified input.
+class ModifyStreamLinkFlowRequest(AbstractModel):
+    """ModifyStreamLinkFlow request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param InputId: Input ID.
-        :type InputId: str
-        :param InputName: Input name.
-        :type InputName: str
-        :param Description: Input description.
-        :type Description: str
-        :param AllowIpList: Allowed push IP in CIDR format.
-        :type AllowIpList: list of str
-        :param SRTSettings: SRT configuration information.
-        :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputSRTSettings`
-        :param RTPSettings: RTP configuration information.
-        :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTPSettings`
-        """
-        self.InputId = None
-        self.InputName = None
-        self.Description = None
-        self.AllowIpList = None
-        self.SRTSettings = None
-        self.RTPSettings = None
-
-
-    def _deserialize(self, params):
-        self.InputId = params.get("InputId")
-        self.InputName = params.get("InputName")
-        self.Description = params.get("Description")
-        self.AllowIpList = params.get("AllowIpList")
-        if params.get("SRTSettings") is not None:
-            self.SRTSettings = CreateInputSRTSettings()
-            self.SRTSettings._deserialize(params.get("SRTSettings"))
-        if params.get("RTPSettings") is not None:
-            self.RTPSettings = CreateInputRTPSettings()
-            self.RTPSettings._deserialize(params.get("RTPSettings"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyMediaConnectFlowRequest(AbstractModel):
-    """ModifyMediaConnectFlow request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param FlowId: Flow ID.
+        :param FlowId: Flow ID
         :type FlowId: str
-        :param FlowName: Name of the flow to be modified.
+        :param FlowName: Name of the flow to modify
         :type FlowName: str
         """
         self.FlowId = None
@@ -1244,8 +926,8 @@ class ModifyMediaConnectFlowRequest(AbstractModel):
         
 
 
-class ModifyMediaConnectFlowResponse(AbstractModel):
-    """ModifyMediaConnectFlow response structure.
+class ModifyStreamLinkFlowResponse(AbstractModel):
+    """ModifyStreamLinkFlow response structure.
 
     """
 
@@ -1259,166 +941,6 @@ class ModifyMediaConnectFlowResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
-
-
-class ModifyMediaConnectInputRequest(AbstractModel):
-    """ModifyMediaConnectInput request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param FlowId: Flow ID.
-        :type FlowId: str
-        :param Input: Information of the input to be modified.
-        :type Input: :class:`tencentcloud.mdc.v20200828.models.ModifyInput`
-        """
-        self.FlowId = None
-        self.Input = None
-
-
-    def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
-        if params.get("Input") is not None:
-            self.Input = ModifyInput()
-            self.Input._deserialize(params.get("Input"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyMediaConnectInputResponse(AbstractModel):
-    """ModifyMediaConnectInput response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Info: Input information after modification.
-        :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeInput`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.Info = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Info") is not None:
-            self.Info = DescribeInput()
-            self.Info._deserialize(params.get("Info"))
-        self.RequestId = params.get("RequestId")
-
-
-class ModifyMediaConnectOutputRequest(AbstractModel):
-    """ModifyMediaConnectOutput request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param FlowId: Flow ID.
-        :type FlowId: str
-        :param Output: Configuration of the output to be modified.
-        :type Output: :class:`tencentcloud.mdc.v20200828.models.ModifyOutput`
-        """
-        self.FlowId = None
-        self.Output = None
-
-
-    def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
-        if params.get("Output") is not None:
-            self.Output = ModifyOutput()
-            self.Output._deserialize(params.get("Output"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyMediaConnectOutputResponse(AbstractModel):
-    """ModifyMediaConnectOutput response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Info: Output configuration after modification.
-        :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeOutput`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.Info = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Info") is not None:
-            self.Info = DescribeOutput()
-            self.Info._deserialize(params.get("Info"))
-        self.RequestId = params.get("RequestId")
-
-
-class ModifyOutput(AbstractModel):
-    """Configuration of the modified output.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param OutputId: ID of the output to be modified.
-        :type OutputId: str
-        :param OutputName: Output name.
-        :type OutputName: str
-        :param Description: Output description.
-        :type Description: str
-        :param Protocol: Output push protocol. Valid values: SRT, RTMP.
-        :type Protocol: str
-        :param SRTSettings: Configuration of SRT push.
-        :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputSrtSettings`
-        :param RTPSettings: Configuration of RTP push.
-        :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputRTPSettings`
-        :param RTMPSettings: Configuration of RTMP push.
-        :type RTMPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputRTMPSettings`
-        """
-        self.OutputId = None
-        self.OutputName = None
-        self.Description = None
-        self.Protocol = None
-        self.SRTSettings = None
-        self.RTPSettings = None
-        self.RTMPSettings = None
-
-
-    def _deserialize(self, params):
-        self.OutputId = params.get("OutputId")
-        self.OutputName = params.get("OutputName")
-        self.Description = params.get("Description")
-        self.Protocol = params.get("Protocol")
-        if params.get("SRTSettings") is not None:
-            self.SRTSettings = CreateOutputSrtSettings()
-            self.SRTSettings._deserialize(params.get("SRTSettings"))
-        if params.get("RTPSettings") is not None:
-            self.RTPSettings = CreateOutputRTPSettings()
-            self.RTPSettings._deserialize(params.get("RTPSettings"))
-        if params.get("RTMPSettings") is not None:
-            self.RTMPSettings = CreateOutputRTMPSettings()
-            self.RTMPSettings._deserialize(params.get("RTMPSettings"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
 
 
 class OutputAddress(AbstractModel):
@@ -1529,14 +1051,14 @@ class SRTAddressDestination(AbstractModel):
         
 
 
-class StartMediaConnectFlowRequest(AbstractModel):
-    """StartMediaConnectFlow request structure.
+class StartStreamLinkFlowRequest(AbstractModel):
+    """StartStreamLinkFlow request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param FlowId: Flow ID.
+        :param FlowId: Flow ID
         :type FlowId: str
         """
         self.FlowId = None
@@ -1553,8 +1075,8 @@ class StartMediaConnectFlowRequest(AbstractModel):
         
 
 
-class StartMediaConnectFlowResponse(AbstractModel):
-    """StartMediaConnectFlow response structure.
+class StartStreamLinkFlowResponse(AbstractModel):
+    """StartStreamLinkFlow response structure.
 
     """
 
@@ -1570,14 +1092,14 @@ class StartMediaConnectFlowResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class StopMediaConnectFlowRequest(AbstractModel):
-    """StopMediaConnectFlow request structure.
+class StopStreamLinkFlowRequest(AbstractModel):
+    """StopStreamLinkFlow request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param FlowId: Flow ID.
+        :param FlowId: Flow ID
         :type FlowId: str
         """
         self.FlowId = None
@@ -1594,8 +1116,8 @@ class StopMediaConnectFlowRequest(AbstractModel):
         
 
 
-class StopMediaConnectFlowResponse(AbstractModel):
-    """StopMediaConnectFlow response structure.
+class StopStreamLinkFlowResponse(AbstractModel):
+    """StopStreamLinkFlow response structure.
 
     """
 
