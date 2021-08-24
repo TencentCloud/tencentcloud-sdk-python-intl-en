@@ -1032,16 +1032,16 @@ class AiContentReviewResult(AbstractModel):
     def __init__(self):
         r"""
         :param Type: Task type. Valid values:
-<li>Porn: porn information detection in image</li>
-<li>Terrorism: terrorism information detection in image</li>
-<li>Political: politically sensitive information detection in image</li>
-<li>Porn.Asr: ASR-based porn information detection in speech</li>
-<li>Porn.Ocr: OCR-based porn information detection in text</li>
-<li>Political.Asr: ASR-based politically sensitive information detection in speech</li>
-<li>Political.Ocr: OCR-based politically sensitive information detection in text</li>
-<li>Terrorism.Ocr: OCR-based terrorism information in text</li>
-<li>Prohibited.Asr: ASR-based prohibited information detection in speech</li>
-<li>Prohibited.Ocr: OCR-based prohibited information detection in text</li>
+<li>`Porn`: porn information recognition in images</li>
+<li>`Terrorism`: terrorism information recognition in images</li>
+<li>`Political`: politically sensitive information recognition in images</li>
+<li>`Porn.Asr`: ASR-based porn information recognition in speech</li>
+<li>`Porn.Ocr`: OCR-based porn information recognition in text</li>
+<li>`Political.Asr`: ASR-based politically sensitive information recognition in speech</li>
+<li>`Political.Ocr`: OCR-based politically sensitive information recognition in text</li>
+<li>`Terrorism.Ocr`: OCR-based terrorism information recognition in text</li>
+<li>`Prohibited.Asr`: ASR-based prohibited information recognition in speech</li>
+<li>`Prohibited.Ocr`: OCR-based prohibited information recognition in text</li>
         :type Type: str
         :param PornTask: Query result of intelligent porn information detection in video image task in video content audit, which is valid when task type is `Porn`.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -1327,12 +1327,19 @@ class AiRecognitionTaskAsrFullTextResultOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SegmentSet: List of full speech recognition segments.
+        :param SegmentSet: List of full-text speech recognition segments
+<font color=red>Note</font>: this list displays up to the first 100 results. You can get all the results from the file whose URL is `SegmentSetFileUrl`.
         :type SegmentSet: list of AiRecognitionTaskAsrFullTextSegmentItem
+        :param SegmentSetFileUrl: URL to the file of the list for full-text speech recognition segments. The file format is JSON, and the data structure is the same as `SegmentSet`. The file will be deleted upon the expiration time `SegmentSetFileUrlExpireTime`, instead of being stored permanently.
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file of the list for full-text speech recognition segments, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732)
+        :type SegmentSetFileUrlExpireTime: str
         :param SubtitleUrl: Subtitles file URL.
         :type SubtitleUrl: str
         """
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
         self.SubtitleUrl = None
 
 
@@ -1343,6 +1350,8 @@ class AiRecognitionTaskAsrFullTextResultOutput(AbstractModel):
                 obj = AiRecognitionTaskAsrFullTextSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         self.SubtitleUrl = params.get("SubtitleUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -1502,10 +1511,17 @@ class AiRecognitionTaskAsrWordsResultOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResultSet: Speech keyword recognition result set.
+        :param ResultSet: Speech keyword recognition result set
+<font color=red>Note</font>: this list displays up to the first 100 results. You can get all the results from the file whose URL is `SegmentSetFileUrl`.
         :type ResultSet: list of AiRecognitionTaskAsrWordsResultItem
+        :param ResultSetFileUrl: URL to the file of the speech keyword recognition result set. The file format is JSON, and the data structure is the same as `SegmentSet`. The file will be deleted upon the expiration time `SegmentSetFileUrlExpireTime`, instead of being stored permanently.
+        :type ResultSetFileUrl: str
+        :param ResultSetFileUrlExpireTime: Expiration time of the URL to the file of the speech keyword recognition result set, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732)
+        :type ResultSetFileUrlExpireTime: str
         """
         self.ResultSet = None
+        self.ResultSetFileUrl = None
+        self.ResultSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -1515,6 +1531,8 @@ class AiRecognitionTaskAsrWordsResultOutput(AbstractModel):
                 obj = AiRecognitionTaskAsrWordsResultItem()
                 obj._deserialize(item)
                 self.ResultSet.append(obj)
+        self.ResultSetFileUrl = params.get("ResultSetFileUrl")
+        self.ResultSetFileUrlExpireTime = params.get("ResultSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1679,10 +1697,17 @@ class AiRecognitionTaskFaceResultOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResultSet: Intelligent face recognition result set.
+        :param ResultSet: Intelligent face recognition result set
+<font color=red>Note</font>: this list displays up to the first 100 results. You can get all the results from the file whose URL is `SegmentSetFileUrl`.
         :type ResultSet: list of AiRecognitionTaskFaceResultItem
+        :param ResultSetFileUrl: URL to the file of the intelligent face recognition result set. The file format is JSON, and the data structure is the same as `SegmentSet`. The file will be deleted upon the expiration time `SegmentSetFileUrlExpireTime`, instead of being stored permanently.
+        :type ResultSetFileUrl: str
+        :param ResultSetFileUrlExpireTime: Expiration time of the URL to the file of the intelligent face recognition result set, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732)
+        :type ResultSetFileUrlExpireTime: str
         """
         self.ResultSet = None
+        self.ResultSetFileUrl = None
+        self.ResultSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -1692,6 +1717,8 @@ class AiRecognitionTaskFaceResultOutput(AbstractModel):
                 obj = AiRecognitionTaskFaceResultItem()
                 obj._deserialize(item)
                 self.ResultSet.append(obj)
+        self.ResultSetFileUrl = params.get("ResultSetFileUrl")
+        self.ResultSetFileUrlExpireTime = params.get("ResultSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1983,10 +2010,17 @@ class AiRecognitionTaskObjectResultOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResultSet: Result set of intelligent object recognition.
+        :param ResultSet: Intelligent object recognition result set
+<font color=red>Note</font>: this list displays up to the first 100 results. You can get all the results from the file whose URL is `SegmentSetFileUrl`.
         :type ResultSet: list of AiRecognitionTaskObjectResultItem
+        :param ResultSetFileUrl: URL to the file of the object recognition result set. The file format is JSON, and the data structure is the same as `SegmentSet`. The file will be deleted upon the expiration time `SegmentSetFileUrlExpireTime`, instead of being stored permanently.
+        :type ResultSetFileUrl: str
+        :param ResultSetFileUrlExpireTime: Expiration time of the URL to the object recognition result set, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732)
+        :type ResultSetFileUrlExpireTime: str
         """
         self.ResultSet = None
+        self.ResultSetFileUrl = None
+        self.ResultSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -1996,6 +2030,8 @@ class AiRecognitionTaskObjectResultOutput(AbstractModel):
                 obj = AiRecognitionTaskObjectResultItem()
                 obj._deserialize(item)
                 self.ResultSet.append(obj)
+        self.ResultSetFileUrl = params.get("ResultSetFileUrl")
+        self.ResultSetFileUrlExpireTime = params.get("ResultSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2121,10 +2157,17 @@ class AiRecognitionTaskOcrFullTextResultOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SegmentSet: Full text recognition result set.
+        :param SegmentSet: Full-text recognition result set
+<font color=red>Note</font>: this list displays up to the first 100 results. You can get all the results from the file whose URL is `SegmentSetFileUrl`.
         :type SegmentSet: list of AiRecognitionTaskOcrFullTextSegmentItem
+        :param SegmentSetFileUrl: URL to the file of the full-text recognition result set. The file format is JSON, and the data structure is the same as `SegmentSet`. The file will be deleted upon the expiration time `SegmentSetFileUrlExpireTime`, instead of being stored permanently.
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file of the full-text recognition result set, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732)
+        :type SegmentSetFileUrlExpireTime: str
         """
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -2134,6 +2177,8 @@ class AiRecognitionTaskOcrFullTextResultOutput(AbstractModel):
                 obj = AiRecognitionTaskOcrFullTextSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2325,10 +2370,17 @@ class AiRecognitionTaskOcrWordsResultOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResultSet: Text keyword recognition result set.
+        :param ResultSet: Text keyword recognition result set
+<font color=red>Note</font>: this list displays up to the first 100 results. You can get all the results from the file whose URL is `SegmentSetFileUrl`.
         :type ResultSet: list of AiRecognitionTaskOcrWordsResultItem
+        :param ResultSetFileUrl: URL to the file of the text keyword recognition result set. The file format is JSON, and the data structure is the same as `SegmentSet`. The file will be deleted upon the expiration time `SegmentSetFileUrlExpireTime`, instead of being stored permanently.
+        :type ResultSetFileUrl: str
+        :param ResultSetFileUrlExpireTime: Expiration time of the URL to the file of the text keyword recognition result set, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732)
+        :type ResultSetFileUrlExpireTime: str
         """
         self.ResultSet = None
+        self.ResultSetFileUrl = None
+        self.ResultSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -2338,6 +2390,8 @@ class AiRecognitionTaskOcrWordsResultOutput(AbstractModel):
                 obj = AiRecognitionTaskOcrWordsResultItem()
                 obj._deserialize(item)
                 self.ResultSet.append(obj)
+        self.ResultSetFileUrl = params.get("ResultSetFileUrl")
+        self.ResultSetFileUrlExpireTime = params.get("ResultSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2464,10 +2518,17 @@ class AiRecognitionTaskSegmentResultOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SegmentSet: List of split video segments.
+        :param SegmentSet: List of split video segments
+<font color=red>Note</font>: this list displays up to the first 100 results. You can get all the results from the file whose URL is `SegmentSetFileUrl`.
         :type SegmentSet: list of AiRecognitionTaskSegmentSegmentItem
+        :param SegmentSetFileUrl: URL to the file of the list for split video segments. The file format is JSON, and the data structure is the same as `SegmentSet`. The file will be deleted upon the expiration time `SegmentSetFileUrlExpireTime`, instead of being stored permanently.
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file of the list for split video segments, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732)
+        :type SegmentSetFileUrlExpireTime: str
         """
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -2477,6 +2538,8 @@ class AiRecognitionTaskSegmentResultOutput(AbstractModel):
                 obj = AiRecognitionTaskSegmentSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9104,6 +9167,7 @@ The value is set according to query period length by default. 5-minute granulari
 <li>`InfrequentStorage`: STANDARD_IA</li>
 <li>`ArchiveStorage`: ARCHIVE</li>
 <li>`DeepArchiveStorage`: DEEP ARCHIVE</li>
+<li>`DeletedInfrequentStorage`: STANDARD_IA data deleted in advance</li>
 <li>`DeletedArchiveStorage`: ARCHIVE data deleted in advance</li>
 <li>`DeletedDeepArchiveStorage`: DEEP ARCHIVE data deleted in advance</li>
 <li>`ArchiveStandardRetrieval`: ARCHIVE data retrieved using standard retrievals</li>
@@ -11233,7 +11297,7 @@ class ImageWatermarkInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageContent: String generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) a watermark image. JPEG and PNG images are supported.
+        :param ImageContent: The [Base64](https://tools.ietf.org/html/rfc4648) encoded string of a watermark image. Only JPEG, PNG, and GIF images are supported.
         :type ImageContent: str
         :param Width: Watermark width. % and px formats are supported:
 <li>If the string ends in %, the `Width` of the watermark will be the specified percentage of the video width. For example, `10%` means that `Width` is 10% of the video width;</li>
@@ -11932,6 +11996,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param StorageClass: Storage class of a media file:
 <li>STANDARD</li>
 <li>STANDARD_IA</li>
+<li>ARCHIVE</li>
+<li>DEEP_ARCHIVE</li>
         :type StorageClass: str
         """
         self.Name = None
@@ -13308,6 +13374,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaTranscodeItem`
         :param Progress: Transcoding progress. Value range: 0-100.
         :type Progress: int
+        :param BeginProcessTime: Transcoding task start time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732)
+        :type BeginProcessTime: str
+        :param FinishTime: Transcoding task end time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732)
+        :type FinishTime: str
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -13316,6 +13386,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Input = None
         self.Output = None
         self.Progress = None
+        self.BeginProcessTime = None
+        self.FinishTime = None
 
 
     def _deserialize(self, params):
@@ -13330,6 +13402,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.Output = MediaTranscodeItem()
             self.Output._deserialize(params.get("Output"))
         self.Progress = params.get("Progress")
+        self.BeginProcessTime = params.get("BeginProcessTime")
+        self.FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17784,6 +17858,9 @@ class SearchMediaRequest(AbstractModel):
         :param CreateTime: Matches files created within the time period.
 <li>Includes specified start and end points in time.</li>
         :type CreateTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
+        :param ExpireTime: Files whose expiration time points are within the specified time range will be returned. Expired files will not be returned.
+<li>The files whose expiration time points are on the start or end time of the specified range will also be returned.</li>
+        :type ExpireTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
         :param Sort: Sorting order.
 <li>Valid value of `Sort.Field`: CreateTime.</li>
 <li>If `Text`, `Names`, or `Descriptions` is not empty, the `Sort.Field` field will not take effect, and the search results will be sorted by match rate.</li>
@@ -17812,6 +17889,12 @@ class SearchMediaRequest(AbstractModel):
         :type StorageRegions: list of str
         :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
+        :param StorageClasses: An array of storage classes. Valid values:
+<li>STANDARD</li>
+<li>STANDARD_IA</li>
+<li>ARCHIVE</li>
+<li>DEEP_ARCHIVE</li>
+        :type StorageClasses: list of str
         :param Text: (This is not recommended. `Names`, `NamePrefixes`, or `Descriptions` should be used instead)
 Search text, which fuzzily matches the media file name or description. The more matching items and the higher the match rate, the higher-ranked the result. It can contain up to 64 characters.
         :type Text: str
@@ -17848,12 +17931,14 @@ End time in the creation time range.
         self.StreamIds = None
         self.Vids = None
         self.CreateTime = None
+        self.ExpireTime = None
         self.Sort = None
         self.Offset = None
         self.Limit = None
         self.Filters = None
         self.StorageRegions = None
         self.SubAppId = None
+        self.StorageClasses = None
         self.Text = None
         self.SourceType = None
         self.StreamId = None
@@ -17876,6 +17961,9 @@ End time in the creation time range.
         if params.get("CreateTime") is not None:
             self.CreateTime = TimeRange()
             self.CreateTime._deserialize(params.get("CreateTime"))
+        if params.get("ExpireTime") is not None:
+            self.ExpireTime = TimeRange()
+            self.ExpireTime._deserialize(params.get("ExpireTime"))
         if params.get("Sort") is not None:
             self.Sort = SortBy()
             self.Sort._deserialize(params.get("Sort"))
@@ -17884,6 +17972,7 @@ End time in the creation time range.
         self.Filters = params.get("Filters")
         self.StorageRegions = params.get("StorageRegions")
         self.SubAppId = params.get("SubAppId")
+        self.StorageClasses = params.get("StorageClasses")
         self.Text = params.get("Text")
         self.SourceType = params.get("SourceType")
         self.StreamId = params.get("StreamId")
