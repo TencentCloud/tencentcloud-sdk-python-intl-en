@@ -8563,16 +8563,21 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param Codec: Audio stream codec, such as aac.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Codec: str
+        :param Channel: Number of sound channels, e.g., 2
+Note: this field may return `null`, indicating that no valid value was found.
+        :type Channel: int
         """
         self.Bitrate = None
         self.SamplingRate = None
         self.Codec = None
+        self.Channel = None
 
 
     def _deserialize(self, params):
         self.Bitrate = params.get("Bitrate")
         self.SamplingRate = params.get("SamplingRate")
         self.Codec = params.get("Codec")
+        self.Channel = params.get("Channel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9655,12 +9660,24 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param Fps: Frame rate in Hz.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Fps: int
+        :param ColorPrimaries: Color primaries
+Note: this field may return `null`, indicating that no valid value was found.
+        :type ColorPrimaries: str
+        :param ColorSpace: Color space
+Note: this field may return `null`, indicating that no valid value was found.
+        :type ColorSpace: str
+        :param ColorTransfer: Color transfer
+Note: this field may return `null`, indicating that no valid value was found.
+        :type ColorTransfer: str
         """
         self.Bitrate = None
         self.Height = None
         self.Width = None
         self.Codec = None
         self.Fps = None
+        self.ColorPrimaries = None
+        self.ColorSpace = None
+        self.ColorTransfer = None
 
 
     def _deserialize(self, params):
@@ -9669,6 +9686,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Width = params.get("Width")
         self.Codec = params.get("Codec")
         self.Fps = params.get("Fps")
+        self.ColorPrimaries = params.get("ColorPrimaries")
+        self.ColorSpace = params.get("ColorSpace")
+        self.ColorTransfer = params.get("ColorTransfer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
