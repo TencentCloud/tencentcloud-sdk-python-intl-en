@@ -2085,6 +2085,8 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
         :type Enable: list of int
         :param NotBindingNoticeRule: If `1` is passed in, alarm policies with no notification rules configured are queried. If it is left empty or other values are passed in, all alarm policies are queried.
         :type NotBindingNoticeRule: int
+        :param InstanceGroupId: Instance group ID.
+        :type InstanceGroupId: int
         """
         self.Module = None
         self.PageNumber = None
@@ -2103,6 +2105,7 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
         self.RuleTypes = None
         self.Enable = None
         self.NotBindingNoticeRule = None
+        self.InstanceGroupId = None
 
 
     def _deserialize(self, params):
@@ -2123,6 +2126,7 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
         self.RuleTypes = params.get("RuleTypes")
         self.Enable = params.get("Enable")
         self.NotBindingNoticeRule = params.get("NotBindingNoticeRule")
+        self.InstanceGroupId = params.get("InstanceGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
