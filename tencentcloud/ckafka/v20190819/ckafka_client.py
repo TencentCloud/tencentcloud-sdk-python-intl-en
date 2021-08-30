@@ -727,6 +727,34 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def FetchMessageByOffset(self, request):
+        """This API is used to query messages based on a specified offset position.
+
+        :param request: Request instance for FetchMessageByOffset.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.FetchMessageByOffsetRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.FetchMessageByOffsetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("FetchMessageByOffset", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.FetchMessageByOffsetResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyGroupOffsets(self, request):
         """This API is used to set the consumer group (Groups) offset.
 

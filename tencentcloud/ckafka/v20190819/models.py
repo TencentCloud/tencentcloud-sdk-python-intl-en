@@ -420,6 +420,53 @@ class ConsumerGroupTopic(AbstractModel):
         
 
 
+class ConsumerRecord(AbstractModel):
+    """Message record
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Topic: Topic name
+        :type Topic: str
+        :param Partition: Partition ID
+        :type Partition: int
+        :param Offset: Offset
+        :type Offset: int
+        :param Key: Message key
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Key: str
+        :param Value: Message value
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Value: str
+        :param Timestamp: Message timestamp
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Timestamp: int
+        """
+        self.Topic = None
+        self.Partition = None
+        self.Offset = None
+        self.Key = None
+        self.Value = None
+        self.Timestamp = None
+
+
+    def _deserialize(self, params):
+        self.Topic = params.get("Topic")
+        self.Partition = params.get("Partition")
+        self.Offset = params.get("Offset")
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        self.Timestamp = params.get("Timestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAclRequest(AbstractModel):
     """CreateAcl request structure.
 
@@ -1981,6 +2028,65 @@ Note: `null` may be returned for this field, indicating that no valid values can
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class FetchMessageByOffsetRequest(AbstractModel):
+    """FetchMessageByOffset request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param Topic: Topic name
+        :type Topic: str
+        :param Partition: Partition ID
+        :type Partition: int
+        :param Offset: Offset information
+        :type Offset: int
+        """
+        self.InstanceId = None
+        self.Topic = None
+        self.Partition = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Topic = params.get("Topic")
+        self.Partition = params.get("Partition")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FetchMessageByOffsetResponse(AbstractModel):
+    """FetchMessageByOffset response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Returned results
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.ConsumerRecord`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ConsumerRecord()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
 
 
 class Filter(AbstractModel):

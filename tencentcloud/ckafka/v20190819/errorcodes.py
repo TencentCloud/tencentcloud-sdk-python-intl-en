@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# Operation failed.
+FAILEDOPERATION = 'FailedOperation'
+
 # Internal error.
 INTERNALERROR = 'InternalError'
 
@@ -40,6 +43,9 @@ INVALIDPARAMETERVALUE_WRONGACTION = 'InvalidParameterValue.WrongAction'
 
 # The zone is not supported.
 INVALIDPARAMETERVALUE_ZONENOTSUPPORT = 'InvalidParameterValue.ZoneNotSupport'
+
+# 
+RESOURCEINUSE = 'ResourceInUse'
 
 # The resource is unavailable.
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'
