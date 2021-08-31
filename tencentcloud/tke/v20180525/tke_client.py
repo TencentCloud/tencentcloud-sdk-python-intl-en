@@ -390,6 +390,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreatePrometheusAlertRule(self, request):
+        """This API is used to create an alarm rule.
+
+        :param request: Request instance for CreatePrometheusAlertRule.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreatePrometheusAlertRuleRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreatePrometheusAlertRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreatePrometheusAlertRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePrometheusAlertRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteCluster(self, request):
         """This API is used to delete a cluster. (Cloud API v3).
 
@@ -600,6 +628,34 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteClusterRouteTableResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeletePrometheusAlertRule(self, request):
+        """This API is used to delete an alarm rule.
+
+        :param request: Request instance for DeletePrometheusAlertRule.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeletePrometheusAlertRuleRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeletePrometheusAlertRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeletePrometheusAlertRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeletePrometheusAlertRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1090,6 +1146,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePrometheusInstance(self, request):
+        """This API is used to obtain the instance details.
+
+        :param request: Request instance for DescribePrometheusInstance.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusInstanceRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePrometheusInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePrometheusInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRegions(self, request):
         """This API is used to obtain all regions supported by TKE.
 
@@ -1132,6 +1216,62 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRouteTableConflictsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVersions(self, request):
+        """This API is used to query cluster version information.
+
+        :param request: Request instance for DescribeVersions.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeVersionsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVersions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVersionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVpcCniPodLimits(self, request):
+        """This API is used to query the maximum number of Pods in the VPC-CNI network mode supported by the models in the specified availability zone of the current user and region.
+
+        :param request: Request instance for DescribeVpcCniPodLimits.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeVpcCniPodLimitsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeVpcCniPodLimitsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVpcCniPodLimits", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVpcCniPodLimitsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1328,6 +1468,34 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyClusterNodePoolResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyPrometheusAlertRule(self, request):
+        """This API is used to modify an alarm rule.
+
+        :param request: Request instance for ModifyPrometheusAlertRule.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyPrometheusAlertRuleRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyPrometheusAlertRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyPrometheusAlertRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyPrometheusAlertRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
