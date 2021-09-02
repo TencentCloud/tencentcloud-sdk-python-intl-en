@@ -1931,6 +1931,65 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTopicSubscribeGroupRequest(AbstractModel):
+    """DescribeTopicSubscribeGroup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param TopicName: Topic name
+        :type TopicName: str
+        :param Offset: Starting position of paging
+        :type Offset: int
+        :param Limit: Number of results per page
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.TopicName = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.TopicName = params.get("TopicName")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTopicSubscribeGroupResponse(AbstractModel):
+    """DescribeTopicSubscribeGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Returned results
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.TopicSubscribeGroup`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TopicSubscribeGroup()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeUserRequest(AbstractModel):
     """DescribeUser request structure.
 
@@ -3836,6 +3895,49 @@ Note: `null` may be returned for this field, indicating that no valid values can
         self.Expect = params.get("Expect")
         self.Current = params.get("Current")
         self.ModTimeStamp = params.get("ModTimeStamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopicSubscribeGroup(AbstractModel):
+    """`DescribeTopicSubscribeGroup` output parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number
+        :type TotalCount: int
+        :param StatusCountInfo: Number of consumer group status
+        :type StatusCountInfo: str
+        :param GroupsInfo: Consumer group information
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type GroupsInfo: list of GroupInfoResponse
+        :param Status: Whether a request is asynchronous. If there are fewer consumer groups in the instances, the result will be returned directly, and status code is 1. When there are many consumer groups in the instances, cache will be updated asynchronously. When status code is 0, grouping information will not be returned until cache update is completed and status code becomes 1.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Status: int
+        """
+        self.TotalCount = None
+        self.StatusCountInfo = None
+        self.GroupsInfo = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.StatusCountInfo = params.get("StatusCountInfo")
+        if params.get("GroupsInfo") is not None:
+            self.GroupsInfo = []
+            for item in params.get("GroupsInfo"):
+                obj = GroupInfoResponse()
+                obj._deserialize(item)
+                self.GroupsInfo.append(obj)
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

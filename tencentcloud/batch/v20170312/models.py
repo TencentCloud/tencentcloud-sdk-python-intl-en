@@ -749,6 +749,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ThroughputPerformance: Cloud disk performance, in MB/s
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ThroughputPerformance: int
+        :param CdcId: ID of the dedicated cluster to which the instance belongs.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type CdcId: str
         """
         self.DiskSize = None
         self.DiskType = None
@@ -758,6 +761,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Encrypt = None
         self.KmsKeyId = None
         self.ThroughputPerformance = None
+        self.CdcId = None
 
 
     def _deserialize(self, params):
@@ -769,6 +773,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Encrypt = params.get("Encrypt")
         self.KmsKeyId = params.get("KmsKeyId")
         self.ThroughputPerformance = params.get("ThroughputPerformance")
+        self.CdcId = params.get("CdcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3455,7 +3460,7 @@ class Placement(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Zone: ID of the availability zone where the instance resides. You can call the [DescribeZones](https://intl.cloud.tencent.com/document/product/213/15707?from_cn_redirect=1) API and obtain the ID in the returned `Zone` field.
+        :param Zone: ID of the availability zone where the instance resides. You can call the [DescribeZones](https://intl.cloud.tencent.com/document/product/213/35071) API and obtain the ID in the returned `Zone` field.
         :type Zone: str
         :param ProjectId: ID of the project to which the instance belongs. To obtain the project IDs, you can call [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1) and look for the `projectId` fields in the response. If this parameter is not specified, the default project will be used.
         :type ProjectId: int
@@ -3782,16 +3787,20 @@ class SystemDisk(AbstractModel):
         :type DiskId: str
         :param DiskSize: System disk size; unit: GB; default value: 50 GB.
         :type DiskSize: int
+        :param CdcId: ID of the dedicated cluster to which the instance belongs.
+        :type CdcId: str
         """
         self.DiskType = None
         self.DiskId = None
         self.DiskSize = None
+        self.CdcId = None
 
 
     def _deserialize(self, params):
         self.DiskType = params.get("DiskType")
         self.DiskId = params.get("DiskId")
         self.DiskSize = params.get("DiskSize")
+        self.CdcId = params.get("CdcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
