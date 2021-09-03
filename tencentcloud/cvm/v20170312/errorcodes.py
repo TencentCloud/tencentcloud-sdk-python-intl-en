@@ -68,11 +68,17 @@ FAILEDOPERATION_RIMAGESHAREFAILED = 'FailedOperation.RImageShareFailed'
 # Security group operation failed.
 FAILEDOPERATION_SECURITYGROUPACTIONFAILED = 'FailedOperation.SecurityGroupActionFailed'
 
+# The snapshot size is larger than the disk capacity. You need a larger disk space.
+FAILEDOPERATION_SNAPSHOTSIZELARGERTHANDATASIZE = 'FailedOperation.SnapshotSizeLargerThanDataSize'
+
 # The snapshot size should be larger than the cloud disk capacity.
 FAILEDOPERATION_SNAPSHOTSIZELESSTHANDATASIZE = 'FailedOperation.SnapshotSizeLessThanDataSize'
 
 # The tag key specified in the request is reserved for the system.
 FAILEDOPERATION_TAGKEYRESERVED = 'FailedOperation.TagKeyReserved'
+
+# This image is not a Linux&x86_64 image.
+FAILEDOPERATION_TATAGENTNOTSUPPORT = 'FailedOperation.TatAgentNotSupport'
 
 # The instance is unreturnable.
 FAILEDOPERATION_UNRETURNABLE = 'FailedOperation.Unreturnable'
@@ -249,7 +255,13 @@ INVALIDPARAMETERCONFLICT = 'InvalidParameterConflict'
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
 # 
+INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDMALFORMED = 'InvalidParameterValue.BandwidthPackageIdMalformed'
+
+# The specified bandwidth package does not exist.
 INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDNOTFOUND = 'InvalidParameterValue.BandwidthPackageIdNotFound'
+
+# Corresponding CHC hosts not found
+INVALIDPARAMETERVALUE_CHCHOSTSNOTFOUND = 'InvalidParameterValue.ChcHostsNotFound'
 
 # The minimum capacity of a SSD data disk is 100 GB.
 INVALIDPARAMETERVALUE_CLOUDSSDDATADISKSIZETOOSMALL = 'InvalidParameterValue.CloudSsdDataDiskSizeTooSmall'
@@ -257,11 +269,17 @@ INVALIDPARAMETERVALUE_CLOUDSSDDATADISKSIZETOOSMALL = 'InvalidParameterValue.Clou
 # Illegal core count.
 INVALIDPARAMETERVALUE_CORECOUNTVALUE = 'InvalidParameterValue.CoreCountValue'
 
-# 
+# Duplicate parameter value
 INVALIDPARAMETERVALUE_DUPLICATE = 'InvalidParameterValue.Duplicate'
 
-# 
+# Non-GPU instances cannot be changed to the GPU instance.
+INVALIDPARAMETERVALUE_GPUINSTANCEFAMILY = 'InvalidParameterValue.GPUInstanceFamily'
+
+# Invalid IP format
 INVALIDPARAMETERVALUE_IPADDRESSMALFORMED = 'InvalidParameterValue.IPAddressMalformed'
+
+# Invalid IPv6 address
+INVALIDPARAMETERVALUE_IPV6ADDRESSMALFORMED = 'InvalidParameterValue.IPv6AddressMalformed'
 
 # The value of HostName is invalid.
 INVALIDPARAMETERVALUE_ILLEGALHOSTNAME = 'InvalidParameterValue.IllegalHostName'
@@ -281,10 +299,22 @@ INVALIDPARAMETERVALUE_INSUFFICIENTOFFERING = 'InvalidParameterValue.Insufficient
 # The bid is lower than the market price.
 INVALIDPARAMETERVALUE_INSUFFICIENTPRICE = 'InvalidParameterValue.InsufficientPrice'
 
+# Invalid AppID
+INVALIDPARAMETERVALUE_INVALIDAPPIDFORMAT = 'InvalidParameterValue.InvalidAppIdFormat'
+
+# The specified image does not support the specified instance type.
+INVALIDPARAMETERVALUE_INVALIDIMAGEFORGIVENINSTANCETYPE = 'InvalidParameterValue.InvalidImageForGivenInstanceType'
+
+# A RAW image cannot be used to create a CVM. Choose another image.
+INVALIDPARAMETERVALUE_INVALIDIMAGEFORMAT = 'InvalidParameterValue.InvalidImageFormat'
+
 # The image does not support this operation.
 INVALIDPARAMETERVALUE_INVALIDIMAGEID = 'InvalidParameterValue.InvalidImageId'
 
-# Invalid image status.
+# The operating system of the specified image is not available in the current region.
+INVALIDPARAMETERVALUE_INVALIDIMAGEOSNAME = 'InvalidParameterValue.InvalidImageOsName'
+
+# The image has another ongoing task. Please check and try again later.
 INVALIDPARAMETERVALUE_INVALIDIMAGESTATE = 'InvalidParameterValue.InvalidImageState'
 
 # Invalid IP address.
@@ -299,7 +329,10 @@ INVALIDPARAMETERVALUE_INVALIDTIMEFORMAT = 'InvalidParameterValue.InvalidTimeForm
 # Incorrect UserData format. Use the Base64-encoded format.
 INVALIDPARAMETERVALUE_INVALIDUSERDATAFORMAT = 'InvalidParameterValue.InvalidUserDataFormat'
 
-# 
+# Invalid fuzzy query string
+INVALIDPARAMETERVALUE_INVALIDVAGUENAME = 'InvalidParameterValue.InvalidVagueName'
+
+# The key does not exist.
 INVALIDPARAMETERVALUE_KEYPAIRNOTFOUND = 'InvalidParameterValue.KeyPairNotFound'
 
 # The specified key does not support the operation.
@@ -329,6 +362,9 @@ INVALIDPARAMETERVALUE_SUBNETIDMALFORMED = 'InvalidParameterValue.SubnetIdMalform
 # Creation failed: the subnet does not exist. Please specify another subnet.
 INVALIDPARAMETERVALUE_SUBNETNOTEXIST = 'InvalidParameterValue.SubnetNotExist'
 
+# The specified tag does not exist
+INVALIDPARAMETERVALUE_TAGKEYNOTFOUND = 'InvalidParameterValue.TagKeyNotFound'
+
 # Invalid thread count per core.
 INVALIDPARAMETERVALUE_THREADPERCOREVALUE = 'InvalidParameterValue.ThreadPerCoreValue'
 
@@ -337,6 +373,9 @@ INVALIDPARAMETERVALUE_TOOLARGE = 'InvalidParameterValue.TooLarge'
 
 # Invalid parameter value: parameter value is too long.
 INVALIDPARAMETERVALUE_TOOLONG = 'InvalidParameterValue.TooLong'
+
+# The VPC ID `xxx` is invalid. Please provide a VPC ID in the format of vpc-xxxxxxxx, where “x” can be a lowercase letter or number.
+INVALIDPARAMETERVALUE_VPCIDMALFORMED = 'InvalidParameterValue.VpcIdMalformed'
 
 # The VPC and instance must be in the same availability zone.
 INVALIDPARAMETERVALUE_VPCIDZONEIDNOTMATCH = 'InvalidParameterValue.VpcIdZoneIdNotMatch'
@@ -389,11 +428,23 @@ LIMITEXCEEDED_ASSOCIATEUSGLIMITEXCEEDED = 'LimitExceeded.AssociateUSGLimitExceed
 # The CVM ENIs associated with the security group has exceeded the limit.
 LIMITEXCEEDED_CVMSVIFSPERSECGROUPLIMITEXCEEDED = 'LimitExceeded.CvmsVifsPerSecGroupLimitExceeded'
 
+# The quota of the specified placement group is insufficient.
+LIMITEXCEEDED_DISASTERRECOVERGROUP = 'LimitExceeded.DisasterRecoverGroup'
+
+# The number of ENIs on a specified instance exceeds the maximum ENIs allowed for the target instance type. Delete some ENIs and try again.
+LIMITEXCEEDED_ENINUMLIMIT = 'LimitExceeded.EniNumLimit'
+
+# Number of IPs on this ENI reached the upper limit
+LIMITEXCEEDED_IPV6ADDRESSNUM = 'LimitExceeded.IPv6AddressNum'
+
 # You are short of the instance quota.
 LIMITEXCEEDED_INSTANCEQUOTA = 'LimitExceeded.InstanceQuota'
 
-# 
+# Unable to adjust: the target instance type does not support the configured public network bandwidth cap. See [Public Network Bandwidth Cap](https://intl.cloud.tencent.com/document/product/213/12523).
 LIMITEXCEEDED_INSTANCETYPEBANDWIDTH = 'LimitExceeded.InstanceTypeBandwidth'
+
+# Your quota for monthly-subscribed instances is full. Increase your quota and try again.
+LIMITEXCEEDED_PREPAYQUOTA = 'LimitExceeded.PrepayQuota'
 
 # The number of security groups exceeds the quota limit.
 LIMITEXCEEDED_SINGLEUSGQUOTA = 'LimitExceeded.SingleUSGQuota'
@@ -412,6 +463,9 @@ LIMITEXCEEDED_VPCSUBNETNUM = 'LimitExceeded.VpcSubnetNum'
 
 # Missing parameter.
 MISSINGPARAMETER = 'MissingParameter'
+
+# Parameter missing. Provide at least one parameter.
+MISSINGPARAMETER_ATLEASTONE = 'MissingParameter.AtLeastOne'
 
 # The DPDK instance requires a VPC.
 MISSINGPARAMETER_DPDKINSTANCETYPEREQUIREDVPC = 'MissingParameter.DPDKInstanceTypeRequiredVPC'
@@ -464,7 +518,7 @@ RESOURCENOTFOUND_NODEFAULTCBSWITHREASON = 'ResourceNotFound.NoDefaultCbsWithReas
 # This instance type is unavailable in the availability zone.
 RESOURCEUNAVAILABLE_INSTANCETYPE = 'ResourceUnavailable.InstanceType'
 
-# 
+# The snapshot is being created.
 RESOURCEUNAVAILABLE_SNAPSHOTCREATING = 'ResourceUnavailable.SnapshotCreating'
 
 # Resources in this availability zone has been sold out.
@@ -479,10 +533,10 @@ RESOURCESSOLDOUT_SPECIFIEDINSTANCETYPE = 'ResourcesSoldOut.SpecifiedInstanceType
 # A general error occurred during the security group service API call.
 SECGROUPACTIONFAILURE = 'SecGroupActionFailure'
 
-# Unauthorized operation.
+# 
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
-# 
+# The specified image does not belong to the user.
 UNAUTHORIZEDOPERATION_IMAGENOTBELONGTOACCOUNT = 'UnauthorizedOperation.ImageNotBelongToAccount'
 
 # Check if the token is valid.
@@ -494,7 +548,7 @@ UNAUTHORIZEDOPERATION_MFAEXPIRED = 'UnauthorizedOperation.MFAExpired'
 # Unauthorized operation. Make sure Multi-Factor Authentication (MFA) exists.
 UNAUTHORIZEDOPERATION_MFANOTFOUND = 'UnauthorizedOperation.MFANotFound'
 
-# 
+# You’re not authorized for the operation. Please check the CAM policy.
 UNAUTHORIZEDOPERATION_PERMISSIONDENIED = 'UnauthorizedOperation.PermissionDenied'
 
 # The specified instance or network cannot use the bandwidth package.
@@ -506,14 +560,23 @@ UNSUPPORTEDOPERATION_IPV6NOTSUPPORTVPCMIGRATE = 'UnsupportedOperation.IPv6NotSup
 # This instance billing mode does not support the operation.
 UNSUPPORTEDOPERATION_INSTANCECHARGETYPE = 'UnsupportedOperation.InstanceChargeType'
 
-# 
+# The instance `ins-xxxxxx` with the `Xserver windows2012cndatacenterx86_64` operating system does not support this operation.
 UNSUPPORTEDOPERATION_INSTANCEOSWINDOWS = 'UnsupportedOperation.InstanceOsWindows'
+
+# The instances are permanently corrupted, and this operation is not supported.
+UNSUPPORTEDOPERATION_INSTANCESTATECORRUPTED = 'UnsupportedOperation.InstanceStateCorrupted'
 
 # Instances are entering the rescue mode, and this operation is not supported.
 UNSUPPORTEDOPERATION_INSTANCESTATEENTERRESCUEMODE = 'UnsupportedOperation.InstanceStateEnterRescueMode'
 
+# The instance `ins-xxxxxx` in the `ENTER_SERVICE_LIVE_MIGRATE` status is not supported.
+UNSUPPORTEDOPERATION_INSTANCESTATEENTERSERVICELIVEMIGRATE = 'UnsupportedOperation.InstanceStateEnterServiceLiveMigrate'
+
 # Instances are exiting from the rescue mode, and this operation is not supported.
 UNSUPPORTEDOPERATION_INSTANCESTATEEXITRESCUEMODE = 'UnsupportedOperation.InstanceStateExitRescueMode'
+
+# The instance `ins-xxxxxx` in the `EXIT_SERVICE_LIVE_MIGRATE` status is not supported.
+UNSUPPORTEDOPERATION_INSTANCESTATEEXITSERVICELIVEMIGRATE = 'UnsupportedOperation.InstanceStateExitServiceLiveMigrate'
 
 # Unable to isolate: the instance is isolated
 UNSUPPORTEDOPERATION_INSTANCESTATEISOLATING = 'UnsupportedOperation.InstanceStateIsolating'
@@ -536,6 +599,9 @@ UNSUPPORTEDOPERATION_INSTANCESTATESERVICELIVEMIGRATE = 'UnsupportedOperation.Ins
 # Isolated instances do not support this operation.
 UNSUPPORTEDOPERATION_INSTANCESTATESHUTDOWN = 'UnsupportedOperation.InstanceStateShutdown'
 
+# The instance is starting up, and this operation is not supported.
+UNSUPPORTEDOPERATION_INSTANCESTATESTARTING = 'UnsupportedOperation.InstanceStateStarting'
+
 # The instance has been shut down, and this operation is not supported.
 UNSUPPORTEDOPERATION_INSTANCESTATESTOPPED = 'UnsupportedOperation.InstanceStateStopped'
 
@@ -554,8 +620,17 @@ UNSUPPORTEDOPERATION_INVALIDDISK = 'UnsupportedOperation.InvalidDisk'
 # The current operation is only supported for Tencent Cloud International users.
 UNSUPPORTEDOPERATION_INVALIDPERMISSIONNONINTERNATIONALACCOUNT = 'UnsupportedOperation.InvalidPermissionNonInternationalAccount'
 
+# Encrypted disks are not available in the selected regions.
+UNSUPPORTEDOPERATION_INVALIDREGIONDISKENCRYPT = 'UnsupportedOperation.InvalidRegionDiskEncrypt'
+
 # Key-pair login is not available to Windows instances.
 UNSUPPORTEDOPERATION_KEYPAIRUNSUPPORTEDWINDOWS = 'UnsupportedOperation.KeyPairUnsupportedWindows'
+
+# A model whose data disks are all local disks does not support cross-model configuration adjustment.
+UNSUPPORTEDOPERATION_LOCALDATADISKCHANGEINSTANCEFAMILY = 'UnsupportedOperation.LocalDataDiskChangeInstanceFamily'
+
+# An instance bound with CLB does not support modifying its VPC attributes.
+UNSUPPORTEDOPERATION_MODIFYVPCWITHCLB = 'UnsupportedOperation.ModifyVPCWithCLB'
 
 # This instance type does not support spot instances.
 UNSUPPORTEDOPERATION_NOINSTANCETYPESUPPORTSPOT = 'UnsupportedOperation.NoInstanceTypeSupportSpot'
@@ -565,6 +640,9 @@ UNSUPPORTEDOPERATION_NOTSUPPORTINSTANCEIMAGE = 'UnsupportedOperation.NotSupportI
 
 # Only a prepaid account supports this operation.
 UNSUPPORTEDOPERATION_ONLYFORPREPAIDACCOUNT = 'UnsupportedOperation.OnlyForPrepaidAccount'
+
+# This image does not support instance reinstallation.
+UNSUPPORTEDOPERATION_RAWLOCALDISKINSREINSTALLTOQCOW2 = 'UnsupportedOperation.RawLocalDiskInsReinstalltoQcow2'
 
 # The region is unsupported.
 UNSUPPORTEDOPERATION_REGION = 'UnsupportedOperation.Region'
@@ -580,6 +658,15 @@ UNSUPPORTEDOPERATION_SPECIALINSTANCETYPE = 'UnsupportedOperation.SpecialInstance
 
 # The instance does not support the **no charges when shut down** feature.
 UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = 'UnsupportedOperation.StoppedModeStopCharging'
+
+# The specified model does not support cross-model configuration adjustment.
+UNSUPPORTEDOPERATION_UNSUPPORTEDCHANGEINSTANCEFAMILY = 'UnsupportedOperation.UnsupportedChangeInstanceFamily'
+
+# Non-ARM model instances cannot be changed to the ARM model.
+UNSUPPORTEDOPERATION_UNSUPPORTEDCHANGEINSTANCEFAMILYTOARM = 'UnsupportedOperation.UnsupportedChangeInstanceFamilyToARM'
+
+# The target model (SA3) does not support configuration adjustment.
+UNSUPPORTEDOPERATION_UNSUPPORTEDCHANGEINSTANCEFAMILYTOSA3 = 'UnsupportedOperation.UnsupportedChangeInstanceFamilyToSA3'
 
 # A Tencent Cloud International account does not support this operation.
 UNSUPPORTEDOPERATION_UNSUPPORTEDINTERNATIONALUSER = 'UnsupportedOperation.UnsupportedInternationalUser'

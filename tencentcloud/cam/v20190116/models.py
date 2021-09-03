@@ -2434,16 +2434,20 @@ class ListAttachedGroupPoliciesRequest(AbstractModel):
         :type Page: int
         :param Rp: Number of entries per page; 20 by default
         :type Rp: int
+        :param Keyword: Search by keyword
+        :type Keyword: str
         """
         self.TargetGroupId = None
         self.Page = None
         self.Rp = None
+        self.Keyword = None
 
 
     def _deserialize(self, params):
         self.TargetGroupId = params.get("TargetGroupId")
         self.Page = params.get("Page")
         self.Rp = params.get("Rp")
+        self.Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2500,12 +2504,15 @@ class ListAttachedRolePoliciesRequest(AbstractModel):
         :type RoleName: str
         :param PolicyType: Filter according to policy type. `User` indicates querying custom policies only. `QCS` indicates querying preset policies only
         :type PolicyType: str
+        :param Keyword: Search by keyword
+        :type Keyword: str
         """
         self.Page = None
         self.Rp = None
         self.RoleId = None
         self.RoleName = None
         self.PolicyType = None
+        self.Keyword = None
 
 
     def _deserialize(self, params):
@@ -2514,6 +2521,7 @@ class ListAttachedRolePoliciesRequest(AbstractModel):
         self.RoleId = params.get("RoleId")
         self.RoleName = params.get("RoleName")
         self.PolicyType = params.get("PolicyType")
+        self.Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

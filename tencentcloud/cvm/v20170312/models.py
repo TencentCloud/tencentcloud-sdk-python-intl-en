@@ -334,13 +334,16 @@ class CreateImageRequest(AbstractModel):
         r"""
         :param ImageName: Image name
         :type ImageName: str
-        :param InstanceId: Instance ID used to create an image.
+        :param InstanceId: ID of the instance from which an image will be created. This parameter is required when using instance to create an image.
         :type InstanceId: str
         :param ImageDescription: Image description
         :type ImageDescription: str
         :param ForcePoweroff: Whether to force shut down an instance to create an image when a soft shutdown fails
         :type ForcePoweroff: str
-        :param Sysprep: Whether to enable Sysprep when creating a Windows image. Click [here](https://intl.cloud.tencent.com/document/product/213/43498?from_cn_redirect=1) to learn more about Sysprep.
+        :param Sysprep: Whether to enable Sysprep when creating a Windows image.
+Valid values: `TRUE` and `FALSE`; default value: `FALSE`.
+
+Click [here](https://intl.cloud.tencent.com/document/product/213/43498?from_cn_redirect=1) to learn more about Sysprep.
         :type Sysprep: str
         :param DataDiskIds: Specified data disk ID included in the full image created from the instance.
         :type DataDiskIds: list of str
@@ -2018,9 +2021,12 @@ class EnhancedService(AbstractModel):
         :type SecurityService: :class:`tencentcloud.cvm.v20170312.models.RunSecurityServiceEnabled`
         :param MonitorService: Enables cloud monitor service. If this parameter is not specified, the cloud monitor service will be enabled by default.
         :type MonitorService: :class:`tencentcloud.cvm.v20170312.models.RunMonitorServiceEnabled`
+        :param AutomationService: Enables the TAT service. If this parameter is not specified, the TAT service will not be enabled.
+        :type AutomationService: :class:`tencentcloud.cvm.v20170312.models.RunAutomationServiceEnabled`
         """
         self.SecurityService = None
         self.MonitorService = None
+        self.AutomationService = None
 
 
     def _deserialize(self, params):
@@ -2030,6 +2036,9 @@ class EnhancedService(AbstractModel):
         if params.get("MonitorService") is not None:
             self.MonitorService = RunMonitorServiceEnabled()
             self.MonitorService._deserialize(params.get("MonitorService"))
+        if params.get("AutomationService") is not None:
+            self.AutomationService = RunAutomationServiceEnabled()
+            self.AutomationService._deserialize(params.get("AutomationService"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2955,7 +2964,7 @@ class Instance(AbstractModel):
         :type InstanceChargeType: str
         :param SystemDisk: Information on the system disk of the instance
         :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
-        :param DataDisks: Information on the data disks of the instance, which only covers the data disks purchased together with the instance. 
+        :param DataDisks: Information of the instance data disks.
         :type DataDisks: list of DataDisk
         :param PrivateIpAddresses: List of private IPs of the instance's primary ENI.
         :type PrivateIpAddresses: list of str
@@ -3011,6 +3020,9 @@ Note: this field may return null, indicating that no valid value was found.
         :param RdmaIpAddresses: IP list of HPC cluster.
 Note: this field may return null, indicating that no valid value was found.
         :type RdmaIpAddresses: list of str
+        :param IsolatedSource: The isolation status of the instance. Valid values:<br><li>`ARREAR`: isolated due to overdue payment;<br></li><li>`EXPIRE`: isolated upon expiration;<br></li><li>`MANMADE`: isolated after manual returning;<br></li><li>`NOTISOLATED`: not isolated<br></li>
+Note: this field may return null, indicating that no valid value was found.
+        :type IsolatedSource: str
         """
         self.Placement = None
         self.InstanceId = None
@@ -3045,6 +3057,7 @@ Note: this field may return null, indicating that no valid value was found.
         self.CamRoleName = None
         self.HpcClusterId = None
         self.RdmaIpAddresses = None
+        self.IsolatedSource = None
 
 
     def _deserialize(self, params):
@@ -3101,6 +3114,7 @@ Note: this field may return null, indicating that no valid value was found.
         self.CamRoleName = params.get("CamRoleName")
         self.HpcClusterId = params.get("HpcClusterId")
         self.RdmaIpAddresses = params.get("RdmaIpAddresses")
+        self.IsolatedSource = params.get("IsolatedSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4303,7 +4317,7 @@ class RebootInstancesRequest(AbstractModel):
         r"""
         :param InstanceIds: Instance IDs. To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. You can operate up to 100 instances in each request.
         :type InstanceIds: list of str
-        :param ForceReboot: Whether to force restart an instance after a normal restart fails. Valid values: <br><li>TRUE: force restart an instance after a normal restart fails <br><li>FALSE: do not force restart an instance after a normal restart fails <br><br>Default value: FALSE.
+        :param ForceReboot: Whether to forcibly restart an instance after a normal restart fails. Valid values: <br><li>`TRUE`: yes;<br><li>`FALSE`: no<br><br>Default value: `FALSE`. This parameter has been disused. We recommend using `StopType` instead. Note that `ForceReboot` and `StopType` parameters cannot be specified at the same time.
         :type ForceReboot: bool
         :param StopType: Shutdown type. Valid values: <br><li>SOFT: soft shutdown<br><li>HARD: hard shutdown<br><li>SOFT_FIRST: perform a soft shutdown first, and perform a hard shutdown if the soft shutdown fails<br><br>Default value: SOFT.
         :type StopType: str
@@ -4775,7 +4789,7 @@ class ResetInstanceRequest(AbstractModel):
         :param ImageId: Specified effective [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are four types of images:<br/><li>Public images</li><li>Custom images</li><li>Shared images</li><li>Marketplace images </li><br/>You can obtain the available image IDs in the following ways:<br/><li>for IDs of `public images`, `custom images`, and `shared images`, log in to the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE); for IDs of `marketplace images`, go to [Cloud Marketplace](https://market.cloud.tencent.com/list).</li><li>Call the API [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>
 <br>Default value: current image.
         :type ImageId: str
-        :param SystemDisk: System disk configurations in the instance. For instances with a cloud disk as the system disk, you can expand the capacity of the system disk to the specified value after re-installation by using this parameter. If the parameter is not specified, lower system disk capacity will be automatically expanded to the image size, and extra disk costs are generated. You can only expand but cannot reduce the system disk capacity. By re-installing the system, you only modify the system disk capacity, but not the type.
+        :param SystemDisk: Configurations of the system disk. For an instance whose system disk is a cloud disk, this parameter can be used to expand the system disk by specifying a new capacity after reinstallation. The system disk capacity can only be expanded but not shrunk. Reinstalling the system can only resize rather than changing the type of the system disk.
         :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
         :param LoginSettings: Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center.
         :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
@@ -5044,6 +5058,30 @@ class ResizeInstanceDisksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RunAutomationServiceEnabled(AbstractModel):
+    """Describes the TAT service information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Enabled: Whether to enable the TAT service. Valid values: <br><li>`TRUE`: yes;<br><li>`FALSE`: no<br><br>Default: `FALSE`.
+        :type Enabled: bool
+        """
+        self.Enabled = None
+
+
+    def _deserialize(self, params):
+        self.Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RunInstancesRequest(AbstractModel):
     """RunInstances request structure.
 
@@ -5088,7 +5126,7 @@ class RunInstancesRequest(AbstractModel):
         :type ActionTimer: :class:`tencentcloud.cvm.v20170312.models.ActionTimer`
         :param DisasterRecoverGroupIds: Placement group ID. You can only specify one.
         :type DisasterRecoverGroupIds: list of str
-        :param TagSpecification: The tag description list. This parameter is used to bind a tag to a resource instance. A tag can only be bound to CVM instances.
+        :param TagSpecification: Binds the tag with the specified resources (CVM and CLB) as well
         :type TagSpecification: list of TagSpecification
         :param InstanceMarketOptions: The market options of the instance.
         :type InstanceMarketOptions: :class:`tencentcloud.cvm.v20170312.models.InstanceMarketOptionsRequest`
@@ -5677,7 +5715,7 @@ class VirtualPrivateCloud(AbstractModel):
         :type VpcId: str
         :param SubnetId: VPC subnet ID in the format `subnet-xxx`. To obtain valid subnet IDs, you can log in to the [console](https://console.cloud.tencent.com/vpc/subnet?rid=1) or call [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) and look for the `unSubnetId` fields in the response. If you specify `DEFAULT` for both `SubnetId` and `VpcId` when creating an instance, the default VPC will be used.
         :type SubnetId: str
-        :param AsVpcGateway: Whether to use an instance as a public gateway. An instance can be used as a public gateway only when it has a public IP and resides in a VPC. Valid values: <br><li>TRUE: use the instance as a public gateway <br><li>FALSE: do not use the instance as a public gateway <br><br>Default value: FALSE.
+        :param AsVpcGateway: Whether to use a CVM instance as a public gateway. The public gateway is only available when the instance has a public IP and resides in a VPC. Valid values: <br><li>`TRUE`: yes;<br><li>`FALSE`: no<br><br>Default: `FALSE`.
         :type AsVpcGateway: bool
         :param PrivateIpAddresses: Array of VPC subnet IPs. You can use this parameter when creating instances or modifying VPC attributes of instances. Currently you can specify multiple IPs in one subnet only when creating multiple instances at the same time.
         :type PrivateIpAddresses: list of str
@@ -5714,14 +5752,15 @@ class ZoneInfo(AbstractModel):
     def __init__(self):
         r"""
         :param Zone: Availability zone name, such as `ap-guangzhou-3`.
-Check below for the list of all availability zones:
+The following is a list of all availability zones:
 <li> ap-chongqing-1 </li>
 <li> ap-seoul-1 </li>
 <li> ap-seoul-2 </li>
 <li> ap-chengdu-1 </li>
 <li> ap-chengdu-2 </li>
-<li> ap-hongkong-1 </li>
+<li> ap-hongkong-1 (sold out)</li>
 <li> ap-hongkong-2 </li>
+<li> ap-hongkong-3 </li>
 <li> ap-shenzhen-fsi-1 </li>
 <li> ap-shenzhen-fsi-2 </li>
 <li> ap-shenzhen-fsi-3 </li>
@@ -5730,13 +5769,17 @@ Check below for the list of all availability zones:
 <li> ap-guangzhou-3 </li>
 <li> ap-guangzhou-4 </li>
 <li> ap-guangzhou-6 </li>
+<li> ap-guangzhou-7 </li>
 <li> ap-tokyo-1 </li>
+<li> ap-tokyo-2 </li>
 <li> ap-singapore-1 </li>
 <li> ap-singapore-2 </li>
+<li> ap-singapore-3 </li>
 <li> ap-shanghai-fsi-1 </li>
 <li> ap-shanghai-fsi-2 </li>
 <li> ap-shanghai-fsi-3 </li>
 <li> ap-bangkok-1 </li>
+<li> ap-bangkok-2 </li>
 <li> ap-shanghai-1 (sold out) </li>
 <li> ap-shanghai-2 </li>
 <li> ap-shanghai-3 </li>
@@ -5755,6 +5798,7 @@ Check below for the list of all availability zones:
 <li> na-siliconvalley-1 </li>
 <li> na-siliconvalley-2 </li>
 <li> eu-frankfurt-1 </li>
+<li> eu-frankfurt-2 </li>
 <li> na-toronto-1 </li>
 <li> na-ashburn-1 </li>
 <li> na-ashburn-2 </li>

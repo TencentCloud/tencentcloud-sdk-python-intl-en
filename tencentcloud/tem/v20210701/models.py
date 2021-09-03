@@ -579,7 +579,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
         :type HorizontalAutoscaler: list of HorizontalAutoscaler
         :param CronHorizontalAutoscaler: Scheduled auto scaling policy
         :type CronHorizontalAutoscaler: list of CronHorizontalAutoscaler
-        :param LogEnable: 
+        :param LogEnable: Specifies whether to enable logging. `1`: enable; `0`: do not enable
         :type LogEnable: int
         """
         self.ApplicationId = None
