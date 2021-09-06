@@ -71,6 +71,59 @@ class AssociateDDoSEipAddressResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AssociateDDoSEipLoadBalancerRequest(AbstractModel):
+    """AssociateDDoSEipLoadBalancer request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Anti-DDoS instance ID (only Anti-DDoS Advanced). For example, `bgpip-0000011x`.
+        :type InstanceId: str
+        :param Eip: EIP of the Anti-DDoS instance ID.
+        :type Eip: str
+        :param LoadBalancerID: ID of the CLB to bind, such as `lb-0000002i`. It can be queried in the console or obtained from `LoadBalancerId` returned by the `DescribeLoadBalancers` API.
+        :type LoadBalancerID: str
+        :param LoadBalancerRegion: Region of the CLB instance, such as `ap-hongkong`.
+        :type LoadBalancerRegion: str
+        """
+        self.InstanceId = None
+        self.Eip = None
+        self.LoadBalancerID = None
+        self.LoadBalancerRegion = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Eip = params.get("Eip")
+        self.LoadBalancerID = params.get("LoadBalancerID")
+        self.LoadBalancerRegion = params.get("LoadBalancerRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssociateDDoSEipLoadBalancerResponse(AbstractModel):
+    """AssociateDDoSEipLoadBalancer response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class BGPIPInstance(AbstractModel):
     """Anti-DDoS Advanced instance details
 
@@ -108,8 +161,8 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 Note: This field is `null` for an Anti-DDoS instance without using a non-BGP package.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type StaticPackRelation: :class:`tencentcloud.antiddos.v20200309.models.StaticPackRelation`
-        :param ZoneId: Used to differentiate Anti-DDoS Advanced lines outside the Chinese mainland
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param ZoneId: Specifies the ISP. `0`: Chinese mainland ISPs (default); `1`：Radware；`2`: Tencent; `3`: NSFOCUS. Note that `1`, `2` and `3` are used for services outside the Chinese mainland.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ZoneId: int
         :param Tgw: Used to differentiate clusters
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -128,6 +181,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 Note: This field is `null` if the EIP is not bound to an Anti-DDoS Advanced instance.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type EipAddressInfo: :class:`tencentcloud.antiddos.v20200309.models.EipAddressRelation`
+        :param Domain: Recommended domain name for clients to access.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Domain: str
         """
         self.InstanceDetail = None
         self.SpecificationLimit = None
@@ -145,6 +201,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.EipFlag = None
         self.EipAddressPackRelation = None
         self.EipAddressInfo = None
+        self.Domain = None
 
 
     def _deserialize(self, params):
@@ -180,6 +237,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         if params.get("EipAddressInfo") is not None:
             self.EipAddressInfo = EipAddressRelation()
             self.EipAddressInfo._deserialize(params.get("EipAddressInfo"))
+        self.Domain = params.get("Domain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -196,7 +254,7 @@ class BGPIPInstanceSpecification(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProtectBandwidth: Base protection bandwidth (in Gbps)
+        :param ProtectBandwidth: Base protection bandwidth (in Mbps)
         :type ProtectBandwidth: int
         :param ProtectCCQPS: CC protection bandwidth (in QPS)
         :type ProtectCCQPS: int
@@ -217,7 +275,7 @@ class BGPIPInstanceSpecification(AbstractModel):
 `99`: third-party line
 ]
         :type Line: int
-        :param ElasticBandwidth: Elastic protection bandwidth (in Gbps)
+        :param ElasticBandwidth: Elastic protection bandwidth (in Mbps)
         :type ElasticBandwidth: int
         """
         self.ProtectBandwidth = None
@@ -1707,6 +1765,56 @@ class DeleteWaterPrintKeyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBasicDeviceStatusRequest(AbstractModel):
+    """DescribeBasicDeviceStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IpList: List of IP resources
+        :type IpList: list of str
+        """
+        self.IpList = None
+
+
+    def _deserialize(self, params):
+        self.IpList = params.get("IpList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBasicDeviceStatusResponse(AbstractModel):
+    """DescribeBasicDeviceStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: The resource and status is returned.
+        :type Data: list of KeyValue
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = KeyValue()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBlackWhiteIpListRequest(AbstractModel):
     """DescribeBlackWhiteIpList request structure.
 
@@ -3096,6 +3204,34 @@ class InstanceRelation(AbstractModel):
     def _deserialize(self, params):
         self.EipList = params.get("EipList")
         self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KeyValue(AbstractModel):
+    """Status of the IP
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: IP
+        :type Key: str
+        :param Value: Status of the IP. Values: `1` (blocked); `2` (normal); `3` (being attacked)
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -54,6 +54,34 @@ class AntiddosClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AssociateDDoSEipLoadBalancer(self, request):
+        """This API is used to bind an Anti-DDoS EIP to the specified private IP of a CLB instance.
+
+        :param request: Request instance for AssociateDDoSEipLoadBalancer.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.AssociateDDoSEipLoadBalancerRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.AssociateDDoSEipLoadBalancerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AssociateDDoSEipLoadBalancer", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AssociateDDoSEipLoadBalancerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateBlackWhiteIpList(self, request):
         """This API is used to add an Anti-DDoS IP blocklist/allowlist.
 
@@ -572,6 +600,34 @@ class AntiddosClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteWaterPrintKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBasicDeviceStatus(self, request):
+        """This API is used to querying the status of Anti-DDoS IP.
+
+        :param request: Request instance for DescribeBasicDeviceStatus.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeBasicDeviceStatusRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeBasicDeviceStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBasicDeviceStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBasicDeviceStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

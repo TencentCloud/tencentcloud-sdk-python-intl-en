@@ -1951,11 +1951,20 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
         :type Volume: int
         :param OplogSize: Oplog size after instance configuration change in GB, which ranges from 10% to 90% of the disk capacity and is 10% of the disk capacity by default
         :type OplogSize: int
+        :param NodeNum: Node quantity after configuration modification. The value range is subject to the response parameter of the `DescribeSpecInfo` API. If this parameter is left empty, the node quantity won't change.
+        :type NodeNum: int
+        :param ReplicateSetNum: Shard quantity after configuration modification, which can only be increased rather than decreased. The value range is subject to the response parameter of the `DescribeSpecInfo` API. If this parameter is left empty, the shard quantity won't change.
+        :type ReplicateSetNum: int
+        :param InMaintenance: Switch time. Valid values: `0` (upon modification completion), `1` (during maintenance time). Default value: `0`. If the node quantity or the shard quantity is modified, `1` is invalid.
+        :type InMaintenance: int
         """
         self.InstanceId = None
         self.Memory = None
         self.Volume = None
         self.OplogSize = None
+        self.NodeNum = None
+        self.ReplicateSetNum = None
+        self.InMaintenance = None
 
 
     def _deserialize(self, params):
@@ -1963,6 +1972,9 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
         self.Memory = params.get("Memory")
         self.Volume = params.get("Volume")
         self.OplogSize = params.get("OplogSize")
+        self.NodeNum = params.get("NodeNum")
+        self.ReplicateSetNum = params.get("ReplicateSetNum")
+        self.InMaintenance = params.get("InMaintenance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

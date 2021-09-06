@@ -90,6 +90,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param Area: Access point region
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Area: str
+        :param AccessPointType: Access point type. Valid values: `VXLAN`, `QCPL`, and `QCAR`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AccessPointType: str
         """
         self.AccessPointName = None
         self.AccessPointId = None
@@ -101,6 +104,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Coordinate = None
         self.City = None
         self.Area = None
+        self.AccessPointType = None
 
 
     def _deserialize(self, params):
@@ -116,6 +120,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
             self.Coordinate._deserialize(params.get("Coordinate"))
         self.City = params.get("City")
         self.Area = params.get("Area")
+        self.AccessPointType = params.get("AccessPointType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
