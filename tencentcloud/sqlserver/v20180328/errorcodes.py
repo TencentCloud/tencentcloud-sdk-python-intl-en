@@ -221,7 +221,7 @@ RESOURCEUNAVAILABLE_INSTANCEMIGRATESTATUSINVALID = 'ResourceUnavailable.Instance
 # Invalid instance status.
 RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = 'ResourceUnavailable.InstanceStatusInvalid'
 
-# Read-only instances are not supported.
+# Read-Only instances are not supported.
 RESOURCEUNAVAILABLE_NOTSUPPORTROINSTANCE = 'ResourceUnavailable.NotSupportRoInstance'
 
 # VPC not found.
@@ -236,7 +236,7 @@ UNAUTHORIZEDOPERATION_PERMISSIONDENIED = 'UnauthorizedOperation.PermissionDenied
 # Unknown parameter error
 UNKNOWNPARAMETER = 'UnknownParameter'
 
-# Repeat operations are not supported.
+# Repeated operations are not supported.
 UNSUPPORTEDOPERATION_NOTSUPPORTREPEAT = 'UnsupportedOperation.NotSupportRepeat'
 
 # A wrong upload type.

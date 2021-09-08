@@ -435,17 +435,18 @@ class BatchTarget(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ListenerId: Listener ID
+        :param ListenerId: Listener ID.
         :type ListenerId: str
-        :param Port: Binding port
+        :param Port: The port to Bind
         :type Port: int
-        :param InstanceId: CVM instance ID. Indicating binding the primary IP of the primary ENI.
+        :param InstanceId: CVM instance ID. The primary IP of the primary ENI will be bound.
         :type InstanceId: str
-        :param EniIp: ENI IP or other private IP. This parameter is required for binding a dual-stack IPv6 CVM instance.
+        :param EniIp: It is required for binding an IP. It supports an ENI IP or any other private IP. To bind an ENI IP, the ENI should be bound to a CVM instance before being bound to a CLB instance.
+Note: either `InstanceId` or `EniIp` must be passed in, which is required for binding a dual-stack IPv6 CVM instance.
         :type EniIp: str
-        :param Weight: CVM instance weight. Value range: [0, 100]. If it is not specified when binding the instance, 10 will be used by default.
+        :param Weight: Weight of the CVM instance. Value range: [0, 100]. If it is not specified for binding the instance, 10 will be used by default.
         :type Weight: int
-        :param LocationId: Layer-7 rule ID
+        :param LocationId: Layer-7 rule ID.
         :type LocationId: str
         """
         self.ListenerId = None
@@ -1478,7 +1479,7 @@ class DeleteLoadBalancerListenersRequest(AbstractModel):
         r"""
         :param LoadBalancerId: CLB instance ID
         :type LoadBalancerId: str
-        :param ListenerIds: Array of IDs of the listeners to be deleted. If this parameter is left empty, all listeners of the CLB instance will be deleted.
+        :param ListenerIds: Array of listener IDs to delete (20 IDs at most). If this parameter is left empty, all listeners of the CLB instance will be deleted.
         :type ListenerIds: list of str
         """
         self.LoadBalancerId = None
@@ -2293,9 +2294,9 @@ class DescribeListenersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancerId: CLB instance ID
+        :param LoadBalancerId: CLB instance ID.
         :type LoadBalancerId: str
-        :param ListenerIds: Array of IDs of the CLB listeners to be queried
+        :param ListenerIds: Array of CLB listener IDs to query (100 IDs at most).
         :type ListenerIds: list of str
         :param Protocol: Type of the listener protocols to be queried. Valid values: TCP, UDP, HTTP, HTTPS, and TCP_SSL.
         :type Protocol: str
@@ -3035,9 +3036,9 @@ class DescribeTargetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancerId: CLB instance ID
+        :param LoadBalancerId: CLB instance ID.
         :type LoadBalancerId: str
-        :param ListenerIds: Listener ID list
+        :param ListenerIds: List of listener IDs (20 IDs at most).
         :type ListenerIds: list of str
         :param Protocol: Listener protocol type
         :type Protocol: str
@@ -4070,6 +4071,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param LoadBalancerPassToTarget: Whether the CLB instance is billed by IP.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type LoadBalancerPassToTarget: int
+        :param TargetHealth: Health status of the target real server.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TargetHealth: str
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -4103,6 +4107,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Isolation = None
         self.SecurityGroup = None
         self.LoadBalancerPassToTarget = None
+        self.TargetHealth = None
 
 
     def _deserialize(self, params):
@@ -4149,6 +4154,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Isolation = params.get("Isolation")
         self.SecurityGroup = params.get("SecurityGroup")
         self.LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
+        self.TargetHealth = params.get("TargetHealth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5356,17 +5362,17 @@ class RsWeightRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ListenerId: CLB listener ID
+        :param ListenerId: CLB listener ID.
         :type ListenerId: str
-        :param Targets: List of real servers for which to modify the weight
+        :param Targets: List of real servers whose weights to modify.
         :type Targets: list of Target
-        :param LocationId: Forwarding rule ID
+        :param LocationId: Forwarding rule ID, which is required only for layer-7 rules.
         :type LocationId: str
         :param Domain: Target rule domain name. This parameter does not take effect if LocationId is specified
         :type Domain: str
         :param Url: Target rule URL. This parameter does not take effect if LocationId is specified
         :type Url: str
-        :param Weight: New forwarding weight of a real server. Value range: 0-100.
+        :param Weight: The new forwarding weight of the real server. Value range: [0, 100]. This parameter takes lower precedence than `Weight` in [`Targets`](https://intl.cloud.tencent.com/document/api/214/30694?from_cn_redirect=1#Target), which means that this parameter only takes effect when the `Weight` in `RsWeightRule` is left empty.
         :type Weight: int
         """
         self.ListenerId = None
@@ -5905,7 +5911,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 Note: either `InstanceId` or `EniIp` must be passed in.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type InstanceId: str
-        :param Weight: Forwarding weight of a real server. Value range: [0, 100]. Default value: 10.
+        :param Weight: The new forwarding weight of the real server. Value range: [0, 100]. Default: 10. This parameter takes priority over `Weight` in [`RsWeightRule`](https://intl.cloud.tencent.com/document/api/214/30694?from_cn_redirect=1#RsWeightRule). If it’s left empty, the value of `Weight` in `RsWeightRule` will be used.
         :type Weight: int
         :param EniIp: It is required when binding an IP. ENI IPs and other private IPs are supported. To bind an ENI IP, the ENI should be bound to a CVM instance before being bound to a CLB instance.
 Note: either `InstanceId` or `EniIp` must be passed in. It is required when binding a dual-stack IPv6 CVM instance.

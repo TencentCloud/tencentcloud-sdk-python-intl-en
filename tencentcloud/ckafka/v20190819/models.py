@@ -1990,6 +1990,69 @@ class DescribeTopicSubscribeGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTopicSyncReplicaRequest(AbstractModel):
+    """DescribeTopicSyncReplica request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param TopicName: Topic name
+        :type TopicName: str
+        :param Offset: Offset. If this parameter is left empty, 0 will be used by default.
+        :type Offset: int
+        :param Limit: Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.
+        :type Limit: int
+        :param OutOfSyncReplicaOnly: Filters unsynced replicas only
+        :type OutOfSyncReplicaOnly: bool
+        """
+        self.InstanceId = None
+        self.TopicName = None
+        self.Offset = None
+        self.Limit = None
+        self.OutOfSyncReplicaOnly = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.TopicName = params.get("TopicName")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.OutOfSyncReplicaOnly = params.get("OutOfSyncReplicaOnly")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTopicSyncReplicaResponse(AbstractModel):
+    """DescribeTopicSyncReplica response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Returns topic replica details
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.TopicInSyncReplicaResult`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TopicInSyncReplicaResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeUserRequest(AbstractModel):
     """DescribeUser request structure.
 
@@ -2584,6 +2647,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param RetentionTimeConfig: Dynamic message retention policy
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :type RetentionTimeConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicRetentionTime`
+        :param MaxConnection: Maximum number of connections
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MaxConnection: int
+        :param PublicNetwork: Public network bandwidth
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PublicNetwork: int
+        :param DeleteRouteTimestamp: Time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DeleteRouteTimestamp: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -2614,6 +2686,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
         self.InstanceType = None
         self.Features = None
         self.RetentionTimeConfig = None
+        self.MaxConnection = None
+        self.PublicNetwork = None
+        self.DeleteRouteTimestamp = None
 
 
     def _deserialize(self, params):
@@ -2660,6 +2735,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
         if params.get("RetentionTimeConfig") is not None:
             self.RetentionTimeConfig = DynamicRetentionTime()
             self.RetentionTimeConfig._deserialize(params.get("RetentionTimeConfig"))
+        self.MaxConnection = params.get("MaxConnection")
+        self.PublicNetwork = params.get("PublicNetwork")
+        self.DeleteRouteTimestamp = params.get("DeleteRouteTimestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3076,6 +3154,8 @@ class ModifyInstanceAttributesRequest(AbstractModel):
         :type DynamicRetentionConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicRetentionTime`
         :param RebalanceTime: Modification of the rebalancing time after upgrade
         :type RebalanceTime: int
+        :param PublicNetwork: Timestamp
+        :type PublicNetwork: int
         """
         self.InstanceId = None
         self.MsgRetentionTime = None
@@ -3083,6 +3163,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
         self.Config = None
         self.DynamicRetentionConfig = None
         self.RebalanceTime = None
+        self.PublicNetwork = None
 
 
     def _deserialize(self, params):
@@ -3096,6 +3177,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
             self.DynamicRetentionConfig = DynamicRetentionTime()
             self.DynamicRetentionConfig._deserialize(params.get("DynamicRetentionConfig"))
         self.RebalanceTime = params.get("RebalanceTime")
+        self.PublicNetwork = params.get("PublicNetwork")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3277,7 +3359,7 @@ class OperateResponseData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: FlowId
+        :param FlowId: FlowId11
 Note: this field may return null, indicating that no valid values can be obtained.
         :type FlowId: int
         """
@@ -3449,7 +3531,7 @@ class Route(AbstractModel):
         :type AccessType: int
         :param RouteId: Route ID
         :type RouteId: int
-        :param VipType: VIP network type (1: public network TGW; 2: classic network; 3: VPC; 4: Tencent Cloud-supported environment (generally used for internal instances); 5: SSL public network access; 6: BM VPC)
+        :param VipType: VIP network type (1: public network TGW; 2: classic network; 3: VPC; 4: supporting network (Standard Edition); 5: SSL public network access; 6: BM VPC; 7: supporting network (Pro Edition))
         :type VipType: int
         :param VipList: Virtual IP list
         :type VipList: list of VipEntity
@@ -3459,6 +3541,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param DomainPort: Domain name port
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DomainPort: int
+        :param DeleteTimestamp: Timestamp
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DeleteTimestamp: str
         """
         self.AccessType = None
         self.RouteId = None
@@ -3466,6 +3551,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.VipList = None
         self.Domain = None
         self.DomainPort = None
+        self.DeleteTimestamp = None
 
 
     def _deserialize(self, params):
@@ -3480,6 +3566,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 self.VipList.append(obj)
         self.Domain = params.get("Domain")
         self.DomainPort = params.get("DomainPort")
+        self.DeleteTimestamp = params.get("DeleteTimestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3788,6 +3875,95 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = TopicDetail()
                 obj._deserialize(item)
                 self.TopicList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopicInSyncReplicaInfo(AbstractModel):
+    """Topic replica and details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Partition: Partition name
+        :type Partition: str
+        :param Leader: Leader ID
+        :type Leader: int
+        :param Replica: Replica set
+        :type Replica: str
+        :param InSyncReplica: ISR
+        :type InSyncReplica: str
+        :param BeginOffset: Starting offset
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type BeginOffset: int
+        :param EndOffset: Ending offset
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type EndOffset: int
+        :param MessageCount: Number of messages
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MessageCount: int
+        :param OutOfSyncReplica: Unsynced replica set
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type OutOfSyncReplica: str
+        """
+        self.Partition = None
+        self.Leader = None
+        self.Replica = None
+        self.InSyncReplica = None
+        self.BeginOffset = None
+        self.EndOffset = None
+        self.MessageCount = None
+        self.OutOfSyncReplica = None
+
+
+    def _deserialize(self, params):
+        self.Partition = params.get("Partition")
+        self.Leader = params.get("Leader")
+        self.Replica = params.get("Replica")
+        self.InSyncReplica = params.get("InSyncReplica")
+        self.BeginOffset = params.get("BeginOffset")
+        self.EndOffset = params.get("EndOffset")
+        self.MessageCount = params.get("MessageCount")
+        self.OutOfSyncReplica = params.get("OutOfSyncReplica")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopicInSyncReplicaResult(AbstractModel):
+    """Set of topic replicas and details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicInSyncReplicaList: Set of topic details and replicas
+        :type TopicInSyncReplicaList: list of TopicInSyncReplicaInfo
+        :param TotalCount: Total number
+        :type TotalCount: int
+        """
+        self.TopicInSyncReplicaList = None
+        self.TotalCount = None
+
+
+    def _deserialize(self, params):
+        if params.get("TopicInSyncReplicaList") is not None:
+            self.TopicInSyncReplicaList = []
+            for item in params.get("TopicInSyncReplicaList"):
+                obj = TopicInSyncReplicaInfo()
+                obj._deserialize(item)
+                self.TopicInSyncReplicaList.append(obj)
         self.TotalCount = params.get("TotalCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
