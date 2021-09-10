@@ -847,6 +847,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param KibanaNodeInfo: Kibana node information
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :type KibanaNodeInfo: :class:`tencentcloud.es.v20180416.models.KibanaNodeInfo`
+        :param WebNodeTypeInfo: Visual node configuration
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type WebNodeTypeInfo: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
+        :param Jdk: JDK type. Valid values: `oracle`, `kona`
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Jdk: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -903,6 +909,8 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         self.SceneType = None
         self.KibanaConfig = None
         self.KibanaNodeInfo = None
+        self.WebNodeTypeInfo = None
+        self.Jdk = None
 
 
     def _deserialize(self, params):
@@ -988,6 +996,10 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         if params.get("KibanaNodeInfo") is not None:
             self.KibanaNodeInfo = KibanaNodeInfo()
             self.KibanaNodeInfo._deserialize(params.get("KibanaNodeInfo"))
+        if params.get("WebNodeTypeInfo") is not None:
+            self.WebNodeTypeInfo = WebNodeTypeInfo()
+            self.WebNodeTypeInfo._deserialize(params.get("WebNodeTypeInfo"))
+        self.Jdk = params.get("Jdk")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1199,7 +1211,6 @@ class NodeInfo(AbstractModel):
         :param Type: Node type<li>`hotData`: hot data node</li>
 <li>`warmData`: warm data node</li>
 <li>`dedicatedMaster`: dedicated master node</li>
-<li>`kibana`: Kibana node</li>
 Default value: `hotData`
         :type Type: str
         :param DiskType: Node disk type <li>CLOUD_SSD: SSD cloud storage </li><li>CLOUD_PREMIUM: Premium cloud disk </li>Default value: CLOUD_SSD
@@ -1348,14 +1359,18 @@ class RestartInstanceRequest(AbstractModel):
         :type InstanceId: str
         :param ForceRestart: Whether to force restart <li>true: Yes </li><li>false: No </li>Default value: false
         :type ForceRestart: bool
+        :param RestartMode: Restart mode. `0`: rolling restart; `1`: full restart
+        :type RestartMode: int
         """
         self.InstanceId = None
         self.ForceRestart = None
+        self.RestartMode = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.ForceRestart = params.get("ForceRestart")
+        self.RestartMode = params.get("RestartMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1654,6 +1669,8 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
         :type SceneType: int
         :param KibanaConfig: Kibana configuration item (JSON string)
         :type KibanaConfig: str
+        :param WebNodeTypeInfo: Visual node configuration
+        :type WebNodeTypeInfo: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1679,6 +1696,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
         self.MultiZoneInfo = None
         self.SceneType = None
         self.KibanaConfig = None
+        self.WebNodeTypeInfo = None
 
 
     def _deserialize(self, params):
@@ -1722,6 +1740,9 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
                 self.MultiZoneInfo.append(obj)
         self.SceneType = params.get("SceneType")
         self.KibanaConfig = params.get("KibanaConfig")
+        if params.get("WebNodeTypeInfo") is not None:
+            self.WebNodeTypeInfo = WebNodeTypeInfo()
+            self.WebNodeTypeInfo._deserialize(params.get("WebNodeTypeInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

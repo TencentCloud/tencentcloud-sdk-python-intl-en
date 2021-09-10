@@ -670,6 +670,62 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSlowQueryAnalysis(self, request):
+        """This API is used to analyze slow query statements with abstract parameter values and return aggregated statistical analysis results.
+
+        :param request: Request instance for DescribeSlowQueryAnalysis.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeSlowQueryAnalysisRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeSlowQueryAnalysisResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSlowQueryAnalysis", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSlowQueryAnalysisResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSlowQueryList(self, request):
+        """This API is used to get the slow query list.
+
+        :param request: Request instance for DescribeSlowQueryList.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeSlowQueryListRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeSlowQueryListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSlowQueryList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSlowQueryListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeZones(self, request):
         """This API is used to query the supported AZs.
 

@@ -2144,9 +2144,12 @@ class EnhancedService(AbstractModel):
         :type SecurityService: :class:`tencentcloud.batch.v20170312.models.RunSecurityServiceEnabled`
         :param MonitorService: Enables cloud monitor service. If this parameter is not specified, the cloud monitor service will be enabled by default.
         :type MonitorService: :class:`tencentcloud.batch.v20170312.models.RunMonitorServiceEnabled`
+        :param AutomationService: Enables the TAT service. If this parameter is not specified, the TAT service will not be enabled.
+        :type AutomationService: :class:`tencentcloud.batch.v20170312.models.RunAutomationServiceEnabled`
         """
         self.SecurityService = None
         self.MonitorService = None
+        self.AutomationService = None
 
 
     def _deserialize(self, params):
@@ -2156,6 +2159,9 @@ class EnhancedService(AbstractModel):
         if params.get("MonitorService") is not None:
             self.MonitorService = RunMonitorServiceEnabled()
             self.MonitorService._deserialize(params.get("MonitorService"))
+        if params.get("AutomationService") is not None:
+            self.AutomationService = RunAutomationServiceEnabled()
+            self.AutomationService._deserialize(params.get("AutomationService"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3606,6 +3612,30 @@ class RetryJobsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RunAutomationServiceEnabled(AbstractModel):
+    """Describes the TAT service information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Enabled: Whether to enable the TAT service. Valid values: <br><li>`TRUE`: yes;<br><li>`FALSE`: no<br><br>Default: `FALSE`.
+        :type Enabled: bool
+        """
+        self.Enabled = None
+
+
+    def _deserialize(self, params):
+        self.Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RunMonitorServiceEnabled(AbstractModel):
     """Describes information related to the Cloud Monitor service.
 
@@ -4474,7 +4504,7 @@ class VirtualPrivateCloud(AbstractModel):
         :type VpcId: str
         :param SubnetId: VPC subnet ID in the format `subnet-xxx`. To obtain valid subnet IDs, you can log in to the [console](https://console.cloud.tencent.com/vpc/subnet?rid=1) or call [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) and look for the `unSubnetId` fields in the response. If you specify `DEFAULT` for both `SubnetId` and `VpcId` when creating an instance, the default VPC will be used.
         :type SubnetId: str
-        :param AsVpcGateway: Whether to use an instance as a public gateway. An instance can be used as a public gateway only when it has a public IP and resides in a VPC. Valid values: <br><li>TRUE: use the instance as a public gateway <br><li>FALSE: do not use the instance as a public gateway <br><br>Default value: FALSE.
+        :param AsVpcGateway: Whether to use a CVM instance as a public gateway. The public gateway is only available when the instance has a public IP and resides in a VPC. Valid values: <br><li>`TRUE`: yes;<br><li>`FALSE`: no<br><br>Default: `FALSE`.
         :type AsVpcGateway: bool
         :param PrivateIpAddresses: Array of VPC subnet IPs. You can use this parameter when creating instances or modifying VPC attributes of instances. Currently you can specify multiple IPs in one subnet only when creating multiple instances at the same time.
         :type PrivateIpAddresses: list of str

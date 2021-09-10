@@ -56,7 +56,7 @@ FAILEDOPERATION_DATABASEACCESSERROR = 'FailedOperation.DatabaseAccessError'
 # Failed to delete VPC routes.
 FAILEDOPERATION_DELETEALLROUTE = 'FailedOperation.DeleteAllRoute'
 
-# 
+# Failed to unbind resources from a project.
 FAILEDOPERATION_DELETERESOURCEPROJECTTAGERROR = 'FailedOperation.DeleteResourceProjectTagError'
 
 # Failed to access ES. Please try again later. If the problem persists, please contact customer service.
@@ -361,6 +361,9 @@ INVALIDPARAMETERVALUE_PARAMETERHANDLEERROR = 'InvalidParameterValue.ParameterHan
 
 # The length of parameter exceeds the limit.
 INVALIDPARAMETERVALUE_PARAMETERLENGTHLIMITERROR = 'InvalidParameterValue.ParameterLengthLimitError'
+
+# The maximum value of the parameter has been reached.
+INVALIDPARAMETERVALUE_PARAMETERVALUEEXCEEDERROR = 'InvalidParameterValue.ParameterValueExceedError'
 
 # The RO group does not exist.
 INVALIDPARAMETERVALUE_READONLYGROUPNOTEXIST = 'InvalidParameterValue.ReadOnlyGroupNotExist'

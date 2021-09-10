@@ -111,6 +111,78 @@ class AddDBInstanceToReadOnlyGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AnalysisItems(AbstractModel):
+    """Detailed analysis of a slow query statement with abstract parameter values, which is returned by the `DescribeSlowQueryAnalysis` API
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DatabaseName: The name of the database queried by the slow query statement
+        :type DatabaseName: str
+        :param UserName: The name of the user who executes the slow query statement
+        :type UserName: str
+        :param NormalQuery: The slow query statement whose parameter values are abstracted
+        :type NormalQuery: str
+        :param ClientAddr: The address of the client that executes the slow query statement
+        :type ClientAddr: str
+        :param CallNum: The number of executions of the slow query statement during the specified period of time
+        :type CallNum: int
+        :param CallPercent: The ratio (in decimal form) of the number of executions of the slow query statement to that of all slow query statements during the specified period of time
+        :type CallPercent: float
+        :param CostTime: The total execution time of the slow query statement during the specified period of time
+        :type CostTime: float
+        :param CostPercent: The ratio (in decimal form) of the total execution time of the slow query statement to that of all slow query statements during the specified period of time
+        :type CostPercent: float
+        :param MinCostTime: The shortest execution time (in ms) of the slow query statement during the specified period of time
+        :type MinCostTime: float
+        :param MaxCostTime: The longest execution time (in ms) of the slow query statement during the specified period of time
+        :type MaxCostTime: float
+        :param AvgCostTime: The average execution time (in ms) of the slow query statement during the specified period of time
+        :type AvgCostTime: float
+        :param FirstTime: The timestamp when the slow query statement starts to execute for the first time during the specified period of time
+        :type FirstTime: str
+        :param LastTime: The timestamp when the slow query statement starts to execute for the last time during the specified period of time
+        :type LastTime: str
+        """
+        self.DatabaseName = None
+        self.UserName = None
+        self.NormalQuery = None
+        self.ClientAddr = None
+        self.CallNum = None
+        self.CallPercent = None
+        self.CostTime = None
+        self.CostPercent = None
+        self.MinCostTime = None
+        self.MaxCostTime = None
+        self.AvgCostTime = None
+        self.FirstTime = None
+        self.LastTime = None
+
+
+    def _deserialize(self, params):
+        self.DatabaseName = params.get("DatabaseName")
+        self.UserName = params.get("UserName")
+        self.NormalQuery = params.get("NormalQuery")
+        self.ClientAddr = params.get("ClientAddr")
+        self.CallNum = params.get("CallNum")
+        self.CallPercent = params.get("CallPercent")
+        self.CostTime = params.get("CostTime")
+        self.CostPercent = params.get("CostPercent")
+        self.MinCostTime = params.get("MinCostTime")
+        self.MaxCostTime = params.get("MaxCostTime")
+        self.AvgCostTime = params.get("AvgCostTime")
+        self.FirstTime = params.get("FirstTime")
+        self.LastTime = params.get("LastTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloseDBExtranetAccessRequest(AbstractModel):
     """CloseDBExtranetAccess request structure.
 
@@ -853,7 +925,7 @@ class DBInstance(AbstractModel):
         :type DBInstanceId: str
         :param DBInstanceName: Instance name
         :type DBInstanceName: str
-        :param DBInstanceStatus: Instance status
+        :param DBInstanceStatus: Instance status. Valid values: `applying`, `init` (to be initialized), `initing` (initializing), `running`, `limited run`, `isolated`, `recycling`, `recycled`, `job running`, `offline`, `migrating`, `expanding`, `waitSwitch` (waiting for switch), `switching`, `readonly`, `restarting`
         :type DBInstanceStatus: str
         :param DBInstanceMemory: Assigned instance memory size in GB
         :type DBInstanceMemory: int
@@ -1956,6 +2028,178 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSlowQueryAnalysisRequest(AbstractModel):
+    """DescribeSlowQueryAnalysis request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: Instance ID.
+        :type DBInstanceId: str
+        :param StartTime: Start timestamp of the query range in the format of "YYYY-MM-DD HH:mm:ss". The log is retained for seven days by default, so the start timestamp must fall within the retention period.
+        :type StartTime: str
+        :param EndTime: End timestamp of the query range in the format of "YYYY-MM-DD HH:mm:ss".
+        :type EndTime: str
+        :param DatabaseName: Filter by database name. This parameter is optional.
+        :type DatabaseName: str
+        :param OrderBy: Sort by field. Valid values: `CallNum`, `CostTime`, `AvgCostTime`.
+        :type OrderBy: str
+        :param OrderByType: Sorting order. Valid values: `asc` (ascending), `desc` (descending).
+        :type OrderByType: str
+        :param Limit: Number of entries per page. Value range: [1,100].
+        :type Limit: int
+        :param Offset: Pagination offset. Value range: [0,INF).
+        :type Offset: int
+        """
+        self.DBInstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.DatabaseName = None
+        self.OrderBy = None
+        self.OrderByType = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.DatabaseName = params.get("DatabaseName")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSlowQueryAnalysisResponse(AbstractModel):
+    """DescribeSlowQueryAnalysis response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: The total number of query results.
+        :type TotalCount: int
+        :param Detail: Detailed analysis.
+        :type Detail: :class:`tencentcloud.postgres.v20170312.models.Detail`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Detail = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Detail") is not None:
+            self.Detail = Detail()
+            self.Detail._deserialize(params.get("Detail"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSlowQueryListRequest(AbstractModel):
+    """DescribeSlowQueryList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: Instance ID.
+        :type DBInstanceId: str
+        :param StartTime: Start timestamp of the query range in the format of "YYYY-MM-DD HH:mm:ss". The log is retained for seven days by default, so the start timestamp must fall within the retention period.
+        :type StartTime: str
+        :param EndTime: End timestamp of the query range in the format of "YYYY-MM-DD HH:mm:ss".
+        :type EndTime: str
+        :param DatabaseName: Filter by database name. This parameter is optional.
+        :type DatabaseName: str
+        :param OrderByType: Sorting order. Valid values: `asc` (ascending), `desc` (descending). Default value: `desc`.
+        :type OrderByType: str
+        :param OrderBy: Sort by field. Valid values: `SessionStartTime` (default), `Duration`.
+        :type OrderBy: str
+        :param Limit: Number of entries per page. Value range: [1,100]. Default value: `20`.
+        :type Limit: int
+        :param Offset: Pagination offset. Value range: [0,INF). Default value: `0`.
+        :type Offset: int
+        """
+        self.DBInstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.DatabaseName = None
+        self.OrderByType = None
+        self.OrderBy = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.DatabaseName = params.get("DatabaseName")
+        self.OrderByType = params.get("OrderByType")
+        self.OrderBy = params.get("OrderBy")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSlowQueryListResponse(AbstractModel):
+    """DescribeSlowQueryList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: The total number of slow query statements during the specified period of time.
+        :type TotalCount: int
+        :param DurationAnalysis: Analysis of the execution time of slow query statements by classifying them to different time ranges. These slow query statements fall within the query range you specified in the request parameters.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DurationAnalysis: list of DurationAnalysis
+        :param RawSlowQueryList: The list of slow query details during the specified period of time.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RawSlowQueryList: list of RawSlowQuery
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.DurationAnalysis = None
+        self.RawSlowQueryList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("DurationAnalysis") is not None:
+            self.DurationAnalysis = []
+            for item in params.get("DurationAnalysis"):
+                obj = DurationAnalysis()
+                obj._deserialize(item)
+                self.DurationAnalysis.append(obj)
+        if params.get("RawSlowQueryList") is not None:
+            self.RawSlowQueryList = []
+            for item in params.get("RawSlowQueryList"):
+                obj = RawSlowQuery()
+                obj._deserialize(item)
+                self.RawSlowQueryList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeZonesRequest(AbstractModel):
     """DescribeZones request structure.
 
@@ -2033,6 +2277,44 @@ class DestroyDBInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Detail(AbstractModel):
+    """Details returned by the `DescribeSlowQueryAnalysis` API
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalTime: The total execution time (in ms) of all slow query statements during the specified period of time
+        :type TotalTime: float
+        :param TotalCallNum: The total number of all slow query statements during the specified period of time
+        :type TotalCallNum: int
+        :param AnalysisItems: The statistical analysis list of slow queries
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AnalysisItems: list of AnalysisItems
+        """
+        self.TotalTime = None
+        self.TotalCallNum = None
+        self.AnalysisItems = None
+
+
+    def _deserialize(self, params):
+        self.TotalTime = params.get("TotalTime")
+        self.TotalCallNum = params.get("TotalCallNum")
+        if params.get("AnalysisItems") is not None:
+            self.AnalysisItems = []
+            for item in params.get("AnalysisItems"):
+                obj = AnalysisItems()
+                obj._deserialize(item)
+                self.AnalysisItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DisIsolateDBInstancesRequest(AbstractModel):
     """DisIsolateDBInstances request structure.
 
@@ -2084,6 +2366,34 @@ class DisIsolateDBInstancesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class DurationAnalysis(AbstractModel):
+    """Analyze the execution time of slow query statements by classifying them to different time ranges
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TimeSegment: Time range
+        :type TimeSegment: str
+        :param Count: The number of slow query statements whose execution time falls within the time range
+        :type Count: int
+        """
+        self.TimeSegment = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.TimeSegment = params.get("TimeSegment")
+        self.Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ErrLogDetail(AbstractModel):
@@ -2956,6 +3266,50 @@ class PgDeal(AbstractModel):
         self.PayMode = params.get("PayMode")
         self.FlowId = params.get("FlowId")
         self.DBInstanceIdSet = params.get("DBInstanceIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RawSlowQuery(AbstractModel):
+    """The list of slow query details returned by the `DescribeSlowQueryList` API
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RawQuery: Slow query statement
+        :type RawQuery: str
+        :param DatabaseName: The database queried by the slow query statement
+        :type DatabaseName: str
+        :param Duration: The execution time of the slow query statement
+        :type Duration: float
+        :param ClientAddr: The client that executes the slow query statement
+        :type ClientAddr: str
+        :param UserName: The name of the user who executes the slow query statement
+        :type UserName: str
+        :param SessionStartTime: The time when the slow query statement starts to execute
+        :type SessionStartTime: str
+        """
+        self.RawQuery = None
+        self.DatabaseName = None
+        self.Duration = None
+        self.ClientAddr = None
+        self.UserName = None
+        self.SessionStartTime = None
+
+
+    def _deserialize(self, params):
+        self.RawQuery = params.get("RawQuery")
+        self.DatabaseName = params.get("DatabaseName")
+        self.Duration = params.get("Duration")
+        self.ClientAddr = params.get("ClientAddr")
+        self.UserName = params.get("UserName")
+        self.SessionStartTime = params.get("SessionStartTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

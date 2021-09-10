@@ -20,6 +20,9 @@ AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
+# Failed to bind the resource pack to the file system.
+FAILEDOPERATION_BINDRESOURCEPKGFAILED = 'FailedOperation.BindResourcePkgFailed'
+
 # The resource is being created.
 FAILEDOPERATION_CLIENTTOKENINUSE = 'FailedOperation.ClientTokenInUse'
 

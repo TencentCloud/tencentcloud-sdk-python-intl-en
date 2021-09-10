@@ -182,19 +182,19 @@ class CreateCfsFileSystemRequest(AbstractModel):
         r"""
         :param Zone: AZ name, such as "ap-beijing-1". For the list of regions and AZs, please see [Overview](https://intl.cloud.tencent.com/document/product/582/13225?from_cn_redirect=1)
         :type Zone: str
-        :param NetInterface: Network type. Valid values: VPC (VPC), BASIC (basic network)
+        :param NetInterface: Network type. Valid values: `VPC` (private network), `BASIC` (classic network), `CCN` (Cloud Connect Network). You must set this parameter to `CCN` if you use the Turbo series. Classic network will be phased out and is not recommended.
         :type NetInterface: str
-        :param PGroupId: Permission group ID
+        :param PGroupId: Permission group ID (required for Standard and High-Performance). For the Turbo series, set it to `pgroupbasic`.
         :type PGroupId: str
-        :param Protocol: File system protocol type. Valid values: NFS, CIFS. If this parameter is left empty, NFS will be used by default
+        :param Protocol: File system protocol. Valid values: `NFS`, `CIFS`, `TURBO`. If this parameter is left empty, `NFS` is used by default. For the Turbo series, you must set this parameter to `TURBO`.
         :type Protocol: str
-        :param StorageType: File system storage class. Valid values: SD (standard), HP (high-performance)
+        :param StorageType: Storage class of the file system. Valid values: `SD` (Standard), `HP` (High-Performance), `TB` (Standard Turbo), `TP` (High-Performance Turbo)
         :type StorageType: str
         :param VpcId: VPC ID. This field is required if network type is VPC.
         :type VpcId: str
         :param SubnetId: Subnet ID. This field is required if network type is VPC.
         :type SubnetId: str
-        :param MountIP: Specifies an IP address, which is supported only for VPC. If this parameter is left empty, a random IP will be assigned in the subnet
+        :param MountIP: IP address (this parameter supports only the VPC network type, and the Turbo series is not supported). If this parameter is left empty, a random IP in the subnet will be assigned.
         :type MountIP: str
         :param FsName: Custom file system name
         :type FsName: str
@@ -202,6 +202,12 @@ class CreateCfsFileSystemRequest(AbstractModel):
         :type ResourceTags: list of TagInfo
         :param ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed. This string is valid for 2 hours.
         :type ClientToken: str
+        :param CcnId: CCN instance ID (required if the network type is CCN)
+        :type CcnId: str
+        :param CidrBlock: CCN IP range used by the CFS (required if the network type is CCN), which cannot conflict with other IP ranges bound in CCN
+        :type CidrBlock: str
+        :param Capacity: File system capacity, in GiB (required for the Turbo series). For Standard Turbo, the minimum purchase required is 40,960 GiB (40 TiB) and the expansion increment is 20,480 GiB (20 TiB). For High-Performance Turbo, the minimum purchase required is 20,480 GiB (20 TiB) and the expansion increment is 10,240 GiB (10 TiB).
+        :type Capacity: int
         """
         self.Zone = None
         self.NetInterface = None
@@ -214,6 +220,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
         self.FsName = None
         self.ResourceTags = None
         self.ClientToken = None
+        self.CcnId = None
+        self.CidrBlock = None
+        self.Capacity = None
 
 
     def _deserialize(self, params):
@@ -233,6 +242,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
         self.ClientToken = params.get("ClientToken")
+        self.CcnId = params.get("CcnId")
+        self.CidrBlock = params.get("CidrBlock")
+        self.Capacity = params.get("Capacity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -255,9 +267,9 @@ class CreateCfsFileSystemResponse(AbstractModel):
         :type CreationToken: str
         :param FileSystemId: File system ID
         :type FileSystemId: str
-        :param LifeCycleState: File system status
+        :param LifeCycleState: File system status. Valid values: `creating`, `create_failed`, `available`, `unserviced`, `upgrading`, `deleting`
         :type LifeCycleState: str
-        :param SizeByte: Used file system capacity
+        :param SizeByte: Storage used by the file system, in bytes
         :type SizeByte: int
         :param ZoneId: AZ ID
         :type ZoneId: int
@@ -1019,6 +1031,8 @@ class FileSystemInfo(AbstractModel):
         :type AppId: int
         :param BandwidthLimit: The upper limit on the file system’s throughput, which is determined based on its current usage, and bound resource packs for both storage and throughput
         :type BandwidthLimit: float
+        :param Capacity: Total capacity of the file system
+        :type Capacity: int
         """
         self.CreationTime = None
         self.CreationToken = None
@@ -1038,6 +1052,7 @@ class FileSystemInfo(AbstractModel):
         self.KmsKeyId = None
         self.AppId = None
         self.BandwidthLimit = None
+        self.Capacity = None
 
 
     def _deserialize(self, params):
@@ -1061,6 +1076,7 @@ class FileSystemInfo(AbstractModel):
         self.KmsKeyId = params.get("KmsKeyId")
         self.AppId = params.get("AppId")
         self.BandwidthLimit = params.get("BandwidthLimit")
+        self.Capacity = params.get("Capacity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1097,6 +1113,10 @@ class MountInfo(AbstractModel):
         :type SubnetId: str
         :param SubnetName: Subnet name
         :type SubnetName: str
+        :param CcnID: CCN instance ID used by CFS Turbo
+        :type CcnID: str
+        :param CidrBlock: CCN IP range used by CFS Turbo
+        :type CidrBlock: str
         """
         self.FileSystemId = None
         self.MountTargetId = None
@@ -1108,6 +1128,8 @@ class MountInfo(AbstractModel):
         self.VpcName = None
         self.SubnetId = None
         self.SubnetName = None
+        self.CcnID = None
+        self.CidrBlock = None
 
 
     def _deserialize(self, params):
@@ -1121,6 +1143,8 @@ class MountInfo(AbstractModel):
         self.VpcName = params.get("VpcName")
         self.SubnetId = params.get("SubnetId")
         self.SubnetName = params.get("SubnetName")
+        self.CcnID = params.get("CcnID")
+        self.CidrBlock = params.get("CidrBlock")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1412,7 +1436,7 @@ class UpdateCfsFileSystemSizeLimitRequest(AbstractModel):
         r"""
         :param FsLimit: File system capacity limit in GB. Value range: 0-1,073,741,824. If 0 is entered, no limit will be imposed on the file system capacity.
         :type FsLimit: int
-        :param FileSystemId: File system ID
+        :param FileSystemId: File system ID. Currently, only Standard file systems are supported.
         :type FileSystemId: str
         """
         self.FsLimit = None
