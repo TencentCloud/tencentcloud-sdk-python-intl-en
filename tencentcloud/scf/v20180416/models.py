@@ -2255,13 +2255,13 @@ class InvokeFunctionRequest(AbstractModel):
         r"""
         :param FunctionName: Function name
         :type FunctionName: str
-        :param Qualifier: Version number or alias of the triggered function
+        :param Qualifier: Version or alias of the function. It defaults to `$DEFAULT`.
         :type Qualifier: str
-        :param Event: Function running parameter, which is in the JSON format. Maximum parameter size is 1 MB.
+        :param Event: Function running parameter, which is in the JSON format. Maximum parameter size is 6 MB.
         :type Event: str
-        :param LogType: If this field is specified for a synchronous invocation, the return value will contain a 4 KB log. Valid value: `None` (default) or `Tail`. If the value is `Tail`, `log` in the return parameter will contain the corresponding function execution log.
+        :param LogType: Valid value: `None` (default) or `Tail`. If the value is `Tail`, `log` in the response will contain the corresponding function execution log (up to 4KB).
         :type LogType: str
-        :param Namespace: Namespace
+        :param Namespace: Namespace. `default` is used if it’s left empty.
         :type Namespace: str
         :param RoutingKey: Traffic routing config in json format, e.g., {"k":"v"}. Please note that both "k" and "v" must be strings. Up to 1024 bytes allowed.
         :type RoutingKey: str
@@ -2894,11 +2894,14 @@ class ListNamespacesRequest(AbstractModel):
         :type Orderby: str
         :param Order: It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.
         :type Order: str
+        :param SearchKey: Specifies the range and keyword for search. The value of `Key` can be `Namespace` or `Description`. Multiple AND conditions can be specified.
+        :type SearchKey: list of SearchKey
         """
         self.Limit = None
         self.Offset = None
         self.Orderby = None
         self.Order = None
+        self.SearchKey = None
 
 
     def _deserialize(self, params):
@@ -2906,6 +2909,12 @@ class ListNamespacesRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Orderby = params.get("Orderby")
         self.Order = params.get("Order")
+        if params.get("SearchKey") is not None:
+            self.SearchKey = []
+            for item in params.get("SearchKey"):
+                obj = SearchKey()
+                obj._deserialize(item)
+                self.SearchKey.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3766,6 +3775,34 @@ class RoutingConfig(AbstractModel):
                 obj = VersionMatch()
                 obj._deserialize(item)
                 self.AddtionVersionMatchs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchKey(AbstractModel):
+    """Key-value condition for keyword search
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: Search range
+        :type Key: str
+        :param Value: Keyword for search
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

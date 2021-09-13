@@ -2336,13 +2336,18 @@ class CreateBandwidthPackageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NetworkType: The type of the bandwidth package. Valid values: `HIGH_QUALITY_BGP`, `BGP`, `SINGLEISP`, and `ANYCAST`.
+        :param NetworkType: The network type of the bandwidth package. Default value: `BGP`. Valid values:
+`BGP` 
+`HIGH_QUALITY_BGP`
         :type NetworkType: str
-        :param ChargeType: The bandwidth package billing mode. Valid values: 'TOP5_POSTPAID_BY_MONTH' and 'PERCENT95_POSTPAID_BY_MONTH'.
+        :param ChargeType: The billing mode of the bandwidth package. Default value: `TOP5_POSTPAID_BY_MONTH`. Valid values:
+<li>`TOP5_POSTPAID_BY_MONTH`: monthly top 5 </li>
+<li>`PERCENT95_POSTPAID_BY_MONTH`: monthly 95th percentile</li>
+<li>`FIXED_PREPAID_BY_MONTH`: monthly subscription</li>
         :type ChargeType: str
         :param BandwidthPackageName: The name of the bandwidth package.
         :type BandwidthPackageName: str
-        :param BandwidthPackageCount: The number of bandwidth packages (It can only be “1” for bill-by-CVM accounts)
+        :param BandwidthPackageCount: The number of bandwidth packages to create. Valid range: 1-20. It can only be “1” for bill-by-CVM accounts.
         :type BandwidthPackageCount: int
         :param InternetMaxBandwidth: The limit of the bandwidth package in Mbps. The value '-1' indicates there is no limit. This feature is currently in beta.
         :type InternetMaxBandwidth: int
@@ -2719,11 +2724,9 @@ class CreateFlowLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: ID of the VPC instance
-        :type VpcId: str
         :param FlowLogName: The name of the flow log instance.
         :type FlowLogName: str
-        :param ResourceType: The type of resources to which the flow log belongs. Valid values: 'VPC', 'SUBNET' and 'NETWORKINTERFACE'.
+        :param ResourceType: The type of resource associated with the flow log. Valid values: `VPC`, `SUBNET`, `NETWORKINTERFACE`, and `CCN`.
         :type ResourceType: str
         :param ResourceId: The unique ID of the resource.
         :type ResourceId: str
@@ -2731,28 +2734,30 @@ class CreateFlowLogRequest(AbstractModel):
         :type TrafficType: str
         :param CloudLogId: The storage ID of the flow log.
         :type CloudLogId: str
+        :param VpcId: The VPC ID or unique ID of the resource. We recommend using the unique ID. This parameter is required unless the `ResourceType` is set to `CCN`.
+        :type VpcId: str
         :param FlowLogDescription: The description of the flow log instance
         :type FlowLogDescription: str
         :param Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}]
         :type Tags: list of Tag
         """
-        self.VpcId = None
         self.FlowLogName = None
         self.ResourceType = None
         self.ResourceId = None
         self.TrafficType = None
         self.CloudLogId = None
+        self.VpcId = None
         self.FlowLogDescription = None
         self.Tags = None
 
 
     def _deserialize(self, params):
-        self.VpcId = params.get("VpcId")
         self.FlowLogName = params.get("FlowLogName")
         self.ResourceType = params.get("ResourceType")
         self.ResourceId = params.get("ResourceId")
         self.TrafficType = params.get("TrafficType")
         self.CloudLogId = params.get("CloudLogId")
+        self.VpcId = params.get("VpcId")
         self.FlowLogDescription = params.get("FlowLogDescription")
         if params.get("Tags") is not None:
             self.Tags = []
@@ -4972,18 +4977,18 @@ class DeleteFlowLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: ID of the VPC instance
-        :type VpcId: str
         :param FlowLogId: The unique ID of the flow log.
         :type FlowLogId: str
+        :param VpcId: The VPC ID or unique ID of the resource. We recommend using the unique ID. This parameter is required unless a CCN flow log is deleted.
+        :type VpcId: str
         """
-        self.VpcId = None
         self.FlowLogId = None
+        self.VpcId = None
 
 
     def _deserialize(self, params):
-        self.VpcId = params.get("VpcId")
         self.FlowLogId = params.get("FlowLogId")
+        self.VpcId = params.get("VpcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6711,10 +6716,11 @@ class DescribeCcnRoutesRequest(AbstractModel):
         :type RouteIds: list of str
         :param Filters: Filter condition. `RouteIds` and `Filters` cannot be specified at the same time.
 <li>route-id - String - (Filter condition) Routing policy ID.</li>
-<li>cidr-block - String - (Filter condition) Destination port.</li>
+<li>cidr-block - String - (Filter condition) Destination.</li>
 <li>instance-type - String - (Filter condition) The next hop type.</li>
 <li>instance-region - String - (Filter condition) The next hop region.</li>
-<li>instance-type - String - (Filter condition) The instance ID of the next hop.</li>
+<li>instance-id - String - (Filter condition) The instance ID of the next hop.</li>
+<li>route-table-id - String - (Filter condition) The list of route table IDs in the format of `ccntr-1234edfr`. Filters by the route table ID.</li>
         :type Filters: list of Filter
         :param Offset: Offset
         :type Offset: int
@@ -11002,7 +11008,7 @@ class FlowLog(AbstractModel):
         :type FlowLogId: str
         :param FlowLogName: The name of the flow log instance.
         :type FlowLogName: str
-        :param ResourceType: The resource type of the flow log. Valid values: 'VPC', 'SUBNET', and 'NETWORKINTERFACE'.
+        :param ResourceType: The type of resource associated with the flow log. Valid values: `VPC`, `SUBNET`, `NETWORKINTERFACE`, and `CCN`.
         :type ResourceType: str
         :param ResourceId: The unique ID of the resource.
         :type ResourceId: str
@@ -12718,24 +12724,24 @@ class ModifyFlowLogAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: ID of the VPC instance
-        :type VpcId: str
         :param FlowLogId: The unique ID of the flow log.
         :type FlowLogId: str
+        :param VpcId: The VPC ID or unique ID of the resource. We recommend using the unique ID. This parameter is required unless the attributes of a CCN flow log is modified.
+        :type VpcId: str
         :param FlowLogName: The name of the flow log.
         :type FlowLogName: str
         :param FlowLogDescription: The description of the flow log.
         :type FlowLogDescription: str
         """
-        self.VpcId = None
         self.FlowLogId = None
+        self.VpcId = None
         self.FlowLogName = None
         self.FlowLogDescription = None
 
 
     def _deserialize(self, params):
-        self.VpcId = params.get("VpcId")
         self.FlowLogId = params.get("FlowLogId")
+        self.VpcId = params.get("VpcId")
         self.FlowLogName = params.get("FlowLogName")
         self.FlowLogDescription = params.get("FlowLogDescription")
         memeber_set = set(params.keys())
