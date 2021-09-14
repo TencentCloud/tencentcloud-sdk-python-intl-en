@@ -1482,6 +1482,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyNodePoolInstanceTypes(self, request):
+        """This API is used to modify the model of instances in a node pool.
+
+        :param request: Request instance for ModifyNodePoolInstanceTypes.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyNodePoolInstanceTypesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyNodePoolInstanceTypesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyNodePoolInstanceTypes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyNodePoolInstanceTypesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyPrometheusAlertRule(self, request):
         """This API is used to modify an alarm rule.
 

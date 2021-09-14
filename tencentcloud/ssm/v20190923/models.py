@@ -144,6 +144,92 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class CreateSSHKeyPairSecretRequest(AbstractModel):
+    """CreateSSHKeyPairSecret request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SecretName: Secret name, which must be unique in the same region. It can contain 128 bytes of letters, digits, hyphens and underscores and must begin with a letter or digit.
+        :type SecretName: str
+        :param ProjectId: ID of the project to which the created SSH key belongs.
+        :type ProjectId: int
+        :param Description: Description, such as what it is used for. It contains up to 2,048 bytes.
+        :type Description: str
+        :param KmsKeyId: Specifies a KMS CMK to encrypt the secret.
+If this parameter is left empty, the CMK created by Secrets Manager by default will be used for encryption.
+You can also specify a custom KMS CMK created in the same region for encryption.
+        :type KmsKeyId: str
+        :param Tags: List of tags.
+        :type Tags: list of Tag
+        """
+        self.SecretName = None
+        self.ProjectId = None
+        self.Description = None
+        self.KmsKeyId = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.SecretName = params.get("SecretName")
+        self.ProjectId = params.get("ProjectId")
+        self.Description = params.get("Description")
+        self.KmsKeyId = params.get("KmsKeyId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSSHKeyPairSecretResponse(AbstractModel):
+    """CreateSSHKeyPairSecret response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SecretName: Name of the created secret.
+        :type SecretName: str
+        :param SSHKeyID: ID of the created SSH key.
+        :type SSHKeyID: str
+        :param SSHKeyName: Name of the created SSH key.
+        :type SSHKeyName: str
+        :param TagCode: Tag return code. `0`: success; `1`: internal error; `2`: business processing error.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TagCode: int
+        :param TagMsg: Tag return message.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TagMsg: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SecretName = None
+        self.SSHKeyID = None
+        self.SSHKeyName = None
+        self.TagCode = None
+        self.TagMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SecretName = params.get("SecretName")
+        self.SSHKeyID = params.get("SSHKeyID")
+        self.SSHKeyName = params.get("SSHKeyName")
+        self.TagCode = params.get("TagCode")
+        self.TagMsg = params.get("TagMsg")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateSecretRequest(AbstractModel):
     """CreateSecret request structure.
 
@@ -241,16 +327,23 @@ class DeleteSecretRequest(AbstractModel):
         r"""
         :param SecretName: Name of the Secret to be deleted.
         :type SecretName: str
-        :param RecoveryWindowInDays: Scheduled deletion time, in days. If set to 0, the Secret is deleted immediately. A number in the range of 1 to 30 indicates the number of retention days. The Secret will be deleted after the set value.
+        :param RecoveryWindowInDays: Scheduled deletion time (in days), indicating the number of retention days for the secret. Value range: 0-30. If it is `0`, the secret is deleted immediately.
+For an SSH key secret, this field can only be `0`.
         :type RecoveryWindowInDays: int
+        :param CleanSSHKey: Specifies whether to delete the SSH key from both the secret and the SSH key list in the CVM console. This field is only valid for SSH key secrets. Valid values:
+`True`: deletes SSH key from both the secret and SSH key list in the CVM console. Note that the deletion will fail if the SSH key is already bound to a CVM instance.
+`False`: only deletes the SSH key information in the secret.
+        :type CleanSSHKey: bool
         """
         self.SecretName = None
         self.RecoveryWindowInDays = None
+        self.CleanSSHKey = None
 
 
     def _deserialize(self, params):
         self.SecretName = params.get("SecretName")
         self.RecoveryWindowInDays = params.get("RecoveryWindowInDays")
+        self.CleanSSHKey = params.get("CleanSSHKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -418,7 +511,7 @@ class DescribeRotationDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnableRotation: Specifies whether to allow rotation. True: yes; False: no.
+        :param EnableRotation: Whether to enable rotation. `true`: enabled; `false`: disabled.
         :type EnableRotation: bool
         :param Frequency: Rotation frequency in days. Default value: 1 day.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -541,8 +634,8 @@ class DescribeSecretResponse(AbstractModel):
         :type DeleteTime: int
         :param CreateTime: Creation time.
         :type CreateTime: int
-        :param SecretType: 0: user-defined credential; 1: Tencent Cloud service credential.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param SecretType: `0`: user-defined secret; `1`: database credential; `2`: SSH key secret.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type SecretType: int
         :param ProductName: Tencent Cloud service name.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -556,6 +649,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param RotationFrequency: Rotation frequency in days by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RotationFrequency: int
+        :param ResourceName: Secret name. This field is only valid when the `SecretType` is set to `2` (SSH key secret).
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ResourceName: str
+        :param ProjectID: Project ID. This field is only valid when the `SecretType` is set to `2` (SSH key secret).
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ProjectID: int
+        :param AssociatedInstanceIDs: ID of the CVM instance associated with the SSH key. ID. This field is only valid when the `SecretType` is set to `2` (SSH key secret).
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AssociatedInstanceIDs: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -571,6 +673,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ResourceID = None
         self.RotationStatus = None
         self.RotationFrequency = None
+        self.ResourceName = None
+        self.ProjectID = None
+        self.AssociatedInstanceIDs = None
         self.RequestId = None
 
 
@@ -587,6 +692,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ResourceID = params.get("ResourceID")
         self.RotationStatus = params.get("RotationStatus")
         self.RotationFrequency = params.get("RotationFrequency")
+        self.ResourceName = params.get("ResourceName")
+        self.ProjectID = params.get("ProjectID")
+        self.AssociatedInstanceIDs = params.get("AssociatedInstanceIDs")
         self.RequestId = params.get("RequestId")
 
 
@@ -735,6 +843,77 @@ class GetRegionsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Regions = params.get("Regions")
+        self.RequestId = params.get("RequestId")
+
+
+class GetSSHKeyPairValueRequest(AbstractModel):
+    """GetSSHKeyPairValue request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SecretName: Secret name. This field is only valid for SSH key secrets.
+        :type SecretName: str
+        :param SSHKeyId: 
+        :type SSHKeyId: str
+        """
+        self.SecretName = None
+        self.SSHKeyId = None
+
+
+    def _deserialize(self, params):
+        self.SecretName = params.get("SecretName")
+        self.SSHKeyId = params.get("SSHKeyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetSSHKeyPairValueResponse(AbstractModel):
+    """GetSSHKeyPairValue response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SSHKeyID: ID of the SSH key.
+        :type SSHKeyID: str
+        :param PublicKey: Plaintext value of the Base64-encoded public key.
+        :type PublicKey: str
+        :param PrivateKey: Plaintext value of the Base64-encoded private key.
+        :type PrivateKey: str
+        :param ProjectID: ID of the project to which the SSH key belongs.
+        :type ProjectID: int
+        :param SSHKeyDescription: Description of the SSH key.
+The description can be modified in the CVM console.
+        :type SSHKeyDescription: str
+        :param SSHKeyName: Name of the SSH key.
+The name can be modified in the CVM console.
+        :type SSHKeyName: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SSHKeyID = None
+        self.PublicKey = None
+        self.PrivateKey = None
+        self.ProjectID = None
+        self.SSHKeyDescription = None
+        self.SSHKeyName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SSHKeyID = params.get("SSHKeyID")
+        self.PublicKey = params.get("PublicKey")
+        self.PrivateKey = params.get("PrivateKey")
+        self.ProjectID = params.get("ProjectID")
+        self.SSHKeyDescription = params.get("SSHKeyDescription")
+        self.SSHKeyName = params.get("SSHKeyName")
         self.RequestId = params.get("RequestId")
 
 
@@ -914,10 +1093,12 @@ The `PendingCreate` and `CreateFailed` status only take effect when `SecretType`
         :type SearchSecretName: str
         :param TagFilters: Tag filter.
         :type TagFilters: list of TagFilter
-        :param SecretType: 0: user-defined credential (default value).
-1: Tencent Cloud service credential.
-Either 1 or 0 can be selected for this parameter.
+        :param SecretType: `0` (default): user-defined secret.
+`1`: Tencent Cloud services secret.
+`2`: SSH key secret.
         :type SecretType: int
+        :param ProductName: 
+        :type ProductName: str
         """
         self.Offset = None
         self.Limit = None
@@ -926,6 +1107,7 @@ Either 1 or 0 can be selected for this parameter.
         self.SearchSecretName = None
         self.TagFilters = None
         self.SecretType = None
+        self.ProductName = None
 
 
     def _deserialize(self, params):
@@ -941,6 +1123,7 @@ Either 1 or 0 can be selected for this parameter.
                 obj._deserialize(item)
                 self.TagFilters.append(obj)
         self.SecretType = params.get("SecretType")
+        self.ProductName = params.get("ProductName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1232,6 +1415,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ProductName: Tencent Cloud service name, which takes effect only when `SecretType` is 1 (Tencent Cloud service credential)
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProductName: str
+        :param ResourceName: Secret name. This field is only valid when the `SecretType` is set to `2` (SSH key secret).
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ResourceName: str
+        :param ProjectID: Project ID. This field is only valid when the `SecretType` is set to `2` (SSH key secret).
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ProjectID: int
+        :param AssociatedInstanceIDs: ID of the CVM instance associated with the SSH key. ID. This field is only valid when the `SecretType` is set to `2` (SSH key secret).
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AssociatedInstanceIDs: list of str
         """
         self.SecretName = None
         self.Description = None
@@ -1245,6 +1437,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.NextRotationTime = None
         self.SecretType = None
         self.ProductName = None
+        self.ResourceName = None
+        self.ProjectID = None
+        self.AssociatedInstanceIDs = None
 
 
     def _deserialize(self, params):
@@ -1260,6 +1455,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.NextRotationTime = params.get("NextRotationTime")
         self.SecretType = params.get("SecretType")
         self.ProductName = params.get("ProductName")
+        self.ResourceName = params.get("ResourceName")
+        self.ProjectID = params.get("ProjectID")
+        self.AssociatedInstanceIDs = params.get("AssociatedInstanceIDs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1384,13 +1582,13 @@ class UpdateRotationStatusRequest(AbstractModel):
         :param SecretName: Tencent Cloud service credential name.
         :type SecretName: str
         :param EnableRotation: Specifies whether to enable rotation.
-True: enable rotation.
-False: disable rotation.
+`true`: enables rotation.
+`false`: disables rotation.
         :type EnableRotation: bool
         :param Frequency: Rotation frequency in days. Value range: 30–365.
         :type Frequency: int
-        :param RotationBeginTime: User-Defined rotation start time in the format of 2006-01-02 15:04:05.
-When `EnableRotation` is `True`, if `RotationBeginTime` is left empty, the current time will be entered by default.
+        :param RotationBeginTime: User-defined rotation start time in the format of 2006-01-02 15:04:05.
+When `EnableRotation` is `true` and `RotationBeginTime` is left empty, the current time will be entered by default.
         :type RotationBeginTime: str
         """
         self.SecretName = None

@@ -867,7 +867,7 @@ class ClusterCIDRSettings(AbstractModel):
         :type IgnoreClusterCIDRConflict: bool
         :param MaxNodePodNum: Maximum number of pods on each node in the cluster
         :type MaxNodePodNum: int
-        :param MaxClusterServiceNum: Maximum number of cluster services
+        :param MaxClusterServiceNum: The maximum number of services in a cluster. The range is from 32 to 32768. When its power is not 2, it will round upward to the closest power of 2. Default value is 256.
         :type MaxClusterServiceNum: int
         :param ServiceCIDR: The CIDR block used to assign cluster service IP addresses. It must conflict with neither the VPC CIDR block nor with CIDR blocks of other clusters in the same VPC instance. The IP range must be within the private network IP range, such as 10.1.0.0/14, 192.168.0.1/18, and 172.16.0.0/16.
         :type ServiceCIDR: str
@@ -3466,9 +3466,12 @@ class EnhancedService(AbstractModel):
         :type SecurityService: :class:`tencentcloud.tke.v20180525.models.RunSecurityServiceEnabled`
         :param MonitorService: Enables cloud monitor service. If this parameter is not specified, the cloud monitor service will be enabled by default.
         :type MonitorService: :class:`tencentcloud.tke.v20180525.models.RunMonitorServiceEnabled`
+        :param AutomationService: Enables the TAT service. If this parameter is not specified, the TAT service will not be enabled.
+        :type AutomationService: :class:`tencentcloud.tke.v20180525.models.RunAutomationServiceEnabled`
         """
         self.SecurityService = None
         self.MonitorService = None
+        self.AutomationService = None
 
 
     def _deserialize(self, params):
@@ -3478,6 +3481,9 @@ class EnhancedService(AbstractModel):
         if params.get("MonitorService") is not None:
             self.MonitorService = RunMonitorServiceEnabled()
             self.MonitorService._deserialize(params.get("MonitorService"))
+        if params.get("AutomationService") is not None:
+            self.AutomationService = RunAutomationServiceEnabled()
+            self.AutomationService._deserialize(params.get("AutomationService"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3952,6 +3958,9 @@ Note: This field may return null, indicating that no valid value was found.
         :param DesiredPodNumber: When the custom PodCIDR mode is enabled for the cluster, you can specify the maximum number of pods per node.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type DesiredPodNumber: int
+        :param PreStartUserScript: Specifies the base64-encoded custom script to be executed before initialization of the node. It’s only valid for adding existing nodes for now.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type PreStartUserScript: str
         """
         self.MountTarget = None
         self.DockerGraphPath = None
@@ -3961,6 +3970,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.DataDisks = None
         self.ExtraArgs = None
         self.DesiredPodNumber = None
+        self.PreStartUserScript = None
 
 
     def _deserialize(self, params):
@@ -3984,6 +3994,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
             self.ExtraArgs = InstanceExtraArgs()
             self.ExtraArgs._deserialize(params.get("ExtraArgs"))
         self.DesiredPodNumber = params.get("DesiredPodNumber")
+        self.PreStartUserScript = params.get("PreStartUserScript")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4602,6 +4613,55 @@ class ModifyClusterNodePoolRequest(AbstractModel):
 
 class ModifyClusterNodePoolResponse(AbstractModel):
     """ModifyClusterNodePool response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyNodePoolInstanceTypesRequest(AbstractModel):
+    """ModifyNodePoolInstanceTypes request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param NodePoolId: Node pool ID
+        :type NodePoolId: str
+        :param InstanceTypes: List of instance types
+        :type InstanceTypes: list of str
+        """
+        self.ClusterId = None
+        self.NodePoolId = None
+        self.InstanceTypes = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodePoolId = params.get("NodePoolId")
+        self.InstanceTypes = params.get("InstanceTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNodePoolInstanceTypesResponse(AbstractModel):
+    """ModifyNodePoolInstanceTypes response structure.
 
     """
 
@@ -5389,6 +5449,30 @@ class RouteTableInfo(AbstractModel):
         self.RouteTableName = params.get("RouteTableName")
         self.RouteTableCidrBlock = params.get("RouteTableCidrBlock")
         self.VpcId = params.get("VpcId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RunAutomationServiceEnabled(AbstractModel):
+    """Describes the TAT service information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Enabled: Whether to enable the TAT service. Valid values: <br><li>`TRUE`: yes;<br><li>`FALSE`: no<br><br>Default: `FALSE`.
+        :type Enabled: bool
+        """
+        self.Enabled = None
+
+
+    def _deserialize(self, params):
+        self.Enabled = params.get("Enabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

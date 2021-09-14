@@ -54,6 +54,34 @@ class SsmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateSSHKeyPairSecret(self, request):
+        """This API is used to create a secret that hosts SSH keys.
+
+        :param request: Request instance for CreateSSHKeyPairSecret.
+        :type request: :class:`tencentcloud.ssm.v20190923.models.CreateSSHKeyPairSecretRequest`
+        :rtype: :class:`tencentcloud.ssm.v20190923.models.CreateSSHKeyPairSecretResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateSSHKeyPairSecret", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSSHKeyPairSecretResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateSecret(self, request):
         """This API is used to create a KMS-encrypted Secret. You can create and store up to 1,000 Secrets in each region.
 
@@ -351,6 +379,34 @@ class SsmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetRegionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetSSHKeyPairValue(self, request):
+        """This API is used to obtain the plaintext value of the SSH key secret.
+
+        :param request: Request instance for GetSSHKeyPairValue.
+        :type request: :class:`tencentcloud.ssm.v20190923.models.GetSSHKeyPairValueRequest`
+        :rtype: :class:`tencentcloud.ssm.v20190923.models.GetSSHKeyPairValueResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetSSHKeyPairValue", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetSSHKeyPairValueResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

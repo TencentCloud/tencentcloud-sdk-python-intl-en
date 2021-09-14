@@ -488,6 +488,8 @@ class CreateAclRequest(AbstractModel):
         :type Host: str
         :param Principal: The list of users allowed to access the topic. Default: User:*, meaning all users. The current user must be in the user list. Add `User:` before the user name (`User:A` for example).
         :type Principal: str
+        :param ResourceNameList: The resource name list, which is in JSON string format. Only one of `ResourceName` and `resourceNameList` can be specified.
+        :type ResourceNameList: str
         """
         self.InstanceId = None
         self.ResourceType = None
@@ -496,6 +498,7 @@ class CreateAclRequest(AbstractModel):
         self.ResourceName = None
         self.Host = None
         self.Principal = None
+        self.ResourceNameList = None
 
 
     def _deserialize(self, params):
@@ -506,6 +509,7 @@ class CreateAclRequest(AbstractModel):
         self.ResourceName = params.get("ResourceName")
         self.Host = params.get("Host")
         self.Principal = params.get("Principal")
+        self.ResourceNameList = params.get("ResourceNameList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -886,6 +890,47 @@ class DeleteAclResponse(AbstractModel):
         if params.get("Result") is not None:
             self.Result = JgwOperateResponse()
             self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteRouteTriggerTimeRequest(AbstractModel):
+    """DeleteRouteTriggerTime request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DelayTime: Modification time.
+        :type DelayTime: str
+        """
+        self.DelayTime = None
+
+
+    def _deserialize(self, params):
+        self.DelayTime = params.get("DelayTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRouteTriggerTimeResponse(AbstractModel):
+    """DeleteRouteTriggerTime response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

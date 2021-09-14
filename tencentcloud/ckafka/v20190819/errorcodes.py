@@ -14,6 +14,12 @@
 # limitations under the License.
 
 
+# CAM signature/authentication error.
+AUTHFAILURE = 'AuthFailure'
+
+# DryRun operation, which means an extra DryRun parameter is passed in yet the request will still be successful.
+DRYRUNOPERATION = 'DryRunOperation'
+
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 

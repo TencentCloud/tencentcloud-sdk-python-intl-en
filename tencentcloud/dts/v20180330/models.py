@@ -702,6 +702,8 @@ class DescribeMigrateJobsRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of the returned instances. Value range: [1, 100]. Default value: 20
         :type Limit: int
+        :param TagFilters: Tag filter.
+        :type TagFilters: list of TagFilter
         """
         self.JobId = None
         self.JobName = None
@@ -709,6 +711,7 @@ class DescribeMigrateJobsRequest(AbstractModel):
         self.OrderSeq = None
         self.Offset = None
         self.Limit = None
+        self.TagFilters = None
 
 
     def _deserialize(self, params):
@@ -718,6 +721,12 @@ class DescribeMigrateJobsRequest(AbstractModel):
         self.OrderSeq = params.get("OrderSeq")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        if params.get("TagFilters") is not None:
+            self.TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self.TagFilters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1406,6 +1415,9 @@ class MigrateJobInfo(AbstractModel):
         :type Detail: :class:`tencentcloud.dts.v20180330.models.MigrateDetailInfo`
         :param ErrorInfo: Prompt message for task error, which is not null or empty when an error occurs with the task
         :type ErrorInfo: list of ErrorInfo
+        :param Tags: Tag
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Tags: list of TagItem
         """
         self.JobId = None
         self.JobName = None
@@ -1423,6 +1435,7 @@ class MigrateJobInfo(AbstractModel):
         self.Status = None
         self.Detail = None
         self.ErrorInfo = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -1455,6 +1468,12 @@ class MigrateJobInfo(AbstractModel):
                 obj = ErrorInfo()
                 obj._deserialize(item)
                 self.ErrorInfo.append(obj)
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagItem()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
