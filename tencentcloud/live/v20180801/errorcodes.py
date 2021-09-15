@@ -50,6 +50,9 @@ FAILEDOPERATION_GETSTREAMRESOLUTIONERROR = 'FailedOperation.GetStreamResolutionE
 # No live stream.
 FAILEDOPERATION_HASNOTLIVINGSTREAM = 'FailedOperation.HasNotLivingStream'
 
+# The number of domain names exceeded the upper limit (100).
+FAILEDOPERATION_HOSTOUTLIMIT = 'FailedOperation.HostOutLimit'
+
 # An exception occurred while manipulating the VOD API.
 FAILEDOPERATION_INVOKEVIDEOAPIFAIL = 'FailedOperation.InvokeVideoApiFail'
 
@@ -268,6 +271,9 @@ INVALIDPARAMETER_DOMAINALREADYEXIST = 'InvalidParameter.DomainAlreadyExist'
 
 # The domain name format is incorrect. Please enter a valid one.
 INVALIDPARAMETER_DOMAINFORMATERROR = 'InvalidParameter.DomainFormatError'
+
+# This domain name is on the blocklist.
+INVALIDPARAMETER_DOMAINHITBLACKLIST = 'InvalidParameter.DomainHitBlackList'
 
 # A blocklisted domain name is used.
 INVALIDPARAMETER_DOMAINISFAMOUS = 'InvalidParameter.DomainIsFamous'

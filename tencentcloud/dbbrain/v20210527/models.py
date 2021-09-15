@@ -2422,6 +2422,72 @@ class IssueTypeInfo(AbstractModel):
         
 
 
+class KillMySqlThreadsRequest(AbstractModel):
+    """KillMySqlThreads request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param Stage: The stage of a session killing task. Valid values: Prepare (preparation stage), Commit (commit stage).
+        :type Stage: str
+        :param Threads: The ID list of MySQL sessions to be killed. This parameter is used in the “Prepare” stage.
+        :type Threads: list of int
+        :param SqlExecId: Execution ID. This parameter is used in the “Commit” stage.
+        :type SqlExecId: str
+        :param Product: Service type. Valid values: mysql (TencentDB for MySQL), cynosdb (TDSQL-C for MySQL). Default value: mysql.
+        :type Product: str
+        """
+        self.InstanceId = None
+        self.Stage = None
+        self.Threads = None
+        self.SqlExecId = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Stage = params.get("Stage")
+        self.Threads = params.get("Threads")
+        self.SqlExecId = params.get("SqlExecId")
+        self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KillMySqlThreadsResponse(AbstractModel):
+    """KillMySqlThreads response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Threads: The ID list of MySQL sessions that have been killed.
+        :type Threads: list of int
+        :param SqlExecId: Execution ID, which is output in the “Prepare” stage and used to specify the ID of the session to be killed in the “Commit” stage.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SqlExecId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Threads = None
+        self.SqlExecId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Threads = params.get("Threads")
+        self.SqlExecId = params.get("SqlExecId")
+        self.RequestId = params.get("RequestId")
+
+
 class MailConfiguration(AbstractModel):
     """Email sending configuration
 

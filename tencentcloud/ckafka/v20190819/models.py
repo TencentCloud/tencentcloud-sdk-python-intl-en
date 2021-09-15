@@ -488,7 +488,7 @@ class CreateAclRequest(AbstractModel):
         :type Host: str
         :param Principal: The list of users allowed to access the topic. Default: User:*, meaning all users. The current user must be in the user list. Add `User:` before the user name (`User:A` for example).
         :type Principal: str
-        :param ResourceNameList: The resource name list, which is in JSON string format. Only one of `ResourceName` and `resourceNameList` can be specified.
+        :param ResourceNameList: The resource name list, which is in JSON string format. Either `ResourceName` or `resourceNameList` can be specified.
         :type ResourceNameList: str
         """
         self.InstanceId = None

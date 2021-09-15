@@ -754,7 +754,9 @@ class CommonMixInputParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InputStreamName: Input stream name of up to 80 bytes, which is a string containing letters, digits, and underscores.
+        :param InputStreamName: Input stream name, which can contain up to 80 bytes of letters, digits, and underscores.
+The value should be the name of an input stream for stream mix when `LayoutParams.InputType` is set to `0` (audio and video), `4` (pure audio), or `5` (pure video).
+The value can be a random name for identification, such as `Canvas1` or `Picture1`, when `LayoutParams.InputType` is set to `2` (image) or `3` (canvas).
         :type InputStreamName: str
         :param LayoutParams: Input stream layout parameter.
         :type LayoutParams: :class:`tencentcloud.live.v20180801.models.CommonMixLayoutParams`
@@ -1560,9 +1562,11 @@ Only letters, digits, underscores, and hyphens can be contained.
         :param SnapshotInterval: Screencapturing interval in seconds. Default value: 10s.
 Value range: 5-300s.
         :type SnapshotInterval: int
-        :param Width: Screenshot width. Default value: 0 (original width).
+        :param Width: Screenshot width. Default value: `0` (original width)
+Value range: 0-3000
         :type Width: int
-        :param Height: Screenshot height. Default value: 0 (original height).
+        :param Height: Screenshot height. Default value: `0` (original height)
+Value range: 0-2000
         :type Height: int
         :param PornFlag: Whether to enable porn detection. 0: no, 1: yes. Default value: 0
         :type PornFlag: int
@@ -1897,9 +1901,9 @@ class CreateRecordTaskRequest(AbstractModel):
         :type DomainName: str
         :param AppName: Push path.
         :type AppName: str
-        :param EndTime: Recording end time in UNIX timestamp format. “EndTime” should be later than “StartTime”, and the duration between “EndTime” and “StartTime” is up to 24 hours.
+        :param EndTime: Recording end time in UNIX timestamp format. `EndTime` should be later than `StartTime` and the current time, and the duration between `EndTime` and `StartTime` is up to 24 hours.
         :type EndTime: int
-        :param StartTime: Recording start time in UNIX timestamp format. If “StartTime” is not entered, recording will start immediately after the API is successfully called. “StartTime” should be within 6 days from the current time.
+        :param StartTime: Recording start time in UNIX timestamp format. Leaving this parameter empty means starting recording now. `StartTime` cannot be later than the current time plus 6 days.
         :type StartTime: int
         :param StreamType: Push type. Default value: 0. Valid values:
 0: LVB push.
@@ -3647,11 +3651,15 @@ class DescribeLiveDomainsResponse(AbstractModel):
         :type AllCount: int
         :param DomainList: List of domain name details.
         :type DomainList: list of DomainInfo
+        :param CreateLimitCount: The number of domain names that can be added
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type CreateLimitCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.AllCount = None
         self.DomainList = None
+        self.CreateLimitCount = None
         self.RequestId = None
 
 
@@ -3663,6 +3671,7 @@ class DescribeLiveDomainsResponse(AbstractModel):
                 obj = DomainInfo()
                 obj._deserialize(item)
                 self.DomainList.append(obj)
+        self.CreateLimitCount = params.get("CreateLimitCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -7765,7 +7774,7 @@ class RecordParam(AbstractModel):
         r"""
         :param RecordInterval: Max recording time per file
 Default value: `1800` (seconds)
-Value range: 60-7200
+Value range: 30-7200
 This parameter is invalid for HLS. Only one HLS file will be generated from push start to push end.
         :type RecordInterval: int
         :param StorageTime: Storage duration of the recording file

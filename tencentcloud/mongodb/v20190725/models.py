@@ -1951,11 +1951,11 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
         :type Volume: int
         :param OplogSize: Oplog size after instance configuration change in GB, which ranges from 10% to 90% of the disk capacity and is 10% of the disk capacity by default
         :type OplogSize: int
-        :param NodeNum: Node quantity after configuration modification. The value range is subject to the response parameter of the `DescribeSpecInfo` API. If this parameter is left empty, the node quantity won't change.
+        :param NodeNum: Node quantity after configuration modification. The value range is subject to the response parameter of the `DescribeSpecInfo` API. If this parameter is left empty, the node quantity remains unchanged.
         :type NodeNum: int
-        :param ReplicateSetNum: Shard quantity after configuration modification, which can only be increased rather than decreased. The value range is subject to the response parameter of the `DescribeSpecInfo` API. If this parameter is left empty, the shard quantity won't change.
+        :param ReplicateSetNum: Shard quantity after configuration modification, which can only be increased rather than decreased. The value range is subject to the response parameter of the `DescribeSpecInfo` API. If this parameter is left empty, the shard quantity remains unchanged.
         :type ReplicateSetNum: int
-        :param InMaintenance: Switch time. Valid values: `0` (upon modification completion), `1` (during maintenance time). Default value: `0`. If the node quantity or the shard quantity is modified, `1` is invalid.
+        :param InMaintenance: Switch time. Valid values: `0` (upon modification completion), `1` (during maintenance time). Default value: `0`. If the quantity of nodes or shards is modified, the value will be `0`.
         :type InMaintenance: int
         """
         self.InstanceId = None
