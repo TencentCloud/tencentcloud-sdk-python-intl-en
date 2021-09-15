@@ -849,6 +849,62 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCustomizedConfigAssociateList(self, request):
+        """This API is used to query the configured location, bound server or bound CLB instance. If there are domain names, the result will be filtered by domain name.
+
+        :param request: Request instance for DescribeCustomizedConfigAssociateList.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeCustomizedConfigAssociateListRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeCustomizedConfigAssociateListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCustomizedConfigAssociateList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCustomizedConfigAssociateListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCustomizedConfigList(self, request):
+        """This API is used to pull custom configuration lists to return the user configuration of `AppId`.
+
+        :param request: Request instance for DescribeCustomizedConfigList.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeCustomizedConfigListRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeCustomizedConfigListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCustomizedConfigList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCustomizedConfigListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeListeners(self, request):
         """This API is used to get the list of listeners by CLB ID, listener protocol, or listener port. If no filter is specified, all listeners for the CLB instance will be returned.
 

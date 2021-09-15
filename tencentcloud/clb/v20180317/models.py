@@ -473,6 +473,70 @@ Note: either `InstanceId` or `EniIp` must be passed in, which is required for bi
         
 
 
+class BindDetailItem(AbstractModel):
+    """Binding details including listener name, protocol, url and vport
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoadBalancerId: Specifies the ID of CLB to be bound
+        :type LoadBalancerId: str
+        :param ListenerId: Specifies the ID of listener to be bound
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ListenerId: str
+        :param Domain: Specifies the domain name to be bound
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Domain: str
+        :param LocationId: Sets the bound rule.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type LocationId: str
+        :param ListenerName: Listener name.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ListenerName: str
+        :param Protocol: Listener protocol.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Protocol: str
+        :param Vport: Listener port.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Vport: int
+        :param Url: URL of the location.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Url: str
+        :param UconfigId: Configuration ID.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type UconfigId: str
+        """
+        self.LoadBalancerId = None
+        self.ListenerId = None
+        self.Domain = None
+        self.LocationId = None
+        self.ListenerName = None
+        self.Protocol = None
+        self.Vport = None
+        self.Url = None
+        self.UconfigId = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerId = params.get("ListenerId")
+        self.Domain = params.get("Domain")
+        self.LocationId = params.get("LocationId")
+        self.ListenerName = params.get("ListenerName")
+        self.Protocol = params.get("Protocol")
+        self.Vport = params.get("Vport")
+        self.Url = params.get("Url")
+        self.UconfigId = params.get("UconfigId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BlockedIP(AbstractModel):
     """IP added to blocklist 12306
 
@@ -900,6 +964,51 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class ConfigListItem(AbstractModel):
+    """Configuration content
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UconfigId: Configuration ID.
+        :type UconfigId: str
+        :param ConfigType: Configuration type.
+        :type ConfigType: str
+        :param ConfigName: Configuration name.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ConfigName: str
+        :param ConfigContent: Configuration content.
+        :type ConfigContent: str
+        :param CreateTimestamp: Creates configuration time.
+        :type CreateTimestamp: str
+        :param UpdateTimestamp: Modifies configuration time.
+        :type UpdateTimestamp: str
+        """
+        self.UconfigId = None
+        self.ConfigType = None
+        self.ConfigName = None
+        self.ConfigContent = None
+        self.CreateTimestamp = None
+        self.UpdateTimestamp = None
+
+
+    def _deserialize(self, params):
+        self.UconfigId = params.get("UconfigId")
+        self.ConfigType = params.get("ConfigType")
+        self.ConfigName = params.get("ConfigName")
+        self.ConfigContent = params.get("ConfigContent")
+        self.CreateTimestamp = params.get("CreateTimestamp")
+        self.UpdateTimestamp = params.get("UpdateTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateClsLogSetRequest(AbstractModel):
     """CreateClsLogSet request structure.
 
@@ -1070,13 +1179,13 @@ OPEN: public network; INTERNAL: private network.
         :param LoadBalancerName: CLB instance name, which takes effect only when only one instance is to be created in the request. It can consist 1 to 60 letters, digits, hyphens (-), or underscores (_).
 Note: if the name of the new CLB instance already exists, a default name will be generated automatically.
         :type LoadBalancerName: str
-        :param VpcId: Network ID of the backend target server of CLB, which can be obtained through the DescribeVpcEx API. If this parameter is not passed in, it will default to a basic network ("0").
+        :param VpcId: Network ID of the target CLB real server, such as `vpc-12345678`, which can be obtained through the [DescribeVpcEx](https://intl.cloud.tencent.com/document/product/215/1372?from_cn_redirect=1) API. If this parameter is not specified, it will default to `DefaultVPC`. This parameter is required for creating a CLB instance.
         :type VpcId: str
-        :param SubnetId: A subnet ID must be specified when you purchase a private network CLB instance in a VPC, and the VIP of this instance will be generated in this subnet.
+        :param SubnetId: A subnet ID must be specified when you purchase a private network CLB instance in a VPC, and the VIP of this instance will be generated in this subnet. This parameter is required for creating a CLB instance.
         :type SubnetId: str
-        :param ProjectId: ID of the project to which a CLB instance belongs, which can be obtained through the DescribeProject API. If this parameter is not passed in, the default project will be used.
+        :param ProjectId: Project ID of the CLB instance, which can be obtained through the [DescribeProject](https://intl.cloud.tencent.com/document/product/378/4400?from_cn_redirect=1) API. If this parameter is not specified, it will default to the default project.
         :type ProjectId: int
-        :param AddressIPVersion: IP version. Valid values: IPv4, IPv6, IPv6FullChain. Default value: IPv4. This parameter is applicable only to public network CLB instances.
+        :param AddressIPVersion: IP version. Valid values: `IPV4` (default), `IPV6` (IPV6 NAT64 version) or `IPv6FullChain` (IPv6 version). This parameter is only for public network CLB instances.
         :type AddressIPVersion: str
         :param Number: Number of CLBs to be created. Default value: 1.
         :type Number: int
@@ -1089,14 +1198,19 @@ Note: A primary AZ carries traffic, while a secondary AZ does not carry traffic 
         :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
         :param VipIsp: This parameter is applicable only to public network CLB instances. Valid values: CMCC (China Mobile), CTCC (China Telecom), CUCC (China Unicom). If this parameter is not specified, BGP will be used by default. ISPs supported in a region can be queried with the `DescribeSingleIsp` API. If an ISP is specified, only bill-by-bandwidth-package (BANDWIDTH_PACKAGE) can be used as the network billing mode.
         :type VipIsp: str
-        :param Tags: Tags a CLB instance when purchasing it
+        :param Tags: Tags a CLB instance when purchasing it.
         :type Tags: list of TagInfo
-        :param Vip: Applies for CLB instances for a specified VIP
+        :param Vip: Specifies a VIP for the CLB instance.
+<ul><li>`VpcId` is optional for creating shared clusters of public network CLB instances. For IPv6 CLB instance type, `SubnetId` is required; for IPv4 and IPv6 NAT64 types, it can be left empty.</li>
+<li>`VpcId` is optional for creating shared clusters of public network CLB instances. For IPv6 CLB instance type, `SubnetId` is required; for IPv4 and IPv6 NAT64 types, it can be left empty.
+</li></ul>
         :type Vip: str
         :param BandwidthPackageId: Bandwidth package ID. If this parameter is specified, the network billing mode (`InternetAccessible.InternetChargeType`) will only support bill-by-bandwidth package (`BANDWIDTH_PACKAGE`).
         :type BandwidthPackageId: str
-        :param ExclusiveCluster: Dedicated cluster information
+        :param ExclusiveCluster: Exclusive cluster information. This parameter is required for creating exclusive clusters of CLB instances.
         :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
+        :param SlaType: 
+        :type SlaType: str
         :param ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
         :type ClientToken: str
         :param SnatPro: Whether Binding IPs of other VPCs feature switch
@@ -1127,6 +1241,7 @@ Note: A secondary AZ will load traffic if the primary AZ has failures. The API `
         self.Vip = None
         self.BandwidthPackageId = None
         self.ExclusiveCluster = None
+        self.SlaType = None
         self.ClientToken = None
         self.SnatPro = None
         self.SnatIps = None
@@ -1161,6 +1276,7 @@ Note: A secondary AZ will load traffic if the primary AZ has failures. The API `
         if params.get("ExclusiveCluster") is not None:
             self.ExclusiveCluster = ExclusiveCluster()
             self.ExclusiveCluster._deserialize(params.get("ExclusiveCluster"))
+        self.SlaType = params.get("SlaType")
         self.ClientToken = params.get("ClientToken")
         self.SnatPro = params.get("SnatPro")
         if params.get("SnatIps") is not None:
@@ -2284,6 +2400,153 @@ class DescribeClsLogSetResponse(AbstractModel):
     def _deserialize(self, params):
         self.LogsetId = params.get("LogsetId")
         self.HealthLogsetId = params.get("HealthLogsetId")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCustomizedConfigAssociateListRequest(AbstractModel):
+    """DescribeCustomizedConfigAssociateList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UconfigId: Configuration ID.
+        :type UconfigId: str
+        :param Offset: Start position of the binding list. Default: 0.
+        :type Offset: int
+        :param Limit: Number of binding lists to pull. Default: 20.
+        :type Limit: int
+        :param Domain: Searches for the domain name.
+        :type Domain: str
+        """
+        self.UconfigId = None
+        self.Offset = None
+        self.Limit = None
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.UconfigId = params.get("UconfigId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomizedConfigAssociateListResponse(AbstractModel):
+    """DescribeCustomizedConfigAssociateList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BindList: List of bound resources
+        :type BindList: list of BindDetailItem
+        :param TotalCount: Total number of bound resources
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.BindList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("BindList") is not None:
+            self.BindList = []
+            for item in params.get("BindList"):
+                obj = BindDetailItem()
+                obj._deserialize(item)
+                self.BindList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCustomizedConfigListRequest(AbstractModel):
+    """DescribeCustomizedConfigList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConfigType: Configuration type. Valid values: `CLB` (CLB-specific configs), `SERVER` (domain name-specific configs), and `LOCATION` (forwarding rule-specific configs).
+        :type ConfigType: str
+        :param Offset: Pagination offset. Default: 0.
+        :type Offset: int
+        :param Limit: Number of results per page. Default: 20.
+        :type Limit: int
+        :param ConfigName: Specifies the name of configs to query. Fuzzy match is supported.
+        :type ConfigName: str
+        :param UconfigIds: Configuration ID.
+        :type UconfigIds: list of str
+        :param Filters: The filters are:
+<li> loadbalancer-id - String - Required: no - (filter) CLB instance ID, such as "lb-12345678". </li>
+<li> vip - String - Required: no - (filter) CLB instance VIP, such as "1.1.1.1" and "2204::22:3". </li>
+        :type Filters: list of Filter
+        """
+        self.ConfigType = None
+        self.Offset = None
+        self.Limit = None
+        self.ConfigName = None
+        self.UconfigIds = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.ConfigType = params.get("ConfigType")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ConfigName = params.get("ConfigName")
+        self.UconfigIds = params.get("UconfigIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomizedConfigListResponse(AbstractModel):
+    """DescribeCustomizedConfigList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConfigList: Configuration list.
+        :type ConfigList: list of ConfigListItem
+        :param TotalCount: Number of configurations.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ConfigList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ConfigList") is not None:
+            self.ConfigList = []
+            for item in params.get("ConfigList"):
+                obj = ConfigListItem()
+                obj._deserialize(item)
+                self.ConfigList.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -4597,6 +4860,8 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         :type LoadBalancerPassToTarget: bool
         :param SnatPro: Whether to enable SnatPro
         :type SnatPro: bool
+        :param DeleteProtect: Specifies whether to enable deletion protection.
+        :type DeleteProtect: bool
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -4604,6 +4869,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         self.InternetChargeInfo = None
         self.LoadBalancerPassToTarget = None
         self.SnatPro = None
+        self.DeleteProtect = None
 
 
     def _deserialize(self, params):
@@ -4617,6 +4883,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
             self.InternetChargeInfo._deserialize(params.get("InternetChargeInfo"))
         self.LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
         self.SnatPro = params.get("SnatPro")
+        self.DeleteProtect = params.get("DeleteProtect")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
