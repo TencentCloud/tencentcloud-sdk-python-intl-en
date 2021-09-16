@@ -1976,6 +1976,8 @@ class DescribeAlarmNoticesRequest(AbstractModel):
         :type UserIds: list of int
         :param GroupIds: Recipient group list
         :type GroupIds: list of int
+        :param NoticeIds: Filter by notification template ID. If an empty array is passed in or if this parameter is left empty, the filter operation will not be performed.
+        :type NoticeIds: list of str
         """
         self.Module = None
         self.PageNumber = None
@@ -1986,6 +1988,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
         self.ReceiverType = None
         self.UserIds = None
         self.GroupIds = None
+        self.NoticeIds = None
 
 
     def _deserialize(self, params):
@@ -1998,6 +2001,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
         self.ReceiverType = params.get("ReceiverType")
         self.UserIds = params.get("UserIds")
         self.GroupIds = params.get("GroupIds")
+        self.NoticeIds = params.get("NoticeIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

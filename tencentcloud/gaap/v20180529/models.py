@@ -31,16 +31,20 @@ class AccessConfiguration(AbstractModel):
         :type Bandwidth: int
         :param Concurrent: Concurrent connection upper limit in 10,000 connections, which indicates the allowed number of concurrently online connections.
         :type Concurrent: int
+        :param NetworkType: Network type. Valid values: `normal` (default), `cn2`
+        :type NetworkType: str
         """
         self.AccessRegion = None
         self.Bandwidth = None
         self.Concurrent = None
+        self.NetworkType = None
 
 
     def _deserialize(self, params):
         self.AccessRegion = params.get("AccessRegion")
         self.Bandwidth = params.get("Bandwidth")
         self.Concurrent = params.get("Concurrent")
+        self.NetworkType = params.get("NetworkType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -586,6 +590,10 @@ class CheckProxyCreateRequest(AbstractModel):
         :type GroupId: str
         :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.
         :type IPAddressVersion: str
+        :param NetworkType: Network type. Valid values: `normal` (default), `cn2`
+        :type NetworkType: str
+        :param PackageType: Package type of connection groups. Valid values: `Thunder` (general connection group) and `Accelerator` (game accelerator connection group).
+        :type PackageType: str
         """
         self.AccessRegion = None
         self.RealServerRegion = None
@@ -593,6 +601,8 @@ class CheckProxyCreateRequest(AbstractModel):
         self.Concurrent = None
         self.GroupId = None
         self.IPAddressVersion = None
+        self.NetworkType = None
+        self.PackageType = None
 
 
     def _deserialize(self, params):
@@ -602,6 +612,8 @@ class CheckProxyCreateRequest(AbstractModel):
         self.Concurrent = params.get("Concurrent")
         self.GroupId = params.get("GroupId")
         self.IPAddressVersion = params.get("IPAddressVersion")
+        self.NetworkType = params.get("NetworkType")
+        self.PackageType = params.get("PackageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1280,6 +1292,8 @@ class CreateProxyGroupRequest(AbstractModel):
         :type AccessRegionSet: list of AccessConfiguration
         :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.
         :type IPAddressVersion: str
+        :param PackageType: Package type of connection group. Valid values: `Thunder` (default) and `Accelerator`.
+        :type PackageType: str
         """
         self.ProjectId = None
         self.GroupName = None
@@ -1287,6 +1301,7 @@ class CreateProxyGroupRequest(AbstractModel):
         self.TagSet = None
         self.AccessRegionSet = None
         self.IPAddressVersion = None
+        self.PackageType = None
 
 
     def _deserialize(self, params):
@@ -1306,6 +1321,7 @@ class CreateProxyGroupRequest(AbstractModel):
                 obj._deserialize(item)
                 self.AccessRegionSet.append(obj)
         self.IPAddressVersion = params.get("IPAddressVersion")
+        self.PackageType = params.get("PackageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1369,6 +1385,8 @@ The connection is to be replicated if this parameter is set.
         :type BillingType: int
         :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.
         :type IPAddressVersion: str
+        :param NetworkType: Network type. Valid values: `normal` (default), `cn2`
+        :type NetworkType: str
         """
         self.ProjectId = None
         self.ProxyName = None
@@ -1382,6 +1400,7 @@ The connection is to be replicated if this parameter is set.
         self.ClonedProxyId = None
         self.BillingType = None
         self.IPAddressVersion = None
+        self.NetworkType = None
 
 
     def _deserialize(self, params):
@@ -1402,6 +1421,7 @@ The connection is to be replicated if this parameter is set.
         self.ClonedProxyId = params.get("ClonedProxyId")
         self.BillingType = params.get("BillingType")
         self.IPAddressVersion = params.get("IPAddressVersion")
+        self.NetworkType = params.get("NetworkType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2176,14 +2196,18 @@ class DescribeAccessRegionsByDestRegionRequest(AbstractModel):
         :type DestRegion: str
         :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.
         :type IPAddressVersion: str
+        :param PackageType: Package type of connection groups. Valid values: `Thunder` (general connection group) and `Accelerator` (game accelerator connection group).
+        :type PackageType: str
         """
         self.DestRegion = None
         self.IPAddressVersion = None
+        self.PackageType = None
 
 
     def _deserialize(self, params):
         self.DestRegion = params.get("DestRegion")
         self.IPAddressVersion = params.get("IPAddressVersion")
+        self.PackageType = params.get("PackageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3355,37 +3379,38 @@ class DescribeProxyGroupListRequest(AbstractModel):
 0: default project
 Other values: specified project
         :type ProjectId: int
+        :param Filters: Filter condition   
+Each request can have a maximum of 5 filter conditions for `Filter.Values`.
+RealServerRegion - String - Required: No - Filter by origin server region. You can also check the value of `RegionId` returned by the `DescribeDestRegions` API.
+PackageType - String - Required: No - Filter by type of connection groups, which can be `Thunder` (general connection group) or `Accelerator` (game accelerator connection group).
+        :type Filters: list of Filter
         :param TagSet: Tag list. If this field exists, the list of the resources with the tag will be pulled.
 It supports up to 5 tags. If there are two or more tags, the connection groups tagged any of them will be pulled.
         :type TagSet: list of TagPair
-        :param Filters: Filter conditions.   
-The limit on Filter.Values of each request is 5.
-RealServerRegion - String - Required: No - Filter by origin server region; Refer to the RegionId in the results returned by DescribeDestRegions API.
-        :type Filters: list of Filter
         """
         self.Offset = None
         self.Limit = None
         self.ProjectId = None
-        self.TagSet = None
         self.Filters = None
+        self.TagSet = None
 
 
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.ProjectId = params.get("ProjectId")
-        if params.get("TagSet") is not None:
-            self.TagSet = []
-            for item in params.get("TagSet"):
-                obj = TagPair()
-                obj._deserialize(item)
-                self.TagSet.append(obj)
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = TagPair()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3795,12 +3820,16 @@ class DescribeRegionAndPriceRequest(AbstractModel):
         r"""
         :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.
         :type IPAddressVersion: str
+        :param PackageType: Package type of connection groups. Valid values: `Thunder` (general connection group) and `Accelerator` (game accelerator connection group).
+        :type PackageType: str
         """
         self.IPAddressVersion = None
+        self.PackageType = None
 
 
     def _deserialize(self, params):
         self.IPAddressVersion = params.get("IPAddressVersion")
+        self.PackageType = params.get("PackageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4969,6 +4998,10 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         :type BillingType: int
         :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.
         :type IPAddressVersion: str
+        :param NetworkType: Network type. Valid values: `normal` (default), `cn2`
+        :type NetworkType: str
+        :param PackageType: Package type of connection groups. Valid values: `Thunder` (general connection group) and `Accelerator` (game accelerator connection group).
+        :type PackageType: str
         """
         self.AccessRegion = None
         self.Bandwidth = None
@@ -4978,6 +5011,8 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         self.Concurrent = None
         self.BillingType = None
         self.IPAddressVersion = None
+        self.NetworkType = None
+        self.PackageType = None
 
 
     def _deserialize(self, params):
@@ -4989,6 +5024,8 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         self.Concurrent = params.get("Concurrent")
         self.BillingType = params.get("BillingType")
         self.IPAddressVersion = params.get("IPAddressVersion")
+        self.NetworkType = params.get("NetworkType")
+        self.PackageType = params.get("PackageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5020,6 +5057,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param DiscountFlowUnitPrice: Discounted connection traffic price in USD/GB.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DiscountFlowUnitPrice: float
+        :param Cn2BandwidthPrice: Dedicated BGP bandwidth price. Unit: USD/Mbps/day
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type Cn2BandwidthPrice: float
+        :param Cn2BandwidthPriceWithDiscount: Dedicated BGP bandwidth discount price. Unit: USD/Mbps/day
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type Cn2BandwidthPriceWithDiscount: float
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -5029,6 +5072,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Currency = None
         self.FlowUnitPrice = None
         self.DiscountFlowUnitPrice = None
+        self.Cn2BandwidthPrice = None
+        self.Cn2BandwidthPriceWithDiscount = None
         self.RequestId = None
 
 
@@ -5044,6 +5089,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Currency = params.get("Currency")
         self.FlowUnitPrice = params.get("FlowUnitPrice")
         self.DiscountFlowUnitPrice = params.get("DiscountFlowUnitPrice")
+        self.Cn2BandwidthPrice = params.get("Cn2BandwidthPrice")
+        self.Cn2BandwidthPriceWithDiscount = params.get("Cn2BandwidthPriceWithDiscount")
         self.RequestId = params.get("RequestId")
 
 
@@ -6274,6 +6321,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type IPAddressVersion: str
+        :param PackageType: Package type of connection groups. Valid values: `Thunder` (general connection group) and `Accelerator` (game accelerator connection group).
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type PackageType: str
         """
         self.CreateTime = None
         self.ProjectId = None
@@ -6292,6 +6342,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.Version = None
         self.ClientIPMethod = None
         self.IPAddressVersion = None
+        self.PackageType = None
 
 
     def _deserialize(self, params):
@@ -6319,6 +6370,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.Version = params.get("Version")
         self.ClientIPMethod = params.get("ClientIPMethod")
         self.IPAddressVersion = params.get("IPAddressVersion")
+        self.PackageType = params.get("PackageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6507,8 +6559,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ModifyConfigTime: Configuration change time
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ModifyConfigTime: int
-        :param ProxyType: Connection type. 104: SILVER connection.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param ProxyType: Connection type
+Note: this field may return `null`, indicating that no valid value can be obtained.
         :type ProxyType: int
         :param ClientIPMethod: Describes how the connection obtains client IPs. 0: TOA; 1: Proxy Protocol.
 Note: this field may return `null`, indicating that no valid values can be obtained.
@@ -6516,6 +6568,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param IPAddressVersion: IP version. Valid values: `IPv4`, `IPv6`.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type IPAddressVersion: str
+        :param NetworkType: Network type. Valid values: `normal`, `cn2`
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type NetworkType: str
+        :param PackageType: Package type of connection groups. Valid values: `Thunder` (general connection group) and `Accelerator` (game accelerator connection group).
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type PackageType: str
         """
         self.InstanceId = None
         self.CreateTime = None
@@ -6545,6 +6603,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.ProxyType = None
         self.ClientIPMethod = None
         self.IPAddressVersion = None
+        self.NetworkType = None
+        self.PackageType = None
 
 
     def _deserialize(self, params):
@@ -6585,6 +6645,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.ProxyType = params.get("ProxyType")
         self.ClientIPMethod = params.get("ClientIPMethod")
         self.IPAddressVersion = params.get("IPAddressVersion")
+        self.NetworkType = params.get("NetworkType")
+        self.PackageType = params.get("PackageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7252,6 +7314,12 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param UnhealthyThreshold: Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 - 10.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type UnhealthyThreshold: int
+        :param FailoverSwitch: Whether to enable the primary/secondary origin server mode for failover. Values: `1` (enabled); `0` (disabled). It’s not available if the origin type is `DOMAIN`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type FailoverSwitch: int
+        :param SessionPersist: Specifies whether to enable session persistence. Values: `0` (disable), `1` (enable)
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type SessionPersist: int
         """
         self.ListenerId = None
         self.ListenerName = None
@@ -7270,6 +7338,8 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.ClientIPMethod = None
         self.HealthyThreshold = None
         self.UnhealthyThreshold = None
+        self.FailoverSwitch = None
+        self.SessionPersist = None
 
 
     def _deserialize(self, params):
@@ -7295,6 +7365,8 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.ClientIPMethod = params.get("ClientIPMethod")
         self.HealthyThreshold = params.get("HealthyThreshold")
         self.UnhealthyThreshold = params.get("UnhealthyThreshold")
+        self.FailoverSwitch = params.get("FailoverSwitch")
+        self.SessionPersist = params.get("SessionPersist")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7398,6 +7470,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type RealServerSet: list of BindRealServer
         :param CreateTime: Listener creation time; using UNIX timestamp.
         :type CreateTime: int
+        :param SessionPersist: Specifies whether to enable session persistence. Values: `0` (disable), `1` (enable)
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SessionPersist: int
         """
         self.ListenerId = None
         self.ListenerName = None
@@ -7410,6 +7485,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.BindStatus = None
         self.RealServerSet = None
         self.CreateTime = None
+        self.SessionPersist = None
 
 
     def _deserialize(self, params):
@@ -7429,6 +7505,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self.RealServerSet.append(obj)
         self.CreateTime = params.get("CreateTime")
+        self.SessionPersist = params.get("SessionPersist")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

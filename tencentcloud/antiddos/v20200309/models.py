@@ -1796,7 +1796,10 @@ class DescribeBasicDeviceStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: The resource and status is returned.
+        :param Data: Status of the specified Anti-DDoS resource. Valid values:
+`1`: The IP is blocked.
+`2`: The P is normal.
+`3`: The IP is being attacked.
         :type Data: list of KeyValue
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1812,6 +1815,92 @@ class DescribeBasicDeviceStatusResponse(AbstractModel):
                 obj = KeyValue()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBizTrendRequest(AbstractModel):
+    """DescribeBizTrend request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Statistics: Statistical method. Valid values: `max`, `min`, `avg`, `sum`. It can only be `max` if the statistical dimension is traffic rate or packet rate.
+        :type Statistics: str
+        :param Business: Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)
+        :type Business: str
+        :param Period: Sampling interval. Valid values: `300`, `1800`, `3600`, `21600`, `86400`
+        :type Period: int
+        :param StartTime: Beginning of the time range for the query, such as `2020-09-22 00:00:00`.
+        :type StartTime: str
+        :param EndTime: End of the time range for the query, such as `2020-09-22 00:00:00`.
+        :type EndTime: str
+        :param Id: Instance ID
+        :type Id: str
+        :param MetricName: Metric. Valid values: `connum`, `new_conn`, `inactive_conn`, `intraffic`, `outtraffic`, `inpkg`, `outpkg`, `qps`
+        :type MetricName: str
+        :param Domain: You can query data by specifying a domain name when the metric is `qps`.
+        :type Domain: str
+        :param ProtoInfo: Protocol and port list, which is valid when the metric is `connum`, `new_conn` or `inactive_conn`. Valid protocols: `TCP`, `UDP`, `HTTP`, `HTTPS`
+        :type ProtoInfo: list of ProtocolPort
+        """
+        self.Statistics = None
+        self.Business = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Id = None
+        self.MetricName = None
+        self.Domain = None
+        self.ProtoInfo = None
+
+
+    def _deserialize(self, params):
+        self.Statistics = params.get("Statistics")
+        self.Business = params.get("Business")
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Id = params.get("Id")
+        self.MetricName = params.get("MetricName")
+        self.Domain = params.get("Domain")
+        if params.get("ProtoInfo") is not None:
+            self.ProtoInfo = []
+            for item in params.get("ProtoInfo"):
+                obj = ProtocolPort()
+                obj._deserialize(item)
+                self.ProtoInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBizTrendResponse(AbstractModel):
+    """DescribeBizTrend response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataList: Value at a time point on the curve
+        :type DataList: list of float
+        :param MetricName: Statistical dimension
+        :type MetricName: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DataList = None
+        self.MetricName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DataList = params.get("DataList")
+        self.MetricName = params.get("MetricName")
         self.RequestId = params.get("RequestId")
 
 
@@ -1861,6 +1950,214 @@ class DescribeBlackWhiteIpListResponse(AbstractModel):
     def _deserialize(self, params):
         self.BlackIpList = params.get("BlackIpList")
         self.WhiteIpList = params.get("WhiteIpList")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCCTrendRequest(AbstractModel):
+    """DescribeCCTrend request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic
+        :type Business: str
+        :param Ip: Instance IP
+        :type Ip: str
+        :param Period: Sampling period. Valid values: `300` (5 minutes), `3600` (one hour), `86400` (one day)
+        :type Period: int
+        :param StartTime: Beginning of the time range for the query
+        :type StartTime: str
+        :param EndTime: End of the time range for the query
+        :type EndTime: str
+        :param MetricName: Metric. Valid values: `inqps`: total peak requests; `dropqps`: peak attack requests
+        :type MetricName: str
+        :param Domain: (Optional) Domain name
+        :type Domain: str
+        :param Id: Instance ID. Leave this field empty when `Business` is `basic`, as basic protection does not require an instance.
+        :type Id: str
+        """
+        self.Business = None
+        self.Ip = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+        self.MetricName = None
+        self.Domain = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Ip = params.get("Ip")
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.MetricName = params.get("MetricName")
+        self.Domain = params.get("Domain")
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCCTrendResponse(AbstractModel):
+    """DescribeCCTrend response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Count: Number of values returned
+        :type Count: int
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic
+        :type Business: str
+        :param Ip: Instance IP
+        :type Ip: str
+        :param Period: Sampling period. Valid values: `300` (5 minutes), `3600` (one hour), `86400` (one day)
+        :type Period: int
+        :param StartTime: Beginning of the time range for the query
+        :type StartTime: str
+        :param EndTime: End of the time range for the query
+        :type EndTime: str
+        :param Data: Value array
+        :type Data: list of int non-negative
+        :param Id: Instance ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Id: str
+        :param MetricName: Metric. Valid values: `inqps`: total peak requests; `dropqps`: peak attack requests
+        :type MetricName: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Count = None
+        self.Business = None
+        self.Ip = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Data = None
+        self.Id = None
+        self.MetricName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        self.Business = params.get("Business")
+        self.Ip = params.get("Ip")
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Data = params.get("Data")
+        self.Id = params.get("Id")
+        self.MetricName = params.get("MetricName")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDDoSTrendRequest(AbstractModel):
+    """DescribeDDoSTrend request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic
+        :type Business: str
+        :param Ip: Instance IP
+        :type Ip: str
+        :param Period: Sampling period. Valid values: `300` (5 minutes), `3600` (one hour), `86400` (one day)
+        :type Period: int
+        :param StartTime: Beginning of the time range for the query
+        :type StartTime: str
+        :param EndTime: End of the time range for the query
+        :type EndTime: str
+        :param MetricName: Metric. Valid values: `bps`: attack traffic bandwidth; `pps`: attack packet rate
+        :type MetricName: str
+        :param Id: Instance ID. Leave this field empty when `Business` is `basic`, as basic protection does not require an instance.
+        :type Id: str
+        """
+        self.Business = None
+        self.Ip = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+        self.MetricName = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Ip = params.get("Ip")
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.MetricName = params.get("MetricName")
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDDoSTrendResponse(AbstractModel):
+    """DescribeDDoSTrend response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Count: Number of values returned
+        :type Count: int
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic
+        :type Business: str
+        :param Ip: Instance IP
+        :type Ip: str
+        :param Period: Sampling period. Valid values: `300` (5 minutes), `3600` (one hour), `86400` (one day)
+        :type Period: int
+        :param StartTime: Beginning of the time range for the query
+        :type StartTime: str
+        :param EndTime: End of the time range for the query
+        :type EndTime: str
+        :param Data: Value array. The unit for attack traffic bandwidth is Mbps, and that for the packet rate is pps.
+        :type Data: list of int non-negative
+        :param Id: Instance ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Id: str
+        :param MetricName: Metric. Valid values: `bps`: attack traffic bandwidth; `pps`: attack packet rate
+        :type MetricName: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Count = None
+        self.Business = None
+        self.Ip = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Data = None
+        self.Id = None
+        self.MetricName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        self.Business = params.get("Business")
+        self.Ip = params.get("Ip")
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Data = params.get("Data")
+        self.Id = params.get("Id")
+        self.MetricName = params.get("MetricName")
         self.RequestId = params.get("RequestId")
 
 
@@ -3939,6 +4236,34 @@ class ProtocolBlockRelation(AbstractModel):
                 obj = InstanceRelation()
                 obj._deserialize(item)
                 self.InstanceDetailList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProtocolPort(AbstractModel):
+    """"Protocol" and "Port" parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Protocol: Protocol. Valid values: `tcp`, `udp`
+        :type Protocol: str
+        :param Port: Port
+        :type Port: int
+        """
+        self.Protocol = None
+        self.Port = None
+
+
+    def _deserialize(self, params):
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

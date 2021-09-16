@@ -98,6 +98,42 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class AclRuleInfo(AbstractModel):
+    """Four pieces of information of ACL rules: source IP address, destination IP address, source port, and destination port
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operation: ACL operation types. Enumerated values: `All` (all operations), `Read` (read), `Write` (write).
+        :type Operation: str
+        :param PermissionType: Permission types: `Deny`, `Allow`.
+        :type PermissionType: str
+        :param Host: The default value is `*`, which means that any host can access the topic. Currently, CKafka does not support the host value being specified as * or IP range.
+        :type Host: str
+        :param Principal: The list of users allowed to access the topic. Default value: `User:*`, which means all users. The current user must be in the user list. Add the prefix `User:` before the user name (`User:A`, for example).
+        :type Principal: str
+        """
+        self.Operation = None
+        self.PermissionType = None
+        self.Host = None
+        self.Principal = None
+
+
+    def _deserialize(self, params):
+        self.Operation = params.get("Operation")
+        self.PermissionType = params.get("PermissionType")
+        self.Host = params.get("Host")
+        self.Principal = params.get("Principal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AppIdResponse(AbstractModel):
     """`AppId` query result
 
@@ -159,6 +195,68 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class BatchCreateAclRequest(AbstractModel):
+    """BatchCreateAcl request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param ResourceType: ACL resource type. Default value: `2` (topic).
+        :type ResourceType: int
+        :param ResourceNames: Resource list array.
+        :type ResourceNames: list of str
+        :param RuleList: ACL rule list.
+        :type RuleList: list of AclRuleInfo
+        """
+        self.InstanceId = None
+        self.ResourceType = None
+        self.ResourceNames = None
+        self.RuleList = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ResourceType = params.get("ResourceType")
+        self.ResourceNames = params.get("ResourceNames")
+        if params.get("RuleList") is not None:
+            self.RuleList = []
+            for item in params.get("RuleList"):
+                obj = AclRuleInfo()
+                obj._deserialize(item)
+                self.RuleList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchCreateAclResponse(AbstractModel):
+    """BatchCreateAcl response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Status code.
+        :type Result: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
 
 
 class ClusterInfo(AbstractModel):

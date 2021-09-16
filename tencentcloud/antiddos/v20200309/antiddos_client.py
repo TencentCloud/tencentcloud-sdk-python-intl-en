@@ -642,6 +642,34 @@ class AntiddosClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBizTrend(self, request):
+        """This API is used to get the traffic flow data collected in the specified period.
+
+        :param request: Request instance for DescribeBizTrend.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeBizTrendRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeBizTrendResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBizTrend", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBizTrendResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBlackWhiteIpList(self, request):
         """This API is used to get an Anti-DDoS IP blocklist/allowlist.
 
@@ -656,6 +684,62 @@ class AntiddosClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBlackWhiteIpListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCCTrend(self, request):
+        """This API is used to get CC attack data, including total peak requests (QPS) and attack requests (QPS).
+
+        :param request: Request instance for DescribeCCTrend.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeCCTrendRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeCCTrendResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCCTrend", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCCTrendResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDDoSTrend(self, request):
+        """This API is used to get DDoS attack traffic bandwidth and attack packet rate.
+
+        :param request: Request instance for DescribeDDoSTrend.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeDDoSTrendRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeDDoSTrendResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDDoSTrend", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDDoSTrendResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
