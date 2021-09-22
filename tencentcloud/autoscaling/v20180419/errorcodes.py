@@ -227,9 +227,6 @@ INVALIDPARAMETERVALUE_SIZE = 'InvalidParameterValue.Size'
 # The start time of the scheduled task is before the current time.
 INVALIDPARAMETERVALUE_STARTTIMEBEFORECURRENTTIME = 'InvalidParameterValue.StartTimeBeforeCurrentTime'
 
-# The shutdown instances cannot be added to the scaling group.
-INVALIDPARAMETERVALUE_STOPPEDINSTANCENOTALLOWATTACH = 'InvalidParameterValue.StoppedInstanceNotAllowAttach'
-
 # The subnet information is invalid.
 INVALIDPARAMETERVALUE_SUBNETIDS = 'InvalidParameterValue.SubnetIds'
 
@@ -397,6 +394,9 @@ RESOURCEUNAVAILABLE_LOADBALANCERINOPERATION = 'ResourceUnavailable.LoadBalancerI
 
 # Project inconsistency.
 RESOURCEUNAVAILABLE_PROJECTINCONSISTENT = 'ResourceUnavailable.ProjectInconsistent'
+
+# The shutdown instances cannot be added to the scaling group.
+RESOURCEUNAVAILABLE_STOPPEDINSTANCENOTALLOWATTACH = 'ResourceUnavailable.StoppedInstanceNotAllowAttach'
 
 # The specified availability zone is unavailable.
 RESOURCEUNAVAILABLE_ZONEUNAVAILABLE = 'ResourceUnavailable.ZoneUnavailable'

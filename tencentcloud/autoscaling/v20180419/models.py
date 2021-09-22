@@ -60,6 +60,8 @@ class Activity(AbstractModel):
         :type StatusMessageSimplified: str
         :param LifecycleActionResultSet: Result of the lifecycle hook action in the scaling activity
         :type LifecycleActionResultSet: list of LifecycleActionResultInfo
+        :param DetailedStatusMessageSet: Detailed description of scaling activity status
+        :type DetailedStatusMessageSet: list of DetailedStatusMessage
         """
         self.AutoScalingGroupId = None
         self.ActivityId = None
@@ -74,6 +76,7 @@ class Activity(AbstractModel):
         self.ActivityRelatedInstanceSet = None
         self.StatusMessageSimplified = None
         self.LifecycleActionResultSet = None
+        self.DetailedStatusMessageSet = None
 
 
     def _deserialize(self, params):
@@ -100,6 +103,12 @@ class Activity(AbstractModel):
                 obj = LifecycleActionResultInfo()
                 obj._deserialize(item)
                 self.LifecycleActionResultSet.append(obj)
+        if params.get("DetailedStatusMessageSet") is not None:
+            self.DetailedStatusMessageSet = []
+            for item in params.get("DetailedStatusMessageSet"):
+                obj = DetailedStatusMessage()
+                obj._deserialize(item)
+                self.DetailedStatusMessageSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2241,6 +2250,54 @@ class DetachInstancesResponse(AbstractModel):
     def _deserialize(self, params):
         self.ActivityId = params.get("ActivityId")
         self.RequestId = params.get("RequestId")
+
+
+class DetailedStatusMessage(AbstractModel):
+    """Detailed description of scaling activity status
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Code: Error type
+        :type Code: str
+        :param Zone: AZ information
+        :type Zone: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param InstanceChargeType: Instance billing mode
+        :type InstanceChargeType: str
+        :param SubnetId: Subnet ID
+        :type SubnetId: str
+        :param Message: Error message
+        :type Message: str
+        :param InstanceType: Instance type
+        :type InstanceType: str
+        """
+        self.Code = None
+        self.Zone = None
+        self.InstanceId = None
+        self.InstanceChargeType = None
+        self.SubnetId = None
+        self.Message = None
+        self.InstanceType = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.Zone = params.get("Zone")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.SubnetId = params.get("SubnetId")
+        self.Message = params.get("Message")
+        self.InstanceType = params.get("InstanceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DisableAutoScalingGroupRequest(AbstractModel):

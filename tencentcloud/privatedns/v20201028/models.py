@@ -18,6 +18,77 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AccountVpcInfo(AbstractModel):
+    """VPC information of a Private DNS account
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UniqVpcId: VpcId: vpc-xadsafsdasd
+        :type UniqVpcId: str
+        :param Region: VPC region: ap-guangzhou, ap-shanghai
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Region: str
+        :param Uin: VPC account: 123456789
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Uin: str
+        :param VpcName: VPC name: testname
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type VpcName: str
+        """
+        self.UniqVpcId = None
+        self.Region = None
+        self.Uin = None
+        self.VpcName = None
+
+
+    def _deserialize(self, params):
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.Region = params.get("Region")
+        self.Uin = params.get("Uin")
+        self.VpcName = params.get("VpcName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AccountVpcInfoOutput(AbstractModel):
+    """Output parameters of the associated VPC
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Uin: UIN of the VPC account
+        :type Uin: str
+        :param UniqVpcId: VPC ID
+        :type UniqVpcId: str
+        :param Region: Region
+        :type Region: str
+        """
+        self.Uin = None
+        self.UniqVpcId = None
+        self.Region = None
+
+
+    def _deserialize(self, params):
+        self.Uin = params.get("Uin")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AuditLog(AbstractModel):
     """Operation log
 
@@ -179,6 +250,8 @@ class CreatePrivateZoneRequest(AbstractModel):
         :type DnsForwardStatus: str
         :param Vpcs: Associates the private domain to a VPC when it is created
         :type Vpcs: list of VpcInfo
+        :param AccountVpcSet: List of authorized accounts' VPCs to associate with the private domain
+        :type AccountVpcSet: list of AccountVpcInfo
         """
         self.Domain = None
         self.TagSet = None
@@ -186,6 +259,7 @@ class CreatePrivateZoneRequest(AbstractModel):
         self.Remark = None
         self.DnsForwardStatus = None
         self.Vpcs = None
+        self.AccountVpcSet = None
 
 
     def _deserialize(self, params):
@@ -210,6 +284,12 @@ class CreatePrivateZoneRequest(AbstractModel):
                 obj = VpcInfo()
                 obj._deserialize(item)
                 self.Vpcs.append(obj)
+        if params.get("AccountVpcSet") is not None:
+            self.AccountVpcSet = []
+            for item in params.get("AccountVpcSet"):
+                obj = AccountVpcInfo()
+                obj._deserialize(item)
+                self.AccountVpcSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -986,9 +1066,12 @@ class ModifyPrivateZoneVpcRequest(AbstractModel):
         :type ZoneId: str
         :param VpcSet: List of all VPCs associated with private domain
         :type VpcSet: list of VpcInfo
+        :param AccountVpcSet: List of authorized accounts' VPCs to associate with the private domain
+        :type AccountVpcSet: list of AccountVpcInfo
         """
         self.ZoneId = None
         self.VpcSet = None
+        self.AccountVpcSet = None
 
 
     def _deserialize(self, params):
@@ -999,6 +1082,12 @@ class ModifyPrivateZoneVpcRequest(AbstractModel):
                 obj = VpcInfo()
                 obj._deserialize(item)
                 self.VpcSet.append(obj)
+        if params.get("AccountVpcSet") is not None:
+            self.AccountVpcSet = []
+            for item in params.get("AccountVpcSet"):
+                obj = AccountVpcInfo()
+                obj._deserialize(item)
+                self.AccountVpcSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1019,11 +1108,14 @@ class ModifyPrivateZoneVpcResponse(AbstractModel):
         :type ZoneId: str
         :param VpcSet: List of VPCs associated with domain
         :type VpcSet: list of VpcInfo
+        :param AccountVpcSet: List of authorized accounts' VPCs associated with the private domain
+        :type AccountVpcSet: list of AccountVpcInfoOutput
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.ZoneId = None
         self.VpcSet = None
+        self.AccountVpcSet = None
         self.RequestId = None
 
 
@@ -1035,6 +1127,12 @@ class ModifyPrivateZoneVpcResponse(AbstractModel):
                 obj = VpcInfo()
                 obj._deserialize(item)
                 self.VpcSet.append(obj)
+        if params.get("AccountVpcSet") is not None:
+            self.AccountVpcSet = []
+            for item in params.get("AccountVpcSet"):
+                obj = AccountVpcInfoOutput()
+                obj._deserialize(item)
+                self.AccountVpcSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1068,6 +1166,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type DnsForwardStatus: str
         :param Tags: Set of tag key-value pairs
         :type Tags: list of TagInfo
+        :param AccountVpcSet: List of authorized accounts' VPCs associated with the private domain
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AccountVpcSet: list of AccountVpcInfoOutput
         """
         self.ZoneId = None
         self.OwnerUin = None
@@ -1080,6 +1181,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Status = None
         self.DnsForwardStatus = None
         self.Tags = None
+        self.AccountVpcSet = None
 
 
     def _deserialize(self, params):
@@ -1104,6 +1206,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = TagInfo()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        if params.get("AccountVpcSet") is not None:
+            self.AccountVpcSet = []
+            for item in params.get("AccountVpcSet"):
+                obj = AccountVpcInfoOutput()
+                obj._deserialize(item)
+                self.AccountVpcSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
