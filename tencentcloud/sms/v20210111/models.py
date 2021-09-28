@@ -50,6 +50,7 @@ class AddSmsSignRequest(AbstractModel):
     def __init__(self):
         r"""
         :param SignName: Signature name.
+Note: you cannot apply for an approved or pending signature again.
         :type SignName: str
         :param SignType: Signature type. Each of these types is followed by their `DocumentType` (identity certificate type) option:
 0: company. Valid values of `DocumentType` include 0, 1, 2, and 3.
@@ -500,6 +501,57 @@ class DeleteTemplateStatus(AbstractModel):
         
 
 
+class DescribePhoneNumberInfoRequest(AbstractModel):
+    """DescribePhoneNumberInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PhoneNumberSet: A parameter used to query mobile numbers in E.164 format (+[country/region code][subscriber number]). Up to 200 mobile numbers can be queried at a time.
+Take the number +8613711112222 as an example. “86” is the country code (with a “+” sign in its front) and “13711112222” is the subscriber number.
+        :type PhoneNumberSet: list of str
+        """
+        self.PhoneNumberSet = None
+
+
+    def _deserialize(self, params):
+        self.PhoneNumberSet = params.get("PhoneNumberSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePhoneNumberInfoResponse(AbstractModel):
+    """DescribePhoneNumberInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PhoneNumberInfoSet: A parameter used to obtain mobile number information.
+        :type PhoneNumberInfoSet: list of PhoneNumberInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.PhoneNumberInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PhoneNumberInfoSet") is not None:
+            self.PhoneNumberInfoSet = []
+            for item in params.get("PhoneNumberInfoSet"):
+                obj = PhoneNumberInfo()
+                obj._deserialize(item)
+                self.PhoneNumberInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSignListStatus(AbstractModel):
     """Response for getting SMS signature information
 
@@ -610,7 +662,7 @@ class DescribeSmsTemplateListRequest(AbstractModel):
     def __init__(self):
         r"""
         :param TemplateIdSet: Template ID array.
-Note: the maximum length of the array is 100 by default.
+<dx-alert infotype="notice" title="Note">The max array length is 100 by default.</dx-alert>
         :type TemplateIdSet: list of int non-negative
         :param International: Whether it is Global SMS:
 0: Mainland China SMS.
@@ -762,9 +814,10 @@ Note: the identity certificate type must be selected according to the correspond
 7: trademark registration certificate.
 Note: the corresponding `DocumentType` must be selected according to `SignType`.
         :type DocumentType: int
-        :param International: Whether it is Global SMS:
-0: Mainland China SMS.
-1: Global SMS.
+        :param International: A parameter used to specify whether it is Global SMS:
+`0`: Chinese mainland SMS.
+`1`: Global SMS.
+Note: the value of this parameter must be consistent with the `International` value of the signature to be modified. This parameter cannot be used to directly change a Chinese mainland signature to an international signature.
         :type International: int
         :param SignPurpose: Signature purpose:
 0: for personal use.
@@ -916,6 +969,54 @@ class ModifyTemplateStatus(AbstractModel):
 
     def _deserialize(self, params):
         self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PhoneNumberInfo(AbstractModel):
+    """Mobile number information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Code: Error code for mobile number information query. `Ok` will be returned if the query is successful.
+        :type Code: str
+        :param Message: Description of the error code for mobile number information query.
+        :type Message: str
+        :param NationCode: Country (or region) code.
+        :type NationCode: str
+        :param SubscriberNumber: Subscriber number in normal format such as 13711112222, without any prefix (country or region code).
+        :type SubscriberNumber: str
+        :param PhoneNumber: The standardized mobile number in E.164 format after parsing, which is consistent with the parsed number for SMS message delivery. If the parsing fails, the original number will be returned.
+        :type PhoneNumber: str
+        :param IsoCode: Country or region code such as CN and US. If the country or region code cannot be identified, `DEF` will be returned by default.
+        :type IsoCode: str
+        :param IsoName: Country code or region name such as China. For more information, see [Global SMS Price Overview](https://intl.cloud.tencent.com/document/product/382/18051?from_cn_redirect=1#.E6.97.A5.E7.BB.93.E5.90.8E.E4.BB.98.E8.B4.B9.3Ca-id.3D.22post-payment.22.3E.3C.2Fa.3E)
+        :type IsoName: str
+        """
+        self.Code = None
+        self.Message = None
+        self.NationCode = None
+        self.SubscriberNumber = None
+        self.PhoneNumber = None
+        self.IsoCode = None
+        self.IsoName = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.Message = params.get("Message")
+        self.NationCode = params.get("NationCode")
+        self.SubscriberNumber = params.get("SubscriberNumber")
+        self.PhoneNumber = params.get("PhoneNumber")
+        self.IsoCode = params.get("IsoCode")
+        self.IsoName = params.get("IsoName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1280,17 +1381,19 @@ class SendSmsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PhoneNumberSet: Target mobile number in the E.164 standard in the format of +[country/region code][mobile number]. Up to 200 mobile numbers are supported in one request (which should be all Mainland China mobile numbers or all global mobile numbers).
-Example: +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).
+        :param PhoneNumberSet: Target mobile number in E.164 format (+[country/region code][subscriber number]). Up to 200 numbers, all of which should be either Chinese mainland numbers or international numbers, are supported in a single request.
+Take the number +8613711112222 as an example. “86” is the country code (with a “+” sign in its front) and “13711112222” is the subscriber number.
+Note: 11-digit Chinese mainland numbers prefixed by 0086 or 86 or those without any country/region code are also supported. The default prefix is +86.
         :type PhoneNumberSet: list of str
         :param SmsSdkAppId: The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 1400006666.
         :type SmsSdkAppId: str
         :param TemplateId: Template ID. You must enter the ID of an approved template, which can be viewed in the [SMS console](https://console.cloud.tencent.com/smsv2). If you need to send SMS messages to global mobile numbers, you can only use a Global SMS template.
         :type TemplateId: str
-        :param SignName: Content of the SMS signature, which should be encoded in UTF-8. You must enter an approved signature, such as Tencent Cloud. The signature information can be viewed in the [SMS console](https://console.cloud.tencent.com/smsv2).
-Note: this parameter is required for Mainland China SMS.
+        :param SignName: SMS signature information which is encoded in UTF-8. You must enter an approved signature (such as Tencent Cloud). The signing information can be viewed in the [SMS console](https://console.cloud.tencent.com/smsv2).
+<dx-alert infotype="notice" title="Note">This parameter is required for Chinese mainland SMS.</dx-alert>
         :type SignName: str
-        :param TemplateParamSet: Template parameter. If there is no template parameter, leave this parameter blank.
+        :param TemplateParamSet: Template parameter. If there is no template parameter, leave this field empty.
+<dx-alert infotype="notice" title="Note">The number of template parameters should be consistent with that of the template variables of `TemplateId`.</dx-alert>
         :type TemplateParamSet: list of str
         :param ExtendCode: SMS code number extension, which is not activated by default. If you need to activate it, please contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).
         :type ExtendCode: str
@@ -1369,7 +1472,7 @@ class SendStatus(AbstractModel):
         :type Fee: int
         :param SessionContext: User session content.
         :type SessionContext: str
-        :param Code: SMS request error code. For specific meanings, please see [Error Codes](https://intl.cloud.tencent.com/document/product/382/49316?from_cn_redirect=1).
+        :param Code: SMS request error code. For details, see [Error Codes](https://intl.cloud.tencent.com/document/api/382/55981?from_cn_redirect=1#6.-.E9.94.99.E8.AF.AF.E7.A0.81). `Ok` will be returned if the request is successful.
         :type Code: str
         :param Message: SMS request error message.
         :type Message: str

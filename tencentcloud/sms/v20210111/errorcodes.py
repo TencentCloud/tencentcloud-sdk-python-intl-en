@@ -35,8 +35,14 @@ FAILEDOPERATION_MARKETINGSENDTIMECONSTRAINT = 'FailedOperation.MarketingSendTime
 # You cannot apply for a template before you apply for a signature. Please create a signature first as instructed in [Creating Signatures](https://intl.cloud.tencent.com/document/product/382/37794?from_cn_redirect=1#.E5.88.9B.E5.BB.BA.E7.AD.BE.E5.90.8D).
 FAILEDOPERATION_MISSINGSIGNATURE = 'FailedOperation.MissingSignature'
 
+# Unable to identify the signature. Please check whether the signature has been approved. For more information, see the signature approval section in [Getting Started](https://intl.cloud.tencent.com/document/product/382/37745?from_cn_redirect=1).
+FAILEDOPERATION_MISSINGSIGNATURELIST = 'FailedOperation.MissingSignatureList'
+
 # This signature ID has not been submitted for approval or does not exist, so it cannot be modified. Please check whether the `SignId` is entered correctly.
 FAILEDOPERATION_MISSINGSIGNATURETOMODIFY = 'FailedOperation.MissingSignatureToModify'
+
+# Unable to identify the template. Please check whether the template has been approved. For more information, see the template approval section in [Getting Started](https://intl.cloud.tencent.com/document/product/382/37745?from_cn_redirect=1).
+FAILEDOPERATION_MISSINGTEMPLATELIST = 'FailedOperation.MissingTemplateList'
 
 # This template ID has not been submitted for approval or does not exist, so it cannot be modified. Please check whether the `TemplateId` is entered correctly.
 FAILEDOPERATION_MISSINGTEMPLATETOMODIFY = 'FailedOperation.MissingTemplateToModify'
@@ -53,23 +59,29 @@ FAILEDOPERATION_PARAMETERSOTHERERROR = 'FailedOperation.ParametersOtherError'
 # The mobile number is in the blocklist. Usually, this is because that the user unsubscribed or the carrier's blocklist was hit. You can contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) for assistance.
 FAILEDOPERATION_PHONENUMBERINBLACKLIST = 'FailedOperation.PhoneNumberInBlacklist'
 
-# The mobile number is in the blocklist. Usually, this is because that the user unsubscribed or the carrier's blocklist was hit. You can contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) for assistance.
-FAILEDOPERATION_PHONENUMBERONBLACKLIST = 'FailedOperation.PhoneNumberOnBlacklist'
+# Failed to parse the mobile number. Please check whether it meets the E.164 standard.
+FAILEDOPERATION_PHONENUMBERPARSEFAIL = 'FailedOperation.PhoneNumberParseFail'
 
 # The number of signatures has reached the maximum value.
 FAILEDOPERATION_SIGNNUMBERLIMIT = 'FailedOperation.SignNumberLimit'
 
-# The signature is in incorrect format or has not been approved. A signature can only contain 2–12 letters and digits. If the signature format is correct, please check whether it has been approved in the [SMS console](https://console.cloud.tencent.com/smsv2).
+# The signature has not been approved or has an incorrect format. (1) Please log in to the [SMS console](https://console.cloud.tencent.com/smsv2) to check whether the signature has been reviewed and approved. (2) Please check whether the signature format is correct (it can contain only 2-12 Chinese and English characters and digits). Should you have any questions, please contact [SMS Helper](https://tccc.qcloud.com/web/im/index.html#/chat?webAppId=8fa15978f85cb41f7e2ea36920cb3ae1&title=Sms).
 FAILEDOPERATION_SIGNATUREINCORRECTORUNAPPROVED = 'FailedOperation.SignatureIncorrectOrUnapproved'
 
 # This template has been approved and cannot be modified again.
 FAILEDOPERATION_TEMPLATEALREADYPASSEDCHECK = 'FailedOperation.TemplateAlreadyPassedCheck'
 
-# The template content has not been approved or does not match the content of the approved template. Please see [Detailed Explanation of Error 1014](https://intl.cloud.tencent.com/document/product/382/9558?from_cn_redirect=1). If the template is in compliance with the template format specification, you can log in to the [SMS console](https://console.cloud.tencent.com/smsv2) to check whether it has been approved.
+# The template or signature ID does not exist.
+FAILEDOPERATION_TEMPLATEIDNOTEXIST = 'FailedOperation.TemplateIdNotExist'
+
+# The template has not been approved or its content does not match that of the approved template. (1) Please log in to the [SMS console](https://console.cloud.tencent.com/smsv2) to check whether the template has been reviewed and approved. (2) Please click [here](https://intl.cloud.tencent.com/document/product/382/9558?from_cn_redirect=1#.E8.BF.94.E5.9B.9E1014.E9.94.99.E8.AF.AF.E5.A6.82.E4.BD.95.E5.A4.84.E7.90.86.EF.BC.9F) to check whether the template format is correct. If you have any questions, please contact [SMS Helper](https://tccc.qcloud.com/web/im/index.html#/chat?webAppId=8fa15978f85cb41f7e2ea36920cb3ae1&title=Sms).
 FAILEDOPERATION_TEMPLATEINCORRECTORUNAPPROVED = 'FailedOperation.TemplateIncorrectOrUnapproved'
 
 # The number of templates has reached the maximum value.
 FAILEDOPERATION_TEMPLATENUMBERLIMIT = 'FailedOperation.TemplateNumberLimit'
+
+# Failed to parse the user parameter. Please contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).
+INTERNALERROR_JSONPARSEFAIL = 'InternalError.JsonParseFail'
 
 # Other error. Please contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) and provide the failed mobile number for assistance.
 INTERNALERROR_OTHERERROR = 'InternalError.OtherError'
@@ -143,9 +155,6 @@ INVALIDPARAMETERVALUE_INVALIDUSEDMETHOD = 'InvalidParameterValue.InvalidUsedMeth
 # `Limit` parameter check failed.
 INVALIDPARAMETERVALUE_LIMITVERIFYFAIL = 'InvalidParameterValue.LimitVerifyFail'
 
-# Unable to identify the signature. Usually, this is because that the signature has been rejected. Please check whether the signature has been approved. For more information, please see [Signature Review](https://intl.cloud.tencent.com/document/product/382/37745?from_cn_redirect=1#.E6.AD.A5.E9.AA.A43.EF.BC.9A.E7.AD.89.E5.BE.85.E5.AE.A1.E6.A0.B8).
-INVALIDPARAMETERVALUE_MISSINGSIGNATURELIST = 'InvalidParameterValue.MissingSignatureList'
-
 # `Offset` parameter check failed.
 INVALIDPARAMETERVALUE_OFFSETVERIFYFAIL = 'InvalidParameterValue.OffsetVerifyFail'
 
@@ -179,7 +188,7 @@ LIMITEXCEEDED_DAILYLIMIT = 'LimitExceeded.DailyLimit'
 # The SMS delivery hits the delivery rate limit policy. You can adjust the policy in the console. If you have other requirements, please contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) for assistance.
 LIMITEXCEEDED_DELIVERYFREQUENCYLIMIT = 'LimitExceeded.DeliveryFrequencyLimit'
 
-# There are more than 200 mobile numbers submitted in a single call of the SMS sending API. Please follow the requirements in [API Description](https://intl.cloud.tencent.com/document/product/382/38778?from_cn_redirect=1).
+# The number of mobile numbers you query at a time exceeds 200. Please refer to the input parameter `PhoneNumberSet`.
 LIMITEXCEEDED_PHONENUMBERCOUNTLIMIT = 'LimitExceeded.PhoneNumberCountLimit'
 
 # The number of SMS messages delivered to a single mobile number on the current day exceeds the set upper limit. You can adjust the SMS delivery rate limit policy in the console.
@@ -215,13 +224,13 @@ UNAUTHORIZEDOPERATION_SDKAPPIDISDISABLED = 'UnauthorizedOperation.SdkAppIdIsDisa
 # The service has been suspended due to overdue payments. You can log in to Tencent Cloud to make the payments.
 UNAUTHORIZEDOPERATION_SERIVCESUSPENDDUETOARREARS = 'UnauthorizedOperation.SerivceSuspendDueToArrears'
 
-# `SmsSdkAppId` check failed.
+# Failed to verify `SmsSdkAppId`. Please check whether [SmsSdkAppId](https://console.cloud.tencent.com/smsv2/app-manage) is under the account associated with the [TencentCloud API key](https://console.cloud.tencent.com/cam/capi).
 UNAUTHORIZEDOPERATION_SMSSDKAPPIDVERIFYFAIL = 'UnauthorizedOperation.SmsSdkAppIdVerifyFail'
 
 # The request is not supported.
 UNSUPPORTEDOPERATION_ = 'UnsupportedOperation.'
 
-# The bulk SMS request contains both Mainland China and global mobile numbers.
+# The group message request contains both Chinese mainland numbers and international numbers. Please check: (1) whether the message is sent to international numbers with a Chinese mainland signature or template; (2) whether the message is sent to Chinese mainland numbers with an international signature or template.
 UNSUPPORTEDOPERATION_CONTAINDOMESTICANDINTERNATIONALPHONENUMBER = 'UnsupportedOperation.ContainDomesticAndInternationalPhoneNumber'
 
 # SMS delivery to this region is not supported.
