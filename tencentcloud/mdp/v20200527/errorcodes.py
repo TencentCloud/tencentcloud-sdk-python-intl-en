@@ -26,11 +26,17 @@ INVALIDPARAMETER_AUTHINFO = 'InvalidParameter.AuthInfo'
 # Invalid `CacheInfo` value
 INVALIDPARAMETER_CACHEINFO = 'InvalidParameter.CacheInfo'
 
+# Invalid `ChannelId`.
+INVALIDPARAMETER_CHANNELID = 'InvalidParameter.ChannelId'
+
 # The quantity exceeds the limit.
 INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = 'InvalidParameter.ExceededQuantityLimit'
 
 # Invalid `Id`.
 INVALIDPARAMETER_ID = 'InvalidParameter.Id'
+
+# Invalid `LvbDomain`.
+INVALIDPARAMETER_LVBDOMAIN = 'InvalidParameter.LvbDomain'
 
 # Invalid name.
 INVALIDPARAMETER_NAME = 'InvalidParameter.Name'

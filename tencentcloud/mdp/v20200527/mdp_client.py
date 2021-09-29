@@ -26,6 +26,34 @@ class MdpClient(AbstractClient):
     _service = 'mdp'
 
 
+    def BindNewLVBDomainWithChannel(self, request):
+        """This API is used to bind an LVB domain name to a channel.
+
+        :param request: Request instance for BindNewLVBDomainWithChannel.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.BindNewLVBDomainWithChannelRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.BindNewLVBDomainWithChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BindNewLVBDomainWithChannel", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BindNewLVBDomainWithChannelResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateStreamPackageChannel(self, request):
         """This API is used to create a StreamPackage channel.
 

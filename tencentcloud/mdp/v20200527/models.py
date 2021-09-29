@@ -18,6 +18,55 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class BindNewLVBDomainWithChannelRequest(AbstractModel):
+    """BindNewLVBDomainWithChannel request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelId: Channel ID
+        :type ChannelId: str
+        :param LVBDomain: The LVB domain name to bind
+        :type LVBDomain: str
+        """
+        self.ChannelId = None
+        self.LVBDomain = None
+
+
+    def _deserialize(self, params):
+        self.ChannelId = params.get("ChannelId")
+        self.LVBDomain = params.get("LVBDomain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindNewLVBDomainWithChannelResponse(AbstractModel):
+    """BindNewLVBDomainWithChannel response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LVBDomain: The LVB domain name bound successfully
+        :type LVBDomain: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.LVBDomain = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LVBDomain = params.get("LVBDomain")
+        self.RequestId = params.get("RequestId")
+
+
 class CacheInfo(AbstractModel):
     """Cache configuration
 
@@ -222,13 +271,19 @@ class CreateStreamPackageChannelResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Info: Channel information
+        :type Info: :class:`tencentcloud.mdp.v20200527.models.ChannelInfo`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.Info = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self.Info = ChannelInfo()
+            self.Info._deserialize(params.get("Info"))
         self.RequestId = params.get("RequestId")
 
 
