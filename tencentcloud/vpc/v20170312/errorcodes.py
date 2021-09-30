@@ -74,6 +74,9 @@ INVALIDPARAMETER_FILTERNOTDICT = 'InvalidParameter.FilterNotDict'
 # The specified filter value should be a list.
 INVALIDPARAMETER_FILTERVALUESNOTLIST = 'InvalidParameter.FilterValuesNotList'
 
+# 
+INVALIDPARAMETER_INVALIDFILTER = 'InvalidParameter.InvalidFilter'
+
 # The next hop type does not match with the next hop gateway.
 INVALIDPARAMETER_NEXTHOPMISMATCH = 'InvalidParameter.NextHopMismatch'
 
@@ -104,8 +107,35 @@ INVALIDPARAMETERVALUE_DUPLICATE = 'InvalidParameterValue.Duplicate'
 # Missing parameters.
 INVALIDPARAMETERVALUE_EMPTY = 'InvalidParameterValue.Empty'
 
+# 
+INVALIDPARAMETERVALUE_INSTANCEDOESNOTSUPPORTANYCAST = 'InvalidParameterValue.InstanceDoesNotSupportAnycast'
+
+# 
+INVALIDPARAMETERVALUE_INSTANCEHASWANIP = 'InvalidParameterValue.InstanceHasWanIP'
+
+# 
+INVALIDPARAMETERVALUE_INSTANCENOCALCIP = 'InvalidParameterValue.InstanceNoCalcIP'
+
+# 
+INVALIDPARAMETERVALUE_INSTANCENOWANIP = 'InvalidParameterValue.InstanceNoWanIP'
+
+# 
+INVALIDPARAMETERVALUE_INSTANCENORMALPUBLICIPBLOCKED = 'InvalidParameterValue.InstanceNormalPublicIpBlocked'
+
 # Invalid DedicatedClusterId.
 INVALIDPARAMETERVALUE_INVALIDDEDICATEDCLUSTERID = 'InvalidParameterValue.InvalidDedicatedClusterId'
+
+# 
+INVALIDPARAMETERVALUE_INVALIDINSTANCEINTERNETCHARGETYPE = 'InvalidParameterValue.InvalidInstanceInternetChargeType'
+
+# 
+INVALIDPARAMETERVALUE_INVALIDINSTANCESTATE = 'InvalidParameterValue.InvalidInstanceState'
+
+# 
+INVALIDPARAMETERVALUE_INVALIDTAG = 'InvalidParameterValue.InvalidTag'
+
+# 
+INVALIDPARAMETERVALUE_LBALREADYBINDEIP = 'InvalidParameterValue.LBAlreadyBindEip'
 
 # The parameter value exceeds the limit.
 INVALIDPARAMETERVALUE_LIMITEXCEEDED = 'InvalidParameterValue.LimitExceeded'
@@ -140,8 +170,14 @@ INVALIDPARAMETERVALUE_TOOLONG = 'InvalidParameterValue.TooLong'
 # Destination IP address range conflicts with CIDR of the current VPC.
 INVALIDPARAMETERVALUE_VPCCIDRCONFLICT = 'InvalidParameterValue.VpcCidrConflict'
 
+# 
+INVALIDPARAMETERVALUE_VPGTYPENOTMATCH = 'InvalidParameterValue.VpgTypeNotMatch'
+
 # Destination IP address range conflicts with CIDR block of the current VPC tunnel.
 INVALIDPARAMETERVALUE_VPNCONNCIDRCONFLICT = 'InvalidParameterValue.VpnConnCidrConflict'
+
+# 
+INVALIDPARAMETERVALUE_VPNCONNHEALTHCHECKIPCONFLICT = 'InvalidParameterValue.VpnConnHealthCheckIpConflict'
 
 # The `Zone` parameter value should be the zone where CDC resides.
 INVALIDPARAMETERVALUE_ZONECONFLICT = 'InvalidParameterValue.ZoneConflict'
@@ -247,6 +283,9 @@ UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
 # The port does not exist.
 UNSUPPORTEDOPERATION_ACTIONNOTFOUND = 'UnsupportedOperation.ActionNotFound'
+
+# 
+UNSUPPORTEDOPERATION_APPIDMISMATCH = 'UnsupportedOperation.AppIdMismatch'
 
 # The EIP is already bound to a CVM.
 UNSUPPORTEDOPERATION_ATTACHMENTALREADYEXISTS = 'UnsupportedOperation.AttachmentAlreadyExists'
@@ -382,6 +421,9 @@ UNSUPPORTEDOPERATION_UNASSIGNCIDRBLOCK = 'UnsupportedOperation.UnassignCidrBlock
 
 # EIP is not bound.
 UNSUPPORTEDOPERATION_UNBINDEIP = 'UnsupportedOperation.UnbindEIP'
+
+# 
+UNSUPPORTEDOPERATION_UNPAIDORDERALREADYEXISTS = 'UnsupportedOperation.UnpaidOrderAlreadyExists'
 
 # The specified instance type does not support ENIs.
 UNSUPPORTEDOPERATION_UNSUPPORTEDINSTANCEFAMILY = 'UnsupportedOperation.UnsupportedInstanceFamily'

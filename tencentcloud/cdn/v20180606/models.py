@@ -791,8 +791,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class AdvancedCache(AbstractModel):
-    """Advanced cache expiration configuration (This feature is in beta and not generally available yet.)
-    Note: this version does not support setting homepage cache rules.
+    """(Disused) Advanced cache validity configuration. You can use `RuleCache` instead.
 
     """
 
@@ -1137,26 +1136,46 @@ class BandwidthAlert(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: Bandwidth cap configuration switch
-on: enabled
-off: disabled
+        :param Switch: Specifies whether to enable the bandwidth cap
+`on`: enable
+`off`: disable
         :type Switch: str
-        :param BpsThreshold: Bandwidth cap threshold (in bps)
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param BpsThreshold: The upper limit of bandwidth usage (in bps) or traffic usage (in bytes).
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type BpsThreshold: int
         :param CounterMeasure: Action taken when threshold is reached
 RESOLVE_DNS_TO_ORIGIN: requests will be forwarded to the origin server. This is only supported for domain names of external origin.
 RETURN_404: a 404 error will be returned for all requests.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CounterMeasure: str
-        :param LastTriggerTime: The last time the bandwidth cap threshold was triggered
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param LastTriggerTime: The last time when the usage upper limit in the Chinese mainland was reached
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type LastTriggerTime: str
+        :param AlertSwitch: Indicates whether to trigger alerts when the upper limit is reached
+`on`: enable
+`off`: disable
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AlertSwitch: str
+        :param AlertPercentage: Triggers alarms when the ratio of bandwidth or traffic usage to the usage upper limit reaches the specified value
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AlertPercentage: int
+        :param LastTriggerTimeOverseas: The last time when the usage outside the Chinese mainland reached the upper limit
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type LastTriggerTimeOverseas: str
+        :param Metric: Dimension of the usage limit
+`bandwidth`: bandwidth
+`flux`: traffic
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Metric: str
         """
         self.Switch = None
         self.BpsThreshold = None
         self.CounterMeasure = None
         self.LastTriggerTime = None
+        self.AlertSwitch = None
+        self.AlertPercentage = None
+        self.LastTriggerTimeOverseas = None
+        self.Metric = None
 
 
     def _deserialize(self, params):
@@ -1164,6 +1183,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.BpsThreshold = params.get("BpsThreshold")
         self.CounterMeasure = params.get("CounterMeasure")
         self.LastTriggerTime = params.get("LastTriggerTime")
+        self.AlertSwitch = params.get("AlertSwitch")
+        self.AlertPercentage = params.get("AlertPercentage")
+        self.LastTriggerTimeOverseas = params.get("LastTriggerTimeOverseas")
+        self.Metric = params.get("Metric")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1377,8 +1400,8 @@ class Cache(AbstractModel):
         :param SimpleCache: Basic cache expiration time configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SimpleCache: :class:`tencentcloud.cdn.v20180606.models.SimpleCache`
-        :param AdvancedCache: Advanced cache expiration configuration (This feature is in beta and not generally available yet.)
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param AdvancedCache: (Disused) Advanced cache validity configuration
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type AdvancedCache: :class:`tencentcloud.cdn.v20180606.models.AdvancedCache`
         :param RuleCache: Advanced path cache configuration
 Note: this field may return null, indicating that no valid value is obtained.
@@ -1530,15 +1553,15 @@ Note: this field may return null, indicating that no valid value is obtained.
 
 
 class CacheKey(AbstractModel):
-    """Cache key configuration (filter parameter configuration)
+    """Cache key configuration (Ignore Query String configuration)
 
     """
 
     def __init__(self):
         r"""
         :param FullUrlCache: Whether to enable full-path cache
-on: enable full-path cache (i.e., disable parameter filter)
-off: disable full-path cache (i.e., enable parameter filter)
+`on`: enables full-path cache (i.e., disables Ignore Query String)
+`off`: disables full-path cache (i.e., enables Ignore Query String)
         :type FullUrlCache: str
         :param IgnoreCase: Whether caches are case insensitive
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -2326,12 +2349,12 @@ The time will be rounded forward based on the granularity parameter `Interval`. 
 The range between the start time and end time should be less than or equal to 90 days
         :type EndTime: str
         :param Interval: Time granularity, which can be:
-min: 1-minute. The query range should be less than or equal to 24 hours
-5min: 5-minute. The query range should be less than or equal to 31 days
-hour: 1-hour. The query range should be less than or equal to 31 days
-day: 1-day. The query period should be greater than 31 days
+`min`: 1-minute granularity. The query period cannot exceed 24 hours.
+`5min`: 5-minute granularity. The query range cannot exceed 31 days.
+`hour`: 1-hour granularity. The query period cannot exceed 31 days.
+`day`: 1-day granularity. The query period cannot exceed 31 days.
 
-Currently, data query at 1-minute granularity is not supported if the `Area` field is `overseas`
+Querying 1-minute granularity data is not supported if the `Area` field is `overseas`.
         :type Interval: str
         :param Domain: Domain name whose billing data is to be queried
         :type Domain: str
@@ -2453,8 +2476,10 @@ The gap between the start time and end time should be less than or equal to 90 d
 `5xx`: lists the number of all status codes starting with **5** returned during the queried period based on the specified interval (if any)
 Specifies the status code to query. The return will be empty if the status code has never been generated.
         :type Metric: str
-        :param Domains: Specifies the list of domain names to be queried
-Up to 30 domain names can be queried at a time
+        :param Domains: Queries the information of specified domain names
+Specifies a domain name to query
+Specifies multiple domain names to query (30 at most at a time)
+Queries all Specifies an account to query all domain names
         :type Domains: list of str
         :param Project: Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)
 Please note that if domain names are specified, this parameter will be ignored.
@@ -3551,10 +3576,11 @@ You must specify either a task ID or a starting time.
 `overseas`: outside Mainland China
 `global`: global
         :type Area: str
-        :param Status: Specifies a task state for your query:
+        :param Status: Queries the status of a specified task
 `fail`: prefetch failed
 `done`: prefetch succeeded
 `process`: prefetch in progress
+`invalid`: invalid prefetch with 4XX/5XX status code returned from the origin server
         :type Status: str
         """
         self.StartTime = None
@@ -4544,7 +4570,7 @@ class EnableClsLogTopicResponse(AbstractModel):
 
 
 class ErrorPage(AbstractModel):
-    """Status code redirect configuration. This is disabled by default. (This feature is in beta and not generally available yet.)
+    """Status code redirect configuration, which is disabled by default.
 
     """
 
@@ -5328,10 +5354,10 @@ Note: this field may return null, indicating that no valid value is obtained.
 `index`: home page
 Note: this field may return null, indicating that no valid value is obtained.
         :type RuleType: str
-        :param FullUrlCache: Whether to enable full-path cache
-on: enable full-path cache (i.e., disable parameter filter)
-off: disable full-path cache (i.e., enable parameter filter)
-Note: this field may return null, indicating that no valid value is obtained.
+        :param FullUrlCache: Whether full-path cache is enaled
+`on`: enables full-path cache (i.e., disables ignore query string)
+`off`: disables full-path cache (i.e., enables ignore query string)
+Note: this field may return `null`, indicating that no valid value can be obtained.
         :type FullUrlCache: str
         :param IgnoreCase: Whether caches are case insensitive
 Note: this field may return null, indicating that no valid value is obtained.
@@ -5962,7 +5988,7 @@ class MapInfo(AbstractModel):
 
 
 class MaxAge(AbstractModel):
-    """Browser cache rule configuration. This is used to set the MaxAge default value and is disabled by default. (This feature is in beta and not generally available yet.)
+    """Browser cache rule configuration, which is used to set the default value of `MaxAge` and is disabled by default.
 
     """
 
@@ -6650,6 +6676,11 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param RequestHeaders: Origin-pull header setting when the path matches.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type RequestHeaders: list of HttpHeaderRule
+        :param FullMatch: When `Regex` is `false`, this parameter should be `true`.
+`false`: disabled
+`true`: enabled
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type FullMatch: bool
         """
         self.Regex = None
         self.Path = None
@@ -6658,6 +6689,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.OriginArea = None
         self.ForwardUri = None
         self.RequestHeaders = None
+        self.FullMatch = None
 
 
     def _deserialize(self, params):
@@ -6673,6 +6705,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
                 obj = HttpHeaderRule()
                 obj._deserialize(item)
                 self.RequestHeaders.append(obj)
+        self.FullMatch = params.get("FullMatch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6890,6 +6923,7 @@ class PushTask(AbstractModel):
 `fail`: prefetch failed
 `done`: prefetch succeeded
 `process`: prefetch in progress
+`invalid`: invalid prefetch with 4XX/5XX status code returned from the origin server
         :type Status: str
         :param Percent: Prefetch progress in percentage
         :type Percent: int
@@ -6948,7 +6982,8 @@ Default value: `TencentCdn`
 `global`: prefetches resources to global nodes
 Default value: `mainland`. You can prefetch a URL to nodes in a region provided that CDN service has been enabled for the domain name in the URL in the region.
         :type Area: str
-        :param Layer: If this parameter is `middle` or left empty, prefetch will be performed onto the intermediate node
+        :param Layer: If this parameter is `middle` or left empty, prefetch will be performed onto the intermediate node.
+Note: resources prefetched outside the Chinese mainland will be cached to CDN nodes outside the Chinese mainland and the traffic generated will incur costs.
         :type Layer: str
         :param ParseM3U8: Whether to recursively resolve the M3U8 index file and prefetch the TS shards in it.
 Notes:
@@ -7366,11 +7401,11 @@ class ResourceData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Resource: Resource name, which is classified as follows based on different query conditions:
-A specific domain name: This indicates the details of this domain name
-multiDomains: This indicates the aggregate details of multiple domain names
-Project ID: This displays the ID of the specifically queried project
-all: This indicates the details at the account level
+        :param Resource: Resource name, which is classified as follows based on different query filters:
+A single domain name: queries domain name details by a domain name. The details of the domain name will be displayed when the passed parameter `detail` is `true` (the `detail` parameter defaults to `false`).
+Multiple domain names: queries domain name details by multiple domain names. The aggregated details of the domain names will be displayed.
+Project ID: queries domain name details by a project ID. The aggregated details of the domain names of the project will be displayed.
+`all`: account-level data, which is aggregated details of all domain names of an account.
         :type Resource: str
         :param CdnData: Data details of a resource
         :type CdnData: list of CdnData
@@ -9281,18 +9316,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class UrlRedirect(AbstractModel):
-    """URL redirect configuration
+    """Configuration of URL rewriting
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: URL redirect configuration switch
-on: enabled
-off: disabled
+        :param Switch: Whether URL rewriting is enabled
+`on`: enabled
+`off`: disabled
         :type Switch: str
-        :param PathRules: URL redirect rule, which is required if `Switch` is `on`. There can be up to 10 rules.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param PathRules: Rule of URL rewriting rule, which is required if `Switch` is `on`. There can be up to 10 rules.
+Note: this field may return `null`, indicating that no valid value can be obtained.
         :type PathRules: list of UrlRedirectRule
         """
         self.Switch = None

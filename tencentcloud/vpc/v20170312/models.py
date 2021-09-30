@@ -4123,8 +4123,6 @@ class CreateVpnConnectionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: VPC instance ID, which can be obtained from the `VpcId` field in the response of the [`DescribeVpcs`](https://intl.cloud.tencent.com/document/product/215/15778?from_cn_redirect=1) API.
-        :type VpcId: str
         :param VpnGatewayId: The ID of the VPN gateway instance.
         :type VpnGatewayId: str
         :param CustomerGatewayId: The ID of the customer gateway, such as `cgw-2wqq41m9`. You can query the customer gateway by using the `DescribeCustomerGateways` API.
@@ -4133,6 +4131,9 @@ class CreateVpnConnectionRequest(AbstractModel):
         :type VpnConnectionName: str
         :param PreShareKey: The pre-shared key.
         :type PreShareKey: str
+        :param VpcId: VPC instance ID, which can be obtained from the `VpcId` field in the response of the [`DescribeVpcs`](https://intl.cloud.tencent.com/document/product/215/15778?from_cn_redirect=1) API.
+This parameter is optional for a CCN-based VPN tunnel.
+        :type VpcId: str
         :param SecurityPolicyDatabases: The SPD policy group, for example: {"10.0.0.5/24":["172.123.10.5/16"]}. 10.0.0.5/24 is the VPC internal IP range, and 172.123.10.5/16 is the IDC IP range. The user specifies the IP range in the VPC that can communicate with the IP range in the IDC.
         :type SecurityPolicyDatabases: list of SecurityPolicyDatabase
         :param IKEOptionsSpecification: Internet Key Exchange (IKE) configuration. IKE has a self-protection mechanism. The network security protocol is configured by the user.
@@ -4147,12 +4148,14 @@ class CreateVpnConnectionRequest(AbstractModel):
         :type HealthCheckLocalIp: str
         :param HealthCheckRemoteIp: Peer IP address for the health check
         :type HealthCheckRemoteIp: str
+        :param RouteType: Tunnel type. Valid values: `STATIC`, `StaticRoute`, and `Policy`.
+        :type RouteType: str
         """
-        self.VpcId = None
         self.VpnGatewayId = None
         self.CustomerGatewayId = None
         self.VpnConnectionName = None
         self.PreShareKey = None
+        self.VpcId = None
         self.SecurityPolicyDatabases = None
         self.IKEOptionsSpecification = None
         self.IPSECOptionsSpecification = None
@@ -4160,14 +4163,15 @@ class CreateVpnConnectionRequest(AbstractModel):
         self.EnableHealthCheck = None
         self.HealthCheckLocalIp = None
         self.HealthCheckRemoteIp = None
+        self.RouteType = None
 
 
     def _deserialize(self, params):
-        self.VpcId = params.get("VpcId")
         self.VpnGatewayId = params.get("VpnGatewayId")
         self.CustomerGatewayId = params.get("CustomerGatewayId")
         self.VpnConnectionName = params.get("VpnConnectionName")
         self.PreShareKey = params.get("PreShareKey")
+        self.VpcId = params.get("VpcId")
         if params.get("SecurityPolicyDatabases") is not None:
             self.SecurityPolicyDatabases = []
             for item in params.get("SecurityPolicyDatabases"):
@@ -4189,6 +4193,7 @@ class CreateVpnConnectionRequest(AbstractModel):
         self.EnableHealthCheck = params.get("EnableHealthCheck")
         self.HealthCheckLocalIp = params.get("HealthCheckLocalIp")
         self.HealthCheckRemoteIp = params.get("HealthCheckRemoteIp")
+        self.RouteType = params.get("RouteType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9567,12 +9572,14 @@ class DescribeVpcsRequest(AbstractModel):
         :param VpcIds: The VPC instance ID, such as `vpc-f49l6u0z`. Each request supports a maximum of 100 instances. `VpcIds` and `Filters` cannot be specified at the same time.
         :type VpcIds: list of str
         :param Filters: Filter condition. `VpcIds` and `Filters` cannot be specified at the same time.
-<li>vpc-name - String - (Filter condition) VPC instance name.</li>
-<li>is-default - String - (Filter condition) Indicates whether it is the default VPC.</li>
-<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>
-<li>cidr-block - String - (Filter condition) VPC CIDR.</li>
-<li>tag-key - String - Required: No - (Filter condition) Filter by tag key.</li>
-<li>tag:tag-key - String - Required: No - (Filter condition) Filter by tag key-value pair. The tag-key is replaced with the specific tag key. For usage, refer to case 2.</li>
+Valid filters include:
+<li>`vpc-name`: VPC instance name</li>
+<li>`is-default`: indicates whether it is the default VPC</li>
+<li>`vpc-id`: VPC instance ID, such as `vpc-f49l6u0z`</li>
+<li>`cidr-block`: VPC CIDR block</li>
+<li>`tag-key`: (optional) tag key</li>
+<li>`tag:tag-key`: (optional) tag key-value pair. Replace the `tag-key` with a specified tag value. For its usage, refer to the Example 2.</li>
+  **Note:** if one filter has multiple values, the logical relationship between these values is `OR`. The logical relationship between filters is `AND`.
         :type Filters: list of Filter
         :param Offset: Offset. Default value: 0.
         :type Offset: str
@@ -13804,7 +13811,7 @@ class ModifyVpcEndPointServiceAttributeRequest(AbstractModel):
         :type VpcId: str
         :param EndPointServiceName: Endpoint service name
         :type EndPointServiceName: str
-        :param AutoAcceptFlag: Whether to automatically accept
+        :param AutoAcceptFlag: Whether to automatically accept VPC endpoint connection requests. Valid values: <ui><li>`true`: yes<li>`false`: no</ul>
         :type AutoAcceptFlag: bool
         :param ServiceInstanceId: Real server ID in the format of `lb-xxx`.
         :type ServiceInstanceId: str

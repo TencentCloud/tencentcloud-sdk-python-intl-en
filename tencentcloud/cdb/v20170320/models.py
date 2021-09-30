@@ -261,9 +261,9 @@ class BackupInfo(AbstractModel):
         :type Size: int
         :param Date: Backup snapshot time in the format of yyyy-MM-dd HH:mm:ss, such as 2016-03-17 02:10:37
         :type Date: str
-        :param IntranetUrl: Download address on the private network
+        :param IntranetUrl: Download address
         :type IntranetUrl: str
-        :param InternetUrl: Download address on the public network
+        :param InternetUrl: Download address
         :type InternetUrl: str
         :param Type: Log type. Valid values: `logical` (logical cold backup), `physical` (physical cold backup).
         :type Type: str
@@ -462,9 +462,9 @@ class BinlogInfo(AbstractModel):
         :type Size: int
         :param Date: File stored time in the format of 2016-03-17 02:10:37
         :type Date: str
-        :param IntranetUrl: Download address on the private network
+        :param IntranetUrl: Download address
         :type IntranetUrl: str
-        :param InternetUrl: Download address on the public network
+        :param InternetUrl: Download address
         :type InternetUrl: str
         :param Type: Log type. Value range: binlog
         :type Type: str
@@ -745,6 +745,70 @@ class CreateAccountsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAuditPolicyRequest(AbstractModel):
+    """CreateAuditPolicy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Audit policy name.
+        :type Name: str
+        :param RuleId: Audit rule ID.
+        :type RuleId: str
+        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
+        :type InstanceId: str
+        :param LogExpireDay: Retention period of audit logs. Valid values:
+7: seven days (a week);
+30: 30 days (a month);
+180: 180 days (six months);
+365: 365 days (a year);
+1095: 1095 days (three years);
+1825: 1825 days (five years).
+This parameter specifies the retention period (30 days by default) of audit logs, which is valid when you create the first audit policy for an instance. If the instance already has audit policies, this parameter is invalid, but you can use the `ModifyAuditConfig` API to modify the retention period.
+        :type LogExpireDay: int
+        """
+        self.Name = None
+        self.RuleId = None
+        self.InstanceId = None
+        self.LogExpireDay = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.RuleId = params.get("RuleId")
+        self.InstanceId = params.get("InstanceId")
+        self.LogExpireDay = params.get("LogExpireDay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAuditPolicyResponse(AbstractModel):
+    """CreateAuditPolicy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PolicyId: Audit policy ID.
+        :type PolicyId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.PolicyId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
         self.RequestId = params.get("RequestId")
 
 
@@ -7471,7 +7535,7 @@ class RollbackInstancesInfo(AbstractModel):
         :param InstanceId: TencentDB instance ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type InstanceId: str
-        :param Strategy: Rollback policy. Value range: table, db, full. Default value: full. Table: expedited rollback mode, where only the selected table-level backups and binlogs are imported; for cross-table rollback, if the associated tables are not selected simultaneously, the rollback will fail; the parameter `Databases` must be empty under this mode. db: fast rollback mode, where only the selected database-level backups and binlogs are imported; for cross-database rollback, if the associated databases are not selected simultaneously, the rollback will fail. full: ordinary rollback mode, which imports all the backups and binlogs of the instance at a relatively low speed.
+        :param Strategy: Rollback policy. Valid values: `table` (ultrafast mode), `db` (faster mode), and `full` (fast mode). Default value: `full`. In the ultrafast mode, only backups and binlogs of the tables specified by the `Tables` parameter are imported; if `Tables` does not include all of the tables involved in cross-table operations, the rollback may fail; and the `Database` parameter must be left empty. In the faster mode, only backups and binlogs of the databases specified by the `Databases` parameter are imported, and if `Databases` does not include all of the databases involved in cross-database operations, the rollback may fail. In the fast mode, backups and binlogs of the entire instance will be imported in a speed slower than the other modes.
         :type Strategy: str
         :param RollbackTime: Database rollback time in the format of yyyy-mm-dd hh:mm:ss
         :type RollbackTime: str
@@ -8823,7 +8887,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type DeviceType: str
         :param Cpu: The number of CPU cores after the instance is upgraded. If this parameter is left empty, the number of CPU cores will be automatically filled in according to the `Memory` value.
         :type Cpu: int
-        :param FastUpgrade: Whether to enable QuickChange. Valid values: `0` (no), `1` (yes). After QuickChange is enabled, the required resources will be checked: QuickChange is performed only when the required resources support the feature; otherwise, an error message will be returned.
+        :param FastUpgrade: Whether to enable QuickChange. Valid values: `0` (no), `1` (yes). After QuickChange is enabled, the required resources will be checked. QuickChange is performed only when the required resources support the feature; otherwise, an error message will be returned.
         :type FastUpgrade: int
         """
         self.InstanceId = None

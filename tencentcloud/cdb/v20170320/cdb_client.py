@@ -166,6 +166,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAuditPolicy(self, request):
+        """This API is used to create an audit policy for a TencentDB instance by associating an audit rule with the TencentDB instance.
+
+        :param request: Request instance for CreateAuditPolicy.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.CreateAuditPolicyRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.CreateAuditPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAuditPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAuditPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateBackup(self, request):
         """This API (CreateBackup) is used to create a TencentDB instance backup.
 
