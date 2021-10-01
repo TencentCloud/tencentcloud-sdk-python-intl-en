@@ -561,6 +561,73 @@ class DescribeDashboardResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePrivateDNSAccountListRequest(AbstractModel):
+    """DescribePrivateDNSAccountList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: Pagination offset, starting from `0`
+        :type Offset: int
+        :param Limit: Number of entries per page. Maximum value: `100`. Default value: `20`
+        :type Limit: int
+        :param Filters: Filter parameters
+        :type Filters: list of Filter
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrivateDNSAccountListResponse(AbstractModel):
+    """DescribePrivateDNSAccountList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Number of Private DNS accounts
+        :type TotalCount: int
+        :param AccountSet: List of Private DNS accounts
+        :type AccountSet: list of PrivateDNSAccount
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.AccountSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AccountSet") is not None:
+            self.AccountSet = []
+            for item in params.get("AccountSet"):
+                obj = PrivateDNSAccount()
+                obj._deserialize(item)
+                self.AccountSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePrivateZoneListRequest(AbstractModel):
     """DescribePrivateZoneList request structure.
 
@@ -1134,6 +1201,38 @@ class ModifyPrivateZoneVpcResponse(AbstractModel):
                 obj._deserialize(item)
                 self.AccountVpcSet.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class PrivateDNSAccount(AbstractModel):
+    """Private DNS account
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Uin: Root account UIN
+        :type Uin: str
+        :param Account: Root account name
+        :type Account: str
+        :param Nickname: Account name
+        :type Nickname: str
+        """
+        self.Uin = None
+        self.Account = None
+        self.Nickname = None
+
+
+    def _deserialize(self, params):
+        self.Uin = params.get("Uin")
+        self.Account = params.get("Account")
+        self.Nickname = params.get("Nickname")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class PrivateZone(AbstractModel):
