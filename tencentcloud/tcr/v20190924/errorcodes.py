@@ -38,7 +38,7 @@ INTERNALERROR_ERRORCONFLICT = 'InternalError.ErrorConflict'
 # The resource quota is exceeded.
 INTERNALERROR_ERROROVERLIMIT = 'InternalError.ErrorOverLimit'
 
-# 
+# No permission for TCR operation.
 INTERNALERROR_ERRORTCRUNAUTHORIZED = 'InternalError.ErrorTcrUnauthorized'
 
 # Unknown error.
@@ -64,6 +64,9 @@ INVALIDPARAMETER_UNSUPPORTEDREGION = 'InvalidParameter.UnsupportedRegion'
 
 # Missing parameters. Please check and try again.
 MISSINGPARAMETER = 'MissingParameter'
+
+# Operation denied.
+OPERATIONDENIED = 'OperationDenied'
 
 # The resource of the TCR instance was not found.
 RESOURCENOTFOUND_TCRRESOURCENOTFOUND = 'ResourceNotFound.TcrResourceNotFound'

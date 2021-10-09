@@ -98,6 +98,91 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class AclRule(AbstractModel):
+    """Output parameters of ACL rule list APIs
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleName: ACL rule name.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type RuleName: str
+        :param InstanceId: Instance ID.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param PatternType: Matching type. Currently, only prefix match is supported. Enumerated value list: PREFIXED
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type PatternType: str
+        :param Pattern: Prefix value for prefix match.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type Pattern: str
+        :param ResourceType: ACL resource type. Only “Topic” is supported. Enumerated value list: Topic.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type ResourceType: str
+        :param AclList: ACL information contained in the rule.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type AclList: str
+        :param CreateTimeStamp: Creation time of the rule.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type CreateTimeStamp: str
+        :param IsApplied: A parameter used to specify whether the preset ACL rule is applied to new topics.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type IsApplied: int
+        :param UpdateTimeStamp: Rule update time.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type UpdateTimeStamp: str
+        :param Comment: Remarks of the rule.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type Comment: str
+        :param TopicName: One of the corresponding topic names that is displayed.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type TopicName: str
+        :param TopicCount: The number of topics that apply this ACL rule.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type TopicCount: int
+        :param PatternTypeTitle: Name of rule type.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type PatternTypeTitle: str
+        """
+        self.RuleName = None
+        self.InstanceId = None
+        self.PatternType = None
+        self.Pattern = None
+        self.ResourceType = None
+        self.AclList = None
+        self.CreateTimeStamp = None
+        self.IsApplied = None
+        self.UpdateTimeStamp = None
+        self.Comment = None
+        self.TopicName = None
+        self.TopicCount = None
+        self.PatternTypeTitle = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+        self.InstanceId = params.get("InstanceId")
+        self.PatternType = params.get("PatternType")
+        self.Pattern = params.get("Pattern")
+        self.ResourceType = params.get("ResourceType")
+        self.AclList = params.get("AclList")
+        self.CreateTimeStamp = params.get("CreateTimeStamp")
+        self.IsApplied = params.get("IsApplied")
+        self.UpdateTimeStamp = params.get("UpdateTimeStamp")
+        self.Comment = params.get("Comment")
+        self.TopicName = params.get("TopicName")
+        self.TopicCount = params.get("TopicCount")
+        self.PatternTypeTitle = params.get("PatternTypeTitle")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AclRuleInfo(AbstractModel):
     """Four pieces of information of ACL rules: source IP address, destination IP address, source port, and destination port
 
@@ -781,6 +866,10 @@ class CreateTopicRequest(AbstractModel):
         :type RetentionMs: int
         :param SegmentMs: Segment rolling duration in ms. The current minimum value is 3,600,000 ms
         :type SegmentMs: int
+        :param EnableAclRule: Preset ACL rule. `1`: enable, `0`: disable. Default value: `0`.
+        :type EnableAclRule: int
+        :param AclRuleName: Name of the preset ACL rule.
+        :type AclRuleName: str
         """
         self.InstanceId = None
         self.TopicName = None
@@ -794,6 +883,8 @@ class CreateTopicRequest(AbstractModel):
         self.UncleanLeaderElectionEnable = None
         self.RetentionMs = None
         self.SegmentMs = None
+        self.EnableAclRule = None
+        self.AclRuleName = None
 
 
     def _deserialize(self, params):
@@ -809,6 +900,8 @@ class CreateTopicRequest(AbstractModel):
         self.UncleanLeaderElectionEnable = params.get("UncleanLeaderElectionEnable")
         self.RetentionMs = params.get("RetentionMs")
         self.SegmentMs = params.get("SegmentMs")
+        self.EnableAclRule = params.get("EnableAclRule")
+        self.AclRuleName = params.get("AclRuleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1970,11 +2063,14 @@ class DescribeTopicDetailRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20. This value must be greater than 0
         :type Limit: int
+        :param AclRuleName: Name of the preset ACL rule.
+        :type AclRuleName: str
         """
         self.InstanceId = None
         self.SearchWord = None
         self.Offset = None
         self.Limit = None
+        self.AclRuleName = None
 
 
     def _deserialize(self, params):
@@ -1982,6 +2078,7 @@ class DescribeTopicDetailRequest(AbstractModel):
         self.SearchWord = params.get("SearchWord")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.AclRuleName = params.get("AclRuleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2029,11 +2126,14 @@ class DescribeTopicRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20
         :type Limit: int
+        :param AclRuleName: Name of the preset ACL rule.
+        :type AclRuleName: str
         """
         self.InstanceId = None
         self.SearchWord = None
         self.Offset = None
         self.Limit = None
+        self.AclRuleName = None
 
 
     def _deserialize(self, params):
@@ -2041,6 +2141,7 @@ class DescribeTopicRequest(AbstractModel):
         self.SearchWord = params.get("SearchWord")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.AclRuleName = params.get("AclRuleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3439,6 +3540,12 @@ class ModifyTopicAttributesRequest(AbstractModel):
         :type MaxMessageBytes: int
         :param CleanUpPolicy: Message deletion policy. Valid values: delete, compact
         :type CleanUpPolicy: str
+        :param IpWhiteList: IP allowlist, which is required if the value of `enableWhileList` is 1.
+        :type IpWhiteList: list of str
+        :param EnableAclRule: Preset ACL rule. `1`: enable, `0`: disable. Default value: `0`.
+        :type EnableAclRule: int
+        :param AclRuleName: Name of the preset ACL rule.
+        :type AclRuleName: str
         """
         self.InstanceId = None
         self.TopicName = None
@@ -3450,6 +3557,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
         self.SegmentMs = None
         self.MaxMessageBytes = None
         self.CleanUpPolicy = None
+        self.IpWhiteList = None
+        self.EnableAclRule = None
+        self.AclRuleName = None
 
 
     def _deserialize(self, params):
@@ -3463,6 +3573,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
         self.SegmentMs = params.get("SegmentMs")
         self.MaxMessageBytes = params.get("MaxMessageBytes")
         self.CleanUpPolicy = params.get("CleanUpPolicy")
+        self.IpWhiteList = params.get("IpWhiteList")
+        self.EnableAclRule = params.get("EnableAclRule")
+        self.AclRuleName = params.get("AclRuleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3878,6 +3991,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Config: :class:`tencentcloud.ckafka.v20190819.models.Config`
         :param Partitions: Partition details
         :type Partitions: list of TopicPartitionDO
+        :param EnableAclRule: Switch of the preset ACL rule. `1`: enable, `0`: disable.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type EnableAclRule: int
+        :param AclRuleList: Preset ACL rule list.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type AclRuleList: list of AclRule
         """
         self.TopicId = None
         self.CreateTime = None
@@ -3887,6 +4006,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.IpWhiteList = None
         self.Config = None
         self.Partitions = None
+        self.EnableAclRule = None
+        self.AclRuleList = None
 
 
     def _deserialize(self, params):
@@ -3905,6 +4026,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = TopicPartitionDO()
                 obj._deserialize(item)
                 self.Partitions.append(obj)
+        self.EnableAclRule = params.get("EnableAclRule")
+        if params.get("AclRuleList") is not None:
+            self.AclRuleList = []
+            for item in params.get("AclRuleList"):
+                obj = AclRule()
+                obj._deserialize(item)
+                self.AclRuleList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3951,6 +4079,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param RetentionTimeConfig: Message retention time configuration (for recording the latest retention time)
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :type RetentionTimeConfig: :class:`tencentcloud.ckafka.v20190819.models.TopicRetentionTimeConfigRsp`
+        :param Status: `0`: normal, `1`: deleted, `2`: deleting
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type Status: int
         """
         self.TopicName = None
         self.TopicId = None
@@ -3965,6 +4096,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
         self.ForwardInterval = None
         self.Config = None
         self.RetentionTimeConfig = None
+        self.Status = None
 
 
     def _deserialize(self, params):
@@ -3985,6 +4117,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
         if params.get("RetentionTimeConfig") is not None:
             self.RetentionTimeConfig = TopicRetentionTimeConfigRsp()
             self.RetentionTimeConfig._deserialize(params.get("RetentionTimeConfig"))
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

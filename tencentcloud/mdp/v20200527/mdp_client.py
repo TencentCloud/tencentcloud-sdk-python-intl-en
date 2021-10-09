@@ -304,3 +304,31 @@ class MdpClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnbindCdnDomainWithChannel(self, request):
+        """This API is used to unbind a CDN playback domain name from a channel.
+
+        :param request: Request instance for UnbindCdnDomainWithChannel.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.UnbindCdnDomainWithChannelRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.UnbindCdnDomainWithChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UnbindCdnDomainWithChannel", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnbindCdnDomainWithChannelResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

@@ -182,6 +182,9 @@ INVALIDPARAMETERVALUE_INVALIDSCHEDULEDACTIONID = 'InvalidParameterValue.InvalidS
 # The scheduled task name contains invalid characters.
 INVALIDPARAMETERVALUE_INVALIDSCHEDULEDACTIONNAMEINCLUDEILLEGALCHAR = 'InvalidParameterValue.InvalidScheduledActionNameIncludeIllegalChar'
 
+# 
+INVALIDPARAMETERVALUE_INVALIDSNAPSHOTID = 'InvalidParameterValue.InvalidSnapshotId'
+
 # Invalid subnet ID.
 INVALIDPARAMETERVALUE_INVALIDSUBNETID = 'InvalidParameterValue.InvalidSubnetId'
 
@@ -395,7 +398,7 @@ RESOURCEUNAVAILABLE_LOADBALANCERINOPERATION = 'ResourceUnavailable.LoadBalancerI
 # Project inconsistency.
 RESOURCEUNAVAILABLE_PROJECTINCONSISTENT = 'ResourceUnavailable.ProjectInconsistent'
 
-# The shutdown instances cannot be added to the scaling group.
+# Unable to add instances to the scaling group when they are shut down.
 RESOURCEUNAVAILABLE_STOPPEDINSTANCENOTALLOWATTACH = 'ResourceUnavailable.StoppedInstanceNotAllowAttach'
 
 # The specified availability zone is unavailable.

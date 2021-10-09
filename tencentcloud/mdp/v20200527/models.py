@@ -843,3 +843,48 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UnbindCdnDomainWithChannelRequest(AbstractModel):
+    """UnbindCdnDomainWithChannel request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelId: Channel ID
+        :type ChannelId: str
+        :param CdnDomain: CDN playback domain name
+        :type CdnDomain: str
+        """
+        self.ChannelId = None
+        self.CdnDomain = None
+
+
+    def _deserialize(self, params):
+        self.ChannelId = params.get("ChannelId")
+        self.CdnDomain = params.get("CdnDomain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnbindCdnDomainWithChannelResponse(AbstractModel):
+    """UnbindCdnDomainWithChannel response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")

@@ -197,6 +197,9 @@ RESOURCENOTFOUND = 'ResourceNotFound'
 # The resource is unavailable.
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 
+# Restricted resources found in your account. Check your inbox and email for details.
+RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = 'ResourceUnavailable.AccountViolation'
+
 # Unauthorized operation.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 

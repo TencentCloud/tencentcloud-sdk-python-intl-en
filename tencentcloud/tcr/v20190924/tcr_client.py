@@ -220,3 +220,31 @@ class TcrClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyInstance(self, request):
+        """This API is used to update instance information.
+
+        :param request: Request instance for ModifyInstance.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyInstanceRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ModifyInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

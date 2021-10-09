@@ -4678,6 +4678,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 2: deleting.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type DomainStatus: int
+        :param BanStatus: Blocking-related status of the domain name. `BANNED`: the domain name is blocked; `RECOVER`: the domain name is unblocked or normal; `BANNING`: the domain name is being blocked; `RECOVERING`: the domain name is being unblocked; `BAN_FAILED`: the blocking fails; RECOVER_FAILED: the unblocking fails.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type BanStatus: str
         """
         self.Domain = None
         self.RuleSet = None
@@ -4698,6 +4701,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.PolyClientCertificateAliasInfo = None
         self.PolyRealServerCertificateAliasInfo = None
         self.DomainStatus = None
+        self.BanStatus = None
 
 
     def _deserialize(self, params):
@@ -4735,6 +4739,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj._deserialize(item)
                 self.PolyRealServerCertificateAliasInfo.append(obj)
         self.DomainStatus = params.get("DomainStatus")
+        self.BanStatus = params.get("BanStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6559,7 +6564,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ModifyConfigTime: Configuration change time
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ModifyConfigTime: int
-        :param ProxyType: Connection type
+        :param ProxyType: Connection type. `100`: THUNDER connection; `103`: Microsoft connection.
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :type ProxyType: int
         :param ClientIPMethod: Describes how the connection obtains client IPs. 0: TOA; 1: Proxy Protocol.
@@ -6574,6 +6579,9 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         :param PackageType: Package type of connection groups. Valid values: `Thunder` (general connection group) and `Accelerator` (game accelerator connection group).
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :type PackageType: str
+        :param BanStatus: Blocking-related status of the domain name. `BANNED`: the domain name is blocked; `RECOVER`: the domain name is unblocked or normal; `BANNING`: the domain name is being blocked; `RECOVERING`: the domain name is being unblocked; `BAN_FAILED`: the blocking fails; RECOVER_FAILED: the unblocking fails.
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type BanStatus: str
         """
         self.InstanceId = None
         self.CreateTime = None
@@ -6605,6 +6613,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         self.IPAddressVersion = None
         self.NetworkType = None
         self.PackageType = None
+        self.BanStatus = None
 
 
     def _deserialize(self, params):
@@ -6647,6 +6656,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         self.IPAddressVersion = params.get("IPAddressVersion")
         self.NetworkType = params.get("NetworkType")
         self.PackageType = params.get("PackageType")
+        self.BanStatus = params.get("BanStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

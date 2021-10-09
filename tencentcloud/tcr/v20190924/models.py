@@ -438,6 +438,51 @@ class ModifyImmutableTagRulesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyInstanceRequest(AbstractModel):
+    """ModifyInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegistryId: Instance ID
+        :type RegistryId: str
+        :param RegistryType: Instance specification
+        :type RegistryType: str
+        """
+        self.RegistryId = None
+        self.RegistryType = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.RegistryType = params.get("RegistryType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceResponse(AbstractModel):
+    """ModifyInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class SecurityPolicy(AbstractModel):
     """Security policy
 

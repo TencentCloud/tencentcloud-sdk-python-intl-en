@@ -855,7 +855,7 @@ class GetSSHKeyPairValueRequest(AbstractModel):
         r"""
         :param SecretName: Secret name. This field is only valid for SSH key secrets.
         :type SecretName: str
-        :param SSHKeyId: 
+        :param SSHKeyId: ID of the key pair, which is the unique identifier of the key pair in the CVM.
         :type SSHKeyId: str
         """
         self.SecretName = None
@@ -1097,7 +1097,11 @@ The `PendingCreate` and `CreateFailed` status only take effect when `SecretType`
 `1`: Tencent Cloud services secret.
 `2`: SSH key secret.
         :type SecretType: int
-        :param ProductName: 
+        :param ProductName: This parameter is valid only when SecretType is `1`.
+ 
+An empty value indicates querying all types of Tencent Cloud service secrets.
+`Mysql`: queries MySQL database credentials.
+`Tdsql-mysql`: queries TDSQL MySQL database credentials.
         :type ProductName: str
         """
         self.Offset = None
