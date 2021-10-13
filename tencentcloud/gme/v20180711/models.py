@@ -503,6 +503,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 <li>Success: task ended successfully</li>
 <li>Error: exceptional</li>
         :type Status: str
+        :param BizId: ID of the application submitted for detection
+        :type BizId: int
         """
         self.Code = None
         self.DataId = None
@@ -516,6 +518,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.TaskId = None
         self.Url = None
         self.Status = None
+        self.BizId = None
 
 
     def _deserialize(self, params):
@@ -536,6 +539,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.TaskId = params.get("TaskId")
         self.Url = params.get("Url")
         self.Status = params.get("Status")
+        self.BizId = params.get("BizId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

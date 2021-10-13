@@ -6844,6 +6844,59 @@ class CreateTranscodeTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateVodDomainRequest(AbstractModel):
+    """CreateVodDomain request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: Domain name to add to VOD. Note: a wildcard domain name is not supported.
+        :type Domain: str
+        :param AccelerateArea: Region to enable acceleration. Valid values:
+<li>`Chinese Mainland`</li>
+<li>`Outside Chinese Mainland`</li>
+<li>`Global`</li>
+If `AccelerateArea` is not set, VOD will enable acceleration in `Chinese Mainland` or `Outside Chinese Mainland` according to the region set under the user’s Tencent Cloud account. To enable acceleration in Chinese mainland for a domain name, please finish [ICP filing](https://intl.cloud.tencent.com/document/product/243/18905?from_cn_redirect=1) for it first.
+        :type AccelerateArea: str
+        :param SubAppId: VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.Domain = None
+        self.AccelerateArea = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.AccelerateArea = params.get("AccelerateArea")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVodDomainResponse(AbstractModel):
+    """CreateVodDomain response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateWatermarkTemplateRequest(AbstractModel):
     """CreateWatermarkTemplate request structure.
 
@@ -7635,6 +7688,51 @@ class DeleteTranscodeTemplateRequest(AbstractModel):
 
 class DeleteTranscodeTemplateResponse(AbstractModel):
     """DeleteTranscodeTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteVodDomainRequest(AbstractModel):
+    """DeleteVodDomain request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: Domain name to delete from VOD
+        :type Domain: str
+        :param SubAppId: VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.Domain = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVodDomainResponse(AbstractModel):
+    """DeleteVodDomain response structure.
 
     """
 
@@ -12350,9 +12448,10 @@ class MediaDeleteItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: Type of the content to be deleted. If this field is left empty, the parameter will be invalid. Valid values:
-<li>TranscodeFiles: deletes transcoded files.</li>
-<li>WechatPublishFiles: deletes files published on WeChat.</li>
+        :param Type: Type of files to delete. If this parameter is left empty, it will be invalid. Valid values:
+<li>`OriginalFiles`: original files. You cannot initiate transcoding, publishing on WeChat, or other video processing operations after deleting the original files.</li>
+<li>`TranscodeFiles`: transcoded files</li>
+<li>`WechatPublishFiles`: files for publishing on WeChat</li>
         :type Type: str
         :param Definition: ID of the template for which to delete the videos of the type specified by the `Type` parameter. For the template definition, please see [Transcoding Template](https://intl.cloud.tencent.com/document/product/266/33478?from_cn_redirect=1#.3Cspan-id-.3D-.22zm.22-.3E.3C.2Fspan.3E.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF).
 Default value: 0, which indicates to delete all videos of the type specified by the `Type` parameter.
@@ -15324,6 +15423,122 @@ class ModifyTranscodeTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyVodDomainAccelerateConfigRequest(AbstractModel):
+    """ModifyVodDomainAccelerateConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: Domain name for acceleration setting
+        :type Domain: str
+        :param Area: Region. Valid values:
+<li>`Chinese Mainland`</li>
+<li>`Outside Chinese Mainland`</li>
+<li>`Global`</li>
+        :type Area: str
+        :param Status: Whether to enable or disable domain name acceleration for the selected region. Valid values:
+<li>`Enabled`: enable</li>
+<li>`Disabled`: disable</li>
+To enable acceleration in Chinese mainland for a domain name, please finish [ICP filing](https://intl.cloud.tencent.com/document/product/243/18905?from_cn_redirect=1) for it first.
+        :type Status: str
+        :param SubAppId: VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.Domain = None
+        self.Area = None
+        self.Status = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Area = params.get("Area")
+        self.Status = params.get("Status")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyVodDomainAccelerateConfigResponse(AbstractModel):
+    """ModifyVodDomainAccelerateConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyVodDomainConfigRequest(AbstractModel):
+    """ModifyVodDomainConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: Domain name
+        :type Domain: str
+        :param RefererAuthPolicy: [Referer hotlink protection](https://intl.cloud.tencent.com/document/product/266/14046?from_cn_redirect=1) policy
+        :type RefererAuthPolicy: :class:`tencentcloud.vod.v20180717.models.RefererAuthPolicy`
+        :param UrlSignatureAuthPolicy: [Key hotlink protection](https://intl.cloud.tencent.com/document/product/266/14047?from_cn_redirect=1) policy
+        :type UrlSignatureAuthPolicy: :class:`tencentcloud.vod.v20180717.models.UrlSignatureAuthPolicy`
+        :param SubAppId: VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.Domain = None
+        self.RefererAuthPolicy = None
+        self.UrlSignatureAuthPolicy = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        if params.get("RefererAuthPolicy") is not None:
+            self.RefererAuthPolicy = RefererAuthPolicy()
+            self.RefererAuthPolicy._deserialize(params.get("RefererAuthPolicy"))
+        if params.get("UrlSignatureAuthPolicy") is not None:
+            self.UrlSignatureAuthPolicy = UrlSignatureAuthPolicy()
+            self.UrlSignatureAuthPolicy._deserialize(params.get("UrlSignatureAuthPolicy"))
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyVodDomainConfigResponse(AbstractModel):
+    """ModifyVodDomainConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyWatermarkTemplateRequest(AbstractModel):
     """ModifyWatermarkTemplate request structure.
 
@@ -17526,14 +17741,16 @@ class RefererAuthPolicy(AbstractModel):
 <li>Disabled</li>
         :type Status: str
         :param AuthType: Referer authentication method. Valid values:
-<li>`Black`: blocklist</li>
-<li>`White`: allowlist</li>
+<li>`Black`: blocklist. Any HTTP request carrying a referer in the `Referers` list will be rejected. </li>
+<li>`White`: allowlist. Only HTTP requests carrying referers in the `Referers` list will be accepted.</li>
+When `Status` is set to `Enabled`, `AuthType` must be specified.
         :type AuthType: str
-        :param Referers: List for referer authentication
+        :param Referers: The list of referers (up to 20). When `Status` is set to `Enabled`, `Referers` cannot be empty. Enter domain names as referers.
         :type Referers: list of str
         :param BlankRefererAllowed: Whether to allow requests with empty referer to access this domain name. Valid values:
-<li>Yes</li>
-<li>No</li>
+<li>`Yes`</li>
+<li>`No`</li>
+When `Status` is set to `Enabled`, `BlankRefererAllowed` must be specified.
         :type BlankRefererAllowed: str
         """
         self.Status = None
@@ -19933,11 +20150,12 @@ class UrlSignatureAuthPolicy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: [Key hotlink protection](https://intl.cloud.tencent.com/document/product/266/33986) status. Valid values:
-<li>Enabled</li>
-<li>Disabled</li>
+        :param Status: Whether to enable or disable [key hotlink protection](https://intl.cloud.tencent.com/document/product/266/33986). Valid values:
+<li>`Enabled`: enable</li>
+<li>`Disabled`: disable</li>
         :type Status: str
-        :param EncryptedKey: The key for generating the signature of [key hotlink protection](https://intl.cloud.tencent.com/document/product/266/33986)
+        :param EncryptedKey: The key for generating the signature of [key hotlink protection](https://intl.cloud.tencent.com/document/product/266/33986).
+`EncryptedKey` can contain 8-40 bytes, and cannot contain non-printable characters.
         :type EncryptedKey: str
         """
         self.Status = None

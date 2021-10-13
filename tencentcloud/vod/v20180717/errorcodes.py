@@ -32,6 +32,9 @@ FAILEDOPERATION_CLASSNOFOUND = 'FailedOperation.ClassNoFound'
 # Operation failed: unsupported cover type.
 FAILEDOPERATION_COVERTYPE = 'FailedOperation.CoverType'
 
+# You cannot modify the settings of the domain name as it is being deployed.
+FAILEDOPERATION_DOMAINDEPLOYING = 'FailedOperation.DomainDeploying'
+
 # User account exception.
 FAILEDOPERATION_INVALIDACCOUNT = 'FailedOperation.InvalidAccount'
 
@@ -226,6 +229,9 @@ INVALIDPARAMETERVALUE_DISTRICTS = 'InvalidParameterValue.Districts'
 
 # Invalid parameter: the domain name does not exist.
 INVALIDPARAMETERVALUE_DOMAINNAME = 'InvalidParameterValue.DomainName'
+
+# This domain name cannot be added as it is invalid.
+INVALIDPARAMETERVALUE_DOMAINNAMEINBLACKLIST = 'InvalidParameterValue.DomainNameInBlackList'
 
 # Parameter value. The domain name list is too large.
 INVALIDPARAMETERVALUE_DOMAINNAMES = 'InvalidParameterValue.DomainNames'

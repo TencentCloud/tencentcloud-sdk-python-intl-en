@@ -1116,6 +1116,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type Cpu: int
         :param AutoSyncFlag: Whether to automatically start disaster recovery synchronization. This parameter takes effect only for disaster recovery instances. Valid values: `0` (no), `1` (yes).
         :type AutoSyncFlag: int
+        :param CageId: Financial cage ID.
+        :type CageId: str
         """
         self.GoodsNum = None
         self.Memory = None
@@ -1148,6 +1150,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.InstanceNodes = None
         self.Cpu = None
         self.AutoSyncFlag = None
+        self.CageId = None
 
 
     def _deserialize(self, params):
@@ -1194,6 +1197,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.InstanceNodes = params.get("InstanceNodes")
         self.Cpu = params.get("Cpu")
         self.AutoSyncFlag = params.get("AutoSyncFlag")
+        self.CageId = params.get("CageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2993,6 +2997,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type DeployGroupIds: list of str
         :param TagKeysForSearch: Whether to use the tag key as a filter condition
         :type TagKeysForSearch: list of str
+        :param CageIds: Financial cage IDs.
+        :type CageIds: list of str
         """
         self.ProjectId = None
         self.InstanceTypes = None
@@ -3021,6 +3027,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.WithMaster = None
         self.DeployGroupIds = None
         self.TagKeysForSearch = None
+        self.CageIds = None
 
 
     def _deserialize(self, params):
@@ -3051,6 +3058,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.WithMaster = params.get("WithMaster")
         self.DeployGroupIds = params.get("DeployGroupIds")
         self.TagKeysForSearch = params.get("TagKeysForSearch")
+        self.CageIds = params.get("CageIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
