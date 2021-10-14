@@ -248,19 +248,19 @@ class Backup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileName: Filename
+        :param FileName: File name. The name of an unarchived backup file is returned by the `DescribeBackupFiles` API instead of this parameter.
         :type FileName: str
-        :param Size: File size in KB
+        :param Size: File size in KB. The size of an unarchived backup file is returned by the `DescribeBackupFiles` API instead of this parameter.
         :type Size: int
         :param StartTime: Backup start time
         :type StartTime: str
         :param EndTime: Backup end time
         :type EndTime: str
-        :param InternalAddr: Download address for private network
+        :param InternalAddr: Private network download address. The download address of an unarchived backup file is returned by the `DescribeBackupFiles` API instead of this parameter.
         :type InternalAddr: str
-        :param ExternalAddr: Download address for public network
+        :param ExternalAddr: Public network download address. The download address of an unarchived backup file is returned by the `DescribeBackupFiles` API instead of this parameter.
         :type ExternalAddr: str
-        :param Id: Unique ID of backup file, which will be used by the `RestoreInstance` API
+        :param Id: Unique ID of a backup file, which is used by the `RestoreInstance` API. The unique ID of an unarchived backup file is returned by the `DescribeBackupFiles` API instead of this parameter.
         :type Id: int
         :param Status: Backup file status (0: creating, 1: succeeded, 2: failed)
         :type Status: int
@@ -270,8 +270,10 @@ class Backup(AbstractModel):
         :type Strategy: int
         :param BackupWay: Backup mode. 0: scheduled, 1: manual
         :type BackupWay: int
-        :param BackupName: Backup name, which can be customized.
+        :param BackupName: Backup task name (customizable)
         :type BackupName: str
+        :param GroupId: Group ID of unarchived backup files, which can be used as a request parameter in the `DescribeBackupFiles` API to get details of unarchived backup files in the specified group. This parameter is invalid for archived backup files.
+        :type GroupId: str
         """
         self.FileName = None
         self.Size = None
@@ -285,6 +287,7 @@ class Backup(AbstractModel):
         self.Strategy = None
         self.BackupWay = None
         self.BackupName = None
+        self.GroupId = None
 
 
     def _deserialize(self, params):
@@ -300,6 +303,47 @@ class Backup(AbstractModel):
         self.Strategy = params.get("Strategy")
         self.BackupWay = params.get("BackupWay")
         self.BackupName = params.get("BackupName")
+        self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BackupFile(AbstractModel):
+    """If the backup files are unarchived, each database corresponds to one backup file.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: Unique ID of a backup file
+        :type Id: int
+        :param FileName: Backup file name
+        :type FileName: str
+        :param Size: File size in KB
+        :type Size: int
+        :param DBs: Name of the database corresponding to the backup file
+        :type DBs: list of str
+        :param DownloadLink: Download address
+        :type DownloadLink: str
+        """
+        self.Id = None
+        self.FileName = None
+        self.Size = None
+        self.DBs = None
+        self.DownloadLink = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.FileName = params.get("FileName")
+        self.Size = params.get("Size")
+        self.DBs = params.get("DBs")
+        self.DownloadLink = params.get("DownloadLink")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1002,7 +1046,7 @@ class DBInstance(AbstractModel):
         :type VpcId: int
         :param SubnetId: Instance VPC subnet ID, which will be 0 if the basic network is used
         :type SubnetId: int
-        :param Status: Instance status. Valid values: <li>1: applying </li> <li>2: running </li> <li>3: restrictedly running (primary/secondary switching) </li> <li>4: isolated </li> <li>5: repossessing </li> <li>6: repossessed </li> <li>7: task running (e.g., backing up or rolling back the instance) </li> <li>8: decommissioned </li> <li>9: scaling </li> <li>10: migrating </li> <li>11: read-only </li> <li>12: restarting </li>
+        :param Status: Instance status. Valid values: <li>1: creating</li> <li>2: running</li> <li>3: instance operations restricted (due to the ongoing primary-replica switch)</li> <li>4: isolated</li> <li>5: repossessing</li> <li>6: repossessed</li> <li>7: running tasks (such as backup and rollback tasks)</li> <li>8: eliminated</li> <li>9: expanding capacity</li> <li>10: migrating</li> <li>11: read-only</li> <li>12: restarting</li>  <li>13: modifying configuration and waiting for switch</li> <li>14: implementing pub/sub</li> <li>15: modifying pub/sub configuration</li> <li>16: modifying configuration and switching</li> <li>17: creating read-only instances</li>
         :type Status: int
         :param Vip: Instance access IP
         :type Vip: str
@@ -1067,6 +1111,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ResourceTags: The list of tags associated with the instance
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ResourceTags: list of ResourceTag
+        :param BackupModel: Backup mode. Valid values: `master_pkg` (archive the backup files of the primary node (default value)), `master_no_pkg` (do not archive the backup files of the primary node), `slave_pkg` (archive the backup files of the replica node (valid for Always On clusters)), `slave_no_pkg` (do not archive the backup files of the replica node (valid for Always On clusters)). This parameter is invalid for read-only instances.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type BackupModel: str
         """
         self.InstanceId = None
         self.Name = None
@@ -1105,6 +1152,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.ROFlag = None
         self.HAFlag = None
         self.ResourceTags = None
+        self.BackupModel = None
 
 
     def _deserialize(self, params):
@@ -1150,6 +1198,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj = ResourceTag()
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
+        self.BackupModel = params.get("BackupModel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1767,6 +1816,76 @@ class DescribeBackupCommandResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBackupFilesRequest(AbstractModel):
+    """DescribeBackupFiles request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of mssql-njj2mtpl
+        :type InstanceId: str
+        :param GroupId: Group ID of unarchived backup files, which can be obtained by the `DescribeBackups` API
+        :type GroupId: str
+        :param Limit: Number of entries to be returned per page. Value range: 1-100. Default value: `20`
+        :type Limit: int
+        :param Offset: Page number. Default value: `0`
+        :type Offset: int
+        :param DatabaseName: Filter backups by database name. If the parameter is left empty, this filter criterion will not take effect.
+        :type DatabaseName: str
+        """
+        self.InstanceId = None
+        self.GroupId = None
+        self.Limit = None
+        self.Offset = None
+        self.DatabaseName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.GroupId = params.get("GroupId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.DatabaseName = params.get("DatabaseName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupFilesResponse(AbstractModel):
+    """DescribeBackupFiles response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number of backups
+        :type TotalCount: int
+        :param BackupFiles: List of backup file details
+        :type BackupFiles: list of BackupFile
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.BackupFiles = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("BackupFiles") is not None:
+            self.BackupFiles = []
+            for item in params.get("BackupFiles"):
+                obj = BackupFile()
+                obj._deserialize(item)
+                self.BackupFiles.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBackupMigrationRequest(AbstractModel):
     """DescribeBackupMigration request structure.
 
@@ -1946,6 +2065,8 @@ class DescribeBackupsRequest(AbstractModel):
         :type BackupId: int
         :param DatabaseName: Filter backups by the database name. If the parameter is left empty, this filter criteria will not take effect.
         :type DatabaseName: str
+        :param Group: Whether to group backup files by backup task. Valid value: `0` (no), `1` (yes). Default value: `0`. This parameter is valid only for unarchived backup files.
+        :type Group: int
         """
         self.StartTime = None
         self.EndTime = None
@@ -1957,6 +2078,7 @@ class DescribeBackupsRequest(AbstractModel):
         self.BackupWay = None
         self.BackupId = None
         self.DatabaseName = None
+        self.Group = None
 
 
     def _deserialize(self, params):
@@ -1970,6 +2092,7 @@ class DescribeBackupsRequest(AbstractModel):
         self.BackupWay = params.get("BackupWay")
         self.BackupId = params.get("BackupId")
         self.DatabaseName = params.get("DatabaseName")
+        self.Group = params.get("Group")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2101,6 +2224,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type TagKeys: list of str
         :param SearchKey: Keyword used for fuzzy match, including instance ID, instance name, and instance private IP
         :type SearchKey: str
+        :param UidSet: Unique Uid of an instance
+        :type UidSet: list of str
         """
         self.ProjectId = None
         self.Status = None
@@ -2116,6 +2241,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.Zone = None
         self.TagKeys = None
         self.SearchKey = None
+        self.UidSet = None
 
 
     def _deserialize(self, params):
@@ -2133,6 +2259,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.Zone = params.get("Zone")
         self.TagKeys = params.get("TagKeys")
         self.SearchKey = params.get("SearchKey")
+        self.UidSet = params.get("UidSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3877,11 +4004,14 @@ class ModifyBackupStrategyRequest(AbstractModel):
         :type BackupTime: int
         :param BackupDay: Backup interval in days when the `BackupType` is `daily`. Valid value: 1.
         :type BackupDay: int
+        :param BackupModel: Backup mode. Valid values: `master_pkg` (archive the backup files of the primary node), `master_no_pkg` (do not archive the backup files of the primary node), `slave_pkg` (archive the backup files of the replica node), `slave_no_pkg` (do not archive the backup files of the replica node). Backup files of the replica node are supported only when Always On disaster recovery is enabled.
+        :type BackupModel: str
         """
         self.InstanceId = None
         self.BackupType = None
         self.BackupTime = None
         self.BackupDay = None
+        self.BackupModel = None
 
 
     def _deserialize(self, params):
@@ -3889,6 +4019,7 @@ class ModifyBackupStrategyRequest(AbstractModel):
         self.BackupType = params.get("BackupType")
         self.BackupTime = params.get("BackupTime")
         self.BackupDay = params.get("BackupDay")
+        self.BackupModel = params.get("BackupModel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4913,11 +5044,14 @@ class RestoreInstanceRequest(AbstractModel):
         :type TargetInstanceId: str
         :param RenameRestore: Restore the databases listed in `ReNameRestoreDatabase` and rename them after restoration. If this parameter is left empty, all databases will be restored and renamed in the default format.
         :type RenameRestore: list of RenameRestoreDatabase
+        :param GroupId: Group ID of unarchived backup files grouped by backup task. This parameter is returned by the [DescribeBackups](https://intl.cloud.tencent.com/document/product/238/19943?from_cn_redirect=1) API.
+        :type GroupId: str
         """
         self.InstanceId = None
         self.BackupId = None
         self.TargetInstanceId = None
         self.RenameRestore = None
+        self.GroupId = None
 
 
     def _deserialize(self, params):
@@ -4930,6 +5064,7 @@ class RestoreInstanceRequest(AbstractModel):
                 obj = RenameRestoreDatabase()
                 obj._deserialize(item)
                 self.RenameRestore.append(obj)
+        self.GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

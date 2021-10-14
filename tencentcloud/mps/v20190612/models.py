@@ -8257,11 +8257,17 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         :type QueueName: str
         :param TopicName: This parameter is valid when the model is `Topic`, indicating the name of the CMQ topic for receiving event notifications.
         :type TopicName: str
+        :param NotifyType: Notification type, `CMQ` by default. If this parameter is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`.
+        :type NotifyType: str
+        :param NotifyUrl: HTTP callback URL, required if `NotifyType` is set to `URL`
+        :type NotifyUrl: str
         """
         self.CmqModel = None
         self.CmqRegion = None
         self.QueueName = None
         self.TopicName = None
+        self.NotifyType = None
+        self.NotifyUrl = None
 
 
     def _deserialize(self, params):
@@ -8269,6 +8275,8 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         self.CmqRegion = params.get("CmqRegion")
         self.QueueName = params.get("QueueName")
         self.TopicName = params.get("TopicName")
+        self.NotifyType = params.get("NotifyType")
+        self.NotifyUrl = params.get("NotifyUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

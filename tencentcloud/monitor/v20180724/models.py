@@ -4989,6 +4989,12 @@ class MetricSet(AbstractModel):
         :type Meaning: :class:`tencentcloud.monitor.v20180724.models.MetricObjectMeaning`
         :param Dimensions: Dimension description
         :type Dimensions: list of DimensionsDesc
+        :param MetricCName: Metric name (in Chinese).
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type MetricCName: str
+        :param MetricEName: Metric name (in English).
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type MetricEName: str
         """
         self.Namespace = None
         self.MetricName = None
@@ -4998,6 +5004,8 @@ class MetricSet(AbstractModel):
         self.Periods = None
         self.Meaning = None
         self.Dimensions = None
+        self.MetricCName = None
+        self.MetricEName = None
 
 
     def _deserialize(self, params):
@@ -5021,6 +5029,8 @@ class MetricSet(AbstractModel):
                 obj = DimensionsDesc()
                 obj._deserialize(item)
                 self.Dimensions.append(obj)
+        self.MetricCName = params.get("MetricCName")
+        self.MetricEName = params.get("MetricEName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

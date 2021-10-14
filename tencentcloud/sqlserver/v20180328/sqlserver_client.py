@@ -446,6 +446,34 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBackupFiles(self, request):
+        """This API is used to query the list of unarchived database backup files.
+
+        :param request: Request instance for DescribeBackupFiles.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupFilesRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupFilesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBackupFiles", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBackupFilesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBackupMigration(self, request):
         """This API is used to create an incremental backup import task.
 

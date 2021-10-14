@@ -322,6 +322,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param DbaUins: Approver UIN list
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :type DbaUins: list of str
+        :param DataFlowStatus: Whether data subscription is enabled
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DataFlowStatus: int
+        :param KafkaInfo: CKafka information when data subscription is enabled
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type KafkaInfo: :class:`tencentcloud.tcaplusdb.v20190823.models.KafkaInfo`
         """
         self.ClusterName = None
         self.ClusterId = None
@@ -347,6 +353,8 @@ Note: `null` may be returned for this field, indicating that no valid values can
         self.ProxyList = None
         self.Censorship = None
         self.DbaUins = None
+        self.DataFlowStatus = None
+        self.KafkaInfo = None
 
 
     def _deserialize(self, params):
@@ -384,6 +392,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
                 self.ProxyList.append(obj)
         self.Censorship = params.get("Censorship")
         self.DbaUins = params.get("DbaUins")
+        self.DataFlowStatus = params.get("DataFlowStatus")
+        if params.get("KafkaInfo") is not None:
+            self.KafkaInfo = KafkaInfo()
+            self.KafkaInfo._deserialize(params.get("KafkaInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -626,6 +638,8 @@ class CreateClusterRequest(AbstractModel):
         :type ProxyList: list of MachineInfo
         :param ClusterType: Cluster type. Valid values: `1` (standard), `2` (dedicated)
         :type ClusterType: int
+        :param AuthType: Authentication type. Valid values: `0` (static password), `1` (signature)
+        :type AuthType: int
         """
         self.IdlType = None
         self.ClusterName = None
@@ -637,6 +651,7 @@ class CreateClusterRequest(AbstractModel):
         self.ServerList = None
         self.ProxyList = None
         self.ClusterType = None
+        self.AuthType = None
 
 
     def _deserialize(self, params):
@@ -665,6 +680,7 @@ class CreateClusterRequest(AbstractModel):
                 obj._deserialize(item)
                 self.ProxyList.append(obj)
         self.ClusterType = params.get("ClusterType")
+        self.AuthType = params.get("AuthType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1067,6 +1083,69 @@ class DeleteSnapshotsResponse(AbstractModel):
             self.TableResults = []
             for item in params.get("TableResults"):
                 obj = SnapshotResult()
+                obj._deserialize(item)
+                self.TableResults.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteTableDataFlowRequest(AbstractModel):
+    """DeleteTableDataFlow request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: The ID of the cluster where the tables reside
+        :type ClusterId: str
+        :param SelectedTables: The list of tables for which data subscription will be disabled
+        :type SelectedTables: list of SelectedTableInfoNew
+        """
+        self.ClusterId = None
+        self.SelectedTables = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("SelectedTables") is not None:
+            self.SelectedTables = []
+            for item in params.get("SelectedTables"):
+                obj = SelectedTableInfoNew()
+                obj._deserialize(item)
+                self.SelectedTables.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTableDataFlowResponse(AbstractModel):
+    """DeleteTableDataFlow response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: The number of tables for which data subscription has been disabled
+        :type TotalCount: int
+        :param TableResults: The result list of tables for which data subscription has been disabled
+        :type TableResults: list of TableResultNew
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TableResults = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TableResults") is not None:
+            self.TableResults = []
+            for item in params.get("TableResults"):
+                obj = TableResultNew()
                 obj._deserialize(item)
                 self.TableResults.append(obj)
         self.RequestId = params.get("RequestId")
@@ -2503,6 +2582,50 @@ Note: `null` may be returned for this field, indicating that no valid values can
         self.RequestId = params.get("RequestId")
 
 
+class KafkaInfo(AbstractModel):
+    """CKafka address
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Address: CKafka address
+        :type Address: str
+        :param Topic: CKafka topic
+        :type Topic: str
+        :param User: CKafka username
+        :type User: str
+        :param Password: CKafka password
+        :type Password: str
+        :param Instance: CKafka instance
+        :type Instance: str
+        :param IsVpc: Whether VPC access is enabled
+        :type IsVpc: int
+        """
+        self.Address = None
+        self.Topic = None
+        self.User = None
+        self.Password = None
+        self.Instance = None
+        self.IsVpc = None
+
+
+    def _deserialize(self, params):
+        self.Address = params.get("Address")
+        self.Topic = params.get("Topic")
+        self.User = params.get("User")
+        self.Password = params.get("Password")
+        self.Instance = params.get("Instance")
+        self.IsVpc = params.get("IsVpc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KeyFile(AbstractModel):
     """The file of keys used to import partial snapshot data
 
@@ -3664,14 +3787,18 @@ class ProxyMachineInfo(AbstractModel):
         :type ProxyUid: str
         :param MachineType: Machine type
         :type MachineType: str
+        :param AvailableCount: The number of proxy resources to be assigned
+        :type AvailableCount: int
         """
         self.ProxyUid = None
         self.MachineType = None
+        self.AvailableCount = None
 
 
     def _deserialize(self, params):
         self.ProxyUid = params.get("ProxyUid")
         self.MachineType = params.get("MachineType")
+        self.AvailableCount = params.get("AvailableCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3944,10 +4071,12 @@ class SelectedTableWithField(AbstractModel):
         :type TableIdlType: str
         :param TableType: Table data structure. Valid values: `GENERIC`, `LIST`
         :type TableType: str
-        :param SelectedFields: The list of fields on which indexes need to be created
+        :param SelectedFields: The list of fields on which indexes will be created, table caching enabled, or data subscription enabled
         :type SelectedFields: list of FieldInfo
         :param ShardNum: The number of index shards
         :type ShardNum: int
+        :param KafkaInfo: CKafka instance information
+        :type KafkaInfo: :class:`tencentcloud.tcaplusdb.v20190823.models.KafkaInfo`
         """
         self.TableGroupId = None
         self.TableName = None
@@ -3956,6 +4085,7 @@ class SelectedTableWithField(AbstractModel):
         self.TableType = None
         self.SelectedFields = None
         self.ShardNum = None
+        self.KafkaInfo = None
 
 
     def _deserialize(self, params):
@@ -3971,6 +4101,9 @@ class SelectedTableWithField(AbstractModel):
                 obj._deserialize(item)
                 self.SelectedFields.append(obj)
         self.ShardNum = params.get("ShardNum")
+        if params.get("KafkaInfo") is not None:
+            self.KafkaInfo = KafkaInfo()
+            self.KafkaInfo._deserialize(params.get("KafkaInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4050,6 +4183,69 @@ class ServerMachineInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SetTableDataFlowRequest(AbstractModel):
+    """SetTableDataFlow request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: The ID of the cluster where the tables reside
+        :type ClusterId: str
+        :param SelectedTables: The list of tables for which data subscription will be enabled
+        :type SelectedTables: list of SelectedTableWithField
+        """
+        self.ClusterId = None
+        self.SelectedTables = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("SelectedTables") is not None:
+            self.SelectedTables = []
+            for item in params.get("SelectedTables"):
+                obj = SelectedTableWithField()
+                obj._deserialize(item)
+                self.SelectedTables.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetTableDataFlowResponse(AbstractModel):
+    """SetTableDataFlow response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: The number of tables for which data subscription has been enabled
+        :type TotalCount: int
+        :param TableResults: The result list of tables for which data subscription has been enabled
+        :type TableResults: list of TableResultNew
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TableResults = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TableResults") is not None:
+            self.TableResults = []
+            for item in params.get("TableResults"):
+                obj = TableResultNew()
+                obj._deserialize(item)
+                self.TableResults.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class SetTableIndexRequest(AbstractModel):
@@ -4388,7 +4584,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SortRule: Sort order of SORTLIST-type tables
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SortRule: int
-        :param DbClusterInfoStruct: Distributed index information of table
+        :param DbClusterInfoStruct: Information about global indexes, table caching, or data subscription
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type DbClusterInfoStruct: str
         """
         self.TableName = None
