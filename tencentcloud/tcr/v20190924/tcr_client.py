@@ -110,6 +110,34 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateReplicationInstance(self, request):
+        """This API is used to create a replication instance.
+
+        :param request: Request instance for CreateReplicationInstance.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.CreateReplicationInstanceRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.CreateReplicationInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateReplicationInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateReplicationInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteImmutableTagRules(self, request):
         """This API is used to delete the tag immutability rule.
 
@@ -180,6 +208,118 @@ class TcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImmutableTagRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeReplicationInstanceCreateTasks(self, request):
+        """This API is used to query the task status of creating a replication instance.
+
+        :param request: Request instance for DescribeReplicationInstanceCreateTasks.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeReplicationInstanceCreateTasksRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeReplicationInstanceCreateTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeReplicationInstanceCreateTasks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeReplicationInstanceCreateTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeReplicationInstanceSyncStatus(self, request):
+        """This API is used to query the synchronization status of a replication instance.
+
+        :param request: Request instance for DescribeReplicationInstanceSyncStatus.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeReplicationInstanceSyncStatusRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeReplicationInstanceSyncStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeReplicationInstanceSyncStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeReplicationInstanceSyncStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeReplicationInstances(self, request):
+        """This API is used to query the list of replication instances.
+
+        :param request: Request instance for DescribeReplicationInstances.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeReplicationInstancesRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeReplicationInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeReplicationInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeReplicationInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ManageReplication(self, request):
+        """This API is used to manage the instance synchronization rule.
+
+        :param request: Request instance for ManageReplication.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.ManageReplicationRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ManageReplicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ManageReplication", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ManageReplicationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

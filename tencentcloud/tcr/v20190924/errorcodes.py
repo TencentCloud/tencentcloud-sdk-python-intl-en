@@ -38,6 +38,15 @@ INTERNALERROR_ERRORCONFLICT = 'InternalError.ErrorConflict'
 # The resource quota is exceeded.
 INTERNALERROR_ERROROVERLIMIT = 'InternalError.ErrorOverLimit'
 
+# Internal error with the TCR instance.
+INTERNALERROR_ERRORTCRINTERNAL = 'InternalError.ErrorTcrInternal'
+
+# Invalid request header
+INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = 'InternalError.ErrorTcrInvalidMediaType'
+
+# TCR instance resource conflict.
+INTERNALERROR_ERRORTCRRESOURCECONFLICT = 'InternalError.ErrorTcrResourceConflict'
+
 # No permission for TCR operation.
 INTERNALERROR_ERRORTCRUNAUTHORIZED = 'InternalError.ErrorTcrUnauthorized'
 
@@ -67,6 +76,12 @@ MISSINGPARAMETER = 'MissingParameter'
 
 # Operation denied.
 OPERATIONDENIED = 'OperationDenied'
+
+# Exceptional instance status.
+RESOURCEINSUFFICIENT_ERRORINSTANCENOTRUNNING = 'ResourceInsufficient.ErrorInstanceNotRunning'
+
+# The resource does not exist.
+RESOURCENOTFOUND = 'ResourceNotFound'
 
 # The resource of the TCR instance was not found.
 RESOURCENOTFOUND_TCRRESOURCENOTFOUND = 'ResourceNotFound.TcrResourceNotFound'
