@@ -754,6 +754,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeClusterAuthenticationOptions(self, request):
+        """This API is used to query cluster authentication configuration.
+
+        :param request: Request instance for DescribeClusterAuthenticationOptions.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterAuthenticationOptionsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterAuthenticationOptionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterAuthenticationOptions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterAuthenticationOptionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeClusterCommonNames(self, request):
         """This API is used to obtain the CommonName from the kube-apiserver client certificate that corresponding to the sub-account in RBAC authorization mode.
 
@@ -1412,6 +1440,34 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyClusterAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyClusterAuthenticationOptions(self, request):
+        """This API is used to modify cluster authentication configuration.
+
+        :param request: Request instance for ModifyClusterAuthenticationOptions.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterAuthenticationOptionsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyClusterAuthenticationOptionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyClusterAuthenticationOptions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyClusterAuthenticationOptionsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

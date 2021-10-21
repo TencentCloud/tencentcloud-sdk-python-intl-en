@@ -9677,6 +9677,9 @@ Note: this field may return `null`, indicating that no valid value was found.
         :param ColorTransfer: Color transfer
 Note: this field may return `null`, indicating that no valid value was found.
         :type ColorTransfer: str
+        :param HdrType: HDR type
+Note: This field may return `null`, indicating that no valid value was found.
+        :type HdrType: str
         """
         self.Bitrate = None
         self.Height = None
@@ -9686,6 +9689,7 @@ Note: this field may return `null`, indicating that no valid value was found.
         self.ColorPrimaries = None
         self.ColorSpace = None
         self.ColorTransfer = None
+        self.HdrType = None
 
 
     def _deserialize(self, params):
@@ -9697,6 +9701,7 @@ Note: this field may return `null`, indicating that no valid value was found.
         self.ColorPrimaries = params.get("ColorPrimaries")
         self.ColorSpace = params.get("ColorSpace")
         self.ColorTransfer = params.get("ColorTransfer")
+        self.HdrType = params.get("HdrType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

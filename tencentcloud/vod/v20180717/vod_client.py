@@ -2556,8 +2556,8 @@ class VodClient(AbstractClient):
 
 
     def ModifyVodDomainAccelerateConfig(self, request):
-        """This API is used to enable or disable the acceleration region of a domain name on VOD.
-        1. You can enable or disable acceleration regions of only domain names whose status is `Online`.
+        """This API is used to modify the acceleration region of a domain name on VOD.
+        1. You can modify acceleration regions of only domain names whose status is `Online`.
 
         :param request: Request instance for ModifyVodDomainAccelerateConfig.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifyVodDomainAccelerateConfigRequest`

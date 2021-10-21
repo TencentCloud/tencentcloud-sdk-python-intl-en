@@ -90,6 +90,8 @@ class AddInstancesRequest(AbstractModel):
         :type DbType: str
         :param OrderSource: Order source
         :type OrderSource: str
+        :param DealMode: Transaction mode. Valid values: `0` (place and pay for an order), `1` (place an order)
+        :type DealMode: int
         """
         self.ClusterId = None
         self.Cpu = None
@@ -103,6 +105,7 @@ class AddInstancesRequest(AbstractModel):
         self.AutoVoucher = None
         self.DbType = None
         self.OrderSource = None
+        self.DealMode = None
 
 
     def _deserialize(self, params):
@@ -118,6 +121,7 @@ class AddInstancesRequest(AbstractModel):
         self.AutoVoucher = params.get("AutoVoucher")
         self.DbType = params.get("DbType")
         self.OrderSource = params.get("OrderSource")
+        self.DealMode = params.get("DealMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -420,6 +424,16 @@ Default value: 600
 If `DbType` is `MYSQL` and the billing mode of cluster compute is pay-as-you-go (or the `DbMode` is `SERVERLESS`), the billing mode of cluster storage must be postpaid.
 Clusters with storage billed in prepaid mode cannot be cloned or rolled back.
         :type StoragePayMode: int
+        :param SecurityGroupIds: Array of security group IDs
+        :type SecurityGroupIds: list of str
+        :param AlarmPolicyIds: Array of alarm policy IDs
+        :type AlarmPolicyIds: list of str
+        :param ClusterParams: Array of parameters
+        :type ClusterParams: list of ParamItem
+        :param DealMode: Transaction mode. Valid values: `0` (place and pay for an order), `1` (place an order)
+        :type DealMode: int
+        :param ParamTemplateId: Parameter template ID
+        :type ParamTemplateId: int
         """
         self.Zone = None
         self.VpcId = None
@@ -455,6 +469,11 @@ Clusters with storage billed in prepaid mode cannot be cloned or rolled back.
         self.AutoPause = None
         self.AutoPauseDelay = None
         self.StoragePayMode = None
+        self.SecurityGroupIds = None
+        self.AlarmPolicyIds = None
+        self.ClusterParams = None
+        self.DealMode = None
+        self.ParamTemplateId = None
 
 
     def _deserialize(self, params):
@@ -497,6 +516,16 @@ Clusters with storage billed in prepaid mode cannot be cloned or rolled back.
         self.AutoPause = params.get("AutoPause")
         self.AutoPauseDelay = params.get("AutoPauseDelay")
         self.StoragePayMode = params.get("StoragePayMode")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.AlarmPolicyIds = params.get("AlarmPolicyIds")
+        if params.get("ClusterParams") is not None:
+            self.ClusterParams = []
+            for item in params.get("ClusterParams"):
+                obj = ParamItem()
+                obj._deserialize(item)
+                self.ClusterParams.append(obj)
+        self.DealMode = params.get("DealMode")
+        self.ParamTemplateId = params.get("ParamTemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -519,11 +548,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param DealNames: Order ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DealNames: list of str
-        :param ResourceIds: List of resource IDs (this parameter may not be returned in case of asynchronous delivery. We strongly recommend you call the `DescribeResourcesByDealName` API with the `dealNames` field to get the IDs of asynchronously delivered resources)
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ResourceIds: List of resource IDs (This field has been deprecated. Please use `dealNames` in the `DescribeResourcesByDealName` API to get resource IDs.)
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ResourceIds: list of str
-        :param ClusterIds: List of cluster IDs (this parameter may not be returned in case of asynchronous delivery. We strongly recommend you call the `DescribeResourcesByDealName` API with the `dealNames` field to get the IDs of asynchronously delivered clusters)
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ClusterIds: List of cluster IDs (This field has been deprecated. Please use `dealNames` in the `DescribeResourcesByDealName` API to get cluster IDs.)
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ClusterIds: list of str
         :param BigDealIds: Big order ID.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -936,12 +965,11 @@ class CynosdbInstance(AbstractModel):
 resume
 pause
         :type ServerlessStatus: str
-        :param StoragePayMode: Storage billing mode
-Note: this field may return `null`, indicating that no valid value can be obtained.
-        :type StoragePayMode: int
         :param StorageId: Prepaid storage ID
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :type StorageId: str
+        :param StoragePayMode: Storage billing mode
+        :type StoragePayMode: int
         """
         self.Uin = None
         self.AppId = None
@@ -983,8 +1011,8 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         self.MinCpu = None
         self.MaxCpu = None
         self.ServerlessStatus = None
-        self.StoragePayMode = None
         self.StorageId = None
+        self.StoragePayMode = None
 
 
     def _deserialize(self, params):
@@ -1028,8 +1056,8 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         self.MinCpu = params.get("MinCpu")
         self.MaxCpu = params.get("MaxCpu")
         self.ServerlessStatus = params.get("ServerlessStatus")
-        self.StoragePayMode = params.get("StoragePayMode")
         self.StorageId = params.get("StorageId")
+        self.StoragePayMode = params.get("StoragePayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2614,6 +2642,38 @@ class OfflineInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ParamItem(AbstractModel):
+    """Parameter to be modified
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ParamName: Parameter name
+        :type ParamName: str
+        :param CurrentValue: New value
+        :type CurrentValue: str
+        :param OldValue: Original value
+        :type OldValue: str
+        """
+        self.ParamName = None
+        self.CurrentValue = None
+        self.OldValue = None
+
+
+    def _deserialize(self, params):
+        self.ParamName = params.get("ParamName")
+        self.CurrentValue = params.get("CurrentValue")
+        self.OldValue = params.get("OldValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PolicyRule(AbstractModel):
     """Security group rule
 
@@ -2859,6 +2919,8 @@ class UpgradeInstanceRequest(AbstractModel):
         :param DbType: Database type. Valid values: 
 <li> MYSQL </li>
         :type DbType: str
+        :param DealMode: Transaction mode. Valid values: `0` (place and pay for an order), `1` (place an order)
+        :type DealMode: int
         """
         self.InstanceId = None
         self.Cpu = None
@@ -2867,6 +2929,7 @@ class UpgradeInstanceRequest(AbstractModel):
         self.StorageLimit = None
         self.AutoVoucher = None
         self.DbType = None
+        self.DealMode = None
 
 
     def _deserialize(self, params):
@@ -2877,6 +2940,7 @@ class UpgradeInstanceRequest(AbstractModel):
         self.StorageLimit = params.get("StorageLimit")
         self.AutoVoucher = params.get("AutoVoucher")
         self.DbType = params.get("DbType")
+        self.DealMode = params.get("DealMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

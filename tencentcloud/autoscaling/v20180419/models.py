@@ -676,9 +676,9 @@ Notes about this policy:
         :param SpotMixedAllocationPolicy: Specifies how to assign pay-as-you-go instances and spot instances.
 This parameter is valid only when `InstanceAllocationPolicy ` is set to `SPOT_MIXED`.
         :type SpotMixedAllocationPolicy: :class:`tencentcloud.autoscaling.v20180419.models.SpotMixedAllocationPolicy`
-        :param CapacityRebalance: Indicates whether the capacity rebalancing feature is enabled. This parameter is only valid for spot instances in the scaling group. Valid values:
+        :param CapacityRebalance: Indicates whether the capacity re-balancing feature is enabled. This parameter is only valid for spot instances in the scaling group. Valid values:
 <br><li>`TRUE`: yes. Before the spot instances in the scaling group are about to be automatically repossessed, AS will terminate them. The scale-in hook (if configured) will take effect before the termination. After the termination process starts, AS will asynchronously initiate a scaling activity to meet the desired capacity.
-<br><li>`FALSE`: no. AS will add instances to meet the desired capacity only after the spot instances are terminated.
+<br><li>`FALSE`: no. In this case, AS will add instances to meet the desired capacity only after the spot instances are terminated.
 
 Default value: `False`.
         :type CapacityRebalance: bool
@@ -3265,7 +3265,7 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
         :type SpotMixedAllocationPolicy: :class:`tencentcloud.autoscaling.v20180419.models.SpotMixedAllocationPolicy`
         :param CapacityRebalance: Indicates whether the capacity rebalancing feature is enabled. This parameter is only valid for spot instances in the scaling group. Valid values:
 <br><li>`TRUE`: yes. Before the spot instances in the scaling group are about to be automatically repossessed, AS will terminate them. The scale-in hook (if configured) will take effect before the termination. After the termination process starts, AS will asynchronously initiate a scaling activity to meet the desired capacity.
-<br><li>`FALSE`: no. AS will add instances to meet the desired capacity only after the spot instances are terminated.
+<br><li>`FALSE`: no. In this case, AS will add instances to meet the desired capacity only after the spot instances are terminated.
         :type CapacityRebalance: bool
         """
         self.AutoScalingGroupId = None

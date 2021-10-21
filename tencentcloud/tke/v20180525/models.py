@@ -2303,6 +2303,59 @@ class DescribeClusterAsGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeClusterAuthenticationOptionsRequest(AbstractModel):
+    """DescribeClusterAuthenticationOptions request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterAuthenticationOptionsResponse(AbstractModel):
+    """DescribeClusterAuthenticationOptions response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceAccounts: ServiceAccount authentication configuration
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ServiceAccounts: :class:`tencentcloud.tke.v20180525.models.ServiceAccountAuthenticationOptions`
+        :param LatestOperationState: Result of the last modification. Values: `Updating`, `Success`, `Failed` or `TimeOut`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type LatestOperationState: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ServiceAccounts = None
+        self.LatestOperationState = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ServiceAccounts") is not None:
+            self.ServiceAccounts = ServiceAccountAuthenticationOptions()
+            self.ServiceAccounts._deserialize(params.get("ServiceAccounts"))
+        self.LatestOperationState = params.get("LatestOperationState")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeClusterCommonNamesRequest(AbstractModel):
     """DescribeClusterCommonNames request structure.
 
@@ -2553,12 +2606,16 @@ class DescribeClusterKubeconfigRequest(AbstractModel):
         r"""
         :param ClusterId: Cluster ID
         :type ClusterId: str
+        :param IsExtranet: Defaults to `false`, which means to obtain the kubeconfig of private network
+        :type IsExtranet: bool
         """
         self.ClusterId = None
+        self.IsExtranet = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
+        self.IsExtranet = params.get("IsExtranet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2888,13 +2945,44 @@ all clusters under the account will be obtained)
         :type Offset: int
         :param Limit: Maximum number of output entries. Default value: 20
         :type Limit: int
-        :param Filters: Filter condition. Currently, only filtering by a single ClusterName is supported
+        :param Filters: ·  ClusterName
+    Filters by the cluster name
+    Type: String
+    Required: no
+
+·  Tags
+    Filters by key-value pairs of tags
+    Type: String
+    Required: no
+
+·  vpc-id
+    Filters by the VPC ID
+    Type: String
+    Required: no
+
+·  tag-key
+    Filters by the tag key
+    Type: String
+    Required: no
+
+·  tag-value
+    Filters by the tag value
+    Type: String
+    Required: no
+
+·  tag:tag-key
+    Filters by key-value pairs of tags
+    Type: String
+    Required: no
         :type Filters: list of Filter
+        :param ClusterType: Cluster type, such as `MANAGED_CLUSTER`
+        :type ClusterType: str
         """
         self.ClusterIds = None
         self.Offset = None
         self.Limit = None
         self.Filters = None
+        self.ClusterType = None
 
 
     def _deserialize(self, params):
@@ -2907,6 +2995,7 @@ all clusters under the account will be obtained)
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.ClusterType = params.get("ClusterType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4496,6 +4585,53 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class ModifyClusterAuthenticationOptionsRequest(AbstractModel):
+    """ModifyClusterAuthenticationOptions request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param ServiceAccounts: ServiceAccount authentication configuration
+        :type ServiceAccounts: :class:`tencentcloud.tke.v20180525.models.ServiceAccountAuthenticationOptions`
+        """
+        self.ClusterId = None
+        self.ServiceAccounts = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("ServiceAccounts") is not None:
+            self.ServiceAccounts = ServiceAccountAuthenticationOptions()
+            self.ServiceAccounts._deserialize(params.get("ServiceAccounts"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterAuthenticationOptionsResponse(AbstractModel):
+    """ModifyClusterAuthenticationOptions response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyClusterEndpointSPRequest(AbstractModel):
     """ModifyClusterEndpointSP request structure.
 
@@ -4568,6 +4704,8 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         :type OsName: str
         :param OsCustomizeType: Image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)
         :type OsCustomizeType: str
+        :param ExtraArgs: Node custom parameter
+        :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.InstanceExtraArgs`
         """
         self.ClusterId = None
         self.NodePoolId = None
@@ -4579,6 +4717,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         self.EnableAutoscale = None
         self.OsName = None
         self.OsCustomizeType = None
+        self.ExtraArgs = None
 
 
     def _deserialize(self, params):
@@ -4602,6 +4741,9 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         self.EnableAutoscale = params.get("EnableAutoscale")
         self.OsName = params.get("OsName")
         self.OsCustomizeType = params.get("OsCustomizeType")
+        if params.get("ExtraArgs") is not None:
+            self.ExtraArgs = InstanceExtraArgs()
+            self.ExtraArgs._deserialize(params.get("ExtraArgs"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5558,6 +5700,41 @@ class RunSecurityServiceEnabled(AbstractModel):
 
     def _deserialize(self, params):
         self.Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceAccountAuthenticationOptions(AbstractModel):
+    """ServiceAccount authentication configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Issuer: service-account-issuer
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Issuer: str
+        :param JWKSURI: service-account-jwks-uri
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type JWKSURI: str
+        :param AutoCreateDiscoveryAnonymousAuth: If it is set to `true`, a RABC rule is automatically created to allow anonymous users to access `/.well-known/openid-configuration` and `/openid/v1/jwks`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AutoCreateDiscoveryAnonymousAuth: bool
+        """
+        self.Issuer = None
+        self.JWKSURI = None
+        self.AutoCreateDiscoveryAnonymousAuth = None
+
+
+    def _deserialize(self, params):
+        self.Issuer = params.get("Issuer")
+        self.JWKSURI = params.get("JWKSURI")
+        self.AutoCreateDiscoveryAnonymousAuth = params.get("AutoCreateDiscoveryAnonymousAuth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

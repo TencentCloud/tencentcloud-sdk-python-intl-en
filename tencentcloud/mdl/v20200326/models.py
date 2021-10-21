@@ -408,7 +408,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
         r"""
         :param Name: Channel name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level
         :type Name: str
-        :param AttachedInputs: Inputs to attach. You can attach 1-5 inputs.
+        :param AttachedInputs: Inputs to attach. You can attach 1 to 5 inputs.
         :type AttachedInputs: list of AttachedInput
         :param OutputGroups: Configuration information of the channel’s output groups. Quantity: [1, 10]
         :type OutputGroups: list of StreamLiveOutputGroupsInfo
@@ -1834,7 +1834,7 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
         :type Id: str
         :param Name: Channel name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level
         :type Name: str
-        :param AttachedInputs: Inputs to attach. You can attach 1-5 inputs.
+        :param AttachedInputs: Inputs to attach. You can attach 1 to 5 inputs.
         :type AttachedInputs: list of AttachedInput
         :param OutputGroups: Configuration information of the channel’s output groups. Quantity: [1, 10]
         :type OutputGroups: list of StreamLiveOutputGroupsInfo

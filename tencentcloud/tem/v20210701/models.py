@@ -846,7 +846,7 @@ class DescribeEnvironmentsRequest(AbstractModel):
         r"""
         :param Limit: Pagination limit
         :type Limit: int
-        :param Offset: Page number
+        :param Offset: Page offset
         :type Offset: int
         :param SourceChannel: Source
         :type SourceChannel: int
@@ -1084,7 +1084,7 @@ class DescribeRunPodPage(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: Page number
+        :param Offset: Page offset
         :type Offset: int
         :param Limit: Number of records per page
         :type Limit: int
@@ -1991,7 +1991,7 @@ class RestartApplicationPodRequest(AbstractModel):
         :type PodName: str
         :param Limit: Number of items per page
         :type Limit: int
-        :param Offset: Page number
+        :param Offset: Page offset
         :type Offset: int
         :param Status: Pod status
         :type Status: str
