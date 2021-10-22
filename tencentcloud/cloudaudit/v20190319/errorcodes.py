@@ -14,14 +14,8 @@
 # limitations under the License.
 
 
-# Duplicate recorder name.
-INVALIDPARAMETERVALUE_RECORDERNAMEREPEAT = 'InvalidParameterValue.RecorderNameRepeat'
+# Internal error.
+INTERNALERROR = 'InternalError'
 
-# The number of resource recorders exceeds the limit.
-LIMITEXCEEDED_RECORDEROVERAMOUNT = 'LimitExceeded.RecorderOverAmount'
-
-# Recorder not found.
-RESOURCENOTFOUND_RECORDERNOTFOUND = 'ResourceNotFound.RecorderNotFound'
-
-# Resource not found.
-RESOURCENOTFOUND_RESOURCENOTFOUND = 'ResourceNotFound.ResourceNotFound'
+# Parameter error.
+INVALIDPARAMETER = 'InvalidParameter'
