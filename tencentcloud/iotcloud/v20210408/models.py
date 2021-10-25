@@ -518,7 +518,8 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         :param FirmwareUpdateTime: Firmware update time of the device
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type FirmwareUpdateTime: int
-        :param CreateUserId: 
+        :param CreateUserId: Account ID of the creator
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type CreateUserId: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1219,6 +1220,51 @@ class ProductProperties(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SetProductsForbiddenStatusRequest(AbstractModel):
+    """SetProductsForbiddenStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: List of products to enable or disable
+        :type ProductId: list of str
+        :param Status: `0`: enable; `1`: disable
+        :type Status: int
+        """
+        self.ProductId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetProductsForbiddenStatusResponse(AbstractModel):
+    """SetProductsForbiddenStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class UpdateDeviceLogLevelRequest(AbstractModel):

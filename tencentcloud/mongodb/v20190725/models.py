@@ -392,15 +392,15 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type Volume: int
         :param ReplicateSetNum: Number of replica sets. When a replica set instance is created, this parameter must be set to 1. When a sharding instance is created, please see the parameters returned by the DescribeSpecInfo API
         :type ReplicateSetNum: int
-        :param NodeNum: Number of nodes in each replica set. Currently, the number of nodes in a replica set is fixed at 3, while the number of shards is customizable. For more information, please see the parameter returned by the DescribeSpecInfo API
+        :param NodeNum: The number of nodes in each replica set. The value range is subject to the response parameter of the `DescribeSpecInfo` API.
         :type NodeNum: int
-        :param MongoVersion: Version number. For the specific purchasable versions supported, please see the return result of the DescribeSpecInfo API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition
+        :param MongoVersion: Version number. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition; MONGO_40_WT: MongoDB 4.0 WiredTiger Edition; MONGO_42_WT: MongoDB 4.2 WiredTiger Edition.
         :type MongoVersion: str
         :param MachineCode: Server type. HIO: high IO; HIO10G: 10-Gigabit high IO
         :type MachineCode: str
         :param GoodsNum: Number of instances. Minimum value: 1. Maximum value: 10
         :type GoodsNum: int
-        :param Zone: AZ information in the format of ap-guangzhou-2
+        :param Zone: AZ in the format of ap-guangzhou-2. If multi-AZ deployment is enabled, this parameter refers to the primary AZ and must be one of the values of `AvailabilityZoneList`.
         :type Zone: str
         :param ClusterType: Instance type. REPLSET: replica set; SHARD: sharding cluster
         :type ClusterType: str
@@ -414,12 +414,24 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type ProjectId: int
         :param Tags: Instance tag information
         :type Tags: list of TagInfo
-        :param Clone: Valid values: 1 (regular instance), 2 (temp instance), 3 (read-only instance), 4 (disaster recovery instance).
+        :param Clone: Instance type. Valid values: `1` (primary instance), `2` (temp instance), `3` (read-only instance), `4` (disaster recovery instance), `5` (cloned instance).
         :type Clone: int
         :param Father: Parent instance ID. It is required if the `Clone` is 3 or 4.
         :type Father: str
         :param SecurityGroup: Security group.
         :type SecurityGroup: list of str
+        :param RestoreTime: The point in time to which the cloned instance will be rolled back. This parameter is required for a cloned instance. The point in time in the format of 2021-08-13 16:30:00 must be within the last seven days.
+        :type RestoreTime: str
+        :param InstanceName: Instance name, which can contain up to 60 letters, digits, or symbols (_-).
+        :type InstanceName: str
+        :param AvailabilityZoneList: AZ list when multi-AZ deployment is enabled. For the specific purchasable versions which support multi-AZ deployment, please see the return result of the `DescribeSpecInfo` API. Notes: 1. Nodes of a multi-AZ instance must be deployed across three AZs. 2. To ensure a successful cross-AZ switch, you should not deploy most of the nodes to the same AZ. (For example, a three-node sharded cluster instance does not support deploying two or more nodes in the same AZ.) 3. MongoDB 4.2 and later versions do not support multi-AZ deployment. 4. Read-Only and disaster recovery instances do not support multi-AZ deployment. 5. Instances in the classic network do not support multi-AZ deployment.
+        :type AvailabilityZoneList: list of str
+        :param MongosCpu: The number of mongos CPUs, which is required for a sharded cluster instance of MongoDB 4.2 WiredTiger. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API.
+        :type MongosCpu: int
+        :param MongosMemory: The size of mongos memory, which is required for a sharded cluster instance of MongoDB 4.2 WiredTiger. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API.
+        :type MongosMemory: int
+        :param MongosNodeNum: The number of mongos routers, which is required for a sharded cluster instance of MongoDB 4.2 WiredTiger. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. Note: please purchase 3-32 mongos routers for high availability.
+        :type MongosNodeNum: int
         """
         self.Memory = None
         self.Volume = None
@@ -438,6 +450,12 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.Clone = None
         self.Father = None
         self.SecurityGroup = None
+        self.RestoreTime = None
+        self.InstanceName = None
+        self.AvailabilityZoneList = None
+        self.MongosCpu = None
+        self.MongosMemory = None
+        self.MongosNodeNum = None
 
 
     def _deserialize(self, params):
@@ -463,6 +481,12 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.Clone = params.get("Clone")
         self.Father = params.get("Father")
         self.SecurityGroup = params.get("SecurityGroup")
+        self.RestoreTime = params.get("RestoreTime")
+        self.InstanceName = params.get("InstanceName")
+        self.AvailabilityZoneList = params.get("AvailabilityZoneList")
+        self.MongosCpu = params.get("MongosCpu")
+        self.MongosMemory = params.get("MongosMemory")
+        self.MongosNodeNum = params.get("MongosNodeNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -504,17 +528,17 @@ class CreateDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NodeNum: Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of secondary nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API.
+        :param NodeNum: The number of nodes in each replica set. The value range is subject to the response parameter of the `DescribeSpecInfo` API.
         :type NodeNum: int
         :param Memory: Instance memory size in GB.
         :type Memory: int
         :param Volume: Instance disk size in GB.
         :type Volume: int
-        :param MongoVersion: Version number. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition; MONGO_40_WT: MongoDB 4.0 WiredTiger Edition.
+        :param MongoVersion: Version number. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition; MONGO_40_WT: MongoDB 4.0 WiredTiger Edition; MONGO_42_WT: MongoDB 4.2 WiredTiger Edition.
         :type MongoVersion: str
         :param GoodsNum: Number of instances. Minimum value: 1. Maximum value: 10.
         :type GoodsNum: int
-        :param Zone: Instance region name in the format of ap-guangzhou-2.
+        :param Zone: AZ in the format of ap-guangzhou-2. If multi-AZ deployment is enabled, this parameter refers to the primary AZ and must be one of the values of `AvailabilityZoneList`.
         :type Zone: str
         :param Period: Instance validity period in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.
         :type Period: int
@@ -538,12 +562,24 @@ class CreateDBInstanceRequest(AbstractModel):
         :type AutoRenewFlag: int
         :param AutoVoucher: Whether to automatically use a voucher. Valid values: 1 (yes), 0 (no). Default value: 0.
         :type AutoVoucher: int
-        :param Clone: Valid values: 1 (regular instance), 2 (temp instance), 3 (read-only instance), 4 (disaster recovery instance).
+        :param Clone: Instance type. Valid values: `1` (primary instance), `2` (temp instance), `3` (read-only instance), `4` (disaster recovery instance), `5` (cloned instance).
         :type Clone: int
-        :param Father: Primary instance ID. It is required for read-only and disaster recovery instances.
+        :param Father: Primary instance ID. It is required for read-only, disaster recovery, and cloned instances.
         :type Father: str
         :param SecurityGroup: Security group.
         :type SecurityGroup: list of str
+        :param RestoreTime: The point in time to which the cloned instance will be rolled back. This parameter is required for a cloned instance. The point in time in the format of 2021-08-13 16:30:00 must be within the last seven days.
+        :type RestoreTime: str
+        :param InstanceName: Instance name, which can contain up to 60 letters, digits, or symbols (_-).
+        :type InstanceName: str
+        :param AvailabilityZoneList: AZ list when multi-AZ deployment is enabled. For the specific purchasable versions which support multi-AZ deployment, please see the return result of the `DescribeSpecInfo` API. Notes: 1. Nodes of a multi-AZ instance must be deployed across three AZs. 2. To ensure a successful cross-AZ switch, you should not deploy most of the nodes to the same AZ. (For example, a three-node sharded cluster instance does not support deploying two or more nodes in the same AZ.) 3. MongoDB 4.2 and later versions do not support multi-AZ deployment. 4. Read-Only and disaster recovery instances do not support multi-AZ deployment. 5. Instances in the classic network do not support multi-AZ deployment.
+        :type AvailabilityZoneList: list of str
+        :param MongosCpu: The number of mongos CPUs, which is required for a sharded cluster instance of MongoDB 4.2 WiredTiger. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API.
+        :type MongosCpu: int
+        :param MongosMemory: The size of mongos memory, which is required for a sharded cluster instance of MongoDB 4.2 WiredTiger. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API.
+        :type MongosMemory: int
+        :param MongosNodeNum: The number of mongos routers, which is required for a sharded cluster instance of MongoDB 4.2 WiredTiger. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. Note: please purchase 3-32 mongos routers for high availability.
+        :type MongosNodeNum: int
         """
         self.NodeNum = None
         self.Memory = None
@@ -565,6 +601,12 @@ class CreateDBInstanceRequest(AbstractModel):
         self.Clone = None
         self.Father = None
         self.SecurityGroup = None
+        self.RestoreTime = None
+        self.InstanceName = None
+        self.AvailabilityZoneList = None
+        self.MongosCpu = None
+        self.MongosMemory = None
+        self.MongosNodeNum = None
 
 
     def _deserialize(self, params):
@@ -593,6 +635,12 @@ class CreateDBInstanceRequest(AbstractModel):
         self.Clone = params.get("Clone")
         self.Father = params.get("Father")
         self.SecurityGroup = params.get("SecurityGroup")
+        self.RestoreTime = params.get("RestoreTime")
+        self.InstanceName = params.get("InstanceName")
+        self.AvailabilityZoneList = params.get("AvailabilityZoneList")
+        self.MongosCpu = params.get("MongosCpu")
+        self.MongosMemory = params.get("MongosMemory")
+        self.MongosNodeNum = params.get("MongosNodeNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -719,7 +767,7 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: Status.
+        :param Status: Status. Valid values: `initial` (initializing), `running`, `paused` (paused due to failure), `undoed` (rolled back due to failure), `failed` (ended due to failure), `success`
         :type Status: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str

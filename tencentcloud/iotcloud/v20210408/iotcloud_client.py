@@ -362,6 +362,34 @@ class IotcloudClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SetProductsForbiddenStatus(self, request):
+        """This API is used to enable or disable multiple products at a time.
+
+        :param request: Request instance for SetProductsForbiddenStatus.
+        :type request: :class:`tencentcloud.iotcloud.v20210408.models.SetProductsForbiddenStatusRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20210408.models.SetProductsForbiddenStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetProductsForbiddenStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetProductsForbiddenStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpdateDeviceLogLevel(self, request):
         """This API is used to set the device log level.
 

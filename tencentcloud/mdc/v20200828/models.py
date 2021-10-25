@@ -564,6 +564,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param RTMPSettings: RTMP configuration information of output.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RTMPSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRTMPSettings`
+        :param RTMPPullSettings: RTMP pull configuration of the output
+Note: This field may return `null`, indicating that no valid value was found.
+        :type RTMPPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRTMPPullSettings`
+        :param AllowIpList: CIDR allowlist
+This parameter is valid if `Protocol` is set to `RTMP_PULL`. If this parameter is left empty, there is no restriction on clients’ IP addresses.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type AllowIpList: list of str
         """
         self.OutputId = None
         self.OutputName = None
@@ -575,6 +582,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.SRTSettings = None
         self.RTPSettings = None
         self.RTMPSettings = None
+        self.RTMPPullSettings = None
+        self.AllowIpList = None
 
 
     def _deserialize(self, params):
@@ -599,6 +608,68 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("RTMPSettings") is not None:
             self.RTMPSettings = DescribeOutputRTMPSettings()
             self.RTMPSettings._deserialize(params.get("RTMPSettings"))
+        if params.get("RTMPPullSettings") is not None:
+            self.RTMPPullSettings = DescribeOutputRTMPPullSettings()
+            self.RTMPPullSettings._deserialize(params.get("RTMPPullSettings"))
+        self.AllowIpList = params.get("AllowIpList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOutputRTMPPullServerUrl(AbstractModel):
+    """RTMP pull URL of the output
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TcUrl: `tcUrl` of the RTMP pull URL
+        :type TcUrl: str
+        :param StreamKey: Stream key of the RTMP pull URL
+        :type StreamKey: str
+        """
+        self.TcUrl = None
+        self.StreamKey = None
+
+
+    def _deserialize(self, params):
+        self.TcUrl = params.get("TcUrl")
+        self.StreamKey = params.get("StreamKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOutputRTMPPullSettings(AbstractModel):
+    """RTMP pull configuration of the output
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServerUrls: List of pull URLs
+Note: This field may return `null`, indicating that no valid value was found.
+        :type ServerUrls: list of DescribeOutputRTMPPullServerUrl
+        """
+        self.ServerUrls = None
+
+
+    def _deserialize(self, params):
+        if params.get("ServerUrls") is not None:
+            self.ServerUrls = []
+            for item in params.get("ServerUrls"):
+                obj = DescribeOutputRTMPPullServerUrl()
+                obj._deserialize(item)
+                self.ServerUrls.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
