@@ -296,6 +296,8 @@ class Code(AbstractModel):
         :type GitCommitId: str
         :param GitUserNameSecret: Git user name after encryption. In general, this value is not required.
         :type GitUserNameSecret: str
+        :param ImageConfig: TCR image configurations
+        :type ImageConfig: :class:`tencentcloud.scf.v20180416.models.ImageConfig`
         """
         self.CosBucketName = None
         self.CosObjectName = None
@@ -311,6 +313,7 @@ class Code(AbstractModel):
         self.GitDirectory = None
         self.GitCommitId = None
         self.GitUserNameSecret = None
+        self.ImageConfig = None
 
 
     def _deserialize(self, params):
@@ -328,6 +331,9 @@ class Code(AbstractModel):
         self.GitDirectory = params.get("GitDirectory")
         self.GitCommitId = params.get("GitCommitId")
         self.GitUserNameSecret = params.get("GitUserNameSecret")
+        if params.get("ImageConfig") is not None:
+            self.ImageConfig = ImageConfig()
+            self.ImageConfig._deserialize(params.get("ImageConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -519,7 +525,7 @@ class CreateFunctionRequest(AbstractModel):
         :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigIn`
         :param CfsConfig: File system configuration parameter, which is used for the function to mount the file system
         :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
-        :param InitTimeout: Timeout period for function initialization
+        :param InitTimeout: The function initialization timeout period. It defaults to 65s for general cases and 90s for image deployment functions.
         :type InitTimeout: int
         :param Tags: Tag parameter of the function. It is an array of key-value pairs.
         :type Tags: list of Tag
@@ -681,7 +687,7 @@ class CreateTriggerRequest(AbstractModel):
         :type FunctionName: str
         :param TriggerName: Name of a new trigger. For a timer trigger, the name can contain up to 100 letters, digits, dashes, and underscores; for a COS trigger, it should be an access domain name of the corresponding COS bucket applicable to the XML API (e.g., 5401-5ff414-12345.cos.ap-shanghai.myqcloud.com); for other triggers, please see the descriptions of parameters bound to the specific trigger.
         :type TriggerName: str
-        :param Type: Trigger type. Currently, COS, CMQ, timer, and ckafka triggers are supported.
+        :param Type: Type of trigger. Values: `cos`, `cmq`, `timer`, `ckafka` and `apigw`. To create a CLS trigger, please refer to [Creating Shipping Task (SCF)](https://intl.cloud.tencent.com/document/product/614/61096?from_cn_redirect=1).
         :type Type: str
         :param TriggerDesc: For parameters of triggers, see [Trigger Description](https://intl.cloud.tencent.com/document/product/583/39901?from_cn_redirect=1)
         :type TriggerDesc: str
@@ -1013,7 +1019,7 @@ class DeleteReservedConcurrencyConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Name of the function for which to delete the provisioned concurrency
+        :param FunctionName: Specifies the function of which you want to delete the reserved quota
         :type FunctionName: str
         :param Namespace: Function namespace. Default value: `default`
         :type Namespace: str
@@ -1289,6 +1295,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ReservedConcurrencyMem: Reserved memory for function concurrence
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ReservedConcurrencyMem: int
+        :param AsyncRunEnable: Asynchronization attribute of the function. Values: `TRUE` and `FALSE`.
+        :type AsyncRunEnable: str
+        :param TraceEnable: Whether to enable call tracing for ansynchronized functions. Values: `TRUE` and `FALSE`.
+        :type TraceEnable: str
         """
         self.ModTime = None
         self.AddTime = None
@@ -1304,6 +1314,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.StatusReasons = None
         self.TotalProvisionedConcurrencyMem = None
         self.ReservedConcurrencyMem = None
+        self.AsyncRunEnable = None
+        self.TraceEnable = None
 
 
     def _deserialize(self, params):
@@ -1331,6 +1343,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 self.StatusReasons.append(obj)
         self.TotalProvisionedConcurrencyMem = params.get("TotalProvisionedConcurrencyMem")
         self.ReservedConcurrencyMem = params.get("ReservedConcurrencyMem")
+        self.AsyncRunEnable = params.get("AsyncRunEnable")
+        self.TraceEnable = params.get("TraceEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2203,7 +2217,7 @@ class GetReservedConcurrencyConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Name of the function for which to get the provisioned concurrency details.
+        :param FunctionName: Specifies the function of which you want to obtain the reserved quota
         :type FunctionName: str
         :param Namespace: Function namespace. Default value: default.
         :type Namespace: str
@@ -2231,8 +2245,8 @@ class GetReservedConcurrencyConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReservedMem: Reserved concurrency memory of function.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ReservedMem: The reserved quota of the function
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ReservedMem: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2246,6 +2260,54 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class ImageConfig(AbstractModel):
+    """TCR image information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageType: Image repository type, which can be `personal` or `enterprise`
+        :type ImageType: str
+        :param ImageUri: {domain}/{namespace}/{imageName}:{tag}@{digest}
+        :type ImageUri: str
+        :param RegistryId: The temp token that a TCR Enterprise instance uses to obtain an image. It’s required when `ImageType` is `enterprise`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RegistryId: str
+        :param EntryPoint: Entry point of the application
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type EntryPoint: str
+        :param Command: entrypoint execution command
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Command: str
+        :param Args: Command parameters
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Args: str
+        """
+        self.ImageType = None
+        self.ImageUri = None
+        self.RegistryId = None
+        self.EntryPoint = None
+        self.Command = None
+        self.Args = None
+
+
+    def _deserialize(self, params):
+        self.ImageType = params.get("ImageType")
+        self.ImageUri = params.get("ImageUri")
+        self.RegistryId = params.get("RegistryId")
+        self.EntryPoint = params.get("EntryPoint")
+        self.Command = params.get("Command")
+        self.Args = params.get("Args")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InvokeFunctionRequest(AbstractModel):
     """InvokeFunction request structure.
 
@@ -2257,7 +2319,7 @@ class InvokeFunctionRequest(AbstractModel):
         :type FunctionName: str
         :param Qualifier: Version or alias of the function. It defaults to `$DEFAULT`.
         :type Qualifier: str
-        :param Event: Function running parameter, which is in the JSON format. Maximum parameter size is 6 MB.
+        :param Event: Function running parameter, which is in the JSON format. Maximum parameter size is 6 MB. This field corresponds to [event input parameter](https://intl.cloud.tencent.com/document/product/583/9210?from_cn_redirect=1#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E).
         :type Event: str
         :param LogType: Valid value: `None` (default) or `Tail`. If the value is `Tail`, `log` in the response will contain the corresponding function execution log (up to 4KB).
         :type LogType: str
@@ -2322,13 +2384,13 @@ class InvokeRequest(AbstractModel):
         r"""
         :param FunctionName: Function name
         :type FunctionName: str
-        :param InvocationType: The value is `RequestResponse` (synchronous) or `Event` (asynchronous). The default value is synchronous.
+        :param InvocationType: Fill in `RequestResponse` for synchronized invocations (default and recommended) and `Event` for asychronized invocations. Note that for synchronized invocations, the max timeout period is 300s. Choose asychronized invocations if the required timeout period is longer than 300 seconds. You can also use [InvokeFunction](https://intl.cloud.tencent.com/document/product/583/58400?from_cn_redirect=1) for synchronized invocations. 
         :type InvocationType: str
         :param Qualifier: Version number or name of the triggered function
         :type Qualifier: str
-        :param ClientContext: Function running parameter, which is in the JSON format. Maximum parameter size is 1 MB.
+        :param ClientContext: Function running parameter, which is in the JSON format. The maximum parameter size is 6 MB for synchronized invocations and 128KB for asynchronized invocations. This field corresponds to [event input parameter](https://intl.cloud.tencent.com/document/product/583/9210?from_cn_redirect=1#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E).
         :type ClientContext: str
-        :param LogType: If this field is specified during sync invocation, the returned value will contain 4 KB of logs. Valid values: None, Tail. Default value: None. If the value is `Tail`, the `Log` field in the returned parameter will contain the corresponding function execution log
+        :param LogType: Null for async invocations
         :type LogType: str
         :param Namespace: Namespace
         :type Namespace: str
@@ -3583,9 +3645,9 @@ class PutReservedConcurrencyConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Name of the function for which to set the provisioned concurrency
+        :param FunctionName: Specifies the function of which you want to configure the reserved quota
         :type FunctionName: str
-        :param ReservedConcurrencyMem: Reserved concurrency memory of function. Note: the upper limit for the total reserved concurrency memory of the function is the user's total concurrency memory minus 12800
+        :param ReservedConcurrencyMem: Reserved memory quota of the function. Note: the upper limit for the total reserved quota of the function is the user's total concurrency memory minus 12800
         :type ReservedConcurrencyMem: int
         :param Namespace: Function namespace. Default value: `default`
         :type Namespace: str
@@ -4333,7 +4395,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigIn`
         :param CfsConfig: File system configuration input parameter, which is used for the function to bind the CFS file system
         :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
-        :param InitTimeout: Timeout period for function initialization. Default value: 15 seconds
+        :param InitTimeout: The function initialization timeout period
         :type InitTimeout: int
         """
         self.FunctionName = None

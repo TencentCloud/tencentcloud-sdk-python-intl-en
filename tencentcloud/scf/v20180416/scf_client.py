@@ -314,7 +314,7 @@ class ScfClient(AbstractClient):
 
 
     def DeleteReservedConcurrencyConfig(self, request):
-        """This API is used to delete the reserved concurrency configuration of a function.
+        """This API is used to delete the configuration of reserved quota.
 
         :param request: Request instance for DeleteReservedConcurrencyConfig.
         :type request: :class:`tencentcloud.scf.v20180416.models.DeleteReservedConcurrencyConfigRequest`
@@ -594,7 +594,7 @@ class ScfClient(AbstractClient):
 
 
     def GetReservedConcurrencyConfig(self, request):
-        """This API is used to get the reserved concurrency details of a function.
+        """This API is used to obtain the reserved quota details of a function.
 
         :param request: Request instance for GetReservedConcurrencyConfig.
         :type request: :class:`tencentcloud.scf.v20180416.models.GetReservedConcurrencyConfigRequest`
@@ -986,7 +986,7 @@ class ScfClient(AbstractClient):
 
 
     def PutReservedConcurrencyConfig(self, request):
-        """This API is used to set the reserved concurrency of a function.
+        """This API is used to configure the reserved quota of a function.
 
         :param request: Request instance for PutReservedConcurrencyConfig.
         :type request: :class:`tencentcloud.scf.v20180416.models.PutReservedConcurrencyConfigRequest`
