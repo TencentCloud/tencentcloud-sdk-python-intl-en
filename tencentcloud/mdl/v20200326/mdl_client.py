@@ -530,6 +530,34 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeStreamLiveRegions(self, request):
+        """This API is used to query all StreamLive regions.
+
+        :param request: Request instance for DescribeStreamLiveRegions.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveRegionsRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeStreamLiveRegions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStreamLiveRegionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyStreamLiveChannel(self, request):
         """This API is used to modify a StreamLive channel.
 

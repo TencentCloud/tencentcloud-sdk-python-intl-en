@@ -941,6 +941,35 @@ class DescribeStreamLinkFlowsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeStreamLinkRegionsRequest(AbstractModel):
+    """DescribeStreamLinkRegions request structure.
+
+    """
+
+
+class DescribeStreamLinkRegionsResponse(AbstractModel):
+    """DescribeStreamLinkRegions response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Info: StreamLink region information
+        :type Info: :class:`tencentcloud.mdc.v20200828.models.StreamLinkRegionInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Info = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self.Info = StreamLinkRegionInfo()
+            self.Info._deserialize(params.get("Info"))
+        self.RequestId = params.get("RequestId")
+
+
 class InputAddress(AbstractModel):
     """Input address information.
 
@@ -1094,6 +1123,30 @@ class RTPAddressDestination(AbstractModel):
         
 
 
+class RegionInfo(AbstractModel):
+    """Region information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Region name
+        :type Name: str
+        """
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SRTAddressDestination(AbstractModel):
     """Push destination address information.
 
@@ -1202,3 +1255,32 @@ class StopStreamLinkFlowResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class StreamLinkRegionInfo(AbstractModel):
+    """StreamLink region information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Regions: List of StreamLink regions
+        :type Regions: list of RegionInfo
+        """
+        self.Regions = None
+
+
+    def _deserialize(self, params):
+        if params.get("Regions") is not None:
+            self.Regions = []
+            for item in params.get("Regions"):
+                obj = RegionInfo()
+                obj._deserialize(item)
+                self.Regions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

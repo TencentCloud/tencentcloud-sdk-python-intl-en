@@ -1326,6 +1326,35 @@ Note: this field may return `null`, indicating that no valid value was found.
         self.RequestId = params.get("RequestId")
 
 
+class DescribeStreamLiveRegionsRequest(AbstractModel):
+    """DescribeStreamLiveRegions request structure.
+
+    """
+
+
+class DescribeStreamLiveRegionsResponse(AbstractModel):
+    """DescribeStreamLiveRegions response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Info: StreamLive region information
+        :type Info: :class:`tencentcloud.mdl.v20200326.models.StreamLiveRegionInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Info = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self.Info = StreamLiveRegionInfo()
+            self.Info._deserialize(params.get("Info"))
+        self.RequestId = params.get("RequestId")
+
+
 class DestinationInfo(AbstractModel):
     """Relay destination address.
 
@@ -2298,6 +2327,30 @@ class PlanResp(AbstractModel):
         
 
 
+class RegionInfo(AbstractModel):
+    """Region information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Region name
+        :type Name: str
+        """
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Scte35SettingsInfo(AbstractModel):
     """SCTE-35 configuration information.
 
@@ -2647,6 +2700,35 @@ Note: this field may return `null`, indicating that no valid value was found.
         if params.get("StreamPackageSettings") is not None:
             self.StreamPackageSettings = StreamPackageSettingsInfo()
             self.StreamPackageSettings._deserialize(params.get("StreamPackageSettings"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StreamLiveRegionInfo(AbstractModel):
+    """StreamLive region information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Regions: List of StreamLive regions
+        :type Regions: list of RegionInfo
+        """
+        self.Regions = None
+
+
+    def _deserialize(self, params):
+        if params.get("Regions") is not None:
+            self.Regions = []
+            for item in params.get("Regions"):
+                obj = RegionInfo()
+                obj._deserialize(item)
+                self.Regions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

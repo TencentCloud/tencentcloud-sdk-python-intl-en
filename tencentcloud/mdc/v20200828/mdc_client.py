@@ -166,6 +166,34 @@ class MdcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeStreamLinkRegions(self, request):
+        """This API is used to query all StreamLink regions.
+
+        :param request: Request instance for DescribeStreamLinkRegions.
+        :type request: :class:`tencentcloud.mdc.v20200828.models.DescribeStreamLinkRegionsRequest`
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeStreamLinkRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeStreamLinkRegions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStreamLinkRegionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyStreamLinkFlow(self, request):
         """This API is used to modify the configuration information of a StreamLink flow.
 
