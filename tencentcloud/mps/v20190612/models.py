@@ -13793,15 +13793,15 @@ class VideoTemplateInfo(AbstractModel):
     def __init__(self):
         r"""
         :param Codec: Video stream codec. Valid values:
-<li>libx264: H.264</li>
-<li>libx265: H.265</li>
-Currently, a resolution within 640*480p must be specified for H.265.
+<li>`libx264`: H.264</li>
+<li>`libx265`: H.265</li>
+<li>`av1`: AOMedia Video 1</li>
         :type Codec: str
         :param Fps: Video frame rate in Hz. Value range: [0, 100].
 If the value is 0, the frame rate will be the same as that of the source video.
         :type Fps: int
-        :param Bitrate: Bitrate of a video stream in Kbps. Value range: 0 and [128, 35,000].
-If the value is 0, the bitrate of the video will be the same as that of the source video.
+        :param Bitrate: Video stream bitrate (Kbps). Valid values: `0`; [75, 35000]
+If the value is `0`, the original video bitrate will be used.
         :type Bitrate: int
         :param ResolutionAdaptive: Resolution adaption. Valid values:
 <li>open: Enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
