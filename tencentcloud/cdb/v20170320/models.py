@@ -913,6 +913,8 @@ which is left empty by default. Specify this parameter when cloning a strong syn
         :type DeviceType: str
         :param InstanceNodes: The number of nodes of the clone. If this parameter is set to `3` or the `BackupZone` parameter is specified, the clone will have three nodes. If this parameter is set to `2` or left empty, the clone will have two nodes.
         :type InstanceNodes: int
+        :param DeployGroupId: Placement group ID.
+        :type DeployGroupId: str
         """
         self.InstanceId = None
         self.SpecifiedRollbackTime = None
@@ -931,6 +933,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
         self.BackupZone = None
         self.DeviceType = None
         self.InstanceNodes = None
+        self.DeployGroupId = None
 
 
     def _deserialize(self, params):
@@ -956,6 +959,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
         self.BackupZone = params.get("BackupZone")
         self.DeviceType = params.get("DeviceType")
         self.InstanceNodes = params.get("InstanceNodes")
+        self.DeployGroupId = params.get("DeployGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1066,7 +1070,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type UniqVpcId: str
         :param UniqSubnetId: VPC subnet ID. If `UniqVpcId` is set, then `UniqSubnetId` will be required. Please use the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API to query the subnet lists.
         :type UniqSubnetId: str
-        :param ProjectId: Project ID. If this is left empty, the default project will be used. Please use the [DescribeProject](https://intl.cloud.tencent.com/document/product/378/4400?from_cn_redirect=1) API to get the project ID.
+        :param ProjectId: Project ID. If this is left empty, the default project will be used.
         :type ProjectId: int
         :param Zone: AZ information. By default, the system will automatically select an AZ. Please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported AZs.
         :type Zone: str
@@ -1443,30 +1447,6 @@ class DBSwitchInfo(AbstractModel):
     def _deserialize(self, params):
         self.SwitchTime = params.get("SwitchTime")
         self.SwitchType = params.get("SwitchType")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DatabaseName(AbstractModel):
-    """Name of a database
-
-    """
-
-    def __init__(self):
-        r"""
-        :param DatabaseName: Name of a database
-        :type DatabaseName: str
-        """
-        self.DatabaseName = None
-
-
-    def _deserialize(self, params):
-        self.DatabaseName = params.get("DatabaseName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2077,76 +2057,6 @@ class DescribeBackupConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeBackupDatabasesRequest(AbstractModel):
-    """DescribeBackupDatabases request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
-        :type InstanceId: str
-        :param StartTime: Start time in the format of yyyy-MM-dd HH:mm:ss, such as 2017-07-12 10:29:20.
-        :type StartTime: str
-        :param SearchDatabase: Prefix of the database to be queried.
-        :type SearchDatabase: str
-        :param Offset: Pagination offset.
-        :type Offset: int
-        :param Limit: Number of entries per page. Value range: 1-2,000.
-        :type Limit: int
-        """
-        self.InstanceId = None
-        self.StartTime = None
-        self.SearchDatabase = None
-        self.Offset = None
-        self.Limit = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.StartTime = params.get("StartTime")
-        self.SearchDatabase = params.get("SearchDatabase")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeBackupDatabasesResponse(AbstractModel):
-    """DescribeBackupDatabases response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TotalCount: Number of the returned data entries.
-        :type TotalCount: int
-        :param Items: Array of eligible databases.
-        :type Items: list of DatabaseName
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.Items = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("Items") is not None:
-            self.Items = []
-            for item in params.get("Items"):
-                obj = DatabaseName()
-                obj._deserialize(item)
-                self.Items.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeBackupOverviewRequest(AbstractModel):
     """DescribeBackupOverview request structure.
 
@@ -2271,80 +2181,6 @@ class DescribeBackupSummariesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Items.append(obj)
         self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeBackupTablesRequest(AbstractModel):
-    """DescribeBackupTables request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
-        :type InstanceId: str
-        :param StartTime: Start time in the format of yyyy-MM-dd HH:mm:ss, such as 2017-07-12 10:29:20.
-        :type StartTime: str
-        :param DatabaseName: Specified database name.
-        :type DatabaseName: str
-        :param SearchTable: Prefix of the table to be queried.
-        :type SearchTable: str
-        :param Offset: Pagination offset.
-        :type Offset: int
-        :param Limit: Number of entries per page. Value range: 1-2,000.
-        :type Limit: int
-        """
-        self.InstanceId = None
-        self.StartTime = None
-        self.DatabaseName = None
-        self.SearchTable = None
-        self.Offset = None
-        self.Limit = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.StartTime = params.get("StartTime")
-        self.DatabaseName = params.get("DatabaseName")
-        self.SearchTable = params.get("SearchTable")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeBackupTablesResponse(AbstractModel):
-    """DescribeBackupTables response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TotalCount: Number of the returned data entries.
-        :type TotalCount: int
-        :param Items: Array of eligible tables.
-        :type Items: list of TableName
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.Items = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("Items") is not None:
-            self.Items = []
-            for item in params.get("Items"):
-                obj = TableName()
-                obj._deserialize(item)
-                self.Items.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2943,7 +2779,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProjectId: Project ID. You can use the [project list querying API](https://intl.cloud.tencent.com/document/product/378/4400?from_cn_redirect=1) to query the project ID.
+        :param ProjectId: Project ID.
         :type ProjectId: int
         :param InstanceTypes: Instance type. Value range: 1 (primary), 2 (disaster recovery), 3 (read-only).
         :type InstanceTypes: list of int non-negative
@@ -8548,30 +8384,6 @@ class SwitchForUpgradeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
-
-
-class TableName(AbstractModel):
-    """Table name
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TableName: Table name
-        :type TableName: str
-        """
-        self.TableName = None
-
-
-    def _deserialize(self, params):
-        self.TableName = params.get("TableName")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
 
 
 class TablePrivilege(AbstractModel):

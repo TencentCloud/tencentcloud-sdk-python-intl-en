@@ -652,36 +652,6 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeBackupDatabases(self, request):
-        """This API is used to query the databases contained in a backup file. It has been disused.
-        After the legacy version becomes capable of full backup, if you want to download logical backup files by table, you need to use this API.
-        The new API (CreateBackup) can specify the table to be backed up when a logical backup file is created, which can be downloaded directly.
-
-        :param request: Request instance for DescribeBackupDatabases.
-        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupDatabasesRequest`
-        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupDatabasesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeBackupDatabases", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeBackupDatabasesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeBackupOverview(self, request):
         """This API is used to query the backup overview of a user. It will return the user's current total number of backups, total capacity used by backups, capacity in the free tier, and paid capacity (all capacity values are in bytes).
 
@@ -724,36 +694,6 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBackupSummariesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeBackupTables(self, request):
-        """This API is used to query the backup tables of the specified database. It has been disused.
-        After the legacy version becomes capable of full backup, if you want to download logical backup files by table, you need to use this API.
-        The new API (CreateBackup) can specify the table to be backed up when a logical backup file is created, which can be downloaded directly.
-
-        :param request: Request instance for DescribeBackupTables.
-        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupTablesRequest`
-        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupTablesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeBackupTables", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeBackupTablesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
