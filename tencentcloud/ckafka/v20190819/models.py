@@ -142,7 +142,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :type TopicCount: int
         :param PatternTypeTitle: Name of rule type.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type PatternTypeTitle: str
         """
         self.RuleName = None
@@ -3862,6 +3862,46 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class SaleInfo(AbstractModel):
+    """Sales information of Standard Edition
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Flag: Manually set flag.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Flag: bool
+        :param Version: CKafka version (v1.1.1/2.4.2/0.10.2）
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Version: str
+        :param Platform: Whether it is Pro Edition or Standard Edition.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Platform: str
+        :param SoldOut: Whether it has been sold out. `true`: sold out.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SoldOut: bool
+        """
+        self.Flag = None
+        self.Version = None
+        self.Platform = None
+        self.SoldOut = None
+
+
+    def _deserialize(self, params):
+        self.Flag = params.get("Flag")
+        self.Version = params.get("Version")
+        self.Platform = params.get("Platform")
+        self.SoldOut = params.get("SoldOut")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SubscribedInfo(AbstractModel):
     """Subscribed message entity
 
@@ -4520,6 +4560,9 @@ class ZoneInfo(AbstractModel):
         :type Exflag: str
         :param SoldOut: JSON object. The key is the model. The value `true` means “sold out”, and `false` means “not sold out”.
         :type SoldOut: str
+        :param SalesInfo: Information on whether Standard Edition has been sold out.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SalesInfo: list of SaleInfo
         """
         self.ZoneId = None
         self.IsInternalApp = None
@@ -4529,6 +4572,7 @@ class ZoneInfo(AbstractModel):
         self.ZoneStatus = None
         self.Exflag = None
         self.SoldOut = None
+        self.SalesInfo = None
 
 
     def _deserialize(self, params):
@@ -4540,6 +4584,12 @@ class ZoneInfo(AbstractModel):
         self.ZoneStatus = params.get("ZoneStatus")
         self.Exflag = params.get("Exflag")
         self.SoldOut = params.get("SoldOut")
+        if params.get("SalesInfo") is not None:
+            self.SalesInfo = []
+            for item in params.get("SalesInfo"):
+                obj = SaleInfo()
+                obj._deserialize(item)
+                self.SalesInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

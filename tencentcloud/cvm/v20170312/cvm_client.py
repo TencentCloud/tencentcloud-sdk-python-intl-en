@@ -747,7 +747,7 @@ class CvmClient(AbstractClient):
 
 
     def DescribeRegions(self, request):
-        """This API is used to query regions.
+        """(Suspended) This API is used to query the information of regions. Due to platform policy, the update of this API has been temporarily stopped. Please try the new one as described in https://intl.cloud.tencent.com/document/product/1278/55255?from_cn_redirect=1
 
         :param request: Request instance for DescribeRegions.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeRegionsRequest`
@@ -976,7 +976,7 @@ class CvmClient(AbstractClient):
 
 
     def ImportImage(self, request):
-        """This API is used to import images. Imported images can be used to create instances.
+        """The API is used to import an image. The image imported can be used to create instances. Currently, this API can import images in formats like RAW, VHD, QCOW2, and VMDK.
 
         :param request: Request instance for ImportImage.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ImportImageRequest`
@@ -1336,11 +1336,12 @@ class CvmClient(AbstractClient):
 
 
     def ModifyInstancesAttribute(self, request):
-        """This API is used to modify the attributes of an instance. Currently you can only use the API to modify the name and the associated security groups of the instance.
+        """The API is used to modify the attributes of an instance. Currently, you can only use the API to modify the name and the associated security groups of the instance.
 
-        * Instance names are used only for users' convenience. Tencent Cloud does not use the name for ticket submission or instance management.
-        * Batch operations are supported. The maximum number of instances in each request is 100.
-        * When you change the security groups associated with an instance, the original security groups will be disassociated.
+        * **Instance names** are used only for users' convenience. Tencent Cloud does not use these names for online support or instance management.
+        * Batch operations are supported. The maximum number of Batch instances in each request is 100.
+        * When you modify the security groups associated with an instance, the original security groups will be disassociated.
+        * You can use the [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) API to query the instance operation result. If the 'LatestOperationState' in the response is **SUCCESS**, the operation is successful.
 
         :param request: Request instance for ModifyInstancesAttribute.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyInstancesAttributeRequest`

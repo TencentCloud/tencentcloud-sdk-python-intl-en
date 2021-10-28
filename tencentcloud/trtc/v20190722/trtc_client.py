@@ -27,7 +27,7 @@ class TrtcClient(AbstractClient):
 
 
     def CreatePicture(self, request):
-        """This API is no longer used, and an error will occur if you call it. To use the feature provided by this API, please see [Console Guide > Application Management > Material Management](https://intl.cloud.tencent.com/document/product/647/50769?from_cn_redirect=1).
+        """This API is used to add custom background or watermark images during [On-Cloud MixTranscoding](https://intl.cloud.tencent.com/document/product/647/16827?from_cn_redirect=1). If you do not need to add such images frequently, we recommend you add them in the console via **Application Management** > **[Material Management](https://intl.cloud.tencent.com/document/product/647/50769?from_cn_redirect=1)**.
 
         :param request: Request instance for CreatePicture.
         :type request: :class:`tencentcloud.trtc.v20190722.models.CreatePictureRequest`
@@ -83,7 +83,7 @@ class TrtcClient(AbstractClient):
 
 
     def DeletePicture(self, request):
-        """This API is no longer used, and an error will occur if you call it. To use the feature provided by this API, please see [Console Guide > Application Management > Material Management](https://intl.cloud.tencent.com/document/product/647/50769?from_cn_redirect=1).
+        """This API is used to delete custom background or watermark images during [On-Cloud MixTranscoding](https://intl.cloud.tencent.com/document/product/647/16827?from_cn_redirect=1). If you do not need to delete such images frequently, we recommend you delete them in the console via **Application Management** > **[Material Management](https://intl.cloud.tencent.com/document/product/647/50769?from_cn_redirect=1)**.
 
         :param request: Request instance for DeletePicture.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DeletePictureRequest`
@@ -139,8 +139,8 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeCallDetail(self, request):
-        """This API is used to query the user list and call quality data of a specified time range in the last 14 days. When `DataType` is not null, data of up to 6 users during a period of up to 1 hour can be queried each time, and the period can start on one day and end on the next. When `DataType` and `UserIds` are null, 6 users are queried by default, and data of up to 100 users can be displayed on each page (`PageSize` set to 100 or lower). This API is used to query call quality and is not recommended for billing.
-        Note: you are not advised to use the API for the processing of real-time business logic.
+        """This API is used to query the user list and call quality data of a specified time range in the last 14 days. When `DataType` is not null, data of up to 6 users during a period of up to 1 hour can be queried each time, and the period can start on one day and end on the next. When `DataType` and `UserIds` are null, 6 users are queried by default, and data of up to 100 users can be displayed on each page (`PageSize` set to 100 or smaller). This API is used to query call quality and is not recommended for billing.
+        **Note**: You can use this API to query or check historical data, but not for real-time key business logic.
 
         :param request: Request instance for DescribeCallDetail.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeCallDetailRequest`
@@ -224,7 +224,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribePicture(self, request):
-        """This API is no longer used, and an error will occur if you call it. To use the feature provided by this API, please see [Console Guide > Application Management > Material Management](https://intl.cloud.tencent.com/document/product/647/50769?from_cn_redirect=1).
+        """This API is used to query the information of custom background or watermark images during [On-Cloud MixTranscoding](https://intl.cloud.tencent.com/document/product/647/16827?from_cn_redirect=1). If you do not need to query such information frequently, we recommend you query it in the console via **Application Management** > **[Material Management](https://intl.cloud.tencent.com/document/product/647/50769?from_cn_redirect=1)**.
 
         :param request: Request instance for DescribePicture.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribePictureRequest`
@@ -337,7 +337,7 @@ class TrtcClient(AbstractClient):
 
     def DescribeRoomInformation(self, request):
         """This API is used to query the room list of an `SDKAppID` in the last 14 days. It returns 10 calls by default and can return up to 100 calls per query.
-        Note: you are not advised to use the API for the processing of real-time business logic.
+        **Note**: You can use this API to query or check historical data, but not for real-time key business logic.
 
         :param request: Request instance for DescribeRoomInformation.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeRoomInformationRequest`
@@ -365,8 +365,8 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeUserInformation(self, request):
-        """This API is used to query the user list of a specified time range (up to 4 hours) in the last 14 days. Data of 6 users is displayed on each page by default, and data of up to 100 users can be displayed on each page (`PageSize` set to 100 or lower).
-        Note: you are not advised to use the API for the processing of real-time business logic.
+        """This API is used to query the user list of a specified time range (up to 4 hours) in the last 14 days. Data of 6 users is displayed on each page by default, and data of up to 100 users can be displayed on each page (`PageSize` set to 100 or smaller).
+        **Note**: You can use this API to query or check historical data, but not for real-time key business logic.
 
         :param request: Request instance for DescribeUserInformation.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeUserInformationRequest`
@@ -450,7 +450,7 @@ class TrtcClient(AbstractClient):
 
 
     def ModifyPicture(self, request):
-        """This API is no longer used, and an error will occur if you call it. To use the feature provided by this API, please see [Console Guide > Application Management > Material Management](https://intl.cloud.tencent.com/document/product/647/50769?from_cn_redirect=1).
+        """This API is used to modify custom background or watermark images during [On-Cloud MixTranscoding](https://intl.cloud.tencent.com/document/product/647/16827?from_cn_redirect=1). If you do not need to modify such images frequently, we recommend you modify them in the console via **Application Management** > **[Material Management](https://intl.cloud.tencent.com/document/product/647/50769?from_cn_redirect=1)**.
 
         :param request: Request instance for ModifyPicture.
         :type request: :class:`tencentcloud.trtc.v20190722.models.ModifyPictureRequest`
@@ -536,22 +536,25 @@ class TrtcClient(AbstractClient):
     def StartMCUMixTranscode(self, request):
         """This API is used to enable On-Cloud MixTranscoding and specify the position of each channel of image in stream mixing.
 
-        There may be multiple channels of audio/video streams in a TRTC room. You can call this API to request the Tencent Cloud server to combine multiple channels of video images and audio into one channel and specify the position of each image so as to produce just one channel of audio/video stream for recording and live streaming. The mixing stops automatically after a room is destroyed.
+        There may be multiple audio/video streams in a TRTC room. You can call this API to request the Tencent Cloud server to mix the audio and video and specify the position of each image to produce just one audio/video stream for recording and playback. The mixing stops automatically after a room is terminated.
 
         You can use this API to perform the following operations:
         - Set image and audio quality parameters of the final live stream, including video resolution, video bitrate, video frame rate, and audio quality.
-        - Set the layout, i.e., the position of each channel of image. You only need to set it once when enabling On-Cloud MixTranscoding, and the layout engine will automatically arrange images as configured.
+        - Set the layout, i.e., the position of each image. You only need to set it once when enabling On-Cloud MixTranscoding, and the layout engine will automatically arrange images as configured.
         - Set the names of recording files for future playback.
         - Set the stream ID for CDN live streaming.
 
         Currently, On-Cloud MixTranscoding supports the following layout templates:
-        - Floating: the entire screen is covered by the video image of the first user who enters the room, and the images of other users are displayed as small images in horizontal rows in the bottom-left corner in room entry sequence. The screen can accommodate up to 4 rows of 4 small images, which float over the big image. Up to 1 big image and 15 small images can be displayed. A user sending audio only will still occupy an image spot.
-        - Grid: the images of the users split the entire screen evenly. The more the users, the smaller the image dimensions. Up to 16 images can be displayed. A user sending audio only will still occupy an image spot.
-        - Screen sharing: this is designed for video conferencing and online education. The shared screen (image of the anchor) is always displayed as the big image, which occupies the left half of the screen, and the images of other users occupy the right half in up to 2 columns of up to 8 small images each. Up to 1 big image and 15 small images can be displayed. If the aspect ratio of upstream images do not match that of output images, the big image on the left will be scaled and displayed in whole, while the small images on the right will be cropped.
-        - Picture-in-picture: this is designed for mixing the dual-channel (small and big) image or big image with the audio of other users. The small images float over the big image. You can specify which users to be displayed as the big/small images as well as the positions of the small images. Up to 2 images are supported.
-        - Custom: this is designed for cases where you want to specify the image positions of users in the mixed stream or preset image positions. If users are assigned to preset positions, the layout engine will reserve the positions for the users; if not, users will occupy the positions in room entry sequence. Once all preset positions are occupied, TRTC will stop mixing the audio and images of other users. If the placeholding feature is enabled for a custom template (`PlaceHolderMode` in `LayoutParams` set to 1), but a user for whom a place is reserved is not sending video data, the position will show the corresponding placeholder image (`PlaceImageId`).
+        - Floating: The entire screen is covered by the video image of the first user who enters the room, and the images of other users are displayed as small images in rows in the bottom-left corner in room entry sequence. The screen allows up to 4 rows of 4 small images, which float over the big image. Up to 1 big image and 15 small images can be displayed. A user sending audio only will still occupy an image spot.
+        - Grid: The images of all users split the entire screen evenly. The more users, the smaller the image dimensions. Up to 16 images can be displayed. A user sending audio only will still occupy an image spot.
+        - Screen sharing: This is designed for video conferencing and online education. The shared screen (or camera image of the anchor) is always displayed as the big image, which occupies the left half of the screen, and the images of other users occupy the right half in up to 2 columns of up to 8 small images each. Up to 1 big image and 15 small images can be displayed. If the upstream aspect ratio does not match the output, the big image on the left will be scaled and displayed in whole, while the small images on the right will be cropped.
+        - Picture-in-picture: This template mixes the big and small images or big image of a user with the audio of other users. The small image floats over the big image. You can specify the user whose small and big images are displayed, as well as the position of the small image. This template can display at most 2 images.
+        - Custom: This is designed for cases where you want to specify the image positions of users in the mixed stream or preset image positions. If users are assigned to preset positions, the layout engine will reserve the positions for the users; if not, users will occupy the positions in room entry sequence. Once all preset positions are occupied, TRTC will stop mixing the audio and video of other users. If the place-holding feature is enabled for a custom template (by setting `PlaceHolderMode` in `LayoutParams` to `1`) and a user for whom a place is held is not sending video, the position will show the specified placeholder image (`PlaceImageId`).
 
-        Note: only applications created on and after January 9, 2020 can call this API directly. Applications created before use the stream mixing service of LVB by default. If you want to switch to MCU On-Cloud MixTranscoding, please [submit a ticket](https://console.cloud.tencent.com/workorder/category).
+        Notes:
+        1. **As On-Cloud MixTranscoding is a paid feature, you will be charged for calling this API. For details, see [Billing of On-Cloud MixTranscoding](https://intl.cloud.tencent.com/document/product/647/49446?from_cn_redirect=1).**
+        2. You can call this API only if your application is created on or after January 9, 2020. Applications created before use the stream mixing service of CSS by default. If you want to switch to MCU On-Cloud MixTranscoding, please [submit a ticket](https://console.cloud.tencent.com/workorder/category).
+        3. You cannot use the server and client stream mixing APIs at the same time.
 
         :param request: Request instance for StartMCUMixTranscode.
         :type request: :class:`tencentcloud.trtc.v20190722.models.StartMCUMixTranscodeRequest`
@@ -596,7 +599,10 @@ class TrtcClient(AbstractClient):
         - Picture-in-picture: this template mixes the big and small images or big image of a user with the audio of other users. The small image floats over the big image. You can specify the user whose big and small images are displayed and the position of the small image.
         - Custom: you can use custom templates to specify the image positions of users in mixed streams or preset image positions. If users are assigned to preset positions, the layout engine will reserve the positions for the users; if not, users will occupy the positions in room entry sequence. Once all preset positions are occupied, TRTC will stop mixing the audio and images of other users. If the placeholding feature is enabled for a custom template (`PlaceHolderMode` in `LayoutParams` is set to 1), but a user for whom a place is reserved is not sending video data, the position will show the corresponding placeholder image (`PlaceImageId`).
 
-        Note: only applications created on and after January 9, 2020 can call this API directly. Those created before use the stream mixing service of CSS by default. If you want to switch to MCU On-Cloud MixTranscoding, please [submit a ticket](https://console.cloud.tencent.com/workorder/category).
+        Notes:
+        1. **As On-Cloud MixTranscoding is a paid feature, you will be charged for calling this API. For details, see [Billing of On-Cloud MixTranscoding](https://intl.cloud.tencent.com/document/product/647/49446?from_cn_redirect=1).**
+        2. You can call this API only if your application is created on or after January 9, 2020. Applications created before use the stream mixing service of CSS by default. If you want to switch to MCU On-Cloud MixTranscoding, please [submit a ticket](https://console.cloud.tencent.com/workorder/category).
+        3. You cannot use the server and client stream mixing APIs at the same time.
 
         :param request: Request instance for StartMCUMixTranscodeByStrRoomId.
         :type request: :class:`tencentcloud.trtc.v20190722.models.StartMCUMixTranscodeByStrRoomIdRequest`
