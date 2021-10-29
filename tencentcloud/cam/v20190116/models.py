@@ -871,6 +871,47 @@ class CreateServiceLinkedRoleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateUserSAMLConfigRequest(AbstractModel):
+    """CreateUserSAMLConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SAMLMetadataDocument: SAML metadata document, which must be Base64 encoded.
+        :type SAMLMetadataDocument: str
+        """
+        self.SAMLMetadataDocument = None
+
+
+    def _deserialize(self, params):
+        self.SAMLMetadataDocument = params.get("SAMLMetadataDocument")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUserSAMLConfigResponse(AbstractModel):
+    """CreateUserSAMLConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteGroupRequest(AbstractModel):
     """DeleteGroup request structure.
 
@@ -1507,6 +1548,37 @@ class DescribeSubAccountsResponse(AbstractModel):
                 obj = SubAccountUser()
                 obj._deserialize(item)
                 self.SubAccounts.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUserSAMLConfigRequest(AbstractModel):
+    """DescribeUserSAMLConfig request structure.
+
+    """
+
+
+class DescribeUserSAMLConfigResponse(AbstractModel):
+    """DescribeUserSAMLConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SAMLMetadata: SAML metadata document.
+        :type SAMLMetadata: str
+        :param Status: Status. `0`: not set, `11`: enabled, `2`: disabled.
+        :type Status: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SAMLMetadata = None
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SAMLMetadata = params.get("SAMLMetadata")
+        self.Status = params.get("Status")
         self.RequestId = params.get("RequestId")
 
 
@@ -4295,6 +4367,51 @@ class UpdateUserRequest(AbstractModel):
 
 class UpdateUserResponse(AbstractModel):
     """UpdateUser response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateUserSAMLConfigRequest(AbstractModel):
+    """UpdateUserSAMLConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operate: Type of the modification operation. `enable`: enable, `disable`: disable, `updateSAML`: modify metadata document.
+        :type Operate: str
+        :param SAMLMetadataDocument: Metadata document, which must be Base64 encoded. This parameter is required only when the value of `Operate` is `updateSAML`.
+        :type SAMLMetadataDocument: str
+        """
+        self.Operate = None
+        self.SAMLMetadataDocument = None
+
+
+    def _deserialize(self, params):
+        self.Operate = params.get("Operate")
+        self.SAMLMetadataDocument = params.get("SAMLMetadataDocument")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateUserSAMLConfigResponse(AbstractModel):
+    """UpdateUserSAMLConfig response structure.
 
     """
 

@@ -362,6 +362,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateUserSAMLConfig(self, request):
+        """This API is used to create user SAML configurations.
+
+        :param request: Request instance for CreateUserSAMLConfig.
+        :type request: :class:`tencentcloud.cam.v20190116.models.CreateUserSAMLConfigRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.CreateUserSAMLConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateUserSAMLConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateUserSAMLConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteGroup(self, request):
         """This API is used to delete a user group.
 
@@ -740,6 +768,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSubAccountsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUserSAMLConfig(self, request):
+        """This API is used to query user SAML configurations.
+
+        :param request: Request instance for DescribeUserSAMLConfig.
+        :type request: :class:`tencentcloud.cam.v20190116.models.DescribeUserSAMLConfigRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DescribeUserSAMLConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUserSAMLConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUserSAMLConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1805,6 +1861,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateUserSAMLConfig(self, request):
+        """This API is used to modify user SAML configurations.
+
+        :param request: Request instance for UpdateUserSAMLConfig.
+        :type request: :class:`tencentcloud.cam.v20190116.models.UpdateUserSAMLConfigRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.UpdateUserSAMLConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateUserSAMLConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateUserSAMLConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
