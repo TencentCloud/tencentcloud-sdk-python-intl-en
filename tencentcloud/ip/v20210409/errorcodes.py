@@ -17,6 +17,9 @@
 # CAM signature/authentication error. Please try again later.
 AUTHFAILURE = 'AuthFailure'
 
+# Operation failed.
+FAILEDOPERATION = 'FailedOperation'
+
 # The email address has already been registered.
 FAILEDOPERATION_MAILISREGISTERED = 'FailedOperation.MailIsRegistered'
 

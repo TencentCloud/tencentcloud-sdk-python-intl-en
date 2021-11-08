@@ -18,6 +18,51 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AssignClientCreditRequest(AbstractModel):
+    """AssignClientCredit request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param QuotaNum: Specific value of the credit allocated to the customer
+        :type QuotaNum: float
+        :param ClientUin: Customer UIN
+        :type ClientUin: int
+        """
+        self.QuotaNum = None
+        self.ClientUin = None
+
+
+    def _deserialize(self, params):
+        self.QuotaNum = params.get("QuotaNum")
+        self.ClientUin = params.get("ClientUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssignClientCreditResponse(AbstractModel):
+    """AssignClientCredit response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CountryCodeItem(AbstractModel):
     """Country/region code list
 
@@ -165,3 +210,245 @@ class GetCountryCodesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Data.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class QueryAgentCreditRequest(AbstractModel):
+    """QueryAgentCredit request structure.
+
+    """
+
+
+class QueryAgentCreditResponse(AbstractModel):
+    """QueryAgentCredit response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AssignedCreditAmount: Allocated credit
+        :type AssignedCreditAmount: float
+        :param CustomerCreditAmount: Total credit
+        :type CustomerCreditAmount: float
+        :param RemainingCreditAmount: Remaining credit
+        :type RemainingCreditAmount: float
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AssignedCreditAmount = None
+        self.CustomerCreditAmount = None
+        self.RemainingCreditAmount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AssignedCreditAmount = params.get("AssignedCreditAmount")
+        self.CustomerCreditAmount = params.get("CustomerCreditAmount")
+        self.RemainingCreditAmount = params.get("RemainingCreditAmount")
+        self.RequestId = params.get("RequestId")
+
+
+class QueryClientListItem(AbstractModel):
+    """Reseller's customer list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Name: str
+        :param Type: Type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        :param Mobile: Phone
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Mobile: str
+        :param Email: Email
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Email: str
+        :param Arrears: Overdue payment flag
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Arrears: str
+        :param AssociationTime: Binding time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AssociationTime: str
+        :param RecentExpiry: Expiration time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RecentExpiry: str
+        :param ClientUin: Customer UIN
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ClientUin: int
+        :param CreditAmount: Credit granted to customer
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CreditAmount: float
+        :param RestCreditAmount: Customer's remaining credit
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RestCreditAmount: float
+        """
+        self.Name = None
+        self.Type = None
+        self.Mobile = None
+        self.Email = None
+        self.Arrears = None
+        self.AssociationTime = None
+        self.RecentExpiry = None
+        self.ClientUin = None
+        self.CreditAmount = None
+        self.RestCreditAmount = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.Mobile = params.get("Mobile")
+        self.Email = params.get("Email")
+        self.Arrears = params.get("Arrears")
+        self.AssociationTime = params.get("AssociationTime")
+        self.RecentExpiry = params.get("RecentExpiry")
+        self.ClientUin = params.get("ClientUin")
+        self.CreditAmount = params.get("CreditAmount")
+        self.RestCreditAmount = params.get("RestCreditAmount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryClientListRequest(AbstractModel):
+    """QueryClientList request structure.
+
+    """
+
+
+class QueryClientListResponse(AbstractModel):
+    """QueryClientList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: Queries the list of customers
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Data: list of QueryClientListItem
+        :param Total: Number of customers
+        :type Total: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Data = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = QueryClientListItem()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class QueryCreditHistoryRequest(AbstractModel):
+    """QueryCreditHistory request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClientUin: Customer UIN
+        :type ClientUin: int
+        :param Page: Page number
+        :type Page: int
+        :param PageRow: Number of data entries per page
+        :type PageRow: int
+        """
+        self.ClientUin = None
+        self.Page = None
+        self.PageRow = None
+
+
+    def _deserialize(self, params):
+        self.ClientUin = params.get("ClientUin")
+        self.Page = params.get("Page")
+        self.PageRow = params.get("PageRow")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryCreditHistoryResponse(AbstractModel):
+    """QueryCreditHistory response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: Total number of records
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Total: int
+        :param History: List of record details
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type History: list of QueryUinCreditHistoryData
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.History = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("History") is not None:
+            self.History = []
+            for item in params.get("History"):
+                obj = QueryUinCreditHistoryData()
+                obj._deserialize(item)
+                self.History.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class QueryUinCreditHistoryData(AbstractModel):
+    """Queries reseller's credit allocation records and returns individual records
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CreditAssignUin: Credit allocatee UIN
+        :type CreditAssignUin: int
+        :param AssginTime: Allocation time
+        :type AssginTime: str
+        :param Operator: Operator
+        :type Operator: str
+        :param CreditAmount: Allocated credit value
+        :type CreditAmount: float
+        """
+        self.CreditAssignUin = None
+        self.AssginTime = None
+        self.Operator = None
+        self.CreditAmount = None
+
+
+    def _deserialize(self, params):
+        self.CreditAssignUin = params.get("CreditAssignUin")
+        self.AssginTime = params.get("AssginTime")
+        self.Operator = params.get("Operator")
+        self.CreditAmount = params.get("CreditAmount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

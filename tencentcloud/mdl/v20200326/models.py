@@ -1449,19 +1449,25 @@ class DrmSettingsInfo(AbstractModel):
         :param State: Whether to enable DRM encryption. Valid values: `CLOSE` (disable), `OPEN` (enable). Default value: `CLOSE`
 DRM encryption is supported only for HLS, DASH, HLS_ARCHIVE, DASH_ARCHIVE, HLS_MEDIAPACKAGE, and DASH_MEDIAPACKAGE outputs.
         :type State: str
-        :param Scheme: This parameter can be set to `CustomDRMKeys` or left empty.
-CustomDRMKeys means encryption keys customized by users.
+        :param Scheme: Valid values: `CustomDRMKeys` (default value), `SDMCDRM`
+`CustomDRMKeys` means encryption keys customized by users.
+`SDMCDRM` means the DRM key management system of SDMC.
         :type Scheme: str
-        :param ContentId: If `Scheme` is set to `CustomDRMKeys`, this parameter is required and should be specified by the user.
+        :param ContentId: If `Scheme` is set to `CustomDRMKeys`, this parameter is required.
+If `Scheme` is set to `SDMCDRM`, this parameter is optional. It supports digits, letters, hyphens, and underscores and must contain 1 to 36 characters. If it is not specified, the value of `ChannelId` will be used.
         :type ContentId: str
         :param Keys: The key customized by the content user, which is required when `Scheme` is set to CustomDRMKeys.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Keys: list of DrmKey
+        :param SDMCSettings: SDMC key configuration. This parameter is used when `Scheme` is set to `SDMCDRM`.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type SDMCSettings: :class:`tencentcloud.mdl.v20200326.models.SDMCSettingsInfo`
         """
         self.State = None
         self.Scheme = None
         self.ContentId = None
         self.Keys = None
+        self.SDMCSettings = None
 
 
     def _deserialize(self, params):
@@ -1474,6 +1480,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = DrmKey()
                 obj._deserialize(item)
                 self.Keys.append(obj)
+        if params.get("SDMCSettings") is not None:
+            self.SDMCSettings = SDMCSettingsInfo()
+            self.SDMCSettings._deserialize(params.get("SDMCSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2351,6 +2360,57 @@ class RegionInfo(AbstractModel):
         
 
 
+class SDMCSettingsInfo(AbstractModel):
+    """SDMC DRM configuration information. This parameter is valid only when `Scheme` is set to `SDMCDRM`.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Uid: User ID in the SDMC DRM system
+        :type Uid: str
+        :param Tracks: Tracks of the SDMC DRM system. This parameter is valid for DASH output groups.
+`1`: audio
+`2`: SD
+`4`: HD
+`8`: UHD1
+`16`: UHD2
+
+Default value: `31` (audio + SD + HD + UHD1 + UHD2)
+        :type Tracks: int
+        :param SecretId: Key ID in the SDMC DRM system; required
+        :type SecretId: str
+        :param SecretKey: Key in the SDMC DRM system; required
+        :type SecretKey: str
+        :param Url: Key request URL of the SDMC DRM system, which is `https://uat.multidrm.tv/cpix/2.2/getcontentkey` by default
+        :type Url: str
+        :param TokenName: Token name in an SDMC key request URL, which is `token` by default
+        :type TokenName: str
+        """
+        self.Uid = None
+        self.Tracks = None
+        self.SecretId = None
+        self.SecretKey = None
+        self.Url = None
+        self.TokenName = None
+
+
+    def _deserialize(self, params):
+        self.Uid = params.get("Uid")
+        self.Tracks = params.get("Tracks")
+        self.SecretId = params.get("SecretId")
+        self.SecretKey = params.get("SecretKey")
+        self.Url = params.get("Url")
+        self.TokenName = params.get("TokenName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Scte35SettingsInfo(AbstractModel):
     """SCTE-35 configuration information.
 
@@ -2662,6 +2722,9 @@ Note: this field may return `null`, indicating that no valid value was found.
         :param StreamPackageSettings: StreamPackage configuration information, which is required if the output type is StreamPackage
 Note: this field may return `null`, indicating that no valid value was found.
         :type StreamPackageSettings: :class:`tencentcloud.mdl.v20200326.models.StreamPackageSettingsInfo`
+        :param TimeShiftSettings: Time-shift configuration information
+Note: This field may return `null`, indicating that no valid value was found.
+        :type TimeShiftSettings: :class:`tencentcloud.mdl.v20200326.models.TimeShiftSettingsInfo`
         """
         self.Name = None
         self.Type = None
@@ -2671,6 +2734,7 @@ Note: this field may return `null`, indicating that no valid value was found.
         self.DrmSettings = None
         self.DashRemuxSettings = None
         self.StreamPackageSettings = None
+        self.TimeShiftSettings = None
 
 
     def _deserialize(self, params):
@@ -2700,6 +2764,9 @@ Note: this field may return `null`, indicating that no valid value was found.
         if params.get("StreamPackageSettings") is not None:
             self.StreamPackageSettings = StreamPackageSettingsInfo()
             self.StreamPackageSettings._deserialize(params.get("StreamPackageSettings"))
+        if params.get("TimeShiftSettings") is not None:
+            self.TimeShiftSettings = TimeShiftSettingsInfo()
+            self.TimeShiftSettings._deserialize(params.get("TimeShiftSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2837,6 +2904,41 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class TimeShiftSettingsInfo(AbstractModel):
+    """Time-shift configuration. This parameter is valid only for HLS_ARCHIVE and DASH_ARCHIVE output groups.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param State: Whether to enable time shifting. Valid values: `OPEN`; `CLOSE`
+Note: This field may return `null`, indicating that no valid value was found.
+        :type State: str
+        :param PlayDomain: Domain name bound for time shifting
+Note: This field may return `null`, indicating that no valid value was found.
+        :type PlayDomain: str
+        :param StartoverWindow: Allowable time-shift period (s). Value range: [600, 1209600]. Default value: 300
+Note: This field may return `null`, indicating that no valid value was found.
+        :type StartoverWindow: int
+        """
+        self.State = None
+        self.PlayDomain = None
+        self.StartoverWindow = None
+
+
+    def _deserialize(self, params):
+        self.State = params.get("State")
+        self.PlayDomain = params.get("PlayDomain")
+        self.StartoverWindow = params.get("StartoverWindow")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TimingSettingsReq(AbstractModel):
     """Event trigger time settings
 
@@ -2878,14 +2980,24 @@ class TimingSettingsResp(AbstractModel):
         :param Time: Not empty if `StartType` is `FIXED_TIME`
 UTC time, such as `2020-01-01T12:00:00Z`
         :type Time: str
+        :param StartTime: This parameter cannot be empty if `EventType` is `TIMED_RECORD`.
+It indicates the start time for recording in UTC format (e.g., `2020-01-01T12:00:00Z`) and must be at least 1 minute later than the current time.
+        :type StartTime: str
+        :param EndTime: This parameter cannot be empty if `EventType` is `TIMED_RECORD`.
+It indicates the end time for recording in UTC format (e.g., `2020-01-01T12:00:00Z`) and must be at least 1 minute later than the start time for recording.
+        :type EndTime: str
         """
         self.StartType = None
         self.Time = None
+        self.StartTime = None
+        self.EndTime = None
 
 
     def _deserialize(self, params):
         self.StartType = params.get("StartType")
         self.Time = params.get("Time")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

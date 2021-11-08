@@ -281,6 +281,8 @@ class BackupInfo(AbstractModel):
         :type Method: str
         :param Way: Backup mode. Valid values: `manual` (manual backup), `automatic` (automatic backup).
         :type Way: str
+        :param ManualBackupName: Manual backup alias
+        :type ManualBackupName: str
         """
         self.Name = None
         self.Size = None
@@ -295,6 +297,7 @@ class BackupInfo(AbstractModel):
         self.StartTime = None
         self.Method = None
         self.Way = None
+        self.ManualBackupName = None
 
 
     def _deserialize(self, params):
@@ -311,6 +314,7 @@ class BackupInfo(AbstractModel):
         self.StartTime = params.get("StartTime")
         self.Method = params.get("Method")
         self.Way = params.get("Way")
+        self.ManualBackupName = params.get("ManualBackupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -826,10 +830,13 @@ class CreateBackupRequest(AbstractModel):
         :param BackupDBTableList: Information of the table to be backed up. If this parameter is not set, the entire instance will be backed up by default. It can be set only in logical backup (i.e., BackupMethod = logical). The specified table must exist; otherwise, backup may fail.
 For example, if you want to backup tb1 and tb2 in db1 and the entire db2, you should set the parameter as [{"Db": "db1", "Table": "tb1"}, {"Db": "db1", "Table": "tb2"}, {"Db": "db2"} ].
         :type BackupDBTableList: list of BackupItem
+        :param ManualBackupName: Manual backup alias
+        :type ManualBackupName: str
         """
         self.InstanceId = None
         self.BackupMethod = None
         self.BackupDBTableList = None
+        self.ManualBackupName = None
 
 
     def _deserialize(self, params):
@@ -841,6 +848,7 @@ For example, if you want to backup tb1 and tb2 in db1 and the entire db2, you sh
                 obj = BackupItem()
                 obj._deserialize(item)
                 self.BackupDBTableList.append(obj)
+        self.ManualBackupName = params.get("ManualBackupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -915,6 +923,8 @@ which is left empty by default. Specify this parameter when cloning a strong syn
         :type InstanceNodes: int
         :param DeployGroupId: Placement group ID.
         :type DeployGroupId: str
+        :param DryRun: Whether to check the request without creating any instance. Valid values: `true`, `false` (default). After being submitted, the request will be checked to see if it is in correct format and has all required parameters with valid values. An error code is returned if the check failed, and `RequestId` is returned if the check succeeded. After a successful check, no instance will be created if this parameter is set to `true`, whereas an instance will be created and if it is set to `false`.
+        :type DryRun: bool
         """
         self.InstanceId = None
         self.SpecifiedRollbackTime = None
@@ -934,6 +944,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
         self.DeviceType = None
         self.InstanceNodes = None
         self.DeployGroupId = None
+        self.DryRun = None
 
 
     def _deserialize(self, params):
@@ -960,6 +971,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
         self.DeviceType = params.get("DeviceType")
         self.InstanceNodes = params.get("InstanceNodes")
         self.DeployGroupId = params.get("DeployGroupId")
+        self.DryRun = params.get("DryRun")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -999,7 +1011,7 @@ class CreateDBImportJobRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
         :type InstanceId: str
-        :param FileName: Filename. The file should have already been uploaded to Tencent Cloud.
+        :param FileName: Filename. The file must be a .sql file uploaded to Tencent Cloud.
         :type FileName: str
         :param User: TencentDB username
         :type User: str
@@ -1122,6 +1134,10 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type AutoSyncFlag: int
         :param CageId: Financial cage ID.
         :type CageId: str
+        :param AlarmPolicyIdList: The array of alarm policy names, such as ["policy-uyoee9wg"]. If the `AlarmPolicyList` parameter is specified, this parameter is invalid.
+        :type AlarmPolicyIdList: list of str
+        :param DryRun: Whether to check the request without creating any instance. Valid values: `true`, `false` (default). After being submitted, the request will be checked to see if it is in correct format and has all required parameters with valid values. An error code is returned if the check failed, and `RequestId` is returned if the check succeeded. After a successful check, no instance will be created if this parameter is set to `true`, whereas an instance will be created and if it is set to `false`.
+        :type DryRun: bool
         """
         self.GoodsNum = None
         self.Memory = None
@@ -1155,6 +1171,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.Cpu = None
         self.AutoSyncFlag = None
         self.CageId = None
+        self.AlarmPolicyIdList = None
+        self.DryRun = None
 
 
     def _deserialize(self, params):
@@ -1202,6 +1220,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.Cpu = params.get("Cpu")
         self.AutoSyncFlag = params.get("AutoSyncFlag")
         self.CageId = params.get("CageId")
+        self.AlarmPolicyIdList = params.get("AlarmPolicyIdList")
+        self.DryRun = params.get("DryRun")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6374,59 +6394,6 @@ class ModifyRoReplicationDelayRequest(AbstractModel):
 
 class ModifyRoReplicationDelayResponse(AbstractModel):
     """ModifyRoReplicationDelay response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class ModifyRoTypeRequest(AbstractModel):
-    """ModifyRoType request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceId: Instance ID
-        :type InstanceId: str
-        :param SrcRoInstType: The original type of an RO replica. Valid values: `NORMAL` (do not support delayed replication), `DELAY_REPLICATION` (support delayed replication).
-        :type SrcRoInstType: str
-        :param DstRoInstType: The target type of an RO replica. Valid values: `NORMAL` (do not support delayed replication), `DELAY_REPLICATION` (support delayed replication).
-        :type DstRoInstType: str
-        :param ReplicationDelay: Replication delay in seconds. This parameter is required when a regular RO replica is switched to a delayed one. Value range: 1 to 259200.
-        :type ReplicationDelay: int
-        """
-        self.InstanceId = None
-        self.SrcRoInstType = None
-        self.DstRoInstType = None
-        self.ReplicationDelay = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.SrcRoInstType = params.get("SrcRoInstType")
-        self.DstRoInstType = params.get("DstRoInstType")
-        self.ReplicationDelay = params.get("ReplicationDelay")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyRoTypeResponse(AbstractModel):
-    """ModifyRoType response structure.
 
     """
 

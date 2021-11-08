@@ -2279,34 +2279,6 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyRoType(self, request):
-        """This API is used to change a general RO replica to delayed RO replica.
-
-        :param request: Request instance for ModifyRoType.
-        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyRoTypeRequest`
-        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyRoTypeResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ModifyRoType", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyRoTypeResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def ModifyTimeWindow(self, request):
         """This API (ModifyTimeWindow) is used to update the maintenance time window of a TencentDB instance.
 

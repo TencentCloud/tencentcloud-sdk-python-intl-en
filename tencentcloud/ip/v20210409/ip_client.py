@@ -26,6 +26,38 @@ class IpClient(AbstractClient):
     _service = 'ip'
 
 
+    def AssignClientCredit(self, request):
+        """This API is used for a partner to set credit for a customer, such as increasing or lowering the credit and setting it to 0.
+        1. The credit is valid permanently and will not be zeroed regularly.
+        2. The customer's service will be suspended when its available credit sets to 0, so caution should be exercised with this operation.
+        3. To prevent the customer from making new purchases without affecting their use of previously purchased products, the partner can set their available credit to 0 after obtaining the non-stop feature privilege from the channel manager.
+        4. The set credit is an increase to the current available credit and cannot exceed the remaining allocable credit. Setting the credit to a negative value indicates to repossess it. The available credit can be set to 0 at the minimum.
+
+        :param request: Request instance for AssignClientCredit.
+        :type request: :class:`tencentcloud.ip.v20210409.models.AssignClientCreditRequest`
+        :rtype: :class:`tencentcloud.ip.v20210409.models.AssignClientCreditResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AssignClientCredit", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AssignClientCreditResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAccount(self, request):
         """This API is used to create a Tencent Cloud account in the International Partner platform for a customer. After registration, the customer will be automatically bound to the partner account.
 
@@ -72,6 +104,90 @@ class IpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetCountryCodesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryAgentCredit(self, request):
+        """This API is used for a partner to query its own total credit, available credit, and used credit in USD.
+
+        :param request: Request instance for QueryAgentCredit.
+        :type request: :class:`tencentcloud.ip.v20210409.models.QueryAgentCreditRequest`
+        :rtype: :class:`tencentcloud.ip.v20210409.models.QueryAgentCreditResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryAgentCredit", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryAgentCreditResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryClientList(self, request):
+        """This API is used for a partner to query a customer's credit and basic information.
+
+        :param request: Request instance for QueryClientList.
+        :type request: :class:`tencentcloud.ip.v20210409.models.QueryClientListRequest`
+        :rtype: :class:`tencentcloud.ip.v20210409.models.QueryClientListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryClientList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryClientListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryCreditHistory(self, request):
+        """This API is used to query all the credit allocation records of a single customer.
+
+        :param request: Request instance for QueryCreditHistory.
+        :type request: :class:`tencentcloud.ip.v20210409.models.QueryCreditHistoryRequest`
+        :rtype: :class:`tencentcloud.ip.v20210409.models.QueryCreditHistoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryCreditHistory", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryCreditHistoryResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
