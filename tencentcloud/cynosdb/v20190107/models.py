@@ -652,6 +652,8 @@ pause
         :type MinStorageSize: int
         :param MaxStorageSize: The maximum storage corresponding to the compute specifications of the cluster
         :type MaxStorageSize: int
+        :param NetAddrs: Network information of the cluster
+        :type NetAddrs: list of NetAddr
         """
         self.Status = None
         self.UpdateTime = None
@@ -686,6 +688,7 @@ pause
         self.StoragePayMode = None
         self.MinStorageSize = None
         self.MaxStorageSize = None
+        self.NetAddrs = None
 
 
     def _deserialize(self, params):
@@ -732,6 +735,12 @@ pause
         self.StoragePayMode = params.get("StoragePayMode")
         self.MinStorageSize = params.get("MinStorageSize")
         self.MaxStorageSize = params.get("MaxStorageSize")
+        if params.get("NetAddrs") is not None:
+            self.NetAddrs = []
+            for item in params.get("NetAddrs"):
+                obj = NetAddr()
+                obj._deserialize(item)
+                self.NetAddrs.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2401,6 +2410,60 @@ class ModifyBackupConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyClusterParamRequest(AbstractModel):
+    """ModifyClusterParam request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param ParamList: The list of parameters to be modified
+        :type ParamList: list of ParamItem
+        """
+        self.ClusterId = None
+        self.ParamList = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("ParamList") is not None:
+            self.ParamList = []
+            for item in params.get("ParamList"):
+                obj = ParamItem()
+                obj._deserialize(item)
+                self.ParamList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterParamResponse(AbstractModel):
+    """ModifyClusterParam response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AsyncRequestId: Async request ID used to query the result
+        :type AsyncRequestId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
     """ModifyDBInstanceSecurityGroups request structure.
 
@@ -2501,6 +2564,51 @@ class ModifyMaintainPeriodConfigResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class NetAddr(AbstractModel):
+    """Network information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Vip: Private network IP
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Vip: str
+        :param Vport: Private network port number
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Vport: int
+        :param WanDomain: Public network domain name
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type WanDomain: str
+        :param WanPort: Public network port number
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type WanPort: int
+        :param NetType: Network type. Valid values: `ro` (read-only), `rw` or `ha` (read-write)
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type NetType: str
+        """
+        self.Vip = None
+        self.Vport = None
+        self.WanDomain = None
+        self.WanPort = None
+        self.NetType = None
+
+
+    def _deserialize(self, params):
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.WanDomain = params.get("WanDomain")
+        self.WanPort = params.get("WanPort")
+        self.NetType = params.get("NetType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ObjectTask(AbstractModel):

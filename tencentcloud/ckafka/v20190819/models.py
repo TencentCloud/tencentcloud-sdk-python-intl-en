@@ -431,6 +431,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param MaxMessageBytes: Maximum number of message bytes
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MaxMessageBytes: int
+        :param RetentionBytes: Message retention file size.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RetentionBytes: int
         """
         self.Retention = None
         self.MinInsyncReplicas = None
@@ -439,6 +442,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.UncleanLeaderElectionEnable = None
         self.SegmentBytes = None
         self.MaxMessageBytes = None
+        self.RetentionBytes = None
 
 
     def _deserialize(self, params):
@@ -449,6 +453,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.UncleanLeaderElectionEnable = params.get("UncleanLeaderElectionEnable")
         self.SegmentBytes = params.get("SegmentBytes")
         self.MaxMessageBytes = params.get("MaxMessageBytes")
+        self.RetentionBytes = params.get("RetentionBytes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -844,7 +849,7 @@ class CreateTopicRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID
         :type InstanceId: str
-        :param TopicName: Topic name string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`)
+        :param TopicName: Topic name, which is a string of up to 128 characters. It can contain letters, digits, and hyphens (-) and must start with a letter.
         :type TopicName: str
         :param PartitionNum: Number of partitions, which should be greater than 0
         :type PartitionNum: int
@@ -870,6 +875,8 @@ class CreateTopicRequest(AbstractModel):
         :type EnableAclRule: int
         :param AclRuleName: Name of the preset ACL rule.
         :type AclRuleName: str
+        :param RetentionBytes: Message retention file size in bytes, which is an optional parameter. Default value: -1. Currently, the min value that can be entered is 1,048,576 B.
+        :type RetentionBytes: int
         """
         self.InstanceId = None
         self.TopicName = None
@@ -885,6 +892,7 @@ class CreateTopicRequest(AbstractModel):
         self.SegmentMs = None
         self.EnableAclRule = None
         self.AclRuleName = None
+        self.RetentionBytes = None
 
 
     def _deserialize(self, params):
@@ -902,6 +910,7 @@ class CreateTopicRequest(AbstractModel):
         self.SegmentMs = params.get("SegmentMs")
         self.EnableAclRule = params.get("EnableAclRule")
         self.AclRuleName = params.get("AclRuleName")
+        self.RetentionBytes = params.get("RetentionBytes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3546,6 +3555,8 @@ class ModifyTopicAttributesRequest(AbstractModel):
         :type EnableAclRule: int
         :param AclRuleName: Name of the preset ACL rule.
         :type AclRuleName: str
+        :param RetentionBytes: Message retention file size in bytes, which is an optional parameter. Default value: -1. Currently, the min value that can be entered is 1,048,576 B.
+        :type RetentionBytes: int
         """
         self.InstanceId = None
         self.TopicName = None
@@ -3560,6 +3571,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
         self.IpWhiteList = None
         self.EnableAclRule = None
         self.AclRuleName = None
+        self.RetentionBytes = None
 
 
     def _deserialize(self, params):
@@ -3576,6 +3588,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
         self.IpWhiteList = params.get("IpWhiteList")
         self.EnableAclRule = params.get("EnableAclRule")
         self.AclRuleName = params.get("AclRuleName")
+        self.RetentionBytes = params.get("RetentionBytes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
