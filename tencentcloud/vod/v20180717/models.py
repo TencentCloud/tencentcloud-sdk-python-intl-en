@@ -5105,6 +5105,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Message: Error message.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Message: str
+        :param Progress: Progress of a media file composing task. Value range: [0, 100]
+        :type Progress: int
         :param Input: Input of media file composing task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Input: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTaskInput`
@@ -5114,20 +5116,21 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param MetaData: Metadata of a source video.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
-        :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this parameter. It can contain up to 1000 characters.
-        :type SessionContext: str
         :param SessionId: ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is not carried or is left empty, no deduplication will be performed.
         :type SessionId: str
+        :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this parameter. It can contain up to 1000 characters.
+        :type SessionContext: str
         """
         self.TaskId = None
         self.Status = None
         self.ErrCode = None
         self.Message = None
+        self.Progress = None
         self.Input = None
         self.Output = None
         self.MetaData = None
-        self.SessionContext = None
         self.SessionId = None
+        self.SessionContext = None
 
 
     def _deserialize(self, params):
@@ -5135,6 +5138,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Status = params.get("Status")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
+        self.Progress = params.get("Progress")
         if params.get("Input") is not None:
             self.Input = ComposeMediaTaskInput()
             self.Input._deserialize(params.get("Input"))
@@ -5144,8 +5148,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         if params.get("MetaData") is not None:
             self.MetaData = MediaMetaData()
             self.MetaData._deserialize(params.get("MetaData"))
-        self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6857,7 +6861,7 @@ class CreateVodDomainRequest(AbstractModel):
 <li>`Chinese Mainland`</li>
 <li>`Outside Chinese Mainland`</li>
 <li>`Global`</li>
-If `AccelerateArea` is not set, VOD will enable acceleration in `Chinese Mainland` or `Outside Chinese Mainland` according to the region set under the user’s Tencent Cloud account. To enable acceleration in Chinese mainland for a domain name, please finish [ICP filing](https://intl.cloud.tencent.com/document/product/243/18905?from_cn_redirect=1) for it first.
+If `AccelerateArea` is not specified, VOD will enable acceleration in or outside Chinese mainland based on the regional information a user has configured with Tencent Cloud.
         :type AccelerateArea: str
         :param SubAppId: VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
         :type SubAppId: int
@@ -10411,35 +10415,38 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Message: Error message.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Message: str
+        :param Progress: Progress of a video editing task. Value range: [0, 100]
+        :type Progress: int
         :param Input: Input of video editing task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Input: :class:`tencentcloud.vod.v20180717.models.EditMediaTaskInput`
         :param Output: Output of video editing task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.vod.v20180717.models.EditMediaTaskOutput`
+        :param MetaData: Metadata of a source video
+        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param ProcedureTaskId: If a video processing flow is specified when a video editing task is initiated, this field will be the ID of the task flow.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProcedureTaskId: str
-        :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type SessionContext: str
         :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SessionId: str
-        :param MetaData: Metadata of a source video
-        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
+        :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SessionContext: str
         """
         self.TaskId = None
         self.Status = None
         self.ErrCode = None
         self.ErrCodeExt = None
         self.Message = None
+        self.Progress = None
         self.Input = None
         self.Output = None
-        self.ProcedureTaskId = None
-        self.SessionContext = None
-        self.SessionId = None
         self.MetaData = None
+        self.ProcedureTaskId = None
+        self.SessionId = None
+        self.SessionContext = None
 
 
     def _deserialize(self, params):
@@ -10448,18 +10455,19 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ErrCode = params.get("ErrCode")
         self.ErrCodeExt = params.get("ErrCodeExt")
         self.Message = params.get("Message")
+        self.Progress = params.get("Progress")
         if params.get("Input") is not None:
             self.Input = EditMediaTaskInput()
             self.Input._deserialize(params.get("Input"))
         if params.get("Output") is not None:
             self.Output = EditMediaTaskOutput()
             self.Output._deserialize(params.get("Output"))
-        self.ProcedureTaskId = params.get("ProcedureTaskId")
-        self.SessionContext = params.get("SessionContext")
-        self.SessionId = params.get("SessionId")
         if params.get("MetaData") is not None:
             self.MetaData = MediaMetaData()
             self.MetaData._deserialize(params.get("MetaData"))
+        self.ProcedureTaskId = params.get("ProcedureTaskId")
+        self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15440,7 +15448,6 @@ class ModifyVodDomainAccelerateConfigRequest(AbstractModel):
         :param Status: Whether to enable or disable domain name acceleration for the selected region. Valid values:
 <li>`Enabled`: enable</li>
 <li>`Disabled`: disable</li>
-To enable acceleration in Chinese mainland for a domain name, please finish [ICP filing](https://intl.cloud.tencent.com/document/product/243/18905?from_cn_redirect=1) for it first.
         :type Status: str
         :param SubAppId: VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
         :type SubAppId: int

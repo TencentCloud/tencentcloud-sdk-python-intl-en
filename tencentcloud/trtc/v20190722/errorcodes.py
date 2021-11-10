@@ -59,11 +59,11 @@ INTERNALERROR_INTERFACEERR = 'InternalError.InterfaceErr'
 # Unsupported method.
 INTERNALERROR_METHODERR = 'InternalError.MethodErr'
 
-# Failed to query seconds-level monitoring data.
-INTERNALERROR_MONITORQUERYERR = 'InternalError.MonitorQueryErr'
-
 # Invalid parameter.
 INVALIDPARAMETER = 'InvalidParameter'
+
+# `AppId` verification failed.
+INVALIDPARAMETER_APPID = 'InvalidParameter.AppId'
 
 # Invalid audio codec parameter.
 INVALIDPARAMETER_AUDIOENCODEPARAMS = 'InvalidParameter.AudioEncodeParams'

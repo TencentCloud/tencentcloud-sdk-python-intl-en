@@ -251,76 +251,25 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeRealtimeNetwork(self, request):
-        """This API is used to query the network conditions of an `SDKAppID`, including upstream and downstream packet loss, in the last 24 hours on a per-minute basis. The query period must be 1-60 minutes.
+    def DescribeRecordStatistic(self, request):
+        """This API is used to query billable on-cloud recording durations.
 
-        :param request: Request instance for DescribeRealtimeNetwork.
-        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeRealtimeNetworkRequest`
-        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeRealtimeNetworkResponse`
+        - If the period queried is 1 day or shorter, the statistics returned are on a 5-minute basis. If the period queried is longer than 1 day, the statistics returned are on a daily basis.
+        - The period queried in a request cannot be longer than 31 days.
+        - If you query the statistics of the current day, the statistics returned may be inaccurate due to the delay in data collection.
+        - In the daily pay-as-you-go mode, bills for a day are generated the next morning. Therefore, we recommend you query the statistics after 9 AM the next day.
 
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeRealtimeNetwork", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeRealtimeNetworkResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeRealtimeQuality(self, request):
-        """This API is used to query the quality metrics of an `SDKAppID` in the last 24 hours on a per-minute basis, including room entry success rate, instant playback rate of the first frame, and audio/video lag rate. The query period must be 1-60 minutes.
-
-        :param request: Request instance for DescribeRealtimeQuality.
-        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeRealtimeQualityRequest`
-        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeRealtimeQualityResponse`
+        :param request: Request instance for DescribeRecordStatistic.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeRecordStatisticRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeRecordStatisticResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRealtimeQuality", params)
+            body = self.call("DescribeRecordStatistic", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeRealtimeQualityResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeRealtimeScale(self, request):
-        """This API is used to query the scale of an `SDKAppID` in the last 24 hours on a per-minute basis. The query period must be 1-60 minutes.
-
-        :param request: Request instance for DescribeRealtimeScale.
-        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeRealtimeScaleRequest`
-        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeRealtimeScaleResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeRealtimeScale", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeRealtimeScaleResponse()
+                model = models.DescribeRecordStatisticResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -350,6 +299,70 @@ class TrtcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRoomInformationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTrtcInteractiveTime(self, request):
+        """This API is used to query billable audio/video interaction durations.
+        - If the period queried is 1 day or shorter, the statistics returned are on a 5-minute basis. If the period queried is longer than 1 day, the statistics returned are on a daily basis.
+        - The period queried in a request cannot be longer than 31 days.
+        - If you query the statistics of the current day, the statistics returned may be inaccurate due to the delay in data collection.
+        - In the daily pay-as-you-go mode, bills for a day are generated the next morning. Therefore, we recommend you query the statistics after 9 AM the next day.
+
+        :param request: Request instance for DescribeTrtcInteractiveTime.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeTrtcInteractiveTimeRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeTrtcInteractiveTimeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTrtcInteractiveTime", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTrtcInteractiveTimeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTrtcMcuTranscodeTime(self, request):
+        """This API is used to query billable relaying and transcoding durations.
+        - If the period queried is 1 day or shorter, the statistics returned are on a 5-minute basis. If the period queried is longer than 1 day, the statistics returned are on a daily basis.
+        - The period queried in a request cannot be longer than 31 days.
+        - If you query the statistics of the current day, the statistics returned may be inaccurate due to the delay in data collection.
+        - In the daily pay-as-you-go mode, bills for a day are generated the next morning. Therefore, we recommend you query the statistics after 9 AM the next day.
+
+        :param request: Request instance for DescribeTrtcMcuTranscodeTime.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeTrtcMcuTranscodeTimeRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeTrtcMcuTranscodeTimeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTrtcMcuTranscodeTime", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTrtcMcuTranscodeTimeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

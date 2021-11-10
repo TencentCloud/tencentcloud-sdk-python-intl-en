@@ -647,35 +647,30 @@ class DescribePictureResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeRealtimeNetworkRequest(AbstractModel):
-    """DescribeRealtimeNetwork request structure.
+class DescribeRecordStatisticRequest(AbstractModel):
+    """DescribeRecordStatistic request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param StartTime: Query start time in the format of UNIX timestamp, such as 1588031999s, which is a point in time in the last 24 hours.
-        :type StartTime: int
-        :param EndTime: Query end time in the format of local UNIX timestamp, such as 1588031999s.
-        :type EndTime: int
-        :param SdkAppId: User `sdkappid`
-        :type SdkAppId: str
-        :param DataType: Type of data to query
-sendLossRateRaw: upstream packet loss rate;
-recvLossRateRaw: downstream packet loss rate.
-        :type DataType: list of str
+        :param StartTime: Query start date in the format of YYYY-MM-DD
+        :type StartTime: str
+        :param EndTime: Query end date in the format of YYYY-MM-DD
+The period queried in a request cannot be longer than 31 days.
+        :type EndTime: str
+        :param SdkAppId: Application ID, which is optional. If it is specified, duration statistics for the specified application are returned; otherwise, the total durations of all applications are returned.
+        :type SdkAppId: int
         """
         self.StartTime = None
         self.EndTime = None
         self.SdkAppId = None
-        self.DataType = None
 
 
     def _deserialize(self, params):
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
         self.SdkAppId = params.get("SdkAppId")
-        self.DataType = params.get("DataType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -685,159 +680,29 @@ recvLossRateRaw: downstream packet loss rate.
         
 
 
-class DescribeRealtimeNetworkResponse(AbstractModel):
-    """DescribeRealtimeNetwork response structure.
+class DescribeRecordStatisticResponse(AbstractModel):
+    """DescribeRecordStatistic response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Data: Data returned by query
-        :type Data: list of RealtimeData
+        :param SdkAppIdUsages: Duration statistics of the queried application(s)
+        :type SdkAppIdUsages: list of SdkAppIdRecordUsage
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Data = None
+        self.SdkAppIdUsages = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        if params.get("Data") is not None:
-            self.Data = []
-            for item in params.get("Data"):
-                obj = RealtimeData()
+        if params.get("SdkAppIdUsages") is not None:
+            self.SdkAppIdUsages = []
+            for item in params.get("SdkAppIdUsages"):
+                obj = SdkAppIdRecordUsage()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeRealtimeQualityRequest(AbstractModel):
-    """DescribeRealtimeQuality request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param StartTime: Query start time in the format of local UNIX timestamp, such as 1588031999s, which is a point in time in the last 24 hours.
-        :type StartTime: int
-        :param EndTime: Query end time in the format of local UNIX timestamp, such as 1588031999s.
-        :type EndTime: int
-        :param SdkAppId: User `sdkappid`
-        :type SdkAppId: str
-        :param DataType: Type of data to query
-enterTotalSuccPercent: room entry success rate;
-fistFreamInSecRate: instant playback rate of the first frame;
-blockPercent: video lag rate;
-audioBlockPercent: audio lag rate.
-        :type DataType: list of str
-        """
-        self.StartTime = None
-        self.EndTime = None
-        self.SdkAppId = None
-        self.DataType = None
-
-
-    def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.SdkAppId = params.get("SdkAppId")
-        self.DataType = params.get("DataType")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeRealtimeQualityResponse(AbstractModel):
-    """DescribeRealtimeQuality response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Data: Type of returned data
-        :type Data: list of RealtimeData
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.Data = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Data") is not None:
-            self.Data = []
-            for item in params.get("Data"):
-                obj = RealtimeData()
-                obj._deserialize(item)
-                self.Data.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeRealtimeScaleRequest(AbstractModel):
-    """DescribeRealtimeScale request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param StartTime: Query start time in the format of local UNIX timestamp, such as 1588031999s, which is a point in time in the last 24 hours.
-        :type StartTime: int
-        :param EndTime: Query end time in the format of local UNIX timestamp, such as 1588031999s.
-        :type EndTime: int
-        :param SdkAppId: User `sdkappid`
-        :type SdkAppId: str
-        :param DataType: Type of data to query
-`UserNum: number of users in call;
-RoomNum: number of rooms.
-        :type DataType: list of str
-        """
-        self.StartTime = None
-        self.EndTime = None
-        self.SdkAppId = None
-        self.DataType = None
-
-
-    def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.SdkAppId = params.get("SdkAppId")
-        self.DataType = params.get("DataType")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeRealtimeScaleResponse(AbstractModel):
-    """DescribeRealtimeScale response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Data: Returned data array
-        :type Data: list of RealtimeData
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.Data = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Data") is not None:
-            self.Data = []
-            for item in params.get("Data"):
-                obj = RealtimeData()
-                obj._deserialize(item)
-                self.Data.append(obj)
+                self.SdkAppIdUsages.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -912,6 +777,124 @@ class DescribeRoomInformationResponse(AbstractModel):
                 obj = RoomState()
                 obj._deserialize(item)
                 self.RoomList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTrtcInteractiveTimeRequest(AbstractModel):
+    """DescribeTrtcInteractiveTime request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: Query start date in the format of YYYY-MM-DD
+        :type StartTime: str
+        :param EndTime: Query end date in the format of YYYY-MM-DD
+The period queried in a request cannot be longer than 31 days.
+        :type EndTime: str
+        :param SdkAppId: Application ID, which is optional. If it is specified, duration statistics for the specified application are returned; otherwise, the total durations of all applications are returned.
+        :type SdkAppId: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.SdkAppId = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTrtcInteractiveTimeResponse(AbstractModel):
+    """DescribeTrtcInteractiveTime response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Usages: Duration statistics of the queried application(s)
+        :type Usages: list of OneSdkAppIdUsagesInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Usages = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Usages") is not None:
+            self.Usages = []
+            for item in params.get("Usages"):
+                obj = OneSdkAppIdUsagesInfo()
+                obj._deserialize(item)
+                self.Usages.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTrtcMcuTranscodeTimeRequest(AbstractModel):
+    """DescribeTrtcMcuTranscodeTime request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: Query start date in the format of YYYY-MM-DD
+        :type StartTime: str
+        :param EndTime: Query end date in the format of YYYY-MM-DD
+The period queried in a request cannot be longer than 31 days.
+        :type EndTime: str
+        :param SdkAppId: Application ID, which is optional. If it is specified, duration statistics for the specified application are returned; otherwise, the total durations of all applications are returned.
+        :type SdkAppId: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.SdkAppId = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTrtcMcuTranscodeTimeResponse(AbstractModel):
+    """DescribeTrtcMcuTranscodeTime response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Usages: Duration statistics of the queried application(s)
+        :type Usages: list of OneSdkAppIdTranscodeTimeUsagesInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Usages = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Usages") is not None:
+            self.Usages = []
+            for item in params.get("Usages"):
+                obj = OneSdkAppIdTranscodeTimeUsagesInfo()
+                obj._deserialize(item)
+                self.Usages.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1366,6 +1349,80 @@ class ModifyPictureResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class OneSdkAppIdTranscodeTimeUsagesInfo(AbstractModel):
+    """Relaying and transcoding duration statistics
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppIdTranscodeTimeUsages: Array of relaying and transcoding durations
+        :type SdkAppIdTranscodeTimeUsages: list of SdkAppIdTrtcMcuTranscodeTimeUsage
+        :param TotalNum: Number of records returned
+        :type TotalNum: int
+        :param SdkAppId: ID of the application queried. Its value may be an application ID or `total`, which indicates that the total durations of all applications are queried.
+        :type SdkAppId: str
+        """
+        self.SdkAppIdTranscodeTimeUsages = None
+        self.TotalNum = None
+        self.SdkAppId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SdkAppIdTranscodeTimeUsages") is not None:
+            self.SdkAppIdTranscodeTimeUsages = []
+            for item in params.get("SdkAppIdTranscodeTimeUsages"):
+                obj = SdkAppIdTrtcMcuTranscodeTimeUsage()
+                obj._deserialize(item)
+                self.SdkAppIdTranscodeTimeUsages.append(obj)
+        self.TotalNum = params.get("TotalNum")
+        self.SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OneSdkAppIdUsagesInfo(AbstractModel):
+    """Array of billable audio/video interaction durations of a specific application (`SdkAppId`) and array length
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalNum: Number of records returned for the `SdkAppId`
+        :type TotalNum: int
+        :param SdkAppIdTrtcTimeUsages: Array of durations
+        :type SdkAppIdTrtcTimeUsages: list of SdkAppIdTrtcUsage
+        :param SdkAppId: Application ID
+        :type SdkAppId: str
+        """
+        self.TotalNum = None
+        self.SdkAppIdTrtcTimeUsages = None
+        self.SdkAppId = None
+
+
+    def _deserialize(self, params):
+        self.TotalNum = params.get("TotalNum")
+        if params.get("SdkAppIdTrtcTimeUsages") is not None:
+            self.SdkAppIdTrtcTimeUsages = []
+            for item in params.get("SdkAppIdTrtcTimeUsages"):
+                obj = SdkAppIdTrtcUsage()
+                obj._deserialize(item)
+                self.SdkAppIdTrtcTimeUsages.append(obj)
+        self.SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OutputParams(AbstractModel):
     """MCU On-Cloud MixTranscoding output parameters
 
@@ -1575,30 +1632,37 @@ class QualityData(AbstractModel):
         
 
 
-class RealtimeData(AbstractModel):
-    """Returned data of seconds-level monitoring
+class RecordUsage(AbstractModel):
+    """Recording duration statistics
 
     """
 
     def __init__(self):
         r"""
-        :param Content: Returned data
-        :type Content: list of TimeValue
-        :param DataType: Data type field
-        :type DataType: str
+        :param TimeKey: Time point for the statistics, e.g., `2020-09-07` or `2020-09-07 00:05:05`
+        :type TimeKey: str
+        :param Class1VideoTime: SD video duration (s)
+        :type Class1VideoTime: int
+        :param Class2VideoTime: HD video duration (s)
+        :type Class2VideoTime: int
+        :param Class3VideoTime: FHD video duration (s)
+        :type Class3VideoTime: int
+        :param AudioTime: Audio duration (s)
+        :type AudioTime: int
         """
-        self.Content = None
-        self.DataType = None
+        self.TimeKey = None
+        self.Class1VideoTime = None
+        self.Class2VideoTime = None
+        self.Class3VideoTime = None
+        self.AudioTime = None
 
 
     def _deserialize(self, params):
-        if params.get("Content") is not None:
-            self.Content = []
-            for item in params.get("Content"):
-                obj = TimeValue()
-                obj._deserialize(item)
-                self.Content.append(obj)
-        self.DataType = params.get("DataType")
+        self.TimeKey = params.get("TimeKey")
+        self.Class1VideoTime = params.get("Class1VideoTime")
+        self.Class2VideoTime = params.get("Class2VideoTime")
+        self.Class3VideoTime = params.get("Class3VideoTime")
+        self.AudioTime = params.get("AudioTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1780,6 +1844,126 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.UserNumber = params.get("UserNumber")
         self.UserCount = params.get("UserCount")
         self.RoomNumbers = params.get("RoomNumbers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SdkAppIdRecordUsage(AbstractModel):
+    """Recording duration statistics of a specific application (`SdkAppId`)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: Application ID
+        :type SdkAppId: str
+        :param Usages: Durations for the period queried
+        :type Usages: list of RecordUsage
+        """
+        self.SdkAppId = None
+        self.Usages = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        if params.get("Usages") is not None:
+            self.Usages = []
+            for item in params.get("Usages"):
+                obj = RecordUsage()
+                obj._deserialize(item)
+                self.Usages.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SdkAppIdTrtcMcuTranscodeTimeUsage(AbstractModel):
+    """Billable relaying and transcoding duration statistics
+    If the period queried is 1 day or shorter, the statistics returned are on a 5-minute basis. If the period queried is longer than 1 day, the statistics returned are on a daily basis.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TimeKey: Time point for the statistics. e.g., `2020-09-07` or `2020-09-07 00:05:05`
+        :type TimeKey: str
+        :param AudioTime: Audio duration (s)
+        :type AudioTime: int
+        :param VideoTimeSd: SD video duration (s)
+        :type VideoTimeSd: int
+        :param VideoTimeHd: HD video duration (s)
+        :type VideoTimeHd: int
+        :param VideoTimeFhd: FHD video duration (s)
+        :type VideoTimeFhd: int
+        """
+        self.TimeKey = None
+        self.AudioTime = None
+        self.VideoTimeSd = None
+        self.VideoTimeHd = None
+        self.VideoTimeFhd = None
+
+
+    def _deserialize(self, params):
+        self.TimeKey = params.get("TimeKey")
+        self.AudioTime = params.get("AudioTime")
+        self.VideoTimeSd = params.get("VideoTimeSd")
+        self.VideoTimeHd = params.get("VideoTimeHd")
+        self.VideoTimeFhd = params.get("VideoTimeFhd")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SdkAppIdTrtcUsage(AbstractModel):
+    """Audio/Video interaction duration statistics
+    If the period queried is 1 day or shorter, the statistics returned are on a 5-minute basis. If the period queried is longer than 1 day, the statistics returned are on a daily basis.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TimeKey: Time point for the statistics. e.g., `2020-09-07` or `2020-09-07 00:05:05`
+        :type TimeKey: str
+        :param AudioTime: Audio duration (s)
+        :type AudioTime: int
+        :param AudioVideoTime: Audio/Video duration (s)
+This parameter is returned only for users who signed up before October 11, 2019 and have not switched to the [new billing standards](https://intl.cloud.tencent.com/document/product/647/17157?from_cn_redirect=1).
+        :type AudioVideoTime: int
+        :param VideoTimeSd: SD video duration (s)
+        :type VideoTimeSd: int
+        :param VideoTimeHd: HD video duration (s)
+        :type VideoTimeHd: int
+        :param VideoTimeHdp: FHD video duration (s)
+        :type VideoTimeHdp: int
+        """
+        self.TimeKey = None
+        self.AudioTime = None
+        self.AudioVideoTime = None
+        self.VideoTimeSd = None
+        self.VideoTimeHd = None
+        self.VideoTimeHdp = None
+
+
+    def _deserialize(self, params):
+        self.TimeKey = params.get("TimeKey")
+        self.AudioTime = params.get("AudioTime")
+        self.AudioVideoTime = params.get("AudioVideoTime")
+        self.VideoTimeSd = params.get("VideoTimeSd")
+        self.VideoTimeHd = params.get("VideoTimeHd")
+        self.VideoTimeHdp = params.get("VideoTimeHdp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

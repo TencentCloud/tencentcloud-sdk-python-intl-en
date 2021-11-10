@@ -182,7 +182,7 @@ class CreateStreamPackageChannelEndpointRequest(AbstractModel):
         r"""
         :param Id: Channel ID
         :type Id: str
-        :param Name: Channel name
+        :param Name: Endpoint name, which must contain 1 to 32 characters and supports digits, letters, and underscores
         :type Name: str
         :param AuthInfo: Authentication information
         :type AuthInfo: :class:`tencentcloud.mdp.v20200527.models.EndpointAuthInfo`
