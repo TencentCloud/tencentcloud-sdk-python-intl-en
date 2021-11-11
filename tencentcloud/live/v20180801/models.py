@@ -972,7 +972,7 @@ class CreateCommonMixStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MixStreamSessionId: ID of stream mix session (from applying for stream mix to canceling stream mix).
+        :param MixStreamSessionId: ID of a stream mix session (from applying for the stream mix to cancelling it). This parameter can contain up to 80 bytes of letters, digits, and underscores.
         :type MixStreamSessionId: str
         :param InputStreamList: Input stream list for stream mix.
         :type InputStreamList: list of CommonMixInputParam
@@ -3615,6 +3615,11 @@ class DescribeLiveDomainsRequest(AbstractModel):
         :type IsDelayLive: int
         :param DomainPrefix: Domain name prefix.
         :type DomainPrefix: str
+        :param PlayType: Playback region. This parameter is valid only when `DomainType` is set to `1`.
+`1`: Chinese mainland
+`2`: global
+`3`: outside Chinese mainland
+        :type PlayType: int
         """
         self.DomainStatus = None
         self.DomainType = None
@@ -3622,6 +3627,7 @@ class DescribeLiveDomainsRequest(AbstractModel):
         self.PageNum = None
         self.IsDelayLive = None
         self.DomainPrefix = None
+        self.PlayType = None
 
 
     def _deserialize(self, params):
@@ -3631,6 +3637,7 @@ class DescribeLiveDomainsRequest(AbstractModel):
         self.PageNum = params.get("PageNum")
         self.IsDelayLive = params.get("IsDelayLive")
         self.DomainPrefix = params.get("DomainPrefix")
+        self.PlayType = params.get("PlayType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3688,7 +3695,7 @@ class DescribeLiveForbidStreamListRequest(AbstractModel):
 Value: any integer between 1 and 100.
 Default value: 10.
         :type PageSize: int
-        :param StreamName: The stream name to search for
+        :param StreamName: Stream name for query
         :type StreamName: str
         """
         self.PageNum = None
@@ -5305,7 +5312,7 @@ class DescribeScreenShotSheetNumListRequest(AbstractModel):
         :type Zone: str
         :param PushDomains: Push domain name (data at the domain name level after November 1, 2019 can be queried).
         :type PushDomains: list of str
-        :param Granularity: Data dimension. The data has a delay of one and a half hours. Valid values: 1. Minute (5-minute granularity, which supports a maximum query time range of 31 days); 2. Day (1-day granularity, which is the default value and supports a maximum query time range of 186 days).
+        :param Granularity: Data granularity. There is a 1.5-hour delay in data reporting. Valid values: `Minute` (5-minute granularity; query period of up to 31 days); `Day` (1-day granularity based on UTC+8:00; query period of up to 186 days)
         :type Granularity: str
         """
         self.StartTime = None
@@ -5532,7 +5539,7 @@ class DescribeStreamPushInfoListRequest(AbstractModel):
         :type StreamName: str
         :param StartTime: Start time point in the format of `yyyy-mm-dd HH:MM:SS`.
         :type StartTime: str
-        :param EndTime: End time point in the format of `yyyy-mm-dd HH:MM:SS`. The maximum time span is 6 hours. Data for the last 6 days can be queried.
+        :param EndTime: End time in the format of yyyy-mm-dd HH:MM:SS. You can query data in the past 7 days. You’re advised to set the query period to up to 3 hours.
         :type EndTime: str
         :param PushDomain: Push domain name.
         :type PushDomain: str

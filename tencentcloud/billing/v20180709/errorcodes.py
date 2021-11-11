@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# 
+AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
+
 # Summary is being built. Please try again later.
 FAILEDOPERATION_SUMMARYDATANOTREADY = 'FailedOperation.SummaryDataNotReady'
 

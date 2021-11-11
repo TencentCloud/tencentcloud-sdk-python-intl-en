@@ -1492,6 +1492,54 @@ Note: This field may return `null`, indicating that no valid value was found.
         
 
 
+class EventSettingsDestinationReq(AbstractModel):
+    """Destination address information in event settings
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Url: URL of the COS bucket to save recording files
+        :type Url: str
+        """
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventSettingsDestinationResp(AbstractModel):
+    """Destination address information in event settings
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Url: URL of the COS bucket where recording files are saved
+        :type Url: str
+        """
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EventSettingsReq(AbstractModel):
     """Configuration information of an event in the plan
 
@@ -1499,18 +1547,35 @@ class EventSettingsReq(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventType: Only `INPUT_SWITCH` is supported currently. If you do not specify this parameter, `INPUT_SWITCH` will be used.
+        :param EventType: Valid values: `INPUT_SWITCH`, `TIMED_RECORD`. If it is not specified, `INPUT_SWITCH` will be used.
         :type EventType: str
         :param InputAttachment: ID of the input to attach, which is required if `EventType` is `INPUT_SWITCH`
         :type InputAttachment: str
+        :param OutputGroupName: Name of the output group to attach. This parameter is required if `EventType` is `TIMED_RECORD`.
+        :type OutputGroupName: str
+        :param ManifestName: Name of the manifest file for timed recording, which must end with `.m3u8` for HLS and `.mpd` for DASH. This parameter is required if `EventType` is `TIMED_RECORD`.
+        :type ManifestName: str
+        :param Destinations: URL of the COS bucket to save recording files. This parameter is required if `EventType` is `TIMED_RECORD`. It may contain 1 or 2 URLs. The first URL corresponds to pipeline 0 and the second pipeline 1.
+        :type Destinations: list of EventSettingsDestinationReq
         """
         self.EventType = None
         self.InputAttachment = None
+        self.OutputGroupName = None
+        self.ManifestName = None
+        self.Destinations = None
 
 
     def _deserialize(self, params):
         self.EventType = params.get("EventType")
         self.InputAttachment = params.get("InputAttachment")
+        self.OutputGroupName = params.get("OutputGroupName")
+        self.ManifestName = params.get("ManifestName")
+        if params.get("Destinations") is not None:
+            self.Destinations = []
+            for item in params.get("Destinations"):
+                obj = EventSettingsDestinationReq()
+                obj._deserialize(item)
+                self.Destinations.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1531,14 +1596,31 @@ class EventSettingsResp(AbstractModel):
         :type EventType: str
         :param InputAttachment: ID of the input attached, which is not empty if `EventType` is `INPUT_SWITCH`
         :type InputAttachment: str
+        :param OutputGroupName: Name of the output group attached. This parameter is not empty if `EventType` is `TIMED_RECORD`.
+        :type OutputGroupName: str
+        :param ManifestName: Name of the manifest file for timed recording, which ends with `.m3u8` for HLS and `.mpd` for DASH. This parameter is not empty if `EventType` is `TIMED_RECORD`.
+        :type ManifestName: str
+        :param Destinations: URL of the COS bucket where recording files are saved. This parameter is not empty if `EventType` is `TIMED_RECORD`. It may contain 1 or 2 URLs. The first URL corresponds to pipeline 0 and the second pipeline 1.
+        :type Destinations: list of EventSettingsDestinationResp
         """
         self.EventType = None
         self.InputAttachment = None
+        self.OutputGroupName = None
+        self.ManifestName = None
+        self.Destinations = None
 
 
     def _deserialize(self, params):
         self.EventType = params.get("EventType")
         self.InputAttachment = params.get("InputAttachment")
+        self.OutputGroupName = params.get("OutputGroupName")
+        self.ManifestName = params.get("ManifestName")
+        if params.get("Destinations") is not None:
+            self.Destinations = []
+            for item in params.get("Destinations"):
+                obj = EventSettingsDestinationResp()
+                obj._deserialize(item)
+                self.Destinations.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2946,19 +3028,29 @@ class TimingSettingsReq(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartType: Event trigger type. Valid values: `FIXED_TIME`, `IMMEDIATE`
+        :param StartType: Event trigger type. Valid values: `FIXED_TIME`, `IMMEDIATE`. This parameter is required if `EventType` is `INPUT_SWITCH`.
         :type StartType: str
-        :param Time: Required if `StartType` is `FIXED_TIME`
-UTC time, such as `2020-01-01T12:00:00Z`
+        :param Time: This parameter is required if `EventType` is `INPUT_SWITCH` and `StartType` is `FIXED_TIME`.
+It must be in UTC format, e.g., `2020-01-01T12:00:00Z`.
         :type Time: str
+        :param StartTime: This parameter is required if `EventType` is `TIMED_RECORD`.
+It specifies the recording start time in UTC format (e.g., `2020-01-01T12:00:00Z`) and must be at least 1 minute later than the current time.
+        :type StartTime: str
+        :param EndTime: This parameter is required if `EventType` is `TIMED_RECORD`.
+It specifies the recording end time in UTC format (e.g., `2020-01-01T12:00:00Z`) and must be at least 1 minute later than the recording start time.
+        :type EndTime: str
         """
         self.StartType = None
         self.Time = None
+        self.StartTime = None
+        self.EndTime = None
 
 
     def _deserialize(self, params):
         self.StartType = params.get("StartType")
         self.Time = params.get("Time")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
