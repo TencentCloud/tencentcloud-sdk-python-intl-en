@@ -38,6 +38,9 @@ FAILEDOPERATION_HIGHREJECTIONRATE = 'FailedOperation.HighRejectionRate'
 # Incorrect email address.
 FAILEDOPERATION_INCORRECTEMAIL = 'FailedOperation.IncorrectEmail'
 
+# Incorrect sender format. Follow the sample in this document.
+FAILEDOPERATION_INCORRECTSENDER = 'FailedOperation.IncorrectSender'
+
 # Insufficient balance or account in arrears.
 FAILEDOPERATION_INSUFFICIENTBALANCE = 'FailedOperation.InsufficientBalance'
 
@@ -53,7 +56,7 @@ FAILEDOPERATION_INVALIDLIMIT = 'FailedOperation.InvalidLimit'
 # Invalid template ID or unavailable template.
 FAILEDOPERATION_INVALIDTEMPLATEID = 'FailedOperation.InvalidTemplateID'
 
-# 
+# Missing email content (`TemplateData` and `Simple` cannot be both empty).
 FAILEDOPERATION_MISSINGEMAILCONTENT = 'FailedOperation.MissingEmailContent'
 
 # No permission to send an email with attachments.
@@ -67,6 +70,9 @@ FAILEDOPERATION_NOTSUPPORTDATE = 'FailedOperation.NotSupportDate'
 
 # Incorrect protocol. Make sure the protocol is correct.
 FAILEDOPERATION_PROTOCOLCHECKERR = 'FailedOperation.ProtocolCheckErr'
+
+# Email sending error. Please submit a ticket to us for troubleshooting.
+FAILEDOPERATION_SENDEMAILERR = 'FailedOperation.SendEmailErr'
 
 # The request has not taken effect. Try again.
 FAILEDOPERATION_SERVICENOTAVAILABLE = 'FailedOperation.ServiceNotAvailable'
@@ -104,6 +110,9 @@ INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 # Incorrect attachment content. Make sure the base64 content is correct.
 INVALIDPARAMETERVALUE_ATTACHCONTENTISWRONG = 'InvalidParameterValue.AttachContentIsWrong'
 
+# The start time cannot be earlier than the current time.
+INVALIDPARAMETERVALUE_BEGINTIMEBEFORENOW = 'InvalidParameterValue.BeginTimeBeforeNow'
+
 # This sender domain has been created by another Tencent Cloud account.
 INVALIDPARAMETERVALUE_CREATEDBYOTHER = 'InvalidParameterValue.CreatedByOther'
 
@@ -137,6 +146,9 @@ INVALIDPARAMETERVALUE_TEMPLATECONTENTISNULL = 'InvalidParameterValue.TemplateCon
 # Incorrect template content. Make sure the base64 content is correct.
 INVALIDPARAMETERVALUE_TEMPLATECONTENTISWRONG = 'InvalidParameterValue.TemplateContentIsWrong'
 
+# Variables must be in JSON format.
+INVALIDPARAMETERVALUE_TEMPLATEDATAERROR = 'InvalidParameterValue.TemplateDataError'
+
 # Invalid template name. Make sure the characters and length of the template name are valid.
 INVALIDPARAMETERVALUE_TEMPLATENAMEILLEGAL = 'InvalidParameterValue.TemplateNameIllegal'
 
@@ -155,6 +167,15 @@ LIMITEXCEEDED = 'LimitExceeded'
 # Missing parameter.
 MISSINGPARAMETER = 'MissingParameter'
 
+# For a recurring sending task, you must select the start time and recurrence.
+MISSINGPARAMETER_CYCLEPARAMNECESSARY = 'MissingParameter.CycleParamNecessary'
+
+# Sender address, recipient group, and email template are required.
+MISSINGPARAMETER_SENDPARAMNECESSARY = 'MissingParameter.SendParamNecessary'
+
+# For a scheduled sending task, you must select the start time.
+MISSINGPARAMETER_TIMEDPARAMNECESSARY = 'MissingParameter.TimedParamNecessary'
+
 # Operation denied.
 OPERATIONDENIED = 'OperationDenied'
 
@@ -166,6 +187,18 @@ OPERATIONDENIED_EXCEEDDOMAINLIMIT = 'OperationDenied.ExceedDomainLimit'
 
 # The number of sender addresses exceeds the upper limit.
 OPERATIONDENIED_EXCEEDSENDERLIMIT = 'OperationDenied.ExceedSenderLimit'
+
+# The recipient group does not exist.
+OPERATIONDENIED_RECEIVERNOTEXIST = 'OperationDenied.ReceiverNotExist'
+
+# The recipient group is empty or hasn’t been completely uploaded.
+OPERATIONDENIED_RECEIVERSTATUSERROR = 'OperationDenied.ReceiverStatusError'
+
+# The sender address does not exist or hasn’t been approved.
+OPERATIONDENIED_SENDADDRESSSTATUSERROR = 'OperationDenied.SendAddressStatusError'
+
+# The email template does not exist or hasn’t been approved.
+OPERATIONDENIED_TEMPLATESTATUSERROR = 'OperationDenied.TemplateStatusError'
 
 # The number of requests exceeds the frequency limit.
 REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'

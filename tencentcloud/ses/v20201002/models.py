@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class Attachment(AbstractModel):
-    """Attachment structure, including attachment name and content after base64 encoding.
+    """Attachment structure, including attachment name and Base64-encoded attachment content
 
     """
 
@@ -44,6 +44,102 @@ class Attachment(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class BatchSendEmailRequest(AbstractModel):
+    """BatchSendEmail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FromEmailAddress: Sender address. Enter a sender address, for example, noreply@mail.qcloud.com. To display the sender name, enter the address in the following format:
+Sender <email address>, for example:
+Tencent Cloud team <noreply@mail.qcloud.com>
+        :type FromEmailAddress: str
+        :param ReceiverId: Recipient group ID
+        :type ReceiverId: int
+        :param Subject: Email subject
+        :type Subject: str
+        :param TaskType: Task type. Valid values: `1`: batch; `2`: scheduled; `3`: recurring
+        :type TaskType: int
+        :param ReplyToAddresses: Reply-to address. You can enter a valid personal email address that can receive emails. If this parameter is left empty, reply emails will be sent to Tencent Cloud.
+        :type ReplyToAddresses: str
+        :param Template: Template when emails are sent using a template
+        :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
+        :param Simple: Email content when emails are sent by calling the API
+        :type Simple: :class:`tencentcloud.ses.v20201002.models.Simple`
+        :param Attachments: Email attachments
+        :type Attachments: list of Attachment
+        :param CycleParam: Parameter required for a recurring sending task
+        :type CycleParam: :class:`tencentcloud.ses.v20201002.models.CycleEmailParam`
+        :param TimedParam: Parameter required for a scheduled sending task
+        :type TimedParam: :class:`tencentcloud.ses.v20201002.models.TimedEmailParam`
+        """
+        self.FromEmailAddress = None
+        self.ReceiverId = None
+        self.Subject = None
+        self.TaskType = None
+        self.ReplyToAddresses = None
+        self.Template = None
+        self.Simple = None
+        self.Attachments = None
+        self.CycleParam = None
+        self.TimedParam = None
+
+
+    def _deserialize(self, params):
+        self.FromEmailAddress = params.get("FromEmailAddress")
+        self.ReceiverId = params.get("ReceiverId")
+        self.Subject = params.get("Subject")
+        self.TaskType = params.get("TaskType")
+        self.ReplyToAddresses = params.get("ReplyToAddresses")
+        if params.get("Template") is not None:
+            self.Template = Template()
+            self.Template._deserialize(params.get("Template"))
+        if params.get("Simple") is not None:
+            self.Simple = Simple()
+            self.Simple._deserialize(params.get("Simple"))
+        if params.get("Attachments") is not None:
+            self.Attachments = []
+            for item in params.get("Attachments"):
+                obj = Attachment()
+                obj._deserialize(item)
+                self.Attachments.append(obj)
+        if params.get("CycleParam") is not None:
+            self.CycleParam = CycleEmailParam()
+            self.CycleParam._deserialize(params.get("CycleParam"))
+        if params.get("TimedParam") is not None:
+            self.TimedParam = TimedEmailParam()
+            self.TimedParam._deserialize(params.get("TimedParam"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchSendEmailResponse(AbstractModel):
+    """BatchSendEmail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: Sending task ID
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
 
 
 class BlackEmailAddress(AbstractModel):
@@ -222,6 +318,34 @@ class CreateEmailTemplateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class CycleEmailParam(AbstractModel):
+    """Parameter required to create a recurring sending task
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BeginTime: Start time of the task
+        :type BeginTime: str
+        :param IntervalTime: Task recurrence in hours
+        :type IntervalTime: int
+        """
+        self.BeginTime = None
+        self.IntervalTime = None
+
+
+    def _deserialize(self, params):
+        self.BeginTime = params.get("BeginTime")
+        self.IntervalTime = params.get("IntervalTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DNSAttributes(AbstractModel):
@@ -937,9 +1061,9 @@ class SendEmailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FromEmailAddress: Sender address. Enter a sender address, for example, noreply@mail.qcloud.com. To display the sender name, enter the address in the following format:  
-sender &lt;email address&gt;. For example: 
-Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
+        :param FromEmailAddress: Sender address. Enter a sender address, for example, noreply@mail.qcloud.com. To display the sender name, enter the address in the following format: 
+Sender <email address>, for example:
+Tencent Cloud team <noreply@mail.qcloud.com>
         :type FromEmailAddress: str
         :param Destination: Recipient email addresses. You can send an email to up to 50 recipients at a time. Note: the email content will display all recipient addresses. To send one-to-one emails to several recipients, please call the API multiple times to send the emails.
         :type Destination: list of str
@@ -1220,6 +1344,30 @@ class TemplatesMetadata(AbstractModel):
         self.TemplateStatus = params.get("TemplateStatus")
         self.TemplateID = params.get("TemplateID")
         self.ReviewReason = params.get("ReviewReason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimedEmailParam(AbstractModel):
+    """Time parameter required to create a scheduled sending task, such as the start time
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BeginTime: Start time of a scheduled sending task
+        :type BeginTime: str
+        """
+        self.BeginTime = None
+
+
+    def _deserialize(self, params):
+        self.BeginTime = params.get("BeginTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

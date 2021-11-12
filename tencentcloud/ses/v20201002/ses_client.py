@@ -26,6 +26,34 @@ class SesClient(AbstractClient):
     _service = 'ses'
 
 
+    def BatchSendEmail(self, request):
+        """This API is used to send a TEXT or HTML email to multiple recipients at a time for marketing or notification purposes. By default, you can send emails using a template only. To send custom content, please contact your sales rep to enable this feature. You need to create a recipient group with email addresses first and then send emails by group ID. SES supports scheduled and recurring email sending tasks. You need to pass in `TimedParam` for a scheduled task and `CycleParam` for a recurring one.
+
+        :param request: Request instance for BatchSendEmail.
+        :type request: :class:`tencentcloud.ses.v20201002.models.BatchSendEmailRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.BatchSendEmailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BatchSendEmail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BatchSendEmailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateEmailAddress(self, request):
         """After the sender domain is verified, you need a sender address to send emails. For example, if your sender domain is mail.qcloud.com, your sender address can be service@mail.qcloud.com. If you want to display your name (such as "Tencent Cloud") in the inbox list of the recipients, the sender address should be in the format of `Tencent Cloud <email address>`. Please note that there must be a space between your name and the first angle bracket.
 
@@ -308,7 +336,7 @@ class SesClient(AbstractClient):
 
 
     def GetStatisticsReport(self, request):
-        """This API is used to get the email sending statistics over a recent period, including data on sent emails, delivery success rate, open rate, bounce rate, and so on. The maximum time span is 14 days.
+        """This API is used to get the email sending statistics over a recent period, including data on sent emails, delivery success rate, open rate, bounce rate, and so on.
 
         :param request: Request instance for GetStatisticsReport.
         :type request: :class:`tencentcloud.ses.v20201002.models.GetStatisticsReportRequest`
@@ -448,7 +476,7 @@ class SesClient(AbstractClient):
 
 
     def SendEmail(self, request):
-        """This API is used to send a TEXT or HTML email. By default, you can only send emails using a template. To send custom content, please contact your sales rep to enable this feature.
+        """This API is used to send a TEXT or HTML email triggered for authentication or transaction. By default, you can send emails using a template only. To send custom content, please contact your sales rep to enable this feature.
 
         :param request: Request instance for SendEmail.
         :type request: :class:`tencentcloud.ses.v20201002.models.SendEmailRequest`
