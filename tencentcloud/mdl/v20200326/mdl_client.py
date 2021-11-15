@@ -222,6 +222,34 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteStreamLivePlan(self, request):
+        """This API is used to delete a StreamLive event.
+
+        :param request: Request instance for DeleteStreamLivePlan.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.DeleteStreamLivePlanRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.DeleteStreamLivePlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteStreamLivePlan", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteStreamLivePlanResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeStreamLiveChannel(self, request):
         """This API is used to query a StreamLive channel.
 

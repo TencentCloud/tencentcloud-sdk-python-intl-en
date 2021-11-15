@@ -804,6 +804,51 @@ class DeleteStreamLiveInputSecurityGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteStreamLivePlanRequest(AbstractModel):
+    """DeleteStreamLivePlan request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelId: ID of the channel whose event is to be deleted
+        :type ChannelId: str
+        :param EventName: Name of the event to delete
+        :type EventName: str
+        """
+        self.ChannelId = None
+        self.EventName = None
+
+
+    def _deserialize(self, params):
+        self.ChannelId = params.get("ChannelId")
+        self.EventName = params.get("EventName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteStreamLivePlanResponse(AbstractModel):
+    """DeleteStreamLivePlan response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeStreamLiveChannelAlertsRequest(AbstractModel):
     """DescribeStreamLiveChannelAlerts request structure.
 
