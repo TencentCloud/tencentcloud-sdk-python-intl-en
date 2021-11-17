@@ -1209,7 +1209,9 @@ Note: A primary AZ carries traffic, while a secondary AZ does not carry traffic 
         :type BandwidthPackageId: str
         :param ExclusiveCluster: Exclusive cluster information. This parameter is required for creating exclusive clusters of CLB instances.
         :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
-        :param SlaType: 
+        :param SlaType: Creates an LCU-supported CLB instance
+<ul><li>To create an LCU-supported CLB, this field is required and the value is `SLA`. LCU-supports CLBs adopt the pay-as-you-go model and their performance is guaranteed.</li>
+<li>It’s not required for a shared CLB instance.</li></ul>
         :type SlaType: str
         :param ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
         :type ClientToken: str
@@ -1224,6 +1226,8 @@ Note: A secondary AZ will load traffic if the primary AZ has failures. The API `
         :type SlaveZoneId: str
         :param EipAddressId: Unique ID of an EIP, which can only be used when binding the EIP of a private network CLB instance. E.g., `eip-11112222`.
         :type EipAddressId: str
+        :param LoadBalancerPassToTarget: Whether to allow CLB traffic to the target group. `true`: allows CLB traffic to the target group and verifies security groups only on CLB; `false`: denies CLB traffic to the target group and verifies security groups on both CLB and backend instances.
+        :type LoadBalancerPassToTarget: bool
         """
         self.LoadBalancerType = None
         self.Forward = None
@@ -1248,6 +1252,7 @@ Note: A secondary AZ will load traffic if the primary AZ has failures. The API `
         self.ClusterTag = None
         self.SlaveZoneId = None
         self.EipAddressId = None
+        self.LoadBalancerPassToTarget = None
 
 
     def _deserialize(self, params):
@@ -1288,6 +1293,7 @@ Note: A secondary AZ will load traffic if the primary AZ has failures. The API `
         self.ClusterTag = params.get("ClusterTag")
         self.SlaveZoneId = params.get("SlaveZoneId")
         self.EipAddressId = params.get("EipAddressId")
+        self.LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1329,9 +1335,12 @@ class CreateLoadBalancerSnatIpsRequest(AbstractModel):
         :type LoadBalancerId: str
         :param SnatIps: Information of the SNAT IP to be added. You can apply for a specified IP or apply for an automatically assigned IP by specifying a subnet.
         :type SnatIps: list of SnatIp
+        :param Number: Number of SNAT IPs to be added. This parameter is used in conjunction with `SnatIps`. Note that if `Ip` is specified in `SnapIps`, this parameter is not available.
+        :type Number: int
         """
         self.LoadBalancerId = None
         self.SnatIps = None
+        self.Number = None
 
 
     def _deserialize(self, params):
@@ -1342,6 +1351,7 @@ class CreateLoadBalancerSnatIpsRequest(AbstractModel):
                 obj = SnatIp()
                 obj._deserialize(item)
                 self.SnatIps.append(obj)
+        self.Number = params.get("Number")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2550,6 +2560,61 @@ class DescribeCustomizedConfigListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLBListenersRequest(AbstractModel):
+    """DescribeLBListeners request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Backends: List of private network IPs to be queried.
+        :type Backends: list of LbRsItem
+        """
+        self.Backends = None
+
+
+    def _deserialize(self, params):
+        if params.get("Backends") is not None:
+            self.Backends = []
+            for item in params.get("Backends"):
+                obj = LbRsItem()
+                obj._deserialize(item)
+                self.Backends.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLBListenersResponse(AbstractModel):
+    """DescribeLBListeners response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoadBalancers: Listener rule associated with the real server.
+        :type LoadBalancers: list of LBItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.LoadBalancers = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LoadBalancers") is not None:
+            self.LoadBalancers = []
+            for item in params.get("LoadBalancers"):
+                obj = LBItem()
+                obj._deserialize(item)
+                self.LoadBalancers.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeListenersRequest(AbstractModel):
     """DescribeListeners request structure.
 
@@ -3604,6 +3669,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param HttpVersion: Health check protocol (a custom check parameter), which is required if the value of CheckType is HTTP. This parameter represents the HTTP version of the real server. Value range: HTTP/1.0, HTTP/1.1. (Applicable only to TCP listeners.)
 Note: This field may return null, indicating that no valid values can be obtained.
         :type HttpVersion: str
+        :param SourceIpType: Specifies the source IP for health check. `0`: use the CLB VIP as the source IP; `1`: IP range starting with 100.64 serving as the source IP. Default: `0`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SourceIpType: int
         """
         self.HealthSwitch = None
         self.TimeOut = None
@@ -3620,6 +3688,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RecvContext = None
         self.CheckType = None
         self.HttpVersion = None
+        self.SourceIpType = None
 
 
     def _deserialize(self, params):
@@ -3638,6 +3707,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RecvContext = params.get("RecvContext")
         self.CheckType = params.get("CheckType")
         self.HttpVersion = params.get("HttpVersion")
+        self.SourceIpType = params.get("SourceIpType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3702,6 +3772,117 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self.RenewFlag = params.get("RenewFlag")
         self.Period = params.get("Period")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LBItem(AbstractModel):
+    """Querying the binding relation of the CLB instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoadBalancerId: String ID of the CLB instance.
+        :type LoadBalancerId: str
+        :param Vip: VIP of the CLB instance.
+        :type Vip: str
+        :param Listeners: Listener rule.
+        :type Listeners: list of ListenerItem
+        :param Region: Region of the CLB instance
+        :type Region: str
+        """
+        self.LoadBalancerId = None
+        self.Vip = None
+        self.Listeners = None
+        self.Region = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.Vip = params.get("Vip")
+        if params.get("Listeners") is not None:
+            self.Listeners = []
+            for item in params.get("Listeners"):
+                obj = ListenerItem()
+                obj._deserialize(item)
+                self.Listeners.append(obj)
+        self.Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LbRsItem(AbstractModel):
+    """Querying the input data types
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param PrivateIp: Private network IP to be queried, which can be of the CVM or ENI.
+        :type PrivateIp: str
+        """
+        self.VpcId = None
+        self.PrivateIp = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.PrivateIp = params.get("PrivateIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LbRsTargets(AbstractModel):
+    """Querying the output data types
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: Private network IP type, which can be `cvm` or `eni`.
+        :type Type: str
+        :param PrivateIp: Private network IP of the real server.
+        :type PrivateIp: str
+        :param Port: Port bound to the real server.
+        :type Port: int
+        :param VpcId: VPC ID of the real server.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type VpcId: int
+        :param Weight: Weight of the real server.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Weight: int
+        """
+        self.Type = None
+        self.PrivateIp = None
+        self.Port = None
+        self.VpcId = None
+        self.Weight = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.PrivateIp = params.get("PrivateIp")
+        self.Port = params.get("Port")
+        self.VpcId = params.get("VpcId")
+        self.Weight = params.get("Weight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3924,6 +4105,63 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = RuleHealth()
                 obj._deserialize(item)
                 self.Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListenerItem(AbstractModel):
+    """Querying the listener type
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ListenerId: Listener ID.
+        :type ListenerId: str
+        :param Protocol: Listener protocol.
+        :type Protocol: str
+        :param Port: Listener port.
+        :type Port: int
+        :param Rules: Bound rule.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Rules: list of RulesItems
+        :param Targets: Object bound to the layer-4 listener.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Targets: list of LbRsTargets
+        :param EndPort: End port of the listener.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type EndPort: int
+        """
+        self.ListenerId = None
+        self.Protocol = None
+        self.Port = None
+        self.Rules = None
+        self.Targets = None
+        self.EndPort = None
+
+
+    def _deserialize(self, params):
+        self.ListenerId = params.get("ListenerId")
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = RulesItems()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        if params.get("Targets") is not None:
+            self.Targets = []
+            for item in params.get("Targets"):
+                obj = LbRsTargets()
+                obj._deserialize(item)
+                self.Targets.append(obj)
+        self.EndPort = params.get("EndPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4787,6 +5025,8 @@ They represent weighted round robin and least connections, respectively. Default
         :type KeepaliveEnable: int
         :param DeregisterTargetRst: Whether to send the TCP RST packet to the client when unbinding a real server. This parameter is applicable to TCP listeners only.
         :type DeregisterTargetRst: bool
+        :param SessionType: Session persistence type. `NORMAL`: default session persistence type (L4/L7 session persistence); `QUIC_CID`: session persistence by QUIC connection ID. The `QUIC_CID` value can only be configured in UDP listeners.
+        :type SessionType: str
         """
         self.LoadBalancerId = None
         self.ListenerId = None
@@ -4798,6 +5038,7 @@ They represent weighted round robin and least connections, respectively. Default
         self.SniSwitch = None
         self.KeepaliveEnable = None
         self.DeregisterTargetRst = None
+        self.SessionType = None
 
 
     def _deserialize(self, params):
@@ -4815,6 +5056,7 @@ They represent weighted round robin and least connections, respectively. Default
         self.SniSwitch = params.get("SniSwitch")
         self.KeepaliveEnable = params.get("KeepaliveEnable")
         self.DeregisterTargetRst = params.get("DeregisterTargetRst")
+        self.SessionType = params.get("SessionType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5945,6 +6187,47 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self.Targets = []
             for item in params.get("Targets"):
                 obj = Backend()
+                obj._deserialize(item)
+                self.Targets.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RulesItems(AbstractModel):
+    """Object bound to the layer-7 listener rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LocationId: Rule ID.
+        :type LocationId: str
+        :param Domain: Domain name.
+        :type Domain: str
+        :param Url: Uri
+        :type Url: str
+        :param Targets: Object bound to the real server.
+        :type Targets: list of LbRsTargets
+        """
+        self.LocationId = None
+        self.Domain = None
+        self.Url = None
+        self.Targets = None
+
+
+    def _deserialize(self, params):
+        self.LocationId = params.get("LocationId")
+        self.Domain = params.get("Domain")
+        self.Url = params.get("Url")
+        if params.get("Targets") is not None:
+            self.Targets = []
+            for item in params.get("Targets"):
+                obj = LbRsTargets()
                 obj._deserialize(item)
                 self.Targets.append(obj)
         memeber_set = set(params.keys())

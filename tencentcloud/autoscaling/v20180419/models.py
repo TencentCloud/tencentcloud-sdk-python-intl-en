@@ -407,11 +407,20 @@ class AutoScalingNotification(AbstractModel):
         :type NotificationTypes: list of str
         :param AutoScalingNotificationId: Event notification ID.
         :type AutoScalingNotificationId: str
+        :param TargetType: Notification receiver type.
+        :type TargetType: str
+        :param QueueName: CMQ queue name.
+        :type QueueName: str
+        :param TopicName: CMQ topic name.
+        :type TopicName: str
         """
         self.AutoScalingGroupId = None
         self.NotificationUserGroupIds = None
         self.NotificationTypes = None
         self.AutoScalingNotificationId = None
+        self.TargetType = None
+        self.QueueName = None
+        self.TopicName = None
 
 
     def _deserialize(self, params):
@@ -419,6 +428,9 @@ class AutoScalingNotification(AbstractModel):
         self.NotificationUserGroupIds = params.get("NotificationUserGroupIds")
         self.NotificationTypes = params.get("NotificationTypes")
         self.AutoScalingNotificationId = params.get("AutoScalingNotificationId")
+        self.TargetType = params.get("TargetType")
+        self.QueueName = params.get("QueueName")
+        self.TopicName = params.get("TopicName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -625,9 +637,9 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         :type DesiredCapacity: int
         :param LoadBalancerIds: List of classic CLB IDs. Currently, the maximum length is 20. You cannot specify LoadBalancerIds and ForwardLoadBalancers at the same time.
         :type LoadBalancerIds: list of str
-        :param ProjectId: Project ID
+        :param ProjectId: Project ID of an instance in a scaling group. The default project is used if it’s left blank.
         :type ProjectId: int
-        :param ForwardLoadBalancers: List of CLBs. Currently, the maximum length is 20. You cannot specify LoadBalancerIds and ForwardLoadBalancers at the same time.
+        :param ForwardLoadBalancers: List of application CLBs. Up to 50 CLBs are allowed. You cannot specify `loadBalancerIds` and `ForwardLoadBalancers` at the same time.
         :type ForwardLoadBalancers: list of ForwardLoadBalancer
         :param SubnetIds: List of subnet IDs. A subnet must be specified in the VPC scenario. If multiple subnets are entered, their priority will be determined by the order in which they are entered, and they will be tried one by one until instances can be successfully created.
         :type SubnetIds: list of str
@@ -789,7 +801,8 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         :type LaunchConfigurationName: str
         :param ImageId: Valid [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-8toqc6s3`. There are four types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><li>Marketplace images </li><br/>You can obtain the available image IDs in the following ways: <br/><li>For `public images`, `custom images`, and `shared images`, log in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE) to query the image IDs; for `marketplace images`, query the image IDs through [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>This value can be obtained from the `ImageId` field in the return value of the [DescribeImages API](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1).</li>
         :type ImageId: str
-        :param ProjectId: ID of the project to which the instance belongs. This parameter can be obtained from the `projectId` field in the returned values of [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1). If this is left empty, default project is used.
+        :param ProjectId: Project ID of the launch configuration. The default project is used if it’s left blank.
+Note that this project ID is not the same as the project ID of the scaling group. 
         :type ProjectId: int
         :param InstanceType: Instance model. Different instance models specify different resource specifications. The specific value can be obtained by calling the [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) API to get the latest specification table or referring to the descriptions in [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
 `InstanceType` and `InstanceTypes` are mutually exclusive, and one and only one of them must be entered.
@@ -1035,16 +1048,28 @@ class CreateNotificationConfigurationRequest(AbstractModel):
         :type NotificationTypes: list of str
         :param NotificationUserGroupIds: Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) API.
         :type NotificationUserGroupIds: list of str
+        :param TargetType: Notification receiver type. Values: `USER_GROUP`，`CMQ_QUEUE`，`CMQ_TOPIC`. Default: `USER_GROUP`.
+        :type TargetType: str
+        :param QueueName: CMQ queue name. This field is required when `TargetType` is `CMQ_QUEUE`.
+        :type QueueName: str
+        :param TopicName: CMQ topic name. This field is required when `TargetType` is `CMQ_TOPIC`.
+        :type TopicName: str
         """
         self.AutoScalingGroupId = None
         self.NotificationTypes = None
         self.NotificationUserGroupIds = None
+        self.TargetType = None
+        self.QueueName = None
+        self.TopicName = None
 
 
     def _deserialize(self, params):
         self.AutoScalingGroupId = params.get("AutoScalingGroupId")
         self.NotificationTypes = params.get("NotificationTypes")
         self.NotificationUserGroupIds = params.get("NotificationUserGroupIds")
+        self.TargetType = params.get("TargetType")
+        self.QueueName = params.get("QueueName")
+        self.TopicName = params.get("TopicName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1910,15 +1935,11 @@ class DescribeLifecycleHooksRequest(AbstractModel):
         r"""
         :param LifecycleHookIds: Queries by one or more lifecycle hook IDs in the format of `ash-8azjzxcl`. The maximum quantity per request is 100. This parameter does not support specifying both `LifecycleHookIds` and `Filters` at the same time.
         :type LifecycleHookIds: list of str
-        :param Filters: Filter.
-<li> lifecycle-hook-id - String - Required: No - (Filter) Filter by lifecycle hook ID.</li>
-<li> lifecycle-hook-name - String - Required: No - (Filter) Filter by lifecycle hook name.</li>
-<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>
-Filter.
-<li> lifecycle-hook-id - String - Required: No - (Filter) Filter by lifecycle hook ID.</li>
-<li> lifecycle-hook-name - String - Required: No - (Filter) Filter by lifecycle hook name.</li>
-<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>
-The maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. This parameter does not support specifying both `LifecycleHookIds` and `Filters` at the same time.
+        :param Filters: Filters.
+<li> `lifecycle-hook-id` - String - Required: No - (Filter) Filter by lifecycle hook ID.</li>
+<li> `lifecycle-hook-name` - String - Required: No - (Filter) Filter by lifecycle hook name.</li>
+<li> `auto-scaling-group-id` - String - Required: No - (Filter) Filter by scaling group ID.</li>
+Up to 10 filters can be included in a request and up to 5 values for each filter. It cannot be specified with `LifecycleHookIds` at the same time.
         :type Filters: list of Filter
         :param Limit: Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Limit: int
@@ -3453,6 +3474,8 @@ This field requires passing the `HostName` field. Other fields that are not pass
 If this field is configured in a launch configuration, the `InstanceName` of a CVM created by the scaling group will be generated according to the configuration; otherwise, it will be in the `as-{{AutoScalingGroupName }}` format.
 This field requires passing in the `InstanceName` field. Other fields that are not passed in will use their default values.
         :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
+        :param EnhancedService: Specifies whether to enable additional services, such as security services and monitoring service.
+        :type EnhancedService: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
         """
         self.LaunchConfigurationId = None
         self.ImageId = None
@@ -3470,6 +3493,7 @@ This field requires passing in the `InstanceName` field. Other fields that are n
         self.DataDisks = None
         self.HostNameSettings = None
         self.InstanceNameSettings = None
+        self.EnhancedService = None
 
 
     def _deserialize(self, params):
@@ -3506,6 +3530,9 @@ This field requires passing in the `InstanceName` field. Other fields that are n
         if params.get("InstanceNameSettings") is not None:
             self.InstanceNameSettings = InstanceNameSettings()
             self.InstanceNameSettings._deserialize(params.get("InstanceNameSettings"))
+        if params.get("EnhancedService") is not None:
+            self.EnhancedService = EnhancedService()
+            self.EnhancedService._deserialize(params.get("EnhancedService"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3543,7 +3570,7 @@ class ModifyLoadBalancersRequest(AbstractModel):
         :type AutoScalingGroupId: str
         :param LoadBalancerIds: List of classic CLB IDs. Currently, the maximum length is 20. You cannot specify LoadBalancerIds and ForwardLoadBalancers at the same time.
         :type LoadBalancerIds: list of str
-        :param ForwardLoadBalancers: List of CLBs. Currently, the maximum length is 20. You cannot specify LoadBalancerIds and ForwardLoadBalancers at the same time.
+        :param ForwardLoadBalancers: List of application CLBs. Up to 50 CLBs are allowed. You cannot specify `loadBalancerIds` and `ForwardLoadBalancers` at the same time.
         :type ForwardLoadBalancers: list of ForwardLoadBalancer
         :param LoadBalancersCheckPolicy: CLB verification policy. Valid values: "ALL" and "DIFF". Default value: "ALL"
 <br><li> ALL. Verification is successful only when all CLBs are valid. Otherwise, verification fails.
@@ -3615,16 +3642,24 @@ class ModifyNotificationConfigurationRequest(AbstractModel):
         :type NotificationTypes: list of str
         :param NotificationUserGroupIds: Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) API.
         :type NotificationUserGroupIds: list of str
+        :param QueueName: CMQ queue name.
+        :type QueueName: str
+        :param TopicName: CMQ topic name.
+        :type TopicName: str
         """
         self.AutoScalingNotificationId = None
         self.NotificationTypes = None
         self.NotificationUserGroupIds = None
+        self.QueueName = None
+        self.TopicName = None
 
 
     def _deserialize(self, params):
         self.AutoScalingNotificationId = params.get("AutoScalingNotificationId")
         self.NotificationTypes = params.get("NotificationTypes")
         self.NotificationUserGroupIds = params.get("NotificationUserGroupIds")
+        self.QueueName = params.get("QueueName")
+        self.TopicName = params.get("TopicName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4179,7 +4214,7 @@ class SetInstancesProtectionRequest(AbstractModel):
         :type AutoScalingGroupId: str
         :param InstanceIds: Instance ID.
         :type InstanceIds: list of str
-        :param ProtectedFromScaleIn: Whether the instance needs to be protected from scale-in.
+        :param ProtectedFromScaleIn: Whether to enable scale-in protection for this instance
         :type ProtectedFromScaleIn: bool
         """
         self.AutoScalingGroupId = None
@@ -4525,7 +4560,7 @@ If a model in InstanceTypes does not exist or has been deactivated, a verificati
         :type InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
         :param LoginSettings: Login settings of the instance. This parameter is used to set the login password and key for the instance, or to keep the original login settings for the image. By default, a random password is generated and sent to the user via the internal message.
         :type LoginSettings: :class:`tencentcloud.autoscaling.v20180419.models.LoginSettings`
-        :param ProjectId: Project ID of the instance. This parameter can be obtained from the `projectId` field in the returned values of [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1). If this is left empty, default project is used.
+        :param ProjectId: Project ID of the instance. Leave it blank as the default.
         :type ProjectId: int
         :param SecurityGroupIds: The security group of instance. This parameter can be obtained by calling the `SecurityGroupId` field in the returned value of [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1). If this parameter is not specified, no security group will be bound by default.
         :type SecurityGroupIds: list of str

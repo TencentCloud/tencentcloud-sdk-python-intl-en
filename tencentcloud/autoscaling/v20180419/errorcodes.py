@@ -98,6 +98,9 @@ INVALIDPARAMETERVALUE_BASECAPACITYTOOLARGE = 'InvalidParameterValue.BaseCapacity
 # A classic CLB should be specified.
 INVALIDPARAMETERVALUE_CLASSICLB = 'InvalidParameterValue.ClassicLb'
 
+# Conflicting notification receiver type.
+INVALIDPARAMETERVALUE_CONFLICTNOTIFICATIONTARGET = 'InvalidParameterValue.ConflictNotificationTarget'
+
 # The cron expression specified for the scheduled task is invalid.
 INVALIDPARAMETERVALUE_CRONEXPRESSIONILLEGAL = 'InvalidParameterValue.CronExpressionIllegal'
 
@@ -182,7 +185,7 @@ INVALIDPARAMETERVALUE_INVALIDSCHEDULEDACTIONID = 'InvalidParameterValue.InvalidS
 # The scheduled task name contains invalid characters.
 INVALIDPARAMETERVALUE_INVALIDSCHEDULEDACTIONNAMEINCLUDEILLEGALCHAR = 'InvalidParameterValue.InvalidScheduledActionNameIncludeIllegalChar'
 
-# 
+# Invalid snapshot ID.
 INVALIDPARAMETERVALUE_INVALIDSNAPSHOTID = 'InvalidParameterValue.InvalidSnapshotId'
 
 # Invalid subnet ID.

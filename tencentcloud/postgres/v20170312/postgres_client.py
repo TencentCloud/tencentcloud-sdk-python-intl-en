@@ -418,6 +418,34 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDBInstanceParameters(self, request):
+        """This API is used to get the list of modifiable parameters of an instance.
+
+        :param request: Request instance for DescribeDBInstanceParameters.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBInstanceParametersRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeDBInstanceParametersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDBInstanceParameters", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDBInstanceParametersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDBInstances(self, request):
         """This API is used to query the details of one or more instances.
 
@@ -447,7 +475,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDBSlowlogs(self, request):
-        """This API is used to get slow query logs.
+        """This API was used to get slow query logs. Since it was deprecated on September 1, 2021, it has no longer returned data. Please use the [DescribeSlowQueryList](https://intl.cloud.tencent.com/document/product/409/60540?from_cn_redirect=1) API instead to get slow query logs.
 
         :param request: Request instance for DescribeDBSlowlogs.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBSlowlogsRequest`
@@ -544,6 +572,34 @@ class PostgresClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOrdersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeParamsEvent(self, request):
+        """This API is used to get the details of parameter modification events.
+
+        :param request: Request instance for DescribeParamsEvent.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeParamsEventRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeParamsEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeParamsEvent", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeParamsEventResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -671,7 +727,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeSlowQueryAnalysis(self, request):
-        """This API is used to analyze slow query statements with abstract parameter values and return aggregated statistical analysis results.
+        """This API is used to count and analyze slow query statements during the specified period of time and return aggregated statistical analysis results which are classified by statement with abstract parameter values.
 
         :param request: Request instance for DescribeSlowQueryAnalysis.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeSlowQueryAnalysisRequest`
@@ -699,7 +755,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeSlowQueryList(self, request):
-        """This API is used to get the slow query list.
+        """This API is used to get the slow queries during the specified period of time.
 
         :param request: Request instance for DescribeSlowQueryList.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeSlowQueryListRequest`
@@ -992,6 +1048,34 @@ class PostgresClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstanceNameResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDBInstanceParameters(self, request):
+        """This API is used to modify parameters in batches.
+
+        :param request: Request instance for ModifyDBInstanceParameters.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceParametersRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceParametersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDBInstanceParameters", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDBInstanceParametersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

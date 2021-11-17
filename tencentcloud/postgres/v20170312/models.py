@@ -1467,6 +1467,64 @@ class DescribeDBInstanceAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBInstanceParametersRequest(AbstractModel):
+    """DescribeDBInstanceParameters request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: Instance ID
+        :type DBInstanceId: str
+        :param ParamName: Name of the parameter to be queried. If `ParamName` is left empty or not passed in, the list of all parameters will be returned.
+        :type ParamName: str
+        """
+        self.DBInstanceId = None
+        self.ParamName = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.ParamName = params.get("ParamName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBInstanceParametersResponse(AbstractModel):
+    """DescribeDBInstanceParameters response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number of the parameters in the returned list
+        :type TotalCount: int
+        :param Detail: Details of the returned parameter list
+        :type Detail: list of ParamInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Detail = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Detail") is not None:
+            self.Detail = []
+            for item in params.get("Detail"):
+                obj = ParamInfo()
+                obj._deserialize(item)
+                self.Detail.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBInstancesRequest(AbstractModel):
     """DescribeDBInstances request structure.
 
@@ -1792,6 +1850,60 @@ class DescribeOrdersResponse(AbstractModel):
                 obj = PgDeal()
                 obj._deserialize(item)
                 self.Deals.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeParamsEventRequest(AbstractModel):
+    """DescribeParamsEvent request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: Instance ID
+        :type DBInstanceId: str
+        """
+        self.DBInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeParamsEventResponse(AbstractModel):
+    """DescribeParamsEvent response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number of modified parameters
+        :type TotalCount: int
+        :param EventItems: Details of parameter modification events
+        :type EventItems: list of EventItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.EventItems = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("EventItems") is not None:
+            self.EventItems = []
+            for item in params.get("EventItems"):
+                obj = EventItem()
+                obj._deserialize(item)
+                self.EventItems.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2432,6 +2544,106 @@ class ErrLogDetail(AbstractModel):
         
 
 
+class EventInfo(AbstractModel):
+    """Parameter modification event information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ParamName: Parameter name
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ParamName: str
+        :param OldValue: Original parameter value
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type OldValue: str
+        :param NewValue: New parameter value in this modification event
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type NewValue: str
+        :param ModifyTime: Start time of parameter modification
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ModifyTime: str
+        :param EffectiveTime: Start time when the modified parameter takes effect
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type EffectiveTime: str
+        :param State: Modification status
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type State: str
+        :param Operator: Operator (generally, the value is the UIN of a sub-user)
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Operator: str
+        :param EventLog: Event log
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type EventLog: str
+        """
+        self.ParamName = None
+        self.OldValue = None
+        self.NewValue = None
+        self.ModifyTime = None
+        self.EffectiveTime = None
+        self.State = None
+        self.Operator = None
+        self.EventLog = None
+
+
+    def _deserialize(self, params):
+        self.ParamName = params.get("ParamName")
+        self.OldValue = params.get("OldValue")
+        self.NewValue = params.get("NewValue")
+        self.ModifyTime = params.get("ModifyTime")
+        self.EffectiveTime = params.get("EffectiveTime")
+        self.State = params.get("State")
+        self.Operator = params.get("Operator")
+        self.EventLog = params.get("EventLog")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventItem(AbstractModel):
+    """Modification details of one parameter
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ParamName: Parameter name
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ParamName: str
+        :param EventCount: The number of modification events
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type EventCount: int
+        :param EventDetail: Modification event details
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type EventDetail: list of EventInfo
+        """
+        self.ParamName = None
+        self.EventCount = None
+        self.EventDetail = None
+
+
+    def _deserialize(self, params):
+        self.ParamName = params.get("ParamName")
+        self.EventCount = params.get("EventCount")
+        if params.get("EventDetail") is not None:
+            self.EventDetail = []
+            for item in params.get("EventDetail"):
+                obj = EventInfo()
+                obj._deserialize(item)
+                self.EventDetail.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     """Key-value pair filter for conditional filtering queries, such as filter ID and name
     * If more than one filter exists, the logical relationship between these filters is `AND`.
@@ -2841,6 +3053,56 @@ class ModifyDBInstanceNameResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDBInstanceParametersRequest(AbstractModel):
+    """ModifyDBInstanceParameters request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: Instance ID
+        :type DBInstanceId: str
+        :param ParamList: Parameters to be modified and their new values
+        :type ParamList: list of ParamEntry
+        """
+        self.DBInstanceId = None
+        self.ParamList = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        if params.get("ParamList") is not None:
+            self.ParamList = []
+            for item in params.get("ParamList"):
+                obj = ParamEntry()
+                obj._deserialize(item)
+                self.ParamList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceParametersResponse(AbstractModel):
+    """ModifyDBInstanceParameters response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceReadOnlyGroupRequest(AbstractModel):
     """ModifyDBInstanceReadOnlyGroup request structure.
 
@@ -3229,6 +3491,139 @@ class OpenServerlessDBExtranetAccessResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class ParamEntry(AbstractModel):
+    """Parameters to be modified in batches
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Parameter name
+        :type Name: str
+        :param ExpectedValue: The new value to which the parameter will be modified. When this parameter is used as an input parameter, its value must be a string, such as `0.1` (decimal), `1000` (integer), and `replica` (enum).
+        :type ExpectedValue: str
+        """
+        self.Name = None
+        self.ExpectedValue = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.ExpectedValue = params.get("ExpectedValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParamInfo(AbstractModel):
+    """Parameter details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ID: Parameter ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ID: int
+        :param Name: Parameter name
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Name: str
+        :param ParamValueType: Value type of the parameter. Valid values: `integer`, `real` (floating-point), `bool`, `enum`, `mutil_enum` (this type of parameter can be set to multiple enumerated values)
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ParamValueType: str
+        :param Unit: Value unit of the parameter. If the parameter has no unit, this field will return an empty string.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Unit: str
+        :param DefaultValue: Default value of the parameter, which is returned as a string
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DefaultValue: str
+        :param CurrentValue: Current value of the parameter, which is returned as a string
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type CurrentValue: str
+        :param EnumValue: Value range of the enum parameter
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type EnumValue: list of str
+        :param Max: The maximum value of the `integer` or `real` parameter
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Max: float
+        :param Min: The minimum value of the `integer` or `real` parameter
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Min: float
+        :param ParamDescriptionCH: Parameter description in Chinese
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ParamDescriptionCH: str
+        :param ParamDescriptionEN: Parameter description in English
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ParamDescriptionEN: str
+        :param NeedReboot: Whether to restart the instance for the modified parameter to take effect. Valid values: `true` (yes), `false` (no)
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type NeedReboot: bool
+        :param ClassificationCN: Parameter category in Chinese
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ClassificationCN: str
+        :param ClassificationEN: Parameter category in English
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ClassificationEN: str
+        :param SpecRelated: Whether the parameter is related to specifications. Valid values: `true` (yes), `false` (no)
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SpecRelated: bool
+        :param Advanced: Whether it is a key parameter. Valid values: `true` (yes, and modifying it may affect instance performance), `false` (no)
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Advanced: bool
+        :param LastModifyTime: The last modified time of the parameter
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type LastModifyTime: str
+        """
+        self.ID = None
+        self.Name = None
+        self.ParamValueType = None
+        self.Unit = None
+        self.DefaultValue = None
+        self.CurrentValue = None
+        self.EnumValue = None
+        self.Max = None
+        self.Min = None
+        self.ParamDescriptionCH = None
+        self.ParamDescriptionEN = None
+        self.NeedReboot = None
+        self.ClassificationCN = None
+        self.ClassificationEN = None
+        self.SpecRelated = None
+        self.Advanced = None
+        self.LastModifyTime = None
+
+
+    def _deserialize(self, params):
+        self.ID = params.get("ID")
+        self.Name = params.get("Name")
+        self.ParamValueType = params.get("ParamValueType")
+        self.Unit = params.get("Unit")
+        self.DefaultValue = params.get("DefaultValue")
+        self.CurrentValue = params.get("CurrentValue")
+        self.EnumValue = params.get("EnumValue")
+        self.Max = params.get("Max")
+        self.Min = params.get("Min")
+        self.ParamDescriptionCH = params.get("ParamDescriptionCH")
+        self.ParamDescriptionEN = params.get("ParamDescriptionEN")
+        self.NeedReboot = params.get("NeedReboot")
+        self.ClassificationCN = params.get("ClassificationCN")
+        self.ClassificationEN = params.get("ClassificationEN")
+        self.SpecRelated = params.get("SpecRelated")
+        self.Advanced = params.get("Advanced")
+        self.LastModifyTime = params.get("LastModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class PgDeal(AbstractModel):

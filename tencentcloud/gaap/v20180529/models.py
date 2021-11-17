@@ -69,11 +69,20 @@ class AccessRegionDetial(AbstractModel):
         :type ConcurrentList: list of int
         :param BandwidthList: Value array of the available bandwidth
         :type BandwidthList: list of int
+        :param RegionArea: Region where the data center locates
+        :type RegionArea: str
+        :param RegionAreaName: Name of the region where the data center locates
+        :type RegionAreaName: str
+        :param IDCType: Data center type. `dc`: data center; `ec`: edge server.
+        :type IDCType: str
         """
         self.RegionId = None
         self.RegionName = None
         self.ConcurrentList = None
         self.BandwidthList = None
+        self.RegionArea = None
+        self.RegionAreaName = None
+        self.IDCType = None
 
 
     def _deserialize(self, params):
@@ -81,6 +90,9 @@ class AccessRegionDetial(AbstractModel):
         self.RegionName = params.get("RegionName")
         self.ConcurrentList = params.get("ConcurrentList")
         self.BandwidthList = params.get("BandwidthList")
+        self.RegionArea = params.get("RegionArea")
+        self.RegionAreaName = params.get("RegionAreaName")
+        self.IDCType = params.get("IDCType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3085,6 +3097,18 @@ It supports up to 5 tags. If there are two or more tags, the connections tagged 
 When this field is 0, only grouped connections are pulled.
 When this field does not exist, all connections are pulled, including both not-grouped and grouped connections.
         :type Independent: int
+        :param Order: Specifies how connections are listed. Valid values:
+`asc`: ascending order
+`desc`: descending order
+Default: `desc`
+        :type Order: str
+        :param OrderField: Sorting field. Valid values:
+`create_time`: sort by the creation time
+`proxy_id`: sort by the connection ID
+`bandwidth`:sort by the bandwidth limit
+`concurrent_connections`: sort by the number of concurrent connections
+Default: `create_time`
+        :type OrderField: str
         """
         self.InstanceIds = None
         self.Offset = None
@@ -3093,6 +3117,8 @@ When this field does not exist, all connections are pulled, including both not-g
         self.ProxyIds = None
         self.TagSet = None
         self.Independent = None
+        self.Order = None
+        self.OrderField = None
 
 
     def _deserialize(self, params):
@@ -3113,6 +3139,8 @@ When this field does not exist, all connections are pulled, including both not-g
                 obj._deserialize(item)
                 self.TagSet.append(obj)
         self.Independent = params.get("Independent")
+        self.Order = params.get("Order")
+        self.OrderField = params.get("OrderField")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4980,6 +5008,38 @@ class HttpHeaderParam(AbstractModel):
         
 
 
+class IPDetail(AbstractModel):
+    """IP details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IP: IP string
+        :type IP: str
+        :param Provider: Network provider. `BGP`: Tencent Cloud BGP (default); `CMCC`: China Mobile; `CUCC`: China Unicom; `CTCC`: China Telecom.
+        :type Provider: str
+        :param Bandwidth: Max bandwidth
+        :type Bandwidth: int
+        """
+        self.IP = None
+        self.Provider = None
+        self.Bandwidth = None
+
+
+    def _deserialize(self, params):
+        self.IP = params.get("IP")
+        self.Provider = params.get("Provider")
+        self.Bandwidth = params.get("Bandwidth")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InquiryPriceCreateProxyRequest(AbstractModel):
     """InquiryPriceCreateProxy request structure.
 
@@ -6510,17 +6570,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Bandwidth: int
         :param Concurrent: Concurrence. Unit: requests/second.
         :type Concurrent: int
-        :param Status: Connection status:
-RUNNING: running;
-CREATING: creating;
-DESTROYING: terminating;
-OPENING: enabling;
-CLOSING: disabling;
-CLOSED: disabled;
-ADJUSTING: adjusting configuration
-ISOLATING: isolating (it's triggered when the account is in arrears);
-ISOLATED: isolated (it's triggered when the account is in arrears);
-UNKNOWN: unknown status.
+        :param Status: Connection status. Valid values:
+`RUNNING`: running
+`CREATING`: creating
+`DESTROYING`: terminating
+`OPENING`: enabling
+`CLOSING`: disabling
+`CLOSED`: disabled
+`ADJUSTING`: adjusting configuration
+`ISOLATING`: isolating
+`ISOLATED`: isolated
+`CLONING`: copying
         :type Status: str
         :param Domain: Accessed domain name.
         :type Domain: str
@@ -6573,7 +6633,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param IPAddressVersion: IP version. Valid values: `IPv4`, `IPv6`.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type IPAddressVersion: str
-        :param NetworkType: Network type. Valid values: `normal`, `cn2`
+        :param NetworkType: Network type. `normal`: general BGP; `cn2`: dedicated BGP; `triple`: Non-BGP (provided by the top 3 ISPs in the Chinese mainland).
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :type NetworkType: str
         :param PackageType: Package type of connection groups. Valid values: `Thunder` (general connection group) and `Accelerator` (game accelerator connection group).
@@ -6582,6 +6642,8 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         :param BanStatus: Blocking-related status of the domain name. `BANNED`: the domain name is blocked; `RECOVER`: the domain name is unblocked or normal; `BANNING`: the domain name is being blocked; `RECOVERING`: the domain name is being unblocked; `BAN_FAILED`: the blocking fails; RECOVER_FAILED: the unblocking fails.
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :type BanStatus: str
+        :param IPList: 
+        :type IPList: list of IPDetail
         """
         self.InstanceId = None
         self.CreateTime = None
@@ -6614,6 +6676,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         self.NetworkType = None
         self.PackageType = None
         self.BanStatus = None
+        self.IPList = None
 
 
     def _deserialize(self, params):
@@ -6657,6 +6720,12 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         self.NetworkType = params.get("NetworkType")
         self.PackageType = params.get("PackageType")
         self.BanStatus = params.get("BanStatus")
+        if params.get("IPList") is not None:
+            self.IPList = []
+            for item in params.get("IPList"):
+                obj = IPDetail()
+                obj._deserialize(item)
+                self.IPList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6714,16 +6783,15 @@ class ProxyStatus(AbstractModel):
         :type InstanceId: str
         :param Status: Connection status.
 Valid values:
-RUNNING: running;
-CREATING: creating;
-DESTROYING: terminating;
-OPENING: enabling;
-CLOSING: disabling;
-CLOSED: disabled;
-ADJUSTING: adjusting configuration;
-ISOLATING: isolating;
-ISOLATED: isolated;
-UNKNOWN: unknown status.
+`RUNNING`: running
+`CREATING`: creating
+`DESTROYING`: terminating
+`OPENING`: enabling
+`CLOSING`: disabling
+`CLOSED`: disabled
+`ADJUSTING`: adjusting configuration
+`ISOLATING`: isolating
+`ISOLATED`: isolated
         :type Status: str
         """
         self.InstanceId = None
@@ -6831,16 +6899,21 @@ class RealServerStatus(AbstractModel):
         :type BindStatus: int
         :param ProxyId: ID of the connection bound to this origin server. This string is empty if they are not bound.
         :type ProxyId: str
+        :param GroupId: ID of the connection group bound to this origin server. This string is null if no connection groups are bound.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type GroupId: str
         """
         self.RealServerId = None
         self.BindStatus = None
         self.ProxyId = None
+        self.GroupId = None
 
 
     def _deserialize(self, params):
         self.RealServerId = params.get("RealServerId")
         self.BindStatus = params.get("BindStatus")
         self.ProxyId = params.get("ProxyId")
+        self.GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6861,14 +6934,26 @@ class RegionDetail(AbstractModel):
         :type RegionId: str
         :param RegionName: Region name in Chinese or English
         :type RegionName: str
+        :param RegionArea: Region where the data center locates
+        :type RegionArea: str
+        :param RegionAreaName: Name of the region where the data center locates
+        :type RegionAreaName: str
+        :param IDCType: Data center type. `dc`: data center; `ec`: edge server.
+        :type IDCType: str
         """
         self.RegionId = None
         self.RegionName = None
+        self.RegionArea = None
+        self.RegionAreaName = None
+        self.IDCType = None
 
 
     def _deserialize(self, params):
         self.RegionId = params.get("RegionId")
         self.RegionName = params.get("RegionName")
+        self.RegionArea = params.get("RegionArea")
+        self.RegionAreaName = params.get("RegionAreaName")
+        self.IDCType = params.get("IDCType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
