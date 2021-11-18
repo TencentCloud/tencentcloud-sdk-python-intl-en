@@ -704,35 +704,26 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 1 = yes, 0 = no
         :type NeedRecordNum: int
         :param ActionType: Action type to query. Valid values:
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+Purchase
+Renewal
+Modify
+Refund
+Deduction
+Hourly settlement
+Daily settlement
+Monthly settlement
+Offline project deduction
+Offline deduction
+adjust-CR
+adjust-DR
+One-off RI Fee
+Spot
+Hourly RI fee
+New monthly subscription
+Monthly subscription renewal
+Monthly subscription specification adjustment
+Monthly subscription specification adjustment
+Monthly subscription refund
         :type ActionType: str
         :param ResourceId: ID of the instance to be queried
         :type ResourceId: str
@@ -874,16 +865,25 @@ class DescribeBillSummaryByProductRequest(AbstractModel):
         :type EndTime: str
         :param PayerUin: Queries bill data user's UIN
         :type PayerUin: str
+        :param PayType: A bill type, which corresponds to a subtotal type of L0 bills.
+This parameter has become valid since v3.0 bills took effect in May 2021.
+Valid values:
+`consume`: consumption
+`refund`: refund
+`adjustment`: bill adjustment
+        :type PayType: str
         """
         self.BeginTime = None
         self.EndTime = None
         self.PayerUin = None
+        self.PayType = None
 
 
     def _deserialize(self, params):
         self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
         self.PayerUin = params.get("PayerUin")
+        self.PayType = params.get("PayType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -14,7 +14,7 @@
 # limitations under the License.
 
 
-# 
+# No permission.
 AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
 
 # Summary is being built. Please try again later.
