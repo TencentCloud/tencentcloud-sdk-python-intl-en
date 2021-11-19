@@ -947,11 +947,11 @@ class DescribeBackupUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DownloadUrl: Download address on the public network (valid for 6 hours)
+        :param DownloadUrl: Public network download address (valid for six hours). This field will be deprecated soon.
         :type DownloadUrl: list of str
-        :param InnerDownloadUrl: Download address on the private network (valid for 6 hours)
+        :param InnerDownloadUrl: Private network download address (valid for six hours). This field will be deprecated soon.
         :type InnerDownloadUrl: list of str
-        :param Filenames: File name (only valid for TencentDB for Tendis instances)
+        :param Filenames: Filename. This field will be deprecated soon.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Filenames: list of str
         :param BackupInfos: List of backup file information
@@ -3266,17 +3266,18 @@ class DisableReplicaReadonlyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: ERROR: failure; OK: success
-        :type Status: str
+        :param TaskId: Task ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TaskId: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Status = None
+        self.TaskId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -3364,17 +3365,23 @@ class EnableReplicaReadonlyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: ERROR: erroneous; OK: correct.
+        :param Status: Valid values: `ERROR`, `OK`. This field has been deprecated.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Status: str
+        :param TaskId: Task ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TaskId: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.Status = None
+        self.TaskId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -3482,11 +3489,11 @@ If `TypeId` indicates the standard architecture, `MemSize` indicates the total m
         :type BillingMode: int
         :param ZoneId: ID of the AZ where the instance resides. For more information, see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).
         :type ZoneId: int
-        :param RedisShardNum: Number of instance shards. This parameter can be left blank for Redis 2.8 in standard architecture, CKV in standard architecture, Redis 2.8 in standalone architecture, and Redis 4.0 in standard architecture.
+        :param RedisShardNum: Instance shard quantity. This field is not required by Redis 2.8 standard architecture, CKV standard architecture, Redis 2.8 standalone edition, and Redis 4.0 standard architecture.
         :type RedisShardNum: int
-        :param RedisReplicasNum: Number of instance replicas. This parameter can be left blank for Redis 2.8 in standard architecture, CKV in standard architecture, and Redis 2.8 in standalone architecture.
+        :param RedisReplicasNum: Instance replica quantity. This field is not required by Redis 2.8 standard architecture, CKV standard architecture, and Redis 2.8 standalone edition.
         :type RedisReplicasNum: int
-        :param ReplicasReadonly: Whether to support read-only replicas. This parameter can be left blank for Redis 2.8 in standard architecture, CKV in standard architecture, and Redis 2.8 in standalone architecture.
+        :param ReplicasReadonly: Whether to support read-only replicas. This field is not required by Redis 2.8 standard architecture, CKV standard architecture, and Redis 2.8 standalone edition.
         :type ReplicasReadonly: bool
         :param ZoneName: Name of the AZ where the instance resides. For more information, see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).
         :type ZoneName: str
@@ -3530,7 +3537,7 @@ class InquiryPriceCreateInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Price: Price. Unit: USD
+        :param Price: Price in USD
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Price: float
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
@@ -4607,7 +4614,7 @@ class ModifyAutoBackupConfigRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID
         :type InstanceId: str
-        :param WeekDays: Date. Value range: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+        :param WeekDays: Date. Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`. However, this parameter is now invalid.
         :type WeekDays: list of str
         :param TimePeriod: Time period. Value range: 00:00-01:00, 01:00-02:00...... 23:00-00:00
         :type TimePeriod: str
@@ -5043,11 +5050,11 @@ class ModifyParamTemplateRequest(AbstractModel):
         r"""
         :param TemplateId: ID of the parameter template to be modified.
         :type TemplateId: str
-        :param Name: New name of the parameter template.
+        :param Name: New name after the parameter template is modified.
         :type Name: str
-        :param Description: New description of the parameter template.
+        :param Description: New description after the parameter template is modified.
         :type Description: str
-        :param ParamList: List of new parameters.
+        :param ParamList: New parameter list after the parameter template is modified.
         :type ParamList: list of InstanceParam
         """
         self.TemplateId = None
@@ -6369,11 +6376,11 @@ class UpgradeInstanceRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID
         :type InstanceId: str
-        :param MemSize: Shard size in MB
+        :param MemSize: Shard size in MB. This parameter cannot be passed in at the same time as `RedisShardNum`/`RedisReplicasNum`.
         :type MemSize: int
-        :param RedisShardNum: Number of shards. This parameter can be left blank for Redis 2.8 primary-secondary edition, CKV primary-secondary edition, and Redis 2.8 standalone edition
+        :param RedisShardNum: Shard quantity. This parameter is not required by standard architecture instances and cannot be passed in at the same time as `RedisReplicasNum`/`MemSize`.
         :type RedisShardNum: int
-        :param RedisReplicasNum: Number of replicas. This parameter can be left blank for Redis 2.8 primary-secondary edition, CKV primary-secondary edition, and Redis 2.8 standalone edition
+        :param RedisReplicasNum: Replica quantity. This parameter cannot be passed in at the same time as `RedisShardNum`/`MemSize`. To modify the number of replicas in a multi-AZ instance, `NodeSet` must be passed in.
         :type RedisReplicasNum: int
         :param NodeSet: The information of the replica to be added to a multi-AZ instance, such as replica availability zone and replica type (`NodeType` should be `1`). This parameter is required only when multi-AZ instances add replicas.
         :type NodeSet: list of RedisNodeInfo
