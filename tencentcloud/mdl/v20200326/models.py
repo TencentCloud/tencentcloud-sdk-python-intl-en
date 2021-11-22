@@ -418,6 +418,8 @@ class CreateStreamLiveChannelRequest(AbstractModel):
         :type VideoTemplates: list of VideoTemplateInfo
         :param AVTemplates: Audio/Video transcoding templates. Quantity: [1, 10]
         :type AVTemplates: list of AVTemplate
+        :param PlanSettings: Event settings
+        :type PlanSettings: :class:`tencentcloud.mdl.v20200326.models.PlanSettings`
         """
         self.Name = None
         self.AttachedInputs = None
@@ -425,6 +427,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
         self.AudioTemplates = None
         self.VideoTemplates = None
         self.AVTemplates = None
+        self.PlanSettings = None
 
 
     def _deserialize(self, params):
@@ -459,6 +462,9 @@ class CreateStreamLiveChannelRequest(AbstractModel):
                 obj = AVTemplate()
                 obj._deserialize(item)
                 self.AVTemplates.append(obj)
+        if params.get("PlanSettings") is not None:
+            self.PlanSettings = PlanSettings()
+            self.PlanSettings._deserialize(params.get("PlanSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2009,6 +2015,8 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
         :type VideoTemplates: list of VideoTemplateInfo
         :param AVTemplates: Audio/Video transcoding templates. Quantity: [1, 10]
         :type AVTemplates: list of AVTemplate
+        :param PlanSettings: Event settings
+        :type PlanSettings: :class:`tencentcloud.mdl.v20200326.models.PlanSettings`
         """
         self.Id = None
         self.Name = None
@@ -2017,6 +2025,7 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
         self.AudioTemplates = None
         self.VideoTemplates = None
         self.AVTemplates = None
+        self.PlanSettings = None
 
 
     def _deserialize(self, params):
@@ -2052,6 +2061,9 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
                 obj = AVTemplate()
                 obj._deserialize(item)
                 self.AVTemplates.append(obj)
+        if params.get("PlanSettings") is not None:
+            self.PlanSettings = PlanSettings()
+            self.PlanSettings._deserialize(params.get("PlanSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2463,6 +2475,33 @@ class PlanResp(AbstractModel):
         
 
 
+class PlanSettings(AbstractModel):
+    """Event settings
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TimedRecordSettings: Timed recording settings
+Note: This field may return `null`, indicating that no valid value was found.
+        :type TimedRecordSettings: :class:`tencentcloud.mdl.v20200326.models.TimedRecordSettings`
+        """
+        self.TimedRecordSettings = None
+
+
+    def _deserialize(self, params):
+        if params.get("TimedRecordSettings") is not None:
+            self.TimedRecordSettings = TimedRecordSettings()
+            self.TimedRecordSettings._deserialize(params.get("TimedRecordSettings"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RegionInfo(AbstractModel):
     """Region information
 
@@ -2766,6 +2805,9 @@ Note: this field may return `null`, indicating that no valid value was found.
         :param AVTemplates: Audio/Video transcoding templates
 Note: this field may return `null`, indicating that no valid value was found.
         :type AVTemplates: list of AVTemplate
+        :param PlanSettings: Event settings
+Note: This field may return `null`, indicating that no valid value was found.
+        :type PlanSettings: :class:`tencentcloud.mdl.v20200326.models.PlanSettings`
         """
         self.Id = None
         self.State = None
@@ -2775,6 +2817,7 @@ Note: this field may return `null`, indicating that no valid value was found.
         self.AudioTemplates = None
         self.VideoTemplates = None
         self.AVTemplates = None
+        self.PlanSettings = None
 
 
     def _deserialize(self, params):
@@ -2811,6 +2854,9 @@ Note: this field may return `null`, indicating that no valid value was found.
                 obj = AVTemplate()
                 obj._deserialize(item)
                 self.AVTemplates.append(obj)
+        if params.get("PlanSettings") is not None:
+            self.PlanSettings = PlanSettings()
+            self.PlanSettings._deserialize(params.get("PlanSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3057,6 +3103,32 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.State = params.get("State")
         self.PlayDomain = params.get("PlayDomain")
         self.StartoverWindow = params.get("StartoverWindow")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimedRecordSettings(AbstractModel):
+    """Timed recording settings
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoClear: Whether to automatically delete finished recording events. Valid values: `CLOSE`, `OPEN`. If this parameter is left empty, `CLOSE` will be used.
+If it is set to `OPEN`, a recording event will be deleted 7 days after it is finished.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type AutoClear: str
+        """
+        self.AutoClear = None
+
+
+    def _deserialize(self, params):
+        self.AutoClear = params.get("AutoClear")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

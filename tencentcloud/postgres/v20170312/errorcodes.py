@@ -26,6 +26,9 @@ AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
 # Backend database execution error.
 DBERROR = 'DBError'
 
+# Operation failed.
+FAILEDOPERATION = 'FailedOperation'
+
 # Failed to access classic network. Please try again later. If the problem persists, please contact customer service.
 FAILEDOPERATION_BASENETWORKACCESSERROR = 'FailedOperation.BaseNetworkAccessError'
 

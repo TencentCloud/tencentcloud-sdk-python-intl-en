@@ -3156,6 +3156,87 @@ class ModifyDBInstanceReadOnlyGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDBInstanceSpecRequest(AbstractModel):
+    """ModifyDBInstanceSpec request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: Instance ID in the format of postgres-6bwgamo3.
+        :type DBInstanceId: str
+        :param Memory: Instance memory size in GiB after modification.
+        :type Memory: int
+        :param Storage: Instance disk size in GiB after modification.
+        :type Storage: int
+        :param AutoVoucher: Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.
+        :type AutoVoucher: int
+        :param VoucherIds: Voucher ID list. Currently, you can specify only one voucher.
+        :type VoucherIds: list of str
+        :param ActivityId: Campaign ID.
+        :type ActivityId: int
+        :param SwitchTag: Switch time after instance configurations are modified. Valid values: `0` (switch immediately), `1` (switch at a specified time). Default value: `0`.
+        :type SwitchTag: int
+        :param SwitchStartTime: The earliest time to start a switch.
+        :type SwitchStartTime: str
+        :param SwitchEndTime: The latest time to start a switch.
+        :type SwitchEndTime: str
+        """
+        self.DBInstanceId = None
+        self.Memory = None
+        self.Storage = None
+        self.AutoVoucher = None
+        self.VoucherIds = None
+        self.ActivityId = None
+        self.SwitchTag = None
+        self.SwitchStartTime = None
+        self.SwitchEndTime = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.AutoVoucher = params.get("AutoVoucher")
+        self.VoucherIds = params.get("VoucherIds")
+        self.ActivityId = params.get("ActivityId")
+        self.SwitchTag = params.get("SwitchTag")
+        self.SwitchStartTime = params.get("SwitchStartTime")
+        self.SwitchEndTime = params.get("SwitchEndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceSpecResponse(AbstractModel):
+    """ModifyDBInstanceSpec response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealName: Order ID.
+        :type DealName: str
+        :param BillId: Bill ID of frozen fees.
+        :type BillId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DealName = None
+        self.BillId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealName = params.get("DealName")
+        self.BillId = params.get("BillId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDBInstancesProjectRequest(AbstractModel):
     """ModifyDBInstancesProject request structure.
 
