@@ -352,6 +352,34 @@ class BackupItem(AbstractModel):
         
 
 
+class BackupLimitVpcItem(AbstractModel):
+    """VPCs used to restrict backup download
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Region: The region where the backup download restrictions take effect. It must be the same as the common request parameter `Region` of the API.
+        :type Region: str
+        :param VpcList: The list of VPCs used to restrict backup download
+        :type VpcList: list of str
+        """
+        self.Region = None
+        self.VpcList = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.VpcList = params.get("VpcList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BackupSummaryItem(AbstractModel):
     """Statistical items of instance backup
 
@@ -2074,6 +2102,54 @@ class DescribeBackupConfigResponse(AbstractModel):
         if params.get("BackupTimeWindow") is not None:
             self.BackupTimeWindow = CommonTimeWindow()
             self.BackupTimeWindow._deserialize(params.get("BackupTimeWindow"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBackupDownloadRestrictionRequest(AbstractModel):
+    """DescribeBackupDownloadRestriction request structure.
+
+    """
+
+
+class DescribeBackupDownloadRestrictionResponse(AbstractModel):
+    """DescribeBackupDownloadRestriction response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LimitType: Valid values: `NoLimit` (backups can be downloaded over both private and public networks with any IPs), `LimitOnlyIntranet` (backups can be downloaded over the private network with any private IPs), `Customize` (backups can be downloaded over specified VPCs with specified IPs). The `LimitVpc` and `LimitIp` parameters are valid only when this parameter is set to `Customize`.
+        :type LimitType: str
+        :param VpcComparisonSymbol: Valid value: `In` (backups can only be downloaded over the VPCs specified in `LimitVpc`).
+        :type VpcComparisonSymbol: str
+        :param IpComparisonSymbol: Valid values: `In` (backups can only be downloaded with the IPs specified in `LimitIp`), `NotIn` (backups cannot be downloaded with the IPs specified in `LimitIp`).
+        :type IpComparisonSymbol: str
+        :param LimitVpc: VPCs used to restrict backup download.
+        :type LimitVpc: list of BackupLimitVpcItem
+        :param LimitIp: IPs used to restrict backup download.
+        :type LimitIp: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.LimitType = None
+        self.VpcComparisonSymbol = None
+        self.IpComparisonSymbol = None
+        self.LimitVpc = None
+        self.LimitIp = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LimitType = params.get("LimitType")
+        self.VpcComparisonSymbol = params.get("VpcComparisonSymbol")
+        self.IpComparisonSymbol = params.get("IpComparisonSymbol")
+        if params.get("LimitVpc") is not None:
+            self.LimitVpc = []
+            for item in params.get("LimitVpc"):
+                obj = BackupLimitVpcItem()
+                obj._deserialize(item)
+                self.LimitVpc.append(obj)
+        self.LimitIp = params.get("LimitIp")
         self.RequestId = params.get("RequestId")
 
 
@@ -5856,6 +5932,68 @@ class ModifyBackupConfigRequest(AbstractModel):
 
 class ModifyBackupConfigResponse(AbstractModel):
     """ModifyBackupConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyBackupDownloadRestrictionRequest(AbstractModel):
+    """ModifyBackupDownloadRestriction request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LimitType: Valid values: `NoLimit` (backups can be downloaded over both private and public networks with any IPs), `LimitOnlyIntranet` (backups can be downloaded over the private network with any private IPs), `Customize` (backups can be downloaded over specified VPCs with specified IPs). The `LimitVpc` and `LimitIp` parameters are valid only when this parameter is set to `Customize`.
+        :type LimitType: str
+        :param VpcComparisonSymbol: Valid value: `In` (backups can only be downloaded over the VPCs specified in `LimitVpc`). Default value: `In`.
+        :type VpcComparisonSymbol: str
+        :param IpComparisonSymbol: Valid values: `In` (backups can only be downloaded with the IPs specified in `LimitIp`), `NotIn` (backups cannot be downloaded with the IPs specified in `LimitIp`). Default value: `In`.
+        :type IpComparisonSymbol: str
+        :param LimitVpc: VPCs used to restrict backup download.
+        :type LimitVpc: list of BackupLimitVpcItem
+        :param LimitIp: IPs used to restrict backup download.
+        :type LimitIp: list of str
+        """
+        self.LimitType = None
+        self.VpcComparisonSymbol = None
+        self.IpComparisonSymbol = None
+        self.LimitVpc = None
+        self.LimitIp = None
+
+
+    def _deserialize(self, params):
+        self.LimitType = params.get("LimitType")
+        self.VpcComparisonSymbol = params.get("VpcComparisonSymbol")
+        self.IpComparisonSymbol = params.get("IpComparisonSymbol")
+        if params.get("LimitVpc") is not None:
+            self.LimitVpc = []
+            for item in params.get("LimitVpc"):
+                obj = BackupLimitVpcItem()
+                obj._deserialize(item)
+                self.LimitVpc.append(obj)
+        self.LimitIp = params.get("LimitIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBackupDownloadRestrictionResponse(AbstractModel):
+    """ModifyBackupDownloadRestriction response structure.
 
     """
 

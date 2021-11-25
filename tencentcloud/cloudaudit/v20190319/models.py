@@ -81,12 +81,16 @@ class DescribeEventsResponse(AbstractModel):
         :param Events: Logset.
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :type Events: list of Event
+        :param TotalCount: Total number of events.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.ListOver = None
         self.NextToken = None
         self.Events = None
+        self.TotalCount = None
         self.RequestId = None
 
 
@@ -99,6 +103,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
                 obj = Event()
                 obj._deserialize(item)
                 self.Events.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
