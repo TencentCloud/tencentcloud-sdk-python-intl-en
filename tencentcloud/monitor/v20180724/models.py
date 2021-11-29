@@ -986,7 +986,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
         :type PolicyName: str
         :param MonitorType: Monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring)
         :type MonitorType: str
-        :param Namespace: Type of alarm policy, which can be obtained via [DescribeAllNamespaces](https://intl.cloud.tencent.com/document/product/248/48683?from_cn_redirect=1). An example value is `cvm_device`.
+        :param Namespace: Type of alarm policy, which can be obtained via [DescribeAllNamespaces](https://intl.cloud.tencent.com/document/product/248/48683?from_cn_redirect=1). For the monitoring of Tencent Cloud services, the value of this parameter is `QceNamespacesNew.N.Id` of the output parameter of `DescribeAllNamespaces`, for example, `cvm_device`.
         :type Namespace: str
         :param Remark: Remarks with up to 100 letters, digits, underscores, and hyphens
         :type Remark: str
@@ -1688,12 +1688,10 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
         :param AlarmStatus: Filter by alarm status. Valid values: ALARM (not resolved), OK (resolved), NO_CONF (expired), NO_DATA (insufficient data). If this parameter is left empty, all will be queried by default
         :type AlarmStatus: list of str
         :param ProjectIds: Filter by project ID. Valid values: `-1` (no project), `0` (default project)
-You can query [Project Management](https://console.cloud.tencent.com/project) on this page.
         :type ProjectIds: list of int
         :param InstanceGroupIds: Filter by instance group ID
         :type InstanceGroupIds: list of int
         :param Namespaces: Filter by policy type. Monitoring type and policy type are first-level and second-level filters respectively and both need to be passed in. For example, `[{"MonitorType": "MT_QCE", "Namespace": "cvm_device"}]`
-This parameter can be queried with the API [DescribeAllNamespaces](https://intl.cloud.tencent.com/document/product/248/48683?from_cn_redirect=1).
         :type Namespaces: list of MonitorTypeNamespace
         :param MetricNames: Filter by metric name
         :type MetricNames: list of str
@@ -1701,9 +1699,9 @@ This parameter can be queried with the API [DescribeAllNamespaces](https://intl.
         :type PolicyName: str
         :param Content: Fuzzy search by alarm content
         :type Content: str
-        :param ReceiverUids: Search by recipient. You can get the user list with the API [ListUsers](https://intl.cloud.tencent.com/document/product/598/34587?from_cn_redirect=1) in “Cloud Access Management” or query the sub-user information with the API [GetUser](https://intl.cloud.tencent.com/document/product/598/34590?from_cn_redirect=1). The `Uid` field in the returned result should be entered here.
+        :param ReceiverUids: Search by recipient
         :type ReceiverUids: list of int
-        :param ReceiverGroups: Search by recipient group. You can get the user group list with the API [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) in “Cloud Access Management” or query the user group list where a sub-user is in with the API [ListGroupsForUser](https://intl.cloud.tencent.com/document/product/598/34588?from_cn_redirect=1). The `GroupId` field in the returned result should be entered here.
+        :param ReceiverGroups: Search by recipient group
         :type ReceiverGroups: list of int
         :param PolicyIds: Search by alarm policy ID list
         :type PolicyIds: list of str
@@ -4321,7 +4319,7 @@ class DescribeProductEventListRequest(AbstractModel):
         :type InstanceId: list of str
         :param Dimensions: Filter by dimension, such as by public IP: 10.0.0.1.
         :type Dimensions: list of DescribeProductEventListDimensions
-        :param RegionList: Region filter parameter for service events, such as `gz`. For region abbreviations, please see [Region List](https://intl.cloud.tencent.com/document/product/248/50863?from_cn_redirect=1)
+        :param RegionList: Region filter parameter for service events.
         :type RegionList: list of str
         :param Type: Filter by event type. Valid values: ["status_change","abnormal"], which indicate events whose statuses have changed and events with exceptions respectively.
         :type Type: list of str

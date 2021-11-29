@@ -233,7 +233,7 @@ UNAUTHORIZEDOPERATION_SMSSDKAPPIDVERIFYFAIL = 'UnauthorizedOperation.SmsSdkAppId
 # The request is not supported.
 UNSUPPORTEDOPERATION_ = 'UnsupportedOperation.'
 
-# Both Mainland China mobile numbers and global mobile numbers are included in the bulk SMS request. Check whether you (1) use a Mainland China signature or template to send SMS to global mobile numbers and (2) use a global signature or template to send SMS to Mainland China mobile numbers.
+# The group message request contains both Chinese mainland numbers and international numbers. Please check: (1) whether the message is sent to international numbers with a Chinese mainland signature or template; (2) whether the message is sent to Chinese mainland numbers with an international signature or template.
 UNSUPPORTEDOPERATION_CONTAINDOMESTICANDINTERNATIONALPHONENUMBER = 'UnsupportedOperation.ContainDomesticAndInternationalPhoneNumber'
 
 # SMS delivery to this region is not supported.

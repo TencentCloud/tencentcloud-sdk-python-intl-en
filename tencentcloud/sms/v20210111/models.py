@@ -63,7 +63,7 @@ Note: you cannot apply for an approved or pending signature again.
 Note: the identity certificate type must be selected according to the correspondence; otherwise, the review will fail.
         :type SignType: int
         :param DocumentType: Identity certificate type:
-0: three-in-one.
+0: three-in-one licence.
 1: business license.
 2: organization code certificate.
 3: social credit code certificate.
@@ -1399,10 +1399,10 @@ Note: 11-digit Chinese mainland numbers prefixed by 0086 or 86 or those without 
         :type PhoneNumberSet: list of str
         :param SmsSdkAppId: The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 1400006666.
         :type SmsSdkAppId: str
-        :param TemplateId: Template ID. You must enter the ID of an approved template, which can be viewed on the [Mainland China SMS](https://console.cloud.tencent.com/smsv2/csms-template) or [Global SMS](https://console.cloud.tencent.com/smsv2/isms-template) body template management page. If you need to send SMS messages to global mobile numbers, you can only use a Global SMS template.
+        :param TemplateId: Template ID. You must enter the ID of an approved template, which can be viewed on the [Chinese Mainland SMS](https://console.cloud.tencent.com/smsv2/csms-template) or [Global SMS](https://console.cloud.tencent.com/smsv2/isms-template) body template management page. If you need to send SMS messages to global mobile numbers, you can only use a Global SMS template.
         :type TemplateId: str
-        :param SignName: Content of the SMS signature, which should be encoded in UTF-8. You must enter an approved signature, such as Tencent Cloud. The signature information can be viewed on the [Mainland China SMS](https://console.cloud.tencent.com/smsv2/csms-sign) or [Global SMS](https://console.cloud.tencent.com/smsv2/isms-sign) signature management page.
-<dx-alert infotype="notice" title="Note">This parameter is required for Mainland China SMS.</dx-alert>
+        :param SignName: Content of the SMS signature, which should be encoded in UTF-8. You must enter an approved signature, such as Tencent Cloud. The signature information can be viewed on the [Chinese Mainland SMS](https://console.cloud.tencent.com/smsv2/csms-sign) or [Global SMS](https://console.cloud.tencent.com/smsv2/isms-sign) signature management page.
+<dx-alert infotype="notice" title="Note">This parameter is required for Chinese Mainland SMS.</dx-alert>
         :type SignName: str
         :param TemplateParamSet: Template parameter. If there is no template parameter, leave this field empty.
 <dx-alert infotype="notice" title="Note">The number of template parameters should be consistent with that of the template variables of `TemplateId`.</dx-alert>
@@ -1411,7 +1411,7 @@ Note: 11-digit Chinese mainland numbers prefixed by 0086 or 86 or those without 
         :type ExtendCode: str
         :param SessionContext: User session content, which can carry context information such as user-side ID and will be returned as-is by the server.
         :type SessionContext: str
-        :param SenderId: This parameter is not required for Mainland China SMS. For Global SMS, if you have applied for a separate `SenderId`, this parameter is required. By default, the public `SenderId` is used, in which case you don't need to enter this parameter.
+        :param SenderId: This parameter is not required for Chinese Mainland SMS. For Global SMS, if you have applied for a separate `SenderId`, this parameter is required. By default, the public `SenderId` is used, in which case you don't need to enter this parameter.
 Note: if your monthly usage reaches the specified threshold, you can apply for an independent `SenderId`. For more information, contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).
         :type SenderId: str
         """
