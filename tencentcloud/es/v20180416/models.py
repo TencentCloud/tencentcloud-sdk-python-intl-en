@@ -119,6 +119,8 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
         :type SceneType: int
         :param WebNodeTypeInfo: Visual node configuration
         :type WebNodeTypeInfo: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
+        :param Protocol: Valid values: `https`, `http` (default)
+        :type Protocol: str
         """
         self.Zone = None
         self.EsVersion = None
@@ -149,6 +151,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
         self.BasicSecurityType = None
         self.SceneType = None
         self.WebNodeTypeInfo = None
+        self.Protocol = None
 
 
     def _deserialize(self, params):
@@ -198,6 +201,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
         if params.get("WebNodeTypeInfo") is not None:
             self.WebNodeTypeInfo = WebNodeTypeInfo()
             self.WebNodeTypeInfo._deserialize(params.get("WebNodeTypeInfo"))
+        self.Protocol = params.get("Protocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -853,6 +857,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param Jdk: JDK type. Valid values: `oracle`, `kona`
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Jdk: str
+        :param Protocol: Cluster network communication protocol
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Protocol: str
+        :param SecurityGroups: Security group ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SecurityGroups: list of str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -911,6 +921,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.KibanaNodeInfo = None
         self.WebNodeTypeInfo = None
         self.Jdk = None
+        self.Protocol = None
+        self.SecurityGroups = None
 
 
     def _deserialize(self, params):
@@ -1000,6 +1012,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
             self.WebNodeTypeInfo = WebNodeTypeInfo()
             self.WebNodeTypeInfo._deserialize(params.get("WebNodeTypeInfo"))
         self.Jdk = params.get("Jdk")
+        self.Protocol = params.get("Protocol")
+        self.SecurityGroups = params.get("SecurityGroups")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1671,6 +1685,14 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
         :type KibanaConfig: str
         :param WebNodeTypeInfo: Visual node configuration
         :type WebNodeTypeInfo: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
+        :param SwitchPrivateLink: Whether to switch to the new network architecture
+        :type SwitchPrivateLink: str
+        :param EnableCerebro: Whether to enable Cerebro
+        :type EnableCerebro: bool
+        :param CerebroPublicAccess: Cerebro public network access status
+        :type CerebroPublicAccess: str
+        :param CerebroPrivateAccess: Cerebro private network access status
+        :type CerebroPrivateAccess: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1697,6 +1719,10 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
         self.SceneType = None
         self.KibanaConfig = None
         self.WebNodeTypeInfo = None
+        self.SwitchPrivateLink = None
+        self.EnableCerebro = None
+        self.CerebroPublicAccess = None
+        self.CerebroPrivateAccess = None
 
 
     def _deserialize(self, params):
@@ -1743,6 +1769,10 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
         if params.get("WebNodeTypeInfo") is not None:
             self.WebNodeTypeInfo = WebNodeTypeInfo()
             self.WebNodeTypeInfo._deserialize(params.get("WebNodeTypeInfo"))
+        self.SwitchPrivateLink = params.get("SwitchPrivateLink")
+        self.EnableCerebro = params.get("EnableCerebro")
+        self.CerebroPublicAccess = params.get("CerebroPublicAccess")
+        self.CerebroPrivateAccess = params.get("CerebroPrivateAccess")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
