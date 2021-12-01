@@ -270,7 +270,7 @@ class Code(AbstractModel):
         r"""
         :param CosBucketName: Object bucket name (enter the custom part of the bucket name without `-appid`)
         :type CosBucketName: str
-        :param CosObjectName: COS object path
+        :param CosObjectName: File path of code package stored in COS, which should start with “/”
         :type CosObjectName: str
         :param ZipFile: This parameter contains a .zip file (up to 50 MB) of the function code file and its dependencies. When this API is used, the content of the .zip file needs to be Base64-encoded
         :type ZipFile: str
@@ -3600,11 +3600,14 @@ class PutProvisionedConcurrencyConfigRequest(AbstractModel):
         :type VersionProvisionedConcurrencyNum: int
         :param Namespace: Function namespace. Default value: `default`
         :type Namespace: str
+        :param TriggerActions: Scheduled provisioned concurrency scaling action
+        :type TriggerActions: list of TriggerAction
         """
         self.FunctionName = None
         self.Qualifier = None
         self.VersionProvisionedConcurrencyNum = None
         self.Namespace = None
+        self.TriggerActions = None
 
 
     def _deserialize(self, params):
@@ -3612,6 +3615,12 @@ class PutProvisionedConcurrencyConfigRequest(AbstractModel):
         self.Qualifier = params.get("Qualifier")
         self.VersionProvisionedConcurrencyNum = params.get("VersionProvisionedConcurrencyNum")
         self.Namespace = params.get("Namespace")
+        if params.get("TriggerActions") is not None:
+            self.TriggerActions = []
+            for item in params.get("TriggerActions"):
+                obj = TriggerAction()
+                obj._deserialize(item)
+                self.TriggerActions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3943,16 +3952,20 @@ class TerminateAsyncEventRequest(AbstractModel):
         :type InvokeRequestId: str
         :param Namespace: Namespace
         :type Namespace: str
+        :param GraceShutdown: Specifies whether to enable graceful shutdown
+        :type GraceShutdown: bool
         """
         self.FunctionName = None
         self.InvokeRequestId = None
         self.Namespace = None
+        self.GraceShutdown = None
 
 
     def _deserialize(self, params):
         self.FunctionName = params.get("FunctionName")
         self.InvokeRequestId = params.get("InvokeRequestId")
         self.Namespace = params.get("Namespace")
+        self.GraceShutdown = params.get("GraceShutdown")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4066,6 +4079,41 @@ class Trigger(AbstractModel):
         self.BindStatus = params.get("BindStatus")
         self.TriggerAttribute = params.get("TriggerAttribute")
         self.Qualifier = params.get("Qualifier")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerAction(AbstractModel):
+    """Details of a scheduled provisioned concurrency scaling action
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TriggerName: Scheduled action name
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TriggerName: str
+        :param TriggerProvisionedConcurrencyNum: Target provisioned concurrency of the scheduled scaling action 
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TriggerProvisionedConcurrencyNum: int
+        :param TriggerCronConfig: Trigger time of the scheduled action in Cron expression. Seven fields are required and should be separated with a space.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TriggerCronConfig: str
+        """
+        self.TriggerName = None
+        self.TriggerProvisionedConcurrencyNum = None
+        self.TriggerCronConfig = None
+
+
+    def _deserialize(self, params):
+        self.TriggerName = params.get("TriggerName")
+        self.TriggerProvisionedConcurrencyNum = params.get("TriggerProvisionedConcurrencyNum")
+        self.TriggerCronConfig = params.get("TriggerCronConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4707,12 +4755,16 @@ class VersionProvisionedConcurrencyInfo(AbstractModel):
         :type StatusReason: str
         :param Qualifier: Function version number
         :type Qualifier: str
+        :param TriggerActions: List of scheduled provisioned concurrency scaling actions
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TriggerActions: list of TriggerAction
         """
         self.AllocatedProvisionedConcurrencyNum = None
         self.AvailableProvisionedConcurrencyNum = None
         self.Status = None
         self.StatusReason = None
         self.Qualifier = None
+        self.TriggerActions = None
 
 
     def _deserialize(self, params):
@@ -4721,6 +4773,12 @@ class VersionProvisionedConcurrencyInfo(AbstractModel):
         self.Status = params.get("Status")
         self.StatusReason = params.get("StatusReason")
         self.Qualifier = params.get("Qualifier")
+        if params.get("TriggerActions") is not None:
+            self.TriggerActions = []
+            for item in params.get("TriggerActions"):
+                obj = TriggerAction()
+                obj._deserialize(item)
+                self.TriggerActions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

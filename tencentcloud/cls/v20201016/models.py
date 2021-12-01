@@ -3785,7 +3785,7 @@ class GetAlarmLogRequest(AbstractModel):
         :type Context: str
         :param Sort: Order of the logs sorted by time returned by the log API. Valid values: `asc`: ascending; `desc`: descending. Default value: `desc`
         :type Sort: str
-        :param UseNewAnalysis: 
+        :param UseNewAnalysis: If the value is `true`, the new search method will be used, and the response parameters `AnalysisRecords` and `Columns` will be valid. If the value is `false`, the old search method will be used, and `AnalysisResults` and `ColNames` will be valid.
         :type UseNewAnalysis: bool
         """
         self.From = None
@@ -3836,9 +3836,11 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param AnalysisResults: Log analysis result. If `Analysis` is `False`, `null` may be returned
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type AnalysisResults: list of LogItems
-        :param AnalysisRecords: 
+        :param AnalysisRecords: New log analysis result, which will be valid if `UseNewAnalysis` is `true`
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type AnalysisRecords: list of str
-        :param Columns: 
+        :param Columns: Column attribute of log analysis, which will be valid if `UseNewAnalysis` is `true`
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Columns: list of Column
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -5671,6 +5673,32 @@ class UploadLogRequest(AbstractModel):
     """UploadLog request structure.
 
     """
+
+    def __init__(self):
+        r"""
+        :param TopicId: Topic ID
+        :type TopicId: str
+        :param HashKey: Topic partition where data will be written into by `HashKey` 
+        :type HashKey: str
+        :param CompressType: Compression type
+        :type CompressType: str
+        """
+        self.TopicId = None
+        self.HashKey = None
+        self.CompressType = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        self.HashKey = params.get("HashKey")
+        self.CompressType = params.get("CompressType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UploadLogResponse(AbstractModel):

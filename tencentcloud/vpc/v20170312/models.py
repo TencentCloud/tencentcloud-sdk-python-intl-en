@@ -287,6 +287,35 @@ class AddressChargePrepaid(AbstractModel):
         
 
 
+class AddressInfo(AbstractModel):
+    """IP address template information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Address: IP address
+        :type Address: str
+        :param Description: Remarks
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Description: str
+        """
+        self.Address = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Address = params.get("Address")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AddressTemplate(AbstractModel):
     """IP address template
 
@@ -302,11 +331,14 @@ class AddressTemplate(AbstractModel):
         :type AddressSet: list of str
         :param CreatedTime: Creation Time.
         :type CreatedTime: str
+        :param AddressExtraSet: IP address information with remarks
+        :type AddressExtraSet: list of AddressInfo
         """
         self.AddressTemplateName = None
         self.AddressTemplateId = None
         self.AddressSet = None
         self.CreatedTime = None
+        self.AddressExtraSet = None
 
 
     def _deserialize(self, params):
@@ -314,6 +346,12 @@ class AddressTemplate(AbstractModel):
         self.AddressTemplateId = params.get("AddressTemplateId")
         self.AddressSet = params.get("AddressSet")
         self.CreatedTime = params.get("CreatedTime")
+        if params.get("AddressExtraSet") is not None:
+            self.AddressExtraSet = []
+            for item in params.get("AddressExtraSet"):
+                obj = AddressInfo()
+                obj._deserialize(item)
+                self.AddressExtraSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2139,16 +2177,25 @@ class CreateAddressTemplateRequest(AbstractModel):
         r"""
         :param AddressTemplateName: The name of the IP address template
         :type AddressTemplateName: str
-        :param Addresses: Address information, including IP, CIDR and IP address range.
+        :param Addresses: The address information can be presented by the IP, CIDR block or IP address range. Either Addresses or AddressesExtra is required.
         :type Addresses: list of str
+        :param AddressesExtra: The address information can contain remarks and be presented by the IP, CIDR block or IP address range. Either Addresses or AddressesExtra is required.
+        :type AddressesExtra: list of AddressInfo
         """
         self.AddressTemplateName = None
         self.Addresses = None
+        self.AddressesExtra = None
 
 
     def _deserialize(self, params):
         self.AddressTemplateName = params.get("AddressTemplateName")
         self.Addresses = params.get("Addresses")
+        if params.get("AddressesExtra") is not None:
+            self.AddressesExtra = []
+            for item in params.get("AddressesExtra"):
+                obj = AddressInfo()
+                obj._deserialize(item)
+                self.AddressesExtra.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3679,16 +3726,25 @@ class CreateServiceTemplateRequest(AbstractModel):
         r"""
         :param ServiceTemplateName: Template name of the protocol port
         :type ServiceTemplateName: str
-        :param Services: It supports single port, multiple ports, consecutive ports and all ports. Supported protocols include TCP, UDP, ICMP, and GRE.
+        :param Services: Supported ports inlcude single port, multiple ports, consecutive ports and all ports. Supported protocols include TCP, UDP, ICMP and GRE. Either Services or ServicesExtra is required.
         :type Services: list of str
+        :param ServicesExtra: You can add remarks. Supported ports include single port, multiple ports, consecutive ports and all ports. Supported protocols include TCP, UDP, ICMP and GRE. Either Services or ServicesExtra is required.
+        :type ServicesExtra: list of ServicesInfo
         """
         self.ServiceTemplateName = None
         self.Services = None
+        self.ServicesExtra = None
 
 
     def _deserialize(self, params):
         self.ServiceTemplateName = params.get("ServiceTemplateName")
         self.Services = params.get("Services")
+        if params.get("ServicesExtra") is not None:
+            self.ServicesExtra = []
+            for item in params.get("ServicesExtra"):
+                obj = ServicesInfo()
+                obj._deserialize(item)
+                self.ServicesExtra.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4245,10 +4301,14 @@ class CreateVpnGatewayRequest(AbstractModel):
         :type InstanceChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.InstanceChargePrepaid`
         :param Zone: The availability zone, such as `ap-guangzhou-2`.
         :type Zone: str
-        :param Type: VPN gateway type. Value: `CCN`, indicates CCN-type VPN gateway
+        :param Type: VPN gateway type. Values: `CCN` (CCN VPN gateway), `SSL` (SSL VPN gateway)
         :type Type: str
         :param Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
         :type Tags: list of Tag
+        :param CdcId: CDC instance ID
+        :type CdcId: str
+        :param MaxConnection: Maximum number of connected clients allowed for the SSL VPN gateway. Valid values: [5, 10, 20, 50, 100]. This parameter is only required for SSL VPN gateways.
+        :type MaxConnection: int
         """
         self.VpcId = None
         self.VpnGatewayName = None
@@ -4258,6 +4318,8 @@ class CreateVpnGatewayRequest(AbstractModel):
         self.Zone = None
         self.Type = None
         self.Tags = None
+        self.CdcId = None
+        self.MaxConnection = None
 
 
     def _deserialize(self, params):
@@ -4276,6 +4338,8 @@ class CreateVpnGatewayRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.CdcId = params.get("CdcId")
+        self.MaxConnection = params.get("MaxConnection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6119,9 +6183,10 @@ class DescribeAddressTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: Filter conditions.
-<li>address-template-name - String - (Filter condition) IP address template name.</li>
-<li>address-template-id - String - (Filter condition) IP address template instance ID, such as `ipm-mdunqeb6`.</li>
+        :param Filters: Filters
+<li>address-template-name - IP address template name.</li>
+<li>address-template-id - IP address template ID, such as `ipm-mdunqeb6`.</li>
+<li>address-ip - IP address.</li>
         :type Filters: list of Filter
         :param Offset: Offset. The default value is 0.
         :type Offset: str
@@ -7765,9 +7830,9 @@ class DescribeIpGeolocationInfosRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AddressIps: IP addresses to be queried. Both IPv4 and IPv6 addresses are supported.
+        :param AddressIps: The list of IP addresses (only IPv4 addresses are available currently) to be queried; upper limit: 100
         :type AddressIps: list of str
-        :param Fields: Fields of the IP addresses to be queried, including `Country`, `Province`, `City`, `Region`, `Isp`, `AsName` and `AsId`
+        :param Fields: Fields of the IP addresses to be queried.
         :type Fields: :class:`tencentcloud.vpc.v20170312.models.IpField`
         """
         self.AddressIps = None
@@ -8858,9 +8923,10 @@ class DescribeServiceTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: Filter conditions.
-<li>service-template-name - String - (Filter condition) Protocol port template name.</li>
-<li>service-template-id - String - (Filter condition) Protocol port template instance ID, such as `ppm-e6dy460g`.</li>
+        :param Filters: Filters
+<li>service-template-name - Protocol port template name.</li>
+<li>service-template-id - Protocol port template ID, such as `ppm-e6dy460g`.</li>
+<li>service-port-Protocol port.</li>
         :type Filters: list of Filter
         :param Offset: Offset. The default value is 0.
         :type Offset: str
@@ -12232,16 +12298,25 @@ class ModifyAddressTemplateAttributeRequest(AbstractModel):
         :type AddressTemplateName: str
         :param Addresses: Address information, including IP, CIDR and IP address range.
         :type Addresses: list of str
+        :param AddressesExtra: Address information with remarks, including the IP, CIDR block or IP address range.
+        :type AddressesExtra: list of AddressInfo
         """
         self.AddressTemplateId = None
         self.AddressTemplateName = None
         self.Addresses = None
+        self.AddressesExtra = None
 
 
     def _deserialize(self, params):
         self.AddressTemplateId = params.get("AddressTemplateId")
         self.AddressTemplateName = params.get("AddressTemplateName")
         self.Addresses = params.get("Addresses")
+        if params.get("AddressesExtra") is not None:
+            self.AddressesExtra = []
+            for item in params.get("AddressesExtra"):
+                obj = AddressInfo()
+                obj._deserialize(item)
+                self.AddressesExtra.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12446,16 +12521,20 @@ class ModifyBandwidthPackageAttributeRequest(AbstractModel):
         :type BandwidthPackageName: str
         :param ChargeType: The billing mode of the bandwidth package.
         :type ChargeType: str
+        :param MigrateOnRefund: When a monthly-subscribed bandwidth package is returned, whether to convert it to a pay-as-you-go bandwidth packages. Default value: `No`
+        :type MigrateOnRefund: bool
         """
         self.BandwidthPackageId = None
         self.BandwidthPackageName = None
         self.ChargeType = None
+        self.MigrateOnRefund = None
 
 
     def _deserialize(self, params):
         self.BandwidthPackageId = params.get("BandwidthPackageId")
         self.BandwidthPackageName = params.get("BandwidthPackageName")
         self.ChargeType = params.get("ChargeType")
+        self.MigrateOnRefund = params.get("MigrateOnRefund")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12541,9 +12620,9 @@ class ModifyCcnAttributeRequest(AbstractModel):
         r"""
         :param CcnId: The CCN instance ID, such as `ccn-f49l6u0z`.
         :type CcnId: str
-        :param CcnName: The name of the CCN. The maximum length is 60 characters.
+        :param CcnName: The name of CCN instance. Up to 60 characters allowed. It can contain up to 60 bytes. Either `CcnName` or `CcnDescription` must be specified.
         :type CcnName: str
-        :param CcnDescription: The description of the CCN. The maximum length is 100 characters.
+        :param CcnDescription: The description of CCN instance. Up to 100 characters allowed. It can contain up to 60 bytes. Either `CcnName` or `CcnDescription` must be specified.
         :type CcnDescription: str
         """
         self.CcnId = None
@@ -13558,16 +13637,25 @@ class ModifyServiceTemplateAttributeRequest(AbstractModel):
         :type ServiceTemplateName: str
         :param Services: It supports single port, multiple ports, consecutive ports and all ports. Supported protocols include TCP, UDP, ICMP, and GRE.
         :type Services: list of str
+        :param ServicesExtra: Protocol port information with remarks. Supported ports include single port, multiple ports, consecutive ports and other ports. Supported protocols include TCP, UDP, ICMP, and GRE.
+        :type ServicesExtra: list of ServicesInfo
         """
         self.ServiceTemplateId = None
         self.ServiceTemplateName = None
         self.Services = None
+        self.ServicesExtra = None
 
 
     def _deserialize(self, params):
         self.ServiceTemplateId = params.get("ServiceTemplateId")
         self.ServiceTemplateName = params.get("ServiceTemplateName")
         self.Services = params.get("Services")
+        if params.get("ServicesExtra") is not None:
+            self.ServicesExtra = []
+            for item in params.get("ServicesExtra"):
+                obj = ServicesInfo()
+                obj._deserialize(item)
+                self.ServicesExtra.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16091,6 +16179,9 @@ class SecurityGroup(AbstractModel):
         :type CreatedTime: str
         :param TagSet: Tag key-value pairs.
         :type TagSet: list of Tag
+        :param UpdateTime: Security group update time.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type UpdateTime: str
         """
         self.SecurityGroupId = None
         self.SecurityGroupName = None
@@ -16099,6 +16190,7 @@ class SecurityGroup(AbstractModel):
         self.IsDefault = None
         self.CreatedTime = None
         self.TagSet = None
+        self.UpdateTime = None
 
 
     def _deserialize(self, params):
@@ -16114,6 +16206,7 @@ class SecurityGroup(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+        self.UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16333,11 +16426,14 @@ class ServiceTemplate(AbstractModel):
         :type ServiceSet: list of str
         :param CreatedTime: Creation Time.
         :type CreatedTime: str
+        :param ServiceExtraSet: Protocol port template information with remarks
+        :type ServiceExtraSet: list of ServicesInfo
         """
         self.ServiceTemplateId = None
         self.ServiceTemplateName = None
         self.ServiceSet = None
         self.CreatedTime = None
+        self.ServiceExtraSet = None
 
 
     def _deserialize(self, params):
@@ -16345,6 +16441,12 @@ class ServiceTemplate(AbstractModel):
         self.ServiceTemplateName = params.get("ServiceTemplateName")
         self.ServiceSet = params.get("ServiceSet")
         self.CreatedTime = params.get("CreatedTime")
+        if params.get("ServiceExtraSet") is not None:
+            self.ServiceExtraSet = []
+            for item in params.get("ServiceExtraSet"):
+                obj = ServicesInfo()
+                obj._deserialize(item)
+                self.ServiceExtraSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16418,6 +16520,35 @@ class ServiceTemplateSpecification(AbstractModel):
     def _deserialize(self, params):
         self.ServiceId = params.get("ServiceId")
         self.ServiceGroupId = params.get("ServiceGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServicesInfo(AbstractModel):
+    """Protocol port template information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Service: Protocol port
+        :type Service: str
+        :param Description: Remarks
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Description: str
+        """
+        self.Service = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Service = params.get("Service")
+        self.Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16899,9 +17030,12 @@ class UnassignPrivateIpAddressesRequest(AbstractModel):
         :type NetworkInterfaceId: str
         :param PrivateIpAddresses: The information of the specified private IPs. You can specify a maximum of 10 each time.
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
+        :param InstanceId: Instance ID of the server bound with this IP. This parameter is only applicable when you need to return an IP and unbind the related servers.
+        :type InstanceId: str
         """
         self.NetworkInterfaceId = None
         self.PrivateIpAddresses = None
+        self.InstanceId = None
 
 
     def _deserialize(self, params):
@@ -16912,6 +17046,7 @@ class UnassignPrivateIpAddressesRequest(AbstractModel):
                 obj = PrivateIpAddressSpecification()
                 obj._deserialize(item)
                 self.PrivateIpAddresses.append(obj)
+        self.InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17281,6 +17416,10 @@ class VpnGateway(AbstractModel):
         :type Version: str
         :param NetworkInstanceId: CCN instance ID when the value of Type is CCN.
         :type NetworkInstanceId: str
+        :param CdcId: CDC instance ID
+        :type CdcId: str
+        :param MaxConnection: Maximum number of connected clients allowed for the SSL VPN gateway.
+        :type MaxConnection: int
         """
         self.VpnGatewayId = None
         self.VpcId = None
@@ -17300,6 +17439,8 @@ class VpnGateway(AbstractModel):
         self.VpnGatewayQuotaSet = None
         self.Version = None
         self.NetworkInstanceId = None
+        self.CdcId = None
+        self.MaxConnection = None
 
 
     def _deserialize(self, params):
@@ -17326,6 +17467,8 @@ class VpnGateway(AbstractModel):
                 self.VpnGatewayQuotaSet.append(obj)
         self.Version = params.get("Version")
         self.NetworkInstanceId = params.get("NetworkInstanceId")
+        self.CdcId = params.get("CdcId")
+        self.MaxConnection = params.get("MaxConnection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

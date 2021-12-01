@@ -101,6 +101,9 @@ INVALIDPARAMETER_CONFIGCONFLICT = 'InvalidParameter.ConfigConflict'
 # Invalid `Content`.
 INVALIDPARAMETER_CONTENT = 'InvalidParameter.Content'
 
+# 
+INVALIDPARAMETER_INVALIDINDEXRULEFORSEARCHLOW = 'InvalidParameter.InValidIndexRuleForSearchLow'
+
 # An index rule already exists for the specified log topic.
 INVALIDPARAMETER_INDEXCONFLICT = 'InvalidParameter.IndexConflict'
 
@@ -182,11 +185,17 @@ OPERATIONDENIED_ACCOUNTISOLATE = 'OperationDenied.AccountIsolate'
 # The account does not exist.
 OPERATIONDENIED_ACCOUNTNOTEXISTS = 'OperationDenied.AccountNotExists'
 
+# 
+OPERATIONDENIED_ALARMNOTSUPPORTFORSEARCHLOW = 'OperationDenied.AlarmNotSupportForSearchLow'
+
 # The analysis feature is not enabled for the field.
 OPERATIONDENIED_ANALYSISSWITCHCLOSE = 'OperationDenied.AnalysisSwitchClose'
 
 # The notification template is bound to an alarm and cannot be deleted.
 OPERATIONDENIED_NOTICEHASALARM = 'OperationDenied.NoticeHasAlarm'
+
+# 
+OPERATIONDENIED_TOPICHASDATAFORMTASK = 'OperationDenied.TopicHasDataFormTask'
 
 # The topic is bound to a function for shipping.
 OPERATIONDENIED_TOPICHASDELIVERFUNCTION = 'OperationDenied.TopicHasDeliverFunction'

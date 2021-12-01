@@ -146,7 +146,7 @@ INVALIDPARAMETERVALUE_INVALIDBLUEPRINTID = 'InvalidParameterValue.InvalidBluepri
 # The type of the image OS is invalid.
 INVALIDPARAMETERVALUE_INVALIDBLUEPRINTPLATFORMTYPE = 'InvalidParameterValue.InvalidBlueprintPlatformType'
 
-# 
+# Invalid image status value
 INVALIDPARAMETERVALUE_INVALIDBLUEPRINTSTATE = 'InvalidParameterValue.InvalidBlueprintState'
 
 # The image type is invalid.
@@ -284,7 +284,7 @@ UNAUTHORIZEDOPERATION_MFANOTFOUND = 'UnauthorizedOperation.MFANotFound'
 # Unsupported operation.
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
-# 
+# Unable to associate with CCN: there is no instance in this region
 UNSUPPORTEDOPERATION_ATTACHCCNCONDITIONUNSATISFIED = 'UnsupportedOperation.AttachCcnConditionUnsatisfied'
 
 # Failed to associate the CCN instance. Please check the CCN status and try again later.
