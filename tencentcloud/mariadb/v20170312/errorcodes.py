@@ -17,6 +17,9 @@
 # CAM signature/authentication error
 AUTHFAILURE = 'AuthFailure'
 
+# Operation failed.
+FAILEDOPERATION = 'FailedOperation'
+
 # Failed to add the security group information of an instance.
 FAILEDOPERATION_ADDINSTANCEINFOFAILED = 'FailedOperation.AddInstanceInfoFailed'
 
@@ -158,6 +161,9 @@ INTERNALERROR_SETSVCLOCATIONFAILED = 'InternalError.SetSvcLocationFailed'
 # Failed to update the database.
 INTERNALERROR_UPDATEDATABASEFAILED = 'InternalError.UpdateDatabaseFailed'
 
+# Public network operation failed.
+INTERNALERROR_WANSERVICEFAILED = 'InternalError.WanServiceFailed'
+
 # Parameter error.
 INVALIDPARAMETER = 'InvalidParameter'
 
@@ -185,11 +191,17 @@ INVALIDPARAMETER_PERMISSIONDENIED = 'InvalidParameter.PermissionDenied'
 # Security group validity test failed.
 INVALIDPARAMETER_SGCHECKFAIL = 'InvalidParameter.SGCheckFail'
 
+# The instance shard does not exist.
+INVALIDPARAMETER_SHARDRESOURCEIDNOTFOUND = 'InvalidParameter.ShardResourceIdNotFound'
+
 # The specified VPC subnet was not found.
 INVALIDPARAMETER_SUBNETNOTFOUND = 'InvalidParameter.SubnetNotFound'
 
 # The account to be created already exists.
 INVALIDPARAMETERVALUE_ACCOUNTALREADYEXISTS = 'InvalidParameterValue.AccountAlreadyExists'
+
+# The instance does not support this sync mode.
+INVALIDPARAMETERVALUE_BADSYNCMODE = 'InvalidParameterValue.BadSyncMode'
 
 # The specified permission could not be granted to this account.
 INVALIDPARAMETERVALUE_BADUSERRIGHT = 'InvalidParameterValue.BadUserRight'
@@ -224,11 +236,17 @@ INVALIDPARAMETERVALUE_SUPERUSERFORBIDDEN = 'InvalidParameterValue.SuperUserForbi
 # The specified account does not exist.
 RESOURCENOTFOUND_ACCOUNTDOESNOTEXIST = 'ResourceNotFound.AccountDoesNotExist'
 
+# The instance does not exist.
+RESOURCENOTFOUND_INSTANCENOTFOUND = 'ResourceNotFound.InstanceNotFound'
+
 # The specified database instance was not found.
 RESOURCENOTFOUND_NOINSTANCEFOUND = 'ResourceNotFound.NoInstanceFound'
 
 # Failed to find the configuration of the product associated with the security group.
 RESOURCENOTFOUND_PRODUCTCONFIGNOTEXISTEDERROR = 'ResourceNotFound.ProductConfigNotExistedError'
+
+# The sync task has been deleted.
+RESOURCENOTFOUND_SYNCTASKDELETED = 'ResourceNotFound.SyncTaskDeleted'
 
 # Incorrect instance status. Unable to initialize.
 RESOURCEUNAVAILABLE_BADINSTANCESTATUS = 'ResourceUnavailable.BadInstanceStatus'

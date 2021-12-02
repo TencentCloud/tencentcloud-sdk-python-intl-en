@@ -1044,6 +1044,34 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyDBSyncMode(self, request):
+        """This API is used to modify the sync mode of a TencentDB instance.
+
+        :param request: Request instance for ModifyDBSyncMode.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.ModifyDBSyncModeRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.ModifyDBSyncModeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDBSyncMode", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDBSyncModeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyLogFileRetentionPeriod(self, request):
         """This API is used to modify the number of days for retention of database backup logs.
 
@@ -1058,6 +1086,34 @@ class MariadbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLogFileRetentionPeriodResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySyncTaskAttribute(self, request):
+        """This API is used to modify sync task attributes (currently, only the task name can be modified).
+
+        :param request: Request instance for ModifySyncTaskAttribute.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.ModifySyncTaskAttributeRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.ModifySyncTaskAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifySyncTaskAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySyncTaskAttributeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

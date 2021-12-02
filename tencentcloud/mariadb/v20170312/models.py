@@ -396,7 +396,7 @@ class CreateAccountRequest(AbstractModel):
         :type UserName: str
         :param Host: Host that can be logged in to, which is in the same format as the host of the MySQL account and supports wildcards, such as %, 10.%, and 10.20.%.
         :type Host: str
-        :param Password: Account password, which can contain 6-32 letters, digits, and common symbols but not semicolons, single quotation marks, and double quotation marks.
+        :param Password: Account password. It must contain 8-32 characters in all of the following four types: lowercase letters, uppercase letters, digits, and symbols (()~!@#$%^&*-+=_|{}[]:<>,.?/), and cannot start with a slash (/).
         :type Password: str
         :param ReadOnly: Whether to create a read-only account. 0: no; 1: for the account's SQL requests, the secondary will be used first, and if it is unavailable, the primary will be used; 2: the secondary will be used first, and if it is unavailable, the operation will fail.
         :type ReadOnly: int
@@ -2401,11 +2401,11 @@ class GrantAccountPrivilegesRequest(AbstractModel):
         :type Host: str
         :param DbName: Database name. `\*` indicates that global permissions will be set (i.e., `\*.\*`), in which case the `Type` and `Object ` parameters will be ignored. If `DbName` is not `\*`, the input parameter `Type` is required.
         :type DbName: str
-        :param Privileges: Global permission. Valid values: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, INDEX, ALTER, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, EVENT, TRIGGER, SHOW DATABASES 
-Database permission. Valid values: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, INDEX, ALTER, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, EVENT, TRIGGER 
-Table/view permission. Valid values: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, INDEX, ALTER, CREATE VIEW, SHOW VIEW, TRIGGER 
-Stored procedure/function permission. Valid values: ALTER ROUTINE, EXECUTE 
-Field permission. Valid values: INSERT, REFERENCES, SELECT, UPDATE
+        :param Privileges: Global permission. Valid values: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE TEMPORARY TABLES`, `LOCK TABLES`, `EXECUTE`, `CREATE VIEW`, `SHOW VIEW`, `CREATE ROUTINE`, `ALTER ROUTINE`, `EVENT`, `TRIGGER`, `SHOW DATABASES`, `REPLICATION CLIENT`, `REPLICATION SLAVE`. 
+Database permission. Valid values: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE TEMPORARY TABLES`, `LOCK TABLES`, `EXECUTE`, `CREATE VIEW`, `SHOW VIEW`, `CREATE ROUTINE`, `ALTER ROUTINE`, `EVENT`, `TRIGGER`. 
+Table/View permission. Valid values: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE VIEW`, `SHOW VIEW`, `TRIGGER`. 
+Stored procedure/function permission. Valid values: `ALTER ROUTINE`, `EXECUTE`. 
+Field permission. Valid values: `INSERT`, `REFERENCES`, `SELECT`, `UPDATE`.
         :type Privileges: list of str
         :param Type: Type. Valid values: table, view, proc, func, \*. If `DbName` is a specific database name and `Type` is `\*`, the permissions of the database will be set (i.e., `db.\*`), in which case the `Object` parameter will be ignored
         :type Type: str
@@ -2623,20 +2623,20 @@ Note: if the parameter is left empty, no change will be made to the granted glob
         :param DatabasePrivileges: Database permission. Valid values of `Privileges`: `"SELECT"`, `"INSERT"`, `"UPDATE"`, `"DELETE"`, `"CREATE"`, `"DROP"`, `"REFERENCES"`, `"INDEX"`, `"ALTER"`, `"CREATE TEMPORARY TABLES"`, `"LOCK TABLES"`, `"EXECUTE"`, `"CREATE VIEW"`, `"SHOW VIEW"`, `"CREATE ROUTINE"`, `"ALTER ROUTINE"`, `"EVENT"`, `"TRIGGER"`.
 Note: if the parameter is left empty, no change will be made to the granted database permissions. To clear the granted database permissions, set `Privileges` to an empty array.
         :type DatabasePrivileges: list of DatabasePrivilege
-        :param TablePrivileges: Table permission. Valid values of `Privileges`: `"SELECT"`, `"INSERT"`, `"UPDATE"`, `"DELETE"`, `"CREATE"`, `"DROP"`, `"REFERENCES"`, `"INDEX"`, `"ALTER"`, `"CREATE VIEW"`, `"SHOW VIEW"`, `"TRIGGER"`.
-Note: if the parameter is left empty, no change will be made to the granted table permissions. To clear the granted table permissions, set `Privileges` to an empty array.
+        :param TablePrivileges: Database table permission. Valid values of `Privileges`: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE VIEW`, `SHOW VIEW`, `TRIGGER`.
+Note: if the parameter is not passed in, no change will be made to the granted table permissions. To clear the granted table permissions, set `Privileges` to an empty array.
         :type TablePrivileges: list of TablePrivilege
         :param ColumnPrivileges: Column permission. Valid values of `Privileges`: `"SELECT"`, `"INSERT"`, `"UPDATE"`, `"REFERENCES"`.
 Note: if the parameter is left empty, no change will be made to the granted column permissions. To clear the granted column permissions, set `Privileges` to an empty array.
         :type ColumnPrivileges: list of ColumnPrivilege
-        :param ViewPrivileges: View permission. Valid values of `Privileges`: `"SELECT"`, `"INSERT"`, `"UPDATE"`, `"DELETE"`, `"CREATE"`, `"DROP"`, `"REFERENCES"`, `"INDEX"`, `"ALTER"`, `"CREATE VIEW"`, `"SHOW VIEW"`, `"TRIGGER"`.
-Note: if the parameter is left empty, no change will be made to the granted view permissions. To clear the granted view permissions, set `Privileges` to an empty array.
+        :param ViewPrivileges: Database view permission. Valid values of `Privileges`: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE VIEW`, `SHOW VIEW`, `TRIGGER`.
+Note: if the parameter is not passed in, no change will be made to the granted view permissions. To clear the granted view permissions, set `Privileges` to an empty array.
         :type ViewPrivileges: list of ViewPrivileges
-        :param FunctionPrivileges: Function permissions. Valid values of `Privileges`: `"ALTER ROUTINE"`, `"EXECUTE"`.
-Note: if the parameter is left empty, no change will be made to the granted function permissions. To clear the granted function permissions, set `Privileges` to an empty array.
+        :param FunctionPrivileges: Database function permissions. Valid values of `Privileges`: `ALTER ROUTINE`, `EXECUTE`.
+Note: if the parameter is not passed in, no change will be made to the granted function permissions. To clear the granted function permissions, set `Privileges` to an empty array.
         :type FunctionPrivileges: list of FunctionPrivilege
-        :param ProcedurePrivileges: Stored procedure permission. Valid values of `Privileges`: `"ALTER ROUTINE"`, `"EXECUTE"`.
-Note: if the parameter is left empty, no change will be made to the granted stored procedure permissions. To clear the granted stored procedure permissions, set `Privileges` to an empty array.
+        :param ProcedurePrivileges: Database stored procedure permission. Valid values of `Privileges`: `ALTER ROUTINE`, `EXECUTE`.
+Note: if the parameter is not passed in, no change will be made to the granted stored procedure permissions. To clear the granted stored procedure permissions, set `Privileges` to an empty array.
         :type ProcedurePrivileges: list of ProcedurePrivilege
         """
         self.InstanceId = None
@@ -2984,6 +2984,55 @@ class ModifyDBParametersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDBSyncModeRequest(AbstractModel):
+    """ModifyDBSyncMode request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: ID of an instance for which to modify the sync mode. The ID is in the format of tdsql-ow728lmc.
+        :type InstanceId: str
+        :param SyncMode: Sync mode. Valid values: `0` (async), `1` (strong sync), `2` (downgradable strong sync).
+        :type SyncMode: int
+        """
+        self.InstanceId = None
+        self.SyncMode = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SyncMode = params.get("SyncMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBSyncModeResponse(AbstractModel):
+    """ModifyDBSyncMode response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Async task ID. The task status can be queried through the `DescribeFlow` API.
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyLogFileRetentionPeriodRequest(AbstractModel):
     """ModifyLogFileRetentionPeriod request structure.
 
@@ -3030,6 +3079,51 @@ class ModifyLogFileRetentionPeriodResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySyncTaskAttributeRequest(AbstractModel):
+    """ModifySyncTaskAttribute request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskIds: IDs of tasks for which to modify the attributes. The IDs can be obtained by the return value of the `DescribeSyncTasks` API. Up to 100 tasks can be operated at a time.
+        :type TaskIds: list of str
+        :param TaskName: Task name. You can specify any name you like, but its length cannot exceed 100 characters.
+        :type TaskName: str
+        """
+        self.TaskIds = None
+        self.TaskName = None
+
+
+    def _deserialize(self, params):
+        self.TaskIds = params.get("TaskIds")
+        self.TaskName = params.get("TaskName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySyncTaskAttributeResponse(AbstractModel):
+    """ModifySyncTaskAttribute response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -3603,6 +3697,8 @@ class SlowLogData(AbstractModel):
         :param ExampleSql: Sample SQL
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ExampleSql: str
+        :param Host: Host address of the account
+        :type Host: str
         """
         self.CheckSum = None
         self.Db = None
@@ -3622,6 +3718,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.TsMin = None
         self.User = None
         self.ExampleSql = None
+        self.Host = None
 
 
     def _deserialize(self, params):
@@ -3643,6 +3740,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.TsMin = params.get("TsMin")
         self.User = params.get("User")
         self.ExampleSql = params.get("ExampleSql")
+        self.Host = params.get("Host")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
