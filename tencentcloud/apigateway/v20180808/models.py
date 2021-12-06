@@ -2325,9 +2325,9 @@ class CreatePluginRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PluginName: Custom plugin name. A plugin name contain up to 50 characters out of a-z, A-Z, 0-9, and _, which must begin with a letter and end with a letter or a number.
+        :param PluginName: Custom plugin name. A plugin name should contain 2-50 characters out of a-z, A-Z, 0-9, and _, which must begin with a letter and end with a letter or a number.
         :type PluginName: str
-        :param PluginType: Plugin type. Valid value: `IPControl`.
+        :param PluginType: Plugin type. Valid values: `IPControl`, `TrafficControl`, `Cors`, `CustomReq`, `CustomAuth`
         :type PluginType: str
         :param PluginData: Plugin definition statement in json format
         :type PluginData: str
@@ -4875,6 +4875,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SetType: Cluster type
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SetType: str
+        :param DeploymentType: Cluster type for service deployment
+Note: this field may return null, indicating that no valid values found.
+        :type DeploymentType: str
+        :param SpecialUse: Whether it’s for special usage
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SpecialUse: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -4902,6 +4908,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.InstanceId = None
         self.InstanceName = None
         self.SetType = None
+        self.DeploymentType = None
+        self.SpecialUse = None
         self.RequestId = None
 
 
@@ -4945,6 +4953,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.InstanceId = params.get("InstanceId")
         self.InstanceName = params.get("InstanceName")
         self.SetType = params.get("SetType")
+        self.DeploymentType = params.get("DeploymentType")
+        self.SpecialUse = params.get("SpecialUse")
         self.RequestId = params.get("RequestId")
 
 
@@ -5536,7 +5546,7 @@ class DomainSetList(AbstractModel):
         r"""
         :param DomainName: Domain name.
         :type DomainName: str
-        :param Status: Domain name resolution status. True: success; False: failure.
+        :param Status: Domain name resolution status. `1`: normal, `0`: failed
         :type Status: int
         :param CertificateId: Certificate ID.
         :type CertificateId: str
@@ -7524,6 +7534,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SetType: Cluster type
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SetType: str
+        :param DeploymentType: Cluster type for service deployment
+Note: this field may return null, indicating that no valid values found.
+        :type DeploymentType: str
         """
         self.InnerHttpsPort = None
         self.ServiceDesc = None
@@ -7543,6 +7556,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Tags = None
         self.InstanceId = None
         self.SetType = None
+        self.DeploymentType = None
 
 
     def _deserialize(self, params):
@@ -7569,6 +7583,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 self.Tags.append(obj)
         self.InstanceId = params.get("InstanceId")
         self.SetType = params.get("SetType")
+        self.DeploymentType = params.get("DeploymentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -613,10 +613,33 @@ class DescribeBillDetailRequest(AbstractModel):
         :type PayMode: str
         :param ResourceId: Queries information on a specified resource
         :type ResourceId: str
-        :param ActionType: 
+        :param ActionType: Action type to query. Valid values:
+Purchase
+Renewal
+Modify
+Refund
+Deduction
+Hourly settlement
+Daily settlement
+Monthly settlement
+Offline project deduction
+Offline deduction
+adjust-CR
+adjust-DR
+One-off RI Fee
+Spot
+Hourly RI fee
+New monthly subscription
+Monthly subscription renewal
+Monthly subscription specification adjustment
+Monthly subscription specification adjustment
+Monthly subscription refund
         :type ActionType: str
         :param ProjectId: Project ID: ID of the project to which the resource belongs
         :type ProjectId: int
+        :param BusinessCode: Business code
+Note: To query business codes used in the current month, call <a href="https://intl.cloud.tencent.com/document/product/555/35761?from_cn_redirect=1">DescribeBillSummaryByProduct</a>.
+        :type BusinessCode: str
         """
         self.Offset = None
         self.Limit = None
@@ -630,6 +653,7 @@ class DescribeBillDetailRequest(AbstractModel):
         self.ResourceId = None
         self.ActionType = None
         self.ProjectId = None
+        self.BusinessCode = None
 
 
     def _deserialize(self, params):
@@ -645,6 +669,7 @@ class DescribeBillDetailRequest(AbstractModel):
         self.ResourceId = params.get("ResourceId")
         self.ActionType = params.get("ActionType")
         self.ProjectId = params.get("ProjectId")
+        self.BusinessCode = params.get("BusinessCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -729,6 +754,9 @@ Monthly subscription refund
         :type ResourceId: str
         :param PayMode: Billing mode. Valid values: `prePay` (prepaid), `postPay` (postpaid)
         :type PayMode: str
+        :param BusinessCode: Business code
+Note: To query business codes used in the current month, call <a href="https://intl.cloud.tencent.com/document/product/555/35761?from_cn_redirect=1">DescribeBillSummaryByProduct</a>.
+        :type BusinessCode: str
         """
         self.Offset = None
         self.Limit = None
@@ -738,6 +766,7 @@ Monthly subscription refund
         self.ActionType = None
         self.ResourceId = None
         self.PayMode = None
+        self.BusinessCode = None
 
 
     def _deserialize(self, params):
@@ -749,6 +778,7 @@ Monthly subscription refund
         self.ActionType = params.get("ActionType")
         self.ResourceId = params.get("ResourceId")
         self.PayMode = params.get("PayMode")
+        self.BusinessCode = params.get("BusinessCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

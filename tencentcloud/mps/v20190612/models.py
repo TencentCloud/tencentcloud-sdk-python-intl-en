@@ -9414,6 +9414,9 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
         :param Output: Output of a transcoding task.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaTranscodeItem`
+        :param Progress: Transcoding progress. Value range: 0-100
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -9421,6 +9424,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -9434,6 +9438,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("Output") is not None:
             self.Output = MediaTranscodeItem()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

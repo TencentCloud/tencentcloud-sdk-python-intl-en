@@ -92,6 +92,9 @@ FAILEDOPERATION_DOMAINALREADYBINDOTHERSERVICE = 'FailedOperation.DomainAlreadyBi
 # The domain name has already been bound to this service.
 FAILEDOPERATION_DOMAINALREADYBINDSERVICE = 'FailedOperation.DomainAlreadyBindService'
 
+# Unable to connect: the current domain name is not compliant. 
+FAILEDOPERATION_DOMAININBLACKLIST = 'FailedOperation.DomainInBlackList'
+
 # The domain name does not have an ICP filing through Tencent Cloud. Please get the ICP filing before binding the domain name.
 FAILEDOPERATION_DOMAINNEEDBEIAN = 'FailedOperation.DomainNeedBeian'
 
@@ -155,6 +158,9 @@ INTERNALERROR = 'InternalError'
 # API Gateway internal request error. Please try again later. If the problem persists, please contact the smart customer service or submit a ticket.
 INTERNALERROR_APIGWEXCEPTION = 'InternalError.ApigwException'
 
+# CAuth internal request error. Please try again later. If the problem persists, please submit a ticket.
+INTERNALERROR_CAUTHEXCEPTION = 'InternalError.CauthException'
+
 # OSS internal request error. Please try again. If the problem persists, please contact the smart customer service or submit a ticket.
 INTERNALERROR_OSSEXCEPTION = 'InternalError.OssException'
 
@@ -175,6 +181,12 @@ INVALIDPARAMETER_FORMATERROR = 'InvalidParameter.FormatError'
 
 # The parameter value is incorrect.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
+
+# Duplicate plugin parameter values. Please modify and try again.
+INVALIDPARAMETERVALUE_DUPLICATEPLUGINCONFIG = 'InvalidParameterValue.DuplicatePluginConfig'
+
+# 
+INVALIDPARAMETERVALUE_ILLEGALPROXYIP = 'InvalidParameterValue.IllegalProxyIp'
 
 # Incorrect key.
 INVALIDPARAMETERVALUE_INVALIDACCESSKEYIDS = 'InvalidParameterValue.InvalidAccessKeyIds'
@@ -197,6 +209,9 @@ INVALIDPARAMETERVALUE_INVALIDBACKENDPATH = 'InvalidParameterValue.InvalidBackend
 # Invalid CLB configuration.
 INVALIDPARAMETERVALUE_INVALIDCLB = 'InvalidParameterValue.InvalidClb'
 
+# Policy error.
+INVALIDPARAMETERVALUE_INVALIDCONDITION = 'InvalidParameterValue.InvalidCondition'
+
 # The constant parameter is invalid.
 INVALIDPARAMETERVALUE_INVALIDCONSTANTPARAMETERS = 'InvalidParameterValue.InvalidConstantParameters'
 
@@ -217,6 +232,9 @@ INVALIDPARAMETERVALUE_INVALIDIPADDRESS = 'InvalidParameterValue.InvalidIPAddress
 
 # The method is incorrect. For backend services in the WEBSOCKET type, the frontend method should be configured as GET.
 INVALIDPARAMETERVALUE_INVALIDMETHOD = 'InvalidParameterValue.InvalidMethod'
+
+# Plugin parameter value error. Please modify and try again.
+INVALIDPARAMETERVALUE_INVALIDPLUGINCONFIG = 'InvalidParameterValue.InvalidPluginConfig'
 
 # The backend service port is incorrect.
 INVALIDPARAMETERVALUE_INVALIDPORT = 'InvalidParameterValue.InvalidPort'
@@ -290,7 +308,7 @@ LIMITEXCEEDED = 'LimitExceeded'
 # The number of API documents exceeds the limit.
 LIMITEXCEEDED_APIDOCLIMITEXCEEDED = 'LimitExceeded.APIDocLimitExceeded'
 
-# The number of applications exceeds the limit.
+# Number of applications bound with the service reaches the upper limit.
 LIMITEXCEEDED_APIAPPCOUNTLIMITEXCEEDED = 'LimitExceeded.ApiAppCountLimitExceeded'
 
 # The number of APIs exceeds the limit.
@@ -389,6 +407,9 @@ UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 # The key has already been bound to a usage plan.
 UNSUPPORTEDOPERATION_ALREADYBINDUSAGEPLAN = 'UnsupportedOperation.AlreadyBindUsagePlan'
 
+# The current plugin cannot be bound.
+UNSUPPORTEDOPERATION_ATTACHPLUGIN = 'UnsupportedOperation.AttachPlugin'
+
 # Cannot force HTTPS when the protocol is HTTP.
 UNSUPPORTEDOPERATION_FORCEHTTPS = 'UnsupportedOperation.ForceHttps'
 
@@ -406,6 +427,9 @@ UNSUPPORTEDOPERATION_INVALIDSTATUS = 'UnsupportedOperation.InvalidStatus'
 
 # The EIAM authentication API cannot be modified.
 UNSUPPORTEDOPERATION_MODIFYEIAMAUTHAPI = 'UnsupportedOperation.ModifyEIAMAuthApi'
+
+# The network type cannot be modified
+UNSUPPORTEDOPERATION_MODIFYNETTYPE = 'UnsupportedOperation.ModifyNetType'
 
 # The frontend protocol type cannot be changed.
 UNSUPPORTEDOPERATION_MODIFYPROTOCOL = 'UnsupportedOperation.ModifyProtocol'
