@@ -1314,6 +1314,62 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DisableClusterDeletionProtection(self, request):
+        """This API is used to disable cluster deletion protection.
+
+        :param request: Request instance for DisableClusterDeletionProtection.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DisableClusterDeletionProtectionRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DisableClusterDeletionProtectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisableClusterDeletionProtection", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisableClusterDeletionProtectionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableClusterDeletionProtection(self, request):
+        """This API is used to enable cluster deletion protection.
+
+        :param request: Request instance for EnableClusterDeletionProtection.
+        :type request: :class:`tencentcloud.tke.v20180525.models.EnableClusterDeletionProtectionRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.EnableClusterDeletionProtectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EnableClusterDeletionProtection", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnableClusterDeletionProtectionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def EnableVpcCniNetworkType(self, request):
         """This API is used to enable the VPC-CNI network mode for GR clusters.
 

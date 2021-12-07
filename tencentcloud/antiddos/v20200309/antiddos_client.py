@@ -699,7 +699,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeCCTrend(self, request):
-        """This API is used to get CC attack data, including total peak requests (QPS) and attack requests (QPS).
+        """This API is used to get CC attack data, including total QPS peaks, attack QPS, total number of requests and number of attack requests.
 
         :param request: Request instance for DescribeCCTrend.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeCCTrendRequest`
@@ -1272,6 +1272,34 @@ class AntiddosClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDomainUsrNameResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyNewDomainRules(self, request):
+        """This API is used to modify layer-7 forwarding rules.
+
+        :param request: Request instance for ModifyNewDomainRules.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.ModifyNewDomainRulesRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.ModifyNewDomainRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyNewDomainRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyNewDomainRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

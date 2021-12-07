@@ -184,6 +184,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param Domain: Recommended domain name for clients to access.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Domain: str
+        :param DamDDoSStatus: Whether to enable Sec-MCA. Valid values: `1` (enabled) and `0` (disabled).
+        :type DamDDoSStatus: int
+        :param V6Flag: 
+        :type V6Flag: int
         """
         self.InstanceDetail = None
         self.SpecificationLimit = None
@@ -202,6 +206,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.EipAddressPackRelation = None
         self.EipAddressInfo = None
         self.Domain = None
+        self.DamDDoSStatus = None
+        self.V6Flag = None
 
 
     def _deserialize(self, params):
@@ -238,6 +244,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
             self.EipAddressInfo = EipAddressRelation()
             self.EipAddressInfo._deserialize(params.get("EipAddressInfo"))
         self.Domain = params.get("Domain")
+        self.DamDDoSStatus = params.get("DamDDoSStatus")
+        self.V6Flag = params.get("V6Flag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1970,7 +1978,7 @@ class DescribeCCTrendRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: End of the time range for the query
         :type EndTime: str
-        :param MetricName: Metric. Valid values: `inqps`: total peak requests; `dropqps`: peak attack requests
+        :param MetricName: Metric. Valid values: `inqps` (total QPS peaks), `dropqps` (attack QPS peaks), `incount` (total number of requests), and `dropcount` (number of attack requests).
         :type MetricName: str
         :param Domain: (Optional) Domain name
         :type Domain: str
@@ -2029,7 +2037,7 @@ class DescribeCCTrendResponse(AbstractModel):
         :param Id: Instance ID
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Id: str
-        :param MetricName: Metric. Valid values: `inqps`: total peak requests; `dropqps`: peak attack requests
+        :param MetricName: Metric. Valid values: `inqps` (total QPS peaks), `dropqps` (attack QPS peaks), `incount` (total number of requests), and `dropcount` (number of attack requests).
         :type MetricName: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2306,6 +2314,8 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         :type FilterEipType: int
         :param FilterEipEipAddressStatus: Anti-DDoS Advanced instance binding status filter. Valid values: `BINDING`, `BIND`, `UNBINDING`, `UNBIND`. This filter is only valid when `FilterEipType = 1`.
         :type FilterEipEipAddressStatus: list of str
+        :param FilterDamDDoSStatus: Whether to obtain only Anti-DDoS instances with Sec-MCA enabled. Valid values: `1` (only obtain Anti-DDoS instances with Sec-MCA enabled) and `0` (obtain other Anti-DDoS instances).
+        :type FilterDamDDoSStatus: int
         """
         self.Offset = None
         self.Limit = None
@@ -2316,6 +2326,7 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         self.FilterName = None
         self.FilterEipType = None
         self.FilterEipEipAddressStatus = None
+        self.FilterDamDDoSStatus = None
 
 
     def _deserialize(self, params):
@@ -2328,6 +2339,7 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         self.FilterName = params.get("FilterName")
         self.FilterEipType = params.get("FilterEipType")
         self.FilterEipEipAddressStatus = params.get("FilterEipEipAddressStatus")
+        self.FilterDamDDoSStatus = params.get("FilterDamDDoSStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3538,6 +3550,39 @@ class KeyValue(AbstractModel):
         
 
 
+class L4RuleSource(AbstractModel):
+    """List of layer-4 forwarding rules
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Source: IP or domain name for forwarding.
+        :type Source: str
+        :param Weight: Weight. Value range: [0,100].
+        :type Weight: int
+        :param Port: 8000
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Port: int
+        """
+        self.Source = None
+        self.Weight = None
+        self.Port = None
+
+
+    def _deserialize(self, params):
+        self.Source = params.get("Source")
+        self.Weight = params.get("Weight")
+        self.Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Layer4Rule(AbstractModel):
     """Layer-4 forwarding rule
 
@@ -3817,6 +3862,63 @@ class ModifyDomainUsrNameResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyNewDomainRulesRequest(AbstractModel):
+    """ModifyNewDomainRules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Business: Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced).
+        :type Business: str
+        :param Id: Anti-DDoS instance ID.
+        :type Id: str
+        :param Rule: Domain name forwarding rule.
+        :type Rule: :class:`tencentcloud.antiddos.v20200309.models.NewL7RuleEntry`
+        """
+        self.Business = None
+        self.Id = None
+        self.Rule = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Id = params.get("Id")
+        if params.get("Rule") is not None:
+            self.Rule = NewL7RuleEntry()
+            self.Rule._deserialize(params.get("Rule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNewDomainRulesResponse(AbstractModel):
+    """ModifyNewDomainRules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Success: Success code.
+        :type Success: :class:`tencentcloud.antiddos.v20200309.models.SuccessCode`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Success = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self.Success = SuccessCode()
+            self.Success._deserialize(params.get("Success"))
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyPacketFilterConfigRequest(AbstractModel):
     """ModifyPacketFilterConfig request structure.
 
@@ -3862,6 +3964,128 @@ class ModifyPacketFilterConfigResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class NewL7RuleEntry(AbstractModel):
+    """Layer-7 rule.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param KeepTime: Session persistence duration, in seconds.
+        :type KeepTime: int
+        :param LbType: Load balancing method. Valid value: `1` (weighed polling).
+        :type LbType: int
+        :param SourceList: List of origins
+        :type SourceList: list of L4RuleSource
+        :param KeepEnable: Whether session persistence is enabled. Valid values: `0` (disabled) and `1` (enabled).
+        :type KeepEnable: int
+        :param Domain: Forwarding domain name.
+        :type Domain: str
+        :param Protocol: Forwarding protocol. Valid values: `http` and `https`.
+        :type Protocol: str
+        :param SourceType: Forwarding method. Valid values: `1` (by domain name); `2` (by IP).
+        :type SourceType: int
+        :param HttpsToHttpEnable: Whether to enable **Forward HTTPS requests via HTTP**. Valid values: `0` (disabled) and `1` (enabled). It defaults to `0`.
+        :type HttpsToHttpEnable: int
+        :param Status: Rule status. Valid values: `0` (the rule was successfully configured), `1` (configuring the rule), `2` (rule configuration failed), `3` (deleting the rule), `5` (failed to delete rule), `6` (rule awaiting configuration), `7` (rule awaiting deletion), and `8` (rule awaiting certificate configuration).
+        :type Status: int
+        :param CCLevel: CC protection level based on HTTPS.
+        :type CCLevel: str
+        :param CCEnable: CC protection status based on HTTPS. Valid values: `0` (disabled) and `1` (enabled).
+        :type CCEnable: int
+        :param CCThreshold: CC protection threshold based on HTTPS.
+        :type CCThreshold: int
+        :param Region: Region code.
+        :type Region: int
+        :param RuleName: Rule description.
+        :type RuleName: str
+        :param Cert: [Disused] When the certificate is an external certificate, the certificate content should be provided here. 
+        :type Cert: str
+        :param ModifyTime: Modification time.
+        :type ModifyTime: str
+        :param RuleId: Rule ID. This field is not required for adding a rule, but is required for modifying or deleting a rule.
+        :type RuleId: str
+        :param Ip: Anti-DDoS instance IP address.
+        :type Ip: str
+        :param PrivateKey: [Disused] When the certificate is an external certificate, the certificate key should be provided here. 
+        :type PrivateKey: str
+        :param CertType: Certificate source. When the forwarding protocol is HTTPS, this field must be set to `2` (Tencent Cloud managed certificate), and for HTTP protocol, it can be set to `0`.
+        :type CertType: int
+        :param VirtualPort: Access port number.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type VirtualPort: int
+        :param CCStatus: CC protection status. Valid values: `0` (disabled) and `1` (enabled).
+        :type CCStatus: int
+        :param SSLId: When the certificate is managed by Tencent Cloud, this field must be set to the ID of the managed certificate.
+        :type SSLId: str
+        :param Id: Resource ID.
+        :type Id: str
+        """
+        self.KeepTime = None
+        self.LbType = None
+        self.SourceList = None
+        self.KeepEnable = None
+        self.Domain = None
+        self.Protocol = None
+        self.SourceType = None
+        self.HttpsToHttpEnable = None
+        self.Status = None
+        self.CCLevel = None
+        self.CCEnable = None
+        self.CCThreshold = None
+        self.Region = None
+        self.RuleName = None
+        self.Cert = None
+        self.ModifyTime = None
+        self.RuleId = None
+        self.Ip = None
+        self.PrivateKey = None
+        self.CertType = None
+        self.VirtualPort = None
+        self.CCStatus = None
+        self.SSLId = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.KeepTime = params.get("KeepTime")
+        self.LbType = params.get("LbType")
+        if params.get("SourceList") is not None:
+            self.SourceList = []
+            for item in params.get("SourceList"):
+                obj = L4RuleSource()
+                obj._deserialize(item)
+                self.SourceList.append(obj)
+        self.KeepEnable = params.get("KeepEnable")
+        self.Domain = params.get("Domain")
+        self.Protocol = params.get("Protocol")
+        self.SourceType = params.get("SourceType")
+        self.HttpsToHttpEnable = params.get("HttpsToHttpEnable")
+        self.Status = params.get("Status")
+        self.CCLevel = params.get("CCLevel")
+        self.CCEnable = params.get("CCEnable")
+        self.CCThreshold = params.get("CCThreshold")
+        self.Region = params.get("Region")
+        self.RuleName = params.get("RuleName")
+        self.Cert = params.get("Cert")
+        self.ModifyTime = params.get("ModifyTime")
+        self.RuleId = params.get("RuleId")
+        self.Ip = params.get("Ip")
+        self.PrivateKey = params.get("PrivateKey")
+        self.CertType = params.get("CertType")
+        self.VirtualPort = params.get("VirtualPort")
+        self.CCStatus = params.get("CCStatus")
+        self.SSLId = params.get("SSLId")
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class PackInfo(AbstractModel):
