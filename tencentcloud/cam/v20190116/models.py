@@ -154,7 +154,7 @@ class AddUserToGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Info: How sub-user UIDs are associated with the ID of the user group they are added to.
+        :param Info: The association between the user group ID and the sub-user UIN/UID.
         :type Info: list of GroupIdOfUidInfo
         """
         self.Info = None
@@ -2321,18 +2321,22 @@ class GroupIdOfUidInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uid: Sub-user UID
-        :type Uid: int
         :param GroupId: User Group ID
         :type GroupId: int
+        :param Uid: Sub-user UID
+        :type Uid: int
+        :param Uin: Sub-user UIN. For UIN and UID, at least one of them is required.
+        :type Uin: int
         """
-        self.Uid = None
         self.GroupId = None
+        self.Uid = None
+        self.Uin = None
 
 
     def _deserialize(self, params):
-        self.Uid = params.get("Uid")
         self.GroupId = params.get("GroupId")
+        self.Uid = params.get("Uid")
+        self.Uin = params.get("Uin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3542,7 +3546,7 @@ class RemoveUserFromGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Info: The UID of the user to be deleted and an array corresponding to the User Group IDs
+        :param Info: The user’s UIN/UID to be deleted and the array corresponding to the user group ID.
         :type Info: list of GroupIdOfUidInfo
         """
         self.Info = None

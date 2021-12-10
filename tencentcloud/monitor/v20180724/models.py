@@ -752,27 +752,28 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: Policy group ID. If `PolicyId` is used, this parameter will be ignored, and any value, e.g., 0, can be passed in.
-        :type GroupId: int
         :param Module: Required. The value is fixed to monitor.
         :type Module: str
+        :param GroupId: Policy group ID, such as `4739573`. This parameter will be disused soon. Another parameter `PolicyId` is recommended.
+        :type GroupId: int
+        :param PolicyId: Alarm policy ID, such as `policy-gh892hg0`. At least one of the two parameters, `PolicyId` and `GroupId`, must be specified; otherwise, an error will be reported. `PolicyId` is preferred over `GroupId` when both of them are specified.
+        :type PolicyId: str
         :param InstanceGroupId: Instance group ID.
         :type InstanceGroupId: int
         :param Dimensions: Dimensions of an object to be bound.
         :type Dimensions: list of BindingPolicyObjectDimension
-        :param PolicyId: Alarm policy ID. If this parameter is used, `GroupId` will be ignored.
-        :type PolicyId: str
         """
-        self.GroupId = None
         self.Module = None
+        self.GroupId = None
+        self.PolicyId = None
         self.InstanceGroupId = None
         self.Dimensions = None
-        self.PolicyId = None
 
 
     def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
         self.Module = params.get("Module")
+        self.GroupId = params.get("GroupId")
+        self.PolicyId = params.get("PolicyId")
         self.InstanceGroupId = params.get("InstanceGroupId")
         if params.get("Dimensions") is not None:
             self.Dimensions = []
@@ -780,7 +781,6 @@ class BindingPolicyObjectRequest(AbstractModel):
                 obj = BindingPolicyObjectDimension()
                 obj._deserialize(item)
                 self.Dimensions.append(obj)
-        self.PolicyId = params.get("PolicyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

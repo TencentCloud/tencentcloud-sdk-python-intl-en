@@ -941,7 +941,7 @@ class DBInstance(AbstractModel):
         :type DBInstanceVersion: str
         :param DBCharset: Instance database character set
         :type DBCharset: str
-        :param DBVersion: PostgreSQL kernel version
+        :param DBVersion: PostgreSQL major version
         :type DBVersion: str
         :param CreateTime: Instance creation time
         :type CreateTime: str
@@ -980,6 +980,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param OfflineTime: Elimination time
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OfflineTime: str
+        :param DBKernelVersion: Database kernel version
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DBKernelVersion: str
+        :param NetworkAccessList: Network information list of the instance
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type NetworkAccessList: list of NetworkAccess
         """
         self.Region = None
         self.Zone = None
@@ -1013,6 +1019,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ReadOnlyInstanceNum = None
         self.StatusInReadonlyGroup = None
         self.OfflineTime = None
+        self.DBKernelVersion = None
+        self.NetworkAccessList = None
 
 
     def _deserialize(self, params):
@@ -1058,6 +1066,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ReadOnlyInstanceNum = params.get("ReadOnlyInstanceNum")
         self.StatusInReadonlyGroup = params.get("StatusInReadonlyGroup")
         self.OfflineTime = params.get("OfflineTime")
+        self.DBKernelVersion = params.get("DBKernelVersion")
+        if params.get("NetworkAccessList") is not None:
+            self.NetworkAccessList = []
+            for item in params.get("NetworkAccessList"):
+                obj = NetworkAccess()
+                obj._deserialize(item)
+                self.NetworkAccessList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2155,13 +2170,13 @@ class DescribeSlowQueryAnalysisRequest(AbstractModel):
         :type EndTime: str
         :param DatabaseName: Filter by database name. This parameter is optional.
         :type DatabaseName: str
-        :param OrderBy: Sort by field. Valid values: `CallNum`, `CostTime`, `AvgCostTime`.
+        :param OrderBy: Sort by field. Valid values: `CallNum`, `CostTime`, `AvgCostTime`. Default value: `CallNum`.
         :type OrderBy: str
-        :param OrderByType: Sorting order. Valid values: `asc` (ascending), `desc` (descending).
+        :param OrderByType: Sorting order. Valid values: `asc` (ascending), `desc` (descending). Default value: `desc`.
         :type OrderByType: str
-        :param Limit: Number of entries per page. Value range: [1,100].
+        :param Limit: Number of entries per page. Value range: [1,100]. Default value: `50`.
         :type Limit: int
-        :param Offset: Pagination offset. Value range: [0,INF).
+        :param Offset: Pagination offset. Value range: [0,INF). Default value: `0`.
         :type Offset: int
         """
         self.DBInstanceId = None
@@ -3177,9 +3192,9 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
         :type ActivityId: int
         :param SwitchTag: Switch time after instance configurations are modified. Valid values: `0` (switch immediately), `1` (switch at a specified time). Default value: `0`.
         :type SwitchTag: int
-        :param SwitchStartTime: The earliest time to start a switch.
+        :param SwitchStartTime: The earliest time to start a switch in the format of "HH:MM:SS", such as "01:00:00".
         :type SwitchStartTime: str
-        :param SwitchEndTime: The latest time to start a switch.
+        :param SwitchEndTime: The latest time to start a switch in the format of "HH:MM:SS", such as "01:30:00".
         :type SwitchEndTime: str
         """
         self.DBInstanceId = None
@@ -3400,6 +3415,66 @@ class ModifySwitchTimePeriodResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class NetworkAccess(AbstractModel):
+    """Network information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceId: Network resource ID, instance ID or RO group ID (this field has been deprecated)
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ResourceId: str
+        :param ResourceType: Resource type. Valid values: `1` (instance), `2` (RO group) (this field has been deprecated)
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ResourceType: int
+        :param VpcId: VPC ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type VpcId: str
+        :param Vip: IPv4 address
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Vip: str
+        :param Vip6: IPv6 address
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Vip6: str
+        :param Vport: Access port
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Vport: int
+        :param SubnetId: Subnet ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SubnetId: str
+        :param VpcStatus: Network status. Valid values: `1` (applying), `2` (in use), `3` (deleting), `4` (deleted)
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type VpcStatus: int
+        """
+        self.ResourceId = None
+        self.ResourceType = None
+        self.VpcId = None
+        self.Vip = None
+        self.Vip6 = None
+        self.Vport = None
+        self.SubnetId = None
+        self.VpcStatus = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.ResourceType = params.get("ResourceType")
+        self.VpcId = params.get("VpcId")
+        self.Vip = params.get("Vip")
+        self.Vip6 = params.get("Vip6")
+        self.Vport = params.get("Vport")
+        self.SubnetId = params.get("SubnetId")
+        self.VpcStatus = params.get("VpcStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NormalQueryItem(AbstractModel):
     """Information of one SlowQuery
 
@@ -3615,7 +3690,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param Name: Parameter name
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Name: str
-        :param ParamValueType: Value type of the parameter. Valid values: `integer`, `real` (floating-point), `bool`, `enum`, `mutil_enum` (this type of parameter can be set to multiple enumerated values)
+        :param ParamValueType: Value type of the parameter. Valid values: `integer`, `real` (floating-point), `bool`, `enum`, `mutil_enum` (this type of parameter can be set to multiple enumerated values).
+For an `integer` or `real` parameter, the `Min` field represents the minimum value and the `Max` field the maximum value. 
+For a `bool` parameter, the valid values include `true` and `false`; 
+For an `enum` or `mutil_enum` parameter, the `EnumValue` field represents the valid values.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ParamValueType: str
         :param Unit: Value unit of the parameter. If the parameter has no unit, this field will return an empty string.
@@ -3842,6 +3920,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :type Rebalance: int
         :param DBInstanceNetInfo: Network information
         :type DBInstanceNetInfo: list of DBInstanceNetInfo
+        :param NetworkAccessList: Network information list of the RO group
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type NetworkAccessList: list of NetworkAccess
         """
         self.ReadOnlyGroupId = None
         self.ReadOnlyGroupName = None
@@ -3860,6 +3941,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.ReadOnlyDBInstanceList = None
         self.Rebalance = None
         self.DBInstanceNetInfo = None
+        self.NetworkAccessList = None
 
 
     def _deserialize(self, params):
@@ -3890,6 +3972,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj = DBInstanceNetInfo()
                 obj._deserialize(item)
                 self.DBInstanceNetInfo.append(obj)
+        if params.get("NetworkAccessList") is not None:
+            self.NetworkAccessList = []
+            for item in params.get("NetworkAccessList"):
+                obj = NetworkAccess()
+                obj._deserialize(item)
+                self.NetworkAccessList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4268,6 +4356,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param TagList: The array of tags bound to an instance
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type TagList: list of Tag
+        :param DBKernelVersion: Database kernel version
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DBKernelVersion: str
         """
         self.DBInstanceId = None
         self.DBInstanceName = None
@@ -4284,6 +4375,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.DBAccountSet = None
         self.DBDatabaseList = None
         self.TagList = None
+        self.DBKernelVersion = None
 
 
     def _deserialize(self, params):
@@ -4317,6 +4409,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj = Tag()
                 obj._deserialize(item)
                 self.TagList.append(obj)
+        self.DBKernelVersion = params.get("DBKernelVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

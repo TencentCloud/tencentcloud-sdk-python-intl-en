@@ -747,7 +747,6 @@ Hourly RI fee
 New monthly subscription
 Monthly subscription renewal
 Monthly subscription specification adjustment
-Monthly subscription specification adjustment
 Monthly subscription refund
         :type ActionType: str
         :param ResourceId: ID of the instance to be queried

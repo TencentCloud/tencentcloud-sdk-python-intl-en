@@ -25,17 +25,21 @@ class LivenessCompareRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageBase64: Base64 string of the image for face comparison.
-The size of the Base64-encoded image data can be up to 3 MB. JPG and PNG formats are supported.
-Please use the standard Base64 encoding scheme (with the "=" padding). For the encoding conventions, please see RFC 4648.
-        :type ImageBase64: str
-        :param VideoBase64: Base64 string of the video for liveness detection.
-The size of the Base64-encoded video data can be up to 8 MB. MP4, AVI, and FLV formats are supported.
-Please use the standard Base64 encoding scheme (with the "=" padding). For the encoding conventions, please see RFC 4648.
-        :type VideoBase64: str
         :param LivenessType: Liveness detection type. Valid values: LIP/ACTION/SILENT.
 LIP: numeric mode; ACTION: motion mode; SILENT: silent mode. You need to select a mode to input.
         :type LivenessType: str
+        :param ImageBase64: Base64 string of the image for face comparison.
+The size of the Base64-encoded image data can be up to 3 MB. JPG and PNG formats are supported.
+Please use the standard Base64 encoding scheme (with the "=" padding). For the encoding conventions, please see RFC 4648.
+
+Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageBase64` will be used.
+        :type ImageBase64: str
+        :param ImageUrl: URL of the image for face comparison. The size of the downloaded image after Base64 encoding can be up to 3 MB. JPG and PNG formats are supported.
+
+Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageBase64` will be used.
+
+We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
+        :type ImageUrl: str
         :param ValidateData: Lip mode: set this parameter to a custom 4-digit verification code.
 Action mode: set this parameter to a custom action sequence (e.g., `2,1` or `1,2`).
 Silent mode: do not pass in this parameter.
@@ -45,20 +49,36 @@ Silent mode: do not pass in this parameter.
 "BestFrameNum": 2  // Return multiple best screenshots. Value range: 2−10
 }
         :type Optional: str
+        :param VideoBase64: Base64 string of the video for liveness detection.
+The size of the Base64-encoded video data can be up to 8 MB. MP4, AVI, and FLV formats are supported.
+Please use the standard Base64 encoding scheme (with the "=" padding). For the encoding conventions, please see RFC 4648.
+
+Either the `VideoUrl` or `VideoBase64` of the video must be provided. If both are provided, only `VideoBase64` will be used.
+        :type VideoBase64: str
+        :param VideoUrl: URL of the video for liveness detection. The size of the downloaded video after Base64 encoding can be up to 8 MB. It takes no more than 4 seconds to download. MP4, AVI, and FLV formats are supported.
+
+Either the `VideoUrl` or `VideoBase64` of the video must be provided. If both are provided, only `VideoBase64` will be used.
+
+We recommend you store the video in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
+        :type VideoUrl: str
         """
-        self.ImageBase64 = None
-        self.VideoBase64 = None
         self.LivenessType = None
+        self.ImageBase64 = None
+        self.ImageUrl = None
         self.ValidateData = None
         self.Optional = None
+        self.VideoBase64 = None
+        self.VideoUrl = None
 
 
     def _deserialize(self, params):
-        self.ImageBase64 = params.get("ImageBase64")
-        self.VideoBase64 = params.get("VideoBase64")
         self.LivenessType = params.get("LivenessType")
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
         self.ValidateData = params.get("ValidateData")
         self.Optional = params.get("Optional")
+        self.VideoBase64 = params.get("VideoBase64")
+        self.VideoUrl = params.get("VideoUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

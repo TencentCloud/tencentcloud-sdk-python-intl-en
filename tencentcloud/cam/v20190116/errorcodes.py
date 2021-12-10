@@ -218,6 +218,9 @@ INVALIDPARAMETER_USERNAMEILLEGAL = 'InvalidParameter.UserNameIllegal'
 # User object does not exist
 INVALIDPARAMETER_USERNOTEXIST = 'InvalidParameter.UserNotExist'
 
+# A user’s UIN and UID cannot be left empty at the same time.
+INVALIDPARAMETER_USERUINANDUINNOTALLNULL = 'InvalidParameter.UserUinAndUinNotAllNull'
+
 # `Version` field of policy document invalid.
 INVALIDPARAMETER_VERSIONERROR = 'InvalidParameter.VersionError'
 
