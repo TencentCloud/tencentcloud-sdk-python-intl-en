@@ -983,7 +983,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param DBKernelVersion: Database kernel version
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type DBKernelVersion: str
-        :param NetworkAccessList: Network information list of the instance
+        :param NetworkAccessList: Network access list of the instance
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type NetworkAccessList: list of NetworkAccess
         """
@@ -3920,7 +3920,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :type Rebalance: int
         :param DBInstanceNetInfo: Network information
         :type DBInstanceNetInfo: list of DBInstanceNetInfo
-        :param NetworkAccessList: Network information list of the RO group
+        :param NetworkAccessList: Network access list of the RO group
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type NetworkAccessList: list of NetworkAccess
         """
