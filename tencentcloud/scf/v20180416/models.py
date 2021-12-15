@@ -509,6 +509,8 @@ class CreateFunctionRequest(AbstractModel):
         :type Namespace: str
         :param Role: Role bound to the function
         :type Role: str
+        :param InstallDependency: Specifies whether to [install dependency online](https://intl.cloud.tencent.com/document/product/583/37920?from_cn_redirect=1). `TRUE`: yes. Default to `FALSE`. It is only available for Node.js functions.
+        :type InstallDependency: str
         :param ClsLogsetId: CLS Logset ID to which the function logs are shipped
         :type ClsLogsetId: str
         :param ClsTopicId: CLS Topic ID to which the function logs are shipped
@@ -533,6 +535,10 @@ class CreateFunctionRequest(AbstractModel):
         :type AsyncRunEnable: str
         :param TraceEnable: Whether to enable event tracking. TRUE: yes; FALSE: no
         :type TraceEnable: str
+        :param ProtocolType: Protocols supported by HTTP-triggered functions. Valid value: `WS` (WebSockets)
+        :type ProtocolType: str
+        :param ProtocolParams: Parameters of the specified protocol
+        :type ProtocolParams: :class:`tencentcloud.scf.v20180416.models.ProtocolParams`
         """
         self.FunctionName = None
         self.Code = None
@@ -545,6 +551,7 @@ class CreateFunctionRequest(AbstractModel):
         self.VpcConfig = None
         self.Namespace = None
         self.Role = None
+        self.InstallDependency = None
         self.ClsLogsetId = None
         self.ClsTopicId = None
         self.Type = None
@@ -557,6 +564,8 @@ class CreateFunctionRequest(AbstractModel):
         self.Tags = None
         self.AsyncRunEnable = None
         self.TraceEnable = None
+        self.ProtocolType = None
+        self.ProtocolParams = None
 
 
     def _deserialize(self, params):
@@ -577,6 +586,7 @@ class CreateFunctionRequest(AbstractModel):
             self.VpcConfig._deserialize(params.get("VpcConfig"))
         self.Namespace = params.get("Namespace")
         self.Role = params.get("Role")
+        self.InstallDependency = params.get("InstallDependency")
         self.ClsLogsetId = params.get("ClsLogsetId")
         self.ClsTopicId = params.get("ClsTopicId")
         self.Type = params.get("Type")
@@ -605,6 +615,10 @@ class CreateFunctionRequest(AbstractModel):
                 self.Tags.append(obj)
         self.AsyncRunEnable = params.get("AsyncRunEnable")
         self.TraceEnable = params.get("TraceEnable")
+        self.ProtocolType = params.get("ProtocolType")
+        if params.get("ProtocolParams") is not None:
+            self.ProtocolParams = ProtocolParams()
+            self.ProtocolParams._deserialize(params.get("ProtocolParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1935,6 +1949,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param TraceEnable: Specifies whether to enable event tracking
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type TraceEnable: str
+        :param ProtocolType: Protocols supported by HTTP-triggered functions. It supports WebSockets for now.
+Note: This field may return null, indicating that no valid value was found.
+        :type ProtocolType: str
+        :param ProtocolParams: Parameters of the specified protocol
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ProtocolParams: :class:`tencentcloud.scf.v20180416.models.ProtocolParams`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -1980,6 +2000,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.StatusReasons = None
         self.AsyncRunEnable = None
         self.TraceEnable = None
+        self.ProtocolType = None
+        self.ProtocolParams = None
         self.RequestId = None
 
 
@@ -2060,6 +2082,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 self.StatusReasons.append(obj)
         self.AsyncRunEnable = params.get("AsyncRunEnable")
         self.TraceEnable = params.get("TraceEnable")
+        self.ProtocolType = params.get("ProtocolType")
+        if params.get("ProtocolParams") is not None:
+            self.ProtocolParams = ProtocolParams()
+            self.ProtocolParams._deserialize(params.get("ProtocolParams"))
         self.RequestId = params.get("RequestId")
 
 
@@ -3381,6 +3407,33 @@ class NamespaceUsage(AbstractModel):
         
 
 
+class ProtocolParams(AbstractModel):
+    """Parameters of the protocol
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WSParams: Parameters of WebSockets protocol
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type WSParams: :class:`tencentcloud.scf.v20180416.models.WSParams`
+        """
+        self.WSParams = None
+
+
+    def _deserialize(self, params):
+        if params.get("WSParams") is not None:
+            self.WSParams = WSParams()
+            self.WSParams._deserialize(params.get("WSParams"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PublicNetConfigIn(AbstractModel):
     """Public network access configuration
 
@@ -4427,6 +4480,8 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type VpcConfig: :class:`tencentcloud.scf.v20180416.models.VpcConfig`
         :param Role: Role bound to the function
         :type Role: str
+        :param InstallDependency: Specifies whether to [install dependency online](https://intl.cloud.tencent.com/document/product/583/37920?from_cn_redirect=1). `TRUE`: yes. Default to `FALSE`. It is only available for Node.js functions.
+        :type InstallDependency: str
         :param ClsLogsetId: CLS logset ID to which logs are shipped
         :type ClsLogsetId: str
         :param ClsTopicId: CLS Topic ID to which logs are shipped
@@ -4445,6 +4500,8 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
         :param InitTimeout: The function initialization timeout period
         :type InitTimeout: int
+        :param ProtocolParams: Parameters of the specified protocol
+        :type ProtocolParams: :class:`tencentcloud.scf.v20180416.models.ProtocolParams`
         """
         self.FunctionName = None
         self.Description = None
@@ -4455,6 +4512,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         self.Namespace = None
         self.VpcConfig = None
         self.Role = None
+        self.InstallDependency = None
         self.ClsLogsetId = None
         self.ClsTopicId = None
         self.Publish = None
@@ -4464,6 +4522,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         self.PublicNetConfig = None
         self.CfsConfig = None
         self.InitTimeout = None
+        self.ProtocolParams = None
 
 
     def _deserialize(self, params):
@@ -4480,6 +4539,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
             self.VpcConfig = VpcConfig()
             self.VpcConfig._deserialize(params.get("VpcConfig"))
         self.Role = params.get("Role")
+        self.InstallDependency = params.get("InstallDependency")
         self.ClsLogsetId = params.get("ClsLogsetId")
         self.ClsTopicId = params.get("ClsTopicId")
         self.Publish = params.get("Publish")
@@ -4500,6 +4560,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
             self.CfsConfig = CfsConfig()
             self.CfsConfig._deserialize(params.get("CfsConfig"))
         self.InitTimeout = params.get("InitTimeout")
+        if params.get("ProtocolParams") is not None:
+            self.ProtocolParams = ProtocolParams()
+            self.ProtocolParams._deserialize(params.get("ProtocolParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4835,6 +4898,31 @@ class VpcConfig(AbstractModel):
     def _deserialize(self, params):
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WSParams(AbstractModel):
+    """Parameters of the specified protocol
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdleTimeOut: Idle timeout period in seconds. Default: 15; range: 1 to 1800
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type IdleTimeOut: int
+        """
+        self.IdleTimeOut = None
+
+
+    def _deserialize(self, params):
+        self.IdleTimeOut = params.get("IdleTimeOut")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

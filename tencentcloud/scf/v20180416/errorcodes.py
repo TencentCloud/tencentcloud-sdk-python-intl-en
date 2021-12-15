@@ -203,6 +203,9 @@ INVALIDPARAMETERVALUE_APMCONFIGINSTANCEID = 'InvalidParameterValue.ApmConfigInst
 # ApmConfigRegion input error
 INVALIDPARAMETERVALUE_APMCONFIGREGION = 'InvalidParameterValue.ApmConfigRegion'
 
+# 
+INVALIDPARAMETERVALUE_ARGS = 'InvalidParameterValue.Args'
+
 # The parameter for async retry configuration of the function is invalid.
 INVALIDPARAMETERVALUE_ASYNCTRIGGERCONFIG = 'InvalidParameterValue.AsyncTriggerConfig'
 
@@ -236,6 +239,9 @@ INVALIDPARAMETERVALUE_CODESECRET = 'InvalidParameterValue.CodeSecret'
 # CodeSource error.
 INVALIDPARAMETERVALUE_CODESOURCE = 'InvalidParameterValue.CodeSource'
 
+# 
+INVALIDPARAMETERVALUE_COMMAND = 'InvalidParameterValue.Command'
+
 # Incorrect `CompatibleRuntimes` parameter.
 INVALIDPARAMETERVALUE_COMPATIBLERUNTIMES = 'InvalidParameterValue.CompatibleRuntimes'
 
@@ -268,6 +274,9 @@ INVALIDPARAMETERVALUE_DEFAULTNAMESPACE = 'InvalidParameterValue.DefaultNamespace
 
 # Description error.
 INVALIDPARAMETERVALUE_DESCRIPTION = 'InvalidParameterValue.Description'
+
+# 
+INVALIDPARAMETERVALUE_DNSINFO = 'InvalidParameterValue.DnsInfo'
 
 # EipConfig parameter error.
 INVALIDPARAMETERVALUE_EIPCONFIG = 'InvalidParameterValue.EipConfig'
@@ -313,6 +322,9 @@ INVALIDPARAMETERVALUE_HANDLER = 'InvalidParameterValue.Handler'
 
 # IdleTimeOut input parameter error
 INVALIDPARAMETERVALUE_IDLETIMEOUT = 'InvalidParameterValue.IdleTimeOut'
+
+# 
+INVALIDPARAMETERVALUE_IMAGEURI = 'InvalidParameterValue.ImageUri'
 
 # Invalid InlineZipFile.
 INVALIDPARAMETERVALUE_INLINEZIPFILE = 'InvalidParameterValue.InlineZipFile'
@@ -379,6 +391,9 @@ INVALIDPARAMETERVALUE_PUBLICNETCONFIG = 'InvalidParameterValue.PublicNetConfig'
 
 # Unsupported function version.
 INVALIDPARAMETERVALUE_QUALIFIER = 'InvalidParameterValue.Qualifier'
+
+# 
+INVALIDPARAMETERVALUE_REGISTRYID = 'InvalidParameterValue.RegistryId'
 
 # Invalid RetCode
 INVALIDPARAMETERVALUE_RETCODE = 'InvalidParameterValue.RetCode'
