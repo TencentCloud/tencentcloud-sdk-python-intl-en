@@ -1333,9 +1333,9 @@ class CreateLoadBalancerSnatIpsRequest(AbstractModel):
         r"""
         :param LoadBalancerId: Unique ID of a CLB instance, e.g., lb-12345678.
         :type LoadBalancerId: str
-        :param SnatIps: Information of the SNAT IP to be added. You can apply for a specified IP or apply for an automatically assigned IP by specifying a subnet.
+        :param SnatIps: Information of the SNAT IP to be added. You can specify a SNAT IP or use the one automatically assigned by a subnet.
         :type SnatIps: list of SnatIp
-        :param Number: Number of SNAT IPs to be added. This parameter is used in conjunction with `SnatIps`. Note that if `Ip` is specified in `SnapIps`, this parameter is not available.
+        :param Number: Number of SNAT IPs to be added. This parameter is used in conjunction with `SnatIps`. Note that if `Ip` is specified in `SnapIps`, this parameter is not available. It defaults to `1` and the upper limit is `10`.
         :type Number: int
         """
         self.LoadBalancerId = None
@@ -5157,6 +5157,52 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class ModifyLoadBalancerSlaRequest(AbstractModel):
+    """ModifyLoadBalancerSla request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoadBalancerSla: ID of the LCU-supported CLB instance, and the target specification
+        :type LoadBalancerSla: list of SlaUpdateParam
+        """
+        self.LoadBalancerSla = None
+
+
+    def _deserialize(self, params):
+        if params.get("LoadBalancerSla") is not None:
+            self.LoadBalancerSla = []
+            for item in params.get("LoadBalancerSla"):
+                obj = SlaUpdateParam()
+                obj._deserialize(item)
+                self.LoadBalancerSla.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLoadBalancerSlaResponse(AbstractModel):
+    """ModifyLoadBalancerSla response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyRuleRequest(AbstractModel):
     """ModifyRule request structure.
 
@@ -6249,10 +6295,17 @@ class SetLoadBalancerClsLogRequest(AbstractModel):
         :param LoadBalancerId: CLB instance ID
         :type LoadBalancerId: str
         :param LogSetId: CLS logset ID
+<li>Enter the ID of logset you need to add or update. You can acquire the ID by invoking [DescribeLogsets](https://intl.cloud.tencent.com/document/product/614/56454?from_cn_redirect=1).</li>
+<li>To delete the log set, set this parameter to `null`.</li>
         :type LogSetId: str
         :param LogTopicId: CLS log topic ID
+<li>Enter the ID of log topic you need to add or update. You can acquire the ID by invoking [DescribeTopics](https://intl.cloud.tencent.com/document/product/614/56454?from_cn_redirect=1).</li>
+<li>To delete the log set, set this parameter to `null`.</li>
         :type LogTopicId: str
-        :param LogType: Log type. Valid values: ACCESS (access logs; default value) and HEALTH (health check logs).
+        :param LogType: Log type:
+<li>`ACCESS`: access logs</li>
+<li>`HEALTH`: health check logs</li>
+Default: `ACCESS`
         :type LogType: str
         """
         self.LoadBalancerId = None
@@ -6385,6 +6438,34 @@ class SetSecurityGroupForLoadbalancersResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class SlaUpdateParam(AbstractModel):
+    """Parameter for instance specification adjustment
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoadBalancerId: ID of the CLB instance
+        :type LoadBalancerId: str
+        :param SlaType: Target instance specification
+        :type SlaType: str
+        """
+        self.LoadBalancerId = None
+        self.SlaType = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.SlaType = params.get("SlaType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SnatIp(AbstractModel):

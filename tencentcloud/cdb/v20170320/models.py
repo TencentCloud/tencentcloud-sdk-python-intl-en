@@ -8002,8 +8002,8 @@ class SlowLogItem(AbstractModel):
         :param Timestamp: SQL execution time.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Timestamp: int
-        :param QueryTime: SQL execution duration.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param QueryTime: SQL execution duration in seconds.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type QueryTime: float
         :param SqlText: SQL statement.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -8017,8 +8017,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Database: Database name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Database: str
-        :param LockTime: Lock duration.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param LockTime: Lock duration in seconds.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type LockTime: float
         :param RowsExamined: Number of scanned rows.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -8739,11 +8739,14 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
         :type WaitSwitch: int
         :param UpgradeSubversion: Whether to upgrade kernel minor version. Valid values: 1 (upgrade kernel minor version), 0 (upgrade database engine).
         :type UpgradeSubversion: int
+        :param MaxDelayTime: Delay threshold. Value range: 1-10
+        :type MaxDelayTime: int
         """
         self.InstanceId = None
         self.EngineVersion = None
         self.WaitSwitch = None
         self.UpgradeSubversion = None
+        self.MaxDelayTime = None
 
 
     def _deserialize(self, params):
@@ -8751,6 +8754,7 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
         self.EngineVersion = params.get("EngineVersion")
         self.WaitSwitch = params.get("WaitSwitch")
         self.UpgradeSubversion = params.get("UpgradeSubversion")
+        self.MaxDelayTime = params.get("MaxDelayTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8814,6 +8818,8 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type Cpu: int
         :param FastUpgrade: Whether to enable QuickChange. Valid values: `0` (no), `1` (yes). After QuickChange is enabled, the required resources will be checked. QuickChange is performed only when the required resources support the feature; otherwise, an error message will be returned.
         :type FastUpgrade: int
+        :param MaxDelayTime: Delay threshold. Value range: 1-10. Default value: `10`.
+        :type MaxDelayTime: int
         """
         self.InstanceId = None
         self.Memory = None
@@ -8828,6 +8834,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.DeviceType = None
         self.Cpu = None
         self.FastUpgrade = None
+        self.MaxDelayTime = None
 
 
     def _deserialize(self, params):
@@ -8844,6 +8851,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.DeviceType = params.get("DeviceType")
         self.Cpu = params.get("Cpu")
         self.FastUpgrade = params.get("FastUpgrade")
+        self.MaxDelayTime = params.get("MaxDelayTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

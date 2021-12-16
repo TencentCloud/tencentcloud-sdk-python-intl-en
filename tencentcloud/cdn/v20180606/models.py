@@ -433,6 +433,54 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         
 
 
+class AdvanceHttps(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CustomTlsStatus: 
+        :type CustomTlsStatus: str
+        :param TlsVersion: 
+        :type TlsVersion: list of str
+        :param Cipher: 
+        :type Cipher: str
+        :param VerifyOriginType: 
+        :type VerifyOriginType: str
+        :param CertInfo: 
+        :type CertInfo: :class:`tencentcloud.cdn.v20180606.models.ServerCert`
+        :param OriginCertInfo: 
+        :type OriginCertInfo: :class:`tencentcloud.cdn.v20180606.models.ClientCert`
+        """
+        self.CustomTlsStatus = None
+        self.TlsVersion = None
+        self.Cipher = None
+        self.VerifyOriginType = None
+        self.CertInfo = None
+        self.OriginCertInfo = None
+
+
+    def _deserialize(self, params):
+        self.CustomTlsStatus = params.get("CustomTlsStatus")
+        self.TlsVersion = params.get("TlsVersion")
+        self.Cipher = params.get("Cipher")
+        self.VerifyOriginType = params.get("VerifyOriginType")
+        if params.get("CertInfo") is not None:
+            self.CertInfo = ServerCert()
+            self.CertInfo._deserialize(params.get("CertInfo"))
+        if params.get("OriginCertInfo") is not None:
+            self.OriginCertInfo = ClientCert()
+            self.OriginCertInfo._deserialize(params.get("OriginCertInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AdvancedAuthentication(AbstractModel):
     """Timestamp hotlink protection advanced configuration (allowlist feature)
 
@@ -790,6 +838,70 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         
 
 
+class AdvancedCCRules(AbstractModel):
+    """SCDN custom CC rules
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleName: Rule name
+        :type RuleName: str
+        :param DetectionTime: Detection duration
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DetectionTime: int
+        :param FrequencyLimit: Detection frequency threshold
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type FrequencyLimit: int
+        :param PunishmentSwitch: Whether to enable IP penalty. Valid values: `on` and `off`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type PunishmentSwitch: str
+        :param PunishmentTime: IP penalty duration
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type PunishmentTime: int
+        :param Action: Action. Valid values: `intercept` and `redirect`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Action: str
+        :param RedirectUrl: A redirection URL used when Action is `redirect`
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RedirectUrl: str
+        :param Configure: Layer-7 rule configuration for CC frequency limiting
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Configure: list of ScdnSevenLayerRules
+        """
+        self.RuleName = None
+        self.DetectionTime = None
+        self.FrequencyLimit = None
+        self.PunishmentSwitch = None
+        self.PunishmentTime = None
+        self.Action = None
+        self.RedirectUrl = None
+        self.Configure = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+        self.DetectionTime = params.get("DetectionTime")
+        self.FrequencyLimit = params.get("FrequencyLimit")
+        self.PunishmentSwitch = params.get("PunishmentSwitch")
+        self.PunishmentTime = params.get("PunishmentTime")
+        self.Action = params.get("Action")
+        self.RedirectUrl = params.get("RedirectUrl")
+        if params.get("Configure") is not None:
+            self.Configure = []
+            for item in params.get("Configure"):
+                obj = ScdnSevenLayerRules()
+                obj._deserialize(item)
+                self.Configure.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AdvancedCache(AbstractModel):
     """(Disused) Advanced cache validity configuration. You can use `RuleCache` instead.
 
@@ -828,6 +940,330 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 self.CacheRules.append(obj)
         self.IgnoreCacheControl = params.get("IgnoreCacheControl")
         self.IgnoreSetCookie = params.get("IgnoreSetCookie")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AdvancedScdnAclGroup(AbstractModel):
+    """SCDN precise access control configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleName: Rule name
+        :type RuleName: str
+        :param Configure: Specific configurations
+        :type Configure: list of AdvancedScdnAclRule
+        :param Result: Action. Valid values: `intercept` and `redirect`.
+        :type Result: str
+        :param Status: Whether the rule is activated. Valid values: `active` and `inactive`.
+        :type Status: str
+        :param ErrorPage: Error page configuration
+        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ScdnErrorPage`
+        """
+        self.RuleName = None
+        self.Configure = None
+        self.Result = None
+        self.Status = None
+        self.ErrorPage = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+        if params.get("Configure") is not None:
+            self.Configure = []
+            for item in params.get("Configure"):
+                obj = AdvancedScdnAclRule()
+                obj._deserialize(item)
+                self.Configure.append(obj)
+        self.Result = params.get("Result")
+        self.Status = params.get("Status")
+        if params.get("ErrorPage") is not None:
+            self.ErrorPage = ScdnErrorPage()
+            self.ErrorPage._deserialize(params.get("ErrorPage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AdvancedScdnAclRule(AbstractModel):
+    """Precise access control rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MatchKey: Keyword. Valid values:
+`protocol`: HTTP protocol
+`httpVersion`: HTTP version
+`method`: request method
+`ip`: requester IP
+`ipAsn`: ASN of the requester IP
+`ipCountry`: country/region of the requester IP
+`ipArea`: region of the requester IP
+`xForwardFor`: X-Forward-For request header
+`directory`: path
+`index`: homepage
+`path`: full path of a file
+`file`: file extension
+`param`: request parameter
+`referer`: Referer request header
+`cookie`: Cookie request header
+`userAgent`: User-Agent request header
+`head`: custom request header
+        :type MatchKey: str
+        :param LogicOperator: Logical operator. Valid values:
+`exclude`: the keyword is not included
+`include`: the keyword is included
+`notequal`: not the same as the keyword
+`equal`: the same as the keyword
+`matching`: the prefix is matched
+`null`: empty or does not exist
+        :type LogicOperator: str
+        :param MatchValue: Match value
+When `MatchKey` is `protocol`,
+Values: `HTTP` and `HTTPS`.
+
+When `MatchKey` is `httpVersion`,
+Values: `HTTP/1.0`, `HTTP/1.1`, `HTTP/1.2`, `HTTP/2`, and `HTTP/3`.
+
+When `MatchKey` is `method`,
+Values: `HEAD`, `GET`, `POST`, `PUT`, `OPTIONS`, `TRACE`, `DELETE`, `PATCH` and `CONNECT`.
+
+When `MatchKey` is `ipCountry`, valid values include:
+`OTHER`: other countries/regions
+`VE`: Venezuela
+`UY`: Uruguay
+`SR`: Suriname
+`PY`: Paraguay
+`PE`: Peru
+`GY`: Guyana
+`EC`: Ecuador
+`CO`: Colombia
+`CL`: Chile
+`BR`: Brazil
+`BO`: Bolivia
+`AR`: Argentina
+`NZ`: New Zealand
+`WS`: Samoa
+`VU`: Vanuatu
+`TV`: Tuvalu
+`TO`: Tonga
+`TK`: Tokelau
+`PW`: Palau
+`NU`: Niue
+`NR`: Nauru
+`KI`: Kiribati
+`GU`: Guam
+`FM`: Micronesia
+`AU`: Australia
+`US`: United States
+`PR`: Puerto Rico
+`DO`: Dominican Republic
+`CR`: Costa Rica
+`AS`: American Samoa
+`AG`: Antigua and Barbuda
+`PA`: Panama
+`NI`: Nicaragua
+`MX`: Mexico
+`JM`: Jamaica
+`HT`: Haiti
+`HN`: Honduras
+`GT`: Guatemala
+`GP`: Guadeloupe
+`GL`: Greenland
+`GD`: Grenada
+`CU`: Cuba
+`CA`: Canada
+`BZ`: Belize
+`BS`: Bahamas
+`BM`: Bermuda
+`BB`: Barbados
+`AW`: Aruba
+`AI`: Anguilla
+`VA`: Vatican
+`SK`: Slovakia
+`RU`: Russia
+`GB`: United Kingdom
+`CZ`: Czech Republic
+`UA`: Ukraine
+`TR`: Turkey
+`SI`: Slovenia
+`SE`: Sweden
+`RS`: Republic of Serbia
+`RO`: Romania
+`PT`: Portugal
+`PL`: Poland
+`NO`: Norway
+`NL`: Netherlands
+`MT`: Malta
+`MK`: Macedonia
+`ME`: Montenegro
+`MD`: Moldova
+`MC`: Monaco
+`LV`: Latvia
+`LU`: Luxembourg
+`LT`: Lithuania
+`LI`: Liechtenstein
+`KZ`: Kazakhstan
+`IT`: Italy
+`IS`: Iceland
+`IE`: Ireland
+`HU`: Hungary
+`HR`: Croatia
+`GR`: Greece
+`GI`: Gibraltar
+`GG`: Guernsey
+`GE`: Georgia
+`FR`: France
+`FI`: Finland
+`ES`: Spain
+`EE`: Estonia
+`DK`: Denmark
+`DE`: Germany
+`CY`: Cyprus
+`CH`: Switzerland
+`BY`: Belarus
+`BG`: Bulgaria
+`BE`: Belgium
+`AZ`: Azerbaijan
+`AT`: Austria
+`AM`: Armenia
+`AL`: Albania
+`AD`: Andorra
+`TL`: East Timor
+`SY`: Syria
+`SA`: Saudi Arabia
+`PS`: Palestine
+`LK`: Sri Lanka
+`LK`: Sri Lanka
+`KP`: North Korea
+`KG`: Kyrgyzstan
+`HK`: Hong Kong, China
+`BN`: Brunei
+`BD`: Bangladesh
+`AE`: United Arab Emirates
+`YE`: Yemen
+`VN`: Vietnam
+`UZ`: Uzbekistan
+`TW`: Taiwan, China
+`TM`: Turkmenistan
+`TJ`: Tajikistan
+`TH`: Thailand
+`SG`: Singapore
+`QA`: Qatar
+`PK`: Pakistan
+`PH`: Philippines
+`OM`: Oman
+`NP`: Nepal
+`MY`: Malaysia
+`MV`: Maldives
+`MO`: Macao, China
+`MN`: Mongolia
+`MM`: Myanmar
+`LB`: Lebanon
+`KW`: Kuwait
+`KR`: South Korea
+`KH`: Cambodia
+`JP`: Japan
+`JO`: Jordan
+`IR`: Iran
+`IQ`: Iraq
+`IN`: India
+`IL`: Israel
+`ID`: Indonesia
+`CN`: China
+`BT`: Bhutan
+`BH`: Bahrain
+`AF`: Afghanistan
+`LY`: Libya
+`CD`: Democratic Republic of the Congo
+`RE`: La Réunion
+`SZ`: Swaziland
+`ZW`: Zimbabwe
+`ZM`: Zambia
+`YT`: Mayotte
+`UG`: Uganda
+`TZ`: Tanzania
+`TN`: Tunisia
+`TG`: Togo
+`TD`: Chad
+`SO`: Somalia
+`SN`: Senegal
+`SD`: Sudan
+`SC`: Seychelles
+`RW`: Rwanda
+`NG`: Nigeria
+`NE`: Niger
+`NA`: Namibia
+`MZ`: Mozambique
+`MW`: Malawi
+`MU`: Mauritius
+`MR`: Mauritania
+`ML`: Mali
+`MG`: Madagascar
+`MA`: Morocco
+`LS`: Lesotho
+`LR`: Liberia
+`KM`: Comoros
+`KE`: Kenya
+`GN`: Guinea
+`GM`: Gambia
+`GH`: Ghana
+`GA`: Gabon
+`ET`: Ethiopia
+`ER`: Eritrea
+`EG`: Egypt
+`DZ`: Algeria
+`DJ`: Djibouti
+`CM`: Cameroon
+`CG`: Republic of the Congo
+`BW`: Botswana
+`BJ`: Benin
+`BI`: Burundi
+`AO`: Angola
+
+When MatchKey is `ipArea`, valid values include:
+`OTHER`: other areas
+`AS`: Asia
+`EU`: Europe
+`AN`: Antarctica
+`AF`: Africa
+`OC`: Oceania
+`NA`: North America
+`SA`: South America
+
+When MatchKey is `index`,
+valid value is `/;/index.html`.
+        :type MatchValue: list of str
+        :param CaseSensitive: Whether to distinguish uppercase or lowercase letters. `true`: case sensitive; `false`: case insensitive.
+        :type CaseSensitive: bool
+        :param MatchKeyParam: This field is required when `MatchKey` is `param` or `cookie`. For `param`, it indicates a key value of the request parameter if MatchKey is `param`, while a key value of the Cookie request header if MatchKey is `cookie`.
+        :type MatchKeyParam: str
+        """
+        self.MatchKey = None
+        self.LogicOperator = None
+        self.MatchValue = None
+        self.CaseSensitive = None
+        self.MatchKeyParam = None
+
+
+    def _deserialize(self, params):
+        self.MatchKey = params.get("MatchKey")
+        self.LogicOperator = params.get("LogicOperator")
+        self.MatchValue = params.get("MatchValue")
+        self.CaseSensitive = params.get("CaseSensitive")
+        self.MatchKeyParam = params.get("MatchKeyParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -920,12 +1356,17 @@ If it contains an asterisk (*), this indicates all files.
         :param FilterType: allowlist: indicates that all file types apart from the FileExtensions list are authenticated
 blacklist: indicates that only the file types in the FileExtensions list are authenticated
         :type FilterType: str
+        :param BackupSecretKey: Backup key, which is used to calculate a signature.
+6-32 characters. Only digits and letters are allowed. 
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type BackupSecretKey: str
         """
         self.SecretKey = None
         self.SignParam = None
         self.ExpireTime = None
         self.FileExtensions = None
         self.FilterType = None
+        self.BackupSecretKey = None
 
 
     def _deserialize(self, params):
@@ -934,6 +1375,7 @@ blacklist: indicates that only the file types in the FileExtensions list are aut
         self.ExpireTime = params.get("ExpireTime")
         self.FileExtensions = params.get("FileExtensions")
         self.FilterType = params.get("FilterType")
+        self.BackupSecretKey = params.get("BackupSecretKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -963,11 +1405,16 @@ If it contains an asterisk (*), this indicates all files.
         :param FilterType: allowlist: indicates that all file types apart from the FileExtensions list are authenticated
 blacklist: indicates that only the file types in the FileExtensions list are authenticated
         :type FilterType: str
+        :param BackupSecretKey: Backup key, which is used to calculate a signature.
+6-32 characters. Only digits and letters are allowed. 
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type BackupSecretKey: str
         """
         self.SecretKey = None
         self.ExpireTime = None
         self.FileExtensions = None
         self.FilterType = None
+        self.BackupSecretKey = None
 
 
     def _deserialize(self, params):
@@ -975,6 +1422,7 @@ blacklist: indicates that only the file types in the FileExtensions list are aut
         self.ExpireTime = params.get("ExpireTime")
         self.FileExtensions = params.get("FileExtensions")
         self.FilterType = params.get("FilterType")
+        self.BackupSecretKey = params.get("BackupSecretKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1012,12 +1460,17 @@ dec: decimal
 hex: hexadecimal
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type TimeFormat: str
+        :param BackupSecretKey: Backup key, which is used to calculate a signature.
+6-32 characters. Only digits and letters are allowed. 
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type BackupSecretKey: str
         """
         self.SecretKey = None
         self.ExpireTime = None
         self.FileExtensions = None
         self.FilterType = None
         self.TimeFormat = None
+        self.BackupSecretKey = None
 
 
     def _deserialize(self, params):
@@ -1026,6 +1479,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.FileExtensions = params.get("FileExtensions")
         self.FilterType = params.get("FilterType")
         self.TimeFormat = params.get("TimeFormat")
+        self.BackupSecretKey = params.get("BackupSecretKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1068,6 +1522,10 @@ Only upper and lower-case letters, digits, and underscores (_) are allowed. It c
 dec: decimal
 hex: hexadecimal
         :type TimeFormat: str
+        :param BackupSecretKey: Backup key, which is used to calculate a signature.
+6-32 characters. Only digits and letters are allowed. 
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type BackupSecretKey: str
         """
         self.SecretKey = None
         self.ExpireTime = None
@@ -1076,6 +1534,7 @@ hex: hexadecimal
         self.SignParam = None
         self.TimeParam = None
         self.TimeFormat = None
+        self.BackupSecretKey = None
 
 
     def _deserialize(self, params):
@@ -1086,6 +1545,7 @@ hex: hexadecimal
         self.SignParam = params.get("SignParam")
         self.TimeParam = params.get("TimeParam")
         self.TimeFormat = params.get("TimeFormat")
+        self.BackupSecretKey = params.get("BackupSecretKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2051,7 +2511,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class CompressionRule(AbstractModel):
-    """Compression rules configuration. Up to 100 entries can be set.
+    """Intelligent compression rule configuration
 
     """
 
@@ -2060,10 +2520,6 @@ class CompressionRule(AbstractModel):
         :param Compress: true: must be set as true, enables compression
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Compress: bool
-        :param FileExtensions: Compress according to the file suffix type
-Such as: jpg, txt
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type FileExtensions: list of str
         :param MinLength: The minimum file size to trigger compression (in bytes)
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MinLength: int
@@ -2076,20 +2532,45 @@ gzip: specifies Gzip compression
 brotli: specifies Brotli compression
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Algorithms: list of str
+        :param FileExtensions: Compress according to the file suffix type
+Such as: jpg, txt
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FileExtensions: list of str
+        :param RuleType: Rule types:
+`all`: effective for all files.
+`file`: effective for specified file suffixes.
+`directory`: effective for specified paths.
+`path`: effective for specified absolute paths.
+`contentType`: effective when the `ContentType` is specified
+If this field is specified, `FileExtensions` does not take effect.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RuleType: str
+        :param RulePaths: Content for each `CacheType`:
+For `all`, enter a wildcard `*`.
+For `file`, enter a suffix, e.g., `jpg` or `txt`.
+For `directory`, enter a path, e.g., `/xxx/test/`.
+For `path`, enter an absolute path, e.g., `/xxx/test.html`.
+For `contentType`, enter `text/html`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RulePaths: list of str
         """
         self.Compress = None
-        self.FileExtensions = None
         self.MinLength = None
         self.MaxLength = None
         self.Algorithms = None
+        self.FileExtensions = None
+        self.RuleType = None
+        self.RulePaths = None
 
 
     def _deserialize(self, params):
         self.Compress = params.get("Compress")
-        self.FileExtensions = params.get("FileExtensions")
         self.MinLength = params.get("MinLength")
         self.MaxLength = params.get("MaxLength")
         self.Algorithms = params.get("Algorithms")
+        self.FileExtensions = params.get("FileExtensions")
+        self.RuleType = params.get("RuleType")
+        self.RulePaths = params.get("RulePaths")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3856,8 +4337,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param FollowRedirect: 301/302 origin-pull follow-redirect configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type FollowRedirect: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`
-        :param ErrorPage: Custom error page configuration (in beta)
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ErrorPage: Configuration of custom error page
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`
         :param RequestHeader: Custom request header configuration
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -3971,13 +4452,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param Ipv6Access: IPv6 access configuration
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
-        :param AdvanceSet: Advanced configuration set
+        :param AdvanceSet: Advanced configuration settings
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type AdvanceSet: list of AdvanceConfig
-        :param OfflineCache: Offline cache
+        :param OfflineCache: Offline cache (only available to beta users)
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
-        :param OriginCombine: Merging pull requests
+        :param OriginCombine: Merging origin-pull requests (only available to beta users)
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type OriginCombine: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`
         :param PostMaxSize: POST request configuration item
@@ -3992,6 +4473,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param WebSocket: WebSocket configuration.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type WebSocket: :class:`tencentcloud.cdn.v20180606.models.WebSocket`
+        :param RemoteAuthentication: Remote authentication configuration
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RemoteAuthentication: :class:`tencentcloud.cdn.v20180606.models.RemoteAuthentication`
+        :param ShareCname: Shared CNAME configuration (only available to beta users)
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ShareCname: :class:`tencentcloud.cdn.v20180606.models.ShareCname`
         """
         self.ResourceId = None
         self.AppId = None
@@ -4051,6 +4538,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Quic = None
         self.OssPrivateAccess = None
         self.WebSocket = None
+        self.RemoteAuthentication = None
+        self.ShareCname = None
 
 
     def _deserialize(self, params):
@@ -4206,6 +4695,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         if params.get("WebSocket") is not None:
             self.WebSocket = WebSocket()
             self.WebSocket._deserialize(params.get("WebSocket"))
+        if params.get("RemoteAuthentication") is not None:
+            self.RemoteAuthentication = RemoteAuthentication()
+            self.RemoteAuthentication._deserialize(params.get("RemoteAuthentication"))
+        if params.get("ShareCname") is not None:
+            self.ShareCname = ShareCname()
+            self.ShareCname._deserialize(params.get("ShareCname"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4506,10 +5001,14 @@ class EnableCachesResponse(AbstractModel):
         :param CacheOptResult: Result list
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CacheOptResult: :class:`tencentcloud.cdn.v20180606.models.CacheOptResult`
+        :param TaskId: Task ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TaskId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.CacheOptResult = None
+        self.TaskId = None
         self.RequestId = None
 
 
@@ -4517,6 +5016,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("CacheOptResult") is not None:
             self.CacheOptResult = CacheOptResult()
             self.CacheOptResult._deserialize(params.get("CacheOptResult"))
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -5131,11 +5631,16 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param FilterRules: IP blocklist/allowlist path-based configuration. This feature is only available to selected beta customers.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type FilterRules: list of IpFilterPathRule
+        :param ReturnCode: HTTP code returned when the IP allowlist/blocklist verification fails
+Valid values: 400-499
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ReturnCode: int
         """
         self.Switch = None
         self.FilterType = None
         self.Filters = None
         self.FilterRules = None
+        self.ReturnCode = None
 
 
     def _deserialize(self, params):
@@ -5148,6 +5653,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
                 obj = IpFilterPathRule()
                 obj._deserialize(item)
                 self.FilterRules.append(obj)
+        self.ReturnCode = params.get("ReturnCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5595,6 +6101,8 @@ client: specifies to query data of the client region (where a user request devic
         :type AreaType: str
         :param Product: Specifies the product to query, either `cdn` (default) or `ecdn`.
         :type Product: str
+        :param Limit: Returns the first N data entries. The default value is 100 if this parameter is not specified, whereas 1000 if `Metric` is `url`.
+        :type Limit: int
         """
         self.StartTime = None
         self.EndTime = None
@@ -5607,6 +6115,7 @@ client: specifies to query data of the client region (where a user request devic
         self.Area = None
         self.AreaType = None
         self.Product = None
+        self.Limit = None
 
 
     def _deserialize(self, params):
@@ -5621,6 +6130,7 @@ client: specifies to query data of the client region (where a user request devic
         self.Area = params.get("Area")
         self.AreaType = params.get("AreaType")
         self.Product = params.get("Product")
+        self.Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6115,19 +6625,22 @@ class Origin(AbstractModel):
 When modifying the origin server, you need to enter the corresponding OriginType.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Origins: list of str
-        :param OriginType: Master origin server type
-The following types are supported for input parameters:
-domain: domain name type
-cos: COS origin
-ip: IP list used as origin server
-ipv6: origin server list is a single IPv6 address
-ip_ipv6: origin server list is multiple IPv4 addresses and an IPv6 address
-The following types of output parameters are added:
-image: Cloud Infinite origin
-ftp: legacy FTP origin, which is no longer maintained.
-When modifying `Origins`, you need to enter the corresponding OriginType.
-The IPv6 feature is not generally available yet. Please send in a whitelist application to use this feature.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param OriginType: Primary origin server type
+Input:
+`domain`: domain name
+`cos`: COS bucket address
+`ip`: IP address
+`ipv6`: a single IPv6 address
+`ip_ipv6`: multiple IPv4 addresses and one IPv6 address
+`ip_domain`: both IP addresses and domain names (only available to beta users)
+`ipv6_domain`: multiple IPv6 addresses and one domain name
+`ip_ipv6_domain`: multiple IPv4 and IPv6 addresses and one domain name
+Output: 
+`image`: Cloud Infinite origin
+`ftp`: FTP origin (disused)
+When modifying `Origins`, you need to enter the corresponding `OriginType`.
+The IPv6 feature is now only available to beta users. Please submit an application to use this feature.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type OriginType: str
         :param ServerName: Host header used when accessing the master origin server. If left empty, the acceleration domain name will be used by default.
 If a wildcard domain name is accessed, then the sub-domain name during the access will be used by default.
@@ -6147,11 +6660,16 @@ Note: this field may return null, indicating that no valid values can be obtaine
 When modifying the backup origin server, you need to enter the corresponding BackupOriginType.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type BackupOrigins: list of str
-        :param BackupOriginType: Backup origin server type, which supports the following types:
-domain: domain name type
-ip: IP list used as origin server
-When modifying BackupOrigins, you need to enter the corresponding BackupOriginType.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param BackupOriginType: Secondary origin type. Values:
+`domain`: domain name
+`ip`: IP address
+When modifying `BackupOrigins`, you need to enter the corresponding `BackupOriginType`.
+The following backup origin servers are only available to beta users. Submit an application if you want to become a beta user.
+`ipv6_domain`: multiple IPv6 addresses and one domain name
+`ip_ipv6`: multiple IPv4 addresses and one IPv6 address
+`ipv6_domain`: multiple IPv6 addresses and one domain name
+`ip_ipv6_domain`: multiple IPv4 and IPv6 addresses and one domain name
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type BackupOriginType: str
         :param BackupServerName: Host header used when accessing the backup origin server. If left empty, the ServerName of master origin server will be used by default.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -6164,6 +6682,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param PathBasedOrigin: Path-based origin-pull configurations
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type PathBasedOrigin: list of PathBasedOriginRule
+        :param AdvanceHttps: 
+        :type AdvanceHttps: :class:`tencentcloud.cdn.v20180606.models.AdvanceHttps`
         """
         self.Origins = None
         self.OriginType = None
@@ -6176,6 +6696,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.BasePath = None
         self.PathRules = None
         self.PathBasedOrigin = None
+        self.AdvanceHttps = None
 
 
     def _deserialize(self, params):
@@ -6200,6 +6721,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj = PathBasedOriginRule()
                 obj._deserialize(item)
                 self.PathBasedOrigin.append(obj)
+        if params.get("AdvanceHttps") is not None:
+            self.AdvanceHttps = AdvanceHttps()
+            self.AdvanceHttps._deserialize(params.get("AdvanceHttps"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7146,12 +7670,62 @@ class RangeOriginPull(AbstractModel):
 on: enabled
 off: disabled
         :type Switch: str
+        :param RangeRules: Range GETs configuration
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RangeRules: list of RangeOriginPullRule
         """
         self.Switch = None
+        self.RangeRules = None
 
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+        if params.get("RangeRules") is not None:
+            self.RangeRules = []
+            for item in params.get("RangeRules"):
+                obj = RangeOriginPullRule()
+                obj._deserialize(item)
+                self.RangeRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RangeOriginPullRule(AbstractModel):
+    """Range GETs configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Specifies whether Range GETs is enabled
+        :type Switch: str
+        :param RuleType: Rule types:
+`file`: effective for specified file suffixes.
+`directory`: effective for specified paths.
+`path`: effective for specified absolute paths.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RuleType: str
+        :param RulePaths: Content for each `RuleType`:
+For `file`, enter a suffix, e.g., `jpg` or `txt`.
+For `directory`, enter a path, e.g., `/xxx/test/`.
+For `path`, enter an absolute path, e.g., `/xxx/test.html`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RulePaths: list of str
+        """
+        self.Switch = None
+        self.RuleType = None
+        self.RulePaths = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.RuleType = params.get("RuleType")
+        self.RulePaths = params.get("RulePaths")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7268,6 +7842,113 @@ class RegionMapRelation(AbstractModel):
     def _deserialize(self, params):
         self.RegionId = params.get("RegionId")
         self.SubRegionIdList = params.get("SubRegionIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoteAuthentication(AbstractModel):
+    """Configuration of remote authentication rules. Setting up multiple rules is supported.
+    `RemoteAuthenticationRules` and `Server` cannot be configured at the same time.
+    If only `Server` is configured, all parameters of `RemoteAuthenticationRules` will be set to the default values. The default values are described in each configuration parameter.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Remote authentication switch
+`on`: enable
+`off`: disable
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Switch: str
+        :param RemoteAuthenticationRules: Remote authentication rule configuration
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RemoteAuthenticationRules: list of RemoteAuthenticationRule
+        :param Server: Remote authentication server
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Server: str
+        """
+        self.Switch = None
+        self.RemoteAuthenticationRules = None
+        self.Server = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("RemoteAuthenticationRules") is not None:
+            self.RemoteAuthenticationRules = []
+            for item in params.get("RemoteAuthenticationRules"):
+                obj = RemoteAuthenticationRule()
+                obj._deserialize(item)
+                self.RemoteAuthenticationRules.append(obj)
+        self.Server = params.get("Server")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoteAuthenticationRule(AbstractModel):
+    """Remote authentication rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Server: Remote authentication server
+The server configured in `RemoteAutherntication` is used by default.
+        :type Server: str
+        :param AuthMethod: HTTP method used by the remote authentication server. Valid values: `get`, `post`, `head`, and `all`. 
+`all`: the remote authentication server follows the client request method.
+Default: `all`
+        :type AuthMethod: str
+        :param RuleType: Rule types:
+`all`: apply to all files
+`file`: apply to files with the specified suffixes
+`directory`: apply to the specified directories
+`path`: apply to the specified absolute paths
+Default: `all`.
+        :type RuleType: str
+        :param RulePaths: Content for each `RuleType`:
+For `all`, enter a wildcard `*`.
+For `file`, enter a suffix, e.g., `jpg` or `txt`.
+For `directory`, enter a path, e.g., `/xxx/test/`.
+For `path`, enter an absolute path, e.g., `/xxx/test.html`.
+For `index`, enter a forward slash `/`.
+Default: `*`
+        :type RulePaths: list of str
+        :param AuthTimeout: Timeout period of the remote authentication server. Unit: ms.
+Value range: [1, 30,000]
+Default: 20000
+        :type AuthTimeout: int
+        :param AuthTimeoutAction: Whether to deny or allow the request when the remote authentication server is timed out:
+`RETURN_200`: the request is allowed when the remote authentication server is timed out.
+`RETURN_403`: the request is denied when the remote authentication server is timed out.
+Default: `RETURN_200`
+        :type AuthTimeoutAction: str
+        """
+        self.Server = None
+        self.AuthMethod = None
+        self.RuleType = None
+        self.RulePaths = None
+        self.AuthTimeout = None
+        self.AuthTimeoutAction = None
+
+
+    def _deserialize(self, params):
+        self.Server = params.get("Server")
+        self.AuthMethod = params.get("AuthMethod")
+        self.RuleType = params.get("RuleType")
+        self.RulePaths = params.get("RulePaths")
+        self.AuthTimeout = params.get("AuthTimeout")
+        self.AuthTimeoutAction = params.get("AuthTimeoutAction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7694,16 +8375,20 @@ class ScdnAclConfig(AbstractModel):
         r"""
         :param Switch: Whether to enable. Valid values: `on` and `off`.
         :type Switch: str
-        :param ScriptData: ACL rule group, which is required when the access control is on.
+        :param ScriptData: This field is disused. Please use `AdvancedScriptData` instead.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ScriptData: list of ScdnAclGroup
         :param ErrorPage: Error page configuration
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ScdnErrorPage`
+        :param AdvancedScriptData: ACL rule group, which is required when the access control is on.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AdvancedScriptData: list of AdvancedScdnAclGroup
         """
         self.Switch = None
         self.ScriptData = None
         self.ErrorPage = None
+        self.AdvancedScriptData = None
 
 
     def _deserialize(self, params):
@@ -7717,6 +8402,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         if params.get("ErrorPage") is not None:
             self.ErrorPage = ScdnErrorPage()
             self.ErrorPage._deserialize(params.get("ErrorPage"))
+        if params.get("AdvancedScriptData") is not None:
+            self.AdvancedScriptData = []
+            for item in params.get("AdvancedScriptData"):
+                obj = AdvancedScdnAclGroup()
+                obj._deserialize(item)
+                self.AdvancedScriptData.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7737,7 +8428,7 @@ class ScdnAclGroup(AbstractModel):
         :type RuleName: str
         :param Configure: Specific configurations
         :type Configure: list of ScdnAclRule
-        :param Result: Rule action, which can be `refuse` or `redirect`.
+        :param Result: Action. Valid values: `intercept` and `redirect`.
         :type Result: str
         :param Status: Whether the rule is effective. Valid values: `active` and `inactive`.
         :type Status: str
@@ -7781,11 +8472,11 @@ class ScdnAclRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MatchKey: Match keywords. Valid values: `params`, `url`, `ip`, `referer`, and `user-agent`.
+        :param MatchKey: Keyword
         :type MatchKey: str
-        :param LogiOperator: Logical operator. Valid values: `exclude`, `include`, `notequal`, `equal`, `len-less`, `len-equal`, and `len-more`.
+        :param LogiOperator: Logical operator. Valid values:
         :type LogiOperator: str
-        :param MatchValue: Match value
+        :param MatchValue: Matched value
         :type MatchValue: str
         """
         self.MatchKey = None
@@ -7929,9 +8620,13 @@ class ScdnConfig(AbstractModel):
         :param Rules: Custom CC attack defense rule
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Rules: list of ScdnCCRules
+        :param AdvancedRules: Advanced custom CC attack defense rule
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AdvancedRules: list of AdvancedCCRules
         """
         self.Switch = None
         self.Rules = None
+        self.AdvancedRules = None
 
 
     def _deserialize(self, params):
@@ -7942,6 +8637,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj = ScdnCCRules()
                 obj._deserialize(item)
                 self.Rules.append(obj)
+        if params.get("AdvancedRules") is not None:
+            self.AdvancedRules = []
+            for item in params.get("AdvancedRules"):
+                obj = AdvancedCCRules()
+                obj._deserialize(item)
+                self.AdvancedRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7983,6 +8684,8 @@ class ScdnErrorPage(AbstractModel):
     def __init__(self):
         r"""
         :param RedirectCode: Status code
+`403` is passed in when the action is `intercept`.
+`301` is passed in when the action is `redirect`.
         :type RedirectCode: int
         :param RedirectUrl: Redirection URL
         :type RedirectUrl: str
@@ -7994,6 +8697,67 @@ class ScdnErrorPage(AbstractModel):
     def _deserialize(self, params):
         self.RedirectCode = params.get("RedirectCode")
         self.RedirectUrl = params.get("RedirectUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScdnSevenLayerRules(AbstractModel):
+    """SCDN layer-7 rule configuration for CC frequency limiting
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CaseSensitive: Whether values are case sensitive
+        :type CaseSensitive: bool
+        :param RuleType: Rule types:
+`protocol`: protocol. Valid values: `HTTP` and `HTTPS`.
+`method`: request method. Valid values: `HEAD`, `GET`, `POST`, `PUT`, `OPTIONS`, `TRACE`, `DELETE`, `PATCH` and `CONNECT`.
+`all`: domain name. The matching content is `*` and cannot be edited.
+`ip`: IP in CIDR format.
+`directory`: path starting with a slash (/). You can specify a directory or specific path using up to 128 characters.
+`index`: default homepage, which is specified by `/;/index.html` and cannot be edited.
+`path`: full path of the file, such as `/acb/test.png`. Wildcard is supported, such as `/abc/*.jpg`.
+`file`: file extension, such as `jpg`, `png` and `css`.
+`param`: request parameter. The value can contain up to 512 characters.
+`referer`: Referer. The value can contain up to 512 characters.
+`cookie`: Cookie. The value can contain up to 512 characters.
+`user-agent`: User-Agent. The value can contain up to 512 characters.
+`head`: custom header. The value can contain up to 512 characters. If the matching content is blank or does not exist, enter the matching parameter directly.
+        :type RuleType: str
+        :param LogicOperator: Logical operator, which connects the relation between RuleType and RuleValue. Valid values:
+`exclude`: the rule value is not contained. 
+`include`: the rule value is contained. 
+`notequal`: the rule value is not equal to the specified rule type. 
+`equal`: the rule value is equal to the specified rule type. 
+`matching`: the rule value matches with the prefix of the specified rule type.
+`null`: the rule value is empty or does not exist.
+        :type LogicOperator: str
+        :param RuleValue: Rule value
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RuleValue: list of str
+        :param RuleParam: Matched parameter. Only request parameters, Cookie, and custom request headers have a value.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RuleParam: str
+        """
+        self.CaseSensitive = None
+        self.RuleType = None
+        self.LogicOperator = None
+        self.RuleValue = None
+        self.RuleParam = None
+
+
+    def _deserialize(self, params):
+        self.CaseSensitive = params.get("CaseSensitive")
+        self.RuleType = params.get("RuleType")
+        self.LogicOperator = params.get("LogicOperator")
+        self.RuleValue = params.get("RuleValue")
+        self.RuleParam = params.get("RuleParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8307,6 +9071,37 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ExpireTime = params.get("ExpireTime")
         self.DeployTime = params.get("DeployTime")
         self.Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ShareCname(AbstractModel):
+    """Shared CNAME configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Specifies whether to enable Shared CNAME. If it is set to `off`, the default CNAME is used. If it is set to `on`, a shared CNAME is used.
+
+* ShareCname is only available to beta users. To use this feature, please submit a ticket for application.
+        :type Switch: str
+        :param Cname: Shared CNAME to be configured
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Cname: str
+        """
+        self.Switch = None
+        self.Cname = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Cname = params.get("Cname")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8935,9 +9730,10 @@ media: streaming media VOD acceleration
 Applicable to cases where the acceleration domain name configuration differs for regions in and outside mainland China.
         :type SpecificConfig: :class:`tencentcloud.cdn.v20180606.models.SpecificConfig`
         :param Area: Domain name acceleration region
-mainland: acceleration inside mainland China
-overseas: acceleration outside mainland China
-global: global acceleration
+`mainland`: acceleration inside the Chinese mainland
+`overseas`: acceleration outside the Chinese mainland
+`global`: global acceleration
+When you change it to from `mainland`/`overseas` to `global`, configurations of the domain name will be deployed to the region inside or outside the Chinese mainland. The deployment will take some time as this domain name has special settings.
         :type Area: str
         :param OriginPullTimeout: Origin-pull timeout configuration
         :type OriginPullTimeout: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`
@@ -8947,7 +9743,7 @@ global: global acceleration
         :type UserAgentFilter: :class:`tencentcloud.cdn.v20180606.models.UserAgentFilter`
         :param AccessControl: Access control
         :type AccessControl: :class:`tencentcloud.cdn.v20180606.models.AccessControl`
-        :param UrlRedirect: URL redirect configuration
+        :param UrlRedirect: Configuration of URL rewriting
         :type UrlRedirect: :class:`tencentcloud.cdn.v20180606.models.UrlRedirect`
         :param AccessPort: Access port configuration
         :type AccessPort: list of int
@@ -8967,6 +9763,10 @@ global: global acceleration
         :type OssPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
         :param WebSocket: WebSocket configuration.
         :type WebSocket: :class:`tencentcloud.cdn.v20180606.models.WebSocket`
+        :param RemoteAuthentication: Configuration of remote authentication
+        :type RemoteAuthentication: :class:`tencentcloud.cdn.v20180606.models.RemoteAuthentication`
+        :param ShareCname: Shared CNAME configuration (only available to beta users)
+        :type ShareCname: :class:`tencentcloud.cdn.v20180606.models.ShareCname`
         """
         self.Domain = None
         self.ProjectId = None
@@ -9010,6 +9810,8 @@ global: global acceleration
         self.Quic = None
         self.OssPrivateAccess = None
         self.WebSocket = None
+        self.RemoteAuthentication = None
+        self.ShareCname = None
 
 
     def _deserialize(self, params):
@@ -9129,6 +9931,12 @@ global: global acceleration
         if params.get("WebSocket") is not None:
             self.WebSocket = WebSocket()
             self.WebSocket._deserialize(params.get("WebSocket"))
+        if params.get("RemoteAuthentication") is not None:
+            self.RemoteAuthentication = RemoteAuthentication()
+            self.RemoteAuthentication._deserialize(params.get("RemoteAuthentication"))
+        if params.get("ShareCname") is not None:
+            self.ShareCname = ShareCname()
+            self.ShareCname._deserialize(params.get("ShareCname"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9367,11 +10175,15 @@ class UrlRedirectRule(AbstractModel):
         :param RedirectHost: Target host. It should be a standard domain name starting with `http://` or `https://`. If it is left empty, “http://[current domain name]” will be used by default.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type RedirectHost: str
+        :param FullMatch: Whether to use full-path matching or arbitrary matching
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type FullMatch: bool
         """
         self.RedirectStatusCode = None
         self.Pattern = None
         self.RedirectUrl = None
         self.RedirectHost = None
+        self.FullMatch = None
 
 
     def _deserialize(self, params):
@@ -9379,6 +10191,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Pattern = params.get("Pattern")
         self.RedirectUrl = params.get("RedirectUrl")
         self.RedirectHost = params.get("RedirectHost")
+        self.FullMatch = params.get("FullMatch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1498,6 +1498,34 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyLoadBalancerSla(self, request):
+        """This API is used to upgrade shared CLB instances to LCU-supported CLB instances (downgrade is not allowed) and upgrade/downgrade the specification of LCU-supported instances.
+
+        :param request: Request instance for ModifyLoadBalancerSla.
+        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyLoadBalancerSlaRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyLoadBalancerSlaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLoadBalancerSla", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLoadBalancerSlaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyRule(self, request):
         """This API (ModifyRule) is used to modify the attributes of a forwarding rule under a layer-7 CLB listener, such as forwarding path, health check attribute, and forwarding policy.
         This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.

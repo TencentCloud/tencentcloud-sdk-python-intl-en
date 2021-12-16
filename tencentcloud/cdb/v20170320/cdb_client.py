@@ -1269,7 +1269,8 @@ class CdbClient(AbstractClient):
 
 
     def DescribeErrorLogData(self, request):
-        """This API is used to query the details of instance error logs by search criteria. You can only query error logs within a month.
+        """This API is used to query the error logs of an instance over the past month by search criteria.
+        Note: the HTTP response packet will be very large if it contain a single large error log, which causes the API call to time out. If this happens, we recommend you lower the value of the input parameter `Limit` to reduce the packet size so that the API can respond timely.
 
         :param request: Request instance for DescribeErrorLogData.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeErrorLogDataRequest`
@@ -1549,7 +1550,8 @@ class CdbClient(AbstractClient):
 
 
     def DescribeSlowLogData(self, request):
-        """This API is used to search for slow logs of an instance by criteria. You can only view slow logs within a month.
+        """This API is used to query the slow logs of an instance over the past month by search criteria.
+        Note: the HTTP response packet will be very large if it contain a single large slow log, which causes the API call to time out. If this happens, we recommend you lower the value of the input parameter `Limit` to reduce the packet size so that the API can respond timely.
 
         :param request: Request instance for DescribeSlowLogData.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeSlowLogDataRequest`
