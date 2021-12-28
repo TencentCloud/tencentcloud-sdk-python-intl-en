@@ -1421,17 +1421,23 @@ class DescribeInstancesRequest(AbstractModel):
         r"""
         :param InstanceIds: Instance ID list. Each request can contain up to 100 instances at a time.
         :type InstanceIds: list of str
-        :param Filters: Filter list.
-<li>instance-name</li>Filter by **instance name**.
+        :param Filters: Filter list
+<li>instance-name</li>Filter by the instance name
 Type: String
 Required: no
-<li>private-ip-address</li>Filter by **private IP of instance primary ENI**.
+<li>private-ip-address</li>Filter by the private IP of instance primary ENI
 Type: String
 Required: no
-<li>public-ip-address</li>Filter by **public IP of instance primary ENI**.
+<li>public-ip-address</li>Filter by the public IP of instance primary ENI
 Type: String
 Required: no
-Each request can contain up to 10 `Filters` and 5 `Filter.Values`. You cannot specify both `InstanceIds` and `Filters` at the same time.
+<li>zone</li>Filter by the availability zone
+Type: String
+Required: no
+<li>instance-state</li>Filter by **instance status**.
+Type: String
+Required: no
+Each request can contain up to 10 filters, each of which can have 5 values. You cannot specify both `InstanceIds` and `Filters` at the same time.
         :type Filters: list of Filter
         :param Offset: Offset. Default value: 0. For more information on `Offset`, please see the relevant section in [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
         :type Offset: int

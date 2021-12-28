@@ -185,7 +185,7 @@ INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 # Duplicate plugin parameter values. Please modify and try again.
 INVALIDPARAMETERVALUE_DUPLICATEPLUGINCONFIG = 'InvalidParameterValue.DuplicatePluginConfig'
 
-# 
+# Invalid backend IP address.
 INVALIDPARAMETERVALUE_ILLEGALPROXYIP = 'InvalidParameterValue.IllegalProxyIp'
 
 # Incorrect key.
@@ -275,6 +275,9 @@ INVALIDPARAMETERVALUE_INVALIDTAGVALUES = 'InvalidParameterValue.InvalidTagValues
 # Incorrect configuration of the TSF-type API.
 INVALIDPARAMETERVALUE_INVALIDTSFCONFIG = 'InvalidParameterValue.InvalidTsfConfig'
 
+# The backend channel does not exist or is invalid.
+INVALIDPARAMETERVALUE_INVALIDUPSTREAM = 'InvalidParameterValue.InvalidUpstream'
+
 # The URL parameters are invalid.
 INVALIDPARAMETERVALUE_INVALIDURL = 'InvalidParameterValue.InvalidUrl'
 
@@ -340,6 +343,12 @@ LIMITEXCEEDED_USAGEPLANLIMITEXCEEDED = 'LimitExceeded.UsagePlanLimitExceeded'
 
 # Missing parameter.
 MISSINGPARAMETER = 'MissingParameter'
+
+# The backend service parameter is missing.
+MISSINGPARAMETER_BACKENDSPECIFICPARAM = 'MissingParameter.BackendSpecificParam'
+
+# Parameter is missing in the plugin. Please check and try again.
+MISSINGPARAMETER_PLUGINCONFIG = 'MissingParameter.PluginConfig'
 
 # Operation denied.
 OPERATIONDENIED = 'OperationDenied'
@@ -445,6 +454,9 @@ UNSUPPORTEDOPERATION_RESOURCEASSOCIATED = 'UnsupportedOperation.ResourceAssociat
 
 # The key has already been bound to a usage plan. Please unbind it and try again.
 UNSUPPORTEDOPERATION_RESOURCEISINUSE = 'UnsupportedOperation.ResourceIsInUse'
+
+# The resource is not associated.
+UNSUPPORTEDOPERATION_RESOURCEUNASSOCIATED = 'UnsupportedOperation.ResourceUnassociated'
 
 # The current `Uin` is not in the manual key allowlist.
 UNSUPPORTEDOPERATION_UINNOTINWHITELIST = 'UnsupportedOperation.UinNotInWhiteList'

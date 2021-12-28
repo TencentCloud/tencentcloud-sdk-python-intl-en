@@ -57,6 +57,42 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         
 
 
+class AccountVpcInfoOut(AbstractModel):
+    """Output parameters of the associated VPC
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: VpcId: vpc-xadsafsdasd
+        :type VpcId: str
+        :param Region: Region: ap-guangzhou, ap-shanghai
+        :type Region: str
+        :param Uin: VPC ID: 123456789
+        :type Uin: str
+        :param VpcName: VPC name: testname
+        :type VpcName: str
+        """
+        self.VpcId = None
+        self.Region = None
+        self.Uin = None
+        self.VpcName = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.Region = params.get("Region")
+        self.Uin = params.get("Uin")
+        self.VpcName = params.get("VpcName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AccountVpcInfoOutput(AbstractModel):
     """Output parameters of the associated VPC
 
@@ -160,6 +196,49 @@ class AuditLogInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreatePrivateDNSAccountRequest(AbstractModel):
+    """CreatePrivateDNSAccount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Account: Private DNS account
+        :type Account: :class:`tencentcloud.privatedns.v20201028.models.PrivateDNSAccount`
+        """
+        self.Account = None
+
+
+    def _deserialize(self, params):
+        if params.get("Account") is not None:
+            self.Account = PrivateDNSAccount()
+            self.Account._deserialize(params.get("Account"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrivateDNSAccountResponse(AbstractModel):
+    """CreatePrivateDNSAccount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class CreatePrivateZoneRecordRequest(AbstractModel):
@@ -352,6 +431,49 @@ class DatePoint(AbstractModel):
         
 
 
+class DeletePrivateDNSAccountRequest(AbstractModel):
+    """DeletePrivateDNSAccount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Account: Private DNS account
+        :type Account: :class:`tencentcloud.privatedns.v20201028.models.PrivateDNSAccount`
+        """
+        self.Account = None
+
+
+    def _deserialize(self, params):
+        if params.get("Account") is not None:
+            self.Account = PrivateDNSAccount()
+            self.Account._deserialize(params.get("Account"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePrivateDNSAccountResponse(AbstractModel):
+    """DeletePrivateDNSAccount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeletePrivateZoneRecordRequest(AbstractModel):
     """DeletePrivateZoneRecord request structure.
 
@@ -443,6 +565,77 @@ class DeletePrivateZoneResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAccountVpcListRequest(AbstractModel):
+    """DescribeAccountVpcList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccountUin: UIN of account
+        :type AccountUin: str
+        :param Offset: Pagination offset, starting from 0
+        :type Offset: int
+        :param Limit: Number of entries per page. Maximum value: `100`. Default value: `20`
+        :type Limit: int
+        :param Filters: Filter parameters
+        :type Filters: list of Filter
+        """
+        self.AccountUin = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.AccountUin = params.get("AccountUin")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccountVpcListResponse(AbstractModel):
+    """DescribeAccountVpcList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Number of VPCs
+        :type TotalCount: int
+        :param VpcSet: VPC list
+        :type VpcSet: list of AccountVpcInfoOut
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.VpcSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("VpcSet") is not None:
+            self.VpcSet = []
+            for item in params.get("VpcSet"):
+                obj = AccountVpcInfoOut()
+                obj._deserialize(item)
+                self.VpcSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 

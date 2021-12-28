@@ -412,8 +412,6 @@ class CreateInstancesRequest(AbstractModel):
         r"""
         :param SpecCode: Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.
         :type SpecCode: str
-        :param DBVersion: PostgreSQL kernel version. Valid values: `9.3.5`, `9.5.4`, `10.4`, `11.8`, `12.4`.
-        :type DBVersion: str
         :param Storage: Instance storage capacity in GB
         :type Storage: int
         :param InstanceCount: The number of instances purchased at a time. Value range: 1-10.
@@ -430,6 +428,8 @@ class CreateInstancesRequest(AbstractModel):
         :type AdminPassword: str
         :param ProjectId: Project ID
         :type ProjectId: int
+        :param DBVersion: PostgreSQL major version. Valid values: `9.3`, `9.5`, `10`, `11`, `12`, `13`, `9.3.5`, `9.5.4`, `10.4`, `11.8`, `12.4`.
+        :type DBVersion: str
         :param InstanceChargeType: Instance billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID_BY_HOUR` (pay-as-you-go).
         :type InstanceChargeType: str
         :param AutoVoucher: Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.
@@ -452,9 +452,12 @@ class CreateInstancesRequest(AbstractModel):
         :type TagList: list of Tag
         :param SecurityGroupIds: Security group IDs
         :type SecurityGroupIds: list of str
+        :param DBMajorVersion: 
+        :type DBMajorVersion: str
+        :param DBKernelVersion: 
+        :type DBKernelVersion: str
         """
         self.SpecCode = None
-        self.DBVersion = None
         self.Storage = None
         self.InstanceCount = None
         self.Period = None
@@ -463,6 +466,7 @@ class CreateInstancesRequest(AbstractModel):
         self.AdminName = None
         self.AdminPassword = None
         self.ProjectId = None
+        self.DBVersion = None
         self.InstanceChargeType = None
         self.AutoVoucher = None
         self.VoucherIds = None
@@ -474,11 +478,12 @@ class CreateInstancesRequest(AbstractModel):
         self.NeedSupportIpv6 = None
         self.TagList = None
         self.SecurityGroupIds = None
+        self.DBMajorVersion = None
+        self.DBKernelVersion = None
 
 
     def _deserialize(self, params):
         self.SpecCode = params.get("SpecCode")
-        self.DBVersion = params.get("DBVersion")
         self.Storage = params.get("Storage")
         self.InstanceCount = params.get("InstanceCount")
         self.Period = params.get("Period")
@@ -487,6 +492,7 @@ class CreateInstancesRequest(AbstractModel):
         self.AdminName = params.get("AdminName")
         self.AdminPassword = params.get("AdminPassword")
         self.ProjectId = params.get("ProjectId")
+        self.DBVersion = params.get("DBVersion")
         self.InstanceChargeType = params.get("InstanceChargeType")
         self.AutoVoucher = params.get("AutoVoucher")
         self.VoucherIds = params.get("VoucherIds")
@@ -503,6 +509,8 @@ class CreateInstancesRequest(AbstractModel):
                 obj._deserialize(item)
                 self.TagList.append(obj)
         self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.DBMajorVersion = params.get("DBMajorVersion")
+        self.DBKernelVersion = params.get("DBKernelVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -925,7 +933,7 @@ class DBInstance(AbstractModel):
         :type DBInstanceId: str
         :param DBInstanceName: Instance name
         :type DBInstanceName: str
-        :param DBInstanceStatus: Instance status. Valid values: `applying`, `init` (to be initialized), `initing` (initializing), `running`, `limited run`, `isolated`, `recycling`, `recycled`, `job running`, `offline`, `migrating`, `expanding`, `waitSwitch` (waiting for switch), `switching`, `readonly`, `restarting`
+        :param DBInstanceStatus: Instance status. Valid values: `applying`, `init` (to be initialized), `initing` (initializing), `running`, `limited run`, `isolated`, `recycling`, `recycled`, `job running`, `offline`, `migrating`, `expanding`, `waitSwitch` (waiting for switch), `switching`, `readonly`, `restarting`, `network changing`
         :type DBInstanceStatus: str
         :param DBInstanceMemory: Assigned instance memory size in GB
         :type DBInstanceMemory: int
@@ -983,9 +991,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param DBKernelVersion: Database kernel version
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type DBKernelVersion: str
-        :param NetworkAccessList: Network access list of the instance
+        :param NetworkAccessList: Network access list of the instance (this field has been deprecated)
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type NetworkAccessList: list of NetworkAccess
+        :param DBMajorVersion: 
+        :type DBMajorVersion: str
         """
         self.Region = None
         self.Zone = None
@@ -1021,6 +1031,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.OfflineTime = None
         self.DBKernelVersion = None
         self.NetworkAccessList = None
+        self.DBMajorVersion = None
 
 
     def _deserialize(self, params):
@@ -1073,6 +1084,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj = NetworkAccess()
                 obj._deserialize(item)
                 self.NetworkAccessList.append(obj)
+        self.DBMajorVersion = params.get("DBMajorVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1097,14 +1109,22 @@ class DBInstanceNetInfo(AbstractModel):
         :type Port: int
         :param NetType: Network type. 1: inner (private network address), 2: public (public network address)
         :type NetType: str
-        :param Status: Network connection status
+        :param Status: Network connection status. Valid values: `initing` (never enabled before), `opened` (enabled), `closed` (disabled), `opening` (enabling), `closing` (disabling)
         :type Status: str
+        :param VpcId: VPC ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type VpcId: str
+        :param SubnetId: Subnet ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SubnetId: str
         """
         self.Address = None
         self.Ip = None
         self.Port = None
         self.NetType = None
         self.Status = None
+        self.VpcId = None
+        self.SubnetId = None
 
 
     def _deserialize(self, params):
@@ -1113,6 +1133,8 @@ class DBInstanceNetInfo(AbstractModel):
         self.Port = params.get("Port")
         self.NetType = params.get("NetType")
         self.Status = params.get("Status")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3416,16 +3438,16 @@ class ModifySwitchTimePeriodResponse(AbstractModel):
 
 
 class NetworkAccess(AbstractModel):
-    """Network information.
+    """Network information. (This parameter structure has been deprecated. Please use `DBInstanceNetInfo` to query network information.)
 
     """
 
     def __init__(self):
         r"""
-        :param ResourceId: Network resource ID, instance ID or RO group ID (this field has been deprecated)
+        :param ResourceId: Network resource ID, instance ID, or RO group ID
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ResourceId: str
-        :param ResourceType: Resource type. Valid values: `1` (instance), `2` (RO group) (this field has been deprecated)
+        :param ResourceType: Resource type. Valid values: `1` (instance), `2` (RO group)
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ResourceType: int
         :param VpcId: VPC ID
@@ -3920,7 +3942,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :type Rebalance: int
         :param DBInstanceNetInfo: Network information
         :type DBInstanceNetInfo: list of DBInstanceNetInfo
-        :param NetworkAccessList: Network access list of the RO group
+        :param NetworkAccessList: Network access list of the RO group (this field has been deprecated)
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type NetworkAccessList: list of NetworkAccess
         """

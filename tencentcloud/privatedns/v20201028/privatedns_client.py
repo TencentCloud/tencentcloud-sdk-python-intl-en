@@ -26,6 +26,34 @@ class PrivatednsClient(AbstractClient):
     _service = 'privatedns'
 
 
+    def CreatePrivateDNSAccount(self, request):
+        """This API is used to create a Private DNS account.
+
+        :param request: Request instance for CreatePrivateDNSAccount.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.CreatePrivateDNSAccountRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.CreatePrivateDNSAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreatePrivateDNSAccount", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePrivateDNSAccountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreatePrivateZone(self, request):
         """This API is used to create a private domain.
 
@@ -82,6 +110,34 @@ class PrivatednsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeletePrivateDNSAccount(self, request):
+        """This API is used to delete a Private DNS account.
+
+        :param request: Request instance for DeletePrivateDNSAccount.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.DeletePrivateDNSAccountRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DeletePrivateDNSAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeletePrivateDNSAccount", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeletePrivateDNSAccountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeletePrivateZone(self, request):
         """This API is used to delete a private domain and stop DNS.
 
@@ -124,6 +180,34 @@ class PrivatednsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePrivateZoneRecordResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAccountVpcList(self, request):
+        """This API is used to get the VPC list of a Private DNS account.
+
+        :param request: Request instance for DescribeAccountVpcList.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeAccountVpcListRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DescribeAccountVpcListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAccountVpcList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAccountVpcListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

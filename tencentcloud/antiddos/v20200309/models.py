@@ -186,7 +186,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :type Domain: str
         :param DamDDoSStatus: Whether to enable Sec-MCA. Valid values: `1` (enabled) and `0` (disabled).
         :type DamDDoSStatus: int
-        :param V6Flag: 
+        :param V6Flag: Whether it’s an IPv6 address. `1`: Yes; `0`: No.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type V6Flag: int
         """
         self.InstanceDetail = None

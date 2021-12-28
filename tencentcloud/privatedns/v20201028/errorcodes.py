@@ -56,6 +56,9 @@ INTERNALERROR_UNDEFIENDERROR = 'InternalError.UndefiendError'
 # Incorrect parameter.
 INVALIDPARAMETER = 'InvalidParameter'
 
+# A bound account already exists.
+INVALIDPARAMETER_ACCOUNTEXIST = 'InvalidParameter.AccountExist'
+
 # Invalid CIDR.
 INVALIDPARAMETER_ILLEGALCIDR = 'InvalidParameter.IllegalCidr'
 
@@ -119,7 +122,10 @@ INVALIDPARAMETER_RECORDUNSUPPORTWEIGHT = 'InvalidParameter.RecordUnsupportWeight
 # The VPC has been bound to another domain.
 INVALIDPARAMETER_VPCBINDED = 'InvalidParameter.VpcBinded'
 
-# 
+# The VPC has been associated with the same primary domain.
+INVALIDPARAMETER_VPCBINDEDMAINDOMAIN = 'InvalidParameter.VpcBindedMainDomain'
+
+# The number of PTR records associated with the VPC has reached the limit.
 INVALIDPARAMETER_VPCPTRZONEBINDEXCEED = 'InvalidParameter.VpcPtrZoneBindExceed'
 
 # The domain does not exist.
@@ -175,3 +181,6 @@ UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
 # Account not bound.
 UNSUPPORTEDOPERATION_ACCOUNTNOTBOUND = 'UnsupportedOperation.AccountNotBound'
+
+# There are bound VPC resources.
+UNSUPPORTEDOPERATION_EXISTBOUNDVPC = 'UnsupportedOperation.ExistBoundVpc'

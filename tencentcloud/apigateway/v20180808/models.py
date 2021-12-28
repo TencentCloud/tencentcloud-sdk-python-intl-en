@@ -2045,6 +2045,14 @@ class CreateApiRequest(AbstractModel):
         :type IsBase64Encoded: bool
         :param ServiceScfFunctionType: SCF function type, which takes effect if the backend type is `SCF`. Valid values: `EVENT` and `HTTP`.
         :type ServiceScfFunctionType: str
+        :param EIAMAppType: EIAM application type.
+        :type EIAMAppType: str
+        :param EIAMAuthType: EIAM application authentication type. Valid values: `AuthenticationOnly`, `Authentication`, `Authorization`.
+        :type EIAMAuthType: str
+        :param TokenTimeout: Validity of the EIAM application token. Unit: second. Default value: `7200`.
+        :type TokenTimeout: int
+        :param EIAMAppId: EIAM application ID.
+        :type EIAMAppId: str
         """
         self.ServiceId = None
         self.ServiceType = None
@@ -2093,6 +2101,10 @@ class CreateApiRequest(AbstractModel):
         self.UserType = None
         self.IsBase64Encoded = None
         self.ServiceScfFunctionType = None
+        self.EIAMAppType = None
+        self.EIAMAuthType = None
+        self.TokenTimeout = None
+        self.EIAMAppId = None
 
 
     def _deserialize(self, params):
@@ -2185,6 +2197,10 @@ class CreateApiRequest(AbstractModel):
         self.UserType = params.get("UserType")
         self.IsBase64Encoded = params.get("IsBase64Encoded")
         self.ServiceScfFunctionType = params.get("ServiceScfFunctionType")
+        self.EIAMAppType = params.get("EIAMAppType")
+        self.EIAMAuthType = params.get("EIAMAuthType")
+        self.TokenTimeout = params.get("TokenTimeout")
+        self.EIAMAppId = params.get("EIAMAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2327,7 +2343,7 @@ class CreatePluginRequest(AbstractModel):
         r"""
         :param PluginName: Custom plugin name. A plugin name should contain 2-50 characters out of a-z, A-Z, 0-9, and _, which must begin with a letter and end with a letter or a number.
         :type PluginName: str
-        :param PluginType: Plugin type. Valid values: `IPControl`, `TrafficControl`, `Cors`, `CustomReq`, `CustomAuth`
+        :param PluginType: Plugin type. Valid values: `IPControl`, `TrafficControl`, `Cors`, `CustomReq`, `CustomAuth`, `Routing`, `TrafficControlByParameter`.
         :type PluginType: str
         :param PluginData: Plugin definition statement in json format
         :type PluginData: str
@@ -5131,7 +5147,7 @@ class DescribeServicesStatusRequest(AbstractModel):
         :type Limit: int
         :param Offset: Offset. Default value: 0.
         :type Offset: int
-        :param Filters: Filter. Valid values: ServiceId, ServiceName, NotUsagePlanId, Environment, IpVersion, InstanceId
+        :param Filters: Filter. Valid values: `ServiceId`, `ServiceName`, `NotUsagePlanId`, `Environment`, `IpVersion`, `InstanceId`, `NetType`, `EIAMAppId`.
         :type Filters: list of Filter
         """
         self.Limit = None

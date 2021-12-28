@@ -3568,12 +3568,15 @@ Time range: <= 1 day, supported minimum granularity: 60 seconds;
 Time range: <= 7 days, supported minimum granularity: 3,600 seconds;
 Time range: <= 30 days, supported minimum granularity: 86,400 seconds;
         :type Granularity: int
+        :param Isp: Specifies the ISP. Valid values: `CMCC`, `CUCC`, and `CTCC`. If it is not specified, all ISP data will be returned. Note that this field is valid only when a non-BGP connection is used.
+        :type Isp: str
         """
         self.ProxyId = None
         self.StartTime = None
         self.EndTime = None
         self.MetricNames = None
         self.Granularity = None
+        self.Isp = None
 
 
     def _deserialize(self, params):
@@ -3582,6 +3585,7 @@ Time range: <= 30 days, supported minimum granularity: 86,400 seconds;
         self.EndTime = params.get("EndTime")
         self.MetricNames = params.get("MetricNames")
         self.Granularity = params.get("Granularity")
+        self.Isp = params.get("Isp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
