@@ -5141,6 +5141,43 @@ Requires a full redirect path, such as https://www.test.com/error.html.
         
 
 
+class ExtraLogset(AbstractModel):
+    """Information of logsets and log topics (except those created in the Shanghai region)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Logset: Logset information
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Logset: :class:`tencentcloud.cdn.v20180606.models.LogSetInfo`
+        :param Topics: Log topic information
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Topics: list of TopicInfo
+        """
+        self.Logset = None
+        self.Topics = None
+
+
+    def _deserialize(self, params):
+        if params.get("Logset") is not None:
+            self.Logset = LogSetInfo()
+            self.Logset._deserialize(params.get("Logset"))
+        if params.get("Topics") is not None:
+            self.Topics = []
+            for item in params.get("Topics"):
+                obj = TopicInfo()
+                obj._deserialize(item)
+                self.Topics.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FollowRedirect(AbstractModel):
     """301/302 automatic origin-pull follow-redirect configuration. It is disabled by default.
 
@@ -5932,16 +5969,20 @@ class ListClsLogTopicsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Logset: Logset information
+        :param Logset: Information of logsets in the Shanghai region
         :type Logset: :class:`tencentcloud.cdn.v20180606.models.LogSetInfo`
-        :param Topics: Log topic information list
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Topics: Information of log topics in the Shanghai region
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Topics: list of TopicInfo
+        :param ExtraLogset: Information on logsets in regions except Shanghai
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ExtraLogset: list of ExtraLogset
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.Logset = None
         self.Topics = None
+        self.ExtraLogset = None
         self.RequestId = None
 
 
@@ -5955,6 +5996,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = TopicInfo()
                 obj._deserialize(item)
                 self.Topics.append(obj)
+        if params.get("ExtraLogset") is not None:
+            self.ExtraLogset = []
+            for item in params.get("ExtraLogset"):
+                obj = ExtraLogset()
+                obj._deserialize(item)
+                self.ExtraLogset.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -6190,6 +6237,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type CreateTime: str
         :param Region: Region
         :type Region: str
+        :param Deleted: Whether the logset has been removed from CLS
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Deleted: str
+        :param RegionEn: Whether English is used in this region
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RegionEn: str
         """
         self.AppId = None
         self.Channel = None
@@ -6199,6 +6252,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.LogsetSavePeriod = None
         self.CreateTime = None
         self.Region = None
+        self.Deleted = None
+        self.RegionEn = None
 
 
     def _deserialize(self, params):
@@ -6210,6 +6265,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.LogsetSavePeriod = params.get("LogsetSavePeriod")
         self.CreateTime = params.get("CreateTime")
         self.Region = params.get("Region")
+        self.Deleted = params.get("Deleted")
+        self.RegionEn = params.get("RegionEn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9616,12 +9673,16 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Channel: Either `cdn` or `ecdn`.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Channel: str
+        :param Deleted: Whether the log topic has been removed from CLS
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Deleted: str
         """
         self.TopicId = None
         self.TopicName = None
         self.Enabled = None
         self.CreateTime = None
         self.Channel = None
+        self.Deleted = None
 
 
     def _deserialize(self, params):
@@ -9630,6 +9691,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Enabled = params.get("Enabled")
         self.CreateTime = params.get("CreateTime")
         self.Channel = params.get("Channel")
+        self.Deleted = params.get("Deleted")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

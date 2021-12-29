@@ -521,10 +521,17 @@ class AiAnalysisTaskClassificationOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClassificationSet: List of intelligently generated video categories.
+        :param ClassificationSet: List of intelligently generated video categories
+<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `ClassificationSetFileUrl`.
         :type ClassificationSet: list of MediaAiAnalysisClassificationItem
+        :param ClassificationSetFileUrl: URL to the file for intelligently generated video categories. The file is in JSON format and has the same data structure as `ClassificationSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `ClassificationSetFileUrlExpireTime`.
+        :type ClassificationSetFileUrl: str
+        :param ClassificationSetFileUrlExpireTime: Expiration time of the URL to the file for intelligently generated video categories, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
+        :type ClassificationSetFileUrlExpireTime: str
         """
         self.ClassificationSet = None
+        self.ClassificationSetFileUrl = None
+        self.ClassificationSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -534,6 +541,8 @@ class AiAnalysisTaskClassificationOutput(AbstractModel):
                 obj = MediaAiAnalysisClassificationItem()
                 obj._deserialize(item)
                 self.ClassificationSet.append(obj)
+        self.ClassificationSetFileUrl = params.get("ClassificationSetFileUrl")
+        self.ClassificationSetFileUrlExpireTime = params.get("ClassificationSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -623,10 +632,17 @@ class AiAnalysisTaskCoverOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CoverSet: List of intelligently generated covers.
+        :param CoverSet: List of intelligently generated thumbnails
+<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `CoverSetFileUrl`.
         :type CoverSet: list of MediaAiAnalysisCoverItem
+        :param CoverSetFileUrl: URL to the file for intelligently generated thumbnails. The file is in JSON format and has the same data structure as `CoverSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `CoverSetFileUrlExpireTime`.
+        :type CoverSetFileUrl: str
+        :param CoverSetFileUrlExpireTime: Expiration time of the URL to the file for intelligently generated thumbnails, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
+        :type CoverSetFileUrlExpireTime: str
         """
         self.CoverSet = None
+        self.CoverSetFileUrl = None
+        self.CoverSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -636,6 +652,8 @@ class AiAnalysisTaskCoverOutput(AbstractModel):
                 obj = MediaAiAnalysisCoverItem()
                 obj._deserialize(item)
                 self.CoverSet.append(obj)
+        self.CoverSetFileUrl = params.get("CoverSetFileUrl")
+        self.CoverSetFileUrlExpireTime = params.get("CoverSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -725,10 +743,17 @@ class AiAnalysisTaskFrameTagOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SegmentSet: List of frame-specific video tags.
+        :param SegmentSet: List of frame-specific video tags
+<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.
         :type SegmentSet: list of MediaAiAnalysisFrameTagSegmentItem
+        :param SegmentSetFileUrl: URL to the file for frame-specific video tags. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file for frame-specific video tags, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
+        :type SegmentSetFileUrlExpireTime: str
         """
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -738,6 +763,8 @@ class AiAnalysisTaskFrameTagOutput(AbstractModel):
                 obj = MediaAiAnalysisFrameTagSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -827,10 +854,17 @@ class AiAnalysisTaskHighlightOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param HighlightSet: List of intelligently generated highlights.
+        :param HighlightSet: List of intelligently generated highlights
+<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `HighlightSetFileUrl`.
         :type HighlightSet: list of MediaAiAnalysisHighlightItem
+        :param HighlightSetFileUrl: URL to the file for intelligently generated highlights. The file is in JSON format and has the same data structure as `HighlightSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `HighlightSetFileUrlExpireTime`.
+        :type HighlightSetFileUrl: str
+        :param HighlightSetFileUrlExpireTime: Expiration time of the URL to the file for intelligently generated highlights, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
+        :type HighlightSetFileUrlExpireTime: str
         """
         self.HighlightSet = None
+        self.HighlightSetFileUrl = None
+        self.HighlightSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -840,6 +874,8 @@ class AiAnalysisTaskHighlightOutput(AbstractModel):
                 obj = MediaAiAnalysisHighlightItem()
                 obj._deserialize(item)
                 self.HighlightSet.append(obj)
+        self.HighlightSetFileUrl = params.get("HighlightSetFileUrl")
+        self.HighlightSetFileUrlExpireTime = params.get("HighlightSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -953,10 +989,17 @@ class AiAnalysisTaskTagOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TagSet: List of intelligently generated video tags.
+        :param TagSet: List of intelligently generated video tags
+<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `TagSetFileUrl`.
         :type TagSet: list of MediaAiAnalysisTagItem
+        :param TagSetFileUrl: URL to the file for intelligently generated video tags. The file is in JSON format and has the same data structure as `TagSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `TagSetFileUrlExpireTime`.
+        :type TagSetFileUrl: str
+        :param TagSetFileUrlExpireTime: Expiration time of the URL to the file for intelligently generated video tags, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
+        :type TagSetFileUrlExpireTime: str
         """
         self.TagSet = None
+        self.TagSetFileUrl = None
+        self.TagSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -966,6 +1009,8 @@ class AiAnalysisTaskTagOutput(AbstractModel):
                 obj = MediaAiAnalysisTagItem()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+        self.TagSetFileUrl = params.get("TagSetFileUrl")
+        self.TagSetFileUrlExpireTime = params.get("TagSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2635,12 +2680,19 @@ class AiReviewPoliticalAsrTaskOutput(AbstractModel):
 <li>review.</li>
 <li>block.</li>
         :type Suggestion: str
-        :param SegmentSet: List of video segments that contain ASR-detected politically sensitive information in speech.
+        :param SegmentSet: List of video segments that contain ASR-detected politically sensitive information
+<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.
         :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
+        :param SegmentSetFileUrl: URL to the file for video segments that contain ASR-detected politically sensitive information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file for video segments that contain ASR-detected politically sensitive information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
+        :type SegmentSetFileUrlExpireTime: str
         """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -2652,6 +2704,8 @@ class AiReviewPoliticalAsrTaskOutput(AbstractModel):
                 obj = MediaContentReviewAsrTextSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2699,12 +2753,19 @@ class AiReviewPoliticalOcrTaskOutput(AbstractModel):
 <li>review.</li>
 <li>block.</li>
         :type Suggestion: str
-        :param SegmentSet: List of video segments that contain OCR-detected politically sensitive information in text.
+        :param SegmentSet: List of video segments that contain OCR-detected politically sensitive information
+<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.
         :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
+        :param SegmentSetFileUrl: URL to the file for video segments that contain OCR-detected politically sensitive information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file for video segments that contain OCR-detected politically sensitive information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
+        :type SegmentSetFileUrlExpireTime: str
         """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -2716,6 +2777,8 @@ class AiReviewPoliticalOcrTaskOutput(AbstractModel):
                 obj = MediaContentReviewOcrTextSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2771,14 +2834,20 @@ violation_photo:
 Other values (politician/entertainment/sport/entrepreneur/scholar/celebrity/military):
 <li>politician: political figure.</li>
         :type Label: str
-        :param SegmentSet: List of video segments that contain the detected politically sensitive information.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param SegmentSet: List of video segments that contain politically sensitive information
+<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.
         :type SegmentSet: list of MediaContentReviewPoliticalSegmentItem
+        :param SegmentSetFileUrl: URL to the file for video segments that contain politically sensitive information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file for video segments that contain politically sensitive information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
+        :type SegmentSetFileUrlExpireTime: str
         """
         self.Confidence = None
         self.Suggestion = None
         self.Label = None
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -2791,6 +2860,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = MediaContentReviewPoliticalSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2838,12 +2909,19 @@ class AiReviewPornAsrTaskOutput(AbstractModel):
 <li>review.</li>
 <li>block.</li>
         :type Suggestion: str
-        :param SegmentSet: List of video segments that contain the ASR-detected porn information in speech.
+        :param SegmentSet: List of video segments that contain ASR-detected porn information
+<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.
         :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
+        :param SegmentSetFileUrl: URL to the file for video segments that contain ASR-detected porn information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file for video segments that contain ASR-detected porn information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
+        :type SegmentSetFileUrlExpireTime: str
         """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -2855,6 +2933,8 @@ class AiReviewPornAsrTaskOutput(AbstractModel):
                 obj = MediaContentReviewAsrTextSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2902,12 +2982,19 @@ class AiReviewPornOcrTaskOutput(AbstractModel):
 <li>review.</li>
 <li>block.</li>
         :type Suggestion: str
-        :param SegmentSet: List of video segments that contain the OCR-detected porn information in text.
+        :param SegmentSet: List of video segments that contain OCR-detected porn information
+<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.
         :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
+        :param SegmentSetFileUrl: URL to the file for video segments that contain OCR-detected porn information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file for video segments that contain OCR-detected porn information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
+        :type SegmentSetFileUrlExpireTime: str
         """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -2919,6 +3006,8 @@ class AiReviewPornOcrTaskOutput(AbstractModel):
                 obj = MediaContentReviewOcrTextSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2975,14 +3064,20 @@ Note: this field may return null, indicating that no valid values can be obtaine
 <li>intimacy: intimacy.</li>
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Label: str
-        :param SegmentSet: List of video segments that contain the detected porn information.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param SegmentSet: List of video segments that contain porn information
+<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.
         :type SegmentSet: list of MediaContentReviewSegmentItem
+        :param SegmentSetFileUrl: URL to the file for video segments that contain porn information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file of for video segments that contain porn information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
+        :type SegmentSetFileUrlExpireTime: str
         """
         self.Confidence = None
         self.Suggestion = None
         self.Label = None
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -2995,6 +3090,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = MediaContentReviewSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3042,12 +3139,19 @@ class AiReviewProhibitedAsrTaskOutput(AbstractModel):
 <li>review.</li>
 <li>block.</li>
         :type Suggestion: str
-        :param SegmentSet: List of video segments that contain the ASR-detected prohibited information in speech.
+        :param SegmentSet: List of video segments that contain ASR-detected prohibited information
+<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.
         :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
+        :param SegmentSetFileUrl: URL to the file for video segments that contain ASR-detected prohibited information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file for video segments that contain ASR-detected prohibited information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
+        :type SegmentSetFileUrlExpireTime: str
         """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -3059,6 +3163,8 @@ class AiReviewProhibitedAsrTaskOutput(AbstractModel):
                 obj = MediaContentReviewAsrTextSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3106,12 +3212,19 @@ class AiReviewProhibitedOcrTaskOutput(AbstractModel):
 <li>review.</li>
 <li>block.</li>
         :type Suggestion: str
-        :param SegmentSet: List of video segments that contain the OCR-detected prohibited information in text.
+        :param SegmentSet: List of video segments that contain OCR-detected prohibited information
+<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.
         :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
+        :param SegmentSetFileUrl: URL to the file for video segments that contain OCR-detected prohibited information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: Expiration time of the URL for video segments that contain OCR-detected prohibited information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
+        :type SegmentSetFileUrlExpireTime: str
         """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -3123,6 +3236,8 @@ class AiReviewProhibitedOcrTaskOutput(AbstractModel):
                 obj = MediaContentReviewOcrTextSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3666,12 +3781,19 @@ class AiReviewTerrorismOcrTaskOutput(AbstractModel):
 <li>review.</li>
 <li>block.</li>
         :type Suggestion: str
-        :param SegmentSet: List of video segments that contain OCR-detected terrorism information in text.
+        :param SegmentSet: List of video segments that contain OCR-detected terrorism information
+<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.
         :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
+        :param SegmentSetFileUrl: URL to the file for video segments that contain OCR-detected terrorism information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file for video segments that contain OCR-detected terrorism information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
+        :type SegmentSetFileUrlExpireTime: str
         """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -3683,6 +3805,8 @@ class AiReviewTerrorismOcrTaskOutput(AbstractModel):
                 obj = MediaContentReviewOcrTextSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3743,14 +3867,20 @@ Note: this field may return null, indicating that no valid values can be obtaine
 <li>`terrorists`: terrorists</li>
 <li>`scenario`: terrorism images</li>
         :type Label: str
-        :param SegmentSet: List of video segments that contain the detected terrorism information.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param SegmentSet: List of video segments that contain terrorism information
+<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.
         :type SegmentSet: list of MediaContentReviewSegmentItem
+        :param SegmentSetFileUrl: URL to the file for video segments that contain terrorism information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file for video segments that contain terrorism information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
+        :type SegmentSetFileUrlExpireTime: str
         """
         self.Confidence = None
         self.Suggestion = None
         self.Label = None
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -3763,6 +3893,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = MediaContentReviewSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10664,6 +10796,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param WechatMiniProgramPublishCompleteEvent: Release on WeChat Mini Program task completion event, which is valid if the event type is `WechatMiniProgramPublishComplete`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type WechatMiniProgramPublishCompleteEvent: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTask`
+        :param RestoreMediaCompleteEvent: Callback for video retrieval. This parameter is valid when the event type is `RestoreMediaComplete`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RestoreMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.RestoreMediaTask`
         """
         self.EventHandle = None
         self.EventType = None
@@ -10681,6 +10816,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.SnapshotByTimeOffsetCompleteEvent = None
         self.WechatPublishCompleteEvent = None
         self.WechatMiniProgramPublishCompleteEvent = None
+        self.RestoreMediaCompleteEvent = None
 
 
     def _deserialize(self, params):
@@ -10728,6 +10864,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("WechatMiniProgramPublishCompleteEvent") is not None:
             self.WechatMiniProgramPublishCompleteEvent = WechatMiniProgramPublishTask()
             self.WechatMiniProgramPublishCompleteEvent._deserialize(params.get("WechatMiniProgramPublishCompleteEvent"))
+        if params.get("RestoreMediaCompleteEvent") is not None:
+            self.RestoreMediaCompleteEvent = RestoreMediaTask()
+            self.RestoreMediaCompleteEvent._deserialize(params.get("RestoreMediaCompleteEvent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13706,12 +13845,12 @@ class MediaSourceData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SourceType: Source category of media file:
-<li>Record: recording, such as LVB recording and LVB time shifting recording.</li>
-<li>Upload: upload, such as pull for upload, upload from server, and UCG upload from client.</li>
-<li>VideoProcessing: video processing, such as video splicing and video clipping.</li>
-<li>Unknown: unknown source.</li>
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param SourceType: Source of a media file:
+<li>`Record`: recording, such as live or time-shift recording</li>
+<li>`Upload`: upload, such as pull for upload, upload from server, and UGC upload from client</li>
+<li>`VideoProcessing`: video processing, such as video splicing and video clipping</li>
+<li>`WebPageRecord`: panoramic recording </li>
+<li>`Unknown`: unknown source</li>
         :type SourceType: str
         :param SourceContext: Field passed through when a file is created.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -17900,6 +18039,57 @@ class ResourceTag(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestoreMediaTask(AbstractModel):
+    """Video retrieval task information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: File ID
+        :type FileId: str
+        :param OriginalStorageClass: Original storage class
+        :type OriginalStorageClass: str
+        :param TargetStorageClass: Target storage class. For temporary retrieval, the target storage class is the same as the original.
+        :type TargetStorageClass: str
+        :param RestoreTier: Retrieval mode. Valid values:
+<li>Expedited</li>
+<li>Standard</li>
+<li>Bulk</li>
+        :type RestoreTier: str
+        :param RestoreDay: Validity period (days) for a temporary copy. `0` indicates permanent retrieval.
+        :type RestoreDay: int
+        :param Status: This field has been disused.
+        :type Status: int
+        :param Message: This field has been disused.
+        :type Message: str
+        """
+        self.FileId = None
+        self.OriginalStorageClass = None
+        self.TargetStorageClass = None
+        self.RestoreTier = None
+        self.RestoreDay = None
+        self.Status = None
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.OriginalStorageClass = params.get("OriginalStorageClass")
+        self.TargetStorageClass = params.get("TargetStorageClass")
+        self.RestoreTier = params.get("RestoreTier")
+        self.RestoreDay = params.get("RestoreDay")
+        self.Status = params.get("Status")
+        self.Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

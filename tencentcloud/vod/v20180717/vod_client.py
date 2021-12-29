@@ -1400,11 +1400,11 @@ class VodClient(AbstractClient):
 
     def DescribeDailyPlayStatFileList(self, request):
         """This API is used to query the download links of playback statistics files.
-        * You can query the download links of playback statistics files in last 30 days.
+        * You can query the download links of playback statistics files in the past year. The start and end dates for query cannot be more than 90 days apart.
         * Every day, VOD will analyze CDN request logs of the previous day and then generate a playback statistics file.
         * A playback statistics file includes playback times and traffic of media files.
         * Notes on playback times:
-            1. HLS file: VOD counts playback times when accessing M3U8 files, but not when accessing TS files.
+            1. HLS file: VOD counts playback times when M3U8 files are accessed, but not when TS files are accessed.
             2. Other files (MP4 files for example): VOD does not count playback times when the playback request carries the `range` parameter and the `start` parameter in `range` is not `0`. In other cases, VOD counts playback times.
         * Statistics on playback devices: VOD counts playback times on mobile clients when the playback request carries the `UserAgent` parameter which includes an identifier such as `Android` or `iPhone`. In other cases, VOD counts playback times on PC clients.
 

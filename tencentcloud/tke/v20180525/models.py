@@ -568,7 +568,7 @@ The following conditions are required to use ipvs-bpf network mode:
         :type AuditLogsetId: str
         :param AuditLogTopicId: Specifies the ID of topic to which the audit logs are uploaded.
         :type AuditLogTopicId: str
-        :param VpcCniType: Specifies whether the VPC CNI type is multi-IP ENI or or independent ENI.
+        :param VpcCniType: Specifies the ENI type. Values: `tke-route-eni` (multi-IP shared ENI); `tke-direct-eni` (independent ENI). It defaults to `tke-route-eni`.
         :type VpcCniType: str
         :param RuntimeVersion: Runtime version
         :type RuntimeVersion: str

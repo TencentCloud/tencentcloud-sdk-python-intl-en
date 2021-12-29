@@ -664,13 +664,13 @@ class CreateAclRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID information
         :type InstanceId: str
-        :param ResourceType: ACL resource type. 0: UNKNOWN, 1: ANY, 2: TOPIC, 3: GROUP, 4: CLUSTER, 5: TRANSACTIONAL_ID. Currently, only `TOPIC` is available, and other fields will be used for future ACLs compatible with open-source Kafka
+        :param ResourceType: ACL resource type (`2`: TOPIC, `3`: GROUP, `4`: CLUSTER).
         :type ResourceType: int
-        :param Operation: ACL operation mode. 0: UNKNOWN, 1: ANY, 2: ALL, 3: READ, 4: WRITE, 5: CREATE, 6: DELETE, 7: ALTER, 8: DESCRIBE, 9: CLUSTER_ACTION, 10: DESCRIBE_CONFIGS, 11: ALTER_CONFIGS
+        :param Operation: ACL operation type (`2`: ALL, `3`: READ, `4`: WRITE, `5`: CREATE, `6`: DELETE, `7`: ALTER, `8`: DESCRIBE, `9`: CLUSTER_ACTION, `10`: DESCRIBE_CONFIGS, `11`: ALTER_CONFIGS, `12`: IDEMPOTENT_WRITE).
         :type Operation: int
-        :param PermissionType: Permission type. 0: UNKNOWN, 1: ANY, 2: DENY, 3: ALLOW. Currently, CKafka supports `ALLOW` (equivalent to allowlist), and other fields will be used for future ACLs compatible with open-source Kafka
+        :param PermissionType: Permission type (`2`: DENY, `3`: ALLOW). CKafka currently supports `ALLOW`, which is equivalent to allowlist. `DENY` will be supported for ACLs compatible with open-source Kafka.
         :type PermissionType: int
-        :param ResourceName: Resource name, which is related to `resourceType`. For example, if `resourceType` is `TOPIC`, this field indicates the topic name; if `resourceType` is `GROUP`, this field indicates the group name
+        :param ResourceName: Resource name, which is related to `resourceType`. For example, if `resourceType` is `TOPIC`, this field indicates the topic name; if `resourceType` is `GROUP`, this field indicates the group name; if `resourceType` is `CLUSTER`, this field can be left empty.
         :type ResourceName: str
         :param Host: The default value is `*`, which means that any host can access. Currently, CKafka does not support the host as `*`, but the future product based on the open-source Kafka will directly support this
         :type Host: str
@@ -1031,13 +1031,13 @@ class DeleteAclRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID information
         :type InstanceId: str
-        :param ResourceType: ACL resource type. 0: UNKNOWN, 1: ANY, 2: TOPIC, 3: GROUP, 4: CLUSTER, 5: TRANSACTIONAL_ID. Currently, only `TOPIC` is available, and other fields will be used for future ACLs compatible with open-source Kafka
+        :param ResourceType: ACL resource type (`2`: TOPIC, `3`: GROUP, `4`: CLUSTER).
         :type ResourceType: int
-        :param ResourceName: Resource name, which is related to `resourceType`. For example, if `resourceType` is `TOPIC`, this field indicates the topic name; if `resourceType` is `GROUP`, this field indicates the group name
+        :param ResourceName: Resource name, which is related to `resourceType`. For example, if `resourceType` is `TOPIC`, this field indicates the topic name; if `resourceType` is `GROUP`, this field indicates the group name; if `resourceType` is `CLUSTER`, this field can be left empty.
         :type ResourceName: str
-        :param Operation: ACL operation mode. 0: UNKNOWN, 1: ANY, 2: ALL, 3: READ, 4: WRITE, 5: CREATE, 6: DELETE, 7: ALTER, 8: DESCRIBE, 9: CLUSTER_ACTION, 10: DESCRIBE_CONFIGS, 11: ALTER_CONFIGS, 12: IDEMPOTEN_WRITE. Currently, CKafka only supports `READ` and `WRITE`, and other values will be used for future ACLs compatible with open-source Kafka
+        :param Operation: ACL operation type (`2`: ALL, `3`: READ, `4`: WRITE, `5`: CREATE, `6`: DELETE, `7`: ALTER, `8`: DESCRIBE, `9`: CLUSTER_ACTION, `10`: DESCRIBE_CONFIGS, `11`: ALTER_CONFIGS, `12`: IDEMPOTENT_WRITE).
         :type Operation: int
-        :param PermissionType: Permission type. 0: UNKNOWN, 1: ANY, 2: DENY, 3: ALLOW. Currently, CKafka supports `ALLOW` (equivalent to allowlist), and other fields will be used for future ACLs compatible with open-source Kafka
+        :param PermissionType: Permission type (`2`: DENY, `3`: ALLOW). CKafka currently supports `ALLOW`, which is equivalent to allowlist. `DENY` will be supported for ACLs compatible with open-source Kafka.
         :type PermissionType: int
         :param Host: The default value is `*`, which means that any host can access. Currently, CKafka does not support the host as `*`, but the future product based on the open-source Kafka will directly support this
         :type Host: str
@@ -1300,9 +1300,9 @@ class DescribeACLRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID
         :type InstanceId: str
-        :param ResourceType: ACL resource type. 0: UNKNOWN, 1: ANY, 2: TOPIC, 3: GROUP, 4: CLUSTER, 5: TRANSACTIONAL_ID. Currently, only `TOPIC` is available, and other fields will be used for future ACLs compatible with open-source Kafka
+        :param ResourceType: ACL resource type (`2`: TOPIC, `3`: GROUP, `4`: CLUSTER).
         :type ResourceType: int
-        :param ResourceName: Resource name, which is related to `resourceType`. For example, if `resourceType` is `TOPIC`, this field indicates the topic name; if `resourceType` is `GROUP`, this field indicates the group name
+        :param ResourceName: Resource name, which is related to `resourceType`. For example, if `resourceType` is `TOPIC`, this field indicates the topic name; if `resourceType` is `GROUP`, this field indicates the group name; if `resourceType` is `CLUSTER`, this field can be left empty.
         :type ResourceName: str
         :param Offset: Offset position
         :type Offset: int
@@ -1850,7 +1850,7 @@ class DescribeInstancesRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 100.
         :type Limit: int
-        :param TagKey: Tag key match.
+        :param TagKey: Tag key value (this field has been deprecated).
         :type TagKey: str
         """
         self.InstanceId = None
@@ -2363,6 +2363,42 @@ class DescribeUserResponse(AbstractModel):
             self.Result = UserResponse()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
+
+
+class DynamicDiskConfig(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Enable: 
+        :type Enable: int
+        :param StepForwardPercentage: 
+        :type StepForwardPercentage: int
+        :param DiskQuotaPercentage: 
+        :type DiskQuotaPercentage: int
+        :param MaxDiskSpace: 
+        :type MaxDiskSpace: int
+        """
+        self.Enable = None
+        self.StepForwardPercentage = None
+        self.DiskQuotaPercentage = None
+        self.MaxDiskSpace = None
+
+
+    def _deserialize(self, params):
+        self.Enable = params.get("Enable")
+        self.StepForwardPercentage = params.get("StepForwardPercentage")
+        self.DiskQuotaPercentage = params.get("DiskQuotaPercentage")
+        self.MaxDiskSpace = params.get("MaxDiskSpace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DynamicRetentionTime(AbstractModel):
@@ -2909,6 +2945,14 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param DeleteRouteTimestamp: Time
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DeleteRouteTimestamp: str
+        :param RemainingPartitions: Number of remaining creatable partitions
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RemainingPartitions: int
+        :param RemainingTopics: Number of remaining creatable topics
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RemainingTopics: int
+        :param DynamicDiskConfig: 
+        :type DynamicDiskConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicDiskConfig`
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -2942,6 +2986,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.MaxConnection = None
         self.PublicNetwork = None
         self.DeleteRouteTimestamp = None
+        self.RemainingPartitions = None
+        self.RemainingTopics = None
+        self.DynamicDiskConfig = None
 
 
     def _deserialize(self, params):
@@ -2991,6 +3038,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.MaxConnection = params.get("MaxConnection")
         self.PublicNetwork = params.get("PublicNetwork")
         self.DeleteRouteTimestamp = params.get("DeleteRouteTimestamp")
+        self.RemainingPartitions = params.get("RemainingPartitions")
+        self.RemainingTopics = params.get("RemainingTopics")
+        if params.get("DynamicDiskConfig") is not None:
+            self.DynamicDiskConfig = DynamicDiskConfig()
+            self.DynamicDiskConfig._deserialize(params.get("DynamicDiskConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

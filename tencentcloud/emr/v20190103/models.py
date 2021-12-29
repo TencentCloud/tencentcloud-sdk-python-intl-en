@@ -269,6 +269,24 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Zone: Availability zone
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :type Zone: str
+        :param SceneName: Scenario name
+Note: This field may return `null`, indicating that no valid value was found.
+        :type SceneName: str
+        :param SceneServiceClass: Scenario-based cluster type
+Note: This field may return `null`, indicating that no valid value was found.
+        :type SceneServiceClass: str
+        :param SceneEmrVersion: Scenario-based EMR version
+Note: This field may return `null`, indicating that no valid value was found.
+        :type SceneEmrVersion: str
+        :param DisplayName: Scenario-based cluster type
+Note: This field may return `null`, indicating that no valid value was found.
+        :type DisplayName: str
+        :param VpcName: VPC name
+Note: This field may return `null`, indicating that no valid value was found.
+        :type VpcName: str
+        :param SubnetName: Subnet name
+Note: This field may return `null`, indicating that no valid value was found.
+        :type SubnetName: str
         """
         self.Id = None
         self.ClusterId = None
@@ -300,6 +318,12 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         self.AliasInfo = None
         self.ProductId = None
         self.Zone = None
+        self.SceneName = None
+        self.SceneServiceClass = None
+        self.SceneEmrVersion = None
+        self.DisplayName = None
+        self.VpcName = None
+        self.SubnetName = None
 
 
     def _deserialize(self, params):
@@ -340,6 +364,12 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         self.AliasInfo = params.get("AliasInfo")
         self.ProductId = params.get("ProductId")
         self.Zone = params.get("Zone")
+        self.SceneName = params.get("SceneName")
+        self.SceneServiceClass = params.get("SceneServiceClass")
+        self.SceneEmrVersion = params.get("SceneEmrVersion")
+        self.DisplayName = params.get("DisplayName")
+        self.VpcName = params.get("VpcName")
+        self.SubnetName = params.get("SubnetName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -450,6 +480,12 @@ This parameter can be obtained in the `SecurityGroupId` field in the return valu
         :type MetaDBInfo: :class:`tencentcloud.emr.v20190103.models.CustomMetaInfo`
         :param ApplicationRole: Custom application role.
         :type ApplicationRole: str
+        :param SceneName: Scenario-based values:
+Hadoop-Kudu
+Hadoop-Zookeeper
+Hadoop-Presto
+Hadoop-Hbase
+        :type SceneName: str
         """
         self.ProductId = None
         self.VPCSettings = None
@@ -478,6 +514,7 @@ This parameter can be obtained in the `SecurityGroupId` field in the return valu
         self.UnifyMetaInstanceId = None
         self.MetaDBInfo = None
         self.ApplicationRole = None
+        self.SceneName = None
 
 
     def _deserialize(self, params):
@@ -530,6 +567,7 @@ This parameter can be obtained in the `SecurityGroupId` field in the return valu
             self.MetaDBInfo = CustomMetaInfo()
             self.MetaDBInfo._deserialize(params.get("MetaDBInfo"))
         self.ApplicationRole = params.get("ApplicationRole")
+        self.SceneName = params.get("SceneName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1012,6 +1050,12 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 <li>4: EMR v2.1.0.</li>
 <li>7: EMR v3.0.0.</li>
         :type ProductId: int
+        :param SceneName: Scenario-based values:
+Hadoop-Kudu
+Hadoop-Zookeeper
+Hadoop-Presto
+Hadoop-Hbase
+        :type SceneName: str
         """
         self.TimeUnit = None
         self.TimeSpan = None
@@ -1026,6 +1070,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
         self.UnifyMetaInstanceId = None
         self.MetaDBInfo = None
         self.ProductId = None
+        self.SceneName = None
 
 
     def _deserialize(self, params):
@@ -1050,6 +1095,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
             self.MetaDBInfo = CustomMetaInfo()
             self.MetaDBInfo._deserialize(params.get("MetaDBInfo"))
         self.ProductId = params.get("ProductId")
+        self.SceneName = params.get("SceneName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
