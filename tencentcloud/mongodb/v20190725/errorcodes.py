@@ -23,8 +23,14 @@ INTERNALERROR = 'InternalError'
 # `appId` verification failed.
 INTERNALERROR_CHECKAPPIDFAILED = 'InternalError.CheckAppIdFailed'
 
+# Failed to query the instance.
+INTERNALERROR_FINDINSTANCEFAILED = 'InternalError.FindInstanceFailed'
+
 # Parameter error
 INVALIDPARAMETER = 'InvalidParameter'
+
+# The instance does not support parameter setting.
+INVALIDPARAMETER_CURRENTINSTANCENOTSUPPORTMODIFYPARAMS = 'InvalidParameter.CurrentInstanceNotSupportModifyParams'
 
 # The current subaccount has no permission to perform this operation.
 INVALIDPARAMETER_PERMISSIONDENIED = 'InvalidParameter.PermissionDenied'
@@ -145,3 +151,9 @@ INVALIDPARAMETERVALUE_ZONECLOSED = 'InvalidParameterValue.ZoneClosed'
 
 # Invalid availability zone
 INVALIDPARAMETERVALUE_ZONEERROR = 'InvalidParameterValue.ZoneError'
+
+# The resource does not exist.
+RESOURCENOTFOUND = 'ResourceNotFound'
+
+# The current version does not support the operation.
+UNSUPPORTEDOPERATION_VERSIONNOTSUPPORT = 'UnsupportedOperation.VersionNotSupport'

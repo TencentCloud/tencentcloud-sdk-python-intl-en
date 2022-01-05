@@ -83,7 +83,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateAlarmNotice(self, request):
-        """This API is used to create an alarm notification template.
+        """This API is used to create a notification group.
 
         :param request: Request instance for CreateAlarmNotice.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateAlarmNoticeRequest`
@@ -180,6 +180,34 @@ class ClsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateConsumer(self, request):
+        """This API is used to create a shipping task.
+
+        :param request: Request instance for CreateConsumer.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateConsumerRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateConsumerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateConsumer", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateConsumerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -391,7 +419,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteAlarmNotice(self, request):
-        """This API is used to delete an alarm notification template.
+        """This API is used to delete a notification group.
 
         :param request: Request instance for DeleteAlarmNotice.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteAlarmNoticeRequest`
@@ -516,6 +544,34 @@ class ClsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteConfigFromMachineGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteConsumer(self, request):
+        """This API is used to delete a shipping task.
+
+        :param request: Request instance for DeleteConsumer.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteConsumerRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteConsumerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteConsumer", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteConsumerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -699,7 +755,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeAlarmNotices(self, request):
-        """This API is used to get the list of alarm notification templates.
+        """This API is used to get the notification group list.
 
         :param request: Request instance for DescribeAlarmNotices.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeAlarmNoticesRequest`
@@ -727,7 +783,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeAlarms(self, request):
-        """This API is used to get the list of alarm policies.
+        """This API is used to get the alarm policy list.
 
         :param request: Request instance for DescribeAlarms.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeAlarmsRequest`
@@ -908,6 +964,34 @@ class ClsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeConfigsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeConsumer(self, request):
+        """This API is used to query a shipping task.
+
+        :param request: Request instance for DescribeConsumer.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeConsumerRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeConsumerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeConsumer", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeConsumerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1315,7 +1399,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyAlarmNotice(self, request):
-        """This API is used to modify an alarm notification template.
+        """This API is used to modify a notification group.
 
         :param request: Request instance for ModifyAlarmNotice.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyAlarmNoticeRequest`
@@ -1356,6 +1440,34 @@ class ClsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyConsumer(self, request):
+        """This API is used to modify a shipping task.
+
+        :param request: Request instance for ModifyConsumer.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyConsumerRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyConsumerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyConsumer", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyConsumerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1539,7 +1651,7 @@ class ClsClient(AbstractClient):
 
 
     def SearchLog(self, request):
-        """This API is used to search for logs.
+        """This API is used to search logs. It is subject to the default API rate limit, and the number of concurrent calls to the same log topic cannot exceed 15.
 
         :param request: Request instance for SearchLog.
         :type request: :class:`tencentcloud.cls.v20201016.models.SearchLogRequest`

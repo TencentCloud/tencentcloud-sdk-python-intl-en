@@ -59,6 +59,15 @@ FAILEDOPERATION_DOWNLOADERROR = 'FailedOperation.DownLoadError'
 # File download timed out.
 FAILEDOPERATION_DOWNLOADTIMEOUTERROR = 'FailedOperation.DownLoadTimeoutError'
 
+# The image is blurry.
+FAILEDOPERATION_IMAGEBLUR = 'FailedOperation.ImageBlur'
+
+# Image decoding failed.
+FAILEDOPERATION_IMAGEDECODEFAILED = 'FailedOperation.ImageDecodeFailed'
+
+# The image is too large.
+FAILEDOPERATION_IMAGESIZETOOLARGE = 'FailedOperation.ImageSizeTooLarge'
+
 # Multiple faces are detected.
 FAILEDOPERATION_LIFEPHOTODETECTFACES = 'FailedOperation.LifePhotoDetectFaces'
 
@@ -148,6 +157,24 @@ FAILEDOPERATION_SILENTTOOSHORT = 'FailedOperation.SilentTooShort'
 
 # Unknown internal error.
 FAILEDOPERATION_UNKNOWN = 'FailedOperation.UnKnown'
+
+# The lighting is too dim.
+INTERNALERROR_ACTIONLIGHTDARK = 'InternalError.ActionLightDark'
+
+# The lighting is too strong.
+INTERNALERROR_ACTIONLIGHTSTRONG = 'InternalError.ActionLightStrong'
+
+# Failed to detect a full face.
+INTERNALERROR_ACTIONNODETECTFACE = 'InternalError.ActionNodetectFace'
+
+# The similarity did not reach the passing standard.
+INTERNALERROR_COMPARELOWSIMILARITY = 'InternalError.CompareLowSimilarity'
+
+# The resolution of the image passed in is too low. Please upload a new one.
+INTERNALERROR_LIFEPHOTOPOORQUALITY = 'InternalError.LifePhotoPoorQuality'
+
+# The image passed in is too large or too small.
+INTERNALERROR_LIFEPHOTOSIZEERROR = 'InternalError.LifePhotoSizeError'
 
 # Invalid parameter.
 INVALIDPARAMETER = 'InvalidParameter'

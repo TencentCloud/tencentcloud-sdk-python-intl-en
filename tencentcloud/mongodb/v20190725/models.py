@@ -246,14 +246,18 @@ class ClientConnection(AbstractModel):
         :type IP: str
         :param Count: Number of connections corresponding to a client IP
         :type Count: int
+        :param InternalService: Whether it is the Tencent Cloud IP for automated testing
+        :type InternalService: bool
         """
         self.IP = None
         self.Count = None
+        self.InternalService = None
 
 
     def _deserialize(self, params):
         self.IP = params.get("IP")
         self.Count = params.get("Count")
+        self.InternalService = params.get("InternalService")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1222,6 +1226,87 @@ class DescribeDBInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInstanceParamsRequest(AbstractModel):
+    """DescribeInstanceParams request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceParamsResponse(AbstractModel):
+    """DescribeInstanceParams response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceEnumParam: The collection of enum parameters
+        :type InstanceEnumParam: list of InstanceEnumParam
+        :param InstanceIntegerParam: The collection of integer parameters
+        :type InstanceIntegerParam: list of InstanceIntegerParam
+        :param InstanceTextParam: The collection of text parameters
+        :type InstanceTextParam: list of InstanceTextParam
+        :param InstanceMultiParam: The collection of string parameters used to represent time ranges
+        :type InstanceMultiParam: list of InstanceMultiParam
+        :param TotalCount: The total number of modifiable parameters of the instance, such as 0
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceEnumParam = None
+        self.InstanceIntegerParam = None
+        self.InstanceTextParam = None
+        self.InstanceMultiParam = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceEnumParam") is not None:
+            self.InstanceEnumParam = []
+            for item in params.get("InstanceEnumParam"):
+                obj = InstanceEnumParam()
+                obj._deserialize(item)
+                self.InstanceEnumParam.append(obj)
+        if params.get("InstanceIntegerParam") is not None:
+            self.InstanceIntegerParam = []
+            for item in params.get("InstanceIntegerParam"):
+                obj = InstanceIntegerParam()
+                obj._deserialize(item)
+                self.InstanceIntegerParam.append(obj)
+        if params.get("InstanceTextParam") is not None:
+            self.InstanceTextParam = []
+            for item in params.get("InstanceTextParam"):
+                obj = InstanceTextParam()
+                obj._deserialize(item)
+                self.InstanceTextParam.append(obj)
+        if params.get("InstanceMultiParam") is not None:
+            self.InstanceMultiParam = []
+            for item in params.get("InstanceMultiParam"):
+                obj = InstanceMultiParam()
+                obj._deserialize(item)
+                self.InstanceMultiParam.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSecurityGroupRequest(AbstractModel):
     """DescribeSecurityGroup request structure.
 
@@ -1930,6 +2015,222 @@ class InstanceDetail(AbstractModel):
         self.InstanceType = params.get("InstanceType")
         self.InstanceStatusDesc = params.get("InstanceStatusDesc")
         self.RealInstanceId = params.get("RealInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceEnumParam(AbstractModel):
+    """The collection of modifiable enum parameters of an instance.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CurrentValue: Current value
+        :type CurrentValue: str
+        :param DefaultValue: Default value
+        :type DefaultValue: str
+        :param EnumValue: Acceptable values
+        :type EnumValue: list of str
+        :param NeedRestart: Whether to restart the instance for the parameter to take effect. Valid values: `1` (yes), `0` (no)
+        :type NeedRestart: str
+        :param ParamName: Parameter name
+        :type ParamName: str
+        :param Tips: Parameter description
+        :type Tips: list of str
+        :param ValueType: Data type of the parameter
+        :type ValueType: str
+        :param Status: Whether the TencentDB for MongoDB console has pulled parameter information successfully. Valid values: `1` (yes), `0` (no, and displays "Loading" in the console)
+        :type Status: int
+        """
+        self.CurrentValue = None
+        self.DefaultValue = None
+        self.EnumValue = None
+        self.NeedRestart = None
+        self.ParamName = None
+        self.Tips = None
+        self.ValueType = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.CurrentValue = params.get("CurrentValue")
+        self.DefaultValue = params.get("DefaultValue")
+        self.EnumValue = params.get("EnumValue")
+        self.NeedRestart = params.get("NeedRestart")
+        self.ParamName = params.get("ParamName")
+        self.Tips = params.get("Tips")
+        self.ValueType = params.get("ValueType")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceIntegerParam(AbstractModel):
+    """The collection of modifiable integer parameters of an instance.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CurrentValue: Current value
+        :type CurrentValue: str
+        :param DefaultValue: Default value
+        :type DefaultValue: str
+        :param Max: Maximum value
+        :type Max: str
+        :param Min: Minimum value
+        :type Min: str
+        :param NeedRestart: Whether to restart the instance for the parameter to take effect. Valid values: `1` (yes), `0` (no)
+        :type NeedRestart: str
+        :param ParamName: Parameter name
+        :type ParamName: str
+        :param Tips: Parameter description
+        :type Tips: list of str
+        :param ValueType: Data type of the parameter
+        :type ValueType: str
+        :param Status: Whether the TencentDB for MongoDB console has pulled parameter information successfully. Valid values: `1` (no), `0` (yes). This field is only used in the console.
+        :type Status: int
+        :param Unit: This field is not in use
+        :type Unit: str
+        """
+        self.CurrentValue = None
+        self.DefaultValue = None
+        self.Max = None
+        self.Min = None
+        self.NeedRestart = None
+        self.ParamName = None
+        self.Tips = None
+        self.ValueType = None
+        self.Status = None
+        self.Unit = None
+
+
+    def _deserialize(self, params):
+        self.CurrentValue = params.get("CurrentValue")
+        self.DefaultValue = params.get("DefaultValue")
+        self.Max = params.get("Max")
+        self.Min = params.get("Min")
+        self.NeedRestart = params.get("NeedRestart")
+        self.ParamName = params.get("ParamName")
+        self.Tips = params.get("Tips")
+        self.ValueType = params.get("ValueType")
+        self.Status = params.get("Status")
+        self.Unit = params.get("Unit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceMultiParam(AbstractModel):
+    """The collection of modifiable string parameters of an instance which are used to represent time ranges.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CurrentValue: Current value
+        :type CurrentValue: str
+        :param DefaultValue: Default value
+        :type DefaultValue: str
+        :param EnumValue: Acceptable values
+        :type EnumValue: list of str
+        :param NeedRestart: Whether to restart the instance for the parameter to take effect
+        :type NeedRestart: str
+        :param ParamName: Parameter name
+        :type ParamName: str
+        :param Status: Whether the TencentDB for MongoDB console has pulled parameter information successfully
+        :type Status: int
+        :param Tips: Parameter description
+        :type Tips: list of str
+        :param ValueType: Data type of the parameter
+        :type ValueType: str
+        """
+        self.CurrentValue = None
+        self.DefaultValue = None
+        self.EnumValue = None
+        self.NeedRestart = None
+        self.ParamName = None
+        self.Status = None
+        self.Tips = None
+        self.ValueType = None
+
+
+    def _deserialize(self, params):
+        self.CurrentValue = params.get("CurrentValue")
+        self.DefaultValue = params.get("DefaultValue")
+        self.EnumValue = params.get("EnumValue")
+        self.NeedRestart = params.get("NeedRestart")
+        self.ParamName = params.get("ParamName")
+        self.Status = params.get("Status")
+        self.Tips = params.get("Tips")
+        self.ValueType = params.get("ValueType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceTextParam(AbstractModel):
+    """The collection of modifiable text parameters of an instance.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CurrentValue: Current value (not in use)
+        :type CurrentValue: str
+        :param DefaultValue: Default value (not in use)
+        :type DefaultValue: str
+        :param NeedRestart: Whether to restart the instance for the parameter to take effect (not in use)
+        :type NeedRestart: str
+        :param ParamName: Parameter name (not in use)
+        :type ParamName: str
+        :param TextValue: Acceptable values (not in use)
+        :type TextValue: str
+        :param Tips: Parameter description (not in use)
+        :type Tips: list of str
+        :param ValueType: Data type of the parameter (not in use)
+        :type ValueType: str
+        :param Status: Whether the TencentDB for MongoDB console has pulled parameter information successfully (not in use)
+        :type Status: str
+        """
+        self.CurrentValue = None
+        self.DefaultValue = None
+        self.NeedRestart = None
+        self.ParamName = None
+        self.TextValue = None
+        self.Tips = None
+        self.ValueType = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.CurrentValue = params.get("CurrentValue")
+        self.DefaultValue = params.get("DefaultValue")
+        self.NeedRestart = params.get("NeedRestart")
+        self.ParamName = params.get("ParamName")
+        self.TextValue = params.get("TextValue")
+        self.Tips = params.get("Tips")
+        self.ValueType = params.get("ValueType")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

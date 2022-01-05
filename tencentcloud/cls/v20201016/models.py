@@ -520,6 +520,50 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         
 
 
+class Ckafka(AbstractModel):
+    """Information of the CKafka instance to ship to
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Vip: CKafka VIP
+        :type Vip: str
+        :param Vport: CKafka Vport
+        :type Vport: str
+        :param InstanceId: CKafka instance ID
+        :type InstanceId: str
+        :param InstanceName: CKafka instance name
+        :type InstanceName: str
+        :param TopicId: CKafka topic ID
+        :type TopicId: str
+        :param TopicName: CKafka topic name
+        :type TopicName: str
+        """
+        self.Vip = None
+        self.Vport = None
+        self.InstanceId = None
+        self.InstanceName = None
+        self.TopicId = None
+        self.TopicName = None
+
+
+    def _deserialize(self, params):
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.TopicId = params.get("TopicId")
+        self.TopicName = params.get("TopicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Column(AbstractModel):
     """Column attribute of log analysis
 
@@ -637,6 +681,36 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.UpdateTime = params.get("UpdateTime")
         self.CreateTime = params.get("CreateTime")
         self.UserDefineRule = params.get("UserDefineRule")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConsumerContent(AbstractModel):
+    """Shipping content
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnableTag: Whether to ship tag information
+Note: This field may return `null`, indicating that no valid value was found.
+        :type EnableTag: bool
+        :param MetaFields: List of metadata to ship. Currently, only __SOURCE__, __FILENAME__, and __TIMESTAMP__ are supported.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type MetaFields: list of str
+        """
+        self.EnableTag = None
+        self.MetaFields = None
+
+
+    def _deserialize(self, params):
+        self.EnableTag = params.get("EnableTag")
+        self.MetaFields = params.get("MetaFields")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1052,6 +1126,63 @@ class CreateConfigResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.ConfigId = params.get("ConfigId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateConsumerRequest(AbstractModel):
+    """CreateConsumer request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicId: Log topic ID to bind
+        :type TopicId: str
+        :param NeedContent: Whether to ship log metadata. Default value: `true`
+        :type NeedContent: bool
+        :param Content: Metadata to ship if `NeedContent` is `true`
+        :type Content: :class:`tencentcloud.cls.v20201016.models.ConsumerContent`
+        :param Ckafka: CKafka information
+        :type Ckafka: :class:`tencentcloud.cls.v20201016.models.Ckafka`
+        """
+        self.TopicId = None
+        self.NeedContent = None
+        self.Content = None
+        self.Ckafka = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        self.NeedContent = params.get("NeedContent")
+        if params.get("Content") is not None:
+            self.Content = ConsumerContent()
+            self.Content._deserialize(params.get("Content"))
+        if params.get("Ckafka") is not None:
+            self.Ckafka = Ckafka()
+            self.Ckafka._deserialize(params.get("Ckafka"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateConsumerResponse(AbstractModel):
+    """CreateConsumer response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -1772,6 +1903,47 @@ class DeleteConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteConsumerRequest(AbstractModel):
+    """DeleteConsumer request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicId: Log topic ID bound to the task
+        :type TopicId: str
+        """
+        self.TopicId = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteConsumerResponse(AbstractModel):
+    """DeleteConsumer response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteExportRequest(AbstractModel):
     """DeleteExport request structure.
 
@@ -2125,35 +2297,37 @@ class DescribeAlarmsRequest(AbstractModel):
         r"""
         :param Filters: <br><li> name
 
-Filter by **alarm policy name**.
-Type: String
+Filter by **alarm policy name**
+Type: string
 
 Required: no
 
 <br><li> alarmId
 
-Filter by **alarm policy ID**.
-Type: String
+Filter by **alarm policy ID**
+Type: string
 
 Required: no
 
 <br><li> topicId
 
-Filter by **log topic ID of monitoring object**.
+Filter by **log topic ID**
 
-Type: String
+Type: string
 
 Required: no
 
 <br><li> enable
 
-Filter by **enablement status**.
+Filter by **enablement status**
 
-Type: String
+Type: string
+
+Note: The valid values of `enable` include `1`, `t`, `T`, `TRUE`, `true`, `True`, `0`, `f`, `F`, `FALSE`, `false`, and `False`. If other values are entered, an “invalid parameter” error will be returned.
 
 Required: no
 
-Each request can contain up to 10 `Filters` and 5 `Filter.Values`.
+Each request can have up to 10 `Filters` and 5 `Filter.Values`.
         :type Filters: list of Filter
         :param Offset: Page offset. Default value: 0
         :type Offset: int
@@ -2667,6 +2841,68 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj._deserialize(item)
                 self.Configs.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeConsumerRequest(AbstractModel):
+    """DescribeConsumer request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicId: Log topic ID bound to the task
+        :type TopicId: str
+        """
+        self.TopicId = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConsumerResponse(AbstractModel):
+    """DescribeConsumer response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Effective: Whether the shipping task is effective
+        :type Effective: bool
+        :param NeedContent: Whether log metadata is shipped
+        :type NeedContent: bool
+        :param Content: Metadata shipped if `NeedContent` is `true`
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Content: :class:`tencentcloud.cls.v20201016.models.ConsumerContent`
+        :param Ckafka: CKafka information
+        :type Ckafka: :class:`tencentcloud.cls.v20201016.models.Ckafka`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Effective = None
+        self.NeedContent = None
+        self.Content = None
+        self.Ckafka = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Effective = params.get("Effective")
+        self.NeedContent = params.get("NeedContent")
+        if params.get("Content") is not None:
+            self.Content = ConsumerContent()
+            self.Content._deserialize(params.get("Content"))
+        if params.get("Ckafka") is not None:
+            self.Ckafka = Ckafka()
+            self.Ckafka._deserialize(params.get("Ckafka"))
         self.RequestId = params.get("RequestId")
 
 
@@ -4621,6 +4857,67 @@ class ModifyConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyConsumerRequest(AbstractModel):
+    """ModifyConsumer request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicId: Log topic ID bound to the task
+        :type TopicId: str
+        :param Effective: Whether to enable the shipping task
+        :type Effective: bool
+        :param NeedContent: Whether to ship metadata. Default value: `false`
+        :type NeedContent: bool
+        :param Content: Metadata to ship if `NeedContent` is `true`
+        :type Content: :class:`tencentcloud.cls.v20201016.models.ConsumerContent`
+        :param Ckafka: CKafka information
+        :type Ckafka: :class:`tencentcloud.cls.v20201016.models.Ckafka`
+        """
+        self.TopicId = None
+        self.Effective = None
+        self.NeedContent = None
+        self.Content = None
+        self.Ckafka = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        self.Effective = params.get("Effective")
+        self.NeedContent = params.get("NeedContent")
+        if params.get("Content") is not None:
+            self.Content = ConsumerContent()
+            self.Content._deserialize(params.get("Content"))
+        if params.get("Ckafka") is not None:
+            self.Ckafka = Ckafka()
+            self.Ckafka._deserialize(params.get("Ckafka"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyConsumerResponse(AbstractModel):
+    """ModifyConsumer response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyIndexRequest(AbstractModel):
     """ModifyIndex request structure.
 
@@ -5257,7 +5554,7 @@ class SearchLogRequest(AbstractModel):
         :type Query: str
         :param Limit: Number of raw logs returned in a single query. Maximum value: 100. If the query statement (Query) contains an SQL query, you need to specify the number of SQL query results in `Query`. For more information, please visit https://intl.cloud.tencent.com/document/product/614/58977?from_cn_redirect=1
         :type Limit: int
-        :param Context: This field is used to load more logs. Pass through the last `Context` value returned to get more log content. It will expire after 1 hour.
+        :param Context: This parameter is used to load more logs. Pass through the last `Context` value returned to get more log content. Up to 10,000 raw logs can be obtained in total. This parameter expires in 1 hour.
         :type Context: str
         :param Sort: Order of the logs sorted by time returned by the log API. Valid values: `asc`: ascending; `desc`: descending. Default value: `desc`
         :type Sort: str

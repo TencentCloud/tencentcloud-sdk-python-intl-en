@@ -2046,6 +2046,55 @@ class DescribeDcnDetailResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeFileDownloadUrlRequest(AbstractModel):
+    """DescribeFileDownloadUrl request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param FilePath: Unsigned file path
+        :type FilePath: str
+        """
+        self.InstanceId = None
+        self.FilePath = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.FilePath = params.get("FilePath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFileDownloadUrlResponse(AbstractModel):
+    """DescribeFileDownloadUrl response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PreSignedUrl: Signed download URL
+        :type PreSignedUrl: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.PreSignedUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PreSignedUrl = params.get("PreSignedUrl")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeFlowRequest(AbstractModel):
     """DescribeFlow request structure.
 
