@@ -674,6 +674,80 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBDiagEventsRequest(AbstractModel):
+    """DescribeDBDiagEvents request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: Start time in the format of “2021-05-27 00:00:00”. The earliest time that can be queried is 30 days before the current time.
+        :type StartTime: str
+        :param EndTime: End time in the format of "2021-05-27 01:00:00". The interval between the end time and the start time can be up to 7 days.
+        :type EndTime: str
+        :param Severities: Risk level list. Valid values in descending order of severity: `1` (critical), `2` (serious), `3` (alarm), `4` (warning), `5` (healthy).
+        :type Severities: list of int
+        :param InstanceIds: Instance ID list.
+        :type InstanceIds: list of str
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 50.
+        :type Limit: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Severities = None
+        self.InstanceIds = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Severities = params.get("Severities")
+        self.InstanceIds = params.get("InstanceIds")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBDiagEventsResponse(AbstractModel):
+    """DescribeDBDiagEvents response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number of diagnosis events.
+        :type TotalCount: int
+        :param Items: Diagnosis event list.
+        :type Items: list of DiagHistoryEventItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = DiagHistoryEventItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBDiagHistoryRequest(AbstractModel):
     """DescribeDBDiagHistory request structure.
 
@@ -1392,7 +1466,7 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
         :type InstanceId: str
         :param StartTime: Start time, such as "2019-09-10 12:13:14".
         :type StartTime: str
-        :param EndTime: End time, such as "2019-09-10 12:13:14". The interval between the end time and the start time can be up to 7 days.
+        :param EndTime: End time in the format of "2019-09-11 10:13:14". The interval between the end time and the start time can be up to 7 days.
         :type EndTime: str
         :param SortBy: Sorting key. Valid values: QueryTime, ExecTimes, RowsSent, LockTime, RowsExamined. Default value: QueryTime.
         :type SortBy: str

@@ -277,6 +277,10 @@ class CreateFileSystemRequest(AbstractModel):
         :type RootInodeUser: str
         :param RootInodeGroup: Group name of the root directory Inode, which is `supergroup` by default
         :type RootInodeGroup: str
+        :param EnableRanger: Whether to enable verification of Ranger service addresses
+        :type EnableRanger: bool
+        :param RangerServiceAddresses: List of Ranger service addresses (empty array by default)
+        :type RangerServiceAddresses: list of str
         """
         self.FileSystemName = None
         self.CapacityQuota = None
@@ -285,6 +289,8 @@ class CreateFileSystemRequest(AbstractModel):
         self.SuperUsers = None
         self.RootInodeUser = None
         self.RootInodeGroup = None
+        self.EnableRanger = None
+        self.RangerServiceAddresses = None
 
 
     def _deserialize(self, params):
@@ -295,6 +301,8 @@ class CreateFileSystemRequest(AbstractModel):
         self.SuperUsers = params.get("SuperUsers")
         self.RootInodeUser = params.get("RootInodeUser")
         self.RootInodeGroup = params.get("RootInodeGroup")
+        self.EnableRanger = params.get("EnableRanger")
+        self.RangerServiceAddresses = params.get("RangerServiceAddresses")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -872,18 +880,26 @@ class DescribeFileSystemResponse(AbstractModel):
         r"""
         :param FileSystem: File system
         :type FileSystem: :class:`tencentcloud.chdfs.v20201112.models.FileSystem`
-        :param CapacityUsed: Used capacity (in bytes), including STANDARD storage and ARCHIVE storage
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param CapacityUsed: Used capacity of the file system, in bytes
+Note: this field may return `null`, indicating that no valid value was found.
         :type CapacityUsed: int
-        :param ArchiveCapacityUsed: Used ARCHIVE storage capacity (in bytes)
+        :param ArchiveCapacityUsed: Used ARCHIVE capacity of COS, in bytes
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ArchiveCapacityUsed: int
+        :param StandardCapacityUsed: Used STANDARD capacity of COS, in bytes
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type StandardCapacityUsed: int
+        :param DegradeCapacityUsed: Used STANDARD_IA capacity of COS, in bytes
+Note: this field may return `null`, indicating that no valid value was found.
+        :type DegradeCapacityUsed: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.FileSystem = None
         self.CapacityUsed = None
         self.ArchiveCapacityUsed = None
+        self.StandardCapacityUsed = None
+        self.DegradeCapacityUsed = None
         self.RequestId = None
 
 
@@ -893,6 +909,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
             self.FileSystem._deserialize(params.get("FileSystem"))
         self.CapacityUsed = params.get("CapacityUsed")
         self.ArchiveCapacityUsed = params.get("ArchiveCapacityUsed")
+        self.StandardCapacityUsed = params.get("StandardCapacityUsed")
+        self.DegradeCapacityUsed = params.get("DegradeCapacityUsed")
         self.RequestId = params.get("RequestId")
 
 
@@ -1258,6 +1276,12 @@ class FileSystem(AbstractModel):
         :type SuperUsers: list of str
         :param PosixAcl: POSIX permission control
         :type PosixAcl: bool
+        :param EnableRanger: Whether to enable verification of Ranger service addresses
+Note: this field may return `null`, indicating that no valid value was found.
+        :type EnableRanger: bool
+        :param RangerServiceAddresses: List of Ranger service addresses
+Note: this field may return `null`, indicating that no valid value was found.
+        :type RangerServiceAddresses: list of str
         """
         self.AppId = None
         self.FileSystemName = None
@@ -1270,6 +1294,8 @@ class FileSystem(AbstractModel):
         self.Status = None
         self.SuperUsers = None
         self.PosixAcl = None
+        self.EnableRanger = None
+        self.RangerServiceAddresses = None
 
 
     def _deserialize(self, params):
@@ -1284,6 +1310,8 @@ class FileSystem(AbstractModel):
         self.Status = params.get("Status")
         self.SuperUsers = params.get("SuperUsers")
         self.PosixAcl = params.get("PosixAcl")
+        self.EnableRanger = params.get("EnableRanger")
+        self.RangerServiceAddresses = params.get("RangerServiceAddresses")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1457,6 +1485,10 @@ Note: the file system capacity after change cannot be smaller than the currently
         :type SuperUsers: list of str
         :param PosixAcl: Whether to verify POSIX ACL
         :type PosixAcl: bool
+        :param EnableRanger: Whether to enable verification of Ranger service addresses
+        :type EnableRanger: bool
+        :param RangerServiceAddresses: List of Ranger service addresses, which can be an empty array
+        :type RangerServiceAddresses: list of str
         """
         self.FileSystemId = None
         self.FileSystemName = None
@@ -1464,6 +1496,8 @@ Note: the file system capacity after change cannot be smaller than the currently
         self.CapacityQuota = None
         self.SuperUsers = None
         self.PosixAcl = None
+        self.EnableRanger = None
+        self.RangerServiceAddresses = None
 
 
     def _deserialize(self, params):
@@ -1473,6 +1507,8 @@ Note: the file system capacity after change cannot be smaller than the currently
         self.CapacityQuota = params.get("CapacityQuota")
         self.SuperUsers = params.get("SuperUsers")
         self.PosixAcl = params.get("PosixAcl")
+        self.EnableRanger = params.get("EnableRanger")
+        self.RangerServiceAddresses = params.get("RangerServiceAddresses")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1699,7 +1735,7 @@ class RestoreTask(AbstractModel):
         :type RestoreTaskId: int
         :param FilePath: Restoration task file path
         :type FilePath: str
-        :param Type: Restoration task type (1: standard; 2: expedited; 3: bulk)
+        :param Type: Restoration task type (`1`: standard; `2`: expedited; `3`: bulk, with only the expedited type available currently)
         :type Type: int
         :param Days: Validity period (in days) of the temporary copy generated during restoration
         :type Days: int
@@ -1769,7 +1805,7 @@ class Transition(AbstractModel):
         r"""
         :param Days: Trigger time (in days)
         :type Days: int
-        :param Type: Transition type (1: archive; 2: deletion)
+        :param Type: Transition type (`1`: transition to ARCHIVE; `2`: delete; `3`: transition to STANDARD_IA)
         :type Type: int
         """
         self.Days = None
