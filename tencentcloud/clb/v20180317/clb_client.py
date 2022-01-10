@@ -167,6 +167,34 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CloneLoadBalancer(self, request):
+        """This API is used to generate a CLB instance that has the same rules and binding relations as the specified CLB instance.
+
+        :param request: Request instance for CloneLoadBalancer.
+        :type request: :class:`tencentcloud.clb.v20180317.models.CloneLoadBalancerRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.CloneLoadBalancerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CloneLoadBalancer", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CloneLoadBalancerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateClsLogSet(self, request):
         """This API is used to create a CLB exclusive logset for storing CLB logs.
 
@@ -975,6 +1003,34 @@ class ClbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLoadBalancerListByCertIdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLoadBalancerOverview(self, request):
+        """Queries the total number of CLB instances and the number of CLB instances in different status (running, isolated and about to expire).
+
+        :param request: Request instance for DescribeLoadBalancerOverview.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeLoadBalancerOverviewRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeLoadBalancerOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLoadBalancerOverview", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLoadBalancerOverviewResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

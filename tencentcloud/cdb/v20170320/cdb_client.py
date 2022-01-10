@@ -2282,7 +2282,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyRoGroupInfo(self, request):
-        """This API is used to update the information of a TencentDB RO group, such as configuring an instance removal policy in case of excessive delay and setting read weights of RO instances.
+        """This API is used to update the information of a TencentDB RO group, such as configuring a read-only instance removal policy in case of excessive delay, setting read weights of read-only instances, and setting the replication delay.
 
         :param request: Request instance for ModifyRoGroupInfo.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyRoGroupInfoRequest`
@@ -2295,34 +2295,6 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRoGroupInfoResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ModifyRoReplicationDelay(self, request):
-        """This API is used to modify the replication delay of a delayed RO replica.
-
-        :param request: Request instance for ModifyRoReplicationDelay.
-        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyRoReplicationDelayRequest`
-        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyRoReplicationDelayResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ModifyRoReplicationDelay", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyRoReplicationDelayResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2543,20 +2515,20 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def StartDelayReplication(self, request):
-        """This API is used to start delayed replication on a delayed RO replica.
+    def StartReplication(self, request):
+        """This API is used to start the data replication from the source instance to the read-only instance.
 
-        :param request: Request instance for StartDelayReplication.
-        :type request: :class:`tencentcloud.cdb.v20170320.models.StartDelayReplicationRequest`
-        :rtype: :class:`tencentcloud.cdb.v20170320.models.StartDelayReplicationResponse`
+        :param request: Request instance for StartReplication.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.StartReplicationRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.StartReplicationResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("StartDelayReplication", params)
+            body = self.call("StartReplication", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.StartDelayReplicationResponse()
+                model = models.StartReplicationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2599,20 +2571,20 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def StopDelayReplication(self, request):
-        """This API is used to stop delayed replication on a delayed RO replica.
+    def StopReplication(self, request):
+        """This API is used to stop the data replication from the source instance to the read-only instance.
 
-        :param request: Request instance for StopDelayReplication.
-        :type request: :class:`tencentcloud.cdb.v20170320.models.StopDelayReplicationRequest`
-        :rtype: :class:`tencentcloud.cdb.v20170320.models.StopDelayReplicationResponse`
+        :param request: Request instance for StopReplication.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.StopReplicationRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.StopReplicationResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("StopDelayReplication", params)
+            body = self.call("StopReplication", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.StopDelayReplicationResponse()
+                model = models.StopReplicationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

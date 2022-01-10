@@ -29,14 +29,22 @@ class ApplySnapshotRequest(AbstractModel):
         :type SnapshotId: str
         :param DiskId: ID of the original cloud disk corresponding to the snapshot, which can be queried via the API [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1).
         :type DiskId: str
+        :param AutoStopInstance: Specifies whether to shut down a CVM automatically before a rollback
+        :type AutoStopInstance: bool
+        :param AutoStartInstance: Specifies whether to start up a CVM automatically after a rollback
+        :type AutoStartInstance: bool
         """
         self.SnapshotId = None
         self.DiskId = None
+        self.AutoStopInstance = None
+        self.AutoStartInstance = None
 
 
     def _deserialize(self, params):
         self.SnapshotId = params.get("SnapshotId")
         self.DiskId = params.get("DiskId")
+        self.AutoStopInstance = params.get("AutoStopInstance")
+        self.AutoStartInstance = params.get("AutoStartInstance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -146,6 +154,38 @@ class AttachDisksResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class AutoMountConfiguration(AbstractModel):
+    """This parameter describes the configuration of automatically initializing and mounting the cloud disk to the CVM when purchasing a new cloud disk.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: ID of the instance to which the cloud disk is attached.
+        :type InstanceId: list of str
+        :param MountPoint: Path to the mount point in the CVM
+        :type MountPoint: list of str
+        :param FileSystemType: File system type. Supported: ext4 and xfs.
+        :type FileSystemType: str
+        """
+        self.InstanceId = None
+        self.MountPoint = None
+        self.FileSystemType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.MountPoint = params.get("MountPoint")
+        self.FileSystemType = params.get("FileSystemType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class AutoSnapshotPolicy(AbstractModel):
@@ -367,6 +407,8 @@ class CreateDisksRequest(AbstractModel):
         :type DiskChargePrepaid: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
         :param DeleteSnapshot: Whether to delete the associated non-permanent snapshots when a cloud disk is terminated. Valid values: `0` (do not delete); `1` (delete). Default value: `0`. To find out whether a snapshot is permanent, you can call the `DescribeSnapshots` API and check the `IsPermanent` field (`true`: permanent; `false`: non-permanent) in its response.
         :type DeleteSnapshot: int
+        :param AutoMountConfiguration: When a cloud disk is created, automatically initialize it and attach it to the specified mount point
+        :type AutoMountConfiguration: :class:`tencentcloud.cbs.v20170312.models.AutoMountConfiguration`
         """
         self.Placement = None
         self.DiskChargeType = None
@@ -382,6 +424,7 @@ class CreateDisksRequest(AbstractModel):
         self.Encrypt = None
         self.DiskChargePrepaid = None
         self.DeleteSnapshot = None
+        self.AutoMountConfiguration = None
 
 
     def _deserialize(self, params):
@@ -408,6 +451,9 @@ class CreateDisksRequest(AbstractModel):
             self.DiskChargePrepaid = DiskChargePrepaid()
             self.DiskChargePrepaid._deserialize(params.get("DiskChargePrepaid"))
         self.DeleteSnapshot = params.get("DeleteSnapshot")
+        if params.get("AutoMountConfiguration") is not None:
+            self.AutoMountConfiguration = AutoMountConfiguration()
+            self.AutoMountConfiguration._deserialize(params.get("AutoMountConfiguration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

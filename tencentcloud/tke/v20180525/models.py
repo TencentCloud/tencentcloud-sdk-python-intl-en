@@ -818,6 +818,8 @@ class ClusterBasicSettings(AbstractModel):
         :type OsCustomizeType: str
         :param NeedWorkSecurityGroup: Whether to enable the node’s default security group (default: `No`, Aphla feature)
         :type NeedWorkSecurityGroup: bool
+        :param SubnetId: When the Cilium Overlay add-on is selected, TKE will take two IPs from the subnet to create the private network CLB.
+        :type SubnetId: str
         """
         self.ClusterOs = None
         self.ClusterVersion = None
@@ -828,6 +830,7 @@ class ClusterBasicSettings(AbstractModel):
         self.TagSpecification = None
         self.OsCustomizeType = None
         self.NeedWorkSecurityGroup = None
+        self.SubnetId = None
 
 
     def _deserialize(self, params):
@@ -845,6 +848,7 @@ class ClusterBasicSettings(AbstractModel):
                 self.TagSpecification.append(obj)
         self.OsCustomizeType = params.get("OsCustomizeType")
         self.NeedWorkSecurityGroup = params.get("NeedWorkSecurityGroup")
+        self.SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1451,7 +1455,7 @@ class CreateClusterRequest(AbstractModel):
         :type ClusterAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.ClusterAdvancedSettings`
         :param InstanceAdvancedSettings: Advanced configuration information of the node
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
-        :param ExistedInstancesForNode: Configuration information of an existing instance
+        :param ExistedInstancesForNode: The configuration information for existing instances. All instances must be in the same VPC. Up to 100 instances are allowed in one VPC. Spot instances are not supported.
         :type ExistedInstancesForNode: list of ExistedInstancesForNode
         :param InstanceDataDiskMountSettings: CVM type and the corresponding data disk mounting configuration information.
         :type InstanceDataDiskMountSettings: list of InstanceDataDiskMountSetting

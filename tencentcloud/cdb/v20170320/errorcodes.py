@@ -32,6 +32,9 @@ CDBERROR_IMPORTERROR = 'CdbError.ImportError'
 # Backend task error.
 CDBERROR_TASKERROR = 'CdbError.TaskError'
 
+# Operation failed.
+FAILEDOPERATION = 'FailedOperation'
+
 # Async task exception.
 FAILEDOPERATION_ASYNCTASKSTATUSERROR = 'FailedOperation.AsyncTaskStatusError'
 
@@ -62,9 +65,6 @@ FAILEDOPERATION_JSONUNMARSHALERROR = 'FailedOperation.JsonUnmarshalError'
 # The instance is not a delayed RO replica.
 FAILEDOPERATION_NOTDELAYRO = 'FailedOperation.NotDelayRo'
 
-# Failed to call the backend API to enable delayed replication.
-FAILEDOPERATION_OPERATIONREPLICATIONERROR = 'FailedOperation.OperationReplicationError'
-
 # The executed operation to modify permissions is invalid. You can refer to product documentation for more information about permissions that can be modified for this instance. If you have any questions, please contact customer service.
 FAILEDOPERATION_PRIVILEGEDATAILLEGAL = 'FailedOperation.PrivilegeDataIllegal'
 
@@ -82,6 +82,9 @@ FAILEDOPERATION_STATUSCONFLICT = 'FailedOperation.StatusConflict'
 
 # Failed to submit the task. Please try again later. If the submission remains unsuccessful, please contact customer service.
 FAILEDOPERATION_SUBMITASYNCTASKERROR = 'FailedOperation.SubmitAsyncTaskError'
+
+# The query timed out.
+FAILEDOPERATION_TIMEOUTERROR = 'FailedOperation.TimeoutError'
 
 # This type of operations cannot be performed.
 FAILEDOPERATION_TYPEINCONFLICT = 'FailedOperation.TypeInConflict'
@@ -269,17 +272,8 @@ INVALIDPARAMETERVALUE_ACCOUNTPASSWORDRULEERROR = 'InvalidParameterValue.AccountP
 # Data conversion failed.
 INVALIDPARAMETERVALUE_DATACONVERTERROR = 'InvalidParameterValue.DataConvertError'
 
-# The specified point in time should not be later than the current time.
-INVALIDPARAMETERVALUE_DUETIMEWRONG = 'InvalidParameterValue.DueTimeWrong'
-
 # Invalid parameter value
 INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = 'InvalidParameterValue.InvalidParameterValueError'
-
-# The original type should not be the same as the target type.
-INVALIDPARAMETERVALUE_SRCTYPEEQUALDSTTYPE = 'InvalidParameterValue.SrcTypeEqualDstType'
-
-# The RO replica is not the type of instance allowed by the operation.
-INVALIDPARAMETERVALUE_SRCTYPENOTEQUALDSTTYPE = 'InvalidParameterValue.SrcTypeNotEqualDstType'
 
 # Incorrect format of the account username.
 INVALIDPARAMETERVALUE_USERNAMERULEERROR = 'InvalidParameterValue.UserNameRuleError'
@@ -331,6 +325,9 @@ OPERATIONDENIED_AUDITSTATUSERROR = 'OperationDenied.AuditStatusError'
 
 # The audit tasks conflict.
 OPERATIONDENIED_AUDITTASKCONFLICTERROR = 'OperationDenied.AuditTaskConflictError'
+
+# The operation is not allowed as the RO group contains an invalid read-only instance.
+OPERATIONDENIED_CONFLICTROSTATUS = 'OperationDenied.ConflictRoStatus'
 
 # You have enabled the compliance audit feature of DBbrain, so you cannot enable the rule-based audit.
 OPERATIONDENIED_DBBRAINPOLICYCONFLICT = 'OperationDenied.DBBrainPolicyConflict'

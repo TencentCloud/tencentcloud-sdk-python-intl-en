@@ -6457,11 +6457,14 @@ class ModifyRoGroupInfoRequest(AbstractModel):
         :type RoWeightValues: list of RoWeightValue
         :param IsBalanceRoLoad: Whether to rebalance the loads of read-only replicas in the RO group. Valid values: `1` (yes), `0` (no). Default value: `0`. If this parameter is set to `1`, connections to the read-only replicas in the RO group will be interrupted transiently. Please ensure that your application has a reconnection mechanism.
         :type IsBalanceRoLoad: int
+        :param ReplicationDelayTime: This field has been deprecated.
+        :type ReplicationDelayTime: int
         """
         self.RoGroupId = None
         self.RoGroupInfo = None
         self.RoWeightValues = None
         self.IsBalanceRoLoad = None
+        self.ReplicationDelayTime = None
 
 
     def _deserialize(self, params):
@@ -6476,6 +6479,7 @@ class ModifyRoGroupInfoRequest(AbstractModel):
                 obj._deserialize(item)
                 self.RoWeightValues.append(obj)
         self.IsBalanceRoLoad = params.get("IsBalanceRoLoad")
+        self.ReplicationDelayTime = params.get("ReplicationDelayTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6492,58 +6496,18 @@ class ModifyRoGroupInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param AsyncRequestId: Async task ID.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AsyncRequestId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.AsyncRequestId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class ModifyRoReplicationDelayRequest(AbstractModel):
-    """ModifyRoReplicationDelay request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceId: Instance ID
-        :type InstanceId: str
-        :param ReplicationDelay: Replication delay in seconds. Value range: 1 to 259200.
-        :type ReplicationDelay: int
-        """
-        self.InstanceId = None
-        self.ReplicationDelay = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.ReplicationDelay = params.get("ReplicationDelay")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyRoReplicationDelayResponse(AbstractModel):
-    """ModifyRoReplicationDelay response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
         self.RequestId = params.get("RequestId")
 
 
@@ -7176,6 +7140,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param RoGroupZone: Read-only group AZ.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RoGroupZone: str
+        :param DelayReplicationTime: Replication delay.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DelayReplicationTime: int
         """
         self.RoGroupMode = None
         self.RoGroupId = None
@@ -7192,6 +7159,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.UniqSubnetId = None
         self.RoGroupRegion = None
         self.RoGroupZone = None
+        self.DelayReplicationTime = None
 
 
     def _deserialize(self, params):
@@ -7215,6 +7183,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.UniqSubnetId = params.get("UniqSubnetId")
         self.RoGroupRegion = params.get("RoGroupRegion")
         self.RoGroupZone = params.get("RoGroupZone")
+        self.DelayReplicationTime = params.get("DelayReplicationTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7241,12 +7210,15 @@ class RoGroupAttr(AbstractModel):
         :type MinRoInGroup: int
         :param WeightMode: Weighting mode. Supported values include `system` (automatically assigned by the system) and `custom` (defined by user). Please note that if the `custom` mode is selected, the RO instance weight configuration parameter (RoWeightValues) must be set.
         :type WeightMode: str
+        :param ReplicationDelayTime: Replication delay.
+        :type ReplicationDelayTime: int
         """
         self.RoGroupName = None
         self.RoMaxDelayTime = None
         self.RoOfflineDelay = None
         self.MinRoInGroup = None
         self.WeightMode = None
+        self.ReplicationDelayTime = None
 
 
     def _deserialize(self, params):
@@ -7255,6 +7227,7 @@ class RoGroupAttr(AbstractModel):
         self.RoOfflineDelay = params.get("RoOfflineDelay")
         self.MinRoInGroup = params.get("MinRoInGroup")
         self.WeightMode = params.get("WeightMode")
+        self.ReplicationDelayTime = params.get("ReplicationDelayTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8163,33 +8136,21 @@ class StartBatchRollbackResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class StartDelayReplicationRequest(AbstractModel):
-    """StartDelayReplication request structure.
+class StartReplicationRequest(AbstractModel):
+    """StartReplication request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID
+        :param InstanceId: Read-Only instance ID.
         :type InstanceId: str
-        :param DelayReplicationType: Delayed replication mode. Valid values: `DEFAULT` (replicate according to the specified replication delay), `GTID` (replicate according to the specified GTID), `DUE_TIME` (replicate according to the specified point in time).
-        :type DelayReplicationType: str
-        :param DueTime: Specified point in time. Default value: 0. The maximum value cannot be later than the current time.
-        :type DueTime: int
-        :param Gtid: Specified GITD. This parameter is required when the delayed replication mode is `GTID`.
-        :type Gtid: str
         """
         self.InstanceId = None
-        self.DelayReplicationType = None
-        self.DueTime = None
-        self.Gtid = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
-        self.DelayReplicationType = params.get("DelayReplicationType")
-        self.DueTime = params.get("DueTime")
-        self.Gtid = params.get("Gtid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8199,15 +8160,15 @@ class StartDelayReplicationRequest(AbstractModel):
         
 
 
-class StartDelayReplicationResponse(AbstractModel):
-    """StartDelayReplication response structure.
+class StartReplicationResponse(AbstractModel):
+    """StartReplication response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param AsyncRequestId: Delayed replication task ID. This parameter will be returned if `DelayReplicationType` is not `DEFAULT`. It can be used to view the status of the delayed replication task.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param AsyncRequestId: Async task ID.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type AsyncRequestId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -8262,14 +8223,14 @@ class StopDBImportJobResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class StopDelayReplicationRequest(AbstractModel):
-    """StopDelayReplication request structure.
+class StopReplicationRequest(AbstractModel):
+    """StopReplication request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID
+        :param InstanceId: Read-Only instance ID.
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -8286,20 +8247,25 @@ class StopDelayReplicationRequest(AbstractModel):
         
 
 
-class StopDelayReplicationResponse(AbstractModel):
-    """StopDelayReplication response structure.
+class StopReplicationResponse(AbstractModel):
+    """StopReplication response structure.
 
     """
 
     def __init__(self):
         r"""
+        :param AsyncRequestId: Async task ID.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AsyncRequestId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.AsyncRequestId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
         self.RequestId = params.get("RequestId")
 
 
@@ -8820,6 +8786,10 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type FastUpgrade: int
         :param MaxDelayTime: Delay threshold. Value range: 1-10. Default value: `10`.
         :type MaxDelayTime: int
+        :param CrossCluster: Whether to migrate the source node across AZs. Valid values: `0` (no), `1`(yes). Default value: `0`. If it is `1`, you can modify the source node AZ.
+        :type CrossCluster: int
+        :param ZoneId: New AZ of the source node. This field is only valid when `CrossCluster` is `1`. Only migration across AZs in the same region is supported.
+        :type ZoneId: str
         """
         self.InstanceId = None
         self.Memory = None
@@ -8835,6 +8805,8 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.Cpu = None
         self.FastUpgrade = None
         self.MaxDelayTime = None
+        self.CrossCluster = None
+        self.ZoneId = None
 
 
     def _deserialize(self, params):
@@ -8852,6 +8824,8 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.Cpu = params.get("Cpu")
         self.FastUpgrade = params.get("FastUpgrade")
         self.MaxDelayTime = params.get("MaxDelayTime")
+        self.CrossCluster = params.get("CrossCluster")
+        self.ZoneId = params.get("ZoneId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -930,6 +930,136 @@ class ClassicalTargetInfo(AbstractModel):
         
 
 
+class CloneLoadBalancerRequest(AbstractModel):
+    """CloneLoadBalancer request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoadBalancerId: CLB instance ID
+        :type LoadBalancerId: str
+        :param LoadBalancerName: Clones the name of the CLB instance. The name must be 1-60 characters containing letters, numbers, "-" or "_".
+Note: if the name of a new CLB instance already exists, a default name will be generated automatically.
+        :type LoadBalancerName: str
+        :param ProjectId: ID of the project to which a CLB instance belongs, which can be obtained through the DescribeProject API. If this parameter is not passed in, the default project will be used.
+        :type ProjectId: int
+        :param MasterZoneId: Sets the primary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`, which is applicable only to public network CLB.
+Note: A primary AZ is the default AZ that carries traffic. When it fails, the optimal secondary AZ is chosen automatically to take its place. 
+        :type MasterZoneId: str
+        :param SlaveZoneId: Sets the secondary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`, which is applicable only to public network CLB instances.
+Note: A secondary AZ carries traffic when the primary AZ fails. 
+        :type SlaveZoneId: str
+        :param ZoneId: Specifies an AZ ID for creating a CLB instance, such as `ap-guangzhou-1`, which is applicable only to public network CLB instances.
+        :type ZoneId: str
+        :param InternetAccessible: CLB network billing mode. This parameter is applicable only to public network CLB instances.
+        :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
+        :param VipIsp: This parameter is applicable only to public network CLB instances. Valid values: CMCC (China Mobile), CTCC (China Telecom), CUCC (China Unicom). If this parameter is not specified, BGP will be used by default. ISPs supported in a region can be queried with the `DescribeSingleIsp` API. If an ISP is specified, only bill-by-bandwidth-package (BANDWIDTH_PACKAGE) can be used as the network billing mode.
+        :type VipIsp: str
+        :param Vip: Applies for CLB instances for a specified VIP
+        :type Vip: str
+        :param Tags: Tags a CLB instance when purchasing it
+        :type Tags: list of TagInfo
+        :param ExclusiveCluster: Dedicated cluster information
+        :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
+        :param BandwidthPackageId: Bandwidth package ID. If this parameter is specified, the network billing mode (`InternetAccessible.InternetChargeType`) will only support bill-by-bandwidth package (`BANDWIDTH_PACKAGE`).
+        :type BandwidthPackageId: str
+        :param SnatPro: Whether to support binding cross-VPC IPs or cross-region IPs
+        :type SnatPro: bool
+        :param SnatIps: Creates `SnatIp` when the binding IPs of other VPCs feature is enabled
+        :type SnatIps: list of SnatIp
+        :param ClusterIds: ID of the public network CLB dedicated cluster
+        :type ClusterIds: list of str
+        :param SlaType: 
+        :type SlaType: str
+        :param ClusterTag: Tag of the STGW dedicated cluster
+        :type ClusterTag: str
+        :param Zones: Availability zones for nearby access of private network CLB instances to distribute traffic
+        :type Zones: list of str
+        :param EipAddressId: Unique ID of an EIP, which can only be used when binding the EIP of a private network CLB instance (e.g., `eip-11112222`)
+        :type EipAddressId: str
+        """
+        self.LoadBalancerId = None
+        self.LoadBalancerName = None
+        self.ProjectId = None
+        self.MasterZoneId = None
+        self.SlaveZoneId = None
+        self.ZoneId = None
+        self.InternetAccessible = None
+        self.VipIsp = None
+        self.Vip = None
+        self.Tags = None
+        self.ExclusiveCluster = None
+        self.BandwidthPackageId = None
+        self.SnatPro = None
+        self.SnatIps = None
+        self.ClusterIds = None
+        self.SlaType = None
+        self.ClusterTag = None
+        self.Zones = None
+        self.EipAddressId = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.LoadBalancerName = params.get("LoadBalancerName")
+        self.ProjectId = params.get("ProjectId")
+        self.MasterZoneId = params.get("MasterZoneId")
+        self.SlaveZoneId = params.get("SlaveZoneId")
+        self.ZoneId = params.get("ZoneId")
+        if params.get("InternetAccessible") is not None:
+            self.InternetAccessible = InternetAccessible()
+            self.InternetAccessible._deserialize(params.get("InternetAccessible"))
+        self.VipIsp = params.get("VipIsp")
+        self.Vip = params.get("Vip")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        if params.get("ExclusiveCluster") is not None:
+            self.ExclusiveCluster = ExclusiveCluster()
+            self.ExclusiveCluster._deserialize(params.get("ExclusiveCluster"))
+        self.BandwidthPackageId = params.get("BandwidthPackageId")
+        self.SnatPro = params.get("SnatPro")
+        if params.get("SnatIps") is not None:
+            self.SnatIps = []
+            for item in params.get("SnatIps"):
+                obj = SnatIp()
+                obj._deserialize(item)
+                self.SnatIps.append(obj)
+        self.ClusterIds = params.get("ClusterIds")
+        self.SlaType = params.get("SlaType")
+        self.ClusterTag = params.get("ClusterTag")
+        self.Zones = params.get("Zones")
+        self.EipAddressId = params.get("EipAddressId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneLoadBalancerResponse(AbstractModel):
+    """CloneLoadBalancer response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ClusterItem(AbstractModel):
     """Dedicated cluster information
 
@@ -2732,6 +2862,45 @@ class DescribeLoadBalancerListByCertIdResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLoadBalancerOverviewRequest(AbstractModel):
+    """DescribeLoadBalancerOverview request structure.
+
+    """
+
+
+class DescribeLoadBalancerOverviewResponse(AbstractModel):
+    """DescribeLoadBalancerOverview response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number of CLB instances
+        :type TotalCount: int
+        :param RunningCount: Number of CLB instances that are running
+        :type RunningCount: int
+        :param IsolationCount: Number of CLB instances that are isolated
+        :type IsolationCount: int
+        :param WillExpireCount: Number of CLB instances that are about to expire
+        :type WillExpireCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.RunningCount = None
+        self.IsolationCount = None
+        self.WillExpireCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.RunningCount = params.get("RunningCount")
+        self.IsolationCount = params.get("IsolationCount")
+        self.WillExpireCount = params.get("WillExpireCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLoadBalancerTrafficRequest(AbstractModel):
     """DescribeLoadBalancerTraffic request structure.
 
@@ -2794,7 +2963,7 @@ class DescribeLoadBalancersDetailRequest(AbstractModel):
         :type Limit: int
         :param Offset: Starting offset of the CLB instance list returned. Default value: 0.
         :type Offset: int
-        :param Fields: List of fields to be returned. The `LoadBalancerId` and `LoadBalancerName` are returned by default.
+        :param Fields: List of fields. Only fields specified will be returned. If it’s left blank, `null` is returned. The fields `LoadBalancerId` and `LoadBalancerName` are added by default. For details about fields, see <a href="https://intl.cloud.tencent.com/document/api/214/30694?from_cn_redirect=1#LoadBalancerDetail">LoadBalancerDetail</a>.
         :type Fields: list of str
         :param TargetType: Target type. Valid values: NODE and GROUP. If the list of fields contains `TargetId`, `TargetAddress`, `TargetPort`, `TargetWeight` and other fields, `Target` of the target group or non-target group must be exported.
         :type TargetType: str
@@ -4327,6 +4496,11 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param HealthLogTopicId: Health check log topic ID of CLB CLS
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type HealthLogTopicId: str
+        :param ClusterIds: 
+        :type ClusterIds: list of str
+        :param AttributeFlags: CLB attribute
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AttributeFlags: list of str
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -4379,6 +4553,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.NfvInfo = None
         self.HealthLogSetId = None
         self.HealthLogTopicId = None
+        self.ClusterIds = None
+        self.AttributeFlags = None
 
 
     def _deserialize(self, params):
@@ -4460,6 +4636,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.NfvInfo = params.get("NfvInfo")
         self.HealthLogSetId = params.get("HealthLogSetId")
         self.HealthLogTopicId = params.get("HealthLogTopicId")
+        self.ClusterIds = params.get("ClusterIds")
+        self.AttributeFlags = params.get("AttributeFlags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
