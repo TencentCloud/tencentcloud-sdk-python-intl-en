@@ -344,6 +344,232 @@ class BatchCreateAclResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BatchModifyGroupOffsetsRequest(AbstractModel):
+    """BatchModifyGroupOffsets request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupName: Consumer group name.
+        :type GroupName: str
+        :param InstanceId: Instance name.
+        :type InstanceId: str
+        :param Partitions: Partition information.
+        :type Partitions: list of Partitions
+        :param TopicName: Name of the specified topic. Default value: names of all topics.
+        :type TopicName: list of str
+        """
+        self.GroupName = None
+        self.InstanceId = None
+        self.Partitions = None
+        self.TopicName = None
+
+
+    def _deserialize(self, params):
+        self.GroupName = params.get("GroupName")
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Partitions") is not None:
+            self.Partitions = []
+            for item in params.get("Partitions"):
+                obj = Partitions()
+                obj._deserialize(item)
+                self.Partitions.append(obj)
+        self.TopicName = params.get("TopicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchModifyGroupOffsetsResponse(AbstractModel):
+    """BatchModifyGroupOffsets response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Returned result.
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = JgwOperateResponse()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class BatchModifyTopicAttributesRequest(AbstractModel):
+    """BatchModifyTopicAttributes request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param Topic: Topic attribute list
+        :type Topic: list of BatchModifyTopicInfo
+        """
+        self.InstanceId = None
+        self.Topic = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Topic") is not None:
+            self.Topic = []
+            for item in params.get("Topic"):
+                obj = BatchModifyTopicInfo()
+                obj._deserialize(item)
+                self.Topic.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchModifyTopicAttributesResponse(AbstractModel):
+    """BatchModifyTopicAttributes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Returned result.
+        :type Result: list of BatchModifyTopicResultDTO
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = BatchModifyTopicResultDTO()
+                obj._deserialize(item)
+                self.Result.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class BatchModifyTopicInfo(AbstractModel):
+    """Topic parameters that can be modified in batches
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicName: Topic name.
+        :type TopicName: str
+        :param PartitionNum: The number of partitions.
+        :type PartitionNum: int
+        :param Note: Remarks.
+        :type Note: str
+        :param ReplicaNum: Number of replicas.
+        :type ReplicaNum: int
+        :param CleanUpPolicy: Message deletion policy. Valid values: `delete`, `compact`.
+        :type CleanUpPolicy: str
+        :param MinInsyncReplicas: The minimum number of replicas specified by `min.insync.replicas` when the producer sets `request.required.acks` to `-1`.
+        :type MinInsyncReplicas: int
+        :param UncleanLeaderElectionEnable: Whether to allow a non-ISR replica to be the leader.
+        :type UncleanLeaderElectionEnable: bool
+        :param RetentionMs: Message retention period in topic dimension in milliseconds. Value range: 1 minute to 90 days.
+        :type RetentionMs: int
+        :param RetentionBytes: Message retention size in topic dimension. Value range: 1 MB - 1024 GB.
+        :type RetentionBytes: int
+        :param SegmentMs: Segment rolling duration in milliseconds. Value range: 1-90 days.
+        :type SegmentMs: int
+        :param MaxMessageBytes: Message size per batch. Value range: 1 KB - 12 MB.
+        :type MaxMessageBytes: int
+        """
+        self.TopicName = None
+        self.PartitionNum = None
+        self.Note = None
+        self.ReplicaNum = None
+        self.CleanUpPolicy = None
+        self.MinInsyncReplicas = None
+        self.UncleanLeaderElectionEnable = None
+        self.RetentionMs = None
+        self.RetentionBytes = None
+        self.SegmentMs = None
+        self.MaxMessageBytes = None
+
+
+    def _deserialize(self, params):
+        self.TopicName = params.get("TopicName")
+        self.PartitionNum = params.get("PartitionNum")
+        self.Note = params.get("Note")
+        self.ReplicaNum = params.get("ReplicaNum")
+        self.CleanUpPolicy = params.get("CleanUpPolicy")
+        self.MinInsyncReplicas = params.get("MinInsyncReplicas")
+        self.UncleanLeaderElectionEnable = params.get("UncleanLeaderElectionEnable")
+        self.RetentionMs = params.get("RetentionMs")
+        self.RetentionBytes = params.get("RetentionBytes")
+        self.SegmentMs = params.get("SegmentMs")
+        self.MaxMessageBytes = params.get("MaxMessageBytes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchModifyTopicResultDTO(AbstractModel):
+    """Results of the batch modified topic attributes
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param TopicName: Topic name.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TopicName: str
+        :param ReturnCode: Status code.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ReturnCode: str
+        :param Message: Message status.
+        :type Message: str
+        """
+        self.InstanceId = None
+        self.TopicName = None
+        self.ReturnCode = None
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.TopicName = params.get("TopicName")
+        self.ReturnCode = params.get("ReturnCode")
+        self.Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClusterInfo(AbstractModel):
     """Cluster information entity
 
@@ -877,6 +1103,8 @@ class CreateTopicRequest(AbstractModel):
         :type AclRuleName: str
         :param RetentionBytes: Message retention file size in bytes, which is an optional parameter. Default value: -1. Currently, the min value that can be entered is 1,048,576 B.
         :type RetentionBytes: int
+        :param Tags: Tag list.
+        :type Tags: list of Tag
         """
         self.InstanceId = None
         self.TopicName = None
@@ -893,6 +1121,7 @@ class CreateTopicRequest(AbstractModel):
         self.EnableAclRule = None
         self.AclRuleName = None
         self.RetentionBytes = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -911,6 +1140,12 @@ class CreateTopicRequest(AbstractModel):
         self.EnableAclRule = params.get("EnableAclRule")
         self.AclRuleName = params.get("AclRuleName")
         self.RetentionBytes = params.get("RetentionBytes")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2366,19 +2601,23 @@ class DescribeUserResponse(AbstractModel):
 
 
 class DynamicDiskConfig(AbstractModel):
-    """
+    """Dynamic disk expansion configuration
 
     """
 
     def __init__(self):
         r"""
-        :param Enable: 
+        :param Enable: Whether to enable dynamic disk expansion configuration. `0`: disable, `1`: enable.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Enable: int
-        :param StepForwardPercentage: 
+        :param StepForwardPercentage: Percentage of dynamic disk expansion each time.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type StepForwardPercentage: int
-        :param DiskQuotaPercentage: 
+        :param DiskQuotaPercentage: Disk quota threshold (in percentage) for triggering the automatic disk expansion event.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type DiskQuotaPercentage: int
-        :param MaxDiskSpace: 
+        :param MaxDiskSpace: Max disk space in GB.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type MaxDiskSpace: int
         """
         self.Enable = None
@@ -2951,7 +3190,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param RemainingTopics: Number of remaining creatable topics
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type RemainingTopics: int
-        :param DynamicDiskConfig: 
+        :param DynamicDiskConfig: Dynamic disk expansion policy.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type DynamicDiskConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicDiskConfig`
         """
         self.InstanceId = None
@@ -3461,6 +3701,8 @@ class ModifyInstanceAttributesRequest(AbstractModel):
         :type RebalanceTime: int
         :param PublicNetwork: Timestamp
         :type PublicNetwork: int
+        :param DynamicDiskConfig: Dynamic disk expansion policy configuration.
+        :type DynamicDiskConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicDiskConfig`
         """
         self.InstanceId = None
         self.MsgRetentionTime = None
@@ -3469,6 +3711,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
         self.DynamicRetentionConfig = None
         self.RebalanceTime = None
         self.PublicNetwork = None
+        self.DynamicDiskConfig = None
 
 
     def _deserialize(self, params):
@@ -3483,6 +3726,9 @@ class ModifyInstanceAttributesRequest(AbstractModel):
             self.DynamicRetentionConfig._deserialize(params.get("DynamicRetentionConfig"))
         self.RebalanceTime = params.get("RebalanceTime")
         self.PublicNetwork = params.get("PublicNetwork")
+        if params.get("DynamicDiskConfig") is not None:
+            self.DynamicDiskConfig = DynamicDiskConfig()
+            self.DynamicDiskConfig._deserialize(params.get("DynamicDiskConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3609,6 +3855,8 @@ class ModifyTopicAttributesRequest(AbstractModel):
         :type AclRuleName: str
         :param RetentionBytes: Message retention file size in bytes, which is an optional parameter. Default value: -1. Currently, the min value that can be entered is 1,048,576 B.
         :type RetentionBytes: int
+        :param Tags: Tag list.
+        :type Tags: list of Tag
         """
         self.InstanceId = None
         self.TopicName = None
@@ -3624,6 +3872,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
         self.EnableAclRule = None
         self.AclRuleName = None
         self.RetentionBytes = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -3641,6 +3890,12 @@ class ModifyTopicAttributesRequest(AbstractModel):
         self.EnableAclRule = params.get("EnableAclRule")
         self.AclRuleName = params.get("AclRuleName")
         self.RetentionBytes = params.get("RetentionBytes")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3734,6 +3989,34 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Partition: str
         :param Offset: Offset, such as 100
 Note: this field may return null, indicating that no valid values can be obtained.
+        :type Offset: int
+        """
+        self.Partition = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.Partition = params.get("Partition")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Partitions(AbstractModel):
+    """Partition information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Partition: Partition.
+        :type Partition: int
+        :param Offset: Partition consumption offset.
         :type Offset: int
         """
         self.Partition = None
@@ -4696,6 +4979,12 @@ Note: `null` may be returned for this field, indicating that no valid values can
         :param Physical: Purchase of Physical Dedicated Edition configurations
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :type Physical: str
+        :param PublicNetwork: Public network bandwidth.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type PublicNetwork: str
+        :param PublicNetworkLimit: Public network bandwidth configuration.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type PublicNetworkLimit: str
         """
         self.ZoneList = None
         self.MaxBuyInstanceNum = None
@@ -4707,6 +4996,8 @@ Note: `null` may be returned for this field, indicating that no valid values can
         self.StandardS2 = None
         self.Profession = None
         self.Physical = None
+        self.PublicNetwork = None
+        self.PublicNetworkLimit = None
 
 
     def _deserialize(self, params):
@@ -4734,6 +5025,8 @@ Note: `null` may be returned for this field, indicating that no valid values can
         self.StandardS2 = params.get("StandardS2")
         self.Profession = params.get("Profession")
         self.Physical = params.get("Physical")
+        self.PublicNetwork = params.get("PublicNetwork")
+        self.PublicNetworkLimit = params.get("PublicNetworkLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

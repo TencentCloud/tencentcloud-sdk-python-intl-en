@@ -214,13 +214,13 @@ class CreateMigrateJobRequest(AbstractModel):
         :type JobName: str
         :param MigrateOption: Migration task configuration options
         :type MigrateOption: :class:`tencentcloud.dts.v20180330.models.MigrateOption`
-        :param SrcDatabaseType: Source instance database type, which currently supports MySQL, Redis, MongoDB, PostgreSQL, MariaDB, and Percona. For more information on the supported types in a specific region, see the migration task creation page in the console.
+        :param SrcDatabaseType: Source instance database type, which currently supports MySQL, Redis, MongoDB, PostgreSQL, MariaDB, Percona, and SQL Server. For more information on the supported types in a specific region, see the migration task creation page in the console.
         :type SrcDatabaseType: str
         :param SrcAccessType: Source instance access type. Valid values: extranet (public network), cvm (CVM-based self-created instance), dcg (Direct Connect-enabled instance), vpncloud (Tencent Cloud VPN-enabled instance), cdb (TencentDB instance), ccn (CCN instance)
         :type SrcAccessType: str
         :param SrcInfo: Source instance information, which is correlated with the migration task type
         :type SrcInfo: :class:`tencentcloud.dts.v20180330.models.SrcInfo`
-        :param DstDatabaseType: Target instance access type, which currently supports MySQL, Redis, MongoDB, PostgreSQL, MariaDB, and Percona. For more information on the supported types in a specific region, see the migration task creation page in the console.
+        :param DstDatabaseType: Target instance access type, which currently supports MySQL, Redis, MongoDB, PostgreSQL, MariaDB, and Percona, SQL Server, and TDSQL-C for MySQL. For more information on the supported types in a specific region, see the migration task creation page in the console.
         :type DstDatabaseType: str
         :param DstAccessType: Target instance access type, which currently only supports cdb (TencentDB instance)
         :type DstAccessType: str
@@ -228,14 +228,12 @@ class CreateMigrateJobRequest(AbstractModel):
         :type DstInfo: :class:`tencentcloud.dts.v20180330.models.DstInfo`
         :param DatabaseInfo: Information of the source table to be migrated, which is described in JSON string format. It is required if MigrateOption.MigrateObject is 2 (migrating the specified table).
 For databases with a database-table structure:
-[{Database:db1,Table:[table1,table2]},{Database:db2}]
+[{"Database":"db1","Table":["table1","table2"]},{"Database":"db2"}]
 For databases with a database-schema-table structure:
-[{Database:db1,Schema:s1
-Table:[table1,table2]},{Database:db1,Schema:s2
-Table:[table1,table2]},{Database:db2,Schema:s1
-Table:[table1,table2]},{Database:db3},{Database:db4
-Schema:s1}]
+[{"Database":"db1","Schema":"s1","Table":["table1","table2"]},{"Database":"db1","Schema":"s2","Table":["table1","table2"]},{"Database":"db2","Schema":"s1","Table":["table1","table2"]},{"Database":"db3"},{"Database":"db4","Schema":"s1"}]
         :type DatabaseInfo: str
+        :param Tags: Tag of the instance to be migrated.
+        :type Tags: list of TagItem
         """
         self.JobName = None
         self.MigrateOption = None
@@ -246,6 +244,7 @@ Schema:s1}]
         self.DstAccessType = None
         self.DstInfo = None
         self.DatabaseInfo = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -264,6 +263,12 @@ Schema:s1}]
             self.DstInfo = DstInfo()
             self.DstInfo._deserialize(params.get("DstInfo"))
         self.DatabaseInfo = params.get("DatabaseInfo")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagItem()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -365,132 +370,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
-class CreateSyncCheckJobRequest(AbstractModel):
-    """CreateSyncCheckJob request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param JobId: Disaster recovery sync task ID
-        :type JobId: str
-        """
-        self.JobId = None
-
-
-    def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateSyncCheckJobResponse(AbstractModel):
-    """CreateSyncCheckJob response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class CreateSyncJobRequest(AbstractModel):
-    """CreateSyncJob request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param JobName: Disaster recovery sync task name
-        :type JobName: str
-        :param SyncOption: Configuration options of a disaster recovery sync task
-        :type SyncOption: :class:`tencentcloud.dts.v20180330.models.SyncOption`
-        :param SrcDatabaseType: Source instance database type, which currently only supports mysql
-        :type SrcDatabaseType: str
-        :param SrcAccessType: Source instance access type, which currently only supports cdb (TencentDB instances)
-        :type SrcAccessType: str
-        :param SrcInfo: Source instance information
-        :type SrcInfo: :class:`tencentcloud.dts.v20180330.models.SyncInstanceInfo`
-        :param DstDatabaseType: Target instance access type, which currently only supports mysql
-        :type DstDatabaseType: str
-        :param DstAccessType: Target instance access type, which currently only supports cdb (TencentDB instances)
-        :type DstAccessType: str
-        :param DstInfo: Target instance information
-        :type DstInfo: :class:`tencentcloud.dts.v20180330.models.SyncInstanceInfo`
-        :param DatabaseInfo: Information of the source table to be synced, which is described in JSON string format.
-For databases with a database-table structure:
-[{Database:db1,Table:[table1,table2]},{Database:db2}]
-        :type DatabaseInfo: str
-        """
-        self.JobName = None
-        self.SyncOption = None
-        self.SrcDatabaseType = None
-        self.SrcAccessType = None
-        self.SrcInfo = None
-        self.DstDatabaseType = None
-        self.DstAccessType = None
-        self.DstInfo = None
-        self.DatabaseInfo = None
-
-
-    def _deserialize(self, params):
-        self.JobName = params.get("JobName")
-        if params.get("SyncOption") is not None:
-            self.SyncOption = SyncOption()
-            self.SyncOption._deserialize(params.get("SyncOption"))
-        self.SrcDatabaseType = params.get("SrcDatabaseType")
-        self.SrcAccessType = params.get("SrcAccessType")
-        if params.get("SrcInfo") is not None:
-            self.SrcInfo = SyncInstanceInfo()
-            self.SrcInfo._deserialize(params.get("SrcInfo"))
-        self.DstDatabaseType = params.get("DstDatabaseType")
-        self.DstAccessType = params.get("DstAccessType")
-        if params.get("DstInfo") is not None:
-            self.DstInfo = SyncInstanceInfo()
-            self.DstInfo._deserialize(params.get("DstInfo"))
-        self.DatabaseInfo = params.get("DatabaseInfo")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateSyncJobResponse(AbstractModel):
-    """CreateSyncJob response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param JobId: Disaster recovery sync task ID
-        :type JobId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.JobId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.RequestId = params.get("RequestId")
-
-
 class DeleteMigrateJobRequest(AbstractModel):
     """DeleteMigrateJob request structure.
 
@@ -517,47 +396,6 @@ class DeleteMigrateJobRequest(AbstractModel):
 
 class DeleteMigrateJobResponse(AbstractModel):
     """DeleteMigrateJob response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class DeleteSyncJobRequest(AbstractModel):
-    """DeleteSyncJob request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param JobId: ID of the disaster recovery sync task to be deleted
-        :type JobId: str
-        """
-        self.JobId = None
-
-
-    def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DeleteSyncJobResponse(AbstractModel):
-    """DeleteSyncJob response structure.
 
     """
 
@@ -1063,146 +901,6 @@ class DescribeSubscribesResponse(AbstractModel):
                 obj = SubscribeInfo()
                 obj._deserialize(item)
                 self.Items.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeSyncCheckJobRequest(AbstractModel):
-    """DescribeSyncCheckJob request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param JobId: ID of the disaster recovery sync task to be queried
-        :type JobId: str
-        """
-        self.JobId = None
-
-
-    def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeSyncCheckJobResponse(AbstractModel):
-    """DescribeSyncCheckJob response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Status: Task check status: starting, running, finished
-        :type Status: str
-        :param ErrorCode: Code of the task check result
-        :type ErrorCode: int
-        :param ErrorMessage: Prompt message
-        :type ErrorMessage: str
-        :param StepInfo: Description of a task execution step
-        :type StepInfo: list of SyncCheckStepInfo
-        :param CheckFlag: Check flag. 0: checking; 1: successfully checked
-        :type CheckFlag: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.Status = None
-        self.ErrorCode = None
-        self.ErrorMessage = None
-        self.StepInfo = None
-        self.CheckFlag = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.ErrorCode = params.get("ErrorCode")
-        self.ErrorMessage = params.get("ErrorMessage")
-        if params.get("StepInfo") is not None:
-            self.StepInfo = []
-            for item in params.get("StepInfo"):
-                obj = SyncCheckStepInfo()
-                obj._deserialize(item)
-                self.StepInfo.append(obj)
-        self.CheckFlag = params.get("CheckFlag")
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeSyncJobsRequest(AbstractModel):
-    """DescribeSyncJobs request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param JobId: Disaster recovery sync task ID
-        :type JobId: str
-        :param JobName: Disaster recovery sync task name
-        :type JobName: str
-        :param Order: Sort by field. Value range: JobId, Status, JobName, CreateTime
-        :type Order: str
-        :param OrderSeq: Sorting order. Value range: ASC (ascending), DESC (descending)
-        :type OrderSeq: str
-        :param Offset: Offset. Default value: 0
-        :type Offset: int
-        :param Limit: Number of the returned instances. Value range: [1, 100]. Default value: 20
-        :type Limit: int
-        """
-        self.JobId = None
-        self.JobName = None
-        self.Order = None
-        self.OrderSeq = None
-        self.Offset = None
-        self.Limit = None
-
-
-    def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.JobName = params.get("JobName")
-        self.Order = params.get("Order")
-        self.OrderSeq = params.get("OrderSeq")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeSyncJobsResponse(AbstractModel):
-    """DescribeSyncJobs response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TotalCount: Number of tasks
-        :type TotalCount: int
-        :param JobList: Array of task details
-        :type JobList: list of SyncJobInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.JobList = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("JobList") is not None:
-            self.JobList = []
-            for item in params.get("JobList"):
-                obj = SyncJobInfo()
-                obj._deserialize(item)
-                self.JobList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1876,63 +1574,6 @@ class ModifySubscribeVipVportResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ModifySyncJobRequest(AbstractModel):
-    """ModifySyncJob request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param JobId: ID of the disaster recovery sync task to be modified
-        :type JobId: str
-        :param JobName: Name of the disaster recovery sync task
-        :type JobName: str
-        :param SyncOption: Configuration options of a disaster recovery sync task
-        :type SyncOption: :class:`tencentcloud.dts.v20180330.models.SyncOption`
-        :param DatabaseInfo: When syncing the specified table, you need to set the information of the source table to be synced, which should be described in JSON string format. Below are examples.
-For databases with a database-table structure:
-[{"Database":"db1","Table":["table1","table2"]},{"Database":"db2"}]
-        :type DatabaseInfo: str
-        """
-        self.JobId = None
-        self.JobName = None
-        self.SyncOption = None
-        self.DatabaseInfo = None
-
-
-    def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.JobName = params.get("JobName")
-        if params.get("SyncOption") is not None:
-            self.SyncOption = SyncOption()
-            self.SyncOption._deserialize(params.get("SyncOption"))
-        self.DatabaseInfo = params.get("DatabaseInfo")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifySyncJobResponse(AbstractModel):
-    """ModifySyncJob response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class OfflineIsolatedSubscribeRequest(AbstractModel):
     """OfflineIsolatedSubscribe request structure.
 
@@ -2126,47 +1767,6 @@ class StartMigrateJobRequest(AbstractModel):
 
 class StartMigrateJobResponse(AbstractModel):
     """StartMigrateJob response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class StartSyncJobRequest(AbstractModel):
-    """StartSyncJob request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param JobId: Disaster recovery sync task ID
-        :type JobId: str
-        """
-        self.JobId = None
-
-
-    def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class StartSyncJobResponse(AbstractModel):
-    """StartSyncJob response structure.
 
     """
 
@@ -2418,334 +2018,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Area = params.get("Area")
         self.IsDefaultRegion = params.get("IsDefaultRegion")
         self.Status = params.get("Status")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SwitchDrToMasterRequest(AbstractModel):
-    """SwitchDrToMaster request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param DstInfo: Disaster recovery instance information
-        :type DstInfo: :class:`tencentcloud.dts.v20180330.models.SyncInstanceInfo`
-        :param DatabaseType: Database type (such as MySQL)
-        :type DatabaseType: str
-        """
-        self.DstInfo = None
-        self.DatabaseType = None
-
-
-    def _deserialize(self, params):
-        if params.get("DstInfo") is not None:
-            self.DstInfo = SyncInstanceInfo()
-            self.DstInfo._deserialize(params.get("DstInfo"))
-        self.DatabaseType = params.get("DatabaseType")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SwitchDrToMasterResponse(AbstractModel):
-    """SwitchDrToMaster response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param AsyncRequestId: Backend async task request ID
-        :type AsyncRequestId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.AsyncRequestId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.AsyncRequestId = params.get("AsyncRequestId")
-        self.RequestId = params.get("RequestId")
-
-
-class SyncCheckStepInfo(AbstractModel):
-    """Check steps for a disaster recovery task
-
-    """
-
-    def __init__(self):
-        r"""
-        :param StepNo: Step number
-        :type StepNo: int
-        :param StepName: Step name
-        :type StepName: str
-        :param StepCode: Code of the step execution result
-        :type StepCode: int
-        :param StepMessage: Message about the step execution result
-        :type StepMessage: str
-        """
-        self.StepNo = None
-        self.StepName = None
-        self.StepCode = None
-        self.StepMessage = None
-
-
-    def _deserialize(self, params):
-        self.StepNo = params.get("StepNo")
-        self.StepName = params.get("StepName")
-        self.StepCode = params.get("StepCode")
-        self.StepMessage = params.get("StepMessage")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SyncDetailInfo(AbstractModel):
-    """Describes the specific process of the sync task.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param StepAll: Total number of steps
-        :type StepAll: int
-        :param StepNow: Current step
-        :type StepNow: int
-        :param Progress: Overall progress
-        :type Progress: str
-        :param CurrentStepProgress: Progress of the current step
-        :type CurrentStepProgress: str
-        :param MasterSlaveDistance: Master/slave delay in MB
-        :type MasterSlaveDistance: int
-        :param SecondsBehindMaster: Master/slave delay in seconds
-        :type SecondsBehindMaster: int
-        :param StepInfo: Step information
-        :type StepInfo: list of SyncStepDetailInfo
-        """
-        self.StepAll = None
-        self.StepNow = None
-        self.Progress = None
-        self.CurrentStepProgress = None
-        self.MasterSlaveDistance = None
-        self.SecondsBehindMaster = None
-        self.StepInfo = None
-
-
-    def _deserialize(self, params):
-        self.StepAll = params.get("StepAll")
-        self.StepNow = params.get("StepNow")
-        self.Progress = params.get("Progress")
-        self.CurrentStepProgress = params.get("CurrentStepProgress")
-        self.MasterSlaveDistance = params.get("MasterSlaveDistance")
-        self.SecondsBehindMaster = params.get("SecondsBehindMaster")
-        if params.get("StepInfo") is not None:
-            self.StepInfo = []
-            for item in params.get("StepInfo"):
-                obj = SyncStepDetailInfo()
-                obj._deserialize(item)
-                self.StepInfo.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SyncInstanceInfo(AbstractModel):
-    """Instance information of disaster recovery sync, which records the information of the master instance or disaster recovery instance
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Region: Region name, such as ap-guangzhou
-        :type Region: str
-        :param InstanceId: Short instance ID
-        :type InstanceId: str
-        """
-        self.Region = None
-        self.InstanceId = None
-
-
-    def _deserialize(self, params):
-        self.Region = params.get("Region")
-        self.InstanceId = params.get("InstanceId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SyncJobInfo(AbstractModel):
-    """Disaster recovery sync task information
-
-    """
-
-    def __init__(self):
-        r"""
-        :param JobId: Disaster recovery task ID
-        :type JobId: str
-        :param JobName: Disaster recovery task name
-        :type JobName: str
-        :param SyncOption: Task sync
-        :type SyncOption: :class:`tencentcloud.dts.v20180330.models.SyncOption`
-        :param SrcAccessType: Source access type
-        :type SrcAccessType: str
-        :param SrcDatabaseType: Source data type
-        :type SrcDatabaseType: str
-        :param SrcInfo: Source instance information
-        :type SrcInfo: :class:`tencentcloud.dts.v20180330.models.SyncInstanceInfo`
-        :param DstAccessType: Disaster recovery access type
-        :type DstAccessType: str
-        :param DstDatabaseType: Disaster recovery data type
-        :type DstDatabaseType: str
-        :param DstInfo: Disaster recovery instance information
-        :type DstInfo: :class:`tencentcloud.dts.v20180330.models.SyncInstanceInfo`
-        :param Detail: Task information
-        :type Detail: :class:`tencentcloud.dts.v20180330.models.SyncDetailInfo`
-        :param Status: Task status
-        :type Status: int
-        :param DatabaseInfo: Table to be migrated
-        :type DatabaseInfo: str
-        :param CreateTime: Creation time
-        :type CreateTime: str
-        :param StartTime: Start time
-        :type StartTime: str
-        :param EndTime: End time
-        :type EndTime: str
-        """
-        self.JobId = None
-        self.JobName = None
-        self.SyncOption = None
-        self.SrcAccessType = None
-        self.SrcDatabaseType = None
-        self.SrcInfo = None
-        self.DstAccessType = None
-        self.DstDatabaseType = None
-        self.DstInfo = None
-        self.Detail = None
-        self.Status = None
-        self.DatabaseInfo = None
-        self.CreateTime = None
-        self.StartTime = None
-        self.EndTime = None
-
-
-    def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.JobName = params.get("JobName")
-        if params.get("SyncOption") is not None:
-            self.SyncOption = SyncOption()
-            self.SyncOption._deserialize(params.get("SyncOption"))
-        self.SrcAccessType = params.get("SrcAccessType")
-        self.SrcDatabaseType = params.get("SrcDatabaseType")
-        if params.get("SrcInfo") is not None:
-            self.SrcInfo = SyncInstanceInfo()
-            self.SrcInfo._deserialize(params.get("SrcInfo"))
-        self.DstAccessType = params.get("DstAccessType")
-        self.DstDatabaseType = params.get("DstDatabaseType")
-        if params.get("DstInfo") is not None:
-            self.DstInfo = SyncInstanceInfo()
-            self.DstInfo._deserialize(params.get("DstInfo"))
-        if params.get("Detail") is not None:
-            self.Detail = SyncDetailInfo()
-            self.Detail._deserialize(params.get("Detail"))
-        self.Status = params.get("Status")
-        self.DatabaseInfo = params.get("DatabaseInfo")
-        self.CreateTime = params.get("CreateTime")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SyncOption(AbstractModel):
-    """Configuration options of a disaster recovery sync task
-
-    """
-
-    def __init__(self):
-        r"""
-        :param SyncObject: Sync object. 1: entire instance; 2: specified table
-        :type SyncObject: int
-        :param RunMode: Sync start configuration. 1: start immediately
-        :type RunMode: int
-        :param SyncType: Sync mode. 3: full + incremental sync
-        :type SyncType: int
-        :param ConsistencyType: Data consistency check. 1: no configuration required
-        :type ConsistencyType: int
-        """
-        self.SyncObject = None
-        self.RunMode = None
-        self.SyncType = None
-        self.ConsistencyType = None
-
-
-    def _deserialize(self, params):
-        self.SyncObject = params.get("SyncObject")
-        self.RunMode = params.get("RunMode")
-        self.SyncType = params.get("SyncType")
-        self.ConsistencyType = params.get("ConsistencyType")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SyncStepDetailInfo(AbstractModel):
-    """Sync task progress
-
-    """
-
-    def __init__(self):
-        r"""
-        :param StepNo: Step number
-        :type StepNo: int
-        :param StepName: Step name
-        :type StepName: str
-        :param CanStop: Whether it can be stopped
-        :type CanStop: int
-        :param StepId: Step ID
-        :type StepId: int
-        """
-        self.StepNo = None
-        self.StepName = None
-        self.CanStop = None
-        self.StepId = None
-
-
-    def _deserialize(self, params):
-        self.StepNo = params.get("StepNo")
-        self.StepName = params.get("StepName")
-        self.CanStop = params.get("CanStop")
-        self.StepId = params.get("StepId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

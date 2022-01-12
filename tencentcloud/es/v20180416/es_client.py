@@ -166,6 +166,34 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeViews(self, request):
+        """This API is used to query view data from three dimensions: cluster, node, and Kibana.
+
+        :param request: Request instance for DescribeViews.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeViewsRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeViewsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeViews", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeViewsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetRequestTargetNodeTypes(self, request):
         """This API is used to get the node types used to receive client requests.
 

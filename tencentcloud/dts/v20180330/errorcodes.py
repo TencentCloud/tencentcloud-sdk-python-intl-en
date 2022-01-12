@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# The current user is not allowed to perform this operation as the authentication failed.
+AUTHFAILURE_UNAUTHORIZEDOPERATIONERROR = 'AuthFailure.UnauthorizedOperationError'
+
 # This operation is prohibited.
 FAILEDOPERATION_NOTALLOWOPERATION = 'FailedOperation.NotAllowOperation'
 
@@ -28,6 +31,9 @@ INTERNALERROR = 'InternalError'
 
 # Failed to create the async task.
 INTERNALERROR_ADDTASKERROR = 'InternalError.AddTaskError'
+
+# Internal scheduling system error.
+INTERNALERROR_CELERYERROR = 'InternalError.CeleryError'
 
 # CGW system error.
 INTERNALERROR_CGWSYSTEMERROR = 'InternalError.CgwSystemError'
@@ -44,8 +50,17 @@ INTERNALERROR_LOCKERROR = 'InternalError.LockError'
 # Communication protocol error.
 INTERNALERROR_PROTOCOLERROR = 'InternalError.ProtocolError'
 
+# 
+INTERNALERROR_UNDEFINEDERROR = 'InternalError.UndefinedError'
+
+# Unknown internal error.
+INTERNALERROR_UNKNOWNERROR = 'InternalError.UnknownError'
+
 # A parameter error occurred.
 INVALIDPARAMETER = 'InvalidParameter'
+
+# Parameter value error.
+INVALIDPARAMETER_BIZINVALIDPARAMETERVALUEERROR = 'InvalidParameter.BizInvalidParameterValueError'
 
 # The instance does not exist.
 INVALIDPARAMETER_INSTANCENOTFOUND = 'InvalidParameter.InstanceNotFound'
@@ -59,11 +74,20 @@ LIMITEXCEEDED_MAXUNUSEDJOBS = 'LimitExceeded.MaxUnusedJobs'
 # Operation denied.
 OPERATIONDENIED = 'OperationDenied'
 
+# Task operation failure.
+OPERATIONDENIED_JOBOPERATIONDENIEDERROR = 'OperationDenied.JobOperationDeniedError'
+
+# DTS does not support the current migration type.
+OPERATIONDENIED_MIGRATESERVICESUPPORTERROR = 'OperationDenied.MigrateServiceSupportError'
+
 # This operation cannot be performed.
 OPERATIONDENIED_OPERATIONDENIED = 'OperationDenied.OperationDenied'
 
 # The resource does not exist.
 RESOURCENOTFOUND = 'ResourceNotFound'
+
+# Resource not found.
+RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = 'ResourceNotFound.BizResourceNotFoundError'
 
 # The migration task does not exist.
 RESOURCENOTFOUND_JOBNOTEXIST = 'ResourceNotFound.JobNotExist'
@@ -76,6 +100,3 @@ UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = 'UnauthorizedOperation.NotEnoughPriv
 
 # Unsupported operation
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
-
-# The current instance type does not support this operation.
-UNSUPPORTEDOPERATION_ACTIONNOTSUPPORT = 'UnsupportedOperation.ActionNotSupport'

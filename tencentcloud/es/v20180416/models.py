@@ -18,6 +18,116 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ClusterView(AbstractModel):
+    """Cluster view data
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Health: Cluster health status
+        :type Health: float
+        :param Visible: Whether the cluster is visible
+        :type Visible: float
+        :param Break: Whether the cluster encounters circuit breaking
+        :type Break: float
+        :param AvgDiskUsage: Average disk usage
+        :type AvgDiskUsage: float
+        :param AvgMemUsage: Average memory usage
+        :type AvgMemUsage: float
+        :param AvgCpuUsage: Average CPU usage
+        :type AvgCpuUsage: float
+        :param TotalDiskSize: Total disk size of the cluster
+        :type TotalDiskSize: int
+        :param TargetNodeTypes: Types of nodes to receive client requests
+        :type TargetNodeTypes: list of str
+        :param NodeNum: Number of online nodes
+        :type NodeNum: int
+        :param TotalNodeNum: Total number of nodes
+        :type TotalNodeNum: int
+        :param DataNodeNum: Number of data nodes
+        :type DataNodeNum: int
+        :param IndexNum: Number of indices
+        :type IndexNum: int
+        :param DocNum: Number of documents
+        :type DocNum: int
+        :param DiskUsedInBytes: Used disk size (in bytes)
+        :type DiskUsedInBytes: int
+        :param ShardNum: Number of shards
+        :type ShardNum: int
+        :param PrimaryShardNum: Number of primary shards
+        :type PrimaryShardNum: int
+        :param RelocatingShardNum: Number of relocating shards
+        :type RelocatingShardNum: int
+        :param InitializingShardNum: Number of initializing shards
+        :type InitializingShardNum: int
+        :param UnassignedShardNum: Number of unassigned shards
+        :type UnassignedShardNum: int
+        :param TotalCosStorage: Total COS storage of an enterprise cluster, in GB
+        :type TotalCosStorage: int
+        :param SearchableSnapshotCosBucket: Name of the COS bucket that stores searchable snapshots of an enterprise cluster
+Note: This field may return `null`, indicating that no valid value was found.
+        :type SearchableSnapshotCosBucket: str
+        :param SearchableSnapshotCosAppId: COS app ID of the searchable snapshots of an enterprise cluster
+Note: This field may return `null`, indicating that no valid value was found.
+        :type SearchableSnapshotCosAppId: str
+        """
+        self.Health = None
+        self.Visible = None
+        self.Break = None
+        self.AvgDiskUsage = None
+        self.AvgMemUsage = None
+        self.AvgCpuUsage = None
+        self.TotalDiskSize = None
+        self.TargetNodeTypes = None
+        self.NodeNum = None
+        self.TotalNodeNum = None
+        self.DataNodeNum = None
+        self.IndexNum = None
+        self.DocNum = None
+        self.DiskUsedInBytes = None
+        self.ShardNum = None
+        self.PrimaryShardNum = None
+        self.RelocatingShardNum = None
+        self.InitializingShardNum = None
+        self.UnassignedShardNum = None
+        self.TotalCosStorage = None
+        self.SearchableSnapshotCosBucket = None
+        self.SearchableSnapshotCosAppId = None
+
+
+    def _deserialize(self, params):
+        self.Health = params.get("Health")
+        self.Visible = params.get("Visible")
+        self.Break = params.get("Break")
+        self.AvgDiskUsage = params.get("AvgDiskUsage")
+        self.AvgMemUsage = params.get("AvgMemUsage")
+        self.AvgCpuUsage = params.get("AvgCpuUsage")
+        self.TotalDiskSize = params.get("TotalDiskSize")
+        self.TargetNodeTypes = params.get("TargetNodeTypes")
+        self.NodeNum = params.get("NodeNum")
+        self.TotalNodeNum = params.get("TotalNodeNum")
+        self.DataNodeNum = params.get("DataNodeNum")
+        self.IndexNum = params.get("IndexNum")
+        self.DocNum = params.get("DocNum")
+        self.DiskUsedInBytes = params.get("DiskUsedInBytes")
+        self.ShardNum = params.get("ShardNum")
+        self.PrimaryShardNum = params.get("PrimaryShardNum")
+        self.RelocatingShardNum = params.get("RelocatingShardNum")
+        self.InitializingShardNum = params.get("InitializingShardNum")
+        self.UnassignedShardNum = params.get("UnassignedShardNum")
+        self.TotalCosStorage = params.get("TotalCosStorage")
+        self.SearchableSnapshotCosBucket = params.get("SearchableSnapshotCosBucket")
+        self.SearchableSnapshotCosAppId = params.get("SearchableSnapshotCosAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CosBackup(AbstractModel):
     """Auto-backup to COS for ES
 
@@ -220,15 +330,20 @@ class CreateInstanceResponse(AbstractModel):
         r"""
         :param InstanceId: Instance ID
         :type InstanceId: str
+        :param DealName: Order ID
+Note: This field may return `null`, indicating that no valid value was found.
+        :type DealName: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.InstanceId = None
+        self.DealName = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.DealName = params.get("DealName")
         self.RequestId = params.get("RequestId")
 
 
@@ -456,6 +571,8 @@ class DescribeInstancesRequest(AbstractModel):
         :type TagList: list of TagInfo
         :param IpList: VPC VIP list
         :type IpList: list of str
+        :param ZoneList: List of availability zones
+        :type ZoneList: list of str
         """
         self.Zone = None
         self.InstanceIds = None
@@ -466,6 +583,7 @@ class DescribeInstancesRequest(AbstractModel):
         self.OrderByType = None
         self.TagList = None
         self.IpList = None
+        self.ZoneList = None
 
 
     def _deserialize(self, params):
@@ -483,6 +601,7 @@ class DescribeInstancesRequest(AbstractModel):
                 obj._deserialize(item)
                 self.TagList.append(obj)
         self.IpList = params.get("IpList")
+        self.ZoneList = params.get("ZoneList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -519,6 +638,74 @@ class DescribeInstancesResponse(AbstractModel):
                 obj = InstanceInfo()
                 obj._deserialize(item)
                 self.InstanceList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeViewsRequest(AbstractModel):
+    """DescribeViews request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Cluster instance ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeViewsResponse(AbstractModel):
+    """DescribeViews response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterView: Cluster view
+Note: This field may return `null`, indicating that no valid value was found.
+        :type ClusterView: :class:`tencentcloud.es.v20180416.models.ClusterView`
+        :param NodesView: Node view
+Note: This field may return `null`, indicating that no valid value was found.
+        :type NodesView: list of NodeView
+        :param KibanasView: Kibana view
+Note: This field may return `null`, indicating that no valid value was found.
+        :type KibanasView: list of KibanaView
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ClusterView = None
+        self.NodesView = None
+        self.KibanasView = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterView") is not None:
+            self.ClusterView = ClusterView()
+            self.ClusterView._deserialize(params.get("ClusterView"))
+        if params.get("NodesView") is not None:
+            self.NodesView = []
+            for item in params.get("NodesView"):
+                obj = NodeView()
+                obj._deserialize(item)
+                self.NodesView.append(obj)
+        if params.get("KibanasView") is not None:
+            self.KibanasView = []
+            for item in params.get("KibanasView"):
+                obj = KibanaView()
+                obj._deserialize(item)
+                self.KibanasView.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -796,22 +983,22 @@ class InstanceInfo(AbstractModel):
 Note: this field may return null, indicating that no valid values can be obtained.
         :type EnableHotWarmMode: bool
         :param WarmNodeType: Warm node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field may return `null`, indicating that no valid value was found.
         :type WarmNodeType: str
         :param WarmNodeNum: Number of warm nodes
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field may return `null`, indicating that no valid value was found.
         :type WarmNodeNum: int
         :param WarmCpuNum: Number of warm node CPU cores
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field may return `null`, indicating that no valid value was found.
         :type WarmCpuNum: int
-        :param WarmMemSize: Warm node memory size in GB
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param WarmMemSize: Warm node memory size (in GB)
+Note: This field may return `null`, indicating that no valid value was found.
         :type WarmMemSize: int
         :param WarmDiskType: Warm node disk type
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field may return `null`, indicating that no valid value was found.
         :type WarmDiskType: str
-        :param WarmDiskSize: Warm node disk size in GB
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param WarmDiskSize: Warm node disk size (in GB)
+Note: This field may return `null`, indicating that no valid value was found.
         :type WarmDiskSize: int
         :param NodeInfoList: Cluster node information list
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -863,6 +1050,42 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param SecurityGroups: Security group ID
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type SecurityGroups: list of str
+        :param ColdNodeType: Cold node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
+Note: This field may return `null`, indicating that no valid value was found.
+        :type ColdNodeType: str
+        :param ColdNodeNum: Number of cold nodes
+Note: This field may return `null`, indicating that no valid value was found.
+        :type ColdNodeNum: int
+        :param ColdCpuNum: Number of cold node CPU cores
+Note: This field may return `null`, indicating that no valid value was found.
+        :type ColdCpuNum: int
+        :param ColdMemSize: Cold node memory size (in GB)
+Note: This field may return `null`, indicating that no valid value was found.
+        :type ColdMemSize: int
+        :param ColdDiskType: Cold node disk type
+Note: This field may return `null`, indicating that no valid value was found.
+        :type ColdDiskType: str
+        :param ColdDiskSize: Cold node disk size (in GB)
+Note: This field may return `null`, indicating that no valid value was found.
+        :type ColdDiskSize: int
+        :param FrozenNodeType: Frozen node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
+Note: This field may return `null`, indicating that no valid value was found.
+        :type FrozenNodeType: str
+        :param FrozenNodeNum: Number of frozen nodes
+Note: This field may return `null`, indicating that no valid value was found.
+        :type FrozenNodeNum: int
+        :param FrozenCpuNum: Number of frozen node CPU cores
+Note: This field may return `null`, indicating that no valid value was found.
+        :type FrozenCpuNum: int
+        :param FrozenMemSize: Frozen node memory size (GB)
+Note: This field may return `null`, indicating that no valid value was found.
+        :type FrozenMemSize: int
+        :param FrozenDiskType: Frozen node disk type
+Note: This field may return `null`, indicating that no valid value was found.
+        :type FrozenDiskType: str
+        :param FrozenDiskSize: Frozen node disk size (in GB)
+Note: This field may return `null`, indicating that no valid value was found.
+        :type FrozenDiskSize: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -923,6 +1146,18 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Jdk = None
         self.Protocol = None
         self.SecurityGroups = None
+        self.ColdNodeType = None
+        self.ColdNodeNum = None
+        self.ColdCpuNum = None
+        self.ColdMemSize = None
+        self.ColdDiskType = None
+        self.ColdDiskSize = None
+        self.FrozenNodeType = None
+        self.FrozenNodeNum = None
+        self.FrozenCpuNum = None
+        self.FrozenMemSize = None
+        self.FrozenDiskType = None
+        self.FrozenDiskSize = None
 
 
     def _deserialize(self, params):
@@ -1014,6 +1249,18 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Jdk = params.get("Jdk")
         self.Protocol = params.get("Protocol")
         self.SecurityGroups = params.get("SecurityGroups")
+        self.ColdNodeType = params.get("ColdNodeType")
+        self.ColdNodeNum = params.get("ColdNodeNum")
+        self.ColdCpuNum = params.get("ColdCpuNum")
+        self.ColdMemSize = params.get("ColdMemSize")
+        self.ColdDiskType = params.get("ColdDiskType")
+        self.ColdDiskSize = params.get("ColdDiskSize")
+        self.FrozenNodeType = params.get("FrozenNodeType")
+        self.FrozenNodeNum = params.get("FrozenNodeNum")
+        self.FrozenCpuNum = params.get("FrozenCpuNum")
+        self.FrozenMemSize = params.get("FrozenMemSize")
+        self.FrozenDiskType = params.get("FrozenDiskType")
+        self.FrozenDiskSize = params.get("FrozenDiskSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1122,6 +1369,58 @@ class KibanaNodeInfo(AbstractModel):
         self.KibanaNodeMemSize = params.get("KibanaNodeMemSize")
         self.KibanaNodeDiskType = params.get("KibanaNodeDiskType")
         self.KibanaNodeDiskSize = params.get("KibanaNodeDiskSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KibanaView(AbstractModel):
+    """Kibana view data
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ip: Kibana node IP
+        :type Ip: str
+        :param DiskSize: Node disk size
+        :type DiskSize: int
+        :param DiskUsage: Disk usage
+        :type DiskUsage: float
+        :param MemSize: Node memory size
+        :type MemSize: int
+        :param MemUsage: Memory usage
+        :type MemUsage: float
+        :param CpuNum: Number of node CPUs
+        :type CpuNum: int
+        :param CpuUsage: CPU usage
+        :type CpuUsage: float
+        :param Zone: Availability zone
+        :type Zone: str
+        """
+        self.Ip = None
+        self.DiskSize = None
+        self.DiskUsage = None
+        self.MemSize = None
+        self.MemUsage = None
+        self.CpuNum = None
+        self.CpuUsage = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.Ip = params.get("Ip")
+        self.DiskSize = params.get("DiskSize")
+        self.DiskUsage = params.get("DiskUsage")
+        self.MemSize = params.get("MemSize")
+        self.MemUsage = params.get("MemUsage")
+        self.CpuNum = params.get("CpuNum")
+        self.CpuUsage = params.get("CpuUsage")
+        self.Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1260,6 +1559,94 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.LocalDiskInfo._deserialize(params.get("LocalDiskInfo"))
         self.DiskCount = params.get("DiskCount")
         self.DiskEncrypt = params.get("DiskEncrypt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NodeView(AbstractModel):
+    """Node view data
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeId: Node ID
+        :type NodeId: str
+        :param NodeIp: Node IP
+        :type NodeIp: str
+        :param Visible: Whether the node is visible
+        :type Visible: float
+        :param Break: Whether the node encounters circuit breaking
+        :type Break: float
+        :param DiskSize: Node disk size
+        :type DiskSize: int
+        :param DiskUsage: Disk usage
+        :type DiskUsage: float
+        :param MemSize: Node memory size (in GB)
+        :type MemSize: int
+        :param MemUsage: Memory usage
+        :type MemUsage: float
+        :param CpuNum: Number of node CPUs
+        :type CpuNum: int
+        :param CpuUsage: CPU usage
+        :type CpuUsage: float
+        :param Zone: Availability zone
+        :type Zone: str
+        :param NodeRole: Node role
+        :type NodeRole: str
+        :param NodeHttpIp: Node HTTP IP
+        :type NodeHttpIp: str
+        :param JvmMemUsage: JVM memory usage
+        :type JvmMemUsage: float
+        :param ShardNum: Number of node shards
+        :type ShardNum: int
+        :param DiskIds: ID list of node disks
+        :type DiskIds: list of str
+        :param Hidden: Whether a hidden availability zone
+        :type Hidden: bool
+        """
+        self.NodeId = None
+        self.NodeIp = None
+        self.Visible = None
+        self.Break = None
+        self.DiskSize = None
+        self.DiskUsage = None
+        self.MemSize = None
+        self.MemUsage = None
+        self.CpuNum = None
+        self.CpuUsage = None
+        self.Zone = None
+        self.NodeRole = None
+        self.NodeHttpIp = None
+        self.JvmMemUsage = None
+        self.ShardNum = None
+        self.DiskIds = None
+        self.Hidden = None
+
+
+    def _deserialize(self, params):
+        self.NodeId = params.get("NodeId")
+        self.NodeIp = params.get("NodeIp")
+        self.Visible = params.get("Visible")
+        self.Break = params.get("Break")
+        self.DiskSize = params.get("DiskSize")
+        self.DiskUsage = params.get("DiskUsage")
+        self.MemSize = params.get("MemSize")
+        self.MemUsage = params.get("MemUsage")
+        self.CpuNum = params.get("CpuNum")
+        self.CpuUsage = params.get("CpuUsage")
+        self.Zone = params.get("Zone")
+        self.NodeRole = params.get("NodeRole")
+        self.NodeHttpIp = params.get("NodeHttpIp")
+        self.JvmMemUsage = params.get("JvmMemUsage")
+        self.ShardNum = params.get("ShardNum")
+        self.DiskIds = params.get("DiskIds")
+        self.Hidden = params.get("Hidden")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1789,13 +2176,18 @@ class UpdateInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param DealName: Order ID
+Note: This field may return `null`, indicating that no valid value was found.
+        :type DealName: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.DealName = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.DealName = params.get("DealName")
         self.RequestId = params.get("RequestId")
 
 
@@ -1816,12 +2208,15 @@ class UpdatePluginsRequest(AbstractModel):
         :type ForceRestart: bool
         :param ForceUpdate: Whether to reinstall
         :type ForceUpdate: bool
+        :param PluginType: 0: system plugin
+        :type PluginType: int
         """
         self.InstanceId = None
         self.InstallPluginList = None
         self.RemovePluginList = None
         self.ForceRestart = None
         self.ForceUpdate = None
+        self.PluginType = None
 
 
     def _deserialize(self, params):
@@ -1830,6 +2225,7 @@ class UpdatePluginsRequest(AbstractModel):
         self.RemovePluginList = params.get("RemovePluginList")
         self.ForceRestart = params.get("ForceRestart")
         self.ForceUpdate = params.get("ForceUpdate")
+        self.PluginType = params.get("PluginType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2013,13 +2409,18 @@ class UpgradeLicenseResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param DealName: Order ID
+Note: This field may return `null`, indicating that no valid value was found.
+        :type DealName: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.DealName = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.DealName = params.get("DealName")
         self.RequestId = params.get("RequestId")
 
 

@@ -32,6 +32,9 @@ FAILEDOPERATION_ERRORCLUSTERSTATE = 'FailedOperation.ErrorClusterState'
 # No replicas for indexes in the cluster.
 FAILEDOPERATION_ERRORCLUSTERSTATENOREPLICATION = 'FailedOperation.ErrorClusterStateNoReplication'
 
+# 
+FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = 'FailedOperation.ErrorClusterStateUnhealth'
+
 # No credit card or PayPal account is linked to the current account. Unable to make a payment.
 FAILEDOPERATION_NOPAYMENT = 'FailedOperation.NoPayment'
 
@@ -55,6 +58,9 @@ RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 
 # Insufficient account balance.
 RESOURCEINSUFFICIENT_BALANCE = 'ResourceInsufficient.Balance'
+
+# 
+RESOURCEINSUFFICIENT_HIDDENZONE = 'ResourceInsufficient.HiddenZone'
 
 # Insufficient number of remaining subnet IPs.
 RESOURCEINSUFFICIENT_SUBNET = 'ResourceInsufficient.Subnet'

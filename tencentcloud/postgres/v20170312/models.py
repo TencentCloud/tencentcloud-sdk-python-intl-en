@@ -286,8 +286,6 @@ class CreateDBInstancesRequest(AbstractModel):
         r"""
         :param SpecCode: Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.
         :type SpecCode: str
-        :param DBVersion: PostgreSQL kernel version. Valid values: `9.3.5`, `9.5.4`, `10.4`, `11.8`, `12.4`.
-        :type DBVersion: str
         :param Storage: Instance capacity size in GB.
         :type Storage: int
         :param InstanceCount: Number of instances purchased at a time. Value range: 1-100.
@@ -298,6 +296,8 @@ class CreateDBInstancesRequest(AbstractModel):
         :type Zone: str
         :param ProjectId: Project ID.
         :type ProjectId: int
+        :param DBVersion: PostgreSQL version number. If it is specified, an instance running the latest kernel of PostgreSQL `DBVersion` will be created.
+        :type DBVersion: str
         :param InstanceChargeType: Instance billing type.
         :type InstanceChargeType: str
         :param AutoVoucher: Whether to automatically use vouchers. 1: yes, 0: no. Default value: no.
@@ -320,14 +320,18 @@ class CreateDBInstancesRequest(AbstractModel):
         :type TagList: list of Tag
         :param SecurityGroupIds: Security group ID
         :type SecurityGroupIds: list of str
+        :param DBMajorVersion: PostgreSQL major version number. Valid values: `10`, `11`, `12`, `13`. If it is specified, an instance running the latest kernel of PostgreSQL `DBMajorVersion` will be created.
+        :type DBMajorVersion: str
+        :param DBKernelVersion: PostgreSQL kernel version number. If it is specified, an instance running kernel `DBKernelVersion` will be created.
+        :type DBKernelVersion: str
         """
         self.SpecCode = None
-        self.DBVersion = None
         self.Storage = None
         self.InstanceCount = None
         self.Period = None
         self.Zone = None
         self.ProjectId = None
+        self.DBVersion = None
         self.InstanceChargeType = None
         self.AutoVoucher = None
         self.VoucherIds = None
@@ -339,16 +343,18 @@ class CreateDBInstancesRequest(AbstractModel):
         self.NeedSupportIpv6 = None
         self.TagList = None
         self.SecurityGroupIds = None
+        self.DBMajorVersion = None
+        self.DBKernelVersion = None
 
 
     def _deserialize(self, params):
         self.SpecCode = params.get("SpecCode")
-        self.DBVersion = params.get("DBVersion")
         self.Storage = params.get("Storage")
         self.InstanceCount = params.get("InstanceCount")
         self.Period = params.get("Period")
         self.Zone = params.get("Zone")
         self.ProjectId = params.get("ProjectId")
+        self.DBVersion = params.get("DBVersion")
         self.InstanceChargeType = params.get("InstanceChargeType")
         self.AutoVoucher = params.get("AutoVoucher")
         self.VoucherIds = params.get("VoucherIds")
@@ -365,6 +371,8 @@ class CreateDBInstancesRequest(AbstractModel):
                 obj._deserialize(item)
                 self.TagList.append(obj)
         self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.DBMajorVersion = params.get("DBMajorVersion")
+        self.DBKernelVersion = params.get("DBKernelVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -428,7 +436,7 @@ class CreateInstancesRequest(AbstractModel):
         :type AdminPassword: str
         :param ProjectId: Project ID
         :type ProjectId: int
-        :param DBVersion: PostgreSQL major version. Valid values: `9.3`, `9.5`, `10`, `11`, `12`, `13`, `9.3.5`, `9.5.4`, `10.4`, `11.8`, `12.4`.
+        :param DBVersion: PostgreSQL version number. If it is specified, an instance running the latest kernel of PostgreSQL `DBVersion` will be created.
         :type DBVersion: str
         :param InstanceChargeType: Instance billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID_BY_HOUR` (pay-as-you-go).
         :type InstanceChargeType: str
@@ -452,10 +460,12 @@ class CreateInstancesRequest(AbstractModel):
         :type TagList: list of Tag
         :param SecurityGroupIds: Security group IDs
         :type SecurityGroupIds: list of str
-        :param DBMajorVersion: 
+        :param DBMajorVersion: PostgreSQL major version number. Valid values: `10`, `11`, `12`, `13`. If it is specified, an instance running the latest kernel of PostgreSQL `DBMajorVersion` will be created.
         :type DBMajorVersion: str
-        :param DBKernelVersion: 
+        :param DBKernelVersion: PostgreSQL kernel version number. If it is specified, an instance running kernel `DBKernelVersion` will be created.
         :type DBKernelVersion: str
+        :param DBNodeSet: 
+        :type DBNodeSet: list of DBNode
         """
         self.SpecCode = None
         self.Storage = None
@@ -480,6 +490,7 @@ class CreateInstancesRequest(AbstractModel):
         self.SecurityGroupIds = None
         self.DBMajorVersion = None
         self.DBKernelVersion = None
+        self.DBNodeSet = None
 
 
     def _deserialize(self, params):
@@ -511,6 +522,12 @@ class CreateInstancesRequest(AbstractModel):
         self.SecurityGroupIds = params.get("SecurityGroupIds")
         self.DBMajorVersion = params.get("DBMajorVersion")
         self.DBKernelVersion = params.get("DBKernelVersion")
+        if params.get("DBNodeSet") is not None:
+            self.DBNodeSet = []
+            for item in params.get("DBNodeSet"):
+                obj = DBNode()
+                obj._deserialize(item)
+                self.DBNodeSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -949,7 +966,7 @@ class DBInstance(AbstractModel):
         :type DBInstanceVersion: str
         :param DBCharset: Instance database character set
         :type DBCharset: str
-        :param DBVersion: PostgreSQL major version
+        :param DBVersion: PostgreSQL version number
         :type DBVersion: str
         :param CreateTime: Instance creation time
         :type CreateTime: str
@@ -994,8 +1011,11 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param NetworkAccessList: Network access list of the instance (this field has been deprecated)
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type NetworkAccessList: list of NetworkAccess
-        :param DBMajorVersion: 
+        :param DBMajorVersion: PostgreSQL major version number
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type DBMajorVersion: str
+        :param DBNodeSet: 
+        :type DBNodeSet: list of DBNode
         """
         self.Region = None
         self.Zone = None
@@ -1032,6 +1052,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.DBKernelVersion = None
         self.NetworkAccessList = None
         self.DBMajorVersion = None
+        self.DBNodeSet = None
 
 
     def _deserialize(self, params):
@@ -1085,6 +1106,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj._deserialize(item)
                 self.NetworkAccessList.append(obj)
         self.DBMajorVersion = params.get("DBMajorVersion")
+        if params.get("DBNodeSet") is not None:
+            self.DBNodeSet = []
+            for item in params.get("DBNodeSet"):
+                obj = DBNode()
+                obj._deserialize(item)
+                self.DBNodeSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1135,6 +1162,34 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Status = params.get("Status")
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DBNode(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Role: 
+        :type Role: str
+        :param Zone: 
+        :type Zone: str
+        """
+        self.Role = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.Role = params.get("Role")
+        self.Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4381,6 +4436,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param DBKernelVersion: Database kernel version
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type DBKernelVersion: str
+        :param DBMajorVersion: Database major version number
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DBMajorVersion: str
         """
         self.DBInstanceId = None
         self.DBInstanceName = None
@@ -4398,6 +4456,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.DBDatabaseList = None
         self.TagList = None
         self.DBKernelVersion = None
+        self.DBMajorVersion = None
 
 
     def _deserialize(self, params):
@@ -4432,6 +4491,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj._deserialize(item)
                 self.TagList.append(obj)
         self.DBKernelVersion = params.get("DBKernelVersion")
+        self.DBMajorVersion = params.get("DBMajorVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4618,7 +4678,7 @@ class SpecItemInfo(AbstractModel):
         r"""
         :param SpecCode: Specification ID
         :type SpecCode: str
-        :param Version: PostgreSQL kernel version number
+        :param Version: PostgerSQL version number
         :type Version: str
         :param VersionName: Full version name corresponding to kernel number
         :type VersionName: str
@@ -4636,6 +4696,12 @@ class SpecItemInfo(AbstractModel):
         :type Pid: int
         :param Type: Machine type
         :type Type: str
+        :param MajorVersion: PostgreSQL major version number
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type MajorVersion: str
+        :param KernelVersion: PostgreSQL kernel version number
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type KernelVersion: str
         """
         self.SpecCode = None
         self.Version = None
@@ -4647,6 +4713,8 @@ class SpecItemInfo(AbstractModel):
         self.Qps = None
         self.Pid = None
         self.Type = None
+        self.MajorVersion = None
+        self.KernelVersion = None
 
 
     def _deserialize(self, params):
@@ -4660,6 +4728,8 @@ class SpecItemInfo(AbstractModel):
         self.Qps = params.get("Qps")
         self.Pid = params.get("Pid")
         self.Type = params.get("Type")
+        self.MajorVersion = params.get("MajorVersion")
+        self.KernelVersion = params.get("KernelVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

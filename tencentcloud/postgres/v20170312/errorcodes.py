@@ -50,6 +50,9 @@ FAILEDOPERATION_CAMSIGANDAUTHERROR = 'FailedOperation.CamSigAndAuthError'
 # Failed to get project information. Please try again later. If the problem persists, please contact customer service.
 FAILEDOPERATION_CDBCGWCONNECTERROR = 'FailedOperation.CdbCgwConnectError'
 
+# 
+FAILEDOPERATION_CREATEBASICNETWORKDENIEDERROR = 'FailedOperation.CreateBasicNetworkDeniedError'
+
 # Failed to create the renewal order.
 FAILEDOPERATION_CREATEORDERFAILED = 'FailedOperation.CreateOrderFailed'
 
@@ -364,6 +367,9 @@ INVALIDPARAMETERVALUE_PARAMETERHANDLEERROR = 'InvalidParameterValue.ParameterHan
 
 # The length of parameter exceeds the limit.
 INVALIDPARAMETERVALUE_PARAMETERLENGTHLIMITERROR = 'InvalidParameterValue.ParameterLengthLimitError'
+
+# 
+INVALIDPARAMETERVALUE_PARAMETEROUTRANGEERROR = 'InvalidParameterValue.ParameterOutRangeError'
 
 # The maximum value of the parameter has been reached.
 INVALIDPARAMETERVALUE_PARAMETERVALUEEXCEEDERROR = 'InvalidParameterValue.ParameterValueExceedError'
