@@ -56,6 +56,9 @@ INTERNALERROR_INVALIDERRORCODE = 'InternalError.InvalidErrorCode'
 # Internal service error. Please submit a ticket for troubleshooting.
 INTERNALERROR_PROXYSERVER = 'InternalError.ProxyServer'
 
+# 
+INTERNALERROR_ROUTEERROR = 'InternalError.RouteError'
+
 # The SCDN service is not activated. Please purchase or renew an SCDN packet and try again.
 INTERNALERROR_SCDNUSERNOPACKAGE = 'InternalError.ScdnUserNoPackage'
 
@@ -64,6 +67,9 @@ INTERNALERROR_SCDNUSERSUSPEND = 'InternalError.ScdnUserSuspend'
 
 # Internal error. Please try again or contact the customer service for assistance.
 INTERNALERROR_TAGSYSTEMERROR = 'InternalError.TagSystemError'
+
+# 
+INVALIDPARAMETER_ACCESSPORTOPENEDHTTPS = 'InvalidParameter.AccessPortOpenedHttps'
 
 # Invalid domain name status.
 INVALIDPARAMETER_CDNSTATUSINVALIDDOMAIN = 'InvalidParameter.CDNStatusInvalidDomain'
@@ -373,6 +379,9 @@ UNAUTHORIZEDOPERATION_CDNDOMAINRECORDNOTVERIFIED = 'UnauthorizedOperation.CdnDom
 
 # The domain name already exists in the system. Please submit a ticket.
 UNAUTHORIZEDOPERATION_CDNHOSTEXISTSININTERNAL = 'UnauthorizedOperation.CdnHostExistsInInternal'
+
+# 
+UNAUTHORIZEDOPERATION_CDNHOSTINICPBLACKLIST = 'UnauthorizedOperation.CdnHostInIcpBlacklist'
 
 # This domain name belongs to another account, and you do not have permission to connect it.
 UNAUTHORIZEDOPERATION_CDNHOSTISOWNEDBYOTHER = 'UnauthorizedOperation.CdnHostIsOwnedByOther'

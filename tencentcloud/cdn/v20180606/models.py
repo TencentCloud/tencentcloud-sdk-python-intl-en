@@ -434,23 +434,32 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class AdvanceHttps(AbstractModel):
-    """
+    """Custom HTTPS forwarding configuration
 
     """
 
     def __init__(self):
         r"""
-        :param CustomTlsStatus: 
+        :param CustomTlsStatus: Custom TLS data switch
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type CustomTlsStatus: str
-        :param TlsVersion: 
+        :param TlsVersion: Specifies the TLS version. Valid values: `TLSv1`, `TLSV1.1`, `TLSV1.2`, and `TLSv1.3`. Only consecutive versions can be enabled at the same time.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type TlsVersion: list of str
-        :param Cipher: 
+        :param Cipher: Custom encryption suite
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Cipher: str
-        :param VerifyOriginType: 
+        :param VerifyOriginType: Origin authentication type
+`off`: disable authentication
+`oneWay`: authenticate the origin 
+`twoWay`: two-way authentication
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type VerifyOriginType: str
-        :param CertInfo: 
+        :param CertInfo: Information of the origin-pull certificate
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type CertInfo: :class:`tencentcloud.cdn.v20180606.models.ServerCert`
-        :param OriginCertInfo: 
+        :param OriginCertInfo: Information of the origin server certificate
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type OriginCertInfo: :class:`tencentcloud.cdn.v20180606.models.ClientCert`
         """
         self.CustomTlsStatus = None
@@ -6739,7 +6748,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param PathBasedOrigin: Path-based origin-pull configurations
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type PathBasedOrigin: list of PathBasedOriginRule
-        :param AdvanceHttps: 
+        :param AdvanceHttps: Advanced HTTPS forwarding configuration
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type AdvanceHttps: :class:`tencentcloud.cdn.v20180606.models.AdvanceHttps`
         """
         self.Origins = None
