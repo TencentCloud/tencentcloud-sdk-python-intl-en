@@ -425,6 +425,34 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetAsyncEventStatus(self, request):
+        """This API is used to get the status of an async function execution event. The event status is retained for 3*24 hours, counting from the completion of the event.
+
+        :param request: Request instance for GetAsyncEventStatus.
+        :type request: :class:`tencentcloud.scf.v20180416.models.GetAsyncEventStatusRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.GetAsyncEventStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetAsyncEventStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetAsyncEventStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetFunction(self, request):
         """This API is used to obtain function details, such as name, code, handler, associated trigger, and timeout.
 
@@ -579,6 +607,34 @@ class ScfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetProvisionedConcurrencyConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetRequestStatus(self, request):
+        """This API is used to query the status of a single function request.
+
+        :param request: Request instance for GetRequestStatus.
+        :type request: :class:`tencentcloud.scf.v20180416.models.GetRequestStatusRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.GetRequestStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetRequestStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetRequestStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

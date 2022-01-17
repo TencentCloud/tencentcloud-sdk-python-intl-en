@@ -140,6 +140,38 @@ class AsyncEvent(AbstractModel):
         
 
 
+class AsyncEventStatus(AbstractModel):
+    """Async event status
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: Async event status. Values: `RUNNING` (running); `FINISHED` (invoked successfully); `ABORTED` (invocation ended); `FAILED` (invocation failed).
+        :type Status: str
+        :param StatusCode: Request status code
+        :type StatusCode: int
+        :param InvokeRequestId: Async execution request ID
+        :type InvokeRequestId: str
+        """
+        self.Status = None
+        self.StatusCode = None
+        self.InvokeRequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.StatusCode = params.get("StatusCode")
+        self.InvokeRequestId = params.get("InvokeRequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AsyncTriggerConfig(AbstractModel):
     """Async retry configuration details of function
 
@@ -857,14 +889,18 @@ class DeleteFunctionRequest(AbstractModel):
         :type FunctionName: str
         :param Namespace: Function namespace
         :type Namespace: str
+        :param Qualifier: Function version. Enter the number of the version that needs to be deleted, otherwise all versions of the function will be deleted.
+        :type Qualifier: str
         """
         self.FunctionName = None
         self.Namespace = None
+        self.Qualifier = None
 
 
     def _deserialize(self, params):
         self.FunctionName = params.get("FunctionName")
         self.Namespace = params.get("Namespace")
+        self.Qualifier = params.get("Qualifier")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1251,7 +1287,10 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Fields to be filtered
+        :param Name: Fields to be filtered. Up to 10 conditions allowed.
+Values of `Name`: `VpcId`, `SubnetId`, `ClsTopicId`, `ClsLogsetId`, `Role`, `CfsId`, `CfsMountInsId`, `Eip`. Values limit: 1.
+Name options: Status, Runtime, FunctionType, PublicNetStatus, AsyncRunEnable, TraceEnable. Values limit: 20.
+When `Name` is `Runtime`, `CustomImage` refers to the image type function 
         :type Name: str
         :param Values: Filter values of the field
         :type Values: list of str
@@ -1458,11 +1497,15 @@ Note: This field may return null, indicating that no valid value was found.
         :param ModTime: Update time
 Note: This field may return null, indicating that no valid value was found.
         :type ModTime: str
+        :param Status: Version status
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Status: str
         """
         self.Version = None
         self.Description = None
         self.AddTime = None
         self.ModTime = None
+        self.Status = None
 
 
     def _deserialize(self, params):
@@ -1470,6 +1513,7 @@ Note: This field may return null, indicating that no valid value was found.
         self.Description = params.get("Description")
         self.AddTime = params.get("AddTime")
         self.ModTime = params.get("ModTime")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1589,6 +1633,53 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Description = params.get("Description")
         self.AddTime = params.get("AddTime")
         self.ModTime = params.get("ModTime")
+        self.RequestId = params.get("RequestId")
+
+
+class GetAsyncEventStatusRequest(AbstractModel):
+    """GetAsyncEventStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InvokeRequestId: ID of the async execution request
+        :type InvokeRequestId: str
+        """
+        self.InvokeRequestId = None
+
+
+    def _deserialize(self, params):
+        self.InvokeRequestId = params.get("InvokeRequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetAsyncEventStatusResponse(AbstractModel):
+    """GetAsyncEventStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Async event status
+        :type Result: :class:`tencentcloud.scf.v20180416.models.AsyncEventStatus`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = AsyncEventStatus()
+            self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
 
@@ -2236,6 +2327,78 @@ class GetProvisionedConcurrencyConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetRequestStatusRequest(AbstractModel):
+    """GetRequestStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FunctionName: Function name
+        :type FunctionName: str
+        :param FunctionRequestId: ID of the request to be queried
+        :type FunctionRequestId: str
+        :param Namespace: Function namespace
+        :type Namespace: str
+        :param StartTime: Start time of the query, for example `2017-05-16 20:00:00`. If it’s left empty, it defaults to the current time minus 24 hours.
+        :type StartTime: str
+        :param EndTime: End time of the query, for example `2017-05-16 20:59:59`. If it’s left empty, it defaults to the current time. Note that the EndTime should be later than the StartTime
+        :type EndTime: str
+        """
+        self.FunctionName = None
+        self.FunctionRequestId = None
+        self.Namespace = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.FunctionRequestId = params.get("FunctionRequestId")
+        self.Namespace = params.get("Namespace")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetRequestStatusResponse(AbstractModel):
+    """GetRequestStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total running functions
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TotalCount: int
+        :param Data: Details of the function running status
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Data: list of RequestStatus
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = RequestStatus()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class GetReservedConcurrencyConfigRequest(AbstractModel):
     """GetReservedConcurrencyConfig request structure.
 
@@ -2300,7 +2463,7 @@ class ImageConfig(AbstractModel):
         :param RegistryId: The temp token that a TCR Enterprise instance uses to obtain an image. It’s required when `ImageType` is `enterprise`.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type RegistryId: str
-        :param EntryPoint: Entry point of the application
+        :param EntryPoint: Disused
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type EntryPoint: str
         :param Command: entrypoint execution command
@@ -2412,7 +2575,7 @@ class InvokeRequest(AbstractModel):
         :type FunctionName: str
         :param InvocationType: Fill in `RequestResponse` for synchronized invocations (default and recommended) and `Event` for asychronized invocations. Note that for synchronized invocations, the max timeout period is 300s. Choose asychronized invocations if the required timeout period is longer than 300 seconds. You can also use [InvokeFunction](https://intl.cloud.tencent.com/document/product/583/58400?from_cn_redirect=1) for synchronized invocations. 
         :type InvocationType: str
-        :param Qualifier: Version number or name of the triggered function
+        :param Qualifier: The version or alias of the triggered function. It defaults to $LATEST
         :type Qualifier: str
         :param ClientContext: Function running parameter, which is in the JSON format. The maximum parameter size is 6 MB for synchronized invocations and 128KB for asynchronized invocations. This field corresponds to [event input parameter](https://intl.cloud.tencent.com/document/product/583/9210?from_cn_redirect=1#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E).
         :type ClientContext: str
@@ -3794,6 +3957,58 @@ class PutTotalConcurrencyConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RequestStatus(AbstractModel):
+    """Running status of the function
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FunctionName: Function name
+        :type FunctionName: str
+        :param RetMsg: Return value after the function is executed
+        :type RetMsg: str
+        :param RequestId: Request ID
+        :type RequestId: str
+        :param StartTime: Request start time
+        :type StartTime: str
+        :param RetCode: Result of the request. `0`: succeeded, `1`: running, `-1`: exception
+        :type RetCode: int
+        :param Duration: Time consumed for the request in ms
+        :type Duration: float
+        :param MemUsage: Time consumed by the request in MB
+        :type MemUsage: float
+        :param RetryNum: Retry Attempts
+        :type RetryNum: int
+        """
+        self.FunctionName = None
+        self.RetMsg = None
+        self.RequestId = None
+        self.StartTime = None
+        self.RetCode = None
+        self.Duration = None
+        self.MemUsage = None
+        self.RetryNum = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.RetMsg = params.get("RetMsg")
+        self.RequestId = params.get("RequestId")
+        self.StartTime = params.get("StartTime")
+        self.RetCode = params.get("RetCode")
+        self.Duration = params.get("Duration")
+        self.MemUsage = params.get("MemUsage")
+        self.RetryNum = params.get("RetryNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Result(AbstractModel):
     """Response of the executed function
 
@@ -4005,7 +4220,7 @@ class TerminateAsyncEventRequest(AbstractModel):
         :type InvokeRequestId: str
         :param Namespace: Namespace
         :type Namespace: str
-        :param GraceShutdown: Specifies whether to enable graceful shutdown
+        :param GraceShutdown: Disused
         :type GraceShutdown: bool
         """
         self.FunctionName = None
@@ -4379,10 +4594,10 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Handler: Function handler name, which is in the `file name.function name` form. Use a period (.) to separate a file name and function name. The file name and function name must start and end with letters and contain 2-60 characters, including letters, digits, underscores (_), and hyphens (-).
-        :type Handler: str
         :param FunctionName: Name of the function to be modified
         :type FunctionName: str
+        :param Handler: Function handler name, which is in the `file name.function name` form. Use a period (.) to separate a file name and function name. The file name and function name must start and end with letters and contain 2-60 characters, including letters, digits, underscores (_), and hyphens (-).
+        :type Handler: str
         :param CosBucketName: COS bucket name
         :type CosBucketName: str
         :param CosObjectName: COS object path
@@ -4393,6 +4608,8 @@ class UpdateFunctionCodeRequest(AbstractModel):
         :type Namespace: str
         :param CosBucketRegion: COS region. Note: Beijing includes ap-beijing and ap-beijing-1.
         :type CosBucketRegion: str
+        :param InstallDependency: Whether to install dependencies automatically
+        :type InstallDependency: str
         :param EnvId: Function environment
         :type EnvId: str
         :param Publish: It specifies whether to synchronously release a new version during the update. The default value is `FALSE`, indicating not to release a new version.
@@ -4402,13 +4619,14 @@ class UpdateFunctionCodeRequest(AbstractModel):
         :param CodeSource: Code source. Valid values: ZipFile, Cos, Inline
         :type CodeSource: str
         """
-        self.Handler = None
         self.FunctionName = None
+        self.Handler = None
         self.CosBucketName = None
         self.CosObjectName = None
         self.ZipFile = None
         self.Namespace = None
         self.CosBucketRegion = None
+        self.InstallDependency = None
         self.EnvId = None
         self.Publish = None
         self.Code = None
@@ -4416,13 +4634,14 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self.Handler = params.get("Handler")
         self.FunctionName = params.get("FunctionName")
+        self.Handler = params.get("Handler")
         self.CosBucketName = params.get("CosBucketName")
         self.CosObjectName = params.get("CosObjectName")
         self.ZipFile = params.get("ZipFile")
         self.Namespace = params.get("Namespace")
         self.CosBucketRegion = params.get("CosBucketRegion")
+        self.InstallDependency = params.get("InstallDependency")
         self.EnvId = params.get("EnvId")
         self.Publish = params.get("Publish")
         if params.get("Code") is not None:
