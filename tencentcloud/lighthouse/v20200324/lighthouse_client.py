@@ -119,6 +119,34 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AttachDisks(self, request):
+        """This API is used to attach one or more cloud disks.
+
+        :param request: Request instance for AttachDisks.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.AttachDisksRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.AttachDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AttachDisks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AttachDisksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateBlueprint(self, request):
         """This API is used to create an image.
 
@@ -419,6 +447,34 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBundleDiscount(self, request):
+        """This API is used to query the discount information of a package.
+
+        :param request: Request instance for DescribeBundleDiscount.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeBundleDiscountRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeBundleDiscountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBundleDiscount", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBundleDiscountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBundles(self, request):
         """This API is used to query the information of a package.
 
@@ -461,6 +517,146 @@ class LighthouseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCcnAttachedInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDiskConfigs(self, request):
+        """This API is used to query the cloud disk configuration.
+
+        :param request: Request instance for DescribeDiskConfigs.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDiskConfigsRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDiskConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDiskConfigs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDiskConfigsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDiskDiscount(self, request):
+        """This API is used to query the discount information of a cloud disk.
+
+        :param request: Request instance for DescribeDiskDiscount.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDiskDiscountRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDiskDiscountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDiskDiscount", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDiskDiscountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDisks(self, request):
+        """This API is used to query the information of one or more cloud disks.
+
+        :param request: Request instance for DescribeDisks.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDisksRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDisks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDisksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDisksDeniedActions(self, request):
+        """This API is used to query the list of operation limits of one or more cloud disks.
+
+        :param request: Request instance for DescribeDisksDeniedActions.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDisksDeniedActionsRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDisksDeniedActionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDisksDeniedActions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDisksDeniedActionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDisksReturnable(self, request):
+        """This API is used to query whether the specified cloud disk can be returned.
+
+        :param request: Request instance for DescribeDisksReturnable.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDisksReturnableRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDisksReturnableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDisksReturnable", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDisksReturnableResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -667,6 +863,34 @@ class LighthouseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesDeniedActionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInstancesDiskNum(self, request):
+        """This API is used to query the number of cloud disks attached to instances.
+
+        :param request: Request instance for DescribeInstancesDiskNum.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeInstancesDiskNumRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeInstancesDiskNumResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstancesDiskNum", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstancesDiskNumResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -961,6 +1185,34 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DetachDisks(self, request):
+        """This API is used to detach one or more cloud disks.
+
+        :param request: Request instance for DetachDisks.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DetachDisksRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DetachDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DetachDisks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DetachDisksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DisassociateInstancesKeyPairs(self, request):
         """This API is used to unbind an instance from the specified key pair.
 
@@ -1051,6 +1303,34 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def InquirePriceCreateDisks(self, request):
+        """This API is used to query the price of purchasing cloud disks.
+
+        :param request: Request instance for InquirePriceCreateDisks.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.InquirePriceCreateDisksRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InquirePriceCreateDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InquirePriceCreateDisks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquirePriceCreateDisksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def InquirePriceCreateInstances(self, request):
         """This API is used to query the price of a created instance.
 
@@ -1065,6 +1345,34 @@ class LighthouseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquirePriceCreateInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def InquirePriceRenewDisks(self, request):
+        """This API is used to query the price of renewing cloud disks.
+
+        :param request: Request instance for InquirePriceRenewDisks.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.InquirePriceRenewDisksRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InquirePriceRenewDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InquirePriceRenewDisks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquirePriceRenewDisksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1121,6 +1429,62 @@ class LighthouseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyBlueprintAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDisksAttribute(self, request):
+        """This API is used to modify cloud disk attributes.
+
+        :param request: Request instance for ModifyDisksAttribute.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.ModifyDisksAttributeRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.ModifyDisksAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDisksAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDisksAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDisksRenewFlag(self, request):
+        """This API is used to modify the configuration of auto-renewal of cloud disks.
+
+        :param request: Request instance for ModifyDisksRenewFlag.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.ModifyDisksRenewFlagRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.ModifyDisksRenewFlagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDisksRenewFlag", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDisksRenewFlagResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1510,6 +1874,34 @@ class LighthouseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TerminateDisks(self, request):
+        """This API is used to terminate one or more cloud disk.
+
+        :param request: Request instance for TerminateDisks.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.TerminateDisksRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.TerminateDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("TerminateDisks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TerminateDisksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

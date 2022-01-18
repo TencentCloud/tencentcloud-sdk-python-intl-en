@@ -218,8 +218,14 @@ INVALIDPARAMETERVALUE_CFSPARAMETERDUPLICATE = 'InvalidParameterValue.CfsParamete
 # The value of `cfs` configuration item does not meet the specification.
 INVALIDPARAMETERVALUE_CFSPARAMETERERROR = 'InvalidParameterValue.CfsParameterError'
 
+# The CFS parameter format does not conform to the specification.
+INVALIDPARAMETERVALUE_CFSSTRUCTIONERROR = 'InvalidParameterValue.CfsStructionError'
+
 # Ckafka error.
 INVALIDPARAMETERVALUE_CKAFKA = 'InvalidParameterValue.Ckafka'
+
+# 
+INVALIDPARAMETERVALUE_CLIENTCONTEXT = 'InvalidParameterValue.ClientContext'
 
 # Cls error.
 INVALIDPARAMETERVALUE_CLS = 'InvalidParameterValue.Cls'
@@ -362,6 +368,12 @@ INVALIDPARAMETERVALUE_NAMESPACE = 'InvalidParameterValue.Namespace'
 # Incorrect Namespace. A namespace contains up to 30 characters of letters, digits, hyphens (-), and underscores (_).
 INVALIDPARAMETERVALUE_NAMESPACEINVALID = 'InvalidParameterValue.NamespaceInvalid'
 
+# 
+INVALIDPARAMETERVALUE_NODESPEC = 'InvalidParameterValue.NodeSpec'
+
+# 
+INVALIDPARAMETERVALUE_NODETYPE = 'InvalidParameterValue.NodeType'
+
 # Invalid offset.
 INVALIDPARAMETERVALUE_OFFSET = 'InvalidParameterValue.Offset'
 
@@ -436,6 +448,9 @@ INVALIDPARAMETERVALUE_TEMPCOSOBJECTNAME = 'InvalidParameterValue.TempCosObjectNa
 
 # The value of `TraceEnable` is invalid. Please modify and try again.
 INVALIDPARAMETERVALUE_TRACEENABLE = 'InvalidParameterValue.TraceEnable'
+
+# 
+INVALIDPARAMETERVALUE_TRACKINGTARGET = 'InvalidParameterValue.TrackingTarget'
 
 # TriggerCronConfig input parameter error
 INVALIDPARAMETERVALUE_TRIGGERCRONCONFIG = 'InvalidParameterValue.TriggerCronConfig'

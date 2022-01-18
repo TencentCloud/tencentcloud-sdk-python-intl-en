@@ -149,6 +149,87 @@ class AttachCcnResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AttachDetail(AbstractModel):
+    """Attachment information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param AttachedDiskCount: Number of elastic cloud disks attached to the instance
+        :type AttachedDiskCount: int
+        :param MaxAttachCount: Upper limit of attached elastic cloud disks
+        :type MaxAttachCount: int
+        """
+        self.InstanceId = None
+        self.AttachedDiskCount = None
+        self.MaxAttachCount = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AttachedDiskCount = params.get("AttachedDiskCount")
+        self.MaxAttachCount = params.get("MaxAttachCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AttachDisksRequest(AbstractModel):
+    """AttachDisks request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskIds: List of cloud disk IDs.
+        :type DiskIds: list of str
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param RenewFlag: Whether Auto-Renewal is enabled 
+        :type RenewFlag: str
+        """
+        self.DiskIds = None
+        self.InstanceId = None
+        self.RenewFlag = None
+
+
+    def _deserialize(self, params):
+        self.DiskIds = params.get("DiskIds")
+        self.InstanceId = params.get("InstanceId")
+        self.RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AttachDisksResponse(AbstractModel):
+    """AttachDisks response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Blueprint(AbstractModel):
     """Image information.
 
@@ -651,6 +732,46 @@ class CreateKeyPairResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DataDiskPrice(AbstractModel):
+    """Data disk price
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskId: Cloud disk ID.
+        :type DiskId: str
+        :param OriginalDiskPrice: Cloud disk unit price.
+        :type OriginalDiskPrice: float
+        :param OriginalPrice: Total cloud disk price.
+        :type OriginalPrice: float
+        :param Discount: Discount.
+        :type Discount: float
+        :param DiscountPrice: Discounted total price.
+        :type DiscountPrice: float
+        """
+        self.DiskId = None
+        self.OriginalDiskPrice = None
+        self.OriginalPrice = None
+        self.Discount = None
+        self.DiscountPrice = None
+
+
+    def _deserialize(self, params):
+        self.DiskId = params.get("DiskId")
+        self.OriginalDiskPrice = params.get("OriginalDiskPrice")
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.Discount = params.get("Discount")
+        self.DiscountPrice = params.get("DiscountPrice")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteBlueprintsRequest(AbstractModel):
     """DeleteBlueprints request structure.
 
@@ -1004,6 +1125,60 @@ class DescribeBlueprintsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBundleDiscountRequest(AbstractModel):
+    """DescribeBundleDiscount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BundleId: Package ID.
+        :type BundleId: str
+        """
+        self.BundleId = None
+
+
+    def _deserialize(self, params):
+        self.BundleId = params.get("BundleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBundleDiscountResponse(AbstractModel):
+    """DescribeBundleDiscount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Currency: Currency: CNY, USD.
+        :type Currency: str
+        :param DiscountDetail: Discount tier details. The information of each tier includes the duration, discounted quantity, total price, discounted price, and discount details (user discount, official website discount, or final discount).
+        :type DiscountDetail: list of DiscountDetail
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Currency = None
+        self.DiscountDetail = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Currency = params.get("Currency")
+        if params.get("DiscountDetail") is not None:
+            self.DiscountDetail = []
+            for item in params.get("DiscountDetail"):
+                obj = DiscountDetail()
+                obj._deserialize(item)
+                self.DiscountDetail.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBundlesRequest(AbstractModel):
     """DescribeBundles request structure.
 
@@ -1117,6 +1292,338 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = CcnAttachedInstance()
                 obj._deserialize(item)
                 self.CcnAttachedInstanceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDiskConfigsRequest(AbstractModel):
+    """DescribeDiskConfigs request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: Filter list.
+<li>zone</li>Filter by availability zone.
+Type: String
+Required: no
+        :type Filters: list of Filter
+        """
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDiskConfigsResponse(AbstractModel):
+    """DescribeDiskConfigs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskConfigSet: List of cloud disk configurations.
+        :type DiskConfigSet: list of DiskConfig
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DiskConfigSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DiskConfigSet") is not None:
+            self.DiskConfigSet = []
+            for item in params.get("DiskConfigSet"):
+                obj = DiskConfig()
+                obj._deserialize(item)
+                self.DiskConfigSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDiskDiscountRequest(AbstractModel):
+    """DescribeDiskDiscount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskType: Cloud disk type. Valid values: "CLOUD_PREMIUM".
+        :type DiskType: str
+        :param DiskSize: Cloud disk size.
+        :type DiskSize: int
+        """
+        self.DiskType = None
+        self.DiskSize = None
+
+
+    def _deserialize(self, params):
+        self.DiskType = params.get("DiskType")
+        self.DiskSize = params.get("DiskSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDiskDiscountResponse(AbstractModel):
+    """DescribeDiskDiscount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Currency: Currency: CNY, USD.
+        :type Currency: str
+        :param DiscountDetail: Discount tier details. The information of each tier includes the duration, discounted quantity, total price, discounted price, and discount details (user discount, official website discount, or final discount).
+        :type DiscountDetail: list of DiscountDetail
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Currency = None
+        self.DiscountDetail = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Currency = params.get("Currency")
+        if params.get("DiscountDetail") is not None:
+            self.DiscountDetail = []
+            for item in params.get("DiscountDetail"):
+                obj = DiscountDetail()
+                obj._deserialize(item)
+                self.DiscountDetail.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDisksDeniedActionsRequest(AbstractModel):
+    """DescribeDisksDeniedActions request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskIds: List of cloud disk IDs.
+        :type DiskIds: list of str
+        """
+        self.DiskIds = None
+
+
+    def _deserialize(self, params):
+        self.DiskIds = params.get("DiskIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDisksDeniedActionsResponse(AbstractModel):
+    """DescribeDisksDeniedActions response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskDeniedActionSet: List of operation limits of cloud disks.
+        :type DiskDeniedActionSet: list of DiskDeniedActions
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DiskDeniedActionSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DiskDeniedActionSet") is not None:
+            self.DiskDeniedActionSet = []
+            for item in params.get("DiskDeniedActionSet"):
+                obj = DiskDeniedActions()
+                obj._deserialize(item)
+                self.DiskDeniedActionSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDisksRequest(AbstractModel):
+    """DescribeDisks request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskIds: List of cloud disk IDs.
+        :type DiskIds: list of str
+        :param Filters: Filter list.
+disk-id
+Filter by **cloud disk ID**.
+Type: String
+Required: no
+instance-id
+Filter by **instance ID**.
+Type: String
+Required: no
+disk-name
+Filter by **cloud disk name**.
+Type: String
+Required: no
+zone
+Filter by **availability zone**.
+Type: String
+Required: no
+disk-usage
+Filter by **cloud disk type**.
+Type: String
+Required: no
+disk-state
+Filter by **cloud disk status**.
+Type: String
+Required: no
+Each request can contain up to 10 filters, each of which can have 5 values. You cannot specify both `DiskIds` and `Filters` at the same time.
+        :type Filters: list of Filter
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param OrderField: The field by which the cloud disks are sorted. Valid values: "CREATED_TIME" (creation time), "EXPIRED_TIME" (expiration time), "DISK_SIZE" (size of cloud disks). Default value: "CREATED_TIME".
+        :type OrderField: str
+        :param Order: Sorting order of the output cloud disks. Valid values: "ASC" (ascending order), "DESC" (descending order). Default value: "DESC".
+        :type Order: str
+        """
+        self.DiskIds = None
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.OrderField = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.DiskIds = params.get("DiskIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.OrderField = params.get("OrderField")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDisksResponse(AbstractModel):
+    """DescribeDisks response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskSet: List of cloud disk information.
+        :type DiskSet: list of Disk
+        :param TotalCount: Number of eligible cloud disks.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DiskSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DiskSet") is not None:
+            self.DiskSet = []
+            for item in params.get("DiskSet"):
+                obj = Disk()
+                obj._deserialize(item)
+                self.DiskSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDisksReturnableRequest(AbstractModel):
+    """DescribeDisksReturnable request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskIds: List of cloud disk IDs.
+        :type DiskIds: list of str
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        """
+        self.DiskIds = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.DiskIds = params.get("DiskIds")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDisksReturnableResponse(AbstractModel):
+    """DescribeDisksReturnable response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskReturnableSet: List of returnable cloud disks.
+        :type DiskReturnableSet: list of DiskReturnable
+        :param TotalCount: Number of eligible cloud disks.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DiskReturnableSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DiskReturnableSet") is not None:
+            self.DiskReturnableSet = []
+            for item in params.get("DiskReturnableSet"):
+                obj = DiskReturnable()
+                obj._deserialize(item)
+                self.DiskReturnableSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -1409,6 +1916,60 @@ class DescribeInstancesDeniedActionsResponse(AbstractModel):
                 obj = InstanceDeniedActions()
                 obj._deserialize(item)
                 self.InstanceDeniedActionSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstancesDiskNumRequest(AbstractModel):
+    """DescribeInstancesDiskNum request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: List of instance IDs.
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstancesDiskNumResponse(AbstractModel):
+    """DescribeInstancesDiskNum response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AttachDetailSet: Information of all attached disks
+        :type AttachDetailSet: list of AttachDetail
+        :param TotalCount: Number of attached cloud disks
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AttachDetailSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AttachDetailSet") is not None:
+            self.AttachDetailSet = []
+            for item in params.get("AttachDetailSet"):
+                obj = AttachDetail()
+                obj._deserialize(item)
+                self.AttachDetailSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -2118,6 +2679,47 @@ class DetachCcnResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DetachDisksRequest(AbstractModel):
+    """DetachDisks request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskIds: List of cloud disk IDs.
+        :type DiskIds: list of str
+        """
+        self.DiskIds = None
+
+
+    def _deserialize(self, params):
+        self.DiskIds = params.get("DiskIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetachDisksResponse(AbstractModel):
+    """DetachDisks response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DisassociateInstancesKeyPairsRequest(AbstractModel):
     """DisassociateInstancesKeyPairs request structure.
 
@@ -2161,6 +2763,327 @@ class DisassociateInstancesKeyPairsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class DiscountDetail(AbstractModel):
+    """Package discount details (only returned for price query APIs called in the console).
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TimeSpan: Billing duration.
+        :type TimeSpan: int
+        :param TimeUnit: Billing unit.
+        :type TimeUnit: str
+        :param TotalCost: Total price.
+        :type TotalCost: float
+        :param RealTotalCost: Discounted total price.
+        :type RealTotalCost: float
+        :param Discount: Discount.
+        :type Discount: int
+        :param PolicyDetail: Discount details.
+        :type PolicyDetail: :class:`tencentcloud.lighthouse.v20200324.models.PolicyDetail`
+        """
+        self.TimeSpan = None
+        self.TimeUnit = None
+        self.TotalCost = None
+        self.RealTotalCost = None
+        self.Discount = None
+        self.PolicyDetail = None
+
+
+    def _deserialize(self, params):
+        self.TimeSpan = params.get("TimeSpan")
+        self.TimeUnit = params.get("TimeUnit")
+        self.TotalCost = params.get("TotalCost")
+        self.RealTotalCost = params.get("RealTotalCost")
+        self.Discount = params.get("Discount")
+        if params.get("PolicyDetail") is not None:
+            self.PolicyDetail = PolicyDetail()
+            self.PolicyDetail._deserialize(params.get("PolicyDetail"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Disk(AbstractModel):
+    """Disk information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskId: Disk ID
+        :type DiskId: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Zone: Availability zone
+        :type Zone: str
+        :param DiskName: Disk name
+        :type DiskName: str
+        :param DiskUsage: Disk type
+        :type DiskUsage: str
+        :param DiskType: Disk media type
+        :type DiskType: str
+        :param DiskChargeType: Disk payment type
+        :type DiskChargeType: str
+        :param DiskSize: Disk size
+        :type DiskSize: int
+        :param RenewFlag: Renewal flag
+        :type RenewFlag: str
+        :param DiskState: Disk status
+        :type DiskState: str
+        :param Attached: Whether the disk is attached to an instance
+        :type Attached: bool
+        :param DeleteWithInstance: Whether to release the disk along with the instance
+        :type DeleteWithInstance: bool
+        :param LatestOperation: Last operation
+        :type LatestOperation: str
+        :param LatestOperationState: Last operation status
+        :type LatestOperationState: str
+        :param LatestOperationRequestId: Last request ID
+        :type LatestOperationRequestId: str
+        :param CreatedTime: Creation time
+        :type CreatedTime: str
+        :param ExpiredTime: Expiration date
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ExpiredTime: str
+        :param IsolatedTime: Isolation time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IsolatedTime: str
+        """
+        self.DiskId = None
+        self.InstanceId = None
+        self.Zone = None
+        self.DiskName = None
+        self.DiskUsage = None
+        self.DiskType = None
+        self.DiskChargeType = None
+        self.DiskSize = None
+        self.RenewFlag = None
+        self.DiskState = None
+        self.Attached = None
+        self.DeleteWithInstance = None
+        self.LatestOperation = None
+        self.LatestOperationState = None
+        self.LatestOperationRequestId = None
+        self.CreatedTime = None
+        self.ExpiredTime = None
+        self.IsolatedTime = None
+
+
+    def _deserialize(self, params):
+        self.DiskId = params.get("DiskId")
+        self.InstanceId = params.get("InstanceId")
+        self.Zone = params.get("Zone")
+        self.DiskName = params.get("DiskName")
+        self.DiskUsage = params.get("DiskUsage")
+        self.DiskType = params.get("DiskType")
+        self.DiskChargeType = params.get("DiskChargeType")
+        self.DiskSize = params.get("DiskSize")
+        self.RenewFlag = params.get("RenewFlag")
+        self.DiskState = params.get("DiskState")
+        self.Attached = params.get("Attached")
+        self.DeleteWithInstance = params.get("DeleteWithInstance")
+        self.LatestOperation = params.get("LatestOperation")
+        self.LatestOperationState = params.get("LatestOperationState")
+        self.LatestOperationRequestId = params.get("LatestOperationRequestId")
+        self.CreatedTime = params.get("CreatedTime")
+        self.ExpiredTime = params.get("ExpiredTime")
+        self.IsolatedTime = params.get("IsolatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiskChargePrepaid(AbstractModel):
+    """Parameter settings for the monthly subscribed cloud disk
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Period: Purchase duration.
+        :type Period: int
+        :param RenewFlag: Whether Auto-Renewal is enabled 
+        :type RenewFlag: str
+        :param TimeUnit: Purchase duration unit. Default value: "m" (month)
+        :type TimeUnit: str
+        """
+        self.Period = None
+        self.RenewFlag = None
+        self.TimeUnit = None
+
+
+    def _deserialize(self, params):
+        self.Period = params.get("Period")
+        self.RenewFlag = params.get("RenewFlag")
+        self.TimeUnit = params.get("TimeUnit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiskConfig(AbstractModel):
+    """Cloud disk configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zone: Availability zone.
+        :type Zone: str
+        :param DiskType: Cloud disk type.
+        :type DiskType: str
+        :param DiskSalesState: Cloud disk sale status.
+        :type DiskSalesState: str
+        :param MaxDiskSize: Maximum cloud disk size.
+        :type MaxDiskSize: int
+        :param MinDiskSize: Minimum cloud disk size.
+        :type MinDiskSize: int
+        :param DiskStepSize: Cloud disk increment.
+        :type DiskStepSize: int
+        """
+        self.Zone = None
+        self.DiskType = None
+        self.DiskSalesState = None
+        self.MaxDiskSize = None
+        self.MinDiskSize = None
+        self.DiskStepSize = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.DiskType = params.get("DiskType")
+        self.DiskSalesState = params.get("DiskSalesState")
+        self.MaxDiskSize = params.get("MaxDiskSize")
+        self.MinDiskSize = params.get("MinDiskSize")
+        self.DiskStepSize = params.get("DiskStepSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiskDeniedActions(AbstractModel):
+    """List of operation limits of disks.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskId: Cloud disk ID.
+        :type DiskId: str
+        :param DeniedActions: List of operation limits.
+        :type DeniedActions: list of DeniedAction
+        """
+        self.DiskId = None
+        self.DeniedActions = None
+
+
+    def _deserialize(self, params):
+        self.DiskId = params.get("DiskId")
+        if params.get("DeniedActions") is not None:
+            self.DeniedActions = []
+            for item in params.get("DeniedActions"):
+                obj = DeniedAction()
+                obj._deserialize(item)
+                self.DeniedActions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiskPrice(AbstractModel):
+    """Cloud disk price
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OriginalDiskPrice: Cloud disk unit price.
+        :type OriginalDiskPrice: float
+        :param OriginalPrice: Total cloud disk price.
+        :type OriginalPrice: float
+        :param Discount: Discount.
+        :type Discount: float
+        :param DiscountPrice: Discounted total price.
+        :type DiscountPrice: float
+        """
+        self.OriginalDiskPrice = None
+        self.OriginalPrice = None
+        self.Discount = None
+        self.DiscountPrice = None
+
+
+    def _deserialize(self, params):
+        self.OriginalDiskPrice = params.get("OriginalDiskPrice")
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.Discount = params.get("Discount")
+        self.DiscountPrice = params.get("DiscountPrice")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiskReturnable(AbstractModel):
+    """Details of the returnable cloud disk
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskId: Cloud disk ID.
+        :type DiskId: str
+        :param IsReturnable: Whether the cloud disk can be returned.
+        :type IsReturnable: bool
+        :param ReturnFailCode: Error code of cloud disk return failure.
+        :type ReturnFailCode: int
+        :param ReturnFailMessage: Error message of cloud disk return failure.
+        :type ReturnFailMessage: str
+        """
+        self.DiskId = None
+        self.IsReturnable = None
+        self.ReturnFailCode = None
+        self.ReturnFailMessage = None
+
+
+    def _deserialize(self, params):
+        self.DiskId = params.get("DiskId")
+        self.IsReturnable = params.get("IsReturnable")
+        self.ReturnFailCode = params.get("ReturnFailCode")
+        self.ReturnFailMessage = params.get("ReturnFailMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Filter(AbstractModel):
@@ -2414,6 +3337,67 @@ class InquirePriceCreateBlueprintResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class InquirePriceCreateDisksRequest(AbstractModel):
+    """InquirePriceCreateDisks request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskSize: Cloud disk size in GB.
+        :type DiskSize: int
+        :param DiskType: Cloud disk media type. Valid values: "CLOUD_PREMIUM" (premium cloud storage), "CLOUD_SSD" (SSD cloud disk).
+        :type DiskType: str
+        :param DiskChargePrepaid: Parameter settings for purchasing the monthly subscribed cloud disk.
+        :type DiskChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.DiskChargePrepaid`
+        :param DiskCount: Number of cloud disks. Default value: 1.
+        :type DiskCount: int
+        """
+        self.DiskSize = None
+        self.DiskType = None
+        self.DiskChargePrepaid = None
+        self.DiskCount = None
+
+
+    def _deserialize(self, params):
+        self.DiskSize = params.get("DiskSize")
+        self.DiskType = params.get("DiskType")
+        if params.get("DiskChargePrepaid") is not None:
+            self.DiskChargePrepaid = DiskChargePrepaid()
+            self.DiskChargePrepaid._deserialize(params.get("DiskChargePrepaid"))
+        self.DiskCount = params.get("DiskCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquirePriceCreateDisksResponse(AbstractModel):
+    """InquirePriceCreateDisks response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskPrice: Cloud disk price.
+        :type DiskPrice: :class:`tencentcloud.lighthouse.v20200324.models.DiskPrice`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DiskPrice = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DiskPrice") is not None:
+            self.DiskPrice = DiskPrice()
+            self.DiskPrice._deserialize(params.get("DiskPrice"))
+        self.RequestId = params.get("RequestId")
+
+
 class InquirePriceCreateInstancesRequest(AbstractModel):
     """InquirePriceCreateInstances request structure.
 
@@ -2475,6 +3459,59 @@ class InquirePriceCreateInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class InquirePriceRenewDisksRequest(AbstractModel):
+    """InquirePriceRenewDisks request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskIds: List of cloud disk IDs.
+        :type DiskIds: list of str
+        :param RenewDiskChargePrepaid: Parameter settings for renewing the monthly subscribed cloud disk.
+        :type RenewDiskChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.RenewDiskChargePrepaid`
+        """
+        self.DiskIds = None
+        self.RenewDiskChargePrepaid = None
+
+
+    def _deserialize(self, params):
+        self.DiskIds = params.get("DiskIds")
+        if params.get("RenewDiskChargePrepaid") is not None:
+            self.RenewDiskChargePrepaid = RenewDiskChargePrepaid()
+            self.RenewDiskChargePrepaid._deserialize(params.get("RenewDiskChargePrepaid"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquirePriceRenewDisksResponse(AbstractModel):
+    """InquirePriceRenewDisks response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskPrice: Cloud disk price.
+        :type DiskPrice: :class:`tencentcloud.lighthouse.v20200324.models.DiskPrice`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DiskPrice = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DiskPrice") is not None:
+            self.DiskPrice = DiskPrice()
+            self.DiskPrice._deserialize(params.get("DiskPrice"))
+        self.RequestId = params.get("RequestId")
+
+
 class InquirePriceRenewInstancesRequest(AbstractModel):
     """InquirePriceRenewInstances request structure.
 
@@ -2486,9 +3523,15 @@ class InquirePriceRenewInstancesRequest(AbstractModel):
         :type InstanceIds: list of str
         :param InstanceChargePrepaid: Prepaid mode, i.e., monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. It is required for prepaid instances.
         :type InstanceChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
+        :param RenewDataDisk: Whether to renew the data disk
+        :type RenewDataDisk: bool
+        :param AlignInstanceExpiredTime: Whether the data disk has the same expiration time as the instance
+        :type AlignInstanceExpiredTime: bool
         """
         self.InstanceIds = None
         self.InstanceChargePrepaid = None
+        self.RenewDataDisk = None
+        self.AlignInstanceExpiredTime = None
 
 
     def _deserialize(self, params):
@@ -2496,6 +3539,8 @@ class InquirePriceRenewInstancesRequest(AbstractModel):
         if params.get("InstanceChargePrepaid") is not None:
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self.RenewDataDisk = params.get("RenewDataDisk")
+        self.AlignInstanceExpiredTime = params.get("AlignInstanceExpiredTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2514,10 +3559,14 @@ class InquirePriceRenewInstancesResponse(AbstractModel):
         r"""
         :param Price: Price query information.
         :type Price: :class:`tencentcloud.lighthouse.v20200324.models.Price`
+        :param DataDiskPriceSet: List of data disk price information.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DataDiskPriceSet: list of DataDiskPrice
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.Price = None
+        self.DataDiskPriceSet = None
         self.RequestId = None
 
 
@@ -2525,6 +3574,12 @@ class InquirePriceRenewInstancesResponse(AbstractModel):
         if params.get("Price") is not None:
             self.Price = Price()
             self.Price._deserialize(params.get("Price"))
+        if params.get("DataDiskPriceSet") is not None:
+            self.DataDiskPriceSet = []
+            for item in params.get("DataDiskPriceSet"):
+                obj = DataDiskPrice()
+                obj._deserialize(item)
+                self.DataDiskPriceSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2602,6 +3657,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type OsName: str
         :param Zone: AZ.
         :type Zone: str
+        :param Tags: The list of tags associated with the instance
+        :type Tags: list of Tag
         """
         self.InstanceId = None
         self.BundleId = None
@@ -2628,6 +3685,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Platform = None
         self.OsName = None
         self.Zone = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -2662,6 +3720,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Platform = params.get("Platform")
         self.OsName = params.get("OsName")
         self.Zone = params.get("Zone")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3031,6 +4095,96 @@ class ModifyBundle(AbstractModel):
         
 
 
+class ModifyDisksAttributeRequest(AbstractModel):
+    """ModifyDisksAttribute request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskIds: List of cloud disk IDs.
+        :type DiskIds: list of str
+        :param DiskName: Cloud disk name.
+        :type DiskName: str
+        """
+        self.DiskIds = None
+        self.DiskName = None
+
+
+    def _deserialize(self, params):
+        self.DiskIds = params.get("DiskIds")
+        self.DiskName = params.get("DiskName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDisksAttributeResponse(AbstractModel):
+    """ModifyDisksAttribute response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDisksRenewFlagRequest(AbstractModel):
+    """ModifyDisksRenewFlag request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskIds: List of cloud disk IDs.
+        :type DiskIds: list of str
+        :param RenewFlag: Whether Auto-Renewal is enabled 
+        :type RenewFlag: str
+        """
+        self.DiskIds = None
+        self.RenewFlag = None
+
+
+    def _deserialize(self, params):
+        self.DiskIds = params.get("DiskIds")
+        self.RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDisksRenewFlagResponse(AbstractModel):
+    """ModifyDisksRenewFlag response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyFirewallRuleDescriptionRequest(AbstractModel):
     """ModifyFirewallRuleDescription request structure.
 
@@ -3316,6 +4470,38 @@ class ModifySnapshotAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class PolicyDetail(AbstractModel):
+    """Discount details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserDiscount: User discount.
+        :type UserDiscount: int
+        :param CommonDiscount: Public discount.
+        :type CommonDiscount: int
+        :param FinalDiscount: Final discount.
+        :type FinalDiscount: int
+        """
+        self.UserDiscount = None
+        self.CommonDiscount = None
+        self.FinalDiscount = None
+
+
+    def _deserialize(self, params):
+        self.UserDiscount = params.get("UserDiscount")
+        self.CommonDiscount = params.get("CommonDiscount")
+        self.FinalDiscount = params.get("FinalDiscount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Price(AbstractModel):
     """Price information
 
@@ -3410,6 +4596,42 @@ class RegionInfo(AbstractModel):
         self.RegionName = params.get("RegionName")
         self.RegionState = params.get("RegionState")
         self.IsChinaMainland = params.get("IsChinaMainland")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewDiskChargePrepaid(AbstractModel):
+    """Parameter settings for renewing the monthly subscribed cloud disk
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Period: Purchase duration.
+        :type Period: int
+        :param RenewFlag: Whether Auto-Renewal is enabled 
+        :type RenewFlag: str
+        :param TimeUnit: Duration unit. Default value: "m" (month).
+        :type TimeUnit: str
+        :param CurInstanceDeadline: Expiration time of the current instance.
+        :type CurInstanceDeadline: str
+        """
+        self.Period = None
+        self.RenewFlag = None
+        self.TimeUnit = None
+        self.CurInstanceDeadline = None
+
+
+    def _deserialize(self, params):
+        self.Period = params.get("Period")
+        self.RenewFlag = params.get("RenewFlag")
+        self.TimeUnit = params.get("TimeUnit")
+        self.CurInstanceDeadline = params.get("CurInstanceDeadline")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3890,6 +5112,75 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class Tag(AbstractModel):
+    """Information on tags
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: Tag key.
+        :type Key: str
+        :param Value: Tag value.
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TerminateDisksRequest(AbstractModel):
+    """TerminateDisks request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskIds: List of cloud disk IDs.
+        :type DiskIds: list of str
+        """
+        self.DiskIds = None
+
+
+    def _deserialize(self, params):
+        self.DiskIds = params.get("DiskIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TerminateDisksResponse(AbstractModel):
+    """TerminateDisks response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class TerminateInstancesRequest(AbstractModel):
