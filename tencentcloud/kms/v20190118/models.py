@@ -343,7 +343,7 @@ class CreateKeyRequest(AbstractModel):
         :type Alias: str
         :param Description: CMK description of up to 1,024 bytes in length
         :type Description: str
-        :param KeyUsage: Key purpose. Valid values: `ENCRYPT_DECRYPT` (default value; creating a symmetric key for encryption and decryption), `ASYMMETRIC_DECRYPT_RSA_2048` (creating an RSA2048 asymmetric key for encryption and decryption), `ASYMMETRIC_DECRYPT_SM2` (creating an SM2 asymmetric key for encryption and decryption), and `ASYMMETRIC_SIGN_VERIFY_SM2` (creating an SM2 asymmetric key for signature verification).
+        :param KeyUsage: Defines the purpose of the key. The valid values are as follows: `ENCRYPT_DECRYPT` (default): creates a symmetric encryption/decryption key; `ASYMMETRIC_DECRYPT_RSA_2048`: creates an asymmetric encryption/decryption 2048-bit RSA key; `ASYMMETRIC_DECRYPT_SM2`: creates an asymmetric encryption/decryption SM2 key; `ASYMMETRIC_SIGN_VERIFY_SM2`: creates an asymmetric SM2 key for signature verification; `ASYMMETRIC_SIGN_VERIFY_ECC`: creates an asymmetric 2048-bit RSA key for signature verification; `ASYMMETRIC_SIGN_VERIFY_ECDSA384`: creates an asymmetric ECDSA384 key for signature verification. You can get a full list of supported key purposes and algorithms using the ListAlgorithms API.
         :type KeyUsage: str
         :param Type: Specifies the key type. Default value: 1. Valid value: 1 - default type, indicating that the CMK is created by KMS; 2 - EXTERNAL type, indicating that you need to import key material. For more information, please see the `GetParametersForImport` and `ImportKeyMaterial` API documents.
         :type Type: int
@@ -515,14 +515,22 @@ class DecryptRequest(AbstractModel):
         :type CiphertextBlob: str
         :param EncryptionContext: JSON string of key-value pair. If this parameter is specified for `Encrypt`, the same parameter needs to be provided when the `Decrypt` API is called. The maximum length is 1,024 bytes.
         :type EncryptionContext: str
+        :param EncryptionPublicKey: PEM-encoded public key (2048-bit RSA/SM2 key), which can be used to encrypt the `Plaintext` returned. If this field is left empty, the `Plaintext` will not be encrypted.
+        :type EncryptionPublicKey: str
+        :param EncryptionAlgorithm: Asymmetric encryption algorithm. Valid values: `SM2(C1C3C2)`, `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, and `RSAES_OAEP_SHA_256`. This field is used in combination with `EncryptionPublicKey` for encryption. If it is left empty, a SM2 public key will be used by default.
+        :type EncryptionAlgorithm: str
         """
         self.CiphertextBlob = None
         self.EncryptionContext = None
+        self.EncryptionPublicKey = None
+        self.EncryptionAlgorithm = None
 
 
     def _deserialize(self, params):
         self.CiphertextBlob = params.get("CiphertextBlob")
         self.EncryptionContext = params.get("EncryptionContext")
+        self.EncryptionPublicKey = params.get("EncryptionPublicKey")
+        self.EncryptionAlgorithm = params.get("EncryptionAlgorithm")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -541,7 +549,8 @@ class DecryptResponse(AbstractModel):
         r"""
         :param KeyId: Globally unique CMK ID
         :type KeyId: str
-        :param Plaintext: Decrypted plaintext. This field is Base64-encoded. In order to get the original plaintext, the Base64-decoding is needed
+        :param Plaintext: If `EncryptionPublicKey` is left empty, a Base64-encoded ciphertext will be returned. To get the plaintext, you need to decode the ciphertext first.
+If `EncryptionPublicKey` is specified, this field will return the Base64-encoded ciphertext encrypted with the specified public key. To get the plaintext, you need to decode the ciphertext and upload the corresponding private key.
         :type Plaintext: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1514,7 +1523,7 @@ class EncryptResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CiphertextBlob: Base64-encoded encrypted ciphertext
+        :param CiphertextBlob: Base64-encoded ciphertext, which is the encrypted information of the ciphertext and key. To get the plaintext, you need to pass in this field to the Decrypt API.
         :type CiphertextBlob: str
         :param KeyId: Globally unique ID of the CMK used for encryption
         :type KeyId: str
@@ -1547,11 +1556,17 @@ class GenerateDataKeyRequest(AbstractModel):
         :type NumberOfBytes: int
         :param EncryptionContext: JSON string of key-value pair. If this field is used, the same string should be entered when the returned `DataKey` is decrypted.
         :type EncryptionContext: str
+        :param EncryptionPublicKey: PEM-encoded public key (2048-bit RSA/SM2 key), which can be used to encrypt the `Plaintext` returned. If this field is left empty, the `Plaintext` will not be encrypted.
+        :type EncryptionPublicKey: str
+        :param EncryptionAlgorithm: Asymmetric encryption algorithm. Valid values: `SM2(C1C3C2)`, `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, and `RSAES_OAEP_SHA_256`. This field is used with `EncryptionPublicKey` for encryption. If it is left empty, a SM2 public key will be used by default.
+        :type EncryptionAlgorithm: str
         """
         self.KeyId = None
         self.KeySpec = None
         self.NumberOfBytes = None
         self.EncryptionContext = None
+        self.EncryptionPublicKey = None
+        self.EncryptionAlgorithm = None
 
 
     def _deserialize(self, params):
@@ -1559,6 +1574,8 @@ class GenerateDataKeyRequest(AbstractModel):
         self.KeySpec = params.get("KeySpec")
         self.NumberOfBytes = params.get("NumberOfBytes")
         self.EncryptionContext = params.get("EncryptionContext")
+        self.EncryptionPublicKey = params.get("EncryptionPublicKey")
+        self.EncryptionAlgorithm = params.get("EncryptionAlgorithm")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1577,7 +1594,8 @@ class GenerateDataKeyResponse(AbstractModel):
         r"""
         :param KeyId: Globally unique CMK ID
         :type KeyId: str
-        :param Plaintext: Plaintext of the generated data key. The plaintext is Base64-encoded and can be used locally after having it Base64-decoded.
+        :param Plaintext: If `EncryptionPublicKey` is left empty, a Base64-encoded ciphertext will be returned. To get the plaintext, you need to decode the ciphertext first.
+If `EncryptionPublicKey` is specified, this field will return the Base64-encoded ciphertext encrypted with the specified public key. To get the plaintext, you need to decode the ciphertext and upload the corresponding private key.
         :type Plaintext: str
         :param CiphertextBlob: Ciphertext of the data key, which should be kept by yourself. KMS does not host user data keys. You can call the `Decrypt` API to get the plaintext of the data key from `CiphertextBlob`.
         :type CiphertextBlob: str
@@ -1977,7 +1995,7 @@ class KeyMetadata(AbstractModel):
         :type Description: str
         :param KeyState: CMK status. Valid values: Enabled, Disabled, PendingDelete, PendingImport, Archived.
         :type KeyState: str
-        :param KeyUsage: CMK purpose. Valid values: `ENCRYPT_DECRYPT`, `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`, and `ASYMMETRIC_SIGN_VERIFY_SM2`.
+        :param KeyUsage: CMK purpose. Valid values: `ENCRYPT_DECRYPT`, `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`, `ASYMMETRIC_SIGN_VERIFY_SM2`, `ASYMMETRIC_SIGN_VERIFY_RSA_2048`, and `ASYMMETRIC_SIGN_VERIFY_ECC`.
         :type KeyUsage: str
         :param Type: CMK type. 2: FIPS-compliant; 4: SM-CRYPTO
         :type Type: int
@@ -2113,7 +2131,7 @@ class ListKeyDetailRequest(AbstractModel):
         :type SearchKeyAlias: str
         :param Origin: Filters by CMK type. "TENCENT_KMS" indicates to filter CMKs whose key materials are created by KMS; "EXTERNAL" indicates to filter CMKs of `EXTERNAL` type whose key materials are imported by users; "ALL" or empty indicates to filter CMKs of both types. This value is case-sensitive.
         :type Origin: str
-        :param KeyUsage: Filter by the `KeyUsage` field of CMKs. Valid values: `ALL` (filtering all CMKs), `ENCRYPT_DECRYPT` (it will be used when the parameter is left empty), `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`, and `ASYMMETRIC_SIGN_VERIFY_SM2`.
+        :param KeyUsage: Filters by the `KeyUsage` field value. Valid values: `ALL` (all CMKs), `ENCRYPT_DECRYPT` (used when this field is left empty), `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`, `ASYMMETRIC_SIGN_VERIFY_SM2`, `ASYMMETRIC_SIGN_VERIFY_RSA_2048`, and `ASYMMETRIC_SIGN_VERIFY_ECC`.
         :type KeyUsage: str
         :param TagFilters: Tag filter condition
         :type TagFilters: list of TagFilter
@@ -2425,9 +2443,9 @@ class SignByAsymmetricKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Algorithm: Signature algorithm. Supported algorithm: SM2DSA.
+        :param Algorithm: Signature algorithm. The valid values include `SM2DSA`, `ECC_P256_R1`, `RSA_PSS_SHA_256`, and `RSA_PKCS1_SHA_256`, etc. You can get a full list of supported algorithms using the ListAlgorithms API.
         :type Algorithm: str
-        :param Message: The original message or message abstract. For an original message, the length before Base64 encoding can contain up to 4,096 bytes. For a message abstract, the SM2 signature algorithm only supports 32-byte (before Base64 encoding) message abstracts.
+        :param Message: Full message or message abstract. Before Base64 encoding, an original message can contain up to 4,096 bytes while a message abstract must be 32 bytes.
         :type Message: str
         :param KeyId: Unique ID of a key
         :type KeyId: str
@@ -2681,9 +2699,9 @@ class VerifyByAsymmetricKeyRequest(AbstractModel):
         :type KeyId: str
         :param SignatureValue: Signature value, which is generated by calling the KMS signature API.
         :type SignatureValue: str
-        :param Message: The original message or message abstract. For an original message, the length before Base64 encoding can contain up to 4,096 bytes. For a message abstract, the SM2 signature algorithm only supports 32-byte (before Base64 encoding) message abstracts.
+        :param Message: Full message or message abstract. Before Base64 encoding, an original message can contain up to 4,096 bytes while a message abstract must be 32 bytes.
         :type Message: str
-        :param Algorithm: Signature algorithm. Supported algorithm: SM2DSA.
+        :param Algorithm: Signature algorithm. The valid values include `SM2DSA`, `ECC_P256_R1`, `RSA_PSS_SHA_256`, and `RSA_PKCS1_SHA_256`, etc. You can get a full list of supported algorithms using the ListAlgorithms API.
         :type Algorithm: str
         :param MessageType: Message type. Valid values: `RAW` (indicating an original message; used by default if the parameter is not passed in) and `DIGEST`.
         :type MessageType: str
@@ -2717,7 +2735,7 @@ class VerifyByAsymmetricKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SignatureValid: Whether the signature is valid.
+        :param SignatureValid: Whether the signature is valid. `true`: the signature is valid; `false`: the signature is invalid.
         :type SignatureValid: bool
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str

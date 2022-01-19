@@ -23,6 +23,9 @@ ADDRESSQUOTALIMITEXCEEDED_DAILYALLOCATE = 'AddressQuotaLimitExceeded.DailyAlloca
 # CAM signature or authentication error.
 AUTHFAILURE = 'AuthFailure'
 
+# The ENI information is not available in this address.
+FAILEDOPERATION_ADDRESSENIINFONOTFOUND = 'FailedOperation.AddressEniInfoNotFound'
+
 # An internal error occurred.
 INTERNALERROR = 'InternalError'
 
@@ -80,11 +83,17 @@ INVALIDPARAMETER_INVALIDFILTER = 'InvalidParameter.InvalidFilter'
 # The next hop type does not match with the next hop gateway.
 INVALIDPARAMETER_NEXTHOPMISMATCH = 'InvalidParameter.NextHopMismatch'
 
+# The cross-AZ placement group of the DC gateway doesn't exist.
+INVALIDPARAMETER_VPGHAGROUPNOTFOUND = 'InvalidParameter.VpgHaGroupNotFound'
+
 # The two parameters cannot be specified at the same time, nor exist concurrently. EIP can only be bound to the instances or the specified private IPs of the specified ENIs.
 INVALIDPARAMETERCONFLICT = 'InvalidParameterConflict'
 
 # Incorrect parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
+
+# This IP address ID is invalid.
+INVALIDPARAMETERVALUE_ADDRESSIDMALFORMED = 'InvalidParameterValue.AddressIdMalformed'
 
 # The billing mode of this IP address conflicts with that of other IP addresses.
 INVALIDPARAMETERVALUE_ADDRESSINTERNETCHARGETYPECONFLICT = 'InvalidParameterValue.AddressInternetChargeTypeConflict'
@@ -98,11 +107,17 @@ INVALIDPARAMETERVALUE_ADDRESSNOTAPPLICABLE = 'InvalidParameterValue.AddressNotAp
 # This IP address is not a CalcIP (device IP).
 INVALIDPARAMETERVALUE_ADDRESSNOTCALCIP = 'InvalidParameterValue.AddressNotCalcIP'
 
+# 
+INVALIDPARAMETERVALUE_ADDRESSNOTEIP = 'InvalidParameterValue.AddressNotEIP'
+
 # Unable to find the address.
 INVALIDPARAMETERVALUE_ADDRESSNOTFOUND = 'InvalidParameterValue.AddressNotFound'
 
 # The bandwidth exceeds the limit.
 INVALIDPARAMETERVALUE_BANDWIDTHOUTOFRANGE = 'InvalidParameterValue.BandwidthOutOfRange'
+
+# 
+INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDMALFORMED = 'InvalidParameterValue.BandwidthPackageIdMalformed'
 
 # The bandwidth package is in use.
 INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEINUSE = 'InvalidParameterValue.BandwidthPackageInUse'
@@ -146,8 +161,17 @@ INVALIDPARAMETERVALUE_INSTANCENOWANIP = 'InvalidParameterValue.InstanceNoWanIP'
 # Failed to bind: this IP is restricted
 INVALIDPARAMETERVALUE_INSTANCENORMALPUBLICIPBLOCKED = 'InvalidParameterValue.InstanceNormalPublicIpBlocked'
 
+# 
+INVALIDPARAMETERVALUE_INSTANCENOTMATCHASSOCIATEENI = 'InvalidParameterValue.InstanceNotMatchAssociateEni'
+
+# The network billing mode has not been changed.
+INVALIDPARAMETERVALUE_INTERNETCHARGETYPENOTCHANGED = 'InvalidParameterValue.InternetChargeTypeNotChanged'
+
 # Invalid billing mode of bandwidth package
 INVALIDPARAMETERVALUE_INVALIDBANDWIDTHPACKAGECHARGETYPE = 'InvalidParameterValue.InvalidBandwidthPackageChargeType'
+
+# The parameter value does not exist or is not supported.
+INVALIDPARAMETERVALUE_INVALIDBUSINESS = 'InvalidParameterValue.InvalidBusiness'
 
 # Invalid DedicatedClusterId.
 INVALIDPARAMETERVALUE_INVALIDDEDICATEDCLUSTERID = 'InvalidParameterValue.InvalidDedicatedClusterId'
@@ -170,11 +194,20 @@ INVALIDPARAMETERVALUE_LIMITEXCEEDED = 'InvalidParameterValue.LimitExceeded'
 # Invalid input parameter format.
 INVALIDPARAMETERVALUE_MALFORMED = 'InvalidParameterValue.Malformed'
 
+# 
+INVALIDPARAMETERVALUE_MISSINGASSOCIATEENTITY = 'InvalidParameterValue.MissingAssociateEntity'
+
 # A request cannot contain IP addresses with different cluster types.
 INVALIDPARAMETERVALUE_MIXEDADDRESSIPSETTYPE = 'InvalidParameterValue.MixedAddressIpSetType'
 
 # The NAT Gateway already has an identical SNAT rule.
 INVALIDPARAMETERVALUE_NATSNATRULEEXISTS = 'InvalidParameterValue.NatSnatRuleExists'
+
+# The probe destination IP and network probe are in the same VPC.
+INVALIDPARAMETERVALUE_NETDETECTINVPC = 'InvalidParameterValue.NetDetectInVpc'
+
+# Unable to find the matched next hop in the CCN route table for the destination IP.
+INVALIDPARAMETERVALUE_NETDETECTNOTFOUNDIP = 'InvalidParameterValue.NetDetectNotFoundIp'
 
 # The detection destination IP address is the same as that of another network detection instance under the same subnet in the same VPC.
 INVALIDPARAMETERVALUE_NETDETECTSAMEIP = 'InvalidParameterValue.NetDetectSameIp'
@@ -194,6 +227,9 @@ INVALIDPARAMETERVALUE_RESERVED = 'InvalidParameterValue.Reserved'
 # The resource has already added to another bandwidth package.
 INVALIDPARAMETERVALUE_RESOURCEALREADYEXISTED = 'InvalidParameterValue.ResourceAlreadyExisted'
 
+# 
+INVALIDPARAMETERVALUE_RESOURCEEXPIRED = 'InvalidParameterValue.ResourceExpired'
+
 # The resource ID is incorrect.
 INVALIDPARAMETERVALUE_RESOURCEIDMALFORMED = 'InvalidParameterValue.ResourceIdMalformed'
 
@@ -203,8 +239,14 @@ INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = 'InvalidParameterValue.ResourceNotExi
 # This resource is not found.
 INVALIDPARAMETERVALUE_RESOURCENOTFOUND = 'InvalidParameterValue.ResourceNotFound'
 
+# The resource does not support this operation.
+INVALIDPARAMETERVALUE_RESOURCENOTSUPPORT = 'InvalidParameterValue.ResourceNotSupport'
+
 # Subnet CIDR conflict.
 INVALIDPARAMETERVALUE_SUBNETCONFLICT = 'InvalidParameterValue.SubnetConflict'
+
+# 
+INVALIDPARAMETERVALUE_SUBNETOVERLAPASSISTCIDR = 'InvalidParameterValue.SubnetOverlapAssistCidr'
 
 # Invalid subnet CIDR.
 INVALIDPARAMETERVALUE_SUBNETRANGE = 'InvalidParameterValue.SubnetRange'
@@ -214,6 +256,9 @@ INVALIDPARAMETERVALUE_TAGNOTEXISTED = 'InvalidParameterValue.TagNotExisted'
 
 # Invalid parameter value. The parameter value is too long.
 INVALIDPARAMETERVALUE_TOOLONG = 'InvalidParameterValue.TooLong'
+
+# 
+INVALIDPARAMETERVALUE_UNAVAILABLEZONE = 'InvalidParameterValue.UnavailableZone'
 
 # Destination IP address range conflicts with CIDR of the current VPC.
 INVALIDPARAMETERVALUE_VPCCIDRCONFLICT = 'InvalidParameterValue.VpcCidrConflict'
@@ -305,8 +350,14 @@ RESOURCEINSUFFICIENT_CIDRBLOCK = 'ResourceInsufficient.CidrBlock'
 # The resource does not exist.
 RESOURCENOTFOUND = 'ResourceNotFound'
 
+# The Svc doesn't exist.
+RESOURCENOTFOUND_SVCNOTEXIST = 'ResourceNotFound.SvcNotExist'
+
 # The resource is unavailable.
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'
+
+# The current user is not in the allowlist of the specified endpoint service.
+RESOURCEUNAVAILABLE_SERVICEWHITELISTNOTADDED = 'ResourceUnavailable.ServiceWhiteListNotAdded'
 
 # Unauthorized operation.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
@@ -332,8 +383,14 @@ UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 # The port does not exist.
 UNSUPPORTEDOPERATION_ACTIONNOTFOUND = 'UnsupportedOperation.ActionNotFound'
 
+# This operation is not supported by the IP address status.
+UNSUPPORTEDOPERATION_ADDRESSSTATUSNOTPERMIT = 'UnsupportedOperation.AddressStatusNotPermit'
+
 # The resource is not under the specified AppId.
 UNSUPPORTEDOPERATION_APPIDMISMATCH = 'UnsupportedOperation.AppIdMismatch'
+
+# The APPId doesn't exist.
+UNSUPPORTEDOPERATION_APPIDNOTFOUND = 'UnsupportedOperation.AppIdNotFound'
 
 # The EIP is already bound to a CVM.
 UNSUPPORTEDOPERATION_ATTACHMENTALREADYEXISTS = 'UnsupportedOperation.AttachmentAlreadyExists'
@@ -355,6 +412,9 @@ UNSUPPORTEDOPERATION_CIDRUNSUPPORTEDCLASSICLINK = 'UnsupportedOperation.CIDRUnSu
 
 # The instance is already associated with a CCN.
 UNSUPPORTEDOPERATION_CCNATTACHED = 'UnsupportedOperation.CcnAttached'
+
+# This CCN instance cannot be deleted as it has flow logs.
+UNSUPPORTEDOPERATION_CCNHASFLOWLOG = 'UnsupportedOperation.CcnHasFlowLog'
 
 # The instance is not associated with a CCN.
 UNSUPPORTEDOPERATION_CCNNOTATTACHED = 'UnsupportedOperation.CcnNotAttached'
@@ -395,11 +455,29 @@ UNSUPPORTEDOPERATION_ECMPWITHCCNROUTE = 'UnsupportedOperation.EcmpWithCcnRoute'
 # Form an ECMP with the user’s custom routes.
 UNSUPPORTEDOPERATION_ECMPWITHUSERROUTE = 'UnsupportedOperation.EcmpWithUserRoute'
 
+# The endpoint service itself cannot be set as the endpoint.
+UNSUPPORTEDOPERATION_ENDPOINTSERVICE = 'UnsupportedOperation.EndPointService'
+
+# 
+UNSUPPORTEDOPERATION_INCORRECTADDRESSRESOURCETYPE = 'UnsupportedOperation.IncorrectAddressResourceType'
+
 # The configured instance does not match with the route table.
 UNSUPPORTEDOPERATION_INSTANCEANDRTBNOTMATCH = 'UnsupportedOperation.InstanceAndRtbNotMatch'
 
+# This operation is not supported by the status of the instance bound with the IP address.
+UNSUPPORTEDOPERATION_INSTANCESTATENOTSUPPORTED = 'UnsupportedOperation.InstanceStateNotSupported'
+
 # Insufficient account balance.
 UNSUPPORTEDOPERATION_INSUFFICIENTFUNDS = 'UnsupportedOperation.InsufficientFunds'
+
+# Unsupported operation.
+UNSUPPORTEDOPERATION_INVALIDACTION = 'UnsupportedOperation.InvalidAction'
+
+# This operation is not allowed under the network billing mode of the IP address.
+UNSUPPORTEDOPERATION_INVALIDADDRESSINTERNETCHARGETYPE = 'UnsupportedOperation.InvalidAddressInternetChargeType'
+
+# This operation is not supported by the IP address status.
+UNSUPPORTEDOPERATION_INVALIDADDRESSSTATE = 'UnsupportedOperation.InvalidAddressState'
 
 # Invalid instance status.
 UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = 'UnsupportedOperation.InvalidInstanceState'
@@ -416,14 +494,20 @@ UNSUPPORTEDOPERATION_INVALIDSTATE = 'UnsupportedOperation.InvalidState'
 # The account of the instance associated with the current CCN is not a Financial Cloud account.
 UNSUPPORTEDOPERATION_ISNOTFINANCEACCOUNT = 'UnsupportedOperation.IsNotFinanceAccount'
 
+# This ISP does not support this operation.
+UNSUPPORTEDOPERATION_ISPNOTSUPPORTED = 'UnsupportedOperation.IspNotSupported'
+
 # The specified CDC instance already has a local gateway.
-UNSUPPORTEDOPERATION_LOCALGATEWAYALREADYEXISTS = 'UnsupportedOperation.LocalGateWayAlreadyExists'
+UNSUPPORTEDOPERATION_LOCALGATEWAYALREADYEXISTS = 'UnsupportedOperation.LocalGatewayAlreadyExists'
 
 # The resource mutual exclusion operation is being executed.
 UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = 'UnsupportedOperation.MutexOperationTaskRunning'
 
 # The specified NAT Gateway type does not support configuring a SNAT rule.
 UNSUPPORTEDOPERATION_NATGATEWAYTYPENOTSUPPORTSNAT = 'UnsupportedOperation.NatGatewayTypeNotSupportSNAT'
+
+# The NAT instance does not support this operation.
+UNSUPPORTEDOPERATION_NATNOTSUPPORTED = 'UnsupportedOperation.NatNotSupported'
 
 # The specified subnet does not support creating a route to the local gateway.
 UNSUPPORTEDOPERATION_NORMALSUBNETNOTSUPPORTLOCALGATEWAY = 'UnsupportedOperation.NormalSubnetNotSupportLocalGateway'

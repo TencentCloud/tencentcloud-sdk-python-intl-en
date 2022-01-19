@@ -54,6 +54,34 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AttachLoadBalancers(self, request):
+        """This API is used to add CLBs to a security group.
+
+        :param request: Request instance for AttachLoadBalancers.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.AttachLoadBalancersRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.AttachLoadBalancersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AttachLoadBalancers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AttachLoadBalancersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ClearLaunchConfigurationAttributes(self, request):
         """This API is used to clear specific attributes of the launch configuration.
 
@@ -585,6 +613,34 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAutoScalingAdvices(self, request):
+        """This API is used to query suggestions for scaling group configurations.
+
+        :param request: Request instance for DescribeAutoScalingAdvices.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DescribeAutoScalingAdvicesRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DescribeAutoScalingAdvicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAutoScalingAdvices", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAutoScalingAdvicesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAutoScalingGroupLastActivities(self, request):
         """This API is used to query the latest activity history of an auto scaling group.
 
@@ -858,6 +914,34 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DetachLoadBalancers(self, request):
+        """This API is used to unbind one or more CLBs from a scaling group. This API will not terminate CLBs.
+
+        :param request: Request instance for DetachLoadBalancers.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DetachLoadBalancersRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DetachLoadBalancersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DetachLoadBalancers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DetachLoadBalancersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DisableAutoScalingGroup(self, request):
         """This API (DisableAutoScalingGroup) is used to disable the specified auto scaling group.
 
@@ -1018,6 +1102,34 @@ class AutoscalingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLaunchConfigurationAttributesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyLoadBalancerTargetAttributes(self, request):
+        """This API is used to modify the target rule attributes of the CLB in the scaling group.
+
+        :param request: Request instance for ModifyLoadBalancerTargetAttributes.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.ModifyLoadBalancerTargetAttributesRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ModifyLoadBalancerTargetAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLoadBalancerTargetAttributes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLoadBalancerTargetAttributesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

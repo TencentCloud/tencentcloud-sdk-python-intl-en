@@ -150,6 +150,38 @@ class ActivtyRelatedInstance(AbstractModel):
         
 
 
+class Advice(AbstractModel):
+    """Suggestions for scaling group configurations.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Problem: Problem Description
+        :type Problem: str
+        :param Detail: Problem Details
+        :type Detail: str
+        :param Solution: Recommended resolutions
+        :type Solution: str
+        """
+        self.Problem = None
+        self.Detail = None
+        self.Solution = None
+
+
+    def _deserialize(self, params):
+        self.Problem = params.get("Problem")
+        self.Detail = params.get("Detail")
+        self.Solution = params.get("Solution")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AttachInstancesRequest(AbstractModel):
     """AttachInstances request structure.
 
@@ -197,6 +229,97 @@ class AttachInstancesResponse(AbstractModel):
     def _deserialize(self, params):
         self.ActivityId = params.get("ActivityId")
         self.RequestId = params.get("RequestId")
+
+
+class AttachLoadBalancersRequest(AbstractModel):
+    """AttachLoadBalancers request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoScalingGroupId: Scaling group ID
+        :type AutoScalingGroupId: str
+        :param LoadBalancerIds: List of classic CLB IDs. Up to 20 classic CLBs can be bound to a security group. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.
+        :type LoadBalancerIds: list of str
+        :param ForwardLoadBalancers: List of application CLBs. Up to 50 application CLBs can be bound to a security group. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.
+        :type ForwardLoadBalancers: list of ForwardLoadBalancer
+        """
+        self.AutoScalingGroupId = None
+        self.LoadBalancerIds = None
+        self.ForwardLoadBalancers = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.LoadBalancerIds = params.get("LoadBalancerIds")
+        if params.get("ForwardLoadBalancers") is not None:
+            self.ForwardLoadBalancers = []
+            for item in params.get("ForwardLoadBalancers"):
+                obj = ForwardLoadBalancer()
+                obj._deserialize(item)
+                self.ForwardLoadBalancers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AttachLoadBalancersResponse(AbstractModel):
+    """AttachLoadBalancers response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ActivityId: Scaling activity ID
+        :type ActivityId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ActivityId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ActivityId = params.get("ActivityId")
+        self.RequestId = params.get("RequestId")
+
+
+class AutoScalingAdvice(AbstractModel):
+    """Suggestions for scaling group configurations.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoScalingGroupId: Scaling group ID
+        :type AutoScalingGroupId: str
+        :param Advices: A collection of suggestions for scaling group configurations.
+        :type Advices: list of Advice
+        """
+        self.AutoScalingGroupId = None
+        self.Advices = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        if params.get("Advices") is not None:
+            self.Advices = []
+            for item in params.get("Advices"):
+                obj = Advice()
+                obj._deserialize(item)
+                self.Advices.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class AutoScalingGroup(AbstractModel):
@@ -1048,11 +1171,18 @@ class CreateNotificationConfigurationRequest(AbstractModel):
         :type NotificationTypes: list of str
         :param NotificationUserGroupIds: Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) API.
         :type NotificationUserGroupIds: list of str
-        :param TargetType: Notification receiver type. Values: `USER_GROUP`，`CMQ_QUEUE`，`CMQ_TOPIC`. Default: `USER_GROUP`.
+        :param TargetType: Notification receiver type. Valid values:
+<br><li>USER_GROUP:User group
+<br><li>CMQ_QUEUE:CMQ queue
+<br><li>CMQ_TOPIC:CMQ topic
+<br><li>TDMQ_CMQ_TOPIC:TDMQ CMQ topic
+<br><li>TDMQ_CMQ_QUEUE:TDMQ CMQ queue
+
+Default value: `USER_GROUP`.
         :type TargetType: str
-        :param QueueName: CMQ queue name. This field is required when `TargetType` is `CMQ_QUEUE`.
+        :param QueueName: CMQ queue name. This parameter is required when `TargetType` is `CMQ_QUEUE` or `TDMQ_CMQ_QUEUE`.
         :type QueueName: str
-        :param TopicName: CMQ topic name. This field is required when `TargetType` is `CMQ_TOPIC`.
+        :param TopicName: CMQ topic name. This parameter is required when `TargetType` is `CMQ_TOPIC` or `TDMQ_CMQ_TOPIC`.
         :type TopicName: str
         """
         self.AutoScalingGroupId = None
@@ -1648,6 +1778,56 @@ class DescribeAutoScalingActivitiesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAutoScalingAdvicesRequest(AbstractModel):
+    """DescribeAutoScalingAdvices request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoScalingGroupIds: List of scaling groups to be queried. Upper limit: 100.
+        :type AutoScalingGroupIds: list of str
+        """
+        self.AutoScalingGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupIds = params.get("AutoScalingGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAutoScalingAdvicesResponse(AbstractModel):
+    """DescribeAutoScalingAdvices response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoScalingAdviceSet: A collection of suggestions for scaling group configurations.
+        :type AutoScalingAdviceSet: list of AutoScalingAdvice
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AutoScalingAdviceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AutoScalingAdviceSet") is not None:
+            self.AutoScalingAdviceSet = []
+            for item in params.get("AutoScalingAdviceSet"):
+                obj = AutoScalingAdvice()
+                obj._deserialize(item)
+                self.AutoScalingAdviceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAutoScalingGroupLastActivitiesRequest(AbstractModel):
     """DescribeAutoScalingGroupLastActivities request structure.
 
@@ -1793,7 +1973,7 @@ The maximum number of `Filters` per request is 10. The upper limit for `Filter.V
         :type Filters: list of Filter
         :param Offset: Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Offset: int
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :param Limit: Number of returned results. The default value is 20. The maximum is 2000. For more information on `Limit`, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Limit: int
         """
         self.InstanceIds = None
@@ -2273,6 +2453,64 @@ class DetachInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DetachLoadBalancersRequest(AbstractModel):
+    """DetachLoadBalancers request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoScalingGroupId: Scaling group ID
+        :type AutoScalingGroupId: str
+        :param LoadBalancerIds: List of classic CLB IDs. Up to 20 IDs are allowed. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.
+        :type LoadBalancerIds: list of str
+        :param ForwardLoadBalancerIdentifications: List of application CLB IDs. Up to 50 IDs are allowed. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.
+        :type ForwardLoadBalancerIdentifications: list of ForwardLoadBalancerIdentification
+        """
+        self.AutoScalingGroupId = None
+        self.LoadBalancerIds = None
+        self.ForwardLoadBalancerIdentifications = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.LoadBalancerIds = params.get("LoadBalancerIds")
+        if params.get("ForwardLoadBalancerIdentifications") is not None:
+            self.ForwardLoadBalancerIdentifications = []
+            for item in params.get("ForwardLoadBalancerIdentifications"):
+                obj = ForwardLoadBalancerIdentification()
+                obj._deserialize(item)
+                self.ForwardLoadBalancerIdentifications.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetachLoadBalancersResponse(AbstractModel):
+    """DetachLoadBalancers response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ActivityId: Scaling activity ID
+        :type ActivityId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ActivityId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ActivityId = params.get("ActivityId")
+        self.RequestId = params.get("RequestId")
+
+
 class DetailedStatusMessage(AbstractModel):
     """Detailed description of scaling activity status
 
@@ -2554,6 +2792,38 @@ class ForwardLoadBalancer(AbstractModel):
                 self.TargetAttributes.append(obj)
         self.LocationId = params.get("LocationId")
         self.Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ForwardLoadBalancerIdentification(AbstractModel):
+    """Application CLB IDs
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoadBalancerId: ID of the CLB
+        :type LoadBalancerId: str
+        :param ListenerId: Application CLB listener ID
+        :type ListenerId: str
+        :param LocationId: ID of a forwarding rule. This parameter is required for layer-7 listeners.
+        :type LocationId: str
+        """
+        self.LoadBalancerId = None
+        self.ListenerId = None
+        self.LocationId = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerId = params.get("ListenerId")
+        self.LocationId = params.get("LocationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3476,6 +3746,8 @@ This field requires passing in the `InstanceName` field. Other fields that are n
         :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
         :param EnhancedService: Specifies whether to enable additional services, such as security services and monitoring service.
         :type EnhancedService: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
+        :param CamRoleName: CAM role name. This parameter can be obtained from the `roleName` field returned by DescribeRoleList API.
+        :type CamRoleName: str
         """
         self.LaunchConfigurationId = None
         self.ImageId = None
@@ -3494,6 +3766,7 @@ This field requires passing in the `InstanceName` field. Other fields that are n
         self.HostNameSettings = None
         self.InstanceNameSettings = None
         self.EnhancedService = None
+        self.CamRoleName = None
 
 
     def _deserialize(self, params):
@@ -3533,6 +3806,7 @@ This field requires passing in the `InstanceName` field. Other fields that are n
         if params.get("EnhancedService") is not None:
             self.EnhancedService = EnhancedService()
             self.EnhancedService._deserialize(params.get("EnhancedService"))
+        self.CamRoleName = params.get("CamRoleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3556,6 +3830,60 @@ class ModifyLaunchConfigurationAttributesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLoadBalancerTargetAttributesRequest(AbstractModel):
+    """ModifyLoadBalancerTargetAttributes request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoScalingGroupId: Scaling group ID
+        :type AutoScalingGroupId: str
+        :param ForwardLoadBalancers: List of application CLBs to modify.Up to 50 CLBs allowed.
+        :type ForwardLoadBalancers: list of ForwardLoadBalancer
+        """
+        self.AutoScalingGroupId = None
+        self.ForwardLoadBalancers = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        if params.get("ForwardLoadBalancers") is not None:
+            self.ForwardLoadBalancers = []
+            for item in params.get("ForwardLoadBalancers"):
+                obj = ForwardLoadBalancer()
+                obj._deserialize(item)
+                self.ForwardLoadBalancers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLoadBalancerTargetAttributesResponse(AbstractModel):
+    """ModifyLoadBalancerTargetAttributes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ActivityId: Scaling activity ID
+        :type ActivityId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ActivityId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ActivityId = params.get("ActivityId")
         self.RequestId = params.get("RequestId")
 
 
@@ -3642,9 +3970,9 @@ class ModifyNotificationConfigurationRequest(AbstractModel):
         :type NotificationTypes: list of str
         :param NotificationUserGroupIds: Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) API.
         :type NotificationUserGroupIds: list of str
-        :param QueueName: CMQ queue name.
+        :param QueueName: CMQ or TDMQ CMQ queue name.
         :type QueueName: str
-        :param TopicName: CMQ topic name.
+        :param TopicName: CMQ or TDMQ CMQ toipc name.
         :type TopicName: str
         """
         self.AutoScalingNotificationId = None
@@ -3830,13 +4158,15 @@ class NotificationTarget(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TargetType: Target type. Value range: `CMQ_QUEUE`, `CMQ_TOPIC`.
-<li> CMQ_QUEUE: CMQ_QUEUE: CMQ queue model.</li>
-<li> CMQ_TOPIC: CMQ topic model.</li>
+        :param TargetType: Target type. Valid values: `CMQ_QUEUE`, `CMQ_TOPIC`, `TDMQ_CMQ_QUEUE` and `TDMQ_CMQ_TOPIC`.
+<li> CMQ_QUEUE: Tencent Cloud message queue - queue model.</li>
+<li> CMQ_TOPIC: Tencent Cloud message queue - topic model.</li>
+<li> TDMQ_CMQ_QUEUE: Tencent Cloud TDMQ message queue - queue model.</li>
+<li> TDMQ_CMQ_TOPIC: Tencent Cloud TDMQ message queue - topic model.</li>
         :type TargetType: str
-        :param QueueName: Queue name. If `TargetType` is `CMQ_QUEUE`, this parameter is required.
+        :param QueueName: Queue name. This parameter is required when `TargetType` is `CMQ_QUEUE` or `TDMQ_CMQ_QUEUE`.
         :type QueueName: str
-        :param TopicName: Topic name. If `TargetType` is `CMQ_TOPIC`, this parameter is required.
+        :param TopicName: Topic name. This parameter is required when `TargetType` is `CMQ_TOPIC` or `TDMQ_CMQ_TOPIC`.
         :type TopicName: str
         """
         self.TargetType = None

@@ -282,6 +282,34 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class BatchContent(AbstractModel):
+    """Message content that can be sent in batches
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Body: Message body that is sent.
+        :type Body: str
+        :param Key: Message sending key name.
+        :type Key: str
+        """
+        self.Body = None
+        self.Key = None
+
+
+    def _deserialize(self, params):
+        self.Body = params.get("Body")
+        self.Key = params.get("Key")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BatchCreateAclRequest(AbstractModel):
     """BatchCreateAcl request structure.
 
@@ -4248,6 +4276,60 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SendMessageRequest(AbstractModel):
+    """SendMessage request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataHubId: Datahub access ID.
+        :type DataHubId: str
+        :param Message: Message content that is sent.
+        :type Message: list of BatchContent
+        """
+        self.DataHubId = None
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.DataHubId = params.get("DataHubId")
+        if params.get("Message") is not None:
+            self.Message = []
+            for item in params.get("Message"):
+                obj = BatchContent()
+                obj._deserialize(item)
+                self.Message.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SendMessageResponse(AbstractModel):
+    """SendMessage response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MessageId: Message ID list.
+        :type MessageId: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.MessageId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MessageId = params.get("MessageId")
+        self.RequestId = params.get("RequestId")
 
 
 class SubscribedInfo(AbstractModel):

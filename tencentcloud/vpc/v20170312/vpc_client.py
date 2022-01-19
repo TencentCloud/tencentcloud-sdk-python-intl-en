@@ -241,12 +241,12 @@ class VpcClient(AbstractClient):
 
     def AssociateAddress(self, request):
         """This API is used to bind an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP for short) to the specified private IP of an instance or ENI.
-        * The EIP is essentially bound to the primary private IP of the primary ENI on a CVM instance.
-        * The EIP binding will automatically unbind and release the public IP previously bound to the CVM instance.
-        * To bind another EIP to the private IP of the specified ENI (not the primary private IP of the primary ENI), you must first unbind the EIP.
-        * To bind an EIP to a NAT Gateway, use the [`AssociateNatGatewayAddress`](https://intl.cloud.tencent.com/document/product/215/36722?from_cn_redirect=1) API.
-        * EIP that is in arrears or blocked cannot be bound.
-        * Only EIP in the UNBIND status can be bound.
+        * Binding an EIP to a CVM instance is actually binding the EIP to the primary private IP of the primary ENI on the CVM instance.
+        * When an EIP is bound, the public IP previously bound to the CVM instance will be unbound and released automatically.
+        * To bind another EIP to the private IP of the specified ENI, you must first unbind the EIP.
+        * To bind an EIP to a NAT Gateway, use the API [AssociateNatGatewayAddress](https://intl.cloud.tencent.com/document/product/215/36722?from_cn_redirect=1).
+        * An EIP cannot be bound if it’s overdue or blocked
+        * Only EIP in the `UNBIND` status can be bound.
 
         :param request: Request instance for AssociateAddress.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AssociateAddressRequest`
@@ -6395,8 +6395,8 @@ class VpcClient(AbstractClient):
 
 
     def TransformAddress(self, request):
-        """This API (TransformAddress) is used to switch common public IPs into [Elastic IPs](https://intl.cloud.tencent.comhttps://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1?from_cn_redirect=1).
-        * The platform limits the number of times that a user can unbind an EIP and reassign public IPs in each region per day. For more information, see [EIP product introduction](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1)). The preceding quota can be obtained through the [DescribeAddressQuota](https://intl.cloud.tencent.com/document/api/213/1378?from_cn_redirect=1) API.
+        """This API is used to convert a common public IP into an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP for short).
+        * Tencent Cloud limits the number of times that a user can unbind EIPs and reassign public IPs in each region per day. For more information, see product introduction of [Elastic IP](https://intl.cloud.tencent.com/document/product/213/5733?from_cn_redirect=1). The preceding quota can be obtained through the API [DescribeAddressQuota](https://intl.cloud.tencent.com/document/product/215/16701).
 
         :param request: Request instance for TransformAddress.
         :type request: :class:`tencentcloud.vpc.v20170312.models.TransformAddressRequest`

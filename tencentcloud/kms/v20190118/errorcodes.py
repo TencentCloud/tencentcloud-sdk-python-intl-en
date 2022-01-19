@@ -26,6 +26,9 @@ FAILEDOPERATION_CMKUSEDBYCLOUDPRODUCT = 'FailedOperation.CmkUsedByCloudProduct'
 # Decryption failed.
 FAILEDOPERATION_DECRYPTERROR = 'FailedOperation.DecryptError'
 
+# Encryption failed.
+FAILEDOPERATION_ENCRYPTIONERROR = 'FailedOperation.EncryptionError'
+
 # Internal error.
 INTERNALERROR = 'InternalError'
 
@@ -83,6 +86,9 @@ LIMITEXCEEDED_FINGERPRINTSLIMITEXCEEDED = 'LimitExceeded.FingerprintsLimitExceed
 # The number of created keys exceeded the limit.
 LIMITEXCEEDED_KEYLIMITEXCEEDED = 'LimitExceeded.KeyLimitExceeded'
 
+# Missing parameters. Please check and try again.
+MISSINGPARAMETER = 'MissingParameter'
+
 # The resource does not exist.
 RESOURCENOTFOUND = 'ResourceNotFound'
 
@@ -109,6 +115,9 @@ RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = 'ResourceUnavailable.CmkStateNotSupport
 
 # The key has been disabled.
 RESOURCEUNAVAILABLE_KEYDISABLED = 'ResourceUnavailable.KeyDisabled'
+
+# The key is not available as it’s pending deleted.
+RESOURCEUNAVAILABLE_KEYPENDINGDELETE = 'ResourceUnavailable.KeyPendingDelete'
 
 # The white-box key service has not been activated.
 RESOURCEUNAVAILABLE_NOTPURCHASED = 'ResourceUnavailable.NotPurchased'
