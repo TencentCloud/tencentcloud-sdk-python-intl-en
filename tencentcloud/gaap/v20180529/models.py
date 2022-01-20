@@ -75,6 +75,8 @@ class AccessRegionDetial(AbstractModel):
         :type RegionAreaName: str
         :param IDCType: Data center type. `dc`: data center; `ec`: edge server.
         :type IDCType: str
+        :param FeatureBitmap: 
+        :type FeatureBitmap: int
         """
         self.RegionId = None
         self.RegionName = None
@@ -83,6 +85,7 @@ class AccessRegionDetial(AbstractModel):
         self.RegionArea = None
         self.RegionAreaName = None
         self.IDCType = None
+        self.FeatureBitmap = None
 
 
     def _deserialize(self, params):
@@ -93,6 +96,7 @@ class AccessRegionDetial(AbstractModel):
         self.RegionArea = params.get("RegionArea")
         self.RegionAreaName = params.get("RegionAreaName")
         self.IDCType = params.get("IDCType")
+        self.FeatureBitmap = params.get("FeatureBitmap")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -604,8 +608,10 @@ class CheckProxyCreateRequest(AbstractModel):
         :type IPAddressVersion: str
         :param NetworkType: Network type. Valid values: `normal` (default), `cn2`
         :type NetworkType: str
-        :param PackageType: Package type of connection groups. Valid values: `Thunder` (general connection group) and `Accelerator` (game accelerator connection group).
+        :param PackageType: Package type of connection groups. Valid values: `Thunder` (general connection group), `Accelerator` (game accelerator connection group), and `CrossBorder` (cross-border connection group).
         :type PackageType: str
+        :param Http3Supported: 
+        :type Http3Supported: int
         """
         self.AccessRegion = None
         self.RealServerRegion = None
@@ -615,6 +621,7 @@ class CheckProxyCreateRequest(AbstractModel):
         self.IPAddressVersion = None
         self.NetworkType = None
         self.PackageType = None
+        self.Http3Supported = None
 
 
     def _deserialize(self, params):
@@ -626,6 +633,7 @@ class CheckProxyCreateRequest(AbstractModel):
         self.IPAddressVersion = params.get("IPAddressVersion")
         self.NetworkType = params.get("NetworkType")
         self.PackageType = params.get("PackageType")
+        self.Http3Supported = params.get("Http3Supported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1397,8 +1405,12 @@ The connection is to be replicated if this parameter is set.
         :type BillingType: int
         :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.
         :type IPAddressVersion: str
-        :param NetworkType: Network type. Valid values: `normal` (default), `cn2`
+        :param NetworkType: Network type. `normal`: general BGP; `cn2`: dedicated BGP; `triple`: Non-BGP (provided by the top 3 ISPs in the Chinese mainland).
         :type NetworkType: str
+        :param PackageType: Package type of connection groups. Valid values: `Thunder` (general), `Accelerator` (specific for games), and `CrossBorder` (cross-MLC-border connection).
+        :type PackageType: str
+        :param Http3Supported: 
+        :type Http3Supported: int
         """
         self.ProjectId = None
         self.ProxyName = None
@@ -1413,6 +1425,8 @@ The connection is to be replicated if this parameter is set.
         self.BillingType = None
         self.IPAddressVersion = None
         self.NetworkType = None
+        self.PackageType = None
+        self.Http3Supported = None
 
 
     def _deserialize(self, params):
@@ -1434,6 +1448,8 @@ The connection is to be replicated if this parameter is set.
         self.BillingType = params.get("BillingType")
         self.IPAddressVersion = params.get("IPAddressVersion")
         self.NetworkType = params.get("NetworkType")
+        self.PackageType = params.get("PackageType")
+        self.Http3Supported = params.get("Http3Supported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2208,7 +2224,7 @@ class DescribeAccessRegionsByDestRegionRequest(AbstractModel):
         :type DestRegion: str
         :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.
         :type IPAddressVersion: str
-        :param PackageType: Package type of connection groups. Valid values: `Thunder` (general connection group) and `Accelerator` (game accelerator connection group).
+        :param PackageType: Package type of connection groups. Valid values: `Thunder` (general), `Accelerator` (specific for games), and `CrossBorder` (cross-MLC-border connection).
         :type PackageType: str
         """
         self.DestRegion = None
@@ -3087,6 +3103,7 @@ AccessRegion - String - Required: No - Filter by access region.
 RealServerRegion - String - Required: No - Filter by origin server region.
 GroupId - String - Required: No - Filter by connection group ID.
 IPAddressVersion - String - Required: No - Filter by IP version.
+PackageType - String - Required: No - Filter by package type of connection groups.
         :type Filters: list of Filter
         :param ProxyIds: Queries by one or multiple instance IDs. The upper limit on the number of instances for each request is 100. This parameter does not support specifying InstanceIds and Filters at the same time. It's a new parameter, and replaces InstanceIds.
         :type ProxyIds: list of str
@@ -3852,7 +3869,7 @@ class DescribeRegionAndPriceRequest(AbstractModel):
         r"""
         :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.
         :type IPAddressVersion: str
-        :param PackageType: Package type of connection groups. Valid values: `Thunder` (general connection group) and `Accelerator` (game accelerator connection group).
+        :param PackageType: Package type of connection groups. Valid values: `Thunder` (general), `Accelerator` (specific for games), and `CrossBorder` (cross-MLC-border connection).
         :type PackageType: str
         """
         self.IPAddressVersion = None
@@ -5069,8 +5086,10 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         :type IPAddressVersion: str
         :param NetworkType: Network type. Valid values: `normal` (default), `cn2`
         :type NetworkType: str
-        :param PackageType: Package type of connection groups. Valid values: `Thunder` (general connection group) and `Accelerator` (game accelerator connection group).
+        :param PackageType: Package type of connection groups. Valid values: `Thunder` (general), `Accelerator` (specific for games), and `CrossBorder` (cross-MLC-border connection).
         :type PackageType: str
+        :param Http3Supported: 
+        :type Http3Supported: int
         """
         self.AccessRegion = None
         self.Bandwidth = None
@@ -5082,6 +5101,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         self.IPAddressVersion = None
         self.NetworkType = None
         self.PackageType = None
+        self.Http3Supported = None
 
 
     def _deserialize(self, params):
@@ -5095,6 +5115,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         self.IPAddressVersion = params.get("IPAddressVersion")
         self.NetworkType = params.get("NetworkType")
         self.PackageType = params.get("PackageType")
+        self.Http3Supported = params.get("Http3Supported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6640,7 +6661,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param NetworkType: Network type. `normal`: general BGP; `cn2`: dedicated BGP; `triple`: Non-BGP (provided by the top 3 ISPs in the Chinese mainland).
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :type NetworkType: str
-        :param PackageType: Package type of connection groups. Valid values: `Thunder` (general connection group) and `Accelerator` (game accelerator connection group).
+        :param PackageType: Package type of connection groups. Valid values: `Thunder` (general), `Accelerator` (specific for games), 
+and `CrossBorder` (cross-MLC-border connection).
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :type PackageType: str
         :param BanStatus: Blocking-related status of the domain name. `BANNED`: the domain name is blocked; `RECOVER`: the domain name is unblocked or normal; `BANNING`: the domain name is being blocked; `RECOVERING`: the domain name is being unblocked; `BAN_FAILED`: the blocking fails; RECOVER_FAILED: the unblocking fails.
@@ -6648,6 +6670,8 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         :type BanStatus: str
         :param IPList: 
         :type IPList: list of IPDetail
+        :param Http3Supported: 
+        :type Http3Supported: int
         """
         self.InstanceId = None
         self.CreateTime = None
@@ -6681,6 +6705,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         self.PackageType = None
         self.BanStatus = None
         self.IPList = None
+        self.Http3Supported = None
 
 
     def _deserialize(self, params):
@@ -6730,6 +6755,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
                 obj = IPDetail()
                 obj._deserialize(item)
                 self.IPList.append(obj)
+        self.Http3Supported = params.get("Http3Supported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

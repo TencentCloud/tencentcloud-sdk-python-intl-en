@@ -869,7 +869,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeAccessRegionsByDestRegion(self, request):
-        """This API (DescribeAccessRegionsByDestRegion) is used to query the list of the available acceleration regions based on the origin server region.
+        """This API is used to query the available accelerator region based on the origin server region.
 
         :param request: Request instance for DescribeAccessRegionsByDestRegion.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeAccessRegionsByDestRegionRequest`

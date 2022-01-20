@@ -1747,7 +1747,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeUploadedFiles(self, request):
-        """This API is used to query the list of user-imported SQL files.
+        """This API is used to query the list of SQL files imported by users. The common request parameter `Region` must be `ap-shanghai`.
 
         :param request: Request instance for DescribeUploadedFiles.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeUploadedFilesRequest`

@@ -1370,6 +1370,8 @@ class CreateClusterNodePoolRequest(AbstractModel):
         :type NodePoolOs: str
         :param OsCustomizeType: Container image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)
         :type OsCustomizeType: str
+        :param Tags: Resource tag
+        :type Tags: list of Tag
         """
         self.ClusterId = None
         self.AutoScalingGroupPara = None
@@ -1381,6 +1383,7 @@ class CreateClusterNodePoolRequest(AbstractModel):
         self.Taints = None
         self.NodePoolOs = None
         self.OsCustomizeType = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -1406,6 +1409,12 @@ class CreateClusterNodePoolRequest(AbstractModel):
                 self.Taints.append(obj)
         self.NodePoolOs = params.get("NodePoolOs")
         self.OsCustomizeType = params.get("OsCustomizeType")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4792,6 +4801,10 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         :type OsCustomizeType: str
         :param ExtraArgs: Node custom parameter
         :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.InstanceExtraArgs`
+        :param Tags: Resource tag
+        :type Tags: list of Tag
+        :param Unschedulable: 
+        :type Unschedulable: int
         """
         self.ClusterId = None
         self.NodePoolId = None
@@ -4804,6 +4817,8 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         self.OsName = None
         self.OsCustomizeType = None
         self.ExtraArgs = None
+        self.Tags = None
+        self.Unschedulable = None
 
 
     def _deserialize(self, params):
@@ -4830,6 +4845,13 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         if params.get("ExtraArgs") is not None:
             self.ExtraArgs = InstanceExtraArgs()
             self.ExtraArgs._deserialize(params.get("ExtraArgs"))
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.Unschedulable = params.get("Unschedulable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5037,6 +5059,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         :param UserScript: Custom script
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type UserScript: str
+        :param Tags: Resource tag
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Tags: list of Tag
         """
         self.NodePoolId = None
         self.Name = None
@@ -5056,6 +5081,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.ImageId = None
         self.DesiredPodNum = None
         self.UserScript = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -5089,6 +5115,12 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.ImageId = params.get("ImageId")
         self.DesiredPodNum = params.get("DesiredPodNum")
         self.UserScript = params.get("UserScript")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5230,6 +5262,9 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         :param Annotations: Refer to annotations in prometheus rule
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :type Annotations: list of Label
+        :param RuleState: Alarm rule status
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RuleState: int
         """
         self.Name = None
         self.Rule = None
@@ -5238,6 +5273,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         self.For = None
         self.Describe = None
         self.Annotations = None
+        self.RuleState = None
 
 
     def _deserialize(self, params):
@@ -5258,6 +5294,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
                 obj = Label()
                 obj._deserialize(item)
                 self.Annotations.append(obj)
+        self.RuleState = params.get("RuleState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

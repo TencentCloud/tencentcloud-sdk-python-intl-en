@@ -62,7 +62,7 @@ FAILEDOPERATION_INSTANCEQUERYERROR = 'FailedOperation.InstanceQueryError'
 # Failed to deserialize JSON.
 FAILEDOPERATION_JSONUNMARSHALERROR = 'FailedOperation.JsonUnmarshalError'
 
-# The instance is not a delayed RO replica.
+# It is not a read-only instance with delayed replication enabled.
 FAILEDOPERATION_NOTDELAYRO = 'FailedOperation.NotDelayRo'
 
 # The executed operation to modify permissions is invalid. You can refer to product documentation for more information about permissions that can be modified for this instance. If you have any questions, please contact customer service.

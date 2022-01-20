@@ -792,9 +792,10 @@ class CommonMixLayoutParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageLayer: Input layer. Value range: [1,16].
-1) For `image_layer` of background stream (i.e., main host video image or canvas), enter 1.
-2) For audio stream mix, this parameter is also required.
+        :param ImageLayer: Input layer. Value range: [1,16]
+(1) For the background stream, i.e., the room owner’s image or the canvas, set this parameter to `1`.
+(2) This parameter is required for audio-only stream mixing as well.
+Note that two inputs cannot have the same `ImageLayer` value.
         :type ImageLayer: int
         :param InputType: Input type. Value range: [0,5].
 If this parameter is left empty, 0 will be used by default.
@@ -804,18 +805,18 @@ If this parameter is left empty, 0 will be used by default.
 4: the input stream is audio.
 5: the input stream is pure video.
         :type InputType: int
-        :param ImageWidth: Output width of input video image. Value range:
-Pixel: [0,2000]
-Percentage: [0.01,0.99]
-If this parameter is left empty, the input stream width will be used by default.
-If percentage is used, the expected output is (percentage * background width).
-        :type ImageWidth: float
         :param ImageHeight: Output height of input video image. Value range:
 Pixel: [0,2000]
 Percentage: [0.01,0.99]
 If this parameter is left empty, the input stream height will be used by default.
 If percentage is used, the expected output is (percentage * background height).
         :type ImageHeight: float
+        :param ImageWidth: Output width of input video image. Value range:
+Pixel: [0,2000]
+Percentage: [0.01,0.99]
+If this parameter is left empty, the input stream width will be used by default.
+If percentage is used, the expected output is (percentage * background width).
+        :type ImageWidth: float
         :param LocationX: X-axis offset of input in output video image. Value range:
 Pixel: [0,2000]
 Percentage: [0.01,0.99]
@@ -845,8 +846,8 @@ Gray: 0x999999
         """
         self.ImageLayer = None
         self.InputType = None
-        self.ImageWidth = None
         self.ImageHeight = None
+        self.ImageWidth = None
         self.LocationX = None
         self.LocationY = None
         self.Color = None
@@ -856,8 +857,8 @@ Gray: 0x999999
     def _deserialize(self, params):
         self.ImageLayer = params.get("ImageLayer")
         self.InputType = params.get("InputType")
-        self.ImageWidth = params.get("ImageWidth")
         self.ImageHeight = params.get("ImageHeight")
+        self.ImageWidth = params.get("ImageWidth")
         self.LocationX = params.get("LocationX")
         self.LocationY = params.get("LocationY")
         self.Color = params.get("Color")
@@ -1559,8 +1560,8 @@ Note: the value of `CosBucket` cannot contain `-[appid]`.
 Maximum length: 1,024 bytes.
 Only letters, digits, underscores, and hyphens can be contained.
         :type Description: str
-        :param SnapshotInterval: Screencapturing interval in seconds. Default value: 10s.
-Value range: 5-300s.
+        :param SnapshotInterval: Screencapturing interval (s). Default value: 10
+Value range: 2-300
         :type SnapshotInterval: int
         :param Width: Screenshot width. Default value: `0` (original width)
 Value range: 0-3000
@@ -1724,9 +1725,10 @@ It must be a multiple of 2. The original width is 0.
         :type Width: int
         :param NeedAudio: Whether to keep the audio. 0: no; 1: yes. Default value: 1.
         :type NeedAudio: int
-        :param Height: Height. Default value: 0.
-Value range: [0,3000]
-The value must be a multiple of 2, and 0 is the original height.
+        :param Height: Height. Default value: 0
+Value range: 0-3000
+The value must be a multiple of 2. The original height is `0`.
+This parameter is required for a top speed codec template (when `AiTransCode` is `1`).
         :type Height: int
         :param Fps: Frame rate. Default value: 0.
 Value range: 0-60
@@ -2834,6 +2836,17 @@ Default value: 5.
         :type Granularity: int
         :param ServiceName: Service name. Valid values: LVB, LEB. The sum of LVB and LEB usage will be returned if this parameter is left empty.
         :type ServiceName: str
+        :param RegionNames: Region. Valid values:
+China Mainland
+Asia Pacific I
+Asia Pacific II
+Asia Pacific III
+Europe
+North America
+South America
+Middle East
+Africa
+        :type RegionNames: list of str
         """
         self.StartTime = None
         self.EndTime = None
@@ -2841,6 +2854,7 @@ Default value: 5.
         self.MainlandOrOversea = None
         self.Granularity = None
         self.ServiceName = None
+        self.RegionNames = None
 
 
     def _deserialize(self, params):
@@ -2850,6 +2864,7 @@ Default value: 5.
         self.MainlandOrOversea = params.get("MainlandOrOversea")
         self.Granularity = params.get("Granularity")
         self.ServiceName = params.get("ServiceName")
+        self.RegionNames = params.get("RegionNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7599,11 +7614,11 @@ class PushDataInfo(AbstractModel):
         :type ServerIp: str
         :param VideoFps: Pushed video frame rate in Hz.
         :type VideoFps: int
-        :param VideoSpeed: Pushed video bitrate in bps.
+        :param VideoSpeed: Video bitrate (Kbps) for publishing
         :type VideoSpeed: int
         :param AudioFps: Pushed audio frame rate in Hz.
         :type AudioFps: int
-        :param AudioSpeed: Pushed audio bitrate in bps.
+        :param AudioSpeed: Audio bitrate (Kbps) for publishing
         :type AudioSpeed: int
         :param PushDomain: Push domain name.
         :type PushDomain: str

@@ -41,9 +41,6 @@ INVALIDAUTOSNAPSHOTPOLICYID_NOTFOUND = 'InvalidAutoSnapshotPolicyId.NotFound'
 # Cloud disk is already bound to scheduled snapshot policy.
 INVALIDDISK_ALREADYBOUND = 'InvalidDisk.AlreadyBound'
 
-# Cloud disk is already mounted.
-INVALIDDISK_ATTACHED = 'InvalidDisk.Attached'
-
 # The cloud disk is busy. Try again later.
 INVALIDDISK_BUSY = 'InvalidDisk.Busy'
 
@@ -53,17 +50,11 @@ INVALIDDISK_EXPIRE = 'InvalidDisk.Expire'
 # Non-elastic cloud disks are not supported.
 INVALIDDISK_NOTPORTABLE = 'InvalidDisk.NotPortable'
 
-# Cloud disk return not supported.
-INVALIDDISK_NOTSUPPORTREFUND = 'InvalidDisk.NotSupportRefund'
-
 # The cloud disk does not have the snapshot capability.
 INVALIDDISK_NOTSUPPORTSNAPSHOT = 'InvalidDisk.NotSupportSnapshot'
 
 # Indicates that the operation is not supported for the cloud disk.
 INVALIDDISK_NOTSUPPORTED = 'InvalidDisk.NotSupported'
-
-# Cloud disk has already been returned and cannot be returned again.
-INVALIDDISK_REPEATREFUND = 'InvalidDisk.RepeatRefund'
 
 # A snapshot is being created for the cloud disk. Try again later.
 INVALIDDISK_SNAPSHOTCREATING = 'InvalidDisk.SnapshotCreating'
@@ -137,7 +128,7 @@ RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 # Quota insufficient.
 RESOURCEINSUFFICIENT_OVERQUOTA = 'ResourceInsufficient.OverQuota'
 
-# 
+# The number of returned cloud disks has reached the limit and no more cloud disks can be returned.
 RESOURCEINSUFFICIENT_OVERREFUNDQUOTA = 'ResourceInsufficient.OverRefundQuota'
 
 # The resource is not found.
@@ -151,6 +142,9 @@ RESOURCEUNAVAILABLE_EXPIRE = 'ResourceUnavailable.Expire'
 
 # The non-elastic cloud disk does not support this operation.
 RESOURCEUNAVAILABLE_NOTPORTABLE = 'ResourceUnavailable.NotPortable'
+
+# Cloud disks cannot be returned.
+RESOURCEUNAVAILABLE_NOTSUPPORTREFUND = 'ResourceUnavailable.NotSupportRefund'
 
 # The resource does not support this operation.
 RESOURCEUNAVAILABLE_NOTSUPPORTED = 'ResourceUnavailable.NotSupported'
@@ -205,6 +199,3 @@ UNSUPPORTEDOPERATION_SNAPSHOTHASBINDEDIMAGE = 'UnsupportedOperation.SnapshotHasB
 
 # The resource does not support this operation in this status.
 UNSUPPORTEDOPERATION_STATEERROR = 'UnsupportedOperation.StateError'
-
-# The cloud disk and the instance are not in the same availability zone.
-ZONENOTMATCH = 'ZoneNotMatch'

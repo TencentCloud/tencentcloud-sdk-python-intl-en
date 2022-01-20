@@ -953,6 +953,8 @@ which is left empty by default. Specify this parameter when cloning a strong syn
         :type DeployGroupId: str
         :param DryRun: Whether to check the request without creating any instance. Valid values: `true`, `false` (default). After being submitted, the request will be checked to see if it is in correct format and has all required parameters with valid values. An error code is returned if the check failed, and `RequestId` is returned if the check succeeded. After a successful check, no instance will be created if this parameter is set to `true`, whereas an instance will be created and if it is set to `false`.
         :type DryRun: bool
+        :param CageId: Financial cage ID.
+        :type CageId: str
         """
         self.InstanceId = None
         self.SpecifiedRollbackTime = None
@@ -973,6 +975,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
         self.InstanceNodes = None
         self.DeployGroupId = None
         self.DryRun = None
+        self.CageId = None
 
 
     def _deserialize(self, params):
@@ -1000,6 +1003,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
         self.InstanceNodes = params.get("InstanceNodes")
         self.DeployGroupId = params.get("DeployGroupId")
         self.DryRun = params.get("DryRun")
+        self.CageId = params.get("CageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1162,6 +1166,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type AutoSyncFlag: int
         :param CageId: Financial cage ID.
         :type CageId: str
+        :param ParamTemplateType: Type of the default parameter template. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template).
+        :type ParamTemplateType: str
         :param AlarmPolicyIdList: The array of alarm policy names, such as ["policy-uyoee9wg"]. If the `AlarmPolicyList` parameter is specified, this parameter is invalid.
         :type AlarmPolicyIdList: list of str
         :param DryRun: Whether to check the request without creating any instance. Valid values: `true`, `false` (default). After being submitted, the request will be checked to see if it is in correct format and has all required parameters with valid values. An error code is returned if the check failed, and `RequestId` is returned if the check succeeded. After a successful check, no instance will be created if this parameter is set to `true`, whereas an instance will be created and if it is set to `false`.
@@ -1199,6 +1205,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.Cpu = None
         self.AutoSyncFlag = None
         self.CageId = None
+        self.ParamTemplateType = None
         self.AlarmPolicyIdList = None
         self.DryRun = None
 
@@ -1248,6 +1255,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.Cpu = params.get("Cpu")
         self.AutoSyncFlag = params.get("AutoSyncFlag")
         self.CageId = params.get("CageId")
+        self.ParamTemplateType = params.get("ParamTemplateType")
         self.AlarmPolicyIdList = params.get("AlarmPolicyIdList")
         self.DryRun = params.get("DryRun")
         memeber_set = set(params.keys())
@@ -3776,6 +3784,24 @@ class DescribeParamTemplatesRequest(AbstractModel):
     """DescribeParamTemplates request structure.
 
     """
+
+    def __init__(self):
+        r"""
+        :param EngineVersions: 
+        :type EngineVersions: list of str
+        """
+        self.EngineVersions = None
+
+
+    def _deserialize(self, params):
+        self.EngineVersions = params.get("EngineVersions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeParamTemplatesResponse(AbstractModel):

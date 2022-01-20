@@ -495,7 +495,7 @@ class CreateSnapshotRequest(AbstractModel):
         :type DiskId: str
         :param SnapshotName: Snapshot name. If it is left empty, the new snapshot name is "Not named" by default.
         :type SnapshotName: str
-        :param Deadline: Expiration time of the snapshot. The snapshot will be automatically deleted upon expiration.
+        :param Deadline: Expiration time of the snapshot. It must be in UTC ISO-8601 format, eg. 2022-01-08T09:47:55+00:00. The snapshot will be automatically deleted when it expires
         :type Deadline: str
         """
         self.DiskId = None
@@ -1361,6 +1361,8 @@ Note: This field may return null, indicating that no valid value was found.
         :type Shareable: bool
         :param CreateTime: Creation time of the cloud disk.
         :type CreateTime: str
+        :param DeleteSnapshot: Delete the associated non-permanently reserved snapshots upon deletion of the source cloud disk. `0`: No (default). `1`: Yes. To check whether a snapshot is permanently reserved, refer to the `IsPermanent` field returned by the `DescribeSnapshots` API. 
+        :type DeleteSnapshot: int
         """
         self.DeleteWithInstance = None
         self.RenewFlag = None
@@ -1397,6 +1399,7 @@ Note: This field may return null, indicating that no valid value was found.
         self.ReturnFailCode = None
         self.Shareable = None
         self.CreateTime = None
+        self.DeleteSnapshot = None
 
 
     def _deserialize(self, params):
@@ -1442,6 +1445,7 @@ Note: This field may return null, indicating that no valid value was found.
         self.ReturnFailCode = params.get("ReturnFailCode")
         self.Shareable = params.get("Shareable")
         self.CreateTime = params.get("CreateTime")
+        self.DeleteSnapshot = params.get("DeleteSnapshot")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2614,12 +2618,16 @@ class TerminateDisksRequest(AbstractModel):
         r"""
         :param DiskIds: List of cloud disk IDs required to be returned.
         :type DiskIds: list of str
+        :param DeleteSnapshot: Delete the associated non-permanently reserved snapshots upon deletion of the source cloud disk. `0`: No (default). `1`: Yes. To check whether a snapshot is permanently reserved, refer to the `IsPermanent` field returned by the `DescribeSnapshots` API. 
+        :type DeleteSnapshot: int
         """
         self.DiskIds = None
+        self.DeleteSnapshot = None
 
 
     def _deserialize(self, params):
         self.DiskIds = params.get("DiskIds")
+        self.DeleteSnapshot = params.get("DeleteSnapshot")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
