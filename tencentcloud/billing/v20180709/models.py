@@ -121,12 +121,13 @@ class BillDetail(AbstractModel):
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Tags: list of BillTagInfo
         :param BusinessCode: Product code
-Note: this field may return `null`, indicating that no valid values can be obtained.
+Note: This field may return `null`, indicating that no valid value can be found.
         :type BusinessCode: str
         :param ProductCode: Subproduct code
-Note: this field may return `null`, indicating that no valid values can be obtained.
+Note: This field may return `null`, indicating that no valid value can be found.
         :type ProductCode: str
-        :param ActionType: Transaction type/code (optional)
+        :param ActionType: Transaction type
+Note: This field may return `null`, indicating that no valid value can be found.
         :type ActionType: str
         :param RegionId: 
         :type RegionId: str
@@ -310,7 +311,7 @@ class BillResourceSummary(AbstractModel):
         r"""
         :param BusinessCodeName: Product name: major categories of Tencent Cloud services, e.g. CVM and TencentDB for MySQL
         :type BusinessCodeName: str
-        :param ProductCodeName: Sub-product name: sub-categories of Tencent Cloud services, such as CVM-Standard S1; if no subproduct name is obtained, '-' is returned.
+        :param ProductCodeName: Subproduct name, which is the subcategory of a Tencent Cloud product, such as CVM-Standard S1. If no subproduct name can be obtained, `-` is returned.
         :type ProductCodeName: str
         :param PayModeName: Billing mode
         :type PayModeName: str
@@ -370,9 +371,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type OwnerUin: str
         :param OperateUin: Operator UIN; '-' is returned if no value is obtained
         :type OperateUin: str
-        :param BusinessCode: 
+        :param BusinessCode: Product code
         :type BusinessCode: str
-        :param ProductCode: 
+        :param ProductCode: Subproduct code
         :type ProductCode: str
         :param RegionId: 
         :type RegionId: int
@@ -496,7 +497,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
     def __init__(self):
         r"""
         :param BusinessCode: Product code
-Note: This field may return null, indicating that no valid value was found.
+Note: This field may return `null`, indicating that no valid value can be found.
         :type BusinessCode: str
         :param BusinessCodeName: Product name: major categories of Tencent Cloud services, e.g. CVM and TencentDB for MySQL
         :type BusinessCodeName: str
@@ -637,8 +638,8 @@ Monthly subscription refund
         :type ActionType: str
         :param ProjectId: Project ID: ID of the project to which the resource belongs
         :type ProjectId: int
-        :param BusinessCode: Business code
-Note: To query business codes used in the current month, call <a href="https://intl.cloud.tencent.com/document/product/555/35761?from_cn_redirect=1">DescribeBillSummaryByProduct</a>.
+        :param BusinessCode: Product code
+Note: To query the product codes used in the current month, call <a href="https://intl.cloud.tencent.com/document/product/555/35761?from_cn_redirect=1">DescribeBillSummaryByProduct</a>.
         :type BusinessCode: str
         """
         self.Offset = None
@@ -753,8 +754,8 @@ Monthly subscription refund
         :type ResourceId: str
         :param PayMode: Billing mode. Valid values: `prePay` (prepaid), `postPay` (postpaid)
         :type PayMode: str
-        :param BusinessCode: Business code
-Note: To query business codes used in the current month, call <a href="https://intl.cloud.tencent.com/document/product/555/35761?from_cn_redirect=1">DescribeBillSummaryByProduct</a>.
+        :param BusinessCode: Product code
+Note: To query the product codes used in the current month, call <a href="https://intl.cloud.tencent.com/document/product/555/35761?from_cn_redirect=1">DescribeBillSummaryByProduct</a>.
         :type BusinessCode: str
         """
         self.Offset = None

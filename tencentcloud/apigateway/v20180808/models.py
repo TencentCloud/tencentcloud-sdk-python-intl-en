@@ -1773,6 +1773,46 @@ class ConstantParameter(AbstractModel):
         
 
 
+class CosConfig(AbstractModel):
+    """COS-type API configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Action: Specifies how the backend COS bucket is called by the API. The frontend request method and Action can be:
+GET：GetObject
+PUT：PutObject
+POST：PostObject、AppendObject
+HEAD： HeadObject
+DELETE： DeleteObject
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Action: str
+        :param BucketName: Backend COS bucket of the API
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type BucketName: str
+        :param Authorization: Whether to enable the backend COS signature for the API. It defaults to `false`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Authorization: bool
+        """
+        self.Action = None
+        self.BucketName = None
+        self.Authorization = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.BucketName = params.get("BucketName")
+        self.Authorization = params.get("Authorization")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAPIDocRequest(AbstractModel):
     """CreateAPIDoc request structure.
 
@@ -7626,12 +7666,16 @@ class ServiceConfig(AbstractModel):
         :type Path: str
         :param Method: API backend service request method, such as `GET`, which is required if `ServiceType` is `HTTP`. The frontend and backend methods can be different
         :type Method: str
+        :param CosConfig: API backend COS configuration. It’s required if the `ServiceType` is ·`COS`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type CosConfig: :class:`tencentcloud.apigateway.v20180808.models.CosConfig`
         """
         self.Product = None
         self.UniqVpcId = None
         self.Url = None
         self.Path = None
         self.Method = None
+        self.CosConfig = None
 
 
     def _deserialize(self, params):
@@ -7640,6 +7684,9 @@ class ServiceConfig(AbstractModel):
         self.Url = params.get("Url")
         self.Path = params.get("Path")
         self.Method = params.get("Method")
+        if params.get("CosConfig") is not None:
+            self.CosConfig = CosConfig()
+            self.CosConfig._deserialize(params.get("CosConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

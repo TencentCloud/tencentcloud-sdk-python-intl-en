@@ -1258,6 +1258,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ListAttachedUserAllPolicies(self, request):
+        """This API is used to list policies associated with the user (including those inherited from the user group).
+
+        :param request: Request instance for ListAttachedUserAllPolicies.
+        :type request: :class:`tencentcloud.cam.v20190116.models.ListAttachedUserAllPoliciesRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.ListAttachedUserAllPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListAttachedUserAllPolicies", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListAttachedUserAllPoliciesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ListAttachedUserPolicies(self, request):
         """This API (ListAttachedUserPolicies) is used to query the list of policies associated with a sub-account.
 

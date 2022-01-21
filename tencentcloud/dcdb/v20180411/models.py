@@ -364,7 +364,7 @@ class CreateAccountRequest(AbstractModel):
         :type UserName: str
         :param Host: Host that can be logged in to, which is in the same format as the host of the MySQL account and supports wildcards, such as %, 10.%, and 10.20.%.
         :type Host: str
-        :param Password: Account password, which can contain 6-32 letters, digits, and common symbols but not semicolons, single quotation marks, and double quotation marks.
+        :param Password: Account password. It must contain 8-32 characters in all of the following four types: lowercase letters, uppercase letters, digits, and symbols (()~!@#$%^&*-+=_|{}[]:<>,.?/), and cannot start with a slash (/).
         :type Password: str
         :param ReadOnly: Whether to create a read-only account. 0: no; 1: for the account's SQL requests, the secondary will be used first, and if it is unavailable, the primary will be used; 2: the secondary will be used first, and if it is unavailable, the operation will fail; 3: only the secondary will be read from.
         :type ReadOnly: int
@@ -623,6 +623,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param InstanceType: Instance type. Valid values: `1` (dedicated primary instance), `2` (standard primary instance), `3` (standard disaster recovery instance), `4` (dedicated disaster recovery instance)
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type InstanceType: int
+        :param ResourceTags: Instance tag information
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ResourceTags: list of ResourceTag
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -672,6 +675,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.DcnStatus = None
         self.DcnDstNum = None
         self.InstanceType = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
@@ -728,6 +732,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.DcnStatus = params.get("DcnStatus")
         self.DcnDstNum = params.get("DcnDstNum")
         self.InstanceType = params.get("InstanceType")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2036,6 +2046,59 @@ class DescribeDcnDetailResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeFileDownloadUrlRequest(AbstractModel):
+    """DescribeFileDownloadUrl request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param ShardId: Shard ID
+        :type ShardId: str
+        :param FilePath: Unsigned file path
+        :type FilePath: str
+        """
+        self.InstanceId = None
+        self.ShardId = None
+        self.FilePath = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ShardId = params.get("ShardId")
+        self.FilePath = params.get("FilePath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFileDownloadUrlResponse(AbstractModel):
+    """DescribeFileDownloadUrl response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PreSignedUrl: Signed download URL
+        :type PreSignedUrl: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.PreSignedUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PreSignedUrl = params.get("PreSignedUrl")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeFlowRequest(AbstractModel):
     """DescribeFlow request structure.
 
@@ -2118,10 +2181,13 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
         r"""
         :param Groups: Security group details
         :type Groups: list of SecurityGroup
+        :param Total: Number of security groups.
+        :type Total: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.Groups = None
+        self.Total = None
         self.RequestId = None
 
 
@@ -2132,6 +2198,7 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
                 obj = SecurityGroup()
                 obj._deserialize(item)
                 self.Groups.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -2329,13 +2396,12 @@ class GrantAccountPrivilegesRequest(AbstractModel):
         :type Host: str
         :param DbName: Database name. `\*` indicates that global permissions will be queried (i.e., `\*.\*`), in which case the `Type` and `Object ` parameters will be ignored
         :type DbName: str
-        :param Privileges: Global permission. Valid values: SELECT; INSERT; UPDATE; DELETE; CREATE; DROP; REFERENCES; INDEX; ALTER; CREATE TEMPORARY TABLES; LOCK TABLES; EXECUTE; CREATE VIEW; SHOW VIEW; CREATE ROUTINE; ALTER ROUTINE; EVENT; TRIGGER; SHOW DATABASES 
-Database permission. Valid values: SELECT; INSERT; UPDATE; DELETE; CREATE; DROP; REFERENCES; INDEX; ALTER; CREATE TEMPORARY TABLES; LOCK TABLES; EXECUTE; CREATE VIEW; SHOW VIEW; CREATE ROUTINE; ALTER ROUTINE; EVENT; TRIGGER 
-Table/view permission. Valid values: SELECT; INSERT; UPDATE; DELETE; CREATE; DROP; REFERENCES; INDEX; ALTER; CREATE VIEW; SHOW VIEW; TRIGGER 
-Stored procedure/function permission. Valid values: ALTER ROUTINE; EXECUTE 
-Field permission. Valid values: INSERT; REFERENCES; SELECT; UPDATE
+        :param Privileges: Global permission. Valid values: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE TEMPORARY TABLES`, `LOCK TABLES`, `EXECUTE`, `CREATE VIEW`, `SHOW VIEW`, `CREATE ROUTINE`, `ALTER ROUTINE`, `EVENT`, `TRIGGER`, `SHOW DATABASES`, `REPLICATION CLIENT`, `REPLICATION SLAVE`.
+Database permission. Valid values: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE TEMPORARY TABLES`, `LOCK TABLES`, `EXECUTE`, `CREATE VIEW`, `SHOW VIEW`, `CREATE ROUTINE`, `ALTER ROUTINE`, `EVENT`, `TRIGGER`. 
+Table permission. Valid values: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE VIEW`, `SHOW VIEW`, `TRIGGER`.  
+Field permission. Valid values: `INSERT`, `REFERENCES`, `SELECT`, `UPDATE`.
         :type Privileges: list of str
-        :param Type: Type. Valid values: table; view; proc; func; \*. If `DbName` is a specific database name and `Type` is `\*`, the permissions of the database will be set (i.e., `db.\*`), in which case the `Object` parameter will be ignored
+        :param Type: Type. Valid values: `table`, `\*`. If `DbName` is a specific database name and `Type` is `\*`, the permissions of the database will be set (i.e., `db.\*`), in which case the `Object` parameter will be ignored
         :type Type: str
         :param Object: Type name. For example, if `Type` is table, `Object` indicates a specific table name; if both `DbName` and `Type` are specific names, it indicates a specific object name and cannot be `\*` or empty
         :type Object: str
@@ -3018,6 +3084,34 @@ class ResetAccountPasswordResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class ResourceTag(AbstractModel):
+    """Tag object, including tag key and tag value
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagKey: Tag key
+        :type TagKey: str
+        :param TagValue: Tag value
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SecurityGroup(AbstractModel):

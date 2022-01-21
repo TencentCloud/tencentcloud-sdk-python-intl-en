@@ -506,6 +506,98 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class AttachedUserPolicy(AbstractModel):
+    """Details of policies associated with the user
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PolicyId: Policy ID.
+        :type PolicyId: str
+        :param PolicyName: Policy name.
+        :type PolicyName: str
+        :param Description: Policy description.
+        :type Description: str
+        :param AddTime: Creation time.
+        :type AddTime: str
+        :param StrategyType: Policy type (`1`: custom policy; `2`: preset policy).
+        :type StrategyType: str
+        :param CreateMode: Creation mode (`1`: create by product feature or project permission; other values: create by policy syntax).
+        :type CreateMode: str
+        :param Groups: Information on policies inherited from the user group.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Groups: list of AttachedUserPolicyGroupInfo
+        :param Deactived: Whether the product has been deprecated (`0`: no; `1`: yes).
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Deactived: int
+        :param DeactivedDetail: List of deprecated products.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DeactivedDetail: list of str
+        """
+        self.PolicyId = None
+        self.PolicyName = None
+        self.Description = None
+        self.AddTime = None
+        self.StrategyType = None
+        self.CreateMode = None
+        self.Groups = None
+        self.Deactived = None
+        self.DeactivedDetail = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.PolicyName = params.get("PolicyName")
+        self.Description = params.get("Description")
+        self.AddTime = params.get("AddTime")
+        self.StrategyType = params.get("StrategyType")
+        self.CreateMode = params.get("CreateMode")
+        if params.get("Groups") is not None:
+            self.Groups = []
+            for item in params.get("Groups"):
+                obj = AttachedUserPolicyGroupInfo()
+                obj._deserialize(item)
+                self.Groups.append(obj)
+        self.Deactived = params.get("Deactived")
+        self.DeactivedDetail = params.get("DeactivedDetail")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AttachedUserPolicyGroupInfo(AbstractModel):
+    """Information on policies associated with the user via the user group.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: Group ID.
+        :type GroupId: int
+        :param GroupName: Group name.
+        :type GroupName: str
+        """
+        self.GroupId = None
+        self.GroupName = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConsumeCustomMFATokenRequest(AbstractModel):
     """ConsumeCustomMFAToken request structure.
 
@@ -2633,6 +2725,80 @@ class ListAttachedRolePoliciesResponse(AbstractModel):
                 obj = AttachedPolicyOfRole()
                 obj._deserialize(item)
                 self.List.append(obj)
+        self.TotalNum = params.get("TotalNum")
+        self.RequestId = params.get("RequestId")
+
+
+class ListAttachedUserAllPoliciesRequest(AbstractModel):
+    """ListAttachedUserAllPolicies request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TargetUin: Target user ID.
+        :type TargetUin: int
+        :param Rp: The number of policies displayed on each page. Value range: 1-200.
+        :type Rp: int
+        :param Page: Page number. Value range: 1-200.
+        :type Page: int
+        :param AttachType: `0`: return policies that are directly associated and inherited from the user group; `1`: return policies that are directly associated; `2`: return policies inherited from the user group.
+        :type AttachType: int
+        :param StrategyType: Policy type.
+        :type StrategyType: int
+        :param Keyword: Keyword for searching.
+        :type Keyword: str
+        """
+        self.TargetUin = None
+        self.Rp = None
+        self.Page = None
+        self.AttachType = None
+        self.StrategyType = None
+        self.Keyword = None
+
+
+    def _deserialize(self, params):
+        self.TargetUin = params.get("TargetUin")
+        self.Rp = params.get("Rp")
+        self.Page = params.get("Page")
+        self.AttachType = params.get("AttachType")
+        self.StrategyType = params.get("StrategyType")
+        self.Keyword = params.get("Keyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListAttachedUserAllPoliciesResponse(AbstractModel):
+    """ListAttachedUserAllPolicies response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PolicyList: Policy list.
+        :type PolicyList: list of AttachedUserPolicy
+        :param TotalNum: Total number of policies.
+        :type TotalNum: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.PolicyList = None
+        self.TotalNum = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PolicyList") is not None:
+            self.PolicyList = []
+            for item in params.get("PolicyList"):
+                obj = AttachedUserPolicy()
+                obj._deserialize(item)
+                self.PolicyList.append(obj)
         self.TotalNum = params.get("TotalNum")
         self.RequestId = params.get("RequestId")
 

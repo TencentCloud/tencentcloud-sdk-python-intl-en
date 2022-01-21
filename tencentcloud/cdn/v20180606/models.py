@@ -6370,6 +6370,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param VideoSeek: Video dragging configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
+        :param AwsPrivateAccess: Private access for S3 origin
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
+        :param OssPrivateAccess: Private access for OSS origin
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type OssPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
         """
         self.Authentication = None
         self.BandwidthAlert = None
@@ -6395,6 +6401,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ServiceType = None
         self.StatusCodeCache = None
         self.VideoSeek = None
+        self.AwsPrivateAccess = None
+        self.OssPrivateAccess = None
 
 
     def _deserialize(self, params):
@@ -6468,6 +6476,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("VideoSeek") is not None:
             self.VideoSeek = VideoSeek()
             self.VideoSeek._deserialize(params.get("VideoSeek"))
+        if params.get("AwsPrivateAccess") is not None:
+            self.AwsPrivateAccess = AwsPrivateAccess()
+            self.AwsPrivateAccess._deserialize(params.get("AwsPrivateAccess"))
+        if params.get("OssPrivateAccess") is not None:
+            self.OssPrivateAccess = OssPrivateAccess()
+            self.OssPrivateAccess._deserialize(params.get("OssPrivateAccess"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7087,6 +7101,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param VideoSeek: Video dragging configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
+        :param AwsPrivateAccess: Private access for S3 origin
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
+        :param OssPrivateAccess: Private access for OSS origin
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type OssPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
         """
         self.Authentication = None
         self.BandwidthAlert = None
@@ -7112,6 +7132,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ServiceType = None
         self.StatusCodeCache = None
         self.VideoSeek = None
+        self.AwsPrivateAccess = None
+        self.OssPrivateAccess = None
 
 
     def _deserialize(self, params):
@@ -7185,6 +7207,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("VideoSeek") is not None:
             self.VideoSeek = VideoSeek()
             self.VideoSeek._deserialize(params.get("VideoSeek"))
+        if params.get("AwsPrivateAccess") is not None:
+            self.AwsPrivateAccess = AwsPrivateAccess()
+            self.AwsPrivateAccess._deserialize(params.get("AwsPrivateAccess"))
+        if params.get("OssPrivateAccess") is not None:
+            self.OssPrivateAccess = OssPrivateAccess()
+            self.OssPrivateAccess._deserialize(params.get("OssPrivateAccess"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9093,9 +9121,8 @@ class ServerCert(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CertId: Server certificate ID
-This is auto-generated when the certificate is being hosted by the SSL Certificate Service
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param CertId: Server certificate ID, which is auto-generated when the certificate is added to Tencent Cloud SSL Certificates
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type CertId: str
         :param CertName: Server certificate name
 This is auto-generated when the certificate is being hosted by the SSL Certificate Service
