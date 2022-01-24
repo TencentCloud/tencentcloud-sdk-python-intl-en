@@ -83,7 +83,7 @@ class RedisClient(AbstractClient):
 
 
     def ChangeReplicaToMaster(self, request):
-        """This API is used to promote a replica node group of a multi-AZ deployed instance to master node group.
+        """This API is used to promote a replica node group of a multi-AZ deployed instance to master node group or a replica node of a single-AZ deployed instance to master node.
 
         :param request: Request instance for ChangeReplicaToMaster.
         :type request: :class:`tencentcloud.redis.v20180412.models.ChangeReplicaToMasterRequest`

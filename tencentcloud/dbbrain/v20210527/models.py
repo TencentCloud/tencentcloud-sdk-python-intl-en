@@ -230,6 +230,83 @@ class CreateDBDiagReportUrlResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateKillTaskRequest(AbstractModel):
+    """CreateKillTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: ID of the instance associated with the session killing task.
+        :type InstanceId: str
+        :param Duration: Task duration in seconds. Pass in `-1` to stop the task manually.
+        :type Duration: int
+        :param Host: Client IP, which is a task filter.
+        :type Host: str
+        :param DB: Database name, which is a task filter. Multiple database names are separated by comma.
+        :type DB: str
+        :param Command: Related command, which is a task filter. Multiple commands are separated by comma.
+        :type Command: str
+        :param Info: Task filter. Filtering by single filter prefix is supported.
+        :type Info: str
+        :param User: User type, which is a task filter.
+        :type User: str
+        :param Time: Session duration in seconds, which is a task filter.
+        :type Time: int
+        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.
+        :type Product: str
+        """
+        self.InstanceId = None
+        self.Duration = None
+        self.Host = None
+        self.DB = None
+        self.Command = None
+        self.Info = None
+        self.User = None
+        self.Time = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Duration = params.get("Duration")
+        self.Host = params.get("Host")
+        self.DB = params.get("DB")
+        self.Command = params.get("Command")
+        self.Info = params.get("Info")
+        self.User = params.get("User")
+        self.Time = params.get("Time")
+        self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateKillTaskResponse(AbstractModel):
+    """CreateKillTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: Task status. `1` is returned if the session killing task is successfully created.
+        :type Status: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateMailProfileRequest(AbstractModel):
     """CreateMailProfile request structure.
 
@@ -290,6 +367,55 @@ class CreateMailProfileResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateProxySessionKillTaskRequest(AbstractModel):
+    """CreateProxySessionKillTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param Product: Service type. Valid value: `redis` (TencentDB for Redis).
+        :type Product: str
+        """
+        self.InstanceId = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateProxySessionKillTaskResponse(AbstractModel):
+    """CreateProxySessionKillTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AsyncRequestId: Async task ID that is returned after the session killing task is created.
+        :type AsyncRequestId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1148,7 +1274,7 @@ class DescribeMailProfileResponse(AbstractModel):
         :param ProfileList: Email configuration details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProfileList: list of UserProfile
-        :param TotalCount: Total number of email templates.
+        :param TotalCount: Total number of the configured emails.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.

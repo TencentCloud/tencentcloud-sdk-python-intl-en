@@ -139,6 +139,62 @@ class SesClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateReceiver(self, request):
+        """This API is used to create a recipient group, which is the list of target email addresses for batch sending emails. After creating a group, you need to upload recipient email addresses. Then, you can create a sending task and select the group to batch send emails.
+
+        :param request: Request instance for CreateReceiver.
+        :type request: :class:`tencentcloud.ses.v20201002.models.CreateReceiverRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.CreateReceiverResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateReceiver", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateReceiverResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateReceiverDetail(self, request):
+        """This API is used to add recipient email addresses (up to 100,000 at a time) to a recipient group. This will be processed asynchronously. You can upload recipient email addresses only once. If the data volume is large, it may take some time to upload. You can check the recipient group to learn the upload status and upload quantity.
+
+        :param request: Request instance for CreateReceiverDetail.
+        :type request: :class:`tencentcloud.ses.v20201002.models.CreateReceiverDetailRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.CreateReceiverDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateReceiverDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateReceiverDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteBlackList(self, request):
         """This API is used to unblocklist email addresses. If you confirm that a blocklisted recipient address is valid and active, you can remove it from Tencent Cloud’s address blocklist database.
 
@@ -308,7 +364,7 @@ class SesClient(AbstractClient):
 
 
     def GetSendEmailStatus(self, request):
-        """This API is used to get email sending status. Only data within 90 days can be queried.
+        """This API is used to get email sending status. Only data within 30 days can be queried.
 
         :param request: Request instance for GetSendEmailStatus.
         :type request: :class:`tencentcloud.ses.v20201002.models.GetSendEmailStatusRequest`
@@ -461,6 +517,62 @@ class SesClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListEmailTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListReceivers(self, request):
+        """This API is used to query recipient groups. It supports pagination, fuzzy query, and query by status.
+
+        :param request: Request instance for ListReceivers.
+        :type request: :class:`tencentcloud.ses.v20201002.models.ListReceiversRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.ListReceiversResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListReceivers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListReceiversResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListSendTasks(self, request):
+        """This API is used to query batch email sending tasks (including immediate, scheduled, and recurring tasks) by page. You can query task data including the number of emails requested to be sent, the number of sent emails, the number of cached emails, and task status.
+
+        :param request: Request instance for ListSendTasks.
+        :type request: :class:`tencentcloud.ses.v20201002.models.ListSendTasksRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.ListSendTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListSendTasks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListSendTasksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

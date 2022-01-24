@@ -61,7 +61,7 @@ Tencent Cloud team <noreply@mail.qcloud.com>
         :type ReceiverId: int
         :param Subject: Email subject
         :type Subject: str
-        :param TaskType: Task type. Valid values: `1`: batch; `2`: scheduled; `3`: recurring
+        :param TaskType: Task type. `1`: immediate; `2`: scheduled; `3`: recurring
         :type TaskType: int
         :param ReplyToAddresses: Reply-to address. You can enter a valid personal email address that can receive emails. If this parameter is left empty, reply emails will be sent to Tencent Cloud.
         :type ReplyToAddresses: str
@@ -75,6 +75,8 @@ Tencent Cloud team <noreply@mail.qcloud.com>
         :type CycleParam: :class:`tencentcloud.ses.v20201002.models.CycleEmailParam`
         :param TimedParam: Parameter required for a scheduled sending task
         :type TimedParam: :class:`tencentcloud.ses.v20201002.models.TimedEmailParam`
+        :param Unsubscribe: Unsubscribe option. `1`: provides an unsubscribe link; `0`: does not provide an unsubscribe link
+        :type Unsubscribe: str
         """
         self.FromEmailAddress = None
         self.ReceiverId = None
@@ -86,6 +88,7 @@ Tencent Cloud team <noreply@mail.qcloud.com>
         self.Attachments = None
         self.CycleParam = None
         self.TimedParam = None
+        self.Unsubscribe = None
 
 
     def _deserialize(self, params):
@@ -112,6 +115,7 @@ Tencent Cloud team <noreply@mail.qcloud.com>
         if params.get("TimedParam") is not None:
             self.TimedParam = TimedEmailParam()
             self.TimedParam._deserialize(params.get("TimedParam"))
+        self.Unsubscribe = params.get("Unsubscribe")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -317,6 +321,100 @@ class CreateEmailTemplateResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateReceiverDetailRequest(AbstractModel):
+    """CreateReceiverDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReceiverId: Recipient group ID
+        :type ReceiverId: int
+        :param Emails: Email address
+        :type Emails: list of str
+        """
+        self.ReceiverId = None
+        self.Emails = None
+
+
+    def _deserialize(self, params):
+        self.ReceiverId = params.get("ReceiverId")
+        self.Emails = params.get("Emails")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateReceiverDetailResponse(AbstractModel):
+    """CreateReceiverDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateReceiverRequest(AbstractModel):
+    """CreateReceiver request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReceiversName: Recipient group name
+        :type ReceiversName: str
+        :param Desc: Recipient group description
+        :type Desc: str
+        """
+        self.ReceiversName = None
+        self.Desc = None
+
+
+    def _deserialize(self, params):
+        self.ReceiversName = params.get("ReceiversName")
+        self.Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateReceiverResponse(AbstractModel):
+    """CreateReceiver response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReceiverId: Recipient group ID, by which recipient email addresses are uploaded
+        :type ReceiverId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ReceiverId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReceiverId = params.get("ReceiverId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1054,6 +1152,188 @@ class ListEmailTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ListReceiversRequest(AbstractModel):
+    """ListReceivers request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: Offset, starting from 0. The value is an integer.
+        :type Offset: int
+        :param Limit: Number of records to query. The value is an integer not exceeding 100.
+        :type Limit: int
+        :param Status: Group status (`1`: to be uploaded; `2` uploading; `3` uploaded). To query groups in all states, do not pass in this parameter.
+        :type Status: int
+        :param KeyWord: Group name keyword for fuzzy query
+        :type KeyWord: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Status = None
+        self.KeyWord = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Status = params.get("Status")
+        self.KeyWord = params.get("KeyWord")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListReceiversResponse(AbstractModel):
+    """ListReceivers response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number
+        :type TotalCount: int
+        :param Data: Data record
+        :type Data: list of ReceiverData
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = ReceiverData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ListSendTasksRequest(AbstractModel):
+    """ListSendTasks request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: Offset, starting from 0. The value is an integer. `0` means to skip 0 entries.
+        :type Offset: int
+        :param Limit: Number of records to query. The value is an integer not exceeding 100.
+        :type Limit: int
+        :param Status: Task status. `1`: to start; `5`: sending; `6`: sending suspended today; `7`: sending error; `10`: sent. To query tasks in all states, do not pass in this parameter.
+        :type Status: int
+        :param ReceiverId: Recipient group ID
+        :type ReceiverId: int
+        :param TaskType: Task type. `1`: immediate; `2`: scheduled; `3`: recurring. To query tasks of all types, do not pass in this parameter.
+        :type TaskType: int
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Status = None
+        self.ReceiverId = None
+        self.TaskType = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Status = params.get("Status")
+        self.ReceiverId = params.get("ReceiverId")
+        self.TaskType = params.get("TaskType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListSendTasksResponse(AbstractModel):
+    """ListSendTasks response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number
+        :type TotalCount: int
+        :param Data: Data record
+        :type Data: list of SendTaskData
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = SendTaskData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ReceiverData(AbstractModel):
+    """Recipient group data type
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReceiverId: Recipient group ID
+        :type ReceiverId: int
+        :param ReceiversName: Recipient group name
+        :type ReceiversName: str
+        :param Count: Total number of recipient email addresses
+        :type Count: int
+        :param Desc: Recipient group description
+Note: This field may return `null`, indicating that no valid value can be found.
+        :type Desc: str
+        :param ReceiversStatus: Group status (`1`: to be uploaded; `2` uploading; `3` uploaded)
+Note: This field may return `null`, indicating that no valid value can be found.
+        :type ReceiversStatus: int
+        :param CreateTime: Creation time, such as 2021-09-28 16:40:35
+        :type CreateTime: str
+        """
+        self.ReceiverId = None
+        self.ReceiversName = None
+        self.Count = None
+        self.Desc = None
+        self.ReceiversStatus = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.ReceiverId = params.get("ReceiverId")
+        self.ReceiversName = params.get("ReceiversName")
+        self.Count = params.get("Count")
+        self.Desc = params.get("Desc")
+        self.ReceiversStatus = params.get("ReceiversStatus")
+        self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SendEmailRequest(AbstractModel):
     """SendEmail request structure.
 
@@ -1061,9 +1341,9 @@ class SendEmailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FromEmailAddress: Sender address. Enter a sender address, for example, noreply@mail.qcloud.com. To display the sender name, enter the address in the following format: 
-Sender <email address>, for example:
-Tencent Cloud team <noreply@mail.qcloud.com>
+        :param FromEmailAddress: Sender address. Enter a sender address, for example, noreply@mail.qcloud.com.
+To display the sender name, enter the address in the following format: 
+Sender <email address>
         :type FromEmailAddress: str
         :param Destination: Recipient email addresses. You can send an email to up to 50 recipients at a time. Note: the email content will display all recipient addresses. To send one-to-one emails to several recipients, please call the API multiple times to send the emails.
         :type Destination: list of str
@@ -1077,6 +1357,8 @@ Tencent Cloud team <noreply@mail.qcloud.com>
         :type Simple: :class:`tencentcloud.ses.v20201002.models.Simple`
         :param Attachments: Email attachments
         :type Attachments: list of Attachment
+        :param Unsubscribe: Unsubscribe option. `1`: provides an unsubscribe link; `0`: does not provide an unsubscribe link
+        :type Unsubscribe: str
         """
         self.FromEmailAddress = None
         self.Destination = None
@@ -1085,6 +1367,7 @@ Tencent Cloud team <noreply@mail.qcloud.com>
         self.Template = None
         self.Simple = None
         self.Attachments = None
+        self.Unsubscribe = None
 
 
     def _deserialize(self, params):
@@ -1104,6 +1387,7 @@ Tencent Cloud team <noreply@mail.qcloud.com>
                 obj = Attachment()
                 obj._deserialize(item)
                 self.Attachments.append(obj)
+        self.Unsubscribe = params.get("Unsubscribe")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1229,6 +1513,100 @@ class SendEmailStatus(AbstractModel):
         
 
 
+class SendTaskData(AbstractModel):
+    """Email sending task data
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: Task ID
+        :type TaskId: int
+        :param FromEmailAddress: Sender address
+        :type FromEmailAddress: str
+        :param ReceiverId: Recipient group ID
+        :type ReceiverId: int
+        :param TaskStatus: Task status. `1`: to start; `5`: sending; `6`: sending suspended today; `7`: sending error; `10`: sent
+        :type TaskStatus: int
+        :param TaskType: Task type. `1`: immediate; `2`: scheduled; `3`: recurring
+        :type TaskType: int
+        :param RequestCount: Number of emails requested to be sent
+        :type RequestCount: int
+        :param SendCount: Number of emails sent
+        :type SendCount: int
+        :param CacheCount: Number of emails cached
+        :type CacheCount: int
+        :param CreateTime: Task creation time
+        :type CreateTime: str
+        :param UpdateTime: Task update time
+        :type UpdateTime: str
+        :param Subject: Email subject
+        :type Subject: str
+        :param Template: Template and template data
+Note: This field may return `null`, indicating that no valid value can be found.
+        :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
+        :param CycleParam: Parameters of a recurring task
+Note: This field may return `null`, indicating that no valid value can be found.
+        :type CycleParam: :class:`tencentcloud.ses.v20201002.models.CycleEmailParam`
+        :param TimedParam: Parameters of a scheduled task
+Note: This field may return `null`, indicating that no valid value can be found.
+        :type TimedParam: :class:`tencentcloud.ses.v20201002.models.TimedEmailParam`
+        :param ErrMsg: Task exception information
+Note: This field may return `null`, indicating that no valid value can be found.
+        :type ErrMsg: str
+        :param ReceiversName: Recipient group name
+        :type ReceiversName: str
+        """
+        self.TaskId = None
+        self.FromEmailAddress = None
+        self.ReceiverId = None
+        self.TaskStatus = None
+        self.TaskType = None
+        self.RequestCount = None
+        self.SendCount = None
+        self.CacheCount = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.Subject = None
+        self.Template = None
+        self.CycleParam = None
+        self.TimedParam = None
+        self.ErrMsg = None
+        self.ReceiversName = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.FromEmailAddress = params.get("FromEmailAddress")
+        self.ReceiverId = params.get("ReceiverId")
+        self.TaskStatus = params.get("TaskStatus")
+        self.TaskType = params.get("TaskType")
+        self.RequestCount = params.get("RequestCount")
+        self.SendCount = params.get("SendCount")
+        self.CacheCount = params.get("CacheCount")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Subject = params.get("Subject")
+        if params.get("Template") is not None:
+            self.Template = Template()
+            self.Template._deserialize(params.get("Template"))
+        if params.get("CycleParam") is not None:
+            self.CycleParam = CycleEmailParam()
+            self.CycleParam._deserialize(params.get("CycleParam"))
+        if params.get("TimedParam") is not None:
+            self.TimedParam = TimedEmailParam()
+            self.TimedParam._deserialize(params.get("TimedParam"))
+        self.ErrMsg = params.get("ErrMsg")
+        self.ReceiversName = params.get("ReceiversName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Simple(AbstractModel):
     """Email content, which can be plain text (TEXT), pure code (HTML), or a combination of TEXT and HTML (recommended).
 
@@ -1267,6 +1645,8 @@ class Template(AbstractModel):
         :param TemplateID: Template ID. If you don’t have any template, please create one.
         :type TemplateID: int
         :param TemplateData: Variable parameters in the template. Please use `json.dump` to format the JSON object into a string type. The object is a set of key-value pairs. Each key denotes a variable, which is represented by {{key}}. The key will be replaced with the corresponding value (represented by {{value}}) when sending the email.
+Note: The parameter value cannot be data of a complex type such as HTML.
+Example: {"name":"xxx","age":"xx"}
         :type TemplateData: str
         """
         self.TemplateID = None

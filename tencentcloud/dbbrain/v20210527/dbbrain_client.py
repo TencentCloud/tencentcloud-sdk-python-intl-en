@@ -110,6 +110,34 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateKillTask(self, request):
+        """This API is used to create session killing tasks.
+
+        :param request: Request instance for CreateKillTask.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.CreateKillTaskRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.CreateKillTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateKillTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateKillTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateMailProfile(self, request):
         """This API is used to create the email configuration. The input parameter `ProfileType` represents the type of the email configuration. Valid values: `dbScan_mail_configuration` (email configuration of database inspection report) and `scheduler_mail_configuration` (email sending configuration of scheduled task health report). Please always select Guangzhou for `Region`, regardless of the region where the instance resides.
 
@@ -124,6 +152,34 @@ class DbbrainClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateMailProfileResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateProxySessionKillTask(self, request):
+        """This API is used to create an async task of killing all proxy node connection sessions and is currently supported only for Redis. The async task ID is the returned value, which can be passed to the API `DescribeProxySessionKillTasks` as a parameter to query the execution status of the session killing task.
+
+        :param request: Request instance for CreateProxySessionKillTask.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.CreateProxySessionKillTaskRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.CreateProxySessionKillTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateProxySessionKillTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateProxySessionKillTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -2033,14 +2033,16 @@ class DescribeInstancesDetailRequest(AbstractModel):
         :type SearchWord: str
         :param Status: (Filter) instance status. 0: creating, 1: running, 2: deleting. If this parameter is left empty, all instances will be returned by default
         :type Status: list of int
-        :param Offset: Offset. If this parameter is left empty, 0 will be used by default
+        :param Offset: Offset. If this parameter is left empty, `0` will be used by default.
         :type Offset: int
-        :param Limit: Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20
+        :param Limit: Number of returned results. If this parameter is left empty, `10` will be used by default. The maximum value is `20`.
         :type Limit: int
         :param TagKey: Tag key match.
         :type TagKey: str
-        :param Filters: Filter
+        :param Filters: Filter.
         :type Filters: list of Filter
+        :param InstanceIds: This parameter has been deprecated and replaced with `InstanceIdList`.
+        :type InstanceIds: str
         """
         self.InstanceId = None
         self.SearchWord = None
@@ -2049,6 +2051,7 @@ class DescribeInstancesDetailRequest(AbstractModel):
         self.Limit = None
         self.TagKey = None
         self.Filters = None
+        self.InstanceIds = None
 
 
     def _deserialize(self, params):
@@ -2064,6 +2067,7 @@ class DescribeInstancesDetailRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.InstanceIds = params.get("InstanceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2115,6 +2119,8 @@ class DescribeInstancesRequest(AbstractModel):
         :type Limit: int
         :param TagKey: Tag key value (this field has been deprecated).
         :type TagKey: str
+        :param VpcId: VPC ID.
+        :type VpcId: str
         """
         self.InstanceId = None
         self.SearchWord = None
@@ -2122,6 +2128,7 @@ class DescribeInstancesRequest(AbstractModel):
         self.Offset = None
         self.Limit = None
         self.TagKey = None
+        self.VpcId = None
 
 
     def _deserialize(self, params):
@@ -2131,6 +2138,7 @@ class DescribeInstancesRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.TagKey = params.get("TagKey")
+        self.VpcId = params.get("VpcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3421,6 +3429,15 @@ Note: `null` may be returned for this field, indicating that no valid values can
         :param RebalanceTime: Time of scheduled upgrade
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :type RebalanceTime: str
+        :param PartitionNumber: Number of partitions in the current instance.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type PartitionNumber: int
+        :param PublicNetworkChargeType: Public network bandwidth type.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type PublicNetworkChargeType: str
+        :param PublicNetwork: Public network bandwidth.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type PublicNetwork: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -3449,6 +3466,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
         self.MaxTopicNumber = None
         self.MaxPartitionNumber = None
         self.RebalanceTime = None
+        self.PartitionNumber = None
+        self.PublicNetworkChargeType = None
+        self.PublicNetwork = None
 
 
     def _deserialize(self, params):
@@ -3489,6 +3509,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
         self.MaxTopicNumber = params.get("MaxTopicNumber")
         self.MaxPartitionNumber = params.get("MaxPartitionNumber")
         self.RebalanceTime = params.get("RebalanceTime")
+        self.PartitionNumber = params.get("PartitionNumber")
+        self.PublicNetworkChargeType = params.get("PublicNetworkChargeType")
+        self.PublicNetwork = params.get("PublicNetwork")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
