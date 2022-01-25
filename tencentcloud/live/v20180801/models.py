@@ -4783,6 +4783,75 @@ class DescribeLiveTranscodeTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLiveTranscodeTotalInfoRequest(AbstractModel):
+    """DescribeLiveTranscodeTotalInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: Start time (Beijing time)
+Format: yyyy-mm-dd HH:MM:SS
+        :type StartTime: str
+        :param EndTime: End time (Beijing time)
+Format: yyyy-mm-dd HH:MM:SS
+        :type EndTime: str
+        :param PushDomains: List of push domains to query. If this parameter is left empty, the data of all domains is queried.
+If this parameter is specified, the data returned will be on an hourly basis.
+        :type PushDomains: list of str
+        :param MainlandOrOversea: Valid values:
+`Mainland`: queries transcoding data in the Chinese mainland
+`Oversea`: queries transcoding data outside the Chinese mainland
+By default, the data both in and outside the Chinese mainland is queried.
+        :type MainlandOrOversea: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.PushDomains = None
+        self.MainlandOrOversea = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.PushDomains = params.get("PushDomains")
+        self.MainlandOrOversea = params.get("MainlandOrOversea")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLiveTranscodeTotalInfoResponse(AbstractModel):
+    """DescribeLiveTranscodeTotalInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataInfoList: List of transcoding data
+Note: This field may return `null`, indicating that no valid value can be found.
+        :type DataInfoList: list of TranscodeTotalInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = TranscodeTotalInfo()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLiveWatermarkRequest(AbstractModel):
     """DescribeLiveWatermark request structure.
 
@@ -5477,8 +5546,8 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
         r"""
         :param StartTime: Start time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS
         :type StartTime: str
-        :param EndTime: End time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS.
-The difference between the start time and end time cannot be greater than 24 hours. Data in the last 30 days can be queried.
+        :param EndTime: End time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS
+The start time and end time cannot be more than 24 hours apart and must be within the last 15 days.
         :type EndTime: str
         :param PlayDomain: Playback domain name,
 If this parameter is left empty, data of live streams of all playback domain names will be queried.
@@ -8646,6 +8715,49 @@ topspeed_H265: top speed codec - H265.
         self.Bitrate = params.get("Bitrate")
         self.Type = params.get("Type")
         self.PushDomain = params.get("PushDomain")
+        self.Resolution = params.get("Resolution")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TranscodeTotalInfo(AbstractModel):
+    """Total usage of the transcoding service
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Time: Usage time (Beijing time)
+Example: 2019-03-01 00:00:00
+        :type Time: str
+        :param Duration: Transcoding duration in minutes
+        :type Duration: int
+        :param ModuleCodec: Codec, with modules
+Examples:
+`liveprocessor_H264`: live transcoding-H264
+`liveprocessor_H265`: live transcoding-H265
+`topspeed_H264`: top speed codec-H264
+`topspeed_H265`: top speed codec-H265
+        :type ModuleCodec: str
+        :param Resolution: Resolution
+Example: 540*480
+        :type Resolution: str
+        """
+        self.Time = None
+        self.Duration = None
+        self.ModuleCodec = None
+        self.Resolution = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Duration = params.get("Duration")
+        self.ModuleCodec = params.get("ModuleCodec")
         self.Resolution = params.get("Resolution")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
