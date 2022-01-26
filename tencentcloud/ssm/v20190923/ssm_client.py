@@ -592,7 +592,8 @@ class SsmClient(AbstractClient):
 
 
     def RotateProductSecret(self, request):
-        """This API is used to rotate a Tencent Cloud service credential. It is only applicable to Tencent Cloud service credentials in `Enabled` status but not Tencent Cloud service credentials in other status or user-defined credentials.
+        """This API is used to rotate secrets for Tencent Cloud services or Tencent Cloud API key pairs.
+        Note that only the secrets with the "Enabled" status can be rotated.
 
         :param request: Request instance for RotateProductSecret.
         :type request: :class:`tencentcloud.ssm.v20190923.models.RotateProductSecretRequest`

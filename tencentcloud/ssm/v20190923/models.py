@@ -643,8 +643,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ResourceID: Tencent Cloud service instance ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ResourceID: str
-        :param RotationStatus: Whether to enable rotation. True: yes; False: no.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param RotationStatus: Whether to enable rotation. `True`: enable rotation; `False`: disable rotation.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type RotationStatus: bool
         :param RotationFrequency: Rotation frequency in days by default.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -658,6 +658,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param AssociatedInstanceIDs: ID of the CVM instance associated with the SSH key. ID. This field is only valid when the `SecretType` is set to `2` (SSH key secret).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AssociatedInstanceIDs: list of str
+        :param TargetUin: UIN of the Tencent Cloud API key. This field is valid when the secret type is Tencent Cloud API key secret.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TargetUin: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -676,6 +679,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ResourceName = None
         self.ProjectID = None
         self.AssociatedInstanceIDs = None
+        self.TargetUin = None
         self.RequestId = None
 
 
@@ -695,6 +699,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ResourceName = params.get("ResourceName")
         self.ProjectID = params.get("ProjectID")
         self.AssociatedInstanceIDs = params.get("AssociatedInstanceIDs")
+        self.TargetUin = params.get("TargetUin")
         self.RequestId = params.get("RequestId")
 
 
@@ -998,17 +1003,22 @@ class GetServiceStatusResponse(AbstractModel):
         :type ServiceEnabled: bool
         :param InvalidType: Invalid service type. `0`: not purchased; `1`: normal; `2`: suspended due to arrears; `3`: resource released
         :type InvalidType: int
+        :param AccessKeyEscrowEnabled: `true`: allow SSM to manage Tencent Cloud API key secrets.
+`false`: forbid SSM to manage Tencent Cloud API key secrets.
+        :type AccessKeyEscrowEnabled: bool
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.ServiceEnabled = None
         self.InvalidType = None
+        self.AccessKeyEscrowEnabled = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.ServiceEnabled = params.get("ServiceEnabled")
         self.InvalidType = params.get("InvalidType")
+        self.AccessKeyEscrowEnabled = params.get("AccessKeyEscrowEnabled")
         self.RequestId = params.get("RequestId")
 
 
@@ -1096,6 +1106,7 @@ The `PendingCreate` and `CreateFailed` status only take effect when `SecretType`
         :param SecretType: `0` (default): user-defined secret.
 `1`: Tencent Cloud services secret.
 `2`: SSH key secret.
+`3`: Tencent Cloud API key secret.
         :type SecretType: int
         :param ProductName: This parameter is valid only when SecretType is `1`.
  
@@ -1370,7 +1381,7 @@ class RotateProductSecretResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowID: Async rotation task ID.
+        :param FlowID: Asynchronous rotation task ID. This field is valid when `SecretType` is `1` (i.e., the secret type is Tencent Cloud services secret, such as MySQL/TDSQL credentials).
         :type FlowID: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1413,8 +1424,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param NextRotationTime: Start time of the next rotation in UNIX timestamp format
 Note: this field may return null, indicating that no valid values can be obtained.
         :type NextRotationTime: int
-        :param SecretType: 0: user-defined credential; 1: Tencent Cloud service credential.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param SecretType: `0`: user-defined secret.
+`1`: Tencent Cloud services secret.
+`2`: SSH key secret.
+`3`: Tencent Cloud API key secret.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type SecretType: int
         :param ProductName: Tencent Cloud service name, which takes effect only when `SecretType` is 1 (Tencent Cloud service credential)
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -1428,6 +1442,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param AssociatedInstanceIDs: ID of the CVM instance associated with the SSH key. ID. This field is only valid when the `SecretType` is set to `2` (SSH key secret).
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type AssociatedInstanceIDs: list of str
+        :param TargetUin: UIN of the Tencent Cloud API key. This field is valid when the secret type is Tencent Cloud API key secret.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TargetUin: int
         """
         self.SecretName = None
         self.Description = None
@@ -1444,6 +1461,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.ResourceName = None
         self.ProjectID = None
         self.AssociatedInstanceIDs = None
+        self.TargetUin = None
 
 
     def _deserialize(self, params):
@@ -1462,6 +1480,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.ResourceName = params.get("ResourceName")
         self.ProjectID = params.get("ProjectID")
         self.AssociatedInstanceIDs = params.get("AssociatedInstanceIDs")
+        self.TargetUin = params.get("TargetUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

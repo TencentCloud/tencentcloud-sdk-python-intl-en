@@ -6034,16 +6034,26 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ValidationCode: Verification code
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ValidationCode: str
+        :param StartTime: Start time of the notification in seconds, which is calculated from 00:00:00.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type StartTime: int
+        :param EndTime: End time of the notification in seconds, which is calculated from 00:00:00.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type EndTime: int
         """
         self.URL = None
         self.IsValid = None
         self.ValidationCode = None
+        self.StartTime = None
+        self.EndTime = None
 
 
     def _deserialize(self, params):
         self.URL = params.get("URL")
         self.IsValid = params.get("IsValid")
         self.ValidationCode = params.get("ValidationCode")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
