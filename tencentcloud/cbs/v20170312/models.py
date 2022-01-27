@@ -1696,6 +1696,47 @@ class Image(AbstractModel):
         
 
 
+class InitializeDisksRequest(AbstractModel):
+    """InitializeDisks request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskIds: ID list of the cloud disks to be reinitialized. Up to 20 disks can be reinitialized at a time.
+        :type DiskIds: list of str
+        """
+        self.DiskIds = None
+
+
+    def _deserialize(self, params):
+        self.DiskIds = params.get("DiskIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InitializeDisksResponse(AbstractModel):
+    """InitializeDisks response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class InquirePriceModifyDiskExtraPerformanceRequest(AbstractModel):
     """InquirePriceModifyDiskExtraPerformance request structure.
 

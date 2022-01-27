@@ -17,11 +17,20 @@
 # CAM signature/authentication error
 AUTHFAILURE = 'AuthFailure'
 
+# Failed to access COS.
+FAILEDOPERATION_COSERROR = 'FailedOperation.CosError'
+
 # Errors occurred while acquiring uploaded configuration information.
 FAILEDOPERATION_COSPROPERTIESERROR = 'FailedOperation.CosPropertiesError'
 
 # Failed to create order.
 FAILEDOPERATION_CREATEORDERFAILED = 'FailedOperation.CreateOrderFailed'
+
+# Database error.
+FAILEDOPERATION_DBERROR = 'FailedOperation.DBError'
+
+# The operation failed or the network timed out.
+FAILEDOPERATION_GCSERROR = 'FailedOperation.GcsError'
 
 # Failed to get VPC information.
 FAILEDOPERATION_GETVPCFAILED = 'FailedOperation.GetVpcFailed'
@@ -98,6 +107,9 @@ INVALIDPARAMETERVALUE_ACCOUNTNAMEISKEYWORDS = 'InvalidParameterValue.AccountName
 # The account remarks are invalid.
 INVALIDPARAMETERVALUE_ACCOUNTREMARKISILLEGAL = 'InvalidParameterValue.AccountRemarkIsIllegal'
 
+# You can only apply for one admin account.
+INVALIDPARAMETERVALUE_ADMINACCOUNTNOTUNIQUE = 'InvalidParameterValue.AdminAccountNotUnique'
+
 # The backup name contains invalid characters.
 INVALIDPARAMETERVALUE_BACKUPNAMEISILLEGAL = 'InvalidParameterValue.BackupNameIsIllegal'
 
@@ -154,6 +166,9 @@ INVALIDPARAMETERVALUE_MIGRATIONNAMEISILLEGAL = 'InvalidParameterValue.MigrationN
 
 # Only `enable` and `disable` are valid values.
 INVALIDPARAMETERVALUE_MODIFYTYPEVALUEINVALID = 'InvalidParameterValue.ModifyTypeValueInvalid'
+
+# Basic edition instances are not supported.
+INVALIDPARAMETERVALUE_ONCVMTYPENOTSUPPORTED = 'InvalidParameterValue.OnCvmTypeNotSupported'
 
 # Incorrect parameter type.
 INVALIDPARAMETERVALUE_PARAMETERTYPEERROR = 'InvalidParameterValue.ParameterTypeError'

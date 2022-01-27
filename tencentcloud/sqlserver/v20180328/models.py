@@ -4114,11 +4114,14 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
         :type NewSubnetId: str
         :param OldIpRetainTime: Retention period (in hours) of the original VIP. Value range: `0-168`. Default value: `0`, indicating the original VIP is released immediately.
         :type OldIpRetainTime: int
+        :param Vip: New VIP
+        :type Vip: str
         """
         self.InstanceId = None
         self.NewVpcId = None
         self.NewSubnetId = None
         self.OldIpRetainTime = None
+        self.Vip = None
 
 
     def _deserialize(self, params):
@@ -4126,6 +4129,7 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
         self.NewVpcId = params.get("NewVpcId")
         self.NewSubnetId = params.get("NewSubnetId")
         self.OldIpRetainTime = params.get("OldIpRetainTime")
+        self.Vip = params.get("Vip")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -600,6 +600,38 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def InitializeDisks(self, request):
+        """This API is used to reinitialize the cloud disks. Note the following when reinitializing the cloud disks:
+        1. For a cloud disk created from a snapshot, it is rolled back to the state of the snapshot;
+        2. For a cloud disk created from the scratch, all data are cleared. Please check and back up the necessary data before the reinitialization;
+        3. Currently, you can only re-initialize a cloud disk when it’s not attached to a resource and not shared by others;
+        4. For a cloud disk created from a snapshot, if the snapshot has been deleted, it cannot be reinitialized.
+
+        :param request: Request instance for InitializeDisks.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.InitializeDisksRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.InitializeDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InitializeDisks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InitializeDisksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def InquirePriceModifyDiskExtraPerformance(self, request):
         """This API is used to query the price for adjusting the cloud disk’s extra performance.
 
