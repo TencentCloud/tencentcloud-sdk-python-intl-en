@@ -195,6 +195,34 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateHourDBInstance(self, request):
+        """This API is used to create pay-as-you-go instances.
+
+        :param request: Request instance for CreateHourDBInstance.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.CreateHourDBInstanceRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.CreateHourDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateHourDBInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateHourDBInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteAccount(self, request):
         """This API is used to delete a TencentDB account, which is uniquely identified by username and host.
 
@@ -1199,6 +1227,34 @@ class MariadbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetAccountPasswordResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SwitchDBInstanceHA(self, request):
+        """This API is used to start a primary-replica switch of instances.
+
+        :param request: Request instance for SwitchDBInstanceHA.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.SwitchDBInstanceHARequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.SwitchDBInstanceHAResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SwitchDBInstanceHA", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SwitchDBInstanceHAResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

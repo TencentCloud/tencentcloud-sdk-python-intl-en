@@ -464,6 +464,139 @@ class CreateAccountResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateHourDBInstanceRequest(AbstractModel):
+    """CreateHourDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zones: AZs to deploy instance nodes. You can specify up to two AZs. If each shard has one primary node and two replica nodes, two of the three will be deployed in the first AZ you have specified.
+        :type Zones: list of str
+        :param NodeCount: Number of nodes.
+        :type NodeCount: int
+        :param Memory: Memory size in GB.
+        :type Memory: int
+        :param Storage: Storage size in GB.
+        :type Storage: int
+        :param Count: Number of instances to purchase.
+        :type Count: int
+        :param ProjectId: Project ID. If this parameter is not passed in, the default project will be used.
+        :type ProjectId: int
+        :param VpcId: Unique ID of the network. If this parameter is not passed in, the classic network will be used.
+        :type VpcId: str
+        :param SubnetId: Unique ID of the subnet. If `VpcId` is specified, this parameter is required.
+        :type SubnetId: str
+        :param DbVersionId: Database engine version. Valid values:
+10.0.10: MariaDB 10.0.10;
+10.1.9: MariaDB 10.1.9;
+5.7.17: Percona 5.7.17.
+If this parameter is left empty, `10.1.9` will be used.
+        :type DbVersionId: str
+        :param InstanceName: Custom name of the instance.
+        :type InstanceName: str
+        :param SecurityGroupIds: Security group ID. If this parameter is not passed in, no security groups will be associated when the instance is created.
+        :type SecurityGroupIds: list of str
+        :param Ipv6Flag: Whether IPv6 is supported.
+        :type Ipv6Flag: int
+        :param ResourceTags: Array of tag key-value pairs.
+        :type ResourceTags: list of ResourceTag
+        :param DcnRegion: If you create a disaster recovery instance, you need to use this parameter to specify the region of the associated primary instance so that the disaster recovery instance can sync data with the primary instance over the Data Communication Network (DCN).
+        :type DcnRegion: str
+        :param DcnInstanceId: If you create a disaster recovery instance, you need to use this parameter to specify the ID of the associated primary instance so that the disaster recovery instance can sync data with the primary instance over the Data Communication Network (DCN).
+        :type DcnInstanceId: str
+        :param InitParams: List of parameters. Valid values: `character_set_server` (character set; required); `lower_case_table_names` (table name case sensitivity; required; 0: case-sensitive; 1: case-insensitive); `innodb_page_size` (InnoDB data page size; default size: 16 KB); `sync_mode` (sync mode; 0: async; 1: strong sync; 2: downgradable strong sync; default value: 2).
+        :type InitParams: list of DBParamValue
+        :param RollbackInstanceId: ID of the instance whose backup data will be rolled back to the new instance you create.
+        :type RollbackInstanceId: str
+        :param RollbackTime: Rollback time.
+        :type RollbackTime: str
+        """
+        self.Zones = None
+        self.NodeCount = None
+        self.Memory = None
+        self.Storage = None
+        self.Count = None
+        self.ProjectId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.DbVersionId = None
+        self.InstanceName = None
+        self.SecurityGroupIds = None
+        self.Ipv6Flag = None
+        self.ResourceTags = None
+        self.DcnRegion = None
+        self.DcnInstanceId = None
+        self.InitParams = None
+        self.RollbackInstanceId = None
+        self.RollbackTime = None
+
+
+    def _deserialize(self, params):
+        self.Zones = params.get("Zones")
+        self.NodeCount = params.get("NodeCount")
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.Count = params.get("Count")
+        self.ProjectId = params.get("ProjectId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.DbVersionId = params.get("DbVersionId")
+        self.InstanceName = params.get("InstanceName")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.Ipv6Flag = params.get("Ipv6Flag")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
+        self.DcnRegion = params.get("DcnRegion")
+        self.DcnInstanceId = params.get("DcnInstanceId")
+        if params.get("InitParams") is not None:
+            self.InitParams = []
+            for item in params.get("InitParams"):
+                obj = DBParamValue()
+                obj._deserialize(item)
+                self.InitParams.append(obj)
+        self.RollbackInstanceId = params.get("RollbackInstanceId")
+        self.RollbackTime = params.get("RollbackTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateHourDBInstanceResponse(AbstractModel):
+    """CreateHourDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealName: Order ID, which is used in the `DescribeOrders` API.
+ The parameter can be used to either query order details or call the user account APIs to make another payment when this payment fails.
+        :type DealName: str
+        :param InstanceIds: IDs of the instances you have purchased in this order. If no instance IDs are returned, you can query them with the `DescribeOrders` API. You can also use the `DescribeDBInstances` API to check whether an instance has been created successfully.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type InstanceIds: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DealName = None
+        self.InstanceIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealName = params.get("DealName")
+        self.InstanceIds = params.get("InstanceIds")
+        self.RequestId = params.get("RequestId")
+
+
 class DBAccount(AbstractModel):
     """TencentDB account information
 
@@ -666,6 +799,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param InstanceType: Instance type. Valid values: `1` (dedicated primary instance), `2` (primary instance), `3` (disaster recovery instance), and `4` (dedicated disaster recovery instance).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type InstanceType: int
+        :param ResourceTags: Instance tag information
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ResourceTags: list of ResourceTag
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -717,6 +853,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.DcnStatus = None
         self.DcnDstNum = None
         self.InstanceType = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
@@ -770,6 +907,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.DcnStatus = params.get("DcnStatus")
         self.DcnDstNum = params.get("DcnDstNum")
         self.InstanceType = params.get("InstanceType")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2288,10 +2431,13 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
         r"""
         :param Groups: Security group details
         :type Groups: list of SecurityGroup
+        :param Total: Total number of security groups.
+        :type Total: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.Groups = None
+        self.Total = None
         self.RequestId = None
 
 
@@ -2302,6 +2448,7 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
                 obj = SecurityGroup()
                 obj._deserialize(item)
                 self.Groups.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -3564,6 +3711,34 @@ class ResetAccountPasswordResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ResourceTag(AbstractModel):
+    """Tag object, including tag key and tag value
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagKey: Tag key
+        :type TagKey: str
+        :param TagValue: Tag value
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResourceUsageMonitorSet(AbstractModel):
     """Set of database resource usage monitoring metrics
 
@@ -3797,6 +3972,55 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SwitchDBInstanceHARequest(AbstractModel):
+    """SwitchDBInstanceHA request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of tdsql-ow728lmc
+        :type InstanceId: str
+        :param Zone: Target AZ. The node with the lowest delay in the target AZ will be automatically promoted to primary node.
+        :type Zone: str
+        """
+        self.InstanceId = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchDBInstanceHAResponse(AbstractModel):
+    """SwitchDBInstanceHA response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Async task ID
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
 
 
 class TablePrivilege(AbstractModel):
