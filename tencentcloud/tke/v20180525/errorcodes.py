@@ -164,6 +164,9 @@ INTERNALERROR_ROUTETABLENOTEMPTY = 'InternalError.RouteTableNotEmpty'
 # Route table does not exist.
 INTERNALERROR_ROUTETABLENOTFOUND = 'InternalError.RouteTableNotFound'
 
+# A same task is in progress.
+INTERNALERROR_TASKALREADYRUNNING = 'InternalError.TaskAlreadyRunning'
+
 # Failed to create the task.
 INTERNALERROR_TASKCREATEFAILED = 'InternalError.TaskCreateFailed'
 

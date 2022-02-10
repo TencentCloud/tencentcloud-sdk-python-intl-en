@@ -791,14 +791,13 @@ If an availability zone or subnet in Zones/SubnetIds does not exist, a verificat
         :param Ipv6AddressCount: The number of IPv6 addresses that an instance has. Valid values: 0 and 1. Default value: 0.
         :type Ipv6AddressCount: int
         :param MultiZoneSubnetPolicy: Multi-availability zone/subnet policy. Valid values: PRIORITY and EQUALITY. Default value: PRIORITY.
-<br><li> PRIORITY: creates instances based on the priority determined by the order in the availability zone/subnet list. If an instance can be successfully created in the availability zone/subnet of the highest priority, all instances will be created in the availability zone/subnet.
-<br><li> EQUALITY: scales out the availability zone/subnet with the least instances each time. This gives each availability zone/subnet an opportunity for scale-out and disperses the instances created during multiple scale-out operations across different availability zones/subnets.
+<br><li> PRIORITY: when creating instances, choose the availability zone/subnet based on the order in the list from top to bottom. If the first instance is successfully created in the availability zone/subnet of the highest priority, all instances will be created in this availability zone/subnet.
+<br><li>EQUALITY: instances created for scale-out are distributed to multiple availability zones/subnets, so as to keep the number of instances in different availability zone/subnet in balance.
 
-Notes about this policy:
-<br><li> When the scaling group is based on basic network, this policy applies to multiple availability zones. When the scaling group is based on VPC, this policy applies to multiple subnets, and you do not need to consider availability zones. For example, if you have four subnets (A, B, C, and D) and A, B, and C are in availability zone 1 and D is in availability zone 2, you only need to decide the order of the four subnets, without worrying about the issue of availability zones.
-<br><li> This policy is applicable to multiple availability zones/subnets, but is not applicable to multiple models with launch configurations. When there are multiple models, the PRIORITY policy is applied.
-<br><li> During instance creation, apply the multi-model policy and then apply the multi-availability zones/subnet policy. For example, if you have models A and B and subnets 1, 2, and 3 (based on the PRIORITY policy), creation will be attempted in the following order: A1, A2, A3, B1, B2, and B3. If A1 is sold out, A2 (not B1) is tried next.
-<br><li> No matter what policy is used, a single scaling event always uses a specific configuration at priority (model * availability zone/subnet).
+Notes: 
+<br><li> When the scaling group is based on the classic network, this policy applies to multiple availability zones. When the scaling group is based on a VPC, this policy applies to multiple subnets, and you do not need to consider availability zones. For example, if you have four subnets (A, B, C, and D) and A, B, and C are in availability zone 1 and D is in availability zone 2, you only need to decide the order of the four subnets, without worrying about the issue of availability zones.
+<br><li> This policy is applicable to multiple availability zones/subnets, but is not applicable to multiple models with launch configurations. Specify the models according to the model priority.
+<br><li> When creating instances based on the PRIORITY policy, apply the multi-model policy and then apply the multi-availability zones/subnet policy. For example, if you have models A and B and subnets 1, 2, and 3, creation will be attempted in the following order: A1, A2, A3, B1, B2, and B3. If A1 is sold out, A2 (not B1) is tried next.
         :type MultiZoneSubnetPolicy: str
         :param HealthCheckType: Health check type of instances in a scaling group.<br><li>CVM: confirm whether an instance is healthy based on the network status. If the pinged instance is unreachable, the instance will be considered unhealthy. For more information, see [Instance Health Check](https://intl.cloud.tencent.com/document/product/377/8553?from_cn_redirect=1)<br><li>CLB: confirm whether an instance is healthy based on the CLB health check status. For more information, see [Health Check Overview](https://intl.cloud.tencent.com/document/product/214/6097?from_cn_redirect=1).<br>If the parameter is set to `CLB`, the scaling group will check both the network status and the CLB health check status. If the network check indicates unhealthy, the `HealthStatus` field will return `UNHEALTHY`. If the CLB health check indicates unhealthy, the `HealthStatus` field will return `CLB_UNHEALTHY`. If both checks indicate unhealthy, the `HealthStatus` field will return `UNHEALTHY|CLB_UNHEALTHY`. Default value: `CLB`.
         :type HealthCheckType: str
@@ -2462,9 +2461,9 @@ class DetachLoadBalancersRequest(AbstractModel):
         r"""
         :param AutoScalingGroupId: Scaling group ID
         :type AutoScalingGroupId: str
-        :param LoadBalancerIds: List of classic CLB IDs. Up to 20 IDs are allowed. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.
+        :param LoadBalancerIds: List of classic CLB IDs. Up to 20 IDs are allowed. `LoadBalancerIds` and `ForwardLoadBalancerIdentifications` cannot be specified at the same time.
         :type LoadBalancerIds: list of str
-        :param ForwardLoadBalancerIdentifications: List of application CLB IDs. Up to 50 IDs are allowed. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.
+        :param ForwardLoadBalancerIdentifications: List of application CLB IDs. Up to 50 IDs are allowed. `LoadBalancerIds` and `ForwardLoadBalancerIdentifications` cannot be specified at the same time.
         :type ForwardLoadBalancerIdentifications: list of ForwardLoadBalancerIdentification
         """
         self.AutoScalingGroupId = None
@@ -3842,7 +3841,7 @@ class ModifyLoadBalancerTargetAttributesRequest(AbstractModel):
         r"""
         :param AutoScalingGroupId: Scaling group ID
         :type AutoScalingGroupId: str
-        :param ForwardLoadBalancers: List of application CLBs to modify.Up to 50 CLBs allowed.
+        :param ForwardLoadBalancers: List of application CLBs to modify. Up to 50 CLBs allowed.
         :type ForwardLoadBalancers: list of ForwardLoadBalancer
         """
         self.AutoScalingGroupId = None

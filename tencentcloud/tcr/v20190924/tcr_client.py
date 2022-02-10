@@ -82,6 +82,34 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateInstanceToken(self, request):
+        """This API is used to create a temporary or long-term instance access credential.
+
+        :param request: Request instance for CreateInstanceToken.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.CreateInstanceTokenRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.CreateInstanceTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateInstanceToken", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateInstanceTokenResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateMultipleSecurityPolicy(self, request):
         """This API is used to create multiple public network access allowlist policies of the TCR instance.
 

@@ -75,7 +75,18 @@ class AccessRegionDetial(AbstractModel):
         :type RegionAreaName: str
         :param IDCType: Data center type. `dc`: data center; `ec`: edge server.
         :type IDCType: str
-        :param FeatureBitmap: 
+        :param FeatureBitmap: Feature bitmap. Valid values:
+`0`: disable the feature;
+`1`: enable the feature.
+Each bit in the bitmap represents a feature:
+1st bit: layer-4 acceleration;
+2nd bit: layer-7 acceleration;
+3rd bit: HTTP3 access;
+4th bit: IPv6;
+5th bit: dedicated BGP access;
+6th bit: non-BGP access;
+7th bit: QoS acceleration.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type FeatureBitmap: int
         """
         self.RegionId = None
@@ -610,7 +621,7 @@ class CheckProxyCreateRequest(AbstractModel):
         :type NetworkType: str
         :param PackageType: Package type of connection groups. Valid values: `Thunder` (general connection group), `Accelerator` (game accelerator connection group), and `CrossBorder` (cross-border connection group).
         :type PackageType: str
-        :param Http3Supported: 
+        :param Http3Supported: Specifies whether to enable HTTP3. Valid values: `0` (disable HTTP3); `1` (enable HTTP3). Note: If HTTP3 is enabled for a connection, TCP/UDP access will not be allowed. After the connection is created, you cannot change your HTTP3 setting.
         :type Http3Supported: int
         """
         self.AccessRegion = None
@@ -1071,12 +1082,18 @@ This field is required only when the mutual authentication method is adopted.
         :param PolyClientCertificateIds: Client CA certificate, which is used for the HTTPS interaction between the client and GAAP.
 This field or the `ClientCertificateId` field is required for mutual authentication only.
         :type PolyClientCertificateIds: list of str
+        :param Http3Supported: Specifies whether to enable HTTP3. Valid values:
+`0`: disable HTTP3;
+`1`: enable HTTP3.
+HTTP3 is not enabled by default. You can enable it with this field SetDomainHttp3.
+        :type Http3Supported: int
         """
         self.ListenerId = None
         self.Domain = None
         self.CertificateId = None
         self.ClientCertificateId = None
         self.PolyClientCertificateIds = None
+        self.Http3Supported = None
 
 
     def _deserialize(self, params):
@@ -1085,6 +1102,7 @@ This field or the `ClientCertificateId` field is required for mutual authenticat
         self.CertificateId = params.get("CertificateId")
         self.ClientCertificateId = params.get("ClientCertificateId")
         self.PolyClientCertificateIds = params.get("PolyClientCertificateIds")
+        self.Http3Supported = params.get("Http3Supported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1196,6 +1214,12 @@ The one-way authentication is used by default.
         :type PolyClientCertificateIds: list of str
         :param GroupId: Connection group ID, which cannot be set together with `ProxyId` at the same time. A listener will be created for the corresponding connection group.
         :type GroupId: str
+        :param Http3Supported: Specifies whether to enable HTTP3. Valid values:
+`0`: disable HTTP3;
+`1`: enable HTTP3.
+Note: If HTTP3 is enabled for a connection, the listener will use the port that is originally accessed to UDP, and a UDP listener with the same port cannot be created.
+After the connection is created, you cannot change your HTTP3 setting.
+        :type Http3Supported: int
         """
         self.ListenerName = None
         self.Port = None
@@ -1206,6 +1230,7 @@ The one-way authentication is used by default.
         self.ClientCertificateId = None
         self.PolyClientCertificateIds = None
         self.GroupId = None
+        self.Http3Supported = None
 
 
     def _deserialize(self, params):
@@ -1218,6 +1243,7 @@ The one-way authentication is used by default.
         self.ClientCertificateId = params.get("ClientCertificateId")
         self.PolyClientCertificateIds = params.get("PolyClientCertificateIds")
         self.GroupId = params.get("GroupId")
+        self.Http3Supported = params.get("Http3Supported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1314,6 +1340,12 @@ class CreateProxyGroupRequest(AbstractModel):
         :type IPAddressVersion: str
         :param PackageType: Package type of connection group. Valid values: `Thunder` (default) and `Accelerator`.
         :type PackageType: str
+        :param Http3Supported: Specifies whether to enable HTTP3. Valid values:
+`0`: disable HTTP3;
+`1`: enable HTTP3.
+Note that if HTTP3 is enabled for a connection, TCP/UDP access will not be allowed.
+After the connection is created, you cannot change your HTTP3 setting.
+        :type Http3Supported: int
         """
         self.ProjectId = None
         self.GroupName = None
@@ -1322,6 +1354,7 @@ class CreateProxyGroupRequest(AbstractModel):
         self.AccessRegionSet = None
         self.IPAddressVersion = None
         self.PackageType = None
+        self.Http3Supported = None
 
 
     def _deserialize(self, params):
@@ -1342,6 +1375,7 @@ class CreateProxyGroupRequest(AbstractModel):
                 self.AccessRegionSet.append(obj)
         self.IPAddressVersion = params.get("IPAddressVersion")
         self.PackageType = params.get("PackageType")
+        self.Http3Supported = params.get("Http3Supported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1409,7 +1443,7 @@ The connection is to be replicated if this parameter is set.
         :type NetworkType: str
         :param PackageType: Package type of connection groups. Valid values: `Thunder` (general), `Accelerator` (specific for games), and `CrossBorder` (cross-MLC-border connection).
         :type PackageType: str
-        :param Http3Supported: 
+        :param Http3Supported: Specifies whether to enable HTTP3. Valid values: `0` (disable HTTP3); `1` (enable HTTP3). Note: If HTTP3 is enabled for a connection, TCP/UDP access will not be allowed. After the connection is created, you cannot change your HTTP3 setting.
         :type Http3Supported: int
         """
         self.ProjectId = None
@@ -2888,6 +2922,12 @@ class DescribeHTTPSListenersRequest(AbstractModel):
         :type SearchValue: str
         :param GroupId: Connection group ID as a filter
         :type GroupId: str
+        :param Http3Supported: Specifies whether to enable HTTP3. Valid values:
+`0`: disable HTTP3;
+`1`: enable HTTP3.
+Note: If HTTP3 is enabled for a connection, the listener will use the port that is originally accessed to UDP, and a UDP listener with the same port cannot be created.
+After the connection is created, you cannot change your HTTP3 setting.
+        :type Http3Supported: int
         """
         self.ProxyId = None
         self.ListenerId = None
@@ -2897,6 +2937,7 @@ class DescribeHTTPSListenersRequest(AbstractModel):
         self.Limit = None
         self.SearchValue = None
         self.GroupId = None
+        self.Http3Supported = None
 
 
     def _deserialize(self, params):
@@ -2908,6 +2949,7 @@ class DescribeHTTPSListenersRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.SearchValue = params.get("SearchValue")
         self.GroupId = params.get("GroupId")
+        self.Http3Supported = params.get("Http3Supported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4730,6 +4772,11 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param BanStatus: Blocking-related status of the domain name. `BANNED`: the domain name is blocked; `RECOVER`: the domain name is unblocked or normal; `BANNING`: the domain name is being blocked; `RECOVERING`: the domain name is being unblocked; `BAN_FAILED`: the blocking fails; RECOVER_FAILED: the unblocking fails.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type BanStatus: str
+        :param Http3Supported: Specifies whether to enable HTTP3. Valid values:
+`0`: disable HTTP3;
+`1`: enable HTTP3.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Http3Supported: int
         """
         self.Domain = None
         self.RuleSet = None
@@ -4751,6 +4798,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.PolyRealServerCertificateAliasInfo = None
         self.DomainStatus = None
         self.BanStatus = None
+        self.Http3Supported = None
 
 
     def _deserialize(self, params):
@@ -4789,6 +4837,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
                 self.PolyRealServerCertificateAliasInfo.append(obj)
         self.DomainStatus = params.get("DomainStatus")
         self.BanStatus = params.get("BanStatus")
+        self.Http3Supported = params.get("Http3Supported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5088,7 +5137,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         :type NetworkType: str
         :param PackageType: Package type of connection groups. Valid values: `Thunder` (general), `Accelerator` (specific for games), and `CrossBorder` (cross-MLC-border connection).
         :type PackageType: str
-        :param Http3Supported: 
+        :param Http3Supported: Specifies whether to enable HTTP3. Valid values: `0` (disable HTTP3); `1` (enable HTTP3). Note: If HTTP3 is enabled for a connection, TCP/UDP access will not be allowed. After the connection is created, you cannot change your HTTP3 setting.
         :type Http3Supported: int
         """
         self.AccessRegion = None
@@ -6411,9 +6460,14 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type IPAddressVersion: str
-        :param PackageType: Package type of connection groups. Valid values: `Thunder` (general connection group) and `Accelerator` (game accelerator connection group).
+        :param PackageType: Package type of connection groups. Valid values: `Thunder` (general connection group), `Accelerator` (game accelerator connection group), and `CrossBorder` (cross-MLC-border connection group).
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type PackageType: str
+        :param Http3Supported: Specifies whether to enable HTTP3. Valid values:
+`0`: disable;
+`1`: enable.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Http3Supported: int
         """
         self.CreateTime = None
         self.ProjectId = None
@@ -6433,6 +6487,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.ClientIPMethod = None
         self.IPAddressVersion = None
         self.PackageType = None
+        self.Http3Supported = None
 
 
     def _deserialize(self, params):
@@ -6461,6 +6516,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.ClientIPMethod = params.get("ClientIPMethod")
         self.IPAddressVersion = params.get("IPAddressVersion")
         self.PackageType = params.get("PackageType")
+        self.Http3Supported = params.get("Http3Supported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6507,6 +6563,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ProxyType: Whether the connection group contains a Microsoft connection
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProxyType: int
+        :param Http3Supported: Specifies whether to enable HTTP3. Valid values:
+`0`: disable HTTP3;
+`1`: enable HTTP3.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Http3Supported: int
         """
         self.GroupId = None
         self.Domain = None
@@ -6518,6 +6579,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Version = None
         self.CreateTime = None
         self.ProxyType = None
+        self.Http3Supported = None
 
 
     def _deserialize(self, params):
@@ -6538,6 +6600,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Version = params.get("Version")
         self.CreateTime = params.get("CreateTime")
         self.ProxyType = params.get("ProxyType")
+        self.Http3Supported = params.get("Http3Supported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6670,7 +6733,10 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         :type BanStatus: str
         :param IPList: 
         :type IPList: list of IPDetail
-        :param Http3Supported: 
+        :param Http3Supported: Specifies whether to enable HTTP3. Valid values:
+`0`: disable HTTP3;
+`1`: enable HTTP3.
+Note: this field may return `null`, indicating that no valid value can be obtained.
         :type Http3Supported: int
         """
         self.InstanceId = None
@@ -6970,12 +7036,26 @@ class RegionDetail(AbstractModel):
         :type RegionAreaName: str
         :param IDCType: Data center type. `dc`: data center; `ec`: edge server.
         :type IDCType: str
+        :param FeatureBitmap: Feature bitmap. Valid values:
+`0`: the feature is not supported;
+`1`: the feature is supported.
+Each bit in the bitmap represents a feature:
+1st bit: layer-4 acceleration;
+2nd bit: layer-7 acceleration;
+3rd bit: HTTP3 access;
+4th bit: IPv6;
+5th bit: dedicated BGP access;
+6th bit: non-BGP access;
+7th bit: QoS acceleration.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type FeatureBitmap: int
         """
         self.RegionId = None
         self.RegionName = None
         self.RegionArea = None
         self.RegionAreaName = None
         self.IDCType = None
+        self.FeatureBitmap = None
 
 
     def _deserialize(self, params):
@@ -6984,6 +7064,7 @@ class RegionDetail(AbstractModel):
         self.RegionArea = params.get("RegionArea")
         self.RegionAreaName = params.get("RegionAreaName")
         self.IDCType = params.get("IDCType")
+        self.FeatureBitmap = params.get("FeatureBitmap")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

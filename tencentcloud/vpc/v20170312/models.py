@@ -182,7 +182,7 @@ class Address(AbstractModel):
         :type IsBlocked: bool
         :param IsEipDirectConnection: Whether the EIP supports direct connection mode. `True` indicates the EIP supports direct connection. `False` indicates that the resource does not support direct connection.
         :type IsEipDirectConnection: bool
-        :param AddressType: The resource type of the EIP. This includes `CalcIP`, `WanIP`, `EIP`, and `AnycastEIP`. Among these, `CalcIP` indicates the device IP, `WanIP` indicates the common public IP, `EIP` indicates Elastic IP, and `AnycastEip` indicates accelerated EIP.
+        :param AddressType: EIP resource type. Valid values: `CalcIP` (device IP), `WanIP` (public network IP), `EIP` (elastic IP) and `AnycastEIP` (accelerated EIP).
         :type AddressType: str
         :param CascadeRelease: Whether the EIP is automatically released after being unbound. `True` indicates the EIP will be automatically released after being unbound. `False` indicates the EIP will not be automatically released after being unbound.
         :type CascadeRelease: bool
@@ -196,6 +196,16 @@ class Address(AbstractModel):
 Note: this field may return `null`, indicating that no valid value was found.
         :type Bandwidth: int
         :param InternetChargeType: Network billing mode of EIP. The EIP for the bill-by-CVM account will return `null`.
+Note: this field may return `null`, indicating that no valid value was found.
+Including:
+<li><strong>BANDWIDTH_PREPAID_BY_MONTH</strong></li>
+<p style="padding-left: 30px;">Prepaid by monthly-subscribed bandwidth.</p>
+<li><strong>TRAFFIC_POSTPAID_BY_HOUR</strong></li>
+<p style="padding-left: 30px;">Pay-as-you-go billing by hourly traffic.</p>
+<li><strong>BANDWIDTH_POSTPAID_BY_HOUR</strong></li>
+<p style="padding-left: 30px;">Pay-as-you-go billing by hourly bandwidth.</p>
+<li><strong>BANDWIDTH_PACKAGE</strong></li>
+<p style="padding-left: 30px;">Bandwidth package.</p>
 Note: this field may return `null`, indicating that no valid value was found.
         :type InternetChargeType: str
         :param TagSet: List of tags associated with the EIP
@@ -2783,23 +2793,29 @@ class CreateFlowLogRequest(AbstractModel):
         :type ResourceId: str
         :param TrafficType: Type of the flow logs to be collected. Valid values: `ACCEPT`, `REJECT` and `ALL`.
         :type TrafficType: str
-        :param CloudLogId: The storage ID of the flow log.
-        :type CloudLogId: str
         :param VpcId: The VPC ID or unique ID of the resource. We recommend using the unique ID. This parameter is required unless the `ResourceType` is set to `CCN`.
         :type VpcId: str
         :param FlowLogDescription: The description of the flow log instance
         :type FlowLogDescription: str
+        :param CloudLogId: The storage ID of the flow log.
+        :type CloudLogId: str
         :param Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}]
         :type Tags: list of Tag
+        :param StorageType: Consumer types: `cls` and `ckafka`
+        :type StorageType: str
+        :param FlowLogStorage: Information of the flow log consumer, which is required when the consumer type is `ckafka`.
+        :type FlowLogStorage: :class:`tencentcloud.vpc.v20170312.models.FlowLogStorage`
         """
         self.FlowLogName = None
         self.ResourceType = None
         self.ResourceId = None
         self.TrafficType = None
-        self.CloudLogId = None
         self.VpcId = None
         self.FlowLogDescription = None
+        self.CloudLogId = None
         self.Tags = None
+        self.StorageType = None
+        self.FlowLogStorage = None
 
 
     def _deserialize(self, params):
@@ -2807,15 +2823,19 @@ class CreateFlowLogRequest(AbstractModel):
         self.ResourceType = params.get("ResourceType")
         self.ResourceId = params.get("ResourceId")
         self.TrafficType = params.get("TrafficType")
-        self.CloudLogId = params.get("CloudLogId")
         self.VpcId = params.get("VpcId")
         self.FlowLogDescription = params.get("FlowLogDescription")
+        self.CloudLogId = params.get("CloudLogId")
         if params.get("Tags") is not None:
             self.Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.StorageType = params.get("StorageType")
+        if params.get("FlowLogStorage") is not None:
+            self.FlowLogStorage = FlowLogStorage()
+            self.FlowLogStorage._deserialize(params.get("FlowLogStorage"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11153,7 +11173,7 @@ class FlowLog(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: ID of the VPC instance
+        :param VpcId: ID of the VPC instance.
         :type VpcId: str
         :param FlowLogId: The unique ID of the flow log.
         :type FlowLogId: str
@@ -11161,20 +11181,28 @@ class FlowLog(AbstractModel):
         :type FlowLogName: str
         :param ResourceType: The type of resource associated with the flow log. Valid values: `VPC`, `SUBNET`, `NETWORKINTERFACE`, and `CCN`.
         :type ResourceType: str
-        :param ResourceId: The unique ID of the resource.
+        :param ResourceId: The unique ID of the resource
         :type ResourceId: str
         :param TrafficType: Type of flow logs to be collected. Valid values: `ACCEPT`, `REJECT` and `ALL`.
         :type TrafficType: str
-        :param CloudLogId: The storage ID of the flow log.
+        :param CloudLogId: The storage ID of the flow log
         :type CloudLogId: str
-        :param CloudLogState: The storage ID status of the flow log.
+        :param CloudLogState: Flow log storage ID status.
         :type CloudLogState: str
         :param FlowLogDescription: The flow log description.
         :type FlowLogDescription: str
         :param CreatedTime: The creation time of the flow log.
         :type CreatedTime: str
-        :param TagSet: Tag list, such as [{"Key": "city", "Value": "shanghai"}]
+        :param TagSet: Tag list, such as [{"Key": "city", "Value": "shanghai"}].
         :type TagSet: list of Tag
+        :param Enable: Whether to enable. `true`: yes; `false`: no.
+        :type Enable: bool
+        :param StorageType: Consumer end types: cls and ckafka
+Note: this field may return `null`, indicating that no valid value can be found.
+        :type StorageType: str
+        :param FlowLogStorage: Information of the consumer, which is returned when the consumer type is `ckafka`.
+Note: this field may return `null`, indicating that no valid value can be found.
+        :type FlowLogStorage: :class:`tencentcloud.vpc.v20170312.models.FlowLogStorage`
         """
         self.VpcId = None
         self.FlowLogId = None
@@ -11187,6 +11215,9 @@ class FlowLog(AbstractModel):
         self.FlowLogDescription = None
         self.CreatedTime = None
         self.TagSet = None
+        self.Enable = None
+        self.StorageType = None
+        self.FlowLogStorage = None
 
 
     def _deserialize(self, params):
@@ -11206,6 +11237,40 @@ class FlowLog(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+        self.Enable = params.get("Enable")
+        self.StorageType = params.get("StorageType")
+        if params.get("FlowLogStorage") is not None:
+            self.FlowLogStorage = FlowLogStorage()
+            self.FlowLogStorage._deserialize(params.get("FlowLogStorage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowLogStorage(AbstractModel):
+    """Flow log storage information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StorageId: Storage instance ID, which is required when `StorageType` is `ckafka`.
+        :type StorageId: str
+        :param StorageTopic: Topic ID, which is required when `StorageType` is `ckafka`.
+Note: this field may return `null`, indicating that no valid value can be found.
+        :type StorageTopic: str
+        """
+        self.StorageId = None
+        self.StorageTopic = None
+
+
+    def _deserialize(self, params):
+        self.StorageId = params.get("StorageId")
+        self.StorageTopic = params.get("StorageTopic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

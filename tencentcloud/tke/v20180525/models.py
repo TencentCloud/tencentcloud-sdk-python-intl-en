@@ -1009,6 +1009,74 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         
 
 
+class ClusterStatus(AbstractModel):
+    """Cluster status information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param ClusterState: Cluster status
+        :type ClusterState: str
+        :param ClusterInstanceState: Status of nodes in the cluster
+        :type ClusterInstanceState: str
+        :param ClusterBMonitor: Indicates whether the monitoring service is enabled for the cluster
+        :type ClusterBMonitor: bool
+        :param ClusterInitNodeNum: Number of cluster nodes being created. "-1" indicates that the request to obtain the node status timed out. "-2" indicates that the request failed.
+        :type ClusterInitNodeNum: int
+        :param ClusterRunningNodeNum: Number of running nodes in the cluster. "-1" indicates that the request to obtain the node status timed out. "-2" indicates that the request failed.
+        :type ClusterRunningNodeNum: int
+        :param ClusterFailedNodeNum: Number of abnormal nodes in the cluster.  "-1" indicates that the request to obtain the node status timed out. "-2" indicates that the request failed.
+        :type ClusterFailedNodeNum: int
+        :param ClusterClosedNodeNum: Number of shutdown nodes in the cluster.  "-1" indicates that the request to obtain the node status timed out. "-2" indicates that the request failed.
+Note: this field may return `null`, indicating that no valid value can be found.
+        :type ClusterClosedNodeNum: int
+        :param ClusterClosingNodeNum: Number of nodes being shut down in the cluster.  "-1" indicates that the request to obtain the node status timed out. "-2" indicates that the request failed.
+Note: this field may return `null`, indicating that no valid value can be found.
+        :type ClusterClosingNodeNum: int
+        :param ClusterDeletionProtection: Indicates whether to enable cluster deletion protection
+Note: this field may return `null`, indicating that no valid value can be found.
+        :type ClusterDeletionProtection: bool
+        :param ClusterAuditEnabled: Indicates whether the cluster is auditable
+Note: this field may return `null`, indicating that no valid value can be found.
+        :type ClusterAuditEnabled: bool
+        """
+        self.ClusterId = None
+        self.ClusterState = None
+        self.ClusterInstanceState = None
+        self.ClusterBMonitor = None
+        self.ClusterInitNodeNum = None
+        self.ClusterRunningNodeNum = None
+        self.ClusterFailedNodeNum = None
+        self.ClusterClosedNodeNum = None
+        self.ClusterClosingNodeNum = None
+        self.ClusterDeletionProtection = None
+        self.ClusterAuditEnabled = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterState = params.get("ClusterState")
+        self.ClusterInstanceState = params.get("ClusterInstanceState")
+        self.ClusterBMonitor = params.get("ClusterBMonitor")
+        self.ClusterInitNodeNum = params.get("ClusterInitNodeNum")
+        self.ClusterRunningNodeNum = params.get("ClusterRunningNodeNum")
+        self.ClusterFailedNodeNum = params.get("ClusterFailedNodeNum")
+        self.ClusterClosedNodeNum = params.get("ClusterClosedNodeNum")
+        self.ClusterClosingNodeNum = params.get("ClusterClosingNodeNum")
+        self.ClusterDeletionProtection = params.get("ClusterDeletionProtection")
+        self.ClusterAuditEnabled = params.get("ClusterAuditEnabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClusterVersion(AbstractModel):
     """Cluster version information
 
@@ -2944,6 +3012,60 @@ Note: This field may return null, indicating that no valid value was found.
         self.RequestId = params.get("RequestId")
 
 
+class DescribeClusterStatusRequest(AbstractModel):
+    """DescribeClusterStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterIds: Cluster ID list. All clusters are pulled if it is left empty.
+        :type ClusterIds: list of str
+        """
+        self.ClusterIds = None
+
+
+    def _deserialize(self, params):
+        self.ClusterIds = params.get("ClusterIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterStatusResponse(AbstractModel):
+    """DescribeClusterStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterStatusSet: Cluster status list
+        :type ClusterStatusSet: list of ClusterStatus
+        :param TotalCount: Number of clusters
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ClusterStatusSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterStatusSet") is not None:
+            self.ClusterStatusSet = []
+            for item in params.get("ClusterStatusSet"):
+                obj = ClusterStatus()
+                obj._deserialize(item)
+                self.ClusterStatusSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeClustersRequest(AbstractModel):
     """DescribeClusters request structure.
 
@@ -4803,7 +4925,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.InstanceExtraArgs`
         :param Tags: Resource tag
         :type Tags: list of Tag
-        :param Unschedulable: 
+        :param Unschedulable: Sets whether the added node is schedulable. 0 (default): schedulable; other values: unschedulable. After node initialization is completed, you can run `kubectl uncordon nodename` to enable this node for scheduling.
         :type Unschedulable: int
         """
         self.ClusterId = None

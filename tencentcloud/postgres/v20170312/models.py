@@ -183,6 +183,171 @@ class AnalysisItems(AbstractModel):
         
 
 
+class BackupPlan(AbstractModel):
+    """Backup plan
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BackupPeriod: Backup cycle
+        :type BackupPeriod: str
+        :param BaseBackupRetentionPeriod: Retention period of basic backups
+        :type BaseBackupRetentionPeriod: int
+        :param MinBackupStartTime: The earliest time to start a backup
+        :type MinBackupStartTime: str
+        :param MaxBackupStartTime: The latest time to start a backup
+        :type MaxBackupStartTime: str
+        """
+        self.BackupPeriod = None
+        self.BaseBackupRetentionPeriod = None
+        self.MinBackupStartTime = None
+        self.MaxBackupStartTime = None
+
+
+    def _deserialize(self, params):
+        self.BackupPeriod = params.get("BackupPeriod")
+        self.BaseBackupRetentionPeriod = params.get("BaseBackupRetentionPeriod")
+        self.MinBackupStartTime = params.get("MinBackupStartTime")
+        self.MaxBackupStartTime = params.get("MaxBackupStartTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneDBInstanceRequest(AbstractModel):
+    """CloneDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: ID of the original instance to be cloned.
+        :type DBInstanceId: str
+        :param SpecCode: Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.
+        :type SpecCode: str
+        :param Storage: Instance storage capacity in GB.
+        :type Storage: int
+        :param Period: Valid period in months of the purchased instance. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`. This parameter is set to `1` when the pay-as-you-go billing mode is used.
+        :type Period: int
+        :param AutoRenewFlag: Renewal flag. Valid values: `0` (manual renewal), `1` (auto-renewal). Default value: `0`.
+        :type AutoRenewFlag: int
+        :param VpcId: VPC ID.
+        :type VpcId: str
+        :param SubnetId: ID of a subnet in the VPC specified by `VpcId`.
+        :type SubnetId: str
+        :param Name: Name of the purchased instance.
+        :type Name: str
+        :param InstanceChargeType: Instance billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID_BY_HOUR` (pay-as-you-go).
+        :type InstanceChargeType: str
+        :param SecurityGroupIds: Security group ID.
+        :type SecurityGroupIds: list of str
+        :param ProjectId: Project ID.
+        :type ProjectId: int
+        :param TagList: The information of tags to be bound with the purchased instance. This parameter is left empty by default.
+        :type TagList: list of Tag
+        :param DBNodeSet: This parameter is required if you purchase a multi-AZ deployed instance.
+        :type DBNodeSet: list of DBNode
+        :param AutoVoucher: Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.
+        :type AutoVoucher: int
+        :param VoucherIds: Voucher ID list.
+        :type VoucherIds: str
+        :param ActivityId: Campaign ID.
+        :type ActivityId: int
+        :param BackupSetId: Basic backup set ID.
+        :type BackupSetId: str
+        :param RecoveryTargetTime: Restoration point in time.
+        :type RecoveryTargetTime: str
+        """
+        self.DBInstanceId = None
+        self.SpecCode = None
+        self.Storage = None
+        self.Period = None
+        self.AutoRenewFlag = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.Name = None
+        self.InstanceChargeType = None
+        self.SecurityGroupIds = None
+        self.ProjectId = None
+        self.TagList = None
+        self.DBNodeSet = None
+        self.AutoVoucher = None
+        self.VoucherIds = None
+        self.ActivityId = None
+        self.BackupSetId = None
+        self.RecoveryTargetTime = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.SpecCode = params.get("SpecCode")
+        self.Storage = params.get("Storage")
+        self.Period = params.get("Period")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Name = params.get("Name")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.ProjectId = params.get("ProjectId")
+        if params.get("TagList") is not None:
+            self.TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagList.append(obj)
+        if params.get("DBNodeSet") is not None:
+            self.DBNodeSet = []
+            for item in params.get("DBNodeSet"):
+                obj = DBNode()
+                obj._deserialize(item)
+                self.DBNodeSet.append(obj)
+        self.AutoVoucher = params.get("AutoVoucher")
+        self.VoucherIds = params.get("VoucherIds")
+        self.ActivityId = params.get("ActivityId")
+        self.BackupSetId = params.get("BackupSetId")
+        self.RecoveryTargetTime = params.get("RecoveryTargetTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneDBInstanceResponse(AbstractModel):
+    """CloneDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealName: Order ID.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DealName: str
+        :param BillId: Bill ID.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type BillId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DealName = None
+        self.BillId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealName = params.get("DealName")
+        self.BillId = params.get("BillId")
+        self.RequestId = params.get("RequestId")
+
+
 class CloseDBExtranetAccessRequest(AbstractModel):
     """CloseDBExtranetAccess request structure.
 
@@ -464,7 +629,7 @@ class CreateInstancesRequest(AbstractModel):
         :type DBMajorVersion: str
         :param DBKernelVersion: PostgreSQL kernel version number. If it is specified, an instance running kernel `DBKernelVersion` will be created.
         :type DBKernelVersion: str
-        :param DBNodeSet: 
+        :param DBNodeSet: Instance node information, which is required if you purchase a multi-AZ deployed instance.
         :type DBNodeSet: list of DBNode
         """
         self.SpecCode = None
@@ -894,6 +1059,9 @@ class DBBackup(AbstractModel):
         :type InternalAddr: str
         :param ExternalAddr: Download address on public network
         :type ExternalAddr: str
+        :param SetId: Backup set ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SetId: str
         """
         self.Id = None
         self.StartTime = None
@@ -906,6 +1074,7 @@ class DBBackup(AbstractModel):
         self.DbList = None
         self.InternalAddr = None
         self.ExternalAddr = None
+        self.SetId = None
 
 
     def _deserialize(self, params):
@@ -920,6 +1089,7 @@ class DBBackup(AbstractModel):
         self.DbList = params.get("DbList")
         self.InternalAddr = params.get("InternalAddr")
         self.ExternalAddr = params.get("ExternalAddr")
+        self.SetId = params.get("SetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1014,7 +1184,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param DBMajorVersion: PostgreSQL major version number
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type DBMajorVersion: str
-        :param DBNodeSet: 
+        :param DBNodeSet: Instance node information
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type DBNodeSet: list of DBNode
         """
         self.Region = None
@@ -1172,15 +1343,17 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class DBNode(AbstractModel):
-    """
+    """Instance node information including node type and AZ.
 
     """
 
     def __init__(self):
         r"""
-        :param Role: 
+        :param Role: Node type. Valid values:
+`Primary`;
+`Standby`.
         :type Role: str
-        :param Zone: 
+        :param Zone: AZ where the node resides, such as ap-guangzhou-1.
         :type Zone: str
         """
         self.Role = None
@@ -1357,6 +1530,162 @@ class DescribeAccountsResponse(AbstractModel):
                 obj = AccountInfo()
                 obj._deserialize(item)
                 self.Details.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAvailableRecoveryTimeRequest(AbstractModel):
+    """DescribeAvailableRecoveryTime request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: Instance ID
+        :type DBInstanceId: str
+        """
+        self.DBInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAvailableRecoveryTimeResponse(AbstractModel):
+    """DescribeAvailableRecoveryTime response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RecoveryBeginTime: The earliest restoration time (UTC+8).
+        :type RecoveryBeginTime: str
+        :param RecoveryEndTime: The latest restoration time (UTC+8).
+        :type RecoveryEndTime: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RecoveryBeginTime = None
+        self.RecoveryEndTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RecoveryBeginTime = params.get("RecoveryBeginTime")
+        self.RecoveryEndTime = params.get("RecoveryEndTime")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBackupPlansRequest(AbstractModel):
+    """DescribeBackupPlans request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: Instance ID
+        :type DBInstanceId: str
+        """
+        self.DBInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupPlansResponse(AbstractModel):
+    """DescribeBackupPlans response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Plans: The set of instance backup plans
+        :type Plans: list of BackupPlan
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Plans = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Plans") is not None:
+            self.Plans = []
+            for item in params.get("Plans"):
+                obj = BackupPlan()
+                obj._deserialize(item)
+                self.Plans.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCloneDBInstanceSpecRequest(AbstractModel):
+    """DescribeCloneDBInstanceSpec request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: Instance ID.
+        :type DBInstanceId: str
+        :param BackupSetId: Basic backup set ID. Either this parameter or `RecoveryTargetTime` must be passed in. If both are passed in, only this parameter takes effect.
+        :type BackupSetId: str
+        :param RecoveryTargetTime: Restoration time (UTC+8). Either this parameter or `BackupSetId` must be passed in.
+        :type RecoveryTargetTime: str
+        """
+        self.DBInstanceId = None
+        self.BackupSetId = None
+        self.RecoveryTargetTime = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.BackupSetId = params.get("BackupSetId")
+        self.RecoveryTargetTime = params.get("RecoveryTargetTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloneDBInstanceSpecResponse(AbstractModel):
+    """DescribeCloneDBInstanceSpec response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MinSpecCode: Code of the minimum specification available for purchase.
+        :type MinSpecCode: str
+        :param MinStorage: The minimum disk capacity in GB available for purchase.
+        :type MinStorage: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.MinSpecCode = None
+        self.MinStorage = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MinSpecCode = params.get("MinSpecCode")
+        self.MinStorage = params.get("MinStorage")
         self.RequestId = params.get("RequestId")
 
 
@@ -3085,6 +3414,125 @@ class ModifyAccountRemarkRequest(AbstractModel):
 
 class ModifyAccountRemarkResponse(AbstractModel):
     """ModifyAccountRemark response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyBackupPlanRequest(AbstractModel):
+    """ModifyBackupPlan request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: Instance ID
+        :type DBInstanceId: str
+        :param MinBackupStartTime: The earliest time to start a backup
+        :type MinBackupStartTime: str
+        :param MaxBackupStartTime: The latest time to start a backup
+        :type MaxBackupStartTime: str
+        :param BaseBackupRetentionPeriod: Backup retention period in days. Value range: 3-7
+        :type BaseBackupRetentionPeriod: int
+        :param BackupPeriod: Backup cycle, which means on which days each week the instance will be backed up. The parameter value should be the lowercase names of the days of the week.
+        :type BackupPeriod: list of str
+        """
+        self.DBInstanceId = None
+        self.MinBackupStartTime = None
+        self.MaxBackupStartTime = None
+        self.BaseBackupRetentionPeriod = None
+        self.BackupPeriod = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.MinBackupStartTime = params.get("MinBackupStartTime")
+        self.MaxBackupStartTime = params.get("MaxBackupStartTime")
+        self.BaseBackupRetentionPeriod = params.get("BaseBackupRetentionPeriod")
+        self.BackupPeriod = params.get("BackupPeriod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBackupPlanResponse(AbstractModel):
+    """ModifyBackupPlan response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDBInstanceDeploymentRequest(AbstractModel):
+    """ModifyDBInstanceDeployment request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: Instance ID.
+        :type DBInstanceId: str
+        :param DBNodeSet: Instance node information.
+        :type DBNodeSet: list of DBNode
+        :param SwitchTag: Switch time. Valid values: `0` (switch immediately), `1` (switch at a specified time). Default value: `0`.
+        :type SwitchTag: int
+        :param SwitchStartTime: The earliest time to start a switch in the format of "HH:MM:SS", such as "01:00:00".
+        :type SwitchStartTime: str
+        :param SwitchEndTime: The latest time to start a switch in the format of "HH:MM:SS", such as "01:30:00".
+        :type SwitchEndTime: str
+        """
+        self.DBInstanceId = None
+        self.DBNodeSet = None
+        self.SwitchTag = None
+        self.SwitchStartTime = None
+        self.SwitchEndTime = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        if params.get("DBNodeSet") is not None:
+            self.DBNodeSet = []
+            for item in params.get("DBNodeSet"):
+                obj = DBNode()
+                obj._deserialize(item)
+                self.DBNodeSet.append(obj)
+        self.SwitchTag = params.get("SwitchTag")
+        self.SwitchStartTime = params.get("SwitchStartTime")
+        self.SwitchEndTime = params.get("SwitchEndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceDeploymentResponse(AbstractModel):
+    """ModifyDBInstanceDeployment response structure.
 
     """
 
@@ -4905,16 +5353,20 @@ class ZoneInfo(AbstractModel):
         :type ZoneName: str
         :param ZoneId: AZ number
         :type ZoneId: int
-        :param ZoneState: Availability status. UNAVAILABLE: unavailable, AVAILABLE: available
+        :param ZoneState: Availability status. Valid values: `UNAVAILABLE`, `AVAILABLE`, `SELLOUT`
         :type ZoneState: str
         :param ZoneSupportIpv6: Whether the AZ supports IPv6 address access
         :type ZoneSupportIpv6: int
+        :param StandbyZoneSet: AZs that can be used as standby when this AZ is primary
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type StandbyZoneSet: list of str
         """
         self.Zone = None
         self.ZoneName = None
         self.ZoneId = None
         self.ZoneState = None
         self.ZoneSupportIpv6 = None
+        self.StandbyZoneSet = None
 
 
     def _deserialize(self, params):
@@ -4923,6 +5375,7 @@ class ZoneInfo(AbstractModel):
         self.ZoneId = params.get("ZoneId")
         self.ZoneState = params.get("ZoneState")
         self.ZoneSupportIpv6 = params.get("ZoneSupportIpv6")
+        self.StandbyZoneSet = params.get("StandbyZoneSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

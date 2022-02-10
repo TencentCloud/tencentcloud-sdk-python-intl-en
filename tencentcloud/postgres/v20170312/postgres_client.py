@@ -54,6 +54,34 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CloneDBInstance(self, request):
+        """This API is used to clone an instance by specifying a backup set or a point in time.
+
+        :param request: Request instance for CloneDBInstance.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.CloneDBInstanceRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.CloneDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CloneDBInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CloneDBInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CloseDBExtranetAccess(self, request):
         """This API is used to disable the public network link to an instance.
 
@@ -320,6 +348,90 @@ class PostgresClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccountsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAvailableRecoveryTime(self, request):
+        """This API is used to query the available restoration time of an instance.
+
+        :param request: Request instance for DescribeAvailableRecoveryTime.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeAvailableRecoveryTimeRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeAvailableRecoveryTimeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAvailableRecoveryTime", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAvailableRecoveryTimeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBackupPlans(self, request):
+        """This API is used to query all backup plans of an instance.
+
+        :param request: Request instance for DescribeBackupPlans.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeBackupPlansRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeBackupPlansResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBackupPlans", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBackupPlansResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCloneDBInstanceSpec(self, request):
+        """This API is used to query the minimum specification required by a cloned instance, including `SpecCode` and disk specification.
+
+        :param request: Request instance for DescribeCloneDBInstanceSpec.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeCloneDBInstanceSpecRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeCloneDBInstanceSpecResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCloneDBInstanceSpec", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCloneDBInstanceSpecResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1020,6 +1132,62 @@ class PostgresClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccountRemarkResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyBackupPlan(self, request):
+        """This API is used to modify the backup plan of an instance, such as modifying the backup start time. By default, a full backup starts at midnight every day and the generated backup files will be retained for seven days.
+
+        :param request: Request instance for ModifyBackupPlan.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyBackupPlanRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.ModifyBackupPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyBackupPlan", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyBackupPlanResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDBInstanceDeployment(self, request):
+        """This API is used to modify the AZs where the nodes of a source instance reside.
+
+        :param request: Request instance for ModifyDBInstanceDeployment.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceDeploymentRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceDeploymentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDBInstanceDeployment", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDBInstanceDeploymentResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

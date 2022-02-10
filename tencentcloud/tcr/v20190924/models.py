@@ -118,6 +118,73 @@ class CreateImmutableTagRulesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateInstanceTokenRequest(AbstractModel):
+    """CreateInstanceToken request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegistryId: Instance ID
+        :type RegistryId: str
+        :param TokenType: Access credential type. Values: `longterm` and `temp` (default, valid for one hour)
+        :type TokenType: str
+        :param Desc: Description of the long-term access credential
+        :type Desc: str
+        """
+        self.RegistryId = None
+        self.TokenType = None
+        self.Desc = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.TokenType = params.get("TokenType")
+        self.Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInstanceTokenResponse(AbstractModel):
+    """CreateInstanceToken response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Username: Username
+Note: this field may return `null`, indicating that no valid value can be found.
+        :type Username: str
+        :param Token: Access credential
+        :type Token: str
+        :param ExpTime: Expiration timestamp of access credential. It is a string of numbers without unit.
+        :type ExpTime: int
+        :param TokenId: Token ID of long-term access credential. It is not available to temporary access credential.
+Note: this field may return `null`, indicating that no valid value can be found.
+        :type TokenId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Username = None
+        self.Token = None
+        self.ExpTime = None
+        self.TokenId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Username = params.get("Username")
+        self.Token = params.get("Token")
+        self.ExpTime = params.get("ExpTime")
+        self.TokenId = params.get("TokenId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateMultipleSecurityPolicyRequest(AbstractModel):
     """CreateMultipleSecurityPolicy request structure.
 

@@ -573,6 +573,8 @@ class DescribeInstancesRequest(AbstractModel):
         :type IpList: list of str
         :param ZoneList: List of availability zones
         :type ZoneList: list of str
+        :param HealthStatus: Health status filter list
+        :type HealthStatus: list of int
         """
         self.Zone = None
         self.InstanceIds = None
@@ -584,6 +586,7 @@ class DescribeInstancesRequest(AbstractModel):
         self.TagList = None
         self.IpList = None
         self.ZoneList = None
+        self.HealthStatus = None
 
 
     def _deserialize(self, params):
@@ -602,6 +605,7 @@ class DescribeInstancesRequest(AbstractModel):
                 self.TagList.append(obj)
         self.IpList = params.get("IpList")
         self.ZoneList = params.get("ZoneList")
+        self.HealthStatus = params.get("HealthStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1086,6 +1090,9 @@ Note: This field may return `null`, indicating that no valid value was found.
         :param FrozenDiskSize: Frozen node disk size (in GB)
 Note: This field may return `null`, indicating that no valid value was found.
         :type FrozenDiskSize: int
+        :param HealthStatus: Cluster health status. `-1`: Unknown; `0`: Green; `1`: Yellow; `2`: Red
+Note: This field may return `null`, indicating that no valid value was found.
+        :type HealthStatus: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1158,6 +1165,7 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.FrozenMemSize = None
         self.FrozenDiskType = None
         self.FrozenDiskSize = None
+        self.HealthStatus = None
 
 
     def _deserialize(self, params):
@@ -1261,6 +1269,7 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.FrozenMemSize = params.get("FrozenMemSize")
         self.FrozenDiskType = params.get("FrozenDiskType")
         self.FrozenDiskSize = params.get("FrozenDiskSize")
+        self.HealthStatus = params.get("HealthStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

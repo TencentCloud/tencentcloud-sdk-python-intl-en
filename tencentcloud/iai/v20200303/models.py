@@ -38,9 +38,15 @@ We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guar
 The download speed and stability of non-Tencent Cloud URLs may be low.
 PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type Url: str
-        :param FaceModelVersion: Algorithm model version used by the Face Recognition service. Valid values: 2.0, 3.0.  
-This parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API previously, `2.0` will be used by default.  
-Different algorithm model versions correspond to different face recognition algorithms. The new version has a better overall effect than the legacy version and is thus recommended.
+        :param FaceModelVersion: Algorithm model version used by the Face Recognition service.
+
+Currently, `2.0` and `3.0` are supported.
+
+This parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API, `2.0` will be used by default.
+
+The parameter can be set only to `3.0` for accounts that purchase the service after November 26, 2020.
+
+Different algorithm model versions correspond to different face recognition algorithms. The 3.0 version has a better overall effect than the legacy version and is recommended.
         :type FaceModelVersion: str
         :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
         :type NeedRotateDetection: int
@@ -103,6 +109,34 @@ class AnalyzeFaceResponse(AbstractModel):
                 self.FaceShapeSet.append(obj)
         self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")
+
+
+class AttributeItem(AbstractModel):
+    """Face attribute information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: Attribute value
+        :type Type: int
+        :param Probability: Probability of recognizing `Type`, which indicates the probability of correct recognition. Value range: [0,1].
+        :type Probability: float
+        """
+        self.Type = None
+        self.Probability = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Probability = params.get("Probability")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Candidate(AbstractModel):
@@ -196,9 +230,15 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 If there are multiple faces in the image, only the face with the largest size will be selected.
 PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type UrlB: str
-        :param FaceModelVersion: Algorithm model version used by the Face Recognition service. Valid values: 2.0, 3.0. 
-This parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API previously, `2.0` will be used by default. 
-Different algorithm model versions correspond to different face recognition algorithms. The 3.0 version has a better overall effect than the legacy version and is thus recommended.
+        :param FaceModelVersion: Algorithm model version used by the Face Recognition service.
+
+Currently, `2.0` and `3.0` are supported.
+
+This parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API, `2.0` will be used by default.
+
+The parameter can be set only to `3.0` for accounts that purchase the service after November 26, 2020.
+
+Different algorithm model versions correspond to different face recognition algorithms. The 3.0 version has a better overall effect than the legacy version and is recommended.
         :type FaceModelVersion: str
         :param QualityControl: Image quality control. 
 0: no control. 
@@ -454,9 +494,15 @@ You can enter content in the corresponding field to register a person's student 
         :type GroupExDescriptions: list of str
         :param Tag: Group remarks, which can contain 0 to 40 characters.
         :type Tag: str
-        :param FaceModelVersion: Algorithm model version used by the Face Recognition service. Valid values: 2.0, 3.0.
-This parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API previously, `2.0` will be used by default. 
-Different algorithm model versions correspond to different face recognition algorithms. The 3.0 version has a better overall effect than the legacy version and is thus recommended.
+        :param FaceModelVersion: Algorithm model version used by the Face Recognition service.
+
+Currently, `2.0` and `3.0` are supported.
+
+This parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API, `2.0` will be used by default.
+
+The parameter can be set only to `3.0` for accounts that purchase the service after November 26, 2020.
+
+Different algorithm model versions correspond to different face recognition algorithms. The 3.0 version has a better overall effect than the legacy version and is recommended.
         :type FaceModelVersion: str
         """
         self.GroupName = None
@@ -807,6 +853,104 @@ class DeletePersonResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DetectFaceAttributesRequest(AbstractModel):
+    """DetectFaceAttributes request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MaxFaceNum: Maximum number of processable faces. 
+Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 120. 
+This parameter is used to control the number of faces in the image to be detected. The smaller the value, the faster the processing.
+        :type MaxFaceNum: int
+        :param Image: Base64-encoded image data, which cannot exceed 5 MB.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats. 
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type Image: str
+        :param Url: Image URL. 
+The image cannot exceed 5 MB in size after being Base64-encoded. 
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
+Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used. 
+We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
+The download speed and stability of non-Tencent Cloud URLs may be low. 
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type Url: str
+        :param FaceAttributesType: Whether to return attributes such as age, gender, and emotion. 
+Valid values (case-insensitive): None, Age, Beauty, Emotion, Eye, Eyebrow, 
+Gender, Hair, Hat, Headpose, Mask, Mouth, Moustache, Nose, Shape, Skin, Smile. 
+Default value: None, indicating that no attributes need to be returned. 
+You need to combine the attributes into a string and separate them with commas. The sequence of the attributes is not limited. 
+For more information on the attributes, please see the output parameters as described below. 
+The face attribute information of up to 5 largest faces in the image will be returned, and `AttributesInfo` of the 6th and rest faces is meaningless.
+        :type FaceAttributesType: str
+        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image is not rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        :type NeedRotateDetection: int
+        :param FaceModelVersion: Algorithm model version used by the Face Recognition service. You can enter only `3.0` for this API.
+        :type FaceModelVersion: str
+        """
+        self.MaxFaceNum = None
+        self.Image = None
+        self.Url = None
+        self.FaceAttributesType = None
+        self.NeedRotateDetection = None
+        self.FaceModelVersion = None
+
+
+    def _deserialize(self, params):
+        self.MaxFaceNum = params.get("MaxFaceNum")
+        self.Image = params.get("Image")
+        self.Url = params.get("Url")
+        self.FaceAttributesType = params.get("FaceAttributesType")
+        self.NeedRotateDetection = params.get("NeedRotateDetection")
+        self.FaceModelVersion = params.get("FaceModelVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetectFaceAttributesResponse(AbstractModel):
+    """DetectFaceAttributes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageWidth: Width of requested image.
+        :type ImageWidth: int
+        :param ImageHeight: Height of requested image.
+        :type ImageHeight: int
+        :param FaceDetailInfos: Face information list.
+        :type FaceDetailInfos: list of FaceDetailInfo
+        :param FaceModelVersion: Algorithm model version used for face recognition.
+        :type FaceModelVersion: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ImageWidth = None
+        self.ImageHeight = None
+        self.FaceDetailInfos = None
+        self.FaceModelVersion = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ImageWidth = params.get("ImageWidth")
+        self.ImageHeight = params.get("ImageHeight")
+        if params.get("FaceDetailInfos") is not None:
+            self.FaceDetailInfos = []
+            for item in params.get("FaceDetailInfos"):
+                obj = FaceDetailInfo()
+                obj._deserialize(item)
+                self.FaceDetailInfos.append(obj)
+        self.FaceModelVersion = params.get("FaceModelVersion")
+        self.RequestId = params.get("RequestId")
+
+
 class DetectFaceRequest(AbstractModel):
     """DetectFace request structure.
 
@@ -842,9 +986,15 @@ If the value is not 1, it will be deemed not to perform quality detection.
 The face quality score information of up to 30 largest faces in the image will be returned, and `FaceQualityInfo` of the 31st and rest faces is meaningless.  
 We recommend enabling this feature for the face adding operation.
         :type NeedQualityDetection: int
-        :param FaceModelVersion: Algorithm model version used by the Face Recognition service. Valid values: 2.0, 3.0.  
-This parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API previously, `2.0` will be used by default. 
-Different algorithm model versions correspond to different face recognition algorithms. The 3.0 version has a better overall effect than the legacy version and is thus recommended.
+        :param FaceModelVersion: Algorithm model version used by the Face Recognition service.
+
+Currently, `2.0` and `3.0` are supported.
+
+This parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API, `2.0` will be used by default.
+
+The parameter can be set only to `3.0` for accounts that purchase the service after November 26, 2020.
+
+Different algorithm model versions correspond to different face recognition algorithms. The 3.0 version has a better overall effect than the legacy version and is recommended.
         :type FaceModelVersion: str
         :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
         :type NeedRotateDetection: int
@@ -934,9 +1084,15 @@ We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guar
 The download speed and stability of non-Tencent Cloud URLs may be low.
 PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type Url: str
-        :param FaceModelVersion: Algorithm model version used by the Face Recognition service. Valid values: 2.0, 3.0.  
-This parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API previously, `2.0` will be used by default. 
-Different algorithm model versions correspond to different face recognition algorithms. The 3.0 version has a better overall effect than the legacy version and is thus recommended.
+        :param FaceModelVersion: Algorithm model version used by the Face Recognition service.
+
+Currently, `2.0` and `3.0` are supported.
+
+This parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API, `2.0` will be used by default.
+
+The parameter can be set only to `3.0` for accounts that purchase the service after November 26, 2020.
+
+Different algorithm model versions correspond to different face recognition algorithms. The 3.0 version has a better overall effect than the legacy version and is recommended.
         :type FaceModelVersion: str
         """
         self.Image = None
@@ -986,6 +1142,95 @@ This field is meaningful only if `FaceModelVersion` is 3.0.
         self.FaceModelVersion = params.get("FaceModelVersion")
         self.IsLiveness = params.get("IsLiveness")
         self.RequestId = params.get("RequestId")
+
+
+class Eye(AbstractModel):
+    """Eye information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Glass: Whether glasses are worn.
+The `Type` values of the `AttributeItem` include: 0: no glasses; 1: general glasses; 2: sunglasses.
+        :type Glass: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
+        :param EyeOpen: Whether the eyes are open.
+The `Type` values of the `AttributeItem` include: 0: open; 1: closed.
+        :type EyeOpen: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
+        :param EyelidType: Whether the person has double eyelids.
+The `Type` values of the `AttributeItem` include: 0: no; 1: yes.
+        :type EyelidType: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
+        :param EyeSize: Eye size.
+The `Type` values of the `AttributeItem` include: 0: small eyes; 1: general eyes; 2: big eyes.
+        :type EyeSize: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
+        """
+        self.Glass = None
+        self.EyeOpen = None
+        self.EyelidType = None
+        self.EyeSize = None
+
+
+    def _deserialize(self, params):
+        if params.get("Glass") is not None:
+            self.Glass = AttributeItem()
+            self.Glass._deserialize(params.get("Glass"))
+        if params.get("EyeOpen") is not None:
+            self.EyeOpen = AttributeItem()
+            self.EyeOpen._deserialize(params.get("EyeOpen"))
+        if params.get("EyelidType") is not None:
+            self.EyelidType = AttributeItem()
+            self.EyelidType._deserialize(params.get("EyelidType"))
+        if params.get("EyeSize") is not None:
+            self.EyeSize = AttributeItem()
+            self.EyeSize._deserialize(params.get("EyeSize"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Eyebrow(AbstractModel):
+    """Eyebrow information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EyebrowDensity: Eyebrow thickness.
+The `Type` values of the `AttributeItem` include: 0: light; 1: thick.
+        :type EyebrowDensity: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
+        :param EyebrowCurve: Eyebrow curve.
+The `Type` values of the `AttributeItem` include: 0: flat; 1: curved.
+        :type EyebrowCurve: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
+        :param EyebrowLength: Eyebrow length.
+The `Type` values of the `AttributeItem` include: 0: short; 1: long.
+        :type EyebrowLength: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
+        """
+        self.EyebrowDensity = None
+        self.EyebrowCurve = None
+        self.EyebrowLength = None
+
+
+    def _deserialize(self, params):
+        if params.get("EyebrowDensity") is not None:
+            self.EyebrowDensity = AttributeItem()
+            self.EyebrowDensity._deserialize(params.get("EyebrowDensity"))
+        if params.get("EyebrowCurve") is not None:
+            self.EyebrowCurve = AttributeItem()
+            self.EyebrowCurve._deserialize(params.get("EyebrowCurve"))
+        if params.get("EyebrowLength") is not None:
+            self.EyebrowLength = AttributeItem()
+            self.EyebrowLength._deserialize(params.get("EyebrowLength"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class FaceAttributesInfo(AbstractModel):
@@ -1057,6 +1302,179 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.Hair = FaceHairAttributesInfo()
             self.Hair._deserialize(params.get("Hair"))
         self.EyeOpen = params.get("EyeOpen")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FaceDetailAttributesInfo(AbstractModel):
+    """Face attribute information. According to the types specified in `FaceAttributesType`, the following face attributes will be returned: Age, Beauty,
+    Emotion, Eye, Eyebrow, Gender,
+    Hair, Hat, Headpose, Mask, Mouth, Moustache,
+    Nose, Shape, Skin, Smile, etc.
+    If no types are specified in `FaceAttributesType`, the details returned by `FaceDetaiAttributesInfo` will be meaningless.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Age: Age. Value range: [0,65], where 65 indicates 65 years old or above. 
+If `FaceAttributesType` does not include `Age` or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        :type Age: int
+        :param Beauty: Beauty score. Value range: [0,100]. 
+If `FaceAttributesType` does not include `Beauty` or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        :type Beauty: int
+        :param Emotion: Emotion, including relaxed, happy, surprised, angry, sad, disgusted, and scared. 
+The `Type` values of the `AttributeItem` include: 0: relaxed; 1: happy; 2: surprised; 3: angry; 4: sad; 5: disgusted; 6: scared.
+If `FaceAttributesType` does not include `Emotion` or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        :type Emotion: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
+        :param Eye: Eye information, including whether glasses are worn, whether eyes are closed, whether the person has double eyelids, and the eye size. 
+If `FaceAttributesType` does not include `Eye` or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        :type Eye: :class:`tencentcloud.iai.v20200303.models.Eye`
+        :param Eyebrow: Eyebrow information, including whether the eyebrows are thick, curved, or long. 
+If `FaceAttributesType` does not include `Eyebrow` or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        :type Eyebrow: :class:`tencentcloud.iai.v20200303.models.Eyebrow`
+        :param Gender: Gender information. 
+The `Type` values of the `AttributeItem` include: 0: male; 1: female.	
+If `FaceAttributesType` does not include `Gender` or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        :type Gender: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
+        :param Hair: Hair information, including length, bang, and color. 
+If `FaceAttributesType` does not include `Hair` or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        :type Hair: :class:`tencentcloud.iai.v20200303.models.Hair`
+        :param Hat: Hat information, including whether a hat is worn, hat style, and hat color. 
+If `FaceAttributesType` does not include `Hat` or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        :type Hat: :class:`tencentcloud.iai.v20200303.models.Hat`
+        :param HeadPose: Pose information, including the face pitch, yaw, and roll. 
+If `FaceAttributesType` does not include `Headpose` or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        :type HeadPose: :class:`tencentcloud.iai.v20200303.models.HeadPose`
+        :param Mask: Mask information. 
+The `Type` values of the `AttributeItem` include: 0: no mask; 1: the mask is worn and does not cover the face; 2: the mask is worn and covers the chin; 3: the mask is worn and covers the mouth; 4: the mask is worn properly.
+If `FaceAttributesType` does not include `Mask` or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        :type Mask: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
+        :param Mouth: Mouth information, including whether the mouth is open and the lip thickness. 
+If `FaceAttributesType` does not include `Mouth` or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        :type Mouth: :class:`tencentcloud.iai.v20200303.models.Mouth`
+        :param Moustache: Beard information.
+The `Type` values of the `AttributeItem` include: 0: no beard; 1: beard detected. 
+If `FaceAttributesType` does not include `Moustache` or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        :type Moustache: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
+        :param Nose: Nose information. 
+The `Type` values of the `AttributeItem` include: 0: upturned nose; 1: aquiline nose; 2: general nose; 3: bulbous nose.
+If `FaceAttributesType` does not include `Nose` or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        :type Nose: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
+        :param Shape: Face shape information. 
+The `Type` values of the `AttributeItem` include: 0: square; 1: triangular; 2: oval; 3: heart-shaped; 4: round.
+If `FaceAttributesType` does not include `Shape` or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        :type Shape: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
+        :param Skin: Skin color information. 
+The `Type` values of the `AttributeItem` include: 0: yellow; 1: brown; 2: black; 3: white.
+If `FaceAttributesType` does not include `Skin` or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        :type Skin: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
+        :param Smile: Smile level. Value range: [0,100]. 
+If `FaceAttributesType` does not include `Smile` or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        :type Smile: int
+        """
+        self.Age = None
+        self.Beauty = None
+        self.Emotion = None
+        self.Eye = None
+        self.Eyebrow = None
+        self.Gender = None
+        self.Hair = None
+        self.Hat = None
+        self.HeadPose = None
+        self.Mask = None
+        self.Mouth = None
+        self.Moustache = None
+        self.Nose = None
+        self.Shape = None
+        self.Skin = None
+        self.Smile = None
+
+
+    def _deserialize(self, params):
+        self.Age = params.get("Age")
+        self.Beauty = params.get("Beauty")
+        if params.get("Emotion") is not None:
+            self.Emotion = AttributeItem()
+            self.Emotion._deserialize(params.get("Emotion"))
+        if params.get("Eye") is not None:
+            self.Eye = Eye()
+            self.Eye._deserialize(params.get("Eye"))
+        if params.get("Eyebrow") is not None:
+            self.Eyebrow = Eyebrow()
+            self.Eyebrow._deserialize(params.get("Eyebrow"))
+        if params.get("Gender") is not None:
+            self.Gender = AttributeItem()
+            self.Gender._deserialize(params.get("Gender"))
+        if params.get("Hair") is not None:
+            self.Hair = Hair()
+            self.Hair._deserialize(params.get("Hair"))
+        if params.get("Hat") is not None:
+            self.Hat = Hat()
+            self.Hat._deserialize(params.get("Hat"))
+        if params.get("HeadPose") is not None:
+            self.HeadPose = HeadPose()
+            self.HeadPose._deserialize(params.get("HeadPose"))
+        if params.get("Mask") is not None:
+            self.Mask = AttributeItem()
+            self.Mask._deserialize(params.get("Mask"))
+        if params.get("Mouth") is not None:
+            self.Mouth = Mouth()
+            self.Mouth._deserialize(params.get("Mouth"))
+        if params.get("Moustache") is not None:
+            self.Moustache = AttributeItem()
+            self.Moustache._deserialize(params.get("Moustache"))
+        if params.get("Nose") is not None:
+            self.Nose = AttributeItem()
+            self.Nose._deserialize(params.get("Nose"))
+        if params.get("Shape") is not None:
+            self.Shape = AttributeItem()
+            self.Shape._deserialize(params.get("Shape"))
+        if params.get("Skin") is not None:
+            self.Skin = AttributeItem()
+            self.Skin._deserialize(params.get("Skin"))
+        self.Smile = params.get("Smile")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FaceDetailInfo(AbstractModel):
+    """Face information list.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FaceRect: Position of the detected face frame.
+        :type FaceRect: :class:`tencentcloud.iai.v20200303.models.FaceRect`
+        :param FaceDetailAttributesInfo: Face attribute information. According to the types specified in `FaceAttributesType`, the following face attributes will be returned: age (Age), beauty score (Beauty), 
+emotion (Emotion), eye information (Eye), eyebrow information (Eyebrow), gender (Gender), 
+hair information (Hair), hat information (Hat), pose (Headpose), mask information (Mask), mouth information (Mouse), beard information (Moustache), 
+nose information (Nose), face shape (Shape), skin color (Skin), and smile information (Smile), etc.  
+If no types are specified in `FaceAttributesType`, the detailed items returned by `FaceDetaiAttributesInfo` will be meaningless.
+        :type FaceDetailAttributesInfo: :class:`tencentcloud.iai.v20200303.models.FaceDetailAttributesInfo`
+        """
+        self.FaceRect = None
+        self.FaceDetailAttributesInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("FaceRect") is not None:
+            self.FaceRect = FaceRect()
+            self.FaceRect._deserialize(params.get("FaceRect"))
+        if params.get("FaceDetailAttributesInfo") is not None:
+            self.FaceDetailAttributesInfo = FaceDetailAttributesInfo()
+            self.FaceDetailAttributesInfo._deserialize(params.get("FaceDetailAttributesInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1879,6 +2297,113 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class Hair(AbstractModel):
+    """Hair information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Length: Hair length information.
+The `Type` values of the `AttributeItem` include: 0: bald, 1: short hair, 2: medium hair, 3: long hair, 4: braid.
+        :type Length: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
+        :param Bang: Bang information.
+The `Type` values of the `AttributeItem` include: 0: no bang; 1: bang detected.
+        :type Bang: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
+        :param Color: Hair color information.
+The `Type` values of the `AttributeItem` include: 0: black; 1: golden; 2: brown; 3: gray.
+        :type Color: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
+        """
+        self.Length = None
+        self.Bang = None
+        self.Color = None
+
+
+    def _deserialize(self, params):
+        if params.get("Length") is not None:
+            self.Length = AttributeItem()
+            self.Length._deserialize(params.get("Length"))
+        if params.get("Bang") is not None:
+            self.Bang = AttributeItem()
+            self.Bang._deserialize(params.get("Bang"))
+        if params.get("Color") is not None:
+            self.Color = AttributeItem()
+            self.Color._deserialize(params.get("Color"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Hat(AbstractModel):
+    """Hat information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Style: Hat wearing status information.
+The `Type` values of the `AttributeItem` include: 0: no hat; 1: general hat; 2: helmet; 3: security guard hat.
+        :type Style: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
+        :param Color: Hat color.
+The `Type` values of the `AttributeItem` include: 0: no hat; 1: red; 2: yellow; 3: blue; 4: black; 5: gray; 6: mixed colors.
+        :type Color: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
+        """
+        self.Style = None
+        self.Color = None
+
+
+    def _deserialize(self, params):
+        if params.get("Style") is not None:
+            self.Style = AttributeItem()
+            self.Style._deserialize(params.get("Style"))
+        if params.get("Color") is not None:
+            self.Color = AttributeItem()
+            self.Color._deserialize(params.get("Color"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HeadPose(AbstractModel):
+    """Pose information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Pitch: Pitch. Value range: [-30,30].
+        :type Pitch: int
+        :param Yaw: Yaw. Value range: [-30,30].
+        :type Yaw: int
+        :param Roll: Roll. Value range: [-180,180].
+        :type Roll: int
+        """
+        self.Pitch = None
+        self.Yaw = None
+        self.Roll = None
+
+
+    def _deserialize(self, params):
+        self.Pitch = params.get("Pitch")
+        self.Yaw = params.get("Yaw")
+        self.Roll = params.get("Roll")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyGroupRequest(AbstractModel):
     """ModifyGroup request structure.
 
@@ -2040,6 +2565,33 @@ class ModifyPersonGroupInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Mouth(AbstractModel):
+    """Mouth information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MouthOpen: Whether the mouth is open.
+The `Type` values of the `AttributeItem` include: 0: closed; 1: open.
+        :type MouthOpen: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
+        """
+        self.MouthOpen = None
+
+
+    def _deserialize(self, params):
+        if params.get("MouthOpen") is not None:
+            self.MouthOpen = AttributeItem()
+            self.MouthOpen._deserialize(params.get("MouthOpen"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PersonExDescriptionInfo(AbstractModel):
     """Custom description field of the person to be modified, which is a `key-value` pair.
 
@@ -2114,8 +2666,8 @@ class PersonInfo(AbstractModel):
         :type PersonExDescriptions: list of str
         :param FaceIds: List of contained face images
         :type FaceIds: list of str
-        :param CreationTimestamp: Person creation time and date (`CreationTimestamp`), whose value is the number of milliseconds between the UNIX epoch time and the group creation time. 
-The UNIX epoch time is 00:00:00, Thursday, January 1, 1970, Coordinated Universal Time (UTC). For more information, please see the UNIX time document.
+        :param CreationTimestamp: Person creation time, measured in the number of milliseconds elapsed since the Unix epoch 
+The Unix epoch is 00:00:00, Thursday, January 1, 1970, Coordinated Universal Time (UTC). For more information, please see the Unix time document.
         :type CreationTimestamp: int
         """
         self.PersonName = None
@@ -2258,6 +2810,7 @@ class SearchFacesRequest(AbstractModel):
     def __init__(self):
         r"""
         :param GroupIds: List of groups to be searched in (up to 100). The array element value is the `GroupId` in the `CreateGroup` API.
+You cannot search for groups using different algorithm model versions (`FaceModelVersion`) at a time.
         :type GroupIds: list of str
         :param Image: Base64-encoded image data, which cannot exceed 5 MB.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
@@ -2370,6 +2923,7 @@ class SearchFacesReturnsByGroupRequest(AbstractModel):
     def __init__(self):
         r"""
         :param GroupIds: List of groups to be searched in (up to 60). The array element value is the `GroupId` in the `CreateGroup` API.
+You cannot search for groups using different algorithm model versions (`FaceModelVersion`) at a time.
         :type GroupIds: list of str
         :param Image: Base64-encoded image data, which cannot exceed 5 MB.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
