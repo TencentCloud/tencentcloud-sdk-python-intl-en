@@ -1202,20 +1202,48 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeProducers(self, request):
-        """This API is used to get the list of producers. Only online producers will be displayed.
+    def DescribePublisherSummary(self, request):
+        """This API is used to obtain message production overview information.
 
-        :param request: Request instance for DescribeProducers.
-        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeProducersRequest`
-        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeProducersResponse`
+        :param request: Request instance for DescribePublisherSummary.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribePublisherSummaryRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribePublisherSummaryResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProducers", params)
+            body = self.call("DescribePublisherSummary", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeProducersResponse()
+                model = models.DescribePublisherSummaryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePublishers(self, request):
+        """This API is used to obtain the list of producer information.
+
+        :param request: Request instance for DescribePublishers.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribePublishersRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribePublishersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePublishers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePublishersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

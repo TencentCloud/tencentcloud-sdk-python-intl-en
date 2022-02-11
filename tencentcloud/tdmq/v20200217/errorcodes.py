@@ -71,9 +71,6 @@ FAILEDOPERATION_DELETESUBSCRIPTIONS = 'FailedOperation.DeleteSubscriptions'
 # Failed to delete the topic.
 FAILEDOPERATION_DELETETOPICS = 'FailedOperation.DeleteTopics'
 
-# Failed to query the producer data.
-FAILEDOPERATION_DESCRIBEPRODUCERS = 'FailedOperation.DescribeProducers'
-
 # Failed to query the subscription data.
 FAILEDOPERATION_DESCRIBESUBSCRIPTION = 'FailedOperation.DescribeSubscription'
 
@@ -145,6 +142,9 @@ INTERNALERROR_BROKERSERVICE = 'InternalError.BrokerService'
 
 # Failed to get attributes.
 INTERNALERROR_GETATTRIBUTESFAILED = 'InternalError.GetAttributesFailed'
+
+# Internal error.
+INTERNALERROR_ILLEGALMESSAGE = 'InternalError.IllegalMessage'
 
 # You can try again.
 INTERNALERROR_RETRY = 'InternalError.Retry'
@@ -221,6 +221,9 @@ RESOURCEINUSE_ENVIRONMENTROLE = 'ResourceInUse.EnvironmentRole'
 # A namespace with the same name already exists.
 RESOURCEINUSE_NAMESPACE = 'ResourceInUse.Namespace'
 
+# The queue already exists.
+RESOURCEINUSE_QUEUE = 'ResourceInUse.Queue'
+
 # The role already exists.
 RESOURCEINUSE_ROLE = 'ResourceInUse.Role'
 
@@ -262,6 +265,12 @@ RESOURCENOTFOUND_TOPIC = 'ResourceNotFound.Topic'
 
 # The resource is unavailable.
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'
+
+# Assignment exception.
+RESOURCEUNAVAILABLE_CREATEFAILED = 'ResourceUnavailable.CreateFailed'
+
+# You must top up before proceeding.
+RESOURCEUNAVAILABLE_FUNDREQUIRED = 'ResourceUnavailable.FundRequired'
 
 # The system is being upgraded.
 RESOURCEUNAVAILABLE_SYSTEMUPGRADE = 'ResourceUnavailable.SystemUpgrade'

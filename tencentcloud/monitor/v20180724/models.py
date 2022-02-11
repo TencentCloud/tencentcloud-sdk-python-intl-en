@@ -2313,14 +2313,18 @@ class DescribeBaseMetricsRequest(AbstractModel):
         :type Namespace: str
         :param MetricName: Metric name. Tencent Cloud services have different metric names. For more information on metric names, see the monitoring metric documentation of each service. For example, see [CVM Monitoring Metrics](https://intl.cloud.tencent.com/document/product/248/6843?from_cn_redirect=1) for the metric names of CVM
         :type MetricName: str
+        :param Dimensions: Filter by dimension. This parameter is optional.
+        :type Dimensions: list of str
         """
         self.Namespace = None
         self.MetricName = None
+        self.Dimensions = None
 
 
     def _deserialize(self, params):
         self.Namespace = params.get("Namespace")
         self.MetricName = params.get("MetricName")
+        self.Dimensions = params.get("Dimensions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

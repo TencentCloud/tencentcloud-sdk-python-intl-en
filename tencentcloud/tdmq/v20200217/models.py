@@ -204,7 +204,7 @@ class Cluster(AbstractModel):
         :param HealthyInfo: Cluster health information
 Note: this field may return null, indicating that no valid values can be obtained.
         :type HealthyInfo: str
-        :param Status: Cluster status. 0: creating; 1: normal; 2: deleting; 3: deleted; 5. creation failed; 6: deletion failed
+        :param Status: Cluster status. 0: creating; 1: normal; 2: terminating; 3: deleted; 4. isolated; 5. creation failed; 6: deletion failed
         :type Status: int
         :param MaxNamespaceNum: Maximum number of namespaces
         :type MaxNamespaceNum: int
@@ -480,6 +480,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param NamespaceName: Namespace name
 Note: this field may return null, indicating that no valid values can be obtained.
         :type NamespaceName: str
+        :param Status: Cluster status. 0: creating; 1: normal; 2: terminating; 3: deleted; 4. isolated; 5. creation failed; 6: deletion failed
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Status: int
+        :param MaxUnackedMsgNum: The maximum number of unacknowledged messages.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type MaxUnackedMsgNum: int
+        :param MaxMsgBacklogSize: Maximum size of heaped messages in bytes.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type MaxMsgBacklogSize: int
         """
         self.QueueId = None
         self.QueueName = None
@@ -508,6 +517,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Trace = None
         self.TenantId = None
         self.NamespaceName = None
+        self.Status = None
+        self.MaxUnackedMsgNum = None
+        self.MaxMsgBacklogSize = None
 
 
     def _deserialize(self, params):
@@ -552,6 +564,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Trace = params.get("Trace")
         self.TenantId = params.get("TenantId")
         self.NamespaceName = params.get("NamespaceName")
+        self.Status = params.get("Status")
+        self.MaxUnackedMsgNum = params.get("MaxUnackedMsgNum")
+        self.MaxMsgBacklogSize = params.get("MaxMsgBacklogSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -772,61 +787,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
-class Connection(AbstractModel):
-    """Producer connection instance
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Address: Producer address.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Address: str
-        :param Partitions: Topic partition.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Partitions: int
-        :param ClientVersion: Producer version.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ClientVersion: str
-        :param ProducerName: Producer name.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ProducerName: str
-        :param ProducerId: Producer ID.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ProducerId: str
-        :param AverageMsgSize: Average message size in bytes.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type AverageMsgSize: str
-        :param MsgThroughputIn: Production rate in bytes/sec.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type MsgThroughputIn: str
-        """
-        self.Address = None
-        self.Partitions = None
-        self.ClientVersion = None
-        self.ProducerName = None
-        self.ProducerId = None
-        self.AverageMsgSize = None
-        self.MsgThroughputIn = None
-
-
-    def _deserialize(self, params):
-        self.Address = params.get("Address")
-        self.Partitions = params.get("Partitions")
-        self.ClientVersion = params.get("ClientVersion")
-        self.ProducerName = params.get("ProducerName")
-        self.ProducerId = params.get("ProducerId")
-        self.AverageMsgSize = params.get("AverageMsgSize")
-        self.MsgThroughputIn = params.get("MsgThroughputIn")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class Consumer(AbstractModel):
     """Consumer
 
@@ -928,7 +888,7 @@ class CreateClusterRequest(AbstractModel):
         :type BindClusterId: int
         :param Remark: Remarks (up to 128 characters).
         :type Remark: str
-        :param Tags: List of cluster tags
+        :param Tags: Cluster tag list (deprecated).
         :type Tags: list of Tag
         :param PublicAccessEnabled: Whether to enable public network access. If this parameter is left empty, the feature will be enabled by default
         :type PublicAccessEnabled: bool
@@ -3281,41 +3241,29 @@ class DescribeEnvironmentsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeProducersRequest(AbstractModel):
-    """DescribeProducers request structure.
+class DescribePublisherSummaryRequest(AbstractModel):
+    """DescribePublisherSummary request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param EnvironmentId: Environment (namespace) name.
-        :type EnvironmentId: str
-        :param TopicName: Topic name.
-        :type TopicName: str
-        :param Offset: Offset. If this parameter is left empty, 0 will be used by default.
-        :type Offset: int
-        :param Limit: Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.
-        :type Limit: int
-        :param ProducerName: Fuzzy match by producer name.
-        :type ProducerName: str
-        :param ClusterId: Pulsar cluster ID
+        :param ClusterId: Cluster ID.
         :type ClusterId: str
+        :param Namespace: Namespace name.
+        :type Namespace: str
+        :param Topic: Topic name.
+        :type Topic: str
         """
-        self.EnvironmentId = None
-        self.TopicName = None
-        self.Offset = None
-        self.Limit = None
-        self.ProducerName = None
         self.ClusterId = None
+        self.Namespace = None
+        self.Topic = None
 
 
     def _deserialize(self, params):
-        self.EnvironmentId = params.get("EnvironmentId")
-        self.TopicName = params.get("TopicName")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.ProducerName = params.get("ProducerName")
         self.ClusterId = params.get("ClusterId")
+        self.Namespace = params.get("Namespace")
+        self.Topic = params.get("Topic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3325,33 +3273,126 @@ class DescribeProducersRequest(AbstractModel):
         
 
 
-class DescribeProducersResponse(AbstractModel):
-    """DescribeProducers response structure.
+class DescribePublisherSummaryResponse(AbstractModel):
+    """DescribePublisherSummary response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param ProducerSets: Array set of producers.
-        :type ProducerSets: list of Producer
-        :param TotalCount: Total number of records.
-        :type TotalCount: int
+        :param MsgRateIn: Production rate (messages/sec).
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type MsgRateIn: float
+        :param MsgThroughputIn: Production rate (byte/sec).
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type MsgThroughputIn: float
+        :param PublisherCount: The number of producers.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type PublisherCount: int
+        :param StorageSize: Message storage size in bytes.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type StorageSize: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.ProducerSets = None
-        self.TotalCount = None
+        self.MsgRateIn = None
+        self.MsgThroughputIn = None
+        self.PublisherCount = None
+        self.StorageSize = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        if params.get("ProducerSets") is not None:
-            self.ProducerSets = []
-            for item in params.get("ProducerSets"):
-                obj = Producer()
+        self.MsgRateIn = params.get("MsgRateIn")
+        self.MsgThroughputIn = params.get("MsgThroughputIn")
+        self.PublisherCount = params.get("PublisherCount")
+        self.StorageSize = params.get("StorageSize")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePublishersRequest(AbstractModel):
+    """DescribePublishers request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID.
+        :type ClusterId: str
+        :param Namespace: Namespace name.
+        :type Namespace: str
+        :param Topic: Topic name.
+        :type Topic: str
+        :param Filters: Parameter filter. The `ProducerName` and `Address` fields are supported.
+        :type Filters: list of Filter
+        :param Offset: Offset for query. Default value: `0`.
+        :type Offset: int
+        :param Limit: The number of query results displayed per page. Default value: `20`.
+        :type Limit: int
+        :param Sort: Sort by field.
+        :type Sort: :class:`tencentcloud.tdmq.v20200217.models.Sort`
+        """
+        self.ClusterId = None
+        self.Namespace = None
+        self.Topic = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+        self.Sort = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Namespace = params.get("Namespace")
+        self.Topic = params.get("Topic")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
                 obj._deserialize(item)
-                self.ProducerSets.append(obj)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Sort") is not None:
+            self.Sort = Sort()
+            self.Sort._deserialize(params.get("Sort"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePublishersResponse(AbstractModel):
+    """DescribePublishers response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number of query results.
+        :type TotalCount: int
+        :param Publishers: List of producer information.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Publishers: list of Publisher
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Publishers = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.TotalCount = params.get("TotalCount")
+        if params.get("Publishers") is not None:
+            self.Publishers = []
+            for item in params.get("Publishers"):
+                obj = Publisher()
+                obj._deserialize(item)
+                self.Publishers.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4977,49 +5018,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
-class Producer(AbstractModel):
-    """Producer
-
-    """
-
-    def __init__(self):
-        r"""
-        :param EnvironmentId: Environment (namespace) name.
-        :type EnvironmentId: str
-        :param TopicName: Topic name.
-        :type TopicName: str
-        :param CountConnect: Number of connections.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CountConnect: int
-        :param ConnectionSets: Set of connections.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ConnectionSets: list of Connection
-        """
-        self.EnvironmentId = None
-        self.TopicName = None
-        self.CountConnect = None
-        self.ConnectionSets = None
-
-
-    def _deserialize(self, params):
-        self.EnvironmentId = params.get("EnvironmentId")
-        self.TopicName = params.get("TopicName")
-        self.CountConnect = params.get("CountConnect")
-        if params.get("ConnectionSets") is not None:
-            self.ConnectionSets = []
-            for item in params.get("ConnectionSets"):
-                obj = Connection()
-                obj._deserialize(item)
-                self.ConnectionSets.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class PublishCmqMsgRequest(AbstractModel):
     """PublishCmqMsg request structure.
 
@@ -5075,6 +5073,71 @@ class PublishCmqMsgResponse(AbstractModel):
         self.Result = params.get("Result")
         self.MsgId = params.get("MsgId")
         self.RequestId = params.get("RequestId")
+
+
+class Publisher(AbstractModel):
+    """Producer information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProducerId: Producer ID.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ProducerId: int
+        :param ProducerName: Producer name.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ProducerName: str
+        :param Address: Producer address.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Address: str
+        :param ClientVersion: Client version.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ClientVersion: str
+        :param MsgRateIn: Message production rate (message/sec).
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type MsgRateIn: float
+        :param MsgThroughputIn: Message production throughput rate (byte/sec).
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type MsgThroughputIn: float
+        :param AverageMsgSize: Average message size in bytes.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AverageMsgSize: float
+        :param ConnectedSince: Connection time.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ConnectedSince: str
+        :param Partition: Serial number of the topic partition connected to the producer.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Partition: int
+        """
+        self.ProducerId = None
+        self.ProducerName = None
+        self.Address = None
+        self.ClientVersion = None
+        self.MsgRateIn = None
+        self.MsgThroughputIn = None
+        self.AverageMsgSize = None
+        self.ConnectedSince = None
+        self.Partition = None
+
+
+    def _deserialize(self, params):
+        self.ProducerId = params.get("ProducerId")
+        self.ProducerName = params.get("ProducerName")
+        self.Address = params.get("Address")
+        self.ClientVersion = params.get("ClientVersion")
+        self.MsgRateIn = params.get("MsgRateIn")
+        self.MsgThroughputIn = params.get("MsgThroughputIn")
+        self.AverageMsgSize = params.get("AverageMsgSize")
+        self.ConnectedSince = params.get("ConnectedSince")
+        self.Partition = params.get("Partition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ReceiveMessageRequest(AbstractModel):
@@ -5920,6 +5983,34 @@ class SendMsgResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class Sort(AbstractModel):
+    """Sort by field
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Sorting field.
+        :type Name: str
+        :param Order: Ascending order: `ASC`; descending order: `DESC`.
+        :type Order: str
+        """
+        self.Name = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Subscription(AbstractModel):
