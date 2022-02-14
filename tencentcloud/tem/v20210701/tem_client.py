@@ -138,6 +138,37 @@ class TemClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteApplication(self, request):
+        """This API is used to delete an application.
+          - Stop the application if it’s running
+          - Delete resources associated with this application
+          - Delele the application
+
+        :param request: Request instance for DeleteApplication.
+        :type request: :class:`tencentcloud.tem.v20210701.models.DeleteApplicationRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.DeleteApplicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteApplication", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteApplicationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteIngress(self, request):
         """This API is used to delete an ingress rule.
 
@@ -446,6 +477,34 @@ class TemClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RestartApplication(self, request):
+        """This API is used to restart an application.
+
+        :param request: Request instance for RestartApplication.
+        :type request: :class:`tencentcloud.tem.v20210701.models.RestartApplicationRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.RestartApplicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RestartApplication", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RestartApplicationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RestartApplicationPod(self, request):
         """This API is used to restart an application pod.
 
@@ -460,6 +519,62 @@ class TemClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RestartApplicationPodResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RollingUpdateApplicationByVersion(self, request):
+        """This API is used to configure the rolling update policy for an application.
+
+        :param request: Request instance for RollingUpdateApplicationByVersion.
+        :type request: :class:`tencentcloud.tem.v20210701.models.RollingUpdateApplicationByVersionRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.RollingUpdateApplicationByVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RollingUpdateApplicationByVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RollingUpdateApplicationByVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopApplication(self, request):
+        """This API is used to stop an application.
+
+        :param request: Request instance for StopApplication.
+        :type request: :class:`tencentcloud.tem.v20210701.models.StopApplicationRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.StopApplicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopApplication", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopApplicationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

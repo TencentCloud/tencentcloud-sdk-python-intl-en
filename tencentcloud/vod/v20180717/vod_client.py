@@ -2698,17 +2698,19 @@ class VodClient(AbstractClient):
 
 
     def ProcessMedia(self, request):
-        """This API is used to initiate a processing task for an audio/video media file in VOD, including:
-        1. Video transcoding (with watermark);
-        2. Animated image generating;
-        3. Time point screencapturing;
-        4. Sampled screencapturing;
-        5. Image sprite generating;
-        6. Cover generating by screencapturing;
-        7. Adaptive bitrate streaming (with encryption);
-        8. Intelligent content audit (detection of porn, terrorism, and politically sensitive information);
-        9. Intelligent content analysis (tag, category, cover, and frame-specific tag);
-        10. Intelligent content recognition (opening and closing credits, face, full text, text keyword, full speech, speech keyword, and object).
+        """This API is used to initiate a media processing task on a VOD file. The task may include:
+        1. Video transcoding (with watermark)
+        2. Animated image generating
+        3. Time point screenshot
+        4. Sampled screenshot
+        5. Image sprite generating
+        6. Taking a screenshot to use as the thumbnail
+        7. Adaptive bitrate streaming and encryption
+        8. Intelligent recognition of pornographic, terrorism, and politically sensitive content
+        9. Intelligent content analysis for labeling, categorization, thumbnail generation, or frame-specific labeling
+        10. Recognition of opening and closing credits, faces, full text, text keywords, full speech, speech keywords, and objects
+
+        If event notifications are used, the event type is [ProcedureStateChanged](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1).
 
         :param request: Request instance for ProcessMedia.
         :type request: :class:`tencentcloud.vod.v20180717.models.ProcessMediaRequest`

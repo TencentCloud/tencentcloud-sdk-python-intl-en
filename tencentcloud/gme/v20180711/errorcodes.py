@@ -42,7 +42,10 @@ INVALIDPARAMETER_TIMERANGEERROR = 'InvalidParameter.TimeRangeError'
 LIMITEXCEEDED_APPLICATION = 'LimitExceeded.Application'
 
 # Missing parameter.
-MISSINGPARAMETER_ = 'MissingParameter.'
+MISSINGPARAMETER = 'MissingParameter'
+
+# Operation denied.
+OPERATIONDENIED = 'OperationDenied'
 
 # The resource does not exist.
 RESOURCENOTFOUND = 'ResourceNotFound'

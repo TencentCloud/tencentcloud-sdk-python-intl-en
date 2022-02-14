@@ -243,11 +243,17 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
         :type DrmType: str
         :param Url: Playback address.
         :type Url: str
+        :param Size: File size (bytes)
+<li>If the file is an HLS file, the value of this parameter is the sum of the size of the M3U8 and TS files.</li>
+<li>If the file is a DASH file, the value of this parameter is the sum of the size of the MPD and segment files.</li>
+<li><font color=red>Note</font>: For adaptive bitrate streaming files generated before 2022-01-10T16:00:00Z, the value of this parameter is `0`.</li>
+        :type Size: int
         """
         self.Definition = None
         self.Package = None
         self.DrmType = None
         self.Url = None
+        self.Size = None
 
 
     def _deserialize(self, params):
@@ -255,6 +261,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
         self.Package = params.get("Package")
         self.DrmType = params.get("DrmType")
         self.Url = params.get("Url")
+        self.Size = params.get("Size")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1070,54 +1077,54 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class AiContentReviewResult(AbstractModel):
-    """Content audit result
+    """Intelligent recognition result
 
     """
 
     def __init__(self):
         r"""
         :param Type: Task type. Valid values:
-<li>`Porn`: porn information recognition in images</li>
-<li>`Terrorism`: terrorism information recognition in images</li>
-<li>`Political`: politically sensitive information recognition in images</li>
-<li>`Porn.Asr`: ASR-based porn information recognition in speech</li>
-<li>`Porn.Ocr`: OCR-based porn information recognition in text</li>
-<li>`Political.Asr`: ASR-based politically sensitive information recognition in speech</li>
-<li>`Political.Ocr`: OCR-based politically sensitive information recognition in text</li>
-<li>`Terrorism.Ocr`: OCR-based terrorism information recognition in text</li>
-<li>`Prohibited.Asr`: ASR-based prohibited information recognition in speech</li>
-<li>`Prohibited.Ocr`: OCR-based prohibited information recognition in text</li>
+<li>`Porn`: recognition of pornographic content in images</li>
+<li>`Terrorism`: recognition of terrorism content in images</li>
+<li>`Political`: recognition of politically sensitive content in images</li>
+<li>`Porn.Asr`: ASR-based recognition of pornographic content</li>
+<li>`Porn.Ocr`: OCR-based recognition of pornographic content</li>
+<li>`Political.Asr`: ASR-based recognition of politically sensitive content</li>
+<li>`Political.Ocr`: OCR-based recognition of politically sensitive content</li>
+<li>`Terrorism.Ocr`: OCR-based recognition of terrorism content</li>
+<li>`Prohibited.Asr`: ASR-based recognition of banned content</li>
+<li>`Prohibited.Ocr`: OCR-based recognition of banned content</li>
         :type Type: str
-        :param PornTask: Query result of intelligent porn information detection in video image task in video content audit, which is valid when task type is `Porn`.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param PornTask: Result for intelligent recognition of pornographic content in images. This parameter is valid when `Type` is `Porn`.
+Note: This field may return `null`, indicating that no valid value can be found.
         :type PornTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPornResult`
-        :param TerrorismTask: Query result of intelligent terrorism information detection in video image task in video content audit, which is valid when task type is `Terrorism`.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param TerrorismTask: Result for intelligent recognition of terrorism content in images. This parameter is valid when `Type` is `Terrorism`.
+Note: This field may return `null`, indicating that no valid value can be found.
         :type TerrorismTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskTerrorismResult`
-        :param PoliticalTask: Query result of intelligent politically sensitive information detection in video image task in video content audit, which is valid when task type is `Political`.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param PoliticalTask: Result for intelligent recognition of politically sensitive content in images. This parameter is valid when `Type` is `Political`.
+Note: This field may return `null`, indicating that no valid value can be found.
         :type PoliticalTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPoliticalResult`
-        :param PornAsrTask: Query result of ASR-based porn information detection in speech task in video content audit, which is valid when task type is `Porn.Asr`.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param PornAsrTask: Result for ASR-based recognition of pornographic content. This parameter is valid when `Type` is `Porn.Asr`.
+Note: This field may return `null`, indicating that no valid value can be found.
         :type PornAsrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPornAsrResult`
-        :param PornOcrTask: Query result of OCR-based porn information detection in text task in video content audit, which is valid when task type is `Porn.Ocr`.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param PornOcrTask: Result for OCR-based recognition of pornographic content. This parameter is valid when `Type` is `Porn.Ocr`.
+Note: This field may return `null`, indicating that no valid value can be found.
         :type PornOcrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPornOcrResult`
-        :param PoliticalAsrTask: Query result of ASR-based politically sensitive information detection in speech task in video content audit, which is valid when task type is `Political.Asr`.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param PoliticalAsrTask: Result for ASR-based recognition of politically sensitive content. This parameter is valid when `Type` is `Political.Asr`.
+Note: This field may return `null`, indicating that no valid value can be found.
         :type PoliticalAsrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPoliticalAsrResult`
-        :param PoliticalOcrTask: Query result of OCR-based politically sensitive information detection in text task in video content audit, which is valid when task type is `Political.Ocr`.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param PoliticalOcrTask: Result for OCR-based recognition of politically sensitive content. This parameter is valid when `Type` is `Political.Ocr`.
+Note: This field may return `null`, indicating that no valid value can be found.
         :type PoliticalOcrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPoliticalOcrResult`
-        :param TerrorismOcrTask: Query result of OCR-based terrorism information detection in text task in video content audit, which is valid when task type is `Terrorism.Ocr`.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param TerrorismOcrTask: Result for OCR-based recognition of terrorism content. This parameter is valid when `Type` is `Terrorism.Ocr`.
+Note: This field may return `null`, indicating that no valid value can be found.
         :type TerrorismOcrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskTerrorismOcrResult`
-        :param ProhibitedAsrTask: Query result of ASR-based prohibited information detection in speech task in video content audit, which is valid when task type is `Prohibited.Asr`.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ProhibitedAsrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskProhibitedAsrResult`
-        :param ProhibitedOcrTask: Query result of OCR-based prohibited information detection in text task in video content audit, which is valid when task type is `Prohibited.Ocr`.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ProhibitedOcrTask: Result for OCR-based recognition of banned content. This parameter is valid when `Type` is `Prohibited.Ocr`.
+Note: This field may return `null`, indicating that no valid value can be found.
         :type ProhibitedOcrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskProhibitedOcrResult`
+        :param ProhibitedAsrTask: Result for ASR-based recognition of banned content. This parameter is valid when `Type` is `Prohibited.Asr`.
+Note: This field may return `null`, indicating that no valid value can be found.
+        :type ProhibitedAsrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskProhibitedAsrResult`
         """
         self.Type = None
         self.PornTask = None
@@ -1128,8 +1135,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.PoliticalAsrTask = None
         self.PoliticalOcrTask = None
         self.TerrorismOcrTask = None
-        self.ProhibitedAsrTask = None
         self.ProhibitedOcrTask = None
+        self.ProhibitedAsrTask = None
 
 
     def _deserialize(self, params):
@@ -1158,12 +1165,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("TerrorismOcrTask") is not None:
             self.TerrorismOcrTask = AiReviewTaskTerrorismOcrResult()
             self.TerrorismOcrTask._deserialize(params.get("TerrorismOcrTask"))
-        if params.get("ProhibitedAsrTask") is not None:
-            self.ProhibitedAsrTask = AiReviewTaskProhibitedAsrResult()
-            self.ProhibitedAsrTask._deserialize(params.get("ProhibitedAsrTask"))
         if params.get("ProhibitedOcrTask") is not None:
             self.ProhibitedOcrTask = AiReviewTaskProhibitedOcrResult()
             self.ProhibitedOcrTask._deserialize(params.get("ProhibitedOcrTask"))
+        if params.get("ProhibitedAsrTask") is not None:
+            self.ProhibitedAsrTask = AiReviewTaskProhibitedAsrResult()
+            self.ProhibitedAsrTask._deserialize(params.get("ProhibitedAsrTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1174,13 +1181,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class AiContentReviewTaskInput(AbstractModel):
-    """Task type of intelligent content audit
+    """Type of intelligent recognition task
 
     """
 
     def __init__(self):
         r"""
-        :param Definition: Video content audit template ID.
+        :param Definition: Intelligent recognition template ID
         :type Definition: int
         """
         self.Definition = None
@@ -2643,13 +2650,13 @@ class AiRecognitionTaskSegmentSegmentItem(AbstractModel):
 
 
 class AiReviewPoliticalAsrTaskInput(AbstractModel):
-    """Input parameter type of ASR-based politically sensitive information detection in speech task in content audit
+    """Input parameters for ASR-based recognition of politically sensitive content
 
     """
 
     def __init__(self):
         r"""
-        :param Definition: Politically sensitive information detection template ID.
+        :param Definition: ID of the template for recognition of politically sensitive content
         :type Definition: int
         """
         self.Definition = None
@@ -2667,25 +2674,25 @@ class AiReviewPoliticalAsrTaskInput(AbstractModel):
 
 
 class AiReviewPoliticalAsrTaskOutput(AbstractModel):
-    """ASR-detected politically sensitive information in speech
+    """Output for ASR-based recognition of politically sensitive content
 
     """
 
     def __init__(self):
         r"""
-        :param Confidence: Score of ASR-detected politically sensitive information in speech between 0 and 100.
+        :param Confidence: Confidence score for the ASR-detected politically sensitive content. Value range: 0-100
         :type Confidence: float
-        :param Suggestion: Suggestion for ASR-detected politically sensitive information in speech. Valid values:
-<li>pass.</li>
-<li>review.</li>
-<li>block.</li>
+        :param Suggestion: Processing suggestion for the ASR-detected politically sensitive content. Valid values:
+<li>pass</li>
+<li>review</li>
+<li>block</li>
         :type Suggestion: str
-        :param SegmentSet: List of video segments that contain ASR-detected politically sensitive information
+        :param SegmentSet: List of video segments that contain ASR-detected politically sensitive content
 <font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.
         :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
-        :param SegmentSetFileUrl: URL to the file for video segments that contain ASR-detected politically sensitive information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.
+        :param SegmentSetFileUrl: URL to the file for video segments that contain ASR-detected politically sensitive content. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.
         :type SegmentSetFileUrl: str
-        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file for video segments that contain ASR-detected politically sensitive information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
+        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file for video segments that contain ASR-detected politically sensitive content, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
         :type SegmentSetFileUrlExpireTime: str
         """
         self.Confidence = None
@@ -2716,13 +2723,13 @@ class AiReviewPoliticalAsrTaskOutput(AbstractModel):
 
 
 class AiReviewPoliticalOcrTaskInput(AbstractModel):
-    """Input parameter type of OCR-based politically sensitive information detection in text task in content audit
+    """Input parameters for OCR-based recognition of politically sensitive content
 
     """
 
     def __init__(self):
         r"""
-        :param Definition: Politically sensitive information detection template ID.
+        :param Definition: ID of the template for recognition of politically sensitive content
         :type Definition: int
         """
         self.Definition = None
@@ -2740,25 +2747,25 @@ class AiReviewPoliticalOcrTaskInput(AbstractModel):
 
 
 class AiReviewPoliticalOcrTaskOutput(AbstractModel):
-    """OCR-detected politically sensitive information in text
+    """Output for OCR-based recognition of politically sensitive content
 
     """
 
     def __init__(self):
         r"""
-        :param Confidence: Score of OCR-detected politically sensitive information in text between 0 and 100.
+        :param Confidence: Confidence score for the OCR-detected politically sensitive content. Value range: 0-100
         :type Confidence: float
-        :param Suggestion: Suggestion for OCR-detected politically sensitive information in text. Valid values:
-<li>pass.</li>
-<li>review.</li>
-<li>block.</li>
+        :param Suggestion: Processing suggestion for the OCR-detected politically sensitive content. Valid values:
+<li>pass</li>
+<li>review</li>
+<li>block</li>
         :type Suggestion: str
-        :param SegmentSet: List of video segments that contain OCR-detected politically sensitive information
+        :param SegmentSet: List of video segments that contain OCR-detected politically sensitive content
 <font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.
         :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
-        :param SegmentSetFileUrl: URL to the file for video segments that contain OCR-detected politically sensitive information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.
+        :param SegmentSetFileUrl: URL to the file for video segments that contain OCR-detected politically sensitive content. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.
         :type SegmentSetFileUrl: str
-        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file for video segments that contain OCR-detected politically sensitive information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
+        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file for video segments that contain OCR-detected politically sensitive content, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
         :type SegmentSetFileUrlExpireTime: str
         """
         self.Confidence = None
@@ -2789,13 +2796,13 @@ class AiReviewPoliticalOcrTaskOutput(AbstractModel):
 
 
 class AiReviewPoliticalTaskInput(AbstractModel):
-    """Input parameter type of politically sensitive information detection task in content audit
+    """Input parameters for intelligent recognition of politically sensitive content
 
     """
 
     def __init__(self):
         r"""
-        :param Definition: Politically sensitive information detection template ID.
+        :param Definition: ID of the template for recognition of politically sensitive content
         :type Definition: int
         """
         self.Definition = None
@@ -2813,33 +2820,31 @@ class AiReviewPoliticalTaskInput(AbstractModel):
 
 
 class AiReviewPoliticalTaskOutput(AbstractModel):
-    """Politically sensitive information
+    """Output for intelligent recognition of politically sensitive content
 
     """
 
     def __init__(self):
         r"""
-        :param Confidence: Score of detected politically sensitive information in video between 0 and 100.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Confidence: Confidence score for the detected politically sensitive content. Value range: 0-100
         :type Confidence: float
-        :param Suggestion: Suggestion for detected politically sensitive information. Valid values:
-<li>pass.</li>
-<li>review.</li>
-<li>block.</li>
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Suggestion: Processing suggestion for the detected politically sensitive content
+<li>pass</li>
+<li>review</li>
+<li>block</li>
         :type Suggestion: str
-        :param Label: Tags for the results of video politically sensitive information detection. The relationship between the `LabelSet` parameter in the content audit template [controlling tasks of video politically sensitive information detection](https://intl.cloud.tencent.com/document/api/266/31773?from_cn_redirect=1#PoliticalImgReviewTemplateInfo) and this parameter is as follows:
+        :param Label: Labels for the detected politically sensitive content. The relationship between the values of this parameter and those of the `LabelSet` parameter in [PoliticalImgReviewTemplateInfo](https://intl.cloud.tencent.com/document/api/266/31773?from_cn_redirect=1#PoliticalImgReviewTemplateInfo) is as follows:
 violation_photo:
-<li>violation_photo: violating photo.</li>
+<li>`violation_photo`: banned images</li>
 Other values (politician/entertainment/sport/entrepreneur/scholar/celebrity/military):
-<li>politician: political figure.</li>
+<li>`politician`: politically sensitive people</li>
         :type Label: str
-        :param SegmentSet: List of video segments that contain politically sensitive information
+        :param SegmentSet: List of video segments that contain detected politically sensitive content
 <font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.
         :type SegmentSet: list of MediaContentReviewPoliticalSegmentItem
-        :param SegmentSetFileUrl: URL to the file for video segments that contain politically sensitive information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.
+        :param SegmentSetFileUrl: URL to the file for video segments that contain detected politically sensitive content. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.
         :type SegmentSetFileUrl: str
-        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file for video segments that contain politically sensitive information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
+        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file for video segments that contain politically sensitive content, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
         :type SegmentSetFileUrlExpireTime: str
         """
         self.Confidence = None
@@ -2872,13 +2877,13 @@ Other values (politician/entertainment/sport/entrepreneur/scholar/celebrity/mili
 
 
 class AiReviewPornAsrTaskInput(AbstractModel):
-    """Input parameter type of ASR-based porn information detection in speech task in content audit
+    """Input parameters for ASR-based recognition of pornographic content
 
     """
 
     def __init__(self):
         r"""
-        :param Definition: Porn information detection template ID.
+        :param Definition: ID of the template for recognition of pornographic content
         :type Definition: int
         """
         self.Definition = None
@@ -2896,25 +2901,25 @@ class AiReviewPornAsrTaskInput(AbstractModel):
 
 
 class AiReviewPornAsrTaskOutput(AbstractModel):
-    """ASR-detected porn information in speech
+    """Output for ASR-based recognition of pornographic content
 
     """
 
     def __init__(self):
         r"""
-        :param Confidence: Score of ASR-detected porn information in speech between 0 and 100.
+        :param Confidence: Confidence score for the ASR-detected pornographic content
         :type Confidence: float
-        :param Suggestion: Suggestion for ASR-detected porn information in speech. Valid values:
-<li>pass.</li>
-<li>review.</li>
-<li>block.</li>
+        :param Suggestion: Processing suggestion for the ASR-detected pornographic content
+<li>pass</li>
+<li>review</li>
+<li>block</li>
         :type Suggestion: str
-        :param SegmentSet: List of video segments that contain ASR-detected porn information
+        :param SegmentSet: List of video segments that contain ASR-detected pornographic content
 <font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.
         :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
-        :param SegmentSetFileUrl: URL to the file for video segments that contain ASR-detected porn information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.
+        :param SegmentSetFileUrl: URL to the file for video segments that contain ASR-detected pornographic content. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.
         :type SegmentSetFileUrl: str
-        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file for video segments that contain ASR-detected porn information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
+        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file for video segments that contain ASR-detected pornographic content, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
         :type SegmentSetFileUrlExpireTime: str
         """
         self.Confidence = None
@@ -2945,13 +2950,13 @@ class AiReviewPornAsrTaskOutput(AbstractModel):
 
 
 class AiReviewPornOcrTaskInput(AbstractModel):
-    """Input parameter type of OCR-based porn information detection in text task in content audit
+    """Input parameters for OCR-based recognition of pornographic content
 
     """
 
     def __init__(self):
         r"""
-        :param Definition: Porn information detection template ID.
+        :param Definition: ID of the template for recognition of pornographic content
         :type Definition: int
         """
         self.Definition = None
@@ -2969,25 +2974,25 @@ class AiReviewPornOcrTaskInput(AbstractModel):
 
 
 class AiReviewPornOcrTaskOutput(AbstractModel):
-    """OCR-detected porn information in text
+    """Output for OCR-based recognition of pornographic content
 
     """
 
     def __init__(self):
         r"""
-        :param Confidence: Score of OCR-detected porn information in text between 0 and 100.
+        :param Confidence: Confidence score for the OCR-detected pornographic content
         :type Confidence: float
-        :param Suggestion: Suggestion for OCR-detected porn information in text. Valid values:
-<li>pass.</li>
-<li>review.</li>
-<li>block.</li>
+        :param Suggestion: Processing suggestion for the OCR-detected pornographic content
+<li>pass</li>
+<li>review</li>
+<li>block</li>
         :type Suggestion: str
-        :param SegmentSet: List of video segments that contain OCR-detected porn information
+        :param SegmentSet: List of video segments that contain OCR-detected pornographic content
 <font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.
         :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
-        :param SegmentSetFileUrl: URL to the file for video segments that contain OCR-detected porn information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.
+        :param SegmentSetFileUrl: URL to the file for video segments that contain OCR-detected pornographic content. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.
         :type SegmentSetFileUrl: str
-        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file for video segments that contain OCR-detected porn information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
+        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file for video segments that contain OCR-detected pornographic content, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
         :type SegmentSetFileUrlExpireTime: str
         """
         self.Confidence = None
@@ -3018,13 +3023,13 @@ class AiReviewPornOcrTaskOutput(AbstractModel):
 
 
 class AiReviewPornTaskInput(AbstractModel):
-    """Input parameter type of porn information detection task in content audit
+    """Input parameters for intelligent recognition of pornographic content
 
     """
 
     def __init__(self):
         r"""
-        :param Definition: Porn information detection template ID.
+        :param Definition: ID of the template for recognition of pornographic content
         :type Definition: int
         """
         self.Definition = None
@@ -3042,34 +3047,31 @@ class AiReviewPornTaskInput(AbstractModel):
 
 
 class AiReviewPornTaskOutput(AbstractModel):
-    """Result information of porn information detection
+    """Output for intelligent recognition of pornographic content
 
     """
 
     def __init__(self):
         r"""
-        :param Confidence: Score of detected porn information in video between 0 and 100.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Confidence: Confidence score for the detected pornographic content. Value range: 0-100
         :type Confidence: float
-        :param Suggestion: Suggestion for detected porn information. Valid values:
-<li>pass.</li>
-<li>review.</li>
-<li>block.</li>
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Suggestion: Processing suggestion for the detected pornographic content. Valid values:
+<li>pass</li>
+<li>review</li>
+<li>block</li>
         :type Suggestion: str
-        :param Label: Tag of detected porn information in video. Valid values:
-<li>porn: porn.</li>
-<li>sexy: sexiness.</li>
-<li>vulgar: vulgarity.</li>
-<li>intimacy: intimacy.</li>
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Label: Labels for the detected pornographic content. Valid values:
+<li>porn</li>
+<li>sexy</li>
+<li>vulgar</li>
+<li>intimacy</li>
         :type Label: str
-        :param SegmentSet: List of video segments that contain porn information
+        :param SegmentSet: List of video segments that contain detected pornographic content
 <font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.
         :type SegmentSet: list of MediaContentReviewSegmentItem
-        :param SegmentSetFileUrl: URL to the file for video segments that contain porn information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.
+        :param SegmentSetFileUrl: URL to the file for video segments that contain detected pornographic content. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.
         :type SegmentSetFileUrl: str
-        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file of for video segments that contain porn information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
+        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file for video segments that contain detected pornographic content, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
         :type SegmentSetFileUrlExpireTime: str
         """
         self.Confidence = None
@@ -3102,7 +3104,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class AiReviewProhibitedAsrTaskInput(AbstractModel):
-    """Input parameter type of ASR-based prohibited information detection in speech task in content audit
+    """Input parameters for ASR-based recognition of banned content
 
     """
 
@@ -3175,7 +3177,7 @@ class AiReviewProhibitedAsrTaskOutput(AbstractModel):
 
 
 class AiReviewProhibitedOcrTaskInput(AbstractModel):
-    """Input parameter type of OCR-based prohibited information detection in text task in content audit
+    """Input parameters for OCR-based recognition of banned content
 
     """
 
@@ -3248,7 +3250,7 @@ class AiReviewProhibitedOcrTaskOutput(AbstractModel):
 
 
 class AiReviewTaskPoliticalAsrResult(AbstractModel):
-    """Result type of ASR-based politically sensitive information detection in speech task in content audit
+    """Result for ASR-based recognition of politically sensitive content
 
     """
 
@@ -3263,9 +3265,9 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
         :param Message: Error message.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Message: str
-        :param Input: Input of ASR-based politically sensitive information detection in speech task in content audit.
+        :param Input: Input for ASR-based recognition of politically sensitive content
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalAsrTaskInput`
-        :param Output: Output of ASR-based politically sensitive information detection in speech task in content audit.
+        :param Output: Output for ASR-based recognition of politically sensitive content
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalAsrTaskOutput`
         """
         self.Status = None
@@ -3297,7 +3299,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class AiReviewTaskPoliticalOcrResult(AbstractModel):
-    """Result type of OCR-based politically sensitive information detection in text task in content audit
+    """Result for OCR-based recognition of politically sensitive content
 
     """
 
@@ -3312,10 +3314,10 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
         :param Message: Error message.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Message: str
-        :param Input: Input of OCR-based politically sensitive information detection in text task in content audit.
+        :param Input: Input for OCR-based recognition of politically sensitive content
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalOcrTaskInput`
-        :param Output: Output of OCR-based politically sensitive information detection in text task in content audit.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Output: Output for OCR-based recognition of politically sensitive content
+Note: This field may return `null`, indicating that no valid value can be found.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalOcrTaskOutput`
         """
         self.Status = None
@@ -3347,7 +3349,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class AiReviewTaskPoliticalResult(AbstractModel):
-    """Result type of politically sensitive information detection task in content audit
+    """Result for intelligent recognition of politically sensitive content
 
     """
 
@@ -3362,10 +3364,10 @@ class AiReviewTaskPoliticalResult(AbstractModel):
         :param Message: Error message.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Message: str
-        :param Input: Input of politically sensitive information detection task in content audit.
+        :param Input: Input for intelligent recognition of politically sensitive content
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalTaskInput`
-        :param Output: Output of politically sensitive information detection task in content audit.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Output: Output for intelligent recognition of politically sensitive content
+Note: This field may return `null`, indicating that no valid value can be found.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalTaskOutput`
         """
         self.Status = None
@@ -3397,7 +3399,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class AiReviewTaskPornAsrResult(AbstractModel):
-    """Result type of ASR-based porn information detection in speech task in content audit
+    """Result for ASR-based recognition of pornographic content
 
     """
 
@@ -3412,10 +3414,10 @@ class AiReviewTaskPornAsrResult(AbstractModel):
         :param Message: Error message.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Message: str
-        :param Input: Input of ASR-based porn information detection in speech task in content audit.
+        :param Input: Input for ASR-based recognition of pornographic content
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPornAsrTaskInput`
-        :param Output: Output of ASR-based porn information detection in speech task in content audit.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Output: Output for ASR-based recognition of pornographic content
+Note: This field may return `null`, indicating that no valid value can be found.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPornAsrTaskOutput`
         """
         self.Status = None
@@ -3447,7 +3449,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class AiReviewTaskPornOcrResult(AbstractModel):
-    """Result type of OCR-based porn information detection in text task in content audit
+    """Result for OCR-based recognition of pornographic content
 
     """
 
@@ -3462,10 +3464,10 @@ class AiReviewTaskPornOcrResult(AbstractModel):
         :param Message: Error message.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Message: str
-        :param Input: Input of OCR-based porn information detection in text task in content audit.
+        :param Input: Input for OCR-based recognition of pornographic content
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPornOcrTaskInput`
-        :param Output: Output of OCR-based porn information detection in text task in content audit.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Output: Output for OCR-based recognition of pornographic content
+Note: This field may return `null`, indicating that no valid value can be found.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPornOcrTaskOutput`
         """
         self.Status = None
@@ -3497,7 +3499,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class AiReviewTaskPornResult(AbstractModel):
-    """Result type of porn information detection task in content audit
+    """Result for intelligent recognition of pornographic content
 
     """
 
@@ -3512,10 +3514,10 @@ class AiReviewTaskPornResult(AbstractModel):
         :param Message: Error message.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Message: str
-        :param Input: Input of porn information detection task in content audit.
+        :param Input: Input for intelligent recognition of pornographic content
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPornTaskInput`
-        :param Output: Output of porn information detection task in content audit.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Output: Output for intelligent recognition of pornographic content
+Note: This field may return `null`, indicating that no valid value can be found.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPornTaskOutput`
         """
         self.Status = None
@@ -3547,7 +3549,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class AiReviewTaskProhibitedAsrResult(AbstractModel):
-    """Result type of ASR-based prohibited information detection in speech task in content audit
+    """Result for ASR-based recognition of banned content
 
     """
 
@@ -3561,10 +3563,10 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
-        :param Input: Input of ASR-based prohibited information detection in speech task in content audit
+        :param Input: Input for ASR-based recognition of banned content
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedAsrTaskInput`
-        :param Output: Output of ASR-based prohibited information detection in speech task in content audit
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Output: Output for ASR-based recognition of banned content
+Note: This field may return `null`, indicating that no valid value can be found.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedAsrTaskOutput`
         """
         self.Status = None
@@ -3596,7 +3598,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class AiReviewTaskProhibitedOcrResult(AbstractModel):
-    """Result type of OCR-based prohibited information detection in text task in content audit
+    """Result for OCR-based recognition of banned content
 
     """
 
@@ -3610,10 +3612,10 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
-        :param Input: Input of OCR-based prohibited information detection in text task in content audit
+        :param Input: Input for OCR-based recognition of banned content
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedOcrTaskInput`
-        :param Output: Output of OCR-based prohibited information detection in text task in content audit
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Output: Output for OCR-based recognition of banned content
+Note: This field may return `null`, indicating that no valid value can be found.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedOcrTaskOutput`
         """
         self.Status = None
@@ -3645,7 +3647,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class AiReviewTaskTerrorismOcrResult(AbstractModel):
-    """Result type of OCR-based terrorism information detection in text task in content audit
+    """Result for OCR-based recognition of terrorism content
 
     """
 
@@ -3659,10 +3661,10 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
-        :param Input: Input of OCR-based terrorism information detection in text task in content audit.
+        :param Input: Input for OCR-based recognition of terrorism content
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismOcrTaskInput`
-        :param Output: Output of OCR-based terrorism information detection in text task in content audit.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Output: Output for OCR-based recognition of terrorism content
+Note: This field may return `null`, indicating that no valid value can be found.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismOcrTaskOutput`
         """
         self.Status = None
@@ -3694,7 +3696,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class AiReviewTaskTerrorismResult(AbstractModel):
-    """Result type of terrorism information detection task in content audit
+    """Result for intelligent recognition of terrorism content
 
     """
 
@@ -3709,10 +3711,10 @@ class AiReviewTaskTerrorismResult(AbstractModel):
         :param Message: Error message.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Message: str
-        :param Input: Input of terrorism information detection task in content audit.
+        :param Input: Input for intelligent recognition of terrorism content
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismTaskInput`
-        :param Output: Output of terrorism information detection task in content audit.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Output: Output for intelligent recognition of terrorism content
+Note: This field may return `null`, indicating that no valid value can be found.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismTaskOutput`
         """
         self.Status = None
@@ -3744,13 +3746,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class AiReviewTerrorismOcrTaskInput(AbstractModel):
-    """Input parameter type of OCR-based terrorism information detection in text task in content audit
+    """Input parameters for OCR-based recognition of terrorism content
 
     """
 
     def __init__(self):
         r"""
-        :param Definition: Terrorism information detection template ID.
+        :param Definition: ID of the template for recognition of terrorism content
         :type Definition: int
         """
         self.Definition = None
@@ -3768,25 +3770,25 @@ class AiReviewTerrorismOcrTaskInput(AbstractModel):
 
 
 class AiReviewTerrorismOcrTaskOutput(AbstractModel):
-    """OCR-detected terrorism information in text
+    """Output for OCR-based recognition of terrorism content
 
     """
 
     def __init__(self):
         r"""
-        :param Confidence: Score of OCR-detected terrorism information in text between 0 and 100.
+        :param Confidence: Confidence score for the OCR-detected terrorism content. Value range: 0-100
         :type Confidence: float
-        :param Suggestion: Suggestion for OCR-detected terrorism information in text. Valid values:
-<li>pass.</li>
-<li>review.</li>
-<li>block.</li>
+        :param Suggestion: Processing suggestion for the OCR-detected terrorism content
+<li>pass</li>
+<li>review</li>
+<li>block</li>
         :type Suggestion: str
-        :param SegmentSet: List of video segments that contain OCR-detected terrorism information
+        :param SegmentSet: List of video segments that contain OCR-detected terrorism content
 <font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.
         :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
-        :param SegmentSetFileUrl: URL to the file for video segments that contain OCR-detected terrorism information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.
+        :param SegmentSetFileUrl: URL to the file for video segments that contain OCR-detected terrorism content. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.
         :type SegmentSetFileUrl: str
-        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file for video segments that contain OCR-detected terrorism information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
+        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file for video segments that contain OCR-detected terrorism content, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)
         :type SegmentSetFileUrlExpireTime: str
         """
         self.Confidence = None
@@ -3817,13 +3819,13 @@ class AiReviewTerrorismOcrTaskOutput(AbstractModel):
 
 
 class AiReviewTerrorismTaskInput(AbstractModel):
-    """Input parameter type of terrorism information detection task in content audit
+    """Input parameters for intelligent recognition of terrorism content
 
     """
 
     def __init__(self):
         r"""
-        :param Definition: Terrorism information detection template ID.
+        :param Definition: ID of the template for recognition of terrorism content
         :type Definition: int
         """
         self.Definition = None
@@ -5509,38 +5511,38 @@ class ConfirmEventsResponse(AbstractModel):
 
 
 class ContentReviewTemplateItem(AbstractModel):
-    """Content audit template details
+    """Intelligent recognition template details
 
     """
 
     def __init__(self):
         r"""
-        :param Definition: Unique ID of content audit template.
+        :param Definition: Unique ID of an intelligent recognition template
         :type Definition: int
-        :param Name: Content audit template name. Length limit: 64 characters.
+        :param Name: Name of an intelligent recognition template. Max 64 characters
         :type Name: str
-        :param Comment: Content audit template description. Length limit: 256 characters.
+        :param Comment: Description of an intelligent recognition template. Max 256 characters
         :type Comment: str
-        :param PornConfigure: Porn information detection control parameter.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param PornConfigure: Parameters for recognition of pornographic content
+Note: This field may return `null`, indicating that no valid value can be found.
         :type PornConfigure: :class:`tencentcloud.vod.v20180717.models.PornConfigureInfo`
-        :param TerrorismConfigure: Terrorism information detection control parameter.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param TerrorismConfigure: Parameters for recognition of terrorism content
+Note: This field may return `null`, indicating that no valid value can be found.
         :type TerrorismConfigure: :class:`tencentcloud.vod.v20180717.models.TerrorismConfigureInfo`
-        :param PoliticalConfigure: Politically sensitive information detection control parameter.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param PoliticalConfigure: Parameters for recognition of politically sensitive content
+Note: This field may return `null`, indicating that no valid value can be found.
         :type PoliticalConfigure: :class:`tencentcloud.vod.v20180717.models.PoliticalConfigureInfo`
         :param ProhibitedConfigure: Control parameter of prohibited information detection. Prohibited information includes:
 <li>Abusive;</li>
 <li>Drug-related.</li>
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProhibitedConfigure: :class:`tencentcloud.vod.v20180717.models.ProhibitedConfigureInfo`
-        :param UserDefineConfigure: Custom content audit control parameter.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param UserDefineConfigure: Custom recognition parameters
+Note: This field may return `null`, indicating that no valid value can be found.
         :type UserDefineConfigure: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfo`
-        :param ReviewWallSwitch: Switch controlling whether to add audit result to review list (for human review).
-<li>ON: yes;</li>
-<li>OFF: no.</li>
+        :param ReviewWallSwitch: Whether to subject the recognition result to human review
+<li>ON</li>
+<li>OFF</li>
         :type ReviewWallSwitch: str
         :param ScreenshotInterval: Frame capturing interval in seconds. If this parameter is left empty, 1 second will be used by default. Minimum value: 0.5 seconds.
         :type ScreenshotInterval: float
@@ -6492,7 +6494,7 @@ class CreateProcedureTemplateRequest(AbstractModel):
         :type Comment: str
         :param MediaProcessTask: Parameter of video processing task.
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
-        :param AiContentReviewTask: Parameter of AI-based content audit task.
+        :param AiContentReviewTask: Intelligent recognition task
         :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
         :param AiAnalysisTask: Parameter of AI-based content analysis task.
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
@@ -8891,13 +8893,14 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: End date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). The end date must be on or after the start date.
         :type EndTime: str
-        :param Type: This API is used to query video processing task types. Valid values:
-<li>Transcoding: basic transcoding</li>
-<li>Transcoding-TESHD: TESHD transcoding</li>
-<li>Editing: video editing</li>
-<li>AdaptiveBitrateStreaming: adaptive bitrate streaming</li>
-<li>ContentAudit: content moderation</li>
-<li>Transcode: transcoding types, including basic transcoding, TESHD transcoding and video editing. This value is not recommended.</li>
+        :param Type: Type of media processing task. Valid values:
+<li>`Transcoding`: basic transcoding</li>
+<li>`Transcoding-TESHD`: TESHD transcoding</li>
+<li>`Editing`: video editing</li>
+<li>`AdaptiveBitrateStreaming`: adaptive bitrate streaming</li>
+<li>`ContentAudit`: content moderation</li>
+<li>`RemoveWatermark`: watermark removal</li>
+<li>`Transcode`: transcoding, including basic transcoding, TESHD transcoding, and video editing. This value is not recommended.</li>
         :type Type: str
         :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
@@ -10955,10 +10958,10 @@ class FaceConfigureInfo(AbstractModel):
         :type Switch: str
         :param Score: Face recognition filter score. If this score is reached or exceeded, a recognition result will be returned. Value range: 0–100. Default value: 95.
         :type Score: float
-        :param DefaultLibraryLabelSet: Default figure filter tag, which specifies the default figure tag that needs to be returned. If this parameter is left empty or a blank value is entered, all results of the default figures will be returned. Valid values:
-<li>entertainment: entertainment celebrity;</li>
-<li>sport: sports celebrity;</li>
-<li>politician: politically sensitive figure.</li>
+        :param DefaultLibraryLabelSet: Default face filter labels, which specify the types of faces to return. If this parameter is left empty, the recognition results for all labels are returned. Valid values:
+<li>`entertainment`: people in the entertainment industry</li>
+<li>`sport`: sports celebrities</li>
+<li>`politician`: politically sensitive people</li>
         :type DefaultLibraryLabelSet: list of str
         :param UserDefineLibraryLabelSet: Custom face labels for filtering. After you specify a label, callbacks of face images without this label will be returned. If this parameter is not specified or left empty, callbacks of all face images will be returned.
 You can specify up to 100 labels, with each containing up to 16 characters.
@@ -11005,10 +11008,10 @@ class FaceConfigureInfoForUpdate(AbstractModel):
         :type Switch: str
         :param Score: Face recognition filter score. If this score is reached or exceeded, a recognition result will be returned. Value range: 0–100.
         :type Score: float
-        :param DefaultLibraryLabelSet: Default figure filter tag, which specifies the default figure tag that needs to be returned. If this parameter is left empty or a blank value is entered, all results of the default figures will be returned. Valid values:
-<li>entertainment: entertainment celebrity;</li>
-<li>sport: sports celebrity;</li>
-<li>politician: politically sensitive figure.</li>
+        :param DefaultLibraryLabelSet: Default face filter labels, which specify the types of faces to return. If this parameter is left empty or an empty value is entered, the recognition results for all labels are returned. Valid values:
+<li>`entertainment`: people in the entertainment industry</li>
+<li>`sport`: sports celebrities</li>
+<li>`politician`: politically sensitive people</li>
         :type DefaultLibraryLabelSet: list of str
         :param UserDefineLibraryLabelSet: Custom face labels for filtering. After you specify a label, callbacks of face images without this label will be returned. If this parameter is not specified or left empty, callbacks of all face images will be returned.
 You can specify up to 100 labels, with each containing up to 16 characters.
@@ -12336,7 +12339,7 @@ class MediaClassInfo(AbstractModel):
 
 
 class MediaContentReviewAsrTextSegmentItem(AbstractModel):
-    """Suspected segment identified during ASR-based speech audit in content audit
+    """Video segment containing ASR-detected suspicious content
 
     """
 
@@ -12351,11 +12354,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Confidence: Confidence of suspected segment.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Confidence: float
-        :param Suggestion: Suggestion for suspected segment audit. Valid values:
-<li>pass.</li>
-<li>review.</li>
-<li>block.</li>
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Suggestion: Processing suggestion for the detected suspicious content. Valid values:
+<li>pass</li>
+<li>review</li>
+<li>block</li>
         :type Suggestion: str
         :param KeywordSet: List of suspected keywords.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -12384,7 +12386,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class MediaContentReviewOcrTextSegmentItem(AbstractModel):
-    """Suspected segment identified during OCR-based text audit in content audit
+    """Video segment containing OCR-detected suspicious content
 
     """
 
@@ -12399,11 +12401,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Confidence: Confidence of suspected segment.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Confidence: float
-        :param Suggestion: Suggestion for suspected segment audit. Valid values:
-<li>pass.</li>
-<li>review.</li>
-<li>block.</li>
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Suggestion: Processing suggestion for the detected suspicious content. Valid values:
+<li>pass</li>
+<li>review</li>
+<li>block</li>
         :type Suggestion: str
         :param KeywordSet: List of suspected keywords.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -12446,7 +12447,7 @@ and will be deleted after `PicUrlExpireTime`).
 
 
 class MediaContentReviewPoliticalSegmentItem(AbstractModel):
-    """Suspected politically sensitive segment identified in content audit
+    """Video segment containing detected politically sensitive content
 
     """
 
@@ -12456,44 +12457,44 @@ class MediaContentReviewPoliticalSegmentItem(AbstractModel):
         :type StartTimeOffset: float
         :param EndTimeOffset: End time offset of a suspected segment in seconds.
         :type EndTimeOffset: float
-        :param Confidence: Score of a suspected politically sensitive segment.
+        :param Confidence: Confidence score for the detected politically sensitive content
         :type Confidence: float
-        :param Suggestion: Suggestion for politically sensitive information detection of a suspected segment. Valid values:
-<li>pass.</li>
-<li>review.</li>
-<li>block.</li>
+        :param Suggestion: Processing suggestion for the detected politically sensitive content. Valid values:
+<li>pass</li>
+<li>review</li>
+<li>block</li>
         :type Suggestion: str
-        :param Name: Name of a politically sensitive figure or violating photo.
+        :param Name: Name of the politically sensitive content or banned images
         :type Name: str
-        :param Label: Tags for the results of politically sensitive information detection of suspected video segments. The relationship between the `LabelSet` parameter in the content audit template [controlling tasks of video politically sensitive information detection](https://intl.cloud.tencent.com/document/api/266/31773?from_cn_redirect=1#PoliticalImgReviewTemplateInfo) and this parameter is as follows:
+        :param Label: Labels for the detected politically sensitive content. The relationship between the values of this parameter and those of the `LabelSet` parameter in [PoliticalImgReviewTemplateInfo](https://intl.cloud.tencent.com/document/api/266/31773?from_cn_redirect=1#PoliticalImgReviewTemplateInfo) is as follows:
 violation_photo:
-<li>violation_photo: violating photo.</li>
+<li>`violation_photo`: banned images</li>
 politician:
-<li>nation_politician: head of state/government;</li>
-<li>province_politician: province/state leader;</li>
-<li>bureau_politician: ministry leader;</li>
-<li>county_politician: county/city leader;</li>
-<li>rural_politician: town leader;</li>
-<li>sensitive_politician: politically sensitive figure;</li>
-<li>foreign_politician: head of a foreign country/government.</li>
+<li>`nation_politician`: state leader of China</li>
+<li>`province_politician`: provincial officials</li>
+<li>`bureau_politician`: bureau-level officials</li>
+<li>`county_politician`: county-level officials</li>
+<li>`rural_politician`: township-level officials</li>
+<li>`sensitive_politician`: politically sensitive people</li>
+<li>`foreign_politician`: state leaders of other countries</li>
 entertainment:
-<li>sensitive_entertainment: sensitive entertainment celebrity.</li>
+<li>`sensitive_entertainment`: banned people in the entertainment industry</li>
 sport:
-<li>sensitive_sport: sensitive sports figure.</li>
+<li>`sensitive_sport`: banned sports celebrities</li>
 entrepreneur:
-<li>sensitive_entrepreneur: sensitive business figure.</li>
+<li>`sensitive_entrepreneur`: banned businesspeople</li>
 scholar:
-<li>sensitive_scholar: sensitive educator.</li>
+<li>sensitive_scholar: banned scholars</li>
 celebrity:
-<li>sensitive_celebrity: sensitive well-known figure;</li>
-<li>historical_celebrity: well-known historical figures.</li>
+<li>sensitive_celebrity: banned celebrities</li>
+<li>historical_celebrity: banned historical figures</li>
 military:
-<li>sensitive_military: militarily sensitive figure.</li>
+<li>sensitive_military: banned people in military</li>
         :type Label: str
         :param Url: URL of a suspected image (which will not be permanently stored
  and will be deleted after `PicUrlExpireTime`).
         :type Url: str
-        :param AreaCoordSet: Zone coordinates (at the pixel level) of a politically sensitive figure or violating photo: [x1, y1, x2, y2], i.e., the coordinates of the top-left and bottom-right corners.
+        :param AreaCoordSet: Coordinates (pixel) of the detected politically sensitive content or banned icons. The format is [x1, y1, x2, y2], which indicates the coordinates of the top-left and bottom-right corners.
         :type AreaCoordSet: list of int
         :param PicUrlExpireTimeStamp: This field has been disused. Please use `PicUrlExpireTime`.
         :type PicUrlExpireTimeStamp: int
@@ -12533,7 +12534,7 @@ military:
 
 
 class MediaContentReviewSegmentItem(AbstractModel):
-    """Suspected porn/terrorism segment identified in content audit
+    """Video segment containing detected pornographic or terrorism content
 
     """
 
@@ -12543,14 +12544,14 @@ class MediaContentReviewSegmentItem(AbstractModel):
         :type StartTimeOffset: float
         :param EndTimeOffset: End time offset of a suspected segment in seconds.
         :type EndTimeOffset: float
-        :param Confidence: Score of a suspected porn segment.
+        :param Confidence: Confidence score for the detected pornographic content
         :type Confidence: float
-        :param Label: Tag of porn information detection result of a suspected segment.
+        :param Label: Label for the detected pornographic content
         :type Label: str
-        :param Suggestion: Suggestion for porn information detection of a suspected segment. Valid values:
-<li>pass.</li>
-<li>review.</li>
-<li>block.</li>
+        :param Suggestion: Processing suggestion for the detected pornographic content. Valid values:
+<li>pass</li>
+<li>review</li>
+<li>block</li>
         :type Suggestion: str
         :param Url: URL of a suspected image (which will not be permanently stored
  and will be deleted after `PicUrlExpireTime`).
@@ -12977,7 +12978,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class MediaMiniProgramReviewElem(AbstractModel):
-    """Summary metadata of WeChat Mini Program audit.
+    """
 
     """
 
@@ -13019,7 +13020,7 @@ class MediaMiniProgramReviewElem(AbstractModel):
 
 
 class MediaMiniProgramReviewInfo(AbstractModel):
-    """WeChat Mini Program audit information
+    """
 
     """
 
@@ -13048,7 +13049,7 @@ class MediaMiniProgramReviewInfo(AbstractModel):
 
 
 class MediaMiniProgramReviewInfoItem(AbstractModel):
-    """WeChat Mini Program audit information unit
+    """
 
     """
 
@@ -16339,30 +16340,30 @@ class PlayerConfig(AbstractModel):
 
 
 class PoliticalAsrReviewTemplateInfo(AbstractModel):
-    """Control parameter of politically sensitive information detection in speech task
+    """Parameters for ASR-based recognition of politically sensitive content
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of politically sensitive information detection in speech task. Valid values:
-<li>ON: enables politically sensitive information detection in speech task;</li>
-<li>OFF: disables politically sensitive information detection in speech task.</li>
+        :param Switch: Whether to enable ASR-based recognition of politically sensitive content. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
-        :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :param ReviewConfidence: Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `75` will be used by default. Value range: 0-100
         :type ReviewConfidence: int
+        :param BlockConfidence: Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `100` will be used by default. Value range: 0-100
+        :type BlockConfidence: int
         """
         self.Switch = None
-        self.BlockConfidence = None
         self.ReviewConfidence = None
+        self.BlockConfidence = None
 
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
-        self.BlockConfidence = params.get("BlockConfidence")
         self.ReviewConfidence = params.get("ReviewConfidence")
+        self.BlockConfidence = params.get("BlockConfidence")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16373,19 +16374,19 @@ class PoliticalAsrReviewTemplateInfo(AbstractModel):
 
 
 class PoliticalAsrReviewTemplateInfoForUpdate(AbstractModel):
-    """Control parameter of politically sensitive information detection in speech task.
+    """Parameters for ASR-based recognition of politically sensitive content
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of politically sensitive information detection in speech task. Valid values:
-<li>ON: enables politically sensitive information detection in speech task;</li>
-<li>OFF: disables politically sensitive information detection in speech task.</li>
+        :param Switch: Whether to enable ASR-based recognition of politically sensitive content. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :param BlockConfidence: Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. Value range: 0-100
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
+        :param ReviewConfidence: Confidence score threshold for human review. If this threshold is reached, human review is needed. Value range: 0-100
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -16407,20 +16408,20 @@ class PoliticalAsrReviewTemplateInfoForUpdate(AbstractModel):
 
 
 class PoliticalConfigureInfo(AbstractModel):
-    """Control parameter of politically sensitive information detection task
+    """Parameters for recognition of politically sensitive content
 
     """
 
     def __init__(self):
         r"""
-        :param ImgReviewInfo: Control parameter of politically sensitive information detection in video image.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ImgReviewInfo: Parameters for recognition of politically sensitive content in images
+Note: This field may return `null`, indicating that no valid value can be found.
         :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalImgReviewTemplateInfo`
-        :param AsrReviewInfo: Control parameter of politically sensitive information detection in speech.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param AsrReviewInfo: Parameters for ASR-based recognition of politically sensitive content
+Note: This field may return `null`, indicating that no valid value can be found.
         :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalAsrReviewTemplateInfo`
-        :param OcrReviewInfo: Control parameter of politically sensitive information detection in text.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param OcrReviewInfo: Parameters for OCR-based recognition of politically sensitive content
+Note: This field may return `null`, indicating that no valid value can be found.
         :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalOcrReviewTemplateInfo`
         """
         self.ImgReviewInfo = None
@@ -16448,17 +16449,17 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class PoliticalConfigureInfoForUpdate(AbstractModel):
-    """Control parameter of politically sensitive information detection task.
+    """Parameters for recognition of politically sensitive content
 
     """
 
     def __init__(self):
         r"""
-        :param ImgReviewInfo: Control parameter of politically sensitive information detection in video image.
+        :param ImgReviewInfo: Parameters for recognition of politically sensitive content in images
         :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalImgReviewTemplateInfoForUpdate`
-        :param AsrReviewInfo: Control parameter of politically sensitive information detection in speech.
+        :param AsrReviewInfo: Parameters for ASR-based recognition of politically sensitive content
         :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalAsrReviewTemplateInfoForUpdate`
-        :param OcrReviewInfo: Control parameter of politically sensitive information detection in text.
+        :param OcrReviewInfo: Parameters for OCR-based recognition of politically sensitive content
         :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalOcrReviewTemplateInfoForUpdate`
         """
         self.ImgReviewInfo = None
@@ -16486,29 +16487,29 @@ class PoliticalConfigureInfoForUpdate(AbstractModel):
 
 
 class PoliticalImgReviewTemplateInfo(AbstractModel):
-    """Control parameter of politically sensitive information detection in video image task
+    """Parameters for recognition of politically sensitive content in images
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of politically sensitive information detection in video image task. Valid values:
-<li>ON: enables politically sensitive information detection in video image task;</li>
-<li>OFF: disables politically sensitive information detection in video image task.</li>
+        :param Switch: Whether to enable recognition of politically sensitive content in images. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
-        :param LabelSet: Filter tags for politically sensitive information detection of video images. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
-<li>violation_photo: violating photo;</li>
-<li>politician: political figure;</li>
-<li>entertainment: entertainment celebrity;</li>
-<li>sport: sports figure;</li>
-<li>entrepreneur: business figure;</li>
-<li>scholar: educator;</li>
-<li>celebrity: well-known figure;</li>
-<li>military: military figure.</li>
+        :param LabelSet: Filter labels for recognition of politically sensitive content in images. Results containing the specified labels are returned. If no labels are specified, all results are returned. Valid values:
+<li>`violation_photo`: banned images</li>
+<li>`politician`: politically sensitive people</li>
+<li>`entertainment`: people in the entertainment industry</li>
+<li>`sport`: sportspeople</li>
+<li>`entrepreneur`: businesspeople</li>
+<li>`scholar`: scholars</li>
+<li>`celebrity`: celebrities</li>
+<li>`military`: people in military</li>
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 97 will be used by default. Value range: 0-100.
+        :param BlockConfidence: Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `97` will be used by default. Value range: 0-100
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 95 will be used by default. Value range: 0-100.
+        :param ReviewConfidence: Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `95` will be used by default. Value range: 0-100
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -16532,29 +16533,29 @@ class PoliticalImgReviewTemplateInfo(AbstractModel):
 
 
 class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
-    """Control parameter of politically sensitive information detection in video image task.
+    """Parameters for recognition of politically sensitive content in images
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of politically sensitive information detection in video image task. Valid values:
-<li>ON: enables politically sensitive information detection in video image task;</li>
-<li>OFF: disables politically sensitive information detection in video image task.</li>
+        :param Switch: Whether to enable recognition of politically sensitive content in images. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
-        :param LabelSet: Filter tags for politically sensitive information detection of video images. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
-<li>violation_photo: violating photo;</li>
-<li>politician: political figure;</li>
-<li>entertainment: entertainment celebrity;</li>
-<li>sport: sports figure;</li>
-<li>entrepreneur: business figure;</li>
-<li>scholar: educator;</li>
-<li>celebrity: well-known figure;</li>
-<li>military: military figure.</li>
+        :param LabelSet: Filter labels for recognition of politically sensitive content in images. Results containing the specified labels are returned. If no labels are specified, all results are returned. Valid values:
+<li>`violation_photo`: banned images</li>
+<li>`politician`: politically sensitive people</li>
+<li>`entertainment`: people in the entertainment industry</li>
+<li>`sport`: sportspeople</li>
+<li>`entrepreneur`: businesspeople</li>
+<li>`scholar`: scholars</li>
+<li>`celebrity`: celebrities</li>
+<li>`military`: people in military</li>
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :param BlockConfidence: Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. Value range: 0-100
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
+        :param ReviewConfidence: Confidence score threshold for human review. If this threshold is reached, human review is needed. Value range: 0-100
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -16578,19 +16579,19 @@ class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
 
 
 class PoliticalOcrReviewTemplateInfo(AbstractModel):
-    """Control parameter of politically sensitive information detection in text task
+    """Parameters for OCR-based recognition of politically sensitive content
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of politically sensitive information detection in text task. Valid values:
-<li>ON: enables politically sensitive information detection in text task;</li>
-<li>OFF: disables politically sensitive information detection in text task.</li>
+        :param Switch: Whether to enable OCR-based recognition of politically sensitive content. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
+        :param BlockConfidence: Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `100` will be used by default. Value range: 0-100
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :param ReviewConfidence: Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `75` will be used by default. Value range: 0-100
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -16612,19 +16613,19 @@ class PoliticalOcrReviewTemplateInfo(AbstractModel):
 
 
 class PoliticalOcrReviewTemplateInfoForUpdate(AbstractModel):
-    """Control parameter of politically sensitive information detection in text task.
+    """Parameters for OCR-based recognition of politically sensitive content
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of politically sensitive information detection in text task. Valid values:
-<li>ON: enables politically sensitive information detection in text task;</li>
-<li>OFF: disables politically sensitive information detection in text task.</li>
+        :param Switch: Whether to enable OCR-based recognition of politically sensitive content. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :param BlockConfidence: Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. Value range: 0-100
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
+        :param ReviewConfidence: Confidence score threshold for human review. If this threshold is reached, human review is needed. Value range: 0-100
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -16646,19 +16647,19 @@ class PoliticalOcrReviewTemplateInfoForUpdate(AbstractModel):
 
 
 class PornAsrReviewTemplateInfo(AbstractModel):
-    """Control parameter of porn information detection in speech task
+    """Parameters for ASR-based recognition of pornographic content
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of porn information detection in speech task. Valid values:
-<li>ON: enables porn information detection in speech task;</li>
-<li>OFF: disables porn information detection in speech task.</li>
+        :param Switch: Whether to enable ASR-based recognition of pornographic content. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
+        :param BlockConfidence: Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `100` will be used by default. Value range: 0-100
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :param ReviewConfidence: Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `75` will be used by default. Value range: 0-100
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -16680,19 +16681,19 @@ class PornAsrReviewTemplateInfo(AbstractModel):
 
 
 class PornAsrReviewTemplateInfoForUpdate(AbstractModel):
-    """Control parameter of porn detection in speech task.
+    """Parameters for ASR-based recognition of pornographic content
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of porn detection in speech task. Valid values:
-<li>ON: enables porn detection in speech task;</li>
-<li>OFF: disables porn detection in speech task.</li>
+        :param Switch: Whether to enable ASR-based recognition of pornographic content. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :param BlockConfidence: Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. Value range: 0-100
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
+        :param ReviewConfidence: Confidence score threshold for human review. If this threshold is reached, human review is needed. Value range: 0-100
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -16714,20 +16715,20 @@ class PornAsrReviewTemplateInfoForUpdate(AbstractModel):
 
 
 class PornConfigureInfo(AbstractModel):
-    """Control parameter of porn information detection task
+    """Parameters for recognition of pornographic content
 
     """
 
     def __init__(self):
         r"""
-        :param ImgReviewInfo: Control parameter of porn information detection in video image.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ImgReviewInfo: Parameters for recognition of pornographic content in images
+Note: This field may return `null`, indicating that no valid value can be found.
         :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornImgReviewTemplateInfo`
-        :param AsrReviewInfo: Control parameter of porn information detection in speech.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param AsrReviewInfo: Parameters for ASR-based recognition of pornographic content
+Note: This field may return `null`, indicating that no valid value can be found.
         :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornAsrReviewTemplateInfo`
-        :param OcrReviewInfo: Control parameter of porn information detection in text.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param OcrReviewInfo: Parameters for OCR-based recognition of pornographic content
+Note: This field may return `null`, indicating that no valid value can be found.
         :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornOcrReviewTemplateInfo`
         """
         self.ImgReviewInfo = None
@@ -16755,17 +16756,17 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class PornConfigureInfoForUpdate(AbstractModel):
-    """Control parameter of porn detection task.
+    """Parameters for recognition of pornographic content
 
     """
 
     def __init__(self):
         r"""
-        :param ImgReviewInfo: Control parameter of porn detection in video image.
+        :param ImgReviewInfo: Parameters for recognition of pornographic content in images
         :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornImgReviewTemplateInfoForUpdate`
-        :param AsrReviewInfo: Control parameter of porn detection in speech.
+        :param AsrReviewInfo: Parameters for ASR-based recognition of pornographic content
         :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornAsrReviewTemplateInfoForUpdate`
-        :param OcrReviewInfo: Control parameter of porn detection in text.
+        :param OcrReviewInfo: Parameters for OCR-based recognition of pornographic content
         :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornOcrReviewTemplateInfoForUpdate`
         """
         self.ImgReviewInfo = None
@@ -16793,25 +16794,25 @@ class PornConfigureInfoForUpdate(AbstractModel):
 
 
 class PornImgReviewTemplateInfo(AbstractModel):
-    """Control parameter of porn information detection in video image task
+    """Parameters for recognition of pornographic content in images
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of porn information detection in video image task. Valid values:
-<li>ON: enables porn information detection in video image task;</li>
-<li>OFF: disables porn information detection in video image task.</li>
+        :param Switch: Whether to enable recognition of pornographic content in images. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
-        :param LabelSet: Filter tag for porn information detection in video image. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
-<li>porn: porn;</li>
-<li>vulgar: vulgarity;</li>
-<li>intimacy: intimacy;</li>
-<li>sexy: sexiness.</li>
+        :param LabelSet: Filter labels for recognition of pornographic content in images. Results containing the specified labels are returned. If no labels are specified, all results are returned. Valid values:
+<li>porn</li>
+<li>vulgar</li>
+<li>intimacy</li>
+<li>sexy</li>
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 90 will be used by default. Value range: 0-100.
+        :param BlockConfidence: Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `90` will be used by default. Value range: 0-100
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 0 will be used by default. Value range: 0-100.
+        :param ReviewConfidence: Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `0` will be used by default. Value range: 0-100
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -16835,25 +16836,25 @@ class PornImgReviewTemplateInfo(AbstractModel):
 
 
 class PornImgReviewTemplateInfoForUpdate(AbstractModel):
-    """Control parameter of porn detection in video image task.
+    """Parameters for recognition of pornographic content in images
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of porn detection in video image task. Valid values:
-<li>ON: enables porn detection in video image task;</li>
-<li>OFF: disables porn detection in video image task.</li>
+        :param Switch: Whether to enable recognition of pornographic content in images. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
-        :param LabelSet: Filter tag for porn detection in video image. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
-<li>porn: porn;</li>
-<li>vulgar: vulgarity;</li>
-<li>intimacy: intimacy;</li>
-<li>sexy: sexiness.</li>
+        :param LabelSet: Filter labels for recognition of pornographic content in images. Results containing the specified labels are returned. If no labels are specified, all results are returned. Valid values:
+<li>porn</li>
+<li>vulgar</li>
+<li>intimacy</li>
+<li>sexy</li>
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :param BlockConfidence: Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. Value range: 0-100
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
+        :param ReviewConfidence: Confidence score threshold for human review. If this threshold is reached, human review is needed. Value range: 0-100
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -16877,19 +16878,19 @@ class PornImgReviewTemplateInfoForUpdate(AbstractModel):
 
 
 class PornOcrReviewTemplateInfo(AbstractModel):
-    """Control parameter of porn information detection in text task
+    """Parameters for OCR-based recognition of pornographic content
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of porn information detection in text task. Valid values:
-<li>ON: enables porn information detection in text task;</li>
-<li>OFF: disables porn information detection in text task.</li>
+        :param Switch: Whether to enable OCR-based recognition of pornographic content. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
+        :param BlockConfidence: Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `100` will be used by default. Value range: 0-100
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :param ReviewConfidence: Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `75` will be used by default. Value range: 0-100
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -16911,15 +16912,15 @@ class PornOcrReviewTemplateInfo(AbstractModel):
 
 
 class PornOcrReviewTemplateInfoForUpdate(AbstractModel):
-    """Control parameter of porn detection in text task.
+    """Parameters for OCR-based recognition of pornographic content
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of porn detection in text task. Valid values:
-<li>ON: enables porn detection in text task;</li>
-<li>OFF: disables porn detection in text task.</li>
+        :param Switch: Whether to enable OCR-based recognition of pornographic content. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
         :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
         :type BlockConfidence: int
@@ -16982,8 +16983,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param MediaProcessResultSet: Execution status and result of video processing task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MediaProcessResultSet: list of MediaProcessTaskResult
-        :param AiContentReviewResultSet: Execution status and result of video content audit task.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param AiContentReviewResultSet: Status and result of an intelligent recognition task
         :type AiContentReviewResultSet: list of AiContentReviewResult
         :param AiAnalysisResultSet: Execution status and result of video content analysis task.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -17091,8 +17091,8 @@ class ProcedureTemplate(AbstractModel):
         :param MediaProcessTask: Parameter of video processing task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
-        :param AiContentReviewTask: Parameter of AI-based content audit task.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param AiContentReviewTask: Intelligent recognition task
+Note: This field may return `null`, indicating that no valid value can be found.
         :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
         :param AiAnalysisTask: Parameter of AI-based content analysis task.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -17325,7 +17325,7 @@ class ProcessMediaRequest(AbstractModel):
         :type FileId: str
         :param MediaProcessTask: Parameter of video processing task.
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
-        :param AiContentReviewTask: Type parameter of video content audit task.
+        :param AiContentReviewTask: Parameters for intelligent recognition
         :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
         :param AiAnalysisTask: Video content analysis task parameter.
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
@@ -17418,9 +17418,9 @@ class ProhibitedAsrReviewTemplateInfo(AbstractModel):
 <li>ON: enables prohibited information detection in speech task;</li>
 <li>OFF: disables prohibited information detection in speech task.</li>
         :type Switch: str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
+        :param BlockConfidence: Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `100` will be used by default. Value range: 0-100
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :param ReviewConfidence: Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `75` will be used by default. Value range: 0-100
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -17452,9 +17452,9 @@ class ProhibitedAsrReviewTemplateInfoForUpdate(AbstractModel):
 <li>ON: enables prohibited information detection in speech task;</li>
 <li>OFF: disables prohibited information detection in speech task.</li>
         :type Switch: str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
+        :param BlockConfidence: Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `100` will be used by default. Value range: 0-100
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
+        :param ReviewConfidence: Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `75` will be used by default. Value range: 0-100
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -17552,9 +17552,9 @@ class ProhibitedOcrReviewTemplateInfo(AbstractModel):
 <li>ON: enables prohibited information detection in text task;</li>
 <li>OFF: disables prohibited information detection in text task.</li>
         :type Switch: str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
+        :param BlockConfidence: Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `100` will be used by default. Value range: 0-100
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :param ReviewConfidence: Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `75` will be used by default. Value range: 0-100
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -17586,9 +17586,9 @@ class ProhibitedOcrReviewTemplateInfoForUpdate(AbstractModel):
 <li>ON: enables prohibited information detection in text task;</li>
 <li>OFF: disables prohibited information detection in text task.</li>
         :type Switch: str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
+        :param BlockConfidence: Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `100` will be used by default. Value range: 0-100
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
+        :param ReviewConfidence: Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `75` will be used by default. Value range: 0-100
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -19525,51 +19525,59 @@ class TaskStatData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskType: Task type.
-<li>Transcoding: basic transcoding</li>
-<li>Transcoding-TESHD: TESHD transcoding</li>
-<li>Editing: video editing</li>
-<li>AdaptiveBitrateStreaming: adaptive bitrate streaming</li>
-<li>ContentAudit: content moderation</li>
-<li>Transcode: transcoding types, including basic transcoding, TESHD transcoding and video editing. This value is not recommended.</li>
+        :param TaskType: Task type
+<li>`Transcoding`: basic transcoding</li>
+<li>`Transcoding-TESHD`: TESHD transcoding</li>
+<li>`Editing`: video editing</li>
+<li>`AdaptiveBitrateStreaming`: adaptive bitrate streaming</li>
+<li>`ContentAudit`: content moderation</li>
+<li>`RemoveWatermark`: watermark removal</li>
+<li>`Transcode`: transcoding, including basic transcoding, TESHD transcoding, and video editing. This value is not recommended.</li>
         :type TaskType: str
         :param Summary: Task statistics overview (usage unit: second).
         :type Summary: list of TaskStatDataItem
-        :param Details: Detailed statistics of tasks with different specifications.
-Transcoding specification:
-<li>Remuxing: remuxing</li>
-<li>Audio: audio transcoding</li>
-<li>Standard.H264.SD: H.264 SD transcoding</li>
-<li>Standard.H264.HD: H.264 HD transcoding</li>
-<li>Standard.H264.FHD: H.264 FHD transcoding</li>
-<li>Standard.H264.2K: H.264 2K transcoding</li>
-<li>Standard.H264.4K: H.264 4K transcoding</li>
-<li>Standard.H265.SD: H.265 SD transcoding</li>
-<li>Standard.H265.HD: H.265 HD transcoding</li>
-<li>Standard.H265.FHD: H.265 FHD transcoding</li>
-<li>Standard.H265.2K: H.265 2K transcoding</li>
-<li>Standard.H265.4K: H.265 4K transcoding</li>
-<li>TESHD-10.H264.SD: H.264 SD TESHD transcoding</li>
-<li>TESHD-10.H264.HD: H.264 HD TESHD transcoding</li>
-<li>TESHD-10.H264.FHD: H.264 FHD TESHD transcoding</li>
-<li>TESHD-10.H264.2K: H.264 2K TESHD transcoding</li>
-<li>TESHD-10.H264.4K: H.264 4K TESHD transcoding</li>
-<li>TESHD-10.H265.SD: H.265 SD TESHD transcoding</li>
-<li>TESHD-10.H265.HD: H.265 HD TESHD transcoding</li>
-<li>TESHD-10.H265.FHD: H.265 FHD TESHD transcoding</li>
-<li>TESHD-10.H265.2K: H.265 2K TESHD transcoding</li>
-<li>TESHD-10.H265.4K: H.265 4K TESHD transcoding</li>
-<li>Edit.Audio: audio editing</li>
-<li>Edit.H264.SD: H.264 SD video editing</li>
-<li>Edit.H264.HD: H.264 HD video editing</li>
-<li>Edit.H264.FHD: H.264 FHD video editing</li>
-<li>Edit.H264.2K: H.264 2K video editing</li>
-<li>Edit.H264.4K: H.264 4K video editing</li>
-<li>Edit.H265.SD: H.265 SD video editing</li>
-<li>Edit.H265.HD: H.265 HD video editing</li>
-<li>Edit.H265.FHD: H.265 FHD video editing</li>
-<li>Edit.H265.2K: H.265 2K video editing</li>
-<li>Edit.H265.4K: H.265 4K video editing</li>
+        :param Details: Detailed statistics of different tasks
+Transcoding statistics:
+<li>Remuxing</li>
+<li>Audio</li>
+<li>Standard.H264.SD</li>
+<li>Standard.H264.HD</li>
+<li>Standard.H264.FHD</li>
+<li>Standard.H264.2K</li>
+<li>Standard.H264.4K</li>
+<li>Standard.H265.SD</li>
+<li>Standard.H265.HD</li>
+<li>Standard.H265.FHD</li>
+<li>Standard.H265.2K</li>
+<li>Standard.H265.4K</li>
+<li>TESHD-10.H264.SD</li>
+<li>TESHD-10.H264.HD</li>
+<li>TESHD-10.H264.FHD</li>
+<li>TESHD-10.H264.2K</li>
+<li>TESHD-10.H264.4K</li>
+<li>TESHD-10.H265.SD</li>
+<li>TESHD-10.H265.HD</li>
+<li>TESHD-10.H265.FHD</li>
+<li>TESHD-10.H265.2K</li>
+<li>TESHD-10.H265.4K</li>
+<li>Edit.Audio</li>
+<li>Edit.H264.SD</li>
+<li>Edit.H264.HD</li>
+<li>Edit.H264.FHD</li>
+<li>Edit.H264.2K</li>
+<li>Edit.H264.4K</li>
+<li>Edit.H265.SD</li>
+<li>Edit.H265.HD</li>
+<li>Edit.H265.FHD</li>
+<li>Edit.H265.2K</li>
+<li>Edit.H265.4K</li>
+Watermark removal:
+<li>`480P`: 640 × 480 and below</li>
+<li>`720P`: 1280 × 720 and below</li>
+<li>`1080P`: 1920 × 1080 and below</li>
+<li>`2K`: 2560 × 1440 and below</li>
+<li>`4K`: 3840 × 2160 and below</li>
+<li>`8K`: 7680 × 4320 and below</li>
         :type Details: list of SpecificationDataItem
         """
         self.TaskType = None
@@ -19669,17 +19677,17 @@ class TempCertificate(AbstractModel):
 
 
 class TerrorismConfigureInfo(AbstractModel):
-    """Control parameter of terrorism information detection task
+    """Parameters for recognition of terrorism content
 
     """
 
     def __init__(self):
         r"""
-        :param ImgReviewInfo: Control parameter of terrorism information detection in video image task.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ImgReviewInfo: Parameters for recognition of terrorism content in images
+Note: This field may return `null`, indicating that no valid value can be found.
         :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.TerrorismImgReviewTemplateInfo`
-        :param OcrReviewInfo: Control parameter of terrorism information detection in text task.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param OcrReviewInfo: Parameters for OCR-based recognition of terrorism content
+Note: This field may return `null`, indicating that no valid value can be found.
         :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.TerrorismOcrReviewTemplateInfo`
         """
         self.ImgReviewInfo = None
@@ -19703,15 +19711,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class TerrorismConfigureInfoForUpdate(AbstractModel):
-    """Control parameter of terrorism information detection task.
+    """Parameters for recognition of terrorism content
 
     """
 
     def __init__(self):
         r"""
-        :param ImgReviewInfo: Control parameter of terrorism information detection in video image task.
+        :param ImgReviewInfo: Parameters for recognition of terrorism content in images
         :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.TerrorismImgReviewTemplateInfoForUpdate`
-        :param OcrReviewInfo: Control parameter of terrorism information detection in text task.
+        :param OcrReviewInfo: Parameters for OCR-based recognition of terrorism content
         :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.TerrorismOcrReviewTemplateInfoForUpdate`
         """
         self.ImgReviewInfo = None
@@ -19735,30 +19743,30 @@ class TerrorismConfigureInfoForUpdate(AbstractModel):
 
 
 class TerrorismImgReviewTemplateInfo(AbstractModel):
-    """Control parameter of terrorism information detection in video image task
+    """Parameters for recognition of terrorism content in images
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of terrorism information detection in video image task. Valid values:
-<li>ON: enables terrorism information detection in video image task;</li>
-<li>OFF: disables terrorism information detection in video image task.</li>
+        :param Switch: Whether to enable recognition of terrorism content in images. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
-        :param LabelSet: Filter tags for terrorism information detection in images. If a moderation result contains a selected tag, it will be returned. If no filter tag is specified, all moderation results will be returned. Valid values:
+        :param LabelSet: Filter labels for recognition of terrorism content in images. Results containing the specified labels are returned. If no labels are specified, all results are returned. Valid values:
 <li>`guns`: weapons and guns</li>
-<li>`crowd`: crowds</li>
-<li>`bloody`: bloody images</li>
-<li>`police`: police forces</li>
+<li>`crowd`: crowd</li>
+<li>`bloody`: bloody scenes</li>
+<li>`police`: police force</li>
 <li>`banners`: terrorism flags</li>
 <li>`militant`: militants</li>
 <li>`explosion`: explosions and fires</li>
 <li>`terrorists`: terrorists</li>
 <li>`scenario`: terrorism images</li>
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 90 will be used by default. Value range: 0-100.
+        :param BlockConfidence: Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `90` will be used by default. Value range: 0-100
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 80 will be used by default. Value range: 0-100.
+        :param ReviewConfidence: Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `80` will be used by default. Value range: 0-100
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -19782,30 +19790,30 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 
 
 class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
-    """Control parameter of terrorism information detection in video image task.
+    """Parameters for recognition of terrorism content in images
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of terrorism information detection in video image task. Valid values:
-<li>ON: enables terrorism information detection in video image task;</li>
-<li>OFF: disables terrorism information detection in video image task.</li>
+        :param Switch: Whether to enable recognition of terrorism content in images. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
-        :param LabelSet: Filter tags for terrorism information detection in images. If a moderation result contains a selected tag, it will be returned. If no filter tag is specified, all moderation results will be returned. Valid values:
+        :param LabelSet: Filter labels for recognition of terrorism content in images. Results containing the specified labels are returned. If no labels are specified, all results are returned. Valid values:
 <li>`guns`: weapons and guns</li>
-<li>`crowd`: crowds</li>
-<li>`bloody`: bloody images</li>
-<li>`police`: police forces</li>
+<li>`crowd`: crowd</li>
+<li>`bloody`: bloody scenes</li>
+<li>`police`: police force</li>
 <li>`banners`: terrorism flags</li>
 <li>`militant`: militants</li>
 <li>`explosion`: explosions and fires</li>
 <li>`terrorists`: terrorists</li>
 <li>`scenario`: terrorism images</li>
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :param BlockConfidence: Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. Value range: 0-100
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
+        :param ReviewConfidence: Confidence score threshold for human review. If this threshold is reached, human review is needed. Value range: 0-100
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -19829,19 +19837,19 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
 
 
 class TerrorismOcrReviewTemplateInfo(AbstractModel):
-    """Control parameter of terrorism information detection in text task
+    """Parameters for OCR-based recognition of terrorism content
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of terrorism information detection in text task. Valid values:
-<li>ON: enables terrorism information detection in text task;</li>
-<li>OFF: disables terrorism information detection in text task.</li>
+        :param Switch: Whether to enable OCR-based recognition of terrorism content. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
+        :param BlockConfidence: Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `100` will be used by default. Value range: 0-100
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :param ReviewConfidence: Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `75` will be used by default. Value range: 0-100
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -19863,19 +19871,19 @@ class TerrorismOcrReviewTemplateInfo(AbstractModel):
 
 
 class TerrorismOcrReviewTemplateInfoForUpdate(AbstractModel):
-    """Control parameter of terrorism information detection in text task
+    """Parameters for OCR-based recognition of terrorism content
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of terrorism information detection in text task. Valid values:
-<li>ON: enables terrorism information detection in text task;</li>
-<li>OFF: disables terrorism information detection in text task.</li>
+        :param Switch: Whether to enable OCR-based recognition of terrorism content. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
+        :param BlockConfidence: Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `100` will be used by default. Value range: 0-100
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
+        :param ReviewConfidence: Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `75` will be used by default. Value range: 0-100
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -20372,22 +20380,22 @@ class UrlSignatureAuthPolicy(AbstractModel):
 
 
 class UserDefineAsrTextReviewTemplateInfo(AbstractModel):
-    """Control parameter of custom speech audit task
+    """Parameters for custom ASR-based recognition
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of custom speech audit task. Valid values:
-<li>ON: enables custom speech audit task;</li>
-<li>OFF: disables custom speech audit task.</li>
+        :param Switch: Whether to enable custom ASR-based recognition. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
-        :param LabelSet: Custom speech filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom speech keywords.
-There can be up to 10 tags, each with a length limit of 16 characters.
+        :param LabelSet: Filter labels for custom ASR-based recognition. Results containing the specified labels are returned. If no labels are specified, all results are returned. To filter by labels, specify the labels when adding keywords for custom ASR-based recognition.
+Up to 10 labels are allowed, each containing no more than 16 characters.
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
+        :param BlockConfidence: Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `100` will be used by default. Value range: 0-100
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :param ReviewConfidence: Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `75` will be used by default. Value range: 0-100
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -20411,22 +20419,22 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
 
 class UserDefineAsrTextReviewTemplateInfoForUpdate(AbstractModel):
-    """Control parameter of custom speech audit task
+    """Parameters for custom ASR-based recognition
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of custom speech audit task. Valid values:
-<li>ON: enables custom speech audit task;</li>
-<li>OFF: disables custom speech audit task.</li>
+        :param Switch: Whether to enable custom ASR-based recognition. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
-        :param LabelSet: Custom speech filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom speech keywords.
-There can be up to 10 tags, each with a length limit of 16 characters.
+        :param LabelSet: Filter labels for custom ASR-based recognition. Results containing the specified labels are returned. If no labels are specified, all results are returned. To filter by labels, specify the labels when adding keywords for custom ASR-based recognition.
+Up to 10 labels are allowed, each containing no more than 16 characters.
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :param BlockConfidence: Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. Value range: 0-100
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
+        :param ReviewConfidence: Confidence score threshold for human review. If this threshold is reached, human review is needed. Value range: 0-100
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -20450,20 +20458,20 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
 
 class UserDefineConfigureInfo(AbstractModel):
-    """Control parameter of custom audit task
+    """Parameters for custom recognition
 
     """
 
     def __init__(self):
         r"""
-        :param FaceReviewInfo: Control parameter of custom figure audit.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param FaceReviewInfo: Parameters for custom facial recognition
+Note: This field may return `null`, indicating that no valid value can be found.
         :type FaceReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineFaceReviewTemplateInfo`
-        :param AsrReviewInfo: Control parameter of custom speech audit.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param AsrReviewInfo: Parameters for custom ASR-based recognition
+Note: This field may return `null`, indicating that no valid value can be found.
         :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineAsrTextReviewTemplateInfo`
-        :param OcrReviewInfo: Control parameter of custom text audit.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param OcrReviewInfo: Parameters for custom OCR-based recognition
+Note: This field may return `null`, indicating that no valid value can be found.
         :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineOcrTextReviewTemplateInfo`
         """
         self.FaceReviewInfo = None
@@ -20491,17 +20499,17 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UserDefineConfigureInfoForUpdate(AbstractModel):
-    """Control parameter of custom audit task.
+    """Parameters for custom recognition
 
     """
 
     def __init__(self):
         r"""
-        :param FaceReviewInfo: Control parameter of custom figure audit.
+        :param FaceReviewInfo: Parameters for custom facial recognition
         :type FaceReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineFaceReviewTemplateInfoForUpdate`
-        :param AsrReviewInfo: Control parameter of custom speech audit.
+        :param AsrReviewInfo: Parameters for custom ASR-based recognition
         :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineAsrTextReviewTemplateInfoForUpdate`
-        :param OcrReviewInfo: Control parameter of custom text audit.
+        :param OcrReviewInfo: Parameters for custom OCR-based recognition
         :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineOcrTextReviewTemplateInfoForUpdate`
         """
         self.FaceReviewInfo = None
@@ -20529,22 +20537,22 @@ class UserDefineConfigureInfoForUpdate(AbstractModel):
 
 
 class UserDefineFaceReviewTemplateInfo(AbstractModel):
-    """Control parameter of custom figure audit task
+    """Parameters for custom facial recognition
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of custom figure audit task. Valid values:
-<li>ON: enables custom figure audit task;</li>
-<li>OFF: disables custom figure audit task.</li>
+        :param Switch: Whether to enable custom facial recognition. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
-        :param LabelSet: Custom figure filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for the custom figure library.
-There can be up to 10 tags, each with a length limit of 16 characters.
+        :param LabelSet: Filter labels for custom facial recognition. Results containing the specified labels are returned. If no labels are specified, all results are returned. To filter by labels, specify the labels when adding custom facial libraries.
+Up to 10 labels are allowed, each containing no more than 16 characters.
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 97 will be used by default. Value range: 0-100.
+        :param BlockConfidence: Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `97` will be used by default. Value range: 0-100
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 95 will be used by default. Value range: 0-100.
+        :param ReviewConfidence: Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `95` will be used by default. Value range: 0-100
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -20568,22 +20576,22 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
 
 class UserDefineFaceReviewTemplateInfoForUpdate(AbstractModel):
-    """Control parameter of custom figure audit task.
+    """Parameters for custom facial recognition
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of custom figure audit task. Valid values:
-<li>ON: enables custom figure audit task;</li>
-<li>OFF: disables custom figure audit task.</li>
+        :param Switch: Whether to enable custom facial recognition. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
-        :param LabelSet: Custom figure filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for the custom figure library.
-There can be up to 10 tags, each with a length limit of 16 characters.
+        :param LabelSet: Filter labels for custom facial recognition. Results containing the specified labels are returned. If no labels are specified, all results are returned. To filter by labels, specify the labels when adding custom facial libraries.
+Up to 10 labels are allowed, each containing no more than 16 characters.
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :param BlockConfidence: Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. Value range: 0-100
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
+        :param ReviewConfidence: Confidence score threshold for human review. If this threshold is reached, human review is needed. Value range: 0-100
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -20607,22 +20615,22 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
 
 class UserDefineOcrTextReviewTemplateInfo(AbstractModel):
-    """Control parameter of custom text audit task
+    """Parameters for custom OCR-based recognition
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of custom text audit task. Valid values:
-<li>ON: enables custom text audit task;</li>
-<li>OFF: disables custom text audit task.</li>
+        :param Switch: Whether to enable custom OCR-based recognition. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
-        :param LabelSet: Custom text filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom text keywords.
-There can be up to 10 tags, each with a length limit of 16 characters.
+        :param LabelSet: Filter labels for custom OCR-based recognition. Results containing the specified labels are returned. If no labels are specified, all results are returned. To filter by labels, specify the labels when adding keywords for custom OCR-based recognition.
+Up to 10 labels are allowed, each containing no more than 16 characters.
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
+        :param BlockConfidence: Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `100` will be used by default. Value range: 0-100
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :param ReviewConfidence: Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `75` will be used by default. Value range: 0-100
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -20646,22 +20654,22 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
 
 class UserDefineOcrTextReviewTemplateInfoForUpdate(AbstractModel):
-    """Control parameter of custom text audit task.
+    """Parameters for custom OCR-based recognition
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of custom text audit task. Valid values:
-<li>ON: enables custom text audit task;</li>
-<li>OFF: disables custom text audit task.</li>
+        :param Switch: Whether to enable custom OCR-based recognition. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
-        :param LabelSet: Custom text filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom text keywords.
-There can be up to 10 tags, each with a length limit of 16 characters.
+        :param LabelSet: Filter labels for custom OCR-based recognition. Results containing the specified labels are returned. If no labels are specified, all results are returned. To filter by labels, specify the labels when adding keywords for custom OCR-based recognition.
+Up to 10 labels are allowed, each containing no more than 16 characters.
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :param BlockConfidence: Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. Value range: 0-100
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
+        :param ReviewConfidence: Confidence score threshold for human review. If this threshold is reached, human review is needed. Value range: 0-100
         :type ReviewConfidence: int
         """
         self.Switch = None

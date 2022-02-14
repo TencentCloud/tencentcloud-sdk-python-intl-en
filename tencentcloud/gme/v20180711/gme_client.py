@@ -168,17 +168,17 @@ class GmeClient(AbstractClient):
 
 
     def ScanVoice(self, request):
-        """This API is used to submit a speech detection task. Up to 100 tasks can be added in the detection task list. Before using this API, please enable the speech analysis service in [Console > Service Configuration](https://console.cloud.tencent.com/gamegme/conf).
+        """This API is used to submit a speech detection task. Up to 100 tasks can be added in the detection task list. Before using this API, please activate the speech analysis service in [Console > Service Configuration](https://console.cloud.tencent.com/gamegme/conf).
         </br></br>
 
-        <h4><b>Feature trial description:</b></h4>
+        <h4><b>About the trial:</b></h4>
         <li>You can try out the speech analysis service free of charge in <a href="https://console.cloud.tencent.com/gamegme/tryout">Console > Product Trial</a>.</li>
         </br>
 
         <h4><b>API feature description:</b></h4>
-        <li>This API can check audio streams or files for non-compliant content.</li>
+        <li>This API checks audio streams or files for non-compliant content.</li>
         <li>The detection result can be obtained by setting the callback address (`Callback`) or calling the `DescribeScanResultList` API for polling.</li>
-        <li>The scenario can be specified, such as abusive, pornographic, or politically sensitive information.</li>
+        <li>The scenario can be specified, such as abusive or pornographic.</li>
         <li>Detection tasks can be submitted in batches. Up to 100 tasks can be added in the detection task list.</li>
         </br>
         <h4><b>Audio file limit description:</b></h4>
@@ -209,12 +209,10 @@ class GmeClient(AbstractClient):
         <td>
         <p>normal: normal</p>
         <p>porn: pornographic</p>
-        <p>politics: politically sensitive</p>
         <p>abuse: abusive</p>
         <p>ad: advertising</p>
-        <p>terrorism: terrorism</p>
         <p>contraband: prohibited</p>
-        <p>customized: custom keyword library. This feature is only available to allowlisted users. To try it out, please <a href="https://intl.cloud.tencent.com/apply/p/8809fjcik56?from_cn_redirect=1">contact us</a>.</p>
+        <p>customized: custom keyword library. This feature is only available to beta users. To try it out, please <a href="https://intl.cloud.tencent.com/apply/p/8809fjcik56?from_cn_redirect=1">contact us</a>.</p>
         </td>
         </tr>
         </tbody>
@@ -227,7 +225,7 @@ class GmeClient(AbstractClient):
         <table>
         <thread>
         <tr>
-        <th>Name</th>
+        <th>Item</th>
         <th>Type</th>
         <th>Required</th>
         <th>Description</th>

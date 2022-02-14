@@ -881,7 +881,7 @@ class ScanVoiceRequest(AbstractModel):
         r"""
         :param BizId: Application ID, which is the `AppID` obtained when you create an application in [Console > Service Management](https://console.cloud.tencent.com/gamegme)
         :type BizId: int
-        :param Scenes: Speech detection scenario. The value of this parameter is currently required to be `default`. Preset scenarios: abusive, pornographic, politically sensitive, advertising, terrorism, and prohibited scenarios. For specific values, please see the <a href="#Label_Value">Label description</a> above.
+        :param Scenes: Speech detection scenario. The value of this parameter is currently required to be `default`. Preset scenarios: abusive, pornographic, advertising, and other prohibited scenarios. For specific values, please see the <a href="#Label_Value">Label description</a> above.
         :type Scenes: list of str
         :param Live: Whether it is a live stream. false: audio file detection, true: audio stream detection.
         :type Live: bool
@@ -891,12 +891,15 @@ class ScanVoiceRequest(AbstractModel):
         :type Tasks: list of Task
         :param Callback: Async callback address for detection result. For more information, please see the <a href="#Callback_Declare">callback description</a> above. (Note: if this field is empty, the detection result can only be obtained by calling the `DescribeScanResultList` API.)
         :type Callback: str
+        :param Lang: The language. `jp` represents Japanese
+        :type Lang: str
         """
         self.BizId = None
         self.Scenes = None
         self.Live = None
         self.Tasks = None
         self.Callback = None
+        self.Lang = None
 
 
     def _deserialize(self, params):
@@ -910,6 +913,7 @@ class ScanVoiceRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Tasks.append(obj)
         self.Callback = params.get("Callback")
+        self.Lang = params.get("Lang")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

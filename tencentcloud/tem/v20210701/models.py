@@ -441,6 +441,63 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         
 
 
+class DeleteApplicationRequest(AbstractModel):
+    """DeleteApplication request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: Service ID
+        :type ApplicationId: str
+        :param EnvironmentId: Environment ID
+        :type EnvironmentId: str
+        :param SourceChannel: Retain as default
+        :type SourceChannel: int
+        :param DeleteApplicationIfNoRunningVersion: Whether to delete this application automatically when there is no running version.
+        :type DeleteApplicationIfNoRunningVersion: bool
+        """
+        self.ApplicationId = None
+        self.EnvironmentId = None
+        self.SourceChannel = None
+        self.DeleteApplicationIfNoRunningVersion = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.SourceChannel = params.get("SourceChannel")
+        self.DeleteApplicationIfNoRunningVersion = params.get("DeleteApplicationIfNoRunningVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteApplicationResponse(AbstractModel):
+    """DeleteApplication response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Returned result
+        :type Result: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteIngressRequest(AbstractModel):
     """DeleteIngress request structure.
 
@@ -2046,6 +2103,140 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.RequestId = params.get("RequestId")
 
 
+class RestartApplicationRequest(AbstractModel):
+    """RestartApplication request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: Application ID
+        :type ApplicationId: str
+        :param SourceChannel: Retain as default
+        :type SourceChannel: int
+        :param EnvironmentId: Environment ID
+        :type EnvironmentId: str
+        """
+        self.ApplicationId = None
+        self.SourceChannel = None
+        self.EnvironmentId = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.SourceChannel = params.get("SourceChannel")
+        self.EnvironmentId = params.get("EnvironmentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestartApplicationResponse(AbstractModel):
+    """RestartApplication response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Returned result
+        :type Result: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class RollingUpdateApplicationByVersionRequest(AbstractModel):
+    """RollingUpdateApplicationByVersion request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: Application ID
+        :type ApplicationId: str
+        :param EnvironmentId: Environment ID
+        :type EnvironmentId: str
+        :param DeployVersion: Update version. For image-based deployment, it is the value. For deployment with JAR/WAR files, it is `Version`.
+        :type DeployVersion: str
+        :param PackageName: JAR/WAR package name. It’s only required for deployment with JAR/WAR files.
+        :type PackageName: str
+        :param From: Request source. Options: `IntelliJ`, `Coding`
+        :type From: str
+        :param DeployStrategyType: 
+        :type DeployStrategyType: str
+        :param TotalBatchCount: 
+        :type TotalBatchCount: int
+        :param BatchInterval: 
+        :type BatchInterval: int
+        :param BetaBatchNum: 
+        :type BetaBatchNum: int
+        :param MinAvailable: 
+        :type MinAvailable: int
+        """
+        self.ApplicationId = None
+        self.EnvironmentId = None
+        self.DeployVersion = None
+        self.PackageName = None
+        self.From = None
+        self.DeployStrategyType = None
+        self.TotalBatchCount = None
+        self.BatchInterval = None
+        self.BetaBatchNum = None
+        self.MinAvailable = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.DeployVersion = params.get("DeployVersion")
+        self.PackageName = params.get("PackageName")
+        self.From = params.get("From")
+        self.DeployStrategyType = params.get("DeployStrategyType")
+        self.TotalBatchCount = params.get("TotalBatchCount")
+        self.BatchInterval = params.get("BatchInterval")
+        self.BetaBatchNum = params.get("BetaBatchNum")
+        self.MinAvailable = params.get("MinAvailable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RollingUpdateApplicationByVersionResponse(AbstractModel):
+    """RollingUpdateApplicationByVersion response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Version ID
+        :type Result: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class RunVersionPod(AbstractModel):
     """Application pod
 
@@ -2109,6 +2300,59 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class StopApplicationRequest(AbstractModel):
+    """StopApplication request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: Application ID
+        :type ApplicationId: str
+        :param SourceChannel: Retain as default
+        :type SourceChannel: int
+        :param EnvironmentId: Environment ID
+        :type EnvironmentId: str
+        """
+        self.ApplicationId = None
+        self.SourceChannel = None
+        self.EnvironmentId = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.SourceChannel = params.get("SourceChannel")
+        self.EnvironmentId = params.get("EnvironmentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopApplicationResponse(AbstractModel):
+    """StopApplication response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Returned result
+        :type Result: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
 
 
 class StorageConf(AbstractModel):
