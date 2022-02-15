@@ -185,6 +185,9 @@ INVALIDPARAMETER_SGCHECKFAIL = 'InvalidParameter.SGCheckFail'
 # The specified VPC subnet was not found.
 INVALIDPARAMETER_SUBNETNOTFOUND = 'InvalidParameter.SubnetNotFound'
 
+# Incorrect AZ information.
+INVALIDPARAMETER_ZONEIDILLEGAL = 'InvalidParameter.ZoneIdIllegal'
+
 # The account to be created already exists.
 INVALIDPARAMETERVALUE_ACCOUNTALREADYEXISTS = 'InvalidParameterValue.AccountAlreadyExists'
 

@@ -1038,3 +1038,31 @@ class DcdbClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SwitchDBInstanceHA(self, request):
+        """This API is used to start a source-replica switch of instances.
+
+        :param request: Request instance for SwitchDBInstanceHA.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.SwitchDBInstanceHARequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.SwitchDBInstanceHAResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SwitchDBInstanceHA", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SwitchDBInstanceHAResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

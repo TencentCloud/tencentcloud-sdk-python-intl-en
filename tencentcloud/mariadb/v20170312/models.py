@@ -471,7 +471,7 @@ class CreateHourDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Zones: AZs to deploy instance nodes. You can specify up to two AZs. If each shard has one primary node and two replica nodes, two of the three will be deployed in the first AZ you have specified.
+        :param Zones: AZs to deploy instance nodes. You can specify up to two AZs.
         :type Zones: list of str
         :param NodeCount: Number of nodes.
         :type NodeCount: int
