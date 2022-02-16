@@ -54,6 +54,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ApplyCDBProxy(self, request):
+        """This API is used to create a database proxy group for a source instance.
+
+        :param request: Request instance for ApplyCDBProxy.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ApplyCDBProxyRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ApplyCDBProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ApplyCDBProxy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ApplyCDBProxyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AssociateSecurityGroups(self, request):
         """This API (AssociateSecurityGroups) is used to bind security groups to instances in batches.
 
@@ -96,6 +124,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BalanceRoGroupLoadResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CloseCDBProxy(self, request):
+        """This API is used to disable database proxy.
+
+        :param request: Request instance for CloseCDBProxy.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.CloseCDBProxyRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.CloseCDBProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CloseCDBProxy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CloseCDBProxyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -820,6 +876,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCDBProxy(self, request):
+        """This API is used to query the information of database proxy.
+
+        :param request: Request instance for DescribeCDBProxy.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeCDBProxyRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeCDBProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCDBProxy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCDBProxyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCloneList(self, request):
         """This API is used to query the clone task list of an instance.
 
@@ -1353,6 +1437,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLocalBinlogConfig(self, request):
+        """This API is used to query the retention policy of local binlog of an instance.
+
+        :param request: Request instance for DescribeLocalBinlogConfig.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeLocalBinlogConfigRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeLocalBinlogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLocalBinlogConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLocalBinlogConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeParamTemplateInfo(self, request):
         """This API is used to query parameter template details. The common request parameter `Region` can only be set to `ap-guangzhou`.
 
@@ -1382,7 +1494,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeParamTemplates(self, request):
-        """This API (DescribeParamTemplates) is used to query the list of parameter templates
+        """This API is used to query the parameter template list. The common request parameter `Region` can only be set to `ap-guangzhou`.
 
         :param request: Request instance for DescribeParamTemplates.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeParamTemplatesRequest`
@@ -1423,6 +1535,62 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProjectSecurityGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeProxyConnectionPoolConf(self, request):
+        """This API is used to query the connection pool configuration of database proxy.
+
+        :param request: Request instance for DescribeProxyConnectionPoolConf.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeProxyConnectionPoolConfRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeProxyConnectionPoolConfResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProxyConnectionPoolConf", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProxyConnectionPoolConfResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeProxyCustomConf(self, request):
+        """This API is used to query the proxy configuration.
+
+        :param request: Request instance for DescribeProxyCustomConf.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeProxyCustomConfRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeProxyCustomConfResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProxyCustomConf", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProxyCustomConfResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2057,6 +2225,118 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyCDBProxy(self, request):
+        """This API is used to configure read/write separation of database proxy.
+
+        :param request: Request instance for ModifyCDBProxy.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyCDBProxyRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyCDBProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyCDBProxy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCDBProxyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCDBProxyConnectionPool(self, request):
+        """This API is used to configure the connection pool of database proxy. You can use the `DescribeProxyConnectionPoolConf` API to query the supported connection pool configurations.
+
+        :param request: Request instance for ModifyCDBProxyConnectionPool.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyCDBProxyConnectionPoolRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyCDBProxyConnectionPoolResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyCDBProxyConnectionPool", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCDBProxyConnectionPoolResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCDBProxyDesc(self, request):
+        """This API is used to modify the description of database proxy.
+
+        :param request: Request instance for ModifyCDBProxyDesc.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyCDBProxyDescRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyCDBProxyDescResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyCDBProxyDesc", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCDBProxyDescResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCDBProxyVipVPort(self, request):
+        """This API is used to modify the VIP or port of database proxy.
+
+        :param request: Request instance for ModifyCDBProxyVipVPort.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyCDBProxyVipVPortRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyCDBProxyVipVPortResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyCDBProxyVipVPort", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCDBProxyVipVPortResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyDBInstanceName(self, request):
         """This API (ModifyDBInstanceName) is used to rename a TencentDB instance.
 
@@ -2211,6 +2491,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyInstanceTagResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyLocalBinlogConfig(self, request):
+        """This API is used to modify the retention policy of local binlog of an instance.
+
+        :param request: Request instance for ModifyLocalBinlogConfig.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyLocalBinlogConfigRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyLocalBinlogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLocalBinlogConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLocalBinlogConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2427,6 +2735,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryCDBProxy(self, request):
+        """This API is used to query the proxy details.
+
+        :param request: Request instance for QueryCDBProxy.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.QueryCDBProxyRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.QueryCDBProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryCDBProxy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryCDBProxyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ReleaseIsolatedDBInstances(self, request):
         """This API is used to deisolate an isolated TencentDB instance.
 
@@ -2441,6 +2777,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReleaseIsolatedDBInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ReloadBalanceProxyNode(self, request):
+        """This API is used to rebalance the load on database proxy.
+
+        :param request: Request instance for ReloadBalanceProxyNode.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ReloadBalanceProxyNodeRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ReloadBalanceProxyNodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ReloadBalanceProxyNode", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReloadBalanceProxyNodeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2627,6 +2991,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SwitchCDBProxy(self, request):
+        """This API is used to switch database proxy after the proxy configuration is modified or the proxy version is upgraded.
+
+        :param request: Request instance for SwitchCDBProxy.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.SwitchCDBProxyRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.SwitchCDBProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SwitchCDBProxy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SwitchCDBProxyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SwitchDBInstanceMasterSlave(self, request):
         """This API is used for source-to-replica switch.
 
@@ -2697,6 +3089,62 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SwitchForUpgradeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpgradeCDBProxy(self, request):
+        """This API is used to upgrade the configuration of database proxy.
+
+        :param request: Request instance for UpgradeCDBProxy.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.UpgradeCDBProxyRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.UpgradeCDBProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpgradeCDBProxy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpgradeCDBProxyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpgradeCDBProxyVersion(self, request):
+        """This API is used to upgrade the version of database proxy.
+
+        :param request: Request instance for UpgradeCDBProxyVersion.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.UpgradeCDBProxyVersionRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.UpgradeCDBProxyVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpgradeCDBProxyVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpgradeCDBProxyVersionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
