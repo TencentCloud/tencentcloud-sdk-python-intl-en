@@ -218,13 +218,13 @@ INVALIDPARAMETERVALUE_CFSPARAMETERDUPLICATE = 'InvalidParameterValue.CfsParamete
 # The value of `cfs` configuration item does not meet the specification.
 INVALIDPARAMETERVALUE_CFSPARAMETERERROR = 'InvalidParameterValue.CfsParameterError'
 
-# The CFS parameter format does not conform to the specification.
+# Invalid CFS parameter format
 INVALIDPARAMETERVALUE_CFSSTRUCTIONERROR = 'InvalidParameterValue.CfsStructionError'
 
 # Ckafka error.
 INVALIDPARAMETERVALUE_CKAFKA = 'InvalidParameterValue.Ckafka'
 
-# 
+# Function running parameter error
 INVALIDPARAMETERVALUE_CLIENTCONTEXT = 'InvalidParameterValue.ClientContext'
 
 # Cls error.
@@ -359,6 +359,9 @@ INVALIDPARAMETERVALUE_MEMORY = 'InvalidParameterValue.Memory'
 # MemorySize error.
 INVALIDPARAMETERVALUE_MEMORYSIZE = 'InvalidParameterValue.MemorySize'
 
+# 
+INVALIDPARAMETERVALUE_MINCAPACITY = 'InvalidParameterValue.MinCapacity'
+
 # Incorrect `Name` parameter.
 INVALIDPARAMETERVALUE_NAME = 'InvalidParameterValue.Name'
 
@@ -368,10 +371,10 @@ INVALIDPARAMETERVALUE_NAMESPACE = 'InvalidParameterValue.Namespace'
 # Incorrect Namespace. A namespace contains up to 30 characters of letters, digits, hyphens (-), and underscores (_).
 INVALIDPARAMETERVALUE_NAMESPACEINVALID = 'InvalidParameterValue.NamespaceInvalid'
 
-# 
+# NodeSpec parameter error
 INVALIDPARAMETERVALUE_NODESPEC = 'InvalidParameterValue.NodeSpec'
 
-# 
+# NodeType parameter error
 INVALIDPARAMETERVALUE_NODETYPE = 'InvalidParameterValue.NodeType'
 
 # Invalid offset.
@@ -449,7 +452,7 @@ INVALIDPARAMETERVALUE_TEMPCOSOBJECTNAME = 'InvalidParameterValue.TempCosObjectNa
 # The value of `TraceEnable` is invalid. Please modify and try again.
 INVALIDPARAMETERVALUE_TRACEENABLE = 'InvalidParameterValue.TraceEnable'
 
-# 
+# TrackingTarget parameter error
 INVALIDPARAMETERVALUE_TRACKINGTARGET = 'InvalidParameterValue.TrackingTarget'
 
 # TriggerCronConfig input parameter error
@@ -611,7 +614,7 @@ RESOURCENOTFOUND_CDN = 'ResourceNotFound.Cdn'
 # Unable to find the specified mount point under the specified CFS
 RESOURCENOTFOUND_CFSMOUNTINSNOTMATCH = 'ResourceNotFound.CfsMountInsNotMatch'
 
-# 
+# CFS not available
 RESOURCENOTFOUND_CFSSTATUSERROR = 'ResourceNotFound.CfsStatusError'
 
 # VPCs of the CFS instance and the SCF function are different.
@@ -662,7 +665,7 @@ RESOURCENOTFOUND_QUALIFIER = 'ResourceNotFound.Qualifier'
 # The role does not exist.
 RESOURCENOTFOUND_ROLE = 'ResourceNotFound.Role'
 
-# 
+# The role does not exist.
 RESOURCENOTFOUND_ROLECHECK = 'ResourceNotFound.RoleCheck'
 
 # Timer does not exist.
@@ -731,7 +734,7 @@ UNSUPPORTEDOPERATION_CDN = 'UnsupportedOperation.Cdn'
 # Cos operation is not supported.
 UNSUPPORTEDOPERATION_COS = 'UnsupportedOperation.Cos'
 
-# 
+# The specified EipFixed does not exist.
 UNSUPPORTEDOPERATION_EIPFIXED = 'UnsupportedOperation.EipFixed'
 
 # This region is not supported.
@@ -741,4 +744,7 @@ UNSUPPORTEDOPERATION_REGION = 'UnsupportedOperation.Region'
 UNSUPPORTEDOPERATION_TRIGGER = 'UnsupportedOperation.Trigger'
 
 # 
+UNSUPPORTEDOPERATION_UPDATEFUNCTIONEVENTINVOKECONFIG = 'UnsupportedOperation.UpdateFunctionEventInvokeConfig'
+
+# The specified VpcConfig does not exist.
 UNSUPPORTEDOPERATION_VPCCONFIG = 'UnsupportedOperation.VpcConfig'

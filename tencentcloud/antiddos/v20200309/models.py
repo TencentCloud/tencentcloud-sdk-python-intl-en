@@ -2317,6 +2317,8 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         :type FilterEipEipAddressStatus: list of str
         :param FilterDamDDoSStatus: Whether to obtain only Anti-DDoS instances with Sec-MCA enabled. Valid values: `1` (only obtain Anti-DDoS instances with Sec-MCA enabled) and `0` (obtain other Anti-DDoS instances).
         :type FilterDamDDoSStatus: int
+        :param FilterStatus: Filters by status of bound resources. `idle`: normal; `attacking`: being attacked; `blocking`: blocked
+        :type FilterStatus: str
         """
         self.Offset = None
         self.Limit = None
@@ -2328,6 +2330,7 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         self.FilterEipType = None
         self.FilterEipEipAddressStatus = None
         self.FilterDamDDoSStatus = None
+        self.FilterStatus = None
 
 
     def _deserialize(self, params):
@@ -2341,6 +2344,7 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         self.FilterEipType = params.get("FilterEipType")
         self.FilterEipEipAddressStatus = params.get("FilterEipEipAddressStatus")
         self.FilterDamDDoSStatus = params.get("FilterDamDDoSStatus")
+        self.FilterStatus = params.get("FilterStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2401,6 +2405,10 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         :type FilterName: str
         :param FilterLine: Line filter. Valid values: 1: BGP; 2: Non-BGP.
         :type FilterLine: int
+        :param FilterStatus: Filters by instance status. `idle`: normal; `attacking`: being attacked; `blocking`: blocked
+        :type FilterStatus: str
+        :param FilterBoundStatus: Filters by binding status. `bounding`: the instance is bound; `failed`: the binding failed.
+        :type FilterBoundStatus: str
         """
         self.Offset = None
         self.Limit = None
@@ -2409,6 +2417,8 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         self.FilterRegion = None
         self.FilterName = None
         self.FilterLine = None
+        self.FilterStatus = None
+        self.FilterBoundStatus = None
 
 
     def _deserialize(self, params):
@@ -2419,6 +2429,8 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         self.FilterRegion = params.get("FilterRegion")
         self.FilterName = params.get("FilterName")
         self.FilterLine = params.get("FilterLine")
+        self.FilterStatus = params.get("FilterStatus")
+        self.FilterBoundStatus = params.get("FilterBoundStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
