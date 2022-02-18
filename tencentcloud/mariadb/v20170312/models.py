@@ -2085,6 +2085,76 @@ class DescribeDBSlowLogsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDatabaseTableRequest(AbstractModel):
+    """DescribeDatabaseTable request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of dcdbt-ow7t8lmc.
+        :type InstanceId: str
+        :param DbName: Database name, which can be obtained through the `DescribeDatabases` API.
+        :type DbName: str
+        :param Table: Table name, which can be obtained through the `DescribeDatabaseObjects` API.
+        :type Table: str
+        """
+        self.InstanceId = None
+        self.DbName = None
+        self.Table = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DbName = params.get("DbName")
+        self.Table = params.get("Table")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatabaseTableResponse(AbstractModel):
+    """DescribeDatabaseTable response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance name.
+        :type InstanceId: str
+        :param DbName: Database name.
+        :type DbName: str
+        :param Table: Table name.
+        :type Table: str
+        :param Cols: Column information.
+        :type Cols: list of TableColumn
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.DbName = None
+        self.Table = None
+        self.Cols = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DbName = params.get("DbName")
+        self.Table = params.get("Table")
+        if params.get("Cols") is not None:
+            self.Cols = []
+            for item in params.get("Cols"):
+                obj = TableColumn()
+                obj._deserialize(item)
+                self.Cols.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDatabasesRequest(AbstractModel):
     """DescribeDatabases request structure.
 
@@ -4021,6 +4091,34 @@ class SwitchDBInstanceHAResponse(AbstractModel):
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
+
+
+class TableColumn(AbstractModel):
+    """Database column information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Col: Column name
+        :type Col: str
+        :param Type: Column type
+        :type Type: str
+        """
+        self.Col = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Col = params.get("Col")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TablePrivilege(AbstractModel):
