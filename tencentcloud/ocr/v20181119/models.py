@@ -627,10 +627,11 @@ class MLIDCardOCRResponse(AbstractModel):
         :type Address: str
         :param Sex: Gender
         :type Sex: str
-        :param Warn: Alarm code
--9103	Alarm for photographed document
--9102	Alarm for photocopied document
--9106       Alarm for covered card
+        :param Warn: Warning code
+-9103 Warning for spoofed card
+-9102 Warning for photocopied card
+-9106 Warning for covered card
+-9107 Warning for blurry image
         :type Warn: list of int
         :param Image: Identity photo
         :type Image: str
