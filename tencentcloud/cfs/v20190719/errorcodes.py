@@ -113,8 +113,14 @@ INVALIDPARAMETERVALUE_INVALIDPROTOCOL = 'InvalidParameterValue.InvalidProtocol'
 # Either `ZoneName` or `ZoneId, Region` must be selected.
 INVALIDPARAMETERVALUE_INVALIDREGIONZONEINFO = 'InvalidParameterValue.InvalidRegionZoneInfo'
 
+# Invalid parameter value: invalid resource tag value.
+INVALIDPARAMETERVALUE_INVALIDRESOURCETAGS = 'InvalidParameterValue.InvalidResourceTags'
+
 # Incorrect read/write permission settings.
 INVALIDPARAMETERVALUE_INVALIDRWPERMISSION = 'InvalidParameterValue.InvalidRwPermission'
+
+# 
+INVALIDPARAMETERVALUE_INVALIDSNAPSHOTSTATUS = 'InvalidParameterValue.InvalidSnapshotStatus'
 
 # The resource pack does not exist or has been bound.
 INVALIDPARAMETERVALUE_INVALIDSTORAGERESOURCEPKG = 'InvalidParameterValue.InvalidStorageResourcePkg'
@@ -190,6 +196,9 @@ INVALIDPARAMETERVALUE_PGROUPNAMELIMITEXCEEDED = 'InvalidParameterValue.PgroupNam
 
 # The permission group rule and permission group do not match.
 INVALIDPARAMETERVALUE_RULENOTMATCHPGROUP = 'InvalidParameterValue.RuleNotMatchPgroup'
+
+# Invalid parameter value: the number of tag keys exceeds the upper limit (6).
+INVALIDPARAMETERVALUE_TAGKEYFILTERLIMITEXCEEDED = 'InvalidParameterValue.TagKeyFilterLimitExceeded'
 
 # The length of the tag key exceeds the upper limit of 127 bytes.
 INVALIDPARAMETERVALUE_TAGKEYLIMITEXCEEDED = 'InvalidParameterValue.TagKeyLimitExceeded'

@@ -168,7 +168,22 @@ class ClbClient(AbstractClient):
 
 
     def CloneLoadBalancer(self, request):
-        """This API is used to generate a CLB instance that has the same rules and binding relations as the specified CLB instance.
+        """This API is used to create a CLB instance with the same forwarding rules and binding relation as the source CLB instance. Note that this API is asynchronous, which means that changes to the source CLB after the invocation are not cloned.
+
+        Use limits:
+        Classic network-based CLBs, Classic CLBs, IPv6 CLBs, and NAT64 CLBs are not supported.
+        Monthly-subscribed CLB instances are not supported.
+        QUIC and port listeners are not supported.
+        The CLB backend server cannot be bound to a target group or an SCF function.
+        The following settings will not be cloned automatically: "Custom Configuration", "Redirection Configuration" and "Allow Traffic by Default in Security Group".
+
+        Permissions:
+        The required permissions are as follows: `CreateLoadBalancer`, `CreateLoadBalancerListeners`, `CreateListenerRules`, `BatchRegisterTargets`, `SetLoadBalancerSecurityGroups`, `ModifyLoadBalancerAttributes`, `SetLoadBalancerClsLog`, and `DeleteLoadBalancer`. Note that `DeleteLoadBalancer` is used to roll back in case of cloning failures. If you do not have the permission, the failure data will remain.
+
+        Notes:
+        For a BGP bandwidth package, you need to pass the package ID.
+        To clone a dedicated CLB cluster, specify it in the parameter, otherwise a shared CLB cluster is created.
+        This API is only available for beta users. To try it out, [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20CLB&step=1).
 
         :param request: Request instance for CloneLoadBalancer.
         :type request: :class:`tencentcloud.clb.v20180317.models.CloneLoadBalancerRequest`
@@ -877,6 +892,34 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCrossTargets(self, request):
+        """Queries information of CVMs and ENIs that use cross-region binding 2.0
+
+        :param request: Request instance for DescribeCrossTargets.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeCrossTargetsRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeCrossTargetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCrossTargets", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCrossTargetsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCustomizedConfigAssociateList(self, request):
         """This API is used to query the configured location, bound server or bound CLB instance. If there are domain names, the result will be filtered by domain name.
 
@@ -1410,6 +1453,35 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def MigrateClassicalLoadBalancers(self, request):
+        """This API is used to upgrade classic CLB instances to application CLB instances.
+        This is an async API. After it is returned successfully, you can check the action result by calling `DescribeLoadBalancers`.
+
+        :param request: Request instance for MigrateClassicalLoadBalancers.
+        :type request: :class:`tencentcloud.clb.v20180317.models.MigrateClassicalLoadBalancersRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.MigrateClassicalLoadBalancersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("MigrateClassicalLoadBalancers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.MigrateClassicalLoadBalancersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyBlockIPList(self, request):
         """This API is used to modify the client IP blocklist of a CLB instance. One forwarding rule supports blocking up to 2,000,000 IPs. One blocklist can contain up to 2,000,000 entries.
         (This API is in beta test. To use it, please submit a ticket.)
@@ -1555,7 +1627,7 @@ class ClbClient(AbstractClient):
 
 
     def ModifyLoadBalancerSla(self, request):
-        """This API is used to upgrade shared CLB instances to LCU-supported CLB instances (downgrade is not allowed) and upgrade/downgrade the specification of LCU-supported instances.
+        """This API is used to upgrade shared CLB instances to LCU-supported CLB instances.
 
         :param request: Request instance for ModifyLoadBalancerSla.
         :type request: :class:`tencentcloud.clb.v20180317.models.ModifyLoadBalancerSlaRequest`

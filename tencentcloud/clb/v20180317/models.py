@@ -942,10 +942,10 @@ class CloneLoadBalancerRequest(AbstractModel):
         :param LoadBalancerName: Clones the name of the CLB instance. The name must be 1-60 characters containing letters, numbers, "-" or "_".
 Note: if the name of a new CLB instance already exists, a default name will be generated automatically.
         :type LoadBalancerName: str
-        :param ProjectId: ID of the project to which a CLB instance belongs, which can be obtained through the DescribeProject API. If this parameter is not passed in, the default project will be used.
+        :param ProjectId: Project ID of the CLB instance, which can be obtained through the [`DescribeProject`](https://intl.cloud.tencent.com/document/product/378/4400?from_cn_redirect=1) API. If this field is not specified, it will default to the default project.
         :type ProjectId: int
         :param MasterZoneId: Sets the primary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`, which is applicable only to public network CLB.
-Note: A primary AZ is the default AZ that carries traffic. When it fails, the optimal secondary AZ is chosen automatically to take its place. 
+Note: A primary AZ carries traffic by default, while a secondary AZ does not. It only works when the primary AZ is faulty.
         :type MasterZoneId: str
         :param SlaveZoneId: Sets the secondary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`, which is applicable only to public network CLB instances.
 Note: A secondary AZ carries traffic when the primary AZ fails. 
@@ -970,7 +970,7 @@ Note: A secondary AZ carries traffic when the primary AZ fails.
         :type SnatIps: list of SnatIp
         :param ClusterIds: ID of the public network CLB dedicated cluster
         :type ClusterIds: list of str
-        :param SlaType: 
+        :param SlaType: Guaranteed performance specification.
         :type SlaType: str
         :param ClusterTag: Tag of the STGW dedicated cluster
         :type ClusterTag: str
@@ -1442,15 +1442,20 @@ class CreateLoadBalancerResponse(AbstractModel):
         r"""
         :param LoadBalancerIds: Array of unique CLB instance IDs.
         :type LoadBalancerIds: list of str
+        :param DealName: Order ID.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DealName: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.LoadBalancerIds = None
+        self.DealName = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.LoadBalancerIds = params.get("LoadBalancerIds")
+        self.DealName = params.get("DealName")
         self.RequestId = params.get("RequestId")
 
 
@@ -1679,6 +1684,60 @@ class CreateTopicResponse(AbstractModel):
     def _deserialize(self, params):
         self.TopicId = params.get("TopicId")
         self.RequestId = params.get("RequestId")
+
+
+class CrossTargets(AbstractModel):
+    """Information of CVMs and ENIs that use cross-region binding 2.0
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LocalVpcId: VPC ID of the CLB instance
+        :type LocalVpcId: str
+        :param VpcId: VPC ID of the CVM or ENI instance
+        :type VpcId: str
+        :param IP: IP address of the CVM or ENI instance
+        :type IP: str
+        :param VpcName: VPC name of the CVM or ENI instance
+        :type VpcName: str
+        :param EniId: ENI ID of the CVM instance
+        :type EniId: str
+        :param InstanceId: ID of the CVM instance
+Note: This field may return `null`, indicating that no valid value was found.
+        :type InstanceId: str
+        :param InstanceName: Name of the CVM instance
+Note: This field may return `null`, indicating that no valid value was found.
+        :type InstanceName: str
+        :param Region: Region of the CVM or ENI instance
+        :type Region: str
+        """
+        self.LocalVpcId = None
+        self.VpcId = None
+        self.IP = None
+        self.VpcName = None
+        self.EniId = None
+        self.InstanceId = None
+        self.InstanceName = None
+        self.Region = None
+
+
+    def _deserialize(self, params):
+        self.LocalVpcId = params.get("LocalVpcId")
+        self.VpcId = params.get("VpcId")
+        self.IP = params.get("IP")
+        self.VpcName = params.get("VpcName")
+        self.EniId = params.get("EniId")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeleteListenerRequest(AbstractModel):
@@ -2543,6 +2602,77 @@ class DescribeClsLogSetResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCrossTargetsRequest(AbstractModel):
+    """DescribeCrossTargets request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: Number of real server lists returned. Default value: 20; maximum value: 100.
+        :type Limit: int
+        :param Offset: Starting offset of the real server list returned. Default value: 0.
+        :type Offset: int
+        :param Filters: Filter conditions to query CVMs and ENIs
+<li> `vpc-id` - String - Required: No - (Filter condition) Filter by VPC ID, such as "vpc-12345678".</li>
+<li> `ip` - String - Required: No - (Filter condition) Filter by real server IP, such as "192.168.0.1".</li>
+<li> `listener-id` - String - Required: No - (Filter condition) Filter by listener ID, such as "lbl-12345678".</li>
+<li> `location-id` - String - Required: No - (Filter condition) Filter by forwarding rule ID of the layer-7 listener, such as "loc-12345678".</li>
+        :type Filters: list of Filter
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCrossTargetsResponse(AbstractModel):
+    """DescribeCrossTargets response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number of real server lists
+        :type TotalCount: int
+        :param CrossTargetSet: Real server list
+        :type CrossTargetSet: list of CrossTargets
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.CrossTargetSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("CrossTargetSet") is not None:
+            self.CrossTargetSet = []
+            for item in params.get("CrossTargetSet"):
+                obj = CrossTargets()
+                obj._deserialize(item)
+                self.CrossTargetSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCustomizedConfigAssociateListRequest(AbstractModel):
     """DescribeCustomizedConfigAssociateList request structure.
 
@@ -3306,11 +3436,11 @@ class DescribeTargetGroupInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of results in current query
+        :param TotalCount: Number of results returned for the current query
         :type TotalCount: int
         :param TargetGroupInstanceSet: Information of the bound server
         :type TargetGroupInstanceSet: list of TargetGroupBackend
-        :param RealCount: Actual statistics, which are not affected by `Limit`, `Offset`, and `CAM`.
+        :param RealCount: The actual total number of bound instances, which is not affected by the setting of `Limit`, `Offset` and the CAM permissions.
         :type RealCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3598,12 +3728,16 @@ class DescribeTaskStatusRequest(AbstractModel):
         r"""
         :param TaskId: Request ID, i.e., the RequestId parameter returned by the API.
         :type TaskId: str
+        :param DealName: Order ID.
+        :type DealName: str
         """
         self.TaskId = None
+        self.DealName = None
 
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.DealName = params.get("DealName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3622,15 +3756,20 @@ class DescribeTaskStatusResponse(AbstractModel):
         r"""
         :param Status: Current status of a task. Value range: 0 (succeeded), 1 (failed), 2 (in progress).
         :type Status: int
+        :param LoadBalancerIds: Array of unique CLB instance IDs.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type LoadBalancerIds: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.Status = None
+        self.LoadBalancerIds = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.LoadBalancerIds = params.get("LoadBalancerIds")
         self.RequestId = params.get("RequestId")
 
 
@@ -4980,6 +5119,53 @@ class ManualRewriteResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class MigrateClassicalLoadBalancersRequest(AbstractModel):
+    """MigrateClassicalLoadBalancers request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoadBalancerIds: Array of classic CLB instance IDs
+        :type LoadBalancerIds: list of str
+        :param ExclusiveCluster: Exclusive cluster information
+        :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
+        """
+        self.LoadBalancerIds = None
+        self.ExclusiveCluster = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerIds = params.get("LoadBalancerIds")
+        if params.get("ExclusiveCluster") is not None:
+            self.ExclusiveCluster = ExclusiveCluster()
+            self.ExclusiveCluster._deserialize(params.get("ExclusiveCluster"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MigrateClassicalLoadBalancersResponse(AbstractModel):
+    """MigrateClassicalLoadBalancers response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyBlockIPListRequest(AbstractModel):
     """ModifyBlockIPList request structure.
 
@@ -5129,9 +5315,9 @@ class ModifyDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancerId: CLB instance ID
+        :param LoadBalancerId: CLB instance ID.
         :type LoadBalancerId: str
-        :param ListenerId: CLB listener ID
+        :param ListenerId: CLB listener ID.
         :type ListenerId: str
         :param Domain: Legacy domain name under a listener.
         :type Domain: str
@@ -5342,7 +5528,7 @@ class ModifyLoadBalancerSlaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancerSla: ID of the LCU-supported CLB instance, and the target specification
+        :param LoadBalancerSla: CLB instance information
         :type LoadBalancerSla: list of SlaUpdateParam
         """
         self.LoadBalancerSla = None
@@ -6619,7 +6805,7 @@ class SetSecurityGroupForLoadbalancersResponse(AbstractModel):
 
 
 class SlaUpdateParam(AbstractModel):
-    """Parameter for instance specification adjustment
+    """Instance specification adjustment parameters
 
     """
 
@@ -6627,7 +6813,7 @@ class SlaUpdateParam(AbstractModel):
         r"""
         :param LoadBalancerId: ID of the CLB instance
         :type LoadBalancerId: str
-        :param SlaType: Target instance specification
+        :param SlaType: To upgrade to LCU-supported CLB instances. It must be `SLA`.
         :type SlaType: str
         """
         self.LoadBalancerId = None
