@@ -299,6 +299,7 @@ class ClbClient(AbstractClient):
 
     def CreateLoadBalancerSnatIps(self, request):
         """This API is used to add an SNAT IP for an SnatPro CLB instance. If SnatPro is not enabled for CLB, it will be automatically enabled after the SNAT IP is added.
+        This is an async API. After it is returned successfully, you can check the task result by calling `DescribeTaskStatus` with the returned `RequestID`.
 
         :param request: Request instance for CreateLoadBalancerSnatIps.
         :type request: :class:`tencentcloud.clb.v20180317.models.CreateLoadBalancerSnatIpsRequest`
@@ -499,6 +500,7 @@ class ClbClient(AbstractClient):
 
     def DeleteLoadBalancerSnatIps(self, request):
         """This API is used to delete the SNAT IP for an SnatPro CLB instance.
+        This is an async API. After it is returned successfully, you can check the task result by calling `DescribeTaskStatus` with the returned `RequestID`.
 
         :param request: Request instance for DeleteLoadBalancerSnatIps.
         :type request: :class:`tencentcloud.clb.v20180317.models.DeleteLoadBalancerSnatIpsRequest`
@@ -1600,6 +1602,7 @@ class ClbClient(AbstractClient):
 
     def ModifyLoadBalancerAttributes(self, request):
         """This API is used to modify the attributes of a CLB instance such as name and cross-region attributes.
+        This is an async API. After it is returned successfully, you can check the task result by calling `DescribeTaskStatus` with the returned `RequestID`.
 
         :param request: Request instance for ModifyLoadBalancerAttributes.
         :type request: :class:`tencentcloud.clb.v20180317.models.ModifyLoadBalancerAttributesRequest`

@@ -838,7 +838,7 @@ class DescribeDataCustomUrlRequest(AbstractModel):
         r"""
         :param StartTime: Start time
         :type StartTime: int
-        :param Type: Type
+        :param Type: `top`: top resources view; `allcount`: performance view; `day`: 14-day data; `condition`: condition list; `pagepv`: PV view; `area`: request speed distribution; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
         :type Type: str
         :param EndTime: End time
         :type EndTime: int
@@ -971,7 +971,7 @@ class DescribeDataEventUrlRequest(AbstractModel):
         r"""
         :param StartTime: Start time
         :type StartTime: int
-        :param Type: Type
+        :param Type: `allcount`: performance view; `day`: 14-day data; `condition`: condition list; `ckuv`: UV trend; `ckpv`: PV trend; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
         :type Type: str
         :param EndTime: End time
         :type EndTime: int
@@ -1100,7 +1100,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
         r"""
         :param StartTime: Start time
         :type StartTime: int
-        :param Type: Type
+        :param Type: `allcount`: performance view; `day`: 14-day data; `condition`: condition list; `area`: request speed distribution; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
         :type Type: str
         :param EndTime: End time
         :type EndTime: int
@@ -1366,7 +1366,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
         r"""
         :param StartTime: Start time
         :type StartTime: int
-        :param Type: Type
+        :param Type: `allcount`: performance view; `day`: 14-day data; `count40x`: HTTP status codes 40X view; `count50x`: HTTP status codes 50X view; `count5xand4x`: HTTP status codes 40X∑50X view; `top`: top resources view; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
         :type Type: str
         :param EndTime: End time
         :type EndTime: int
@@ -1552,7 +1552,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
         r"""
         :param StartTime: Start time
         :type StartTime: int
-        :param Type: "analysis", "compare", "samp", "version", "ext3","nettype", "platform","isp","region","device","browser","ext1","ext2"
+        :param Type: `analysis`: exception analysis; `compare`: exception list comparison; `allcount`: performance view; `condition`: condition list; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
         :type Type: str
         :param EndTime: End time
         :type EndTime: int
@@ -1681,7 +1681,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
         :type StartTime: int
         :param EndTime: End time
         :type EndTime: int
-        :param Type: ["pagepv","allcount"]
+        :param Type: `pagepv`: PV view; `allcount`: performance view; `falls`: page loading waterfall plot; `samp`: FMP, `day`: 14-day data, `nettype`: network/platform view; `performance`: top underperformed pages view; `version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: version view; device view; ISP view; region view; browser view, and so on.
         :type Type: str
         :param Level: Log level
         :type Level: str
@@ -1806,7 +1806,7 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
         r"""
         :param StartTime: Start time
         :type StartTime: int
-        :param Type: "allcount", "falls", "samp", "version", "ext3","nettype", "platform","isp","region","device","browser","ext1","ext2"
+        :param Type: `allcount`; performance view; `falls`: page loading waterfall plot; `samp`: FMP, `day`: 14-day data, `nettype`: network/platform view; `performance`: top underperformed pages view; `condition`: condition list; `area`: request speed distribution; `version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: version view; device view; ISP view; region view; browser view, and so on.
         :type Type: str
         :param EndTime: End time
         :type EndTime: int
@@ -2060,7 +2060,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
         r"""
         :param StartTime: Start time
         :type StartTime: int
-        :param Type: Type: "allcount", "falls", "samp", "version", "ext3", "nettype", "platform", "isp", "region", "device", "browser", "ext1", "ext2"
+        :param Type: `allcount`; performance view; `day`: 14-day data, `vp`: performance; `ckuv`: UV; `ckpv`: PV; `condition`: condition list; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
         :type Type: str
         :param EndTime: End time
         :type EndTime: int
@@ -2295,7 +2295,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
         r"""
         :param StartTime: Start time
         :type StartTime: int
-        :param Type: "allcount", "falls", "samp", "version", "ext3","nettype", "platform","isp","region","device","browser","ext1","ext2"
+        :param Type: `allcount`: performance view; `data`: mini program; `component`: mini program-related components; `day`: 14-day data; `nettype`: network/platform view; `performance`: top underperformed pages view; `version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: version view; device view; ISP view; region view; browser view, and so on.
         :type Type: str
         :param EndTime: End time
         :type EndTime: int
@@ -2424,7 +2424,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
         r"""
         :param StartTime: Start time
         :type StartTime: int
-        :param Type: Type
+        :param Type: `allcount`: performance view; `day`: 14-day data; `condition`: condition list; `area`: request speed distribution; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
         :type Type: str
         :param EndTime: End time
         :type EndTime: int
@@ -2557,7 +2557,7 @@ class DescribeDataStaticResourceRequest(AbstractModel):
         r"""
         :param StartTime: Start time
         :type StartTime: int
-        :param Type: Type
+        :param Type: `top`: top resources view; `count40x`: HTTP status codes 40X view; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
         :type Type: str
         :param EndTime: End time
         :type EndTime: int
@@ -2690,7 +2690,7 @@ class DescribeDataStaticUrlRequest(AbstractModel):
         r"""
         :param StartTime: Start time
         :type StartTime: int
-        :param Type: Type
+        :param Type: `pagepv`: page view; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
         :type Type: str
         :param EndTime: End time
         :type EndTime: int

@@ -205,6 +205,66 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateLaunchTemplate(self, request):
+        """This API is used to create an instance launch template.
+
+        An instance launch template contains the configuration information required to create an instance, including instance type, data/system disk type and size, and security group, etc.
+
+        When a template is created, it defaults to Version 1. You can use `CreateLaunchTemplateVersion` to create new versions of this template, with the version number increasing. When you run `RunInstances` to create instances, you can specify the instance launch template version. If it’s not specified, the default template version is used.
+
+        :param request: Request instance for CreateLaunchTemplate.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.CreateLaunchTemplateRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.CreateLaunchTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateLaunchTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLaunchTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateLaunchTemplateVersion(self, request):
+        """This API is used to create an instance launch template based on the specified template ID and the corresponding template version number. The default version number will be used when no template version numbers are specified. Each instance launch template can have up to 30 version numbers.
+
+        :param request: Request instance for CreateLaunchTemplateVersion.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.CreateLaunchTemplateVersionRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.CreateLaunchTemplateVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateLaunchTemplateVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLaunchTemplateVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteDisasterRecoverGroups(self, request):
         """This API is used to delete a [spread placement group](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1). Only empty placement groups can be deleted. To delete a non-empty group, you need to terminate all the CVM instances in it first. Otherwise, the deletion will fail.
 
@@ -282,6 +342,62 @@ class CvmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteKeyPairsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLaunchTemplate(self, request):
+        """This API is used to delete an instance launch template.
+
+        :param request: Request instance for DeleteLaunchTemplate.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DeleteLaunchTemplateRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DeleteLaunchTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLaunchTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLaunchTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLaunchTemplateVersions(self, request):
+        """This API is used to delete one or more instance launch template versions.
+
+        :param request: Request instance for DeleteLaunchTemplateVersions.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DeleteLaunchTemplateVersionsRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DeleteLaunchTemplateVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLaunchTemplateVersions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLaunchTemplateVersionsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -732,6 +848,62 @@ class CvmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeKeyPairsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLaunchTemplateVersions(self, request):
+        """This API is used to query the information of instance launch template versions.
+
+        :param request: Request instance for DescribeLaunchTemplateVersions.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeLaunchTemplateVersionsRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeLaunchTemplateVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLaunchTemplateVersions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLaunchTemplateVersionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLaunchTemplates(self, request):
+        """This API is used to query one or more instance launch templates.
+
+        :param request: Request instance for DescribeLaunchTemplates.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeLaunchTemplatesRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeLaunchTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLaunchTemplates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLaunchTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1336,12 +1508,13 @@ class CvmClient(AbstractClient):
 
 
     def ModifyInstancesAttribute(self, request):
-        """The API is used to modify the attributes of an instance. Currently, you can only use the API to modify the name and the associated security groups of the instance.
+        """The API is used to modify the attributes of an instance. Only the name and the associated security groups can be modified for now.
 
-        * **Instance names** are used only for users' convenience. Tencent Cloud does not use these names for online support or instance management.
-        * Batch operations are supported. The maximum number of Batch instances in each request is 100.
-        * When you modify the security groups associated with an instance, the original security groups will be disassociated.
-        * You can use the [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) API to query the instance operation result. If the 'LatestOperationState' in the response is **SUCCESS**, the operation is successful.
+        * An attribute must be specified in the request.
+        * "Instance name" is a custom name for easier management. Tencent Cloud does not use the name for online support or instance management.
+        * Batch operations are supported. Each request can modify up to 100 instances.
+        * When you modify the security groups associated with an instance is modified, the original security groups are disassociated.
+        * You can use the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) to query the instance operation result. If the 'LatestOperationState' in the response is **SUCCESS**, the operation is successful.
 
         :param request: Request instance for ModifyInstancesAttribute.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyInstancesAttributeRequest`
@@ -1450,6 +1623,34 @@ class CvmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyKeyPairAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyLaunchTemplateDefaultVersion(self, request):
+        """This API is used to modify the default version of the instance launch template.
+
+        :param request: Request instance for ModifyLaunchTemplateDefaultVersion.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyLaunchTemplateDefaultVersionRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.ModifyLaunchTemplateDefaultVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLaunchTemplateDefaultVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLaunchTemplateDefaultVersionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -1468,7 +1468,7 @@ class RumClient(AbstractClient):
 
 
     def ModifyProjectLimit(self, request):
-        """This API is used to add or modify a project limit.
+        """This API is used to add or modify data reporting limit.
 
         :param request: Request instance for ModifyProjectLimit.
         :type request: :class:`tencentcloud.rum.v20210622.models.ModifyProjectLimitRequest`

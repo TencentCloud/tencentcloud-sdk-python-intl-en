@@ -2787,12 +2787,39 @@ class DescribeClusterNodePoolsRequest(AbstractModel):
         r"""
         :param ClusterId: ClusterId (cluster ID)
         :type ClusterId: str
+        :param Filters: ·  NodePoolsName
+    Filters by the node pool name
+    Type: String
+    Required: No
+
+·  NodePoolsId
+    Filters by the node pool ID
+    Type: String
+    Required: No
+
+·  tags
+    Filters by key-value pairs of tags
+    Type: String
+    Required: No
+
+·  tag:tag-key
+    Filters by key-value pairs of tags
+    Type: String
+    Required: No
+        :type Filters: list of Filter
         """
         self.ClusterId = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3083,32 +3110,42 @@ all clusters under the account will be obtained)
         :param Filters: ·  ClusterName
     Filters by the cluster name
     Type: String
-    Required: no
+    Required: No
+
+·  ClusterType
+    Filters by the cluster type
+    Type: String
+    Required: No
+
+·  ClusterStatus
+    Filters by the cluster status
+    Type: String
+    Required: No
 
 ·  Tags
     Filters by key-value pairs of tags
     Type: String
-    Required: no
+    Required: No
 
 ·  vpc-id
     Filters by the VPC ID
     Type: String
-    Required: no
+    Required: No
 
 ·  tag-key
     Filters by the tag key
     Type: String
-    Required: no
+    Required: No
 
 ·  tag-value
     Filters by the tag value
     Type: String
-    Required: no
+    Required: No
 
 ·  tag:tag-key
     Filters by key-value pairs of tags
     Type: String
-    Required: no
+    Required: No
         :type Filters: list of Filter
         :param ClusterType: Cluster type, such as `MANAGED_CLUSTER`
         :type ClusterType: str

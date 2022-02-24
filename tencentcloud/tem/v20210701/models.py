@@ -601,6 +601,8 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
         :param JdkVersion: JDK version
 - KONA: use KONA JDK
 - OPEN: use open JDK
+- KONA: use KONA JDK
+- OPEN: use open JDK
         :type JdkVersion: str
         :param SecurityGroupIds: Security group IDs
         :type SecurityGroupIds: list of str
@@ -638,6 +640,12 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
         :type CronHorizontalAutoscaler: list of CronHorizontalAutoscaler
         :param LogEnable: Specifies whether to enable logging. `1`: enable; `0`: do not enable
         :type LogEnable: int
+        :param ConfEdited: Whether the configuration is modified (except for the image configuration)
+        :type ConfEdited: bool
+        :param SpeedUp: Whether the application acceleration is enabled 
+        :type SpeedUp: bool
+        :param StartupProbe: Whether to enable probing
+        :type StartupProbe: :class:`tencentcloud.tem.v20210701.models.HealthCheckConfig`
         """
         self.ApplicationId = None
         self.InitPodNum = None
@@ -674,6 +682,9 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
         self.HorizontalAutoscaler = None
         self.CronHorizontalAutoscaler = None
         self.LogEnable = None
+        self.ConfEdited = None
+        self.SpeedUp = None
+        self.StartupProbe = None
 
 
     def _deserialize(self, params):
@@ -754,6 +765,11 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
                 obj._deserialize(item)
                 self.CronHorizontalAutoscaler.append(obj)
         self.LogEnable = params.get("LogEnable")
+        self.ConfEdited = params.get("ConfEdited")
+        self.SpeedUp = params.get("SpeedUp")
+        if params.get("StartupProbe") is not None:
+            self.StartupProbe = HealthCheckConfig()
+            self.StartupProbe._deserialize(params.get("StartupProbe"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -799,11 +815,14 @@ class DeployStrategyConf(AbstractModel):
         :type DeployStrategyType: int
         :param BatchInterval: Interval between batches
         :type BatchInterval: int
+        :param MinAvailable: The minimum number of available pods
+        :type MinAvailable: int
         """
         self.TotalBatchCount = None
         self.BetaBatchNum = None
         self.DeployStrategyType = None
         self.BatchInterval = None
+        self.MinAvailable = None
 
 
     def _deserialize(self, params):
@@ -811,6 +830,7 @@ class DeployStrategyConf(AbstractModel):
         self.BetaBatchNum = params.get("BetaBatchNum")
         self.DeployStrategyType = params.get("DeployStrategyType")
         self.BatchInterval = params.get("BatchInterval")
+        self.MinAvailable = params.get("MinAvailable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1984,14 +2004,24 @@ class Pair(AbstractModel):
         :type Key: str
         :param Value: Value
         :type Value: str
+        :param Type: `default``: Custom. `reserved`: System variable. `referenced`: Referenced configuration item.
+Note: This field may return `null`, indicating that no valid value can be found.
+        :type Type: str
+        :param Config: Configuration name
+Note: This field may return `null`, indicating that no valid value can be found.
+        :type Config: str
         """
         self.Key = None
         self.Value = None
+        self.Type = None
+        self.Config = None
 
 
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+        self.Type = params.get("Type")
+        self.Config = params.get("Config")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2173,15 +2203,15 @@ class RollingUpdateApplicationByVersionRequest(AbstractModel):
         :type PackageName: str
         :param From: Request source. Options: `IntelliJ`, `Coding`
         :type From: str
-        :param DeployStrategyType: 
+        :param DeployStrategyType: The deployment policy. Values: `AUTO` (automatically deploy), `BETA` (deploy a small batch first to test the result, and deploy the rest automatically) and `MANUAL` (manually deploy)
         :type DeployStrategyType: str
-        :param TotalBatchCount: 
+        :param TotalBatchCount: Total number of batches
         :type TotalBatchCount: int
-        :param BatchInterval: 
+        :param BatchInterval: Interval between the batches
         :type BatchInterval: int
-        :param BetaBatchNum: 
+        :param BetaBatchNum: Number of instances in a beta batch
         :type BetaBatchNum: int
-        :param MinAvailable: 
+        :param MinAvailable: Minimum number of available instances during the deployment
         :type MinAvailable: int
         """
         self.ApplicationId = None
@@ -2456,6 +2486,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :type ClusterStatus: str
         :param EnableTswTraceService: Whether to enable TSW
         :type EnableTswTraceService: bool
+        :param Locked: Whether the environment is locked. `1`: locked; `0`: not locked
+        :type Locked: int
         """
         self.EnvironmentId = None
         self.Channel = None
@@ -2473,6 +2505,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.SubnetId = None
         self.ClusterStatus = None
         self.EnableTswTraceService = None
+        self.Locked = None
 
 
     def _deserialize(self, params):
@@ -2492,6 +2525,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.SubnetId = params.get("SubnetId")
         self.ClusterStatus = params.get("ClusterStatus")
         self.EnableTswTraceService = params.get("EnableTswTraceService")
+        self.Locked = params.get("Locked")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

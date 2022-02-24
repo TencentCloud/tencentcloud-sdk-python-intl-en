@@ -2083,6 +2083,8 @@ class CreateApiRequest(AbstractModel):
         :type UserType: str
         :param IsBase64Encoded: Whether to enable Base64 encoding. This parameter takes effect only when the backend is SCF.
         :type IsBase64Encoded: bool
+        :param EventBusId: Event bus ID.
+        :type EventBusId: str
         :param ServiceScfFunctionType: SCF function type, which takes effect if the backend type is `SCF`. Valid values: `EVENT` and `HTTP`.
         :type ServiceScfFunctionType: str
         :param EIAMAppType: EIAM application type.
@@ -2140,6 +2142,7 @@ class CreateApiRequest(AbstractModel):
         self.TargetNamespaceId = None
         self.UserType = None
         self.IsBase64Encoded = None
+        self.EventBusId = None
         self.ServiceScfFunctionType = None
         self.EIAMAppType = None
         self.EIAMAuthType = None
@@ -2236,6 +2239,7 @@ class CreateApiRequest(AbstractModel):
         self.TargetNamespaceId = params.get("TargetNamespaceId")
         self.UserType = params.get("UserType")
         self.IsBase64Encoded = params.get("IsBase64Encoded")
+        self.EventBusId = params.get("EventBusId")
         self.ServiceScfFunctionType = params.get("ServiceScfFunctionType")
         self.EIAMAppType = params.get("EIAMAppType")
         self.EIAMAuthType = params.get("EIAMAuthType")
@@ -6579,6 +6583,18 @@ class ModifyApiRequest(AbstractModel):
         :type IsBase64Trigger: bool
         :param Base64EncodedTriggerRules: Header trigger rules. The number of rules cannot exceed 10.
         :type Base64EncodedTriggerRules: list of Base64EncodedTriggerRule
+        :param EventBusId: Event bus ID.
+        :type EventBusId: str
+        :param ServiceScfFunctionType: SCF function type, which takes effect when the backend type is `SCF`. Valid values: `EVENT` and `HTTP`.
+        :type ServiceScfFunctionType: str
+        :param EIAMAppType: EIAM application type.
+        :type EIAMAppType: str
+        :param EIAMAuthType: EIAM application authentication type. Valid values: `AuthenticationOnly`, `Authentication`, `Authorization`.
+        :type EIAMAuthType: str
+        :param EIAMAppId: Validity of the EIAM application token. Unit: second. Default value: `7200`.
+        :type EIAMAppId: str
+        :param TokenTimeout: EIAM application ID.
+        :type TokenTimeout: int
         """
         self.ServiceId = None
         self.ServiceType = None
@@ -6628,6 +6644,12 @@ class ModifyApiRequest(AbstractModel):
         self.IsBase64Encoded = None
         self.IsBase64Trigger = None
         self.Base64EncodedTriggerRules = None
+        self.EventBusId = None
+        self.ServiceScfFunctionType = None
+        self.EIAMAppType = None
+        self.EIAMAuthType = None
+        self.EIAMAppId = None
+        self.TokenTimeout = None
 
 
     def _deserialize(self, params):
@@ -6723,6 +6745,12 @@ class ModifyApiRequest(AbstractModel):
                 obj = Base64EncodedTriggerRule()
                 obj._deserialize(item)
                 self.Base64EncodedTriggerRules.append(obj)
+        self.EventBusId = params.get("EventBusId")
+        self.ServiceScfFunctionType = params.get("ServiceScfFunctionType")
+        self.EIAMAppType = params.get("EIAMAppType")
+        self.EIAMAuthType = params.get("EIAMAuthType")
+        self.EIAMAppId = params.get("EIAMAppId")
+        self.TokenTimeout = params.get("TokenTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

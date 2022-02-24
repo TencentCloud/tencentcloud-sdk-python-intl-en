@@ -161,6 +161,9 @@ INTERNALERROR_APIGWEXCEPTION = 'InternalError.ApigwException'
 # CAuth internal request error. Please try again later. If the problem persists, please submit a ticket.
 INTERNALERROR_CAUTHEXCEPTION = 'InternalError.CauthException'
 
+# 
+INTERNALERROR_CLBEXCEPTION = 'InternalError.ClbException'
+
 # OSS internal request error. Please try again. If the problem persists, please contact the smart customer service or submit a ticket.
 INTERNALERROR_OSSEXCEPTION = 'InternalError.OssException'
 

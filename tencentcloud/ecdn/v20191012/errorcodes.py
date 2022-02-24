@@ -26,11 +26,17 @@ INTERNALERROR_ECDNDBERROR = 'InternalError.EcdnDbError'
 # System error. Please submit a ticket for troubleshooting.
 INTERNALERROR_ECDNSYSTEMERROR = 'InternalError.EcdnSystemError'
 
+# Backend service error. Please try again later.
+INTERNALERROR_PROXYSERVER = 'InternalError.ProxyServer'
+
 # The tag key does not exist.
 INVALIDPARAMETER_ECDNCAMTAGKEYNOTEXIST = 'InvalidParameter.EcdnCamTagKeyNotExist'
 
 # Unable to resolve the certificate information.
 INVALIDPARAMETER_ECDNCERTNOCERTINFO = 'InvalidParameter.EcdnCertNoCertInfo'
+
+# The cache configuration is invalid.
+INVALIDPARAMETER_ECDNCONFIGINVALIDCACHE = 'InvalidParameter.EcdnConfigInvalidCache'
 
 # Invalid domain name status.
 INVALIDPARAMETER_ECDNDOMAININVALIDSTATUS = 'InvalidParameter.EcdnDomainInvalidStatus'
@@ -95,6 +101,12 @@ LIMITEXCEEDED_ECDNPURGEURLEXCEEDBATCHLIMIT = 'LimitExceeded.EcdnPurgeUrlExceedBa
 # The number of URLs to be purged exceeded the daily quota.
 LIMITEXCEEDED_ECDNPURGEURLEXCEEDDAYLIMIT = 'LimitExceeded.EcdnPurgeUrlExceedDayLimit'
 
+# The number of connected domain names reached the upper limit.
+LIMITEXCEEDED_ECDNUSERTOOMANYDOMAINS = 'LimitExceeded.EcdnUserTooManyDomains'
+
+# This domain name already exists.
+RESOURCEINUSE_ECDNDOMAINEXISTS = 'ResourceInUse.EcdnDomainExists'
+
 # The ECDN resource is being manipulated.
 RESOURCEINUSE_ECDNOPINPROGRESS = 'ResourceInUse.EcdnOpInProgress'
 
@@ -109,6 +121,15 @@ RESOURCENOTFOUND_ECDNPROJECTNOTEXISTS = 'ResourceNotFound.EcdnProjectNotExists'
 
 # The ECDN service has not been activated. Please activate it first before using this API.
 RESOURCENOTFOUND_ECDNUSERNOTEXISTS = 'ResourceNotFound.EcdnUserNotExists'
+
+# The domain name has been locked. Please submit a ticket.
+RESOURCEUNAVAILABLE_ECDNDOMAINISLOCKED = 'ResourceUnavailable.EcdnDomainIsLocked'
+
+# Failed to deactivate the domain name. Please check and try again.
+RESOURCEUNAVAILABLE_ECDNDOMAINISNOTOFFLINE = 'ResourceUnavailable.EcdnDomainIsNotOffline'
+
+# The domain name has been deactivated. Please check and try again.
+RESOURCEUNAVAILABLE_ECDNDOMAINISNOTONLINE = 'ResourceUnavailable.EcdnDomainIsNotOnline'
 
 # The sub-account is unauthorized to query full data.
 UNAUTHORIZEDOPERATION_CDNACCOUNTUNAUTHORIZED = 'UnauthorizedOperation.CdnAccountUnauthorized'
@@ -140,11 +161,20 @@ UNAUTHORIZEDOPERATION_ECDNACCOUNTUNAUTHORIZED = 'UnauthorizedOperation.EcdnAccou
 # No CAM policy is configured for the sub-account.
 UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = 'UnauthorizedOperation.EcdnCamUnauthorized'
 
+# The domain name resolution is not verified.
+UNAUTHORIZEDOPERATION_ECDNDOMAINRECORDNOTVERIFIED = 'UnauthorizedOperation.EcdnDomainRecordNotVerified'
+
 # The acceleration domain name is not authorized for the ECDN sub-account.
 UNAUTHORIZEDOPERATION_ECDNDOMAINUNAUTHORIZED = 'UnauthorizedOperation.EcdnDomainUnauthorized'
 
+# This domain name belongs to another account. You are not allowed o connect it to ECDN.
+UNAUTHORIZEDOPERATION_ECDNHOSTISOWNEDBYOTHER = 'UnauthorizedOperation.EcdnHostIsOwnedByOther'
+
 # The acceleration domain name is not authorized for the ECDN sub-account.
 UNAUTHORIZEDOPERATION_ECDNHOSTUNAUTHORIZED = 'UnauthorizedOperation.EcdnHostUnauthorized'
+
+# Please go to the CDN console for operation.
+UNAUTHORIZEDOPERATION_ECDNMIGRATEDCDN = 'UnauthorizedOperation.EcdnMigratedCdn'
 
 # The sub-account does not have the permission to access the domain name. Please try again after authorization.
 UNAUTHORIZEDOPERATION_ECDNNODOMAINUNAUTHORIZED = 'UnauthorizedOperation.EcdnNoDomainUnauthorized'
@@ -166,3 +196,6 @@ UNAUTHORIZEDOPERATION_PROJECTNOPERMISSION = 'UnauthorizedOperation.ProjectNoPerm
 
 # The project is not authorized for the ECDN sub-account.
 UNAUTHORIZEDOPERATION_PROJECTSNOPERMISSION = 'UnauthorizedOperation.ProjectsNoPermission'
+
+# Unknown error. Please try again later.
+UNAUTHORIZEDOPERATION_UNKNOWN = 'UnauthorizedOperation.Unknown'

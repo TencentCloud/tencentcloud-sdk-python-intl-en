@@ -1146,21 +1146,21 @@ class CreateClsLogSetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Period: Logset retention period in days; max value: 90
-        :type Period: int
         :param LogsetName: Logset name, which must be unique among all CLS logsets; default value: clb_logset
         :type LogsetName: str
+        :param Period: Logset retention period (in days)
+        :type Period: int
         :param LogsetType: Logset type. Valid values: ACCESS (access logs; default value) and HEALTH (health check logs).
         :type LogsetType: str
         """
-        self.Period = None
         self.LogsetName = None
+        self.Period = None
         self.LogsetType = None
 
 
     def _deserialize(self, params):
-        self.Period = params.get("Period")
         self.LogsetName = params.get("LogsetName")
+        self.Period = params.get("Period")
         self.LogsetType = params.get("LogsetType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -1646,16 +1646,20 @@ class CreateTopicRequest(AbstractModel):
         :type PartitionCount: int
         :param TopicType: Log type. Valid values: ACCESS (access logs; default value) and HEALTH (health check logs).
         :type TopicType: str
+        :param Period: Logset retention period (in days). Default: 30 days.
+        :type Period: int
         """
         self.TopicName = None
         self.PartitionCount = None
         self.TopicType = None
+        self.Period = None
 
 
     def _deserialize(self, params):
         self.TopicName = params.get("TopicName")
         self.PartitionCount = params.get("PartitionCount")
         self.TopicType = params.get("TopicType")
+        self.Period = params.get("Period")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1987,11 +1991,11 @@ class DeleteRuleRequest(AbstractModel):
         :type ListenerId: str
         :param LocationIds: Array of IDs of the forwarding rules to be deleted
         :type LocationIds: list of str
-        :param Domain: Domain name of the forwarding rule to be deleted. This parameter does not take effect if LocationIds is specified.
+        :param Domain: Specifies the target domain name. Only one domain name is allowed. This field is invalid when `LocationIds` is specified.
         :type Domain: str
         :param Url: Forwarding path of the forwarding rule to be deleted. This parameter does not take effect if LocationIds is specified.
         :type Url: str
-        :param NewDefaultServerDomain: A listener must be configured with a default domain name. If you need to delete the default domain name, you can specify another one as the new default domain name.
+        :param NewDefaultServerDomain: Specifies a new default domain name for the listener. This field is used when the original default domain name is disabled. If there are multiple domain names, specify one of them.
         :type NewDefaultServerDomain: str
         """
         self.LoadBalancerId = None
@@ -3977,8 +3981,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param HttpVersion: Health check protocol (a custom check parameter), which is required if the value of CheckType is HTTP. This parameter represents the HTTP version of the real server. Value range: HTTP/1.0, HTTP/1.1. (Applicable only to TCP listeners.)
 Note: This field may return null, indicating that no valid values can be obtained.
         :type HttpVersion: str
-        :param SourceIpType: Specifies the source IP for health check. `0`: use the CLB VIP as the source IP; `1`: IP range starting with 100.64 serving as the source IP. Default: `0`.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param SourceIpType: Specifies the type of IP for health check. `0` (default): Use the CLB VIP as the source IP. `1`: Use the IP range starting with 100.64 as the source IP.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type SourceIpType: int
         """
         self.HealthSwitch = None
@@ -4892,6 +4896,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param TargetHealth: Health status of the target real server.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type TargetHealth: str
+        :param Domains: List o domain names associated with the forwarding rule
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Domains: str
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -4926,6 +4933,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.SecurityGroup = None
         self.LoadBalancerPassToTarget = None
         self.TargetHealth = None
+        self.Domains = None
 
 
     def _deserialize(self, params):
@@ -4973,6 +4981,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.SecurityGroup = params.get("SecurityGroup")
         self.LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
         self.TargetHealth = params.get("TargetHealth")
+        self.Domains = params.get("Domains")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5248,9 +5257,9 @@ class ModifyDomainAttributesRequest(AbstractModel):
         :type LoadBalancerId: str
         :param ListenerId: CLB listener ID
         :type ListenerId: str
-        :param Domain: Domain name, which must be under a created forwarding rule.
+        :param Domain: The domain name, which must be associated with an existing forwarding rule. If there are multiple domain names, you only need to specify one.
         :type Domain: str
-        :param NewDomain: New domain name
+        :param NewDomain: The one domain name to modify. `NewDomain` and `NewDomains` can not be both specified.
         :type NewDomain: str
         :param Certificate: Domain name certificate information. Note: This is only applicable to SNI-enabled listeners.
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
@@ -5258,8 +5267,10 @@ class ModifyDomainAttributesRequest(AbstractModel):
         :type Http2: bool
         :param DefaultServer: Whether to set this domain name as the default domain name. Note: Only one default domain name can be set under one listener.
         :type DefaultServer: bool
-        :param NewDefaultServerDomain: A listener must be configured with a default domain name. If you need to disable the default domain name, you must specify another one as the new default domain name.
+        :param NewDefaultServerDomain: Specifies a new default domain name for the listener. This field is used when the original default domain name is disabled. If there are multiple domain names, specify one of them.
         :type NewDefaultServerDomain: str
+        :param NewDomains: The new domain names to modify. `NewDomain` and `NewDomains` can not be both specified.
+        :type NewDomains: list of str
         """
         self.LoadBalancerId = None
         self.ListenerId = None
@@ -5269,6 +5280,7 @@ class ModifyDomainAttributesRequest(AbstractModel):
         self.Http2 = None
         self.DefaultServer = None
         self.NewDefaultServerDomain = None
+        self.NewDomains = None
 
 
     def _deserialize(self, params):
@@ -5282,6 +5294,7 @@ class ModifyDomainAttributesRequest(AbstractModel):
         self.Http2 = params.get("Http2")
         self.DefaultServer = params.get("DefaultServer")
         self.NewDefaultServerDomain = params.get("NewDefaultServerDomain")
+        self.NewDomains = params.get("NewDomains")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6374,10 +6387,10 @@ class RuleInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Domain: Domain name of the forwarding rule. Length: 1-80.
-        :type Domain: str
         :param Url: Forwarding rule path. Length: 1-200.
         :type Url: str
+        :param Domain: The domain name associated with the forwarding rule. It can contain 1-80 characters. Only one domain name can be entered. If you need to enter multiple domain names, use `Domains`.
+        :type Domain: str
         :param SessionExpireTime: Session persistence time in seconds. Value range: 30-3,600. Setting it to 0 indicates that session persistence is disabled.
         :type SessionExpireTime: int
         :param HealthCheck: Health check information. For more information, please see [Health Check](https://intl.cloud.tencent.com/document/product/214/6097?from_cn_redirect=1)
@@ -6401,9 +6414,11 @@ They represent weighted round robin, least connections, and IP hash, respectivel
         :type TrpcFunc: str
         :param Quic: Whether to enable QUIC. Note: QUIC can be enabled only for HTTPS domain names
         :type Quic: bool
+        :param Domains: The domain name associated with the forwarding rule. Each contain 1-80 characters. If you only need to enter one domain name, use `Domain` instead.
+        :type Domains: list of str
         """
-        self.Domain = None
         self.Url = None
+        self.Domain = None
         self.SessionExpireTime = None
         self.HealthCheck = None
         self.Certificate = None
@@ -6415,11 +6430,12 @@ They represent weighted round robin, least connections, and IP hash, respectivel
         self.TrpcCallee = None
         self.TrpcFunc = None
         self.Quic = None
+        self.Domains = None
 
 
     def _deserialize(self, params):
-        self.Domain = params.get("Domain")
         self.Url = params.get("Url")
+        self.Domain = params.get("Domain")
         self.SessionExpireTime = params.get("SessionExpireTime")
         if params.get("HealthCheck") is not None:
             self.HealthCheck = HealthCheck()
@@ -6435,6 +6451,7 @@ They represent weighted round robin, least connections, and IP hash, respectivel
         self.TrpcCallee = params.get("TrpcCallee")
         self.TrpcFunc = params.get("TrpcFunc")
         self.Quic = params.get("Quic")
+        self.Domains = params.get("Domains")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6503,6 +6520,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param QuicStatus: QUIC status
 Note: this field may return null, indicating that no valid values can be obtained.
         :type QuicStatus: str
+        :param Domains: List of domain names associated with the forwarding rule
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Domains: list of str
         """
         self.LocationId = None
         self.Domain = None
@@ -6525,6 +6545,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.TrpcCallee = None
         self.TrpcFunc = None
         self.QuicStatus = None
+        self.Domains = None
 
 
     def _deserialize(self, params):
@@ -6557,6 +6578,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.TrpcCallee = params.get("TrpcCallee")
         self.TrpcFunc = params.get("TrpcFunc")
         self.QuicStatus = params.get("QuicStatus")
+        self.Domains = params.get("Domains")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

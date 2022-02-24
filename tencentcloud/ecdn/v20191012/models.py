@@ -130,6 +130,63 @@ class AddEcdnDomainResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AdvanceHttps(AbstractModel):
+    """Custom HTTPS configuration for origin-pull
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CustomTlsStatus: Custom TLS data switch
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CustomTlsStatus: str
+        :param TlsVersion: TLS version settings. Valid values: `TLSv1`, `TLSV1.1`, `TLSV1.2`, and `TLSv1.3`. Only consecutive versions can be enabled at the same time.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type TlsVersion: list of str
+        :param Cipher: Custom encryption suite
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Cipher: str
+        :param VerifyOriginType: Origin-pull verification status
+`off`: Disables origin-pull verification
+`oneWay`: Only verify the origin
+`twoWay`: Enables two-way origin-pull verification
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type VerifyOriginType: str
+        :param CertInfo: Configuration information of the origin-pull certificate
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CertInfo: :class:`tencentcloud.ecdn.v20191012.models.ServerCert`
+        :param OriginCertInfo: Configuration information of the origin server certificate
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type OriginCertInfo: :class:`tencentcloud.ecdn.v20191012.models.ClientCert`
+        """
+        self.CustomTlsStatus = None
+        self.TlsVersion = None
+        self.Cipher = None
+        self.VerifyOriginType = None
+        self.CertInfo = None
+        self.OriginCertInfo = None
+
+
+    def _deserialize(self, params):
+        self.CustomTlsStatus = params.get("CustomTlsStatus")
+        self.TlsVersion = params.get("TlsVersion")
+        self.Cipher = params.get("Cipher")
+        self.VerifyOriginType = params.get("VerifyOriginType")
+        if params.get("CertInfo") is not None:
+            self.CertInfo = ServerCert()
+            self.CertInfo._deserialize(params.get("CertInfo"))
+        if params.get("OriginCertInfo") is not None:
+            self.OriginCertInfo = ClientCert()
+            self.OriginCertInfo._deserialize(params.get("OriginCertInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Cache(AbstractModel):
     """Simple edition of cache configuration, which does not support setting a caching rule for scenarios where the `max-age` is not returned from the origin server.
 
@@ -627,11 +684,11 @@ request: number of requests
 4xx: returns the number of 4xx status codes or details of status codes starting with 4
 5xx: returns the number of 5xx status codes or details of status codes starting with 5
         :type Metrics: list of str
-        :param Interval: Time granularity, which can be:
-1 day	 1, 5, 15, 30, 60, 120, 240, 1440 
-2-3 days 15, 30, 60, 120, 240, 1440
-4-7 days 30, 60, 120, 240, 1440
-8-90 days	 60, 120, 240, 1440
+        :param Interval: Sampling interval in minutes. The available options vary for different query period. See below: 
+1 day: `1`, `5`, `15`, `30`, `60`, `120`, `240`, `1440` 
+2 to 3 days: `15`, `30`, `60`, `120`, `240`, `1440`
+4 to 7 days: `30`, `60`, `120`, `240`, `1440`
+8 to 31 days: `60`, `120`, `240`, `1440`
         :type Interval: int
         :param Domains: Specifies the list of domain names to be queried
 
@@ -936,6 +993,9 @@ class DomainBriefInfo(AbstractModel):
         :type Area: str
         :param Readonly: Domain name lock status. normal: not locked; global: globally locked
         :type Readonly: str
+        :param Tag: Domain name tag
+Note: This field may return `null`, indicating that no valid value can be found.
+        :type Tag: list of Tag
         """
         self.ResourceId = None
         self.AppId = None
@@ -949,6 +1009,7 @@ class DomainBriefInfo(AbstractModel):
         self.Disable = None
         self.Area = None
         self.Readonly = None
+        self.Tag = None
 
 
     def _deserialize(self, params):
@@ -966,6 +1027,12 @@ class DomainBriefInfo(AbstractModel):
         self.Disable = params.get("Disable")
         self.Area = params.get("Area")
         self.Readonly = params.get("Readonly")
+        if params.get("Tag") is not None:
+            self.Tag = []
+            for item in params.get("Tag"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tag.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1155,17 +1222,18 @@ class DomainFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Filter field name, which can be:
-- origin: primary origin server.
-- domain: domain name.
-- resourceId: domain name ID.
-- status: domain name status. Valid values: online, offline, processing.
-- disable: domain name blockage status. Valid values: normal, unlicensed.
-- projectId: project ID.
-- fullUrlCache: full path cache. Valid values: on, off.
-- https: whether to configure HTTPS. Valid values: on, off, processing.
-- originPullProtocol: origin-pull protocol type. Valid values: http, follow, https.
-- area: acceleration region. Valid values: mainland, overseas, global.
+        :param Name: Filters by the field name, which includes:
+- `origin`: Primary origin server.
+- `domain`: Domain name.
+- `resourceId`: Domain name ID.
+- `status`: Domain name status. Valid values: `online`, `offline`, and `processing`.
+- `disable`: Whether the domain name is blocked. Valid values: `normal`, `unlicensed`.
+- `projectId`: Project ID.
+- `fullUrlCache`: Whether to enable full-path cache, which can be `on` or `off`.
+- `https`: Whether to configure HTTPS, which can be `on`, `off` or `processing`.
+- `originPullProtocol`: Origin-pull protocol type, which can be `http`, `follow`, or `https`.
+- `area`: Acceleration region, which can be `mainland`，`overseas` or `global`.
+- `tagKey`: Tag key.
         :type Name: str
         :param Value: Filter field value.
         :type Value: list of str
@@ -1576,6 +1644,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 This is required when setting `BackupOrigins`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type BackupOriginType: str
+        :param AdvanceHttps: HTTPS advanced origin-pull configuration
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type AdvanceHttps: :class:`tencentcloud.ecdn.v20191012.models.AdvanceHttps`
         """
         self.Origins = None
         self.OriginType = None
@@ -1583,6 +1654,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.OriginPullProtocol = None
         self.BackupOrigins = None
         self.BackupOriginType = None
+        self.AdvanceHttps = None
 
 
     def _deserialize(self, params):
@@ -1592,6 +1664,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.OriginPullProtocol = params.get("OriginPullProtocol")
         self.BackupOrigins = params.get("BackupOrigins")
         self.BackupOriginType = params.get("BackupOriginType")
+        if params.get("AdvanceHttps") is not None:
+            self.AdvanceHttps = AdvanceHttps()
+            self.AdvanceHttps._deserialize(params.get("AdvanceHttps"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1636,7 +1711,7 @@ class PurgePathCacheResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: Purge task ID. The first ten digits are the UTC time when the task is submitted.
+        :param TaskId: Purge task ID
         :type TaskId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1725,7 +1800,7 @@ class PurgeUrlsCacheResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: Purge task ID. The first ten digits are the UTC time when the task is submitted.
+        :param TaskId: Purge task ID
         :type TaskId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2175,7 +2250,9 @@ class WebSocket(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: WebSocket configuration switch, which can be `on` or `off`.
+        :param Switch: Whether to enable custom WebSocket timeout setting. When it’s `off`: WebSocket connection is supported, and the default timeout period is 15 seconds. To change the timeout period, please set it to `on`.
+
+* WebSocket is now only available for beta users. To use it, please submit a ticket.
         :type Switch: str
         :param Timeout: Sets timeout period in seconds. Maximum value: 65
 Note: This field may return `null`, indicating that no valid values can be obtained.

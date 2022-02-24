@@ -396,7 +396,7 @@ class ApigatewayClient(AbstractClient):
 
     def CreateService(self, request):
         """This API is used to create a service.
-        The maximum unit in API Gateway is service. Multiple APIs can be created in one service, and each service has a default domain name for users to call. You can also bind your own custom domain name to a service.
+        A service is the biggest usage unit in API Gateway. Each service can contain multiple APIs and one default domain name for invocation. You can also bind your own custom domain name to a service.
 
         :param request: Request instance for CreateService.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.CreateServiceRequest`

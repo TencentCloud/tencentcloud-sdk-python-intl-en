@@ -351,6 +351,8 @@ Click [here](https://intl.cloud.tencent.com/document/product/213/43498?from_cn_r
         :type SnapshotIds: list of str
         :param DryRun: Success status of this request, without affecting the resources involved
         :type DryRun: bool
+        :param TagSpecification: Tag description list. This parameter is used to bind a tag to a custom image.
+        :type TagSpecification: list of TagSpecification
         """
         self.ImageName = None
         self.InstanceId = None
@@ -360,6 +362,7 @@ Click [here](https://intl.cloud.tencent.com/document/product/213/43498?from_cn_r
         self.DataDiskIds = None
         self.SnapshotIds = None
         self.DryRun = None
+        self.TagSpecification = None
 
 
     def _deserialize(self, params):
@@ -371,6 +374,12 @@ Click [here](https://intl.cloud.tencent.com/document/product/213/43498?from_cn_r
         self.DataDiskIds = params.get("DataDiskIds")
         self.SnapshotIds = params.get("SnapshotIds")
         self.DryRun = params.get("DryRun")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = TagSpecification()
+                obj._deserialize(item)
+                self.TagSpecification.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -453,6 +462,366 @@ class CreateKeyPairResponse(AbstractModel):
         if params.get("KeyPair") is not None:
             self.KeyPair = KeyPair()
             self.KeyPair._deserialize(params.get("KeyPair"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateLaunchTemplateRequest(AbstractModel):
+    """CreateLaunchTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LaunchTemplateName: Instance launch template name. It can include 2-128 characters.
+        :type LaunchTemplateName: str
+        :param Placement: Location of the instance. You can use this parameter to specify the attributes of the instance, such as its availability zone, project, and CDH (for dedicated CVMs)
+        :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
+        :param ImageId: The [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are four types of images:<br/><li>Public images</li><li>Custom images</li><li>Shared images</li><li>Marketplace images (for Chinese mainland only)</li><br/>To check the image ID:<br/><li>For public images, custom images, and shared images, go to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE). For marketplace images, go to [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1), pass in `InstanceType` to retrieve the list of images supported by the current model, and then find the `ImageId` in the response.</li>
+        :type ImageId: str
+        :param LaunchTemplateVersionDescription: Description of instance launch template versions. This parameter can contain 2-256 characters.
+        :type LaunchTemplateVersionDescription: str
+        :param InstanceType: The instance model. Different resource specifications are specified for different instance models.
+<br><li>To view specific values for `PREPAID` or `POSTPAID_BY_HOUR` instances, you can call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). If this parameter is not specified, the system will specify the default model according to the dynamic resource sales in the current region. <br><li>For `CDHPAID` instances, the value of this parameter is in the format of `CDH_XCXG` based on the number of CPU cores and memory capacity. For example, if you want to create a CDH instance with a single-core CPU and 1 GB memory, you need to specify this parameter as `CDH_1C1G`.
+        :type InstanceType: str
+        :param SystemDisk: System disk configuration of the instance. If this parameter is not specified, the default value will be used.
+        :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
+        :param DataDisks: The configuration information of instance data disks. If this parameter is not specified, no data disk will be purchased by default. When purchasing, you can specify 21 data disks, which can contain at most 1 LOCAL_BASIC or LOCAL_SSD data disk, and at most 20 CLOUD_BASIC, CLOUD_PREMIUM, or CLOUD_SSD data disks.
+        :type DataDisks: list of DataDisk
+        :param VirtualPrivateCloud: Configuration information of VPC. This parameter is used to specify VPC ID and subnet ID, etc. If this parameter is not specified, the classic network is used by default. If a VPC IP is specified in this parameter, it indicates the primary ENI IP of each instance. The value of parameter InstanceCount must be same as the number of VPC IPs, which cannot be greater than 20.
+        :type VirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
+        :param InternetAccessible: Configuration of public network bandwidth. If this parameter is not specified, 0 Mbps will be used by default.
+        :type InternetAccessible: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
+        :param InstanceCount: Number of instances to be purchased. Value range for monthly-subscribed instances: [1, 300]. Value range for pay-as-you-go instances: [1, 100]. Default value: 1. The specified number of instances to be purchased cannot exceed the remaining quota allowed for the user. For more information on quota, see CVM instance [Purchase Limits](https://intl.cloud.tencent.com/document/product/213/2664).
+        :type InstanceCount: int
+        :param InstanceName: Instance name to be displayed. <br><li>If this parameter is not specified, "Unnamed" will be displayed by default. </li><li>If you purchase multiple instances at the same time and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string, `server_{R:3}`. If you only purchase 1 instance, the instance will be named `server_3`; if you purchase 2, they will be named `server_3` and `server_4`. You can specify multiple pattern strings in the format of `{R:x}`. </li><li>If you purchase multiple instances at the same time and do not specify a pattern string, the instance names will be suffixed by `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase 2 instances and the instance name body is `server_`, the instance names will be `server_1` and `server_2`. </li><li>This parameter can contain up to 60 characters, including the pattern string.
+        :type InstanceName: str
+        :param LoginSettings: Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center.
+        :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
+        :param SecurityGroupIds: Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response. If this parameter is not specified, the instance will be associated with default security groups.
+        :type SecurityGroupIds: list of str
+        :param EnhancedService: Enhanced service. You can use this parameter to specify whether to enable services such as Anti-DDoS and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Anti-DDoS are enabled for public images by default. However, for custom images and images from the marketplace, Anti-DDoS and Cloud Monitor are not enabled by default. The original services in the image will be retained.
+        :type EnhancedService: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
+        :param ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
+        :type ClientToken: str
+        :param HostName: Host name of the CVM. <br><li>Dots (.) or hyphens (-) cannot be the start or end of a host name or appear consecutively in a host name. <br><li>For Windows instances, the host name must be 2-15 characters long and can contain uppercase and lowercase letters, numbers, and hyphens (-). It cannot contain dots (.) or contain only numbers. <br><li>For other instances, such as Linux instances, the host name must be 2-60 characters long. It supports multiple dots (.) and allows uppercase and lowercase letters, numbers, and hyphens (-) between any two dots (.).
+        :type HostName: str
+        :param ActionTimer: Scheduled tasks. You can use this parameter to specify scheduled tasks for the instance. Only scheduled termination is supported.
+        :type ActionTimer: :class:`tencentcloud.cvm.v20170312.models.ActionTimer`
+        :param DisasterRecoverGroupIds: Placement group ID. You can only specify one.
+        :type DisasterRecoverGroupIds: list of str
+        :param TagSpecification: The tag description list. This parameter is used to bind a tag to a resource instance. A tag can only be bound to CVM instances.
+        :type TagSpecification: list of TagSpecification
+        :param InstanceMarketOptions: Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.
+        :type InstanceMarketOptions: :class:`tencentcloud.cvm.v20170312.models.InstanceMarketOptionsRequest`
+        :param UserData: User data provided to the instance. This parameter needs to be encoded in base64 format with the maximum size of 16KB. For more information on how to get the value of this parameter, see the commands you need to execute on startup for [Windows](https://intl.cloud.tencent.com/document/product/213/17526) or [Linux](https://intl.cloud.tencent.com/document/product/213/17525).
+        :type UserData: str
+        :param DryRun: Whether the request is a dry run only.
+true: dry run only. The request will not create instance(s). A dry run can check whether all the required parameters are specified, whether the request format is right, whether the request exceeds service limits, and whether the specified CVMs are available.
+If the dry run fails, the corresponding error code will be returned.
+If the dry run succeeds, the RequestId will be returned.
+false (default value): send a normal request and create instance(s) if all the requirements are met.
+        :type DryRun: bool
+        :param CamRoleName: CAM role name, which can be obtained from the `roleName` field in the response of the [`DescribeRoleList`](https://intl.cloud.tencent.com/document/product/598/13887?from_cn_redirect=1) API.
+        :type CamRoleName: str
+        :param HpcClusterId: HPC cluster ID. The HPC cluster must and can only be specified for a high-performance computing instance.
+        :type HpcClusterId: str
+        :param InstanceChargeType: Instance [Billing Mode](https://intl.cloud.tencent.com/document/product/213/2180?from_cn_redirect=1). Valid values: <br><li>`PREPAID`: prepaid, i.e., billed for monthly-subscribed instances <br><li>`POSTPAID_BY_HOUR`: pay-as-you-go on an hourly basis <br><li>`CDHPAID`: billed for CDH instances, not the CVMs running on the CDHs. <br><li>`SPOTPAID`: billed for spot instances. <br>Default value: POSTPAID_BY_HOUR.
+        :type InstanceChargeType: str
+        :param InstanceChargePrepaid: Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.
+        :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
+        """
+        self.LaunchTemplateName = None
+        self.Placement = None
+        self.ImageId = None
+        self.LaunchTemplateVersionDescription = None
+        self.InstanceType = None
+        self.SystemDisk = None
+        self.DataDisks = None
+        self.VirtualPrivateCloud = None
+        self.InternetAccessible = None
+        self.InstanceCount = None
+        self.InstanceName = None
+        self.LoginSettings = None
+        self.SecurityGroupIds = None
+        self.EnhancedService = None
+        self.ClientToken = None
+        self.HostName = None
+        self.ActionTimer = None
+        self.DisasterRecoverGroupIds = None
+        self.TagSpecification = None
+        self.InstanceMarketOptions = None
+        self.UserData = None
+        self.DryRun = None
+        self.CamRoleName = None
+        self.HpcClusterId = None
+        self.InstanceChargeType = None
+        self.InstanceChargePrepaid = None
+
+
+    def _deserialize(self, params):
+        self.LaunchTemplateName = params.get("LaunchTemplateName")
+        if params.get("Placement") is not None:
+            self.Placement = Placement()
+            self.Placement._deserialize(params.get("Placement"))
+        self.ImageId = params.get("ImageId")
+        self.LaunchTemplateVersionDescription = params.get("LaunchTemplateVersionDescription")
+        self.InstanceType = params.get("InstanceType")
+        if params.get("SystemDisk") is not None:
+            self.SystemDisk = SystemDisk()
+            self.SystemDisk._deserialize(params.get("SystemDisk"))
+        if params.get("DataDisks") is not None:
+            self.DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self.DataDisks.append(obj)
+        if params.get("VirtualPrivateCloud") is not None:
+            self.VirtualPrivateCloud = VirtualPrivateCloud()
+            self.VirtualPrivateCloud._deserialize(params.get("VirtualPrivateCloud"))
+        if params.get("InternetAccessible") is not None:
+            self.InternetAccessible = InternetAccessible()
+            self.InternetAccessible._deserialize(params.get("InternetAccessible"))
+        self.InstanceCount = params.get("InstanceCount")
+        self.InstanceName = params.get("InstanceName")
+        if params.get("LoginSettings") is not None:
+            self.LoginSettings = LoginSettings()
+            self.LoginSettings._deserialize(params.get("LoginSettings"))
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("EnhancedService") is not None:
+            self.EnhancedService = EnhancedService()
+            self.EnhancedService._deserialize(params.get("EnhancedService"))
+        self.ClientToken = params.get("ClientToken")
+        self.HostName = params.get("HostName")
+        if params.get("ActionTimer") is not None:
+            self.ActionTimer = ActionTimer()
+            self.ActionTimer._deserialize(params.get("ActionTimer"))
+        self.DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = TagSpecification()
+                obj._deserialize(item)
+                self.TagSpecification.append(obj)
+        if params.get("InstanceMarketOptions") is not None:
+            self.InstanceMarketOptions = InstanceMarketOptionsRequest()
+            self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
+        self.UserData = params.get("UserData")
+        self.DryRun = params.get("DryRun")
+        self.CamRoleName = params.get("CamRoleName")
+        self.HpcClusterId = params.get("HpcClusterId")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLaunchTemplateResponse(AbstractModel):
+    """CreateLaunchTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LaunchTemplateId: The ID of successfully created instance launch template. This parameter will be returned when the instance launch template is created through the `CreateLaunchTemplate` API.
+        :type LaunchTemplateId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.LaunchTemplateId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LaunchTemplateId = params.get("LaunchTemplateId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateLaunchTemplateVersionRequest(AbstractModel):
+    """CreateLaunchTemplateVersion request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Placement: Location of the instance. You can use this parameter to specify the attributes of the instance, such as its availability zone, project, and CDH (for dedicated CVMs)
+        :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
+        :param LaunchTemplateId: Instance launch template ID. This parameter is used as a basis for creating new template versions.
+        :type LaunchTemplateId: str
+        :param LaunchTemplateVersion: This parameter, when specified, is used to create instance launch templates. If this parameter is not specified, the default version will be used.
+        :type LaunchTemplateVersion: int
+        :param LaunchTemplateVersionDescription: Description of instance launch template versions. This parameter can contain 2-256 characters.
+        :type LaunchTemplateVersionDescription: str
+        :param InstanceType: The instance model. Different resource specifications are specified for different instance models.
+<br><li>To view specific values for `PREPAID` or `POSTPAID_BY_HOUR` instances, you can call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). If this parameter is not specified, the system will specify the default model according to the dynamic resource sales in the current region. <br><li>For `CDHPAID` instances, the value of this parameter is in the format of `CDH_XCXG` based on the number of CPU cores and memory capacity. For example, if you want to create a CDH instance with a single-core CPU and 1 GB memory, you need to specify this parameter as `CDH_1C1G`.
+        :type InstanceType: str
+        :param ImageId: The [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are four types of images:<br/><li>Public images</li><li>Custom images</li><li>Shared images</li><li>Marketplace images (for Chinese mainland only)</li><br/>To check the image ID:<br/><li>For public images, custom images, and shared images, go to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE). For marketplace images, go to [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1), pass in `InstanceType` to retrieve the list of images supported by the current model, and then find the `ImageId` in the response.</li>
+        :type ImageId: str
+        :param SystemDisk: System disk configuration of the instance. If this parameter is not specified, the default value will be used.
+        :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
+        :param DataDisks: The configuration information of instance data disks. If this parameter is not specified, no data disk will be purchased by default. When purchasing, you can specify 21 data disks, which can contain at most 1 LOCAL_BASIC or LOCAL_SSD data disk, and at most 20 CLOUD_BASIC, CLOUD_PREMIUM, or CLOUD_SSD data disks.
+        :type DataDisks: list of DataDisk
+        :param VirtualPrivateCloud: Configuration information of VPC. This parameter is used to specify VPC ID and subnet ID, etc. If this parameter is not specified, the classic network is used by default. If a VPC IP is specified in this parameter, it indicates the primary ENI IP of each instance. The value of parameter InstanceCount must be same as the number of VPC IPs, which cannot be greater than 20.
+        :type VirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
+        :param InternetAccessible: Configuration of public network bandwidth. If this parameter is not specified, 0 Mbps will be used by default.
+        :type InternetAccessible: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
+        :param InstanceCount: Number of instances to be purchased. Value range for monthly-subscribed instances: [1, 300]. Value range for pay-as-you-go instances: [1, 100]. Default value: 1. The specified number of instances to be purchased cannot exceed the remaining quota allowed for the user. For more information on quota, see CVM instance [Purchase Limits](https://intl.cloud.tencent.com/document/product/213/2664).
+        :type InstanceCount: int
+        :param InstanceName: Instance name to be displayed. <br><li>If this parameter is not specified, "Unnamed" will be displayed by default. </li><li>If you purchase multiple instances at the same time and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string, `server_{R:3}`. If you only purchase 1 instance, the instance will be named `server_3`; if you purchase 2, they will be named `server_3` and `server_4`. You can specify multiple pattern strings in the format of `{R:x}`. </li><li>If you purchase multiple instances at the same time and do not specify a pattern string, the instance names will be suffixed by `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase 2 instances and the instance name body is `server_`, the instance names will be `server_1` and `server_2`. </li><li>This parameter can contain up to 60 characters, including the pattern string.
+        :type InstanceName: str
+        :param LoginSettings: Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center.
+        :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
+        :param SecurityGroupIds: Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response. If this parameter is not specified, the instance will be associated with default security groups.
+        :type SecurityGroupIds: list of str
+        :param EnhancedService: Enhanced service. You can use this parameter to specify whether to enable services such as Anti-DDoS and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Anti-DDoS are enabled for public images by default. However, for custom images and images from the marketplace, Anti-DDoS and Cloud Monitor are not enabled by default. The original services in the image will be retained.
+        :type EnhancedService: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
+        :param ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
+        :type ClientToken: str
+        :param HostName: Host name of the CVM. <br><li>Dots (.) or hyphens (-) cannot be the start or end of a host name or appear consecutively in a host name. <br><li>For Windows instances, the host name must be 2-15 characters long and can contain uppercase and lowercase letters, numbers, and hyphens (-). It cannot contain dots (.) or contain only numbers. <br><li>For other instances, such as Linux instances, the host name must be 2-60 characters long. It supports multiple dots (.) and allows uppercase and lowercase letters, numbers, and hyphens (-) between any two dots (.).
+        :type HostName: str
+        :param ActionTimer: Scheduled tasks. You can use this parameter to specify scheduled tasks for the instance. Only scheduled termination is supported.
+        :type ActionTimer: :class:`tencentcloud.cvm.v20170312.models.ActionTimer`
+        :param DisasterRecoverGroupIds: Placement group ID. You can only specify one.
+        :type DisasterRecoverGroupIds: list of str
+        :param TagSpecification: The tag description list. This parameter is used to bind a tag to a resource instance. A tag can only be bound to CVM instances.
+        :type TagSpecification: list of TagSpecification
+        :param InstanceMarketOptions: Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.
+        :type InstanceMarketOptions: :class:`tencentcloud.cvm.v20170312.models.InstanceMarketOptionsRequest`
+        :param UserData: User data provided to the instance. This parameter needs to be encoded in base64 format with the maximum size of 16KB. For more information on how to get the value of this parameter, see the commands you need to execute on startup for [Windows](https://intl.cloud.tencent.com/document/product/213/17526) or [Linux](https://intl.cloud.tencent.com/document/product/213/17525).
+        :type UserData: str
+        :param DryRun: Whether the request is a dry run only.
+`true`: dry run only. The request will not create instance(s). A dry run can check whether all the required parameters are specified, whether the request format is right, whether the request exceeds service limits, and whether the specified CVMs are available.
+If the dry run fails, the corresponding error code will be returned.
+If the dry run succeeds, the RequestId will be returned.
+`false` (default value): send a normal request and create instance(s) if all the requirements are met.
+        :type DryRun: bool
+        :param CamRoleName: CAM role name, which can be obtained from the `roleName` field in the response of the [`DescribeRoleList`](https://intl.cloud.tencent.com/document/product/598/13887?from_cn_redirect=1) API.
+        :type CamRoleName: str
+        :param HpcClusterId: HPC cluster ID. The HPC cluster must and can only be specified for a high-performance computing instance.
+        :type HpcClusterId: str
+        :param InstanceChargeType: Instance [billing mode](https://intl.cloud.tencent.com/document/product/213/2180?from_cn_redirect=1). Valid values: <br><li>`PREPAID`: monthly subscription <br><li>`POSTPAID_BY_HOUR`: pay-as-you-go on an hourly basis <br><li>`CDHPAID`: billed on the associated CDH instance. <br><li>`SPOTPAID`: spot instances. <br>Default value: `POSTPAID_BY_HOUR`.
+        :type InstanceChargeType: str
+        :param InstanceChargePrepaid: Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.
+        :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
+        """
+        self.Placement = None
+        self.LaunchTemplateId = None
+        self.LaunchTemplateVersion = None
+        self.LaunchTemplateVersionDescription = None
+        self.InstanceType = None
+        self.ImageId = None
+        self.SystemDisk = None
+        self.DataDisks = None
+        self.VirtualPrivateCloud = None
+        self.InternetAccessible = None
+        self.InstanceCount = None
+        self.InstanceName = None
+        self.LoginSettings = None
+        self.SecurityGroupIds = None
+        self.EnhancedService = None
+        self.ClientToken = None
+        self.HostName = None
+        self.ActionTimer = None
+        self.DisasterRecoverGroupIds = None
+        self.TagSpecification = None
+        self.InstanceMarketOptions = None
+        self.UserData = None
+        self.DryRun = None
+        self.CamRoleName = None
+        self.HpcClusterId = None
+        self.InstanceChargeType = None
+        self.InstanceChargePrepaid = None
+
+
+    def _deserialize(self, params):
+        if params.get("Placement") is not None:
+            self.Placement = Placement()
+            self.Placement._deserialize(params.get("Placement"))
+        self.LaunchTemplateId = params.get("LaunchTemplateId")
+        self.LaunchTemplateVersion = params.get("LaunchTemplateVersion")
+        self.LaunchTemplateVersionDescription = params.get("LaunchTemplateVersionDescription")
+        self.InstanceType = params.get("InstanceType")
+        self.ImageId = params.get("ImageId")
+        if params.get("SystemDisk") is not None:
+            self.SystemDisk = SystemDisk()
+            self.SystemDisk._deserialize(params.get("SystemDisk"))
+        if params.get("DataDisks") is not None:
+            self.DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self.DataDisks.append(obj)
+        if params.get("VirtualPrivateCloud") is not None:
+            self.VirtualPrivateCloud = VirtualPrivateCloud()
+            self.VirtualPrivateCloud._deserialize(params.get("VirtualPrivateCloud"))
+        if params.get("InternetAccessible") is not None:
+            self.InternetAccessible = InternetAccessible()
+            self.InternetAccessible._deserialize(params.get("InternetAccessible"))
+        self.InstanceCount = params.get("InstanceCount")
+        self.InstanceName = params.get("InstanceName")
+        if params.get("LoginSettings") is not None:
+            self.LoginSettings = LoginSettings()
+            self.LoginSettings._deserialize(params.get("LoginSettings"))
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("EnhancedService") is not None:
+            self.EnhancedService = EnhancedService()
+            self.EnhancedService._deserialize(params.get("EnhancedService"))
+        self.ClientToken = params.get("ClientToken")
+        self.HostName = params.get("HostName")
+        if params.get("ActionTimer") is not None:
+            self.ActionTimer = ActionTimer()
+            self.ActionTimer._deserialize(params.get("ActionTimer"))
+        self.DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = TagSpecification()
+                obj._deserialize(item)
+                self.TagSpecification.append(obj)
+        if params.get("InstanceMarketOptions") is not None:
+            self.InstanceMarketOptions = InstanceMarketOptionsRequest()
+            self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
+        self.UserData = params.get("UserData")
+        self.DryRun = params.get("DryRun")
+        self.CamRoleName = params.get("CamRoleName")
+        self.HpcClusterId = params.get("HpcClusterId")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLaunchTemplateVersionResponse(AbstractModel):
+    """CreateLaunchTemplateVersion response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LaunchTemplateVersionNumber: Version number of the new instance launch template.
+        :type LaunchTemplateVersionNumber: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.LaunchTemplateVersionNumber = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LaunchTemplateVersionNumber = params.get("LaunchTemplateVersionNumber")
         self.RequestId = params.get("RequestId")
 
 
@@ -636,6 +1005,92 @@ class DeleteKeyPairsRequest(AbstractModel):
 
 class DeleteKeyPairsResponse(AbstractModel):
     """DeleteKeyPairs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLaunchTemplateRequest(AbstractModel):
+    """DeleteLaunchTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LaunchTemplateId: The launch template ID
+        :type LaunchTemplateId: str
+        """
+        self.LaunchTemplateId = None
+
+
+    def _deserialize(self, params):
+        self.LaunchTemplateId = params.get("LaunchTemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLaunchTemplateResponse(AbstractModel):
+    """DeleteLaunchTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLaunchTemplateVersionsRequest(AbstractModel):
+    """DeleteLaunchTemplateVersions request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LaunchTemplateId: The launch template ID
+        :type LaunchTemplateId: str
+        :param LaunchTemplateVersions: List of instance launch template versions.
+        :type LaunchTemplateVersions: list of int
+        """
+        self.LaunchTemplateId = None
+        self.LaunchTemplateVersions = None
+
+
+    def _deserialize(self, params):
+        self.LaunchTemplateId = params.get("LaunchTemplateId")
+        self.LaunchTemplateVersions = params.get("LaunchTemplateVersions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLaunchTemplateVersionsResponse(AbstractModel):
+    """DeleteLaunchTemplateVersions response structure.
 
     """
 
@@ -924,11 +1379,19 @@ class DescribeImagesRequest(AbstractModel):
         :param ImageIds: List of image IDs, such as `img-gvbnzy6f`. For the format of array-type parameters, see [API Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1). You can obtain the image IDs in two ways: <br><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response. <br><li>View the image IDs in the [Image Console](https://console.cloud.tencent.com/cvm/image).
         :type ImageIds: list of str
         :param Filters: Filters. Each request can have up to 10 `Filters` and 5 `Filters.Values`. You cannot specify `ImageIds` and `Filters` at the same time. Specific filters:
-<li>`image-id` - String - Optional - Filter results by image ID</li>
-<li>`image-type` - String - Optional - Filter results by image type. Valid values:
-    PRIVATE_IMAGE: private image created by the current account 
-    PUBLIC_IMAGE: public image created by Tencent Cloud
-   SHARED_IMAGE: image shared with the current account by another account.</li>
+
+<li><strong>image-id</strong></li>
+<p style="padding-left: 30px;">Filter by the <strong>image ID</strong>.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
+<li><strong>image-type</strong></li>
+<p style="padding-left: 30px;">Filter by the <strong>image type</strong>.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p><p style="padding-left: 30px;">Options:</p><p style="padding-left: 30px;">`PRIVATE_IMAGE`: Private images (images created by this account)</p><p style="padding-left: 30px;">`PUBLIC_IMAGE`: Public images (Tencent Cloud official images)</p><p style="padding-left: 30px;">`SHARED_IMAGE`: Shared images (images shared by other accounts to this account)</p>
+<li><strong>image-name</strong></li>
+<p style="padding-left: 30px;">Filter by the <strong>image name</strong>.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
+<li><strong>platform</strong></li>
+<p style="padding-left: 30px;">Filter by the <strong>image operating system</strong>, such as CentOS.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
+<li><strong>tag-key</strong></li>
+<p style="padding-left: 30px;">Filter by the <strong>tag key</strong>.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
+<li><strong>tag:tag-key</strong></li>
+<p style="padding-left: 30px;">Filter by the <strong>tag key-value pair</strong>. Replace “tag-key” with the actual value. </p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
         :type Filters: list of Filter
         :param Offset: Offset; default value: 0. For more information on `Offset`, see [API Introduction](https://intl.cloud.tencent.com/document/api/213/568?from_cn_redirect=1#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89).
         :type Offset: int
@@ -1473,6 +1936,158 @@ class DescribeKeyPairsResponse(AbstractModel):
                 obj = KeyPair()
                 obj._deserialize(item)
                 self.KeyPairSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLaunchTemplateVersionsRequest(AbstractModel):
+    """DescribeLaunchTemplateVersions request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LaunchTemplateId: The launch template ID
+        :type LaunchTemplateId: str
+        :param LaunchTemplateVersions: List of instance launch templates.
+        :type LaunchTemplateVersions: list of int non-negative
+        :param MinVersion: The minimum version number specified, which defaults to 0.
+        :type MinVersion: int
+        :param MaxVersion: The maximum version number specified, which defaults to 30.
+        :type MaxVersion: int
+        :param Offset: The offset. Default value: 0. For more information on `Offset`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :type Offset: int
+        :param Limit: The number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :type Limit: int
+        :param DefaultVersion: Specify whether to query the default version. This parameter and `LaunchTemplateVersions` cannot be specified at the same time.
+        :type DefaultVersion: bool
+        """
+        self.LaunchTemplateId = None
+        self.LaunchTemplateVersions = None
+        self.MinVersion = None
+        self.MaxVersion = None
+        self.Offset = None
+        self.Limit = None
+        self.DefaultVersion = None
+
+
+    def _deserialize(self, params):
+        self.LaunchTemplateId = params.get("LaunchTemplateId")
+        self.LaunchTemplateVersions = params.get("LaunchTemplateVersions")
+        self.MinVersion = params.get("MinVersion")
+        self.MaxVersion = params.get("MaxVersion")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.DefaultVersion = params.get("DefaultVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLaunchTemplateVersionsResponse(AbstractModel):
+    """DescribeLaunchTemplateVersions response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number of instance launch templates.
+        :type TotalCount: int
+        :param LaunchTemplateVersionSet: Set of instance launch template versions.
+        :type LaunchTemplateVersionSet: list of LaunchTemplateVersionInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.LaunchTemplateVersionSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("LaunchTemplateVersionSet") is not None:
+            self.LaunchTemplateVersionSet = []
+            for item in params.get("LaunchTemplateVersionSet"):
+                obj = LaunchTemplateVersionInfo()
+                obj._deserialize(item)
+                self.LaunchTemplateVersionSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLaunchTemplatesRequest(AbstractModel):
+    """DescribeLaunchTemplates request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LaunchTemplateIds: Instance launch template ID. ID of one or more instance launch templates. If not specified, all templates of the user will be displayed.
+        :type LaunchTemplateIds: list of str
+        :param Filters: <p style="padding-left: 30px;">Filter by [<strong>LaunchTemplateNames</strong>].</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
+The maximum number of `Filters` in each request is 10. The upper limit for `Filter.Values` is 5. This parameter cannot specify `LaunchTemplateIds` and `Filters` at the same time.
+        :type Filters: list of Filter
+        :param Offset: The offset. Default value: 0. For more information on `Offset`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :type Offset: int
+        :param Limit: The number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :type Limit: int
+        """
+        self.LaunchTemplateIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.LaunchTemplateIds = params.get("LaunchTemplateIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLaunchTemplatesResponse(AbstractModel):
+    """DescribeLaunchTemplates response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Number of eligible instance templates.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type TotalCount: int
+        :param LaunchTemplateSet: List of instance details
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type LaunchTemplateSet: list of LaunchTemplateInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.LaunchTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("LaunchTemplateSet") is not None:
+            self.LaunchTemplateSet = []
+            for item in params.get("LaunchTemplateSet"):
+                obj = LaunchTemplateInfo()
+                obj._deserialize(item)
+                self.LaunchTemplateSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2115,6 +2730,41 @@ class Filter(AbstractModel):
         
 
 
+class GPUInfo(AbstractModel):
+    """GPU information of the instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GPUCount: Number of GPUs. 
+Note: this field may return `null`, indicating that no valid value can be found.
+        :type GPUCount: float
+        :param GPUId: GPU address
+Note: this field may return `null`, indicating that no valid value can be found.
+        :type GPUId: list of str
+        :param GPUType: GPU type of the instance.
+Note: this field may return `null`, indicating that no valid value can be found.
+        :type GPUType: str
+        """
+        self.GPUCount = None
+        self.GPUId = None
+        self.GPUType = None
+
+
+    def _deserialize(self, params):
+        self.GPUCount = params.get("GPUCount")
+        self.GPUId = params.get("GPUId")
+        self.GPUType = params.get("GPUType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HostItem(AbstractModel):
     """Details about a CDH instance
 
@@ -2381,6 +3031,8 @@ class ImportImageRequest(AbstractModel):
         :type DryRun: bool
         :param Force: Whether to force import the image. For more information, see [Forcibly Import Image](https://intl.cloud.tencent.com/document/product/213/12849).
         :type Force: bool
+        :param TagSpecification: Tag description list. This parameter is used to bind a tag to a custom image.
+        :type TagSpecification: list of TagSpecification
         """
         self.Architecture = None
         self.OsType = None
@@ -2390,6 +3042,7 @@ class ImportImageRequest(AbstractModel):
         self.ImageDescription = None
         self.DryRun = None
         self.Force = None
+        self.TagSpecification = None
 
 
     def _deserialize(self, params):
@@ -2401,6 +3054,12 @@ class ImportImageRequest(AbstractModel):
         self.ImageDescription = params.get("ImageDescription")
         self.DryRun = params.get("DryRun")
         self.Force = params.get("Force")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = TagSpecification()
+                obj._deserialize(item)
+                self.TagSpecification.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3015,6 +3674,9 @@ Note: this field may return null, indicating that no valid value was found.
         :param IsolatedSource: The isolation status of the instance. Valid values:<br><li>`ARREAR`: isolated due to overdue payment;<br></li><li>`EXPIRE`: isolated upon expiration;<br></li><li>`MANMADE`: isolated after manual returning;<br></li><li>`NOTISOLATED`: not isolated<br></li>
 Note: this field may return null, indicating that no valid value was found.
         :type IsolatedSource: str
+        :param GPUInfo: GPU information. This field is only returned for GPU instances.
+Note: this field may return null, indicating that no valid value was found.
+        :type GPUInfo: :class:`tencentcloud.cvm.v20170312.models.GPUInfo`
         """
         self.Placement = None
         self.InstanceId = None
@@ -3050,6 +3712,7 @@ Note: this field may return null, indicating that no valid value was found.
         self.HpcClusterId = None
         self.RdmaIpAddresses = None
         self.IsolatedSource = None
+        self.GPUInfo = None
 
 
     def _deserialize(self, params):
@@ -3107,6 +3770,9 @@ Note: this field may return null, indicating that no valid value was found.
         self.HpcClusterId = params.get("HpcClusterId")
         self.RdmaIpAddresses = params.get("RdmaIpAddresses")
         self.IsolatedSource = params.get("IsolatedSource")
+        if params.get("GPUInfo") is not None:
+            self.GPUInfo = GPUInfo()
+            self.GPUInfo._deserialize(params.get("GPUInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3630,6 +4296,304 @@ class KeyPair(AbstractModel):
         
 
 
+class LaunchTemplate(AbstractModel):
+    """Instance launch template. This parameter enables you to create an instance using the preset parameters in the template.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LaunchTemplateId: Instance launch template ID. This parameter enables you to create an instance using the preset parameters in the template.
+        :type LaunchTemplateId: str
+        :param LaunchTemplateVersion: Instance launch template version number. If specified, this parameter will be used to create a new instance launch template.
+        :type LaunchTemplateVersion: int
+        """
+        self.LaunchTemplateId = None
+        self.LaunchTemplateVersion = None
+
+
+    def _deserialize(self, params):
+        self.LaunchTemplateId = params.get("LaunchTemplateId")
+        self.LaunchTemplateVersion = params.get("LaunchTemplateVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LaunchTemplateInfo(AbstractModel):
+    """Information of instance launch template.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LatestVersionNumber: Instance launch template version number.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type LatestVersionNumber: int
+        :param LaunchTemplateId: Instance launch template ID.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type LaunchTemplateId: str
+        :param LaunchTemplateName: Instance launch template name.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type LaunchTemplateName: str
+        :param DefaultVersionNumber: Default instance launch template version number.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type DefaultVersionNumber: int
+        :param LaunchTemplateVersionCount: Total number of versions that the instance launch template contains.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type LaunchTemplateVersionCount: int
+        :param CreatedBy: UIN of the user who created the template.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CreatedBy: str
+        :param CreationTime: Creation time of the template.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CreationTime: str
+        """
+        self.LatestVersionNumber = None
+        self.LaunchTemplateId = None
+        self.LaunchTemplateName = None
+        self.DefaultVersionNumber = None
+        self.LaunchTemplateVersionCount = None
+        self.CreatedBy = None
+        self.CreationTime = None
+
+
+    def _deserialize(self, params):
+        self.LatestVersionNumber = params.get("LatestVersionNumber")
+        self.LaunchTemplateId = params.get("LaunchTemplateId")
+        self.LaunchTemplateName = params.get("LaunchTemplateName")
+        self.DefaultVersionNumber = params.get("DefaultVersionNumber")
+        self.LaunchTemplateVersionCount = params.get("LaunchTemplateVersionCount")
+        self.CreatedBy = params.get("CreatedBy")
+        self.CreationTime = params.get("CreationTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LaunchTemplateVersionData(AbstractModel):
+    """Information of instance launch template versions
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Placement: Location of the instance.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
+        :param InstanceType: Instance model.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type InstanceType: str
+        :param InstanceName: Instance name.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type InstanceName: str
+        :param InstanceChargeType: Instance billing mode. Valid values: <br><li>`POSTPAID_BY_HOUR`: postpaid for pay-as-you-go instances <br><li>`CDHPAID`: billed for CDH instances, not the CVMs running on the CDHs.<br>
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type InstanceChargeType: str
+        :param SystemDisk: Instance system disk information.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
+        :param DataDisks: Instance data disk information. This parameter only covers the data disks purchased together with the instance.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type DataDisks: list of DataDisk
+        :param InternetAccessible: Instance bandwidth information.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type InternetAccessible: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
+        :param VirtualPrivateCloud: Information of the VPC where the instance resides.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type VirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
+        :param ImageId: `ID` of the image used to create the instance.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ImageId: str
+        :param SecurityGroupIds: Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type SecurityGroupIds: list of str
+        :param LoginSettings: Login settings of the instance. Currently, only the key associated with the instance is returned.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
+        :param CamRoleName: CAM role name.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CamRoleName: str
+        :param HpcClusterId: HPC cluster `ID`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type HpcClusterId: str
+        :param InstanceCount: Number of instances purchased.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type InstanceCount: int
+        :param EnhancedService: Enhanced service.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type EnhancedService: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
+        :param UserData: User data provided to the instance. This parameter needs to be encoded in base64 format with the maximum size of 16KB.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type UserData: str
+        :param DisasterRecoverGroupIds: Placement group ID. You can only specify one.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type DisasterRecoverGroupIds: list of str
+        :param ActionTimer: Scheduled tasks. You can use this parameter to specify scheduled tasks for the instance. Only scheduled termination is supported.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ActionTimer: :class:`tencentcloud.cvm.v20170312.models.ActionTimer`
+        :param InstanceMarketOptions: Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type InstanceMarketOptions: :class:`tencentcloud.cvm.v20170312.models.InstanceMarketOptionsRequest`
+        :param HostName: Hostname of a CVM.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type HostName: str
+        :param ClientToken: A string used to ensure the idempotency of the request.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ClientToken: str
+        :param InstanceChargePrepaid: Prepaid mode. This parameter indicates relevant parameter settings for monthly-subscribed instances.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
+        :param TagSpecification: List of tag description. By specifying this parameter, the tag can be bound to the corresponding CVM and CBS instances at the same time.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type TagSpecification: list of TagSpecification
+        """
+        self.Placement = None
+        self.InstanceType = None
+        self.InstanceName = None
+        self.InstanceChargeType = None
+        self.SystemDisk = None
+        self.DataDisks = None
+        self.InternetAccessible = None
+        self.VirtualPrivateCloud = None
+        self.ImageId = None
+        self.SecurityGroupIds = None
+        self.LoginSettings = None
+        self.CamRoleName = None
+        self.HpcClusterId = None
+        self.InstanceCount = None
+        self.EnhancedService = None
+        self.UserData = None
+        self.DisasterRecoverGroupIds = None
+        self.ActionTimer = None
+        self.InstanceMarketOptions = None
+        self.HostName = None
+        self.ClientToken = None
+        self.InstanceChargePrepaid = None
+        self.TagSpecification = None
+
+
+    def _deserialize(self, params):
+        if params.get("Placement") is not None:
+            self.Placement = Placement()
+            self.Placement._deserialize(params.get("Placement"))
+        self.InstanceType = params.get("InstanceType")
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("SystemDisk") is not None:
+            self.SystemDisk = SystemDisk()
+            self.SystemDisk._deserialize(params.get("SystemDisk"))
+        if params.get("DataDisks") is not None:
+            self.DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self.DataDisks.append(obj)
+        if params.get("InternetAccessible") is not None:
+            self.InternetAccessible = InternetAccessible()
+            self.InternetAccessible._deserialize(params.get("InternetAccessible"))
+        if params.get("VirtualPrivateCloud") is not None:
+            self.VirtualPrivateCloud = VirtualPrivateCloud()
+            self.VirtualPrivateCloud._deserialize(params.get("VirtualPrivateCloud"))
+        self.ImageId = params.get("ImageId")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("LoginSettings") is not None:
+            self.LoginSettings = LoginSettings()
+            self.LoginSettings._deserialize(params.get("LoginSettings"))
+        self.CamRoleName = params.get("CamRoleName")
+        self.HpcClusterId = params.get("HpcClusterId")
+        self.InstanceCount = params.get("InstanceCount")
+        if params.get("EnhancedService") is not None:
+            self.EnhancedService = EnhancedService()
+            self.EnhancedService._deserialize(params.get("EnhancedService"))
+        self.UserData = params.get("UserData")
+        self.DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+        if params.get("ActionTimer") is not None:
+            self.ActionTimer = ActionTimer()
+            self.ActionTimer._deserialize(params.get("ActionTimer"))
+        if params.get("InstanceMarketOptions") is not None:
+            self.InstanceMarketOptions = InstanceMarketOptionsRequest()
+            self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
+        self.HostName = params.get("HostName")
+        self.ClientToken = params.get("ClientToken")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = TagSpecification()
+                obj._deserialize(item)
+                self.TagSpecification.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LaunchTemplateVersionInfo(AbstractModel):
+    """Set of instance launch template versions.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LaunchTemplateVersion: Instance launch template version number.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type LaunchTemplateVersion: int
+        :param LaunchTemplateVersionData: Details of instance launch template versions.
+        :type LaunchTemplateVersionData: :class:`tencentcloud.cvm.v20170312.models.LaunchTemplateVersionData`
+        :param CreationTime: Creation time of the instance launch template version.
+        :type CreationTime: str
+        :param LaunchTemplateId: Instance launch template ID.
+        :type LaunchTemplateId: str
+        :param IsDefaultVersion: Specifies whether it’s the default launch template version.
+        :type IsDefaultVersion: bool
+        :param LaunchTemplateVersionDescription: Information of instance launch template version description.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type LaunchTemplateVersionDescription: str
+        :param CreatedBy: Creator account
+        :type CreatedBy: str
+        """
+        self.LaunchTemplateVersion = None
+        self.LaunchTemplateVersionData = None
+        self.CreationTime = None
+        self.LaunchTemplateId = None
+        self.IsDefaultVersion = None
+        self.LaunchTemplateVersionDescription = None
+        self.CreatedBy = None
+
+
+    def _deserialize(self, params):
+        self.LaunchTemplateVersion = params.get("LaunchTemplateVersion")
+        if params.get("LaunchTemplateVersionData") is not None:
+            self.LaunchTemplateVersionData = LaunchTemplateVersionData()
+            self.LaunchTemplateVersionData._deserialize(params.get("LaunchTemplateVersionData"))
+        self.CreationTime = params.get("CreationTime")
+        self.LaunchTemplateId = params.get("LaunchTemplateId")
+        self.IsDefaultVersion = params.get("IsDefaultVersion")
+        self.LaunchTemplateVersionDescription = params.get("LaunchTemplateVersionDescription")
+        self.CreatedBy = params.get("CreatedBy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LocalDiskType(AbstractModel):
     """Describes local disk specifications.
 
@@ -3910,20 +4874,25 @@ class ModifyInstancesAttributeRequest(AbstractModel):
         r"""
         :param InstanceIds: Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. The maximum number of instances in each request is 100.
         :type InstanceIds: list of str
-        :param InstanceName: Instance name. You can specify any name you like, but its length cannot exceed 60 characters.
+        :param InstanceName: The instance name, which can not exceed 60 characters
+<dx-alert infotype="explain" title="">Either `InstanceName` or `SecurityGroups` must be specified, but they can not be both specified.</dx-alert>
         :type InstanceName: str
-        :param SecurityGroups: ID list of security groups of the instance. The instance will be associated with the specified security groups and will be disassociated from the original security groups.
+        :param SecurityGroups: IDs of security groups associated with the specified instance. You can associate with a security group by adding its ID, or cancel the association with a security group by removing its ID. <dx-alert infotype="explain" title="">Either `InstanceName` or `SecurityGroups` must be specified, but they cannot be both set.</dx-alert>
         :type SecurityGroups: list of str
+        :param DisableApiTermination: 
+        :type DisableApiTermination: bool
         """
         self.InstanceIds = None
         self.InstanceName = None
         self.SecurityGroups = None
+        self.DisableApiTermination = None
 
 
     def _deserialize(self, params):
         self.InstanceIds = params.get("InstanceIds")
         self.InstanceName = params.get("InstanceName")
         self.SecurityGroups = params.get("SecurityGroups")
+        self.DisableApiTermination = params.get("DisableApiTermination")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4084,6 +5053,51 @@ class ModifyKeyPairAttributeRequest(AbstractModel):
 
 class ModifyKeyPairAttributeResponse(AbstractModel):
     """ModifyKeyPairAttribute response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLaunchTemplateDefaultVersionRequest(AbstractModel):
+    """ModifyLaunchTemplateDefaultVersion request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LaunchTemplateId: The launch template ID
+        :type LaunchTemplateId: str
+        :param DefaultVersion: The number of the version that you want to set as the default version
+        :type DefaultVersion: int
+        """
+        self.LaunchTemplateId = None
+        self.DefaultVersion = None
+
+
+    def _deserialize(self, params):
+        self.LaunchTemplateId = params.get("LaunchTemplateId")
+        self.DefaultVersion = params.get("DefaultVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLaunchTemplateDefaultVersionResponse(AbstractModel):
+    """ModifyLaunchTemplateDefaultVersion response structure.
 
     """
 
@@ -4901,9 +5915,9 @@ class ResetInstancesPasswordRequest(AbstractModel):
         r"""
         :param InstanceIds: Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. The maximum number of instances in each request is 100.
         :type InstanceIds: list of str
-        :param Password: Login password of the instance. The rule of password complexity varies with operating systems:
-For a Linux instance, the password must be 8 to 30 characters in length; password with more than 12 characters is recommended. It cannot begin with "/", and must contain at least three types of the following:<br><li>Lowercase letters: [a-z]<br><li>Uppercase letters: [A-Z]<br><li>Numbers: 0-9<br><li>Special characters: ()\`~!@#$%^&\*-+=\_|{}[]:;'<>,.?/
-For a Windows CVM, the password must be 12 to 30 characters in length. It cannot begin with "/" or contain your username. It must contain at least three types of the following:<br><li>Lowercase letters: [a-z]<br><li>Uppercase letters: [A-Z]<br><li>Numbers: 0-9<br><li>Special characters: ()\`~!@#$%^&\*-+=\_|{}[]:;' <>,.?/<li>If the specified instances include both `Linux` and `Windows` instances, you need to follow the password requirements for `Windows` instances.
+        :param Password: Login password of the instance. The password requirements vary among different operating systems:
+For a Linux instance, the password must be 8 to 30 characters in length; password with more than 12 characters is recommended. It cannot begin with "/", and must contain at least one character from three of the following categories: <br><li>Lowercase letters: [a-z]<br><li>Uppercase letters: [A-Z]<br><li>Numbers: 0-9<br><li>Special characters: ()\`\~!@#$%^&\*-+=\_|{}[]:;'<>,.?/
+For a Windows CVM, the password must be 12 to 30 characters in length. It cannot begin with "/" or contain a username. It must contain at least one character from three of the following categories: <br><li>Lowercase letters: [a-z]<br><li>Uppercase letters: [A-Z]<br><li>Numbers: 0-9<br><li>Special characters: ()\`\~!@#$%^&\*-+=\_|{}[]:;' <>,.?/<br><li>If the specified instances include both `Linux` and `Windows` instances, you will need to follow the password requirements for `Windows` instances.
         :type Password: str
         :param UserName: Username of the instance operating system for which the password needs to be reset. This parameter is limited to 64 characters.
         :type UserName: str
@@ -5009,10 +6023,16 @@ class ResizeInstanceDisksRequest(AbstractModel):
         :type DataDisks: list of DataDisk
         :param ForceStop: Whether to force shut down a running instances. It is recommended to manually shut down a running instance before resetting the user password. Valid values: <br><li>TRUE: force shut down an instance after a normal shutdown fails. <br><li>FALSE: do not force shut down an instance after a normal shutdown fails. <br><br>Default value: FALSE. <br><br>A forced shutdown is similar to switching off the power of a physical computer. It may cause data loss or file system corruption. Be sure to only force shut down a CVM when it cannot be shut down normally.
         :type ForceStop: bool
+        :param SystemDisk: Configuration of the system disk to be expanded. Only cloud disks are supported.
+        :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
+        :param ResizeOnline: Whether the cloud disk is expanded online.
+        :type ResizeOnline: bool
         """
         self.InstanceId = None
         self.DataDisks = None
         self.ForceStop = None
+        self.SystemDisk = None
+        self.ResizeOnline = None
 
 
     def _deserialize(self, params):
@@ -5024,6 +6044,10 @@ class ResizeInstanceDisksRequest(AbstractModel):
                 obj._deserialize(item)
                 self.DataDisks.append(obj)
         self.ForceStop = params.get("ForceStop")
+        if params.get("SystemDisk") is not None:
+            self.SystemDisk = SystemDisk()
+            self.SystemDisk._deserialize(params.get("SystemDisk"))
+        self.ResizeOnline = params.get("ResizeOnline")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5085,12 +6109,15 @@ class RunInstancesRequest(AbstractModel):
         :type InstanceChargeType: str
         :param InstanceChargePrepaid: Configuration of prepaid instances. You can use the parameter to specify the attributes of prepaid instances, such as the subscription period and the auto-renewal plan. This parameter is required for prepaid instances.
         :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
-        :param Placement: Location of the instance. You can use this parameter to specify the attributes of the instance, such as its availability zone, project, and CDH. You can specify a CDH for a CVM by creating the CVM on the CDH.
+        :param Placement: Location of the instance. You can use this parameter to specify the attributes of the instance, such as its availability zone, project, and CDH (for dedicated CVMs)
+ <b>Note: `Zone` is required.</b>
+`Placement` is required when `LaunchTemplate` is not specified. If both the parameters are passed in, `Placement` prevails.
         :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
         :param InstanceType: The instance model. Different resource specifications are specified for different instance models.
 <br><li>To view specific values for `POSTPAID_BY_HOUR` instances, you can call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). If this parameter is not specified, `S1.SMALL1` will be used by default.<br><li>For `CDHPAID` instances, the value of this parameter is in the format of `CDH_XCXG` based on the number of CPU cores and memory capacity. For example, if you want to create a CDH instance with a single-core CPU and 1 GB memory, specify this parameter as `CDH_1C1G`.
         :type InstanceType: str
-        :param ImageId: The [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are four types of images:<br/><li>Public images</li><li>Custom images</li><li>Shared images</li><li>Marketplace images</li><br/>You can retrieve available image IDs in the following ways:<br/><li>For the IDs of `public images`, `custom images`, and `shared images`, log in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE) to query the information. For the IDs of `marketplace images`, go to [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1), pass in `InstanceType` to retrieve the list of images supported by the current model, and then find the `ImageId` in the response.</li>
+        :param ImageId: The [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are four types of images:<br/><li>Public images</li><li>Custom images</li><li>Shared images</li><li>Marketplace images (for Chinese mainland only)</li><br/>To check the image ID:<br/><li>For public images, custom images, and shared images, go to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE). For marketplace images, go to [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1), pass in `InstanceType` to retrieve the list of images supported by the current model, and then find the `ImageId` in the response.</li>
+`ImageId` is required when `LaunchTemplate` is not specified. If both the parameters are passed in, `ImageId` prevails.
         :type ImageId: str
         :param SystemDisk: System disk configuration of the instance. If this parameter is not specified, the default value will be used.
         :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
@@ -5134,6 +6161,10 @@ false (default value): send a normal request and create instance(s) if all the r
         :type CamRoleName: str
         :param HpcClusterId: HPC cluster ID. The HPC cluster must and can only be specified for a high-performance computing instance.
         :type HpcClusterId: str
+        :param LaunchTemplate: Instance launch template.
+        :type LaunchTemplate: :class:`tencentcloud.cvm.v20170312.models.LaunchTemplate`
+        :param ChcIds: 
+        :type ChcIds: list of str
         """
         self.InstanceChargeType = None
         self.InstanceChargePrepaid = None
@@ -5159,6 +6190,8 @@ false (default value): send a normal request and create instance(s) if all the r
         self.DryRun = None
         self.CamRoleName = None
         self.HpcClusterId = None
+        self.LaunchTemplate = None
+        self.ChcIds = None
 
 
     def _deserialize(self, params):
@@ -5214,6 +6247,10 @@ false (default value): send a normal request and create instance(s) if all the r
         self.DryRun = params.get("DryRun")
         self.CamRoleName = params.get("CamRoleName")
         self.HpcClusterId = params.get("HpcClusterId")
+        if params.get("LaunchTemplate") is not None:
+            self.LaunchTemplate = LaunchTemplate()
+            self.LaunchTemplate._deserialize(params.get("LaunchTemplate"))
+        self.ChcIds = params.get("ChcIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5432,7 +6469,7 @@ class StopInstancesRequest(AbstractModel):
         r"""
         :param InstanceIds: Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. The maximum number of instances in each request is 100.
         :type InstanceIds: list of str
-        :param ForceStop: Whether to force shut down an instance after a normal shutdown fails. Valid values: <br><li>TRUE: force shut down an instance after a normal shutdown fails <br><li>FALSE: do not force shut down an instance after a normal shutdown fails <br><br>Default value: FALSE.
+        :param ForceStop: (Disused. Please use `StopType` instead.) Whether to forcibly shut down an instance after a normal shutdown fails. Valid values: <br><li>`TRUE`: yes;<br><li>`FALSE`: no<br><br>Default value: `FALSE`. 
         :type ForceStop: bool
         :param StopType: Instance shutdown mode. Valid values: <br><li>SOFT_FIRST: perform a soft shutdown first, and force shut down the instance if the soft shutdown fails <br><li>HARD: force shut down the instance directly <br><li>SOFT: soft shutdown only <br>Default value: SOFT.
         :type StopType: str
@@ -5780,7 +6817,7 @@ The following is a list of all availability zones:
 <li> ap-mumbai-1 </li>
 <li> ap-mumbai-2 </li>
 <li> eu-moscow-1 </li>
-<li> ap-beijing-1 </li>
+<li> ap-beijing-1 (sold out) </li>
 <li> ap-beijing-2 </li>
 <li> ap-beijing-3 </li>
 <li> ap-beijing-4 </li>
@@ -5796,6 +6833,7 @@ The following is a list of all availability zones:
 <li> na-ashburn-2 </li>
 <li> ap-nanjing-1 </li>
 <li> ap-nanjing-2 </li>
+<li> sa-saopaulo-1</li>
         :type Zone: str
         :param ZoneName: Availability zone description, such as Guangzhou Zone 3.
         :type ZoneName: str
