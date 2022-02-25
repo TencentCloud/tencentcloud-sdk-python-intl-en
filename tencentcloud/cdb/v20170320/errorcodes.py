@@ -53,7 +53,7 @@ FAILEDOPERATION_CREATEROVIPERROR = 'FailedOperation.CreateRoVipError'
 # Database operation failed.
 FAILEDOPERATION_DBOPERATIONACTIONERROR = 'FailedOperation.DBOperationActionError'
 
-# 
+# Failed to query database proxy.
 FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = 'FailedOperation.DescribeProxyGroupError'
 
 # An error occurred while obtaining permissions.
@@ -71,13 +71,13 @@ FAILEDOPERATION_NOTDELAYRO = 'FailedOperation.NotDelayRo'
 # The executed operation to modify permissions is invalid. You can refer to product documentation for more information about permissions that can be modified for this instance. If you have any questions, please contact customer service.
 FAILEDOPERATION_PRIVILEGEDATAILLEGAL = 'FailedOperation.PrivilegeDataIllegal'
 
-# 
+# Database proxy in an exceptional status.
 FAILEDOPERATION_PROXYGROUPSTATUSERROR = 'FailedOperation.ProxyGroupStatusError'
 
 # Log query failed.
 FAILEDOPERATION_QUERYLOGERROR = 'FailedOperation.QueryLogError'
 
-# 
+# The proxy is being created or already exists. You cannot create it again.
 FAILEDOPERATION_REPEATCREATEPROXYERROR = 'FailedOperation.RepeatCreateProxyError'
 
 # Exception with the backend request for the service. Please contact customer service.

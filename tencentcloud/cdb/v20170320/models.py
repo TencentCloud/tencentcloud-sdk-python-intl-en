@@ -1306,28 +1306,32 @@ class CreateDBImportJobRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
         :type InstanceId: str
-        :param FileName: Filename. The file must be a .sql file uploaded to Tencent Cloud.
-        :type FileName: str
         :param User: TencentDB username
         :type User: str
+        :param FileName: Filename. The file must be a .sql file uploaded to Tencent Cloud.
+        :type FileName: str
         :param Password: Password of a TencentDB instance user account
         :type Password: str
         :param DbName: Name of the target database. If this parameter is not passed in, no database is specified.
         :type DbName: str
+        :param CosUrl: URL of a .sql file stored in COS. Either `FileName` or `CosUrl` must be specified.
+        :type CosUrl: str
         """
         self.InstanceId = None
-        self.FileName = None
         self.User = None
+        self.FileName = None
         self.Password = None
         self.DbName = None
+        self.CosUrl = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
-        self.FileName = params.get("FileName")
         self.User = params.get("User")
+        self.FileName = params.get("FileName")
         self.Password = params.get("Password")
         self.DbName = params.get("DbName")
+        self.CosUrl = params.get("CosUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3741,12 +3745,16 @@ class DescribeDefaultParamsRequest(AbstractModel):
         r"""
         :param EngineVersion: MySQL version. Currently, the supported versions are ["5.1", "5.5", "5.6", "5.7"].
         :type EngineVersion: str
+        :param TemplateType: Type of the default parameter template. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template).
+        :type TemplateType: str
         """
         self.EngineVersion = None
+        self.TemplateType = None
 
 
     def _deserialize(self, params):
         self.EngineVersion = params.get("EngineVersion")
+        self.TemplateType = params.get("TemplateType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10565,7 +10573,7 @@ class ZoneSellConf(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: AZ status. Value range: 0 (not available), 1 (available), 2 (purchasable), 3 (not purchasable), 4 (not displayed)
+        :param Status: AZ status used to indicate whether instances are purchasable. Value range: `1` (purchasable), `3` (not purchasable), `4` (AZ not displayed)
         :type Status: int
         :param ZoneName: AZ name
         :type ZoneName: str
@@ -10598,6 +10606,14 @@ class ZoneSellConf(AbstractModel):
         :param RemoteRoZone: Information of supported cross-AZ read-only zone
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RemoteRoZone: list of str
+        :param ExClusterStatus: AZ status used to indicate whether dedicated instances are purchasable. Valid values: `1 (purchasable), `3` (not purchasable), `4` (AZ not displayed)
+        :type ExClusterStatus: int
+        :param ExClusterRemoteRoZone: AZ information of the cross-AZ deployed read-only instances which are associated with a dedicated instance
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ExClusterRemoteRoZone: list of str
+        :param ExClusterZoneConf: AZ information of a multi-AZ deployed dedicated instance.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ExClusterZoneConf: :class:`tencentcloud.cdb.v20170320.models.ZoneConf`
         """
         self.Status = None
         self.ZoneName = None
@@ -10615,6 +10631,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.DrZone = None
         self.IsSupportRemoteRo = None
         self.RemoteRoZone = None
+        self.ExClusterStatus = None
+        self.ExClusterRemoteRoZone = None
+        self.ExClusterZoneConf = None
 
 
     def _deserialize(self, params):
@@ -10641,6 +10660,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.DrZone = params.get("DrZone")
         self.IsSupportRemoteRo = params.get("IsSupportRemoteRo")
         self.RemoteRoZone = params.get("RemoteRoZone")
+        self.ExClusterStatus = params.get("ExClusterStatus")
+        self.ExClusterRemoteRoZone = params.get("ExClusterRemoteRoZone")
+        if params.get("ExClusterZoneConf") is not None:
+            self.ExClusterZoneConf = ZoneConf()
+            self.ExClusterZoneConf._deserialize(params.get("ExClusterZoneConf"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

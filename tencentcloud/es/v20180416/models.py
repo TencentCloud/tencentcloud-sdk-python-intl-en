@@ -1093,6 +1093,12 @@ Note: This field may return `null`, indicating that no valid value was found.
         :param HealthStatus: Cluster health status. `-1`: Unknown; `0`: Green; `1`: Yellow; `2`: Red
 Note: This field may return `null`, indicating that no valid value was found.
         :type HealthStatus: int
+        :param EsPrivateUrl: Private URL of the HTTPS cluster
+Note: This field may return `null`, indicating that no valid value was found.
+        :type EsPrivateUrl: str
+        :param EsPrivateDomain: Private domain of the HTTPS cluster
+Note: This field may return `null`, indicating that no valid value was found.
+        :type EsPrivateDomain: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1166,6 +1172,8 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.FrozenDiskType = None
         self.FrozenDiskSize = None
         self.HealthStatus = None
+        self.EsPrivateUrl = None
+        self.EsPrivateDomain = None
 
 
     def _deserialize(self, params):
@@ -1270,6 +1278,8 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.FrozenDiskType = params.get("FrozenDiskType")
         self.FrozenDiskSize = params.get("FrozenDiskSize")
         self.HealthStatus = params.get("HealthStatus")
+        self.EsPrivateUrl = params.get("EsPrivateUrl")
+        self.EsPrivateDomain = params.get("EsPrivateDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

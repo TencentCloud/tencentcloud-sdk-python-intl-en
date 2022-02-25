@@ -20,6 +20,9 @@ AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
+# CMQ backend error.
+FAILEDOPERATION_CMQBACKENDERROR = 'FailedOperation.CmqBackendError'
+
 # Failed to create the cluster.
 FAILEDOPERATION_CREATECLUSTER = 'FailedOperation.CreateCluster'
 

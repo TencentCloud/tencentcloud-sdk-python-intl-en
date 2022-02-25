@@ -1386,6 +1386,68 @@ class DescribeMySqlProcessListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeProxySessionKillTasksRequest(AbstractModel):
+    """DescribeProxySessionKillTasks request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param AsyncRequestIds: The async session killing task ID, which is obtained after the API `CreateProxySessionKillTask` is successfully called.
+        :type AsyncRequestIds: list of int
+        :param Product: Service type. Valid value: `redis` (TencentDB for Redis).
+        :type Product: str
+        """
+        self.InstanceId = None
+        self.AsyncRequestIds = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AsyncRequestIds = params.get("AsyncRequestIds")
+        self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProxySessionKillTasksResponse(AbstractModel):
+    """DescribeProxySessionKillTasks response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Tasks: Session killing task details.
+        :type Tasks: list of TaskInfo
+        :param TotalCount: Total number of tasks.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Tasks = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = TaskInfo()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSecurityAuditLogDownloadUrlsRequest(AbstractModel):
     """DescribeSecurityAuditLogDownloadUrls request structure.
 
@@ -3493,6 +3555,70 @@ class TableSpaceTimeSeries(AbstractModel):
         if params.get("SeriesData") is not None:
             self.SeriesData = MonitorFloatMetricSeriesData()
             self.SeriesData._deserialize(params.get("SeriesData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskInfo(AbstractModel):
+    """Information about Redis session killing task status
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AsyncRequestId: Async task ID.
+        :type AsyncRequestId: int
+        :param InstProxyList: List of all proxies of the current instance.
+        :type InstProxyList: list of str
+        :param InstProxyCount: Total number of proxies of the current instance.
+        :type InstProxyCount: int
+        :param CreateTime: Task creation time.
+        :type CreateTime: str
+        :param StartTime: Task start time.
+        :type StartTime: str
+        :param TaskStatus: Task status. Valid values: `created` (create), `chosen` (to be executed), `running` (being executed), `failed` (failed), and `finished` (completed).
+        :type TaskStatus: str
+        :param FinishedProxyList: IDs of the proxies that have completed the session killing tasks.
+        :type FinishedProxyList: list of str
+        :param FailedProxyList: IDs of the proxies that failed to execute the session killing tasks.
+        :type FailedProxyList: list of str
+        :param EndTime: Task end time.
+        :type EndTime: str
+        :param Progress: Task progress.
+        :type Progress: int
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        """
+        self.AsyncRequestId = None
+        self.InstProxyList = None
+        self.InstProxyCount = None
+        self.CreateTime = None
+        self.StartTime = None
+        self.TaskStatus = None
+        self.FinishedProxyList = None
+        self.FailedProxyList = None
+        self.EndTime = None
+        self.Progress = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.InstProxyList = params.get("InstProxyList")
+        self.InstProxyCount = params.get("InstProxyCount")
+        self.CreateTime = params.get("CreateTime")
+        self.StartTime = params.get("StartTime")
+        self.TaskStatus = params.get("TaskStatus")
+        self.FinishedProxyList = params.get("FinishedProxyList")
+        self.FailedProxyList = params.get("FailedProxyList")
+        self.EndTime = params.get("EndTime")
+        self.Progress = params.get("Progress")
+        self.InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

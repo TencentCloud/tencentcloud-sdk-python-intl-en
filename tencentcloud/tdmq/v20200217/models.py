@@ -255,6 +255,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Tags: Tag
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Tags: list of Tag
+        :param PayMode: Billing mode:
+`0`: Pay-as-you-go
+`1`: Monthly subscription
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type PayMode: int
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -282,6 +287,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.MaxMessageDelayInSeconds = None
         self.PublicAccessEnabled = None
         self.Tags = None
+        self.PayMode = None
 
 
     def _deserialize(self, params):
@@ -316,6 +322,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.PayMode = params.get("PayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -806,11 +813,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ClientVersion: Consumer version.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ClientVersion: str
+        :param Partition: Serial number of the topic partition connected to the consumer.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Partition: int
         """
         self.ConnectedSince = None
         self.ConsumerAddr = None
         self.ConsumerName = None
         self.ClientVersion = None
+        self.Partition = None
 
 
     def _deserialize(self, params):
@@ -818,6 +829,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ConsumerAddr = params.get("ConsumerAddr")
         self.ConsumerName = params.get("ConsumerName")
         self.ClientVersion = params.get("ClientVersion")
+        self.Partition = params.get("Partition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -978,6 +990,8 @@ class CreateCmqQueueRequest(AbstractModel):
         :type MaxTimeToLive: int
         :param Trace: Whether to enable message trace. true: yes; false: no. If this field is not configured, the feature will not be enabled
         :type Trace: bool
+        :param Tags: Tag array.
+        :type Tags: list of Tag
         """
         self.QueueName = None
         self.MaxMsgHeapNum = None
@@ -994,6 +1008,7 @@ class CreateCmqQueueRequest(AbstractModel):
         self.MaxReceiveCount = None
         self.MaxTimeToLive = None
         self.Trace = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -1012,6 +1027,12 @@ class CreateCmqQueueRequest(AbstractModel):
         self.MaxReceiveCount = params.get("MaxReceiveCount")
         self.MaxTimeToLive = params.get("MaxTimeToLive")
         self.Trace = params.get("Trace")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1132,12 +1153,15 @@ class CreateCmqTopicRequest(AbstractModel):
         :type MsgRetentionSeconds: int
         :param Trace: Whether to enable message trace. true: yes; false: no. If this field is left empty, the feature will not be enabled.
         :type Trace: bool
+        :param Tags: Tag array.
+        :type Tags: list of Tag
         """
         self.TopicName = None
         self.MaxMsgSize = None
         self.FilterType = None
         self.MsgRetentionSeconds = None
         self.Trace = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -1146,6 +1170,12 @@ class CreateCmqTopicRequest(AbstractModel):
         self.FilterType = params.get("FilterType")
         self.MsgRetentionSeconds = params.get("MsgRetentionSeconds")
         self.Trace = params.get("Trace")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1681,32 +1711,40 @@ class CreateTopicRequest(AbstractModel):
         :type TopicName: str
         :param Partitions: 0: non-partitioned topic; other values: number of partitions in the partitioned topic (up to 128).
         :type Partitions: int
+        :param Remark: Remarks (up to 128 characters).
+        :type Remark: str
         :param TopicType: 0: general message;
 1: globally sequential message;
 2: partitionally sequential message;
 3: retry letter queue;
 4: dead letter queue.
         :type TopicType: int
-        :param Remark: Remarks (up to 128 characters).
-        :type Remark: str
         :param ClusterId: Pulsar cluster ID
         :type ClusterId: str
+        :param PulsarTopicType: Pulsar topic type.
+`0`: Non-persistent and non-partitioned
+`1`: Non-persistent and partitioned
+`2`: Persistent and non-partitioned
+`3`: Persistent and partitioned
+        :type PulsarTopicType: int
         """
         self.EnvironmentId = None
         self.TopicName = None
         self.Partitions = None
-        self.TopicType = None
         self.Remark = None
+        self.TopicType = None
         self.ClusterId = None
+        self.PulsarTopicType = None
 
 
     def _deserialize(self, params):
         self.EnvironmentId = params.get("EnvironmentId")
         self.TopicName = params.get("TopicName")
         self.Partitions = params.get("Partitions")
-        self.TopicType = params.get("TopicType")
         self.Remark = params.get("Remark")
+        self.TopicType = params.get("TopicType")
         self.ClusterId = params.get("ClusterId")
+        self.PulsarTopicType = params.get("PulsarTopicType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6069,6 +6107,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param UpdateTime: Modification time.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UpdateTime: str
+        :param SubType: Subscription type. Valid values: `Exclusive`, `Shared`, `Failover`, and `Key_Shared`. An empty string or `NULL`: Unknown.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type SubType: str
+        :param BlockedSubscriptionOnUnackedMsgs: Whether messages are blocked as the limit of unacknowledged messages has been reached.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type BlockedSubscriptionOnUnackedMsgs: bool
+        :param MaxUnackedMsgNum: Maximum number of unacknowledged messages.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type MaxUnackedMsgNum: int
         """
         self.TopicName = None
         self.EnvironmentId = None
@@ -6087,6 +6134,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Remark = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.SubType = None
+        self.BlockedSubscriptionOnUnackedMsgs = None
+        self.MaxUnackedMsgNum = None
 
 
     def _deserialize(self, params):
@@ -6117,6 +6167,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Remark = params.get("Remark")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.SubType = params.get("SubType")
+        self.BlockedSubscriptionOnUnackedMsgs = params.get("BlockedSubscriptionOnUnackedMsgs")
+        self.MaxUnackedMsgNum = params.get("MaxUnackedMsgNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6262,6 +6315,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ConsumerLimit: Maximum number of consumers.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ConsumerLimit: str
+        :param PulsarTopicType: `0`: Non-persistent and non-partitioned
+`1`: Non-persistent and partitioned
+`2`: Persistent and non-partitioned
+`3`: Persistent and partitioned
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type PulsarTopicType: int
         """
         self.AverageMsgSize = None
         self.ConsumerCount = None
@@ -6284,6 +6343,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.UpdateTime = None
         self.ProducerLimit = None
         self.ConsumerLimit = None
+        self.PulsarTopicType = None
 
 
     def _deserialize(self, params):
@@ -6313,6 +6373,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.UpdateTime = params.get("UpdateTime")
         self.ProducerLimit = params.get("ProducerLimit")
         self.ConsumerLimit = params.get("ConsumerLimit")
+        self.PulsarTopicType = params.get("PulsarTopicType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
