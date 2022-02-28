@@ -5150,7 +5150,7 @@ class ComposeMediaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Tracks: List of input media tracks, i.e., information of multiple tracks composed of video, audio, image, and other materials. <li>Multiple input tracks are aligned with the output media file on the time axis. </li><li>The materials of each track at the same time point on the time axis will be superimposed. Specifically, videos or images will be superimposed for video image by track order, where a material with a higher track order will be more on top, while audio materials will be mixed. </li><li>Up to 10 tracks are supported for each type (video, audio, or image).</li>
+        :param Tracks: List of input media tracks, including video, audio, and image tracks. <li>Input tracks are synced to the output media file.</li><li>Input tracks are synced to each other. Videos and images in higher tracks are superimposed over those in lower tracks. Audio tracks are mixed.</li><li>There can be up to 10 tracks for video, audio, and images each.</li><li>The total number of clips in all tracks cannot exceed 500.</li>
         :type Tracks: list of MediaTrack
         :param Output: Information of output media file.
         :type Output: :class:`tencentcloud.vod.v20180717.models.ComposeMediaOutput`
@@ -6806,15 +6806,30 @@ class CreateSuperPlayerConfigRequest(AbstractModel):
         r"""
         :param Name: Player configuration name, which can contain up to 64 letters, digits, underscores, and hyphens (such as test_ABC-123) and must be unique under a user.
         :type Name: str
-        :param DrmSwitch: Switch of DRM-protected adaptive bitstream playback:
-<li>ON: enabled, indicating to play back only output adaptive bitstreams protected by DRM;</li>
-<li>OFF: disabled, indicating to play back unencrypted output adaptive bitstreams.</li>
-Default value: OFF.
+        :param AudioVideoType: Type of audio/video played. Valid values:
+<li>AdaptiveDynamicStreaming</li>
+<li>Transcode</li>
+<li>Original</li>
+Default value: `AdaptiveDynamicStream`
+        :type AudioVideoType: str
+        :param DrmSwitch: Whether to allow only adaptive bitrate streaming playback protected by DRM. Valid values:
+<li>`ON`: allow only adaptive bitrate streaming playback protected by DRM</li>
+<li>`OFF`: allow adaptive bitrate streaming playback not protected by DRM</li>
+Default value: `OFF`
+This parameter is valid when `AudioVideoType` is `AdaptiveDynamicStream`.
         :type DrmSwitch: str
-        :param AdaptiveDynamicStreamingDefinition: ID of the unencrypted adaptive bitrate streaming template that allows output, which is required if `DrmSwitch` is `OFF`.
+        :param AdaptiveDynamicStreamingDefinition: ID of the adaptive bitrate streaming template allowed for playback not protected by DRM.
+
+This parameter is required if `AudioVideoType` is `AdaptiveDynamicStream` and `DrmSwitch` is `OFF`.
         :type AdaptiveDynamicStreamingDefinition: int
-        :param DrmStreamingsInfo: Content of the DRM-protected adaptive bitrate streaming template that allows output, which is required if `DrmSwitch` is `ON`.
+        :param DrmStreamingsInfo: Content of the adaptive bitrate streaming template allowed for playback protected by DRM.
+
+This parameter is required if `AudioVideoType` is `AdaptiveDynamicStream` and `DrmSwitch` is `ON`.
         :type DrmStreamingsInfo: :class:`tencentcloud.vod.v20180717.models.DrmStreamingsInfo`
+        :param TranscodeDefinition: ID of the transcoding template allowed for playback
+
+This parameter is required if `AudioVideoType` is `Transcode`.
+        :type TranscodeDefinition: int
         :param ImageSpriteDefinition: ID of the image sprite generating template that allows output.
         :type ImageSpriteDefinition: int
         :param ResolutionNames: Display name of player for substreams with different resolutions. If this parameter is left empty or an empty array, the default configuration will be used:
@@ -6838,9 +6853,11 @@ Default value: OFF.
         :type SubAppId: int
         """
         self.Name = None
+        self.AudioVideoType = None
         self.DrmSwitch = None
         self.AdaptiveDynamicStreamingDefinition = None
         self.DrmStreamingsInfo = None
+        self.TranscodeDefinition = None
         self.ImageSpriteDefinition = None
         self.ResolutionNames = None
         self.Domain = None
@@ -6851,11 +6868,13 @@ Default value: OFF.
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
+        self.AudioVideoType = params.get("AudioVideoType")
         self.DrmSwitch = params.get("DrmSwitch")
         self.AdaptiveDynamicStreamingDefinition = params.get("AdaptiveDynamicStreamingDefinition")
         if params.get("DrmStreamingsInfo") is not None:
             self.DrmStreamingsInfo = DrmStreamingsInfo()
             self.DrmStreamingsInfo._deserialize(params.get("DrmStreamingsInfo"))
+        self.TranscodeDefinition = params.get("TranscodeDefinition")
         self.ImageSpriteDefinition = params.get("ImageSpriteDefinition")
         if params.get("ResolutionNames") is not None:
             self.ResolutionNames = []
@@ -15404,6 +15423,11 @@ class ModifySuperPlayerConfigRequest(AbstractModel):
         r"""
         :param Name: Player configuration name.
         :type Name: str
+        :param AudioVideoType: Type of audio/video played. Valid values:
+<li>AdaptiveDynamicStreaming</li>
+<li>Transcode</li>
+<li>Original</li>
+        :type AudioVideoType: str
         :param DrmSwitch: Switch of DRM-protected adaptive bitstream playback:
 <li>ON: enabled, indicating to play back only output adaptive bitstreams protected by DRM;</li>
 <li>OFF: disabled, indicating to play back unencrypted output adaptive bitstreams.</li>
@@ -15412,6 +15436,8 @@ class ModifySuperPlayerConfigRequest(AbstractModel):
         :type AdaptiveDynamicStreamingDefinition: int
         :param DrmStreamingsInfo: Content of the DRM-protected adaptive bitrate streaming template that allows output.
         :type DrmStreamingsInfo: :class:`tencentcloud.vod.v20180717.models.DrmStreamingsInfoForUpdate`
+        :param TranscodeDefinition: ID of the transcoding template allowed for playback
+        :type TranscodeDefinition: int
         :param ImageSpriteDefinition: ID of the image sprite generating template that allows output.
         :type ImageSpriteDefinition: int
         :param ResolutionNames: Display name of player for substreams with different resolutions.
@@ -15429,9 +15455,11 @@ class ModifySuperPlayerConfigRequest(AbstractModel):
         :type SubAppId: int
         """
         self.Name = None
+        self.AudioVideoType = None
         self.DrmSwitch = None
         self.AdaptiveDynamicStreamingDefinition = None
         self.DrmStreamingsInfo = None
+        self.TranscodeDefinition = None
         self.ImageSpriteDefinition = None
         self.ResolutionNames = None
         self.Domain = None
@@ -15442,11 +15470,13 @@ class ModifySuperPlayerConfigRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
+        self.AudioVideoType = params.get("AudioVideoType")
         self.DrmSwitch = params.get("DrmSwitch")
         self.AdaptiveDynamicStreamingDefinition = params.get("AdaptiveDynamicStreamingDefinition")
         if params.get("DrmStreamingsInfo") is not None:
             self.DrmStreamingsInfo = DrmStreamingsInfoForUpdate()
             self.DrmStreamingsInfo._deserialize(params.get("DrmStreamingsInfo"))
+        self.TranscodeDefinition = params.get("TranscodeDefinition")
         self.ImageSpriteDefinition = params.get("ImageSpriteDefinition")
         if params.get("ResolutionNames") is not None:
             self.ResolutionNames = []

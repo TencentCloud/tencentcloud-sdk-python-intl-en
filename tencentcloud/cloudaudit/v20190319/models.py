@@ -18,6 +18,29 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class DescribeAuditTracksRequest(AbstractModel):
+    """DescribeAuditTracks request structure.
+
+    """
+
+
+class DescribeAuditTracksResponse(AbstractModel):
+    """DescribeAuditTracks response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEventsRequest(AbstractModel):
     """DescribeEvents request structure.
 

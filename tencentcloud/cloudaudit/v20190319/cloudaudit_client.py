@@ -26,6 +26,34 @@ class CloudauditClient(AbstractClient):
     _service = 'cloudaudit'
 
 
+    def DescribeAuditTracks(self, request):
+        """This API is used to query the CloudAudit tracking set list.
+
+        :param request: Request instance for DescribeAuditTracks.
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.DescribeAuditTracksRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.DescribeAuditTracksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAuditTracks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAuditTracksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeEvents(self, request):
         """This API is used to query CloudAudit logs.
 
