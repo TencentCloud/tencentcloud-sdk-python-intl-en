@@ -4641,8 +4641,8 @@ class LoginSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Password: Login password of the instance. The password requirements vary among different operating systems: <br><li>For Linux instances, the password must be 8-30 characters long and contain at least two of the following types: [a-z], [A-Z], [0-9] and [( ) \` ~ ! @ # $ % ^ & *  - + = | { } [ ] : ; ' , . ? / ]. <br><li>For Windows instances, the password must be 12-30 characters long and contain at least three of the following categories: [a-z], [A-Z], [0-9] and [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]. <br><br>If this parameter is not specified, a random password will be generated and sent to you via the Message Center.
-Note: this field may return null, indicating that no valid value is obtained.
+        :param Password: Login password of the instance. <br><li>For Linux instances, the password must include 8-30 characters, and contain at least two of the following character sets: [a-z], [A-Z], [0-9] and [()\`~!@#$%^&*-+=|{}[]:;',.?/]. <br><li>For Windows instances, the password must include 12-30 characters, and contain at least three of the following character sets: [a-z], [A-Z], [0-9] and [()\`~!@#$%^&*-+=|{}[]:;',.?/]. <br><br>If it's not specified, the user needs to set the login password using the **Reset password** option in the CVM console or calling the API `ResetInstancesPassword` to complete the creation of the CVM instance(s).
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Password: str
         :param KeyIds: List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call [`DescribeKeyPairs`](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1) to obtain `KeyId`. A key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.
 Note: this field may return null, indicating that no valid value is obtained.
@@ -4879,7 +4879,7 @@ class ModifyInstancesAttributeRequest(AbstractModel):
         :type InstanceName: str
         :param SecurityGroups: IDs of security groups associated with the specified instance. You can associate with a security group by adding its ID, or cancel the association with a security group by removing its ID. <dx-alert infotype="explain" title="">Either `InstanceName` or `SecurityGroups` must be specified, but they cannot be both set.</dx-alert>
         :type SecurityGroups: list of str
-        :param DisableApiTermination: 
+        :param DisableApiTermination: Whether the termination protection is enabled. Values: <br><li>`TRUE`: enable instance protection, which means that this instance can not be deleted by an API action.<br><li>`FALSE`: do not enable the instance protection.<br><br>Default Value: `FALSE`.
         :type DisableApiTermination: bool
         """
         self.InstanceIds = None
@@ -6131,7 +6131,7 @@ class RunInstancesRequest(AbstractModel):
         :type InstanceCount: int
         :param InstanceName: Instance name to be displayed.<br><li>If this parameter is not specified, "Unnamed" will be displayed by default.</li><li>If you purchase multiple instances at the same time and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string, `server_{R:3}`. If you only purchase 1 instance, the instance will be named `server_3`; if you purchase 2, they will be named `server_3` and `server_4`. You can specify multiple pattern strings in the format of `{R:x}`.</li><li>If you purchase multiple instances at the same time and do not specify a pattern string, the instance names will be suffixed by `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase 2 instances and name them as `server_`, the instance names will be displayed as `server_1` and `server_2`.</li><li>The instance name contains up to 60 characters (including pattern strings).
         :type InstanceName: str
-        :param LoginSettings: Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center.
+        :param LoginSettings: Instance login settings. You can use this parameter to set the login method, login password and SSH key, or keep the original login settings of the image. If it's not specified, the user needs to set the login password using the "Reset password" option in the CVM console or calling the API `ResetInstancesPassword` to complete the creation of the CVM instance(s).
         :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
         :param SecurityGroupIds: Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response. If this parameter is not specified, the instance will be associated with default security groups.
         :type SecurityGroupIds: list of str
@@ -6163,7 +6163,7 @@ false (default value): send a normal request and create instance(s) if all the r
         :type HpcClusterId: str
         :param LaunchTemplate: Instance launch template.
         :type LaunchTemplate: :class:`tencentcloud.cvm.v20170312.models.LaunchTemplate`
-        :param ChcIds: 
+        :param ChcIds: Specify the CHC physical server that used to create the CHC CVM.
         :type ChcIds: list of str
         """
         self.InstanceChargeType = None

@@ -281,7 +281,7 @@ INVALIDPARAMETERVALUE_CLOUDSSDDATADISKSIZETOOSMALL = 'InvalidParameterValue.Clou
 # Illegal core count.
 INVALIDPARAMETERVALUE_CORECOUNTVALUE = 'InvalidParameterValue.CoreCountValue'
 
-# 
+# Incorrect placement group ID format.
 INVALIDPARAMETERVALUE_DISASTERRECOVERGROUPIDMALFORMED = 'InvalidParameterValue.DisasterRecoverGroupIdMalformed'
 
 # Duplicate parameter value
@@ -326,7 +326,7 @@ INVALIDPARAMETERVALUE_INVALIDIMAGEFORMAT = 'InvalidParameterValue.InvalidImageFo
 # The image does not support this operation.
 INVALIDPARAMETERVALUE_INVALIDIMAGEID = 'InvalidParameterValue.InvalidImageId'
 
-# 
+# The image cannot be used to reinstall the current instance.
 INVALIDPARAMETERVALUE_INVALIDIMAGEIDFORRETSETINSTANCE = 'InvalidParameterValue.InvalidImageIdForRetsetInstance'
 
 # The operating system of the specified image is not available in the current region.
@@ -431,7 +431,7 @@ INVALIDPARAMETERVALUE_VPCIDNOTEXIST = 'InvalidParameterValue.VpcIdNotExist'
 # The VPC and instance must be in the same availability zone.
 INVALIDPARAMETERVALUE_VPCIDZONEIDNOTMATCH = 'InvalidParameterValue.VpcIdZoneIdNotMatch'
 
-# 
+# This VPC does not support the IPv6 addresses.
 INVALIDPARAMETERVALUE_VPCNOTSUPPORTIPV6ADDRESS = 'InvalidParameterValue.VpcNotSupportIpv6Address'
 
 # The availability zone does not support this operation.
@@ -491,7 +491,7 @@ LIMITEXCEEDED_ENINUMLIMIT = 'LimitExceeded.EniNumLimit'
 # Number of IPs on this ENI reached the upper limit
 LIMITEXCEEDED_IPV6ADDRESSNUM = 'LimitExceeded.IPv6AddressNum'
 
-# 
+# Reached the upper limit of the ENIs for the instance.
 LIMITEXCEEDED_INSTANCEENINUMLIMIT = 'LimitExceeded.InstanceEniNumLimit'
 
 # You are short of the instance quota.
@@ -701,7 +701,7 @@ UNSUPPORTEDOPERATION_INSTANCESTATETERMINATED = 'UnsupportedOperation.InstanceSta
 # The instance is being terminated, and the operation is not supported.
 UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = 'UnsupportedOperation.InstanceStateTerminating'
 
-# 
+# The instance is under termination protection and cannot be terminated. Disable the termination protection and try again.
 UNSUPPORTEDOPERATION_INSTANCESPROTECTED = 'UnsupportedOperation.InstancesProtected'
 
 # The specified disk is not supported.
@@ -719,7 +719,7 @@ UNSUPPORTEDOPERATION_KEYPAIRUNSUPPORTEDWINDOWS = 'UnsupportedOperation.KeyPairUn
 # A model whose data disks are all local disks does not support cross-model configuration adjustment.
 UNSUPPORTEDOPERATION_LOCALDATADISKCHANGEINSTANCEFAMILY = 'UnsupportedOperation.LocalDataDiskChangeInstanceFamily'
 
-# 
+# The specified disk is converting to a cloud disk. Try again later.
 UNSUPPORTEDOPERATION_LOCALDISKMIGRATINGTOCLOUDDISK = 'UnsupportedOperation.LocalDiskMigratingToCloudDisk'
 
 # An instance bound with CLB does not support modifying its VPC attributes.
