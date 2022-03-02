@@ -155,6 +155,9 @@ INVALIDPARAMETERVALUE_DUPLICATEDLISTENERPORT = 'InvalidParameterValue.Duplicated
 # The features to be enabled conflict with each other.
 INVALIDPARAMETERVALUE_FEATURECONFLICT = 'InvalidParameterValue.FeatureConflict'
 
+# The resource has been added to the blocklist.
+INVALIDPARAMETERVALUE_HITBANBLACKLIST = 'InvalidParameterValue.HitBanBlacklist'
+
 # The header is blocklisted.
 INVALIDPARAMETERVALUE_HITBLACKLIST = 'InvalidParameterValue.HitBlacklist'
 
@@ -178,6 +181,9 @@ INVALIDPARAMETERVALUE_INVALIDLISTENERPORT = 'InvalidParameterValue.InvalidListen
 
 # The tag is not found or you have no access permission to it.
 INVALIDPARAMETERVALUE_INVALIDTAGS = 'InvalidParameterValue.InvalidTags'
+
+# The domain name has been blocked and cannot be added.
+INVALIDPARAMETERVALUE_L7DOMAINHITBANBLACKLIST = 'InvalidParameterValue.L7DomainHitBanBlacklist'
 
 # The project does not belong to this user.
 INVALIDPARAMETERVALUE_PROJECTIDNOTBELONG = 'InvalidParameterValue.ProjectIdNotBelong'

@@ -404,7 +404,9 @@ class CdnClient(AbstractClient):
 
 
     def DescribeIpStatus(self, request):
-        """This API is used to query the status of the edge servers and intermediate nodes on the domain name acceleration platform. Note: edge servers are not generally available. This API can only be used by allowlisted accounts.
+        """This API is used to query the status of the edge nodes and intermediate nodes. Note: Edge nodes are only available for beta users now.
+
+        >? If you have migrated your ECDN service to CDN, you can use the <a href="https://intl.cloud.tencent.com/document/api/228/41954?from_cn_redirect=1">corresponding CDN API</a>.
 
         :param request: Request instance for DescribeIpStatus.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeIpStatusRequest`

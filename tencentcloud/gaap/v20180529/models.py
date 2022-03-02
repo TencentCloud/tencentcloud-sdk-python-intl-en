@@ -1538,8 +1538,12 @@ class CreateRuleRequest(AbstractModel):
         :param ForwardProtocol: Protocol types of the forwarding from acceleration connection to origin server, which supports HTTP or HTTPS.
 If this field is not passed in, it indicates that the ForwardProtocol of the corresponding listener will be used.
         :type ForwardProtocol: str
-        :param ForwardHost: Remote host to which the acceleration connection forwards. If this parameter is not specified, the default host will be used, i.e., the host with which the client initiates HTTP requests.
+        :param ForwardHost: The forwarding host. If it’s not specified, the default host is used, that is the host with which the client initiates HTTP requests.
         :type ForwardHost: str
+        :param ServerNameIndicationSwitch: Specifies whether to enable Server Name Indication (SNI). Valid values: `ON` (enable) and `OFF` (disable).
+        :type ServerNameIndicationSwitch: str
+        :param ServerNameIndication: Server Name Indication (SNI). This field is required when `ServerNameIndicationSwitch` is `ON`.
+        :type ServerNameIndication: str
         """
         self.ListenerId = None
         self.Domain = None
@@ -1550,6 +1554,8 @@ If this field is not passed in, it indicates that the ForwardProtocol of the cor
         self.CheckParams = None
         self.ForwardProtocol = None
         self.ForwardHost = None
+        self.ServerNameIndicationSwitch = None
+        self.ServerNameIndication = None
 
 
     def _deserialize(self, params):
@@ -1564,6 +1570,8 @@ If this field is not passed in, it indicates that the ForwardProtocol of the cor
             self.CheckParams._deserialize(params.get("CheckParams"))
         self.ForwardProtocol = params.get("ForwardProtocol")
         self.ForwardHost = params.get("ForwardHost")
+        self.ServerNameIndicationSwitch = params.get("ServerNameIndicationSwitch")
+        self.ServerNameIndication = params.get("ServerNameIndication")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3468,8 +3476,8 @@ Other values: specified project
         :type ProjectId: int
         :param Filters: Filter condition   
 Each request can have a maximum of 5 filter conditions for `Filter.Values`.
-RealServerRegion - String - Required: No - Filter by origin server region. You can also check the value of `RegionId` returned by the `DescribeDestRegions` API.
-PackageType - String - Required: No - Filter by type of connection groups, which can be `Thunder` (general connection group) or `Accelerator` (game accelerator connection group).
+`RealServerRegion` - String - Required: No - Filter by origin server region. You can also check the value of `RegionId` returned by the `DescribeDestRegions` API.
+`PackageType` - String - Required: No - Filter by type of connection groups, which can be `Thunder` (general connection group) or `Accelerator` (silver connection group).
         :type Filters: list of Filter
         :param TagSet: Tag list. If this field exists, the list of the resources with the tag will be pulled.
 It supports up to 5 tags. If there are two or more tags, the connection groups tagged any of them will be pulled.
@@ -5939,9 +5947,13 @@ lc: least connections.
         :param ForwardProtocol: Protocol types of the forwarding from acceleration connection to origin server, which supports default, HTTP and HTTPS.
 If `ForwardProtocol=default`, the `ForwardProtocol` of the listener will be used.
         :type ForwardProtocol: str
-        :param ForwardHost: The `host` carried in the request forwarded from the acceleration connection to the origin server.
-If `ForwardHost=default`, the domain name of rule will be used. For other cases, the value set in this field will be used.
+        :param ForwardHost: The forwarding host, which is carried in the request forwarded from the acceleration connection to the origin server.
+If `ForwardHost=default`, the domain name configured with the forwarding rule will be used. For other cases, the value set in this field will be used.
         :type ForwardHost: str
+        :param ServerNameIndicationSwitch: Specifies whether to enable Server Name Indication (SNI). Valid values: `ON` (enable) and `OFF` (disable).
+        :type ServerNameIndicationSwitch: str
+        :param ServerNameIndication: Server Name Indication (SNI). This field is required when `ServerNameIndicationSwitch` is `ON`.
+        :type ServerNameIndication: str
         """
         self.ListenerId = None
         self.RuleId = None
@@ -5951,6 +5963,8 @@ If `ForwardHost=default`, the domain name of rule will be used. For other cases,
         self.Path = None
         self.ForwardProtocol = None
         self.ForwardHost = None
+        self.ServerNameIndicationSwitch = None
+        self.ServerNameIndication = None
 
 
     def _deserialize(self, params):
@@ -5964,6 +5978,8 @@ If `ForwardHost=default`, the domain name of rule will be used. For other cases,
         self.Path = params.get("Path")
         self.ForwardProtocol = params.get("ForwardProtocol")
         self.ForwardHost = params.get("ForwardHost")
+        self.ServerNameIndicationSwitch = params.get("ServerNameIndicationSwitch")
+        self.ServerNameIndication = params.get("ServerNameIndication")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6460,8 +6476,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type IPAddressVersion: str
-        :param PackageType: Package type of connection groups. Valid values: `Thunder` (general connection group), `Accelerator` (game accelerator connection group), and `CrossBorder` (cross-MLC-border connection group).
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param PackageType: Package type of connection groups. Valid values: `Thunder` (general connection group), `Accelerator` (silver connection group), and `CrossBorder` (cross-MLC-border connection group).
+Note: This field may return `null`, indicating that no valid value can be obtained.
         :type PackageType: str
         :param Http3Supported: Specifies whether to enable HTTP3. Valid values:
 `0`: disable;
@@ -6724,9 +6740,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param NetworkType: Network type. `normal`: general BGP; `cn2`: dedicated BGP; `triple`: Non-BGP (provided by the top 3 ISPs in the Chinese mainland).
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :type NetworkType: str
-        :param PackageType: Package type of connection groups. Valid values: `Thunder` (general), `Accelerator` (specific for games), 
+        :param PackageType: Package type of connections. Valid values: `Thunder` (general connection), `Accelerator` (silver connection), 
 and `CrossBorder` (cross-MLC-border connection).
-Note: this field may return `null`, indicating that no valid value can be obtained.
+Note: This field may return `null`, indicating that no valid value can be obtained.
         :type PackageType: str
         :param BanStatus: Blocking-related status of the domain name. `BANNED`: the domain name is blocked; `RECOVER`: the domain name is unblocked or normal; `BANNING`: the domain name is being blocked; `RECOVERING`: the domain name is being unblocked; `BAN_FAILED`: the blocking fails; RECOVER_FAILED: the unblocking fails.
 Note: this field may return `null`, indicating that no valid value can be obtained.
@@ -6738,6 +6754,9 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 `1`: enable HTTP3.
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :type Http3Supported: int
+        :param InBanBlacklist: Indicates whether the origin server IP or domain name is in the blocklist. Valid values: `0` (no) and `1` (yes).
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type InBanBlacklist: int
         """
         self.InstanceId = None
         self.CreateTime = None
@@ -6772,6 +6791,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         self.BanStatus = None
         self.IPList = None
         self.Http3Supported = None
+        self.InBanBlacklist = None
 
 
     def _deserialize(self, params):
@@ -6822,6 +6842,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
                 obj._deserialize(item)
                 self.IPList.append(obj)
         self.Http3Supported = params.get("Http3Supported")
+        self.InBanBlacklist = params.get("InBanBlacklist")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6921,11 +6942,14 @@ class RealServer(AbstractModel):
         :type RealServerName: str
         :param ProjectId: Project ID
         :type ProjectId: int
+        :param InBanBlacklist: Indicates whether the origin server IP or domain name is in the blocklist. Valid values: `0` (no) and `1` (yes).
+        :type InBanBlacklist: int
         """
         self.RealServerIP = None
         self.RealServerId = None
         self.RealServerName = None
         self.ProjectId = None
+        self.InBanBlacklist = None
 
 
     def _deserialize(self, params):
@@ -6933,6 +6957,7 @@ class RealServer(AbstractModel):
         self.RealServerId = params.get("RealServerId")
         self.RealServerName = params.get("RealServerName")
         self.ProjectId = params.get("ProjectId")
+        self.InBanBlacklist = params.get("InBanBlacklist")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7209,6 +7234,14 @@ As long as one origin server is exceptional, this status will be exceptional. Pl
         :param ForwardHost: The `host` carried in the request forwarded from the connection to the origin server. `default` indicates directly forwarding the received 'host'.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ForwardHost: str
+        :param ServerNameIndicationSwitch: Specifies whether to enable Server Name Indication (SNI). Valid values: `ON` (enable) and `OFF` (disable).
+Note: This field may return `null`, indicating that no valid value can be obtained.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type ServerNameIndicationSwitch: str
+        :param ServerNameIndication: Server Name Indication (SNI). This field is required when `ServerNameIndicationSwitch` is `ON`.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type ServerNameIndication: str
         """
         self.RuleId = None
         self.ListenerId = None
@@ -7222,6 +7255,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RealServerSet = None
         self.BindStatus = None
         self.ForwardHost = None
+        self.ServerNameIndicationSwitch = None
+        self.ServerNameIndication = None
 
 
     def _deserialize(self, params):
@@ -7244,6 +7279,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 self.RealServerSet.append(obj)
         self.BindStatus = params.get("BindStatus")
         self.ForwardHost = params.get("ForwardHost")
+        self.ServerNameIndicationSwitch = params.get("ServerNameIndicationSwitch")
+        self.ServerNameIndication = params.get("ServerNameIndication")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7379,7 +7416,7 @@ The default value is 0.
         :type GaapCertificateId: str
         :param RealServerCertificateId: CA certificate ID of the origin server, which is obtained from the certificate management page. When authenticating the origin server, enter this parameter or the `RealServerCertificateIds` parameter.
         :type RealServerCertificateId: str
-        :param RealServerCertificateDomain: Domain name of the origin server certificate.
+        :param RealServerCertificateDomain: This field has been disused. Use ServerNameIndication instead.
         :type RealServerCertificateDomain: str
         :param PolyRealServerCertificateIds: CA certificate IDs of multiple origin servers, which are obtained from the certificate management page. When authenticating the origin servers, enter this parameter or the `RealServerCertificateId` parameter.
         :type PolyRealServerCertificateIds: list of str

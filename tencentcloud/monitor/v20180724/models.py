@@ -395,6 +395,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param TagInstances: Tag
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type TagInstances: list of TagInstance
+        :param FilterDimensionsParam: Information on the filter dimension associated with a policy.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type FilterDimensionsParam: str
         """
         self.PolicyId = None
         self.PolicyName = None
@@ -425,6 +428,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.RuleType = None
         self.OriginId = None
         self.TagInstances = None
+        self.FilterDimensionsParam = None
 
 
     def _deserialize(self, params):
@@ -478,6 +482,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
                 obj = TagInstance()
                 obj._deserialize(item)
                 self.TagInstances.append(obj)
+        self.FilterDimensionsParam = params.get("FilterDimensionsParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2064,6 +2069,8 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 You can also refer to the “Example 2” below.
 
 For more information on the parameter samples of different Tencent Cloud services, see [Product Policy Type and Dimension Information](https://intl.cloud.tencent.com/document/product/248/50397?from_cn_redirect=1).
+
+Note: If `1` is passed in for `NeedCorrespondence`, the relationship between a policy and an instance needs to be returned. You can pass in up to 20 alarm object dimensions to avoid request timeout.
         :type Dimensions: str
         :param ReceiverUids: Search by recipient. You can get the user list with the API [ListUsers](https://intl.cloud.tencent.com/document/product/598/34587?from_cn_redirect=1) in “Cloud Access Management” or query the sub-user information with the API [GetUser](https://intl.cloud.tencent.com/document/product/598/34590?from_cn_redirect=1). The `Uid` field in the returned result should be entered here.
         :type ReceiverUids: list of int
@@ -2089,6 +2096,8 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
         :type NotBindingNoticeRule: int
         :param InstanceGroupId: Instance group ID.
         :type InstanceGroupId: int
+        :param NeedCorrespondence: Whether the relationship between a policy and the input parameter filter dimension is required. `1`: Yes. `0`: No. Default value: `0`.
+        :type NeedCorrespondence: int
         """
         self.Module = None
         self.PageNumber = None
@@ -2108,6 +2117,7 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
         self.Enable = None
         self.NotBindingNoticeRule = None
         self.InstanceGroupId = None
+        self.NeedCorrespondence = None
 
 
     def _deserialize(self, params):
@@ -2129,6 +2139,7 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
         self.Enable = params.get("Enable")
         self.NotBindingNoticeRule = params.get("NotBindingNoticeRule")
         self.InstanceGroupId = params.get("InstanceGroupId")
+        self.NeedCorrespondence = params.get("NeedCorrespondence")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6189,8 +6200,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param EndTime: Notification end time, which is expressed by the number of seconds since 00:00:00. Value range: 0–86399
 Note: this field may return null, indicating that no valid values can be obtained.
         :type EndTime: int
-        :param NoticeWay: Notification channel list. Valid values: EMAIL (email), SMS (SMS), CALL (phone), WECHAT (WeChat)
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param NoticeWay: Notification channel list. Valid values: `EMAIL` (email), `SMS` (SMS), `CALL` (phone), `WECHAT` (WeChat), `RTX` (WeCom)
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type NoticeWay: list of str
         :param UserIds: User `uid` list
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -6213,6 +6224,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param NeedPhoneArriveNotice: Whether receipt notification is required. Valid values: 0 (no), 1 (yes)
 Note: this field may return null, indicating that no valid values can be obtained.
         :type NeedPhoneArriveNotice: int
+        :param PhoneCallType: Dial type. `SYNC` (simultaneous dial), `CIRCLE` (polled dial). Default value: `CIRCLE`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type PhoneCallType: str
         """
         self.ReceiverType = None
         self.StartTime = None
@@ -6225,6 +6239,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.PhoneInnerInterval = None
         self.PhoneCircleInterval = None
         self.NeedPhoneArriveNotice = None
+        self.PhoneCallType = None
 
 
     def _deserialize(self, params):
@@ -6239,6 +6254,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.PhoneInnerInterval = params.get("PhoneInnerInterval")
         self.PhoneCircleInterval = params.get("PhoneCircleInterval")
         self.NeedPhoneArriveNotice = params.get("NeedPhoneArriveNotice")
+        self.PhoneCallType = params.get("PhoneCallType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -109,9 +109,11 @@ class AddCdnDomainRequest(AbstractModel):
         :param Domain: Domain name
         :type Domain: str
         :param ServiceType: Acceleration domain name service type
-web: static acceleration
-download: download acceleration
-media: streaming media VOD acceleration
+`web`: Webpage file downloads
+`download`: Large file downloads
+`media`: Audio and video on demand acceleration
+`hybrid`: Dynamic and static content acceleration
+`dynamic`: Dynamic content acceleration
         :type ServiceType: str
         :param Origin: Origin server configuration
         :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`
@@ -180,7 +182,7 @@ Overseas acceleration service must be enabled to use overseas acceleration and g
         :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
         :param OfflineCache: Offline cache
         :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
-        :param Quic: QUIC is in beta now. Please submit an application to join the beta. For more information, please see QUIC product documents.
+        :param Quic: QUIC access, which is a paid service. You can check the product document and Billing Overview for more information.
         :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`
         :param AwsPrivateAccess: Access authentication for S3 origin
         :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
@@ -4314,10 +4316,12 @@ offline: disabled
         :type Status: str
         :param ProjectId: Project ID, which can be viewed on the Tencent Cloud project management page
         :type ProjectId: int
-        :param ServiceType: Domain name service type
-web: static acceleration
-download: download acceleration
-media: streaming VOD acceleration
+        :param ServiceType: Acceleration domain name service type
+`web`: Webpage file downloads
+`download`: Large file downloads
+`media`: Audio and video on demand acceleration
+`hybrid`: Dynamic and static content acceleration
+`dynamic`: Dynamic content acceleration
         :type ServiceType: str
         :param CreateTime: Domain name creation time
         :type CreateTime: str
@@ -4488,6 +4492,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param ShareCname: Shared CNAME configuration (only available to beta users)
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ShareCname: :class:`tencentcloud.cdn.v20180606.models.ShareCname`
+        :param RuleEngine: Rule engine
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type RuleEngine: :class:`tencentcloud.cdn.v20180606.models.RuleEngine`
         """
         self.ResourceId = None
         self.AppId = None
@@ -4549,6 +4556,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.WebSocket = None
         self.RemoteAuthentication = None
         self.ShareCname = None
+        self.RuleEngine = None
 
 
     def _deserialize(self, params):
@@ -4710,6 +4718,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         if params.get("ShareCname") is not None:
             self.ShareCname = ShareCname()
             self.ShareCname._deserialize(params.get("ShareCname"))
+        if params.get("RuleEngine") is not None:
+            self.RuleEngine = RuleEngine()
+            self.RuleEngine._deserialize(params.get("RuleEngine"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8426,6 +8437,37 @@ Note: this field may return null, indicating that no valid value is obtained.
         
 
 
+class RuleEngine(AbstractModel):
+    """Rule engine configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Specifies whether to enable rule engine
+`on`: Enable
+`off`: Disable
+        :type Switch: str
+        :param Content: Rule
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Content: str
+        """
+        self.Switch = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RuleQueryString(AbstractModel):
     """Configuration to retain query strings for this path
 
@@ -9147,6 +9189,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Message: Certificate remarks
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Message: str
+        :param From: Certificate source
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type From: str
         """
         self.CertId = None
         self.CertName = None
@@ -9155,6 +9200,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ExpireTime = None
         self.DeployTime = None
         self.Message = None
+        self.From = None
 
 
     def _deserialize(self, params):
@@ -9165,6 +9211,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ExpireTime = params.get("ExpireTime")
         self.DeployTime = params.get("DeployTime")
         self.Message = params.get("Message")
+        self.From = params.get("From")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9856,7 +9903,7 @@ When you change it to from `mainland`/`overseas` to `global`, configurations of 
         :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
         :param OriginCombine: Merging pull requests
         :type OriginCombine: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`
-        :param Quic: QUIC is in beta now. Please submit an application to join the beta. For more information, please see QUIC product documents.
+        :param Quic: QUIC access, which is a paid service. You can check the product document and Billing Overview for more information.
         :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`
         :param OssPrivateAccess: Access authentication for OSS origin
         :type OssPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
