@@ -25,23 +25,32 @@ class AssumeRoleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RoleArn: Role resource description, such as qcs::cam::uin/12345678:role/4611686018427397919, qcs::cam::uin/12345678:roleName/testRoleName
+        :param RoleArn: Resource descriptions of a role, which can be obtained by clicking the role name in the [CAM console](https://console.cloud.tencent.com/cam/role).
+General role:
+qcs::cam::uin/12345678:role/4611686018427397919, qcs::cam::uin/12345678:roleName/testRoleName
+Service role:
+qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920, qcs::cam::uin/12345678:role/tencentcloudServiceRoleName/testServiceRoleName
         :type RoleArn: str
-        :param RoleSessionName: User-defined temporary session name
+        :param RoleSessionName: User-defined temporary session name.
+It can contain 2-128 letters, digits, and symbols (=,.@_-). Regex: [\w+=,.@_-]*
         :type RoleSessionName: str
         :param DurationSeconds: Specifies the validity period of credentials in seconds. Default value: 7200. Maximum value: 43200
         :type DurationSeconds: int
         :param Policy: Policy description
 Note:
-1. The policy needs to be URL-encoded (if you request a TencentCloud API through the GET method, all parameters must be URL-encoded again in accordance with [Signature v3](https://cloud.tencent.com/document/api/598/33159#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2) before the request is sent).
-2. For the policy syntax, please see CAM’s [Syntax Logic](https://cloud.tencent.com/document/product/598/10603).
+1. The policy needs to be URL-encoded (if you request a TencentCloud API through the GET method, all parameters must be URL-encoded again in accordance with [Signature v3](https://intl.cloud.tencent.com/document/api/598/33159?from_cn_redirect=1#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2) before the request is sent).
+2. For the policy syntax, please see CAM's [Syntax Logic](https://intl.cloud.tencent.com/document/product/598/10603?from_cn_redirect=1).
 3. The policy cannot contain the `principal` element.
         :type Policy: str
+        :param ExternalId: External role ID, which can be obtained by clicking the role name in the [CAM console](https://console.cloud.tencent.com/cam/role).
+It can contain 2-128 letters, digits, and symbols (=,.@:/-). Regex: [\w+=,.@:\/-]*
+        :type ExternalId: str
         """
         self.RoleArn = None
         self.RoleSessionName = None
         self.DurationSeconds = None
         self.Policy = None
+        self.ExternalId = None
 
 
     def _deserialize(self, params):
@@ -49,6 +58,7 @@ Note:
         self.RoleSessionName = params.get("RoleSessionName")
         self.DurationSeconds = params.get("DurationSeconds")
         self.Policy = params.get("Policy")
+        self.ExternalId = params.get("ExternalId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -104,7 +114,7 @@ class AssumeRoleWithSAMLRequest(AbstractModel):
         :type RoleArn: str
         :param RoleSessionName: Session name
         :type RoleSessionName: str
-        :param DurationSeconds: Specifies the validity period of credentials in seconds. Default value: 7200. Maximum value: 7200
+        :param DurationSeconds: The validity period of the temporary credentials in seconds. Default value: 7,200s. Maximum value: 43,200s.
         :type DurationSeconds: int
         """
         self.SAMLAssertion = None
@@ -167,11 +177,11 @@ class Credentials(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Token: token
+        :param Token: Token, which contains up to 4,096 bytes depending on the associated policies.
         :type Token: str
-        :param TmpSecretId: Temporary credentials secret ID
+        :param TmpSecretId: Temporary credentials key ID, which contains up to 1,024 bytes.
         :type TmpSecretId: str
-        :param TmpSecretKey: Temporary credentials secret key
+        :param TmpSecretKey: Temporary credentials key, which contains up to 1,024 bytes.
         :type TmpSecretKey: str
         """
         self.Token = None
@@ -192,6 +202,54 @@ class Credentials(AbstractModel):
         
 
 
+class GetCallerIdentityRequest(AbstractModel):
+    """GetCallerIdentity request structure.
+
+    """
+
+
+class GetCallerIdentityResponse(AbstractModel):
+    """GetCallerIdentity response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Arn: ARN of the current caller.
+        :type Arn: str
+        :param AccountId: Root account UIN of the current caller.
+        :type AccountId: str
+        :param UserId: User ID.
+1. If the caller is a Tencent Cloud account, the UIN of the current account is returned.
+2. If the caller is a role, `roleId:roleSessionName` is returned.
+3. If the caller is a federated user, `uin:federatedUserName` is returned.
+        :type UserId: str
+        :param PrincipalId: Account UIN.
+1. If the caller is a Tencent Cloud account, the UIN of the current account is returned.
+2. If the caller is a role, the UIN of the account that applies for the role is returned.
+        :type PrincipalId: str
+        :param Type: Identity type.
+        :type Type: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Arn = None
+        self.AccountId = None
+        self.UserId = None
+        self.PrincipalId = None
+        self.Type = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Arn = params.get("Arn")
+        self.AccountId = params.get("AccountId")
+        self.UserId = params.get("UserId")
+        self.PrincipalId = params.get("PrincipalId")
+        self.Type = params.get("Type")
+        self.RequestId = params.get("RequestId")
+
+
 class GetFederationTokenRequest(AbstractModel):
     """GetFederationToken request structure.
 
@@ -203,11 +261,11 @@ class GetFederationTokenRequest(AbstractModel):
         :type Name: str
         :param Policy: Policy description
 Note:
-1. The policy needs to be URL-encoded (if you request a TencentCloud API through the GET method, all parameters must be URL-encoded again in accordance with [Signature v3](https://cloud.tencent.com/document/api/598/33159#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2) before the request is sent).
-2. For the policy syntax, please see CAM’s [Syntax Logic](https://cloud.tencent.com/document/product/598/10603).
+1. The policy needs to be URL-encoded (if you request a TencentCloud API through the GET method, all parameters must be URL-encoded again in accordance with [Signature v3](https://intl.cloud.tencent.com/document/api/598/33159?from_cn_redirect=1#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2) before the request is sent).
+2. For the policy syntax, please see CAM's [Syntax Logic](https://intl.cloud.tencent.com/document/product/598/10603?from_cn_redirect=1).
 3. The policy cannot contain the `principal` element.
         :type Policy: str
-        :param DurationSeconds: Specifies the validity period of credentials in seconds. Default value: 1800. Maximum value: 7200
+        :param DurationSeconds: The validity period of temporary credentials in seconds. Default value: 1,800s. Maximum value for a root account: 7,200s. Maximum value for a sub-account: 129,600s.
         :type DurationSeconds: int
         """
         self.Name = None

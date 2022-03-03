@@ -52,6 +52,8 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
         :type VideoBitrate: int
         :param RateControlMode: Bitrate control mode. Valid values: `CBR`, `ABR` (default)
         :type RateControlMode: str
+        :param WatermarkId: Watermark ID
+        :type WatermarkId: str
         """
         self.Name = None
         self.NeedVideo = None
@@ -66,6 +68,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
         self.AudioBitrate = None
         self.VideoBitrate = None
         self.RateControlMode = None
+        self.WatermarkId = None
 
 
     def _deserialize(self, params):
@@ -82,6 +85,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
         self.AudioBitrate = params.get("AudioBitrate")
         self.VideoBitrate = params.get("VideoBitrate")
         self.RateControlMode = params.get("RateControlMode")
+        self.WatermarkId = params.get("WatermarkId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1856,14 +1860,14 @@ class InputSettingInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: Application name, which is used for RTMP_PUSH and can contain 1-32 letters and digits.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param AppName: Application name, which is valid if `Type` is `RTMP_PUSH` and can contain 1-32 letters and digits
+Note: This field may return `null`, indicating that no valid value was found.
         :type AppName: str
-        :param StreamName: Stream name, which is used for RTMP_PUSH and can contain 1-32 letters and digits.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param StreamName: Stream name, which is valid if `Type` is `RTMP_PUSH` and can contain 1-32 letters and digits
+Note: This field may return `null`, indicating that no valid value was found.
         :type StreamName: str
-        :param SourceUrl: Origin-pull URL, which is used for RTMP_PULL/HLS_PULL/MP4_PULL. Length limit: [1,512].
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param SourceUrl: Source URL, which is valid if `Type` is `RTMP_PULL`, `HLS_PULL`, or `MP4_PULL` and can contain 1-512 characters
+Note: This field may return `null`, indicating that no valid value was found.
         :type SourceUrl: str
         :param InputAddress: RTP/UDP input address, which does not need to be entered for the input parameter.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -1871,12 +1875,18 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SourceType: Source type for stream pulling and relaying. To pull content from private-read COS buckets under the current account, set this parameter to `TencentCOS`; otherwise, leave it empty.
 Note: this field may return `null`, indicating that no valid value was found.
         :type SourceType: str
+        :param DelayTime: Delayed time (ms) for playback, which is valid if `Type` is `RTMP_PUSH`
+Value range: 0 (default) or 10000-600000
+The value must be a multiple of 1,000.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type DelayTime: int
         """
         self.AppName = None
         self.StreamName = None
         self.SourceUrl = None
         self.InputAddress = None
         self.SourceType = None
+        self.DelayTime = None
 
 
     def _deserialize(self, params):
@@ -1885,6 +1895,7 @@ Note: this field may return `null`, indicating that no valid value was found.
         self.SourceUrl = params.get("SourceUrl")
         self.InputAddress = params.get("InputAddress")
         self.SourceType = params.get("SourceType")
+        self.DelayTime = params.get("DelayTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3273,6 +3284,9 @@ class VideoTemplateInfo(AbstractModel):
         :type BitrateCompressionRatio: int
         :param RateControlMode: Bitrate control mode. Valid values: `CBR`, `ABR` (default)
         :type RateControlMode: str
+        :param WatermarkId: Watermark ID
+Note: This field may return `null`, indicating that no valid value was found.
+        :type WatermarkId: str
         """
         self.Name = None
         self.Vcodec = None
@@ -3283,6 +3297,7 @@ class VideoTemplateInfo(AbstractModel):
         self.TopSpeed = None
         self.BitrateCompressionRatio = None
         self.RateControlMode = None
+        self.WatermarkId = None
 
 
     def _deserialize(self, params):
@@ -3295,6 +3310,7 @@ class VideoTemplateInfo(AbstractModel):
         self.TopSpeed = params.get("TopSpeed")
         self.BitrateCompressionRatio = params.get("BitrateCompressionRatio")
         self.RateControlMode = params.get("RateControlMode")
+        self.WatermarkId = params.get("WatermarkId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

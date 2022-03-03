@@ -1467,6 +1467,108 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBSlowLogsRequest(AbstractModel):
+    """DescribeDBSlowLogs request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of dcdbt-hw0qj6m1
+        :type InstanceId: str
+        :param Offset: Data entry number starting from which to return results
+        :type Offset: int
+        :param Limit: Number of results to be returned
+        :type Limit: int
+        :param StartTime: Query start time in the format of 2016-07-23 14:55:20
+        :type StartTime: str
+        :param ShardId: Shard ID of the instance in the format of shard-53ima8ln
+        :type ShardId: str
+        :param EndTime: Query end time in the format of 2016-08-22 14:55:20. If this parameter is left empty, the current time will be used as the query end time.
+        :type EndTime: str
+        :param Db: Specific name of database to be queried
+        :type Db: str
+        :param OrderBy: Sorting metric. Valid values: `query_time_sum`, `query_count`. Default value: `query_time_sum`
+        :type OrderBy: str
+        :param OrderByType: Sorting order. Valid values: `desc` (descending), `asc` (ascending). Default value: `desc`
+        :type OrderByType: str
+        :param Slave: Query slow queries from either the source or the replica. Valid values: `0` (source), `1` (replica). Default value: `0`
+        :type Slave: int
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+        self.StartTime = None
+        self.ShardId = None
+        self.EndTime = None
+        self.Db = None
+        self.OrderBy = None
+        self.OrderByType = None
+        self.Slave = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.StartTime = params.get("StartTime")
+        self.ShardId = params.get("ShardId")
+        self.EndTime = params.get("EndTime")
+        self.Db = params.get("Db")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+        self.Slave = params.get("Slave")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBSlowLogsResponse(AbstractModel):
+    """DescribeDBSlowLogs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LockTimeSum: Sum of all statement lock durations
+        :type LockTimeSum: float
+        :param QueryCount: Total number of statement queries
+        :type QueryCount: int
+        :param Total: Total number of slow queries that have been logged
+        :type Total: int
+        :param QueryTimeSum: Sum of all statement query durations
+        :type QueryTimeSum: float
+        :param Data: Slow query log data
+        :type Data: list of SlowLogData
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.LockTimeSum = None
+        self.QueryCount = None
+        self.Total = None
+        self.QueryTimeSum = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LockTimeSum = params.get("LockTimeSum")
+        self.QueryCount = params.get("QueryCount")
+        self.Total = params.get("Total")
+        self.QueryTimeSum = params.get("QueryTimeSum")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = SlowLogData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBSyncModeRequest(AbstractModel):
     """DescribeDBSyncMode request structure.
 
@@ -3259,6 +3361,104 @@ class ShardInfo(AbstractModel):
         self.NodeCount = params.get("NodeCount")
         self.Pid = params.get("Pid")
         self.Cpu = params.get("Cpu")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SlowLogData(AbstractModel):
+    """Information of a slow query that has been logged
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CheckSum: Statement checksum for querying details
+        :type CheckSum: str
+        :param Db: Database name
+        :type Db: str
+        :param FingerPrint: Abstracted SQL statement
+        :type FingerPrint: str
+        :param LockTimeAvg: Average lock duration
+        :type LockTimeAvg: str
+        :param LockTimeMax: Maximum lock duration
+        :type LockTimeMax: str
+        :param LockTimeMin: Minimum lock duration
+        :type LockTimeMin: str
+        :param LockTimeSum: Sum of lock durations
+        :type LockTimeSum: str
+        :param QueryCount: Number of queries
+        :type QueryCount: str
+        :param QueryTimeAvg: Average query duration
+        :type QueryTimeAvg: str
+        :param QueryTimeMax: Maximum query duration
+        :type QueryTimeMax: str
+        :param QueryTimeMin: Minimum query duration
+        :type QueryTimeMin: str
+        :param QueryTimeSum: Sum of query durations
+        :type QueryTimeSum: str
+        :param RowsExaminedSum: Number of scanned rows
+        :type RowsExaminedSum: str
+        :param RowsSentSum: Number of sent rows
+        :type RowsSentSum: str
+        :param TsMax: Last execution time
+        :type TsMax: str
+        :param TsMin: First execution time
+        :type TsMin: str
+        :param User: Account
+        :type User: str
+        :param ExampleSql: Sample SQL
+Note: This field may return `null`, indicating that no valid value can be found.
+        :type ExampleSql: str
+        :param Host: Host address of the account
+Note: This field may return `null`, indicating that no valid value can be found.
+        :type Host: str
+        """
+        self.CheckSum = None
+        self.Db = None
+        self.FingerPrint = None
+        self.LockTimeAvg = None
+        self.LockTimeMax = None
+        self.LockTimeMin = None
+        self.LockTimeSum = None
+        self.QueryCount = None
+        self.QueryTimeAvg = None
+        self.QueryTimeMax = None
+        self.QueryTimeMin = None
+        self.QueryTimeSum = None
+        self.RowsExaminedSum = None
+        self.RowsSentSum = None
+        self.TsMax = None
+        self.TsMin = None
+        self.User = None
+        self.ExampleSql = None
+        self.Host = None
+
+
+    def _deserialize(self, params):
+        self.CheckSum = params.get("CheckSum")
+        self.Db = params.get("Db")
+        self.FingerPrint = params.get("FingerPrint")
+        self.LockTimeAvg = params.get("LockTimeAvg")
+        self.LockTimeMax = params.get("LockTimeMax")
+        self.LockTimeMin = params.get("LockTimeMin")
+        self.LockTimeSum = params.get("LockTimeSum")
+        self.QueryCount = params.get("QueryCount")
+        self.QueryTimeAvg = params.get("QueryTimeAvg")
+        self.QueryTimeMax = params.get("QueryTimeMax")
+        self.QueryTimeMin = params.get("QueryTimeMin")
+        self.QueryTimeSum = params.get("QueryTimeSum")
+        self.RowsExaminedSum = params.get("RowsExaminedSum")
+        self.RowsSentSum = params.get("RowsSentSum")
+        self.TsMax = params.get("TsMax")
+        self.TsMin = params.get("TsMin")
+        self.User = params.get("User")
+        self.ExampleSql = params.get("ExampleSql")
+        self.Host = params.get("Host")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
