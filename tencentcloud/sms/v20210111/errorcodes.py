@@ -68,7 +68,7 @@ FAILEDOPERATION_PROHIBITSUBACCOUNTUSE = 'FailedOperation.ProhibitSubAccountUse'
 # The number of signatures has reached the maximum value.
 FAILEDOPERATION_SIGNNUMBERLIMIT = 'FailedOperation.SignNumberLimit'
 
-# The signature is not approved or in wrong format. (1) Log in to the [SMS console](https://console.cloud.tencent.com/smsv2) and check whether the signature has been approved; (2) Check whether the signature is in compliance with the format specification, that is, it can contain 2–12 letters and digits. If you have any questions, you can contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) for assistance.
+# The signature is not approved or in an incorrect format. (1) Log in to the [SMS console](https://console.cloud.tencent.com/smsv2) and check whether the signature has been approved; (2) Check whether the signature is in compliance with the format specification, that is, it can contain 2–12 letters and digits. If you have any questions, contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) for assistance.
 FAILEDOPERATION_SIGNATUREINCORRECTORUNAPPROVED = 'FailedOperation.SignatureIncorrectOrUnapproved'
 
 # This template has been approved and cannot be modified again.
@@ -182,8 +182,20 @@ INVALIDPARAMETERVALUE_TEMPLATEPARAMETERLENGTHLIMIT = 'InvalidParameterValue.Temp
 # The template content contains sensitive words. For more information, please see [Body Template Review Standards](https://intl.cloud.tencent.com/document/product/382/39023?from_cn_redirect=1).
 INVALIDPARAMETERVALUE_TEMPLATEWITHDIRTYWORDS = 'InvalidParameterValue.TemplateWithDirtyWords'
 
+# The number of SMS messages delivered on the current day for the specified country/region exceeds the configured upper limit. You can adjust the SMS delivery rate limit policy in the console.
+LIMITEXCEEDED_APPCOUNTRYORREGIONDAILYLIMIT = 'LimitExceeded.AppCountryOrRegionDailyLimit'
+
+# The specified country/region for the SMS message is in the blocklist. You can adjust the SMS delivery limit policy in the console.
+LIMITEXCEEDED_APPCOUNTRYORREGIONINBLACKLIST = 'LimitExceeded.AppCountryOrRegionInBlacklist'
+
 # The number of SMS messages delivered on the current day exceeds the set upper limit. You can adjust the SMS delivery rate limit policy in the console.
 LIMITEXCEEDED_APPDAILYLIMIT = 'LimitExceeded.AppDailyLimit'
+
+# The number of Global SMS messages delivered on the current day exceeds the configured upper limit. You can adjust the SMS delivery rate limit policy in the console.
+LIMITEXCEEDED_APPGLOBALDAILYLIMIT = 'LimitExceeded.AppGlobalDailyLimit'
+
+# The number of Chinese Mainland SMS messages delivered on the current day exceeds the configured upper limit. You can adjust the SMS delivery rate limit policy in the console.
+LIMITEXCEEDED_APPMAINLANDCHINADAILYLIMIT = 'LimitExceeded.AppMainlandChinaDailyLimit'
 
 # The number of SMS messages delivered on the current day exceeds the set upper limit (for Global SMS). If you want to adjust the limit, you can contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1) for assistance.
 LIMITEXCEEDED_DAILYLIMIT = 'LimitExceeded.DailyLimit'

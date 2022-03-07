@@ -1233,6 +1233,9 @@ class PullSmsSendStatus(AbstractModel):
         :type ReportStatus: str
         :param Description: Description of SMS receipt by user.
         :type Description: str
+        :param SessionContext: User session content, which is the same as the `SessionContext` in the request and is empty by default. If you need to activate it, contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SessionContext: str
         """
         self.UserReceiveTime = None
         self.CountryCode = None
@@ -1241,6 +1244,7 @@ class PullSmsSendStatus(AbstractModel):
         self.SerialNo = None
         self.ReportStatus = None
         self.Description = None
+        self.SessionContext = None
 
 
     def _deserialize(self, params):
@@ -1251,6 +1255,7 @@ class PullSmsSendStatus(AbstractModel):
         self.SerialNo = params.get("SerialNo")
         self.ReportStatus = params.get("ReportStatus")
         self.Description = params.get("Description")
+        self.SessionContext = params.get("SessionContext")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1393,9 +1398,8 @@ class SendSmsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PhoneNumberSet: Target mobile number in E.164 format (+[country/region code][subscriber number]). Up to 200 numbers, all of which should be either Chinese mainland numbers or international numbers, are supported in a single request.
-Take the number +8613711112222 as an example. “86” is the country code (with a “+” sign in its front) and “13711112222” is the subscriber number.
-Note: 11-digit Chinese mainland numbers prefixed by 0086 or 86 or those without any country/region code are also supported. The default prefix is +86.
+        :param PhoneNumberSet: Target mobile number in the E.164 standard in the format of +[country/region code][mobile number]. Up to 200 mobile numbers are supported in one request (which should be all Chinese mainland mobile numbers or all global mobile numbers).
+For example, +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).
         :type PhoneNumberSet: list of str
         :param SmsSdkAppId: The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 1400006666.
         :type SmsSdkAppId: str
