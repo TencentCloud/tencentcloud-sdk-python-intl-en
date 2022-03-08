@@ -38,6 +38,9 @@ FAILEDOPERATION_INSUFFICIENTBALANCE = 'FailedOperation.InsufficientBalance'
 # Operation failed ({{1}}). Please try again later. If the problem persists, please contact customer service.
 FAILEDOPERATION_OPERATIONFAILEDERROR = 'FailedOperation.OperationFailedError'
 
+# 
+FAILEDOPERATION_QUERYSPECBYSPECCODEERROR = 'FailedOperation.QuerySpecBySpecCodeError'
+
 # Failed to create the order and make a payment. Please try again later. If the problem persists, please contact customer service.
 FAILEDOPERATION_TRADECREATEORDERERROR = 'FailedOperation.TradeCreateOrderError'
 
@@ -56,7 +59,7 @@ INTERNALERROR_GETSUBNETFAILED = 'InternalError.GetSubnetFailed'
 # Failed to get the VPC.
 INTERNALERROR_GETVPCFAILED = 'InternalError.GetVpcFailed'
 
-# 
+# An exception occurred while executing the HTTP request.
 INTERNALERROR_INTERNALHTTPSERVERERROR = 'InternalError.InternalHttpServerError'
 
 # Failed to query instances by security group.
@@ -85,6 +88,9 @@ INVALIDPARAMETERVALUE_CLUSTERNOTFOUND = 'InvalidParameterValue.ClusterNotFound'
 
 # Unsupported instance type.
 INVALIDPARAMETERVALUE_DBTYPENOTFOUND = 'InvalidParameterValue.DBTypeNotFound'
+
+# The cluster type must be serverless.
+INVALIDPARAMETERVALUE_DBMODENOTSERVERLESSERROR = 'InvalidParameterValue.DbModeNotServerlessError'
 
 # No order ID found.
 INVALIDPARAMETERVALUE_DEALNAMENOTFOUND = 'InvalidParameterValue.DealNameNotFound'
@@ -122,6 +128,9 @@ INVALIDPARAMETERVALUE_PARAMBOTHSETERROR = 'InvalidParameterValue.ParamBothSetErr
 # Incorrect parameter.
 INVALIDPARAMETERVALUE_PARAMERROR = 'InvalidParameterValue.ParamError'
 
+# This operation is not allowed for monthly-subscribed instances.
+INVALIDPARAMETERVALUE_PREPAYPAYMODEERROR = 'InvalidParameterValue.PrePayPayModeError'
+
 # The selected region and AZ are unavailable.
 INVALIDPARAMETERVALUE_REGIONZONEUNAVAILABLE = 'InvalidParameterValue.RegionZoneUnavailable'
 
@@ -143,6 +152,9 @@ OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = 'OperationDenied.ClusterOpNotAllowedE
 # For the cluster ({{1}}) in this status, the operation is not allowed.
 OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = 'OperationDenied.ClusterStatusDeniedError'
 
+# For the instance ({{1}}) in this status, the operation is not allowed.
+OPERATIONDENIED_INSTANCESTATUSDENIEDERROR = 'OperationDenied.InstanceStatusDeniedError'
+
 # Insufficient account balance.
 OPERATIONDENIED_INSUFFICIENTBALANCEERROR = 'OperationDenied.InsufficientBalanceError'
 
@@ -155,11 +167,17 @@ OPERATIONDENIED_SERVERLESSINSTANCESTATUSDENIED = 'OperationDenied.ServerlessInst
 # You need to verify your identity to make a purchase.
 OPERATIONDENIED_USERNOTAUTHENTICATEDERROR = 'OperationDenied.UserNotAuthenticatedError'
 
+# 
+OPERATIONDENIED_VERSIONNOTSUPPORTERROR = 'OperationDenied.VersionNotSupportError'
+
 # The cluster ({{1}}) does not exist.
 RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = 'ResourceNotFound.ClusterNotFoundError'
 
 # The instance ({{1}}) does not exist.
 RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = 'ResourceNotFound.InstanceNotFoundError'
+
+# 
+RESOURCENOTFOUND_RESOURCEERROR = 'ResourceNotFound.ResourceError'
 
 # Failed to lock the instance, so the operation cannot be performed temporarily.
 RESOURCEUNAVAILABLE_INSTANCELOCKFAIL = 'ResourceUnavailable.InstanceLockFail'

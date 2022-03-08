@@ -26,6 +26,34 @@ class MariadbClient(AbstractClient):
     _service = 'mariadb'
 
 
+    def ActivateHourDBInstance(self, request):
+        """This API is used to remove the isolation of pay-as-you-go instances.
+
+        :param request: Request instance for ActivateHourDBInstance.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.ActivateHourDBInstanceRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.ActivateHourDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ActivateHourDBInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ActivateHourDBInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AssociateSecurityGroups(self, request):
         """This API is used to associate security groups with Tencent Cloud resources in batches.
 
@@ -589,6 +617,34 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDatabaseObjects(self, request):
+        """This API is used to query the list of database objects in a TencentDB instance, including tables, stored procedures, views, and functions.
+
+        :param request: Request instance for DescribeDatabaseObjects.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeDatabaseObjectsRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeDatabaseObjectsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDatabaseObjects", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDatabaseObjectsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDatabaseTable(self, request):
         """This API is used to query the table information of a TencentDB instance.
 
@@ -912,6 +968,34 @@ class MariadbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InitDBInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def IsolateHourDBInstance(self, request):
+        """This API is used to isolate pay-as-you-go instances.
+
+        :param request: Request instance for IsolateHourDBInstance.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.IsolateHourDBInstanceRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.IsolateHourDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("IsolateHourDBInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.IsolateHourDBInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

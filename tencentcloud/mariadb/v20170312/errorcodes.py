@@ -101,6 +101,9 @@ INTERNALERROR_GETDBCONFIGFAILED = 'InternalError.GetDbConfigFailed'
 # Failed to get the database list.
 INTERNALERROR_GETDBLISTFAILED = 'InternalError.GetDbListFailed'
 
+# Failed to get the database objects.
+INTERNALERROR_GETDBOBJECTFAILED = 'InternalError.GetDbObjectFailed'
+
 # Failed to get the instance details.
 INTERNALERROR_GETINSTANCEDETAILFAILED = 'InternalError.GetInstanceDetailFailed'
 
@@ -239,6 +242,9 @@ INVALIDPARAMETERVALUE_ILLEGALEXCLUSTERID = 'InvalidParameterValue.IllegalExclust
 # An error occurred while initializing database instance parameters.
 INVALIDPARAMETERVALUE_ILLEGALINITPARAM = 'InvalidParameterValue.IllegalInitParam'
 
+# Invalid instance ID.
+INVALIDPARAMETERVALUE_ILLEGALINSTANCEID = 'InvalidParameterValue.IllegalInstanceId'
+
 # The number of days for log retention after modification is either too high or too low.
 INVALIDPARAMETERVALUE_ILLEGALLOGSAVEDAYS = 'InvalidParameterValue.IllegalLogSaveDays'
 
@@ -253,6 +259,9 @@ INVALIDPARAMETERVALUE_ILLEGALZONE = 'InvalidParameterValue.IllegalZone'
 
 # Invalid instance name.
 INVALIDPARAMETERVALUE_INSTANCENAMEILLEGAL = 'InvalidParameterValue.InstanceNameIllegal'
+
+# Parameter verification error.
+INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = 'InvalidParameterValue.InvalidParameterValueError'
 
 # The shard does not exist.
 INVALIDPARAMETERVALUE_SHARDNOTEXIST = 'InvalidParameterValue.ShardNotExist'

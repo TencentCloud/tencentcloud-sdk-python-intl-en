@@ -26,6 +26,34 @@ class CynosdbClient(AbstractClient):
     _service = 'cynosdb'
 
 
+    def ActivateInstance(self, request):
+        """This API is used to remove the isolation of an instance to make it accessible again.
+
+        :param request: Request instance for ActivateInstance.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ActivateInstanceRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ActivateInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ActivateInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ActivateInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AddInstances(self, request):
         """This API is used to add an instance in a cluster.
 
@@ -712,6 +740,62 @@ class CynosdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OfflineInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PauseServerless(self, request):
+        """This API is used to pause a serverless cluster.
+
+        :param request: Request instance for PauseServerless.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.PauseServerlessRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.PauseServerlessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PauseServerless", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PauseServerlessResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ResumeServerless(self, request):
+        """This API is used to resume a serverless cluster.
+
+        :param request: Request instance for ResumeServerless.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ResumeServerlessRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ResumeServerlessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ResumeServerless", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ResumeServerlessResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

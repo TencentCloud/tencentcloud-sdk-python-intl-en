@@ -46,6 +46,55 @@ class Account(AbstractModel):
         
 
 
+class ActivateHourDBInstanceRequest(AbstractModel):
+    """ActivateHourDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: Instance ID list
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ActivateHourDBInstanceResponse(AbstractModel):
+    """ActivateHourDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SuccessInstanceIds: IDs of isolated instances
+        :type SuccessInstanceIds: list of str
+        :param FailedInstanceIds: IDs of instances failed to be isolated
+        :type FailedInstanceIds: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SuccessInstanceIds = None
+        self.FailedInstanceIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SuccessInstanceIds = params.get("SuccessInstanceIds")
+        self.FailedInstanceIds = params.get("FailedInstanceIds")
+        self.RequestId = params.get("RequestId")
+
+
 class AssociateSecurityGroupsRequest(AbstractModel):
     """AssociateSecurityGroups request structure.
 
@@ -974,6 +1023,30 @@ class Database(AbstractModel):
         
 
 
+class DatabaseFunction(AbstractModel):
+    """Database function information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Func: Function name
+        :type Func: str
+        """
+        self.Func = None
+
+
+    def _deserialize(self, params):
+        self.Func = params.get("Func")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DatabasePrivilege(AbstractModel):
     """Database permission
 
@@ -993,6 +1066,78 @@ class DatabasePrivilege(AbstractModel):
     def _deserialize(self, params):
         self.Privileges = params.get("Privileges")
         self.Database = params.get("Database")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DatabaseProcedure(AbstractModel):
+    """Database stored procedure information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Proc: Stored procedure name
+        :type Proc: str
+        """
+        self.Proc = None
+
+
+    def _deserialize(self, params):
+        self.Proc = params.get("Proc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DatabaseTable(AbstractModel):
+    """Database table information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Table: Table name
+        :type Table: str
+        """
+        self.Table = None
+
+
+    def _deserialize(self, params):
+        self.Table = params.get("Table")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DatabaseView(AbstractModel):
+    """Database view information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param View: View name
+        :type View: str
+        """
+        self.View = None
+
+
+    def _deserialize(self, params):
+        self.View = params.get("View")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2085,6 +2230,95 @@ class DescribeDBSlowLogsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDatabaseObjectsRequest(AbstractModel):
+    """DescribeDatabaseObjects request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of dcdbt-ow7t8lmc.
+        :type InstanceId: str
+        :param DbName: Database name, which can be obtained through the `DescribeDatabases` API.
+        :type DbName: str
+        """
+        self.InstanceId = None
+        self.DbName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DbName = params.get("DbName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatabaseObjectsResponse(AbstractModel):
+    """DescribeDatabaseObjects response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Passed through from the input parameters.
+        :type InstanceId: str
+        :param DbName: Database name.
+        :type DbName: str
+        :param Tables: List of tables.
+        :type Tables: list of DatabaseTable
+        :param Views: List of views.
+        :type Views: list of DatabaseView
+        :param Procs: List of stored procedures.
+        :type Procs: list of DatabaseProcedure
+        :param Funcs: List of functions.
+        :type Funcs: list of DatabaseFunction
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.DbName = None
+        self.Tables = None
+        self.Views = None
+        self.Procs = None
+        self.Funcs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DbName = params.get("DbName")
+        if params.get("Tables") is not None:
+            self.Tables = []
+            for item in params.get("Tables"):
+                obj = DatabaseTable()
+                obj._deserialize(item)
+                self.Tables.append(obj)
+        if params.get("Views") is not None:
+            self.Views = []
+            for item in params.get("Views"):
+                obj = DatabaseView()
+                obj._deserialize(item)
+                self.Views.append(obj)
+        if params.get("Procs") is not None:
+            self.Procs = []
+            for item in params.get("Procs"):
+                obj = DatabaseProcedure()
+                obj._deserialize(item)
+                self.Procs.append(obj)
+        if params.get("Funcs") is not None:
+            self.Funcs = []
+            for item in params.get("Funcs"):
+                obj = DatabaseFunction()
+                obj._deserialize(item)
+                self.Funcs.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDatabaseTableRequest(AbstractModel):
     """DescribeDatabaseTable request structure.
 
@@ -2780,6 +3014,55 @@ class InitDBInstancesResponse(AbstractModel):
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
         self.InstanceIds = params.get("InstanceIds")
+        self.RequestId = params.get("RequestId")
+
+
+class IsolateHourDBInstanceRequest(AbstractModel):
+    """IsolateHourDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: Instance ID list
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IsolateHourDBInstanceResponse(AbstractModel):
+    """IsolateHourDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SuccessInstanceIds: IDs of instances removed from isolation
+        :type SuccessInstanceIds: list of str
+        :param FailedInstanceIds: IDs of instances failed to be removed from isolation
+        :type FailedInstanceIds: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SuccessInstanceIds = None
+        self.FailedInstanceIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SuccessInstanceIds = params.get("SuccessInstanceIds")
+        self.FailedInstanceIds = params.get("FailedInstanceIds")
         self.RequestId = params.get("RequestId")
 
 

@@ -58,6 +58,55 @@ class Account(AbstractModel):
         
 
 
+class ActivateInstanceRequest(AbstractModel):
+    """ActivateInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param InstanceIdList: Array of instance IDs
+        :type InstanceIdList: list of str
+        """
+        self.ClusterId = None
+        self.InstanceIdList = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.InstanceIdList = params.get("InstanceIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ActivateInstanceResponse(AbstractModel):
+    """ActivateInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Task flow ID
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class AddInstancesRequest(AbstractModel):
     """AddInstances request structure.
 
@@ -353,11 +402,14 @@ class CreateClustersRequest(AbstractModel):
         :type DbVersion: str
         :param ProjectId: Project ID
         :type ProjectId: int
-        :param Cpu: Number of CPU cores of normal instance
+        :param Cpu: It is required when `DbMode` is set to `NORMAL` or left empty.
+Number of CPU cores of a non-serverless instance
         :type Cpu: int
-        :param Memory: Memory of a non-serverless instance in GB
+        :param Memory: It is required when `DbMode` is set to `NORMAL` or left empty.
+Memory of a non-serverless instance in GB
         :type Memory: int
-        :param Storage: Storage capacity in GB
+        :param Storage: This parameter has been deprecated.
+Storage capacity in GB.
         :type Storage: int
         :param ClusterName: Cluster name
         :type ClusterName: str
@@ -380,7 +432,8 @@ timeRollback: rollback by time point
         :type OriginalClusterId: str
         :param ExpectTime: Specified time for time point rollback or snapshot time for snapshot rollback
         :type ExpectTime: str
-        :param ExpectTimeThresh: Specified allowed time range for time point rollback
+        :param ExpectTimeThresh: This parameter has been deprecated.
+Specified allowed time range for time point rollback
         :type ExpectTimeThresh: int
         :param StorageLimit: The maximum storage of a non-serverless instance in GB
 If `DbType` is `MYSQL` and the storage billing mode is prepaid, the parameter value cannot exceed the maximum storage corresponding to the CPU and memory specifications.
@@ -1863,7 +1916,14 @@ class DescribeInstancesRequest(AbstractModel):
         :type Filters: list of QueryFilter
         :param DbType: Engine type. Valid values: MYSQL, POSTGRESQL
         :type DbType: str
-        :param Status: Instance status
+        :param Status: Instance status. Valid values:
+creating
+running
+isolating
+isolated
+activating: Removing the instance from isolation
+offlining: Eliminating the instance
+offlined: Instance eliminated
         :type Status: str
         :param InstanceIds: Instance ID list
         :type InstanceIds: list of str
@@ -2360,7 +2420,7 @@ class ModifyBackupConfigRequest(AbstractModel):
         :type ClusterId: str
         :param BackupTimeBeg: Full backup start time. Value range: [0-24*3600]. For example, 0:00 AM, 1:00 AM, and 2:00 AM are represented by 0, 3600, and 7200, respectively
         :type BackupTimeBeg: int
-        :param BackupTimeEnd: Full backup start time. Value range: [0-24*3600]. For example, 0:00 AM, 1:00 AM, and 2:00 AM are represented by 0, 3600, and 7200, respectively
+        :param BackupTimeEnd: Full backup end time. Value range: [0-24*3600]. For example, 0:00 AM, 1:00 AM, and 2:00 AM are represented by 0, 3600, and 7200, respectively.
         :type BackupTimeEnd: int
         :param ReserveDuration: Backup retention period in seconds. Backups will be cleared after this period elapses. 7 days is represented by 3600*24*7 = 604800
         :type ReserveDuration: int
@@ -2421,9 +2481,12 @@ class ModifyClusterParamRequest(AbstractModel):
         :type ClusterId: str
         :param ParamList: The list of parameters to be modified
         :type ParamList: list of ParamItem
+        :param IsInMaintainPeriod: Valid values: `yes` (execute during maintenance time), `no` (execute now)
+        :type IsInMaintainPeriod: str
         """
         self.ClusterId = None
         self.ParamList = None
+        self.IsInMaintainPeriod = None
 
 
     def _deserialize(self, params):
@@ -2434,6 +2497,7 @@ class ModifyClusterParamRequest(AbstractModel):
                 obj = ParamItem()
                 obj._deserialize(item)
                 self.ParamList.append(obj)
+        self.IsInMaintainPeriod = params.get("IsInMaintainPeriod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2782,6 +2846,55 @@ class ParamItem(AbstractModel):
         
 
 
+class PauseServerlessRequest(AbstractModel):
+    """PauseServerless request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param ForcePause: Whether to pause forcibly and ignore the current user connections. Valid values: `0` (no), `1` (yes). Default value: `1`
+        :type ForcePause: int
+        """
+        self.ClusterId = None
+        self.ForcePause = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ForcePause = params.get("ForcePause")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PauseServerlessResponse(AbstractModel):
+    """PauseServerless response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Async task ID
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class PolicyRule(AbstractModel):
     """Security group rule
 
@@ -2868,6 +2981,51 @@ class QueryFilter(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ResumeServerlessRequest(AbstractModel):
+    """ResumeServerless request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResumeServerlessResponse(AbstractModel):
+    """ResumeServerless response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Async task ID
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
 
 
 class SecurityGroup(AbstractModel):
