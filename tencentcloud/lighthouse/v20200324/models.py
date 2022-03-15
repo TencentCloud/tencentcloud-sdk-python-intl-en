@@ -529,6 +529,34 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class ContainerEnv(AbstractModel):
+    """Container environment variables
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: Environment variable key
+        :type Key: str
+        :param Value: Environment variable value
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateBlueprintRequest(AbstractModel):
     """CreateBlueprint request structure.
 
@@ -682,6 +710,102 @@ class CreateInstanceSnapshotResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.SnapshotId = params.get("SnapshotId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateInstancesRequest(AbstractModel):
+    """CreateInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BundleId: ID of the Lighthouse package
+        :type BundleId: str
+        :param BlueprintId: ID of the Lighthouse image
+        :type BlueprintId: str
+        :param InstanceChargePrepaid: Monthly subscription information for the instance, including the purchase period, setting of auto-renewal, etc.
+        :type InstanceChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
+        :param InstanceName: The display name of the Lighthouse instance
+        :type InstanceName: str
+        :param InstanceCount: Number of the Lighthouse instances to purchase. For monthly subscribed instances, the value can be 1 to 30. The default value is `1`. Note that this number can not exceed the remaining quota under the current account.
+        :type InstanceCount: int
+        :param Zones: List of availability zones. A random AZ is selected by default.
+        :type Zones: list of str
+        :param DryRun: Whether the request is a dry run only.
+`true`: dry run only. The request will not create instance(s). A dry run can check whether all the required parameters are specified, whether the request format is right, whether the request exceeds service limits, and whether the specified CVMs are available.
+If the dry run fails, the corresponding error code will be returned.
+If the dry run succeeds, the RequestId will be returned.
+`false` (default value): send a normal request and create instance(s) if all the requirements are met.
+        :type DryRun: bool
+        :param ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idem-potency of the request cannot be guaranteed.
+        :type ClientToken: str
+        :param LoginConfiguration: Login password of the instance. It’s only available for Windows instances. If it’s not specified, it means that the user choose to set the login password after the instance creation.
+        :type LoginConfiguration: :class:`tencentcloud.lighthouse.v20200324.models.LoginConfiguration`
+        :param Containers: Configuration of the containers to create
+        :type Containers: list of DockerContainerConfiguration
+        """
+        self.BundleId = None
+        self.BlueprintId = None
+        self.InstanceChargePrepaid = None
+        self.InstanceName = None
+        self.InstanceCount = None
+        self.Zones = None
+        self.DryRun = None
+        self.ClientToken = None
+        self.LoginConfiguration = None
+        self.Containers = None
+
+
+    def _deserialize(self, params):
+        self.BundleId = params.get("BundleId")
+        self.BlueprintId = params.get("BlueprintId")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceCount = params.get("InstanceCount")
+        self.Zones = params.get("Zones")
+        self.DryRun = params.get("DryRun")
+        self.ClientToken = params.get("ClientToken")
+        if params.get("LoginConfiguration") is not None:
+            self.LoginConfiguration = LoginConfiguration()
+            self.LoginConfiguration._deserialize(params.get("LoginConfiguration"))
+        if params.get("Containers") is not None:
+            self.Containers = []
+            for item in params.get("Containers"):
+                obj = DockerContainerConfiguration()
+                obj._deserialize(item)
+                self.Containers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInstancesResponse(AbstractModel):
+    """CreateInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIdSet: List of IDs created by using this API. The returning of IDs does not mean that the instances are created successfully.
+
+You can call `DescribeInstances` API, and find the instance ID in the `InstancesSet` returned to check its status. If the `status` is `running`, the instance is created successfully.
+        :type InstanceIdSet: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceIdSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIdSet = params.get("InstanceIdSet")
         self.RequestId = params.get("RequestId")
 
 
@@ -1998,7 +2122,7 @@ Required: no
 <li>instance-state</li>Filter by **instance status**.
 Type: String
 Required: no
-Each request can contain up to 10 filters, each of which can have 5 values. You cannot specify both `InstanceIds` and `Filters` at the same time.
+Each request can contain up to 10 filters, each of which can have 100 values. You cannot specify both `InstanceIds` and `Filters` at the same time.
         :type Filters: list of Filter
         :param Offset: Offset. Default value: 0. For more information on `Offset`, please see the relevant section in [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
         :type Offset: int
@@ -3086,6 +3210,131 @@ class DiskReturnable(AbstractModel):
         
 
 
+class DockerContainerConfiguration(AbstractModel):
+    """Configuration used to create Docker containers
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ContainerImage: Container image address
+        :type ContainerImage: str
+        :param ContainerName: Container name
+        :type ContainerName: str
+        :param Envs: List of environment variables
+        :type Envs: list of ContainerEnv
+        :param PublishPorts: List of mappings of container ports and host ports
+        :type PublishPorts: list of DockerContainerPublishPort
+        :param Volumes: List of container mount volumes
+        :type Volumes: list of DockerContainerVolume
+        :param Command: The command to run
+        :type Command: str
+        """
+        self.ContainerImage = None
+        self.ContainerName = None
+        self.Envs = None
+        self.PublishPorts = None
+        self.Volumes = None
+        self.Command = None
+
+
+    def _deserialize(self, params):
+        self.ContainerImage = params.get("ContainerImage")
+        self.ContainerName = params.get("ContainerName")
+        if params.get("Envs") is not None:
+            self.Envs = []
+            for item in params.get("Envs"):
+                obj = ContainerEnv()
+                obj._deserialize(item)
+                self.Envs.append(obj)
+        if params.get("PublishPorts") is not None:
+            self.PublishPorts = []
+            for item in params.get("PublishPorts"):
+                obj = DockerContainerPublishPort()
+                obj._deserialize(item)
+                self.PublishPorts.append(obj)
+        if params.get("Volumes") is not None:
+            self.Volumes = []
+            for item in params.get("Volumes"):
+                obj = DockerContainerVolume()
+                obj._deserialize(item)
+                self.Volumes.append(obj)
+        self.Command = params.get("Command")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DockerContainerPublishPort(AbstractModel):
+    """Port mapping of the Docker container
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HostPort: Host port
+        :type HostPort: int
+        :param ContainerPort: Container port
+        :type ContainerPort: int
+        :param Ip: External IP. It defaults to 0.0.0.0.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Ip: str
+        :param Protocol: The protocol defaults to `tcp`. Valid values: `tcp`, `udp` and `sctp`.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Protocol: str
+        """
+        self.HostPort = None
+        self.ContainerPort = None
+        self.Ip = None
+        self.Protocol = None
+
+
+    def _deserialize(self, params):
+        self.HostPort = params.get("HostPort")
+        self.ContainerPort = params.get("ContainerPort")
+        self.Ip = params.get("Ip")
+        self.Protocol = params.get("Protocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DockerContainerVolume(AbstractModel):
+    """Docker container mount volume
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ContainerPath: Container path
+        :type ContainerPath: str
+        :param HostPath: Host path
+        :type HostPath: str
+        """
+        self.ContainerPath = None
+        self.HostPath = None
+
+
+    def _deserialize(self, params):
+        self.ContainerPath = params.get("ContainerPath")
+        self.HostPath = params.get("HostPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     """>Key-Value pair filter for conditional filtering queries, such as filtering name
     > * If there are multiple `Filter` parameters, the relationship among them is the logical `AND`.
@@ -3983,6 +4232,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class LoginConfiguration(AbstractModel):
+    """Login password information
+
+    """
+
+
 class LoginSettings(AbstractModel):
     """Instance login configuration and information.
 
@@ -4072,10 +4327,14 @@ class ModifyBundle(AbstractModel):
         :type ModifyBundleState: str
         :param Bundle: Package information.
         :type Bundle: :class:`tencentcloud.lighthouse.v20200324.models.Bundle`
+        :param NotSupportModifyMessage: The reason of package changing failure. It’s empty if the package change status is `AVAILABLE`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type NotSupportModifyMessage: str
         """
         self.ModifyPrice = None
         self.ModifyBundleState = None
         self.Bundle = None
+        self.NotSupportModifyMessage = None
 
 
     def _deserialize(self, params):
@@ -4086,6 +4345,7 @@ class ModifyBundle(AbstractModel):
         if params.get("Bundle") is not None:
             self.Bundle = Bundle()
             self.Bundle._deserialize(params.get("Bundle"))
+        self.NotSupportModifyMessage = params.get("NotSupportModifyMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

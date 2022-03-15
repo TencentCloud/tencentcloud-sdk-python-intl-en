@@ -571,7 +571,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class AttachedUserPolicyGroupInfo(AbstractModel):
-    """Information on policies associated with the user via the user group.
+    """Information on policies that are associated with the user and inherited from the user group
 
     """
 
@@ -1658,7 +1658,7 @@ class DescribeUserSAMLConfigResponse(AbstractModel):
         r"""
         :param SAMLMetadata: SAML metadata document.
         :type SAMLMetadata: str
-        :param Status: Status. `0`: not set, `11`: enabled, `2`: disabled.
+        :param Status: Status. `0`: not set, `1`: enabled, `2`: disabled.
         :type Status: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2069,7 +2069,7 @@ class GetPolicyVersionRequest(AbstractModel):
         r"""
         :param PolicyId: Policy ID
         :type PolicyId: int
-        :param VersionId: Policy version ID
+        :param VersionId: Policy version, which can be obtained through `ListPolicyVersions`.
         :type VersionId: int
         """
         self.PolicyId = None
@@ -2231,7 +2231,7 @@ class GetSecurityLastUsedRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretIdList: A parameter used to query the key ID list.
+        :param SecretIdList: Key ID list query. Up to 10 key IDs can be queried.
         :type SecretIdList: list of str
         """
         self.SecretIdList = None
@@ -2333,6 +2333,41 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class GetUserAppIdRequest(AbstractModel):
+    """GetUserAppId request structure.
+
+    """
+
+
+class GetUserAppIdResponse(AbstractModel):
+    """GetUserAppId response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Uin: UIN of the current account.
+        :type Uin: str
+        :param OwnerUin: OwnerUin of the current account.
+        :type OwnerUin: str
+        :param AppId: AppId of the current account.
+        :type AppId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Uin = None
+        self.OwnerUin = None
+        self.AppId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Uin = params.get("Uin")
+        self.OwnerUin = params.get("OwnerUin")
+        self.AppId = params.get("AppId")
+        self.RequestId = params.get("RequestId")
+
+
 class GetUserRequest(AbstractModel):
     """GetUser request structure.
 
@@ -2371,8 +2406,9 @@ class GetUserResponse(AbstractModel):
         :param Uid: Sub-user UID
         :type Uid: int
         :param Remark: Sub-user remarks
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Remark: str
-        :param ConsoleLogin: If sub-user can log in to the Console
+        :param ConsoleLogin: Whether the sub-user can log in to the console. `0`: No; `1`: Yes.
         :type ConsoleLogin: int
         :param PhoneNum: Mobile number
         :type PhoneNum: str
@@ -2491,17 +2527,17 @@ class GroupMemberInfo(AbstractModel):
         :type PhoneNum: str
         :param CountryCode: Mobile number country/area code
         :type CountryCode: str
-        :param PhoneFlag: If mobile number has been verified
+        :param PhoneFlag: Whether the mobile phone has been verified. `0`: No; `1`: Yes.
         :type PhoneFlag: int
         :param Email: Email address
         :type Email: str
-        :param EmailFlag: If email has been verified
+        :param EmailFlag: Whether the email has been verified. `0`: No; `1`: Yes.
         :type EmailFlag: int
-        :param UserType: User type
+        :param UserType: User type. `1`: Global collaborator; `2`: Project collaborator; `3`: Message recipient.
         :type UserType: int
         :param CreateTime: Time policy created
         :type CreateTime: str
-        :param IsReceiverOwner: If the user is the main message recipient
+        :param IsReceiverOwner: Whether the user is the primary message recipient. `0`: No; `1`: Yes.
         :type IsReceiverOwner: int
         """
         self.Uid = None
@@ -3888,7 +3924,7 @@ class SetDefaultPolicyVersionRequest(AbstractModel):
         r"""
         :param PolicyId: Policy ID
         :type PolicyId: int
-        :param VersionId: Policy version ID
+        :param VersionId: Policy version, which can be obtained through `ListPolicyVersions`.
         :type VersionId: int
         """
         self.PolicyId = None
@@ -4092,6 +4128,9 @@ class SubAccountInfo(AbstractModel):
         :param CreateTime: Creation time
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type CreateTime: str
+        :param NickName: Nickname.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type NickName: str
         """
         self.Uin = None
         self.Name = None
@@ -4102,6 +4141,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.CountryCode = None
         self.Email = None
         self.CreateTime = None
+        self.NickName = None
 
 
     def _deserialize(self, params):
@@ -4114,6 +4154,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.CountryCode = params.get("CountryCode")
         self.Email = params.get("Email")
         self.CreateTime = params.get("CreateTime")
+        self.NickName = params.get("NickName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4134,7 +4175,7 @@ class SubAccountUser(AbstractModel):
         :type Uin: int
         :param Name: Sub-user name
         :type Name: str
-        :param Uid: Sub-user UID
+        :param Uid: Sub-user UID. UID is the unique identifier of a user who is a message recipient, while UIN is a unique identifier of a user.
         :type Uid: int
         :param Remark: Sub-user remarks
         :type Remark: str
@@ -4345,9 +4386,9 @@ class UpdateRoleConsoleLoginRequest(AbstractModel):
         r"""
         :param ConsoleLogin: Whether login is allowed. 1: yes, 0: no
         :type ConsoleLogin: int
-        :param RoleId: Role ID
+        :param RoleId: Role ID. Use either `RoleId` or `RoleName` as the input parameter.
         :type RoleId: int
-        :param RoleName: Role name
+        :param RoleName: Role name. Use either `RoleId` or `RoleName` as the input parameter.
         :type RoleName: str
         """
         self.ConsoleLogin = None

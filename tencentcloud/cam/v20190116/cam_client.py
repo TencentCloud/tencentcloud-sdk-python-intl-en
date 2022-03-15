@@ -1174,6 +1174,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetUserAppId(self, request):
+        """This API is used to get the user AppId.
+
+        :param request: Request instance for GetUserAppId.
+        :type request: :class:`tencentcloud.cam.v20190116.models.GetUserAppIdRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.GetUserAppIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetUserAppId", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetUserAppIdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ListAccessKeys(self, request):
         """This API is used to list the access keys associated with a specified CAM user.
 
