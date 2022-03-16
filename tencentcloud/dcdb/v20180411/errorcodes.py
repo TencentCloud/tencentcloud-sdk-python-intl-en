@@ -35,6 +35,9 @@ FAILEDOPERATION_COPYRIGHTERROR = 'FailedOperation.CopyRightError'
 # Failed to create the flow.
 FAILEDOPERATION_CREATEFLOWFAILED = 'FailedOperation.CreateFlowFailed'
 
+# Failed to create an order.
+FAILEDOPERATION_CREATEORDERFAILED = 'FailedOperation.CreateOrderFailed'
+
 # Failed to create the account.
 FAILEDOPERATION_CREATEUSERFAILED = 'FailedOperation.CreateUserFailed'
 
@@ -56,8 +59,14 @@ FAILEDOPERATION_RESETPASSWORDFAILED = 'FailedOperation.ResetPasswordFailed'
 # Failed to set a rule.
 FAILEDOPERATION_SETRULELOCATIONFAILED = 'FailedOperation.SetRuleLocationFailed'
 
+# Either tag key/value verification or tag API authentication failed.
+FAILEDOPERATION_TAGDRYRUNERROR = 'FailedOperation.TagDryRunError'
+
 # Failed to update the security group information of an instance.
 FAILEDOPERATION_UPDATEINSTANCEINFOFAILED = 'FailedOperation.UpdateInstanceInfoFailed'
+
+# Unverified user.
+FAILEDOPERATION_USERNOTAUTHED = 'FailedOperation.UserNotAuthed'
 
 # Internal error.
 INTERNALERROR = 'InternalError'
@@ -167,6 +176,9 @@ INVALIDPARAMETER = 'InvalidParameter'
 # The password contains invalid characters.
 INVALIDPARAMETER_CHARACTERERROR = 'InvalidParameter.CharacterError'
 
+# Failed to verify input parameters.
+INVALIDPARAMETER_CHECKPARAMNOTPASS = 'InvalidParameter.CheckParamNotPass'
+
 # The specified task information was not found.
 INVALIDPARAMETER_FLOWNOTFOUND = 'InvalidParameter.FlowNotFound'
 
@@ -191,6 +203,9 @@ INVALIDPARAMETER_SGCHECKFAIL = 'InvalidParameter.SGCheckFail'
 # The specified VPC subnet was not found.
 INVALIDPARAMETER_SUBNETNOTFOUND = 'InvalidParameter.SubnetNotFound'
 
+# The specified VPC was not found.
+INVALIDPARAMETER_VPCNOTFOUND = 'InvalidParameter.VpcNotFound'
+
 # Incorrect AZ information.
 INVALIDPARAMETER_ZONEIDILLEGAL = 'InvalidParameter.ZoneIdIllegal'
 
@@ -214,6 +229,9 @@ INVALIDPARAMETERVALUE_ILLEGALINITPARAM = 'InvalidParameterValue.IllegalInitParam
 
 # Incorrect permission parameter
 INVALIDPARAMETERVALUE_ILLEGALRIGHTPARAM = 'InvalidParameterValue.IllegalRightParam'
+
+# The specified AZ was not found.
+INVALIDPARAMETERVALUE_ILLEGALZONE = 'InvalidParameterValue.IllegalZone'
 
 # The specification information of the database instance was not found.
 INVALIDPARAMETERVALUE_SPECIDILLEGAL = 'InvalidParameterValue.SpecIdIllegal'

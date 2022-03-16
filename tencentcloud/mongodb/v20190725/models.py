@@ -27,7 +27,7 @@ class AssignProjectRequest(AbstractModel):
         r"""
         :param InstanceIds: List of instance IDs in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page
         :type InstanceIds: list of str
-        :param ProjectId: Project ID
+        :param ProjectId: Unique ID of an existing project (instead of a new project).
         :type ProjectId: int
         """
         self.InstanceIds = None
@@ -90,6 +90,11 @@ class BackupDownloadTask(AbstractModel):
         :type TimeSpend: int
         :param Url: Backup download address
         :type Url: str
+        :param BackupMethod: Backup type of the backup file. Valid values: `0` (logical backup), `1` (physical backup)
+        :type BackupMethod: int
+        :param BackupDesc: Backup description you set when starting a backup task
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type BackupDesc: str
         """
         self.CreateTime = None
         self.BackupName = None
@@ -99,6 +104,8 @@ class BackupDownloadTask(AbstractModel):
         self.Percent = None
         self.TimeSpend = None
         self.Url = None
+        self.BackupMethod = None
+        self.BackupDesc = None
 
 
     def _deserialize(self, params):
@@ -110,6 +117,8 @@ class BackupDownloadTask(AbstractModel):
         self.Percent = params.get("Percent")
         self.TimeSpend = params.get("TimeSpend")
         self.Url = params.get("Url")
+        self.BackupMethod = params.get("BackupMethod")
+        self.BackupDesc = params.get("BackupDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -327,11 +336,13 @@ class CreateBackupDownloadTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID in the format of "cmgo-p8vnipr5", which is the same as the instance ID displayed in the TencentDB console
+        :param InstanceId: Instance ID in the format of "cmgo-p8vnipr5", which is the same as the instance ID displayed in the TencentDB console.
         :type InstanceId: str
-        :param BackupName: The name of the backup file to be downloaded, which can be obtained by the `DescribeDBBackups` API
+        :param BackupName: The name of the backup file to be downloaded, which can be obtained by the `DescribeDBBackups` API.
         :type BackupName: str
-        :param BackupSets: The list of shards with backups to be downloaded
+        :param BackupSets: Specify the node name of a replica set instance or the shard name list of a sharded cluster instance. Only backups of the specified node or shards will be downloaded.
+Suppose you have a replica set instance (ID: cmgo-p8vnipr5), you can use the sample code `BackupSets.0=cmgo-p8vnipr5_0` to download the full backup. For a replica set instance, the parameter value must be in the format of "instance ID_0".
+Suppose you have a sharded cluster instance (ID: cmgo-p8vnipr5), you can use the sample code `BackupSets.0=cmgo-p8vnipr5_0&BackupSets.1=cmgo-p8vnipr5_1` to download the backup data of shard 0 and shard 1. To download the full backup, please specify all shard names.
         :type BackupSets: list of ReplicaSetInfo
         """
         self.InstanceId = None
@@ -860,7 +871,7 @@ class DescribeBackupDownloadTaskRequest(AbstractModel):
         :type BackupName: str
         :param StartTime: The start time of the query period. Tasks whose start time and end time fall within the query period will be queried. If it is left empty, the start time can be any time earlier than the end time.
         :type StartTime: str
-        :param EndTime: The end time of the query period. Tasks whose start time and end time fall within the query period will be queried. If it is left empty, the end time can be any time later than the start time.
+        :param EndTime: The end time of the query period. Tasks will be queried if their start and end times fall within the query period. If it is left empty, the end time can be any time later than the start time.
         :type EndTime: str
         :param Limit: The maximum number of results returned per page. Value range: 1-100. Default value: `20`.
         :type Limit: int
@@ -942,7 +953,7 @@ class DescribeClientConnectionsRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page
         :type InstanceId: str
-        :param Limit: The number of records that will be returned. Default value: 10,000.
+        :param Limit: Number of results to be returned for a single request. Value range: 1-1,000. Default value: 1,000
         :type Limit: int
         :param Offset: Offset. Default value: 0.
         :type Offset: int
@@ -1608,7 +1619,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
         r"""
         :param Zone: Instance region name in the format of ap-guangzhou-2.
         :type Zone: str
-        :param NodeNum: Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of secondary nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API.
+        :param NodeNum: The number of nodes in each replica set. The value range is subject to the response parameter of the `DescribeSpecInfo` API.
         :type NodeNum: int
         :param Memory: Instance memory size in GB.
         :type Memory: int
@@ -1616,7 +1627,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
         :type Volume: int
         :param MongoVersion: Version number. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition; MONGO_40_WT: MongoDB 4.0 WiredTiger Edition.
         :type MongoVersion: str
-        :param MachineCode: Server type. Valid values: HIO (high IO), HIO10G (10-gigabit high IO), STDS5 (standard).
+        :param MachineCode: Server type. Valid values: `HIO` (high IO), `HIO10G` (ten-gigabit high IO)
         :type MachineCode: str
         :param GoodsNum: Number of instances. Minimum value: 1. Maximum value: 10.
         :type GoodsNum: int
@@ -1695,16 +1706,24 @@ class InquirePriceModifyDBInstanceSpecRequest(AbstractModel):
         :type Memory: int
         :param Volume: Instance disk size in GB after specification adjustment.
         :type Volume: int
+        :param NodeNum: Node quantity after configuration modification. The value range is subject to the response parameter of the `DescribeSpecInfo` API. If this parameter is left empty, the node quantity remains unchanged.
+        :type NodeNum: int
+        :param ReplicateSetNum: Shard quantity after configuration modification, which can only be increased rather than decreased. The value range is subject to the response parameter of the `DescribeSpecInfo` API. If this parameter is left empty, the shard quantity remains unchanged.
+        :type ReplicateSetNum: int
         """
         self.InstanceId = None
         self.Memory = None
         self.Volume = None
+        self.NodeNum = None
+        self.ReplicateSetNum = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Memory = params.get("Memory")
         self.Volume = params.get("Volume")
+        self.NodeNum = params.get("NodeNum")
+        self.ReplicateSetNum = params.get("ReplicateSetNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2037,7 +2056,7 @@ class InstanceEnumParam(AbstractModel):
         :type DefaultValue: str
         :param EnumValue: Acceptable values
         :type EnumValue: list of str
-        :param NeedRestart: Whether to restart the instance for the parameter to take effect. Valid values: `1` (yes), `0` (no)
+        :param NeedRestart: Whether to restart the instance for the parameter to take effect. Valid values: `1` (yes), `0` (no, which means the parameter setting takes effect immediately)
         :type NeedRestart: str
         :param ParamName: Parameter name
         :type ParamName: str
@@ -2045,7 +2064,7 @@ class InstanceEnumParam(AbstractModel):
         :type Tips: list of str
         :param ValueType: Data type of the parameter
         :type ValueType: str
-        :param Status: Whether the TencentDB for MongoDB console has pulled parameter information successfully. Valid values: `1` (yes), `0` (no, and displays "Loading" in the console)
+        :param Status: Whether `CurrentValue` is the parameter value actually in use. Valid values: `1` (yes), `0` (no)
         :type Status: int
         """
         self.CurrentValue = None
@@ -2091,7 +2110,7 @@ class InstanceIntegerParam(AbstractModel):
         :type Max: str
         :param Min: Minimum value
         :type Min: str
-        :param NeedRestart: Whether to restart the instance for the parameter to take effect. Valid values: `1` (yes), `0` (no)
+        :param NeedRestart: Whether to restart the instance for the parameter to take effect. Valid values: `1` (yes), `0` (no, which means the parameter setting takes effect immediately)
         :type NeedRestart: str
         :param ParamName: Parameter name
         :type ParamName: str
@@ -2099,9 +2118,9 @@ class InstanceIntegerParam(AbstractModel):
         :type Tips: list of str
         :param ValueType: Data type of the parameter
         :type ValueType: str
-        :param Status: Whether the TencentDB for MongoDB console has pulled parameter information successfully. Valid values: `1` (no), `0` (yes). This field is only used in the console.
+        :param Status: Whether `CurrentValue` is the parameter value actually in use. Valid values: `1` (yes), `0` (no)
         :type Status: int
-        :param Unit: This field is not in use
+        :param Unit: Redundant field which can be ignored
         :type Unit: str
         """
         self.CurrentValue = None
@@ -2149,15 +2168,15 @@ class InstanceMultiParam(AbstractModel):
         :type DefaultValue: str
         :param EnumValue: Acceptable values
         :type EnumValue: list of str
-        :param NeedRestart: Whether to restart the instance for the parameter to take effect
+        :param NeedRestart: Whether to restart the instance for the parameter to take effect. Valid values: `1` (yes), `0` (no, which means the parameter setting takes effect immediately)
         :type NeedRestart: str
         :param ParamName: Parameter name
         :type ParamName: str
-        :param Status: Whether the TencentDB for MongoDB console has pulled parameter information successfully
+        :param Status: Whether `CurrentValue` is the parameter value actually in use. Valid values: `1` (yes), `0` (no)
         :type Status: int
         :param Tips: Parameter description
         :type Tips: list of str
-        :param ValueType: Data type of the parameter
+        :param ValueType: Data type of the current value. Default value: `multi`
         :type ValueType: str
         """
         self.CurrentValue = None
@@ -2195,21 +2214,21 @@ class InstanceTextParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CurrentValue: Current value (not in use)
+        :param CurrentValue: Current value
         :type CurrentValue: str
-        :param DefaultValue: Default value (not in use)
+        :param DefaultValue: Default value
         :type DefaultValue: str
-        :param NeedRestart: Whether to restart the instance for the parameter to take effect (not in use)
+        :param NeedRestart: Whether to restart the instance for the parameter to take effect
         :type NeedRestart: str
-        :param ParamName: Parameter name (not in use)
+        :param ParamName: Parameter name
         :type ParamName: str
-        :param TextValue: Acceptable values (not in use)
+        :param TextValue: Value of a text parameter
         :type TextValue: str
-        :param Tips: Parameter description (not in use)
+        :param Tips: Parameter description
         :type Tips: list of str
-        :param ValueType: Data type of the parameter (not in use)
+        :param ValueType: Value type
         :type ValueType: str
-        :param Status: Whether the TencentDB for MongoDB console has pulled parameter information successfully (not in use)
+        :param Status: Whether `CurrentValue` is the parameter value actually in use. Valid values: `1` (yes), `0` (no)
         :type Status: str
         """
         self.CurrentValue = None
@@ -2282,6 +2301,51 @@ class IsolateDBInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDBInstanceSecurityGroupRequest(AbstractModel):
+    """ModifyDBInstanceSecurityGroup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param SecurityGroupIds: Target security group IDs
+        :type SecurityGroupIds: list of str
+        """
+        self.InstanceId = None
+        self.SecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceSecurityGroupResponse(AbstractModel):
+    """ModifyDBInstanceSecurityGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -2408,7 +2472,7 @@ class RenameInstanceRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page
         :type InstanceId: str
-        :param NewName: Instance name
+        :param NewName: Custom name of the instance, which can contain up to 60 letters, digits, or symbols (_-)
         :type NewName: str
         """
         self.InstanceId = None
@@ -2498,7 +2562,7 @@ class ReplicaSetInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReplicaSetId: Shard name
+        :param ReplicaSetId: Replica set ID
         :type ReplicaSetId: str
         """
         self.ReplicaSetId = None
@@ -2526,7 +2590,7 @@ class ResetDBInstancePasswordRequest(AbstractModel):
         :type InstanceId: str
         :param UserName: Instance account name
         :type UserName: str
-        :param Password: New password
+        :param Password: New password, which must contain at least eight characters
         :type Password: str
         """
         self.InstanceId = None

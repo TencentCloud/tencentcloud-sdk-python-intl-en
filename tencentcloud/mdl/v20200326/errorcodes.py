@@ -44,6 +44,9 @@ INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = 'InvalidParameter.ExceededQuantityLimit
 # Invalid `Id`.
 INVALIDPARAMETER_ID = 'InvalidParameter.Id'
 
+# Watermark image configuration error.
+INVALIDPARAMETER_IMAGESETTINGS = 'InvalidParameter.ImageSettings'
+
 # Invalid `InputSettings`.
 INVALIDPARAMETER_INPUTSETTINGS = 'InvalidParameter.InputSettings'
 
@@ -70,6 +73,9 @@ INVALIDPARAMETER_STATE = 'InvalidParameter.State'
 
 # Incorrect status.
 INVALIDPARAMETER_STATEERROR = 'InvalidParameter.StateError'
+
+# Watermark text configuration error.
+INVALIDPARAMETER_TEXTSETTINGS = 'InvalidParameter.TextSettings'
 
 # Invalid `Type`.
 INVALIDPARAMETER_TYPE = 'InvalidParameter.Type'

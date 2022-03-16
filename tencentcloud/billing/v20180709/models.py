@@ -74,6 +74,34 @@ class ActionSummaryOverviewItem(AbstractModel):
         
 
 
+class ApplicableProducts(AbstractModel):
+    """The products that are applicable.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GoodsName: Valid values: `all products` or names of the applicable products (string). Multiple names are separated by commas.
+        :type GoodsName: str
+        :param PayMode: Valid values: `postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all. If `GoodsName` contains multiple product names and `PayMode` is `*`, it indicates that the voucher can be used in all billing modes for each of the products.
+        :type PayMode: str
+        """
+        self.GoodsName = None
+        self.PayMode = None
+
+
+    def _deserialize(self, params):
+        self.GoodsName = params.get("GoodsName")
+        self.PayMode = params.get("PayMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BillDetail(AbstractModel):
     """Bill details
 
@@ -1165,6 +1193,220 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.RequestId = params.get("RequestId")
 
 
+class DescribeVoucherInfoRequest(AbstractModel):
+    """DescribeVoucherInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: The number of records per page. The default is 20, and the maximum is 1,000.
+        :type Limit: int
+        :param Offset: The page number the records start from. The default is 1.
+        :type Offset: int
+        :param Status: The voucher status. Valid values: `unUsed`, `used`, `delivered`, `cancel`, `overdue`.
+        :type Status: str
+        :param VoucherId: The voucher ID.
+        :type VoucherId: str
+        :param CodeId: The voucher order ID.
+        :type CodeId: str
+        :param ProductCode: The product code.
+        :type ProductCode: str
+        :param ActivityId: The campaign ID.
+        :type ActivityId: str
+        :param VoucherName: The voucher name.
+        :type VoucherName: str
+        :param TimeFrom: The start time of the promotional campaign.
+        :type TimeFrom: str
+        :param TimeTo: The end time of the promotional campaign.
+        :type TimeTo: str
+        :param SortField: The field used to sort the records. Valid values: BeginTime, EndTime, CreateTime.
+        :type SortField: str
+        :param SortOrder: Whether to sort the records in ascending or descending order. Valid values: desc, asc.
+        :type SortOrder: str
+        :param PayMode: The payment mode. Valid values: `postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all. If this parameter is empty or `*`, `productCode` and `subProductCode` must also be empty.
+        :type PayMode: str
+        :param PayScene: If `PayMode` is `postPay`, this parameter may be `spotpay` (spot instance) or `settle account` (regular pay-as-you-go). If `PayMode` is `prePay`, this parameter may be `purchase`, `renew`, or `modify` (downgrade/upgrade). If `PayMode` is `riPay`, this parameter may be `oneOffFee` (prepayment of reserved instance) or `hourlyFee` (hourly billing of reserved instance). `*` means to query vouchers that support all billing scenarios.
+        :type PayScene: str
+        :param Operator: The operator. The default is the UIN of the current user.
+        :type Operator: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Status = None
+        self.VoucherId = None
+        self.CodeId = None
+        self.ProductCode = None
+        self.ActivityId = None
+        self.VoucherName = None
+        self.TimeFrom = None
+        self.TimeTo = None
+        self.SortField = None
+        self.SortOrder = None
+        self.PayMode = None
+        self.PayScene = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Status = params.get("Status")
+        self.VoucherId = params.get("VoucherId")
+        self.CodeId = params.get("CodeId")
+        self.ProductCode = params.get("ProductCode")
+        self.ActivityId = params.get("ActivityId")
+        self.VoucherName = params.get("VoucherName")
+        self.TimeFrom = params.get("TimeFrom")
+        self.TimeTo = params.get("TimeTo")
+        self.SortField = params.get("SortField")
+        self.SortOrder = params.get("SortOrder")
+        self.PayMode = params.get("PayMode")
+        self.PayScene = params.get("PayScene")
+        self.Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVoucherInfoResponse(AbstractModel):
+    """DescribeVoucherInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: The total number of vouchers.
+        :type TotalCount: int
+        :param TotalBalance: The total voucher balance. The value of this parameter is the total balance (USD, rounded to 8 decimal places) multiplied by 100,000,000.
+        :type TotalBalance: int
+        :param VoucherInfos: The voucher information.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type VoucherInfos: list of VoucherInfos
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TotalBalance = None
+        self.VoucherInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.TotalBalance = params.get("TotalBalance")
+        if params.get("VoucherInfos") is not None:
+            self.VoucherInfos = []
+            for item in params.get("VoucherInfos"):
+                obj = VoucherInfos()
+                obj._deserialize(item)
+                self.VoucherInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVoucherUsageDetailsRequest(AbstractModel):
+    """DescribeVoucherUsageDetails request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: The number of records per page. The default is 20, and the maximum is 1,000.
+        :type Limit: int
+        :param Offset: The page number the records start from. The default is 1.
+        :type Offset: int
+        :param VoucherId: The voucher ID.
+        :type VoucherId: str
+        :param Operator: The operator. The default is the UIN of the current.
+        :type Operator: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.VoucherId = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.VoucherId = params.get("VoucherId")
+        self.Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVoucherUsageDetailsResponse(AbstractModel):
+    """DescribeVoucherUsageDetails response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: The total number of vouchers.
+        :type TotalCount: int
+        :param TotalUsedAmount: The total amount used. The value of this parameter is the total amount used (USD, rounded to 8 decimal places) multiplied by 100,000,000.
+        :type TotalUsedAmount: int
+        :param UsageRecords: The usage details.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type UsageRecords: list of UsageRecords
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TotalUsedAmount = None
+        self.UsageRecords = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.TotalUsedAmount = params.get("TotalUsedAmount")
+        if params.get("UsageRecords") is not None:
+            self.UsageRecords = []
+            for item in params.get("UsageRecords"):
+                obj = UsageRecords()
+                obj._deserialize(item)
+                self.UsageRecords.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ExcludedProducts(AbstractModel):
+    """The products that are not applicable.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GoodsName: The names of non-applicable products.
+        :type GoodsName: str
+        :param PayMode: `postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all.
+        :type PayMode: str
+        """
+        self.GoodsName = None
+        self.PayMode = None
+
+
+    def _deserialize(self, params):
+        self.GoodsName = params.get("GoodsName")
+        self.PayMode = params.get("PayMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PayModeSummaryOverviewItem(AbstractModel):
     """Detailed summary of purchases by billing mode
 
@@ -1400,6 +1642,146 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.RealTotalCost = params.get("RealTotalCost")
         self.RealTotalCostRatio = params.get("RealTotalCostRatio")
         self.TotalCost = params.get("TotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UsageDetails(AbstractModel):
+    """The product purchased.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductName: The name of the product.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type ProductName: str
+        :param SubProductName: 
+        :type SubProductName: str
+        """
+        self.ProductName = None
+        self.SubProductName = None
+
+
+    def _deserialize(self, params):
+        self.ProductName = params.get("ProductName")
+        self.SubProductName = params.get("SubProductName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UsageRecords(AbstractModel):
+    """The usage records.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UsedAmount: The amount used. The value of this parameter is the amount used (USD, rounded to 8 decimal places) multiplied by 100,000,000.
+        :type UsedAmount: int
+        :param UsedTime: The time when the voucher was used.
+        :type UsedTime: str
+        :param UsageDetails: The details of the product purchased.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type UsageDetails: list of UsageDetails
+        """
+        self.UsedAmount = None
+        self.UsedTime = None
+        self.UsageDetails = None
+
+
+    def _deserialize(self, params):
+        self.UsedAmount = params.get("UsedAmount")
+        self.UsedTime = params.get("UsedTime")
+        if params.get("UsageDetails") is not None:
+            self.UsageDetails = []
+            for item in params.get("UsageDetails"):
+                obj = UsageDetails()
+                obj._deserialize(item)
+                self.UsageDetails.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoucherInfos(AbstractModel):
+    """Voucher information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OwnerUin: The owner of the voucher.
+        :type OwnerUin: str
+        :param Status: The status of the voucher: `unUsed`, `used`, `delivered`, `cancel`, `overdue`
+        :type Status: str
+        :param NominalValue: The value of the voucher. The value of this parameter is the voucher value (USD, rounded to 8 decimal places) multiplied by 100,000,000.
+        :type NominalValue: int
+        :param Balance: The balance left. The value of this parameter is the balance left (USD, rounded to 8 decimal places) multiplied by 100,000,000.
+        :type Balance: int
+        :param VoucherId: The voucher ID.
+        :type VoucherId: str
+        :param PayMode: `postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all.
+        :type PayMode: str
+        :param PayScene: If `PayMode` is `postPay`, this parameter may be `spotpay` (spot instance) or `settle account` (regular pay-as-you-go). If `PayMode` is `prePay`, this parameter may be `purchase`, `renew`, or `modify` (downgrade/upgrade). If `PayMode` is `riPay`, this parameter may be `oneOffFee` (prepayment of reserved instance) or `hourlyFee` (hourly billing of reserved instance). `*` means to query vouchers that support all billing scenarios.
+        :type PayScene: str
+        :param BeginTime: The start time of the validity period.
+        :type BeginTime: str
+        :param EndTime: The end time of the validity period.
+        :type EndTime: str
+        :param ApplicableProducts: The products that are applicable.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type ApplicableProducts: :class:`tencentcloud.billing.v20180709.models.ApplicableProducts`
+        :param ExcludedProducts: The products that are not applicable.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type ExcludedProducts: list of ExcludedProducts
+        """
+        self.OwnerUin = None
+        self.Status = None
+        self.NominalValue = None
+        self.Balance = None
+        self.VoucherId = None
+        self.PayMode = None
+        self.PayScene = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.ApplicableProducts = None
+        self.ExcludedProducts = None
+
+
+    def _deserialize(self, params):
+        self.OwnerUin = params.get("OwnerUin")
+        self.Status = params.get("Status")
+        self.NominalValue = params.get("NominalValue")
+        self.Balance = params.get("Balance")
+        self.VoucherId = params.get("VoucherId")
+        self.PayMode = params.get("PayMode")
+        self.PayScene = params.get("PayScene")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        if params.get("ApplicableProducts") is not None:
+            self.ApplicableProducts = ApplicableProducts()
+            self.ApplicableProducts._deserialize(params.get("ApplicableProducts"))
+        if params.get("ExcludedProducts") is not None:
+            self.ExcludedProducts = []
+            for item in params.get("ExcludedProducts"):
+                obj = ExcludedProducts()
+                obj._deserialize(item)
+                self.ExcludedProducts.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -646,6 +646,14 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
         :type SpeedUp: bool
         :param StartupProbe: Whether to enable probing
         :type StartupProbe: :class:`tencentcloud.tem.v20210701.models.HealthCheckConfig`
+        :param OsFlavour: The version of the operating system
+If `openjdk` is selected, the value can be: 
+- ALPINE
+- CENTOS
+If `konajdk` is selected, the value can be: 
+- ALPINE
+- TENCENTOS
+        :type OsFlavour: str
         """
         self.ApplicationId = None
         self.InitPodNum = None
@@ -685,6 +693,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
         self.ConfEdited = None
         self.SpeedUp = None
         self.StartupProbe = None
+        self.OsFlavour = None
 
 
     def _deserialize(self, params):
@@ -770,6 +779,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
         if params.get("StartupProbe") is not None:
             self.StartupProbe = HealthCheckConfig()
             self.StartupProbe._deserialize(params.get("StartupProbe"))
+        self.OsFlavour = params.get("OsFlavour")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -817,12 +827,15 @@ class DeployStrategyConf(AbstractModel):
         :type BatchInterval: int
         :param MinAvailable: The minimum number of available pods
         :type MinAvailable: int
+        :param Force: Whether to enable force release
+        :type Force: bool
         """
         self.TotalBatchCount = None
         self.BetaBatchNum = None
         self.DeployStrategyType = None
         self.BatchInterval = None
         self.MinAvailable = None
+        self.Force = None
 
 
     def _deserialize(self, params):
@@ -831,6 +844,7 @@ class DeployStrategyConf(AbstractModel):
         self.DeployStrategyType = params.get("DeployStrategyType")
         self.BatchInterval = params.get("BatchInterval")
         self.MinAvailable = params.get("MinAvailable")
+        self.Force = params.get("Force")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

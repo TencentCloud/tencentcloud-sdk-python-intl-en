@@ -18,6 +18,55 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ActiveHourDCDBInstanceRequest(AbstractModel):
+    """ActiveHourDCDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: List of instance IDs in the format of dcdbt-ow728lmc, which can be obtained through the `DescribeDCDBInstances` API.
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ActiveHourDCDBInstanceResponse(AbstractModel):
+    """ActiveHourDCDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SuccessInstanceIds: IDs of instances removed from isolation
+        :type SuccessInstanceIds: list of str
+        :param FailedInstanceIds: IDs of instances failed to be removed from isolation
+        :type FailedInstanceIds: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SuccessInstanceIds = None
+        self.FailedInstanceIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SuccessInstanceIds = params.get("SuccessInstanceIds")
+        self.FailedInstanceIds = params.get("FailedInstanceIds")
+        self.RequestId = params.get("RequestId")
+
+
 class AssociateSecurityGroupsRequest(AbstractModel):
     """AssociateSecurityGroups request structure.
 
@@ -430,6 +479,153 @@ class CreateAccountResponse(AbstractModel):
         self.UserName = params.get("UserName")
         self.Host = params.get("Host")
         self.ReadOnly = params.get("ReadOnly")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateHourDCDBInstanceRequest(AbstractModel):
+    """CreateHourDCDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ShardMemory: Shard memory in GB, which can be obtained through the `DescribeShardSpec` API.
+  
+        :type ShardMemory: int
+        :param ShardStorage: Shard capacity in GB, which can be obtained through the `DescribeShardSpec` API.
+  
+        :type ShardStorage: int
+        :param ShardNodeCount: The number of nodes per shard, which can be obtained through the `DescribeShardSpec` API.
+  
+        :type ShardNodeCount: int
+        :param ShardCount: The number of shards in the instance. Value range: 2-8. Upgrade your instance to have up to 64 shards if you require more.
+        :type ShardCount: int
+        :param Count: The number of instances to be purchased
+        :type Count: int
+        :param ProjectId: Project ID, which can be obtained through the `DescribeProjects` API. If this parameter is not passed in, the instance will be associated with the default project.
+        :type ProjectId: int
+        :param VpcId: VPC ID. If this parameter is left empty or not passed in, the instance will be created on the classic network.
+        :type VpcId: str
+        :param SubnetId: VPC subnet ID, which is required when `VpcId` is specified
+        :type SubnetId: str
+        :param ShardCpu: The number of CPU cores per shard, which can be obtained through the `DescribeShardSpec` API.
+  
+        :type ShardCpu: int
+        :param DbVersionId: Database engine version. Valid values:
+10.0.10: MariaDB 10.0.10;
+10.1.9: MariaDB 10.1.9;
+5.7.17: Percona 5.7.17.
+If this parameter is left empty, `10.1.9` will be used.
+        :type DbVersionId: str
+        :param Zones: AZs to deploy shard nodes. You can specify up to two AZs.
+        :type Zones: list of str
+        :param SecurityGroupId: Security group ID
+        :type SecurityGroupId: str
+        :param InstanceName: Custom name of the instance
+        :type InstanceName: str
+        :param Ipv6Flag: Whether IPv6 is supported
+        :type Ipv6Flag: int
+        :param ResourceTags: Array of tag key-value pairs
+        :type ResourceTags: list of ResourceTag
+        :param DcnRegion: If you create a disaster recovery instance, you need to use this parameter to specify the region of the associated source instance so that the disaster recovery instance can sync data with the source instance over the Data Communication Network (DCN).
+        :type DcnRegion: str
+        :param DcnInstanceId: If you create a disaster recovery instance, you need to use this parameter to specify the ID of the associated source instance so that the disaster recovery instance can sync data with the source instance over the Data Communication Network (DCN).
+        :type DcnInstanceId: str
+        :param InitParams: List of parameters. Valid values: `character_set_server` (character set; required); `lower_case_table_names` (table name case sensitivity; required; 0: case-sensitive; 1: case-insensitive); `innodb_page_size` (InnoDB data page size; default size: 16 KB); `sync_mode` (sync mode; 0: async; 1: strong sync; 2: downgradable strong sync; default value: 2).
+        :type InitParams: list of DBParamValue
+        :param RollbackInstanceId: ID of the instance to be rolled back
+        :type RollbackInstanceId: str
+        :param RollbackTime: Rollback time
+        :type RollbackTime: str
+        :param SecurityGroupIds: Array of security group IDs (this parameter is compatible with the old parameter `SecurityGroupId`)
+        :type SecurityGroupIds: list of str
+        """
+        self.ShardMemory = None
+        self.ShardStorage = None
+        self.ShardNodeCount = None
+        self.ShardCount = None
+        self.Count = None
+        self.ProjectId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.ShardCpu = None
+        self.DbVersionId = None
+        self.Zones = None
+        self.SecurityGroupId = None
+        self.InstanceName = None
+        self.Ipv6Flag = None
+        self.ResourceTags = None
+        self.DcnRegion = None
+        self.DcnInstanceId = None
+        self.InitParams = None
+        self.RollbackInstanceId = None
+        self.RollbackTime = None
+        self.SecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.ShardMemory = params.get("ShardMemory")
+        self.ShardStorage = params.get("ShardStorage")
+        self.ShardNodeCount = params.get("ShardNodeCount")
+        self.ShardCount = params.get("ShardCount")
+        self.Count = params.get("Count")
+        self.ProjectId = params.get("ProjectId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.ShardCpu = params.get("ShardCpu")
+        self.DbVersionId = params.get("DbVersionId")
+        self.Zones = params.get("Zones")
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.InstanceName = params.get("InstanceName")
+        self.Ipv6Flag = params.get("Ipv6Flag")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
+        self.DcnRegion = params.get("DcnRegion")
+        self.DcnInstanceId = params.get("DcnInstanceId")
+        if params.get("InitParams") is not None:
+            self.InitParams = []
+            for item in params.get("InitParams"):
+                obj = DBParamValue()
+                obj._deserialize(item)
+                self.InitParams.append(obj)
+        self.RollbackInstanceId = params.get("RollbackInstanceId")
+        self.RollbackTime = params.get("RollbackTime")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateHourDCDBInstanceResponse(AbstractModel):
+    """CreateHourDCDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: IDs of the instances you have purchased in this order. If no instance IDs are returned, you can query them with the `DescribeOrders` API. You can also use the `DescribeDBInstances` API to check whether an instance has been created successfully.
+        :type InstanceIds: list of str
+        :param FlowId: Task ID, which can be used to query the creation progress
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceIds = None
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
 
 
@@ -2610,6 +2806,55 @@ class InitDCDBInstancesResponse(AbstractModel):
     def _deserialize(self, params):
         self.FlowIds = params.get("FlowIds")
         self.InstanceIds = params.get("InstanceIds")
+        self.RequestId = params.get("RequestId")
+
+
+class IsolateHourDCDBInstanceRequest(AbstractModel):
+    """IsolateHourDCDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: Instance ID list
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IsolateHourDCDBInstanceResponse(AbstractModel):
+    """IsolateHourDCDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SuccessInstanceIds: IDs of isolated instances
+        :type SuccessInstanceIds: list of str
+        :param FailedInstanceIds: IDs of instances failed to be isolated
+        :type FailedInstanceIds: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SuccessInstanceIds = None
+        self.FailedInstanceIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SuccessInstanceIds = params.get("SuccessInstanceIds")
+        self.FailedInstanceIds = params.get("FailedInstanceIds")
         self.RequestId = params.get("RequestId")
 
 

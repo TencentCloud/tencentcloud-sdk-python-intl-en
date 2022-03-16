@@ -220,3 +220,59 @@ class BillingClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVoucherInfo(self, request):
+        """This API is used to query vouchers.
+
+        :param request: Request instance for DescribeVoucherInfo.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeVoucherInfoRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeVoucherInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVoucherInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVoucherInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVoucherUsageDetails(self, request):
+        """This API is used to query voucher usage details.
+
+        :param request: Request instance for DescribeVoucherUsageDetails.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeVoucherUsageDetailsRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeVoucherUsageDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVoucherUsageDetails", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVoucherUsageDetailsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

@@ -138,6 +138,34 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateStreamLiveWatermark(self, request):
+        """This API is used to add a watermark.
+
+        :param request: Request instance for CreateStreamLiveWatermark.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.CreateStreamLiveWatermarkRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.CreateStreamLiveWatermarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateStreamLiveWatermark", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateStreamLiveWatermarkResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteStreamLiveChannel(self, request):
         """This API is used to delete a StreamLive channel.
 
@@ -236,6 +264,34 @@ class MdlClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteStreamLivePlanResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteStreamLiveWatermark(self, request):
+        """This API is used to delete a watermark.
+
+        :param request: Request instance for DeleteStreamLiveWatermark.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.DeleteStreamLiveWatermarkRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.DeleteStreamLiveWatermarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteStreamLiveWatermark", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteStreamLiveWatermarkResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -586,6 +642,62 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeStreamLiveWatermark(self, request):
+        """This API is used to query a watermark.
+
+        :param request: Request instance for DescribeStreamLiveWatermark.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveWatermarkRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveWatermarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeStreamLiveWatermark", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStreamLiveWatermarkResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeStreamLiveWatermarks(self, request):
+        """This API is used to query multiple watermarks at a time.
+
+        :param request: Request instance for DescribeStreamLiveWatermarks.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveWatermarksRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveWatermarksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeStreamLiveWatermarks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStreamLiveWatermarksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyStreamLiveChannel(self, request):
         """This API is used to modify a StreamLive channel.
 
@@ -656,6 +768,34 @@ class MdlClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyStreamLiveInputSecurityGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyStreamLiveWatermark(self, request):
+        """This API is used to modify a watermark.
+
+        :param request: Request instance for ModifyStreamLiveWatermark.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.ModifyStreamLiveWatermarkRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.ModifyStreamLiveWatermarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyStreamLiveWatermark", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyStreamLiveWatermarkResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

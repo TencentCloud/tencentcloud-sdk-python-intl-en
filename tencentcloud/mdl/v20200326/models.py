@@ -403,6 +403,58 @@ This time is available only after the alarm ends.
         
 
 
+class CreateImageSettings(AbstractModel):
+    """Watermark image settings
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageType: Image file format. Valid values: png, jpg.
+        :type ImageType: str
+        :param ImageContent: Base64 encoded image content
+        :type ImageContent: str
+        :param Location: Origin. Valid values: TOP_LEFT, BOTTOM_LEFT, TOP_RIGHT, BOTTOM_RIGHT.
+        :type Location: str
+        :param XPos: The watermark’s horizontal distance from the origin as a percentage of the video width. Value range: 0-100. Default: 10.
+        :type XPos: int
+        :param YPos: The watermark’s vertical distance from the origin as a percentage of the video height. Value range: 0-100. Default: 10.
+        :type YPos: int
+        :param Width: The watermark image’s width as a percentage of the video width. Value range: 0-100. Default: 10.
+`0` means to scale the width proportionally to the height.
+You cannot set both `Width` and `Height` to `0`.
+        :type Width: int
+        :param Height: The watermark image’s height as a percentage of the video height. Value range: 0-100. Default: 10.
+`0` means to scale the height proportionally to the width.
+You cannot set both `Width` and `Height` to `0`.
+        :type Height: int
+        """
+        self.ImageType = None
+        self.ImageContent = None
+        self.Location = None
+        self.XPos = None
+        self.YPos = None
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        self.ImageType = params.get("ImageType")
+        self.ImageContent = params.get("ImageContent")
+        self.Location = params.get("Location")
+        self.XPos = params.get("XPos")
+        self.YPos = params.get("YPos")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateStreamLiveChannelRequest(AbstractModel):
     """CreateStreamLiveChannel request structure.
 
@@ -659,6 +711,111 @@ class CreateStreamLivePlanResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateStreamLiveWatermarkRequest(AbstractModel):
+    """CreateStreamLiveWatermark request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Watermark name
+        :type Name: str
+        :param Type: Watermark type. Valid values: STATIC_IMAGE, TEXT.
+        :type Type: str
+        :param ImageSettings: Watermark image settings. This parameter is valid if `Type` is `STATIC_IMAGE`.
+        :type ImageSettings: :class:`tencentcloud.mdl.v20200326.models.CreateImageSettings`
+        :param TextSettings: Watermark text settings. This parameter is valid if `Type` is `TEXT`.
+        :type TextSettings: :class:`tencentcloud.mdl.v20200326.models.CreateTextSettings`
+        """
+        self.Name = None
+        self.Type = None
+        self.ImageSettings = None
+        self.TextSettings = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        if params.get("ImageSettings") is not None:
+            self.ImageSettings = CreateImageSettings()
+            self.ImageSettings._deserialize(params.get("ImageSettings"))
+        if params.get("TextSettings") is not None:
+            self.TextSettings = CreateTextSettings()
+            self.TextSettings._deserialize(params.get("TextSettings"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateStreamLiveWatermarkResponse(AbstractModel):
+    """CreateStreamLiveWatermark response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: Watermark ID
+        :type Id: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Id = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateTextSettings(AbstractModel):
+    """Watermark text settings
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Text: Text
+        :type Text: str
+        :param Location: Origin. Valid values: TOP_LEFT, BOTTOM_LEFT, TOP_RIGHT, BOTTOM_RIGHT.
+        :type Location: str
+        :param XPos: The watermark’s horizontal distance from the origin as a percentage of the video width. Value range: 0-100. Default: 10.
+        :type XPos: int
+        :param YPos: The watermark’s vertical distance from the origin as a percentage of the video height. Value range: 0-100. Default: 10.
+        :type YPos: int
+        :param FontSize: Font size. Value range: 25-50.
+        :type FontSize: int
+        :param FontColor: Font color, which is an RGB color value. Default value: 0x000000.
+        :type FontColor: str
+        """
+        self.Text = None
+        self.Location = None
+        self.XPos = None
+        self.YPos = None
+        self.FontSize = None
+        self.FontColor = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        self.Location = params.get("Location")
+        self.XPos = params.get("XPos")
+        self.YPos = params.get("YPos")
+        self.FontSize = params.get("FontSize")
+        self.FontColor = params.get("FontColor")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DashRemuxSettingsInfo(AbstractModel):
     """DASH configuration information.
 
@@ -857,6 +1014,87 @@ class DeleteStreamLivePlanResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class DeleteStreamLiveWatermarkRequest(AbstractModel):
+    """DeleteStreamLiveWatermark request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: Watermark ID
+        :type Id: str
+        """
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteStreamLiveWatermarkResponse(AbstractModel):
+    """DeleteStreamLiveWatermark response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeImageSettings(AbstractModel):
+    """Watermark image settings
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Location: Origin
+        :type Location: str
+        :param XPos: The watermark image’s horizontal distance from the origin as a percentage of the video width
+        :type XPos: int
+        :param YPos: The watermark image’s vertical distance from the origin as a percentage of the video height
+        :type YPos: int
+        :param Width: The watermark image’s width as a percentage of the video width
+        :type Width: int
+        :param Height: The watermark image’s height as a percentage of the video height
+        :type Height: int
+        """
+        self.Location = None
+        self.XPos = None
+        self.YPos = None
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        self.Location = params.get("Location")
+        self.XPos = params.get("XPos")
+        self.YPos = params.get("YPos")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeStreamLiveChannelAlertsRequest(AbstractModel):
@@ -1408,6 +1646,185 @@ class DescribeStreamLiveRegionsResponse(AbstractModel):
             self.Info = StreamLiveRegionInfo()
             self.Info._deserialize(params.get("Info"))
         self.RequestId = params.get("RequestId")
+
+
+class DescribeStreamLiveWatermarkRequest(AbstractModel):
+    """DescribeStreamLiveWatermark request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: Watermark ID
+        :type Id: str
+        """
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamLiveWatermarkResponse(AbstractModel):
+    """DescribeStreamLiveWatermark response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Info: Watermark information
+        :type Info: :class:`tencentcloud.mdl.v20200326.models.DescribeWatermarkInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Info = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self.Info = DescribeWatermarkInfo()
+            self.Info._deserialize(params.get("Info"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStreamLiveWatermarksRequest(AbstractModel):
+    """DescribeStreamLiveWatermarks request structure.
+
+    """
+
+
+class DescribeStreamLiveWatermarksResponse(AbstractModel):
+    """DescribeStreamLiveWatermarks response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Infos: List of watermark information
+        :type Infos: list of DescribeWatermarkInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Infos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self.Infos = []
+            for item in params.get("Infos"):
+                obj = DescribeWatermarkInfo()
+                obj._deserialize(item)
+                self.Infos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTextSettings(AbstractModel):
+    """Watermark text settings
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Text: Text
+        :type Text: str
+        :param Location: Origin
+        :type Location: str
+        :param XPos: The watermark image’s horizontal distance from the origin as a percentage of the video width
+        :type XPos: int
+        :param YPos: The watermark image’s vertical distance from the origin as a percentage of the video height
+        :type YPos: int
+        :param FontSize: Font size
+        :type FontSize: int
+        :param FontColor: Font color
+        :type FontColor: str
+        """
+        self.Text = None
+        self.Location = None
+        self.XPos = None
+        self.YPos = None
+        self.FontSize = None
+        self.FontColor = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        self.Location = params.get("Location")
+        self.XPos = params.get("XPos")
+        self.YPos = params.get("YPos")
+        self.FontSize = params.get("FontSize")
+        self.FontColor = params.get("FontColor")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWatermarkInfo(AbstractModel):
+    """Watermark information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: Watermark ID
+        :type Id: str
+        :param Name: Watermark name
+        :type Name: str
+        :param Type: Watermark type. Valid values: STATIC_IMAGE, TEXT.
+        :type Type: str
+        :param ImageSettings: Watermark image settings. This parameter is valid if `Type` is `STATIC_IMAGE`.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type ImageSettings: :class:`tencentcloud.mdl.v20200326.models.DescribeImageSettings`
+        :param TextSettings: Watermark text settings. This parameter is valid if `Type` is `TEXT`.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type TextSettings: :class:`tencentcloud.mdl.v20200326.models.DescribeTextSettings`
+        :param UpdateTime: Last modified time (UTC+0) of the watermark, in the format of `2020-01-01T12:00:00Z`
+Note: This field may return `null`, indicating that no valid value was found.
+        :type UpdateTime: str
+        :param AttachedChannels: List of channel IDs the watermark is bound to
+Note: This field may return `null`, indicating that no valid value was found.
+        :type AttachedChannels: list of str
+        """
+        self.Id = None
+        self.Name = None
+        self.Type = None
+        self.ImageSettings = None
+        self.TextSettings = None
+        self.UpdateTime = None
+        self.AttachedChannels = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        if params.get("ImageSettings") is not None:
+            self.ImageSettings = DescribeImageSettings()
+            self.ImageSettings._deserialize(params.get("ImageSettings"))
+        if params.get("TextSettings") is not None:
+            self.TextSettings = DescribeTextSettings()
+            self.TextSettings._deserialize(params.get("TextSettings"))
+        self.UpdateTime = params.get("UpdateTime")
+        self.AttachedChannels = params.get("AttachedChannels")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DestinationInfo(AbstractModel):
@@ -2196,6 +2613,63 @@ class ModifyStreamLiveInputSecurityGroupRequest(AbstractModel):
 
 class ModifyStreamLiveInputSecurityGroupResponse(AbstractModel):
     """ModifyStreamLiveInputSecurityGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyStreamLiveWatermarkRequest(AbstractModel):
+    """ModifyStreamLiveWatermark request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: Watermark ID
+        :type Id: str
+        :param Name: Watermark name
+        :type Name: str
+        :param ImageSettings: Watermark image settings. This parameter is valid if `Type` is `STATIC_IMAGE`.
+        :type ImageSettings: :class:`tencentcloud.mdl.v20200326.models.CreateImageSettings`
+        :param TextSettings: Watermark text settings. This parameter is valid if `Type` is `TEXT`.
+        :type TextSettings: :class:`tencentcloud.mdl.v20200326.models.CreateTextSettings`
+        """
+        self.Id = None
+        self.Name = None
+        self.ImageSettings = None
+        self.TextSettings = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        if params.get("ImageSettings") is not None:
+            self.ImageSettings = CreateImageSettings()
+            self.ImageSettings._deserialize(params.get("ImageSettings"))
+        if params.get("TextSettings") is not None:
+            self.TextSettings = CreateTextSettings()
+            self.TextSettings._deserialize(params.get("TextSettings"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyStreamLiveWatermarkResponse(AbstractModel):
+    """ModifyStreamLiveWatermark response structure.
 
     """
 
