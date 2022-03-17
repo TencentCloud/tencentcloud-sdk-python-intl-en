@@ -1389,16 +1389,21 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param SnapshotId: Data disk snapshot ID, such as `snap-l8psqwnt`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SnapshotId: str
+        :param DeleteWithInstance: Specifies whether the data disk is terminated along with the termination of the associated CVM instance.  Values: <br><li>`TRUE` (only available for pay-as-you-go cloud disks that are billed by hour) and `FALSE`.
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type DeleteWithInstance: bool
         """
         self.DiskType = None
         self.DiskSize = None
         self.SnapshotId = None
+        self.DeleteWithInstance = None
 
 
     def _deserialize(self, params):
         self.DiskType = params.get("DiskType")
         self.DiskSize = params.get("DiskSize")
         self.SnapshotId = params.get("SnapshotId")
+        self.DeleteWithInstance = params.get("DeleteWithInstance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1963,7 +1968,7 @@ class DescribeAutoScalingInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceIds: ID of the CVM instance to be queried. This parameter does not support specifying both InstanceIds and Filters at the same time.
+        :param InstanceIds: IDs of the CVM instances to query. Up to 100 IDs can be queried at one time. `InstanceIds` and `Filters` can not be both specified.
         :type InstanceIds: list of str
         :param Filters: Filter.
 <li> instance-id - String - Required: No - (Filter) Filter by instance ID.</li>
@@ -1972,7 +1977,7 @@ The maximum number of `Filters` per request is 10. The upper limit for `Filter.V
         :type Filters: list of Filter
         :param Offset: Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Offset: int
-        :param Limit: Number of returned results. The default value is 20. The maximum is 2000. For more information on `Limit`, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :param Limit: The number of returned results. Default value: `20`. Maximum value: `100`. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Limit: int
         """
         self.InstanceIds = None
@@ -4471,6 +4476,8 @@ class ScheduledAction(AbstractModel):
         :type MinSize: int
         :param CreatedTime: Creation time of the scheduled task. The value is in `UTC time` in the format of `YYYY-MM-DDThh:mm:ssZ` according to the `ISO8601` standard.
         :type CreatedTime: str
+        :param ScheduledType: Specifies how the scheduled action is executed. <br><li>`CRONTAB`: execute repeatedly <br><li>`ONCE`: execute only once
+        :type ScheduledType: str
         """
         self.ScheduledActionId = None
         self.ScheduledActionName = None
@@ -4482,6 +4489,7 @@ class ScheduledAction(AbstractModel):
         self.DesiredCapacity = None
         self.MinSize = None
         self.CreatedTime = None
+        self.ScheduledType = None
 
 
     def _deserialize(self, params):
@@ -4495,6 +4503,7 @@ class ScheduledAction(AbstractModel):
         self.DesiredCapacity = params.get("DesiredCapacity")
         self.MinSize = params.get("MinSize")
         self.CreatedTime = params.get("CreatedTime")
+        self.ScheduledType = params.get("ScheduledType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

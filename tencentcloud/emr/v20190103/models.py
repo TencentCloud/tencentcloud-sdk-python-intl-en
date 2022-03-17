@@ -145,6 +145,46 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class ClusterExternalServiceInfo(AbstractModel):
+    """Relationship between shared components and the current cluster
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DependType: Dependency. `0`: Other clusters depend on the current cluster. `1`: The current cluster depends on other clusters.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type DependType: int
+        :param Service: Shared component
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Service: str
+        :param ClusterId: Sharing cluster
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ClusterId: str
+        :param ClusterStatus: Sharing cluster status
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ClusterStatus: int
+        """
+        self.DependType = None
+        self.Service = None
+        self.ClusterId = None
+        self.ClusterStatus = None
+
+
+    def _deserialize(self, params):
+        self.DependType = params.get("DependType")
+        self.Service = params.get("Service")
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterStatus = params.get("ClusterStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClusterInstancesInfo(AbstractModel):
     """Cluster instance information
 
@@ -287,6 +327,9 @@ Note: This field may return `null`, indicating that no valid value was found.
         :param SubnetName: Subnet name
 Note: This field may return `null`, indicating that no valid value was found.
         :type SubnetName: str
+        :param ClusterExternalServiceInfo: Cluster dependency
+Note: This field may return `null`, indicating that no valid value was found.
+        :type ClusterExternalServiceInfo: list of ClusterExternalServiceInfo
         """
         self.Id = None
         self.ClusterId = None
@@ -324,6 +367,7 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.DisplayName = None
         self.VpcName = None
         self.SubnetName = None
+        self.ClusterExternalServiceInfo = None
 
 
     def _deserialize(self, params):
@@ -370,6 +414,12 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.DisplayName = params.get("DisplayName")
         self.VpcName = params.get("VpcName")
         self.SubnetName = params.get("SubnetName")
+        if params.get("ClusterExternalServiceInfo") is not None:
+            self.ClusterExternalServiceInfo = []
+            for item in params.get("ClusterExternalServiceInfo"):
+                obj = ClusterExternalServiceInfo()
+                obj._deserialize(item)
+                self.ClusterExternalServiceInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -486,6 +536,8 @@ Hadoop-Zookeeper
 Hadoop-Presto
 Hadoop-Hbase
         :type SceneName: str
+        :param ExternalService: Shared component information
+        :type ExternalService: list of ExternalService
         """
         self.ProductId = None
         self.VPCSettings = None
@@ -515,6 +567,7 @@ Hadoop-Hbase
         self.MetaDBInfo = None
         self.ApplicationRole = None
         self.SceneName = None
+        self.ExternalService = None
 
 
     def _deserialize(self, params):
@@ -568,6 +621,12 @@ Hadoop-Hbase
             self.MetaDBInfo._deserialize(params.get("MetaDBInfo"))
         self.ApplicationRole = params.get("ApplicationRole")
         self.SceneName = params.get("SceneName")
+        if params.get("ExternalService") is not None:
+            self.ExternalService = []
+            for item in params.get("ExternalService"):
+                obj = ExternalService()
+                obj._deserialize(item)
+                self.ExternalService.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -946,6 +1005,9 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         :param SecurityGroups: Security groups
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :type SecurityGroups: list of str
+        :param PublicKeyId: SSH key ID
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type PublicKeyId: str
         """
         self.SoftInfo = None
         self.MasterNodeSize = None
@@ -965,6 +1027,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         self.CbsEncrypt = None
         self.ApplicationRole = None
         self.SecurityGroups = None
+        self.PublicKeyId = None
 
 
     def _deserialize(self, params):
@@ -994,6 +1057,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         self.CbsEncrypt = params.get("CbsEncrypt")
         self.ApplicationRole = params.get("ApplicationRole")
         self.SecurityGroups = params.get("SecurityGroups")
+        self.PublicKeyId = params.get("PublicKeyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

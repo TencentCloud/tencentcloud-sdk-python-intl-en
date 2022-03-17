@@ -20,6 +20,9 @@ FAILEDOPERATION = 'FailedOperation'
 # Duplicate order. Please check the EMR console.
 FAILEDOPERATION_DUPLICATEORDERNOTALLOWED = 'FailedOperation.DuplicateOrderNotAllowed'
 
+# Operation failed. The pods are not supported.
+FAILEDOPERATION_NOTSUPPORTPOD = 'FailedOperation.NotSupportPod'
+
 # Internal error.
 INTERNALERROR = 'InternalError'
 
@@ -110,6 +113,9 @@ INVALIDPARAMETER_INVALIDCLIENTTOKEN = 'InvalidParameter.InvalidClientToken'
 # Invalid parameter: ClusterId.
 INVALIDPARAMETER_INVALIDCLUSTERID = 'InvalidParameter.InvalidClusterId'
 
+# Invalid parameter.
+INVALIDPARAMETER_INVALIDCOMMONDISKTYPE = 'InvalidParameter.InvalidCommonDiskType'
+
 # Invalid component.
 INVALIDPARAMETER_INVALIDCOMPONENT = 'InvalidParameter.InvalidComponent'
 
@@ -142,6 +148,9 @@ INVALIDPARAMETER_INVALIDINSTANCETYPE = 'InvalidParameter.InvalidInstanceType'
 
 # Invalid login settings.
 INVALIDPARAMETER_INVALIDLOGINSETTING = 'InvalidParameter.InvalidLoginSetting'
+
+# Invalid parameter.
+INVALIDPARAMETER_INVALIDMASTERDISKTYPE = 'InvalidParameter.InvalidMasterDiskType'
 
 # Invalid metadata table type.
 INVALIDPARAMETER_INVALIDMETATYPE = 'InvalidParameter.InvalidMetaType'
@@ -294,7 +303,7 @@ RESOURCEUNAVAILABLE_RESOURCESPECNOTDEFAULTSPEC = 'ResourceUnavailable.ResourceSp
 RESOURCEUNAVAILABLE_RESOURCESPEC_NOTDEFAULTSPEC = 'ResourceUnavailable.ResourceSpec_NotDefaultSpec'
 
 # The resources have been sold out.
-RESOURCESSOLDOUT_ = 'ResourcesSoldOut.'
+RESOURCESSOLDOUT = 'ResourcesSoldOut'
 
 # The CBS resources have been sold out.
 RESOURCESSOLDOUT_CBSSOLDOUT = 'ResourcesSoldOut.CbsSoldOut'

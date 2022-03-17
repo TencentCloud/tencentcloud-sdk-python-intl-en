@@ -138,6 +138,118 @@ class AntiddosClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCCPrecisionPolicy(self, request):
+        """This API is used to create a CC precise protection policy.
+
+        :param request: Request instance for CreateCCPrecisionPolicy.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateCCPrecisionPolicyRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.CreateCCPrecisionPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateCCPrecisionPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCCPrecisionPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateCCReqLimitPolicy(self, request):
+        """This API is used to create a CC frequency limit policy.
+
+        :param request: Request instance for CreateCCReqLimitPolicy.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateCCReqLimitPolicyRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.CreateCCReqLimitPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateCCReqLimitPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCCReqLimitPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateCcBlackWhiteIpList(self, request):
+        """This API is used to create a layer 4 access control list to prevent CC attacks.
+
+        :param request: Request instance for CreateCcBlackWhiteIpList.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateCcBlackWhiteIpListRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.CreateCcBlackWhiteIpListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateCcBlackWhiteIpList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCcBlackWhiteIpListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateCcGeoIPBlockConfig(self, request):
+        """This API is used to create a regional blocking configuration.
+
+        :param request: Request instance for CreateCcGeoIPBlockConfig.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateCcGeoIPBlockConfigRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.CreateCcGeoIPBlockConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateCcGeoIPBlockConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCcGeoIPBlockConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDDoSAI(self, request):
         """This API is used to set Anti-DDoS AI protection switches.
 
@@ -474,6 +586,146 @@ class AntiddosClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteCCLevelPolicy(self, request):
+        """This API is used to delete a level-defining policy of CC attacks.
+
+        :param request: Request instance for DeleteCCLevelPolicy.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DeleteCCLevelPolicyRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DeleteCCLevelPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteCCLevelPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteCCLevelPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteCCPrecisionPolicy(self, request):
+        """This API is used to delete a CC precise protection policy.
+
+        :param request: Request instance for DeleteCCPrecisionPolicy.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DeleteCCPrecisionPolicyRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DeleteCCPrecisionPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteCCPrecisionPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteCCPrecisionPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteCCThresholdPolicy(self, request):
+        """This API is used to delete a CC cleansing threshold policy.
+
+        :param request: Request instance for DeleteCCThresholdPolicy.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DeleteCCThresholdPolicyRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DeleteCCThresholdPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteCCThresholdPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteCCThresholdPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteCcBlackWhiteIpList(self, request):
+        """This API is used to delete a layer-4 access control list.
+
+        :param request: Request instance for DeleteCcBlackWhiteIpList.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DeleteCcBlackWhiteIpListRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DeleteCcBlackWhiteIpListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteCcBlackWhiteIpList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteCcBlackWhiteIpListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteCcGeoIPBlockConfig(self, request):
+        """This API is used to delete a regional blocking configuration.
+
+        :param request: Request instance for DeleteCcGeoIPBlockConfig.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DeleteCcGeoIPBlockConfigRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DeleteCcGeoIPBlockConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteCcGeoIPBlockConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteCcGeoIPBlockConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteDDoSGeoIPBlockConfig(self, request):
         """This API is used to delete Anti-DDoS region blocking configurations.
 
@@ -698,6 +950,118 @@ class AntiddosClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCCLevelList(self, request):
+        """This API is used to query the list of CC protection levels.
+
+        :param request: Request instance for DescribeCCLevelList.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeCCLevelListRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeCCLevelListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCCLevelList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCCLevelListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCCLevelPolicy(self, request):
+        """This API is used the query a level-defining policy of CC attacks
+
+        :param request: Request instance for DescribeCCLevelPolicy.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeCCLevelPolicyRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeCCLevelPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCCLevelPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCCLevelPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCCPrecisionPlyList(self, request):
+        """This API is used to obtain a CC precise protection policy.
+
+        :param request: Request instance for DescribeCCPrecisionPlyList.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeCCPrecisionPlyListRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeCCPrecisionPlyListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCCPrecisionPlyList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCCPrecisionPlyListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCCThresholdList(self, request):
+        """This API is used to query the list of CC cleansing thresholds.
+
+        :param request: Request instance for DescribeCCThresholdList.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeCCThresholdListRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeCCThresholdListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCCThresholdList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCCThresholdListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCCTrend(self, request):
         """This API is used to get CC attack data, including total QPS peaks, attack QPS, total number of requests and number of attack requests.
 
@@ -712,6 +1076,62 @@ class AntiddosClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCCTrendResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCcBlackWhiteIpList(self, request):
+        """This API is used to obtain a layer-4 access control list.
+
+        :param request: Request instance for DescribeCcBlackWhiteIpList.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeCcBlackWhiteIpListRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeCcBlackWhiteIpListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCcBlackWhiteIpList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCcBlackWhiteIpListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCcGeoIPBlockConfigList(self, request):
+        """This API is used to obtain a list of regional blocking configurations.
+
+        :param request: Request instance for DescribeCcGeoIPBlockConfigList.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeCcGeoIPBlockConfigListRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeCcGeoIPBlockConfigListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCcGeoIPBlockConfigList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCcGeoIPBlockConfigListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1188,6 +1608,62 @@ class AntiddosClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateDDoSEipAddressResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCCPrecisionPolicy(self, request):
+        """This API is used to modify a CC precise protection policy.
+
+        :param request: Request instance for ModifyCCPrecisionPolicy.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.ModifyCCPrecisionPolicyRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.ModifyCCPrecisionPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyCCPrecisionPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCCPrecisionPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCcBlackWhiteIpList(self, request):
+        """This API is used to modify a layer-4 access control list.
+
+        :param request: Request instance for ModifyCcBlackWhiteIpList.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.ModifyCcBlackWhiteIpListRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.ModifyCcBlackWhiteIpListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyCcBlackWhiteIpList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCcBlackWhiteIpListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

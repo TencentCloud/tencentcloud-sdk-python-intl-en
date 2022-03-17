@@ -984,6 +984,65 @@ class CreateAclResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateConsumerRequest(AbstractModel):
+    """CreateConsumer request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param GroupName: Group name.
+        :type GroupName: str
+        :param TopicName: Topic name. You must specify the name of an existing topic for either `TopicName` or `TopicNameList`.
+        :type TopicName: str
+        :param TopicNameList: Topic name array.
+        :type TopicNameList: list of str
+        """
+        self.InstanceId = None
+        self.GroupName = None
+        self.TopicName = None
+        self.TopicNameList = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.GroupName = params.get("GroupName")
+        self.TopicName = params.get("TopicName")
+        self.TopicNameList = params.get("TopicNameList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateConsumerResponse(AbstractModel):
+    """CreateConsumer response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Description of the created consumer group.
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = JgwOperateResponse()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreatePartitionRequest(AbstractModel):
     """CreatePartition request structure.
 
@@ -3391,7 +3450,7 @@ class InstanceDetail(AbstractModel):
         :type SubnetId: str
         :param RenewFlag: Whether to renew the instance automatically, which is an int-type enumerated value. 1: yes, 2: no
         :type RenewFlag: int
-        :param Healthy: Instance status, which is an int-type value. 0: healthy, 1: alarmed, 2: exceptional
+        :param Healthy: Instance status. An int-type value will be returned. `0`: Healthy, `1`: Alarmed, `2`: Exceptional
         :type Healthy: int
         :param HealthyMessage: Instance status information
         :type HealthyMessage: str

@@ -365,6 +365,9 @@ RESOURCENOTFOUND_LISTENERNOTFOUND = 'ResourceNotFound.ListenerNotFound'
 # The specified load balancer was not found.
 RESOURCENOTFOUND_LOADBALANCERNOTFOUND = 'ResourceNotFound.LoadBalancerNotFound'
 
+# The specified CLB does not exist in the current scaling group.
+RESOURCENOTFOUND_LOADBALANCERNOTINAUTOSCALINGGROUP = 'ResourceNotFound.LoadBalancerNotInAutoScalingGroup'
+
 # The specified location does not exist.
 RESOURCENOTFOUND_LOCATIONNOTFOUND = 'ResourceNotFound.LocationNotFound'
 

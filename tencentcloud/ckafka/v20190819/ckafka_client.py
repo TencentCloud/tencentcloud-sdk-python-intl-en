@@ -138,6 +138,34 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateConsumer(self, request):
+        """This API is used to create a consumer group.
+
+        :param request: Request instance for CreateConsumer.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateConsumerRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateConsumerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateConsumer", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateConsumerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreatePartition(self, request):
         """This API is used to add a partition in a topic.
 
