@@ -864,6 +864,69 @@ class CommonNamespace(AbstractModel):
         
 
 
+class Condition(AbstractModel):
+    """Alarm condition
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AlarmNotifyPeriod: Alarm notification frequency.
+        :type AlarmNotifyPeriod: int
+        :param AlarmNotifyType: Predefined repeated notification policy. `0`: One-time alarm; `1`: exponential alarm; `2`: consecutive alarm.
+        :type AlarmNotifyType: int
+        :param CalcType: Detection method.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CalcType: str
+        :param CalcValue: Detection value.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CalcValue: str
+        :param ContinueTime: Duration.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ContinueTime: str
+        :param MetricID: Metric ID.
+        :type MetricID: int
+        :param MetricDisplayName: Displayed metric name.
+        :type MetricDisplayName: str
+        :param Period: Statistical period.
+        :type Period: int
+        :param RuleID: Rule ID.
+        :type RuleID: int
+        :param Unit: Metric unit.
+        :type Unit: str
+        """
+        self.AlarmNotifyPeriod = None
+        self.AlarmNotifyType = None
+        self.CalcType = None
+        self.CalcValue = None
+        self.ContinueTime = None
+        self.MetricID = None
+        self.MetricDisplayName = None
+        self.Period = None
+        self.RuleID = None
+        self.Unit = None
+
+
+    def _deserialize(self, params):
+        self.AlarmNotifyPeriod = params.get("AlarmNotifyPeriod")
+        self.AlarmNotifyType = params.get("AlarmNotifyType")
+        self.CalcType = params.get("CalcType")
+        self.CalcValue = params.get("CalcValue")
+        self.ContinueTime = params.get("ContinueTime")
+        self.MetricID = params.get("MetricID")
+        self.MetricDisplayName = params.get("MetricDisplayName")
+        self.Period = params.get("Period")
+        self.RuleID = params.get("RuleID")
+        self.Unit = params.get("Unit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConditionsTemp(AbstractModel):
     """Alarm condition template
 
@@ -999,7 +1062,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
         :type Enable: int
         :param ProjectId: Project ID. For products with different projects, a value other than `-1` must be passed in. `-1`: no project; `0`: default project. If no value is passed in, `-1` will be used. The supported project IDs can be viewed on the [**Account Center** > **Project Management**](https://console.cloud.tencent.com/project) page of the console.
         :type ProjectId: int
-        :param ConditionTemplateId: ID of trigger condition template. This parameter can be left empty.
+        :param ConditionTemplateId: Trigger condition template ID. Pass in this parameter if the policy is associated with the trigger condition template; otherwise, pass in the `Condition` parameter. The trigger condition template ID can be obtained via [`DescribeConditionsTemplateList`](https://intl.cloud.tencent.com/document/api/248/70250?from_cn_redirect=1).
         :type ConditionTemplateId: int
         :param Condition: Metric trigger condition. The supported metrics can be queried via [DescribeAlarmMetrics](https://intl.cloud.tencent.com/document/product/248/51283?from_cn_redirect=1).
         :type Condition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
@@ -2821,6 +2884,85 @@ Note: This field may return null, indicating that no valid value was found.
         self.RequestId = params.get("RequestId")
 
 
+class DescribeConditionsTemplateListRequest(AbstractModel):
+    """DescribeConditionsTemplateList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Module: The value is fixed to `monitor`.
+        :type Module: str
+        :param ViewName: View name, which can be obtained via [DescribeAllNamespaces](https://intl.cloud.tencent.com/document/product/248/48683?from_cn_redirect=1). For the monitoring of Tencent Cloud services, the value of this parameter is `QceNamespacesNew.N.Id` of the output parameter of `DescribeAllNamespaces`, for example, `cvm_device`.
+        :type ViewName: str
+        :param GroupName: Filter by trigger condition template name.
+        :type GroupName: str
+        :param GroupID: Filter by trigger condition template ID.
+        :type GroupID: str
+        :param Limit: Pagination parameter, which specifies the number of returned results per page. Value range: 1-100. Default value: 20.
+        :type Limit: int
+        :param Offset: Pagination offset starting from 0. Default value: 0.
+        :type Offset: int
+        :param UpdateTimeOrder: Sorting method by update time. `asc`: Ascending order; `desc`: Descending order.
+        :type UpdateTimeOrder: str
+        """
+        self.Module = None
+        self.ViewName = None
+        self.GroupName = None
+        self.GroupID = None
+        self.Limit = None
+        self.Offset = None
+        self.UpdateTimeOrder = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.ViewName = params.get("ViewName")
+        self.GroupName = params.get("GroupName")
+        self.GroupID = params.get("GroupID")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.UpdateTimeOrder = params.get("UpdateTimeOrder")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConditionsTemplateListResponse(AbstractModel):
+    """DescribeConditionsTemplateList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: Total number of templates.
+        :type Total: int
+        :param TemplateGroupList: Template list.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type TemplateGroupList: list of TemplateGroup
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.TemplateGroupList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("TemplateGroupList") is not None:
+            self.TemplateGroupList = []
+            for item in params.get("TemplateGroupList"):
+                obj = TemplateGroup()
+                obj._deserialize(item)
+                self.TemplateGroupList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeMonitorTypesRequest(AbstractModel):
     """DescribeMonitorTypes request structure.
 
@@ -4587,6 +4729,48 @@ class DimensionsDesc(AbstractModel):
         
 
 
+class EventCondition(AbstractModel):
+    """Event alarm conditions
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AlarmNotifyPeriod: Alarm notification frequency.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type AlarmNotifyPeriod: str
+        :param AlarmNotifyType: Predefined repeated notification policy. `0`: One-time alarm; `1`: exponential alarm; `2`: consecutive alarm
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type AlarmNotifyType: str
+        :param EventID: Event ID.
+        :type EventID: str
+        :param EventDisplayName: Displayed event name.
+        :type EventDisplayName: str
+        :param RuleID: Rule ID.
+        :type RuleID: str
+        """
+        self.AlarmNotifyPeriod = None
+        self.AlarmNotifyType = None
+        self.EventID = None
+        self.EventDisplayName = None
+        self.RuleID = None
+
+
+    def _deserialize(self, params):
+        self.AlarmNotifyPeriod = params.get("AlarmNotifyPeriod")
+        self.AlarmNotifyType = params.get("AlarmNotifyType")
+        self.EventID = params.get("EventID")
+        self.EventDisplayName = params.get("EventDisplayName")
+        self.RuleID = params.get("RuleID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GetMonitorDataRequest(AbstractModel):
     """GetMonitorData request structure.
 
@@ -5291,22 +5475,26 @@ class ModifyAlarmPolicyNoticeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Module: Module name. Enter "monitor" here
+        :param Module: Module name, which is specified as `monitor`.
         :type Module: str
-        :param PolicyId: Alarm policy ID
+        :param PolicyId: Alarm policy ID. If both `PolicyIds` and this parameter are returned, only `PolicyIds` takes effect.
         :type PolicyId: str
-        :param NoticeIds: Alarm notification template ID list
+        :param NoticeIds: List of alarm notification template IDs.
         :type NoticeIds: list of str
+        :param PolicyIds: Alarm policy ID array, which can be used to associate notification templates with multiple alarm policies. Max value: 30.
+        :type PolicyIds: list of str
         """
         self.Module = None
         self.PolicyId = None
         self.NoticeIds = None
+        self.PolicyIds = None
 
 
     def _deserialize(self, params):
         self.Module = params.get("Module")
         self.PolicyId = params.get("PolicyId")
         self.NoticeIds = params.get("NoticeIds")
+        self.PolicyIds = params.get("PolicyIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5746,6 +5934,174 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class PolicyGroup(AbstractModel):
+    """Policy group information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CanSetDefault: Whether the alarm policy can be set to default.
+        :type CanSetDefault: bool
+        :param GroupID: Alarm policy group ID.
+        :type GroupID: int
+        :param GroupName: Alarm policy group name.
+        :type GroupName: str
+        :param InsertTime: Creation time.
+        :type InsertTime: int
+        :param IsDefault: Whether the alarm policy is set to default.
+        :type IsDefault: int
+        :param Enable: Whether the alarm policy is enabled.
+        :type Enable: bool
+        :param LastEditUin: UIN of the last modifier.
+        :type LastEditUin: int
+        :param NoShieldedInstanceCount: Number of unshielded instances.
+        :type NoShieldedInstanceCount: int
+        :param ParentGroupID: Parent policy group ID.
+        :type ParentGroupID: int
+        :param ProjectID: Project ID.
+        :type ProjectID: int
+        :param ReceiverInfos: Alarm recipient information.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ReceiverInfos: list of PolicyGroupReceiverInfo
+        :param Remark: Remarks.
+        :type Remark: str
+        :param UpdateTime: Modification time.
+        :type UpdateTime: int
+        :param TotalInstanceCount: The total number of associated instances.
+        :type TotalInstanceCount: int
+        :param ViewName: View.
+        :type ViewName: str
+        :param IsUnionRule: Whether the logical relationship between rules is AND.
+        :type IsUnionRule: int
+        """
+        self.CanSetDefault = None
+        self.GroupID = None
+        self.GroupName = None
+        self.InsertTime = None
+        self.IsDefault = None
+        self.Enable = None
+        self.LastEditUin = None
+        self.NoShieldedInstanceCount = None
+        self.ParentGroupID = None
+        self.ProjectID = None
+        self.ReceiverInfos = None
+        self.Remark = None
+        self.UpdateTime = None
+        self.TotalInstanceCount = None
+        self.ViewName = None
+        self.IsUnionRule = None
+
+
+    def _deserialize(self, params):
+        self.CanSetDefault = params.get("CanSetDefault")
+        self.GroupID = params.get("GroupID")
+        self.GroupName = params.get("GroupName")
+        self.InsertTime = params.get("InsertTime")
+        self.IsDefault = params.get("IsDefault")
+        self.Enable = params.get("Enable")
+        self.LastEditUin = params.get("LastEditUin")
+        self.NoShieldedInstanceCount = params.get("NoShieldedInstanceCount")
+        self.ParentGroupID = params.get("ParentGroupID")
+        self.ProjectID = params.get("ProjectID")
+        if params.get("ReceiverInfos") is not None:
+            self.ReceiverInfos = []
+            for item in params.get("ReceiverInfos"):
+                obj = PolicyGroupReceiverInfo()
+                obj._deserialize(item)
+                self.ReceiverInfos.append(obj)
+        self.Remark = params.get("Remark")
+        self.UpdateTime = params.get("UpdateTime")
+        self.TotalInstanceCount = params.get("TotalInstanceCount")
+        self.ViewName = params.get("ViewName")
+        self.IsUnionRule = params.get("IsUnionRule")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PolicyGroupReceiverInfo(AbstractModel):
+    """Information on recipients in the policy template list (API v2018)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EndTime: End time of a valid time period.
+        :type EndTime: int
+        :param NeedSendNotice: Whether it is required to send notifications.
+        :type NeedSendNotice: int
+        :param NotifyWay: Alarm receiving channel.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type NotifyWay: list of str
+        :param PersonInterval: Alarm call intervals for individuals in seconds.
+        :type PersonInterval: int
+        :param ReceiverGroupList: Message recipient group list.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ReceiverGroupList: list of int
+        :param ReceiverType: Recipient type.
+        :type ReceiverType: str
+        :param ReceiverUserList: Recipient list. The list of recipient IDs that is queried by a platform API.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ReceiverUserList: list of int
+        :param RecoverNotify: Alarm resolution notification method.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type RecoverNotify: list of str
+        :param RoundInterval: Alarm call interval per round in seconds.
+        :type RoundInterval: int
+        :param RoundNumber: Number of alarm call rounds.
+        :type RoundNumber: int
+        :param SendFor: Alarm call notification time. Valid values: `OCCUR` (indicating that a notification is sent when the alarm is triggered) and `RECOVER` (indicating that a notification is sent when the alarm is resolved).
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type SendFor: list of str
+        :param StartTime: Start time of a valid time period.
+        :type StartTime: int
+        :param UIDList: UID of the alarm call recipient.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type UIDList: list of int
+        """
+        self.EndTime = None
+        self.NeedSendNotice = None
+        self.NotifyWay = None
+        self.PersonInterval = None
+        self.ReceiverGroupList = None
+        self.ReceiverType = None
+        self.ReceiverUserList = None
+        self.RecoverNotify = None
+        self.RoundInterval = None
+        self.RoundNumber = None
+        self.SendFor = None
+        self.StartTime = None
+        self.UIDList = None
+
+
+    def _deserialize(self, params):
+        self.EndTime = params.get("EndTime")
+        self.NeedSendNotice = params.get("NeedSendNotice")
+        self.NotifyWay = params.get("NotifyWay")
+        self.PersonInterval = params.get("PersonInterval")
+        self.ReceiverGroupList = params.get("ReceiverGroupList")
+        self.ReceiverType = params.get("ReceiverType")
+        self.ReceiverUserList = params.get("ReceiverUserList")
+        self.RecoverNotify = params.get("RecoverNotify")
+        self.RoundInterval = params.get("RoundInterval")
+        self.RoundNumber = params.get("RoundNumber")
+        self.SendFor = params.get("SendFor")
+        self.StartTime = params.get("StartTime")
+        self.UIDList = params.get("UIDList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PutMonitorDataRequest(AbstractModel):
     """PutMonitorData request structure.
 
@@ -6024,6 +6380,88 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.RegionId = params.get("RegionId")
         self.BindingStatus = params.get("BindingStatus")
         self.TagStatus = params.get("TagStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TemplateGroup(AbstractModel):
+    """Template list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Conditions: Metric alarm rules.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Conditions: list of Condition
+        :param EventConditions: Event alarm rules.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type EventConditions: list of EventCondition
+        :param PolicyGroups: The associated alarm policy groups.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type PolicyGroups: list of PolicyGroup
+        :param GroupID: Template-based policy group ID.
+        :type GroupID: int
+        :param GroupName: Template-based policy group name.
+        :type GroupName: str
+        :param InsertTime: Creation time.
+        :type InsertTime: int
+        :param LastEditUin: UIN of the last modifier.
+        :type LastEditUin: int
+        :param Remark: Remarks.
+        :type Remark: str
+        :param UpdateTime: Update time.
+        :type UpdateTime: int
+        :param ViewName: View.
+        :type ViewName: str
+        :param IsUnionRule: Whether the logical relationship between rules is AND.
+        :type IsUnionRule: int
+        """
+        self.Conditions = None
+        self.EventConditions = None
+        self.PolicyGroups = None
+        self.GroupID = None
+        self.GroupName = None
+        self.InsertTime = None
+        self.LastEditUin = None
+        self.Remark = None
+        self.UpdateTime = None
+        self.ViewName = None
+        self.IsUnionRule = None
+
+
+    def _deserialize(self, params):
+        if params.get("Conditions") is not None:
+            self.Conditions = []
+            for item in params.get("Conditions"):
+                obj = Condition()
+                obj._deserialize(item)
+                self.Conditions.append(obj)
+        if params.get("EventConditions") is not None:
+            self.EventConditions = []
+            for item in params.get("EventConditions"):
+                obj = EventCondition()
+                obj._deserialize(item)
+                self.EventConditions.append(obj)
+        if params.get("PolicyGroups") is not None:
+            self.PolicyGroups = []
+            for item in params.get("PolicyGroups"):
+                obj = PolicyGroup()
+                obj._deserialize(item)
+                self.PolicyGroups.append(obj)
+        self.GroupID = params.get("GroupID")
+        self.GroupName = params.get("GroupName")
+        self.InsertTime = params.get("InsertTime")
+        self.LastEditUin = params.get("LastEditUin")
+        self.Remark = params.get("Remark")
+        self.UpdateTime = params.get("UpdateTime")
+        self.ViewName = params.get("ViewName")
+        self.IsUnionRule = params.get("IsUnionRule")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

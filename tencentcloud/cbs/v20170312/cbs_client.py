@@ -120,6 +120,37 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CopySnapshotCrossRegions(self, request):
+        """This API is used to replicate a snapshot to another region.
+
+        * This is an async API. A new snapshot ID is issued when the cross-region replication task is generated. It does not mean that the snapshot has been replicated successfully. You can all the [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1) API in the destination region to check for this snapshot. If the snapshot status is `NORMAL`, the snapshot is replicated successfully.
+        * The snapshot cross-region replication service will be commercialized in the Q3 of 2022. We will notify users about the commercialization in advance. Please check your messages in the Message Center.
+
+        :param request: Request instance for CopySnapshotCrossRegions.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.CopySnapshotCrossRegionsRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.CopySnapshotCrossRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CopySnapshotCrossRegions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CopySnapshotCrossRegionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAutoSnapshotPolicy(self, request):
         """This API (CreateAutoSnapshotPolicy) is used to create a scheduled snapshot policy.
 

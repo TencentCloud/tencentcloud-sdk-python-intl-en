@@ -116,6 +116,9 @@ RESOURCEBUSY = 'ResourceBusy'
 # Occupied resource.
 RESOURCEINUSE = 'ResourceInUse'
 
+# The specified snapshot is being replicated to the destination region.
+RESOURCEINUSE_COPYSNAPSHOTCONFLICT = 'ResourceInUse.CopySnapshotConflict'
+
 # The cloud disk is being migrated. Try again later.
 RESOURCEINUSE_DISKMIGRATING = 'ResourceInUse.DiskMigrating'
 
@@ -179,6 +182,9 @@ UNAUTHORIZEDOPERATION_NOTCERTIFICATION = 'UnauthorizedOperation.NotCertification
 # No payment permission.
 UNAUTHORIZEDOPERATION_NOTHAVEPAYMENTRIGHT = 'UnauthorizedOperation.NotHavePaymentRight'
 
+# The authorization role does not exist.
+UNAUTHORIZEDOPERATION_ROLENOTEXISTS = 'UnauthorizedOperation.RoleNotExists'
+
 # Unsupported operation
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
@@ -196,6 +202,9 @@ UNSUPPORTEDOPERATION_SNAPHASSHARED = 'UnsupportedOperation.SnapHasShared'
 
 # A custom snapshot was created for this snapshot. First delete the corresponding image. 
 UNSUPPORTEDOPERATION_SNAPSHOTHASBINDEDIMAGE = 'UnsupportedOperation.SnapshotHasBindedImage'
+
+# The snapshot does not support cross-region replication.
+UNSUPPORTEDOPERATION_SNAPSHOTNOTSUPPORTCOPY = 'UnsupportedOperation.SnapshotNotSupportCopy'
 
 # The resource does not support this operation in this status.
 UNSUPPORTEDOPERATION_STATEERROR = 'UnsupportedOperation.StateError'

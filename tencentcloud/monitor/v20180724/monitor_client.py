@@ -83,7 +83,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateAlarmPolicy(self, request):
-        """This API is used to create an alarm policy.
+        """This API is used to create a Cloud Monitor alarm policy.
 
         :param request: Request instance for CreateAlarmPolicy.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreateAlarmPolicyRequest`
@@ -574,6 +574,34 @@ class MonitorClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBindingPolicyObjectListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeConditionsTemplateList(self, request):
+        """This API is used to get the trigger condition template.
+
+        :param request: Request instance for DescribeConditionsTemplateList.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeConditionsTemplateListRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeConditionsTemplateListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeConditionsTemplateList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeConditionsTemplateListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

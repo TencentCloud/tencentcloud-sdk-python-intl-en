@@ -157,7 +157,7 @@ class AttachDisksResponse(AbstractModel):
 
 
 class AutoMountConfiguration(AbstractModel):
-    """This parameter describes the configuration of automatically initializing and mounting the cloud disk to the CVM when purchasing a new cloud disk.
+    """Describes how a newly purchased cloud disk is initialized and mounted to a CVM
 
     """
 
@@ -295,6 +295,64 @@ class BindAutoSnapshotPolicyResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CopySnapshotCrossRegionsRequest(AbstractModel):
+    """CopySnapshotCrossRegions request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DestinationRegions: Destination regions of the replication task. You can query the value of regions by calling [DescribeRegions](https://intl.cloud.tencent.com/document/product/213/9456?from_cn_redirect=1) API. Note that you can only specify regions that support snapshots.
+        :type DestinationRegions: list of str
+        :param SnapshotId: Snapshot ID, which can be queried via the [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1) API.
+        :type SnapshotId: str
+        :param SnapshotName: Name of the snapshot replica. If it’s not specified, it defaults to “Copied [source snapshot ID from [region name]”
+        :type SnapshotName: str
+        """
+        self.DestinationRegions = None
+        self.SnapshotId = None
+        self.SnapshotName = None
+
+
+    def _deserialize(self, params):
+        self.DestinationRegions = params.get("DestinationRegions")
+        self.SnapshotId = params.get("SnapshotId")
+        self.SnapshotName = params.get("SnapshotName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CopySnapshotCrossRegionsResponse(AbstractModel):
+    """CopySnapshotCrossRegions response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotCopyResultSet: Result of the cross-region replication task. The ID of the new snapshot replica is returned if the request succeeds. Otherwise `Error` is returned.
+        :type SnapshotCopyResultSet: list of SnapshotCopyResult
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SnapshotCopyResultSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SnapshotCopyResultSet") is not None:
+            self.SnapshotCopyResultSet = []
+            for item in params.get("SnapshotCopyResultSet"):
+                obj = SnapshotCopyResult()
+                obj._deserialize(item)
+                self.SnapshotCopyResultSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2558,6 +2616,42 @@ class Snapshot(AbstractModel):
         self.SnapshotType = params.get("SnapshotType")
         self.ShareReference = params.get("ShareReference")
         self.TimeStartShare = params.get("TimeStartShare")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SnapshotCopyResult(AbstractModel):
+    """Result of the cross-region replication task
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotId: ID of the snapshot replica
+        :type SnapshotId: str
+        :param Message: Error message. It’s null if the request succeeds.
+        :type Message: str
+        :param Code: Error code. It’s `Success` if the request succeeds.
+        :type Code: str
+        :param DestinationRegion: Destination region of the replication task
+        :type DestinationRegion: str
+        """
+        self.SnapshotId = None
+        self.Message = None
+        self.Code = None
+        self.DestinationRegion = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotId = params.get("SnapshotId")
+        self.Message = params.get("Message")
+        self.Code = params.get("Code")
+        self.DestinationRegion = params.get("DestinationRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
