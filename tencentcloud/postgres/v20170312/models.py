@@ -442,6 +442,68 @@ class CloseServerlessDBExtranetAccessResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateDBInstanceNetworkAccessRequest(AbstractModel):
+    """CreateDBInstanceNetworkAccess request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: Instance ID in the format of postgres-6bwgamo3.
+        :type DBInstanceId: str
+        :param VpcId: Unified VPC ID.
+        :type VpcId: str
+        :param SubnetId: Subnet ID.
+        :type SubnetId: str
+        :param IsAssignVip: Whether to manually assign the VIP. Valid values: `true` (manually assign), `false` (automatically assign).
+        :type IsAssignVip: bool
+        :param Vip: Target VIP.
+        :type Vip: str
+        """
+        self.DBInstanceId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.IsAssignVip = None
+        self.Vip = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.IsAssignVip = params.get("IsAssignVip")
+        self.Vip = params.get("Vip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDBInstanceNetworkAccessResponse(AbstractModel):
+    """CreateDBInstanceNetworkAccess response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Task ID.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateDBInstancesRequest(AbstractModel):
     """CreateDBInstances request structure.
 
@@ -859,6 +921,68 @@ class CreateReadOnlyDBInstanceResponse(AbstractModel):
         self.DealNames = params.get("DealNames")
         self.BillId = params.get("BillId")
         self.DBInstanceIdSet = params.get("DBInstanceIdSet")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateReadOnlyGroupNetworkAccessRequest(AbstractModel):
+    """CreateReadOnlyGroupNetworkAccess request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReadOnlyGroupId: RO group ID in the format of pgro-4t9c6g7k.
+        :type ReadOnlyGroupId: str
+        :param VpcId: Unified VPC ID.
+        :type VpcId: str
+        :param SubnetId: Subnet ID.
+        :type SubnetId: str
+        :param IsAssignVip: Whether to manually assign the VIP. Valid values: `true` (manually assign), `false` (automatically assign).
+        :type IsAssignVip: bool
+        :param Vip: Target VIP.
+        :type Vip: str
+        """
+        self.ReadOnlyGroupId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.IsAssignVip = None
+        self.Vip = None
+
+
+    def _deserialize(self, params):
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.IsAssignVip = params.get("IsAssignVip")
+        self.Vip = params.get("Vip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateReadOnlyGroupNetworkAccessResponse(AbstractModel):
+    """CreateReadOnlyGroupNetworkAccess response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Task ID.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1370,6 +1494,122 @@ class DBNode(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DeleteDBInstanceNetworkAccessRequest(AbstractModel):
+    """DeleteDBInstanceNetworkAccess request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: Instance ID in the format of postgres-6bwgamo3.
+        :type DBInstanceId: str
+        :param VpcId: Unified VPC ID. If you want to delete the classic network, set the parameter to `0`.
+        :type VpcId: str
+        :param SubnetId: Subnet ID. If you want to delete the classic network, set the parameter to `0`.
+        :type SubnetId: str
+        :param Vip: Target VIP.
+        :type Vip: str
+        """
+        self.DBInstanceId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.Vip = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Vip = params.get("Vip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDBInstanceNetworkAccessResponse(AbstractModel):
+    """DeleteDBInstanceNetworkAccess response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Task ID.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteReadOnlyGroupNetworkAccessRequest(AbstractModel):
+    """DeleteReadOnlyGroupNetworkAccess request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReadOnlyGroupId: RO group ID in the format of pgro-4t9c6g7k.
+        :type ReadOnlyGroupId: str
+        :param VpcId: Unified VPC ID. If you want to delete the classic network, set the parameter to `0`.
+        :type VpcId: str
+        :param SubnetId: Subnet ID. If you want to delete the classic network, set the parameter to `0`.
+        :type SubnetId: str
+        :param Vip: Target VIP.
+        :type Vip: str
+        """
+        self.ReadOnlyGroupId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.Vip = None
+
+
+    def _deserialize(self, params):
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Vip = params.get("Vip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteReadOnlyGroupNetworkAccessResponse(AbstractModel):
+    """DeleteReadOnlyGroupNetworkAccess response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Task ID.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
 
 
 class DeleteReadOnlyGroupRequest(AbstractModel):
