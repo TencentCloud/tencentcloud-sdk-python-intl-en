@@ -1429,7 +1429,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type InstanceNodes: int
         :param Cpu: The number of CPU cores of the instance. If this parameter is left empty, the number of CPU cores depends on the `Memory` value.
         :type Cpu: int
-        :param AutoSyncFlag: Whether to automatically start disaster recovery synchronization. This parameter takes effect only for disaster recovery instances. Valid values: `0` (no), `1` (yes).
+        :param AutoSyncFlag: Whether to automatically start disaster recovery synchronization. This parameter takes effect only for disaster recovery instances. Valid values: `0` (no), `1` (yes). Default value: `0`.
         :type AutoSyncFlag: int
         :param CageId: Financial cage ID.
         :type CageId: str
@@ -2543,13 +2543,13 @@ class DescribeBackupSummariesRequest(AbstractModel):
         r"""
         :param Product: TencentDB product type to be queried. Currently, only `mysql` is supported.
         :type Product: str
-        :param Offset: Pagination offset.
+        :param Offset: Paginated query offset. Default value: `0`.
         :type Offset: int
-        :param Limit: Paginated query limit. Default value: 20.
+        :param Limit: Maximum entries returned per page, which ranges from 1 to 100. Default value: `20`.
         :type Limit: int
-        :param OrderBy: Sorting criterion. Valid values: BackupVolume (backup capacity), DataBackupVolume (data backup capacity), BinlogBackupVolume (log backup capacity), AutoBackupVolume (automatic backup capacity), ManualBackupVolume (manual backup capacity).
+        :param OrderBy: Sorting criterion. Valid values: `BackupVolume` (backup capacity), `DataBackupVolume` (data backup capacity), `BinlogBackupVolume` (log backup capacity), `AutoBackupVolume` (automatic backup capacity), `ManualBackupVolume` (manual backup capacity). Default value: `BackupVolume`.
         :type OrderBy: str
-        :param OrderDirection: Sorting order. Valid values: ASC (ascending), DESC (descending).
+        :param OrderDirection: Sorting order. Valid values: `ASC` (ascending), `DESC` (descending). Default value: `ASC`.
         :type OrderDirection: str
         """
         self.Product = None
@@ -3458,7 +3458,7 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
         :type InstanceId: str
-        :param ForReadonlyInstance: This parameter takes effect only when the ID of read-only replica is passed in. If this parameter is set to `False` or left empty, the security groups bound with the RO group of the read-only replica will be queried. If this parameter is set to `True`, the security groups bound with the read-only replica itself will be queried.
+        :param ForReadonlyInstance: This parameter takes effect only when the ID of a read-only instance is passed in. If the parameter is set to `False` or left empty, the security groups bound with the RO groups of the read-only instance can only be queried. If it is set to `True`, the security groups can be modified.
         :type ForReadonlyInstance: bool
         """
         self.InstanceId = None
@@ -4817,7 +4817,7 @@ class DescribeSlowLogsRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
         :type InstanceId: str
-        :param Offset: Offset. Minimum value: 0.
+        :param Offset: Pagination offset, starting from `0`. Default value: `0`.
         :type Offset: int
         :param Limit: Number of entries per page. Value range: 1-100. Default value: 20.
         :type Limit: int
@@ -6440,8 +6440,8 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
         :type InstanceId: str
         :param Accounts: Database account, including username and domain name.
         :type Accounts: list of Account
-        :param GlobalPrivileges: Global permission. Valid values: "SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "PROCESS", "DROP", "REFERENCES", "INDEX", "ALTER", "SHOW DATABASES", "CREATE TEMPORARY TABLES", "LOCK TABLES", "EXECUTE", "CREATE VIEW", "SHOW VIEW", "CREATE ROUTINE", "ALTER ROUTINE", "EVENT", "TRIGGER".
-Note: if this parameter is not passed in, it means to clear the permission.
+        :param GlobalPrivileges: Global permission. Valid values: "SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "PROCESS", "DROP", "REFERENCES", "INDEX", "ALTER", "SHOW DATABASES", "CREATE TEMPORARY TABLES", "LOCK TABLES", "EXECUTE", "CREATE VIEW", "SHOW VIEW", "CREATE ROUTINE", "ALTER ROUTINE", "EVENT", "TRIGGER","CREATE USER","RELOAD","REPLICATION CLIENT","REPLICATION SLAVE","UPDATE".
+Note: If this parameter is not passed in, it means to clear the permission.
         :type GlobalPrivileges: list of str
         :param DatabasePrivileges: Database permission. Valid values: "SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", 	"DROP", "REFERENCES", "INDEX", "ALTER", "CREATE TEMPORARY TABLES", "LOCK TABLES", "EXECUTE", "CREATE VIEW", "SHOW VIEW", "CREATE ROUTINE", "ALTER ROUTINE", "EVENT", "TRIGGER".
 Note: if this parameter is not passed in, it means to clear the permission.
@@ -6942,7 +6942,7 @@ class ModifyDBInstanceNameRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters.
         :type InstanceId: str
-        :param InstanceName: Instance name.
+        :param InstanceName: The modified instance name.
         :type InstanceName: str
         """
         self.InstanceId = None
@@ -8687,7 +8687,7 @@ class RoInstanceInfo(AbstractModel):
         :type Zone: str
         :param InstanceId: RO instance ID in the format of cdbro-c1nl9rpv
         :type InstanceId: str
-        :param Status: RO instance status. Value range: 0 (creating), 1 (running), 4 (deleting)
+        :param Status: RO instance status. Valid values: `0` (creating), `1` (running), `3` (remote RO), `4` (deleting). When the `DescribeDBInstances` API is used to query the information of the source instance, if the source instance is associated with a remote read-only instance, the returned status value of the remote read-only instance always shows 3.
         :type Status: int
         :param InstanceType: Instance type. Value range: 1 (primary), 2 (disaster recovery), 3 (read-only)
         :type InstanceType: int
