@@ -2359,6 +2359,46 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyMediaStorageClass(self, request):
+        """This API is used to modify the storage class of media files.
+        If the current storage class is STANDARD, it can be changed to one of the following classes:
+        <li>STANDARD_IA</li>
+        <li>ARCHIVE</li>
+        <li>DEEP ARCHIVE</li>
+        If the current storage class is STANDARD_IA, it can be changed to one of the following classes:
+        <li>STANDARD</li>
+        <li>ARCHIVE</li>
+        <li>DEEP ARCHIVE</li>
+        If the current storage class is ARCHIVE, it can be changed to the following class:
+        <li>STANDARD</li>
+        If the current storage class is DEEP ARCHIVE, it can be changed to the following class:
+        <li>STANDARD</li>
+
+        :param request: Request instance for ModifyMediaStorageClass.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyMediaStorageClassRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyMediaStorageClassResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyMediaStorageClass", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyMediaStorageClassResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyPersonSample(self, request):
         """This API is used to modify sample information according to the sample ID. You can modify the name and description, add, delete, and reset facial features or tags. Leave at least one image after deleting facial features. To leave no image, please use the reset operation.
 

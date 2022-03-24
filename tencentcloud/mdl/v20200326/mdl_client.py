@@ -642,6 +642,34 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeStreamLiveTranscodeDetail(self, request):
+        """This API is used to query the transcoding information of StreamLive streams.
+
+        :param request: Request instance for DescribeStreamLiveTranscodeDetail.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveTranscodeDetailRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeStreamLiveTranscodeDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeStreamLiveTranscodeDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStreamLiveTranscodeDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeStreamLiveWatermark(self, request):
         """This API is used to query a watermark.
 

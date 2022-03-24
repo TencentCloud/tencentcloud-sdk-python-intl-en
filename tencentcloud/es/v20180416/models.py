@@ -2335,6 +2335,8 @@ class UpgradeInstanceRequest(AbstractModel):
         :type BasicSecurityType: int
         :param UpgradeMode: Upgrade mode. <li>scale: blue/green deployment</li><li>restart: rolling restart</li>Default value: scale
         :type UpgradeMode: str
+        :param CosBackup: Whether to back up the cluster before version upgrade (no backup by default)
+        :type CosBackup: bool
         """
         self.InstanceId = None
         self.EsVersion = None
@@ -2342,6 +2344,7 @@ class UpgradeInstanceRequest(AbstractModel):
         self.LicenseType = None
         self.BasicSecurityType = None
         self.UpgradeMode = None
+        self.CosBackup = None
 
 
     def _deserialize(self, params):
@@ -2351,6 +2354,7 @@ class UpgradeInstanceRequest(AbstractModel):
         self.LicenseType = params.get("LicenseType")
         self.BasicSecurityType = params.get("BasicSecurityType")
         self.UpgradeMode = params.get("UpgradeMode")
+        self.CosBackup = params.get("CosBackup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

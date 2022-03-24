@@ -408,11 +408,15 @@ class AdaptiveStreamTemplate(AbstractModel):
 <li>0: no</li>
 <li>1: yes</li>
         :type RemoveVideo: int
+        :param TEHDConfig: TESHD transcoding parameters
+Note: This field may return `null`, indicating that no valid value was found.
+        :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfig`
         """
         self.Video = None
         self.Audio = None
         self.RemoveAudio = None
         self.RemoveVideo = None
+        self.TEHDConfig = None
 
 
     def _deserialize(self, params):
@@ -424,6 +428,9 @@ class AdaptiveStreamTemplate(AbstractModel):
             self.Audio._deserialize(params.get("Audio"))
         self.RemoveAudio = params.get("RemoveAudio")
         self.RemoveVideo = params.get("RemoveVideo")
+        if params.get("TEHDConfig") is not None:
+            self.TEHDConfig = TEHDConfig()
+            self.TEHDConfig._deserialize(params.get("TEHDConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15034,6 +15041,70 @@ class ModifyMediaInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyMediaStorageClassRequest(AbstractModel):
+    """ModifyMediaStorageClass request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileIds: The unique IDs of media files
+        :type FileIds: list of str
+        :param StorageClass: The target storage class. Valid values:
+<li>STANDARD</li>
+<li>STANDARD_IA</li>
+<li>ARCHIVE</li>
+<li>DEEP_ARCHIVE</li>
+        :type StorageClass: str
+        :param SubAppId: VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :type SubAppId: int
+        :param RestoreTier: The retrieval mode. When switching files from DEEP ARCHIVE or ARCHIVE to STANDARD, you need to specify the retrieval mode. For details, see [Data retrieval and retrieval mode](https://intl.cloud.tencent.com/document/product/266/43051#data-retrieval-and-retrieval-mode.3Ca-id.3D.22retake.22.3E.3C.2Fa.3E).
+If the current storage class is ARCHIVE, the valid values for this parameter are as follows:
+<li>Expedited</li>
+<li>Standard</li>
+<li>Bulk</li>
+If the current storage class is DEEP ARCHIVE, the valid values for this parameter are as follows:
+<li>Standard</li>
+<li>Bulk</li>
+        :type RestoreTier: str
+        """
+        self.FileIds = None
+        self.StorageClass = None
+        self.SubAppId = None
+        self.RestoreTier = None
+
+
+    def _deserialize(self, params):
+        self.FileIds = params.get("FileIds")
+        self.StorageClass = params.get("StorageClass")
+        self.SubAppId = params.get("SubAppId")
+        self.RestoreTier = params.get("RestoreTier")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMediaStorageClassResponse(AbstractModel):
+    """ModifyMediaStorageClass response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyPersonSampleRequest(AbstractModel):
     """ModifyPersonSample request structure.
 
@@ -19347,9 +19418,7 @@ class TEHDConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: TESHD type. Valid values:
-<li>TEHD-100: TESHD-100.</li>
-If this parameter is left blank, TESHD will not be enabled.
+        :param Type: TESHD transcoding type. Valid values: <li>TEHD-100</li> <li>OFF (default)</li>
         :type Type: str
         :param MaxVideoBitrate: Maximum bitrate, which is valid when `Type` is `TESHD`.
 If this parameter is left blank or 0 is entered, there will be no upper limit for bitrate.
@@ -19378,9 +19447,7 @@ class TEHDConfigForUpdate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: TESHD type. Valid values:
-<li>TEHD-100: TESHD-100.</li>
-If this parameter is left blank, no modification will be made.
+        :param Type: TESHD transcoding type. Valid values: <li>TEHD-100</li> <li>OFF (default)</li>
         :type Type: str
         :param MaxVideoBitrate: Maximum bitrate. If this parameter is left blank, no modification will be made.
         :type MaxVideoBitrate: int

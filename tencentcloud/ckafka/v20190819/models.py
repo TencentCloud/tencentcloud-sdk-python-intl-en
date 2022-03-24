@@ -3613,6 +3613,36 @@ class InstanceDetailResponse(AbstractModel):
         
 
 
+class InstanceQuotaConfigResp(AbstractModel):
+    """Traffic throttling policy in instance/topic dimension
+
+    """
+
+    def __init__(self):
+        r"""
+        :param QuotaProducerByteRate: Production throttling in MB/sec.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type QuotaProducerByteRate: int
+        :param QuotaConsumerByteRate: Consumption throttling in MB/sec.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type QuotaConsumerByteRate: int
+        """
+        self.QuotaProducerByteRate = None
+        self.QuotaConsumerByteRate = None
+
+
+    def _deserialize(self, params):
+        self.QuotaProducerByteRate = params.get("QuotaProducerByteRate")
+        self.QuotaConsumerByteRate = params.get("QuotaConsumerByteRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceResponse(AbstractModel):
     """Aggregated returned result of instance status
 
@@ -3967,6 +3997,10 @@ class ModifyTopicAttributesRequest(AbstractModel):
         :type RetentionBytes: int
         :param Tags: Tag list.
         :type Tags: list of Tag
+        :param QuotaProducerByteRate: Production throttling in MB/sec.
+        :type QuotaProducerByteRate: int
+        :param QuotaConsumerByteRate: Consumption throttling in MB/sec.
+        :type QuotaConsumerByteRate: int
         """
         self.InstanceId = None
         self.TopicName = None
@@ -3983,6 +4017,8 @@ class ModifyTopicAttributesRequest(AbstractModel):
         self.AclRuleName = None
         self.RetentionBytes = None
         self.Tags = None
+        self.QuotaProducerByteRate = None
+        self.QuotaConsumerByteRate = None
 
 
     def _deserialize(self, params):
@@ -4006,6 +4042,8 @@ class ModifyTopicAttributesRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.QuotaProducerByteRate = params.get("QuotaProducerByteRate")
+        self.QuotaConsumerByteRate = params.get("QuotaConsumerByteRate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4549,6 +4587,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
         :param AclRuleList: Preset ACL rule list.
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :type AclRuleList: list of AclRule
+        :param QuotaConfig: Traffic throttling policy in topic dimension.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type QuotaConfig: :class:`tencentcloud.ckafka.v20190819.models.InstanceQuotaConfigResp`
         """
         self.TopicId = None
         self.CreateTime = None
@@ -4560,6 +4601,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
         self.Partitions = None
         self.EnableAclRule = None
         self.AclRuleList = None
+        self.QuotaConfig = None
 
 
     def _deserialize(self, params):
@@ -4585,6 +4627,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
                 obj = AclRule()
                 obj._deserialize(item)
                 self.AclRuleList.append(obj)
+        if params.get("QuotaConfig") is not None:
+            self.QuotaConfig = InstanceQuotaConfigResp()
+            self.QuotaConfig._deserialize(params.get("QuotaConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -329,34 +329,6 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def AssociateNetworkAclSubnets(self, request):
-        """This API is used to associate a network ACL with subnets in a VPC instance.
-
-        :param request: Request instance for AssociateNetworkAclSubnets.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.AssociateNetworkAclSubnetsRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.AssociateNetworkAclSubnetsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("AssociateNetworkAclSubnets", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.AssociateNetworkAclSubnetsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def AssociateNetworkInterfaceSecurityGroups(self, request):
         """This API (AssociateNetworkInterfaceSecurityGroups) is used to attach a security group to an ENI.
 
@@ -598,7 +570,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateAddressTemplate(self, request):
-        """This API (CreateAddressTemplate) is used to create an IP address template.
+        """This API is used to create an IP address template.
 
         :param request: Request instance for CreateAddressTemplate.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateAddressTemplateRequest`
@@ -626,7 +598,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateAddressTemplateGroup(self, request):
-        """This API (CreateAddressTemplateGroup) is used to create an IP address template group.
+        """This API is used to create an IP address template group.
 
         :param request: Request instance for CreateAddressTemplateGroup.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateAddressTemplateGroupRequest`
@@ -674,34 +646,6 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAndAttachNetworkInterfaceResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def CreateAssistantCidr(self, request):
-        """This API (CreateAssistantCidr) is used to batch create secondary CIDR blocks. (To use this API that is in Beta, please submit a ticket.)
-
-        :param request: Request instance for CreateAssistantCidr.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateAssistantCidrRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateAssistantCidrResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("CreateAssistantCidr", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateAssistantCidrResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1077,35 +1021,6 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateNetDetectResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def CreateNetworkAcl(self, request):
-        """This API is used to create a <a href="https://intl.cloud.tencent.com/document/product/215/20088?from_cn_redirect=1">network ACL</a>.
-        * The inbound and outbound rules for a new network ACL are "Deny All" by default. You need to call `ModifyNetworkAclEntries` after creation to set rules for the network ACL as needed.
-
-        :param request: Request instance for CreateNetworkAcl.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateNetworkAclRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateNetworkAclResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("CreateNetworkAcl", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateNetworkAclResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1709,34 +1624,6 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteAssistantCidr(self, request):
-        """This API (DeleteAssistantCidr) is used to delete secondary CIDR blocks. (To use this API that is in Beta, please submit a ticket.)
-
-        :param request: Request instance for DeleteAssistantCidr.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteAssistantCidrRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteAssistantCidrResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DeleteAssistantCidr", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteAssistantCidrResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DeleteBandwidthPackage(self, request):
         """This API is used to delete bandwidth packages, including [device bandwidth packages](https://intl.cloud.tencent.com/document/product/684/15246?from_cn_redirect=1#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85) and [IP bandwidth packages](https://intl.cloud.tencent.com/document/product/684/15246?from_cn_redirect=1#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85).
 
@@ -2066,34 +1953,6 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNetDetectResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DeleteNetworkAcl(self, request):
-        """This API is used to delete a network ACL.
-
-        :param request: Request instance for DeleteNetworkAcl.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteNetworkAclRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteNetworkAclResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DeleteNetworkAcl", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteNetworkAclResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3188,34 +3047,6 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeGatewayFlowQos(self, request):
-        """This API (DescribeGatewayFlowQos) is used to query the QoS bandwidth limit of inbound IP flow in a gateway.
-
-        :param request: Request instance for DescribeGatewayFlowQos.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeGatewayFlowQosRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeGatewayFlowQosResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeGatewayFlowQos", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeGatewayFlowQosResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeHaVips(self, request):
         """This API (DescribeHaVips) is used to query the list of highly available virtual IPs (HAVIP).
 
@@ -4003,34 +3834,6 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeVpcTaskResult(self, request):
-        """This API is used to query the execution result of a VPC task.
-
-        :param request: Request instance for DescribeVpcTaskResult.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcTaskResultRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcTaskResultResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeVpcTaskResult", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeVpcTaskResultResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeVpcs(self, request):
         """This API (DescribeVpcs) is used to query the VPC list.
 
@@ -4287,34 +4090,6 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DisableGatewayFlowMonitor(self, request):
-        """This API (DisableGatewayFlowMonitor) is used to disable gateway flow monitor.
-
-        :param request: Request instance for DisableGatewayFlowMonitor.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.DisableGatewayFlowMonitorRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.DisableGatewayFlowMonitorResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DisableGatewayFlowMonitor", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DisableGatewayFlowMonitorResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DisassociateAddress(self, request):
         """This API is used to unbind an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP for short).
         * This API supports unbinding an EIP from CVM instances and ENIs.
@@ -4389,34 +4164,6 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateNatGatewayAddressResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DisassociateNetworkAclSubnets(self, request):
-        """This API is used to disassociate a network ACL from subnets in a VPC instance.
-
-        :param request: Request instance for DisassociateNetworkAclSubnets.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.DisassociateNetworkAclSubnetsRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.DisassociateNetworkAclSubnetsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DisassociateNetworkAclSubnets", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DisassociateNetworkAclSubnetsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -4530,34 +4277,6 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableCcnRoutesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def EnableGatewayFlowMonitor(self, request):
-        """This API (EnableGatewayFlowMonitor) is used to enable gateway flow monitor.
-
-        :param request: Request instance for EnableGatewayFlowMonitor.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.EnableGatewayFlowMonitorRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.EnableGatewayFlowMonitorResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("EnableGatewayFlowMonitor", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.EnableGatewayFlowMonitorResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -5001,34 +4720,6 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyAssistantCidr(self, request):
-        """This API (ModifyAssistantCidr) is used to batch modify (e.g. add and delete) secondary CIDR blocks. (To use this API that is in Beta, please submit a ticket.)
-
-        :param request: Request instance for ModifyAssistantCidr.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyAssistantCidrRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyAssistantCidrResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ModifyAssistantCidr", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyAssistantCidrResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def ModifyBandwidthPackageAttribute(self, request):
         """This API is used to modify the attributes of a bandwidth package, including the bandwidth package name, and so on.
 
@@ -5225,34 +4916,6 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyGatewayFlowQos(self, request):
-        """This API (ModifyGatewayFlowQos) is used to adjust the QoS bandwidth limit in a gateway.
-
-        :param request: Request instance for ModifyGatewayFlowQos.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyGatewayFlowQosRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyGatewayFlowQosResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ModifyGatewayFlowQos", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyGatewayFlowQosResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def ModifyHaVipAttribute(self, request):
         """This API (ModifyHaVipAttribute) is used to modify HAVIP attributes.
 
@@ -5435,62 +5098,6 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyNetDetectResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ModifyNetworkAclAttribute(self, request):
-        """This API is used to modify the attributes of a network ACL.
-
-        :param request: Request instance for ModifyNetworkAclAttribute.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyNetworkAclAttributeRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyNetworkAclAttributeResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ModifyNetworkAclAttribute", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyNetworkAclAttributeResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ModifyNetworkAclEntries(self, request):
-        """This API is used to modify (add or delete) the inbound and outbound rules of a network ACL.
-
-        :param request: Request instance for ModifyNetworkAclEntries.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyNetworkAclEntriesRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyNetworkAclEntriesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ModifyNetworkAclEntries", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyNetworkAclEntriesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -5955,34 +5562,6 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVpnGatewayRoutesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def NotifyRoutes(self, request):
-        """This API is used to publish a route to CCN. This can also be done by clicking the **Publish to CCN** button on the route table page.
-
-        :param request: Request instance for NotifyRoutes.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.NotifyRoutesRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.NotifyRoutesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("NotifyRoutes", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.NotifyRoutesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -6527,34 +6106,6 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnassignPrivateIpAddressesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def WithdrawNotifyRoutes(self, request):
-        """This API is used to withdraw a route from CCN. This can also be done by clicking the **Withdraw from CCN** button on the route table page.
-
-        :param request: Request instance for WithdrawNotifyRoutes.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.WithdrawNotifyRoutesRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.WithdrawNotifyRoutesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("WithdrawNotifyRoutes", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.WithdrawNotifyRoutesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

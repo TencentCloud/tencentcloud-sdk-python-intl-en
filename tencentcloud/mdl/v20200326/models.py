@@ -1648,6 +1648,92 @@ class DescribeStreamLiveRegionsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeStreamLiveTranscodeDetailRequest(AbstractModel):
+    """DescribeStreamLiveTranscodeDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartDayTime: The query start time (UTC+8) in the format of yyyy-MM-dd.
+You can only query data in the last month (not including the current day).
+        :type StartDayTime: str
+        :param EndDayTime: The query end time (UTC+8) in the format of yyyy-MM-dd.
+You can only query data in the last month (not including the current day).
+        :type EndDayTime: str
+        :param ChannelId: The channel ID (optional).
+        :type ChannelId: str
+        :param PageNum: The number of pages. Default value: 1.
+The value cannot exceed 100.
+        :type PageNum: int
+        :param PageSize: The number of records per page. Default value: 10.
+Value range: 1-1000.
+        :type PageSize: int
+        """
+        self.StartDayTime = None
+        self.EndDayTime = None
+        self.ChannelId = None
+        self.PageNum = None
+        self.PageSize = None
+
+
+    def _deserialize(self, params):
+        self.StartDayTime = params.get("StartDayTime")
+        self.EndDayTime = params.get("EndDayTime")
+        self.ChannelId = params.get("ChannelId")
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamLiveTranscodeDetailResponse(AbstractModel):
+    """DescribeStreamLiveTranscodeDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Infos: A list of the transcoding information.
+        :type Infos: list of DescribeTranscodeDetailInfo
+        :param PageNum: The number of the current page.
+        :type PageNum: int
+        :param PageSize: The number of records per page.
+        :type PageSize: int
+        :param TotalNum: The total number of records.
+        :type TotalNum: int
+        :param TotalPage: The total number of pages.
+        :type TotalPage: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Infos = None
+        self.PageNum = None
+        self.PageSize = None
+        self.TotalNum = None
+        self.TotalPage = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self.Infos = []
+            for item in params.get("Infos"):
+                obj = DescribeTranscodeDetailInfo()
+                obj._deserialize(item)
+                self.Infos.append(obj)
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        self.TotalNum = params.get("TotalNum")
+        self.TotalPage = params.get("TotalPage")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeStreamLiveWatermarkRequest(AbstractModel):
     """DescribeStreamLiveWatermark request structure.
 
@@ -1762,6 +1848,67 @@ class DescribeTextSettings(AbstractModel):
         self.YPos = params.get("YPos")
         self.FontSize = params.get("FontSize")
         self.FontColor = params.get("FontColor")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTranscodeDetailInfo(AbstractModel):
+    """Transcoding details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelId: The channel ID.
+        :type ChannelId: str
+        :param StartTime: The start time (UTC+8) of transcoding in the format of yyyy-MM-dd HH:mm:ss.
+        :type StartTime: str
+        :param EndTime: The end time (UTC+8) of transcoding in the format of yyyy-MM-dd HH:mm:ss.
+        :type EndTime: str
+        :param Duration: The duration (s) of transcoding.
+        :type Duration: int
+        :param ModuleCodec: The encoding method.
+Examples:
+`liveprocessor_H264`: Live transcoding-H264
+`liveprocessor_H265`: Live transcoding-H265
+`topspeed_H264`: Top speed codec-H264
+`topspeed_H265`: Top speed codec-H265
+        :type ModuleCodec: str
+        :param Bitrate: The target bitrate (Kbps).
+        :type Bitrate: int
+        :param Type: The transcoding type.
+        :type Type: str
+        :param PushDomain: The push domain name.
+        :type PushDomain: str
+        :param Resolution: The target resolution.
+        :type Resolution: str
+        """
+        self.ChannelId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Duration = None
+        self.ModuleCodec = None
+        self.Bitrate = None
+        self.Type = None
+        self.PushDomain = None
+        self.Resolution = None
+
+
+    def _deserialize(self, params):
+        self.ChannelId = params.get("ChannelId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Duration = params.get("Duration")
+        self.ModuleCodec = params.get("ModuleCodec")
+        self.Bitrate = params.get("Bitrate")
+        self.Type = params.get("Type")
+        self.PushDomain = params.get("PushDomain")
+        self.Resolution = params.get("Resolution")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
