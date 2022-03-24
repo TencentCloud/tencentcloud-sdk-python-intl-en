@@ -1439,6 +1439,48 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class BindApiInfo(AbstractModel):
+    """Information of the API bound with the upstream
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApiId: Unique API ID.
+        :type ApiId: str
+        :param ServiceId: Unique ID of the service
+        :type ServiceId: str
+        :param ApiName: API name
+Note: This field may return `null`, indicating that no valid value was found.
+        :type ApiName: str
+        :param ServiceName: Service name
+Note: This field may return `null`, indicating that no valid value was found.
+        :type ServiceName: str
+        :param BindTime: Bound At
+        :type BindTime: str
+        """
+        self.ApiId = None
+        self.ServiceId = None
+        self.ApiName = None
+        self.ServiceName = None
+        self.BindTime = None
+
+
+    def _deserialize(self, params):
+        self.ApiId = params.get("ApiId")
+        self.ServiceId = params.get("ServiceId")
+        self.ApiName = params.get("ApiName")
+        self.ServiceName = params.get("ServiceName")
+        self.BindTime = params.get("BindTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BindEnvironmentRequest(AbstractModel):
     """BindEnvironment request structure.
 
@@ -1794,16 +1836,25 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param Authorization: Whether to enable the backend COS signature for the API. It defaults to `false`.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Authorization: bool
+        :param PathMatchMode: The path matching mode of the backend COS service
+`BackEndPath`: Match the backend path
+`FullPath`: Match the full path
+
+Default: `BackEndPath`
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type PathMatchMode: str
         """
         self.Action = None
         self.BucketName = None
         self.Authorization = None
+        self.PathMatchMode = None
 
 
     def _deserialize(self, params):
         self.Action = params.get("Action")
         self.BucketName = params.get("BucketName")
         self.Authorization = params.get("Authorization")
+        self.PathMatchMode = params.get("PathMatchMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2288,20 +2339,32 @@ class CreateApiRsp(AbstractModel):
         :param ApiId: API ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiId: str
-        :param Path: path
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Path: Path
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Path: str
-        :param Method: method
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Method: Request method
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Method: str
         :param CreatedTime: Creation time
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CreatedTime: str
+        :param Status: Status of the import task
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Status: str
+        :param ErrMsg: Details of the error
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ErrMsg: str
+        :param ApiName: API name
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ApiName: str
         """
         self.ApiId = None
         self.Path = None
         self.Method = None
         self.CreatedTime = None
+        self.Status = None
+        self.ErrMsg = None
+        self.ApiName = None
 
 
     def _deserialize(self, params):
@@ -2309,6 +2372,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Path = params.get("Path")
         self.Method = params.get("Method")
         self.CreatedTime = params.get("CreatedTime")
+        self.Status = params.get("Status")
+        self.ErrMsg = params.get("ErrMsg")
+        self.ApiName = params.get("ApiName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2464,6 +2530,8 @@ class CreateServiceRequest(AbstractModel):
         :type Tags: list of Tag
         :param InstanceId: Dedicated instance ID
         :type InstanceId: str
+        :param UniqVpcId: VPC attribute
+        :type UniqVpcId: str
         """
         self.ServiceName = None
         self.Protocol = None
@@ -2475,6 +2543,7 @@ class CreateServiceRequest(AbstractModel):
         self.AppIdType = None
         self.Tags = None
         self.InstanceId = None
+        self.UniqVpcId = None
 
 
     def _deserialize(self, params):
@@ -2493,6 +2562,7 @@ class CreateServiceRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.InstanceId = params.get("InstanceId")
+        self.UniqVpcId = params.get("UniqVpcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2549,6 +2619,94 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.CreatedTime = params.get("CreatedTime")
         self.NetTypes = params.get("NetTypes")
         self.IpVersion = params.get("IpVersion")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateUpstreamRequest(AbstractModel):
+    """CreateUpstream request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Scheme: Backend protocol. Values: `HTTP`, `HTTPS`
+        :type Scheme: str
+        :param Algorithm: The balancing method can only be `ROUND_ROBIN`.
+        :type Algorithm: str
+        :param UniqVpcId: Unique VPC ID
+        :type UniqVpcId: str
+        :param UpstreamName: Name of the upstream 
+        :type UpstreamName: str
+        :param UpstreamDescription: Description of the upstream
+        :type UpstreamDescription: str
+        :param Retries: Retry attempts. It defaults to `3`.
+        :type Retries: int
+        :param UpstreamHost: The host header in the request sending to the backend
+        :type UpstreamHost: str
+        :param Nodes: Backend nodes
+        :type Nodes: list of UpstreamNode
+        :param K8sService: The location of K8s service
+        :type K8sService: list of K8sService
+        """
+        self.Scheme = None
+        self.Algorithm = None
+        self.UniqVpcId = None
+        self.UpstreamName = None
+        self.UpstreamDescription = None
+        self.Retries = None
+        self.UpstreamHost = None
+        self.Nodes = None
+        self.K8sService = None
+
+
+    def _deserialize(self, params):
+        self.Scheme = params.get("Scheme")
+        self.Algorithm = params.get("Algorithm")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UpstreamName = params.get("UpstreamName")
+        self.UpstreamDescription = params.get("UpstreamDescription")
+        self.Retries = params.get("Retries")
+        self.UpstreamHost = params.get("UpstreamHost")
+        if params.get("Nodes") is not None:
+            self.Nodes = []
+            for item in params.get("Nodes"):
+                obj = UpstreamNode()
+                obj._deserialize(item)
+                self.Nodes.append(obj)
+        if params.get("K8sService") is not None:
+            self.K8sService = []
+            for item in params.get("K8sService"):
+                obj = K8sService()
+                obj._deserialize(item)
+                self.K8sService.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUpstreamResponse(AbstractModel):
+    """CreateUpstream response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UpstreamId: The unique upstream IP returned
+Note: This field may return `null`, indicating that no valid value was found.
+        :type UpstreamId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.UpstreamId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.UpstreamId = params.get("UpstreamId")
         self.RequestId = params.get("RequestId")
 
 
@@ -2994,6 +3152,52 @@ class DeleteServiceSubDomainMappingResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteUpstreamRequest(AbstractModel):
+    """DeleteUpstream request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UpstreamId: ID of the upstream to delete
+        :type UpstreamId: str
+        """
+        self.UpstreamId = None
+
+
+    def _deserialize(self, params):
+        self.UpstreamId = params.get("UpstreamId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteUpstreamResponse(AbstractModel):
+    """DeleteUpstream response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UpstreamId: ID of the upstream deleted
+Note: This field may return `null`, indicating that no valid value was found.
+        :type UpstreamId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.UpstreamId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.UpstreamId = params.get("UpstreamId")
         self.RequestId = params.get("RequestId")
 
 
@@ -5241,6 +5445,196 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeUpstreamBindApis(AbstractModel):
+    """Querying the list of APIs bound with an upstream.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number
+        :type TotalCount: int
+        :param BindApiSet: Information of bound APIs
+        :type BindApiSet: list of BindApiInfo
+        """
+        self.TotalCount = None
+        self.BindApiSet = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("BindApiSet") is not None:
+            self.BindApiSet = []
+            for item in params.get("BindApiSet"):
+                obj = BindApiInfo()
+                obj._deserialize(item)
+                self.BindApiSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUpstreamBindApisRequest(AbstractModel):
+    """DescribeUpstreamBindApis request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: Number of results returned in a page
+        :type Limit: int
+        :param Offset: Page offset
+        :type Offset: int
+        :param UpstreamId: Upstream ID
+        :type UpstreamId: str
+        :param Filters: Filters the results by `ServiceId` and `ApiId`
+        :type Filters: list of Filter
+        """
+        self.Limit = None
+        self.Offset = None
+        self.UpstreamId = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.UpstreamId = params.get("UpstreamId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUpstreamBindApisResponse(AbstractModel):
+    """DescribeUpstreamBindApis response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Query results
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.DescribeUpstreamBindApis`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = DescribeUpstreamBindApis()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUpstreamInfo(AbstractModel):
+    """Information of the queried upstreams
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number of results
+        :type TotalCount: int
+        :param UpstreamSet: List of query result
+        :type UpstreamSet: list of UpstreamInfo
+        """
+        self.TotalCount = None
+        self.UpstreamSet = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("UpstreamSet") is not None:
+            self.UpstreamSet = []
+            for item in params.get("UpstreamSet"):
+                obj = UpstreamInfo()
+                obj._deserialize(item)
+                self.UpstreamSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUpstreamsRequest(AbstractModel):
+    """DescribeUpstreams request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: Number of results returned in a page
+        :type Limit: int
+        :param Offset: Page offset
+        :type Offset: int
+        :param Filters: Filters
+        :type Filters: list of Filter
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUpstreamsResponse(AbstractModel):
+    """DescribeUpstreams response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Query results
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.DescribeUpstreamInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = DescribeUpstreamInfo()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeUsagePlanEnvironmentsRequest(AbstractModel):
     """DescribeUsagePlanEnvironments request structure.
 
@@ -6143,6 +6537,87 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = IPStrategy()
                 obj._deserialize(item)
                 self.StrategySet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class K8sLabel(AbstractModel):
+    """K8s Label
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: Key of the label
+        :type Key: str
+        :param Value: Value of the label
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class K8sService(AbstractModel):
+    """Configuration of K8s service
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Weight: Weight
+        :type Weight: int
+        :param ClusterId: K8s cluster ID
+        :type ClusterId: str
+        :param Namespace: Namespace of the container
+        :type Namespace: str
+        :param ServiceName: Name of the service
+        :type ServiceName: str
+        :param Port: Service port
+        :type Port: int
+        :param ExtraLabels: The additional Label of the Pod
+        :type ExtraLabels: list of K8sLabel
+        :param Name: (Optional) Custom name of the service
+        :type Name: str
+        """
+        self.Weight = None
+        self.ClusterId = None
+        self.Namespace = None
+        self.ServiceName = None
+        self.Port = None
+        self.ExtraLabels = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Weight = params.get("Weight")
+        self.ClusterId = params.get("ClusterId")
+        self.Namespace = params.get("Namespace")
+        self.ServiceName = params.get("ServiceName")
+        self.Port = params.get("Port")
+        if params.get("ExtraLabels") is not None:
+            self.ExtraLabels = []
+            for item in params.get("ExtraLabels"):
+                obj = K8sLabel()
+                obj._deserialize(item)
+                self.ExtraLabels.append(obj)
+        self.Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7077,6 +7552,100 @@ class ModifySubDomainResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyUpstreamRequest(AbstractModel):
+    """ModifyUpstream request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UpstreamId: Unique ID of the upstream
+        :type UpstreamId: str
+        :param UpstreamName: Name of the upstream 
+        :type UpstreamName: str
+        :param UpstreamDescription: Description of the upstream
+        :type UpstreamDescription: str
+        :param Scheme: Backend protocol. Values: `HTTP`, `HTTPS`
+        :type Scheme: str
+        :param Algorithm: The balancing method can only be `ROUND_ROBIN`.
+        :type Algorithm: str
+        :param UniqVpcId: Unique VPC ID.
+        :type UniqVpcId: str
+        :param Retries: Retry attempts. It defaults to `3`.
+        :type Retries: int
+        :param UpstreamHost: The host header in the request sending to the backend
+        :type UpstreamHost: str
+        :param Nodes: List of backend nodes
+        :type Nodes: list of UpstreamNode
+        :param K8sService: Configuration of K8s service
+        :type K8sService: list of K8sService
+        """
+        self.UpstreamId = None
+        self.UpstreamName = None
+        self.UpstreamDescription = None
+        self.Scheme = None
+        self.Algorithm = None
+        self.UniqVpcId = None
+        self.Retries = None
+        self.UpstreamHost = None
+        self.Nodes = None
+        self.K8sService = None
+
+
+    def _deserialize(self, params):
+        self.UpstreamId = params.get("UpstreamId")
+        self.UpstreamName = params.get("UpstreamName")
+        self.UpstreamDescription = params.get("UpstreamDescription")
+        self.Scheme = params.get("Scheme")
+        self.Algorithm = params.get("Algorithm")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.Retries = params.get("Retries")
+        self.UpstreamHost = params.get("UpstreamHost")
+        if params.get("Nodes") is not None:
+            self.Nodes = []
+            for item in params.get("Nodes"):
+                obj = UpstreamNode()
+                obj._deserialize(item)
+                self.Nodes.append(obj)
+        if params.get("K8sService") is not None:
+            self.K8sService = []
+            for item in params.get("K8sService"):
+                obj = K8sService()
+                obj._deserialize(item)
+                self.K8sService.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyUpstreamResponse(AbstractModel):
+    """ModifyUpstream response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Information of the upstream after the modification
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.UpstreamInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = UpstreamInfo()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyUsagePlanRequest(AbstractModel):
     """ModifyUsagePlan request structure.
 
@@ -7684,7 +8253,7 @@ class ServiceConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Product: Backend type, which takes effect when VPC is enabled. Valid values: `clb` and `upstream` (VPC channel)
+        :param Product: The backend type. It’s available when `vpc` is enabled. Values: `clb`, `cvm` and `upstream`.
         :type Product: str
         :param UniqVpcId: Unique VPC ID.
         :type UniqVpcId: str
@@ -8704,6 +9273,254 @@ Note: this field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
+
+
+class UpstreamHealthChecker(AbstractModel):
+    """Upstream health check configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnableActiveCheck: Specifies whether to enable active health check
+        :type EnableActiveCheck: bool
+        :param EnablePassiveCheck: Specifies whether the enable passive health check
+        :type EnablePassiveCheck: bool
+        :param HealthyHttpStatus: The HTTP status code that indicates that the upstream is healthy
+        :type HealthyHttpStatus: str
+        :param UnhealthyHttpStatus: The HTTP status code that indicates that the upstream is unhealthy
+        :type UnhealthyHttpStatus: str
+        :param TcpFailureThreshold: The threshold on consecutive TCP errors. Range: [0, 254]. `0` indicates not to check TCP.
+        :type TcpFailureThreshold: int
+        :param TimeoutThreshold: The threshold on consecutive timeouts. Range: [0, 254]. `0` indicates not to check TCP.
+        :type TimeoutThreshold: int
+        :param HttpFailureThreshold: The threshold on consecutive HTTP errors. Range: [0, 254]. `0` indicates not to check HTTP.
+        :type HttpFailureThreshold: int
+        :param ActiveCheckHttpPath: The path for active health check. It defaults to `/`.
+        :type ActiveCheckHttpPath: str
+        :param ActiveCheckTimeout: The timeout period for active health check in seconds. Default: `5`. 
+        :type ActiveCheckTimeout: int
+        :param ActiveCheckInterval: The interval for active health check in seconds. Default: `5`. 
+        :type ActiveCheckInterval: int
+        :param ActiveRequestHeader: Header of the active health check request
+        :type ActiveRequestHeader: list of UpstreamHealthCheckerReqHeaders
+        :param UnhealthyTimeout: The period for an abnormal to recover automatically in seconds. If only the passive health check is enabled, it must be greater than 0. Otherwise the abnormal nodes can not recovered automatically. The default value is 30 seconds. 
+        :type UnhealthyTimeout: int
+        """
+        self.EnableActiveCheck = None
+        self.EnablePassiveCheck = None
+        self.HealthyHttpStatus = None
+        self.UnhealthyHttpStatus = None
+        self.TcpFailureThreshold = None
+        self.TimeoutThreshold = None
+        self.HttpFailureThreshold = None
+        self.ActiveCheckHttpPath = None
+        self.ActiveCheckTimeout = None
+        self.ActiveCheckInterval = None
+        self.ActiveRequestHeader = None
+        self.UnhealthyTimeout = None
+
+
+    def _deserialize(self, params):
+        self.EnableActiveCheck = params.get("EnableActiveCheck")
+        self.EnablePassiveCheck = params.get("EnablePassiveCheck")
+        self.HealthyHttpStatus = params.get("HealthyHttpStatus")
+        self.UnhealthyHttpStatus = params.get("UnhealthyHttpStatus")
+        self.TcpFailureThreshold = params.get("TcpFailureThreshold")
+        self.TimeoutThreshold = params.get("TimeoutThreshold")
+        self.HttpFailureThreshold = params.get("HttpFailureThreshold")
+        self.ActiveCheckHttpPath = params.get("ActiveCheckHttpPath")
+        self.ActiveCheckTimeout = params.get("ActiveCheckTimeout")
+        self.ActiveCheckInterval = params.get("ActiveCheckInterval")
+        if params.get("ActiveRequestHeader") is not None:
+            self.ActiveRequestHeader = []
+            for item in params.get("ActiveRequestHeader"):
+                obj = UpstreamHealthCheckerReqHeaders()
+                obj._deserialize(item)
+                self.ActiveRequestHeader.append(obj)
+        self.UnhealthyTimeout = params.get("UnhealthyTimeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpstreamHealthCheckerReqHeaders(AbstractModel):
+    """The request header configuration of active upstream health check requests
+
+    """
+
+
+class UpstreamInfo(AbstractModel):
+    """Information of an upstream
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UpstreamId: Unique ID of the upstream
+        :type UpstreamId: str
+        :param UpstreamName: Name of the upstream 
+        :type UpstreamName: str
+        :param UpstreamDescription: Description of the upstream
+        :type UpstreamDescription: str
+        :param Scheme: Protocol
+        :type Scheme: str
+        :param Algorithm: Load balancing algorithm
+        :type Algorithm: str
+        :param UniqVpcId: Unique VPC ID.
+        :type UniqVpcId: str
+        :param Retries: Number of retried attempts
+        :type Retries: int
+        :param Nodes: Backend nodes
+        :type Nodes: list of UpstreamNode
+        :param CreatedTime: Creation time.
+        :type CreatedTime: str
+        :param Tags: Label
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Tags: list of Tag
+        :param HealthChecker: Health check configuration
+Note: This field may return `null`, indicating that no valid value was found.
+        :type HealthChecker: :class:`tencentcloud.apigateway.v20180808.models.UpstreamHealthChecker`
+        :param UpstreamType: Type of the upstream
+        :type UpstreamType: str
+        :param K8sServices: Configuration of K8s service
+Note: This field may return `null`, indicating that no valid value was found.
+        :type K8sServices: list of K8sService
+        :param UpstreamHost: Host of the upstream
+Note: This field may return `null`, indicating that no valid value was found.
+        :type UpstreamHost: str
+        """
+        self.UpstreamId = None
+        self.UpstreamName = None
+        self.UpstreamDescription = None
+        self.Scheme = None
+        self.Algorithm = None
+        self.UniqVpcId = None
+        self.Retries = None
+        self.Nodes = None
+        self.CreatedTime = None
+        self.Tags = None
+        self.HealthChecker = None
+        self.UpstreamType = None
+        self.K8sServices = None
+        self.UpstreamHost = None
+
+
+    def _deserialize(self, params):
+        self.UpstreamId = params.get("UpstreamId")
+        self.UpstreamName = params.get("UpstreamName")
+        self.UpstreamDescription = params.get("UpstreamDescription")
+        self.Scheme = params.get("Scheme")
+        self.Algorithm = params.get("Algorithm")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.Retries = params.get("Retries")
+        if params.get("Nodes") is not None:
+            self.Nodes = []
+            for item in params.get("Nodes"):
+                obj = UpstreamNode()
+                obj._deserialize(item)
+                self.Nodes.append(obj)
+        self.CreatedTime = params.get("CreatedTime")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        if params.get("HealthChecker") is not None:
+            self.HealthChecker = UpstreamHealthChecker()
+            self.HealthChecker._deserialize(params.get("HealthChecker"))
+        self.UpstreamType = params.get("UpstreamType")
+        if params.get("K8sServices") is not None:
+            self.K8sServices = []
+            for item in params.get("K8sServices"):
+                obj = K8sService()
+                obj._deserialize(item)
+                self.K8sServices.append(obj)
+        self.UpstreamHost = params.get("UpstreamHost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpstreamNode(AbstractModel):
+    """Metadata of backend nodes of the upstream
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Host: IP or domain name of the host
+        :type Host: str
+        :param Port: The port number. Range: [0, 65535]
+        :type Port: int
+        :param Weight: Value range: [0, 100]. `0` refers to disable it.
+        :type Weight: int
+        :param VmInstanceId: VM instance ID
+Note: This field may return `null`, indicating that no valid value was found.
+        :type VmInstanceId: str
+        :param Tags: Tag
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Tags: list of str
+        :param Healthy: Health status of the node. Value: `OFF`, `HEALTHY`, `UNHEALTHY` and `NO_DATA`. It’s not required for creating and editing actions.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Healthy: str
+        :param ServiceName: The K8s service name
+Note: This field may return `null`, indicating that no valid value was found.
+        :type ServiceName: str
+        :param NameSpace: K8s namespace
+Note: This field may return `null`, indicating that no valid value was found.
+        :type NameSpace: str
+        :param ClusterId: ID of the TKE cluster
+Note: This field may return `null`, indicating that no valid value was found.
+        :type ClusterId: str
+        :param Source: Source of the node
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Source: str
+        :param UniqueServiceName: The unique service name in API Gateway
+Note: This field may return `null`, indicating that no valid value was found.
+        :type UniqueServiceName: str
+        """
+        self.Host = None
+        self.Port = None
+        self.Weight = None
+        self.VmInstanceId = None
+        self.Tags = None
+        self.Healthy = None
+        self.ServiceName = None
+        self.NameSpace = None
+        self.ClusterId = None
+        self.Source = None
+        self.UniqueServiceName = None
+
+
+    def _deserialize(self, params):
+        self.Host = params.get("Host")
+        self.Port = params.get("Port")
+        self.Weight = params.get("Weight")
+        self.VmInstanceId = params.get("VmInstanceId")
+        self.Tags = params.get("Tags")
+        self.Healthy = params.get("Healthy")
+        self.ServiceName = params.get("ServiceName")
+        self.NameSpace = params.get("NameSpace")
+        self.ClusterId = params.get("ClusterId")
+        self.Source = params.get("Source")
+        self.UniqueServiceName = params.get("UniqueServiceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UsagePlan(AbstractModel):

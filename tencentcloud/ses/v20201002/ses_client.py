@@ -112,7 +112,7 @@ class SesClient(AbstractClient):
 
     def CreateEmailTemplate(self, request):
         """This API is used to create a TEXT or HTML email template. To create an HTML template, ensure that it does not include external CSS files. You can use {{variable name}} to specify a variable in the template.
-        Note: only an approved template can be used to send emails.
+        Note: Only an approved template can be used to send emails.
 
         :param request: Request instance for CreateEmailTemplate.
         :type request: :class:`tencentcloud.ses.v20201002.models.CreateEmailTemplateRequest`
@@ -293,6 +293,34 @@ class SesClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteEmailTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteReceiver(self, request):
+        """This API is used to delete a recipient group and all recipient email addresses in the group based on the recipient group ID.
+
+        :param request: Request instance for DeleteReceiver.
+        :type request: :class:`tencentcloud.ses.v20201002.models.DeleteReceiverRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.DeleteReceiverResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteReceiver", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteReceiverResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -27,7 +27,7 @@ class Attachment(AbstractModel):
         r"""
         :param FileName: Attachment name, which cannot exceed 255 characters. Some attachment types are not supported. For details, see [Attachment Types](https://intl.cloud.tencent.com/document/product/1288/51951?from_cn_redirect=1).
         :type FileName: str
-        :param Content: Attachment content after base64 encoding. A single attachment cannot exceed 5 MB. Note: Tencent Cloud APIs require that a request packet should not exceed 10 MB. If you are sending multiple attachments, the total size of these attachments cannot exceed 10 MB.
+        :param Content: Attachment content after Base64 encoding. A single attachment cannot exceed 4 MB. Note: Tencent Cloud APIs require that a request packet should not exceed 8 MB. If you are sending multiple attachments, the total size of these attachments cannot exceed 8 MB.
         :type Content: str
         """
         self.FileName = None
@@ -67,9 +67,9 @@ Tencent Cloud team <noreply@mail.qcloud.com>
         :type ReplyToAddresses: str
         :param Template: Template when emails are sent using a template
         :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
-        :param Simple: Email content when emails are sent by calling the API
+        :param Simple: Email content when emails are sent by calling the API. This parameter is currently unavailable.
         :type Simple: :class:`tencentcloud.ses.v20201002.models.Simple`
-        :param Attachments: Email attachments
+        :param Attachments: Attachment parameters to set when you need to send attachments. This parameter is currently unavailable.
         :type Attachments: list of Attachment
         :param CycleParam: Parameter required for a recurring sending task
         :type CycleParam: :class:`tencentcloud.ses.v20201002.models.CycleEmailParam`
@@ -77,6 +77,8 @@ Tencent Cloud team <noreply@mail.qcloud.com>
         :type TimedParam: :class:`tencentcloud.ses.v20201002.models.TimedEmailParam`
         :param Unsubscribe: Unsubscribe option. `1`: provides an unsubscribe link; `0`: does not provide an unsubscribe link
         :type Unsubscribe: str
+        :param ADLocation: 
+        :type ADLocation: int
         """
         self.FromEmailAddress = None
         self.ReceiverId = None
@@ -89,6 +91,7 @@ Tencent Cloud team <noreply@mail.qcloud.com>
         self.CycleParam = None
         self.TimedParam = None
         self.Unsubscribe = None
+        self.ADLocation = None
 
 
     def _deserialize(self, params):
@@ -116,6 +119,7 @@ Tencent Cloud team <noreply@mail.qcloud.com>
             self.TimedParam = TimedEmailParam()
             self.TimedParam._deserialize(params.get("TimedParam"))
         self.Unsubscribe = params.get("Unsubscribe")
+        self.ADLocation = params.get("ADLocation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -635,6 +639,47 @@ class DeleteEmailTemplateRequest(AbstractModel):
 
 class DeleteEmailTemplateResponse(AbstractModel):
     """DeleteEmailTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteReceiverRequest(AbstractModel):
+    """DeleteReceiver request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReceiverId: Recipient group ID, which is returned when a recipient group is created.
+        :type ReceiverId: int
+        """
+        self.ReceiverId = None
+
+
+    def _deserialize(self, params):
+        self.ReceiverId = params.get("ReceiverId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteReceiverResponse(AbstractModel):
+    """DeleteReceiver response structure.
 
     """
 
@@ -1359,6 +1404,8 @@ Sender <email address>
         :type Attachments: list of Attachment
         :param Unsubscribe: Unsubscribe option. `1`: provides an unsubscribe link; `0`: does not provide an unsubscribe link
         :type Unsubscribe: str
+        :param TriggerType: Email triggering type. `0` (default): non-trigger-based, suitable for marketing emails and non-immediate emails; `1`: trigger-based, suitable for immediate emails such as emails containing verification codes. If the size of an email exceeds a specified value, the system will automatically choose the non-trigger-based type.
+        :type TriggerType: int
         """
         self.FromEmailAddress = None
         self.Destination = None
@@ -1368,6 +1415,7 @@ Sender <email address>
         self.Simple = None
         self.Attachments = None
         self.Unsubscribe = None
+        self.TriggerType = None
 
 
     def _deserialize(self, params):
@@ -1388,6 +1436,7 @@ Sender <email address>
                 obj._deserialize(item)
                 self.Attachments.append(obj)
         self.Unsubscribe = params.get("Unsubscribe")
+        self.TriggerType = params.get("TriggerType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

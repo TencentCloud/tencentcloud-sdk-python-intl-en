@@ -423,6 +423,34 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateUpstream(self, request):
+        """This API is used to create an upstream.
+
+        :param request: Request instance for CreateUpstream.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.CreateUpstreamRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.CreateUpstreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateUpstream", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateUpstreamResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateUsagePlan(self, request):
         """This API is used to create a usage plan.
         To use API Gateway, you need to create a usage plan and bind it to a service environment.
@@ -663,6 +691,34 @@ class ApigatewayClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteServiceSubDomainMappingResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteUpstream(self, request):
+        """This API is used to delete an upstream. Note that you can only delete an upstream when it’s not bound with an API.
+
+        :param request: Request instance for DeleteUpstream.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DeleteUpstreamRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DeleteUpstreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteUpstream", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteUpstreamResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1045,8 +1101,8 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeApiKeysStatus(self, request):
-        """This API is used to query the list of keys.
-        If you have created multiple API key pairs, you can use this API to query the information of one or more keys. This API does not display the `secretKey`.
+        """This API is used to query the information of one or more API keys.
+
 
         :param request: Request instance for DescribeApiKeysStatus.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiKeysStatusRequest`
@@ -1583,6 +1639,62 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeUpstreamBindApis(self, request):
+        """This API is used to query the list of APIs bound with an upstream.
+
+        :param request: Request instance for DescribeUpstreamBindApis.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeUpstreamBindApisRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeUpstreamBindApisResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUpstreamBindApis", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUpstreamBindApisResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUpstreams(self, request):
+        """This API is used to query the list of upstreams.
+
+        :param request: Request instance for DescribeUpstreams.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeUpstreamsRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeUpstreamsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUpstreams", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUpstreamsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeUsagePlan(self, request):
         """This API is used to query the details of a usage plan, such as its name, QPS, creation time, and bound environment.
 
@@ -2075,6 +2187,34 @@ class ApigatewayClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySubDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyUpstream(self, request):
+        """This API is used to modify an upstream.
+
+        :param request: Request instance for ModifyUpstream.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.ModifyUpstreamRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.ModifyUpstreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyUpstream", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyUpstreamResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
