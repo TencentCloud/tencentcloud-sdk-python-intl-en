@@ -1019,34 +1019,6 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeBillBandwidthAndFluxList(self, request):
-        """This API is used to query the data of billable LVB bandwidth and traffic.
-
-        :param request: Request instance for DescribeBillBandwidthAndFluxList.
-        :type request: :class:`tencentcloud.live.v20180801.models.DescribeBillBandwidthAndFluxListRequest`
-        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeBillBandwidthAndFluxListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeBillBandwidthAndFluxList", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeBillBandwidthAndFluxListResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeConcurrentRecordStreamNum(self, request):
         """This API is used to query the number of concurrent recording channels, which is applicable to LCB and LVB.
 
@@ -2292,34 +2264,6 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamPlayInfoListResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeStreamPushInfoList(self, request):
-        """This API is used to query the upstream push quality data by stream ID, including frame rate, bitrate, elapsed time, and codec of audio and video files.
-
-        :param request: Request instance for DescribeStreamPushInfoList.
-        :type request: :class:`tencentcloud.live.v20180801.models.DescribeStreamPushInfoListRequest`
-        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeStreamPushInfoListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeStreamPushInfoList", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeStreamPushInfoListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

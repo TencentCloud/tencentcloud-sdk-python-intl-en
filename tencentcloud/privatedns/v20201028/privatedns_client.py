@@ -110,90 +110,6 @@ class PrivatednsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeletePrivateDNSAccount(self, request):
-        """This API is used to delete a Private DNS account.
-
-        :param request: Request instance for DeletePrivateDNSAccount.
-        :type request: :class:`tencentcloud.privatedns.v20201028.models.DeletePrivateDNSAccountRequest`
-        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DeletePrivateDNSAccountResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DeletePrivateDNSAccount", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeletePrivateDNSAccountResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DeletePrivateZone(self, request):
-        """This API is used to delete a private domain and stop DNS.
-
-        :param request: Request instance for DeletePrivateZone.
-        :type request: :class:`tencentcloud.privatedns.v20201028.models.DeletePrivateZoneRequest`
-        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DeletePrivateZoneResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DeletePrivateZone", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeletePrivateZoneResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DeletePrivateZoneRecord(self, request):
-        """This API is used to delete a DNS record for a private domain.
-
-        :param request: Request instance for DeletePrivateZoneRecord.
-        :type request: :class:`tencentcloud.privatedns.v20201028.models.DeletePrivateZoneRecordRequest`
-        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DeletePrivateZoneRecordResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DeletePrivateZoneRecord", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeletePrivateZoneRecordResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeAccountVpcList(self, request):
         """This API is used to get the VPC list of a Private DNS account.
 
@@ -306,90 +222,6 @@ class PrivatednsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribePrivateZone(self, request):
-        """This API is used to get the private domain information.
-
-        :param request: Request instance for DescribePrivateZone.
-        :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribePrivateZoneRequest`
-        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DescribePrivateZoneResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribePrivateZone", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribePrivateZoneResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribePrivateZoneList(self, request):
-        """This API is used to get the list of private domains.
-
-        :param request: Request instance for DescribePrivateZoneList.
-        :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribePrivateZoneListRequest`
-        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DescribePrivateZoneListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribePrivateZoneList", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribePrivateZoneListResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribePrivateZoneRecordList(self, request):
-        """This API is used to get the list of records for a private domain.
-
-        :param request: Request instance for DescribePrivateZoneRecordList.
-        :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribePrivateZoneRecordListRequest`
-        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DescribePrivateZoneRecordListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribePrivateZoneRecordList", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribePrivateZoneRecordListResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribePrivateZoneService(self, request):
         """This API is used to query the Private DNS activation status.
 
@@ -404,6 +236,34 @@ class PrivatednsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePrivateZoneServiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeQuotaUsage(self, request):
+        """This API is used to query quota usage.
+
+        :param request: Request instance for DescribeQuotaUsage.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeQuotaUsageRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DescribeQuotaUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeQuotaUsage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeQuotaUsageResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

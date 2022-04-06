@@ -1420,6 +1420,8 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
         :param Mp3Param: Mp3 recording parameter, which is set when Mp3 recording is enabled.
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        :param RemoveWatermark: Whether to remove the watermark. This parameter is invalid if `IsDelayLive` is `1`.
+        :type RemoveWatermark: bool
         """
         self.TemplateName = None
         self.Description = None
@@ -1430,6 +1432,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         self.IsDelayLive = None
         self.HlsSpecialParam = None
         self.Mp3Param = None
+        self.RemoveWatermark = None
 
 
     def _deserialize(self, params):
@@ -1454,6 +1457,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         if params.get("Mp3Param") is not None:
             self.Mp3Param = RecordParam()
             self.Mp3Param._deserialize(params.get("Mp3Param"))
+        self.RemoveWatermark = params.get("RemoveWatermark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2804,117 +2808,6 @@ class DescribeAreaBillBandwidthAndFluxListResponse(AbstractModel):
             self.DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = BillAreaInfo()
-                obj._deserialize(item)
-                self.DataInfoList.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeBillBandwidthAndFluxListRequest(AbstractModel):
-    """DescribeBillBandwidthAndFluxList request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param StartTime: Start time point in the format of `yyyy-mm-dd HH:MM:SS`.
-        :type StartTime: str
-        :param EndTime: End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 31 days. Data in the last 3 years can be queried.
-        :type EndTime: str
-        :param PlayDomains: LVB playback domain name. If this parameter is left empty, full data will be queried.
-        :type PlayDomains: list of str
-        :param MainlandOrOversea: Valid values:
-Mainland: query data for Mainland China,
-Oversea: query data for regions outside Mainland China,
-Default: query data for all regions.
-Note: LEB only supports querying data for all regions.
-        :type MainlandOrOversea: str
-        :param Granularity: Data granularity. Valid values:
-5: 5-minute granularity (the query time span should be within 1 day),
-60: 1-hour granularity (the query time span should be within one month),
-1440: 1-day granularity (the query time span should be within one month).
-Default value: 5.
-        :type Granularity: int
-        :param ServiceName: Service name. Valid values: LVB, LEB. The sum of LVB and LEB usage will be returned if this parameter is left empty.
-        :type ServiceName: str
-        :param RegionNames: Region. Valid values:
-China Mainland
-Asia Pacific I
-Asia Pacific II
-Asia Pacific III
-Europe
-North America
-South America
-Middle East
-Africa
-        :type RegionNames: list of str
-        """
-        self.StartTime = None
-        self.EndTime = None
-        self.PlayDomains = None
-        self.MainlandOrOversea = None
-        self.Granularity = None
-        self.ServiceName = None
-        self.RegionNames = None
-
-
-    def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.PlayDomains = params.get("PlayDomains")
-        self.MainlandOrOversea = params.get("MainlandOrOversea")
-        self.Granularity = params.get("Granularity")
-        self.ServiceName = params.get("ServiceName")
-        self.RegionNames = params.get("RegionNames")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeBillBandwidthAndFluxListResponse(AbstractModel):
-    """DescribeBillBandwidthAndFluxList response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param PeakBandwidthTime: Time point of peak bandwidth value in the format of `yyyy-mm-dd HH:MM:SS`.
-        :type PeakBandwidthTime: str
-        :param PeakBandwidth: Peak bandwidth in Mbps.
-        :type PeakBandwidth: float
-        :param P95PeakBandwidthTime: Time point of 95th percentile bandwidth value in the format of `yyyy-mm-dd HH:MM:SS`.
-        :type P95PeakBandwidthTime: str
-        :param P95PeakBandwidth: 95th percentile bandwidth in Mbps.
-        :type P95PeakBandwidth: float
-        :param SumFlux: Total traffic in MB.
-        :type SumFlux: float
-        :param DataInfoList: Detailed data information.
-        :type DataInfoList: list of BillDataInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.PeakBandwidthTime = None
-        self.PeakBandwidth = None
-        self.P95PeakBandwidthTime = None
-        self.P95PeakBandwidth = None
-        self.SumFlux = None
-        self.DataInfoList = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.PeakBandwidthTime = params.get("PeakBandwidthTime")
-        self.PeakBandwidth = params.get("PeakBandwidth")
-        self.P95PeakBandwidthTime = params.get("P95PeakBandwidthTime")
-        self.P95PeakBandwidth = params.get("P95PeakBandwidth")
-        self.SumFlux = params.get("SumFlux")
-        if params.get("DataInfoList") is not None:
-            self.DataInfoList = []
-            for item in params.get("DataInfoList"):
-                obj = BillDataInfo()
                 obj._deserialize(item)
                 self.DataInfoList.append(obj)
         self.RequestId = params.get("RequestId")
@@ -5612,72 +5505,6 @@ class DescribeStreamPlayInfoListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeStreamPushInfoListRequest(AbstractModel):
-    """DescribeStreamPushInfoList request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param StreamName: Stream name.
-        :type StreamName: str
-        :param StartTime: Start time point in the format of `yyyy-mm-dd HH:MM:SS`.
-        :type StartTime: str
-        :param EndTime: End time in the format of yyyy-mm-dd HH:MM:SS. You can query data in the past 7 days. You’re advised to set the query period to up to 3 hours.
-        :type EndTime: str
-        :param PushDomain: Push domain name.
-        :type PushDomain: str
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
-        :type AppName: str
-        """
-        self.StreamName = None
-        self.StartTime = None
-        self.EndTime = None
-        self.PushDomain = None
-        self.AppName = None
-
-
-    def _deserialize(self, params):
-        self.StreamName = params.get("StreamName")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.PushDomain = params.get("PushDomain")
-        self.AppName = params.get("AppName")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeStreamPushInfoListResponse(AbstractModel):
-    """DescribeStreamPushInfoList response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param DataInfoList: Returned data list.
-        :type DataInfoList: list of PushQualityData
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.DataInfoList = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("DataInfoList") is not None:
-            self.DataInfoList = []
-            for item in params.get("DataInfoList"):
-                obj = PushQualityData()
-                obj._deserialize(item)
-                self.DataInfoList.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeTopClientIpSumInfoListRequest(AbstractModel):
     """DescribeTopClientIpSumInfoList request structure.
 
@@ -7019,6 +6846,8 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
         :param Mp3Param: MP3 recording parameter, which is set when MP3 recording is enabled.
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        :param RemoveWatermark: Whether to remove the watermark. This parameter is invalid if `IsDelayLive` is `1`.
+        :type RemoveWatermark: bool
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -7029,6 +6858,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         self.AacParam = None
         self.HlsSpecialParam = None
         self.Mp3Param = None
+        self.RemoveWatermark = None
 
 
     def _deserialize(self, params):
@@ -7053,6 +6883,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         if params.get("Mp3Param") is not None:
             self.Mp3Param = RecordParam()
             self.Mp3Param._deserialize(params.get("Mp3Param"))
+        self.RemoveWatermark = params.get("RemoveWatermark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7683,11 +7514,11 @@ class PushDataInfo(AbstractModel):
         :type ServerIp: str
         :param VideoFps: Pushed video frame rate in Hz.
         :type VideoFps: int
-        :param VideoSpeed: Video bitrate (Kbps) for publishing
+        :param VideoSpeed: Video bitrate (bps) for publishing
         :type VideoSpeed: int
         :param AudioFps: Pushed audio frame rate in Hz.
         :type AudioFps: int
-        :param AudioSpeed: Audio bitrate (Kbps) for publishing
+        :param AudioSpeed: Audio bitrate (bps) for publishing
         :type AudioSpeed: int
         :param PushDomain: Push domain name.
         :type PushDomain: str
@@ -7703,9 +7534,9 @@ Example: H.264.
         :type Resolution: str
         :param AsampleRate: Sample rate.
         :type AsampleRate: int
-        :param MetaAudioSpeed: Audio bitrate in `metadata` in Kbps.
+        :param MetaAudioSpeed: Audio bitrate (bps) in metadata
         :type MetaAudioSpeed: int
-        :param MetaVideoSpeed: Video bitrate in `metadata` in Kbps.
+        :param MetaVideoSpeed: Video bitrate (bps) in metadata
         :type MetaVideoSpeed: int
         :param MetaFps: Frame rate in `metadata`.
         :type MetaFps: int
@@ -7747,106 +7578,6 @@ Example: H.264.
         self.MetaAudioSpeed = params.get("MetaAudioSpeed")
         self.MetaVideoSpeed = params.get("MetaVideoSpeed")
         self.MetaFps = params.get("MetaFps")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class PushQualityData(AbstractModel):
-    """Push quality data of a stream.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Time: Data time in the format of `%Y-%m-%d %H:%M:%S.%ms` and accurate down to the millisecond level.
-        :type Time: str
-        :param PushDomain: Push domain name.
-        :type PushDomain: str
-        :param AppName: Push path.
-        :type AppName: str
-        :param ClientIp: Push client IP.
-        :type ClientIp: str
-        :param BeginPushTime: Push start time in the format of `%Y-%m-%d %H:%M:%S.%ms` and accurate down to the millisecond level.
-        :type BeginPushTime: str
-        :param Resolution: Resolution information.
-        :type Resolution: str
-        :param VCodec: Video codec.
-        :type VCodec: str
-        :param ACodec: Audio codec.
-        :type ACodec: str
-        :param Sequence: Push serial number, which uniquely identifies a push.
-        :type Sequence: str
-        :param VideoFps: Video frame rate.
-        :type VideoFps: int
-        :param VideoRate: Video bitrate in bps.
-        :type VideoRate: int
-        :param AudioFps: Audio frame rate.
-        :type AudioFps: int
-        :param AudioRate: Audio bitrate in bps.
-        :type AudioRate: int
-        :param LocalTs: Local elapsed time in milliseconds. The greater the difference between audio/video elapsed time and local elapsed time, the poorer the push quality and the more serious the upstream lag.
-        :type LocalTs: int
-        :param VideoTs: Video elapsed time in milliseconds.
-        :type VideoTs: int
-        :param AudioTs: Audio elapsed time in milliseconds.
-        :type AudioTs: int
-        :param MetaVideoRate: Video bitrate in `metadata` in Kbps.
-        :type MetaVideoRate: int
-        :param MetaAudioRate: Audio bitrate in `metadata` in Kbps.
-        :type MetaAudioRate: int
-        :param MateFps: Frame rate in `metadata`.
-        :type MateFps: int
-        :param StreamParam: Push parameter
-        :type StreamParam: str
-        """
-        self.Time = None
-        self.PushDomain = None
-        self.AppName = None
-        self.ClientIp = None
-        self.BeginPushTime = None
-        self.Resolution = None
-        self.VCodec = None
-        self.ACodec = None
-        self.Sequence = None
-        self.VideoFps = None
-        self.VideoRate = None
-        self.AudioFps = None
-        self.AudioRate = None
-        self.LocalTs = None
-        self.VideoTs = None
-        self.AudioTs = None
-        self.MetaVideoRate = None
-        self.MetaAudioRate = None
-        self.MateFps = None
-        self.StreamParam = None
-
-
-    def _deserialize(self, params):
-        self.Time = params.get("Time")
-        self.PushDomain = params.get("PushDomain")
-        self.AppName = params.get("AppName")
-        self.ClientIp = params.get("ClientIp")
-        self.BeginPushTime = params.get("BeginPushTime")
-        self.Resolution = params.get("Resolution")
-        self.VCodec = params.get("VCodec")
-        self.ACodec = params.get("ACodec")
-        self.Sequence = params.get("Sequence")
-        self.VideoFps = params.get("VideoFps")
-        self.VideoRate = params.get("VideoRate")
-        self.AudioFps = params.get("AudioFps")
-        self.AudioRate = params.get("AudioRate")
-        self.LocalTs = params.get("LocalTs")
-        self.VideoTs = params.get("VideoTs")
-        self.AudioTs = params.get("AudioTs")
-        self.MetaVideoRate = params.get("MetaVideoRate")
-        self.MetaAudioRate = params.get("MetaAudioRate")
-        self.MateFps = params.get("MateFps")
-        self.StreamParam = params.get("StreamParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7964,6 +7695,9 @@ class RecordTemplateInfo(AbstractModel):
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
         :param Mp3Param: MP3 recording parameter.
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        :param RemoveWatermark: Whether the watermark is removed.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type RemoveWatermark: bool
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -7975,6 +7709,7 @@ class RecordTemplateInfo(AbstractModel):
         self.IsDelayLive = None
         self.HlsSpecialParam = None
         self.Mp3Param = None
+        self.RemoveWatermark = None
 
 
     def _deserialize(self, params):
@@ -8000,6 +7735,7 @@ class RecordTemplateInfo(AbstractModel):
         if params.get("Mp3Param") is not None:
             self.Mp3Param = RecordParam()
             self.Mp3Param._deserialize(params.get("Mp3Param"))
+        self.RemoveWatermark = params.get("RemoveWatermark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

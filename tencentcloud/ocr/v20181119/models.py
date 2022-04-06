@@ -750,6 +750,10 @@ class MLIDPassportOCRResponse(AbstractModel):
     }
 }
         :type AdvancedInfo: str
+        :param CodeSet: The first row of the machine-readable zone (MRZ) at the bottom
+        :type CodeSet: str
+        :param CodeCrc: The second row of the MRZ at the bottom
+        :type CodeCrc: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -763,6 +767,8 @@ class MLIDPassportOCRResponse(AbstractModel):
         self.Warn = None
         self.Image = None
         self.AdvancedInfo = None
+        self.CodeSet = None
+        self.CodeCrc = None
         self.RequestId = None
 
 
@@ -777,6 +783,8 @@ class MLIDPassportOCRResponse(AbstractModel):
         self.Warn = params.get("Warn")
         self.Image = params.get("Image")
         self.AdvancedInfo = params.get("AdvancedInfo")
+        self.CodeSet = params.get("CodeSet")
+        self.CodeCrc = params.get("CodeCrc")
         self.RequestId = params.get("RequestId")
 
 

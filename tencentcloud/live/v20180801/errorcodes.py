@@ -362,6 +362,9 @@ RESOURCENOTFOUND = 'ResourceNotFound'
 # The channel does not exist.
 RESOURCENOTFOUND_CHANNELNOTEXIST = 'ResourceNotFound.ChannelNotExist'
 
+# The certificate does not exist.
+RESOURCENOTFOUND_CRTDATENOTFOUND = 'ResourceNotFound.CrtDateNotFound'
+
 # No certificate was found.
 RESOURCENOTFOUND_CRTDOMAINNOTFOUND = 'ResourceNotFound.CrtDomainNotFound'
 

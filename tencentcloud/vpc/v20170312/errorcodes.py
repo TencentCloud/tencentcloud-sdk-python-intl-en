@@ -218,9 +218,6 @@ INVALIDPARAMETERVALUE_MISSINGASSOCIATEENTITY = 'InvalidParameterValue.MissingAss
 # A request cannot contain IP addresses with different cluster types.
 INVALIDPARAMETERVALUE_MIXEDADDRESSIPSETTYPE = 'InvalidParameterValue.MixedAddressIpSetType'
 
-# The SNAT forwarding rule of the NAT gateway does not exist.
-INVALIDPARAMETERVALUE_NATGATEWAYSNATRULENOTEXISTS = 'InvalidParameterValue.NatGatewaySnatRuleNotExists'
-
 # The NAT Gateway already has an identical SNAT rule.
 INVALIDPARAMETERVALUE_NATSNATRULEEXISTS = 'InvalidParameterValue.NatSnatRuleExists'
 
@@ -317,23 +314,17 @@ INVALIDVPNGATEWAYID_NOTFOUND = 'InvalidVpnGatewayId.NotFound'
 # Quota limit is reached.
 LIMITEXCEEDED = 'LimitExceeded'
 
-# 
+# Ran out of the quota for returning under this account.
 LIMITEXCEEDED_ACCOUNTRETURNQUOTA = 'LimitExceeded.AccountReturnQuota'
 
 # The number of assigned IP addresses has reached the upper limit.
 LIMITEXCEEDED_ADDRESS = 'LimitExceeded.Address'
-
-# The number of EIPs applied for exceeds the upper limit.
-LIMITEXCEEDED_ADDRESSQUOTALIMITEXCEEDED = 'LimitExceeded.AddressQuotaLimitExceeded'
 
 # Exceeded the upper limit of the bandwidth package quota.
 LIMITEXCEEDED_BANDWIDTHPACKAGEQUOTA = 'LimitExceeded.BandwidthPackageQuota'
 
 # The number of assigned IP ranges of the VPC has reached the upper limit.
 LIMITEXCEEDED_CIDRBLOCK = 'LimitExceeded.CidrBlock'
-
-# The number of EIPs applied for exceeds the daily upper limit.
-LIMITEXCEEDED_DAILYALLOCATEADDRESSQUOTALIMITEXCEEDED = 'LimitExceeded.DailyAllocateAddressQuotaLimitExceeded'
 
 # Exceeded the upper limit of the EIPs bound to the instance.
 LIMITEXCEEDED_INSTANCEADDRESSQUOTA = 'LimitExceeded.InstanceAddressQuota'
@@ -344,17 +335,8 @@ LIMITEXCEEDED_MODIFYADDRESSINTERNETCHARGETYPEQUOTA = 'LimitExceeded.ModifyAddres
 # Ran out of the monthly quota of chances to retrieve IPs.
 LIMITEXCEEDED_MONTHLYADDRESSRECOVERYQUOTA = 'LimitExceeded.MonthlyAddressRecoveryQuota'
 
-# Reached the upper limit of NAT gateways.
-LIMITEXCEEDED_NATGATEWAYLIMITEXCEEDED = 'LimitExceeded.NatGatewayLimitExceeded'
-
-# The number of NAT gateways created by the VPC has reached the upper limit.
-LIMITEXCEEDED_NATGATEWAYPERVPCLIMITEXCEEDED = 'LimitExceeded.NatGatewayPerVpcLimitExceeded'
-
-# 
+# Exceeded the character limit of a filter name.
 LIMITEXCEEDED_NUMBEROFFILTERS = 'LimitExceeded.NumberOfFilters'
-
-# The number of EIPs bound to the NAT gateway has reached the upper limit.
-LIMITEXCEEDED_PUBLICIPADDRESSPERNATGATEWAYLIMITEXCEEDED = 'LimitExceeded.PublicIpAddressPerNatGatewayLimitExceeded'
 
 # The number of security group rules exceeds the upper limit.
 LIMITEXCEEDED_SECURITYGROUPPOLICYSET = 'LimitExceeded.SecurityGroupPolicySet'
@@ -395,7 +377,7 @@ UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 # The binding relationship does not exist.
 UNAUTHORIZEDOPERATION_ATTACHMENTNOTFOUND = 'UnauthorizedOperation.AttachmentNotFound'
 
-# 
+# Unauthorized user.
 UNAUTHORIZEDOPERATION_INVALIDACCOUNT = 'UnauthorizedOperation.InvalidAccount'
 
 # Identity verification has not been completed for the account.
@@ -542,6 +524,9 @@ UNSUPPORTEDOPERATION_LOCALGATEWAYALREADYEXISTS = 'UnsupportedOperation.LocalGate
 # The resource mutual exclusion operation is being executed.
 UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = 'UnsupportedOperation.MutexOperationTaskRunning'
 
+# The private IP specified in the SNAT/DNAT forwarding rule has been bound with another rule.
+UNSUPPORTEDOPERATION_NATGATEWAYRULEPIPEXISTS = 'UnsupportedOperation.NatGatewayRulePipExists'
+
 # The specified NAT Gateway type does not support configuring a SNAT rule.
 UNSUPPORTEDOPERATION_NATGATEWAYTYPENOTSUPPORTSNAT = 'UnsupportedOperation.NatGatewayTypeNotSupportSNAT'
 
@@ -568,18 +553,6 @@ UNSUPPORTEDOPERATION_PREPAIDCCNONLYSUPPORTINTERREGIONLIMIT = 'UnsupportedOperati
 
 # The specified value is a primary IP.
 UNSUPPORTEDOPERATION_PRIMARYIP = 'UnsupportedOperation.PrimaryIp'
-
-# At least one EIP exists on the NAT gateway, and the EIP cannot be unbound.
-UNSUPPORTEDOPERATION_PUBLICIPADDRESSDISASSOCIATE = 'UnsupportedOperation.PublicIpAddressDisassociate'
-
-# The EIP bound to the NAT gateway is not a BGP IP.
-UNSUPPORTEDOPERATION_PUBLICIPADDRESSISNOTBGPIP = 'UnsupportedOperation.PublicIpAddressIsNotBGPIp'
-
-# The EIP bound to the NAT gateway does not exist.
-UNSUPPORTEDOPERATION_PUBLICIPADDRESSISNOTEXISTED = 'UnsupportedOperation.PublicIpAddressIsNotExisted'
-
-# The EIP bound to the NAT gateway is not bill-by-traffic.
-UNSUPPORTEDOPERATION_PUBLICIPADDRESSNOTBILLEDBYTRAFFIC = 'UnsupportedOperation.PublicIpAddressNotBilledByTraffic'
 
 # The current account can not use this service in the current region.
 UNSUPPORTEDOPERATION_PURCHASELIMIT = 'UnsupportedOperation.PurchaseLimit'
@@ -608,11 +581,11 @@ UNSUPPORTEDOPERATION_UNASSIGNCIDRBLOCK = 'UnsupportedOperation.UnassignCidrBlock
 # EIP is not bound.
 UNSUPPORTEDOPERATION_UNBINDEIP = 'UnsupportedOperation.UnbindEIP'
 
-# Overdue payments are found under this account. Please complete the payment first.
-UNSUPPORTEDOPERATION_UNPAIDORDERALREADYEXISTS = 'UnsupportedOperation.UnpaidOrderAlreadyExists'
-
 # The specified instance type does not support ENIs.
 UNSUPPORTEDOPERATION_UNSUPPORTEDINSTANCEFAMILY = 'UnsupportedOperation.UnsupportedInstanceFamily'
+
+# The service is not available in this country/region.
+UNSUPPORTEDOPERATION_UNSUPPORTEDREGION = 'UnsupportedOperation.UnsupportedRegion'
 
 # The selected CCN instance cannot be created because the payment type is not supported.
 UNSUPPORTEDOPERATION_USERANDCCNCHARGETYPENOTMATCH = 'UnsupportedOperation.UserAndCcnChargeTypeNotMatch'

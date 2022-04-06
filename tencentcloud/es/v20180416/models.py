@@ -2028,6 +2028,71 @@ class TaskDetail(AbstractModel):
         
 
 
+class UpdateDictionariesRequest(AbstractModel):
+    """UpdateDictionaries request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: ES instance ID
+        :type InstanceId: str
+        :param IkMainDicts: COS address of the main dictionary for the IK analyzer
+        :type IkMainDicts: list of str
+        :param IkStopwords: COS address of the stopword dictionary for the IK analyzer
+        :type IkStopwords: list of str
+        :param Synonym: COS address of the synonym dictionary
+        :type Synonym: list of str
+        :param QQDict: COS address of the QQ dictionary
+        :type QQDict: list of str
+        :param UpdateType: 0: Install; 1: Delete
+        :type UpdateType: int
+        :param ForceRestart: Whether to force restart the cluster
+        :type ForceRestart: bool
+        """
+        self.InstanceId = None
+        self.IkMainDicts = None
+        self.IkStopwords = None
+        self.Synonym = None
+        self.QQDict = None
+        self.UpdateType = None
+        self.ForceRestart = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.IkMainDicts = params.get("IkMainDicts")
+        self.IkStopwords = params.get("IkStopwords")
+        self.Synonym = params.get("Synonym")
+        self.QQDict = params.get("QQDict")
+        self.UpdateType = params.get("UpdateType")
+        self.ForceRestart = params.get("ForceRestart")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateDictionariesResponse(AbstractModel):
+    """UpdateDictionaries response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class UpdateInstanceRequest(AbstractModel):
     """UpdateInstance request structure.
 

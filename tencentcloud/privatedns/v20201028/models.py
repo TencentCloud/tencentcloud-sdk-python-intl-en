@@ -431,143 +431,6 @@ class DatePoint(AbstractModel):
         
 
 
-class DeletePrivateDNSAccountRequest(AbstractModel):
-    """DeletePrivateDNSAccount request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Account: Private DNS account
-        :type Account: :class:`tencentcloud.privatedns.v20201028.models.PrivateDNSAccount`
-        """
-        self.Account = None
-
-
-    def _deserialize(self, params):
-        if params.get("Account") is not None:
-            self.Account = PrivateDNSAccount()
-            self.Account._deserialize(params.get("Account"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DeletePrivateDNSAccountResponse(AbstractModel):
-    """DeletePrivateDNSAccount response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class DeletePrivateZoneRecordRequest(AbstractModel):
-    """DeletePrivateZoneRecord request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ZoneId: Private domain ID
-        :type ZoneId: str
-        :param RecordId: Record ID
-        :type RecordId: str
-        :param RecordIdSet: Array of record IDs. `RecordId` takes precedence.
-        :type RecordIdSet: list of str
-        """
-        self.ZoneId = None
-        self.RecordId = None
-        self.RecordIdSet = None
-
-
-    def _deserialize(self, params):
-        self.ZoneId = params.get("ZoneId")
-        self.RecordId = params.get("RecordId")
-        self.RecordIdSet = params.get("RecordIdSet")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DeletePrivateZoneRecordResponse(AbstractModel):
-    """DeletePrivateZoneRecord response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class DeletePrivateZoneRequest(AbstractModel):
-    """DeletePrivateZone request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ZoneId: Private domain ID
-        :type ZoneId: str
-        :param ZoneIdSet: Array of private domain IDs. `ZoneId` takes precedence.
-        :type ZoneIdSet: list of str
-        """
-        self.ZoneId = None
-        self.ZoneIdSet = None
-
-
-    def _deserialize(self, params):
-        self.ZoneId = params.get("ZoneId")
-        self.ZoneIdSet = params.get("ZoneIdSet")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DeletePrivateZoneResponse(AbstractModel):
-    """DeletePrivateZone response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeAccountVpcListRequest(AbstractModel):
     """DescribeAccountVpcList request structure.
 
@@ -821,191 +684,6 @@ class DescribePrivateDNSAccountListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribePrivateZoneListRequest(AbstractModel):
-    """DescribePrivateZoneList request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Offset: Pagination offset, starting from 0
-        :type Offset: int
-        :param Limit: Number of entries per page. Maximum value: 100. Default value: 20
-        :type Limit: int
-        :param Filters: Filter parameter
-        :type Filters: list of Filter
-        """
-        self.Offset = None
-        self.Limit = None
-        self.Filters = None
-
-
-    def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self.Filters.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribePrivateZoneListResponse(AbstractModel):
-    """DescribePrivateZoneList response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TotalCount: Number of private domains
-        :type TotalCount: int
-        :param PrivateZoneSet: List of private domains
-        :type PrivateZoneSet: list of PrivateZone
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.PrivateZoneSet = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("PrivateZoneSet") is not None:
-            self.PrivateZoneSet = []
-            for item in params.get("PrivateZoneSet"):
-                obj = PrivateZone()
-                obj._deserialize(item)
-                self.PrivateZoneSet.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribePrivateZoneRecordListRequest(AbstractModel):
-    """DescribePrivateZoneRecordList request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ZoneId: Private domain ID: zone-xxxxxx
-        :type ZoneId: str
-        :param Filters: Filter parameter
-        :type Filters: list of Filter
-        :param Offset: Pagination offset, starting from 0
-        :type Offset: int
-        :param Limit: Number of entries per page. Maximum value: 100. Default value: 20
-        :type Limit: int
-        """
-        self.ZoneId = None
-        self.Filters = None
-        self.Offset = None
-        self.Limit = None
-
-
-    def _deserialize(self, params):
-        self.ZoneId = params.get("ZoneId")
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribePrivateZoneRecordListResponse(AbstractModel):
-    """DescribePrivateZoneRecordList response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TotalCount: Number of DNS records
-        :type TotalCount: int
-        :param RecordSet: List of DNS records
-        :type RecordSet: list of PrivateZoneRecord
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.RecordSet = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("RecordSet") is not None:
-            self.RecordSet = []
-            for item in params.get("RecordSet"):
-                obj = PrivateZoneRecord()
-                obj._deserialize(item)
-                self.RecordSet.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribePrivateZoneRequest(AbstractModel):
-    """DescribePrivateZone request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ZoneId: Domain name, which must be in the format of standard TLD
-        :type ZoneId: str
-        """
-        self.ZoneId = None
-
-
-    def _deserialize(self, params):
-        self.ZoneId = params.get("ZoneId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribePrivateZoneResponse(AbstractModel):
-    """DescribePrivateZone response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param PrivateZone: Private domain details
-        :type PrivateZone: :class:`tencentcloud.privatedns.v20201028.models.PrivateZone`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.PrivateZone = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("PrivateZone") is not None:
-            self.PrivateZone = PrivateZone()
-            self.PrivateZone._deserialize(params.get("PrivateZone"))
-        self.RequestId = params.get("RequestId")
-
-
 class DescribePrivateZoneServiceRequest(AbstractModel):
     """DescribePrivateZoneService request structure.
 
@@ -1030,6 +708,35 @@ class DescribePrivateZoneServiceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.ServiceStatus = params.get("ServiceStatus")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeQuotaUsageRequest(AbstractModel):
+    """DescribeQuotaUsage request structure.
+
+    """
+
+
+class DescribeQuotaUsageResponse(AbstractModel):
+    """DescribeQuotaUsage response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TldQuota: TLD quota usage
+        :type TldQuota: :class:`tencentcloud.privatedns.v20201028.models.TldQuota`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TldQuota = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TldQuota") is not None:
+            self.TldQuota = TldQuota()
+            self.TldQuota._deserialize(params.get("TldQuota"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1428,162 +1135,6 @@ class PrivateDNSAccount(AbstractModel):
         
 
 
-class PrivateZone(AbstractModel):
-    """Private domain information
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ZoneId: Private domain ID: zone-xxxxxxxx
-        :type ZoneId: str
-        :param OwnerUin: Domain name owner UIN
-        :type OwnerUin: int
-        :param Domain: Private domain
-        :type Domain: str
-        :param CreatedOn: Creation time
-        :type CreatedOn: str
-        :param UpdatedOn: Modification time
-        :type UpdatedOn: str
-        :param RecordCount: Number of results
-        :type RecordCount: int
-        :param Remark: Remarks
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Remark: str
-        :param VpcSet: List of bound VPCs
-        :type VpcSet: list of VpcInfo
-        :param Status: Private domain status. Valid values: ENABLED (DNS enabled); SUSPEND (DNS paused); FROZEN (locked)
-        :type Status: str
-        :param DnsForwardStatus: Subdomain recursive DNS status. Valid values: ENABLED, DISABLED
-        :type DnsForwardStatus: str
-        :param Tags: Set of tag key-value pairs
-        :type Tags: list of TagInfo
-        :param AccountVpcSet: List of authorized accounts' VPCs associated with the private domain
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type AccountVpcSet: list of AccountVpcInfoOutput
-        """
-        self.ZoneId = None
-        self.OwnerUin = None
-        self.Domain = None
-        self.CreatedOn = None
-        self.UpdatedOn = None
-        self.RecordCount = None
-        self.Remark = None
-        self.VpcSet = None
-        self.Status = None
-        self.DnsForwardStatus = None
-        self.Tags = None
-        self.AccountVpcSet = None
-
-
-    def _deserialize(self, params):
-        self.ZoneId = params.get("ZoneId")
-        self.OwnerUin = params.get("OwnerUin")
-        self.Domain = params.get("Domain")
-        self.CreatedOn = params.get("CreatedOn")
-        self.UpdatedOn = params.get("UpdatedOn")
-        self.RecordCount = params.get("RecordCount")
-        self.Remark = params.get("Remark")
-        if params.get("VpcSet") is not None:
-            self.VpcSet = []
-            for item in params.get("VpcSet"):
-                obj = VpcInfo()
-                obj._deserialize(item)
-                self.VpcSet.append(obj)
-        self.Status = params.get("Status")
-        self.DnsForwardStatus = params.get("DnsForwardStatus")
-        if params.get("Tags") is not None:
-            self.Tags = []
-            for item in params.get("Tags"):
-                obj = TagInfo()
-                obj._deserialize(item)
-                self.Tags.append(obj)
-        if params.get("AccountVpcSet") is not None:
-            self.AccountVpcSet = []
-            for item in params.get("AccountVpcSet"):
-                obj = AccountVpcInfoOutput()
-                obj._deserialize(item)
-                self.AccountVpcSet.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class PrivateZoneRecord(AbstractModel):
-    """Private domain information
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RecordId: Record ID
-        :type RecordId: str
-        :param ZoneId: Private domain ID: zone-xxxxxxxx
-        :type ZoneId: str
-        :param SubDomain: Subdomain
-        :type SubDomain: str
-        :param RecordType: Record type. Valid values: "A", "AAAA", "CNAME", "MX", "TXT", "PTR"
-        :type RecordType: str
-        :param RecordValue: Record value
-        :type RecordValue: str
-        :param TTL: Record cache time. The smaller the value, the faster the record will take effect. Value range: 1–86400s. Default value: 600
-        :type TTL: int
-        :param MX: MX priority, which is required when the record type is MX. Valid values: 5, 10, 15, 20, 30, 40, 50
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type MX: int
-        :param Status: Record status: ENABLED
-        :type Status: str
-        :param Weight: Record weight. Value range: 1–100
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Weight: int
-        :param CreatedOn: Record creation time
-        :type CreatedOn: str
-        :param UpdatedOn: Record update time
-        :type UpdatedOn: str
-        :param Extra: Additional information
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Extra: str
-        """
-        self.RecordId = None
-        self.ZoneId = None
-        self.SubDomain = None
-        self.RecordType = None
-        self.RecordValue = None
-        self.TTL = None
-        self.MX = None
-        self.Status = None
-        self.Weight = None
-        self.CreatedOn = None
-        self.UpdatedOn = None
-        self.Extra = None
-
-
-    def _deserialize(self, params):
-        self.RecordId = params.get("RecordId")
-        self.ZoneId = params.get("ZoneId")
-        self.SubDomain = params.get("SubDomain")
-        self.RecordType = params.get("RecordType")
-        self.RecordValue = params.get("RecordValue")
-        self.TTL = params.get("TTL")
-        self.MX = params.get("MX")
-        self.Status = params.get("Status")
-        self.Weight = params.get("Weight")
-        self.CreatedOn = params.get("CreatedOn")
-        self.UpdatedOn = params.get("UpdatedOn")
-        self.Extra = params.get("Extra")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class SubscribePrivateZoneServiceRequest(AbstractModel):
     """SubscribePrivateZoneService request structure.
 
@@ -1630,6 +1181,42 @@ class TagInfo(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TldQuota(AbstractModel):
+    """TLD quota
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: Total quota
+        :type Total: int
+        :param Used: Used quota
+        :type Used: int
+        :param Stock: Available quota
+        :type Stock: int
+        :param Quota: User’s quota
+        :type Quota: int
+        """
+        self.Total = None
+        self.Used = None
+        self.Stock = None
+        self.Quota = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        self.Used = params.get("Used")
+        self.Stock = params.get("Stock")
+        self.Quota = params.get("Quota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

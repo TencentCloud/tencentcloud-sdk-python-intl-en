@@ -707,34 +707,6 @@ class BatchClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def SubmitJob(self, request):
-        """This API is used to submit a instance.
-
-        :param request: Request instance for SubmitJob.
-        :type request: :class:`tencentcloud.batch.v20170312.models.SubmitJobRequest`
-        :rtype: :class:`tencentcloud.batch.v20170312.models.SubmitJobResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("SubmitJob", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.SubmitJobResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def TerminateComputeNode(self, request):
         """This API is used to terminate a compute node.
         Termination is allowed for nodes in the CREATED, CREATION_FAILED, RUNNING or ABNORMAL state.

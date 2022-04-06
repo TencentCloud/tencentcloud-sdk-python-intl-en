@@ -301,34 +301,6 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def AssociateNatGatewayAddress(self, request):
-        """This API is used to bind an EIP to NAT Gateway.
-
-        :param request: Request instance for AssociateNatGatewayAddress.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.AssociateNatGatewayAddressRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.AssociateNatGatewayAddressResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("AssociateNatGatewayAddress", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.AssociateNatGatewayAddressResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def AssociateNetworkInterfaceSecurityGroups(self, request):
         """This API (AssociateNetworkInterfaceSecurityGroups) is used to attach a security group to an ENI.
 
@@ -908,35 +880,6 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLocalGatewayResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def CreateNatGateway(self, request):
-        """This API is used to create a NAT Gateway.
-        Before taking actions on a NAT Gateway, ensure that it has been successfully created, namely, the `State` field in the response of the `DescribeNatGateway` API is `AVAILABLE`.
-
-        :param request: Request instance for CreateNatGateway.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateNatGatewayRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateNatGatewayResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("CreateNatGateway", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateNatGatewayResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1840,91 +1783,6 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLocalGatewayResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DeleteNatGateway(self, request):
-        """This API (DeleteNatGateway) is used to delete a NAT gateway.
-        After the deletion of a NAT gateway, the system will automatically delete the routing entry that contains the NAT gateway from the route table. It will also unbind the Elastic IP.
-
-        :param request: Request instance for DeleteNatGateway.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteNatGatewayRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteNatGatewayResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DeleteNatGateway", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteNatGatewayResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DeleteNatGatewayDestinationIpPortTranslationNatRule(self, request):
-        """This API (DeleteNatGatewayDestinationIpPortTranslationNatRule) is used to delete a port forwarding rule for a NAT gateway.
-
-        :param request: Request instance for DeleteNatGatewayDestinationIpPortTranslationNatRule.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteNatGatewayDestinationIpPortTranslationNatRuleRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteNatGatewayDestinationIpPortTranslationNatRuleResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DeleteNatGatewayDestinationIpPortTranslationNatRule", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteNatGatewayDestinationIpPortTranslationNatRuleResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DeleteNatGatewaySourceIpTranslationNatRule(self, request):
-        """This API is used to delete a SNAT forwarding rule of the NAT Gateway.
-
-        :param request: Request instance for DeleteNatGatewaySourceIpTranslationNatRule.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteNatGatewaySourceIpTranslationNatRuleRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteNatGatewaySourceIpTranslationNatRuleResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DeleteNatGatewaySourceIpTranslationNatRule", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteNatGatewaySourceIpTranslationNatRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3160,90 +3018,6 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeNatGatewayDestinationIpPortTranslationNatRules(self, request):
-        """This API (DescribeNatGatewayDestinationIpPortTranslationNatRules) is used to query the array of objects of the port forwarding rules for a NAT gateway.
-
-        :param request: Request instance for DescribeNatGatewayDestinationIpPortTranslationNatRules.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeNatGatewayDestinationIpPortTranslationNatRulesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeNatGatewayDestinationIpPortTranslationNatRules", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeNatGatewayDestinationIpPortTranslationNatRulesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeNatGatewaySourceIpTranslationNatRules(self, request):
-        """This API is used to query the object arrays of SNAT forwarding rules of the NAT Gateway.
-
-        :param request: Request instance for DescribeNatGatewaySourceIpTranslationNatRules.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNatGatewaySourceIpTranslationNatRulesRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeNatGatewaySourceIpTranslationNatRulesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeNatGatewaySourceIpTranslationNatRules", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeNatGatewaySourceIpTranslationNatRulesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeNatGateways(self, request):
-        """This API (DescribeNatGateways) is used to query NAT gateways.
-
-        :param request: Request instance for DescribeNatGateways.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNatGatewaysRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeNatGatewaysResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeNatGateways", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeNatGatewaysResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeNetDetectStates(self, request):
         """This API (DescribeNetDetectStates) is used to query the list of network detection verification results.
 
@@ -4150,34 +3924,6 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DisassociateNatGatewayAddress(self, request):
-        """This API (DisassociateNatGatewayAddress) is used to unbind an EIP from a NAT gateway.
-
-        :param request: Request instance for DisassociateNatGatewayAddress.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.DisassociateNatGatewayAddressRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.DisassociateNatGatewayAddressResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DisassociateNatGatewayAddress", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DisassociateNatGatewayAddressResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DisassociateNetworkInterfaceSecurityGroups(self, request):
         """This API (DisassociateNetworkInterfaceSecurityGroups) is used to detach (or fully detach if possible) a security group from an ENI.
 
@@ -4419,34 +4165,6 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquirePriceCreateDirectConnectGatewayResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def InquiryPriceCreateVpnGateway(self, request):
-        """This API (InquiryPriceCreateVpnGateway) is used to query the price for VPN gateway creation.
-
-        :param request: Request instance for InquiryPriceCreateVpnGateway.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceCreateVpnGatewayRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceCreateVpnGatewayResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("InquiryPriceCreateVpnGateway", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.InquiryPriceCreateVpnGatewayResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -4986,90 +4704,6 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLocalGatewayResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ModifyNatGatewayAttribute(self, request):
-        """This API (ModifyNatGatewayAttribute) is used to modify the attributes of a NAT gateway.
-
-        :param request: Request instance for ModifyNatGatewayAttribute.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyNatGatewayAttributeRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyNatGatewayAttributeResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ModifyNatGatewayAttribute", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyNatGatewayAttributeResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ModifyNatGatewayDestinationIpPortTranslationNatRule(self, request):
-        """This API (ModifyNatGatewayDestinationIpPortTranslationNatRule) is used to modify a port forwarding rule for a NAT gateway.
-
-        :param request: Request instance for ModifyNatGatewayDestinationIpPortTranslationNatRule.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyNatGatewayDestinationIpPortTranslationNatRuleRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyNatGatewayDestinationIpPortTranslationNatRuleResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ModifyNatGatewayDestinationIpPortTranslationNatRule", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyNatGatewayDestinationIpPortTranslationNatRuleResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ModifyNatGatewaySourceIpTranslationNatRule(self, request):
-        """This API is used to modify a SNAT forwarding rule of the NAT Gateway.
-
-        :param request: Request instance for ModifyNatGatewaySourceIpTranslationNatRule.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyNatGatewaySourceIpTranslationNatRuleRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyNatGatewaySourceIpTranslationNatRuleResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ModifyNatGatewaySourceIpTranslationNatRule", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyNatGatewaySourceIpTranslationNatRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -5818,34 +5452,6 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetAttachCcnInstancesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ResetNatGatewayConnection(self, request):
-        """This API (ResetNatGatewayConnection) is used to adjust concurrent connection cap for the NAT gateway.
-
-        :param request: Request instance for ResetNatGatewayConnection.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.ResetNatGatewayConnectionRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.ResetNatGatewayConnectionResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ResetNatGatewayConnection", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ResetNatGatewayConnectionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
