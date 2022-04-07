@@ -255,6 +255,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param PolicyIds: List of IDs of the alarm policies bound to alarm notification template
 Note: this field may return null, indicating that no valid values can be obtained.
         :type PolicyIds: list of str
+        :param CLSNotices: Channel to push alarm notifications to CLS.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CLSNotices: list of CLSNotice
         """
         self.Id = None
         self.Name = None
@@ -266,6 +269,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.IsPreset = None
         self.NoticeLanguage = None
         self.PolicyIds = None
+        self.CLSNotices = None
 
 
     def _deserialize(self, params):
@@ -289,6 +293,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.IsPreset = params.get("IsPreset")
         self.NoticeLanguage = params.get("NoticeLanguage")
         self.PolicyIds = params.get("PolicyIds")
+        if params.get("CLSNotices") is not None:
+            self.CLSNotices = []
+            for item in params.get("CLSNotices"):
+                obj = CLSNotice()
+                obj._deserialize(item)
+                self.CLSNotices.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -812,6 +822,42 @@ class BindingPolicyObjectResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CLSNotice(AbstractModel):
+    """The operation of pushing alarm notifications to CLS
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Region: Region.
+        :type Region: str
+        :param LogSetId: Logset ID.
+        :type LogSetId: str
+        :param TopicId: Topic ID.
+        :type TopicId: str
+        :param Enable: Status. Valid values: `0` (disabled), `1` (enabled). Default value: `1` (enabled). This parameter can be left empty.
+        :type Enable: int
+        """
+        self.Region = None
+        self.LogSetId = None
+        self.TopicId = None
+        self.Enable = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.LogSetId = params.get("LogSetId")
+        self.TopicId = params.get("TopicId")
+        self.Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CommonNamespace(AbstractModel):
     """Unified namespace information
 
@@ -985,6 +1031,8 @@ class CreateAlarmNoticeRequest(AbstractModel):
         :type UserNotices: list of UserNotice
         :param URLNotices: Callback notifications (up to 3)
         :type URLNotices: list of URLNotice
+        :param CLSNotices: The operation of pushing alarm notifications to CLS. Up to one CLS log topic can be configured.
+        :type CLSNotices: list of CLSNotice
         """
         self.Module = None
         self.Name = None
@@ -992,6 +1040,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
         self.NoticeLanguage = None
         self.UserNotices = None
         self.URLNotices = None
+        self.CLSNotices = None
 
 
     def _deserialize(self, params):
@@ -1011,6 +1060,12 @@ class CreateAlarmNoticeRequest(AbstractModel):
                 obj = URLNotice()
                 obj._deserialize(item)
                 self.URLNotices.append(obj)
+        if params.get("CLSNotices") is not None:
+            self.CLSNotices = []
+            for item in params.get("CLSNotices"):
+                obj = CLSNotice()
+                obj._deserialize(item)
+                self.CLSNotices.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2161,6 +2216,8 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
         :type InstanceGroupId: int
         :param NeedCorrespondence: Whether the relationship between a policy and the input parameter filter dimension is required. `1`: Yes. `0`: No. Default value: `0`.
         :type NeedCorrespondence: int
+        :param TriggerTasks: Filter alarm policy by triggered task (such as auto scaling task). Up to 10 tasks can be specified.
+        :type TriggerTasks: list of AlarmPolicyTriggerTask
         """
         self.Module = None
         self.PageNumber = None
@@ -2181,6 +2238,7 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
         self.NotBindingNoticeRule = None
         self.InstanceGroupId = None
         self.NeedCorrespondence = None
+        self.TriggerTasks = None
 
 
     def _deserialize(self, params):
@@ -2203,6 +2261,12 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
         self.NotBindingNoticeRule = params.get("NotBindingNoticeRule")
         self.InstanceGroupId = params.get("InstanceGroupId")
         self.NeedCorrespondence = params.get("NeedCorrespondence")
+        if params.get("TriggerTasks") is not None:
+            self.TriggerTasks = []
+            for item in params.get("TriggerTasks"):
+                obj = AlarmPolicyTriggerTask()
+                obj._deserialize(item)
+                self.TriggerTasks.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5290,6 +5354,8 @@ class ModifyAlarmNoticeRequest(AbstractModel):
         :type UserNotices: list of UserNotice
         :param URLNotices: Callback notifications (up to 3)
         :type URLNotices: list of URLNotice
+        :param CLSNotices: The operation of pushing alarm notifications to CLS. Up to one CLS log topic can be configured.
+        :type CLSNotices: list of CLSNotice
         """
         self.Module = None
         self.Name = None
@@ -5298,6 +5364,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
         self.NoticeId = None
         self.UserNotices = None
         self.URLNotices = None
+        self.CLSNotices = None
 
 
     def _deserialize(self, params):
@@ -5318,6 +5385,12 @@ class ModifyAlarmNoticeRequest(AbstractModel):
                 obj = URLNotice()
                 obj._deserialize(item)
                 self.URLNotices.append(obj)
+        if params.get("CLSNotices") is not None:
+            self.CLSNotices = []
+            for item in params.get("CLSNotices"):
+                obj = CLSNotice()
+                obj._deserialize(item)
+                self.CLSNotices.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

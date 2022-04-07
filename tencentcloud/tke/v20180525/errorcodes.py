@@ -176,10 +176,10 @@ INTERNALERROR_TASKLIFESTATEERROR = 'InternalError.TaskLifeStateError'
 # No task found
 INTERNALERROR_TASKNOTFOUND = 'InternalError.TaskNotFound'
 
-# 
+# Query failed
 INTERNALERROR_TRADECOMMON = 'InternalError.TradeCommon'
 
-# 
+# Insufficient account balance.
 INTERNALERROR_TRADEINSUFFICIENTBALANCE = 'InternalError.TradeInsufficientBalance'
 
 # Internal error.

@@ -26,34 +26,6 @@ class DcdbClient(AbstractClient):
     _service = 'dcdb'
 
 
-    def ActiveHourDCDBInstance(self, request):
-        """This API is used to remove the isolation of pay-as-you-go TDSQL for MySQL instances.
-
-        :param request: Request instance for ActiveHourDCDBInstance.
-        :type request: :class:`tencentcloud.dcdb.v20180411.models.ActiveHourDCDBInstanceRequest`
-        :rtype: :class:`tencentcloud.dcdb.v20180411.models.ActiveHourDCDBInstanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ActiveHourDCDBInstance", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ActiveHourDCDBInstanceResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def AssociateSecurityGroups(self, request):
         """This API is used to associate security groups with Tencent Cloud resources in batches.
 
@@ -96,34 +68,6 @@ class DcdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CancelDcnJobResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def CloneAccount(self, request):
-        """This API is used to clone an instance account.
-
-        :param request: Request instance for CloneAccount.
-        :type request: :class:`tencentcloud.dcdb.v20180411.models.CloneAccountRequest`
-        :rtype: :class:`tencentcloud.dcdb.v20180411.models.CloneAccountResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("CloneAccount", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CloneAccountResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -279,63 +223,6 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeAccountPrivileges(self, request):
-        """This API is used to query the permissions of a TencentDB account.
-        Note: accounts with the same username but different hosts are different accounts.
-
-        :param request: Request instance for DescribeAccountPrivileges.
-        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeAccountPrivilegesRequest`
-        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeAccountPrivilegesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeAccountPrivileges", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeAccountPrivilegesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeAccounts(self, request):
-        """This API is used to query the list of accounts of a specified TencentDB instance.
-
-        :param request: Request instance for DescribeAccounts.
-        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeAccountsRequest`
-        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeAccountsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeAccounts", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeAccountsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeDBLogFiles(self, request):
         """This API is used to get the list of various logs of a database, including cold backups, binlogs, errlogs, and slowlogs.
 
@@ -364,34 +251,6 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeDBParameters(self, request):
-        """This API is used to get the current parameter settings of a database.
-
-        :param request: Request instance for DescribeDBParameters.
-        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBParametersRequest`
-        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBParametersResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeDBParameters", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDBParametersResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeDBSecurityGroups(self, request):
         """This API is used to query the security group details of an instance.
 
@@ -406,34 +265,6 @@ class DcdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBSecurityGroupsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeDBSlowLogs(self, request):
-        """This API is used to query the list of slow query logs.
-
-        :param request: Request instance for DescribeDBSlowLogs.
-        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBSlowLogsRequest`
-        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBSlowLogsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeDBSlowLogs", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDBSlowLogsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -519,118 +350,6 @@ class DcdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDCDBInstancesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeDCDBShards(self, request):
-        """This API is used to query the information of shards of a TencentDB instance.
-
-        :param request: Request instance for DescribeDCDBShards.
-        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBShardsRequest`
-        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBShardsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeDCDBShards", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDCDBShardsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeDatabaseObjects(self, request):
-        """This API is used to query the list of database objects in a TencentDB instance, including tables, stored procedures, views, and functions.
-
-        :param request: Request instance for DescribeDatabaseObjects.
-        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDatabaseObjectsRequest`
-        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeDatabaseObjectsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeDatabaseObjects", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDatabaseObjectsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeDatabaseTable(self, request):
-        """This API is used to query the table information of a TencentDB instance.
-
-        :param request: Request instance for DescribeDatabaseTable.
-        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDatabaseTableRequest`
-        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeDatabaseTableResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeDatabaseTable", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDatabaseTableResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeDatabases(self, request):
-        """This API is used to query the list of databases of a TencentDB instance.
-
-        :param request: Request instance for DescribeDatabases.
-        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDatabasesRequest`
-        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeDatabasesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeDatabases", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDatabasesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -898,62 +617,6 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def InitDCDBInstances(self, request):
-        """This API is used to initialize instances, including setting the default character set and table name case sensitivity.
-
-        :param request: Request instance for InitDCDBInstances.
-        :type request: :class:`tencentcloud.dcdb.v20180411.models.InitDCDBInstancesRequest`
-        :rtype: :class:`tencentcloud.dcdb.v20180411.models.InitDCDBInstancesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("InitDCDBInstances", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.InitDCDBInstancesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def IsolateHourDCDBInstance(self, request):
-        """This API is used to isolate pay-as-you-go TDSQL for MySQL instances.
-
-        :param request: Request instance for IsolateHourDCDBInstance.
-        :type request: :class:`tencentcloud.dcdb.v20180411.models.IsolateHourDCDBInstanceRequest`
-        :rtype: :class:`tencentcloud.dcdb.v20180411.models.IsolateHourDCDBInstanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("IsolateHourDCDBInstance", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.IsolateHourDCDBInstanceResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def ModifyAccountDescription(self, request):
         """This API is used to modify the remarks of a TencentDB account.
         Note: accounts with the same username but different hosts are different accounts.
@@ -1025,90 +688,6 @@ class DcdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstancesProjectResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ModifyDBParameters(self, request):
-        """This API is used to modify database parameters.
-
-        :param request: Request instance for ModifyDBParameters.
-        :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyDBParametersRequest`
-        :rtype: :class:`tencentcloud.dcdb.v20180411.models.ModifyDBParametersResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ModifyDBParameters", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyDBParametersResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ModifyDBSyncMode(self, request):
-        """This API is used to modify the sync mode of a TencentDB instance.
-
-        :param request: Request instance for ModifyDBSyncMode.
-        :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyDBSyncModeRequest`
-        :rtype: :class:`tencentcloud.dcdb.v20180411.models.ModifyDBSyncModeResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ModifyDBSyncMode", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyDBSyncModeResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def OpenDBExtranetAccess(self, request):
-        """This API is used to enable public network access for a TencentDB instance. After that, you can access the instance with the public domain name and port obtained through the `DescribeDCDBInstances` API.
-
-        :param request: Request instance for OpenDBExtranetAccess.
-        :type request: :class:`tencentcloud.dcdb.v20180411.models.OpenDBExtranetAccessRequest`
-        :rtype: :class:`tencentcloud.dcdb.v20180411.models.OpenDBExtranetAccessResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("OpenDBExtranetAccess", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.OpenDBExtranetAccessResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

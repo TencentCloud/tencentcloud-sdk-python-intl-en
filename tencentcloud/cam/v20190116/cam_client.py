@@ -362,6 +362,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateUserOIDCConfig(self, request):
+        """This API is used to create a user OIDC configuration. Only one user OIDC IdP can be created, and the user SAML SSO IdP will be automatically disabled after it is created.
+
+        :param request: Request instance for CreateUserOIDCConfig.
+        :type request: :class:`tencentcloud.cam.v20190116.models.CreateUserOIDCConfigRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.CreateUserOIDCConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateUserOIDCConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateUserOIDCConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateUserSAMLConfig(self, request):
         """This API is used to create user SAML configurations.
 
@@ -670,34 +698,6 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeSafeAuthFlag(self, request):
-        """This API is used to query security settings.
-
-        :param request: Request instance for DescribeSafeAuthFlag.
-        :type request: :class:`tencentcloud.cam.v20190116.models.DescribeSafeAuthFlagRequest`
-        :rtype: :class:`tencentcloud.cam.v20190116.models.DescribeSafeAuthFlagResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeSafeAuthFlag", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeSafeAuthFlagResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeSafeAuthFlagColl(self, request):
         """This API is used to query security settings.
 
@@ -768,6 +768,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSubAccountsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUserOIDCConfig(self, request):
+        """This API is used to query the user OIDC configuration.
+
+        :param request: Request instance for DescribeUserOIDCConfig.
+        :type request: :class:`tencentcloud.cam.v20190116.models.DescribeUserOIDCConfigRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DescribeUserOIDCConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUserOIDCConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUserOIDCConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -880,6 +908,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachUserPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DisableUserSSO(self, request):
+        """This API is used to disable user SSO.
+
+        :param request: Request instance for DisableUserSSO.
+        :type request: :class:`tencentcloud.cam.v20190116.models.DisableUserSSORequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DisableUserSSOResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisableUserSSO", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisableUserSSOResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1917,6 +1973,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateUserOIDCConfig(self, request):
+        """This API is used to modify the user OIDC configuration.
+
+        :param request: Request instance for UpdateUserOIDCConfig.
+        :type request: :class:`tencentcloud.cam.v20190116.models.UpdateUserOIDCConfigRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.UpdateUserOIDCConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateUserOIDCConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateUserOIDCConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

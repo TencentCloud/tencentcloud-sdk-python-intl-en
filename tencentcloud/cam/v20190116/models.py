@@ -963,6 +963,80 @@ class CreateServiceLinkedRoleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateUserOIDCConfigRequest(AbstractModel):
+    """CreateUserOIDCConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdentityUrl: OpenID Connect IdP URL.
+It corresponds to the value of the `issuer` field in the `Openid-configuration` provided by the enterprise IdP.
+        :type IdentityUrl: str
+        :param IdentityKey: Signature public key, which is used to verify the OpenID Connect IdP's ID token and must be Base64-encoded. For the security of your account, we recommend you rotate it regularly.
+        :type IdentityKey: str
+        :param ClientId: Client ID registered with the OpenID Connect IdP.
+        :type ClientId: str
+        :param AuthorizationEndpoint: OpenID Connect IdP authorization endpoint. It corresponds to the value of the `authorization_endpoint` field in the `Openid-configuration` provided by the enterprise IdP.
+        :type AuthorizationEndpoint: str
+        :param ResponseType: Authorization response type, which is always `id_token`.
+        :type ResponseType: str
+        :param ResponseMode: Authorization response mode. Valid values: form_post (recommended); fragment.
+        :type ResponseMode: str
+        :param MappingFiled: Mapping field name. It indicates which field in the `id_token` of the IdP is mapped to the username of a sub-user. It is usually the `sub` or `name` field
+        :type MappingFiled: str
+        :param Scope: Authorization information scope. Valid values: openid (default); email; profile.
+        :type Scope: list of str
+        :param Description: Description
+        :type Description: str
+        """
+        self.IdentityUrl = None
+        self.IdentityKey = None
+        self.ClientId = None
+        self.AuthorizationEndpoint = None
+        self.ResponseType = None
+        self.ResponseMode = None
+        self.MappingFiled = None
+        self.Scope = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.IdentityUrl = params.get("IdentityUrl")
+        self.IdentityKey = params.get("IdentityKey")
+        self.ClientId = params.get("ClientId")
+        self.AuthorizationEndpoint = params.get("AuthorizationEndpoint")
+        self.ResponseType = params.get("ResponseType")
+        self.ResponseMode = params.get("ResponseMode")
+        self.MappingFiled = params.get("MappingFiled")
+        self.Scope = params.get("Scope")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUserOIDCConfigResponse(AbstractModel):
+    """CreateUserOIDCConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateUserSAMLConfigRequest(AbstractModel):
     """CreateUserSAMLConfig request structure.
 
@@ -1552,47 +1626,6 @@ class DescribeSafeAuthFlagIntlResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeSafeAuthFlagRequest(AbstractModel):
-    """DescribeSafeAuthFlag request structure.
-
-    """
-
-
-class DescribeSafeAuthFlagResponse(AbstractModel):
-    """DescribeSafeAuthFlag response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param LoginFlag: Login protection settings
-        :type LoginFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
-        :param ActionFlag: Sensitive operation protection settings
-        :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
-        :param OffsiteFlag: Suspicious login location protection settings
-        :type OffsiteFlag: :class:`tencentcloud.cam.v20190116.models.OffsiteFlag`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.LoginFlag = None
-        self.ActionFlag = None
-        self.OffsiteFlag = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("LoginFlag") is not None:
-            self.LoginFlag = LoginActionFlag()
-            self.LoginFlag._deserialize(params.get("LoginFlag"))
-        if params.get("ActionFlag") is not None:
-            self.ActionFlag = LoginActionFlag()
-            self.ActionFlag._deserialize(params.get("ActionFlag"))
-        if params.get("OffsiteFlag") is not None:
-            self.OffsiteFlag = OffsiteFlag()
-            self.OffsiteFlag._deserialize(params.get("OffsiteFlag"))
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeSubAccountsRequest(AbstractModel):
     """DescribeSubAccounts request structure.
 
@@ -1640,6 +1673,73 @@ class DescribeSubAccountsResponse(AbstractModel):
                 obj = SubAccountUser()
                 obj._deserialize(item)
                 self.SubAccounts.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUserOIDCConfigRequest(AbstractModel):
+    """DescribeUserOIDCConfig request structure.
+
+    """
+
+
+class DescribeUserOIDCConfigResponse(AbstractModel):
+    """DescribeUserOIDCConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProviderType: IdP type. 12: user OIDC IdP
+        :type ProviderType: int
+        :param IdentityUrl: IdP URL
+        :type IdentityUrl: str
+        :param IdentityKey: Signature public key
+        :type IdentityKey: str
+        :param ClientId: Client ID
+        :type ClientId: str
+        :param Status: Status. 0: not set; 2: disabled; 11: enabled.
+        :type Status: int
+        :param AuthorizationEndpoint: Authorization endpoint
+        :type AuthorizationEndpoint: str
+        :param Scope: Authorization scope
+        :type Scope: list of str
+        :param ResponseType: Authorization response type
+        :type ResponseType: str
+        :param ResponseMode: Authorization response mode
+        :type ResponseMode: str
+        :param MappingFiled: Mapping field name
+        :type MappingFiled: str
+        :param Description: Description
+        :type Description: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ProviderType = None
+        self.IdentityUrl = None
+        self.IdentityKey = None
+        self.ClientId = None
+        self.Status = None
+        self.AuthorizationEndpoint = None
+        self.Scope = None
+        self.ResponseType = None
+        self.ResponseMode = None
+        self.MappingFiled = None
+        self.Description = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ProviderType = params.get("ProviderType")
+        self.IdentityUrl = params.get("IdentityUrl")
+        self.IdentityKey = params.get("IdentityKey")
+        self.ClientId = params.get("ClientId")
+        self.Status = params.get("Status")
+        self.AuthorizationEndpoint = params.get("AuthorizationEndpoint")
+        self.Scope = params.get("Scope")
+        self.ResponseType = params.get("ResponseType")
+        self.ResponseMode = params.get("ResponseMode")
+        self.MappingFiled = params.get("MappingFiled")
+        self.Description = params.get("Description")
         self.RequestId = params.get("RequestId")
 
 
@@ -1802,6 +1902,29 @@ class DetachUserPolicyRequest(AbstractModel):
 
 class DetachUserPolicyResponse(AbstractModel):
     """DetachUserPolicy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DisableUserSSORequest(AbstractModel):
+    """DisableUserSSO request structure.
+
+    """
+
+
+class DisableUserSSOResponse(AbstractModel):
+    """DisableUserSSO response structure.
 
     """
 
@@ -4509,6 +4632,80 @@ class UpdateSAMLProviderRequest(AbstractModel):
 
 class UpdateSAMLProviderResponse(AbstractModel):
     """UpdateSAMLProvider response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateUserOIDCConfigRequest(AbstractModel):
+    """UpdateUserOIDCConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdentityUrl: OpenID Connect IdP URL.
+It corresponds to the value of the `issuer` field in the `Openid-configuration` provided by the enterprise IdP.
+        :type IdentityUrl: str
+        :param IdentityKey: Signature public key, which is used to verify the OpenID Connect IdP's ID token and must be Base64-encoded. For the security of your account, we recommend you rotate it regularly.
+        :type IdentityKey: str
+        :param ClientId: Client ID registered with the OpenID Connect IdP.
+        :type ClientId: str
+        :param AuthorizationEndpoint: OpenID Connect IdP authorization endpoint. It corresponds to the value of the `authorization_endpoint` field in the `Openid-configuration` provided by the enterprise IdP.
+        :type AuthorizationEndpoint: str
+        :param ResponseType: Authorization response type, which is always `id_token`.
+        :type ResponseType: str
+        :param ResponseMode: Authorization response mode. Valid values: form_post (recommended); fragment.
+        :type ResponseMode: str
+        :param MappingFiled: Mapping field name. It indicates which field in the `id_token` of the IdP is mapped to the username of a sub-user. It is usually the `sub` or `name` field
+        :type MappingFiled: str
+        :param Scope: Authorization information scope. Valid values: openid (default); email; profile.
+        :type Scope: list of str
+        :param Description: Description
+        :type Description: str
+        """
+        self.IdentityUrl = None
+        self.IdentityKey = None
+        self.ClientId = None
+        self.AuthorizationEndpoint = None
+        self.ResponseType = None
+        self.ResponseMode = None
+        self.MappingFiled = None
+        self.Scope = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.IdentityUrl = params.get("IdentityUrl")
+        self.IdentityKey = params.get("IdentityKey")
+        self.ClientId = params.get("ClientId")
+        self.AuthorizationEndpoint = params.get("AuthorizationEndpoint")
+        self.ResponseType = params.get("ResponseType")
+        self.ResponseMode = params.get("ResponseMode")
+        self.MappingFiled = params.get("MappingFiled")
+        self.Scope = params.get("Scope")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateUserOIDCConfigResponse(AbstractModel):
+    """UpdateUserOIDCConfig response structure.
 
     """
 

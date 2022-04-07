@@ -26,34 +26,6 @@ class MariadbClient(AbstractClient):
     _service = 'mariadb'
 
 
-    def ActivateHourDBInstance(self, request):
-        """This API is used to remove the isolation of pay-as-you-go instances.
-
-        :param request: Request instance for ActivateHourDBInstance.
-        :type request: :class:`tencentcloud.mariadb.v20170312.models.ActivateHourDBInstanceRequest`
-        :rtype: :class:`tencentcloud.mariadb.v20170312.models.ActivateHourDBInstanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ActivateHourDBInstance", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ActivateHourDBInstanceResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def AssociateSecurityGroups(self, request):
         """This API is used to associate security groups with Tencent Cloud resources in batches.
 
@@ -96,34 +68,6 @@ class MariadbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CancelDcnJobResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def CloneAccount(self, request):
-        """This API is used to clone an instance account.
-
-        :param request: Request instance for CloneAccount.
-        :type request: :class:`tencentcloud.mariadb.v20170312.models.CloneAccountRequest`
-        :rtype: :class:`tencentcloud.mariadb.v20170312.models.CloneAccountResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("CloneAccount", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CloneAccountResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -279,91 +223,6 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeAccountPrivileges(self, request):
-        """This API is used to query the permissions of a TencentDB account.
-        Note: accounts with the same username but different hosts are different accounts.
-
-        :param request: Request instance for DescribeAccountPrivileges.
-        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeAccountPrivilegesRequest`
-        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeAccountPrivilegesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeAccountPrivileges", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeAccountPrivilegesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeAccounts(self, request):
-        """This API is used to query the list of accounts of a specified TencentDB instance.
-
-        :param request: Request instance for DescribeAccounts.
-        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeAccountsRequest`
-        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeAccountsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeAccounts", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeAccountsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeBackupTime(self, request):
-        """This API is used to get the backup time of a TencentDB instance. The backend system will perform instance backup regularly according to this configuration.
-
-        :param request: Request instance for DescribeBackupTime.
-        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeBackupTimeRequest`
-        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeBackupTimeResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeBackupTime", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeBackupTimeResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeDBInstances(self, request):
         """This API is used to query the TencentDB instance list. It supports filtering instances by project ID, instance ID, private address, and instance name.
         If no filter is specified, 20 instances will be returned by default. Up to 100 instances can be returned for a single request.
@@ -421,146 +280,6 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeDBParameters(self, request):
-        """This API is used to get the current parameter settings of a database.
-
-        :param request: Request instance for DescribeDBParameters.
-        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeDBParametersRequest`
-        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeDBParametersResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeDBParameters", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDBParametersResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeDBPerformance(self, request):
-        """This API is used to view the current performance data of a database instance.
-
-        :param request: Request instance for DescribeDBPerformance.
-        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeDBPerformanceRequest`
-        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeDBPerformanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeDBPerformance", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDBPerformanceResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeDBPerformanceDetails(self, request):
-        """This API is used to view the instance performance data details.
-
-        :param request: Request instance for DescribeDBPerformanceDetails.
-        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeDBPerformanceDetailsRequest`
-        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeDBPerformanceDetailsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeDBPerformanceDetails", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDBPerformanceDetailsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeDBResourceUsage(self, request):
-        """This API is used to view the resource usage of a database instance.
-
-        :param request: Request instance for DescribeDBResourceUsage.
-        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeDBResourceUsageRequest`
-        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeDBResourceUsageResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeDBResourceUsage", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDBResourceUsageResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeDBResourceUsageDetails(self, request):
-        """This API is used to view the current performance data of a database instance.
-
-        :param request: Request instance for DescribeDBResourceUsageDetails.
-        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeDBResourceUsageDetailsRequest`
-        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeDBResourceUsageDetailsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeDBResourceUsageDetails", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDBResourceUsageDetailsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeDBSecurityGroups(self, request):
         """This API is used to query the security group details of an instance.
 
@@ -575,118 +294,6 @@ class MariadbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBSecurityGroupsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeDBSlowLogs(self, request):
-        """This API is used to query the slow query log list.
-
-        :param request: Request instance for DescribeDBSlowLogs.
-        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeDBSlowLogsRequest`
-        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeDBSlowLogsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeDBSlowLogs", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDBSlowLogsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeDatabaseObjects(self, request):
-        """This API is used to query the list of database objects in a TencentDB instance, including tables, stored procedures, views, and functions.
-
-        :param request: Request instance for DescribeDatabaseObjects.
-        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeDatabaseObjectsRequest`
-        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeDatabaseObjectsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeDatabaseObjects", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDatabaseObjectsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeDatabaseTable(self, request):
-        """This API is used to query the table information of a TencentDB instance.
-
-        :param request: Request instance for DescribeDatabaseTable.
-        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeDatabaseTableRequest`
-        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeDatabaseTableResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeDatabaseTable", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDatabaseTableResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeDatabases(self, request):
-        """This API is used to query the list of databases of a TencentDB instance.
-
-        :param request: Request instance for DescribeDatabases.
-        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeDatabasesRequest`
-        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeDatabasesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeDatabases", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDatabasesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -757,34 +364,6 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeFlow(self, request):
-        """This API is used to query flow status.
-
-        :param request: Request instance for DescribeFlow.
-        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeFlowRequest`
-        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeFlowResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeFlow", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeFlowResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeInstanceNodeInfo(self, request):
         """This API is used to query the information of primary and replica nodes of an instance.
 
@@ -799,34 +378,6 @@ class MariadbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceNodeInfoResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeLogFileRetentionPeriod(self, request):
-        """This API is used to view the configured number of days for retention of database backup logs.
-
-        :param request: Request instance for DescribeLogFileRetentionPeriod.
-        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeLogFileRetentionPeriodRequest`
-        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeLogFileRetentionPeriodResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeLogFileRetentionPeriod", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeLogFileRetentionPeriodResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -954,62 +505,6 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def InitDBInstances(self, request):
-        """This API is used to initialize TencentDB instances, including setting the default character set and table name case sensitivity.
-
-        :param request: Request instance for InitDBInstances.
-        :type request: :class:`tencentcloud.mariadb.v20170312.models.InitDBInstancesRequest`
-        :rtype: :class:`tencentcloud.mariadb.v20170312.models.InitDBInstancesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("InitDBInstances", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.InitDBInstancesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def IsolateHourDBInstance(self, request):
-        """This API is used to isolate pay-as-you-go instances.
-
-        :param request: Request instance for IsolateHourDBInstance.
-        :type request: :class:`tencentcloud.mariadb.v20170312.models.IsolateHourDBInstanceRequest`
-        :rtype: :class:`tencentcloud.mariadb.v20170312.models.IsolateHourDBInstanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("IsolateHourDBInstance", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.IsolateHourDBInstanceResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def ModifyAccountDescription(self, request):
         """This API is used to modify the remarks of a TencentDB account.
         Note: accounts with the same username but different hosts are different accounts.
@@ -1072,90 +567,6 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyBackupTime(self, request):
-        """This API is used to set the backup time of a TencentDB instance. The backend system will perform instance backup regularly according to this configuration.
-
-        :param request: Request instance for ModifyBackupTime.
-        :type request: :class:`tencentcloud.mariadb.v20170312.models.ModifyBackupTimeRequest`
-        :rtype: :class:`tencentcloud.mariadb.v20170312.models.ModifyBackupTimeResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ModifyBackupTime", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyBackupTimeResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ModifyDBInstanceName(self, request):
-        """This API is used to rename a TencentDB instance.
-
-        :param request: Request instance for ModifyDBInstanceName.
-        :type request: :class:`tencentcloud.mariadb.v20170312.models.ModifyDBInstanceNameRequest`
-        :rtype: :class:`tencentcloud.mariadb.v20170312.models.ModifyDBInstanceNameResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ModifyDBInstanceName", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyDBInstanceNameResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ModifyDBInstanceSecurityGroups(self, request):
-        """This API is used to modify the security groups associated with TencentDB.
-
-        :param request: Request instance for ModifyDBInstanceSecurityGroups.
-        :type request: :class:`tencentcloud.mariadb.v20170312.models.ModifyDBInstanceSecurityGroupsRequest`
-        :rtype: :class:`tencentcloud.mariadb.v20170312.models.ModifyDBInstanceSecurityGroupsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ModifyDBInstanceSecurityGroups", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyDBInstanceSecurityGroupsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def ModifyDBInstancesProject(self, request):
         """This API is used to modify the project to which TencentDB instances belong.
 
@@ -1170,90 +581,6 @@ class MariadbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstancesProjectResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ModifyDBParameters(self, request):
-        """This API is used to modify database parameters.
-
-        :param request: Request instance for ModifyDBParameters.
-        :type request: :class:`tencentcloud.mariadb.v20170312.models.ModifyDBParametersRequest`
-        :rtype: :class:`tencentcloud.mariadb.v20170312.models.ModifyDBParametersResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ModifyDBParameters", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyDBParametersResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ModifyDBSyncMode(self, request):
-        """This API is used to modify the sync mode of a TencentDB instance.
-
-        :param request: Request instance for ModifyDBSyncMode.
-        :type request: :class:`tencentcloud.mariadb.v20170312.models.ModifyDBSyncModeRequest`
-        :rtype: :class:`tencentcloud.mariadb.v20170312.models.ModifyDBSyncModeResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ModifyDBSyncMode", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyDBSyncModeResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ModifyLogFileRetentionPeriod(self, request):
-        """This API is used to modify the number of days for retention of database backup logs.
-
-        :param request: Request instance for ModifyLogFileRetentionPeriod.
-        :type request: :class:`tencentcloud.mariadb.v20170312.models.ModifyLogFileRetentionPeriodRequest`
-        :rtype: :class:`tencentcloud.mariadb.v20170312.models.ModifyLogFileRetentionPeriodResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ModifyLogFileRetentionPeriod", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyLogFileRetentionPeriodResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1296,34 +623,6 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def OpenDBExtranetAccess(self, request):
-        """This API is used to enable public network access for a TencentDB instance. After that, you can access the instance with the public domain name and port obtained through the `DescribeDCDBInstances` API.
-
-        :param request: Request instance for OpenDBExtranetAccess.
-        :type request: :class:`tencentcloud.mariadb.v20170312.models.OpenDBExtranetAccessRequest`
-        :rtype: :class:`tencentcloud.mariadb.v20170312.models.OpenDBExtranetAccessResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("OpenDBExtranetAccess", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.OpenDBExtranetAccessResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def ResetAccountPassword(self, request):
         """This API is used to reset the password of a TencentDB account.
         Note: accounts with the same username but different hosts are different accounts.
@@ -1339,34 +638,6 @@ class MariadbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetAccountPasswordResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def SwitchDBInstanceHA(self, request):
-        """This API is used to start a primary-replica switch of instances.
-
-        :param request: Request instance for SwitchDBInstanceHA.
-        :type request: :class:`tencentcloud.mariadb.v20170312.models.SwitchDBInstanceHARequest`
-        :rtype: :class:`tencentcloud.mariadb.v20170312.models.SwitchDBInstanceHAResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("SwitchDBInstanceHA", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.SwitchDBInstanceHAResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

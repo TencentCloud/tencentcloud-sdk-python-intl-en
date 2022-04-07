@@ -227,6 +227,12 @@ INVALIDPARAMETER_USERUINANDUINNOTALLNULL = 'InvalidParameter.UserUinAndUinNotAll
 # `Version` field of policy document invalid.
 INVALIDPARAMETER_VERSIONERROR = 'InvalidParameter.VersionError'
 
+# The OIDC signature public key is incorrect.
+INVALIDPARAMETERVALUE_IDENTITYKEYERROR = 'InvalidParameterValue.IdentityKeyError'
+
+# The IdP URL is incorrect.
+INVALIDPARAMETERVALUE_IDENTITYURLERROR = 'InvalidParameterValue.IdentityUrlError'
+
 # Identity provider metadata document error.
 INVALIDPARAMETERVALUE_METADATAERROR = 'InvalidParameterValue.MetadataError'
 

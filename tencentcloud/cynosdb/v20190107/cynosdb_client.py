@@ -82,20 +82,20 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateClusters(self, request):
-        """This API is used to create a cluster.
+    def CreateAccounts(self, request):
+        """This API is used to create an account.
 
-        :param request: Request instance for CreateClusters.
-        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateClustersRequest`
-        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CreateClustersResponse`
+        :param request: Request instance for CreateAccounts.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateAccountsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CreateAccountsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateClusters", params)
+            body = self.call("CreateAccounts", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateClustersResponse()
+                model = models.CreateAccountsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -614,6 +614,34 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyClusterName(self, request):
+        """This API is used to modify cluster name.
+
+        :param request: Request instance for ModifyClusterName.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterNameRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyClusterName", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyClusterNameResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyClusterParam(self, request):
         """This API is used to modify the parameters of a cluster.
 
@@ -656,6 +684,34 @@ class CynosdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstanceSecurityGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyInstanceName(self, request):
+        """This API is used to modify instance name.
+
+        :param request: Request instance for ModifyInstanceName.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyInstanceNameRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyInstanceNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyInstanceName", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyInstanceNameResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

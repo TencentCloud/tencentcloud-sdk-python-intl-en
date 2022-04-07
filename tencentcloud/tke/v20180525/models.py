@@ -297,6 +297,30 @@ class AutoScalingGroupRange(AbstractModel):
         
 
 
+class AutoUpgradeClusterLevel(AbstractModel):
+    """Auto-upgrades cluster specification
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IsAutoUpgrade: Whether to enable Auto Cluster Upgrade
+        :type IsAutoUpgrade: bool
+        """
+        self.IsAutoUpgrade = None
+
+
+    def _deserialize(self, params):
+        self.IsAutoUpgrade = params.get("IsAutoUpgrade")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AutoscalingAdded(AbstractModel):
     """Nodes that are added in scale-out
 
@@ -449,7 +473,7 @@ class Cluster(AbstractModel):
         :type ProjectId: int
         :param TagSpecification: Tag description list.
         :type TagSpecification: list of TagSpecification
-        :param ClusterStatus: Cluster status (Running, Creating, or Abnormal)
+        :param ClusterStatus: Cluster status (`Running`, `Creating`, `Idling` or `Abnormal`)
         :type ClusterStatus: str
         :param Property: Cluster attributes (including a map of different cluster attributes, with attribute fields including NodeNameType (lan-ip mode and hostname mode, with lan-ip mode as default))
         :type Property: str
@@ -473,6 +497,10 @@ Note: this field may return null, indicating that no valid value is obtained.
         :param EnableExternalNode: Specifies whether the cluster supports external nodes.
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :type EnableExternalNode: bool
+        :param ClusterLevel: 
+        :type ClusterLevel: str
+        :param AutoUpgradeClusterLevel: 
+        :type AutoUpgradeClusterLevel: bool
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -493,6 +521,8 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         self.CreatedTime = None
         self.DeletionProtection = None
         self.EnableExternalNode = None
+        self.ClusterLevel = None
+        self.AutoUpgradeClusterLevel = None
 
 
     def _deserialize(self, params):
@@ -522,6 +552,8 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         self.CreatedTime = params.get("CreatedTime")
         self.DeletionProtection = params.get("DeletionProtection")
         self.EnableExternalNode = params.get("EnableExternalNode")
+        self.ClusterLevel = params.get("ClusterLevel")
+        self.AutoUpgradeClusterLevel = params.get("AutoUpgradeClusterLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -820,6 +852,10 @@ class ClusterBasicSettings(AbstractModel):
         :type NeedWorkSecurityGroup: bool
         :param SubnetId: When the Cilium Overlay add-on is selected, TKE will take two IPs from the subnet to create the private network CLB.
         :type SubnetId: str
+        :param ClusterLevel: Cluster specifications available for managed clusters
+        :type ClusterLevel: str
+        :param AutoUpgradeClusterLevel: Auto cluster upgrade for managed clusters
+        :type AutoUpgradeClusterLevel: :class:`tencentcloud.tke.v20180525.models.AutoUpgradeClusterLevel`
         """
         self.ClusterOs = None
         self.ClusterVersion = None
@@ -831,6 +867,8 @@ class ClusterBasicSettings(AbstractModel):
         self.OsCustomizeType = None
         self.NeedWorkSecurityGroup = None
         self.SubnetId = None
+        self.ClusterLevel = None
+        self.AutoUpgradeClusterLevel = None
 
 
     def _deserialize(self, params):
@@ -849,6 +887,10 @@ class ClusterBasicSettings(AbstractModel):
         self.OsCustomizeType = params.get("OsCustomizeType")
         self.NeedWorkSecurityGroup = params.get("NeedWorkSecurityGroup")
         self.SubnetId = params.get("SubnetId")
+        self.ClusterLevel = params.get("ClusterLevel")
+        if params.get("AutoUpgradeClusterLevel") is not None:
+            self.AutoUpgradeClusterLevel = AutoUpgradeClusterLevel()
+            self.AutoUpgradeClusterLevel._deserialize(params.get("AutoUpgradeClusterLevel"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4839,11 +4881,17 @@ class ModifyClusterAttributeRequest(AbstractModel):
         :type ClusterName: str
         :param ClusterDesc: Cluster description
         :type ClusterDesc: str
+        :param ClusterLevel: Cluster specification
+        :type ClusterLevel: str
+        :param AutoUpgradeClusterLevel: Auto-upgrades cluster specification
+        :type AutoUpgradeClusterLevel: :class:`tencentcloud.tke.v20180525.models.AutoUpgradeClusterLevel`
         """
         self.ClusterId = None
         self.ProjectId = None
         self.ClusterName = None
         self.ClusterDesc = None
+        self.ClusterLevel = None
+        self.AutoUpgradeClusterLevel = None
 
 
     def _deserialize(self, params):
@@ -4851,6 +4899,10 @@ class ModifyClusterAttributeRequest(AbstractModel):
         self.ProjectId = params.get("ProjectId")
         self.ClusterName = params.get("ClusterName")
         self.ClusterDesc = params.get("ClusterDesc")
+        self.ClusterLevel = params.get("ClusterLevel")
+        if params.get("AutoUpgradeClusterLevel") is not None:
+            self.AutoUpgradeClusterLevel = AutoUpgradeClusterLevel()
+            self.AutoUpgradeClusterLevel._deserialize(params.get("AutoUpgradeClusterLevel"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4876,12 +4928,20 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ClusterDesc: Cluster description
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ClusterDesc: str
+        :param ClusterLevel: Cluster specification
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ClusterLevel: str
+        :param AutoUpgradeClusterLevel: Auto-upgrades cluster specification
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type AutoUpgradeClusterLevel: :class:`tencentcloud.tke.v20180525.models.AutoUpgradeClusterLevel`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.ProjectId = None
         self.ClusterName = None
         self.ClusterDesc = None
+        self.ClusterLevel = None
+        self.AutoUpgradeClusterLevel = None
         self.RequestId = None
 
 
@@ -4889,6 +4949,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ProjectId = params.get("ProjectId")
         self.ClusterName = params.get("ClusterName")
         self.ClusterDesc = params.get("ClusterDesc")
+        self.ClusterLevel = params.get("ClusterLevel")
+        if params.get("AutoUpgradeClusterLevel") is not None:
+            self.AutoUpgradeClusterLevel = AutoUpgradeClusterLevel()
+            self.AutoUpgradeClusterLevel._deserialize(params.get("AutoUpgradeClusterLevel"))
         self.RequestId = params.get("RequestId")
 
 

@@ -381,204 +381,30 @@ class ClusterInstanceDetail(AbstractModel):
         
 
 
-class CreateClustersRequest(AbstractModel):
-    """CreateClusters request structure.
+class CreateAccountsRequest(AbstractModel):
+    """CreateAccounts request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Zone: AZ
-        :type Zone: str
-        :param VpcId: VPC ID
-        :type VpcId: str
-        :param SubnetId: Subnet ID
-        :type SubnetId: str
-        :param DbType: Database type. Valid values: 
-<li> MYSQL </li>
-        :type DbType: str
-        :param DbVersion: Database version. Valid values: 
-<li> Valid values for `MYSQL`: 5.7 </li>
-        :type DbVersion: str
-        :param ProjectId: Project ID
-        :type ProjectId: int
-        :param Cpu: It is required when `DbMode` is set to `NORMAL` or left empty.
-Number of CPU cores of a non-serverless instance
-        :type Cpu: int
-        :param Memory: It is required when `DbMode` is set to `NORMAL` or left empty.
-Memory of a non-serverless instance in GB
-        :type Memory: int
-        :param Storage: This parameter has been deprecated.
-Storage capacity in GB.
-        :type Storage: int
-        :param ClusterName: Cluster name
-        :type ClusterName: str
-        :param AdminPassword: Account password (it must contain 8-64 characters in at least three of the following four types: uppercase letters, lowercase letters, digits, and symbols (~!@#$%^&*_-+=`|\(){}[]:;'<>,.?/).)
-        :type AdminPassword: str
-        :param Port: Port. Default value: 5432
-        :type Port: int
-        :param PayMode: Billing mode. 0: pay-as-you-go; 1: monthly subscription. Default value: 0
-        :type PayMode: int
-        :param Count: Number of purchased items. Currently, only 1 can be passed in. If this parameter is left empty, 1 will be used by default.
-        :type Count: int
-        :param RollbackStrategy: Rollback type:
-noneRollback: no rollback
-snapRollback: rollback by snapshot
-timeRollback: rollback by time point
-        :type RollbackStrategy: str
-        :param RollbackId: `snapshotId` for snapshot rollback or `queryId` for time point rollback. 0 indicates to determine whether the time point is valid
-        :type RollbackId: int
-        :param OriginalClusterId: Pass in the source cluster ID during rollback to find the source `poolId`
-        :type OriginalClusterId: str
-        :param ExpectTime: Specified time for time point rollback or snapshot time for snapshot rollback
-        :type ExpectTime: str
-        :param ExpectTimeThresh: This parameter has been deprecated.
-Specified allowed time range for time point rollback
-        :type ExpectTimeThresh: int
-        :param StorageLimit: The maximum storage of a non-serverless instance in GB
-If `DbType` is `MYSQL` and the storage billing mode is prepaid, the parameter value cannot exceed the maximum storage corresponding to the CPU and memory specifications.
-        :type StorageLimit: int
-        :param InstanceCount: Number of instances
-        :type InstanceCount: int
-        :param TimeSpan: Purchase duration of monthly subscription plan
-        :type TimeSpan: int
-        :param TimeUnit: Purchase duration unit of monthly subscription plan
-        :type TimeUnit: str
-        :param AutoRenewFlag: Whether auto-renewal is enabled for monthly subscription plan
-        :type AutoRenewFlag: int
-        :param AutoVoucher: Whether to automatically select a voucher. 1: yes; 0: no. Default value: 0
-        :type AutoVoucher: int
-        :param HaCount: Number of instances (this parameter has been disused and is retained only for compatibility with existing instances)
-        :type HaCount: int
-        :param OrderSource: Order source
-        :type OrderSource: str
-        :param ResourceTags: Array of tags to be bound to the created cluster
-        :type ResourceTags: list of Tag
-        :param DbMode: Database type
-Valid values when `DbType` is `MYSQL` (default value: NORMAL):
-<li>NORMAL</li>
-<li>SERVERLESS</li>
-        :type DbMode: str
-        :param MinCpu: This parameter is required if `DbMode` is `SERVERLESS`
-Minimum number of CPU cores. For the value range, please see the returned result of `DescribeServerlessInstanceSpecs`
-        :type MinCpu: float
-        :param MaxCpu: This parameter is required if `DbMode` is `SERVERLESS`:
-Maximum number of CPU cores. For the value range, please see the returned result of `DescribeServerlessInstanceSpecs`
-        :type MaxCpu: float
-        :param AutoPause: This parameter specifies whether the cluster will be automatically paused if `DbMode` is `SERVERLESS`. Valid values:
-<li>yes</li>
-<li>no</li>
-Default value: yes
-        :type AutoPause: str
-        :param AutoPauseDelay: This parameter specifies the delay for automatic cluster pause in seconds if `DbMode` is `SERVERLESS`. Value range: [600,691200]
-Default value: 600
-        :type AutoPauseDelay: int
-        :param StoragePayMode: The billing mode of cluster storage. Valid values: `0` (postpaid), `1` (prepaid). Default value: `0`.
-If `DbType` is `MYSQL` and the billing mode of cluster compute is pay-as-you-go (or the `DbMode` is `SERVERLESS`), the billing mode of cluster storage must be postpaid.
-Clusters with storage billed in prepaid mode cannot be cloned or rolled back.
-        :type StoragePayMode: int
-        :param SecurityGroupIds: Array of security group IDs
-        :type SecurityGroupIds: list of str
-        :param AlarmPolicyIds: Array of alarm policy IDs
-        :type AlarmPolicyIds: list of str
-        :param ClusterParams: Array of parameters
-        :type ClusterParams: list of ParamItem
-        :param DealMode: Transaction mode. Valid values: `0` (place and pay for an order), `1` (place an order)
-        :type DealMode: int
-        :param ParamTemplateId: Parameter template ID
-        :type ParamTemplateId: int
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param Accounts: List of new accounts
+        :type Accounts: list of NewAccount
         """
-        self.Zone = None
-        self.VpcId = None
-        self.SubnetId = None
-        self.DbType = None
-        self.DbVersion = None
-        self.ProjectId = None
-        self.Cpu = None
-        self.Memory = None
-        self.Storage = None
-        self.ClusterName = None
-        self.AdminPassword = None
-        self.Port = None
-        self.PayMode = None
-        self.Count = None
-        self.RollbackStrategy = None
-        self.RollbackId = None
-        self.OriginalClusterId = None
-        self.ExpectTime = None
-        self.ExpectTimeThresh = None
-        self.StorageLimit = None
-        self.InstanceCount = None
-        self.TimeSpan = None
-        self.TimeUnit = None
-        self.AutoRenewFlag = None
-        self.AutoVoucher = None
-        self.HaCount = None
-        self.OrderSource = None
-        self.ResourceTags = None
-        self.DbMode = None
-        self.MinCpu = None
-        self.MaxCpu = None
-        self.AutoPause = None
-        self.AutoPauseDelay = None
-        self.StoragePayMode = None
-        self.SecurityGroupIds = None
-        self.AlarmPolicyIds = None
-        self.ClusterParams = None
-        self.DealMode = None
-        self.ParamTemplateId = None
+        self.ClusterId = None
+        self.Accounts = None
 
 
     def _deserialize(self, params):
-        self.Zone = params.get("Zone")
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
-        self.DbType = params.get("DbType")
-        self.DbVersion = params.get("DbVersion")
-        self.ProjectId = params.get("ProjectId")
-        self.Cpu = params.get("Cpu")
-        self.Memory = params.get("Memory")
-        self.Storage = params.get("Storage")
-        self.ClusterName = params.get("ClusterName")
-        self.AdminPassword = params.get("AdminPassword")
-        self.Port = params.get("Port")
-        self.PayMode = params.get("PayMode")
-        self.Count = params.get("Count")
-        self.RollbackStrategy = params.get("RollbackStrategy")
-        self.RollbackId = params.get("RollbackId")
-        self.OriginalClusterId = params.get("OriginalClusterId")
-        self.ExpectTime = params.get("ExpectTime")
-        self.ExpectTimeThresh = params.get("ExpectTimeThresh")
-        self.StorageLimit = params.get("StorageLimit")
-        self.InstanceCount = params.get("InstanceCount")
-        self.TimeSpan = params.get("TimeSpan")
-        self.TimeUnit = params.get("TimeUnit")
-        self.AutoRenewFlag = params.get("AutoRenewFlag")
-        self.AutoVoucher = params.get("AutoVoucher")
-        self.HaCount = params.get("HaCount")
-        self.OrderSource = params.get("OrderSource")
-        if params.get("ResourceTags") is not None:
-            self.ResourceTags = []
-            for item in params.get("ResourceTags"):
-                obj = Tag()
+        self.ClusterId = params.get("ClusterId")
+        if params.get("Accounts") is not None:
+            self.Accounts = []
+            for item in params.get("Accounts"):
+                obj = NewAccount()
                 obj._deserialize(item)
-                self.ResourceTags.append(obj)
-        self.DbMode = params.get("DbMode")
-        self.MinCpu = params.get("MinCpu")
-        self.MaxCpu = params.get("MaxCpu")
-        self.AutoPause = params.get("AutoPause")
-        self.AutoPauseDelay = params.get("AutoPauseDelay")
-        self.StoragePayMode = params.get("StoragePayMode")
-        self.SecurityGroupIds = params.get("SecurityGroupIds")
-        self.AlarmPolicyIds = params.get("AlarmPolicyIds")
-        if params.get("ClusterParams") is not None:
-            self.ClusterParams = []
-            for item in params.get("ClusterParams"):
-                obj = ParamItem()
-                obj._deserialize(item)
-                self.ClusterParams.append(obj)
-        self.DealMode = params.get("DealMode")
-        self.ParamTemplateId = params.get("ParamTemplateId")
+                self.Accounts.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -588,45 +414,20 @@ Clusters with storage billed in prepaid mode cannot be cloned or rolled back.
         
 
 
-class CreateClustersResponse(AbstractModel):
-    """CreateClusters response structure.
+class CreateAccountsResponse(AbstractModel):
+    """CreateAccounts response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param TranId: Freezing transaction ID
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type TranId: str
-        :param DealNames: Order ID
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type DealNames: list of str
-        :param ResourceIds: List of resource IDs (This field has been deprecated. Please use `dealNames` in the `DescribeResourcesByDealName` API to get resource IDs.)
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ResourceIds: list of str
-        :param ClusterIds: List of cluster IDs (This field has been deprecated. Please use `dealNames` in the `DescribeResourcesByDealName` API to get cluster IDs.)
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ClusterIds: list of str
-        :param BigDealIds: Big order ID.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type BigDealIds: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TranId = None
-        self.DealNames = None
-        self.ResourceIds = None
-        self.ClusterIds = None
-        self.BigDealIds = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        self.TranId = params.get("TranId")
-        self.DealNames = params.get("DealNames")
-        self.ResourceIds = params.get("ResourceIds")
-        self.ClusterIds = params.get("ClusterIds")
-        self.BigDealIds = params.get("BigDealIds")
         self.RequestId = params.get("RequestId")
 
 
@@ -637,7 +438,16 @@ class CynosdbCluster(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: Cluster status
+        :param Status: Cluster status. Valid values are as follows:
+creating
+running
+isolating
+isolated
+activating (removing isolation)
+offlining (deactivating)
+offlined (deactivated)
+deleting
+deleted
         :type Status: str
         :param UpdateTime: Update time
         :type UpdateTime: str
@@ -2470,6 +2280,51 @@ class ModifyBackupConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyClusterNameRequest(AbstractModel):
+    """ModifyClusterName request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param ClusterName: Cluster name
+        :type ClusterName: str
+        """
+        self.ClusterId = None
+        self.ClusterName = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterNameResponse(AbstractModel):
+    """ModifyClusterName response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyClusterParamRequest(AbstractModel):
     """ModifyClusterParam request structure.
 
@@ -2577,6 +2432,51 @@ class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyInstanceNameRequest(AbstractModel):
+    """ModifyInstanceName request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceNameResponse(AbstractModel):
+    """ModifyInstanceName response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyMaintainPeriodConfigRequest(AbstractModel):
     """ModifyMaintainPeriodConfig request structure.
 
@@ -2666,6 +2566,42 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.WanDomain = params.get("WanDomain")
         self.WanPort = params.get("WanPort")
         self.NetType = params.get("NetType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NewAccount(AbstractModel):
+    """Newly created account
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccountName: Account name
+        :type AccountName: str
+        :param AccountPassword: Password
+        :type AccountPassword: str
+        :param Host: Host
+        :type Host: str
+        :param Description: Description
+        :type Description: str
+        """
+        self.AccountName = None
+        self.AccountPassword = None
+        self.Host = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.AccountName = params.get("AccountName")
+        self.AccountPassword = params.get("AccountPassword")
+        self.Host = params.get("Host")
+        self.Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
