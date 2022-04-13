@@ -5254,8 +5254,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Output: Output of media file composing task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTaskOutput`
-        :param MetaData: Metadata of a source video.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param MetaData: The metadata of the output video.
+Note: This field may return `null`, indicating that no valid value was found.
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param SessionId: ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is not carried or is left empty, no deduplication will be performed.
         :type SessionId: str
@@ -5515,6 +5515,117 @@ class ConfirmEventsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class ContentReviewOcrResult(AbstractModel):
+    """The result for OCR-based image recognition.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Confidence: The confidence score for the OCR-based recognition result. Value range: 0-100.
+        :type Confidence: float
+        :param Suggestion: The suggestion for handling the suspicious content detected based on OCR. Valid values:
+<li>pass/li>
+<li>review</li>
+<li>block</li>
+        :type Suggestion: str
+        :param KeywordSet: The list of suspicious keywords detected based on OCR.
+        :type KeywordSet: list of str
+        :param AreaCoordSet: The coordinates (pixel) of the top-left and bottom-right corners of the frame where a suspicious keyword appears. Format: [x1, y1, x2, y2].
+        :type AreaCoordSet: list of int
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.KeywordSet = None
+        self.AreaCoordSet = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.KeywordSet = params.get("KeywordSet")
+        self.AreaCoordSet = params.get("AreaCoordSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ContentReviewResult(AbstractModel):
+    """The result for intelligent image recognition.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: The result type. Valid values:
+<li>Porn.Image: Recognition of pornographic content in the image</li>
+<li>Terrorism.Image: Recognition of terrorism content in the image</li>
+<li>Political.Image: Recognition of politically sensitive content in the image</li>
+<li>Porn.Ocr: OCR-based recognition of pornographic content in the image</li>
+<li>Terrorism.Ocr: OCR-based recognition of terrorism content in the image</li>
+<li>Political.Ocr: OCR-based recognition of politically sensitive content in the image</li>
+        :type Type: str
+        :param PornImageResult: The pornographic content detected in the image. This parameter is valid if `Type` is `Porn.Image`.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type PornImageResult: :class:`tencentcloud.vod.v20180717.models.PornImageResult`
+        :param TerrorismImageResult: The terrorism content detected in the image. This parameter is valid if `Type` is `Terrorism.Image`.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type TerrorismImageResult: :class:`tencentcloud.vod.v20180717.models.TerrorismImageResult`
+        :param PoliticalImageResult: The politically sensitive content detected in the image. This parameter is valid if `Type` is `Political.Image`.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type PoliticalImageResult: :class:`tencentcloud.vod.v20180717.models.PoliticalImageResult`
+        :param PornOcrResult: The pornographic content detected in the image based on OCR. This parameter is valid if `Type` is `Porn.Ocr`.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type PornOcrResult: :class:`tencentcloud.vod.v20180717.models.ContentReviewOcrResult`
+        :param TerrorismOcrResult: The terrorism content detected in the image based on OCR. This parameter is valid if `Type` is `Terrorism.Ocr`.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type TerrorismOcrResult: :class:`tencentcloud.vod.v20180717.models.ContentReviewOcrResult`
+        :param PoliticalOcrResult: The politically sensitive content detected in the image based on OCR. This parameter is valid if `Type` is `Political.Ocr`.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type PoliticalOcrResult: :class:`tencentcloud.vod.v20180717.models.ContentReviewOcrResult`
+        """
+        self.Type = None
+        self.PornImageResult = None
+        self.TerrorismImageResult = None
+        self.PoliticalImageResult = None
+        self.PornOcrResult = None
+        self.TerrorismOcrResult = None
+        self.PoliticalOcrResult = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("PornImageResult") is not None:
+            self.PornImageResult = PornImageResult()
+            self.PornImageResult._deserialize(params.get("PornImageResult"))
+        if params.get("TerrorismImageResult") is not None:
+            self.TerrorismImageResult = TerrorismImageResult()
+            self.TerrorismImageResult._deserialize(params.get("TerrorismImageResult"))
+        if params.get("PoliticalImageResult") is not None:
+            self.PoliticalImageResult = PoliticalImageResult()
+            self.PoliticalImageResult._deserialize(params.get("PoliticalImageResult"))
+        if params.get("PornOcrResult") is not None:
+            self.PornOcrResult = ContentReviewOcrResult()
+            self.PornOcrResult._deserialize(params.get("PornOcrResult"))
+        if params.get("TerrorismOcrResult") is not None:
+            self.TerrorismOcrResult = ContentReviewOcrResult()
+            self.TerrorismOcrResult._deserialize(params.get("TerrorismOcrResult"))
+        if params.get("PoliticalOcrResult") is not None:
+            self.PoliticalOcrResult = ContentReviewOcrResult()
+            self.PoliticalOcrResult._deserialize(params.get("PoliticalOcrResult"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ContentReviewTemplateItem(AbstractModel):
@@ -8908,6 +9019,75 @@ class DescribeMediaInfosResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeMediaPlayStatDetailsRequest(AbstractModel):
+    """DescribeMediaPlayStatDetails request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: The ID of the media file.
+        :type FileId: str
+        :param StartTime: The start time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
+        :type StartTime: str
+        :param EndTime: The end time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
+        :type EndTime: str
+        :param Interval: Granularity. Valid values:
+<li>Hour</li>
+<li>Day</li>
+The default value depends on the time period queried. If the time period is shorter than one day, the default value is `Hour`; if the time period is one day or longer, the default value is `Day`.
+        :type Interval: str
+        :param SubAppId: The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.FileId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Interval = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Interval = params.get("Interval")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMediaPlayStatDetailsResponse(AbstractModel):
+    """DescribeMediaPlayStatDetails response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PlayStatInfoSet: The playback statistics.
+        :type PlayStatInfoSet: list of PlayStatInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.PlayStatInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PlayStatInfoSet") is not None:
+            self.PlayStatInfoSet = []
+            for item in params.get("PlayStatInfoSet"):
+                obj = PlayStatInfo()
+                obj._deserialize(item)
+                self.PlayStatInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeMediaProcessUsageDataRequest(AbstractModel):
     """DescribeMediaProcessUsageData request structure.
 
@@ -10381,142 +10561,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
-class EditMediaOutputConfig(AbstractModel):
-    """Result file output of video editing.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param MediaName: Output filename of up to 64 characters, which is generated by the system by default.
-        :type MediaName: str
-        :param Type: Output file format. Valid values: mp4, hls. Default value: mp4.
-        :type Type: str
-        :param ClassId: Category ID, which is used to categorize the media for management. A category can be created and its ID can be obtained by using the [category creating](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API.
-<li>Default value: 0, which means "Other".</li>
-        :type ClassId: int
-        :param ExpireTime: Expiration time of output media file in ISO 8601 format, after which the file will be deleted. Files will never expire by default. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
-        :type ExpireTime: str
-        """
-        self.MediaName = None
-        self.Type = None
-        self.ClassId = None
-        self.ExpireTime = None
-
-
-    def _deserialize(self, params):
-        self.MediaName = params.get("MediaName")
-        self.Type = params.get("Type")
-        self.ClassId = params.get("ClassId")
-        self.ExpireTime = params.get("ExpireTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class EditMediaRequest(AbstractModel):
-    """EditMedia request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InputType: Input video type. Valid values: File, Stream.
-        :type InputType: str
-        :param FileInfos: Information of input video file, which is required if `InputType` is `File`.
-        :type FileInfos: list of EditMediaFileInfo
-        :param StreamInfos: Input stream information, which is required if `InputType` is `Stream`.
-        :type StreamInfos: list of EditMediaStreamInfo
-        :param Definition: Editing template ID. Valid values: 10, 20. If this parameter is left empty, template 10 will be used.
-<li>10: the input with the highest resolution will be used as the benchmark;</li>
-<li>20: the input with the highest bitrate will be used as the benchmark;</li>
-        :type Definition: int
-        :param ProcedureName: [Task flow template](https://intl.cloud.tencent.com/document/product/266/11700?from_cn_redirect=1#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF) name, which should be entered if you want to perform a task flow on the generated new video.
-        :type ProcedureName: str
-        :param OutputConfig: Configuration of file generated after editing.
-        :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.EditMediaOutputConfig`
-        :param SessionContext: Identifies the source context which is used to pass through the user request information. The `EditMediaComplete` callback and task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
-        :type SessionContext: str
-        :param TasksPriority: Task priority. The higher the value, the higher the priority. Value range: -10-10. If this parameter is left empty, 0 will be used.
-        :type TasksPriority: int
-        :param SessionId: Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.
-        :type SessionId: str
-        :param ExtInfo: Reserved field for special purposes.
-        :type ExtInfo: str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
-        """
-        self.InputType = None
-        self.FileInfos = None
-        self.StreamInfos = None
-        self.Definition = None
-        self.ProcedureName = None
-        self.OutputConfig = None
-        self.SessionContext = None
-        self.TasksPriority = None
-        self.SessionId = None
-        self.ExtInfo = None
-        self.SubAppId = None
-
-
-    def _deserialize(self, params):
-        self.InputType = params.get("InputType")
-        if params.get("FileInfos") is not None:
-            self.FileInfos = []
-            for item in params.get("FileInfos"):
-                obj = EditMediaFileInfo()
-                obj._deserialize(item)
-                self.FileInfos.append(obj)
-        if params.get("StreamInfos") is not None:
-            self.StreamInfos = []
-            for item in params.get("StreamInfos"):
-                obj = EditMediaStreamInfo()
-                obj._deserialize(item)
-                self.StreamInfos.append(obj)
-        self.Definition = params.get("Definition")
-        self.ProcedureName = params.get("ProcedureName")
-        if params.get("OutputConfig") is not None:
-            self.OutputConfig = EditMediaOutputConfig()
-            self.OutputConfig._deserialize(params.get("OutputConfig"))
-        self.SessionContext = params.get("SessionContext")
-        self.TasksPriority = params.get("TasksPriority")
-        self.SessionId = params.get("SessionId")
-        self.ExtInfo = params.get("ExtInfo")
-        self.SubAppId = params.get("SubAppId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class EditMediaResponse(AbstractModel):
-    """EditMedia response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TaskId: Video editing task ID, which can be used to query the status of editing task (with task type being `EditMedia`).
-        :type TaskId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.TaskId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
-
-
 class EditMediaStreamInfo(AbstractModel):
     """Video stream editing information
 
@@ -10584,7 +10628,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Output: Output of video editing task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.vod.v20180717.models.EditMediaTaskOutput`
-        :param MetaData: Metadata of a source video
+        :param MetaData: The metadata of the output video.
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param ProcedureTaskId: If a video processing flow is specified when a video editing task is initiated, this field will be the ID of the task flow.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -11400,6 +11444,31 @@ class HighlightsConfigureInfoForUpdate(AbstractModel):
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageContentReviewInput(AbstractModel):
+    """The request parameters for an image recognition task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: The ID of the image recognition template to use. Valid values:
+<li>10: All recognition types enabled</li>
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16358,6 +16427,44 @@ class PlayStatFileInfo(AbstractModel):
         
 
 
+class PlayStatInfo(AbstractModel):
+    """The playback statistics.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Time: The start time (in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I)) of the data returned. For example, if the granularity is a day, `2018-12-01T00:00:00+08:00` indicates that the data is for the period between December 1, 2018 (inclusive) and December 2, 2018 (exclusive).
+<li>If the granularity is an hour, `2019-08-22T00:00:00+08:00` indicates the data is for the period between 00:00 and 01:00 AM on August 22, 2019.</li>
+<li>If the granularity is a day, `2019-08-22T00:00:00+08:00` indicates the data is for August 22, 2019.</li>
+        :type Time: str
+        :param FileId: The ID of the media file.
+        :type FileId: str
+        :param PlayTimes: The playback times.
+        :type PlayTimes: int
+        :param Traffic: The traffic (in bytes) consumed for playback.
+        :type Traffic: int
+        """
+        self.Time = None
+        self.FileId = None
+        self.PlayTimes = None
+        self.Traffic = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.FileId = params.get("FileId")
+        self.PlayTimes = params.get("PlayTimes")
+        self.Traffic = params.get("Traffic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PlayerConfig(AbstractModel):
     """Player configuration details
 
@@ -16578,6 +16685,45 @@ class PoliticalConfigureInfoForUpdate(AbstractModel):
         if params.get("OcrReviewInfo") is not None:
             self.OcrReviewInfo = PoliticalOcrReviewTemplateInfoForUpdate()
             self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PoliticalImageResult(AbstractModel):
+    """The result for the recognition of politically sensitive content in the image.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Confidence: The confidence score for the politically sensitive content recognition result. Value range: 0-100.
+        :type Confidence: float
+        :param Suggestion: The suggestion for handling the detected politically sensitive content. Valid values:
+<li>pass/li>
+<li>review</li>
+<li>block</li>
+        :type Suggestion: str
+        :param Name: The name of the politically sensitive content or banned icon detected.
+        :type Name: str
+        :param AreaCoordSet: The coordinates (pixel) of the top-left and bottom-right corners of the frame where politically sensitive content or a banned icon appears. Format: [x1, y1, x2, y2].
+        :type AreaCoordSet: list of int
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.Name = None
+        self.AreaCoordSet = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.Name = params.get("Name")
+        self.AreaCoordSet = params.get("AreaCoordSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16885,6 +17031,45 @@ class PornConfigureInfoForUpdate(AbstractModel):
         if params.get("OcrReviewInfo") is not None:
             self.OcrReviewInfo = PornOcrReviewTemplateInfoForUpdate()
             self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PornImageResult(AbstractModel):
+    """The result for the recognition of pornographic content in the image.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Confidence: The confidence score for the pornographic content recognition result. Value range: 0-100.
+        :type Confidence: float
+        :param Suggestion: The suggestion for handling the detected pornographic content. Valid values:
+<li>pass/li>
+<li>review</li>
+<li>block</li>
+        :type Suggestion: str
+        :param Label: The label for the detected pornographic content. Valid values:
+<li>porn</li>
+<li>sexy</li>
+<li>vulgar</li>
+<li>intimacy</li>
+        :type Label: str
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.Label = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.Label = params.get("Label")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17249,6 +17434,70 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ProcessImageRequest(AbstractModel):
+    """ProcessImage request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: The unique ID of the media file. For this API to work, the file must be an image.
+        :type FileId: str
+        :param Operation: Operation. `ContentReview` is the only valid value currently.
+        :type Operation: str
+        :param ContentReviewInput: Image recognition parameters. This parameter is valid if `Operation` is `ContentReview`.
+        :type ContentReviewInput: :class:`tencentcloud.vod.v20180717.models.ImageContentReviewInput`
+        :param SubAppId: The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.FileId = None
+        self.Operation = None
+        self.ContentReviewInput = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.Operation = params.get("Operation")
+        if params.get("ContentReviewInput") is not None:
+            self.ContentReviewInput = ImageContentReviewInput()
+            self.ContentReviewInput._deserialize(params.get("ContentReviewInput"))
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProcessImageResponse(AbstractModel):
+    """ProcessImage response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ContentReviewResultSet: The image recognition result.
+        :type ContentReviewResultSet: list of ContentReviewResult
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ContentReviewResultSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ContentReviewResultSet") is not None:
+            self.ContentReviewResultSet = []
+            for item in params.get("ContentReviewResultSet"):
+                obj = ContentReviewResult()
+                obj._deserialize(item)
+                self.ContentReviewResultSet.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class ProcessMediaByProcedureRequest(AbstractModel):
@@ -17882,7 +18131,7 @@ class PullUploadTask(AbstractModel):
         :param MediaBasicInfo: Basic information of media file generated after pull for upload is completed.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MediaBasicInfo: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`
-        :param MetaData: Metadata of a source video
+        :param MetaData: The metadata of the output video.
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param FileUrl: Playback address generated after pull for upload is completed.
         :type FileUrl: str
@@ -18280,11 +18529,11 @@ Default value: open.
         :type CreateTime: str
         :param UpdateTime: Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type UpdateTime: str
-        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
-<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
-<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
-<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>
-<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>
+        :param FillType: The fill mode, or the way of processing a screenshot when the configured aspect ratio is different from that of the source video. Valid values:
+<li>stretch: Stretch the image frame by frame to fill the entire screen. The video image may become "squashed" or "stretched" after transcoding.</li>
+<li>black: Keep the image's original aspect ratio and fill the blank space with black bars.</li>
+<li>white: Keep the image’s original aspect ratio and fill the blank space with white bars.</li>
+<li>gauss: Keep the image’s original aspect ratio and apply Gaussian blur to the blank space.</li>
 Default value: black.
         :type FillType: str
         """
@@ -18822,11 +19071,11 @@ Default value: open.
         :type CreateTime: str
         :param UpdateTime: Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type UpdateTime: str
-        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
-<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
-<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
-<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>
-<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>
+        :param FillType: The fill mode, or the way of processing a screenshot when the configured aspect ratio is different from that of the source video. Valid values:
+<li>stretch: Stretch the image frame by frame to fill the entire screen. The video image may become "squashed" or "stretched" after transcoding.</li>
+<li>black: Keep the image's original aspect ratio and fill the blank space with black bars.</li>
+<li>white: Keep the image’s original aspect ratio and fill the blank space with white bars.</li>
+<li>gauss: Keep the image’s original aspect ratio and apply Gaussian blur to the blank space.</li>
 Default value: black.
         :type FillType: str
         """
@@ -19830,6 +20079,48 @@ class TerrorismConfigureInfoForUpdate(AbstractModel):
         if params.get("OcrReviewInfo") is not None:
             self.OcrReviewInfo = TerrorismOcrReviewTemplateInfoForUpdate()
             self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TerrorismImageResult(AbstractModel):
+    """The result for the recognition of terrorism content in the image.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Confidence: The confidence score for the terrorism content recognition result. Value range: 0-100.
+        :type Confidence: float
+        :param Suggestion: The suggestion for handling the detected terrorism content. Valid values:
+<li>pass/li>
+<li>review</li>
+<li>block</li>
+        :type Suggestion: str
+        :param Label: The label for the detected terrorism content. Valid values:
+<li>guns</li>
+<li>crowd</li>
+<li>police</li>
+<li>bloody</li>
+<li>banners</li>
+<li>explosion</li>
+<li>scenario (terrorist scenes) </li>
+        :type Label: str
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.Label = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.Label = params.get("Label")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -21209,59 +21500,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
-
-
-class WeChatMiniProgramPublishRequest(AbstractModel):
-    """WeChatMiniProgramPublish request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param FileId: Media file ID.
-        :type FileId: str
-        :param SourceDefinition: ID of the transcoding template corresponding to the published video. 0 represents the source video.
-        :type SourceDefinition: int
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
-        """
-        self.FileId = None
-        self.SourceDefinition = None
-        self.SubAppId = None
-
-
-    def _deserialize(self, params):
-        self.FileId = params.get("FileId")
-        self.SourceDefinition = params.get("SourceDefinition")
-        self.SubAppId = params.get("SubAppId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class WeChatMiniProgramPublishResponse(AbstractModel):
-    """WeChatMiniProgramPublish response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TaskId: Task ID.
-        :type TaskId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.TaskId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
 
 
 class WechatMiniProgramPublishTask(AbstractModel):

@@ -339,6 +339,8 @@ class CreateTawInstanceRequest(AbstractModel):
         :type CountNum: str
         :param PeriodRetain: Billing for data storage
         :type PeriodRetain: str
+        :param BuyingChannel: Instance purchase channel. Valid value: `cdn`.
+        :type BuyingChannel: str
         """
         self.AreaId = None
         self.ChargeType = None
@@ -348,6 +350,7 @@ class CreateTawInstanceRequest(AbstractModel):
         self.InstanceDesc = None
         self.CountNum = None
         self.PeriodRetain = None
+        self.BuyingChannel = None
 
 
     def _deserialize(self, params):
@@ -364,6 +367,7 @@ class CreateTawInstanceRequest(AbstractModel):
         self.InstanceDesc = params.get("InstanceDesc")
         self.CountNum = params.get("CountNum")
         self.PeriodRetain = params.get("PeriodRetain")
+        self.BuyingChannel = params.get("BuyingChannel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3069,7 +3073,7 @@ class DescribeLogListRequest(AbstractModel):
         :type Limit: int
         :param Context: Context, which is used to load more logs. Pass through the last `Context` value returned to get more log content (up to 10,000 raw logs). It will expire after 1 hour
         :type Context: str
-        :param Query: Query statement. Maximum length: 4096
+        :param Query: Query statement, which can contain up to 4,096 characters.
         :type Query: str
         :param EndTime: End time
         :type EndTime: str
@@ -3324,73 +3328,6 @@ class DescribeProjectLimitsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeProjectsRequest(AbstractModel):
-    """DescribeProjects request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Limit: Number of items per page (integer)
-        :type Limit: int
-        :param Offset: Page number (integer)
-        :type Offset: int
-        :param Filters: Filter
-        :type Filters: list of Filter
-        """
-        self.Limit = None
-        self.Offset = None
-        self.Filters = None
-
-
-    def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self.Filters.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeProjectsResponse(AbstractModel):
-    """DescribeProjects response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TotalCount: Total number of items in the list
-        :type TotalCount: int
-        :param ProjectSet: Project list
-        :type ProjectSet: list of RumProject
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.ProjectSet = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("ProjectSet") is not None:
-            self.ProjectSet = []
-            for item in params.get("ProjectSet"):
-                obj = RumProject()
-                obj._deserialize(item)
-                self.ProjectSet.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribePvListRequest(AbstractModel):
     """DescribePvList request structure.
 
@@ -3569,64 +3506,6 @@ class DescribeReleaseFilesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeScoresRequest(AbstractModel):
-    """DescribeScores request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param EndTime: End time
-        :type EndTime: str
-        :param StartTime: Start time
-        :type StartTime: str
-        :param ID: Project ID
-        :type ID: int
-        """
-        self.EndTime = None
-        self.StartTime = None
-        self.ID = None
-
-
-    def _deserialize(self, params):
-        self.EndTime = params.get("EndTime")
-        self.StartTime = params.get("StartTime")
-        self.ID = params.get("ID")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeScoresResponse(AbstractModel):
-    """DescribeScores response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ScoreSet: Array
-        :type ScoreSet: list of ScoreInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.ScoreSet = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("ScoreSet") is not None:
-            self.ScoreSet = []
-            for item in params.get("ScoreSet"):
-                obj = ScoreInfo()
-                obj._deserialize(item)
-                self.ScoreSet.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeTawAreasRequest(AbstractModel):
     """DescribeTawAreas request structure.
 
@@ -3694,93 +3573,6 @@ class DescribeTawAreasResponse(AbstractModel):
                 obj = RumAreaInfo()
                 obj._deserialize(item)
                 self.AreaSet.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeTawInstancesRequest(AbstractModel):
-    """DescribeTawInstances request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ChargeStatuses: Billing status
-        :type ChargeStatuses: list of int
-        :param ChargeTypes: Billing type
-        :type ChargeTypes: list of int
-        :param Limit: Pagination limit
-        :type Limit: int
-        :param Offset: Pagination offset
-        :type Offset: int
-        :param AreaIds: Region ID
-        :type AreaIds: list of int
-        :param InstanceStatuses: Instance status (1: creating; 2: running; 3: exceptional; 4: restarting; 5: stopping; 6: stopped; 7: terminating; 8: terminated)
-        :type InstanceStatuses: list of int
-        :param InstanceIds: Instance ID
-        :type InstanceIds: list of str
-        :param Filters: Filter parameter
-        :type Filters: list of Filter
-        """
-        self.ChargeStatuses = None
-        self.ChargeTypes = None
-        self.Limit = None
-        self.Offset = None
-        self.AreaIds = None
-        self.InstanceStatuses = None
-        self.InstanceIds = None
-        self.Filters = None
-
-
-    def _deserialize(self, params):
-        self.ChargeStatuses = params.get("ChargeStatuses")
-        self.ChargeTypes = params.get("ChargeTypes")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.AreaIds = params.get("AreaIds")
-        self.InstanceStatuses = params.get("InstanceStatuses")
-        self.InstanceIds = params.get("InstanceIds")
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self.Filters.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeTawInstancesResponse(AbstractModel):
-    """DescribeTawInstances response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceSet: Instance list
-        :type InstanceSet: list of RumInstanceInfo
-        :param TotalCount: Total number of instances
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.InstanceSet = None
-        self.TotalCount = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("InstanceSet") is not None:
-            self.InstanceSet = []
-            for item in params.get("InstanceSet"):
-                obj = RumInstanceInfo()
-                obj._deserialize(item)
-                self.InstanceSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -3894,37 +3686,6 @@ class DescribeWhitelistsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.WhitelistSet.append(obj)
         self.RequestId = params.get("RequestId")
-
-
-class Filter(AbstractModel):
-    """Key-Value pair filter for conditional filtering queries, such as filtering ID, name, status, etc.
-
-    · If more than one filter exists, the logical relationship between these filters is `AND`.
-    · If multiple values exist in one filter, the logical relationship between these values is `OR`.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Values: One or more filter values.
-        :type Values: list of str
-        :param Name: Filter name.
-        :type Name: str
-        """
-        self.Values = None
-        self.Name = None
-
-
-    def _deserialize(self, params):
-        self.Values = params.get("Values")
-        self.Name = params.get("Name")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
 
 
 class LogExport(AbstractModel):
@@ -4345,163 +4106,6 @@ class RumAreaInfo(AbstractModel):
         
 
 
-class RumInstanceInfo(AbstractModel):
-    """RUM instance information
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceStatus: Instance status (1: creating; 2: running; 3: exceptional; 4: restarting; 5: stopping; 6: stopped; 7: deleted)
-        :type InstanceStatus: int
-        :param AreaId: Region ID
-        :type AreaId: int
-        :param Tags: Tag list
-        :type Tags: list of Tag
-        :param InstanceId: Instance ID
-        :type InstanceId: str
-        :param ClusterId: Cluster ID
-        :type ClusterId: int
-        :param InstanceDesc: Instance description
-        :type InstanceDesc: str
-        :param ChargeStatus: Billing status (1: in use; 2: expired; 3: terminated; 4: assigning; 5: assignment failed)
-        :type ChargeStatus: int
-        :param ChargeType: Billing type (1: free; 2: prepaid; 3: postpaid)
-        :type ChargeType: int
-        :param UpdatedAt: Update time
-        :type UpdatedAt: str
-        :param DataRetentionDays: Data retention period (in days)
-        :type DataRetentionDays: int
-        :param InstanceName: Instance name
-        :type InstanceName: str
-        :param CreatedAt: Creation time
-        :type CreatedAt: str
-        """
-        self.InstanceStatus = None
-        self.AreaId = None
-        self.Tags = None
-        self.InstanceId = None
-        self.ClusterId = None
-        self.InstanceDesc = None
-        self.ChargeStatus = None
-        self.ChargeType = None
-        self.UpdatedAt = None
-        self.DataRetentionDays = None
-        self.InstanceName = None
-        self.CreatedAt = None
-
-
-    def _deserialize(self, params):
-        self.InstanceStatus = params.get("InstanceStatus")
-        self.AreaId = params.get("AreaId")
-        if params.get("Tags") is not None:
-            self.Tags = []
-            for item in params.get("Tags"):
-                obj = Tag()
-                obj._deserialize(item)
-                self.Tags.append(obj)
-        self.InstanceId = params.get("InstanceId")
-        self.ClusterId = params.get("ClusterId")
-        self.InstanceDesc = params.get("InstanceDesc")
-        self.ChargeStatus = params.get("ChargeStatus")
-        self.ChargeType = params.get("ChargeType")
-        self.UpdatedAt = params.get("UpdatedAt")
-        self.DataRetentionDays = params.get("DataRetentionDays")
-        self.InstanceName = params.get("InstanceName")
-        self.CreatedAt = params.get("CreatedAt")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class RumProject(AbstractModel):
-    """RUM project information
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Name: Project name
-        :type Name: str
-        :param Creator: Creator ID
-        :type Creator: str
-        :param InstanceID: Instance ID
-        :type InstanceID: str
-        :param Type: Project type
-        :type Type: str
-        :param CreateTime: Creation time
-        :type CreateTime: str
-        :param Repo: Project repository address
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Repo: str
-        :param URL: Project URL
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type URL: str
-        :param Rate: Project sample rate
-        :type Rate: str
-        :param Key: Unique project key (12 characters)
-        :type Key: str
-        :param EnableURLGroup: Whether to enable URL aggregation
-        :type EnableURLGroup: int
-        :param InstanceName: Instance name
-        :type InstanceName: str
-        :param ID: Project ID
-        :type ID: int
-        :param InstanceKey: Instance key
-        :type InstanceKey: str
-        :param Desc: Project description
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Desc: str
-        :param IsStar: Starred status. 1: yes; 0: no
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type IsStar: int
-        """
-        self.Name = None
-        self.Creator = None
-        self.InstanceID = None
-        self.Type = None
-        self.CreateTime = None
-        self.Repo = None
-        self.URL = None
-        self.Rate = None
-        self.Key = None
-        self.EnableURLGroup = None
-        self.InstanceName = None
-        self.ID = None
-        self.InstanceKey = None
-        self.Desc = None
-        self.IsStar = None
-
-
-    def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Creator = params.get("Creator")
-        self.InstanceID = params.get("InstanceID")
-        self.Type = params.get("Type")
-        self.CreateTime = params.get("CreateTime")
-        self.Repo = params.get("Repo")
-        self.URL = params.get("URL")
-        self.Rate = params.get("Rate")
-        self.Key = params.get("Key")
-        self.EnableURLGroup = params.get("EnableURLGroup")
-        self.InstanceName = params.get("InstanceName")
-        self.ID = params.get("ID")
-        self.InstanceKey = params.get("InstanceKey")
-        self.Desc = params.get("Desc")
-        self.IsStar = params.get("IsStar")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class RumPvInfo(AbstractModel):
     """RUM log object
 
@@ -4558,78 +4162,6 @@ class RumUvInfo(AbstractModel):
         self.ProjectId = params.get("ProjectId")
         self.Uv = params.get("Uv")
         self.CreateTime = params.get("CreateTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ScoreInfo(AbstractModel):
-    """Project score entity
-
-    """
-
-    def __init__(self):
-        r"""
-        :param StaticDuration: duration
-        :type StaticDuration: str
-        :param PagePv: pv
-        :type PagePv: str
-        :param ApiFail: Failure
-        :type ApiFail: str
-        :param ApiNum: Request
-        :type ApiNum: str
-        :param StaticFail: fail
-        :type StaticFail: str
-        :param ProjectID: Project ID
-        :type ProjectID: int
-        :param PageUv: uv
-        :type PageUv: str
-        :param ApiDuration: Number of requests
-        :type ApiDuration: str
-        :param Score: Score
-        :type Score: str
-        :param PageError: error
-        :type PageError: str
-        :param StaticNum: num
-        :type StaticNum: str
-        :param RecordNum: num
-        :type RecordNum: int
-        :param PageDuration: Duration
-        :type PageDuration: str
-        """
-        self.StaticDuration = None
-        self.PagePv = None
-        self.ApiFail = None
-        self.ApiNum = None
-        self.StaticFail = None
-        self.ProjectID = None
-        self.PageUv = None
-        self.ApiDuration = None
-        self.Score = None
-        self.PageError = None
-        self.StaticNum = None
-        self.RecordNum = None
-        self.PageDuration = None
-
-
-    def _deserialize(self, params):
-        self.StaticDuration = params.get("StaticDuration")
-        self.PagePv = params.get("PagePv")
-        self.ApiFail = params.get("ApiFail")
-        self.ApiNum = params.get("ApiNum")
-        self.StaticFail = params.get("StaticFail")
-        self.ProjectID = params.get("ProjectID")
-        self.PageUv = params.get("PageUv")
-        self.ApiDuration = params.get("ApiDuration")
-        self.Score = params.get("Score")
-        self.PageError = params.get("PageError")
-        self.StaticNum = params.get("StaticNum")
-        self.RecordNum = params.get("RecordNum")
-        self.PageDuration = params.get("PageDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

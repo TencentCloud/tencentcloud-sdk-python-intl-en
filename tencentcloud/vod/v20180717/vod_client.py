@@ -1499,6 +1499,37 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeMediaPlayStatDetails(self, request):
+        """This API is used to query the playback statistics of a media file at the specified granularity.
+        * You can query playback statistics in the past year.
+        * If the granularity is an hour, the start and end time cannot be more than seven days apart.
+        * If the granularity is a day, the start and end time cannot be more than 90 days apart.
+
+        :param request: Request instance for DescribeMediaPlayStatDetails.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeMediaPlayStatDetailsRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeMediaPlayStatDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMediaPlayStatDetails", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMediaPlayStatDetailsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeMediaProcessUsageData(self, request):
         """This API is used to query the information of video processing usage within the specified time range.
            1. Statistics on video processing for the last 365 days can be queried.
@@ -1945,44 +1976,6 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWordSamplesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def EditMedia(self, request):
-        """This API is used to edit a video (by clipping, splicing, etc.) to generate a new VOD video. Editing features include:
-
-        1. Clipping a file in VOD to generate a new video;
-        2. Splicing multiple files in VOD to generate a new video;
-        3. Clipping multiple files in VOD and then splicing the clips to generate a new video;
-        4. Directly generating a new video from a stream in VOD;
-        5. Clipping a stream in VOD to generate a new video;
-        6. Splicing multiple streams in VOD to generate a new video;
-        7. Clipping multiple streams in VOD and then splicing the clips to generate a new video.
-
-        You can also specify whether to perform a task flow for the generated new video.
-
-        :param request: Request instance for EditMedia.
-        :type request: :class:`tencentcloud.vod.v20180717.models.EditMediaRequest`
-        :rtype: :class:`tencentcloud.vod.v20180717.models.EditMediaResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("EditMedia", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.EditMediaResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2737,6 +2730,40 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ProcessImage(self, request):
+        """This API is used to initiate an image processing task. Image processing operations include the following:
+
+        1. Intelligent recognition of pornographic, terrorism, and politically sensitive content
+
+        ><li>File size: < 5 MB</li>
+        ><li>Resolution: Preferably higher than 256 x 256. Resolution lower than this may compromise the recognition performance.</li>
+        ><li>Supported image formats: PNG, JPG, JPEG, BMP, GIF, WEBP</li>
+
+        :param request: Request instance for ProcessImage.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ProcessImageRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ProcessImage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ProcessImageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ProcessMedia(self, request):
         """This API is used to initiate a media processing task on a VOD file. The task may include:
         1. Video transcoding (with watermark)
@@ -3052,34 +3079,6 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SimpleHlsClipResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def WeChatMiniProgramPublish(self, request):
-        """This API is used to publish a VOD video on WeChat Mini Program for playback in the WeChat Mini Program player.
-
-        :param request: Request instance for WeChatMiniProgramPublish.
-        :type request: :class:`tencentcloud.vod.v20180717.models.WeChatMiniProgramPublishRequest`
-        :rtype: :class:`tencentcloud.vod.v20180717.models.WeChatMiniProgramPublishResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("WeChatMiniProgramPublish", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.WeChatMiniProgramPublishResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
