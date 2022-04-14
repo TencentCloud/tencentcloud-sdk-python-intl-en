@@ -18,34 +18,6 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
-class AccessInfo(AbstractModel):
-    """HTTP domain name-related information
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Host: Domain name
-        :type Host: str
-        :param Vip: VIP
-        :type Vip: str
-        """
-        self.Host = None
-        self.Vip = None
-
-
-    def _deserialize(self, params):
-        self.Host = params.get("Host")
-        self.Vip = params.get("Vip")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class Alias(AbstractModel):
     """Version alias of function
 
@@ -196,94 +168,6 @@ class AsyncTriggerConfig(AbstractModel):
                 obj._deserialize(item)
                 self.RetryConfig.append(obj)
         self.MsgTTL = params.get("MsgTTL")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CfsConfig(AbstractModel):
-    """File system (CFS) configuration description
-
-    """
-
-    def __init__(self):
-        r"""
-        :param CfsInsList: File system information list
-        :type CfsInsList: list of CfsInsInfo
-        """
-        self.CfsInsList = None
-
-
-    def _deserialize(self, params):
-        if params.get("CfsInsList") is not None:
-            self.CfsInsList = []
-            for item in params.get("CfsInsList"):
-                obj = CfsInsInfo()
-                obj._deserialize(item)
-                self.CfsInsList.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CfsInsInfo(AbstractModel):
-    """Configuration information of the CFS instance associated with function
-
-    """
-
-    def __init__(self):
-        r"""
-        :param UserId: User ID
-        :type UserId: str
-        :param UserGroupId: User group ID
-        :type UserGroupId: str
-        :param CfsId: CFS instance ID
-        :type CfsId: str
-        :param MountInsId: File system mount target ID
-        :type MountInsId: str
-        :param LocalMountDir: Local mount target
-        :type LocalMountDir: str
-        :param RemoteMountDir: Remote mount target
-        :type RemoteMountDir: str
-        :param IpAddress: File system IP, which is not required when you configure CFS.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type IpAddress: str
-        :param MountVpcId: VPC ID of file system, which is not required when you configure CFS.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type MountVpcId: str
-        :param MountSubnetId: VPC subnet ID of file system, which is not required when you configure CFS.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type MountSubnetId: str
-        """
-        self.UserId = None
-        self.UserGroupId = None
-        self.CfsId = None
-        self.MountInsId = None
-        self.LocalMountDir = None
-        self.RemoteMountDir = None
-        self.IpAddress = None
-        self.MountVpcId = None
-        self.MountSubnetId = None
-
-
-    def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.UserGroupId = params.get("UserGroupId")
-        self.CfsId = params.get("CfsId")
-        self.MountInsId = params.get("MountInsId")
-        self.LocalMountDir = params.get("LocalMountDir")
-        self.RemoteMountDir = params.get("RemoteMountDir")
-        self.IpAddress = params.get("IpAddress")
-        self.MountVpcId = params.get("MountVpcId")
-        self.MountSubnetId = params.get("MountSubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -512,171 +396,6 @@ class CreateAliasResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class CreateFunctionRequest(AbstractModel):
-    """CreateFunction request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param FunctionName: Name of the new function. The name can contain 2 to 60 characters, including English letters, digits, hyphens (-), and underscores (_). The name must start with a letter and cannot end with a hyphen or underscore.
-        :type FunctionName: str
-        :param Code: Function code. Note: `COS`, `ZipFile`, and `DemoId` cannot be specified at the same time.
-        :type Code: :class:`tencentcloud.scf.v20180416.models.Code`
-        :param Handler: Function handler name. It supports the format of "file name.handler name" where the file name and handler name are separated with a "." (for Java, it is in the format of "package name.class name::handler name"). File and handler names can contain 2–60 letters, digits, underscores, and dashes and must start and end with letters
-        :type Handler: str
-        :param Description: Function description. It can contain up to 1,000 characters including letters, digits, spaces, commas (,), periods (.), and Chinese characters.
-        :type Description: str
-        :param MemorySize: Memory size available for function during execution. Default value: 128 MB. Value range: 64 or 128-3072 MB in increments of 128 MB
-        :type MemorySize: int
-        :param Timeout: Maximum execution duration of function in seconds. Value range: 1-900 seconds. Default value: 3 seconds
-        :type Timeout: int
-        :param Environment: Function environment variable
-        :type Environment: :class:`tencentcloud.scf.v20180416.models.Environment`
-        :param Runtime: Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, Php5, Php7, Go1, Java8, CustomRuntime. Default value: Python2.7
-        :type Runtime: str
-        :param VpcConfig: Function VPC configuration
-        :type VpcConfig: :class:`tencentcloud.scf.v20180416.models.VpcConfig`
-        :param Namespace: Function namespace
-        :type Namespace: str
-        :param Role: Role bound to the function
-        :type Role: str
-        :param InstallDependency: Specifies whether to [install dependency online](https://intl.cloud.tencent.com/document/product/583/37920?from_cn_redirect=1). `TRUE`: yes. Default to `FALSE`. It is only available for Node.js functions.
-        :type InstallDependency: str
-        :param ClsLogsetId: CLS Logset ID to which the function logs are shipped
-        :type ClsLogsetId: str
-        :param ClsTopicId: CLS Topic ID to which the function logs are shipped
-        :type ClsTopicId: str
-        :param Type: Function type. The default value is `Event`. Enter `Event` if you need to create a trigger function. Enter `HTTP` if you need to create an HTTP function service.
-        :type Type: str
-        :param CodeSource: Code source. Valid values: ZipFile, Cos, Demo
-        :type CodeSource: str
-        :param Layers: List of layer versions to be associate with the function. Layers will be overwritten sequentially in the order in the list.
-        :type Layers: list of LayerVersionSimple
-        :param DeadLetterConfig: Dead letter queue parameter
-        :type DeadLetterConfig: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`
-        :param PublicNetConfig: Public network access configuration
-        :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigIn`
-        :param CfsConfig: File system configuration parameter, which is used for the function to mount the file system
-        :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
-        :param InitTimeout: The function initialization timeout period. It defaults to 65s for general cases and 90s for image deployment functions.
-        :type InitTimeout: int
-        :param Tags: Tag parameter of the function. It is an array of key-value pairs.
-        :type Tags: list of Tag
-        :param AsyncRunEnable: Whether to enable the async attribute. TRUE: yes; FALSE: no
-        :type AsyncRunEnable: str
-        :param TraceEnable: Whether to enable event tracking. TRUE: yes; FALSE: no
-        :type TraceEnable: str
-        :param ProtocolType: Protocols supported by HTTP-triggered functions. Valid value: `WS` (WebSockets)
-        :type ProtocolType: str
-        :param ProtocolParams: Parameters of the specified protocol
-        :type ProtocolParams: :class:`tencentcloud.scf.v20180416.models.ProtocolParams`
-        """
-        self.FunctionName = None
-        self.Code = None
-        self.Handler = None
-        self.Description = None
-        self.MemorySize = None
-        self.Timeout = None
-        self.Environment = None
-        self.Runtime = None
-        self.VpcConfig = None
-        self.Namespace = None
-        self.Role = None
-        self.InstallDependency = None
-        self.ClsLogsetId = None
-        self.ClsTopicId = None
-        self.Type = None
-        self.CodeSource = None
-        self.Layers = None
-        self.DeadLetterConfig = None
-        self.PublicNetConfig = None
-        self.CfsConfig = None
-        self.InitTimeout = None
-        self.Tags = None
-        self.AsyncRunEnable = None
-        self.TraceEnable = None
-        self.ProtocolType = None
-        self.ProtocolParams = None
-
-
-    def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        if params.get("Code") is not None:
-            self.Code = Code()
-            self.Code._deserialize(params.get("Code"))
-        self.Handler = params.get("Handler")
-        self.Description = params.get("Description")
-        self.MemorySize = params.get("MemorySize")
-        self.Timeout = params.get("Timeout")
-        if params.get("Environment") is not None:
-            self.Environment = Environment()
-            self.Environment._deserialize(params.get("Environment"))
-        self.Runtime = params.get("Runtime")
-        if params.get("VpcConfig") is not None:
-            self.VpcConfig = VpcConfig()
-            self.VpcConfig._deserialize(params.get("VpcConfig"))
-        self.Namespace = params.get("Namespace")
-        self.Role = params.get("Role")
-        self.InstallDependency = params.get("InstallDependency")
-        self.ClsLogsetId = params.get("ClsLogsetId")
-        self.ClsTopicId = params.get("ClsTopicId")
-        self.Type = params.get("Type")
-        self.CodeSource = params.get("CodeSource")
-        if params.get("Layers") is not None:
-            self.Layers = []
-            for item in params.get("Layers"):
-                obj = LayerVersionSimple()
-                obj._deserialize(item)
-                self.Layers.append(obj)
-        if params.get("DeadLetterConfig") is not None:
-            self.DeadLetterConfig = DeadLetterConfig()
-            self.DeadLetterConfig._deserialize(params.get("DeadLetterConfig"))
-        if params.get("PublicNetConfig") is not None:
-            self.PublicNetConfig = PublicNetConfigIn()
-            self.PublicNetConfig._deserialize(params.get("PublicNetConfig"))
-        if params.get("CfsConfig") is not None:
-            self.CfsConfig = CfsConfig()
-            self.CfsConfig._deserialize(params.get("CfsConfig"))
-        self.InitTimeout = params.get("InitTimeout")
-        if params.get("Tags") is not None:
-            self.Tags = []
-            for item in params.get("Tags"):
-                obj = Tag()
-                obj._deserialize(item)
-                self.Tags.append(obj)
-        self.AsyncRunEnable = params.get("AsyncRunEnable")
-        self.TraceEnable = params.get("TraceEnable")
-        self.ProtocolType = params.get("ProtocolType")
-        if params.get("ProtocolParams") is not None:
-            self.ProtocolParams = ProtocolParams()
-            self.ProtocolParams._deserialize(params.get("ProtocolParams"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateFunctionResponse(AbstractModel):
-    """CreateFunction response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class CreateNamespaceRequest(AbstractModel):
     """CreateNamespace request structure.
 
@@ -739,7 +458,7 @@ class CreateTriggerRequest(AbstractModel):
         :type TriggerDesc: str
         :param Namespace: Function namespace
         :type Namespace: str
-        :param Qualifier: Function version
+        :param Qualifier: Function version. It defaults to `$LATEST`. It’s recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release.
         :type Qualifier: str
         :param Enable: Initial enabling status of the trigger. `OPEN` indicates enabled, and `CLOSE` indicates disabled.
         :type Enable: str
@@ -795,38 +514,6 @@ class CreateTriggerResponse(AbstractModel):
             self.TriggerInfo = Trigger()
             self.TriggerInfo._deserialize(params.get("TriggerInfo"))
         self.RequestId = params.get("RequestId")
-
-
-class DeadLetterConfig(AbstractModel):
-    """Dead letter queue parameter
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Type: Dead letter queue mode
-        :type Type: str
-        :param Name: Dead letter queue name
-        :type Name: str
-        :param FilterType: Tag form of a dead letter queue topic mode
-        :type FilterType: str
-        """
-        self.Type = None
-        self.Name = None
-        self.FilterType = None
-
-
-    def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.Name = params.get("Name")
-        self.FilterType = params.get("FilterType")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
 
 
 class DeleteAliasRequest(AbstractModel):
@@ -1166,116 +853,6 @@ class DeleteTriggerResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
-
-
-class EipConfigIn(AbstractModel):
-    """Fixed IP configuration for public network access
-
-    """
-
-    def __init__(self):
-        r"""
-        :param EipStatus: Status of the EIP. Values: ['ENABLE','DISABLE']
-        :type EipStatus: str
-        """
-        self.EipStatus = None
-
-
-    def _deserialize(self, params):
-        self.EipStatus = params.get("EipStatus")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class EipConfigOut(AbstractModel):
-    """Fixed IP configuration for public network access
-
-    """
-
-    def __init__(self):
-        r"""
-        :param EipStatus: Whether it is a fixed IP. Valid values: ["ENABLE","DISABLE"]
-        :type EipStatus: str
-        :param EipAddress: IP list
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type EipAddress: list of str
-        """
-        self.EipStatus = None
-        self.EipAddress = None
-
-
-    def _deserialize(self, params):
-        self.EipStatus = params.get("EipStatus")
-        self.EipAddress = params.get("EipAddress")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class EipOutConfig(AbstractModel):
-    """EipOutConfig
-
-    """
-
-    def __init__(self):
-        r"""
-        :param EipFixed: It specifies whether the IP is fixed. The value is `TRUE` or `FALSE`.
-        :type EipFixed: str
-        :param Eips: IP list
-        :type Eips: list of str
-        """
-        self.EipFixed = None
-        self.Eips = None
-
-
-    def _deserialize(self, params):
-        self.EipFixed = params.get("EipFixed")
-        self.Eips = params.get("Eips")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class Environment(AbstractModel):
-    """Environment variable parameter of the function
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Variables: Environment variable array
-        :type Variables: list of Variable
-        """
-        self.Variables = None
-
-
-    def _deserialize(self, params):
-        if params.get("Variables") is not None:
-            self.Variables = []
-            for item in params.get("Variables"):
-                obj = Variable()
-                obj._deserialize(item)
-                self.Variables.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
 
 
 class Filter(AbstractModel):
@@ -1905,281 +1482,6 @@ class GetFunctionLogsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class GetFunctionRequest(AbstractModel):
-    """GetFunction request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param FunctionName: Name of the function to obtain details
-        :type FunctionName: str
-        :param Qualifier: Function version number
-        :type Qualifier: str
-        :param Namespace: Function namespace
-        :type Namespace: str
-        :param ShowCode: It indicates whether to display the code. `TRUE` means displaying the code, and `FALSE` means hiding the code. The code will not be displayed for entry files exceeding 1 MB.
-        :type ShowCode: str
-        """
-        self.FunctionName = None
-        self.Qualifier = None
-        self.Namespace = None
-        self.ShowCode = None
-
-
-    def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.Qualifier = params.get("Qualifier")
-        self.Namespace = params.get("Namespace")
-        self.ShowCode = params.get("ShowCode")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class GetFunctionResponse(AbstractModel):
-    """GetFunction response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ModTime: Latest modification time of the function
-        :type ModTime: str
-        :param CodeInfo: Function code
-        :type CodeInfo: str
-        :param Description: Function description
-        :type Description: str
-        :param Triggers: Function trigger list
-        :type Triggers: list of Trigger
-        :param Handler: Function entry
-        :type Handler: str
-        :param CodeSize: Function code size
-        :type CodeSize: int
-        :param Timeout: Function timeout
-        :type Timeout: int
-        :param FunctionVersion: Function version
-        :type FunctionVersion: str
-        :param MemorySize: Maximum available memory of the function
-        :type MemorySize: int
-        :param Runtime: Function running environment
-        :type Runtime: str
-        :param FunctionName: Function name
-        :type FunctionName: str
-        :param VpcConfig: Function VPC
-        :type VpcConfig: :class:`tencentcloud.scf.v20180416.models.VpcConfig`
-        :param UseGpu: Whether to use GPU
-        :type UseGpu: str
-        :param Environment: Function environment variable
-        :type Environment: :class:`tencentcloud.scf.v20180416.models.Environment`
-        :param CodeResult: Whether the code is correct
-        :type CodeResult: str
-        :param CodeError: Code error information
-        :type CodeError: str
-        :param ErrNo: Error code
-        :type ErrNo: int
-        :param Namespace: Function namespace
-        :type Namespace: str
-        :param Role: Role bound to the function
-        :type Role: str
-        :param InstallDependency: Whether to install dependencies automatically
-        :type InstallDependency: str
-        :param Status: Function status. For valid values and status change process, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1)
-        :type Status: str
-        :param StatusDesc: Status description
-        :type StatusDesc: str
-        :param ClsLogsetId: CLS logset to which logs are shipped
-        :type ClsLogsetId: str
-        :param ClsTopicId: CLS Topic to which logs are shipped
-        :type ClsTopicId: str
-        :param FunctionId: Function ID
-        :type FunctionId: str
-        :param Tags: Function tag list
-        :type Tags: list of Tag
-        :param EipConfig: EipConfig configuration
-        :type EipConfig: :class:`tencentcloud.scf.v20180416.models.EipOutConfig`
-        :param AccessInfo: Domain name information
-        :type AccessInfo: :class:`tencentcloud.scf.v20180416.models.AccessInfo`
-        :param Type: Function type. The value is `HTTP` or `Event`.
-        :type Type: str
-        :param L5Enable: Whether to enable L5
-        :type L5Enable: str
-        :param Layers: Version information of a layer associated with a function
-        :type Layers: list of LayerVersionInfo
-        :param DeadLetterConfig: Information of a dead letter queue associated with a function
-        :type DeadLetterConfig: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`
-        :param AddTime: Function creation time
-        :type AddTime: str
-        :param PublicNetConfig: Public network access configuration
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigOut`
-        :param OnsEnable: Whether Ons is enabled
-Note: This field may return null, indicating that no valid value was found.
-        :type OnsEnable: str
-        :param CfsConfig: File system configuration parameter, which is used for the function to mount the file system
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
-        :param AvailableStatus: Function billing status. For valid values, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.87.BD.E6.95.B0.E8.AE.A1.E8.B4.B9.E7.8A.B6.E6.80.81)
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type AvailableStatus: str
-        :param Qualifier: Function version
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Qualifier: str
-        :param InitTimeout: Timeout period for function initialization
-        :type InitTimeout: int
-        :param StatusReasons: Cause of function failure
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type StatusReasons: list of StatusReason
-        :param AsyncRunEnable: Specifies whether to enable asynchronization 
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type AsyncRunEnable: str
-        :param TraceEnable: Specifies whether to enable event tracking
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type TraceEnable: str
-        :param ProtocolType: Protocols supported by HTTP-triggered functions. It supports WebSockets for now.
-Note: This field may return null, indicating that no valid value was found.
-        :type ProtocolType: str
-        :param ProtocolParams: Parameters of the specified protocol
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ProtocolParams: :class:`tencentcloud.scf.v20180416.models.ProtocolParams`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.ModTime = None
-        self.CodeInfo = None
-        self.Description = None
-        self.Triggers = None
-        self.Handler = None
-        self.CodeSize = None
-        self.Timeout = None
-        self.FunctionVersion = None
-        self.MemorySize = None
-        self.Runtime = None
-        self.FunctionName = None
-        self.VpcConfig = None
-        self.UseGpu = None
-        self.Environment = None
-        self.CodeResult = None
-        self.CodeError = None
-        self.ErrNo = None
-        self.Namespace = None
-        self.Role = None
-        self.InstallDependency = None
-        self.Status = None
-        self.StatusDesc = None
-        self.ClsLogsetId = None
-        self.ClsTopicId = None
-        self.FunctionId = None
-        self.Tags = None
-        self.EipConfig = None
-        self.AccessInfo = None
-        self.Type = None
-        self.L5Enable = None
-        self.Layers = None
-        self.DeadLetterConfig = None
-        self.AddTime = None
-        self.PublicNetConfig = None
-        self.OnsEnable = None
-        self.CfsConfig = None
-        self.AvailableStatus = None
-        self.Qualifier = None
-        self.InitTimeout = None
-        self.StatusReasons = None
-        self.AsyncRunEnable = None
-        self.TraceEnable = None
-        self.ProtocolType = None
-        self.ProtocolParams = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.ModTime = params.get("ModTime")
-        self.CodeInfo = params.get("CodeInfo")
-        self.Description = params.get("Description")
-        if params.get("Triggers") is not None:
-            self.Triggers = []
-            for item in params.get("Triggers"):
-                obj = Trigger()
-                obj._deserialize(item)
-                self.Triggers.append(obj)
-        self.Handler = params.get("Handler")
-        self.CodeSize = params.get("CodeSize")
-        self.Timeout = params.get("Timeout")
-        self.FunctionVersion = params.get("FunctionVersion")
-        self.MemorySize = params.get("MemorySize")
-        self.Runtime = params.get("Runtime")
-        self.FunctionName = params.get("FunctionName")
-        if params.get("VpcConfig") is not None:
-            self.VpcConfig = VpcConfig()
-            self.VpcConfig._deserialize(params.get("VpcConfig"))
-        self.UseGpu = params.get("UseGpu")
-        if params.get("Environment") is not None:
-            self.Environment = Environment()
-            self.Environment._deserialize(params.get("Environment"))
-        self.CodeResult = params.get("CodeResult")
-        self.CodeError = params.get("CodeError")
-        self.ErrNo = params.get("ErrNo")
-        self.Namespace = params.get("Namespace")
-        self.Role = params.get("Role")
-        self.InstallDependency = params.get("InstallDependency")
-        self.Status = params.get("Status")
-        self.StatusDesc = params.get("StatusDesc")
-        self.ClsLogsetId = params.get("ClsLogsetId")
-        self.ClsTopicId = params.get("ClsTopicId")
-        self.FunctionId = params.get("FunctionId")
-        if params.get("Tags") is not None:
-            self.Tags = []
-            for item in params.get("Tags"):
-                obj = Tag()
-                obj._deserialize(item)
-                self.Tags.append(obj)
-        if params.get("EipConfig") is not None:
-            self.EipConfig = EipOutConfig()
-            self.EipConfig._deserialize(params.get("EipConfig"))
-        if params.get("AccessInfo") is not None:
-            self.AccessInfo = AccessInfo()
-            self.AccessInfo._deserialize(params.get("AccessInfo"))
-        self.Type = params.get("Type")
-        self.L5Enable = params.get("L5Enable")
-        if params.get("Layers") is not None:
-            self.Layers = []
-            for item in params.get("Layers"):
-                obj = LayerVersionInfo()
-                obj._deserialize(item)
-                self.Layers.append(obj)
-        if params.get("DeadLetterConfig") is not None:
-            self.DeadLetterConfig = DeadLetterConfig()
-            self.DeadLetterConfig._deserialize(params.get("DeadLetterConfig"))
-        self.AddTime = params.get("AddTime")
-        if params.get("PublicNetConfig") is not None:
-            self.PublicNetConfig = PublicNetConfigOut()
-            self.PublicNetConfig._deserialize(params.get("PublicNetConfig"))
-        self.OnsEnable = params.get("OnsEnable")
-        if params.get("CfsConfig") is not None:
-            self.CfsConfig = CfsConfig()
-            self.CfsConfig._deserialize(params.get("CfsConfig"))
-        self.AvailableStatus = params.get("AvailableStatus")
-        self.Qualifier = params.get("Qualifier")
-        self.InitTimeout = params.get("InitTimeout")
-        if params.get("StatusReasons") is not None:
-            self.StatusReasons = []
-            for item in params.get("StatusReasons"):
-                obj = StatusReason()
-                obj._deserialize(item)
-                self.StatusReasons.append(obj)
-        self.AsyncRunEnable = params.get("AsyncRunEnable")
-        self.TraceEnable = params.get("TraceEnable")
-        self.ProtocolType = params.get("ProtocolType")
-        if params.get("ProtocolParams") is not None:
-            self.ProtocolParams = ProtocolParams()
-            self.ProtocolParams._deserialize(params.get("ProtocolParams"))
-        self.RequestId = params.get("RequestId")
-
-
 class GetLayerVersionRequest(AbstractModel):
     """GetLayerVersion request structure.
 
@@ -2677,34 +1979,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.LayerVersion = params.get("LayerVersion")
         self.LayerName = params.get("LayerName")
         self.Status = params.get("Status")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class LayerVersionSimple(AbstractModel):
-    """Specifies a layer version
-
-    """
-
-    def __init__(self):
-        r"""
-        :param LayerName: Name of the layer to bind. Leave it blank if you want to unbind layers
-        :type LayerName: str
-        :param LayerVersion: Version ID f the layer to bind/unbind. If the layer version to unbind is the only layer version of the function version, enter `0`.
-        :type LayerVersion: int
-        """
-        self.LayerName = None
-        self.LayerVersion = None
-
-
-    def _deserialize(self, params):
-        self.LayerName = params.get("LayerName")
-        self.LayerVersion = params.get("LayerVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3551,103 +2825,26 @@ class NamespaceUsage(AbstractModel):
         :type Namespace: str
         :param FunctionsCount: Number of functions in namespace
         :type FunctionsCount: int
+        :param TotalConcurrencyMem: Total memory quota of the namespace
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type TotalConcurrencyMem: int
+        :param TotalAllocatedConcurrencyMem: Memory usage of the namespace
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type TotalAllocatedConcurrencyMem: int
         """
         self.Functions = None
         self.Namespace = None
         self.FunctionsCount = None
+        self.TotalConcurrencyMem = None
+        self.TotalAllocatedConcurrencyMem = None
 
 
     def _deserialize(self, params):
         self.Functions = params.get("Functions")
         self.Namespace = params.get("Namespace")
         self.FunctionsCount = params.get("FunctionsCount")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ProtocolParams(AbstractModel):
-    """Parameters of the protocol
-
-    """
-
-    def __init__(self):
-        r"""
-        :param WSParams: Parameters of WebSockets protocol
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type WSParams: :class:`tencentcloud.scf.v20180416.models.WSParams`
-        """
-        self.WSParams = None
-
-
-    def _deserialize(self, params):
-        if params.get("WSParams") is not None:
-            self.WSParams = WSParams()
-            self.WSParams._deserialize(params.get("WSParams"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class PublicNetConfigIn(AbstractModel):
-    """Public network access configuration
-
-    """
-
-    def __init__(self):
-        r"""
-        :param PublicNetStatus: Whether to enable public network access. Valid values: ['DISABLE', 'ENABLE']
-        :type PublicNetStatus: str
-        :param EipConfig: EIP configuration
-        :type EipConfig: :class:`tencentcloud.scf.v20180416.models.EipConfigIn`
-        """
-        self.PublicNetStatus = None
-        self.EipConfig = None
-
-
-    def _deserialize(self, params):
-        self.PublicNetStatus = params.get("PublicNetStatus")
-        if params.get("EipConfig") is not None:
-            self.EipConfig = EipConfigIn()
-            self.EipConfig._deserialize(params.get("EipConfig"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class PublicNetConfigOut(AbstractModel):
-    """Public network access configuration
-
-    """
-
-    def __init__(self):
-        r"""
-        :param PublicNetStatus: Whether to enable public network access. Valid values: ['DISABLE', 'ENABLE']
-        :type PublicNetStatus: str
-        :param EipConfig: EIP configuration
-        :type EipConfig: :class:`tencentcloud.scf.v20180416.models.EipConfigOut`
-        """
-        self.PublicNetStatus = None
-        self.EipConfig = None
-
-
-    def _deserialize(self, params):
-        self.PublicNetStatus = params.get("PublicNetStatus")
-        if params.get("EipConfig") is not None:
-            self.EipConfig = EipConfigOut()
-            self.EipConfig._deserialize(params.get("EipConfig"))
+        self.TotalConcurrencyMem = params.get("TotalConcurrencyMem")
+        self.TotalAllocatedConcurrencyMem = params.get("TotalAllocatedConcurrencyMem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3818,12 +3015,29 @@ class PutProvisionedConcurrencyConfigRequest(AbstractModel):
         :type Namespace: str
         :param TriggerActions: Scheduled provisioned concurrency scaling action
         :type TriggerActions: list of TriggerAction
+        :param ProvisionedType: Specifies the provisioned concurrency type.
+`Default`: Static provisioned concurrency. 
+`ConcurrencyUtilizationTracking`: Scales the concurrency automatically according to the concurrency utilization.
+If `ConcurrencyUtilizationTracking` is passed in, 
+
+`TrackingTarget`, `MinCapacity` and `MaxCapacity` are required, and `VersionProvisionedConcurrencyNum` must be `0`. 
+        :type ProvisionedType: str
+        :param TrackingTarget: The target concurrency utilization. Range: (0,1) (two decimal places)
+        :type TrackingTarget: float
+        :param MinCapacity: The minimum number of instances. It can not be smaller than `1`.
+        :type MinCapacity: int
+        :param MaxCapacity: The maximum number of instances
+        :type MaxCapacity: int
         """
         self.FunctionName = None
         self.Qualifier = None
         self.VersionProvisionedConcurrencyNum = None
         self.Namespace = None
         self.TriggerActions = None
+        self.ProvisionedType = None
+        self.TrackingTarget = None
+        self.MinCapacity = None
+        self.MaxCapacity = None
 
 
     def _deserialize(self, params):
@@ -3837,6 +3051,10 @@ class PutProvisionedConcurrencyConfigRequest(AbstractModel):
                 obj = TriggerAction()
                 obj._deserialize(item)
                 self.TriggerActions.append(obj)
+        self.ProvisionedType = params.get("ProvisionedType")
+        self.TrackingTarget = params.get("TrackingTarget")
+        self.MinCapacity = params.get("MinCapacity")
+        self.MaxCapacity = params.get("MaxCapacity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4679,140 +3897,6 @@ class UpdateFunctionCodeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class UpdateFunctionConfigurationRequest(AbstractModel):
-    """UpdateFunctionConfiguration request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param FunctionName: Name of the function to be modified
-        :type FunctionName: str
-        :param Description: Function description. It can contain up to 1,000 characters, including letters, digits, spaces, commas (,), periods (.), and Chinese characters.
-        :type Description: str
-        :param MemorySize: Memory size available for function during execution. Default value: 128 MB. Value range: 64 or 128-3,072 MB in increments of 128 MB.
-        :type MemorySize: int
-        :param Timeout: Maximum execution duration of function in seconds. Value range: 1-900 seconds. Default value: 3 seconds
-        :type Timeout: int
-        :param Runtime: Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, PHP5, PHP7, Go1, Java8, CustomRuntime
-        :type Runtime: str
-        :param Environment: Function environment variable
-        :type Environment: :class:`tencentcloud.scf.v20180416.models.Environment`
-        :param Namespace: Function namespace
-        :type Namespace: str
-        :param VpcConfig: Function VPC configuration
-        :type VpcConfig: :class:`tencentcloud.scf.v20180416.models.VpcConfig`
-        :param Role: Role bound to the function
-        :type Role: str
-        :param InstallDependency: Specifies whether to [install dependency online](https://intl.cloud.tencent.com/document/product/583/37920?from_cn_redirect=1). `TRUE`: yes. Default to `FALSE`. It is only available for Node.js functions.
-        :type InstallDependency: str
-        :param ClsLogsetId: CLS logset ID to which logs are shipped
-        :type ClsLogsetId: str
-        :param ClsTopicId: CLS Topic ID to which logs are shipped
-        :type ClsTopicId: str
-        :param Publish: It specifies whether to synchronously publish a new version during the update. The default value is `FALSE`, indicating not to publish a new version
-        :type Publish: str
-        :param L5Enable: Whether to enable L5 access. TRUE: enable; FALSE: not enable
-        :type L5Enable: str
-        :param Layers: List of layer versions that bound with the function. Files with the same name will be overridden by the bound layer versions according to the ascending order in the list. 
-        :type Layers: list of LayerVersionSimple
-        :param DeadLetterConfig: Information of a dead letter queue associated with a function
-        :type DeadLetterConfig: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`
-        :param PublicNetConfig: Public network access configuration
-        :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigIn`
-        :param CfsConfig: File system configuration input parameter, which is used for the function to bind the CFS file system
-        :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
-        :param InitTimeout: The function initialization timeout period
-        :type InitTimeout: int
-        :param ProtocolParams: Parameters of the specified protocol
-        :type ProtocolParams: :class:`tencentcloud.scf.v20180416.models.ProtocolParams`
-        """
-        self.FunctionName = None
-        self.Description = None
-        self.MemorySize = None
-        self.Timeout = None
-        self.Runtime = None
-        self.Environment = None
-        self.Namespace = None
-        self.VpcConfig = None
-        self.Role = None
-        self.InstallDependency = None
-        self.ClsLogsetId = None
-        self.ClsTopicId = None
-        self.Publish = None
-        self.L5Enable = None
-        self.Layers = None
-        self.DeadLetterConfig = None
-        self.PublicNetConfig = None
-        self.CfsConfig = None
-        self.InitTimeout = None
-        self.ProtocolParams = None
-
-
-    def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.Description = params.get("Description")
-        self.MemorySize = params.get("MemorySize")
-        self.Timeout = params.get("Timeout")
-        self.Runtime = params.get("Runtime")
-        if params.get("Environment") is not None:
-            self.Environment = Environment()
-            self.Environment._deserialize(params.get("Environment"))
-        self.Namespace = params.get("Namespace")
-        if params.get("VpcConfig") is not None:
-            self.VpcConfig = VpcConfig()
-            self.VpcConfig._deserialize(params.get("VpcConfig"))
-        self.Role = params.get("Role")
-        self.InstallDependency = params.get("InstallDependency")
-        self.ClsLogsetId = params.get("ClsLogsetId")
-        self.ClsTopicId = params.get("ClsTopicId")
-        self.Publish = params.get("Publish")
-        self.L5Enable = params.get("L5Enable")
-        if params.get("Layers") is not None:
-            self.Layers = []
-            for item in params.get("Layers"):
-                obj = LayerVersionSimple()
-                obj._deserialize(item)
-                self.Layers.append(obj)
-        if params.get("DeadLetterConfig") is not None:
-            self.DeadLetterConfig = DeadLetterConfig()
-            self.DeadLetterConfig._deserialize(params.get("DeadLetterConfig"))
-        if params.get("PublicNetConfig") is not None:
-            self.PublicNetConfig = PublicNetConfigIn()
-            self.PublicNetConfig._deserialize(params.get("PublicNetConfig"))
-        if params.get("CfsConfig") is not None:
-            self.CfsConfig = CfsConfig()
-            self.CfsConfig._deserialize(params.get("CfsConfig"))
-        self.InitTimeout = params.get("InitTimeout")
-        if params.get("ProtocolParams") is not None:
-            self.ProtocolParams = ProtocolParams()
-            self.ProtocolParams._deserialize(params.get("ProtocolParams"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class UpdateFunctionConfigurationResponse(AbstractModel):
-    """UpdateFunctionConfiguration response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class UpdateFunctionEventInvokeConfigRequest(AbstractModel):
     """UpdateFunctionEventInvokeConfig request structure.
 
@@ -4954,34 +4038,6 @@ class UsageInfo(AbstractModel):
         
 
 
-class Variable(AbstractModel):
-    """Variable parameter
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Key: Variable name
-        :type Key: str
-        :param Value: Variable value
-        :type Value: str
-        """
-        self.Key = None
-        self.Value = None
-
-
-    def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Value = params.get("Value")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class VersionMatch(AbstractModel):
     """Function version with match rule
 
@@ -5094,59 +4150,6 @@ class VersionWeight(AbstractModel):
     def _deserialize(self, params):
         self.Version = params.get("Version")
         self.Weight = params.get("Weight")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class VpcConfig(AbstractModel):
-    """VPC parameter configuration
-
-    """
-
-    def __init__(self):
-        r"""
-        :param VpcId: VPC ID
-        :type VpcId: str
-        :param SubnetId: Subnet ID
-        :type SubnetId: str
-        """
-        self.VpcId = None
-        self.SubnetId = None
-
-
-    def _deserialize(self, params):
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class WSParams(AbstractModel):
-    """Parameters of the specified protocol
-
-    """
-
-    def __init__(self):
-        r"""
-        :param IdleTimeOut: Idle timeout period in seconds. Default: 15; range: 1 to 1800
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type IdleTimeOut: int
-        """
-        self.IdleTimeOut = None
-
-
-    def _deserialize(self, params):
-        self.IdleTimeOut = params.get("IdleTimeOut")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

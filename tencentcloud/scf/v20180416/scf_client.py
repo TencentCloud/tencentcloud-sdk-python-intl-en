@@ -89,34 +89,6 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateFunction(self, request):
-        """This API is used to create a function based on the input parameters.
-
-        :param request: Request instance for CreateFunction.
-        :type request: :class:`tencentcloud.scf.v20180416.models.CreateFunctionRequest`
-        :rtype: :class:`tencentcloud.scf.v20180416.models.CreateFunctionResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("CreateFunction", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateFunctionResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def CreateNamespace(self, request):
         """This API is used to create a namespace based on the input parameters.
 
@@ -439,34 +411,6 @@ class ScfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetAsyncEventStatusResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def GetFunction(self, request):
-        """This API is used to obtain function details, such as name, code, handler, associated trigger, and timeout.
-
-        :param request: Request instance for GetFunction.
-        :type request: :class:`tencentcloud.scf.v20180416.models.GetFunctionRequest`
-        :rtype: :class:`tencentcloud.scf.v20180416.models.GetFunctionResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("GetFunction", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.GetFunctionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1167,34 +1111,6 @@ class ScfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateFunctionCodeResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def UpdateFunctionConfiguration(self, request):
-        """This API is used to update the function configuration based on the input parameters.
-
-        :param request: Request instance for UpdateFunctionConfiguration.
-        :type request: :class:`tencentcloud.scf.v20180416.models.UpdateFunctionConfigurationRequest`
-        :rtype: :class:`tencentcloud.scf.v20180416.models.UpdateFunctionConfigurationResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("UpdateFunctionConfiguration", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.UpdateFunctionConfigurationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

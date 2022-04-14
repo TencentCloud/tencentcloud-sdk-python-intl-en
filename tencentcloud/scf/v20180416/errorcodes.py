@@ -23,9 +23,6 @@ FAILEDOPERATION_APIGATEWAY = 'FailedOperation.ApiGateway'
 # Failed to create the trigger.
 FAILEDOPERATION_APIGW = 'FailedOperation.Apigw'
 
-# Failed to obtain Apm InstanceId
-FAILEDOPERATION_APMCONFIGINSTANCEID = 'FailedOperation.ApmConfigInstanceId'
-
 # This operation is not supported by the current async event status. Please try again later.
 FAILEDOPERATION_ASYNCEVENTSTATUS = 'FailedOperation.AsyncEventStatus'
 
@@ -41,9 +38,6 @@ FAILEDOPERATION_COS = 'FailedOperation.Cos'
 # Failed to create the alias.
 FAILEDOPERATION_CREATEALIAS = 'FailedOperation.CreateAlias'
 
-# Operation failed.
-FAILEDOPERATION_CREATEFUNCTION = 'FailedOperation.CreateFunction'
-
 # Failed to create the namespace.
 FAILEDOPERATION_CREATENAMESPACE = 'FailedOperation.CreateNamespace'
 
@@ -52,9 +46,6 @@ FAILEDOPERATION_CREATETRIGGER = 'FailedOperation.CreateTrigger'
 
 # This operation cannot be performed in the current debugging status.
 FAILEDOPERATION_DEBUGMODESTATUS = 'FailedOperation.DebugModeStatus'
-
-# Execution timeout period cannot be updated in debug mode.
-FAILEDOPERATION_DEBUGMODEUPDATETIMEOUTFAIL = 'FailedOperation.DebugModeUpdateTimeOutFail'
 
 # Failed to delete the alias.
 FAILEDOPERATION_DELETEALIAS = 'FailedOperation.DeleteAlias'
@@ -92,12 +83,6 @@ FAILEDOPERATION_INSUFFICIENTBALANCE = 'FailedOperation.InsufficientBalance'
 # Failed to invoke the function.
 FAILEDOPERATION_INVOKEFUNCTION = 'FailedOperation.InvokeFunction'
 
-# The namespace already exists. Please do not create it again.
-FAILEDOPERATION_NAMESPACE = 'FailedOperation.Namespace'
-
-# Failed to activate the service.
-FAILEDOPERATION_OPENSERVICE = 'FailedOperation.OpenService'
-
 # Operation conflict.
 FAILEDOPERATION_OPERATIONCONFLICT = 'FailedOperation.OperationConflict'
 
@@ -116,9 +101,6 @@ FAILEDOPERATION_PUBLISHLAYERVERSION = 'FailedOperation.PublishLayerVersion'
 # You cannot publish a version in the current function state. Please try again when the state is normal.
 FAILEDOPERATION_PUBLISHVERSION = 'FailedOperation.PublishVersion'
 
-# The role does not exist.
-FAILEDOPERATION_QCSROLENOTFOUND = 'FailedOperation.QcsRoleNotFound'
-
 # The function already has a reserved concurrency setting task in progress. Please try again later.
 FAILEDOPERATION_RESERVEDINPROGRESS = 'FailedOperation.ReservedInProgress'
 
@@ -136,9 +118,6 @@ FAILEDOPERATION_UPDATEALIAS = 'FailedOperation.UpdateAlias'
 
 # You cannot update code in the current function state. Please try again when the state is normal.
 FAILEDOPERATION_UPDATEFUNCTIONCODE = 'FailedOperation.UpdateFunctionCode'
-
-# The `UpdateFunctionConfiguration` operation failed.
-FAILEDOPERATION_UPDATEFUNCTIONCONFIGURATION = 'FailedOperation.UpdateFunctionConfiguration'
 
 # Internal error.
 INTERNALERROR = 'InternalError'
@@ -161,14 +140,8 @@ INTERNALERROR_ES = 'InternalError.ES'
 # Internal service error
 INTERNALERROR_EXCEPTION = 'InternalError.Exception'
 
-# Internal service error.
-INTERNALERROR_GETROLEERROR = 'InternalError.GetRoleError'
-
 # Internal system error.
 INTERNALERROR_SYSTEM = 'InternalError.System'
-
-# Internal service error.
-INTERNALERROR_SYSTEMERROR = 'InternalError.SystemError'
 
 # The value of `FunctionName` does not conform to the specification. Please fix it and try again. For more information, please visit https://tencentcs.com/5jXKFnBW.
 INVALIDPARAMETER_FUNCTIONNAME = 'InvalidParameter.FunctionName'
@@ -182,9 +155,6 @@ INVALIDPARAMETER_ROUTINGCONFIG = 'InvalidParameter.RoutingConfig'
 # Incorrect parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
-# The value of `Action` does not conform to the specification. Please fix it and try again. For more information, please visit https://tencentcs.com/5jXKFnBW.
-INVALIDPARAMETERVALUE_ACTION = 'InvalidParameterValue.Action'
-
 # Incorrect `AdditionalVersionWeights` parameter.
 INVALIDPARAMETERVALUE_ADDITIONALVERSIONWEIGHTS = 'InvalidParameterValue.AdditionalVersionWeights'
 
@@ -193,15 +163,6 @@ INVALIDPARAMETERVALUE_ALIAS = 'InvalidParameterValue.Alias'
 
 # ApiGateway parameter error.
 INVALIDPARAMETERVALUE_APIGATEWAY = 'InvalidParameterValue.ApiGateway'
-
-# ApmConfig input error
-INVALIDPARAMETERVALUE_APMCONFIG = 'InvalidParameterValue.ApmConfig'
-
-# ApmConfigInstanceId input error
-INVALIDPARAMETERVALUE_APMCONFIGINSTANCEID = 'InvalidParameterValue.ApmConfigInstanceId'
-
-# ApmConfigRegion input error
-INVALIDPARAMETERVALUE_APMCONFIGREGION = 'InvalidParameterValue.ApmConfigRegion'
 
 # The value of Args is incorrect.
 INVALIDPARAMETERVALUE_ARGS = 'InvalidParameterValue.Args'
@@ -212,26 +173,11 @@ INVALIDPARAMETERVALUE_ASYNCTRIGGERCONFIG = 'InvalidParameterValue.AsyncTriggerCo
 # Cdn error.
 INVALIDPARAMETERVALUE_CDN = 'InvalidParameterValue.Cdn'
 
-# The `cfs` configuration item already exists.
-INVALIDPARAMETERVALUE_CFSPARAMETERDUPLICATE = 'InvalidParameterValue.CfsParameterDuplicate'
-
-# The value of `cfs` configuration item does not meet the specification.
-INVALIDPARAMETERVALUE_CFSPARAMETERERROR = 'InvalidParameterValue.CfsParameterError'
-
-# Invalid CFS parameter format
-INVALIDPARAMETERVALUE_CFSSTRUCTIONERROR = 'InvalidParameterValue.CfsStructionError'
-
 # Ckafka error.
 INVALIDPARAMETERVALUE_CKAFKA = 'InvalidParameterValue.Ckafka'
 
 # Function running parameter error
 INVALIDPARAMETERVALUE_CLIENTCONTEXT = 'InvalidParameterValue.ClientContext'
-
-# Cls error.
-INVALIDPARAMETERVALUE_CLS = 'InvalidParameterValue.Cls'
-
-# To modify CLS configuration, Role parameter is required. Please check and try again.
-INVALIDPARAMETERVALUE_CLSROLE = 'InvalidParameterValue.ClsRole'
 
 # Cmq error.
 INVALIDPARAMETERVALUE_CMQ = 'InvalidParameterValue.Cmq'
@@ -272,32 +218,17 @@ INVALIDPARAMETERVALUE_CUSTOMARGUMENT = 'InvalidParameterValue.CustomArgument'
 # DateTime error.
 INVALIDPARAMETERVALUE_DATETIME = 'InvalidParameterValue.DateTime'
 
-# The value of `DeadLetterConfig` is invalid. Please modify and try again. See https://tencentcs.com/5jXKFnBW.
-INVALIDPARAMETERVALUE_DEADLETTERCONFIG = 'InvalidParameterValue.DeadLetterConfig'
-
 # Failed to create the default namespace.
 INVALIDPARAMETERVALUE_DEFAULTNAMESPACE = 'InvalidParameterValue.DefaultNamespace'
 
 # Description error.
 INVALIDPARAMETERVALUE_DESCRIPTION = 'InvalidParameterValue.Description'
 
-# The configuration of the environment variable DNS[OS_NAMESERVER] is incorrect.
-INVALIDPARAMETERVALUE_DNSINFO = 'InvalidParameterValue.DnsInfo'
-
-# EipConfig parameter error.
-INVALIDPARAMETERVALUE_EIPCONFIG = 'InvalidParameterValue.EipConfig'
-
 # The value of `Enable` does not conform to the specification. Please fix it and try again. For more information, please visit https://tencentcs.com/5jXKFnBW.
 INVALIDPARAMETERVALUE_ENABLE = 'InvalidParameterValue.Enable'
 
 # Environment error.
 INVALIDPARAMETERVALUE_ENVIRONMENT = 'InvalidParameterValue.Environment'
-
-# The size of the environment variable exceeds the limit. Please keep it within 4 KB.
-INVALIDPARAMETERVALUE_ENVIRONMENTEXCEEDEDLIMIT = 'InvalidParameterValue.EnvironmentExceededLimit'
-
-# You cannot modify the function's system environment variables or runtime environment variables.
-INVALIDPARAMETERVALUE_ENVIRONMENTSYSTEMPROTECT = 'InvalidParameterValue.EnvironmentSystemProtect'
 
 # Filters parameter error.
 INVALIDPARAMETERVALUE_FILTERS = 'InvalidParameterValue.Filters'
@@ -310,9 +241,6 @@ INVALIDPARAMETERVALUE_FUNCTIONNAME = 'InvalidParameterValue.FunctionName'
 
 # The format of GitBranch is incorrect. 
 INVALIDPARAMETERVALUE_GITBRANCH = 'InvalidParameterValue.GitBranch'
-
-# The value of `GitCommitId` does not conform to the specification. Please fix it and try again. For more information, please visit https://tencentcs.com/5jXKFnBW.
-INVALIDPARAMETERVALUE_GITCOMMITID = 'InvalidParameterValue.GitCommitId'
 
 # The format of GitDirectory is incorrect.
 INVALIDPARAMETERVALUE_GITDIRECTORY = 'InvalidParameterValue.GitDirectory'
@@ -329,9 +257,6 @@ INVALIDPARAMETERVALUE_GITUSERNAME = 'InvalidParameterValue.GitUserName'
 # Handler error.
 INVALIDPARAMETERVALUE_HANDLER = 'InvalidParameterValue.Handler'
 
-# IdleTimeOut input parameter error
-INVALIDPARAMETERVALUE_IDLETIMEOUT = 'InvalidParameterValue.IdleTimeOut'
-
 # The input of imageUri is incorrect.
 INVALIDPARAMETERVALUE_IMAGEURI = 'InvalidParameterValue.ImageUri'
 
@@ -344,22 +269,13 @@ INVALIDPARAMETERVALUE_INVOKETYPE = 'InvalidParameterValue.InvokeType'
 # Incorrect `LayerName` parameter.
 INVALIDPARAMETERVALUE_LAYERNAME = 'InvalidParameterValue.LayerName'
 
-# Layers parameter error.
-INVALIDPARAMETERVALUE_LAYERS = 'InvalidParameterValue.Layers'
-
 # Limit error.
 INVALIDPARAMETERVALUE_LIMIT = 'InvalidParameterValue.Limit'
 
 # The parameter exceeds the length limit.
 INVALIDPARAMETERVALUE_LIMITEXCEEDED = 'InvalidParameterValue.LimitExceeded'
 
-# The value of `Memory` does not conform to the specification. Please fix it and try again. For more information, please visit https://tencentcs.com/5jXKFnBW.
-INVALIDPARAMETERVALUE_MEMORY = 'InvalidParameterValue.Memory'
-
-# MemorySize error.
-INVALIDPARAMETERVALUE_MEMORYSIZE = 'InvalidParameterValue.MemorySize'
-
-# 
+# MinCapacity parameter input error.
 INVALIDPARAMETERVALUE_MINCAPACITY = 'InvalidParameterValue.MinCapacity'
 
 # Incorrect `Name` parameter.
@@ -370,12 +286,6 @@ INVALIDPARAMETERVALUE_NAMESPACE = 'InvalidParameterValue.Namespace'
 
 # Incorrect Namespace. A namespace contains up to 30 characters of letters, digits, hyphens (-), and underscores (_).
 INVALIDPARAMETERVALUE_NAMESPACEINVALID = 'InvalidParameterValue.NamespaceInvalid'
-
-# NodeSpec parameter error
-INVALIDPARAMETERVALUE_NODESPEC = 'InvalidParameterValue.NodeSpec'
-
-# NodeType parameter error
-INVALIDPARAMETERVALUE_NODETYPE = 'InvalidParameterValue.NodeType'
 
 # Invalid offset.
 INVALIDPARAMETERVALUE_OFFSET = 'InvalidParameterValue.Offset'
@@ -389,9 +299,6 @@ INVALIDPARAMETERVALUE_ORDERBY = 'InvalidParameterValue.OrderBy'
 # The input parameter is not in the standard JSON format.
 INVALIDPARAMETERVALUE_PARAM = 'InvalidParameterValue.Param'
 
-# ProtocolType input parameter error
-INVALIDPARAMETERVALUE_PROTOCOLTYPE = 'InvalidParameterValue.ProtocolType'
-
 # Cron expression of the scheduled action already exists
 INVALIDPARAMETERVALUE_PROVISIONTRIGGERCRONCONFIGDUPLICATE = 'InvalidParameterValue.ProvisionTriggerCronConfigDuplicate'
 
@@ -403,9 +310,6 @@ INVALIDPARAMETERVALUE_PROVISIONTRIGGERNAMEDUPLICATE = 'InvalidParameterValue.Pro
 
 # ProvisionType input parameter error
 INVALIDPARAMETERVALUE_PROVISIONTYPE = 'InvalidParameterValue.ProvisionType'
-
-# The `PublicNetConfig` parameter is invalid.
-INVALIDPARAMETERVALUE_PUBLICNETCONFIG = 'InvalidParameterValue.PublicNetConfig'
 
 # Unsupported function version.
 INVALIDPARAMETERVALUE_QUALIFIER = 'InvalidParameterValue.Qualifier'
@@ -443,14 +347,8 @@ INVALIDPARAMETERVALUE_STARTTIMEORENDTIME = 'InvalidParameterValue.StartTimeOrEnd
 # The `Status` value does not conform to the specification. Please fix it and try again.
 INVALIDPARAMETERVALUE_STATUS = 'InvalidParameterValue.Status'
 
-# The system environment variable is invalid.
-INVALIDPARAMETERVALUE_SYSTEMENVIRONMENT = 'InvalidParameterValue.SystemEnvironment'
-
 # Invalid TempCosObjectName.
 INVALIDPARAMETERVALUE_TEMPCOSOBJECTNAME = 'InvalidParameterValue.TempCosObjectName'
-
-# The value of `TraceEnable` is invalid. Please modify and try again.
-INVALIDPARAMETERVALUE_TRACEENABLE = 'InvalidParameterValue.TraceEnable'
 
 # TrackingTarget parameter error
 INVALIDPARAMETERVALUE_TRACKINGTARGET = 'InvalidParameterValue.TrackingTarget'
@@ -473,12 +371,6 @@ INVALIDPARAMETERVALUE_TRIGGERPROVISIONEDCONCURRENCYNUM = 'InvalidParameterValue.
 # Type error.
 INVALIDPARAMETERVALUE_TYPE = 'InvalidParameterValue.Type'
 
-# A VPC needs to be activated together with CFS configuration.
-INVALIDPARAMETERVALUE_VPCNOTSETWHENOPENCFS = 'InvalidParameterValue.VpcNotSetWhenOpenCfs'
-
-# WebSocketsParams input parameter error
-INVALIDPARAMETERVALUE_WEBSOCKETSPARAMS = 'InvalidParameterValue.WebSocketsParams'
-
 # A non-standard zip file was detected. Please recompress and try again.
 INVALIDPARAMETERVALUE_ZIPFILE = 'InvalidParameterValue.ZipFile'
 
@@ -490,9 +382,6 @@ LIMITEXCEEDED_ALIAS = 'LimitExceeded.Alias'
 
 # The Cdn usage exceeds the upper limit.
 LIMITEXCEEDED_CDN = 'LimitExceeded.Cdn'
-
-# The EIP resource exceeded the limit.
-LIMITEXCEEDED_EIP = 'LimitExceeded.Eip'
 
 # If the number of functions exceeds the upper limit, you can apply for an increase by [submitting a ticket](https://intl.cloud.tencent.com/act/event/Online_service?from=scf%7Cindex?from_cn_redirect=1).
 LIMITEXCEEDED_FUNCTION = 'LimitExceeded.Function'
@@ -511,9 +400,6 @@ LIMITEXCEEDED_FUNCTIONTOTALPROVISIONEDCONCURRENCYMEMORY = 'LimitExceeded.Functio
 
 # The total amount of provisioned concurrency of the function has exceeded the limit.
 LIMITEXCEEDED_FUNCTIONTOTALPROVISIONEDCONCURRENCYNUM = 'LimitExceeded.FunctionTotalProvisionedConcurrencyNum'
-
-# The value of `InitTimeout` has reached the upper limit. You can submit a ticket to increase it at https://tencentcs.com/7Fixwt63.
-LIMITEXCEEDED_INITTIMEOUT = 'LimitExceeded.InitTimeout'
 
 # The number of layer versions exceeds the upper limit.
 LIMITEXCEEDED_LAYERVERSIONS = 'LimitExceeded.LayerVersions'
@@ -539,6 +425,9 @@ LIMITEXCEEDED_PROVISIONTRIGGERACTION = 'LimitExceeded.ProvisionTriggerAction'
 # The interval of triggering is too short.
 LIMITEXCEEDED_PROVISIONTRIGGERINTERVAL = 'LimitExceeded.ProvisionTriggerInterval'
 
+# Reached the upper limit of quota
+LIMITEXCEEDED_QUOTA = 'LimitExceeded.Quota'
+
 # The number of retry attempts in the async retry configuration of the function exceeds the limit.
 LIMITEXCEEDED_RETRYNUM = 'LimitExceeded.RetryNum'
 
@@ -557,12 +446,6 @@ LIMITEXCEEDED_USERTOTALCONCURRENCYMEMORY = 'LimitExceeded.UserTotalConcurrencyMe
 # Missing parameter.
 MISSINGPARAMETER = 'MissingParameter'
 
-# Failed to import Code.
-MISSINGPARAMETER_CODE = 'MissingParameter.Code'
-
-# Runtime is missing.
-MISSINGPARAMETER_RUNTIME = 'MissingParameter.Runtime'
-
 # The resource is in use.
 RESOURCEINUSE = 'ResourceInUse'
 
@@ -577,9 +460,6 @@ RESOURCEINUSE_CMQ = 'ResourceInUse.Cmq'
 
 # Cos is in use.
 RESOURCEINUSE_COS = 'ResourceInUse.Cos'
-
-# This function already exists.
-RESOURCEINUSE_FUNCTION = 'ResourceInUse.Function'
 
 # This FunctionName already exists.
 RESOURCEINUSE_FUNCTIONNAME = 'ResourceInUse.FunctionName'
@@ -611,15 +491,6 @@ RESOURCENOTFOUND_ASYNCEVENT = 'ResourceNotFound.AsyncEvent'
 # Cdn does not exist.
 RESOURCENOTFOUND_CDN = 'ResourceNotFound.Cdn'
 
-# Unable to find the specified mount point under the specified CFS
-RESOURCENOTFOUND_CFSMOUNTINSNOTMATCH = 'ResourceNotFound.CfsMountInsNotMatch'
-
-# CFS not available
-RESOURCENOTFOUND_CFSSTATUSERROR = 'ResourceNotFound.CfsStatusError'
-
-# VPCs of the CFS instance and the SCF function are different.
-RESOURCENOTFOUND_CFSVPCNOTMATCH = 'ResourceNotFound.CfsVpcNotMatch'
-
 # Ckafka does not exist.
 RESOURCENOTFOUND_CKAFKA = 'ResourceNotFound.Ckafka'
 
@@ -629,9 +500,6 @@ RESOURCENOTFOUND_CMQ = 'ResourceNotFound.Cmq'
 # Cos does not exist.
 RESOURCENOTFOUND_COS = 'ResourceNotFound.Cos'
 
-# Demo does not exist.
-RESOURCENOTFOUND_DEMO = 'ResourceNotFound.Demo'
-
 # The function does not exist.
 RESOURCENOTFOUND_FUNCTION = 'ResourceNotFound.Function'
 
@@ -640,15 +508,6 @@ RESOURCENOTFOUND_FUNCTIONNAME = 'ResourceNotFound.FunctionName'
 
 # The function version does not exist.
 RESOURCENOTFOUND_FUNCTIONVERSION = 'ResourceNotFound.FunctionVersion'
-
-# An error occurred while getting the CFS mount target information.
-RESOURCENOTFOUND_GETCFSMOUNTINSERROR = 'ResourceNotFound.GetCfsMountInsError'
-
-# An error occurred while getting the CFS information.
-RESOURCENOTFOUND_GETCFSNOTMATCH = 'ResourceNotFound.GetCfsNotMatch'
-
-# Failed to find the specified ImageConfig. Please create it first.
-RESOURCENOTFOUND_IMAGECONFIG = 'ResourceNotFound.ImageConfig'
 
 # The layer does not exist.
 RESOURCENOTFOUND_LAYER = 'ResourceNotFound.Layer'
@@ -661,9 +520,6 @@ RESOURCENOTFOUND_NAMESPACE = 'ResourceNotFound.Namespace'
 
 # The version does not exist.
 RESOURCENOTFOUND_QUALIFIER = 'ResourceNotFound.Qualifier'
-
-# The role does not exist.
-RESOURCENOTFOUND_ROLE = 'ResourceNotFound.Role'
 
 # The role does not exist.
 RESOURCENOTFOUND_ROLECHECK = 'ResourceNotFound.RoleCheck'
@@ -680,14 +536,8 @@ RESOURCENOTFOUND_TRIGGER = 'ResourceNotFound.Trigger'
 # The version does not exist.
 RESOURCENOTFOUND_VERSION = 'ResourceNotFound.Version'
 
-# The VPC or subnet does not exist.
-RESOURCENOTFOUND_VPC = 'ResourceNotFound.Vpc'
-
 # Your balance is insufficient. Please top up first.
 RESOURCEUNAVAILABLE_INSUFFICIENTBALANCE = 'ResourceUnavailable.InsufficientBalance'
-
-# The Namespace is not available.
-RESOURCEUNAVAILABLE_NAMESPACE = 'ResourceUnavailable.Namespace'
 
 # Unauthorized operation.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
@@ -712,9 +562,6 @@ UNAUTHORIZEDOPERATION_NOTMC = 'UnauthorizedOperation.NotMC'
 
 # Region error.
 UNAUTHORIZEDOPERATION_REGION = 'UnauthorizedOperation.Region'
-
-# You do not have permissions to access your Cos resources.
-UNAUTHORIZEDOPERATION_ROLE = 'UnauthorizedOperation.Role'
 
 # The `Appid` of TempCos is not consistent with the APPID of the request account.
 UNAUTHORIZEDOPERATION_TEMPCOSAPPID = 'UnauthorizedOperation.TempCosAppid'
@@ -743,7 +590,7 @@ UNSUPPORTEDOPERATION_REGION = 'UnsupportedOperation.Region'
 # Trigger operation is not supported.
 UNSUPPORTEDOPERATION_TRIGGER = 'UnsupportedOperation.Trigger'
 
-# 
+# The specified configuration is not supported. Please modify and try again.
 UNSUPPORTEDOPERATION_UPDATEFUNCTIONEVENTINVOKECONFIG = 'UnsupportedOperation.UpdateFunctionEventInvokeConfig'
 
 # The specified VpcConfig does not exist.
