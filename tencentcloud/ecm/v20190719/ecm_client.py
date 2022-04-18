@@ -36,7 +36,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AllocateAddresses", params)
+            headers = request.headers
+            body = self.call("AllocateAddresses", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AllocateAddressesResponse()
@@ -64,7 +65,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssignIpv6Addresses", params)
+            headers = request.headers
+            body = self.call("AssignIpv6Addresses", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssignIpv6AddressesResponse()
@@ -92,7 +94,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssignPrivateIpAddresses", params)
+            headers = request.headers
+            body = self.call("AssignPrivateIpAddresses", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssignPrivateIpAddressesResponse()
@@ -123,7 +126,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssociateAddress", params)
+            headers = request.headers
+            body = self.call("AssociateAddress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssociateAddressResponse()
@@ -151,7 +155,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssociateSecurityGroups", params)
+            headers = request.headers
+            body = self.call("AssociateSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssociateSecurityGroupsResponse()
@@ -179,7 +184,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AttachNetworkInterface", params)
+            headers = request.headers
+            body = self.call("AttachNetworkInterface", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AttachNetworkInterfaceResponse()
@@ -207,7 +213,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BatchDeregisterTargets", params)
+            headers = request.headers
+            body = self.call("BatchDeregisterTargets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BatchDeregisterTargetsResponse()
@@ -235,7 +242,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BatchModifyTargetWeight", params)
+            headers = request.headers
+            body = self.call("BatchModifyTargetWeight", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BatchModifyTargetWeightResponse()
@@ -263,7 +271,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BatchRegisterTargets", params)
+            headers = request.headers
+            body = self.call("BatchRegisterTargets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BatchRegisterTargetsResponse()
@@ -291,7 +300,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateHaVip", params)
+            headers = request.headers
+            body = self.call("CreateHaVip", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateHaVipResponse()
@@ -319,7 +329,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateImage", params)
+            headers = request.headers
+            body = self.call("CreateImage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateImageResponse()
@@ -347,7 +358,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateKeyPair", params)
+            headers = request.headers
+            body = self.call("CreateKeyPair", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateKeyPairResponse()
@@ -375,7 +387,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateListener", params)
+            headers = request.headers
+            body = self.call("CreateListener", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateListenerResponse()
@@ -403,7 +416,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLoadBalancer", params)
+            headers = request.headers
+            body = self.call("CreateLoadBalancer", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLoadBalancerResponse()
@@ -431,7 +445,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateModule", params)
+            headers = request.headers
+            body = self.call("CreateModule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateModuleResponse()
@@ -459,7 +474,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateNetworkInterface", params)
+            headers = request.headers
+            body = self.call("CreateNetworkInterface", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateNetworkInterfaceResponse()
@@ -487,7 +503,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRouteTable", params)
+            headers = request.headers
+            body = self.call("CreateRouteTable", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRouteTableResponse()
@@ -515,7 +532,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRoutes", params)
+            headers = request.headers
+            body = self.call("CreateRoutes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRoutesResponse()
@@ -543,7 +561,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSecurityGroup", params)
+            headers = request.headers
+            body = self.call("CreateSecurityGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSecurityGroupResponse()
@@ -584,7 +603,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSecurityGroupPolicies", params)
+            headers = request.headers
+            body = self.call("CreateSecurityGroupPolicies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSecurityGroupPoliciesResponse()
@@ -612,7 +632,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSubnet", params)
+            headers = request.headers
+            body = self.call("CreateSubnet", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSubnetResponse()
@@ -640,7 +661,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateVpc", params)
+            headers = request.headers
+            body = self.call("CreateVpc", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateVpcResponse()
@@ -668,7 +690,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteHaVip", params)
+            headers = request.headers
+            body = self.call("DeleteHaVip", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteHaVipResponse()
@@ -696,7 +719,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteImage", params)
+            headers = request.headers
+            body = self.call("DeleteImage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteImageResponse()
@@ -724,7 +748,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteListener", params)
+            headers = request.headers
+            body = self.call("DeleteListener", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteListenerResponse()
@@ -752,7 +777,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLoadBalancer", params)
+            headers = request.headers
+            body = self.call("DeleteLoadBalancer", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLoadBalancerResponse()
@@ -780,7 +806,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLoadBalancerListeners", params)
+            headers = request.headers
+            body = self.call("DeleteLoadBalancerListeners", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLoadBalancerListenersResponse()
@@ -808,7 +835,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteModule", params)
+            headers = request.headers
+            body = self.call("DeleteModule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteModuleResponse()
@@ -836,7 +864,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteNetworkInterface", params)
+            headers = request.headers
+            body = self.call("DeleteNetworkInterface", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNetworkInterfaceResponse()
@@ -864,7 +893,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRouteTable", params)
+            headers = request.headers
+            body = self.call("DeleteRouteTable", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRouteTableResponse()
@@ -892,7 +922,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRoutes", params)
+            headers = request.headers
+            body = self.call("DeleteRoutes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRoutesResponse()
@@ -922,7 +953,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSecurityGroup", params)
+            headers = request.headers
+            body = self.call("DeleteSecurityGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSecurityGroupResponse()
@@ -950,7 +982,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSecurityGroupPolicies", params)
+            headers = request.headers
+            body = self.call("DeleteSecurityGroupPolicies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSecurityGroupPoliciesResponse()
@@ -981,7 +1014,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSnapshots", params)
+            headers = request.headers
+            body = self.call("DeleteSnapshots", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSnapshotsResponse()
@@ -1009,7 +1043,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSubnet", params)
+            headers = request.headers
+            body = self.call("DeleteSubnet", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSubnetResponse()
@@ -1037,7 +1072,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteVpc", params)
+            headers = request.headers
+            body = self.call("DeleteVpc", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteVpcResponse()
@@ -1065,7 +1101,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAddressQuota", params)
+            headers = request.headers
+            body = self.call("DescribeAddressQuota", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAddressQuotaResponse()
@@ -1093,7 +1130,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAddresses", params)
+            headers = request.headers
+            body = self.call("DescribeAddresses", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAddressesResponse()
@@ -1121,7 +1159,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBaseOverview", params)
+            headers = request.headers
+            body = self.call("DescribeBaseOverview", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBaseOverviewResponse()
@@ -1149,7 +1188,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeConfig", params)
+            headers = request.headers
+            body = self.call("DescribeConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeConfigResponse()
@@ -1177,7 +1217,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCustomImageTask", params)
+            headers = request.headers
+            body = self.call("DescribeCustomImageTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCustomImageTaskResponse()
@@ -1205,7 +1246,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDefaultSubnet", params)
+            headers = request.headers
+            body = self.call("DescribeDefaultSubnet", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDefaultSubnetResponse()
@@ -1233,7 +1275,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeHaVips", params)
+            headers = request.headers
+            body = self.call("DescribeHaVips", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeHaVipsResponse()
@@ -1261,7 +1304,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImage", params)
+            headers = request.headers
+            body = self.call("DescribeImage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageResponse()
@@ -1289,7 +1333,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImportImageOs", params)
+            headers = request.headers
+            body = self.call("DescribeImportImageOs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImportImageOsResponse()
@@ -1317,7 +1362,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceTypeConfig", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceTypeConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceTypeConfigResponse()
@@ -1345,7 +1391,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceVncUrl", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceVncUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceVncUrlResponse()
@@ -1373,7 +1420,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstances", params)
+            headers = request.headers
+            body = self.call("DescribeInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesResponse()
@@ -1401,7 +1449,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstancesDeniedActions", params)
+            headers = request.headers
+            body = self.call("DescribeInstancesDeniedActions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesDeniedActionsResponse()
@@ -1429,7 +1478,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeListeners", params)
+            headers = request.headers
+            body = self.call("DescribeListeners", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeListenersResponse()
@@ -1457,7 +1507,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLoadBalanceTaskStatus", params)
+            headers = request.headers
+            body = self.call("DescribeLoadBalanceTaskStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLoadBalanceTaskStatusResponse()
@@ -1485,7 +1536,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLoadBalancers", params)
+            headers = request.headers
+            body = self.call("DescribeLoadBalancers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLoadBalancersResponse()
@@ -1513,7 +1565,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeModule", params)
+            headers = request.headers
+            body = self.call("DescribeModule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeModuleResponse()
@@ -1541,7 +1594,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeModuleDetail", params)
+            headers = request.headers
+            body = self.call("DescribeModuleDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeModuleDetailResponse()
@@ -1569,7 +1623,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMonthPeakNetwork", params)
+            headers = request.headers
+            body = self.call("DescribeMonthPeakNetwork", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMonthPeakNetworkResponse()
@@ -1597,7 +1652,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNetworkInterfaces", params)
+            headers = request.headers
+            body = self.call("DescribeNetworkInterfaces", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNetworkInterfacesResponse()
@@ -1625,7 +1681,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNode", params)
+            headers = request.headers
+            body = self.call("DescribeNode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNodeResponse()
@@ -1653,7 +1710,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePackingQuotaGroup", params)
+            headers = request.headers
+            body = self.call("DescribePackingQuotaGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePackingQuotaGroupResponse()
@@ -1681,7 +1739,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePeakBaseOverview", params)
+            headers = request.headers
+            body = self.call("DescribePeakBaseOverview", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePeakBaseOverviewResponse()
@@ -1709,7 +1768,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePeakNetworkOverview", params)
+            headers = request.headers
+            body = self.call("DescribePeakNetworkOverview", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePeakNetworkOverviewResponse()
@@ -1737,7 +1797,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePriceRunInstance", params)
+            headers = request.headers
+            body = self.call("DescribePriceRunInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePriceRunInstanceResponse()
@@ -1765,7 +1826,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRouteConflicts", params)
+            headers = request.headers
+            body = self.call("DescribeRouteConflicts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRouteConflictsResponse()
@@ -1793,7 +1855,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRouteTables", params)
+            headers = request.headers
+            body = self.call("DescribeRouteTables", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRouteTablesResponse()
@@ -1821,7 +1884,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSecurityGroupAssociationStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeSecurityGroupAssociationStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecurityGroupAssociationStatisticsResponse()
@@ -1849,7 +1913,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSecurityGroupLimits", params)
+            headers = request.headers
+            body = self.call("DescribeSecurityGroupLimits", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecurityGroupLimitsResponse()
@@ -1877,7 +1942,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSecurityGroupPolicies", params)
+            headers = request.headers
+            body = self.call("DescribeSecurityGroupPolicies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecurityGroupPoliciesResponse()
@@ -1905,7 +1971,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSecurityGroups", params)
+            headers = request.headers
+            body = self.call("DescribeSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecurityGroupsResponse()
@@ -1936,7 +2003,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSnapshots", params)
+            headers = request.headers
+            body = self.call("DescribeSnapshots", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSnapshotsResponse()
@@ -1964,7 +2032,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSubnets", params)
+            headers = request.headers
+            body = self.call("DescribeSubnets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSubnetsResponse()
@@ -1992,7 +2061,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTargetHealth", params)
+            headers = request.headers
+            body = self.call("DescribeTargetHealth", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTargetHealthResponse()
@@ -2020,7 +2090,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTargets", params)
+            headers = request.headers
+            body = self.call("DescribeTargets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTargetsResponse()
@@ -2048,7 +2119,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskResult", params)
+            headers = request.headers
+            body = self.call("DescribeTaskResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskResultResponse()
@@ -2076,7 +2148,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskStatus", params)
+            headers = request.headers
+            body = self.call("DescribeTaskStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskStatusResponse()
@@ -2104,7 +2177,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVpcs", params)
+            headers = request.headers
+            body = self.call("DescribeVpcs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVpcsResponse()
@@ -2132,7 +2206,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetachNetworkInterface", params)
+            headers = request.headers
+            body = self.call("DetachNetworkInterface", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachNetworkInterfaceResponse()
@@ -2160,7 +2235,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableRoutes", params)
+            headers = request.headers
+            body = self.call("DisableRoutes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableRoutesResponse()
@@ -2190,7 +2266,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisassociateAddress", params)
+            headers = request.headers
+            body = self.call("DisassociateAddress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateAddressResponse()
@@ -2218,7 +2295,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisassociateInstancesKeyPairs", params)
+            headers = request.headers
+            body = self.call("DisassociateInstancesKeyPairs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateInstancesKeyPairsResponse()
@@ -2246,7 +2324,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisassociateSecurityGroups", params)
+            headers = request.headers
+            body = self.call("DisassociateSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateSecurityGroupsResponse()
@@ -2275,7 +2354,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnableRoutes", params)
+            headers = request.headers
+            body = self.call("EnableRoutes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableRoutesResponse()
@@ -2303,7 +2383,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ImportImage", params)
+            headers = request.headers
+            body = self.call("ImportImage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ImportImageResponse()
@@ -2331,7 +2412,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("MigrateNetworkInterface", params)
+            headers = request.headers
+            body = self.call("MigrateNetworkInterface", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.MigrateNetworkInterfaceResponse()
@@ -2361,7 +2443,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("MigratePrivateIpAddress", params)
+            headers = request.headers
+            body = self.call("MigratePrivateIpAddress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.MigratePrivateIpAddressResponse()
@@ -2389,7 +2472,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAddressAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyAddressAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAddressAttributeResponse()
@@ -2417,7 +2501,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAddressesBandwidth", params)
+            headers = request.headers
+            body = self.call("ModifyAddressesBandwidth", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAddressesBandwidthResponse()
@@ -2445,7 +2530,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDefaultSubnet", params)
+            headers = request.headers
+            body = self.call("ModifyDefaultSubnet", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDefaultSubnetResponse()
@@ -2473,7 +2559,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyHaVipAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyHaVipAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyHaVipAttributeResponse()
@@ -2501,7 +2588,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyImageAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyImageAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyImageAttributeResponse()
@@ -2529,7 +2617,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyInstancesAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyInstancesAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyInstancesAttributeResponse()
@@ -2557,7 +2646,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyIpv6AddressesAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyIpv6AddressesAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyIpv6AddressesAttributeResponse()
@@ -2585,7 +2675,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyListener", params)
+            headers = request.headers
+            body = self.call("ModifyListener", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyListenerResponse()
@@ -2613,7 +2704,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLoadBalancerAttributes", params)
+            headers = request.headers
+            body = self.call("ModifyLoadBalancerAttributes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLoadBalancerAttributesResponse()
@@ -2641,7 +2733,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyModuleConfig", params)
+            headers = request.headers
+            body = self.call("ModifyModuleConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyModuleConfigResponse()
@@ -2669,7 +2762,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyModuleDisableWanIp", params)
+            headers = request.headers
+            body = self.call("ModifyModuleDisableWanIp", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyModuleDisableWanIpResponse()
@@ -2697,7 +2791,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyModuleImage", params)
+            headers = request.headers
+            body = self.call("ModifyModuleImage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyModuleImageResponse()
@@ -2725,7 +2820,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyModuleIpDirect", params)
+            headers = request.headers
+            body = self.call("ModifyModuleIpDirect", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyModuleIpDirectResponse()
@@ -2753,7 +2849,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyModuleName", params)
+            headers = request.headers
+            body = self.call("ModifyModuleName", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyModuleNameResponse()
@@ -2781,7 +2878,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyModuleNetwork", params)
+            headers = request.headers
+            body = self.call("ModifyModuleNetwork", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyModuleNetworkResponse()
@@ -2809,7 +2907,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyModuleSecurityGroups", params)
+            headers = request.headers
+            body = self.call("ModifyModuleSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyModuleSecurityGroupsResponse()
@@ -2837,7 +2936,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPrivateIpAddressesAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyPrivateIpAddressesAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPrivateIpAddressesAttributeResponse()
@@ -2865,7 +2965,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyRouteTableAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyRouteTableAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRouteTableAttributeResponse()
@@ -2893,7 +2994,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySecurityGroupAttribute", params)
+            headers = request.headers
+            body = self.call("ModifySecurityGroupAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySecurityGroupAttributeResponse()
@@ -2921,7 +3023,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySecurityGroupPolicies", params)
+            headers = request.headers
+            body = self.call("ModifySecurityGroupPolicies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySecurityGroupPoliciesResponse()
@@ -2949,7 +3052,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySubnetAttribute", params)
+            headers = request.headers
+            body = self.call("ModifySubnetAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySubnetAttributeResponse()
@@ -2977,7 +3081,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTargetPort", params)
+            headers = request.headers
+            body = self.call("ModifyTargetPort", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTargetPortResponse()
@@ -3005,7 +3110,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTargetWeight", params)
+            headers = request.headers
+            body = self.call("ModifyTargetWeight", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTargetWeightResponse()
@@ -3033,7 +3139,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyVpcAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyVpcAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVpcAttributeResponse()
@@ -3061,7 +3168,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RebootInstances", params)
+            headers = request.headers
+            body = self.call("RebootInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RebootInstancesResponse()
@@ -3091,7 +3199,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReleaseAddresses", params)
+            headers = request.headers
+            body = self.call("ReleaseAddresses", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReleaseAddressesResponse()
@@ -3119,7 +3228,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReleaseIpv6Addresses", params)
+            headers = request.headers
+            body = self.call("ReleaseIpv6Addresses", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReleaseIpv6AddressesResponse()
@@ -3148,7 +3258,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RemovePrivateIpAddresses", params)
+            headers = request.headers
+            body = self.call("RemovePrivateIpAddresses", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemovePrivateIpAddressesResponse()
@@ -3176,7 +3287,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReplaceRouteTableAssociation", params)
+            headers = request.headers
+            body = self.call("ReplaceRouteTableAssociation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReplaceRouteTableAssociationResponse()
@@ -3204,7 +3316,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReplaceRoutes", params)
+            headers = request.headers
+            body = self.call("ReplaceRoutes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReplaceRoutesResponse()
@@ -3232,7 +3345,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReplaceSecurityGroupPolicy", params)
+            headers = request.headers
+            body = self.call("ReplaceSecurityGroupPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReplaceSecurityGroupPolicyResponse()
@@ -3260,7 +3374,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetInstances", params)
+            headers = request.headers
+            body = self.call("ResetInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetInstancesResponse()
@@ -3288,7 +3403,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetInstancesMaxBandwidth", params)
+            headers = request.headers
+            body = self.call("ResetInstancesMaxBandwidth", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetInstancesMaxBandwidthResponse()
@@ -3316,7 +3432,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetInstancesPassword", params)
+            headers = request.headers
+            body = self.call("ResetInstancesPassword", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetInstancesPasswordResponse()
@@ -3344,7 +3461,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetRoutes", params)
+            headers = request.headers
+            body = self.call("ResetRoutes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetRoutesResponse()
@@ -3372,7 +3490,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RunInstances", params)
+            headers = request.headers
+            body = self.call("RunInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RunInstancesResponse()
@@ -3400,7 +3519,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetLoadBalancerSecurityGroups", params)
+            headers = request.headers
+            body = self.call("SetLoadBalancerSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetLoadBalancerSecurityGroupsResponse()
@@ -3428,7 +3548,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetSecurityGroupForLoadbalancers", params)
+            headers = request.headers
+            body = self.call("SetSecurityGroupForLoadbalancers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetSecurityGroupForLoadbalancersResponse()
@@ -3456,7 +3577,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartInstances", params)
+            headers = request.headers
+            body = self.call("StartInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartInstancesResponse()
@@ -3486,7 +3608,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopInstances", params)
+            headers = request.headers
+            body = self.call("StopInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopInstancesResponse()
@@ -3514,7 +3637,8 @@ class EcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TerminateInstances", params)
+            headers = request.headers
+            body = self.call("TerminateInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TerminateInstancesResponse()

@@ -36,7 +36,8 @@ class IotcloudClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDevice", params)
+            headers = request.headers
+            body = self.call("CreateDevice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDeviceResponse()
@@ -64,7 +65,8 @@ class IotcloudClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePrivateCA", params)
+            headers = request.headers
+            body = self.call("CreatePrivateCA", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePrivateCAResponse()
@@ -92,7 +94,8 @@ class IotcloudClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteDevice", params)
+            headers = request.headers
+            body = self.call("DeleteDevice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDeviceResponse()
@@ -120,7 +123,8 @@ class IotcloudClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePrivateCA", params)
+            headers = request.headers
+            body = self.call("DeletePrivateCA", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePrivateCAResponse()
@@ -148,7 +152,8 @@ class IotcloudClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteProduct", params)
+            headers = request.headers
+            body = self.call("DeleteProduct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteProductResponse()
@@ -176,7 +181,8 @@ class IotcloudClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDevice", params)
+            headers = request.headers
+            body = self.call("DescribeDevice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDeviceResponse()
@@ -204,7 +210,8 @@ class IotcloudClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDevices", params)
+            headers = request.headers
+            body = self.call("DescribeDevices", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDevicesResponse()
@@ -232,7 +239,8 @@ class IotcloudClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePrivateCA", params)
+            headers = request.headers
+            body = self.call("DescribePrivateCA", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePrivateCAResponse()
@@ -260,7 +268,8 @@ class IotcloudClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePrivateCABindedProducts", params)
+            headers = request.headers
+            body = self.call("DescribePrivateCABindedProducts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePrivateCABindedProductsResponse()
@@ -288,7 +297,8 @@ class IotcloudClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePrivateCAs", params)
+            headers = request.headers
+            body = self.call("DescribePrivateCAs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePrivateCAsResponse()
@@ -316,7 +326,8 @@ class IotcloudClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProduct", params)
+            headers = request.headers
+            body = self.call("DescribeProduct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProductResponse()
@@ -344,7 +355,8 @@ class IotcloudClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProductCA", params)
+            headers = request.headers
+            body = self.call("DescribeProductCA", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProductCAResponse()
@@ -372,7 +384,8 @@ class IotcloudClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetProductsForbiddenStatus", params)
+            headers = request.headers
+            body = self.call("SetProductsForbiddenStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetProductsForbiddenStatusResponse()
@@ -400,7 +413,8 @@ class IotcloudClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateDeviceLogLevel", params)
+            headers = request.headers
+            body = self.call("UpdateDeviceLogLevel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateDeviceLogLevelResponse()
@@ -428,7 +442,8 @@ class IotcloudClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateDevicesEnableState", params)
+            headers = request.headers
+            body = self.call("UpdateDevicesEnableState", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateDevicesEnableStateResponse()
@@ -456,7 +471,8 @@ class IotcloudClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdatePrivateCA", params)
+            headers = request.headers
+            body = self.call("UpdatePrivateCA", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdatePrivateCAResponse()

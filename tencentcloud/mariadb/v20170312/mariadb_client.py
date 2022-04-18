@@ -36,7 +36,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssociateSecurityGroups", params)
+            headers = request.headers
+            body = self.call("AssociateSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssociateSecurityGroupsResponse()
@@ -64,7 +65,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CancelDcnJob", params)
+            headers = request.headers
+            body = self.call("CancelDcnJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CancelDcnJobResponse()
@@ -92,7 +94,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CloseDBExtranetAccess", params)
+            headers = request.headers
+            body = self.call("CloseDBExtranetAccess", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CloseDBExtranetAccessResponse()
@@ -121,7 +124,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CopyAccountPrivileges", params)
+            headers = request.headers
+            body = self.call("CopyAccountPrivileges", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CopyAccountPrivilegesResponse()
@@ -149,7 +153,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAccount", params)
+            headers = request.headers
+            body = self.call("CreateAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAccountResponse()
@@ -177,7 +182,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateHourDBInstance", params)
+            headers = request.headers
+            body = self.call("CreateHourDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateHourDBInstanceResponse()
@@ -205,7 +211,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAccount", params)
+            headers = request.headers
+            body = self.call("DeleteAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAccountResponse()
@@ -234,7 +241,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBInstances", params)
+            headers = request.headers
+            body = self.call("DescribeDBInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBInstancesResponse()
@@ -262,7 +270,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBLogFiles", params)
+            headers = request.headers
+            body = self.call("DescribeDBLogFiles", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBLogFilesResponse()
@@ -290,7 +299,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBSecurityGroups", params)
+            headers = request.headers
+            body = self.call("DescribeDBSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBSecurityGroupsResponse()
@@ -318,7 +328,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDcnDetail", params)
+            headers = request.headers
+            body = self.call("DescribeDcnDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDcnDetailResponse()
@@ -346,7 +357,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFileDownloadUrl", params)
+            headers = request.headers
+            body = self.call("DescribeFileDownloadUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFileDownloadUrlResponse()
@@ -374,7 +386,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceNodeInfo", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceNodeInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceNodeInfoResponse()
@@ -402,7 +415,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProjectSecurityGroups", params)
+            headers = request.headers
+            body = self.call("DescribeProjectSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProjectSecurityGroupsResponse()
@@ -430,7 +444,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DestroyHourDBInstance", params)
+            headers = request.headers
+            body = self.call("DestroyHourDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DestroyHourDBInstanceResponse()
@@ -458,7 +473,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisassociateSecurityGroups", params)
+            headers = request.headers
+            body = self.call("DisassociateSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateSecurityGroupsResponse()
@@ -487,7 +503,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GrantAccountPrivileges", params)
+            headers = request.headers
+            body = self.call("GrantAccountPrivileges", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GrantAccountPrivilegesResponse()
@@ -516,7 +533,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAccountDescription", params)
+            headers = request.headers
+            body = self.call("ModifyAccountDescription", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccountDescriptionResponse()
@@ -549,7 +567,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAccountPrivileges", params)
+            headers = request.headers
+            body = self.call("ModifyAccountPrivileges", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccountPrivilegesResponse()
@@ -577,7 +596,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDBInstancesProject", params)
+            headers = request.headers
+            body = self.call("ModifyDBInstancesProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstancesProjectResponse()
@@ -605,7 +625,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySyncTaskAttribute", params)
+            headers = request.headers
+            body = self.call("ModifySyncTaskAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySyncTaskAttributeResponse()
@@ -634,7 +655,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetAccountPassword", params)
+            headers = request.headers
+            body = self.call("ResetAccountPassword", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetAccountPasswordResponse()

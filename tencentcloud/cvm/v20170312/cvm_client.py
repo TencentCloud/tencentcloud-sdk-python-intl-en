@@ -37,7 +37,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AllocateHosts", params)
+            headers = request.headers
+            body = self.call("AllocateHosts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AllocateHostsResponse()
@@ -70,7 +71,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssociateInstancesKeyPairs", params)
+            headers = request.headers
+            body = self.call("AssociateInstancesKeyPairs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssociateInstancesKeyPairsResponse()
@@ -98,7 +100,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssociateSecurityGroups", params)
+            headers = request.headers
+            body = self.call("AssociateSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssociateSecurityGroupsResponse()
@@ -126,7 +129,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDisasterRecoverGroup", params)
+            headers = request.headers
+            body = self.call("CreateDisasterRecoverGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDisasterRecoverGroupResponse()
@@ -154,7 +158,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateImage", params)
+            headers = request.headers
+            body = self.call("CreateImage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateImageResponse()
@@ -187,7 +192,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateKeyPair", params)
+            headers = request.headers
+            body = self.call("CreateKeyPair", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateKeyPairResponse()
@@ -219,7 +225,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLaunchTemplate", params)
+            headers = request.headers
+            body = self.call("CreateLaunchTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLaunchTemplateResponse()
@@ -247,7 +254,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLaunchTemplateVersion", params)
+            headers = request.headers
+            body = self.call("CreateLaunchTemplateVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLaunchTemplateVersionResponse()
@@ -275,7 +283,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteDisasterRecoverGroups", params)
+            headers = request.headers
+            body = self.call("DeleteDisasterRecoverGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDisasterRecoverGroupsResponse()
@@ -307,7 +316,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteImages", params)
+            headers = request.headers
+            body = self.call("DeleteImages", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteImagesResponse()
@@ -338,7 +348,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteKeyPairs", params)
+            headers = request.headers
+            body = self.call("DeleteKeyPairs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteKeyPairsResponse()
@@ -366,7 +377,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLaunchTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteLaunchTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLaunchTemplateResponse()
@@ -394,7 +406,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLaunchTemplateVersions", params)
+            headers = request.headers
+            body = self.call("DeleteLaunchTemplateVersions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLaunchTemplateVersionsResponse()
@@ -422,7 +435,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDisasterRecoverGroupQuota", params)
+            headers = request.headers
+            body = self.call("DescribeDisasterRecoverGroupQuota", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDisasterRecoverGroupQuotaResponse()
@@ -450,7 +464,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDisasterRecoverGroups", params)
+            headers = request.headers
+            body = self.call("DescribeDisasterRecoverGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDisasterRecoverGroupsResponse()
@@ -478,7 +493,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeHosts", params)
+            headers = request.headers
+            body = self.call("DescribeHosts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeHostsResponse()
@@ -506,7 +522,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImageQuota", params)
+            headers = request.headers
+            body = self.call("DescribeImageQuota", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageQuotaResponse()
@@ -534,7 +551,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImageSharePermission", params)
+            headers = request.headers
+            body = self.call("DescribeImageSharePermission", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageSharePermissionResponse()
@@ -565,7 +583,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImages", params)
+            headers = request.headers
+            body = self.call("DescribeImages", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImagesResponse()
@@ -593,7 +612,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImportImageOs", params)
+            headers = request.headers
+            body = self.call("DescribeImportImageOs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImportImageOsResponse()
@@ -621,7 +641,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceFamilyConfigs", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceFamilyConfigs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceFamilyConfigsResponse()
@@ -652,7 +673,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceTypeConfigs", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceTypeConfigs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceTypeConfigsResponse()
@@ -694,7 +716,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceVncUrl", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceVncUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceVncUrlResponse()
@@ -725,7 +748,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstances", params)
+            headers = request.headers
+            body = self.call("DescribeInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesResponse()
@@ -755,7 +779,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstancesOperationLimit", params)
+            headers = request.headers
+            body = self.call("DescribeInstancesOperationLimit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesOperationLimitResponse()
@@ -786,7 +811,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstancesStatus", params)
+            headers = request.headers
+            body = self.call("DescribeInstancesStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesStatusResponse()
@@ -814,7 +840,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInternetChargeTypeConfigs", params)
+            headers = request.headers
+            body = self.call("DescribeInternetChargeTypeConfigs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInternetChargeTypeConfigsResponse()
@@ -844,7 +871,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeKeyPairs", params)
+            headers = request.headers
+            body = self.call("DescribeKeyPairs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeKeyPairsResponse()
@@ -872,7 +900,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLaunchTemplateVersions", params)
+            headers = request.headers
+            body = self.call("DescribeLaunchTemplateVersions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLaunchTemplateVersionsResponse()
@@ -900,7 +929,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLaunchTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeLaunchTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLaunchTemplatesResponse()
@@ -928,7 +958,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRegions", params)
+            headers = request.headers
+            body = self.call("DescribeRegions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRegionsResponse()
@@ -956,7 +987,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReservedInstances", params)
+            headers = request.headers
+            body = self.call("DescribeReservedInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReservedInstancesResponse()
@@ -984,7 +1016,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReservedInstancesConfigInfos", params)
+            headers = request.headers
+            body = self.call("DescribeReservedInstancesConfigInfos", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReservedInstancesConfigInfosResponse()
@@ -1012,7 +1045,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReservedInstancesOfferings", params)
+            headers = request.headers
+            body = self.call("DescribeReservedInstancesOfferings", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReservedInstancesOfferingsResponse()
@@ -1040,7 +1074,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeZoneInstanceConfigInfos", params)
+            headers = request.headers
+            body = self.call("DescribeZoneInstanceConfigInfos", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeZoneInstanceConfigInfosResponse()
@@ -1068,7 +1103,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeZones", params)
+            headers = request.headers
+            body = self.call("DescribeZones", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeZonesResponse()
@@ -1101,7 +1137,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisassociateInstancesKeyPairs", params)
+            headers = request.headers
+            body = self.call("DisassociateInstancesKeyPairs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateInstancesKeyPairsResponse()
@@ -1129,7 +1166,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisassociateSecurityGroups", params)
+            headers = request.headers
+            body = self.call("DisassociateSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateSecurityGroupsResponse()
@@ -1157,7 +1195,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ImportImage", params)
+            headers = request.headers
+            body = self.call("ImportImage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ImportImageResponse()
@@ -1189,7 +1228,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ImportKeyPair", params)
+            headers = request.headers
+            body = self.call("ImportKeyPair", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ImportKeyPairResponse()
@@ -1217,7 +1257,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquirePricePurchaseReservedInstancesOffering", params)
+            headers = request.headers
+            body = self.call("InquirePricePurchaseReservedInstancesOffering", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquirePricePurchaseReservedInstancesOfferingResponse()
@@ -1249,7 +1290,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceResetInstance", params)
+            headers = request.headers
+            body = self.call("InquiryPriceResetInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceResetInstanceResponse()
@@ -1280,7 +1322,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceResetInstancesInternetMaxBandwidth", params)
+            headers = request.headers
+            body = self.call("InquiryPriceResetInstancesInternetMaxBandwidth", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceResetInstancesInternetMaxBandwidthResponse()
@@ -1311,7 +1354,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceResetInstancesType", params)
+            headers = request.headers
+            body = self.call("InquiryPriceResetInstancesType", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceResetInstancesTypeResponse()
@@ -1342,7 +1386,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceResizeInstanceDisks", params)
+            headers = request.headers
+            body = self.call("InquiryPriceResizeInstanceDisks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceResizeInstanceDisksResponse()
@@ -1370,7 +1415,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceRunInstances", params)
+            headers = request.headers
+            body = self.call("InquiryPriceRunInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceRunInstancesResponse()
@@ -1398,7 +1444,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDisasterRecoverGroupAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyDisasterRecoverGroupAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDisasterRecoverGroupAttributeResponse()
@@ -1426,7 +1473,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyHostsAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyHostsAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyHostsAttributeResponse()
@@ -1456,7 +1504,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyImageAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyImageAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyImageAttributeResponse()
@@ -1489,7 +1538,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyImageSharePermission", params)
+            headers = request.headers
+            body = self.call("ModifyImageSharePermission", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyImageSharePermissionResponse()
@@ -1523,7 +1573,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyInstancesAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyInstancesAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyInstancesAttributeResponse()
@@ -1557,7 +1608,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyInstancesProject", params)
+            headers = request.headers
+            body = self.call("ModifyInstancesProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyInstancesProjectResponse()
@@ -1587,7 +1639,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyInstancesVpcAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyInstancesVpcAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyInstancesVpcAttributeResponse()
@@ -1619,7 +1672,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyKeyPairAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyKeyPairAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyKeyPairAttributeResponse()
@@ -1647,7 +1701,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLaunchTemplateDefaultVersion", params)
+            headers = request.headers
+            body = self.call("ModifyLaunchTemplateDefaultVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLaunchTemplateDefaultVersionResponse()
@@ -1675,7 +1730,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PurchaseReservedInstancesOffering", params)
+            headers = request.headers
+            body = self.call("PurchaseReservedInstancesOffering", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PurchaseReservedInstancesOfferingResponse()
@@ -1708,7 +1764,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RebootInstances", params)
+            headers = request.headers
+            body = self.call("RebootInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RebootInstancesResponse()
@@ -1743,7 +1800,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetInstance", params)
+            headers = request.headers
+            body = self.call("ResetInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetInstanceResponse()
@@ -1774,7 +1832,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetInstancesInternetMaxBandwidth", params)
+            headers = request.headers
+            body = self.call("ResetInstancesInternetMaxBandwidth", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetInstancesInternetMaxBandwidthResponse()
@@ -1807,7 +1866,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetInstancesPassword", params)
+            headers = request.headers
+            body = self.call("ResetInstancesPassword", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetInstancesPasswordResponse()
@@ -1837,7 +1897,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetInstancesType", params)
+            headers = request.headers
+            body = self.call("ResetInstancesType", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetInstancesTypeResponse()
@@ -1869,7 +1930,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResizeInstanceDisks", params)
+            headers = request.headers
+            body = self.call("ResizeInstanceDisks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResizeInstanceDisksResponse()
@@ -1902,7 +1964,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RunInstances", params)
+            headers = request.headers
+            body = self.call("RunInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RunInstancesResponse()
@@ -1934,7 +1997,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartInstances", params)
+            headers = request.headers
+            body = self.call("StartInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartInstancesResponse()
@@ -1967,7 +2031,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopInstances", params)
+            headers = request.headers
+            body = self.call("StopInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopInstancesResponse()
@@ -1999,7 +2064,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SyncImages", params)
+            headers = request.headers
+            body = self.call("SyncImages", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SyncImagesResponse()
@@ -2032,7 +2098,8 @@ class CvmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TerminateInstances", params)
+            headers = request.headers
+            body = self.call("TerminateInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TerminateInstancesResponse()

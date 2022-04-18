@@ -36,7 +36,8 @@ class MdcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateStreamLinkFlow", params)
+            headers = request.headers
+            body = self.call("CreateStreamLinkFlow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateStreamLinkFlowResponse()
@@ -64,7 +65,8 @@ class MdcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteStreamLinkFlow", params)
+            headers = request.headers
+            body = self.call("DeleteStreamLinkFlow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteStreamLinkFlowResponse()
@@ -92,7 +94,8 @@ class MdcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteStreamLinkOutput", params)
+            headers = request.headers
+            body = self.call("DeleteStreamLinkOutput", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteStreamLinkOutputResponse()
@@ -120,7 +123,8 @@ class MdcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStreamLinkFlow", params)
+            headers = request.headers
+            body = self.call("DescribeStreamLinkFlow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamLinkFlowResponse()
@@ -148,7 +152,8 @@ class MdcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStreamLinkFlows", params)
+            headers = request.headers
+            body = self.call("DescribeStreamLinkFlows", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamLinkFlowsResponse()
@@ -176,7 +181,8 @@ class MdcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStreamLinkRegions", params)
+            headers = request.headers
+            body = self.call("DescribeStreamLinkRegions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamLinkRegionsResponse()
@@ -204,7 +210,8 @@ class MdcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyStreamLinkFlow", params)
+            headers = request.headers
+            body = self.call("ModifyStreamLinkFlow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyStreamLinkFlowResponse()
@@ -232,7 +239,8 @@ class MdcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartStreamLinkFlow", params)
+            headers = request.headers
+            body = self.call("StartStreamLinkFlow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartStreamLinkFlowResponse()
@@ -260,7 +268,8 @@ class MdcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopStreamLinkFlow", params)
+            headers = request.headers
+            body = self.call("StopStreamLinkFlow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopStreamLinkFlowResponse()

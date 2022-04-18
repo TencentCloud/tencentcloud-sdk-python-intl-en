@@ -38,7 +38,8 @@ class OcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BankCardOCR", params)
+            headers = request.headers
+            body = self.call("BankCardOCR", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BankCardOCRResponse()
@@ -72,7 +73,8 @@ class OcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GeneralAccurateOCR", params)
+            headers = request.headers
+            body = self.call("GeneralAccurateOCR", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GeneralAccurateOCRResponse()
@@ -106,7 +108,8 @@ class OcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GeneralBasicOCR", params)
+            headers = request.headers
+            body = self.call("GeneralBasicOCR", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GeneralBasicOCRResponse()
@@ -136,7 +139,8 @@ class OcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("HKIDCardOCR", params)
+            headers = request.headers
+            body = self.call("HKIDCardOCR", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.HKIDCardOCRResponse()
@@ -166,7 +170,8 @@ class OcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("MLIDCardOCR", params)
+            headers = request.headers
+            body = self.call("MLIDCardOCR", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.MLIDCardOCRResponse()
@@ -196,7 +201,8 @@ class OcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("MLIDPassportOCR", params)
+            headers = request.headers
+            body = self.call("MLIDPassportOCR", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.MLIDPassportOCRResponse()
@@ -226,7 +232,8 @@ class OcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TableOCR", params)
+            headers = request.headers
+            body = self.call("TableOCR", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TableOCRResponse()

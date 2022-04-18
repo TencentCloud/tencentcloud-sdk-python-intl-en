@@ -36,7 +36,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CheckInstance", params)
+            headers = request.headers
+            body = self.call("CheckInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CheckInstanceResponse()
@@ -64,7 +65,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateImmutableTagRules", params)
+            headers = request.headers
+            body = self.call("CreateImmutableTagRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateImmutableTagRulesResponse()
@@ -92,7 +94,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateInstanceToken", params)
+            headers = request.headers
+            body = self.call("CreateInstanceToken", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateInstanceTokenResponse()
@@ -120,7 +123,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateMultipleSecurityPolicy", params)
+            headers = request.headers
+            body = self.call("CreateMultipleSecurityPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateMultipleSecurityPolicyResponse()
@@ -148,7 +152,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateReplicationInstance", params)
+            headers = request.headers
+            body = self.call("CreateReplicationInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateReplicationInstanceResponse()
@@ -176,7 +181,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteImmutableTagRules", params)
+            headers = request.headers
+            body = self.call("DeleteImmutableTagRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteImmutableTagRulesResponse()
@@ -204,7 +210,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMultipleSecurityPolicy", params)
+            headers = request.headers
+            body = self.call("DeleteMultipleSecurityPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMultipleSecurityPolicyResponse()
@@ -232,7 +239,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImmutableTagRules", params)
+            headers = request.headers
+            body = self.call("DescribeImmutableTagRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImmutableTagRulesResponse()
@@ -260,7 +268,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReplicationInstanceCreateTasks", params)
+            headers = request.headers
+            body = self.call("DescribeReplicationInstanceCreateTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReplicationInstanceCreateTasksResponse()
@@ -288,7 +297,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReplicationInstanceSyncStatus", params)
+            headers = request.headers
+            body = self.call("DescribeReplicationInstanceSyncStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReplicationInstanceSyncStatusResponse()
@@ -316,7 +326,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReplicationInstances", params)
+            headers = request.headers
+            body = self.call("DescribeReplicationInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReplicationInstancesResponse()
@@ -344,7 +355,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ManageReplication", params)
+            headers = request.headers
+            body = self.call("ManageReplication", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ManageReplicationResponse()
@@ -372,7 +384,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyImmutableTagRules", params)
+            headers = request.headers
+            body = self.call("ModifyImmutableTagRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyImmutableTagRulesResponse()
@@ -400,7 +413,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyInstance", params)
+            headers = request.headers
+            body = self.call("ModifyInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyInstanceResponse()

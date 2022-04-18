@@ -36,7 +36,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssociateDDoSEipAddress", params)
+            headers = request.headers
+            body = self.call("AssociateDDoSEipAddress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssociateDDoSEipAddressResponse()
@@ -64,7 +65,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssociateDDoSEipLoadBalancer", params)
+            headers = request.headers
+            body = self.call("AssociateDDoSEipLoadBalancer", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssociateDDoSEipLoadBalancerResponse()
@@ -92,7 +94,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateBlackWhiteIpList", params)
+            headers = request.headers
+            body = self.call("CreateBlackWhiteIpList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateBlackWhiteIpListResponse()
@@ -120,7 +123,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateBoundIP", params)
+            headers = request.headers
+            body = self.call("CreateBoundIP", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateBoundIPResponse()
@@ -148,7 +152,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCCPrecisionPolicy", params)
+            headers = request.headers
+            body = self.call("CreateCCPrecisionPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCCPrecisionPolicyResponse()
@@ -176,7 +181,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCCReqLimitPolicy", params)
+            headers = request.headers
+            body = self.call("CreateCCReqLimitPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCCReqLimitPolicyResponse()
@@ -204,7 +210,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCcBlackWhiteIpList", params)
+            headers = request.headers
+            body = self.call("CreateCcBlackWhiteIpList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCcBlackWhiteIpListResponse()
@@ -232,7 +239,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCcGeoIPBlockConfig", params)
+            headers = request.headers
+            body = self.call("CreateCcGeoIPBlockConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCcGeoIPBlockConfigResponse()
@@ -260,7 +268,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDDoSAI", params)
+            headers = request.headers
+            body = self.call("CreateDDoSAI", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDDoSAIResponse()
@@ -288,7 +297,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDDoSGeoIPBlockConfig", params)
+            headers = request.headers
+            body = self.call("CreateDDoSGeoIPBlockConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDDoSGeoIPBlockConfigResponse()
@@ -316,7 +326,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDDoSSpeedLimitConfig", params)
+            headers = request.headers
+            body = self.call("CreateDDoSSpeedLimitConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDDoSSpeedLimitConfigResponse()
@@ -344,7 +355,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDefaultAlarmThreshold", params)
+            headers = request.headers
+            body = self.call("CreateDefaultAlarmThreshold", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDefaultAlarmThresholdResponse()
@@ -372,7 +384,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateIPAlarmThresholdConfig", params)
+            headers = request.headers
+            body = self.call("CreateIPAlarmThresholdConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateIPAlarmThresholdConfigResponse()
@@ -400,7 +413,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateL7RuleCerts", params)
+            headers = request.headers
+            body = self.call("CreateL7RuleCerts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateL7RuleCertsResponse()
@@ -428,7 +442,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePacketFilterConfig", params)
+            headers = request.headers
+            body = self.call("CreatePacketFilterConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePacketFilterConfigResponse()
@@ -456,7 +471,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateProtocolBlockConfig", params)
+            headers = request.headers
+            body = self.call("CreateProtocolBlockConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateProtocolBlockConfigResponse()
@@ -484,7 +500,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSchedulingDomain", params)
+            headers = request.headers
+            body = self.call("CreateSchedulingDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSchedulingDomainResponse()
@@ -512,7 +529,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateWaterPrintConfig", params)
+            headers = request.headers
+            body = self.call("CreateWaterPrintConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateWaterPrintConfigResponse()
@@ -540,7 +558,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateWaterPrintKey", params)
+            headers = request.headers
+            body = self.call("CreateWaterPrintKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateWaterPrintKeyResponse()
@@ -568,7 +587,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteBlackWhiteIpList", params)
+            headers = request.headers
+            body = self.call("DeleteBlackWhiteIpList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteBlackWhiteIpListResponse()
@@ -596,7 +616,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCCLevelPolicy", params)
+            headers = request.headers
+            body = self.call("DeleteCCLevelPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCCLevelPolicyResponse()
@@ -624,7 +645,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCCPrecisionPolicy", params)
+            headers = request.headers
+            body = self.call("DeleteCCPrecisionPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCCPrecisionPolicyResponse()
@@ -652,7 +674,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCCThresholdPolicy", params)
+            headers = request.headers
+            body = self.call("DeleteCCThresholdPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCCThresholdPolicyResponse()
@@ -680,7 +703,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCcBlackWhiteIpList", params)
+            headers = request.headers
+            body = self.call("DeleteCcBlackWhiteIpList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCcBlackWhiteIpListResponse()
@@ -708,7 +732,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCcGeoIPBlockConfig", params)
+            headers = request.headers
+            body = self.call("DeleteCcGeoIPBlockConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCcGeoIPBlockConfigResponse()
@@ -736,7 +761,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteDDoSGeoIPBlockConfig", params)
+            headers = request.headers
+            body = self.call("DeleteDDoSGeoIPBlockConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDDoSGeoIPBlockConfigResponse()
@@ -764,7 +790,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteDDoSSpeedLimitConfig", params)
+            headers = request.headers
+            body = self.call("DeleteDDoSSpeedLimitConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDDoSSpeedLimitConfigResponse()
@@ -792,7 +819,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePacketFilterConfig", params)
+            headers = request.headers
+            body = self.call("DeletePacketFilterConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePacketFilterConfigResponse()
@@ -820,7 +848,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteWaterPrintConfig", params)
+            headers = request.headers
+            body = self.call("DeleteWaterPrintConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteWaterPrintConfigResponse()
@@ -848,7 +877,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteWaterPrintKey", params)
+            headers = request.headers
+            body = self.call("DeleteWaterPrintKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteWaterPrintKeyResponse()
@@ -876,7 +906,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBasicDeviceStatus", params)
+            headers = request.headers
+            body = self.call("DescribeBasicDeviceStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBasicDeviceStatusResponse()
@@ -904,7 +935,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBizTrend", params)
+            headers = request.headers
+            body = self.call("DescribeBizTrend", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBizTrendResponse()
@@ -932,7 +964,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBlackWhiteIpList", params)
+            headers = request.headers
+            body = self.call("DescribeBlackWhiteIpList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBlackWhiteIpListResponse()
@@ -960,7 +993,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCCLevelList", params)
+            headers = request.headers
+            body = self.call("DescribeCCLevelList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCCLevelListResponse()
@@ -988,7 +1022,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCCLevelPolicy", params)
+            headers = request.headers
+            body = self.call("DescribeCCLevelPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCCLevelPolicyResponse()
@@ -1016,7 +1051,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCCThresholdList", params)
+            headers = request.headers
+            body = self.call("DescribeCCThresholdList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCCThresholdListResponse()
@@ -1044,7 +1080,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCCTrend", params)
+            headers = request.headers
+            body = self.call("DescribeCCTrend", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCCTrendResponse()
@@ -1072,7 +1109,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDDoSTrend", params)
+            headers = request.headers
+            body = self.call("DescribeDDoSTrend", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDDoSTrendResponse()
@@ -1100,7 +1138,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDefaultAlarmThreshold", params)
+            headers = request.headers
+            body = self.call("DescribeDefaultAlarmThreshold", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDefaultAlarmThresholdResponse()
@@ -1128,7 +1167,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeL7RulesBySSLCertId", params)
+            headers = request.headers
+            body = self.call("DescribeL7RulesBySSLCertId", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeL7RulesBySSLCertIdResponse()
@@ -1156,7 +1196,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeListBGPIPInstances", params)
+            headers = request.headers
+            body = self.call("DescribeListBGPIPInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeListBGPIPInstancesResponse()
@@ -1184,7 +1225,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeListBlackWhiteIpList", params)
+            headers = request.headers
+            body = self.call("DescribeListBlackWhiteIpList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeListBlackWhiteIpListResponse()
@@ -1212,7 +1254,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeListDDoSAI", params)
+            headers = request.headers
+            body = self.call("DescribeListDDoSAI", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeListDDoSAIResponse()
@@ -1240,7 +1283,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeListDDoSGeoIPBlockConfig", params)
+            headers = request.headers
+            body = self.call("DescribeListDDoSGeoIPBlockConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeListDDoSGeoIPBlockConfigResponse()
@@ -1268,7 +1312,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeListDDoSSpeedLimitConfig", params)
+            headers = request.headers
+            body = self.call("DescribeListDDoSSpeedLimitConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeListDDoSSpeedLimitConfigResponse()
@@ -1296,7 +1341,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeListIPAlarmConfig", params)
+            headers = request.headers
+            body = self.call("DescribeListIPAlarmConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeListIPAlarmConfigResponse()
@@ -1324,7 +1370,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeListListener", params)
+            headers = request.headers
+            body = self.call("DescribeListListener", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeListListenerResponse()
@@ -1352,7 +1399,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeListPacketFilterConfig", params)
+            headers = request.headers
+            body = self.call("DescribeListPacketFilterConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeListPacketFilterConfigResponse()
@@ -1380,7 +1428,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeListProtectThresholdConfig", params)
+            headers = request.headers
+            body = self.call("DescribeListProtectThresholdConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeListProtectThresholdConfigResponse()
@@ -1408,7 +1457,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeListProtocolBlockConfig", params)
+            headers = request.headers
+            body = self.call("DescribeListProtocolBlockConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeListProtocolBlockConfigResponse()
@@ -1436,7 +1486,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeListSchedulingDomain", params)
+            headers = request.headers
+            body = self.call("DescribeListSchedulingDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeListSchedulingDomainResponse()
@@ -1464,7 +1515,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeListWaterPrintConfig", params)
+            headers = request.headers
+            body = self.call("DescribeListWaterPrintConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeListWaterPrintConfigResponse()
@@ -1492,7 +1544,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisassociateDDoSEipAddress", params)
+            headers = request.headers
+            body = self.call("DisassociateDDoSEipAddress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateDDoSEipAddressResponse()
@@ -1520,7 +1573,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCCPrecisionPolicy", params)
+            headers = request.headers
+            body = self.call("ModifyCCPrecisionPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCCPrecisionPolicyResponse()
@@ -1548,7 +1602,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCcBlackWhiteIpList", params)
+            headers = request.headers
+            body = self.call("ModifyCcBlackWhiteIpList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCcBlackWhiteIpListResponse()
@@ -1576,7 +1631,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDDoSGeoIPBlockConfig", params)
+            headers = request.headers
+            body = self.call("ModifyDDoSGeoIPBlockConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDDoSGeoIPBlockConfigResponse()
@@ -1604,7 +1660,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDDoSSpeedLimitConfig", params)
+            headers = request.headers
+            body = self.call("ModifyDDoSSpeedLimitConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDDoSSpeedLimitConfigResponse()
@@ -1632,7 +1689,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDomainUsrName", params)
+            headers = request.headers
+            body = self.call("ModifyDomainUsrName", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDomainUsrNameResponse()
@@ -1660,7 +1718,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyNewDomainRules", params)
+            headers = request.headers
+            body = self.call("ModifyNewDomainRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyNewDomainRulesResponse()
@@ -1688,7 +1747,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPacketFilterConfig", params)
+            headers = request.headers
+            body = self.call("ModifyPacketFilterConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPacketFilterConfigResponse()
@@ -1716,7 +1776,8 @@ class AntiddosClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SwitchWaterPrintConfig", params)
+            headers = request.headers
+            body = self.call("SwitchWaterPrintConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SwitchWaterPrintConfigResponse()

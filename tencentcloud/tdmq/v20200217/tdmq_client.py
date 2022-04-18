@@ -36,7 +36,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AcknowledgeMessage", params)
+            headers = request.headers
+            body = self.call("AcknowledgeMessage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AcknowledgeMessageResponse()
@@ -64,7 +65,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ClearCmqQueue", params)
+            headers = request.headers
+            body = self.call("ClearCmqQueue", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ClearCmqQueueResponse()
@@ -92,7 +94,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ClearCmqSubscriptionFilterTags", params)
+            headers = request.headers
+            body = self.call("ClearCmqSubscriptionFilterTags", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ClearCmqSubscriptionFilterTagsResponse()
@@ -120,7 +123,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCluster", params)
+            headers = request.headers
+            body = self.call("CreateCluster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateClusterResponse()
@@ -148,7 +152,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCmqQueue", params)
+            headers = request.headers
+            body = self.call("CreateCmqQueue", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCmqQueueResponse()
@@ -176,7 +181,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCmqSubscribe", params)
+            headers = request.headers
+            body = self.call("CreateCmqSubscribe", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCmqSubscribeResponse()
@@ -204,7 +210,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCmqTopic", params)
+            headers = request.headers
+            body = self.call("CreateCmqTopic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCmqTopicResponse()
@@ -232,7 +239,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateEnvironment", params)
+            headers = request.headers
+            body = self.call("CreateEnvironment", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateEnvironmentResponse()
@@ -260,7 +268,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateEnvironmentRole", params)
+            headers = request.headers
+            body = self.call("CreateEnvironmentRole", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateEnvironmentRoleResponse()
@@ -288,7 +297,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRocketMQCluster", params)
+            headers = request.headers
+            body = self.call("CreateRocketMQCluster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRocketMQClusterResponse()
@@ -316,7 +326,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRocketMQGroup", params)
+            headers = request.headers
+            body = self.call("CreateRocketMQGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRocketMQGroupResponse()
@@ -344,7 +355,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRocketMQNamespace", params)
+            headers = request.headers
+            body = self.call("CreateRocketMQNamespace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRocketMQNamespaceResponse()
@@ -372,7 +384,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRocketMQTopic", params)
+            headers = request.headers
+            body = self.call("CreateRocketMQTopic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRocketMQTopicResponse()
@@ -400,7 +413,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRole", params)
+            headers = request.headers
+            body = self.call("CreateRole", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRoleResponse()
@@ -428,7 +442,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSubscription", params)
+            headers = request.headers
+            body = self.call("CreateSubscription", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSubscriptionResponse()
@@ -456,7 +471,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTopic", params)
+            headers = request.headers
+            body = self.call("CreateTopic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTopicResponse()
@@ -484,7 +500,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCluster", params)
+            headers = request.headers
+            body = self.call("DeleteCluster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteClusterResponse()
@@ -512,7 +529,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCmqQueue", params)
+            headers = request.headers
+            body = self.call("DeleteCmqQueue", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCmqQueueResponse()
@@ -540,7 +558,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCmqSubscribe", params)
+            headers = request.headers
+            body = self.call("DeleteCmqSubscribe", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCmqSubscribeResponse()
@@ -568,7 +587,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCmqTopic", params)
+            headers = request.headers
+            body = self.call("DeleteCmqTopic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCmqTopicResponse()
@@ -596,7 +616,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteEnvironmentRoles", params)
+            headers = request.headers
+            body = self.call("DeleteEnvironmentRoles", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteEnvironmentRolesResponse()
@@ -624,7 +645,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteEnvironments", params)
+            headers = request.headers
+            body = self.call("DeleteEnvironments", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteEnvironmentsResponse()
@@ -652,7 +674,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRocketMQCluster", params)
+            headers = request.headers
+            body = self.call("DeleteRocketMQCluster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRocketMQClusterResponse()
@@ -680,7 +703,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRocketMQGroup", params)
+            headers = request.headers
+            body = self.call("DeleteRocketMQGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRocketMQGroupResponse()
@@ -708,7 +732,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRocketMQNamespace", params)
+            headers = request.headers
+            body = self.call("DeleteRocketMQNamespace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRocketMQNamespaceResponse()
@@ -736,7 +761,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRocketMQTopic", params)
+            headers = request.headers
+            body = self.call("DeleteRocketMQTopic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRocketMQTopicResponse()
@@ -764,7 +790,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRoles", params)
+            headers = request.headers
+            body = self.call("DeleteRoles", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRolesResponse()
@@ -792,7 +819,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSubscriptions", params)
+            headers = request.headers
+            body = self.call("DeleteSubscriptions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSubscriptionsResponse()
@@ -820,7 +848,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTopics", params)
+            headers = request.headers
+            body = self.call("DeleteTopics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTopicsResponse()
@@ -848,7 +877,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBindClusters", params)
+            headers = request.headers
+            body = self.call("DescribeBindClusters", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBindClustersResponse()
@@ -876,7 +906,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBindVpcs", params)
+            headers = request.headers
+            body = self.call("DescribeBindVpcs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBindVpcsResponse()
@@ -904,7 +935,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterDetail", params)
+            headers = request.headers
+            body = self.call("DescribeClusterDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterDetailResponse()
@@ -932,7 +964,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusters", params)
+            headers = request.headers
+            body = self.call("DescribeClusters", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClustersResponse()
@@ -960,7 +993,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCmqDeadLetterSourceQueues", params)
+            headers = request.headers
+            body = self.call("DescribeCmqDeadLetterSourceQueues", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCmqDeadLetterSourceQueuesResponse()
@@ -988,7 +1022,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCmqQueueDetail", params)
+            headers = request.headers
+            body = self.call("DescribeCmqQueueDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCmqQueueDetailResponse()
@@ -1016,7 +1051,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCmqQueues", params)
+            headers = request.headers
+            body = self.call("DescribeCmqQueues", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCmqQueuesResponse()
@@ -1044,7 +1080,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCmqSubscriptionDetail", params)
+            headers = request.headers
+            body = self.call("DescribeCmqSubscriptionDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCmqSubscriptionDetailResponse()
@@ -1072,7 +1109,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCmqTopicDetail", params)
+            headers = request.headers
+            body = self.call("DescribeCmqTopicDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCmqTopicDetailResponse()
@@ -1100,7 +1138,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCmqTopics", params)
+            headers = request.headers
+            body = self.call("DescribeCmqTopics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCmqTopicsResponse()
@@ -1128,7 +1167,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEnvironmentAttributes", params)
+            headers = request.headers
+            body = self.call("DescribeEnvironmentAttributes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEnvironmentAttributesResponse()
@@ -1156,7 +1196,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEnvironmentRoles", params)
+            headers = request.headers
+            body = self.call("DescribeEnvironmentRoles", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEnvironmentRolesResponse()
@@ -1184,7 +1225,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEnvironments", params)
+            headers = request.headers
+            body = self.call("DescribeEnvironments", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEnvironmentsResponse()
@@ -1212,7 +1254,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePublisherSummary", params)
+            headers = request.headers
+            body = self.call("DescribePublisherSummary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePublisherSummaryResponse()
@@ -1240,7 +1283,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePublishers", params)
+            headers = request.headers
+            body = self.call("DescribePublishers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePublishersResponse()
@@ -1268,7 +1312,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRocketMQCluster", params)
+            headers = request.headers
+            body = self.call("DescribeRocketMQCluster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRocketMQClusterResponse()
@@ -1296,7 +1341,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRocketMQClusters", params)
+            headers = request.headers
+            body = self.call("DescribeRocketMQClusters", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRocketMQClustersResponse()
@@ -1324,7 +1370,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRocketMQGroups", params)
+            headers = request.headers
+            body = self.call("DescribeRocketMQGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRocketMQGroupsResponse()
@@ -1352,7 +1399,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRocketMQNamespaces", params)
+            headers = request.headers
+            body = self.call("DescribeRocketMQNamespaces", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRocketMQNamespacesResponse()
@@ -1380,7 +1428,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRocketMQTopics", params)
+            headers = request.headers
+            body = self.call("DescribeRocketMQTopics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRocketMQTopicsResponse()
@@ -1408,7 +1457,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRoles", params)
+            headers = request.headers
+            body = self.call("DescribeRoles", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRolesResponse()
@@ -1436,7 +1486,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSubscriptions", params)
+            headers = request.headers
+            body = self.call("DescribeSubscriptions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSubscriptionsResponse()
@@ -1464,7 +1515,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTopics", params)
+            headers = request.headers
+            body = self.call("DescribeTopics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTopicsResponse()
@@ -1492,7 +1544,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCluster", params)
+            headers = request.headers
+            body = self.call("ModifyCluster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyClusterResponse()
@@ -1520,7 +1573,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCmqQueueAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyCmqQueueAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCmqQueueAttributeResponse()
@@ -1548,7 +1602,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCmqSubscriptionAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyCmqSubscriptionAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCmqSubscriptionAttributeResponse()
@@ -1576,7 +1631,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCmqTopicAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyCmqTopicAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCmqTopicAttributeResponse()
@@ -1604,7 +1660,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyEnvironmentAttributes", params)
+            headers = request.headers
+            body = self.call("ModifyEnvironmentAttributes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyEnvironmentAttributesResponse()
@@ -1632,7 +1689,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyEnvironmentRole", params)
+            headers = request.headers
+            body = self.call("ModifyEnvironmentRole", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyEnvironmentRoleResponse()
@@ -1660,7 +1718,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyRocketMQCluster", params)
+            headers = request.headers
+            body = self.call("ModifyRocketMQCluster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRocketMQClusterResponse()
@@ -1688,7 +1747,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyRocketMQGroup", params)
+            headers = request.headers
+            body = self.call("ModifyRocketMQGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRocketMQGroupResponse()
@@ -1716,7 +1776,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyRocketMQNamespace", params)
+            headers = request.headers
+            body = self.call("ModifyRocketMQNamespace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRocketMQNamespaceResponse()
@@ -1744,7 +1805,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyRocketMQTopic", params)
+            headers = request.headers
+            body = self.call("ModifyRocketMQTopic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRocketMQTopicResponse()
@@ -1772,7 +1834,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyRole", params)
+            headers = request.headers
+            body = self.call("ModifyRole", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRoleResponse()
@@ -1800,7 +1863,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTopic", params)
+            headers = request.headers
+            body = self.call("ModifyTopic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTopicResponse()
@@ -1828,7 +1892,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PublishCmqMsg", params)
+            headers = request.headers
+            body = self.call("PublishCmqMsg", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PublishCmqMsgResponse()
@@ -1856,7 +1921,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReceiveMessage", params)
+            headers = request.headers
+            body = self.call("ReceiveMessage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReceiveMessageResponse()
@@ -1884,7 +1950,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetMsgSubOffsetByTimestamp", params)
+            headers = request.headers
+            body = self.call("ResetMsgSubOffsetByTimestamp", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetMsgSubOffsetByTimestampResponse()
@@ -1912,7 +1979,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RewindCmqQueue", params)
+            headers = request.headers
+            body = self.call("RewindCmqQueue", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RewindCmqQueueResponse()
@@ -1942,7 +2010,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SendBatchMessages", params)
+            headers = request.headers
+            body = self.call("SendBatchMessages", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SendBatchMessagesResponse()
@@ -1970,7 +2039,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SendCmqMsg", params)
+            headers = request.headers
+            body = self.call("SendCmqMsg", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SendCmqMsgResponse()
@@ -1998,7 +2068,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SendMessages", params)
+            headers = request.headers
+            body = self.call("SendMessages", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SendMessagesResponse()
@@ -2026,7 +2097,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SendMsg", params)
+            headers = request.headers
+            body = self.call("SendMsg", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SendMsgResponse()
@@ -2054,7 +2126,8 @@ class TdmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnbindCmqDeadLetter", params)
+            headers = request.headers
+            body = self.call("UnbindCmqDeadLetter", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnbindCmqDeadLetterResponse()

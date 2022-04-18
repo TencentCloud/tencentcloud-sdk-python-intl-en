@@ -36,7 +36,8 @@ class MdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindNewLVBDomainWithChannel", params)
+            headers = request.headers
+            body = self.call("BindNewLVBDomainWithChannel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindNewLVBDomainWithChannelResponse()
@@ -64,7 +65,8 @@ class MdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateStreamPackageChannel", params)
+            headers = request.headers
+            body = self.call("CreateStreamPackageChannel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateStreamPackageChannelResponse()
@@ -92,7 +94,8 @@ class MdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateStreamPackageChannelEndpoint", params)
+            headers = request.headers
+            body = self.call("CreateStreamPackageChannelEndpoint", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateStreamPackageChannelEndpointResponse()
@@ -120,7 +123,8 @@ class MdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteStreamPackageChannelEndpoints", params)
+            headers = request.headers
+            body = self.call("DeleteStreamPackageChannelEndpoints", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteStreamPackageChannelEndpointsResponse()
@@ -148,7 +152,8 @@ class MdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteStreamPackageChannels", params)
+            headers = request.headers
+            body = self.call("DeleteStreamPackageChannels", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteStreamPackageChannelsResponse()
@@ -176,7 +181,8 @@ class MdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStreamPackageChannel", params)
+            headers = request.headers
+            body = self.call("DescribeStreamPackageChannel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamPackageChannelResponse()
@@ -204,7 +210,8 @@ class MdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStreamPackageChannels", params)
+            headers = request.headers
+            body = self.call("DescribeStreamPackageChannels", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamPackageChannelsResponse()
@@ -232,7 +239,8 @@ class MdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyStreamPackageChannel", params)
+            headers = request.headers
+            body = self.call("ModifyStreamPackageChannel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyStreamPackageChannelResponse()
@@ -260,7 +268,8 @@ class MdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyStreamPackageChannelEndpoint", params)
+            headers = request.headers
+            body = self.call("ModifyStreamPackageChannelEndpoint", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyStreamPackageChannelEndpointResponse()
@@ -288,7 +297,8 @@ class MdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyStreamPackageChannelInputAuthInfo", params)
+            headers = request.headers
+            body = self.call("ModifyStreamPackageChannelInputAuthInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyStreamPackageChannelInputAuthInfoResponse()
@@ -316,7 +326,8 @@ class MdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnbindCdnDomainWithChannel", params)
+            headers = request.headers
+            body = self.call("UnbindCdnDomainWithChannel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnbindCdnDomainWithChannelResponse()

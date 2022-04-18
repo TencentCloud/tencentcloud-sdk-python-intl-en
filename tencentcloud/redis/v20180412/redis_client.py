@@ -36,7 +36,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceAccount", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceAccountResponse()
@@ -64,7 +65,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceMonitorBigKey", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceMonitorBigKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceMonitorBigKeyResponse()
@@ -92,7 +94,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceMonitorBigKeySizeDist", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceMonitorBigKeySizeDist", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceMonitorBigKeySizeDistResponse()
@@ -120,7 +123,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceMonitorBigKeyTypeDist", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceMonitorBigKeyTypeDist", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceMonitorBigKeyTypeDistResponse()
@@ -148,7 +152,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceMonitorHotKey", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceMonitorHotKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceMonitorHotKeyResponse()
@@ -176,7 +181,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceMonitorSIP", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceMonitorSIP", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceMonitorSIPResponse()
@@ -204,7 +210,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceMonitorTookDist", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceMonitorTookDist", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceMonitorTookDistResponse()
@@ -232,7 +239,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceMonitorTopNCmd", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceMonitorTopNCmd", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceMonitorTopNCmdResponse()
@@ -260,7 +268,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceMonitorTopNCmdTook", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceMonitorTopNCmdTook", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceMonitorTopNCmdTookResponse()
@@ -288,7 +297,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMaintenanceWindow", params)
+            headers = request.headers
+            body = self.call("DescribeMaintenanceWindow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMaintenanceWindowResponse()
@@ -316,7 +326,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProductInfo", params)
+            headers = request.headers
+            body = self.call("DescribeProductInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProductInfoResponse()
@@ -344,7 +355,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReplicationGroup", params)
+            headers = request.headers
+            body = self.call("DescribeReplicationGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReplicationGroupResponse()
@@ -372,7 +384,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSlowLog", params)
+            headers = request.headers
+            body = self.call("DescribeSlowLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSlowLogResponse()
@@ -400,7 +413,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceCreateInstance", params)
+            headers = request.headers
+            body = self.call("InquiryPriceCreateInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceCreateInstanceResponse()
@@ -428,7 +442,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceUpgradeInstance", params)
+            headers = request.headers
+            body = self.call("InquiryPriceUpgradeInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceUpgradeInstanceResponse()
@@ -456,7 +471,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModfiyInstancePassword", params)
+            headers = request.headers
+            body = self.call("ModfiyInstancePassword", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModfiyInstancePasswordResponse()

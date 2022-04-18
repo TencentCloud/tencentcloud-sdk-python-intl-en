@@ -40,7 +40,8 @@ class IpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AllocateCustomerCredit", params)
+            headers = request.headers
+            body = self.call("AllocateCustomerCredit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AllocateCustomerCreditResponse()
@@ -72,7 +73,8 @@ class IpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAccount", params)
+            headers = request.headers
+            body = self.call("CreateAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAccountResponse()
@@ -100,7 +102,8 @@ class IpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetCountryCodes", params)
+            headers = request.headers
+            body = self.call("GetCountryCodes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetCountryCodesResponse()
@@ -128,7 +131,8 @@ class IpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryCreditAllocationHistory", params)
+            headers = request.headers
+            body = self.call("QueryCreditAllocationHistory", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryCreditAllocationHistoryResponse()
@@ -156,7 +160,8 @@ class IpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryCustomersCredit", params)
+            headers = request.headers
+            body = self.call("QueryCustomersCredit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryCustomersCreditResponse()
@@ -184,7 +189,8 @@ class IpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryPartnerCredit", params)
+            headers = request.headers
+            body = self.call("QueryPartnerCredit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryPartnerCreditResponse()

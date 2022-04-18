@@ -36,7 +36,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetectReflectLivenessAndCompare", params)
+            headers = request.headers
+            body = self.call("DetectReflectLivenessAndCompare", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetectReflectLivenessAndCompareResponse()
@@ -64,7 +65,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("LivenessCompare", params)
+            headers = request.headers
+            body = self.call("LivenessCompare", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.LivenessCompareResponse()

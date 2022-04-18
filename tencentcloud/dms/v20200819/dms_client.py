@@ -36,7 +36,8 @@ class DmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SendEmail", params)
+            headers = request.headers
+            body = self.call("SendEmail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SendEmailResponse()
@@ -64,7 +65,8 @@ class DmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SendTemplatedEmail", params)
+            headers = request.headers
+            body = self.call("SendTemplatedEmail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SendTemplatedEmailResponse()

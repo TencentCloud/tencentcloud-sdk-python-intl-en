@@ -38,7 +38,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddDelayLiveStream", params)
+            headers = request.headers
+            body = self.call("AddDelayLiveStream", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddDelayLiveStreamResponse()
@@ -66,7 +67,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddLiveDomain", params)
+            headers = request.headers
+            body = self.call("AddLiveDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddLiveDomainResponse()
@@ -95,7 +97,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddLiveWatermark", params)
+            headers = request.headers
+            body = self.call("AddLiveWatermark", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddLiveWatermarkResponse()
@@ -124,7 +127,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindLiveDomainCert", params)
+            headers = request.headers
+            body = self.call("BindLiveDomainCert", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindLiveDomainCertResponse()
@@ -152,7 +156,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CancelCommonMixStream", params)
+            headers = request.headers
+            body = self.call("CancelCommonMixStream", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CancelCommonMixStreamResponse()
@@ -182,7 +187,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCommonMixStream", params)
+            headers = request.headers
+            body = self.call("CreateCommonMixStream", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCommonMixStreamResponse()
@@ -211,7 +217,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLiveCallbackRule", params)
+            headers = request.headers
+            body = self.call("CreateLiveCallbackRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLiveCallbackRuleResponse()
@@ -241,7 +248,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLiveCallbackTemplate", params)
+            headers = request.headers
+            body = self.call("CreateLiveCallbackTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLiveCallbackTemplateResponse()
@@ -269,7 +277,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLiveCert", params)
+            headers = request.headers
+            body = self.call("CreateLiveCert", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLiveCertResponse()
@@ -312,7 +321,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLiveRecord", params)
+            headers = request.headers
+            body = self.call("CreateLiveRecord", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLiveRecordResponse()
@@ -341,7 +351,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLiveRecordRule", params)
+            headers = request.headers
+            body = self.call("CreateLiveRecordRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLiveRecordRuleResponse()
@@ -370,7 +381,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLiveRecordTemplate", params)
+            headers = request.headers
+            body = self.call("CreateLiveRecordTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLiveRecordTemplateResponse()
@@ -400,7 +412,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLiveSnapshotRule", params)
+            headers = request.headers
+            body = self.call("CreateLiveSnapshotRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLiveSnapshotRuleResponse()
@@ -429,7 +442,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLiveSnapshotTemplate", params)
+            headers = request.headers
+            body = self.call("CreateLiveSnapshotTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLiveSnapshotTemplateResponse()
@@ -458,7 +472,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLiveTranscodeRule", params)
+            headers = request.headers
+            body = self.call("CreateLiveTranscodeRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLiveTranscodeRuleResponse()
@@ -487,7 +502,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLiveTranscodeTemplate", params)
+            headers = request.headers
+            body = self.call("CreateLiveTranscodeTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLiveTranscodeTemplateResponse()
@@ -515,7 +531,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLiveWatermarkRule", params)
+            headers = request.headers
+            body = self.call("CreateLiveWatermarkRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLiveWatermarkRuleResponse()
@@ -552,7 +569,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRecordTask", params)
+            headers = request.headers
+            body = self.call("CreateRecordTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRecordTaskResponse()
@@ -580,7 +598,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLiveCallbackRule", params)
+            headers = request.headers
+            body = self.call("DeleteLiveCallbackRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLiveCallbackRuleResponse()
@@ -608,7 +627,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLiveCallbackTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteLiveCallbackTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLiveCallbackTemplateResponse()
@@ -636,7 +656,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLiveCert", params)
+            headers = request.headers
+            body = self.call("DeleteLiveCert", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLiveCertResponse()
@@ -664,7 +685,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLiveDomain", params)
+            headers = request.headers
+            body = self.call("DeleteLiveDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLiveDomainResponse()
@@ -692,7 +714,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLiveRecord", params)
+            headers = request.headers
+            body = self.call("DeleteLiveRecord", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLiveRecordResponse()
@@ -720,7 +743,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLiveRecordRule", params)
+            headers = request.headers
+            body = self.call("DeleteLiveRecordRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLiveRecordRuleResponse()
@@ -748,7 +772,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLiveRecordTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteLiveRecordTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLiveRecordTemplateResponse()
@@ -776,7 +801,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLiveSnapshotRule", params)
+            headers = request.headers
+            body = self.call("DeleteLiveSnapshotRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLiveSnapshotRuleResponse()
@@ -804,7 +830,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLiveSnapshotTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteLiveSnapshotTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLiveSnapshotTemplateResponse()
@@ -833,7 +860,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLiveTranscodeRule", params)
+            headers = request.headers
+            body = self.call("DeleteLiveTranscodeRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLiveTranscodeRuleResponse()
@@ -861,7 +889,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLiveTranscodeTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteLiveTranscodeTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLiveTranscodeTemplateResponse()
@@ -889,7 +918,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLiveWatermark", params)
+            headers = request.headers
+            body = self.call("DeleteLiveWatermark", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLiveWatermarkResponse()
@@ -917,7 +947,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLiveWatermarkRule", params)
+            headers = request.headers
+            body = self.call("DeleteLiveWatermarkRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLiveWatermarkRuleResponse()
@@ -945,7 +976,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRecordTask", params)
+            headers = request.headers
+            body = self.call("DeleteRecordTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRecordTaskResponse()
@@ -973,7 +1005,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAllStreamPlayInfoList", params)
+            headers = request.headers
+            body = self.call("DescribeAllStreamPlayInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAllStreamPlayInfoListResponse()
@@ -1001,7 +1034,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAreaBillBandwidthAndFluxList", params)
+            headers = request.headers
+            body = self.call("DescribeAreaBillBandwidthAndFluxList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAreaBillBandwidthAndFluxListResponse()
@@ -1029,7 +1063,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeConcurrentRecordStreamNum", params)
+            headers = request.headers
+            body = self.call("DescribeConcurrentRecordStreamNum", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeConcurrentRecordStreamNumResponse()
@@ -1057,7 +1092,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDeliverBandwidthList", params)
+            headers = request.headers
+            body = self.call("DescribeDeliverBandwidthList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDeliverBandwidthListResponse()
@@ -1085,7 +1121,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGroupProIspPlayInfoList", params)
+            headers = request.headers
+            body = self.call("DescribeGroupProIspPlayInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGroupProIspPlayInfoListResponse()
@@ -1114,7 +1151,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeHttpStatusInfoList", params)
+            headers = request.headers
+            body = self.call("DescribeHttpStatusInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeHttpStatusInfoListResponse()
@@ -1142,7 +1180,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveCallbackRules", params)
+            headers = request.headers
+            body = self.call("DescribeLiveCallbackRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveCallbackRulesResponse()
@@ -1170,7 +1209,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveCallbackTemplate", params)
+            headers = request.headers
+            body = self.call("DescribeLiveCallbackTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveCallbackTemplateResponse()
@@ -1198,7 +1238,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveCallbackTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeLiveCallbackTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveCallbackTemplatesResponse()
@@ -1226,7 +1267,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveCert", params)
+            headers = request.headers
+            body = self.call("DescribeLiveCert", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveCertResponse()
@@ -1254,7 +1296,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveCerts", params)
+            headers = request.headers
+            body = self.call("DescribeLiveCerts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveCertsResponse()
@@ -1282,7 +1325,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveDelayInfoList", params)
+            headers = request.headers
+            body = self.call("DescribeLiveDelayInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveDelayInfoListResponse()
@@ -1310,7 +1354,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveDomain", params)
+            headers = request.headers
+            body = self.call("DescribeLiveDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveDomainResponse()
@@ -1338,7 +1383,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveDomainCert", params)
+            headers = request.headers
+            body = self.call("DescribeLiveDomainCert", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveDomainCertResponse()
@@ -1366,7 +1412,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveDomainPlayInfoList", params)
+            headers = request.headers
+            body = self.call("DescribeLiveDomainPlayInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveDomainPlayInfoListResponse()
@@ -1395,7 +1442,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveDomainReferer", params)
+            headers = request.headers
+            body = self.call("DescribeLiveDomainReferer", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveDomainRefererResponse()
@@ -1423,7 +1471,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveDomains", params)
+            headers = request.headers
+            body = self.call("DescribeLiveDomains", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveDomainsResponse()
@@ -1453,7 +1502,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveForbidStreamList", params)
+            headers = request.headers
+            body = self.call("DescribeLiveForbidStreamList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveForbidStreamListResponse()
@@ -1481,7 +1531,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLivePlayAuthKey", params)
+            headers = request.headers
+            body = self.call("DescribeLivePlayAuthKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLivePlayAuthKeyResponse()
@@ -1509,7 +1560,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLivePushAuthKey", params)
+            headers = request.headers
+            body = self.call("DescribeLivePushAuthKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLivePushAuthKeyResponse()
@@ -1537,7 +1589,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveRecordRules", params)
+            headers = request.headers
+            body = self.call("DescribeLiveRecordRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveRecordRulesResponse()
@@ -1565,7 +1618,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveRecordTemplate", params)
+            headers = request.headers
+            body = self.call("DescribeLiveRecordTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveRecordTemplateResponse()
@@ -1593,7 +1647,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveRecordTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeLiveRecordTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveRecordTemplatesResponse()
@@ -1621,7 +1676,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveSnapshotRules", params)
+            headers = request.headers
+            body = self.call("DescribeLiveSnapshotRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveSnapshotRulesResponse()
@@ -1649,7 +1705,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveSnapshotTemplate", params)
+            headers = request.headers
+            body = self.call("DescribeLiveSnapshotTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveSnapshotTemplateResponse()
@@ -1677,7 +1734,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveSnapshotTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeLiveSnapshotTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveSnapshotTemplatesResponse()
@@ -1709,7 +1767,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveStreamEventList", params)
+            headers = request.headers
+            body = self.call("DescribeLiveStreamEventList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveStreamEventListResponse()
@@ -1741,7 +1800,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveStreamOnlineList", params)
+            headers = request.headers
+            body = self.call("DescribeLiveStreamOnlineList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveStreamOnlineListResponse()
@@ -1770,7 +1830,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveStreamPublishedList", params)
+            headers = request.headers
+            body = self.call("DescribeLiveStreamPublishedList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveStreamPublishedListResponse()
@@ -1798,7 +1859,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveStreamPushInfoList", params)
+            headers = request.headers
+            body = self.call("DescribeLiveStreamPushInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveStreamPushInfoListResponse()
@@ -1835,7 +1897,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveStreamState", params)
+            headers = request.headers
+            body = self.call("DescribeLiveStreamState", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveStreamStateResponse()
@@ -1863,7 +1926,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveTranscodeDetailInfo", params)
+            headers = request.headers
+            body = self.call("DescribeLiveTranscodeDetailInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveTranscodeDetailInfoResponse()
@@ -1891,7 +1955,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveTranscodeRules", params)
+            headers = request.headers
+            body = self.call("DescribeLiveTranscodeRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveTranscodeRulesResponse()
@@ -1919,7 +1984,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveTranscodeTemplate", params)
+            headers = request.headers
+            body = self.call("DescribeLiveTranscodeTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveTranscodeTemplateResponse()
@@ -1947,7 +2013,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveTranscodeTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeLiveTranscodeTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveTranscodeTemplatesResponse()
@@ -1978,7 +2045,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveTranscodeTotalInfo", params)
+            headers = request.headers
+            body = self.call("DescribeLiveTranscodeTotalInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveTranscodeTotalInfoResponse()
@@ -2006,7 +2074,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveWatermark", params)
+            headers = request.headers
+            body = self.call("DescribeLiveWatermark", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveWatermarkResponse()
@@ -2034,7 +2103,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveWatermarkRules", params)
+            headers = request.headers
+            body = self.call("DescribeLiveWatermarkRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveWatermarkRulesResponse()
@@ -2062,7 +2132,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLiveWatermarks", params)
+            headers = request.headers
+            body = self.call("DescribeLiveWatermarks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveWatermarksResponse()
@@ -2091,7 +2162,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePlayErrorCodeDetailInfoList", params)
+            headers = request.headers
+            body = self.call("DescribePlayErrorCodeDetailInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePlayErrorCodeDetailInfoListResponse()
@@ -2119,7 +2191,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePlayErrorCodeSumInfoList", params)
+            headers = request.headers
+            body = self.call("DescribePlayErrorCodeSumInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePlayErrorCodeSumInfoListResponse()
@@ -2147,7 +2220,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProIspPlaySumInfoList", params)
+            headers = request.headers
+            body = self.call("DescribeProIspPlaySumInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProIspPlaySumInfoListResponse()
@@ -2175,7 +2249,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProvinceIspPlayInfoList", params)
+            headers = request.headers
+            body = self.call("DescribeProvinceIspPlayInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProvinceIspPlayInfoListResponse()
@@ -2203,7 +2278,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeScreenShotSheetNumList", params)
+            headers = request.headers
+            body = self.call("DescribeScreenShotSheetNumList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeScreenShotSheetNumListResponse()
@@ -2231,7 +2307,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStreamDayPlayInfoList", params)
+            headers = request.headers
+            body = self.call("DescribeStreamDayPlayInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamDayPlayInfoListResponse()
@@ -2260,7 +2337,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStreamPlayInfoList", params)
+            headers = request.headers
+            body = self.call("DescribeStreamPlayInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamPlayInfoListResponse()
@@ -2288,7 +2366,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTopClientIpSumInfoList", params)
+            headers = request.headers
+            body = self.call("DescribeTopClientIpSumInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTopClientIpSumInfoListResponse()
@@ -2316,7 +2395,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUploadStreamNums", params)
+            headers = request.headers
+            body = self.call("DescribeUploadStreamNums", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUploadStreamNumsResponse()
@@ -2344,7 +2424,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVisitTopSumInfoList", params)
+            headers = request.headers
+            body = self.call("DescribeVisitTopSumInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVisitTopSumInfoListResponse()
@@ -2372,7 +2453,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DropLiveStream", params)
+            headers = request.headers
+            body = self.call("DropLiveStream", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DropLiveStreamResponse()
@@ -2400,7 +2482,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnableLiveDomain", params)
+            headers = request.headers
+            body = self.call("EnableLiveDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableLiveDomainResponse()
@@ -2428,7 +2511,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ForbidLiveDomain", params)
+            headers = request.headers
+            body = self.call("ForbidLiveDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ForbidLiveDomainResponse()
@@ -2456,7 +2540,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ForbidLiveStream", params)
+            headers = request.headers
+            body = self.call("ForbidLiveStream", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ForbidLiveStreamResponse()
@@ -2484,7 +2569,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLiveCallbackTemplate", params)
+            headers = request.headers
+            body = self.call("ModifyLiveCallbackTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLiveCallbackTemplateResponse()
@@ -2512,7 +2598,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLiveCert", params)
+            headers = request.headers
+            body = self.call("ModifyLiveCert", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLiveCertResponse()
@@ -2540,7 +2627,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLiveDomainCert", params)
+            headers = request.headers
+            body = self.call("ModifyLiveDomainCert", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLiveDomainCertResponse()
@@ -2569,7 +2657,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLiveDomainReferer", params)
+            headers = request.headers
+            body = self.call("ModifyLiveDomainReferer", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLiveDomainRefererResponse()
@@ -2597,7 +2686,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLivePlayAuthKey", params)
+            headers = request.headers
+            body = self.call("ModifyLivePlayAuthKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLivePlayAuthKeyResponse()
@@ -2625,7 +2715,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLivePlayDomain", params)
+            headers = request.headers
+            body = self.call("ModifyLivePlayDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLivePlayDomainResponse()
@@ -2653,7 +2744,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLivePushAuthKey", params)
+            headers = request.headers
+            body = self.call("ModifyLivePushAuthKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLivePushAuthKeyResponse()
@@ -2681,7 +2773,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLiveRecordTemplate", params)
+            headers = request.headers
+            body = self.call("ModifyLiveRecordTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLiveRecordTemplateResponse()
@@ -2709,7 +2802,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLiveSnapshotTemplate", params)
+            headers = request.headers
+            body = self.call("ModifyLiveSnapshotTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLiveSnapshotTemplateResponse()
@@ -2737,7 +2831,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLiveTranscodeTemplate", params)
+            headers = request.headers
+            body = self.call("ModifyLiveTranscodeTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLiveTranscodeTemplateResponse()
@@ -2765,7 +2860,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResumeDelayLiveStream", params)
+            headers = request.headers
+            body = self.call("ResumeDelayLiveStream", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResumeDelayLiveStreamResponse()
@@ -2793,7 +2889,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResumeLiveStream", params)
+            headers = request.headers
+            body = self.call("ResumeLiveStream", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResumeLiveStreamResponse()
@@ -2821,7 +2918,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopLiveRecord", params)
+            headers = request.headers
+            body = self.call("StopLiveRecord", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopLiveRecordResponse()
@@ -2849,7 +2947,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopRecordTask", params)
+            headers = request.headers
+            body = self.call("StopRecordTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopRecordTaskResponse()
@@ -2877,7 +2976,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnBindLiveDomainCert", params)
+            headers = request.headers
+            body = self.call("UnBindLiveDomainCert", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnBindLiveDomainCertResponse()
@@ -2905,7 +3005,8 @@ class LiveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateLiveWatermark", params)
+            headers = request.headers
+            body = self.call("UpdateLiveWatermark", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateLiveWatermarkResponse()

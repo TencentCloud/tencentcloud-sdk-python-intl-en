@@ -36,7 +36,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAIAnalysisTemplate", params)
+            headers = request.headers
+            body = self.call("CreateAIAnalysisTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAIAnalysisTemplateResponse()
@@ -64,7 +65,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAIRecognitionTemplate", params)
+            headers = request.headers
+            body = self.call("CreateAIRecognitionTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAIRecognitionTemplateResponse()
@@ -92,7 +94,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAdaptiveDynamicStreamingTemplate", params)
+            headers = request.headers
+            body = self.call("CreateAdaptiveDynamicStreamingTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAdaptiveDynamicStreamingTemplateResponse()
@@ -120,7 +123,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAnimatedGraphicsTemplate", params)
+            headers = request.headers
+            body = self.call("CreateAnimatedGraphicsTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAnimatedGraphicsTemplateResponse()
@@ -148,7 +152,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateContentReviewTemplate", params)
+            headers = request.headers
+            body = self.call("CreateContentReviewTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateContentReviewTemplateResponse()
@@ -176,7 +181,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateImageSpriteTemplate", params)
+            headers = request.headers
+            body = self.call("CreateImageSpriteTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateImageSpriteTemplateResponse()
@@ -204,7 +210,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePersonSample", params)
+            headers = request.headers
+            body = self.call("CreatePersonSample", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePersonSampleResponse()
@@ -232,7 +239,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSampleSnapshotTemplate", params)
+            headers = request.headers
+            body = self.call("CreateSampleSnapshotTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSampleSnapshotTemplateResponse()
@@ -260,7 +268,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSnapshotByTimeOffsetTemplate", params)
+            headers = request.headers
+            body = self.call("CreateSnapshotByTimeOffsetTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSnapshotByTimeOffsetTemplateResponse()
@@ -288,7 +297,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTranscodeTemplate", params)
+            headers = request.headers
+            body = self.call("CreateTranscodeTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTranscodeTemplateResponse()
@@ -316,7 +326,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateWatermarkTemplate", params)
+            headers = request.headers
+            body = self.call("CreateWatermarkTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateWatermarkTemplateResponse()
@@ -344,7 +355,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateWordSamples", params)
+            headers = request.headers
+            body = self.call("CreateWordSamples", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateWordSamplesResponse()
@@ -382,7 +394,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateWorkflow", params)
+            headers = request.headers
+            body = self.call("CreateWorkflow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateWorkflowResponse()
@@ -412,7 +425,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAIAnalysisTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteAIAnalysisTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAIAnalysisTemplateResponse()
@@ -440,7 +454,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAIRecognitionTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteAIRecognitionTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAIRecognitionTemplateResponse()
@@ -468,7 +483,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAdaptiveDynamicStreamingTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteAdaptiveDynamicStreamingTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAdaptiveDynamicStreamingTemplateResponse()
@@ -496,7 +512,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAnimatedGraphicsTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteAnimatedGraphicsTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAnimatedGraphicsTemplateResponse()
@@ -524,7 +541,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteContentReviewTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteContentReviewTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteContentReviewTemplateResponse()
@@ -552,7 +570,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteImageSpriteTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteImageSpriteTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteImageSpriteTemplateResponse()
@@ -580,7 +599,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePersonSample", params)
+            headers = request.headers
+            body = self.call("DeletePersonSample", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePersonSampleResponse()
@@ -608,7 +628,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSampleSnapshotTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteSampleSnapshotTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSampleSnapshotTemplateResponse()
@@ -636,7 +657,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSnapshotByTimeOffsetTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteSnapshotByTimeOffsetTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSnapshotByTimeOffsetTemplateResponse()
@@ -664,7 +686,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTranscodeTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteTranscodeTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTranscodeTemplateResponse()
@@ -692,7 +715,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteWatermarkTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteWatermarkTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteWatermarkTemplateResponse()
@@ -720,7 +744,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteWordSamples", params)
+            headers = request.headers
+            body = self.call("DeleteWordSamples", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteWordSamplesResponse()
@@ -748,7 +773,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteWorkflow", params)
+            headers = request.headers
+            body = self.call("DeleteWorkflow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteWorkflowResponse()
@@ -776,7 +802,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAIAnalysisTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeAIAnalysisTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAIAnalysisTemplatesResponse()
@@ -804,7 +831,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAIRecognitionTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeAIRecognitionTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAIRecognitionTemplatesResponse()
@@ -832,7 +860,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAdaptiveDynamicStreamingTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeAdaptiveDynamicStreamingTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAdaptiveDynamicStreamingTemplatesResponse()
@@ -860,7 +889,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAnimatedGraphicsTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeAnimatedGraphicsTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAnimatedGraphicsTemplatesResponse()
@@ -888,7 +918,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeContentReviewTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeContentReviewTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeContentReviewTemplatesResponse()
@@ -916,7 +947,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImageSpriteTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeImageSpriteTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageSpriteTemplatesResponse()
@@ -944,7 +976,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMediaMetaData", params)
+            headers = request.headers
+            body = self.call("DescribeMediaMetaData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMediaMetaDataResponse()
@@ -972,7 +1005,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePersonSamples", params)
+            headers = request.headers
+            body = self.call("DescribePersonSamples", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePersonSamplesResponse()
@@ -1000,7 +1034,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSampleSnapshotTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeSampleSnapshotTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSampleSnapshotTemplatesResponse()
@@ -1028,7 +1063,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSnapshotByTimeOffsetTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeSnapshotByTimeOffsetTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSnapshotByTimeOffsetTemplatesResponse()
@@ -1056,7 +1092,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskDetail", params)
+            headers = request.headers
+            body = self.call("DescribeTaskDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskDetailResponse()
@@ -1086,7 +1123,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTasks", params)
+            headers = request.headers
+            body = self.call("DescribeTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTasksResponse()
@@ -1114,7 +1152,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTranscodeTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeTranscodeTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTranscodeTemplatesResponse()
@@ -1142,7 +1181,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWatermarkTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeWatermarkTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWatermarkTemplatesResponse()
@@ -1170,7 +1210,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWordSamples", params)
+            headers = request.headers
+            body = self.call("DescribeWordSamples", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWordSamplesResponse()
@@ -1198,7 +1239,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWorkflows", params)
+            headers = request.headers
+            body = self.call("DescribeWorkflows", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWorkflowsResponse()
@@ -1226,7 +1268,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableWorkflow", params)
+            headers = request.headers
+            body = self.call("DisableWorkflow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableWorkflowResponse()
@@ -1258,7 +1301,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EditMedia", params)
+            headers = request.headers
+            body = self.call("EditMedia", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EditMediaResponse()
@@ -1286,7 +1330,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnableWorkflow", params)
+            headers = request.headers
+            body = self.call("EnableWorkflow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableWorkflowResponse()
@@ -1314,7 +1359,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExecuteFunction", params)
+            headers = request.headers
+            body = self.call("ExecuteFunction", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExecuteFunctionResponse()
@@ -1342,7 +1388,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ManageTask", params)
+            headers = request.headers
+            body = self.call("ManageTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ManageTaskResponse()
@@ -1372,7 +1419,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAIAnalysisTemplate", params)
+            headers = request.headers
+            body = self.call("ModifyAIAnalysisTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAIAnalysisTemplateResponse()
@@ -1400,7 +1448,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAIRecognitionTemplate", params)
+            headers = request.headers
+            body = self.call("ModifyAIRecognitionTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAIRecognitionTemplateResponse()
@@ -1428,7 +1477,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAdaptiveDynamicStreamingTemplate", params)
+            headers = request.headers
+            body = self.call("ModifyAdaptiveDynamicStreamingTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAdaptiveDynamicStreamingTemplateResponse()
@@ -1456,7 +1506,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAnimatedGraphicsTemplate", params)
+            headers = request.headers
+            body = self.call("ModifyAnimatedGraphicsTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAnimatedGraphicsTemplateResponse()
@@ -1484,7 +1535,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyContentReviewTemplate", params)
+            headers = request.headers
+            body = self.call("ModifyContentReviewTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyContentReviewTemplateResponse()
@@ -1512,7 +1564,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyImageSpriteTemplate", params)
+            headers = request.headers
+            body = self.call("ModifyImageSpriteTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyImageSpriteTemplateResponse()
@@ -1540,7 +1593,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPersonSample", params)
+            headers = request.headers
+            body = self.call("ModifyPersonSample", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPersonSampleResponse()
@@ -1568,7 +1622,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySampleSnapshotTemplate", params)
+            headers = request.headers
+            body = self.call("ModifySampleSnapshotTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySampleSnapshotTemplateResponse()
@@ -1596,7 +1651,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySnapshotByTimeOffsetTemplate", params)
+            headers = request.headers
+            body = self.call("ModifySnapshotByTimeOffsetTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySnapshotByTimeOffsetTemplateResponse()
@@ -1624,7 +1680,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTranscodeTemplate", params)
+            headers = request.headers
+            body = self.call("ModifyTranscodeTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTranscodeTemplateResponse()
@@ -1652,7 +1709,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyWatermarkTemplate", params)
+            headers = request.headers
+            body = self.call("ModifyWatermarkTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyWatermarkTemplateResponse()
@@ -1680,7 +1738,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyWordSample", params)
+            headers = request.headers
+            body = self.call("ModifyWordSample", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyWordSampleResponse()
@@ -1709,7 +1768,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ParseLiveStreamProcessNotification", params)
+            headers = request.headers
+            body = self.call("ParseLiveStreamProcessNotification", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ParseLiveStreamProcessNotificationResponse()
@@ -1738,7 +1798,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ParseNotification", params)
+            headers = request.headers
+            body = self.call("ParseNotification", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ParseNotificationResponse()
@@ -1771,7 +1832,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ProcessLiveStream", params)
+            headers = request.headers
+            body = self.call("ProcessLiveStream", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ProcessLiveStreamResponse()
@@ -1807,7 +1869,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ProcessMedia", params)
+            headers = request.headers
+            body = self.call("ProcessMedia", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ProcessMediaResponse()
@@ -1835,7 +1898,8 @@ class MpsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetWorkflow", params)
+            headers = request.headers
+            body = self.call("ResetWorkflow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetWorkflowResponse()

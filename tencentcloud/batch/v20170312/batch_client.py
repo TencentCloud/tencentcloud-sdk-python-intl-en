@@ -42,7 +42,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AttachInstances", params)
+            headers = request.headers
+            body = self.call("AttachInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AttachInstancesResponse()
@@ -70,7 +71,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateComputeEnv", params)
+            headers = request.headers
+            body = self.call("CreateComputeEnv", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateComputeEnvResponse()
@@ -98,7 +100,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTaskTemplate", params)
+            headers = request.headers
+            body = self.call("CreateTaskTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTaskTemplateResponse()
@@ -126,7 +129,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteComputeEnv", params)
+            headers = request.headers
+            body = self.call("DeleteComputeEnv", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteComputeEnvResponse()
@@ -156,7 +160,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteJob", params)
+            headers = request.headers
+            body = self.call("DeleteJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteJobResponse()
@@ -184,7 +189,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTaskTemplates", params)
+            headers = request.headers
+            body = self.call("DeleteTaskTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTaskTemplatesResponse()
@@ -212,7 +218,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAvailableCvmInstanceTypes", params)
+            headers = request.headers
+            body = self.call("DescribeAvailableCvmInstanceTypes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAvailableCvmInstanceTypesResponse()
@@ -240,7 +247,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeComputeEnv", params)
+            headers = request.headers
+            body = self.call("DescribeComputeEnv", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeComputeEnvResponse()
@@ -268,7 +276,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeComputeEnvActivities", params)
+            headers = request.headers
+            body = self.call("DescribeComputeEnvActivities", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeComputeEnvActivitiesResponse()
@@ -296,7 +305,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeComputeEnvCreateInfo", params)
+            headers = request.headers
+            body = self.call("DescribeComputeEnvCreateInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeComputeEnvCreateInfoResponse()
@@ -324,7 +334,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeComputeEnvCreateInfos", params)
+            headers = request.headers
+            body = self.call("DescribeComputeEnvCreateInfos", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeComputeEnvCreateInfosResponse()
@@ -352,7 +363,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeComputeEnvs", params)
+            headers = request.headers
+            body = self.call("DescribeComputeEnvs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeComputeEnvsResponse()
@@ -380,7 +392,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCvmZoneInstanceConfigInfos", params)
+            headers = request.headers
+            body = self.call("DescribeCvmZoneInstanceConfigInfos", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCvmZoneInstanceConfigInfosResponse()
@@ -408,7 +421,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceCategories", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceCategories", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceCategoriesResponse()
@@ -436,7 +450,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeJob", params)
+            headers = request.headers
+            body = self.call("DescribeJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeJobResponse()
@@ -464,7 +479,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeJobSubmitInfo", params)
+            headers = request.headers
+            body = self.call("DescribeJobSubmitInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeJobSubmitInfoResponse()
@@ -492,7 +508,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeJobs", params)
+            headers = request.headers
+            body = self.call("DescribeJobs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeJobsResponse()
@@ -520,7 +537,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTask", params)
+            headers = request.headers
+            body = self.call("DescribeTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskResponse()
@@ -548,7 +566,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskLogs", params)
+            headers = request.headers
+            body = self.call("DescribeTaskLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskLogsResponse()
@@ -576,7 +595,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeTaskTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskTemplatesResponse()
@@ -604,7 +624,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetachInstances", params)
+            headers = request.headers
+            body = self.call("DetachInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachInstancesResponse()
@@ -632,7 +653,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyComputeEnv", params)
+            headers = request.headers
+            body = self.call("ModifyComputeEnv", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyComputeEnvResponse()
@@ -660,7 +682,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTaskTemplate", params)
+            headers = request.headers
+            body = self.call("ModifyTaskTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTaskTemplateResponse()
@@ -689,7 +712,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RetryJobs", params)
+            headers = request.headers
+            body = self.call("RetryJobs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RetryJobsResponse()
@@ -718,7 +742,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TerminateComputeNode", params)
+            headers = request.headers
+            body = self.call("TerminateComputeNode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TerminateComputeNodeResponse()
@@ -746,7 +771,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TerminateComputeNodes", params)
+            headers = request.headers
+            body = self.call("TerminateComputeNodes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TerminateComputeNodesResponse()
@@ -776,7 +802,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TerminateJob", params)
+            headers = request.headers
+            body = self.call("TerminateJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TerminateJobResponse()
@@ -808,7 +835,8 @@ class BatchClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TerminateTaskInstance", params)
+            headers = request.headers
+            body = self.call("TerminateTaskInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TerminateTaskInstanceResponse()

@@ -36,7 +36,8 @@ class TagClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddResourceTag", params)
+            headers = request.headers
+            body = self.call("AddResourceTag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddResourceTagResponse()
@@ -64,7 +65,8 @@ class TagClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AttachResourcesTag", params)
+            headers = request.headers
+            body = self.call("AttachResourcesTag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AttachResourcesTagResponse()
@@ -92,7 +94,8 @@ class TagClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTag", params)
+            headers = request.headers
+            body = self.call("CreateTag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTagResponse()
@@ -120,7 +123,8 @@ class TagClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteResourceTag", params)
+            headers = request.headers
+            body = self.call("DeleteResourceTag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteResourceTagResponse()
@@ -148,7 +152,8 @@ class TagClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTag", params)
+            headers = request.headers
+            body = self.call("DeleteTag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTagResponse()
@@ -176,7 +181,8 @@ class TagClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResourceTags", params)
+            headers = request.headers
+            body = self.call("DescribeResourceTags", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResourceTagsResponse()
@@ -204,7 +210,8 @@ class TagClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResourceTagsByResourceIds", params)
+            headers = request.headers
+            body = self.call("DescribeResourceTagsByResourceIds", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResourceTagsByResourceIdsResponse()
@@ -232,7 +239,8 @@ class TagClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResourceTagsByResourceIdsSeq", params)
+            headers = request.headers
+            body = self.call("DescribeResourceTagsByResourceIdsSeq", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResourceTagsByResourceIdsSeqResponse()
@@ -260,7 +268,8 @@ class TagClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResourceTagsByTagKeys", params)
+            headers = request.headers
+            body = self.call("DescribeResourceTagsByTagKeys", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResourceTagsByTagKeysResponse()
@@ -288,7 +297,8 @@ class TagClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResourcesByTags", params)
+            headers = request.headers
+            body = self.call("DescribeResourcesByTags", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResourcesByTagsResponse()
@@ -316,7 +326,8 @@ class TagClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResourcesByTagsUnion", params)
+            headers = request.headers
+            body = self.call("DescribeResourcesByTagsUnion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResourcesByTagsUnionResponse()
@@ -344,7 +355,8 @@ class TagClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTagKeys", params)
+            headers = request.headers
+            body = self.call("DescribeTagKeys", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTagKeysResponse()
@@ -372,7 +384,8 @@ class TagClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTagValues", params)
+            headers = request.headers
+            body = self.call("DescribeTagValues", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTagValuesResponse()
@@ -400,7 +413,8 @@ class TagClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTagValuesSeq", params)
+            headers = request.headers
+            body = self.call("DescribeTagValuesSeq", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTagValuesSeqResponse()
@@ -428,7 +442,8 @@ class TagClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTags", params)
+            headers = request.headers
+            body = self.call("DescribeTags", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTagsResponse()
@@ -456,7 +471,8 @@ class TagClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTagsSeq", params)
+            headers = request.headers
+            body = self.call("DescribeTagsSeq", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTagsSeqResponse()
@@ -484,7 +500,8 @@ class TagClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetachResourcesTag", params)
+            headers = request.headers
+            body = self.call("DetachResourcesTag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachResourcesTagResponse()
@@ -512,7 +529,8 @@ class TagClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyResourceTags", params)
+            headers = request.headers
+            body = self.call("ModifyResourceTags", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyResourceTagsResponse()
@@ -540,7 +558,8 @@ class TagClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyResourcesTagValue", params)
+            headers = request.headers
+            body = self.call("ModifyResourcesTagValue", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyResourcesTagValueResponse()
@@ -568,7 +587,8 @@ class TagClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateResourceTagValue", params)
+            headers = request.headers
+            body = self.call("UpdateResourceTagValue", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateResourceTagValueResponse()

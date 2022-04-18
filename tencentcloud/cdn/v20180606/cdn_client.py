@@ -36,7 +36,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateScdnFailedLogTask", params)
+            headers = request.headers
+            body = self.call("CreateScdnFailedLogTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateScdnFailedLogTaskResponse()
@@ -65,7 +66,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PurgePathCache", params)
+            headers = request.headers
+            body = self.call("PurgePathCache", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PurgePathCacheResponse()
@@ -94,7 +96,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PushUrlsCache", params)
+            headers = request.headers
+            body = self.call("PushUrlsCache", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PushUrlsCacheResponse()

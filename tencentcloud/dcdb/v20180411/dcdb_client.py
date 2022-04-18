@@ -36,7 +36,8 @@ class DcdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssociateSecurityGroups", params)
+            headers = request.headers
+            body = self.call("AssociateSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssociateSecurityGroupsResponse()
@@ -64,7 +65,8 @@ class DcdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CancelDcnJob", params)
+            headers = request.headers
+            body = self.call("CancelDcnJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CancelDcnJobResponse()
@@ -92,7 +94,8 @@ class DcdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CloseDBExtranetAccess", params)
+            headers = request.headers
+            body = self.call("CloseDBExtranetAccess", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CloseDBExtranetAccessResponse()
@@ -121,7 +124,8 @@ class DcdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CopyAccountPrivileges", params)
+            headers = request.headers
+            body = self.call("CopyAccountPrivileges", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CopyAccountPrivilegesResponse()
@@ -149,7 +153,8 @@ class DcdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAccount", params)
+            headers = request.headers
+            body = self.call("CreateAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAccountResponse()
@@ -177,7 +182,8 @@ class DcdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateHourDCDBInstance", params)
+            headers = request.headers
+            body = self.call("CreateHourDCDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateHourDCDBInstanceResponse()
@@ -205,7 +211,8 @@ class DcdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAccount", params)
+            headers = request.headers
+            body = self.call("DeleteAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAccountResponse()
@@ -233,7 +240,8 @@ class DcdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBLogFiles", params)
+            headers = request.headers
+            body = self.call("DescribeDBLogFiles", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBLogFilesResponse()
@@ -261,7 +269,8 @@ class DcdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBSecurityGroups", params)
+            headers = request.headers
+            body = self.call("DescribeDBSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBSecurityGroupsResponse()
@@ -289,7 +298,8 @@ class DcdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBSyncMode", params)
+            headers = request.headers
+            body = self.call("DescribeDBSyncMode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBSyncModeResponse()
@@ -317,7 +327,8 @@ class DcdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDCDBInstanceNodeInfo", params)
+            headers = request.headers
+            body = self.call("DescribeDCDBInstanceNodeInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDCDBInstanceNodeInfoResponse()
@@ -346,7 +357,8 @@ class DcdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDCDBInstances", params)
+            headers = request.headers
+            body = self.call("DescribeDCDBInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDCDBInstancesResponse()
@@ -374,7 +386,8 @@ class DcdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDcnDetail", params)
+            headers = request.headers
+            body = self.call("DescribeDcnDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDcnDetailResponse()
@@ -402,7 +415,8 @@ class DcdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFileDownloadUrl", params)
+            headers = request.headers
+            body = self.call("DescribeFileDownloadUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFileDownloadUrlResponse()
@@ -430,7 +444,8 @@ class DcdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFlow", params)
+            headers = request.headers
+            body = self.call("DescribeFlow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFlowResponse()
@@ -458,7 +473,8 @@ class DcdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProjectSecurityGroups", params)
+            headers = request.headers
+            body = self.call("DescribeProjectSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProjectSecurityGroupsResponse()
@@ -486,7 +502,8 @@ class DcdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProjects", params)
+            headers = request.headers
+            body = self.call("DescribeProjects", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProjectsResponse()
@@ -514,7 +531,8 @@ class DcdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DestroyDCDBInstance", params)
+            headers = request.headers
+            body = self.call("DestroyDCDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DestroyDCDBInstanceResponse()
@@ -542,7 +560,8 @@ class DcdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DestroyHourDCDBInstance", params)
+            headers = request.headers
+            body = self.call("DestroyHourDCDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DestroyHourDCDBInstanceResponse()
@@ -570,7 +589,8 @@ class DcdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisassociateSecurityGroups", params)
+            headers = request.headers
+            body = self.call("DisassociateSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateSecurityGroupsResponse()
@@ -599,7 +619,8 @@ class DcdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GrantAccountPrivileges", params)
+            headers = request.headers
+            body = self.call("GrantAccountPrivileges", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GrantAccountPrivilegesResponse()
@@ -628,7 +649,8 @@ class DcdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAccountDescription", params)
+            headers = request.headers
+            body = self.call("ModifyAccountDescription", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccountDescriptionResponse()
@@ -656,7 +678,8 @@ class DcdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDBInstanceSecurityGroups", params)
+            headers = request.headers
+            body = self.call("ModifyDBInstanceSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstanceSecurityGroupsResponse()
@@ -684,7 +707,8 @@ class DcdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDBInstancesProject", params)
+            headers = request.headers
+            body = self.call("ModifyDBInstancesProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstancesProjectResponse()
@@ -713,7 +737,8 @@ class DcdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetAccountPassword", params)
+            headers = request.headers
+            body = self.call("ResetAccountPassword", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetAccountPasswordResponse()
@@ -741,7 +766,8 @@ class DcdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SwitchDBInstanceHA", params)
+            headers = request.headers
+            body = self.call("SwitchDBInstanceHA", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SwitchDBInstanceHAResponse()

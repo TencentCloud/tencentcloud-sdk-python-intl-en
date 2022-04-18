@@ -40,7 +40,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ApplySnapshot", params)
+            headers = request.headers
+            body = self.call("ApplySnapshot", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ApplySnapshotResponse()
@@ -71,7 +72,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AttachDisks", params)
+            headers = request.headers
+            body = self.call("AttachDisks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AttachDisksResponse()
@@ -102,7 +104,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindAutoSnapshotPolicy", params)
+            headers = request.headers
+            body = self.call("BindAutoSnapshotPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindAutoSnapshotPolicyResponse()
@@ -133,7 +136,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CopySnapshotCrossRegions", params)
+            headers = request.headers
+            body = self.call("CopySnapshotCrossRegions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CopySnapshotCrossRegionsResponse()
@@ -164,7 +168,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAutoSnapshotPolicy", params)
+            headers = request.headers
+            body = self.call("CreateAutoSnapshotPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAutoSnapshotPolicyResponse()
@@ -195,7 +200,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDisks", params)
+            headers = request.headers
+            body = self.call("CreateDisks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDisksResponse()
@@ -226,7 +232,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSnapshot", params)
+            headers = request.headers
+            body = self.call("CreateSnapshot", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSnapshotResponse()
@@ -256,7 +263,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAutoSnapshotPolicies", params)
+            headers = request.headers
+            body = self.call("DeleteAutoSnapshotPolicies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAutoSnapshotPoliciesResponse()
@@ -287,7 +295,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSnapshots", params)
+            headers = request.headers
+            body = self.call("DeleteSnapshots", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSnapshotsResponse()
@@ -318,7 +327,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAutoSnapshotPolicies", params)
+            headers = request.headers
+            body = self.call("DescribeAutoSnapshotPolicies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAutoSnapshotPoliciesResponse()
@@ -346,7 +356,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDiskAssociatedAutoSnapshotPolicy", params)
+            headers = request.headers
+            body = self.call("DescribeDiskAssociatedAutoSnapshotPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDiskAssociatedAutoSnapshotPolicyResponse()
@@ -374,7 +385,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDiskConfigQuota", params)
+            headers = request.headers
+            body = self.call("DescribeDiskConfigQuota", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDiskConfigQuotaResponse()
@@ -404,7 +416,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDiskOperationLogs", params)
+            headers = request.headers
+            body = self.call("DescribeDiskOperationLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDiskOperationLogsResponse()
@@ -435,7 +448,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDisks", params)
+            headers = request.headers
+            body = self.call("DescribeDisks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDisksResponse()
@@ -465,7 +479,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstancesDiskNum", params)
+            headers = request.headers
+            body = self.call("DescribeInstancesDiskNum", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesDiskNumResponse()
@@ -495,7 +510,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSnapshotOperationLogs", params)
+            headers = request.headers
+            body = self.call("DescribeSnapshotOperationLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSnapshotOperationLogsResponse()
@@ -523,7 +539,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSnapshotSharePermission", params)
+            headers = request.headers
+            body = self.call("DescribeSnapshotSharePermission", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSnapshotSharePermissionResponse()
@@ -554,7 +571,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSnapshots", params)
+            headers = request.headers
+            body = self.call("DescribeSnapshots", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSnapshotsResponse()
@@ -585,7 +603,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetachDisks", params)
+            headers = request.headers
+            body = self.call("DetachDisks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachDisksResponse()
@@ -613,7 +632,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetSnapOverview", params)
+            headers = request.headers
+            body = self.call("GetSnapOverview", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetSnapOverviewResponse()
@@ -645,7 +665,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InitializeDisks", params)
+            headers = request.headers
+            body = self.call("InitializeDisks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InitializeDisksResponse()
@@ -673,7 +694,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquirePriceModifyDiskExtraPerformance", params)
+            headers = request.headers
+            body = self.call("InquirePriceModifyDiskExtraPerformance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquirePriceModifyDiskExtraPerformanceResponse()
@@ -703,7 +725,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceCreateDisks", params)
+            headers = request.headers
+            body = self.call("InquiryPriceCreateDisks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceCreateDisksResponse()
@@ -731,7 +754,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceResizeDisk", params)
+            headers = request.headers
+            body = self.call("InquiryPriceResizeDisk", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceResizeDiskResponse()
@@ -762,7 +786,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAutoSnapshotPolicyAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyAutoSnapshotPolicyAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAutoSnapshotPolicyAttributeResponse()
@@ -792,7 +817,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDiskAttributes", params)
+            headers = request.headers
+            body = self.call("ModifyDiskAttributes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDiskAttributesResponse()
@@ -822,7 +848,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDiskExtraPerformance", params)
+            headers = request.headers
+            body = self.call("ModifyDiskExtraPerformance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDiskExtraPerformanceResponse()
@@ -853,7 +880,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySnapshotAttribute", params)
+            headers = request.headers
+            body = self.call("ModifySnapshotAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySnapshotAttributeResponse()
@@ -887,7 +915,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySnapshotsSharePermission", params)
+            headers = request.headers
+            body = self.call("ModifySnapshotsSharePermission", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySnapshotsSharePermissionResponse()
@@ -918,7 +947,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResizeDisk", params)
+            headers = request.headers
+            body = self.call("ResizeDisk", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResizeDiskResponse()
@@ -950,7 +980,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TerminateDisks", params)
+            headers = request.headers
+            body = self.call("TerminateDisks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TerminateDisksResponse()
@@ -981,7 +1012,8 @@ class CbsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnbindAutoSnapshotPolicy", params)
+            headers = request.headers
+            body = self.call("UnbindAutoSnapshotPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnbindAutoSnapshotPolicyResponse()

@@ -36,7 +36,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CopyFleet", params)
+            headers = request.headers
+            body = self.call("CopyFleet", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CopyFleetResponse()
@@ -64,7 +65,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateGameServerSession", params)
+            headers = request.headers
+            body = self.call("CreateGameServerSession", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateGameServerSessionResponse()
@@ -92,7 +94,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTimerScalingPolicy", params)
+            headers = request.headers
+            body = self.call("DeleteTimerScalingPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTimerScalingPolicyResponse()
@@ -120,7 +123,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGameServerSessionDetails", params)
+            headers = request.headers
+            body = self.call("DescribeGameServerSessionDetails", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGameServerSessionDetailsResponse()
@@ -148,7 +152,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGameServerSessionPlacement", params)
+            headers = request.headers
+            body = self.call("DescribeGameServerSessionPlacement", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGameServerSessionPlacementResponse()
@@ -176,7 +181,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGameServerSessions", params)
+            headers = request.headers
+            body = self.call("DescribeGameServerSessions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGameServerSessionsResponse()
@@ -204,7 +210,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceTypes", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceTypes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceTypesResponse()
@@ -232,7 +239,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePlayerSessions", params)
+            headers = request.headers
+            body = self.call("DescribePlayerSessions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePlayerSessionsResponse()
@@ -260,7 +268,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTimerScalingPolicies", params)
+            headers = request.headers
+            body = self.call("DescribeTimerScalingPolicies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTimerScalingPoliciesResponse()
@@ -288,7 +297,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EndGameServerSessionAndProcess", params)
+            headers = request.headers
+            body = self.call("EndGameServerSessionAndProcess", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EndGameServerSessionAndProcessResponse()
@@ -316,7 +326,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetGameServerSessionLogUrl", params)
+            headers = request.headers
+            body = self.call("GetGameServerSessionLogUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetGameServerSessionLogUrlResponse()
@@ -344,7 +355,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetInstanceAccess", params)
+            headers = request.headers
+            body = self.call("GetInstanceAccess", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetInstanceAccessResponse()
@@ -372,7 +384,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("JoinGameServerSession", params)
+            headers = request.headers
+            body = self.call("JoinGameServerSession", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.JoinGameServerSessionResponse()
@@ -400,7 +413,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("JoinGameServerSessionBatch", params)
+            headers = request.headers
+            body = self.call("JoinGameServerSessionBatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.JoinGameServerSessionBatchResponse()
@@ -430,7 +444,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PutTimerScalingPolicy", params)
+            headers = request.headers
+            body = self.call("PutTimerScalingPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PutTimerScalingPolicyResponse()
@@ -458,7 +473,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SearchGameServerSessions", params)
+            headers = request.headers
+            body = self.call("SearchGameServerSessions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchGameServerSessionsResponse()
@@ -488,7 +504,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetServerReserved", params)
+            headers = request.headers
+            body = self.call("SetServerReserved", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetServerReservedResponse()
@@ -516,7 +533,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartGameServerSessionPlacement", params)
+            headers = request.headers
+            body = self.call("StartGameServerSessionPlacement", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartGameServerSessionPlacementResponse()
@@ -544,7 +562,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopGameServerSessionPlacement", params)
+            headers = request.headers
+            body = self.call("StopGameServerSessionPlacement", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopGameServerSessionPlacementResponse()
@@ -572,7 +591,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateBucketAccelerateOpt", params)
+            headers = request.headers
+            body = self.call("UpdateBucketAccelerateOpt", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateBucketAccelerateOptResponse()
@@ -600,7 +620,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateBucketCORSOpt", params)
+            headers = request.headers
+            body = self.call("UpdateBucketCORSOpt", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateBucketCORSOptResponse()
@@ -628,7 +649,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateGameServerSession", params)
+            headers = request.headers
+            body = self.call("UpdateGameServerSession", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateGameServerSessionResponse()

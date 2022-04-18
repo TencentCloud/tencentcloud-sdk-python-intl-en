@@ -36,7 +36,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ActivateInstance", params)
+            headers = request.headers
+            body = self.call("ActivateInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ActivateInstanceResponse()
@@ -64,7 +65,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddInstances", params)
+            headers = request.headers
+            body = self.call("AddInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddInstancesResponse()
@@ -92,7 +94,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAccounts", params)
+            headers = request.headers
+            body = self.call("CreateAccounts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAccountsResponse()
@@ -120,7 +123,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccounts", params)
+            headers = request.headers
+            body = self.call("DescribeAccounts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccountsResponse()
@@ -148,7 +152,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBackupConfig", params)
+            headers = request.headers
+            body = self.call("DescribeBackupConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBackupConfigResponse()
@@ -176,7 +181,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBackupList", params)
+            headers = request.headers
+            body = self.call("DescribeBackupList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBackupListResponse()
@@ -204,7 +210,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterDetail", params)
+            headers = request.headers
+            body = self.call("DescribeClusterDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterDetailResponse()
@@ -232,7 +239,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterInstanceGrps", params)
+            headers = request.headers
+            body = self.call("DescribeClusterInstanceGrps", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterInstanceGrpsResponse()
@@ -260,7 +268,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusters", params)
+            headers = request.headers
+            body = self.call("DescribeClusters", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClustersResponse()
@@ -288,7 +297,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBSecurityGroups", params)
+            headers = request.headers
+            body = self.call("DescribeDBSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBSecurityGroupsResponse()
@@ -316,7 +326,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceDetail", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceDetailResponse()
@@ -344,7 +355,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceSpecs", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceSpecs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceSpecsResponse()
@@ -372,7 +384,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstances", params)
+            headers = request.headers
+            body = self.call("DescribeInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesResponse()
@@ -400,7 +413,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMaintainPeriod", params)
+            headers = request.headers
+            body = self.call("DescribeMaintainPeriod", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMaintainPeriodResponse()
@@ -428,7 +442,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProjectSecurityGroups", params)
+            headers = request.headers
+            body = self.call("DescribeProjectSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProjectSecurityGroupsResponse()
@@ -456,7 +471,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResourcesByDealName", params)
+            headers = request.headers
+            body = self.call("DescribeResourcesByDealName", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResourcesByDealNameResponse()
@@ -484,7 +500,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRollbackTimeRange", params)
+            headers = request.headers
+            body = self.call("DescribeRollbackTimeRange", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRollbackTimeRangeResponse()
@@ -512,7 +529,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRollbackTimeValidity", params)
+            headers = request.headers
+            body = self.call("DescribeRollbackTimeValidity", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRollbackTimeValidityResponse()
@@ -540,7 +558,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("IsolateCluster", params)
+            headers = request.headers
+            body = self.call("IsolateCluster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.IsolateClusterResponse()
@@ -568,7 +587,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("IsolateInstance", params)
+            headers = request.headers
+            body = self.call("IsolateInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.IsolateInstanceResponse()
@@ -596,7 +616,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyBackupConfig", params)
+            headers = request.headers
+            body = self.call("ModifyBackupConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyBackupConfigResponse()
@@ -624,7 +645,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyClusterName", params)
+            headers = request.headers
+            body = self.call("ModifyClusterName", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyClusterNameResponse()
@@ -652,7 +674,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyClusterParam", params)
+            headers = request.headers
+            body = self.call("ModifyClusterParam", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyClusterParamResponse()
@@ -680,7 +703,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDBInstanceSecurityGroups", params)
+            headers = request.headers
+            body = self.call("ModifyDBInstanceSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstanceSecurityGroupsResponse()
@@ -708,7 +732,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyInstanceName", params)
+            headers = request.headers
+            body = self.call("ModifyInstanceName", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyInstanceNameResponse()
@@ -736,7 +761,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMaintainPeriodConfig", params)
+            headers = request.headers
+            body = self.call("ModifyMaintainPeriodConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMaintainPeriodConfigResponse()
@@ -764,7 +790,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("OfflineCluster", params)
+            headers = request.headers
+            body = self.call("OfflineCluster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OfflineClusterResponse()
@@ -792,7 +819,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("OfflineInstance", params)
+            headers = request.headers
+            body = self.call("OfflineInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OfflineInstanceResponse()
@@ -820,7 +848,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PauseServerless", params)
+            headers = request.headers
+            body = self.call("PauseServerless", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PauseServerlessResponse()
@@ -848,7 +877,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResumeServerless", params)
+            headers = request.headers
+            body = self.call("ResumeServerless", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResumeServerlessResponse()
@@ -876,7 +906,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetRenewFlag", params)
+            headers = request.headers
+            body = self.call("SetRenewFlag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetRenewFlagResponse()
@@ -904,7 +935,8 @@ class CynosdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpgradeInstance", params)
+            headers = request.headers
+            body = self.call("UpgradeInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpgradeInstanceResponse()

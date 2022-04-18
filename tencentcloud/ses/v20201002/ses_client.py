@@ -36,7 +36,8 @@ class SesClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateEmailAddress", params)
+            headers = request.headers
+            body = self.call("CreateEmailAddress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateEmailAddressResponse()
@@ -64,7 +65,8 @@ class SesClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateEmailIdentity", params)
+            headers = request.headers
+            body = self.call("CreateEmailIdentity", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateEmailIdentityResponse()
@@ -92,7 +94,8 @@ class SesClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateReceiver", params)
+            headers = request.headers
+            body = self.call("CreateReceiver", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateReceiverResponse()
@@ -120,7 +123,8 @@ class SesClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateReceiverDetail", params)
+            headers = request.headers
+            body = self.call("CreateReceiverDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateReceiverDetailResponse()
@@ -148,7 +152,8 @@ class SesClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteBlackList", params)
+            headers = request.headers
+            body = self.call("DeleteBlackList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteBlackListResponse()
@@ -176,7 +181,8 @@ class SesClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteEmailAddress", params)
+            headers = request.headers
+            body = self.call("DeleteEmailAddress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteEmailAddressResponse()
@@ -204,7 +210,8 @@ class SesClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteEmailIdentity", params)
+            headers = request.headers
+            body = self.call("DeleteEmailIdentity", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteEmailIdentityResponse()
@@ -232,7 +239,8 @@ class SesClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteEmailTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteEmailTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteEmailTemplateResponse()
@@ -260,7 +268,8 @@ class SesClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteReceiver", params)
+            headers = request.headers
+            body = self.call("DeleteReceiver", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteReceiverResponse()
@@ -288,7 +297,8 @@ class SesClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetEmailIdentity", params)
+            headers = request.headers
+            body = self.call("GetEmailIdentity", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetEmailIdentityResponse()
@@ -316,7 +326,8 @@ class SesClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetEmailTemplate", params)
+            headers = request.headers
+            body = self.call("GetEmailTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetEmailTemplateResponse()
@@ -344,7 +355,8 @@ class SesClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetStatisticsReport", params)
+            headers = request.headers
+            body = self.call("GetStatisticsReport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetStatisticsReportResponse()
@@ -372,7 +384,8 @@ class SesClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListBlackEmailAddress", params)
+            headers = request.headers
+            body = self.call("ListBlackEmailAddress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListBlackEmailAddressResponse()
@@ -400,7 +413,8 @@ class SesClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListEmailAddress", params)
+            headers = request.headers
+            body = self.call("ListEmailAddress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListEmailAddressResponse()
@@ -428,7 +442,8 @@ class SesClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListEmailIdentities", params)
+            headers = request.headers
+            body = self.call("ListEmailIdentities", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListEmailIdentitiesResponse()
@@ -456,7 +471,8 @@ class SesClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListEmailTemplates", params)
+            headers = request.headers
+            body = self.call("ListEmailTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListEmailTemplatesResponse()
@@ -484,7 +500,8 @@ class SesClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListReceivers", params)
+            headers = request.headers
+            body = self.call("ListReceivers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListReceiversResponse()
@@ -512,7 +529,8 @@ class SesClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListSendTasks", params)
+            headers = request.headers
+            body = self.call("ListSendTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListSendTasksResponse()
@@ -540,7 +558,8 @@ class SesClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SendEmail", params)
+            headers = request.headers
+            body = self.call("SendEmail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SendEmailResponse()
@@ -568,7 +587,8 @@ class SesClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateEmailIdentity", params)
+            headers = request.headers
+            body = self.call("UpdateEmailIdentity", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateEmailIdentityResponse()

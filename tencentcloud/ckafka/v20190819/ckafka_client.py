@@ -36,7 +36,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BatchCreateAcl", params)
+            headers = request.headers
+            body = self.call("BatchCreateAcl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BatchCreateAclResponse()
@@ -64,7 +65,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BatchModifyGroupOffsets", params)
+            headers = request.headers
+            body = self.call("BatchModifyGroupOffsets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BatchModifyGroupOffsetsResponse()
@@ -92,7 +94,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BatchModifyTopicAttributes", params)
+            headers = request.headers
+            body = self.call("BatchModifyTopicAttributes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BatchModifyTopicAttributesResponse()
@@ -120,7 +123,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAcl", params)
+            headers = request.headers
+            body = self.call("CreateAcl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAclResponse()
@@ -148,7 +152,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateConsumer", params)
+            headers = request.headers
+            body = self.call("CreateConsumer", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateConsumerResponse()
@@ -176,7 +181,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePartition", params)
+            headers = request.headers
+            body = self.call("CreatePartition", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePartitionResponse()
@@ -204,7 +210,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTopic", params)
+            headers = request.headers
+            body = self.call("CreateTopic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTopicResponse()
@@ -232,7 +239,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTopicIpWhiteList", params)
+            headers = request.headers
+            body = self.call("CreateTopicIpWhiteList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTopicIpWhiteListResponse()
@@ -260,7 +268,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateUser", params)
+            headers = request.headers
+            body = self.call("CreateUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateUserResponse()
@@ -288,7 +297,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAcl", params)
+            headers = request.headers
+            body = self.call("DeleteAcl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAclResponse()
@@ -316,7 +326,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRouteTriggerTime", params)
+            headers = request.headers
+            body = self.call("DeleteRouteTriggerTime", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRouteTriggerTimeResponse()
@@ -344,7 +355,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTopic", params)
+            headers = request.headers
+            body = self.call("DeleteTopic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTopicResponse()
@@ -372,7 +384,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTopicIpWhiteList", params)
+            headers = request.headers
+            body = self.call("DeleteTopicIpWhiteList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTopicIpWhiteListResponse()
@@ -400,7 +413,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteUser", params)
+            headers = request.headers
+            body = self.call("DeleteUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteUserResponse()
@@ -428,7 +442,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeACL", params)
+            headers = request.headers
+            body = self.call("DescribeACL", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeACLResponse()
@@ -456,7 +471,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAppInfo", params)
+            headers = request.headers
+            body = self.call("DescribeAppInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAppInfoResponse()
@@ -484,7 +500,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCkafkaZone", params)
+            headers = request.headers
+            body = self.call("DescribeCkafkaZone", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCkafkaZoneResponse()
@@ -512,7 +529,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeConsumerGroup", params)
+            headers = request.headers
+            body = self.call("DescribeConsumerGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeConsumerGroupResponse()
@@ -540,7 +558,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGroup", params)
+            headers = request.headers
+            body = self.call("DescribeGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGroupResponse()
@@ -568,7 +587,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGroupInfo", params)
+            headers = request.headers
+            body = self.call("DescribeGroupInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGroupInfoResponse()
@@ -596,7 +616,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGroupOffsets", params)
+            headers = request.headers
+            body = self.call("DescribeGroupOffsets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGroupOffsetsResponse()
@@ -624,7 +645,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceAttributes", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceAttributes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceAttributesResponse()
@@ -652,7 +674,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstances", params)
+            headers = request.headers
+            body = self.call("DescribeInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesResponse()
@@ -680,7 +703,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstancesDetail", params)
+            headers = request.headers
+            body = self.call("DescribeInstancesDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesDetailResponse()
@@ -708,7 +732,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRegion", params)
+            headers = request.headers
+            body = self.call("DescribeRegion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRegionResponse()
@@ -736,7 +761,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRoute", params)
+            headers = request.headers
+            body = self.call("DescribeRoute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRouteResponse()
@@ -765,7 +791,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTopic", params)
+            headers = request.headers
+            body = self.call("DescribeTopic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTopicResponse()
@@ -793,7 +820,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTopicAttributes", params)
+            headers = request.headers
+            body = self.call("DescribeTopicAttributes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTopicAttributesResponse()
@@ -821,7 +849,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTopicDetail", params)
+            headers = request.headers
+            body = self.call("DescribeTopicDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTopicDetailResponse()
@@ -849,7 +878,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTopicSubscribeGroup", params)
+            headers = request.headers
+            body = self.call("DescribeTopicSubscribeGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTopicSubscribeGroupResponse()
@@ -877,7 +907,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTopicSyncReplica", params)
+            headers = request.headers
+            body = self.call("DescribeTopicSyncReplica", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTopicSyncReplicaResponse()
@@ -905,7 +936,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUser", params)
+            headers = request.headers
+            body = self.call("DescribeUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserResponse()
@@ -933,7 +965,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("FetchMessageByOffset", params)
+            headers = request.headers
+            body = self.call("FetchMessageByOffset", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.FetchMessageByOffsetResponse()
@@ -961,7 +994,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyGroupOffsets", params)
+            headers = request.headers
+            body = self.call("ModifyGroupOffsets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyGroupOffsetsResponse()
@@ -989,7 +1023,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyInstanceAttributes", params)
+            headers = request.headers
+            body = self.call("ModifyInstanceAttributes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyInstanceAttributesResponse()
@@ -1017,7 +1052,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPassword", params)
+            headers = request.headers
+            body = self.call("ModifyPassword", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPasswordResponse()
@@ -1045,7 +1081,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTopicAttributes", params)
+            headers = request.headers
+            body = self.call("ModifyTopicAttributes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTopicAttributesResponse()
@@ -1073,7 +1110,8 @@ class CkafkaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SendMessage", params)
+            headers = request.headers
+            body = self.call("SendMessage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SendMessageResponse()

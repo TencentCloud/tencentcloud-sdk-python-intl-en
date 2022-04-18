@@ -36,7 +36,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateStreamLiveChannel", params)
+            headers = request.headers
+            body = self.call("CreateStreamLiveChannel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateStreamLiveChannelResponse()
@@ -64,7 +65,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateStreamLiveInput", params)
+            headers = request.headers
+            body = self.call("CreateStreamLiveInput", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateStreamLiveInputResponse()
@@ -92,7 +94,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateStreamLiveInputSecurityGroup", params)
+            headers = request.headers
+            body = self.call("CreateStreamLiveInputSecurityGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateStreamLiveInputSecurityGroupResponse()
@@ -120,7 +123,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateStreamLivePlan", params)
+            headers = request.headers
+            body = self.call("CreateStreamLivePlan", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateStreamLivePlanResponse()
@@ -148,7 +152,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateStreamLiveWatermark", params)
+            headers = request.headers
+            body = self.call("CreateStreamLiveWatermark", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateStreamLiveWatermarkResponse()
@@ -176,7 +181,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteStreamLiveChannel", params)
+            headers = request.headers
+            body = self.call("DeleteStreamLiveChannel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteStreamLiveChannelResponse()
@@ -204,7 +210,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteStreamLiveInput", params)
+            headers = request.headers
+            body = self.call("DeleteStreamLiveInput", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteStreamLiveInputResponse()
@@ -232,7 +239,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteStreamLiveInputSecurityGroup", params)
+            headers = request.headers
+            body = self.call("DeleteStreamLiveInputSecurityGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteStreamLiveInputSecurityGroupResponse()
@@ -260,7 +268,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteStreamLivePlan", params)
+            headers = request.headers
+            body = self.call("DeleteStreamLivePlan", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteStreamLivePlanResponse()
@@ -288,7 +297,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteStreamLiveWatermark", params)
+            headers = request.headers
+            body = self.call("DeleteStreamLiveWatermark", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteStreamLiveWatermarkResponse()
@@ -316,7 +326,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStreamLiveChannel", params)
+            headers = request.headers
+            body = self.call("DescribeStreamLiveChannel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamLiveChannelResponse()
@@ -344,7 +355,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStreamLiveChannelAlerts", params)
+            headers = request.headers
+            body = self.call("DescribeStreamLiveChannelAlerts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamLiveChannelAlertsResponse()
@@ -372,7 +384,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStreamLiveChannelInputStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeStreamLiveChannelInputStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamLiveChannelInputStatisticsResponse()
@@ -400,7 +413,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStreamLiveChannelLogs", params)
+            headers = request.headers
+            body = self.call("DescribeStreamLiveChannelLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamLiveChannelLogsResponse()
@@ -428,7 +442,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStreamLiveChannelOutputStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeStreamLiveChannelOutputStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamLiveChannelOutputStatisticsResponse()
@@ -456,7 +471,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStreamLiveChannels", params)
+            headers = request.headers
+            body = self.call("DescribeStreamLiveChannels", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamLiveChannelsResponse()
@@ -484,7 +500,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStreamLiveInput", params)
+            headers = request.headers
+            body = self.call("DescribeStreamLiveInput", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamLiveInputResponse()
@@ -512,7 +529,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStreamLiveInputSecurityGroup", params)
+            headers = request.headers
+            body = self.call("DescribeStreamLiveInputSecurityGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamLiveInputSecurityGroupResponse()
@@ -540,7 +558,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStreamLiveInputSecurityGroups", params)
+            headers = request.headers
+            body = self.call("DescribeStreamLiveInputSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamLiveInputSecurityGroupsResponse()
@@ -568,7 +587,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStreamLiveInputs", params)
+            headers = request.headers
+            body = self.call("DescribeStreamLiveInputs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamLiveInputsResponse()
@@ -596,7 +616,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStreamLivePlans", params)
+            headers = request.headers
+            body = self.call("DescribeStreamLivePlans", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamLivePlansResponse()
@@ -624,7 +645,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStreamLiveRegions", params)
+            headers = request.headers
+            body = self.call("DescribeStreamLiveRegions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamLiveRegionsResponse()
@@ -652,7 +674,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStreamLiveTranscodeDetail", params)
+            headers = request.headers
+            body = self.call("DescribeStreamLiveTranscodeDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamLiveTranscodeDetailResponse()
@@ -680,7 +703,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStreamLiveWatermark", params)
+            headers = request.headers
+            body = self.call("DescribeStreamLiveWatermark", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamLiveWatermarkResponse()
@@ -708,7 +732,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStreamLiveWatermarks", params)
+            headers = request.headers
+            body = self.call("DescribeStreamLiveWatermarks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamLiveWatermarksResponse()
@@ -736,7 +761,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyStreamLiveChannel", params)
+            headers = request.headers
+            body = self.call("ModifyStreamLiveChannel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyStreamLiveChannelResponse()
@@ -764,7 +790,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyStreamLiveInput", params)
+            headers = request.headers
+            body = self.call("ModifyStreamLiveInput", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyStreamLiveInputResponse()
@@ -792,7 +819,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyStreamLiveInputSecurityGroup", params)
+            headers = request.headers
+            body = self.call("ModifyStreamLiveInputSecurityGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyStreamLiveInputSecurityGroupResponse()
@@ -820,7 +848,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyStreamLiveWatermark", params)
+            headers = request.headers
+            body = self.call("ModifyStreamLiveWatermark", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyStreamLiveWatermarkResponse()
@@ -848,7 +877,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartStreamLiveChannel", params)
+            headers = request.headers
+            body = self.call("StartStreamLiveChannel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartStreamLiveChannelResponse()
@@ -876,7 +906,8 @@ class MdlClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopStreamLiveChannel", params)
+            headers = request.headers
+            body = self.call("StopStreamLiveChannel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopStreamLiveChannelResponse()

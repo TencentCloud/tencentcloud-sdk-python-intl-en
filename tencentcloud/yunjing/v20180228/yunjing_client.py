@@ -36,7 +36,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddLoginWhiteList", params)
+            headers = request.headers
+            body = self.call("AddLoginWhiteList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddLoginWhiteListResponse()
@@ -64,7 +65,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddMachineTag", params)
+            headers = request.headers
+            body = self.call("AddMachineTag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddMachineTagResponse()
@@ -92,7 +94,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CloseProVersion", params)
+            headers = request.headers
+            body = self.call("CloseProVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CloseProVersionResponse()
@@ -120,7 +123,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateOpenPortTask", params)
+            headers = request.headers
+            body = self.call("CreateOpenPortTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateOpenPortTaskResponse()
@@ -148,7 +152,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateProcessTask", params)
+            headers = request.headers
+            body = self.call("CreateProcessTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateProcessTaskResponse()
@@ -176,7 +181,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateUsualLoginPlaces", params)
+            headers = request.headers
+            body = self.call("CreateUsualLoginPlaces", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateUsualLoginPlacesResponse()
@@ -204,7 +210,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteBruteAttacks", params)
+            headers = request.headers
+            body = self.call("DeleteBruteAttacks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteBruteAttacksResponse()
@@ -232,7 +239,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLoginWhiteList", params)
+            headers = request.headers
+            body = self.call("DeleteLoginWhiteList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLoginWhiteListResponse()
@@ -260,7 +268,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMachine", params)
+            headers = request.headers
+            body = self.call("DeleteMachine", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMachineResponse()
@@ -288,7 +297,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMachineTag", params)
+            headers = request.headers
+            body = self.call("DeleteMachineTag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMachineTagResponse()
@@ -316,7 +326,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMaliciousRequests", params)
+            headers = request.headers
+            body = self.call("DeleteMaliciousRequests", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMaliciousRequestsResponse()
@@ -344,7 +355,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMalwares", params)
+            headers = request.headers
+            body = self.call("DeleteMalwares", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMalwaresResponse()
@@ -372,7 +384,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteNonlocalLoginPlaces", params)
+            headers = request.headers
+            body = self.call("DeleteNonlocalLoginPlaces", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNonlocalLoginPlacesResponse()
@@ -400,7 +413,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteUsualLoginPlaces", params)
+            headers = request.headers
+            body = self.call("DeleteUsualLoginPlaces", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteUsualLoginPlacesResponse()
@@ -428,7 +442,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccountStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeAccountStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccountStatisticsResponse()
@@ -456,7 +471,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccounts", params)
+            headers = request.headers
+            body = self.call("DescribeAccounts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccountsResponse()
@@ -484,7 +500,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAgentVuls", params)
+            headers = request.headers
+            body = self.call("DescribeAgentVuls", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAgentVulsResponse()
@@ -512,7 +529,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAlarmAttribute", params)
+            headers = request.headers
+            body = self.call("DescribeAlarmAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAlarmAttributeResponse()
@@ -540,7 +558,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBruteAttacks", params)
+            headers = request.headers
+            body = self.call("DescribeBruteAttacks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBruteAttacksResponse()
@@ -568,7 +587,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeComponentInfo", params)
+            headers = request.headers
+            body = self.call("DescribeComponentInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeComponentInfoResponse()
@@ -596,7 +616,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeComponentStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeComponentStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeComponentStatisticsResponse()
@@ -624,7 +645,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeComponents", params)
+            headers = request.headers
+            body = self.call("DescribeComponents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeComponentsResponse()
@@ -652,7 +674,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeHistoryAccounts", params)
+            headers = request.headers
+            body = self.call("DescribeHistoryAccounts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeHistoryAccountsResponse()
@@ -680,7 +703,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImpactedHosts", params)
+            headers = request.headers
+            body = self.call("DescribeImpactedHosts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImpactedHostsResponse()
@@ -708,7 +732,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLoginWhiteList", params)
+            headers = request.headers
+            body = self.call("DescribeLoginWhiteList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLoginWhiteListResponse()
@@ -736,7 +761,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMachineInfo", params)
+            headers = request.headers
+            body = self.call("DescribeMachineInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMachineInfoResponse()
@@ -764,7 +790,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMachines", params)
+            headers = request.headers
+            body = self.call("DescribeMachines", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMachinesResponse()
@@ -792,7 +819,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMaliciousRequests", params)
+            headers = request.headers
+            body = self.call("DescribeMaliciousRequests", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMaliciousRequestsResponse()
@@ -820,7 +848,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMalwares", params)
+            headers = request.headers
+            body = self.call("DescribeMalwares", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMalwaresResponse()
@@ -848,7 +877,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNonlocalLoginPlaces", params)
+            headers = request.headers
+            body = self.call("DescribeNonlocalLoginPlaces", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNonlocalLoginPlacesResponse()
@@ -876,7 +906,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeOpenPortStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeOpenPortStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOpenPortStatisticsResponse()
@@ -904,7 +935,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeOpenPortTaskStatus", params)
+            headers = request.headers
+            body = self.call("DescribeOpenPortTaskStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOpenPortTaskStatusResponse()
@@ -932,7 +964,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeOpenPorts", params)
+            headers = request.headers
+            body = self.call("DescribeOpenPorts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOpenPortsResponse()
@@ -960,7 +993,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeOverviewStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeOverviewStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOverviewStatisticsResponse()
@@ -988,7 +1022,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProVersionInfo", params)
+            headers = request.headers
+            body = self.call("DescribeProVersionInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProVersionInfoResponse()
@@ -1016,7 +1051,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProcessStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeProcessStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProcessStatisticsResponse()
@@ -1044,7 +1080,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProcessTaskStatus", params)
+            headers = request.headers
+            body = self.call("DescribeProcessTaskStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProcessTaskStatusResponse()
@@ -1072,7 +1109,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProcesses", params)
+            headers = request.headers
+            body = self.call("DescribeProcesses", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProcessesResponse()
@@ -1100,7 +1138,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSecurityDynamics", params)
+            headers = request.headers
+            body = self.call("DescribeSecurityDynamics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecurityDynamicsResponse()
@@ -1128,7 +1167,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSecurityTrends", params)
+            headers = request.headers
+            body = self.call("DescribeSecurityTrends", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecurityTrendsResponse()
@@ -1156,7 +1196,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTagMachines", params)
+            headers = request.headers
+            body = self.call("DescribeTagMachines", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTagMachinesResponse()
@@ -1184,7 +1225,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTags", params)
+            headers = request.headers
+            body = self.call("DescribeTags", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTagsResponse()
@@ -1212,7 +1254,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUsualLoginPlaces", params)
+            headers = request.headers
+            body = self.call("DescribeUsualLoginPlaces", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUsualLoginPlacesResponse()
@@ -1240,7 +1283,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVulInfo", params)
+            headers = request.headers
+            body = self.call("DescribeVulInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVulInfoResponse()
@@ -1268,7 +1312,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVulScanResult", params)
+            headers = request.headers
+            body = self.call("DescribeVulScanResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVulScanResultResponse()
@@ -1296,7 +1341,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVuls", params)
+            headers = request.headers
+            body = self.call("DescribeVuls", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVulsResponse()
@@ -1324,7 +1370,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWeeklyReportBruteAttacks", params)
+            headers = request.headers
+            body = self.call("DescribeWeeklyReportBruteAttacks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWeeklyReportBruteAttacksResponse()
@@ -1352,7 +1399,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWeeklyReportInfo", params)
+            headers = request.headers
+            body = self.call("DescribeWeeklyReportInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWeeklyReportInfoResponse()
@@ -1380,7 +1428,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWeeklyReportMalwares", params)
+            headers = request.headers
+            body = self.call("DescribeWeeklyReportMalwares", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWeeklyReportMalwaresResponse()
@@ -1408,7 +1457,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWeeklyReportNonlocalLoginPlaces", params)
+            headers = request.headers
+            body = self.call("DescribeWeeklyReportNonlocalLoginPlaces", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWeeklyReportNonlocalLoginPlacesResponse()
@@ -1436,7 +1486,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWeeklyReportVuls", params)
+            headers = request.headers
+            body = self.call("DescribeWeeklyReportVuls", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWeeklyReportVulsResponse()
@@ -1464,7 +1515,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWeeklyReports", params)
+            headers = request.headers
+            body = self.call("DescribeWeeklyReports", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWeeklyReportsResponse()
@@ -1492,7 +1544,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EditTags", params)
+            headers = request.headers
+            body = self.call("EditTags", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EditTagsResponse()
@@ -1520,7 +1573,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportBruteAttacks", params)
+            headers = request.headers
+            body = self.call("ExportBruteAttacks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportBruteAttacksResponse()
@@ -1548,7 +1602,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportMaliciousRequests", params)
+            headers = request.headers
+            body = self.call("ExportMaliciousRequests", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportMaliciousRequestsResponse()
@@ -1576,7 +1631,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportMalwares", params)
+            headers = request.headers
+            body = self.call("ExportMalwares", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportMalwaresResponse()
@@ -1604,7 +1660,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportNonlocalLoginPlaces", params)
+            headers = request.headers
+            body = self.call("ExportNonlocalLoginPlaces", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportNonlocalLoginPlacesResponse()
@@ -1632,7 +1689,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("IgnoreImpactedHosts", params)
+            headers = request.headers
+            body = self.call("IgnoreImpactedHosts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.IgnoreImpactedHostsResponse()
@@ -1660,7 +1718,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("MisAlarmNonlocalLoginPlaces", params)
+            headers = request.headers
+            body = self.call("MisAlarmNonlocalLoginPlaces", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.MisAlarmNonlocalLoginPlacesResponse()
@@ -1688,7 +1747,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAlarmAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyAlarmAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAlarmAttributeResponse()
@@ -1716,7 +1776,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAutoOpenProVersionConfig", params)
+            headers = request.headers
+            body = self.call("ModifyAutoOpenProVersionConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAutoOpenProVersionConfigResponse()
@@ -1744,7 +1805,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLoginWhiteList", params)
+            headers = request.headers
+            body = self.call("ModifyLoginWhiteList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLoginWhiteListResponse()
@@ -1772,7 +1834,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyProVersionRenewFlag", params)
+            headers = request.headers
+            body = self.call("ModifyProVersionRenewFlag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyProVersionRenewFlagResponse()
@@ -1800,7 +1863,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("OpenProVersion", params)
+            headers = request.headers
+            body = self.call("OpenProVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OpenProVersionResponse()
@@ -1828,7 +1892,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RecoverMalwares", params)
+            headers = request.headers
+            body = self.call("RecoverMalwares", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RecoverMalwaresResponse()
@@ -1856,7 +1921,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RescanImpactedHost", params)
+            headers = request.headers
+            body = self.call("RescanImpactedHost", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RescanImpactedHostResponse()
@@ -1884,7 +1950,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SeparateMalwares", params)
+            headers = request.headers
+            body = self.call("SeparateMalwares", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SeparateMalwaresResponse()
@@ -1912,7 +1979,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TrustMaliciousRequest", params)
+            headers = request.headers
+            body = self.call("TrustMaliciousRequest", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TrustMaliciousRequestResponse()
@@ -1940,7 +2008,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TrustMalwares", params)
+            headers = request.headers
+            body = self.call("TrustMalwares", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TrustMalwaresResponse()
@@ -1968,7 +2037,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UntrustMaliciousRequest", params)
+            headers = request.headers
+            body = self.call("UntrustMaliciousRequest", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UntrustMaliciousRequestResponse()
@@ -1996,7 +2066,8 @@ class YunjingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UntrustMalwares", params)
+            headers = request.headers
+            body = self.call("UntrustMalwares", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UntrustMalwaresResponse()

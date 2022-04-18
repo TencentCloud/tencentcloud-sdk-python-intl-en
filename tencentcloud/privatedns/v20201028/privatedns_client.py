@@ -36,7 +36,8 @@ class PrivatednsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePrivateDNSAccount", params)
+            headers = request.headers
+            body = self.call("CreatePrivateDNSAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePrivateDNSAccountResponse()
@@ -64,7 +65,8 @@ class PrivatednsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePrivateZone", params)
+            headers = request.headers
+            body = self.call("CreatePrivateZone", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePrivateZoneResponse()
@@ -92,7 +94,8 @@ class PrivatednsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePrivateZoneRecord", params)
+            headers = request.headers
+            body = self.call("CreatePrivateZoneRecord", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePrivateZoneRecordResponse()
@@ -120,7 +123,8 @@ class PrivatednsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccountVpcList", params)
+            headers = request.headers
+            body = self.call("DescribeAccountVpcList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccountVpcListResponse()
@@ -148,7 +152,8 @@ class PrivatednsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAuditLog", params)
+            headers = request.headers
+            body = self.call("DescribeAuditLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAuditLogResponse()
@@ -176,7 +181,8 @@ class PrivatednsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDashboard", params)
+            headers = request.headers
+            body = self.call("DescribeDashboard", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDashboardResponse()
@@ -204,7 +210,8 @@ class PrivatednsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePrivateDNSAccountList", params)
+            headers = request.headers
+            body = self.call("DescribePrivateDNSAccountList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePrivateDNSAccountListResponse()
@@ -232,7 +239,8 @@ class PrivatednsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePrivateZoneService", params)
+            headers = request.headers
+            body = self.call("DescribePrivateZoneService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePrivateZoneServiceResponse()
@@ -260,7 +268,8 @@ class PrivatednsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeQuotaUsage", params)
+            headers = request.headers
+            body = self.call("DescribeQuotaUsage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeQuotaUsageResponse()
@@ -288,7 +297,8 @@ class PrivatednsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRequestData", params)
+            headers = request.headers
+            body = self.call("DescribeRequestData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRequestDataResponse()
@@ -316,7 +326,8 @@ class PrivatednsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPrivateZone", params)
+            headers = request.headers
+            body = self.call("ModifyPrivateZone", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPrivateZoneResponse()
@@ -344,7 +355,8 @@ class PrivatednsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPrivateZoneRecord", params)
+            headers = request.headers
+            body = self.call("ModifyPrivateZoneRecord", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPrivateZoneRecordResponse()
@@ -372,7 +384,8 @@ class PrivatednsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPrivateZoneVpc", params)
+            headers = request.headers
+            body = self.call("ModifyPrivateZoneVpc", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPrivateZoneVpcResponse()
@@ -400,7 +413,8 @@ class PrivatednsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SubscribePrivateZoneService", params)
+            headers = request.headers
+            body = self.call("SubscribePrivateZoneService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SubscribePrivateZoneServiceResponse()

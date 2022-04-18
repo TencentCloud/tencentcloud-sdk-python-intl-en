@@ -36,7 +36,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBillDetail", params)
+            headers = request.headers
+            body = self.call("DescribeBillDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBillDetailResponse()
@@ -64,7 +65,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBillResourceSummary", params)
+            headers = request.headers
+            body = self.call("DescribeBillResourceSummary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBillResourceSummaryResponse()
@@ -92,7 +94,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBillSummaryByPayMode", params)
+            headers = request.headers
+            body = self.call("DescribeBillSummaryByPayMode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBillSummaryByPayModeResponse()
@@ -120,7 +123,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBillSummaryByProduct", params)
+            headers = request.headers
+            body = self.call("DescribeBillSummaryByProduct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBillSummaryByProductResponse()
@@ -148,7 +152,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBillSummaryByProject", params)
+            headers = request.headers
+            body = self.call("DescribeBillSummaryByProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBillSummaryByProjectResponse()
@@ -176,7 +181,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBillSummaryByRegion", params)
+            headers = request.headers
+            body = self.call("DescribeBillSummaryByRegion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBillSummaryByRegionResponse()
@@ -204,7 +210,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBillSummaryByTag", params)
+            headers = request.headers
+            body = self.call("DescribeBillSummaryByTag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBillSummaryByTagResponse()
@@ -232,7 +239,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVoucherInfo", params)
+            headers = request.headers
+            body = self.call("DescribeVoucherInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVoucherInfoResponse()
@@ -260,7 +268,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVoucherUsageDetails", params)
+            headers = request.headers
+            body = self.call("DescribeVoucherUsageDetails", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVoucherUsageDetailsResponse()

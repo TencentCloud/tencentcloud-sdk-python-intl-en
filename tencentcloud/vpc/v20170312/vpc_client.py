@@ -36,7 +36,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AcceptAttachCcnInstances", params)
+            headers = request.headers
+            body = self.call("AcceptAttachCcnInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AcceptAttachCcnInstancesResponse()
@@ -64,7 +65,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddBandwidthPackageResources", params)
+            headers = request.headers
+            body = self.call("AddBandwidthPackageResources", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddBandwidthPackageResourcesResponse()
@@ -95,7 +97,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AllocateAddresses", params)
+            headers = request.headers
+            body = self.call("AllocateAddresses", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AllocateAddressesResponse()
@@ -128,7 +131,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssignIpv6Addresses", params)
+            headers = request.headers
+            body = self.call("AssignIpv6Addresses", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssignIpv6AddressesResponse()
@@ -158,7 +162,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssignIpv6CidrBlock", params)
+            headers = request.headers
+            body = self.call("AssignIpv6CidrBlock", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssignIpv6CidrBlockResponse()
@@ -188,7 +193,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssignIpv6SubnetCidrBlock", params)
+            headers = request.headers
+            body = self.call("AssignIpv6SubnetCidrBlock", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssignIpv6SubnetCidrBlockResponse()
@@ -221,7 +227,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssignPrivateIpAddresses", params)
+            headers = request.headers
+            body = self.call("AssignPrivateIpAddresses", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssignPrivateIpAddressesResponse()
@@ -255,7 +262,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssociateAddress", params)
+            headers = request.headers
+            body = self.call("AssociateAddress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssociateAddressResponse()
@@ -283,7 +291,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssociateDirectConnectGatewayNatGateway", params)
+            headers = request.headers
+            body = self.call("AssociateDirectConnectGatewayNatGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssociateDirectConnectGatewayNatGatewayResponse()
@@ -311,7 +320,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssociateNetworkInterfaceSecurityGroups", params)
+            headers = request.headers
+            body = self.call("AssociateNetworkInterfaceSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssociateNetworkInterfaceSecurityGroupsResponse()
@@ -340,7 +350,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AttachCcnInstances", params)
+            headers = request.headers
+            body = self.call("AttachCcnInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AttachCcnInstancesResponse()
@@ -372,7 +383,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AttachClassicLinkVpc", params)
+            headers = request.headers
+            body = self.call("AttachClassicLinkVpc", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AttachClassicLinkVpcResponse()
@@ -406,7 +418,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AttachNetworkInterface", params)
+            headers = request.headers
+            body = self.call("AttachNetworkInterface", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AttachNetworkInterfaceResponse()
@@ -436,7 +449,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AuditCrossBorderCompliance", params)
+            headers = request.headers
+            body = self.call("AuditCrossBorderCompliance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AuditCrossBorderComplianceResponse()
@@ -467,7 +481,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CheckAssistantCidr", params)
+            headers = request.headers
+            body = self.call("CheckAssistantCidr", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CheckAssistantCidrResponse()
@@ -495,7 +510,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CheckNetDetectState", params)
+            headers = request.headers
+            body = self.call("CheckNetDetectState", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CheckNetDetectStateResponse()
@@ -523,7 +539,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CloneSecurityGroup", params)
+            headers = request.headers
+            body = self.call("CloneSecurityGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CloneSecurityGroupResponse()
@@ -551,7 +568,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAddressTemplate", params)
+            headers = request.headers
+            body = self.call("CreateAddressTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAddressTemplateResponse()
@@ -579,7 +597,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAddressTemplateGroup", params)
+            headers = request.headers
+            body = self.call("CreateAddressTemplateGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAddressTemplateGroupResponse()
@@ -614,7 +633,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAndAttachNetworkInterface", params)
+            headers = request.headers
+            body = self.call("CreateAndAttachNetworkInterface", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAndAttachNetworkInterfaceResponse()
@@ -642,7 +662,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateBandwidthPackage", params)
+            headers = request.headers
+            body = self.call("CreateBandwidthPackage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateBandwidthPackageResponse()
@@ -672,7 +693,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCcn", params)
+            headers = request.headers
+            body = self.call("CreateCcn", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCcnResponse()
@@ -700,7 +722,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCustomerGateway", params)
+            headers = request.headers
+            body = self.call("CreateCustomerGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCustomerGatewayResponse()
@@ -736,7 +759,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDefaultVpc", params)
+            headers = request.headers
+            body = self.call("CreateDefaultVpc", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDefaultVpcResponse()
@@ -764,7 +788,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDirectConnectGateway", params)
+            headers = request.headers
+            body = self.call("CreateDirectConnectGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDirectConnectGatewayResponse()
@@ -792,7 +817,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDirectConnectGatewayCcnRoutes", params)
+            headers = request.headers
+            body = self.call("CreateDirectConnectGatewayCcnRoutes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDirectConnectGatewayCcnRoutesResponse()
@@ -820,7 +846,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateFlowLog", params)
+            headers = request.headers
+            body = self.call("CreateFlowLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateFlowLogResponse()
@@ -848,7 +875,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateHaVip", params)
+            headers = request.headers
+            body = self.call("CreateHaVip", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateHaVipResponse()
@@ -876,7 +904,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLocalGateway", params)
+            headers = request.headers
+            body = self.call("CreateLocalGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLocalGatewayResponse()
@@ -904,7 +933,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateNatGatewayDestinationIpPortTranslationNatRule", params)
+            headers = request.headers
+            body = self.call("CreateNatGatewayDestinationIpPortTranslationNatRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateNatGatewayDestinationIpPortTranslationNatRuleResponse()
@@ -932,7 +962,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateNatGatewaySourceIpTranslationNatRule", params)
+            headers = request.headers
+            body = self.call("CreateNatGatewaySourceIpTranslationNatRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateNatGatewaySourceIpTranslationNatRuleResponse()
@@ -960,7 +991,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateNetDetect", params)
+            headers = request.headers
+            body = self.call("CreateNetDetect", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateNetDetectResponse()
@@ -995,7 +1027,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateNetworkInterface", params)
+            headers = request.headers
+            body = self.call("CreateNetworkInterface", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateNetworkInterfaceResponse()
@@ -1025,7 +1058,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRouteTable", params)
+            headers = request.headers
+            body = self.call("CreateRouteTable", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRouteTableResponse()
@@ -1054,7 +1088,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRoutes", params)
+            headers = request.headers
+            body = self.call("CreateRoutes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRoutesResponse()
@@ -1085,7 +1120,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSecurityGroup", params)
+            headers = request.headers
+            body = self.call("CreateSecurityGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSecurityGroupResponse()
@@ -1127,7 +1163,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSecurityGroupPolicies", params)
+            headers = request.headers
+            body = self.call("CreateSecurityGroupPolicies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSecurityGroupPoliciesResponse()
@@ -1168,7 +1205,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSecurityGroupWithPolicies", params)
+            headers = request.headers
+            body = self.call("CreateSecurityGroupWithPolicies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSecurityGroupWithPoliciesResponse()
@@ -1196,7 +1234,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateServiceTemplate", params)
+            headers = request.headers
+            body = self.call("CreateServiceTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateServiceTemplateResponse()
@@ -1224,7 +1263,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateServiceTemplateGroup", params)
+            headers = request.headers
+            body = self.call("CreateServiceTemplateGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateServiceTemplateGroupResponse()
@@ -1258,7 +1298,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSubnet", params)
+            headers = request.headers
+            body = self.call("CreateSubnet", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSubnetResponse()
@@ -1292,7 +1333,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSubnets", params)
+            headers = request.headers
+            body = self.call("CreateSubnets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSubnetsResponse()
@@ -1323,7 +1365,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateVpc", params)
+            headers = request.headers
+            body = self.call("CreateVpc", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateVpcResponse()
@@ -1351,7 +1394,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateVpcEndPoint", params)
+            headers = request.headers
+            body = self.call("CreateVpcEndPoint", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateVpcEndPointResponse()
@@ -1379,7 +1423,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateVpcEndPointService", params)
+            headers = request.headers
+            body = self.call("CreateVpcEndPointService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateVpcEndPointServiceResponse()
@@ -1407,7 +1452,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateVpcEndPointServiceWhiteList", params)
+            headers = request.headers
+            body = self.call("CreateVpcEndPointServiceWhiteList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateVpcEndPointServiceWhiteListResponse()
@@ -1437,7 +1483,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateVpnConnection", params)
+            headers = request.headers
+            body = self.call("CreateVpnConnection", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateVpnConnectionResponse()
@@ -1465,7 +1512,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateVpnGateway", params)
+            headers = request.headers
+            body = self.call("CreateVpnGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateVpnGatewayResponse()
@@ -1493,7 +1541,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateVpnGatewayRoutes", params)
+            headers = request.headers
+            body = self.call("CreateVpnGatewayRoutes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateVpnGatewayRoutesResponse()
@@ -1521,7 +1570,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAddressTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteAddressTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAddressTemplateResponse()
@@ -1549,7 +1599,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAddressTemplateGroup", params)
+            headers = request.headers
+            body = self.call("DeleteAddressTemplateGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAddressTemplateGroupResponse()
@@ -1577,7 +1628,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteBandwidthPackage", params)
+            headers = request.headers
+            body = self.call("DeleteBandwidthPackage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteBandwidthPackageResponse()
@@ -1607,7 +1659,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCcn", params)
+            headers = request.headers
+            body = self.call("DeleteCcn", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCcnResponse()
@@ -1635,7 +1688,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCustomerGateway", params)
+            headers = request.headers
+            body = self.call("DeleteCustomerGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCustomerGatewayResponse()
@@ -1666,7 +1720,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteDirectConnectGateway", params)
+            headers = request.headers
+            body = self.call("DeleteDirectConnectGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDirectConnectGatewayResponse()
@@ -1694,7 +1749,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteDirectConnectGatewayCcnRoutes", params)
+            headers = request.headers
+            body = self.call("DeleteDirectConnectGatewayCcnRoutes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDirectConnectGatewayCcnRoutesResponse()
@@ -1722,7 +1778,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteFlowLog", params)
+            headers = request.headers
+            body = self.call("DeleteFlowLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteFlowLogResponse()
@@ -1751,7 +1808,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteHaVip", params)
+            headers = request.headers
+            body = self.call("DeleteHaVip", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteHaVipResponse()
@@ -1779,7 +1837,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLocalGateway", params)
+            headers = request.headers
+            body = self.call("DeleteLocalGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLocalGatewayResponse()
@@ -1807,7 +1866,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteNetDetect", params)
+            headers = request.headers
+            body = self.call("DeleteNetDetect", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNetDetectResponse()
@@ -1839,7 +1899,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteNetworkInterface", params)
+            headers = request.headers
+            body = self.call("DeleteNetworkInterface", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNetworkInterfaceResponse()
@@ -1867,7 +1928,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRouteTable", params)
+            headers = request.headers
+            body = self.call("DeleteRouteTable", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRouteTableResponse()
@@ -1895,7 +1957,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRoutes", params)
+            headers = request.headers
+            body = self.call("DeleteRoutes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRoutesResponse()
@@ -1926,7 +1989,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSecurityGroup", params)
+            headers = request.headers
+            body = self.call("DeleteSecurityGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSecurityGroupResponse()
@@ -1955,7 +2019,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSecurityGroupPolicies", params)
+            headers = request.headers
+            body = self.call("DeleteSecurityGroupPolicies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSecurityGroupPoliciesResponse()
@@ -1983,7 +2048,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteServiceTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteServiceTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteServiceTemplateResponse()
@@ -2011,7 +2077,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteServiceTemplateGroup", params)
+            headers = request.headers
+            body = self.call("DeleteServiceTemplateGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteServiceTemplateGroupResponse()
@@ -2040,7 +2107,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSubnet", params)
+            headers = request.headers
+            body = self.call("DeleteSubnet", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSubnetResponse()
@@ -2070,7 +2138,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteVpc", params)
+            headers = request.headers
+            body = self.call("DeleteVpc", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteVpcResponse()
@@ -2098,7 +2167,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteVpcEndPoint", params)
+            headers = request.headers
+            body = self.call("DeleteVpcEndPoint", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteVpcEndPointResponse()
@@ -2127,7 +2197,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteVpcEndPointService", params)
+            headers = request.headers
+            body = self.call("DeleteVpcEndPointService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteVpcEndPointServiceResponse()
@@ -2155,7 +2226,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteVpcEndPointServiceWhiteList", params)
+            headers = request.headers
+            body = self.call("DeleteVpcEndPointServiceWhiteList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteVpcEndPointServiceWhiteListResponse()
@@ -2183,7 +2255,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteVpnConnection", params)
+            headers = request.headers
+            body = self.call("DeleteVpnConnection", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteVpnConnectionResponse()
@@ -2211,7 +2284,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteVpnGateway", params)
+            headers = request.headers
+            body = self.call("DeleteVpnGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteVpnGatewayResponse()
@@ -2239,7 +2313,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteVpnGatewayRoutes", params)
+            headers = request.headers
+            body = self.call("DeleteVpnGatewayRoutes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteVpnGatewayRoutesResponse()
@@ -2267,7 +2342,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccountAttributes", params)
+            headers = request.headers
+            body = self.call("DescribeAccountAttributes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccountAttributesResponse()
@@ -2295,7 +2371,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAddressQuota", params)
+            headers = request.headers
+            body = self.call("DescribeAddressQuota", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAddressQuotaResponse()
@@ -2323,7 +2400,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAddressTemplateGroups", params)
+            headers = request.headers
+            body = self.call("DescribeAddressTemplateGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAddressTemplateGroupsResponse()
@@ -2351,7 +2429,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAddressTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeAddressTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAddressTemplatesResponse()
@@ -2380,7 +2459,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAddresses", params)
+            headers = request.headers
+            body = self.call("DescribeAddresses", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAddressesResponse()
@@ -2408,7 +2488,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssistantCidr", params)
+            headers = request.headers
+            body = self.call("DescribeAssistantCidr", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssistantCidrResponse()
@@ -2436,7 +2517,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBandwidthPackageBillUsage", params)
+            headers = request.headers
+            body = self.call("DescribeBandwidthPackageBillUsage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBandwidthPackageBillUsageResponse()
@@ -2464,7 +2546,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBandwidthPackageQuota", params)
+            headers = request.headers
+            body = self.call("DescribeBandwidthPackageQuota", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBandwidthPackageQuotaResponse()
@@ -2492,7 +2575,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBandwidthPackageResources", params)
+            headers = request.headers
+            body = self.call("DescribeBandwidthPackageResources", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBandwidthPackageResourcesResponse()
@@ -2520,7 +2604,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBandwidthPackages", params)
+            headers = request.headers
+            body = self.call("DescribeBandwidthPackages", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBandwidthPackagesResponse()
@@ -2548,7 +2633,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCcnAttachedInstances", params)
+            headers = request.headers
+            body = self.call("DescribeCcnAttachedInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCcnAttachedInstancesResponse()
@@ -2576,7 +2662,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCcnRegionBandwidthLimits", params)
+            headers = request.headers
+            body = self.call("DescribeCcnRegionBandwidthLimits", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCcnRegionBandwidthLimitsResponse()
@@ -2604,7 +2691,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCcnRoutes", params)
+            headers = request.headers
+            body = self.call("DescribeCcnRoutes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCcnRoutesResponse()
@@ -2632,7 +2720,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCcns", params)
+            headers = request.headers
+            body = self.call("DescribeCcns", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCcnsResponse()
@@ -2660,7 +2749,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClassicLinkInstances", params)
+            headers = request.headers
+            body = self.call("DescribeClassicLinkInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClassicLinkInstancesResponse()
@@ -2689,7 +2779,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCrossBorderCompliance", params)
+            headers = request.headers
+            body = self.call("DescribeCrossBorderCompliance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCrossBorderComplianceResponse()
@@ -2717,7 +2808,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCustomerGatewayVendors", params)
+            headers = request.headers
+            body = self.call("DescribeCustomerGatewayVendors", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCustomerGatewayVendorsResponse()
@@ -2745,7 +2837,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCustomerGateways", params)
+            headers = request.headers
+            body = self.call("DescribeCustomerGateways", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCustomerGatewaysResponse()
@@ -2773,7 +2866,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDirectConnectGatewayCcnRoutes", params)
+            headers = request.headers
+            body = self.call("DescribeDirectConnectGatewayCcnRoutes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDirectConnectGatewayCcnRoutesResponse()
@@ -2801,7 +2895,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDirectConnectGateways", params)
+            headers = request.headers
+            body = self.call("DescribeDirectConnectGateways", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDirectConnectGatewaysResponse()
@@ -2829,7 +2924,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFlowLog", params)
+            headers = request.headers
+            body = self.call("DescribeFlowLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFlowLogResponse()
@@ -2857,7 +2953,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFlowLogs", params)
+            headers = request.headers
+            body = self.call("DescribeFlowLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFlowLogsResponse()
@@ -2887,7 +2984,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGatewayFlowMonitorDetail", params)
+            headers = request.headers
+            body = self.call("DescribeGatewayFlowMonitorDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGatewayFlowMonitorDetailResponse()
@@ -2915,7 +3013,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeHaVips", params)
+            headers = request.headers
+            body = self.call("DescribeHaVips", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeHaVipsResponse()
@@ -2943,7 +3042,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIpGeolocationDatabaseUrl", params)
+            headers = request.headers
+            body = self.call("DescribeIpGeolocationDatabaseUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIpGeolocationDatabaseUrlResponse()
@@ -2972,7 +3072,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIpGeolocationInfos", params)
+            headers = request.headers
+            body = self.call("DescribeIpGeolocationInfos", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIpGeolocationInfosResponse()
@@ -3000,7 +3101,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLocalGateway", params)
+            headers = request.headers
+            body = self.call("DescribeLocalGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLocalGatewayResponse()
@@ -3028,7 +3130,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNetDetectStates", params)
+            headers = request.headers
+            body = self.call("DescribeNetDetectStates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNetDetectStatesResponse()
@@ -3056,7 +3159,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNetDetects", params)
+            headers = request.headers
+            body = self.call("DescribeNetDetects", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNetDetectsResponse()
@@ -3084,7 +3188,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNetworkAcls", params)
+            headers = request.headers
+            body = self.call("DescribeNetworkAcls", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNetworkAclsResponse()
@@ -3112,7 +3217,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNetworkInterfaceLimit", params)
+            headers = request.headers
+            body = self.call("DescribeNetworkInterfaceLimit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNetworkInterfaceLimitResponse()
@@ -3140,7 +3246,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNetworkInterfaces", params)
+            headers = request.headers
+            body = self.call("DescribeNetworkInterfaces", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNetworkInterfacesResponse()
@@ -3168,7 +3275,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRouteTables", params)
+            headers = request.headers
+            body = self.call("DescribeRouteTables", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRouteTablesResponse()
@@ -3196,7 +3304,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSecurityGroupAssociationStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeSecurityGroupAssociationStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecurityGroupAssociationStatisticsResponse()
@@ -3224,7 +3333,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSecurityGroupPolicies", params)
+            headers = request.headers
+            body = self.call("DescribeSecurityGroupPolicies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecurityGroupPoliciesResponse()
@@ -3252,7 +3362,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSecurityGroupReferences", params)
+            headers = request.headers
+            body = self.call("DescribeSecurityGroupReferences", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecurityGroupReferencesResponse()
@@ -3280,7 +3391,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSecurityGroups", params)
+            headers = request.headers
+            body = self.call("DescribeSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecurityGroupsResponse()
@@ -3308,7 +3420,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeServiceTemplateGroups", params)
+            headers = request.headers
+            body = self.call("DescribeServiceTemplateGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeServiceTemplateGroupsResponse()
@@ -3336,7 +3449,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeServiceTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeServiceTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeServiceTemplatesResponse()
@@ -3364,7 +3478,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSubnets", params)
+            headers = request.headers
+            body = self.call("DescribeSubnets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSubnetsResponse()
@@ -3392,7 +3507,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskResult", params)
+            headers = request.headers
+            body = self.call("DescribeTaskResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskResultResponse()
@@ -3420,7 +3536,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVpcEndPoint", params)
+            headers = request.headers
+            body = self.call("DescribeVpcEndPoint", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVpcEndPointResponse()
@@ -3448,7 +3565,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVpcEndPointService", params)
+            headers = request.headers
+            body = self.call("DescribeVpcEndPointService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVpcEndPointServiceResponse()
@@ -3476,7 +3594,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVpcEndPointServiceWhiteList", params)
+            headers = request.headers
+            body = self.call("DescribeVpcEndPointServiceWhiteList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVpcEndPointServiceWhiteListResponse()
@@ -3504,7 +3623,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVpcInstances", params)
+            headers = request.headers
+            body = self.call("DescribeVpcInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVpcInstancesResponse()
@@ -3533,7 +3653,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVpcIpv6Addresses", params)
+            headers = request.headers
+            body = self.call("DescribeVpcIpv6Addresses", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVpcIpv6AddressesResponse()
@@ -3562,7 +3683,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVpcPrivateIpAddresses", params)
+            headers = request.headers
+            body = self.call("DescribeVpcPrivateIpAddresses", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVpcPrivateIpAddressesResponse()
@@ -3590,7 +3712,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVpcResourceDashboard", params)
+            headers = request.headers
+            body = self.call("DescribeVpcResourceDashboard", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVpcResourceDashboardResponse()
@@ -3618,7 +3741,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVpcs", params)
+            headers = request.headers
+            body = self.call("DescribeVpcs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVpcsResponse()
@@ -3646,7 +3770,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVpnConnections", params)
+            headers = request.headers
+            body = self.call("DescribeVpnConnections", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVpnConnectionsResponse()
@@ -3674,7 +3799,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVpnGatewayCcnRoutes", params)
+            headers = request.headers
+            body = self.call("DescribeVpnGatewayCcnRoutes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVpnGatewayCcnRoutesResponse()
@@ -3702,7 +3828,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVpnGatewayRoutes", params)
+            headers = request.headers
+            body = self.call("DescribeVpnGatewayRoutes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVpnGatewayRoutesResponse()
@@ -3730,7 +3857,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVpnGateways", params)
+            headers = request.headers
+            body = self.call("DescribeVpnGateways", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVpnGatewaysResponse()
@@ -3759,7 +3887,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetachCcnInstances", params)
+            headers = request.headers
+            body = self.call("DetachCcnInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachCcnInstancesResponse()
@@ -3789,7 +3918,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetachClassicLinkVpc", params)
+            headers = request.headers
+            body = self.call("DetachClassicLinkVpc", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachClassicLinkVpcResponse()
@@ -3818,7 +3948,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetachNetworkInterface", params)
+            headers = request.headers
+            body = self.call("DetachNetworkInterface", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachNetworkInterfaceResponse()
@@ -3846,7 +3977,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableCcnRoutes", params)
+            headers = request.headers
+            body = self.call("DisableCcnRoutes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableCcnRoutesResponse()
@@ -3878,7 +4010,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisassociateAddress", params)
+            headers = request.headers
+            body = self.call("DisassociateAddress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateAddressResponse()
@@ -3906,7 +4039,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisassociateDirectConnectGatewayNatGateway", params)
+            headers = request.headers
+            body = self.call("DisassociateDirectConnectGatewayNatGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateDirectConnectGatewayNatGatewayResponse()
@@ -3934,7 +4068,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisassociateNetworkInterfaceSecurityGroups", params)
+            headers = request.headers
+            body = self.call("DisassociateNetworkInterfaceSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateNetworkInterfaceSecurityGroupsResponse()
@@ -3962,7 +4097,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisassociateVpcEndPointSecurityGroups", params)
+            headers = request.headers
+            body = self.call("DisassociateVpcEndPointSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateVpcEndPointSecurityGroupsResponse()
@@ -3990,7 +4126,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DownloadCustomerGatewayConfiguration", params)
+            headers = request.headers
+            body = self.call("DownloadCustomerGatewayConfiguration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DownloadCustomerGatewayConfigurationResponse()
@@ -4019,7 +4156,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnableCcnRoutes", params)
+            headers = request.headers
+            body = self.call("EnableCcnRoutes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableCcnRoutesResponse()
@@ -4047,7 +4185,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnableVpcEndPointConnect", params)
+            headers = request.headers
+            body = self.call("EnableVpcEndPointConnect", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableVpcEndPointConnectResponse()
@@ -4075,7 +4214,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetCcnRegionBandwidthLimits", params)
+            headers = request.headers
+            body = self.call("GetCcnRegionBandwidthLimits", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetCcnRegionBandwidthLimitsResponse()
@@ -4104,7 +4244,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("HaVipAssociateAddressIp", params)
+            headers = request.headers
+            body = self.call("HaVipAssociateAddressIp", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.HaVipAssociateAddressIpResponse()
@@ -4133,7 +4274,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("HaVipDisassociateAddressIp", params)
+            headers = request.headers
+            body = self.call("HaVipDisassociateAddressIp", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.HaVipDisassociateAddressIpResponse()
@@ -4161,7 +4303,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquirePriceCreateDirectConnectGateway", params)
+            headers = request.headers
+            body = self.call("InquirePriceCreateDirectConnectGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquirePriceCreateDirectConnectGatewayResponse()
@@ -4189,7 +4332,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceRenewVpnGateway", params)
+            headers = request.headers
+            body = self.call("InquiryPriceRenewVpnGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceRenewVpnGatewayResponse()
@@ -4217,7 +4361,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceResetVpnGatewayInternetMaxBandwidth", params)
+            headers = request.headers
+            body = self.call("InquiryPriceResetVpnGatewayInternetMaxBandwidth", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceResetVpnGatewayInternetMaxBandwidthResponse()
@@ -4246,7 +4391,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("MigrateNetworkInterface", params)
+            headers = request.headers
+            body = self.call("MigrateNetworkInterface", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.MigrateNetworkInterfaceResponse()
@@ -4278,7 +4424,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("MigratePrivateIpAddress", params)
+            headers = request.headers
+            body = self.call("MigratePrivateIpAddress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.MigratePrivateIpAddressResponse()
@@ -4306,7 +4453,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAddressAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyAddressAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAddressAttributeResponse()
@@ -4336,7 +4484,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAddressInternetChargeType", params)
+            headers = request.headers
+            body = self.call("ModifyAddressInternetChargeType", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAddressInternetChargeTypeResponse()
@@ -4364,7 +4513,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAddressTemplateAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyAddressTemplateAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAddressTemplateAttributeResponse()
@@ -4392,7 +4542,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAddressTemplateGroupAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyAddressTemplateGroupAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAddressTemplateGroupAttributeResponse()
@@ -4420,7 +4571,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAddressesBandwidth", params)
+            headers = request.headers
+            body = self.call("ModifyAddressesBandwidth", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAddressesBandwidthResponse()
@@ -4448,7 +4600,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyBandwidthPackageAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyBandwidthPackageAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyBandwidthPackageAttributeResponse()
@@ -4476,7 +4629,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCcnAttachedInstancesAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyCcnAttachedInstancesAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCcnAttachedInstancesAttributeResponse()
@@ -4504,7 +4658,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCcnAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyCcnAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCcnAttributeResponse()
@@ -4532,7 +4687,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCcnRegionBandwidthLimitsType", params)
+            headers = request.headers
+            body = self.call("ModifyCcnRegionBandwidthLimitsType", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCcnRegionBandwidthLimitsTypeResponse()
@@ -4560,7 +4716,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCustomerGatewayAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyCustomerGatewayAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCustomerGatewayAttributeResponse()
@@ -4588,7 +4745,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDirectConnectGatewayAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyDirectConnectGatewayAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDirectConnectGatewayAttributeResponse()
@@ -4616,7 +4774,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyFlowLogAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyFlowLogAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyFlowLogAttributeResponse()
@@ -4644,7 +4803,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyHaVipAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyHaVipAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyHaVipAttributeResponse()
@@ -4672,7 +4832,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyIpv6AddressesAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyIpv6AddressesAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyIpv6AddressesAttributeResponse()
@@ -4700,7 +4861,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLocalGateway", params)
+            headers = request.headers
+            body = self.call("ModifyLocalGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLocalGatewayResponse()
@@ -4728,7 +4890,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyNetDetect", params)
+            headers = request.headers
+            body = self.call("ModifyNetDetect", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyNetDetectResponse()
@@ -4756,7 +4919,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyNetworkInterfaceAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyNetworkInterfaceAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyNetworkInterfaceAttributeResponse()
@@ -4784,7 +4948,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPrivateIpAddressesAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyPrivateIpAddressesAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPrivateIpAddressesAttributeResponse()
@@ -4812,7 +4977,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyRouteTableAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyRouteTableAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRouteTableAttributeResponse()
@@ -4840,7 +5006,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySecurityGroupAttribute", params)
+            headers = request.headers
+            body = self.call("ModifySecurityGroupAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySecurityGroupAttributeResponse()
@@ -4883,7 +5050,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySecurityGroupPolicies", params)
+            headers = request.headers
+            body = self.call("ModifySecurityGroupPolicies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySecurityGroupPoliciesResponse()
@@ -4911,7 +5079,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyServiceTemplateAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyServiceTemplateAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyServiceTemplateAttributeResponse()
@@ -4939,7 +5108,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyServiceTemplateGroupAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyServiceTemplateGroupAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyServiceTemplateGroupAttributeResponse()
@@ -4967,7 +5137,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySubnetAttribute", params)
+            headers = request.headers
+            body = self.call("ModifySubnetAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySubnetAttributeResponse()
@@ -4995,7 +5166,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyVpcAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyVpcAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVpcAttributeResponse()
@@ -5023,7 +5195,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyVpcEndPointAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyVpcEndPointAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVpcEndPointAttributeResponse()
@@ -5052,7 +5225,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyVpcEndPointServiceAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyVpcEndPointServiceAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVpcEndPointServiceAttributeResponse()
@@ -5080,7 +5254,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyVpcEndPointServiceWhiteList", params)
+            headers = request.headers
+            body = self.call("ModifyVpcEndPointServiceWhiteList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVpcEndPointServiceWhiteListResponse()
@@ -5108,7 +5283,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyVpnConnectionAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyVpnConnectionAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVpnConnectionAttributeResponse()
@@ -5136,7 +5312,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyVpnGatewayAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyVpnGatewayAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVpnGatewayAttributeResponse()
@@ -5164,7 +5341,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyVpnGatewayCcnRoutes", params)
+            headers = request.headers
+            body = self.call("ModifyVpnGatewayCcnRoutes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVpnGatewayCcnRoutesResponse()
@@ -5192,7 +5370,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyVpnGatewayRoutes", params)
+            headers = request.headers
+            body = self.call("ModifyVpnGatewayRoutes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVpnGatewayRoutesResponse()
@@ -5220,7 +5399,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RejectAttachCcnInstances", params)
+            headers = request.headers
+            body = self.call("RejectAttachCcnInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RejectAttachCcnInstancesResponse()
@@ -5250,7 +5430,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReleaseAddresses", params)
+            headers = request.headers
+            body = self.call("ReleaseAddresses", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReleaseAddressesResponse()
@@ -5278,7 +5459,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RemoveBandwidthPackageResources", params)
+            headers = request.headers
+            body = self.call("RemoveBandwidthPackageResources", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemoveBandwidthPackageResourcesResponse()
@@ -5306,7 +5488,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RenewVpnGateway", params)
+            headers = request.headers
+            body = self.call("RenewVpnGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RenewVpnGatewayResponse()
@@ -5334,7 +5517,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReplaceDirectConnectGatewayCcnRoutes", params)
+            headers = request.headers
+            body = self.call("ReplaceDirectConnectGatewayCcnRoutes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReplaceDirectConnectGatewayCcnRoutesResponse()
@@ -5363,7 +5547,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReplaceRouteTableAssociation", params)
+            headers = request.headers
+            body = self.call("ReplaceRouteTableAssociation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReplaceRouteTableAssociationResponse()
@@ -5391,7 +5576,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReplaceRoutes", params)
+            headers = request.headers
+            body = self.call("ReplaceRoutes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReplaceRoutesResponse()
@@ -5420,7 +5606,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReplaceSecurityGroupPolicy", params)
+            headers = request.headers
+            body = self.call("ReplaceSecurityGroupPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReplaceSecurityGroupPolicyResponse()
@@ -5448,7 +5635,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetAttachCcnInstances", params)
+            headers = request.headers
+            body = self.call("ResetAttachCcnInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetAttachCcnInstancesResponse()
@@ -5477,7 +5665,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetRoutes", params)
+            headers = request.headers
+            body = self.call("ResetRoutes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetRoutesResponse()
@@ -5505,7 +5694,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetVpnConnection", params)
+            headers = request.headers
+            body = self.call("ResetVpnConnection", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetVpnConnectionResponse()
@@ -5533,7 +5723,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetVpnGatewayInternetMaxBandwidth", params)
+            headers = request.headers
+            body = self.call("ResetVpnGatewayInternetMaxBandwidth", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetVpnGatewayInternetMaxBandwidthResponse()
@@ -5561,7 +5752,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetCcnRegionBandwidthLimits", params)
+            headers = request.headers
+            body = self.call("SetCcnRegionBandwidthLimits", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetCcnRegionBandwidthLimitsResponse()
@@ -5590,7 +5782,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TransformAddress", params)
+            headers = request.headers
+            body = self.call("TransformAddress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TransformAddressResponse()
@@ -5619,7 +5812,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnassignIpv6Addresses", params)
+            headers = request.headers
+            body = self.call("UnassignIpv6Addresses", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnassignIpv6AddressesResponse()
@@ -5648,7 +5842,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnassignIpv6CidrBlock", params)
+            headers = request.headers
+            body = self.call("UnassignIpv6CidrBlock", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnassignIpv6CidrBlockResponse()
@@ -5677,7 +5872,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnassignIpv6SubnetCidrBlock", params)
+            headers = request.headers
+            body = self.call("UnassignIpv6SubnetCidrBlock", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnassignIpv6SubnetCidrBlockResponse()
@@ -5708,7 +5904,8 @@ class VpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnassignPrivateIpAddresses", params)
+            headers = request.headers
+            body = self.call("UnassignPrivateIpAddresses", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnassignPrivateIpAddressesResponse()

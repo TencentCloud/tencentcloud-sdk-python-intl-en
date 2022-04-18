@@ -36,7 +36,8 @@ class SslClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ApplyCertificate", params)
+            headers = request.headers
+            body = self.call("ApplyCertificate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ApplyCertificateResponse()
@@ -64,7 +65,8 @@ class SslClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CancelCertificateOrder", params)
+            headers = request.headers
+            body = self.call("CancelCertificateOrder", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CancelCertificateOrderResponse()
@@ -92,7 +94,8 @@ class SslClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CommitCertificateInformation", params)
+            headers = request.headers
+            body = self.call("CommitCertificateInformation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CommitCertificateInformationResponse()
@@ -120,7 +123,8 @@ class SslClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCertificate", params)
+            headers = request.headers
+            body = self.call("DeleteCertificate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCertificateResponse()
@@ -148,7 +152,8 @@ class SslClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCertificate", params)
+            headers = request.headers
+            body = self.call("DescribeCertificate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCertificateResponse()
@@ -176,7 +181,8 @@ class SslClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCertificateDetail", params)
+            headers = request.headers
+            body = self.call("DescribeCertificateDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCertificateDetailResponse()
@@ -204,7 +210,8 @@ class SslClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCertificateOperateLogs", params)
+            headers = request.headers
+            body = self.call("DescribeCertificateOperateLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCertificateOperateLogsResponse()
@@ -232,7 +239,8 @@ class SslClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCertificates", params)
+            headers = request.headers
+            body = self.call("DescribeCertificates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCertificatesResponse()
@@ -260,7 +268,8 @@ class SslClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DownloadCertificate", params)
+            headers = request.headers
+            body = self.call("DownloadCertificate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DownloadCertificateResponse()
@@ -288,7 +297,8 @@ class SslClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCertificateAlias", params)
+            headers = request.headers
+            body = self.call("ModifyCertificateAlias", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCertificateAliasResponse()
@@ -316,7 +326,8 @@ class SslClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCertificateProject", params)
+            headers = request.headers
+            body = self.call("ModifyCertificateProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCertificateProjectResponse()
@@ -344,7 +355,8 @@ class SslClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReplaceCertificate", params)
+            headers = request.headers
+            body = self.call("ReplaceCertificate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReplaceCertificateResponse()
@@ -372,7 +384,8 @@ class SslClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SubmitCertificateInformation", params)
+            headers = request.headers
+            body = self.call("SubmitCertificateInformation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SubmitCertificateInformationResponse()
@@ -400,7 +413,8 @@ class SslClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UploadCertificate", params)
+            headers = request.headers
+            body = self.call("UploadCertificate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UploadCertificateResponse()
