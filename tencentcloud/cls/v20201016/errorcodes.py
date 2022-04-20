@@ -20,17 +20,14 @@ AUTHFAILURE = 'AuthFailure'
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
-# The offline search task has not been completed. Please wait.
-FAILEDOPERATION_ASYNCSEARCHNOTCOMPLETED = 'FailedOperation.AsyncSearchNotCompleted'
-
-# The offline task is not completed.
-FAILEDOPERATION_ASYNCTASKNOTCOMPLETED = 'FailedOperation.AsyncTaskNotCompleted'
-
 # The alarm notification template has already been bound to an alarm policy.
 FAILEDOPERATION_BINDEDALARM = 'FailedOperation.BindedAlarm'
 
 # The number of searched logs has reached the upper limit.
 FAILEDOPERATION_GETLOGREACHLIMIT = 'FailedOperation.GetlogReachLimit'
+
+# IA storage does not support key-value or tag index configuration.
+FAILEDOPERATION_INVALIDINDEXRULEFORSEARCHLOW = 'FailedOperation.InValidIndexRuleForSearchLow'
 
 # The alarm policy is exceptional. Please check whether all the log topic IDs exist.
 FAILEDOPERATION_INVALIDALARM = 'FailedOperation.InvalidAlarm'
@@ -68,14 +65,14 @@ FAILEDOPERATION_SHIPPERTASKNOTTORETRY = 'FailedOperation.ShipperTaskNotToRetry'
 # An error occurred while parsing the query statement.
 FAILEDOPERATION_SYNTAXERROR = 'FailedOperation.SyntaxError'
 
+# The frequency of tag service requests is limited.
+FAILEDOPERATION_TAGQPSLIMIT = 'FailedOperation.TagQpsLimit'
+
 # The log topic has been disabled.
 FAILEDOPERATION_TOPICCLOSED = 'FailedOperation.TopicClosed'
 
 # The log topic has been isolated.
 FAILEDOPERATION_TOPICISOLATED = 'FailedOperation.TopicIsolated'
-
-# The log topic does not support this operation.
-FAILEDOPERATION_TOPICNOTSUPPORT = 'FailedOperation.TopicNotSupport'
 
 # The write QPS exceeds the limit.
 FAILEDOPERATION_WRITEQPSLIMIT = 'FailedOperation.WriteQpsLimit'
@@ -113,9 +110,6 @@ INVALIDPARAMETER_LOGSETCONFLICT = 'InvalidParameter.LogsetConflict'
 # The same machine group already exists.
 INVALIDPARAMETER_MACHINEGROUPCONFLICT = 'InvalidParameter.MachineGroupConflict'
 
-# Shipping rule naming conflict.
-INVALIDPARAMETER_SHIPPERCONFLICT = 'InvalidParameter.ShipperConflict'
-
 # There is already a log topic with the same name in the specified logset.
 INVALIDPARAMETER_TOPICCONFLICT = 'InvalidParameter.TopicConflict'
 
@@ -124,12 +118,6 @@ INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
 # The quota limit has been reached.
 LIMITEXCEEDED = 'LimitExceeded'
-
-# The number of running offline search tasks exceeds the limit.
-LIMITEXCEEDED_ASYNCSEARCHTASK = 'LimitExceeded.AsyncSearchTask'
-
-# The number of offline tasks exceeds the limit.
-LIMITEXCEEDED_ASYNCTASK = 'LimitExceeded.AsyncTask'
 
 # The collection rule configuration exceeds the maximum value limit.
 LIMITEXCEEDED_CONFIG = 'LimitExceeded.Config'
@@ -158,8 +146,8 @@ LIMITEXCEEDED_MACHINEGROUPLABELS = 'LimitExceeded.MachineGroupLabels'
 # The number of partitions exceeds the limit.
 LIMITEXCEEDED_PARTITION = 'LimitExceeded.Partition'
 
-# The number of shipping rules exceeds the limit.
-LIMITEXCEEDED_SHIPPER = 'LimitExceeded.Shipper'
+# The number of logs returned by the search API exceeds the upper limit (20 MB).
+LIMITEXCEEDED_SEARCHRESULTTOOLARGE = 'LimitExceeded.SearchResultTooLarge'
 
 # The number of tags exceeds the limit.
 LIMITEXCEEDED_TAG = 'LimitExceeded.Tag'
@@ -194,6 +182,9 @@ OPERATIONDENIED_ANALYSISSWITCHCLOSE = 'OperationDenied.AnalysisSwitchClose'
 # The notification template is bound to an alarm and cannot be deleted.
 OPERATIONDENIED_NOTICEHASALARM = 'OperationDenied.NoticeHasAlarm'
 
+# The operation is not supported in IA storage.
+OPERATIONDENIED_OPERATIONNOTSUPPORTINSEARCHLOW = 'OperationDenied.OperationNotSupportInSearchLow'
+
 # A data processing task is bound to this topic.
 OPERATIONDENIED_TOPICHASDATAFORMTASK = 'OperationDenied.TopicHasDataFormTask'
 
@@ -211,12 +202,6 @@ RESOURCENOTFOUND_ALARMNOTEXIST = 'ResourceNotFound.AlarmNotExist'
 
 # The alarm notification template does not exist.
 RESOURCENOTFOUND_ALARMNOTICENOTEXIST = 'ResourceNotFound.AlarmNoticeNotExist'
-
-# The offline search task does not exist.
-RESOURCENOTFOUND_ASYNCSEARCHTASKNOTEXIST = 'ResourceNotFound.AsyncSearchTaskNotExist'
-
-# The offline task does not exist.
-RESOURCENOTFOUND_ASYNCTASKNOTEXIST = 'ResourceNotFound.AsyncTaskNotExist'
 
 # The specified collection rule configuration does not exist.
 RESOURCENOTFOUND_CONFIGNOTEXIST = 'ResourceNotFound.ConfigNotExist'

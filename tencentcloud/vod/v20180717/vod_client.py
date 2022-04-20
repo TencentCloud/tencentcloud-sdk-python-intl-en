@@ -500,6 +500,37 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateStorageRegion(self, request):
+        """This API is used to enable storage in a region.
+          1. When you activate VOD, the system will enable storage for you in certain regions. If you need to store data in another region, you can use this API to enable storage in that region.
+          2. You can use the `DescribeStorageRegions` API to query all supported storage regions and the regions you have storage access to currently.
+
+        :param request: Request instance for CreateStorageRegion.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateStorageRegionRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateStorageRegionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateStorageRegion", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateStorageRegionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateSubAppId(self, request):
         """This API is used to create a VOD subapplication.
 
@@ -1824,6 +1855,38 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeStorageRegions(self, request):
+        """This API is used to query the following information:
+          1. All supported storage regions.
+          2. The regions you have storage access to currently.
+          3. The default storage region.
+
+        :param request: Request instance for DescribeStorageRegions.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeStorageRegionsRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeStorageRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStorageRegions", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStorageRegionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSubAppIds(self, request):
         """This API is used to query the list of the primary application and subapplications of the current account.
 
@@ -2360,6 +2423,35 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyContentReviewTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDefaultStorageRegion(self, request):
+        """This API is used to set the default storage region. A file will be stored in the default region if no region is specified for file upload.
+
+        :param request: Request instance for ModifyDefaultStorageRegion.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyDefaultStorageRegionRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyDefaultStorageRegionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDefaultStorageRegion", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDefaultStorageRegionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

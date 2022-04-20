@@ -113,6 +113,35 @@ class TagClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateTags(self, request):
+        """This API is used to create multiple tag key-value pairs.
+
+        :param request: Request instance for CreateTags.
+        :type request: :class:`tencentcloud.tag.v20180813.models.CreateTagsRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.CreateTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTags", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateTagsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteResourceTag(self, request):
         """This API is used to unassociate tags and resources.
 
@@ -171,6 +200,35 @@ class TagClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteTags(self, request):
+        """This API is used to delete multiple tag key-value pairs.
+
+        :param request: Request instance for DeleteTags.
+        :type request: :class:`tencentcloud.tag.v20180813.models.DeleteTagsRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.DeleteTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteTags", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteTagsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeResourceTags(self, request):
         """This API is used to query the tags associated with a resource.
 
@@ -201,7 +259,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeResourceTagsByResourceIds(self, request):
-        """This API is used to query tag key and value pairs for existing resources.
+        """This API is used to query the tag key-value pairs associated with an existing resource.
 
         :param request: Request instance for DescribeResourceTagsByResourceIds.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeResourceTagsByResourceIdsRequest`
@@ -519,6 +577,122 @@ class TagClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetResources(self, request):
+        """This API is used to query the list of resources associated with a tag.
+
+        :param request: Request instance for GetResources.
+        :type request: :class:`tencentcloud.tag.v20180813.models.GetResourcesRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.GetResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetResources", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetResourcesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetTagKeys(self, request):
+        """This API is used to query the list of tag keys.
+
+        :param request: Request instance for GetTagKeys.
+        :type request: :class:`tencentcloud.tag.v20180813.models.GetTagKeysRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.GetTagKeysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetTagKeys", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetTagKeysResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetTagValues(self, request):
+        """This API is used to query tag values in the list of created tags.
+
+        :param request: Request instance for GetTagValues.
+        :type request: :class:`tencentcloud.tag.v20180813.models.GetTagValuesRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.GetTagValuesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetTagValues", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetTagValuesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetTags(self, request):
+        """This API is used to get the list of created tags.
+
+        :param request: Request instance for GetTags.
+        :type request: :class:`tencentcloud.tag.v20180813.models.GetTagsRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.GetTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetTags", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetTagsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyResourceTags(self, request):
         """This API is used to modify all tags associated with a resource.
 
@@ -563,6 +737,64 @@ class TagClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyResourcesTagValueResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TagResources(self, request):
+        """This API is used to create and bind a tag uniformly to multiple specified resources of multiple Tencent Cloud services.
+
+        :param request: Request instance for TagResources.
+        :type request: :class:`tencentcloud.tag.v20180813.models.TagResourcesRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.TagResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TagResources", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TagResourcesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnTagResources(self, request):
+        """This API is used to unbind a tag uniformly from multiple specified resources of multiple Tencent Cloud services.
+
+        :param request: Request instance for UnTagResources.
+        :type request: :class:`tencentcloud.tag.v20180813.models.UnTagResourcesRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.UnTagResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UnTagResources", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnTagResourcesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

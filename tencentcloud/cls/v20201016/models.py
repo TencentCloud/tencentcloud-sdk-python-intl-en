@@ -222,7 +222,7 @@ class AlarmTarget(AbstractModel):
 
 
 class AlarmTargetInfo(AbstractModel):
-    """Log alarm monitoring object
+    """Alarm object
 
     """
 
@@ -348,147 +348,6 @@ class ApplyConfigToMachineGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
-
-
-class AsyncContextTask(AbstractModel):
-    """Offline context search task
-
-    """
-
-    def __init__(self):
-        r"""
-        :param LogsetId: Logset ID
-        :type LogsetId: str
-        :param TopicId: Log topic ID
-        :type TopicId: str
-        :param CreateTime: Creation time, which is a timestamp accurate down to the millisecond
-        :type CreateTime: int
-        :param Status: Status. Valid values: `0`: to be started; `1`: running; `2`: completed; `-1`: failed
-        :type Status: int
-        :param AsyncContextTaskId: Offline context search task ID
-        :type AsyncContextTaskId: str
-        :param ErrorMessage: Error message of task failure
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ErrorMessage: str
-        :param PkgId: Log package number
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type PkgId: str
-        :param PkgLogId: Log number in log package
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type PkgLogId: str
-        :param Time: Log time
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Time: int
-        :param FinishTime: Task completion time, which is a timestamp accurate down to the millisecond
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type FinishTime: int
-        :param AsyncSearchTaskId: Associated offline search ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type AsyncSearchTaskId: str
-        """
-        self.LogsetId = None
-        self.TopicId = None
-        self.CreateTime = None
-        self.Status = None
-        self.AsyncContextTaskId = None
-        self.ErrorMessage = None
-        self.PkgId = None
-        self.PkgLogId = None
-        self.Time = None
-        self.FinishTime = None
-        self.AsyncSearchTaskId = None
-
-
-    def _deserialize(self, params):
-        self.LogsetId = params.get("LogsetId")
-        self.TopicId = params.get("TopicId")
-        self.CreateTime = params.get("CreateTime")
-        self.Status = params.get("Status")
-        self.AsyncContextTaskId = params.get("AsyncContextTaskId")
-        self.ErrorMessage = params.get("ErrorMessage")
-        self.PkgId = params.get("PkgId")
-        self.PkgLogId = params.get("PkgLogId")
-        self.Time = params.get("Time")
-        self.FinishTime = params.get("FinishTime")
-        self.AsyncSearchTaskId = params.get("AsyncSearchTaskId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class AsyncSearchTask(AbstractModel):
-    """Offline search task
-
-    """
-
-    def __init__(self):
-        r"""
-        :param LogsetId: Logset ID
-        :type LogsetId: str
-        :param TopicId: Log topic ID
-        :type TopicId: str
-        :param CreateTime: Creation time
-        :type CreateTime: str
-        :param Status: Status. Valid values: `0`: to be started; `1`: running; `2`: completed; `-1`: failed
-        :type Status: int
-        :param AsyncSearchTaskId: Offline search task ID
-        :type AsyncSearchTaskId: str
-        :param Query: Query statement
-        :type Query: str
-        :param From: Start time of the log to be queried, which is a Unix timestamp in milliseconds
-        :type From: int
-        :param To: End time of the log to be queried, which is a Unix timestamp in milliseconds
-        :type To: int
-        :param Sort: Log scan order. Valid values: `asc`: ascending; `desc`: descending
-        :type Sort: str
-        :param ErrorMessage: Error message of task failure
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ErrorMessage: str
-        :param LogCount: Total number of logs matched in offline search task
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type LogCount: int
-        :param FinishTime: Task completion time
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type FinishTime: str
-        """
-        self.LogsetId = None
-        self.TopicId = None
-        self.CreateTime = None
-        self.Status = None
-        self.AsyncSearchTaskId = None
-        self.Query = None
-        self.From = None
-        self.To = None
-        self.Sort = None
-        self.ErrorMessage = None
-        self.LogCount = None
-        self.FinishTime = None
-
-
-    def _deserialize(self, params):
-        self.LogsetId = params.get("LogsetId")
-        self.TopicId = params.get("TopicId")
-        self.CreateTime = params.get("CreateTime")
-        self.Status = params.get("Status")
-        self.AsyncSearchTaskId = params.get("AsyncSearchTaskId")
-        self.Query = params.get("Query")
-        self.From = params.get("From")
-        self.To = params.get("To")
-        self.Sort = params.get("Sort")
-        self.ErrorMessage = params.get("ErrorMessage")
-        self.LogCount = params.get("LogCount")
-        self.FinishTime = params.get("FinishTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
 
 
 class CallBackInfo(AbstractModel):
@@ -703,14 +562,19 @@ Note: This field may return `null`, indicating that no valid value was found.
         :param MetaFields: List of metadata to ship. Currently, only __SOURCE__, __FILENAME__, and __TIMESTAMP__ are supported.
 Note: This field may return `null`, indicating that no valid value was found.
         :type MetaFields: list of str
+        :param TagJsonNotTiled: This parameter is required if `EnableTag` is `true`, and is used to specify whether the tag information is JSON tiled. Valid values: `true` (not tiled); `false` (tiled)
+Note: This field may return `null`, indicating that no valid value was found.
+        :type TagJsonNotTiled: bool
         """
         self.EnableTag = None
         self.MetaFields = None
+        self.TagJsonNotTiled = None
 
 
     def _deserialize(self, params):
         self.EnableTag = params.get("EnableTag")
         self.MetaFields = params.get("MetaFields")
+        self.TagJsonNotTiled = params.get("TagJsonNotTiled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -765,16 +629,16 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Alarm template name
+        :param Name: Notification group name
         :type Name: str
-        :param Type: Alarm template type. Valid values:
-<br><li> `Trigger`: alarm triggered
-<br><li> `Recovery`: alarm cleared
-<br><li> `All`: alarm triggered and alarm cleared
+        :param Type: Notification type. Valid values:
+<li> `Trigger`: alarm triggered
+<li> `Recovery`: alarm cleared
+<li> `All`: alarm triggered and alarm cleared
         :type Type: str
-        :param NoticeReceivers: Information of the recipient in alarm template
+        :param NoticeReceivers: Notification recipient
         :type NoticeReceivers: list of NoticeReceiver
-        :param WebCallbacks: Alarm template callback information
+        :param WebCallbacks: API callback information (including WeCom)
         :type WebCallbacks: list of WebCallback
         """
         self.Name = None
@@ -927,132 +791,6 @@ class CreateAlarmResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class CreateAsyncContextTaskRequest(AbstractModel):
-    """CreateAsyncContextTask request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TopicId: Log topic ID
-        :type TopicId: str
-        :param Time: Log time in milliseconds
-        :type Time: int
-        :param PkgId: Log package number
-        :type PkgId: str
-        :param PkgLogId: Log number in log package
-        :type PkgLogId: str
-        :param LogsetId: Logset ID
-        :type LogsetId: str
-        :param AsyncSearchTaskId: Offline search task ID
-        :type AsyncSearchTaskId: str
-        """
-        self.TopicId = None
-        self.Time = None
-        self.PkgId = None
-        self.PkgLogId = None
-        self.LogsetId = None
-        self.AsyncSearchTaskId = None
-
-
-    def _deserialize(self, params):
-        self.TopicId = params.get("TopicId")
-        self.Time = params.get("Time")
-        self.PkgId = params.get("PkgId")
-        self.PkgLogId = params.get("PkgLogId")
-        self.LogsetId = params.get("LogsetId")
-        self.AsyncSearchTaskId = params.get("AsyncSearchTaskId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateAsyncContextTaskResponse(AbstractModel):
-    """CreateAsyncContextTask response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param AsyncContextTaskId: Offline context search task ID
-        :type AsyncContextTaskId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.AsyncContextTaskId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.AsyncContextTaskId = params.get("AsyncContextTaskId")
-        self.RequestId = params.get("RequestId")
-
-
-class CreateAsyncSearchTaskRequest(AbstractModel):
-    """CreateAsyncSearchTask request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param LogsetId: Logset ID
-        :type LogsetId: str
-        :param TopicId: Log topic ID. Currently, only log topics whose `StorageType` is `cold` are supported.
-        :type TopicId: str
-        :param Query: Query statement. Maximum length: 1024
-        :type Query: str
-        :param From: Start time of the log to be queried, which is a Unix timestamp in milliseconds
-        :type From: int
-        :param To: End time of the log to be queried, which is a Unix timestamp in milliseconds
-        :type To: int
-        :param Sort: Log scan order. Valid values: `asc`: ascending; `desc`: descending. Default value: desc
-        :type Sort: str
-        """
-        self.LogsetId = None
-        self.TopicId = None
-        self.Query = None
-        self.From = None
-        self.To = None
-        self.Sort = None
-
-
-    def _deserialize(self, params):
-        self.LogsetId = params.get("LogsetId")
-        self.TopicId = params.get("TopicId")
-        self.Query = params.get("Query")
-        self.From = params.get("From")
-        self.To = params.get("To")
-        self.Sort = params.get("Sort")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateAsyncSearchTaskResponse(AbstractModel):
-    """CreateAsyncSearchTask response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class CreateConfigRequest(AbstractModel):
     """CreateConfig request structure.
 
@@ -1193,12 +931,12 @@ class CreateExportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TopicId: Log topic
+        :param TopicId: Log topic ID
         :type TopicId: str
-        :param Query: Log export search statement
-        :type Query: str
-        :param Count: Number of logs to be exported. Maximum value: 10 million
+        :param Count: Number of logs to be exported. Maximum value: 50 million
         :type Count: int
+        :param Query: Search statements for log export. <a href="https://intl.cloud.tencent.com/document/product/614/44061?from_cn_redirect=1" target="_blank">[SQL statements]</a> are not supported.
+        :type Query: str
         :param From: Start time of the log to be exported, which is a timestamp in milliseconds
         :type From: int
         :param To: End time of the log to be exported, which is a timestamp in milliseconds
@@ -1209,8 +947,8 @@ class CreateExportRequest(AbstractModel):
         :type Format: str
         """
         self.TopicId = None
-        self.Query = None
         self.Count = None
+        self.Query = None
         self.From = None
         self.To = None
         self.Order = None
@@ -1219,8 +957,8 @@ class CreateExportRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.TopicId = params.get("TopicId")
-        self.Query = params.get("Query")
         self.Count = params.get("Count")
+        self.Query = params.get("Query")
         self.From = params.get("From")
         self.To = params.get("To")
         self.Order = params.get("Order")
@@ -1436,96 +1174,6 @@ class CreateMachineGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class CreateShipperRequest(AbstractModel):
-    """CreateShipper request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TopicId: ID of the log topic to which the shipping rule to be created belongs
-        :type TopicId: str
-        :param Bucket: Destination bucket in the shipping rule to be created
-        :type Bucket: str
-        :param Prefix: Prefix of the shipping directory in the shipping rule to be created
-        :type Prefix: str
-        :param ShipperName: Shipping rule name
-        :type ShipperName: str
-        :param Interval: Shipping time interval in seconds. Default value: 300. Value range: 300–900
-        :type Interval: int
-        :param MaxSize: Maximum size of a file to be shipped, in MB. Default value: 256. Value range: 100–256
-        :type MaxSize: int
-        :param FilterRules: Filter rules for shipped logs. Only logs matching the rules can be shipped. All rules are in the AND relationship, and up to five rules can be added. If the array is empty, no filtering will be performed, and all logs will be shipped
-        :type FilterRules: list of FilterRuleInfo
-        :param Partition: Partition rule of shipped log, which can be represented in `strftime` time format
-        :type Partition: str
-        :param Compress: Compression configuration of shipped log
-        :type Compress: :class:`tencentcloud.cls.v20201016.models.CompressInfo`
-        :param Content: Format configuration of shipped log content
-        :type Content: :class:`tencentcloud.cls.v20201016.models.ContentInfo`
-        """
-        self.TopicId = None
-        self.Bucket = None
-        self.Prefix = None
-        self.ShipperName = None
-        self.Interval = None
-        self.MaxSize = None
-        self.FilterRules = None
-        self.Partition = None
-        self.Compress = None
-        self.Content = None
-
-
-    def _deserialize(self, params):
-        self.TopicId = params.get("TopicId")
-        self.Bucket = params.get("Bucket")
-        self.Prefix = params.get("Prefix")
-        self.ShipperName = params.get("ShipperName")
-        self.Interval = params.get("Interval")
-        self.MaxSize = params.get("MaxSize")
-        if params.get("FilterRules") is not None:
-            self.FilterRules = []
-            for item in params.get("FilterRules"):
-                obj = FilterRuleInfo()
-                obj._deserialize(item)
-                self.FilterRules.append(obj)
-        self.Partition = params.get("Partition")
-        if params.get("Compress") is not None:
-            self.Compress = CompressInfo()
-            self.Compress._deserialize(params.get("Compress"))
-        if params.get("Content") is not None:
-            self.Content = ContentInfo()
-            self.Content._deserialize(params.get("Content"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateShipperResponse(AbstractModel):
-    """CreateShipper response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ShipperId: Shipping rule ID
-        :type ShipperId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.ShipperId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.ShipperId = params.get("ShipperId")
-        self.RequestId = params.get("RequestId")
-
-
 class CreateTopicRequest(AbstractModel):
     """CreateTopic request structure.
 
@@ -1545,9 +1193,9 @@ class CreateTopicRequest(AbstractModel):
         :type AutoSplit: bool
         :param MaxSplitPartitions: Maximum number of partitions to split into for this topic if automatic split is enabled. Default value: 50
         :type MaxSplitPartitions: int
-        :param StorageType: Log topic storage class. Valid values: `hot`: real-time storage; `cold`: offline storage. Default value: `hot`. If `cold` is passed in, please contact the customer service to add the log topic to the allowlist first.
+        :param StorageType: Log topic storage type. Valid values: `hot` (real-time storage); `cold` (IA storage). Default value: `hot`.
         :type StorageType: str
-        :param Period: Lifecycle in days. Value range: 1–366. Default value: 30
+        :param Period: Lifecycle in days. Value range: 1-3600 (3640 indicates permanent retention)
         :type Period: int
         """
         self.LogsetId = None
@@ -1652,7 +1300,7 @@ class DeleteAlarmNoticeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AlarmNoticeId: Alarm notification template
+        :param AlarmNoticeId: Notification group ID
         :type AlarmNoticeId: str
         """
         self.AlarmNoticeId = None
@@ -1712,96 +1360,6 @@ class DeleteAlarmRequest(AbstractModel):
 
 class DeleteAlarmResponse(AbstractModel):
     """DeleteAlarm response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class DeleteAsyncContextTaskRequest(AbstractModel):
-    """DeleteAsyncContextTask request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TopicId: Log topic ID
-        :type TopicId: str
-        :param AsyncContextTaskId: Offline context search task ID
-        :type AsyncContextTaskId: str
-        """
-        self.TopicId = None
-        self.AsyncContextTaskId = None
-
-
-    def _deserialize(self, params):
-        self.TopicId = params.get("TopicId")
-        self.AsyncContextTaskId = params.get("AsyncContextTaskId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DeleteAsyncContextTaskResponse(AbstractModel):
-    """DeleteAsyncContextTask response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class DeleteAsyncSearchTaskRequest(AbstractModel):
-    """DeleteAsyncSearchTask request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param AsyncSearchTaskId: Offline search task ID
-        :type AsyncSearchTaskId: str
-        :param TopicId: Log topic ID
-        :type TopicId: str
-        """
-        self.AsyncSearchTaskId = None
-        self.TopicId = None
-
-
-    def _deserialize(self, params):
-        self.AsyncSearchTaskId = params.get("AsyncSearchTaskId")
-        self.TopicId = params.get("TopicId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DeleteAsyncSearchTaskResponse(AbstractModel):
-    """DeleteAsyncSearchTask response structure.
 
     """
 
@@ -2197,37 +1755,24 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: <br><li> name
-
-Filter by **alarm notification template name**.
+        :param Filters: <li> name
+Filter by **notification group name**.
 Type: String
-
-Required: no
-
-<br><li> alarmNoticeId
-
-Filter by **alarm notification template ID**.
+Required: No
+<li> alarmNoticeId
+Filter by **notification group ID**.
 Type: String
-
-Required: no
-
-<br><li> uid
-
+Required: No
+<li> uid
 Filter by **recipient ID**.
-
 Type: String
-
-Required: no
-
-<br><li> groupId
-
-Filter by **user group ID**.
-
+Required: No
+<li> groupId
+Filter by **recipient ID**.
 Type: String
+Required: No
 
-Required: no
-
-Each request can contain up to 10 `Filters` and 5 `Filter.Values`.
+Each request can have up to 10 `Filters` and 5 `Filter.Values`.
         :type Filters: list of Filter
         :param Offset: Page offset. Default value: 0
         :type Offset: int
@@ -2383,322 +1928,6 @@ class DescribeAlarmsResponse(AbstractModel):
                 obj = AlarmInfo()
                 obj._deserialize(item)
                 self.Alarms.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeAsyncContextResultRequest(AbstractModel):
-    """DescribeAsyncContextResult request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param AsyncContextTaskId: Offline search task ID
-        :type AsyncContextTaskId: str
-        :param PkgId: Log package number
-        :type PkgId: str
-        :param PkgLogId: Log number in log package
-        :type PkgLogId: str
-        :param TopicId: Log topic ID
-        :type TopicId: str
-        :param PrevLogs: Number of previous logs. Default value: 10
-        :type PrevLogs: int
-        :param NextLogs: Number of next logs. Default value: 10
-        :type NextLogs: int
-        """
-        self.AsyncContextTaskId = None
-        self.PkgId = None
-        self.PkgLogId = None
-        self.TopicId = None
-        self.PrevLogs = None
-        self.NextLogs = None
-
-
-    def _deserialize(self, params):
-        self.AsyncContextTaskId = params.get("AsyncContextTaskId")
-        self.PkgId = params.get("PkgId")
-        self.PkgLogId = params.get("PkgLogId")
-        self.TopicId = params.get("TopicId")
-        self.PrevLogs = params.get("PrevLogs")
-        self.NextLogs = params.get("NextLogs")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeAsyncContextResultResponse(AbstractModel):
-    """DescribeAsyncContextResult response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param PrevOver: Whether the previous logs have been returned
-        :type PrevOver: bool
-        :param NextOver: Whether the next logs have been returned
-        :type NextOver: bool
-        :param Results: Log content
-        :type Results: list of LogInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.PrevOver = None
-        self.NextOver = None
-        self.Results = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.PrevOver = params.get("PrevOver")
-        self.NextOver = params.get("NextOver")
-        if params.get("Results") is not None:
-            self.Results = []
-            for item in params.get("Results"):
-                obj = LogInfo()
-                obj._deserialize(item)
-                self.Results.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeAsyncContextTasksRequest(AbstractModel):
-    """DescribeAsyncContextTasks request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Offset: Page offset. Default value: 0
-        :type Offset: int
-        :param Limit: Maximum number of entries per page. Default value: 20. Maximum value: 100
-        :type Limit: int
-        :param Filters: <br><li> topicId
-
-Filter by **log topic ID**.
-Type: String
-
-Required: no
-
-<br><li> logsetId
-
-Filter by **logset ID**. You can call `DescribeLogsets` to query the list of created logsets or log in to the console to view them. You can also call `CreateLogset` to create a logset.
-
-Type: String
-
-Required: no
-
-Each request can contain up to 10 `Filters` and 5 `Filter.Values`.
-        :type Filters: list of Filter
-        """
-        self.Offset = None
-        self.Limit = None
-        self.Filters = None
-
-
-    def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self.Filters.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeAsyncContextTasksResponse(AbstractModel):
-    """DescribeAsyncContextTasks response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param AsyncContextTasks: Offline context search task list
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type AsyncContextTasks: list of AsyncContextTask
-        :param TotalCount: Total number of offline context search tasks
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.AsyncContextTasks = None
-        self.TotalCount = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("AsyncContextTasks") is not None:
-            self.AsyncContextTasks = []
-            for item in params.get("AsyncContextTasks"):
-                obj = AsyncContextTask()
-                obj._deserialize(item)
-                self.AsyncContextTasks.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeAsyncSearchResultRequest(AbstractModel):
-    """DescribeAsyncSearchResult request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param AsyncSearchTaskId: Offline search task ID
-        :type AsyncSearchTaskId: str
-        :param TopicId: Logset ID
-        :type TopicId: str
-        :param Context: This field is used to load more logs. Pass through the last `Context` value returned to get more log content.
-        :type Context: str
-        :param Limit: Number of logs returned in a single call. Default value: 20. Maximum value: 500
-        :type Limit: int
-        """
-        self.AsyncSearchTaskId = None
-        self.TopicId = None
-        self.Context = None
-        self.Limit = None
-
-
-    def _deserialize(self, params):
-        self.AsyncSearchTaskId = params.get("AsyncSearchTaskId")
-        self.TopicId = params.get("TopicId")
-        self.Context = params.get("Context")
-        self.Limit = params.get("Limit")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeAsyncSearchResultResponse(AbstractModel):
-    """DescribeAsyncSearchResult response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Context: `Context` for loading subsequent content
-        :type Context: str
-        :param ListOver: Whether all log query results are returned
-        :type ListOver: bool
-        :param Results: Log content
-        :type Results: list of LogInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.Context = None
-        self.ListOver = None
-        self.Results = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Context = params.get("Context")
-        self.ListOver = params.get("ListOver")
-        if params.get("Results") is not None:
-            self.Results = []
-            for item in params.get("Results"):
-                obj = LogInfo()
-                obj._deserialize(item)
-                self.Results.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeAsyncSearchTasksRequest(AbstractModel):
-    """DescribeAsyncSearchTasks request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Offset: Page offset. Default value: 0
-        :type Offset: int
-        :param Limit: Maximum number of entries per page. Default value: 20. Maximum value: 100
-        :type Limit: int
-        :param Filters: <br><li> topicId
-
-Filter by **log topic ID**.
-Type: String
-
-Required: no
-
-<br><li> logsetId
-
-Filter by **logset ID**. You can call `DescribeLogsets` to query the list of created logsets or log in to the console to view them. You can also call `CreateLogset` to create a logset.
-
-Type: String
-
-Required: no
-
-Each request can contain up to 10 `Filters` and 5 `Filter.Values`.
-        :type Filters: list of Filter
-        """
-        self.Offset = None
-        self.Limit = None
-        self.Filters = None
-
-
-    def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self.Filters.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeAsyncSearchTasksResponse(AbstractModel):
-    """DescribeAsyncSearchTasks response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param AsyncSearchTasks: Offline search task list
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type AsyncSearchTasks: list of AsyncSearchTask
-        :param TotalCount: Total number of offline search tasks
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.AsyncSearchTasks = None
-        self.TotalCount = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("AsyncSearchTasks") is not None:
-            self.AsyncSearchTasks = []
-            for item in params.get("AsyncSearchTasks"):
-                obj = AsyncSearchTask()
-                obj._deserialize(item)
-                self.AsyncSearchTasks.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
@@ -3037,7 +2266,7 @@ class DescribeLogContextRequest(AbstractModel):
         r"""
         :param TopicId: Log topic ID to be queried
         :type TopicId: str
-        :param BTime: Log time in the format of `YYYY-mm-dd HH:MM:SS`
+        :param BTime: Log time in the format of YYYY-mm-dd HH:MM:SS.FFF
         :type BTime: str
         :param PkgId: Log package number
         :type PkgId: str
@@ -3103,6 +2332,80 @@ class DescribeLogContextResponse(AbstractModel):
                 self.LogContextInfos.append(obj)
         self.PrevOver = params.get("PrevOver")
         self.NextOver = params.get("NextOver")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLogHistogramRequest(AbstractModel):
+    """DescribeLogHistogram request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicId: ID of the log topic to be queried
+        :type TopicId: str
+        :param From: Start time of the log to be queried, which is a Unix timestamp in milliseconds
+        :type From: int
+        :param To: End time of the log to be queried, which is a Unix timestamp in milliseconds
+        :type To: int
+        :param Query: Query statement
+        :type Query: str
+        :param Interval: Time interval in milliseconds
+        :type Interval: int
+        """
+        self.TopicId = None
+        self.From = None
+        self.To = None
+        self.Query = None
+        self.Interval = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        self.From = params.get("From")
+        self.To = params.get("To")
+        self.Query = params.get("Query")
+        self.Interval = params.get("Interval")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLogHistogramResponse(AbstractModel):
+    """DescribeLogHistogram response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Interval: Statistical period in milliseconds
+        :type Interval: int
+        :param TotalCount: The number of logs that hit the keywords
+        :type TotalCount: int
+        :param HistogramInfos: Statistical result details within the period
+        :type HistogramInfos: list of HistogramInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Interval = None
+        self.TotalCount = None
+        self.HistogramInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Interval = params.get("Interval")
+        self.TotalCount = params.get("TotalCount")
+        if params.get("HistogramInfos") is not None:
+            self.HistogramInfos = []
+            for item in params.get("HistogramInfos"):
+                obj = HistogramInfo()
+                obj._deserialize(item)
+                self.HistogramInfos.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3391,7 +2694,7 @@ class DescribeMachinesResponse(AbstractModel):
         :type UpdateStartTime: str
         :param UpdateEndTime: Preset end time of automatic update of machine group
         :type UpdateEndTime: str
-        :param LatestAgentVersion: Latest LogListener version available to the current user
+        :param LatestAgentVersion: Latest LogListener version available to the current user
         :type LatestAgentVersion: str
         :param ServiceLogging: Whether to enable the service log
         :type ServiceLogging: bool
@@ -3628,53 +2931,7 @@ class DescribeTopicsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: <br><li> topicName
-
-Filter by **log topic name**.
-Type: String
-
-Required: no
-
-<br><li> topicId
-
-Filter by **log topic ID**.
-Type: String
-
-Required: no
-
-<br><li> logsetId
-
-Filter by **logset ID**. You can call `DescribeLogsets` to query the list of created logsets or log in to the console to view them. You can also call `CreateLogset` to create a logset.
-
-Type: String
-
-Required: no
-
-<br><li> tagKey
-
-Filter by **tag key**.
-
-Type: String
-
-Required: no
-
-<br><li> tag:tagKey
-
-Filter by **tag key-value pair**. The `tag-key` should be replaced with a specified tag key. For more information on how to use it, please see sample 2.
-
-Type: String
-
-Required: no
-
-<br><li> storageType
-
-Filter by **log topic storage class**. Valid values: `hot`: real-time storage; `cold`: offline storage.
-Type: String
-
-Required: no
-
-
-Each request can contain up to 10 `Filters` and 100 `Filter.Values`.
+        :param Filters: <br><li> `topicName` filters by **log topic name**. Type: String. Required: No<br><li> `logsetName` filters by **logset name**. Type: String. Required: No<br><li> `topicId` filters by **log topic ID**. Type: String. Required: No<br><li> `logsetId` filters by **logset ID**. You can call DescribeLogsets to query the list of created logsets or log in to the console to view them. You can also call CreateLogset to create a logset. Type: String. Required: No<br><li> `tagKey` filters by **tag key**. Type: String. Required: No<br><li> `tag:tagKey` filters by **tag key-value pair**. The tagKey should be replaced with a specified tag key, such as tag:exampleKey. Type: String. Required: No<br><li> `storageType` filters by **log topic storage type**. Valid values: `hot` (real-time storage); `cold`: (IA storage). Type: String. Required: No. Each request can contain up to 10 `Filters` and 100 `Filter.Values`.
         :type Filters: list of Filter
         :param Offset: Page offset. Default value: 0.
         :type Offset: int
@@ -4015,7 +3272,7 @@ class GetAlarmLogRequest(AbstractModel):
         :type To: int
         :param Query: Query statement. Maximum length: 1024
         :type Query: str
-        :param Limit: Number of logs returned in a single query. Maximum value: 100
+        :param Limit: Number of logs returned in a single query. Maximum value: 1000
         :type Limit: int
         :param Context: This field is used to load more logs. Pass through the last `Context` value returned to get more log content.
         :type Context: str
@@ -4119,6 +3376,34 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.RequestId = params.get("RequestId")
 
 
+class HistogramInfo(AbstractModel):
+    """Histogram details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Count: The number of logs within the statistical period
+        :type Count: int
+        :param BTime: Unix timestamp rounded by `period`, in milliseconds
+        :type BTime: int
+        """
+        self.Count = None
+        self.BTime = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        self.BTime = params.get("BTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class JsonInfo(AbstractModel):
     """JSON type description
 
@@ -4128,8 +3413,8 @@ class JsonInfo(AbstractModel):
         r"""
         :param EnableTag: Enablement flag
         :type EnableTag: bool
-        :param MetaFields: Metadata information list
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param MetaFields: Metadata information list. Valid values: __SOURCE__; __FILENAME__; __TIMESTAMP__
+Note: This field may return `null`, indicating that no valid value was found.
         :type MetaFields: list of str
         """
         self.EnableTag = None
@@ -4183,7 +3468,7 @@ class KeyValueInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: The field that needs to be configured with a key value or metafield index
+        :param Key: When a key value or metafield index needs to be configured for a field, the metafield `Key` does not need to be prefixed with `__TAG__.` and is consistent with the one when logs are uploaded. `__TAG__.` will be prefixed automatically for display in the console.
         :type Key: str
         :param Value: Field index description information
         :type Value: :class:`tencentcloud.cls.v20201016.models.ValueInfo`
@@ -4619,18 +3904,18 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AlarmNoticeId: Alarm notification template ID
+        :param AlarmNoticeId: Notification group ID
         :type AlarmNoticeId: str
-        :param Name: Alarm template name
+        :param Name: Notification group name
         :type Name: str
-        :param Type: Alarm template type. Valid values:
-<br><li> `Trigger`: alarm triggered
-<br><li> `Recovery`: alarm cleared
-<br><li> `All`: alarm triggered and alarm cleared
+        :param Type: Notification type. Valid values:
+<li> `Trigger`: alarm triggered
+<li> `Recovery`: alarm cleared
+<li> `All`: alarm triggered and alarm cleared
         :type Type: str
-        :param NoticeReceivers: Information of the recipient in alarm template
+        :param NoticeReceivers: Notification recipient
         :type NoticeReceivers: list of NoticeReceiver
-        :param WebCallbacks: Alarm template callback information
+        :param WebCallbacks: API callback information (including WeCom)
         :type WebCallbacks: list of WebCallback
         """
         self.AlarmNoticeId = None
@@ -4866,7 +4151,7 @@ class ModifyConsumerRequest(AbstractModel):
         r"""
         :param TopicId: Log topic ID bound to the task
         :type TopicId: str
-        :param Effective: Whether to enable the shipping task
+        :param Effective: Whether the shipping task takes effect (default: no)
         :type Effective: bool
         :param NeedContent: Whether to ship metadata. Default value: `false`
         :type NeedContent: bool
@@ -4929,12 +4214,18 @@ class ModifyIndexRequest(AbstractModel):
         :type TopicId: str
         :param Status: It does not take effect by default
         :type Status: bool
-        :param Rule: Index rule. Either `Rule` or `Effective` must exist.
+        :param Rule: Index rule
         :type Rule: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
+        :param IncludeInternalFields: 
+        :type IncludeInternalFields: bool
+        :param MetadataFlag: 
+        :type MetadataFlag: int
         """
         self.TopicId = None
         self.Status = None
         self.Rule = None
+        self.IncludeInternalFields = None
+        self.MetadataFlag = None
 
 
     def _deserialize(self, params):
@@ -4943,6 +4234,8 @@ class ModifyIndexRequest(AbstractModel):
         if params.get("Rule") is not None:
             self.Rule = RuleInfo()
             self.Rule._deserialize(params.get("Rule"))
+        self.IncludeInternalFields = params.get("IncludeInternalFields")
+        self.MetadataFlag = params.get("MetadataFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5174,76 +4467,6 @@ class ModifyShipperRequest(AbstractModel):
 
 class ModifyShipperResponse(AbstractModel):
     """ModifyShipper response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class ModifyTopicRequest(AbstractModel):
-    """ModifyTopic request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TopicId: Log topic ID
-        :type TopicId: str
-        :param TopicName: Log topic name
-        :type TopicName: str
-        :param Tags: Tag description list. This parameter is used to bind a tag to a log topic. Up to 10 tag key-value pairs are supported, and they must be unique.
-        :type Tags: list of Tag
-        :param Status: Whether to start collection for this log topic
-        :type Status: bool
-        :param AutoSplit: Whether to enable automatic split
-        :type AutoSplit: bool
-        :param MaxSplitPartitions: Maximum number of partitions to split into for this topic if automatic split is enabled
-        :type MaxSplitPartitions: int
-        :param Period: Lifecycle in days. Value range: 1–366
-        :type Period: int
-        """
-        self.TopicId = None
-        self.TopicName = None
-        self.Tags = None
-        self.Status = None
-        self.AutoSplit = None
-        self.MaxSplitPartitions = None
-        self.Period = None
-
-
-    def _deserialize(self, params):
-        self.TopicId = params.get("TopicId")
-        self.TopicName = params.get("TopicName")
-        if params.get("Tags") is not None:
-            self.Tags = []
-            for item in params.get("Tags"):
-                obj = Tag()
-                obj._deserialize(item)
-                self.Tags.append(obj)
-        self.Status = params.get("Status")
-        self.AutoSplit = params.get("AutoSplit")
-        self.MaxSplitPartitions = params.get("MaxSplitPartitions")
-        self.Period = params.get("Period")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyTopicResponse(AbstractModel):
-    """ModifyTopic response structure.
 
     """
 
@@ -5505,7 +4728,7 @@ class RuleKeyValueInfo(AbstractModel):
 
 
 class RuleTagInfo(AbstractModel):
-    """Tag index configuration information
+    """Metafield index configuration
 
     """
 
@@ -5513,7 +4736,7 @@ class RuleTagInfo(AbstractModel):
         r"""
         :param CaseSensitive: Case sensitivity
         :type CaseSensitive: bool
-        :param KeyValues: Field information in tag index configuration
+        :param KeyValues: Field information in the metafield index configuration
         :type KeyValues: list of KeyValueInfo
         """
         self.CaseSensitive = None
@@ -5544,21 +4767,33 @@ class SearchLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TopicId: Log topic ID to be queried
+        :param TopicId: ID of the log topic to be searched
         :type TopicId: str
-        :param From: Start time of the log to be queried, which is a Unix timestamp in milliseconds
+        :param From: Start time of the log to be searched, which is a Unix timestamp in milliseconds
         :type From: int
-        :param To: End time of the log to be queried, which is a Unix timestamp in milliseconds
+        :param To: End time of the log to be searched, which is a Unix timestamp in milliseconds
         :type To: int
-        :param Query: Query statement. Maximum length: 4096
+        :param Query: Statement for search and analysis. Maximum length: 12 KB
+A statement is in the format of <a href="https://intl.cloud.tencent.com/document/product/614/47044?from_cn_redirect=1" target="_blank">[search rule]</a> | <a href="https://intl.cloud.tencent.com/document/product/614/44061?from_cn_redirect=1" target="_blank">[SQL statement]</a>. You can omit the pipe symbol <code> | </code> and SQL statement when log analysis is not required.
         :type Query: str
-        :param Limit: Number of raw logs returned in a single query. Maximum value: 100. If the query statement (Query) contains an SQL query, you need to specify the number of SQL query results in `Query`. For more information, please visit https://intl.cloud.tencent.com/document/product/614/58977?from_cn_redirect=1
+        :param Limit: The number of raw logs returned by a single query. Maximum value: 1000. You need to use `Context` to continue to get logs.
+Notes:
+* This parameter is valid only when the query statement (`Query`) does not contain an SQL statement.
+* To limit the number of analysis results, see <a href="https://intl.cloud.tencent.com/document/product/614/58977?from_cn_redirect=1" target="_blank">SQL LIMIT Syntax</a>.
         :type Limit: int
-        :param Context: This parameter is used to load more logs. Pass through the last `Context` value returned to get more log content. Up to 10,000 raw logs can be obtained in total. This parameter expires in 1 hour.
+        :param Context: You can pass through the `Context` value (validity: 1 hour) returned by the last API to continue to get logs, which can get up to 10,000 raw logs.
+Notes:
+* This parameter is valid only when the query statement (`Query`) does not contain an SQL statement.
+* To continue to get analysis results, see <a href="https://intl.cloud.tencent.com/document/product/614/58977?from_cn_redirect=1" target="_blank">SQL LIMIT Syntax</a>.
         :type Context: str
-        :param Sort: Order of the logs sorted by time returned by the log API. Valid values: `asc`: ascending; `desc`: descending. Default value: `desc`
+        :param Sort: Time order of the logs returned. Valid values: `asc` (ascending); `desc`: (descending). Default value: `desc`
+Notes:
+* This parameter is valid only when the query statement (`Query`) does not contain an SQL statement.
+* To sort the analysis results, see <a href="https://intl.cloud.tencent.com/document/product/614/58978?from_cn_redirect=1" target="_blank">SQL ORDER BY Syntax</a>.
         :type Sort: str
-        :param UseNewAnalysis: If the value is `true`, the new search method will be used, and the response parameters `AnalysisRecords` and `Columns` will be valid. If the value is `false`, the old search method will be used, and `AnalysisResults` and `ColNames` will be valid.
+        :param UseNewAnalysis: If the value is `true`, the new response method will be used, and the output parameters `AnalysisRecords` and `Columns` will be valid.
+If the value is `false`, the old response method will be used, and the output parameters `AnalysisResults` and `ColNames` will be valid.
+The two response methods differ slightly in terms of encoding format. You are advised to use the new method (`true`).
         :type UseNewAnalysis: bool
         """
         self.TopicId = None
@@ -5596,26 +4831,31 @@ class SearchLogResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Context: `Context` for loading subsequent content. It will expire after 1 hour.
+        :param Context: You can pass through the `Context` value (validity: 1 hour) returned by this API to continue to get more logs.
         :type Context: str
-        :param ListOver: Whether to return all raw log query results. This parameter is meaningless if the query statement (Query) contains an SQL query.
+        :param ListOver: Whether to return all raw log query results. If not, you can use `Context` to continue to get logs.
+Note: This parameter is valid only when the query statement (`Query`) does not contain an SQL statement.
         :type ListOver: bool
-        :param Analysis: Whether the return is the analysis result
+        :param Analysis: Whether the returned data is the analysis (SQL) result
         :type Analysis: bool
-        :param ColNames: If `Analysis` is `true`, column name of the analysis result will be returned; otherwise, empty content will be returned.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ColNames: list of str
-        :param Results: Log query result. If `Analysis` is `True`, `null` may be returned
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param Results: Raw logs that meet the search conditions
+Note: This field may return `null`, indicating that no valid value was found.
         :type Results: list of LogInfo
-        :param AnalysisResults: Log analysis result. If `Analysis` is `False`, `null` may be returned
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param ColNames: Column names of log analysis
+This parameter is valid only when `UseNewAnalysis` is `false`.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type ColNames: list of str
+        :param AnalysisResults: Log analysis result
+This parameter is valid only when `UseNewAnalysis` is `false`.
+Note: This field may return `null`, indicating that no valid value was found.
         :type AnalysisResults: list of LogItems
-        :param AnalysisRecords: New log analysis result, which will be valid if `UseNewAnalysis` is `true`
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param AnalysisRecords: Log analysis result
+This parameter is valid only when `UseNewAnalysis` is `true`.
+Note: This field may return `null`, indicating that no valid value was found.
         :type AnalysisRecords: list of str
-        :param Columns: Column attribute of log analysis, which will be valid if `UseNewAnalysis` is `true`
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param Columns: Column attributes of log analysis
+This parameter is valid only when `UseNewAnalysis` is `true`.
+Note: This field may return `null`, indicating that no valid value was found.
         :type Columns: list of Column
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -5623,8 +4863,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Context = None
         self.ListOver = None
         self.Analysis = None
-        self.ColNames = None
         self.Results = None
+        self.ColNames = None
         self.AnalysisResults = None
         self.AnalysisRecords = None
         self.Columns = None
@@ -5635,13 +4875,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Context = params.get("Context")
         self.ListOver = params.get("ListOver")
         self.Analysis = params.get("Analysis")
-        self.ColNames = params.get("ColNames")
         if params.get("Results") is not None:
             self.Results = []
             for item in params.get("Results"):
                 obj = LogInfo()
                 obj._deserialize(item)
                 self.Results.append(obj)
+        self.ColNames = params.get("ColNames")
         if params.get("AnalysisResults") is not None:
             self.AnalysisResults = []
             for item in params.get("AnalysisResults"):
@@ -5921,8 +5161,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param StorageType: Log topic storage class
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type StorageType: str
-        :param Period: Lifecycle in days
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param Period: Lifecycle in days. Value range: 1-3600 (3640 indicates permanent retention)
+Note: This field may return `null`, indicating that no valid value was found.
         :type Period: int
         """
         self.LogsetId = None
@@ -6062,20 +5302,22 @@ class WebCallback(AbstractModel):
         :param Url: Callback address
         :type Url: str
         :param CallbackType: Callback type. Valid values:
-<br><li> WeCom
-<br><li> Http
+<li> WeCom
+<li> Http
         :type CallbackType: str
         :param Method: Callback method. Valid values:
-<br><li> POST
-<br><li> PUT
+<li> POST
+<li> PUT
 Default value: `POST`. This parameter is required if `CallbackType` is `Http`.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+Note: This field may return `null`, indicating that no valid value was found.
         :type Method: str
         :param Headers: Request header
-Note: this field may return `null`, indicating that no valid values can be obtained.
+Note: This parameter is disused. To specify request headers, see `CallBack` in <a href="https://intl.cloud.tencent.com/document/product/614/56466?from_cn_redirect=1">CreateAlarmNotice</a>.
+Note: This field may return `null`, indicating that no valid value was found.
         :type Headers: list of str
-        :param Body: Request content, which is required when `CallbackType` is `Http`.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param Body: Request content
+Note: This parameter is disused. To specify request content, see `CallBack` in <a href="https://intl.cloud.tencent.com/document/product/614/56466?from_cn_redirect=1">CreateAlarmNotice</a>.
+Note: This field may return `null`, indicating that no valid value was found.
         :type Body: str
         :param Index: Number
         :type Index: int

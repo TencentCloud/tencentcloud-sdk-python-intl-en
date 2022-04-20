@@ -2304,6 +2304,68 @@ class IsolateDBInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDBInstanceNetworkAddressRequest(AbstractModel):
+    """ModifyDBInstanceNetworkAddress request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param OldIpExpiredTime: Old IP retention period in minutes. The old IP will be released after the specified time, and both the old and new IPs can be accessed before the release. The value `0` indicates that the old IP will be reclaimed immediately.
+        :type OldIpExpiredTime: int
+        :param NewUniqVpcId: ID of the VPC to which the new IP belongs after the switch. When it is classic network, this field will be empty.
+        :type NewUniqVpcId: str
+        :param NewUniqSubnetId: ID of the subnet to which the new IP belongs after the switch. When it is classic network, this field will be empty.
+        :type NewUniqSubnetId: str
+        :param NetworkAddresses: IP information to be modified
+        :type NetworkAddresses: list of ModifyNetworkAddress
+        """
+        self.InstanceId = None
+        self.OldIpExpiredTime = None
+        self.NewUniqVpcId = None
+        self.NewUniqSubnetId = None
+        self.NetworkAddresses = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.OldIpExpiredTime = params.get("OldIpExpiredTime")
+        self.NewUniqVpcId = params.get("NewUniqVpcId")
+        self.NewUniqSubnetId = params.get("NewUniqSubnetId")
+        if params.get("NetworkAddresses") is not None:
+            self.NetworkAddresses = []
+            for item in params.get("NetworkAddresses"):
+                obj = ModifyNetworkAddress()
+                obj._deserialize(item)
+                self.NetworkAddresses.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceNetworkAddressResponse(AbstractModel):
+    """ModifyDBInstanceNetworkAddress response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceSecurityGroupRequest(AbstractModel):
     """ModifyDBInstanceSecurityGroup request structure.
 
@@ -2416,6 +2478,34 @@ class ModifyDBInstanceSpecResponse(AbstractModel):
     def _deserialize(self, params):
         self.DealId = params.get("DealId")
         self.RequestId = params.get("RequestId")
+
+
+class ModifyNetworkAddress(AbstractModel):
+    """Database IP to be modified
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NewIPAddress: New IP
+        :type NewIPAddress: str
+        :param OldIpAddress: Old IP
+        :type OldIpAddress: str
+        """
+        self.NewIPAddress = None
+        self.OldIpAddress = None
+
+
+    def _deserialize(self, params):
+        self.NewIPAddress = params.get("NewIPAddress")
+        self.OldIpAddress = params.get("OldIpAddress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class OfflineIsolatedDBInstanceRequest(AbstractModel):

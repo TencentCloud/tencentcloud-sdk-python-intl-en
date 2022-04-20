@@ -128,7 +128,7 @@ INVALIDPARAMETER_ZONENOTEXISTS = 'InvalidParameter.ZoneNotExists'
 # Incorrect parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
-# Cannot create a dedicated internal TLD.
+# This is a reserved domain name and cannot be created.
 INVALIDPARAMETERVALUE_RESERVEDDOMAIN = 'InvalidParameterValue.ReservedDomain'
 
 # The quota limit is exceeded.
@@ -163,9 +163,6 @@ RESOURCENOTFOUND_SERVICENOTSUBSCRIBED = 'ResourceNotFound.ServiceNotSubscribed'
 
 # The resource is unavailable.
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'
-
-#  
-RESOURCEUNAVAILABLE_TLDOPERATELIMIT = 'ResourceUnavailable.TldOperateLimit'
 
 # The TLD value-added package expired.
 RESOURCEUNAVAILABLE_TLDPACKAGEEXPIRED = 'ResourceUnavailable.TldPackageExpired'

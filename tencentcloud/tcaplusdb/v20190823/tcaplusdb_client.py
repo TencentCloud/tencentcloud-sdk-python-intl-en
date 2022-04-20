@@ -432,35 +432,6 @@ class TcaplusdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeApplications(self, request):
-        """This API is used to query the list of cluster operation applications.
-
-        :param request: Request instance for DescribeApplications.
-        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeApplicationsRequest`
-        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeApplicationsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeApplications", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeApplicationsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeClusterTags(self, request):
         """This API is used to get the associated tag list of a cluster.
 

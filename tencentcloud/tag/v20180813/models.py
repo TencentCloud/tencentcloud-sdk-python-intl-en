@@ -29,7 +29,7 @@ class AddResourceTagRequest(AbstractModel):
         :type TagKey: str
         :param TagValue: Tag value.
         :type TagValue: str
-        :param Resource: [Six-segment resource description](https://cloud.tencent.com/document/product/598/10606)
+        :param Resource: [Six-segment resource description](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1)
         :type Resource: str
         """
         self.TagKey = None
@@ -74,7 +74,7 @@ class AttachResourcesTagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceType: Resource service name
+        :param ServiceType: Resource service name (the third segment in the six-segment resource description)
         :type ServiceType: str
         :param ResourceIds: Resource ID array, which can contain up to 50 resources
         :type ResourceIds: list of str
@@ -82,9 +82,9 @@ class AttachResourcesTagRequest(AbstractModel):
         :type TagKey: str
         :param TagValue: Tag value
         :type TagValue: str
-        :param ResourceRegion: Resource region. This field is not required for resources that do not have the region attribute
+        :param ResourceRegion: Resource region. If resources have the region attribute, this field is required; otherwise, it is optional.
         :type ResourceRegion: str
-        :param ResourcePrefix: Resource prefix, which is not required for COS buckets
+        :param ResourcePrefix: Resource prefix (the part before "/" in the last segment in the six-segment resource description), which is optional for COS buckets but required for other Tencent Cloud resources.
         :type ResourcePrefix: str
         """
         self.ServiceType = None
@@ -173,6 +173,53 @@ class CreateTagResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateTagsRequest(AbstractModel):
+    """CreateTags request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Tags: Tag list.
+Value range of N: 0–9
+        :type Tags: list of Tag
+        """
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTagsResponse(AbstractModel):
+    """CreateTags response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteResourceTagRequest(AbstractModel):
     """DeleteResourceTag request structure.
 
@@ -182,7 +229,7 @@ class DeleteResourceTagRequest(AbstractModel):
         r"""
         :param TagKey: Tag key.
         :type TagKey: str
-        :param Resource: [Six-segment resource description](https://cloud.tencent.com/document/product/598/10606)
+        :param Resource: [Six-segment resource description](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1)
         :type Resource: str
         """
         self.TagKey = None
@@ -263,6 +310,53 @@ class DeleteTagResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteTagsRequest(AbstractModel):
+    """DeleteTags request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Tags: Tag list.
+Value range of N: 0–9
+        :type Tags: list of Tag
+        """
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTagsResponse(AbstractModel):
+    """DeleteTags response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
     """DescribeResourceTagsByResourceIds request structure.
 
@@ -274,7 +368,7 @@ class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
         :type ServiceType: str
         :param ResourcePrefix: Resource prefix.
         :type ResourcePrefix: str
-        :param ResourceIds: Unique resource ID.
+        :param ResourceIds: Array of resource IDs (up to 50)
         :type ResourceIds: list of str
         :param ResourceRegion: The resource's region.
         :type ResourceRegion: str
@@ -528,13 +622,13 @@ class DescribeResourceTagsRequest(AbstractModel):
         :type ServiceType: str
         :param ResourcePrefix: Resource prefix
         :type ResourcePrefix: str
-        :param ResourceId: Unique resource ID
+        :param ResourceId: Unique resource ID. Queries with `ResourceId` only may be slow or fail to return results. We recommend you also enter `ServiceType`, `ResourcePrefix`, and `ResourceRegion` (which can be ignored for resources that don't have the region attribute) when entering `ResourceId`.
         :type ResourceId: str
         :param Offset: Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter
         :type Offset: int
         :param Limit: Number of entries per page. Default value: 15
         :type Limit: int
-        :param CosResourceId: Whether it is a COS resource ID
+        :param CosResourceId: Whether it is a COS resource (0 or 1). This parameter is required when the entered `ResourceId` is a COS resource.
         :type CosResourceId: int
         """
         self.CreateUin = None
@@ -1191,15 +1285,15 @@ class DetachResourcesTagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceType: Resource service name
+        :param ServiceType: Resource service name (the third segment in the six-segment resource description)
         :type ServiceType: str
         :param ResourceIds: Resource ID array, which can contain up to 50 resources
         :type ResourceIds: list of str
         :param TagKey: Tag key to be unbound
         :type TagKey: str
-        :param ResourceRegion: Resource region. This field is not required for resources that do not have the region attribute
+        :param ResourceRegion: Resource region. If resources have the region attribute, this field is required; otherwise, it is optional.
         :type ResourceRegion: str
-        :param ResourcePrefix: Resource prefix, which is not required for COS buckets
+        :param ResourcePrefix: Resource prefix (the part before "/" in the last segment in the six-segment resource description), which is optional for COS buckets but required for other Tencent Cloud resources.
         :type ResourcePrefix: str
         """
         self.ServiceType = None
@@ -1241,6 +1335,305 @@ class DetachResourcesTagResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class FailedResource(AbstractModel):
+    """Information of failed resources.
+    This is returned when resource tag binding or unbinding fails.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Resource: Six-segment descriptions of failed resources
+        :type Resource: str
+        :param Code: Error code
+        :type Code: str
+        :param Message: Error message
+        :type Message: str
+        """
+        self.Resource = None
+        self.Code = None
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.Resource = params.get("Resource")
+        self.Code = params.get("Code")
+        self.Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetResourcesRequest(AbstractModel):
+    """GetResources request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceList: Six-segment resource description list. Tencent Cloud uses a six-segment value to describe a resource.
+For example, ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}.
+If this parameter is passed in, the list of all matching resources will be returned, and the specified `MaxResults` will become invalid.
+Value range of N: 0–9
+        :type ResourceList: list of str
+        :param TagFilters: Tag key and value.
+If multiple tags are specified, resources bound to all such tags will be queried.
+Value range of N: 0–5
+There can be up to 10 `TagValues` in each `TagFilters`.
+        :type TagFilters: list of TagFilter
+        :param PaginationToken: The token value of the next page obtained from the response of the previous page.
+Leave it empty for the first request.
+        :type PaginationToken: str
+        :param MaxResults: Number of data entries to return per page (up to 200).
+Default value: 50.
+        :type MaxResults: int
+        """
+        self.ResourceList = None
+        self.TagFilters = None
+        self.PaginationToken = None
+        self.MaxResults = None
+
+
+    def _deserialize(self, params):
+        self.ResourceList = params.get("ResourceList")
+        if params.get("TagFilters") is not None:
+            self.TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self.TagFilters.append(obj)
+        self.PaginationToken = params.get("PaginationToken")
+        self.MaxResults = params.get("MaxResults")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetResourcesResponse(AbstractModel):
+    """GetResources response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PaginationToken: Token value obtained for the next page
+        :type PaginationToken: str
+        :param ResourceTagMappingList: List of resources and their associated tags (key-value pairs)
+        :type ResourceTagMappingList: list of ResourceTagMapping
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.PaginationToken = None
+        self.ResourceTagMappingList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PaginationToken = params.get("PaginationToken")
+        if params.get("ResourceTagMappingList") is not None:
+            self.ResourceTagMappingList = []
+            for item in params.get("ResourceTagMappingList"):
+                obj = ResourceTagMapping()
+                obj._deserialize(item)
+                self.ResourceTagMappingList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class GetTagKeysRequest(AbstractModel):
+    """GetTagKeys request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PaginationToken: The token value of the next page obtained from the response of the previous page.
+Leave it empty for the first request.
+        :type PaginationToken: str
+        :param MaxResults: Number of data entries to return per page (up to 1,000).
+Default value: 50.
+        :type MaxResults: int
+        """
+        self.PaginationToken = None
+        self.MaxResults = None
+
+
+    def _deserialize(self, params):
+        self.PaginationToken = params.get("PaginationToken")
+        self.MaxResults = params.get("MaxResults")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTagKeysResponse(AbstractModel):
+    """GetTagKeys response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PaginationToken: Token value obtained for the next page
+        :type PaginationToken: str
+        :param TagKeys: Tag key information.
+        :type TagKeys: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.PaginationToken = None
+        self.TagKeys = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PaginationToken = params.get("PaginationToken")
+        self.TagKeys = params.get("TagKeys")
+        self.RequestId = params.get("RequestId")
+
+
+class GetTagValuesRequest(AbstractModel):
+    """GetTagValues request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagKeys: Tag key.
+All tag values corresponding to the list of tag keys.
+Maximum length: 20
+        :type TagKeys: list of str
+        :param PaginationToken: The token value of the next page obtained from the response of the previous page.
+Leave it empty for the first request.
+        :type PaginationToken: str
+        :param MaxResults: Number of data entries to return per page (up to 1,000).
+Default value: 50.
+        :type MaxResults: int
+        """
+        self.TagKeys = None
+        self.PaginationToken = None
+        self.MaxResults = None
+
+
+    def _deserialize(self, params):
+        self.TagKeys = params.get("TagKeys")
+        self.PaginationToken = params.get("PaginationToken")
+        self.MaxResults = params.get("MaxResults")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTagValuesResponse(AbstractModel):
+    """GetTagValues response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PaginationToken: Token value obtained for the next page
+        :type PaginationToken: str
+        :param Tags: Tag list.
+        :type Tags: list of Tag
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.PaginationToken = None
+        self.Tags = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PaginationToken = params.get("PaginationToken")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class GetTagsRequest(AbstractModel):
+    """GetTags request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PaginationToken: The token value of the next page obtained from the response of the previous page.
+Leave it empty for the first request.
+        :type PaginationToken: str
+        :param MaxResults: Number of data entries to return per page (up to 1,000).
+Default value: 50.
+        :type MaxResults: int
+        :param TagKeys: Tag key.
+All tags corresponding to the list of tag keys.
+Maximum length: 20
+        :type TagKeys: list of str
+        """
+        self.PaginationToken = None
+        self.MaxResults = None
+        self.TagKeys = None
+
+
+    def _deserialize(self, params):
+        self.PaginationToken = params.get("PaginationToken")
+        self.MaxResults = params.get("MaxResults")
+        self.TagKeys = params.get("TagKeys")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTagsResponse(AbstractModel):
+    """GetTags response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PaginationToken: Token value obtained for the next page
+        :type PaginationToken: str
+        :param Tags: Tag list.
+        :type Tags: list of Tag
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.PaginationToken = None
+        self.Tags = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PaginationToken = params.get("PaginationToken")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyResourceTagsRequest(AbstractModel):
     """ModifyResourceTags request structure.
 
@@ -1248,11 +1641,11 @@ class ModifyResourceTagsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Resource: [Six-segment resource description](https://cloud.tencent.com/document/product/598/10606)
+        :param Resource: [Six-segment resource description](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1)
         :type Resource: str
-        :param ReplaceTags: The tags to be added or modified. If the resource described by `Resource` is not associated with the input tag keys, an association will be added. If the tag keys are already associated, the values corresponding to the associated tag keys will be modified to the input values. This API must contain either `ReplaceTags` or `DeleteTag`. And these two parameters cannot include the same tag keys.
+        :param ReplaceTags: The tags to be added or modified. If the resource described by `Resource` is not associated with the input tag keys, an association will be added. If the tag keys are already associated, the values corresponding to the associated tag keys will be modified to the input values. This API must contain either `ReplaceTags` or `DeleteTag`, and these two parameters cannot include the same tag keys. This parameter can be omitted, but it cannot be an empty array.
         :type ReplaceTags: list of Tag
-        :param DeleteTags: The tags to be unassociated. This API must contain either `ReplaceTags` or `DeleteTag`. And these two parameters cannot include the same tag keys.
+        :param DeleteTags: The tags to be disassociated. This API must contain either `ReplaceTags` or `DeleteTag`, and these two parameters cannot include the same tag keys. This parameter can be omitted, but it cannot be an empty array.
         :type DeleteTags: list of TagKeyObject
         """
         self.Resource = None
@@ -1307,7 +1700,7 @@ class ModifyResourcesTagValueRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceType: Resource service name
+        :param ServiceType: Resource service name (the third segment in the six-segment resource description)
         :type ServiceType: str
         :param ResourceIds: Resource ID array, which can contain up to 50 resources
         :type ResourceIds: list of str
@@ -1315,9 +1708,9 @@ class ModifyResourcesTagValueRequest(AbstractModel):
         :type TagKey: str
         :param TagValue: Tag value
         :type TagValue: str
-        :param ResourceRegion: Resource region. This field is not required for resources that do not have the region attribute
+        :param ResourceRegion: Resource region. If resources have the region attribute, this field is required; otherwise, it is optional.
         :type ResourceRegion: str
-        :param ResourcePrefix: Resource prefix, which is not required for COS buckets
+        :param ResourcePrefix: Resource prefix (the part before "/" in the last segment in the six-segment resource description), which is optional for COS buckets but required for other Tencent Cloud resources.
         :type ResourcePrefix: str
         """
         self.ServiceType = None
@@ -1431,6 +1824,40 @@ Note: This field may return null, indicating that no valid value is found.
         self.ServiceType = params.get("ServiceType")
         self.ResourcePrefix = params.get("ResourcePrefix")
         self.ResourceId = params.get("ResourceId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceTagMapping(AbstractModel):
+    """Resources and their associated tags (key-value pairs).
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Resource: Six-segment resource description. Tencent Cloud uses a six-segment value to describe a resource.
+For example, ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}.
+        :type Resource: str
+        :param Tags: List of tags associated with the resource
+        :type Tags: list of Tag
+        """
+        self.Resource = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.Resource = params.get("Resource")
         if params.get("Tags") is not None:
             self.Tags = []
             for item in params.get("Tags"):
@@ -1571,6 +1998,73 @@ Note: this field may return null, indicating that no valid values found.
         
 
 
+class TagResourcesRequest(AbstractModel):
+    """TagResources request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceList: Six-segment resource description list. Tencent Cloud uses a six-segment value to describe a resource. For more information, see [CAM](https://intl.cloud.tencent.com/document/product/598/67350?from_cn_redirect=1) > Overview > API List > Six-Segment Resource Information.
+For example, ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}.
+Value range of N: 0–9
+        :type ResourceList: list of str
+        :param Tags: Tag key and value.
+If multiple tags are specified, all such tags will be created and bound to the specified resources.
+For each resource, each tag key can have only one value. If you try to add an existing tag key, the corresponding tag value will be updated to the new value.
+Non-existent tags will be automatically created.
+Value range of N: 0–9
+        :type Tags: list of Tag
+        """
+        self.ResourceList = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.ResourceList = params.get("ResourceList")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagResourcesResponse(AbstractModel):
+    """TagResources response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FailedResources: Information of failed resources.
+When tag creating and binding succeeds, the returned `FailedResources` will be empty.
+When tag creating and binding partially or completely fails, the returned `FailedResources` will display the details of failed resources.
+        :type FailedResources: list of FailedResource
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FailedResources = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FailedResources") is not None:
+            self.FailedResources = []
+            for item in params.get("FailedResources"):
+                obj = FailedResource()
+                obj._deserialize(item)
+                self.FailedResources.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class TagWithDelete(AbstractModel):
     """A tag key-value pair and if deletion is allowed.
 
@@ -1603,6 +2097,65 @@ class TagWithDelete(AbstractModel):
         
 
 
+class UnTagResourcesRequest(AbstractModel):
+    """UnTagResources request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceList: Six-segment resource description list. Tencent Cloud uses a six-segment value to describe a resource. For more information, see [CAM](https://intl.cloud.tencent.com/document/product/598/67350?from_cn_redirect=1) > Overview > API List > Six-Segment Resource Information.
+For example, ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}.
+Value range of N: 0–9
+        :type ResourceList: list of str
+        :param TagKeys: Tag key.
+Value range: 0–9
+        :type TagKeys: list of str
+        """
+        self.ResourceList = None
+        self.TagKeys = None
+
+
+    def _deserialize(self, params):
+        self.ResourceList = params.get("ResourceList")
+        self.TagKeys = params.get("TagKeys")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnTagResourcesResponse(AbstractModel):
+    """UnTagResources response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FailedResources: Information of failed resources.
+When tag unbinding succeeds, the returned `FailedResources` will be empty.
+When tag unbinding partially or completely fails, the returned `FailedResources` will display the details of failed resources.
+        :type FailedResources: list of FailedResource
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FailedResources = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FailedResources") is not None:
+            self.FailedResources = []
+            for item in params.get("FailedResources"):
+                obj = FailedResource()
+                obj._deserialize(item)
+                self.FailedResources.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class UpdateResourceTagValueRequest(AbstractModel):
     """UpdateResourceTagValue request structure.
 
@@ -1614,7 +2167,7 @@ class UpdateResourceTagValueRequest(AbstractModel):
         :type TagKey: str
         :param TagValue: Modified tag value.
         :type TagValue: str
-        :param Resource: [Six-segment resource description](https://cloud.tencent.com/document/product/598/10606)
+        :param Resource: [Six-segment resource description](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1)
         :type Resource: str
         """
         self.TagKey = None

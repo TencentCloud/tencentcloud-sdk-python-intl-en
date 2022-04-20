@@ -113,64 +113,6 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateAsyncContextTask(self, request):
-        """This API is used to create an offline context search task.
-
-        :param request: Request instance for CreateAsyncContextTask.
-        :type request: :class:`tencentcloud.cls.v20201016.models.CreateAsyncContextTaskRequest`
-        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateAsyncContextTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateAsyncContextTask", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateAsyncContextTaskResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def CreateAsyncSearchTask(self, request):
-        """This API is used to create an offline search task.
-
-        :param request: Request instance for CreateAsyncSearchTask.
-        :type request: :class:`tencentcloud.cls.v20201016.models.CreateAsyncSearchTaskRequest`
-        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateAsyncSearchTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateAsyncSearchTask", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateAsyncSearchTaskResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def CreateConfig(self, request):
         """This API is used to create a collection rule configuration.
 
@@ -230,7 +172,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateExport(self, request):
-        """This API is used to create a log download task.
+        """This API is used to create a download task to export raw logs.
 
         :param request: Request instance for CreateExport.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateExportRequest`
@@ -345,35 +287,6 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateShipper(self, request):
-        """This API is used to create a shipping rule. To use this API, you need to grant CLS the write permission of the specified bucket.
-
-        :param request: Request instance for CreateShipper.
-        :type request: :class:`tencentcloud.cls.v20201016.models.CreateShipperRequest`
-        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateShipperResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateShipper", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateShipperResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def CreateTopic(self, request):
         """This API is used to create a log topic.
 
@@ -447,64 +360,6 @@ class ClsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAlarmNoticeResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DeleteAsyncContextTask(self, request):
-        """This API is used to delete an offline context search task.
-
-        :param request: Request instance for DeleteAsyncContextTask.
-        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteAsyncContextTaskRequest`
-        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteAsyncContextTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteAsyncContextTask", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteAsyncContextTaskResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DeleteAsyncSearchTask(self, request):
-        """This API is used to delete an offline search task.
-
-        :param request: Request instance for DeleteAsyncSearchTask.
-        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteAsyncSearchTaskRequest`
-        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteAsyncSearchTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteAsyncSearchTask", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteAsyncSearchTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -636,7 +491,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteIndex(self, request):
-        """This API is used to delete the index configuration of a log topic.
+        """This API is used to delete the index configuration of a log topic. After deleting, you cannot retrieve or query the collected logs.
 
         :param request: Request instance for DeleteIndex.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteIndexRequest`
@@ -838,122 +693,6 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeAsyncContextResult(self, request):
-        """This API is used to get the result of an offline context search task.
-
-        :param request: Request instance for DescribeAsyncContextResult.
-        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeAsyncContextResultRequest`
-        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeAsyncContextResultResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAsyncContextResult", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeAsyncContextResultResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeAsyncContextTasks(self, request):
-        """This API is used to get the list of offline context search tasks.
-
-        :param request: Request instance for DescribeAsyncContextTasks.
-        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeAsyncContextTasksRequest`
-        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeAsyncContextTasksResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAsyncContextTasks", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeAsyncContextTasksResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeAsyncSearchResult(self, request):
-        """This API is used to get the result of an offline search task.
-
-        :param request: Request instance for DescribeAsyncSearchResult.
-        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeAsyncSearchResultRequest`
-        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeAsyncSearchResultResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAsyncSearchResult", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeAsyncSearchResultResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeAsyncSearchTasks(self, request):
-        """This API is used to get the list of offline search tasks.
-
-        :param request: Request instance for DescribeAsyncSearchTasks.
-        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeAsyncSearchTasksRequest`
-        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeAsyncSearchTasksResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAsyncSearchTasks", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeAsyncSearchTasksResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeConfigMachineGroups(self, request):
         """This API is used to get the machine group bound to a collection rule configuration.
 
@@ -1114,6 +853,35 @@ class ClsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLogContextResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLogHistogram(self, request):
+        """This API is used to build a histogram.
+
+        :param request: Request instance for DescribeLogHistogram.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeLogHistogramRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeLogHistogramResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogHistogram", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLogHistogramResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1650,35 +1418,6 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyTopic(self, request):
-        """This API is used to modify a log topic.
-
-        :param request: Request instance for ModifyTopic.
-        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyTopicRequest`
-        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyTopicResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyTopic", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyTopicResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def RetryShipperTask(self, request):
         """This API is used to retry a failed shipping task.
 
@@ -1709,7 +1448,7 @@ class ClsClient(AbstractClient):
 
 
     def SearchLog(self, request):
-        """This API is used to search logs. It is subject to the default API rate limit, and the number of concurrent calls to the same log topic cannot exceed 15.
+        """This API is used to search logs. It is subject to the default API rate limit, and the number of concurrent queries to the same log topic cannot exceed 15.
 
         :param request: Request instance for SearchLog.
         :type request: :class:`tencentcloud.cls.v20201016.models.SearchLogRequest`
@@ -1767,7 +1506,14 @@ class ClsClient(AbstractClient):
 
 
     def UploadLog(self, request, body):
-        """## Feature Description
+        """## Note
+        To ensure log data reliability and help you use CLS more efficiently, you are advised to use the optimized API [Uploading Structured Logs](https://intl.cloud.tencent.com/document/api/614/16873) to upload logs.
+
+        For the optimized API, we have developed an SDK (available in multiple languages) that provides features including async sending, resource control, automatic retry, graceful shutdown, and detection-based reporting. For details, see [Collection via SDK](https://intl.cloud.tencent.com/document/product/614/67157?from_cn_redirect=1).
+
+        `UploadLog` allows you to synchronously upload log data. If you still want to continue to use this API instead of the optimized one, read this document.
+
+        ## Feature Description
 
         This API is used to write logs to a specified log topic.
 
@@ -1775,11 +1521,11 @@ class ClsClient(AbstractClient):
 
         #### Load balancing mode
 
-        In this mode, logs will be automatically written to a target partition among all readable/writable partitions under the current log topic based on the load balancing principle. This mode is suitable for scenarios where the sequential consumption is not needed.
+        In this mode, logs will be automatically written to a target partition among all readable/writable partitions under the current log topic based on the load balancing principle. This mode is suitable for scenarios where sequential consumption is not needed.
 
         #### Hash routing mode
 
-        In this mode, data will be written to a target partition that meets the range requirements based on the hash value (`X-CLS-HashKey`) carried by data. For example, a log source can be bound to a topic partition through `HashKey`, strictly guaranteeing the sequence of the data written to and consumed in this partition.
+        In this mode, data will be written to a target partition that meets the range requirements based on the carried hash value (`X-CLS-HashKey`). For example, a log source can be bound to a topic partition through `HashKey`, strictly guaranteeing the sequence of the data written to and consumed in this partition.
 
         In addition, CLS allows you to upload logs in the following two modes:
 
@@ -1795,7 +1541,7 @@ class ClsClient(AbstractClient):
         | Parameter     | Required | Description                                                         |
         | ----------- | -------- | ------------------------------------------------------------ |
         | logs        | Yes       | Log array consisting of multiple `Log` values. The `Log` indicates a log, and a `LogGroup` can contain up to 10,000 `Log` values. |
-        | contextFlow | No       | Unique `LogGroup` ID, which should be passed in if the context feature needs to be used. Format: "{context ID}-{LogGroupID}". <br>Context ID: uniquely identifies the context (a series of log files that are continuously scrolling or a series of logs that need to be sequenced), which is a 64-bit integer hex string. <br>LogGroupID: a 64-bit integer hex string that continuously increases, such as `102700A66102516A-59F59`.                        |
+        | contextFlow | No       | Unique `LogGroup` ID, which should be passed in if the context feature needs to be used. Format: "{context ID}-{LogGroupID}". <br>Context ID: Uniquely identifies the context (a series of log files that are continuously scrolling or a series of logs that need to be sequenced), which is a 64-bit integer hex string. <br>LogGroupID: A 64-bit integer hex string that continuously increases, such as `102700A66102516A-59F59`.                        |
         | filename    | No       | Log filename                                                   |
         | source      | No       | Log source, which is generally the machine IP                           |
         | logTags     | No       | Tag list of logs                                               |
@@ -1825,11 +1571,11 @@ class ClsClient(AbstractClient):
 
         This sample describes how to use the protoc compiler to compile the pb description file into a log upload API in C++.
 
-        > ?Currently, protoc supports compilation in multiple programming languages such as Java, C++, and Python. For more information, please see [protoc](https://github.com/protocolbuffers/protobuf).
+        > ?Currently, protoc supports compilation in multiple programming languages such as Java, C++, and Python. For more information, see [protoc](https://github.com/protocolbuffers/protobuf).
 
         #### 1. Install Protocol Buffers
 
-        Download [Protocol Buffers](https://main.qcloudimg.com/raw/d7810aaf8b3073fbbc9d4049c21532aa/protobuf-2.6.1.tar.gz), decompress the package, and install the tool. The version used in the sample is protobuf 2.6.1 running on CentOS 7.3. Run the following command to decompress the `protobuf-2.6.1.tar.gz` package to the `/usr/local` directory and enter the directory:
+        Download [Protocol Buffers](https://main.qcloudimg.com/raw/d7810aaf8b3073fbbc9d4049c21532aa/protobuf-2.6.1.tar.gz), decompress the package, and install the tool. The version used in the sample is protobuf 2.6.1 running on CentOS 7.3. Run the following command to decompress the `protobuf-2.6.1.tar.gz` package to the `/usr/local` directory and go to the directory:
 
         ```
         tar -zxvf protobuf-2.6.1.tar.gz -C /usr/local/ && cd /usr/local/protobuf-2.6.1
@@ -1852,7 +1598,7 @@ class ClsClient(AbstractClient):
 
         #### 2. Create a pb description file
 
-        A pb description file is an agreed-on data interchange format for communication. To upload logs, please compile the specified protocol format to an API in the target programming language and add the API to the project code. For more information, please see [protoc](https://github.com/protocolbuffers/protobuf).
+        A pb description file is an agreed-on data interchange format for communication. To upload logs, compile the specified protocol format to an API in the target programming language and add the API to the project code. For more information, see [protoc](https://github.com/protocolbuffers/protobuf).
 
         Create a pb message description file `cls.proto` based on the pb data format content specified by CLS.
 
@@ -1897,7 +1643,7 @@ class ClsClient(AbstractClient):
 
         #### 3. Compile and generate the API
 
-        This sample uses the proto compiler to generate a C++ file in the same directory as the `cls.proto` file. Run the following compilation commands:
+        This sample uses the proto compiler to generate a C++ file in the same directory as the `cls.proto` file. Run the following compilation command:
 
         ```
         protoc --cpp_out=./ ./cls.proto
@@ -1905,7 +1651,7 @@ class ClsClient(AbstractClient):
 
         > ?`--cpp_out=./ ` indicates that the file will be compiled in cpp format and output to the current directory. `./cls.proto` indicates the `cls.proto` description file in the current directory.
 
-        After the compilation succeeds, the code file in the corresponding programming language will be generated. This sample generates the `cls.pb.h` header file and `cls.pb.cc` code implementation file as shown below:
+        After the compilation succeeds, the code file in the corresponding programming language will be generated. This sample generates the `cls.pb.h` header file and [cls.pb.cc](http://cls.pb.cc) code implementation file as shown below:
 
         ```
         [root@VM_0_8_centos protobuf-2.6.1]# protoc --cpp_out=./ ./cls.proto

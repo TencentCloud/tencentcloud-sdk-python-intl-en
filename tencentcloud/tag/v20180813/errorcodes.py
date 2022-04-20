@@ -17,8 +17,14 @@
 # CAM authentication failed.
 AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
 
+# The operation failed.
+FAILEDOPERATION = 'FailedOperation'
+
 # The `appId` of resources in one single request must be the same.
 FAILEDOPERATION_RESOURCEAPPIDNOTSAME = 'FailedOperation.ResourceAppIdNotSame'
+
+# The resource tag is being processed.
+FAILEDOPERATION_RESOURCETAGPROCESSING = 'FailedOperation.ResourceTagProcessing'
 
 # Tags associated with resources cannot be deleted.
 FAILEDOPERATION_TAGATTACHEDRESOURCE = 'FailedOperation.TagAttachedResource'
@@ -26,11 +32,17 @@ FAILEDOPERATION_TAGATTACHEDRESOURCE = 'FailedOperation.TagAttachedResource'
 # Incorrect parameter.
 INVALIDPARAMETER = 'InvalidParameter'
 
+# The `PaginationToken` parameter is invalid.
+INVALIDPARAMETER_PAGINATIONTOKENINVALID = 'InvalidParameter.PaginationTokenInvalid'
+
 # System reserved tag keys `qcloud`, `tencent` and `project` cannot be created.
 INVALIDPARAMETER_RESERVEDTAGKEY = 'InvalidParameter.ReservedTagKey'
 
 # `Tag` parameter error.
 INVALIDPARAMETER_TAG = 'InvalidParameter.Tag'
+
+# The current business does not support tag operations.
+INVALIDPARAMETER_UNSUPPORTEDSERVICE = 'InvalidParameter.UnsupportedService'
 
 # `DeleteTags` cannot contain the elements in `ReplaceTags` or `AddTags`.
 INVALIDPARAMETERVALUE_DELETETAGSPARAMERROR = 'InvalidParameterValue.DeleteTagsParamError'
@@ -65,6 +77,9 @@ INVALIDPARAMETERVALUE_TAGFILTERSLENGTHEXCEEDED = 'InvalidParameterValue.TagFilte
 # Tag key contains illegal characters.
 INVALIDPARAMETERVALUE_TAGKEYCHARACTERILLEGAL = 'InvalidParameterValue.TagKeyCharacterIllegal'
 
+# There are duplicate `TagKeys` in `TagList`.
+INVALIDPARAMETERVALUE_TAGKEYDUPLICATE = 'InvalidParameterValue.TagKeyDuplicate'
+
 # Tag key cannot be empty.
 INVALIDPARAMETERVALUE_TAGKEYEMPTY = 'InvalidParameterValue.TagKeyEmpty'
 
@@ -74,11 +89,17 @@ INVALIDPARAMETERVALUE_TAGKEYLENGTHEXCEEDED = 'InvalidParameterValue.TagKeyLength
 # Tag value contains illegal characters.
 INVALIDPARAMETERVALUE_TAGVALUECHARACTERILLEGAL = 'InvalidParameterValue.TagValueCharacterIllegal'
 
+# The tag value cannot be empty.
+INVALIDPARAMETERVALUE_TAGVALUEEMPTY = 'InvalidParameterValue.TagValueEmpty'
+
 # Tag value length exceeds limit.
 INVALIDPARAMETERVALUE_TAGVALUELENGTHEXCEEDED = 'InvalidParameterValue.TagValueLengthExceeded'
 
 # `Uin` parameter is invalid.
 INVALIDPARAMETERVALUE_UININVALID = 'InvalidParameterValue.UinInvalid'
+
+# The quota limit is exceeded.
+LIMITEXCEEDED = 'LimitExceeded'
 
 # The number of tags associated with the resource exceeds the limit.
 LIMITEXCEEDED_RESOURCEATTACHEDTAGS = 'LimitExceeded.ResourceAttachedTags'
@@ -89,8 +110,14 @@ LIMITEXCEEDED_RESOURCENUMPERREQUEST = 'LimitExceeded.ResourceNumPerRequest'
 # The number of created tag keys reaches the limit of 1,000.
 LIMITEXCEEDED_TAGKEY = 'LimitExceeded.TagKey'
 
+# The number of tags in a single request exceeds the limit.
+LIMITEXCEEDED_TAGNUMPERREQUEST = 'LimitExceeded.TagNumPerRequest'
+
 # Each tag key can have up to 1,000 values.
 LIMITEXCEEDED_TAGVALUE = 'LimitExceeded.TagValue'
+
+# Missing parameter.
+MISSINGPARAMETER = 'MissingParameter'
 
 # Operation denied.
 OPERATIONDENIED = 'OperationDenied'

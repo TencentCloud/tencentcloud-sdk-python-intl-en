@@ -32,6 +32,9 @@ INVALIDPARAMETER = 'InvalidParameter'
 # The instance does not support parameter setting.
 INVALIDPARAMETER_CURRENTINSTANCENOTSUPPORTMODIFYPARAMS = 'InvalidParameter.CurrentInstanceNotSupportModifyParams'
 
+# Invalid Vip information
+INVALIDPARAMETER_INVALIDVIP = 'InvalidParameter.InvalidVip'
+
 # The current subaccount has no permission to perform this operation.
 INVALIDPARAMETER_PERMISSIONDENIED = 'InvalidParameter.PermissionDenied'
 

@@ -89,6 +89,15 @@ INTERNALERROR_DBOPERATIONFAILED = 'InternalError.DbOperationFailed'
 # Failed to query the information of a dedicated cluster.
 INTERNALERROR_FENCEERROR = 'InternalError.FenceError'
 
+# Failed to get database instance parameters.
+INTERNALERROR_GETDBCONFIGFAILED = 'InternalError.GetDbConfigFailed'
+
+# Failed to get database list.
+INTERNALERROR_GETDBLISTFAILED = 'InternalError.GetDbListFailed'
+
+# Failed to get the database objects.
+INTERNALERROR_GETDBOBJECTFAILED = 'InternalError.GetDbObjectFailed'
+
 # Failed to get the instance details.
 INTERNALERROR_GETINSTANCEDETAILFAILED = 'InternalError.GetInstanceDetailFailed'
 
@@ -101,8 +110,14 @@ INTERNALERROR_GETRIGHTFAILED = 'InternalError.GetRightFailed'
 # Failed to query security group details.
 INTERNALERROR_GETSECURITYGROUPDETAILFAILED = 'InternalError.GetSecurityGroupDetailFailed'
 
+# Failed to query slow query logs.
+INTERNALERROR_GETSLOWLOGFAILED = 'InternalError.GetSlowLogFailed'
+
 # Failed to query the VPC subnet information.
 INTERNALERROR_GETSUBNETFAILED = 'InternalError.GetSubnetFailed'
+
+# Failed to get the table information.
+INTERNALERROR_GETTABLEINFOFAILED = 'InternalError.GetTableInfoFailed'
 
 # Failed to get the list of accounts.
 INTERNALERROR_GETUSERLISTFAILED = 'InternalError.GetUserListFailed'
@@ -130,9 +145,6 @@ INTERNALERROR_LISTINSTANCERESPRESOURCECOUNTNOTMATCHERROR = 'InternalError.ListIn
 
 # An error occurred when querying instance information.
 INTERNALERROR_LISTINSTANCESERROR = 'InternalError.ListInstancesError'
-
-# Failed to pull the project list.
-INTERNALERROR_LISTPROJECTFAILED = 'InternalError.ListProjectFailed'
 
 # Database operation failed.
 INTERNALERROR_OPERATEDATABASEFAILED = 'InternalError.OperateDatabaseFailed'
@@ -173,6 +185,9 @@ INVALIDPARAMETER_GENERICPARAMETERERROR = 'InvalidParameter.GenericParameterError
 # Invalid parameters.
 INVALIDPARAMETER_ILLEGALPARAMETERERROR = 'InvalidParameter.IllegalParameterError'
 
+# Incorrect time parameter.
+INVALIDPARAMETER_ILLEGALTIME = 'InvalidParameter.IllegalTime'
+
 # Failed to find the requested instance.
 INVALIDPARAMETER_INSTANCENOTFOUND = 'InvalidParameter.InstanceNotFound'
 
@@ -194,6 +209,9 @@ INVALIDPARAMETER_ZONEIDILLEGAL = 'InvalidParameter.ZoneIdIllegal'
 # The account to be created already exists.
 INVALIDPARAMETERVALUE_ACCOUNTALREADYEXISTS = 'InvalidParameterValue.AccountAlreadyExists'
 
+# The instance does not support this sync mode.
+INVALIDPARAMETERVALUE_BADSYNCMODE = 'InvalidParameterValue.BadSyncMode'
+
 # The specified permission could not be granted to this account.
 INVALIDPARAMETERVALUE_BADUSERRIGHT = 'InvalidParameterValue.BadUserRight'
 
@@ -202,6 +220,9 @@ INVALIDPARAMETERVALUE_BADUSERTYPE = 'InvalidParameterValue.BadUserType'
 
 # The dedicated cluster to which the database instance belongs was not found.
 INVALIDPARAMETERVALUE_ILLEGALEXCLUSTERID = 'InvalidParameterValue.IllegalExclusterID'
+
+# An error occurred while initializing database instance parameters.
+INVALIDPARAMETERVALUE_ILLEGALINITPARAM = 'InvalidParameterValue.IllegalInitParam'
 
 # Incorrect permission parameter
 INVALIDPARAMETERVALUE_ILLEGALRIGHTPARAM = 'InvalidParameterValue.IllegalRightParam'
@@ -218,14 +239,14 @@ INVALIDPARAMETERVALUE_SUPERUSERFORBIDDEN = 'InvalidParameterValue.SuperUserForbi
 # The specified account does not exist.
 RESOURCENOTFOUND_ACCOUNTDOESNOTEXIST = 'ResourceNotFound.AccountDoesNotExist'
 
-# The instance does not exist.
-RESOURCENOTFOUND_INSTANCENOTFOUND = 'ResourceNotFound.InstanceNotFound'
-
 # The specified database instance was not found.
 RESOURCENOTFOUND_NOINSTANCEFOUND = 'ResourceNotFound.NoInstanceFound'
 
 # Failed to find the configuration of the product associated with the security group.
 RESOURCENOTFOUND_PRODUCTCONFIGNOTEXISTEDERROR = 'ResourceNotFound.ProductConfigNotExistedError'
+
+# Incorrect instance status. Unable to initialize.
+RESOURCEUNAVAILABLE_BADINSTANCESTATUS = 'ResourceUnavailable.BadInstanceStatus'
 
 # An error occurred while calling COS APIs.
 RESOURCEUNAVAILABLE_COSAPIFAILED = 'ResourceUnavailable.CosApiFailed'
@@ -241,6 +262,9 @@ RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = 'ResourceUnavailable.InstanceStatus
 
 # You have no permission to manipulate this API or resource.
 UNAUTHORIZEDOPERATION_PERMISSIONDENIED = 'UnauthorizedOperation.PermissionDenied'
+
+# Unsupported operation.
+UNSUPPORTEDOPERATION_INVALIDOPERATION = 'UnsupportedOperation.InvalidOperation'
 
 # The proxy program is too old. Please contact customer service for upgrade and try again.
 UNSUPPORTEDOPERATION_OLDPROXYVERSION = 'UnsupportedOperation.OldProxyVersion'

@@ -6866,6 +6866,51 @@ class CreateSnapshotByTimeOffsetTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateStorageRegionRequest(AbstractModel):
+    """CreateStorageRegion request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StorageRegion: The region to enable storage in, which must be a storage region supported by VOD.
+        :type StorageRegion: str
+        :param SubAppId: The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.StorageRegion = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.StorageRegion = params.get("StorageRegion")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateStorageRegionResponse(AbstractModel):
+    """CreateStorageRegion response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateSubAppIdRequest(AbstractModel):
     """CreateSubAppId request structure.
 
@@ -9676,6 +9721,56 @@ class DescribeStorageDetailsResponse(AbstractModel):
                 obj = StatDataItem()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStorageRegionsRequest(AbstractModel):
+    """DescribeStorageRegions request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubAppId: The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStorageRegionsResponse(AbstractModel):
+    """DescribeStorageRegions response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StorageRegionInfos: The information of the storage regions.
+        :type StorageRegionInfos: list of StorageRegionInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.StorageRegionInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("StorageRegionInfos") is not None:
+            self.StorageRegionInfos = []
+            for item in params.get("StorageRegionInfos"):
+                obj = StorageRegionInfo()
+                obj._deserialize(item)
+                self.StorageRegionInfos.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -14887,6 +14982,51 @@ class ModifyContentReviewTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDefaultStorageRegionRequest(AbstractModel):
+    """ModifyDefaultStorageRegion request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StorageRegion: The default storage region, which must be a region you have storage access to. You can use the `DescribeStorageRegions` API to query such regions.
+        :type StorageRegion: str
+        :param SubAppId: The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.StorageRegion = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.StorageRegion = params.get("StorageRegion")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDefaultStorageRegionResponse(AbstractModel):
+    """ModifyDefaultStorageRegion response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyImageSpriteTemplateRequest(AbstractModel):
     """ModifyImageSpriteTemplate request structure.
 
@@ -19462,6 +19602,44 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = ImageTransform()
                 obj._deserialize(item)
                 self.ImageOperations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StorageRegionInfo(AbstractModel):
+    """The information of a storage region.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Region: Storage region.
+        :type Region: str
+        :param Description: Description of the storage region.
+        :type Description: str
+        :param Status: Whether storage is enabled in the region. Valid values:
+<li>opened: Enabled</li>
+<li>unopened: Not enabled</li>
+        :type Status: str
+        :param IsDefault: Whether the region is the default storage region. Valid values: true, false.
+        :type IsDefault: bool
+        """
+        self.Region = None
+        self.Description = None
+        self.Status = None
+        self.IsDefault = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.Description = params.get("Description")
+        self.Status = params.get("Status")
+        self.IsDefault = params.get("IsDefault")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
