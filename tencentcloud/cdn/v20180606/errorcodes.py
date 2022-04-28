@@ -17,6 +17,9 @@
 # Authentication error. Please check and try again.
 AUTHFAILURE_INVALIDAUTHORIZATION = 'AuthFailure.InvalidAuthorization'
 
+# Failed to update the domain name configuration. Please try again or contact customer service.
+FAILEDOPERATION_CDNCONFIGERROR = 'FailedOperation.CdnConfigError'
+
 # Authentication system internal error.
 INTERNALERROR_CAMSYSTEMERROR = 'InternalError.CamSystemError'
 
@@ -35,11 +38,26 @@ INTERNALERROR_CDNQUERYSYSTEMERROR = 'InternalError.CdnQuerySystemError'
 # System error. Please submit a ticket for troubleshooting.
 INTERNALERROR_CDNSYSTEMERROR = 'InternalError.CdnSystemError'
 
+# Internal error. Please try again or contact the customer service for assistance.
+INTERNALERROR_COSTDATASYSTEMERROR = 'InternalError.CostDataSystemError'
+
+# Error with the data query. Please submit a ticket for troubleshooting.
+INTERNALERROR_DATASYSTEMERROR = 'InternalError.DataSystemError'
+
 # Service internal error. Please submit a ticket for troubleshooting.
 INTERNALERROR_ERROR = 'InternalError.Error'
 
+# Service internal error. Please submit a ticket for troubleshooting.
+INTERNALERROR_INVALIDERRORCODE = 'InternalError.InvalidErrorCode'
+
 # Internal service error. Please submit a ticket for troubleshooting.
 INTERNALERROR_PROXYSERVER = 'InternalError.ProxyServer'
+
+# Internal service error. Please submit a ticket for troubleshooting.
+INTERNALERROR_ROUTEERROR = 'InternalError.RouteError'
+
+# Internal error. Please try again or contact the customer service for assistance.
+INTERNALERROR_TAGSYSTEMERROR = 'InternalError.TagSystemError'
 
 # Invalid domain name status.
 INVALIDPARAMETER_CDNSTATUSINVALIDDOMAIN = 'InvalidParameter.CDNStatusInvalidDomain'
@@ -56,6 +74,9 @@ INVALIDPARAMETER_CDNHOSTINVALIDSTATUS = 'InvalidParameter.CdnHostInvalidStatus'
 # Internal API error. Please submit a ticket for troubleshooting.
 INVALIDPARAMETER_CDNINTERFACEERROR = 'InvalidParameter.CdnInterfaceError'
 
+# The parameter “Metric” is wrong. Please check and try again.
+INVALIDPARAMETER_CDNINVALIDPARAMMETRIC = 'InvalidParameter.CdnInvalidParamMetric'
+
 # Parameter error. Please see the sample parameters in the documentation.
 INVALIDPARAMETER_CDNPARAMERROR = 'InvalidParameter.CdnParamError'
 
@@ -68,11 +89,20 @@ INVALIDPARAMETER_CDNPUSHWILDCARDNOTALLOWED = 'InvalidParameter.CdnPushWildcardNo
 # Invalid date. Please see the sample date in the documentation.
 INVALIDPARAMETER_CDNSTATINVALIDDATE = 'InvalidParameter.CdnStatInvalidDate'
 
+# Invalid statistical type. Please see the sample statistical analysis in the documentation.
+INVALIDPARAMETER_CDNSTATINVALIDMETRIC = 'InvalidParameter.CdnStatInvalidMetric'
+
 # Incorrect project ID. Please check and try again.
 INVALIDPARAMETER_CDNSTATINVALIDPROJECTID = 'InvalidParameter.CdnStatInvalidProjectId'
 
+# The number of queried domain names reached the limit.
+INVALIDPARAMETER_CDNSTATTOOMANYDOMAINS = 'InvalidParameter.CdnStatTooManyDomains'
+
 # The URL exceeds the length limit.
 INVALIDPARAMETER_CDNURLEXCEEDLENGTH = 'InvalidParameter.CdnUrlExceedLength'
+
+# API internal error. Please try again or contact the customer service for assistance.
+INVALIDPARAMETER_ECDNINTERFACEERROR = 'InvalidParameter.EcdnInterfaceError'
 
 # Unable to recreate: the task has expired.
 INVALIDPARAMETER_SCDNLOGTASKEXPIRED = 'InvalidParameter.ScdnLogTaskExpired'
@@ -113,8 +143,14 @@ RESOURCEINUSE_CDNOPINPROGRESS = 'ResourceInUse.CdnOpInProgress'
 # This domain name does not exist under the account. Please check and try again.
 RESOURCENOTFOUND_CDNHOSTNOTEXISTS = 'ResourceNotFound.CdnHostNotExists'
 
+# The project does not exist. Please check and try again.
+RESOURCENOTFOUND_CDNPROJECTNOTEXISTS = 'ResourceNotFound.CdnProjectNotExists'
+
 # The CDN service has not been activated. Please activate it first before using this API.
 RESOURCENOTFOUND_CDNUSERNOTEXISTS = 'ResourceNotFound.CdnUserNotExists'
+
+# The number of accessed domain names reached the limit.
+RESOURCENOTFOUND_CDNUSERTOOMANYHOSTS = 'ResourceNotFound.CdnUserTooManyHosts'
 
 # The domain name is locked.
 RESOURCEUNAVAILABLE_CDNHOSTISLOCKED = 'ResourceUnavailable.CdnHostIsLocked'
@@ -122,11 +158,20 @@ RESOURCEUNAVAILABLE_CDNHOSTISLOCKED = 'ResourceUnavailable.CdnHostIsLocked'
 # The domain name has been deactivated. Prefetch requests cannot be submitted.
 RESOURCEUNAVAILABLE_CDNHOSTISNOTONLINE = 'ResourceUnavailable.CdnHostIsNotOnline'
 
+# The sub-account is unauthorized to query full data.
+UNAUTHORIZEDOPERATION_CDNACCOUNTUNAUTHORIZED = 'UnauthorizedOperation.CdnAccountUnauthorized'
+
 # No CAM policy is configured for the sub-account.
 UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = 'UnauthorizedOperation.CdnCamUnauthorized'
 
 # The sub-account has no access to the CDN-accelerated domain name.
 UNAUTHORIZEDOPERATION_CDNHOSTUNAUTHORIZED = 'UnauthorizedOperation.CdnHostUnauthorized'
+
+# The sub-account has no access to the project.
+UNAUTHORIZEDOPERATION_CDNPROJECTUNAUTHORIZED = 'UnauthorizedOperation.CdnProjectUnauthorized'
+
+# The sub-account has no access to the tag.
+UNAUTHORIZEDOPERATION_CDNTAGUNAUTHORIZED = 'UnauthorizedOperation.CdnTagUnauthorized'
 
 # Fail to authenticate the CDN user.
 UNAUTHORIZEDOPERATION_CDNUSERAUTHFAIL = 'UnauthorizedOperation.CdnUserAuthFail'
@@ -140,7 +185,10 @@ UNAUTHORIZEDOPERATION_CDNUSERISSUSPENDED = 'UnauthorizedOperation.CdnUserIsSuspe
 # You are not in the beta whitelist and thus have no permission to use this function.
 UNAUTHORIZEDOPERATION_CDNUSERNOWHITELIST = 'UnauthorizedOperation.CdnUserNoWhitelist'
 
-# 
+# Service internal error. Please submit a ticket for troubleshooting.
+UNAUTHORIZEDOPERATION_CSRFERROR = 'UnauthorizedOperation.CsrfError'
+
+# Please go to the CDN console for operation.
 UNAUTHORIZEDOPERATION_ECDNMIGRATEDCDN = 'UnauthorizedOperation.EcdnMigratedCdn'
 
 # This operation is not supported currently. Please submit a ticket for assistance.

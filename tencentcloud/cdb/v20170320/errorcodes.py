@@ -53,17 +53,11 @@ FAILEDOPERATION_CREATEAUDITFAILERROR = 'FailedOperation.CreateAuditFailError'
 # Failed to assign an exclusive VIP to the read-only replica.
 FAILEDOPERATION_CREATEROVIPERROR = 'FailedOperation.CreateRoVipError'
 
-# Database operation failed.
-FAILEDOPERATION_DBOPERATIONACTIONERROR = 'FailedOperation.DBOperationActionError'
-
 # Failed to query database proxy.
 FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = 'FailedOperation.DescribeProxyGroupError'
 
 # An error occurred while obtaining permissions.
 FAILEDOPERATION_GETPRIVILEGEERROR = 'FailedOperation.GetPrivilegeError'
-
-# Query failed.
-FAILEDOPERATION_INSTANCEQUERYERROR = 'FailedOperation.InstanceQueryError'
 
 # Failed to deserialize JSON.
 FAILEDOPERATION_JSONUNMARSHALERROR = 'FailedOperation.JsonUnmarshalError'
@@ -155,6 +149,9 @@ INTERNALERROR_FTPERROR = 'InternalError.FtpError'
 # Exceptional HTTP request
 INTERNALERROR_HTTPERROR = 'InternalError.HttpError'
 
+# Internal service error
+INTERNALERROR_INNERCOMMONERROR = 'InternalError.InnerCommonError'
+
 # Internal service error. Please contact customer service.
 INTERNALERROR_INTERNALASSERTERROR = 'InternalError.InternalAssertError'
 
@@ -212,6 +209,9 @@ INTERNALERROR_TIMEWINDOWERROR = 'InternalError.TimeWindowError'
 # Transaction system error.
 INTERNALERROR_TRADEERROR = 'InternalError.TradeError'
 
+# Operation failed
+INTERNALERROR_TRANSACTIONBEGINERROR = 'InternalError.TransactionBeginError'
+
 # Unknown error
 INTERNALERROR_UNDEFINEDERROR = 'InternalError.UndefinedError'
 
@@ -226,9 +226,6 @@ INVALIDPARAMETER = 'InvalidParameter'
 
 # This API was not found.
 INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = 'InvalidParameter.ControllerNotFoundError'
-
-# There are resources in the placement group.
-INVALIDPARAMETER_DEPLOYGROUPNOTEMPTY = 'InvalidParameter.DeployGroupNotEmpty'
 
 # Parameter exception.
 INVALIDPARAMETER_EXCEPTIONPARAM = 'InvalidParameter.ExceptionParam'
@@ -250,9 +247,6 @@ INVALIDPARAMETER_INVALIDPARAMETERERROR = 'InvalidParameter.InvalidParameterError
 
 # Failed to deserialize JSON.
 INVALIDPARAMETER_JSONUNMARSHALERROR = 'InvalidParameter.JsonUnmarshalError'
-
-# The quota of placement group resources has been exceeded.
-INVALIDPARAMETER_OVERDEPLOYGROUPQUOTA = 'InvalidParameter.OverDeployGroupQuota'
 
 # The resource already exists.
 INVALIDPARAMETER_RESOURCEEXISTS = 'InvalidParameter.ResourceExists'
@@ -304,6 +298,9 @@ INVALIDPARAMETERVALUE_VERIFYACCOUNTPRIVERROR = 'InvalidParameterValue.VerifyAcco
 
 # The quota limit has been reached.
 LIMITEXCEEDED = 'LimitExceeded'
+
+# Missing parameter
+MISSINGPARAMETER = 'MissingParameter'
 
 # Account-related parameters are missing.
 MISSINGPARAMETER_ACCOUNTMISSINGPARAMETERERROR = 'MissingParameter.AccountMissingParameterError'

@@ -1457,7 +1457,9 @@ class CreateSchedulingDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Product: 
+        :param Product: Indicates whether a hybrid cloud product is used.
+`hybrid`: Anti-DDoS Service Platform
+For other products, leave this field empty.
         :type Product: str
         """
         self.Product = None
@@ -1627,9 +1629,9 @@ class DDoSGeoIPBlockConfig(AbstractModel):
     def __init__(self):
         r"""
         :param RegionType: Region type. Valid values:
-oversea: outside the Chinese mainland
-`china`: the Chinese mainland
-`customized`: custom region
+`oversea`: Outside the Chinese mainland
+`china`: The Chinese mainland
+`customized`: User-specified region
 ]
         :type RegionType: str
         :param Action: Blocking action. Valid values:
@@ -4759,112 +4761,120 @@ class NewL7RuleEntry(AbstractModel):
 
     def __init__(self):
         r"""
-        :param KeepTime: Session persistence duration, in seconds.
-        :type KeepTime: int
-        :param LbType: Load balancing method. Valid value: `1` (weighed polling).
-        :type LbType: int
-        :param SourceList: List of origins
-        :type SourceList: list of L4RuleSource
-        :param KeepEnable: Whether session persistence is enabled. Valid values: `0` (disabled) and `1` (enabled).
-        :type KeepEnable: int
-        :param Domain: Forwarding domain name.
-        :type Domain: str
         :param Protocol: Forwarding protocol. Valid values: `http` and `https`.
         :type Protocol: str
+        :param Domain: Forwarding domain name.
+        :type Domain: str
+        :param LbType: Load balancing method. Valid value: `1` (weighed polling).
+        :type LbType: int
+        :param KeepEnable: Whether session persistence is enabled. Valid values: `0` (disabled) and `1` (enabled).
+        :type KeepEnable: int
+        :param KeepTime: Session persistence duration, in seconds.
+        :type KeepTime: int
         :param SourceType: Forwarding method. Valid values: `1` (by domain name); `2` (by IP).
         :type SourceType: int
-        :param HttpsToHttpEnable: Whether to enable **Forward HTTPS requests via HTTP**. Valid values: `0` (disabled) and `1` (enabled). It defaults to `0`.
-        :type HttpsToHttpEnable: int
+        :param SourceList: List of origins
+        :type SourceList: list of L4RuleSource
+        :param Region: Region code.
+        :type Region: int
+        :param Id: Resource ID.
+        :type Id: str
+        :param Ip: Anti-DDoS instance IP address.
+        :type Ip: str
+        :param RuleId: Rule ID. This field is not required for adding a rule, but is required for modifying or deleting a rule.
+        :type RuleId: str
+        :param RuleName: Rule description.
+        :type RuleName: str
+        :param CertType: Certificate source. When the forwarding protocol is HTTPS, this field must be set to `2` (Tencent Cloud managed certificate), and for HTTP protocol, it can be set to `0`.
+        :type CertType: int
+        :param SSLId: When the certificate is managed by Tencent Cloud, this field must be set to the ID of the managed certificate.
+        :type SSLId: str
+        :param Cert: [Disused] When the certificate is an external certificate, the certificate content should be provided here. 
+        :type Cert: str
+        :param PrivateKey: [Disused] When the certificate is an external certificate, the certificate key should be provided here. 
+        :type PrivateKey: str
         :param Status: Rule status. Valid values: `0` (the rule was successfully configured), `1` (configuring the rule), `2` (rule configuration failed), `3` (deleting the rule), `5` (failed to delete rule), `6` (rule awaiting configuration), `7` (rule awaiting deletion), and `8` (rule awaiting certificate configuration).
         :type Status: int
-        :param CCLevel: CC protection level based on HTTPS.
-        :type CCLevel: str
+        :param CCStatus: CC protection status. Valid values: `0` (disabled) and `1` (enabled).
+        :type CCStatus: int
         :param CCEnable: CC protection status based on HTTPS. Valid values: `0` (disabled) and `1` (enabled).
         :type CCEnable: int
         :param CCThreshold: CC protection threshold based on HTTPS.
         :type CCThreshold: int
-        :param Region: Region code.
-        :type Region: int
-        :param RuleName: Rule description.
-        :type RuleName: str
-        :param Cert: [Disused] When the certificate is an external certificate, the certificate content should be provided here. 
-        :type Cert: str
+        :param CCLevel: CC protection level based on HTTPS.
+        :type CCLevel: str
         :param ModifyTime: Modification time.
         :type ModifyTime: str
-        :param RuleId: Rule ID. This field is not required for adding a rule, but is required for modifying or deleting a rule.
-        :type RuleId: str
-        :param Ip: Anti-DDoS instance IP address.
-        :type Ip: str
-        :param PrivateKey: [Disused] When the certificate is an external certificate, the certificate key should be provided here. 
-        :type PrivateKey: str
-        :param CertType: Certificate source. When the forwarding protocol is HTTPS, this field must be set to `2` (Tencent Cloud managed certificate), and for HTTP protocol, it can be set to `0`.
-        :type CertType: int
+        :param HttpsToHttpEnable: Whether to enable **Forward HTTPS requests via HTTP**. Valid values: `0` (disabled) and `1` (enabled). It defaults to `0`.
+        :type HttpsToHttpEnable: int
         :param VirtualPort: Access port number.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type VirtualPort: int
-        :param CCStatus: CC protection status. Valid values: `0` (disabled) and `1` (enabled).
-        :type CCStatus: int
-        :param SSLId: When the certificate is managed by Tencent Cloud, this field must be set to the ID of the managed certificate.
-        :type SSLId: str
-        :param Id: Resource ID.
-        :type Id: str
+        :param RewriteHttps: Specifies whether to forcibly redirect HTTP to HTTPS. `1`: Enable. `0`: Disable.
+        :type RewriteHttps: int
+        :param ErrCode: Returns an error code when the rule configuration fails (only valid when `Status=2`). `1001`: The certificate does not exist. `1002`: Failed to obtain the certificate. `1003`: Failed to upload the certificate. `1004`: The certificate has expired.
+        :type ErrCode: int
         """
-        self.KeepTime = None
-        self.LbType = None
-        self.SourceList = None
-        self.KeepEnable = None
-        self.Domain = None
         self.Protocol = None
+        self.Domain = None
+        self.LbType = None
+        self.KeepEnable = None
+        self.KeepTime = None
         self.SourceType = None
-        self.HttpsToHttpEnable = None
+        self.SourceList = None
+        self.Region = None
+        self.Id = None
+        self.Ip = None
+        self.RuleId = None
+        self.RuleName = None
+        self.CertType = None
+        self.SSLId = None
+        self.Cert = None
+        self.PrivateKey = None
         self.Status = None
-        self.CCLevel = None
+        self.CCStatus = None
         self.CCEnable = None
         self.CCThreshold = None
-        self.Region = None
-        self.RuleName = None
-        self.Cert = None
+        self.CCLevel = None
         self.ModifyTime = None
-        self.RuleId = None
-        self.Ip = None
-        self.PrivateKey = None
-        self.CertType = None
+        self.HttpsToHttpEnable = None
         self.VirtualPort = None
-        self.CCStatus = None
-        self.SSLId = None
-        self.Id = None
+        self.RewriteHttps = None
+        self.ErrCode = None
 
 
     def _deserialize(self, params):
-        self.KeepTime = params.get("KeepTime")
+        self.Protocol = params.get("Protocol")
+        self.Domain = params.get("Domain")
         self.LbType = params.get("LbType")
+        self.KeepEnable = params.get("KeepEnable")
+        self.KeepTime = params.get("KeepTime")
+        self.SourceType = params.get("SourceType")
         if params.get("SourceList") is not None:
             self.SourceList = []
             for item in params.get("SourceList"):
                 obj = L4RuleSource()
                 obj._deserialize(item)
                 self.SourceList.append(obj)
-        self.KeepEnable = params.get("KeepEnable")
-        self.Domain = params.get("Domain")
-        self.Protocol = params.get("Protocol")
-        self.SourceType = params.get("SourceType")
-        self.HttpsToHttpEnable = params.get("HttpsToHttpEnable")
+        self.Region = params.get("Region")
+        self.Id = params.get("Id")
+        self.Ip = params.get("Ip")
+        self.RuleId = params.get("RuleId")
+        self.RuleName = params.get("RuleName")
+        self.CertType = params.get("CertType")
+        self.SSLId = params.get("SSLId")
+        self.Cert = params.get("Cert")
+        self.PrivateKey = params.get("PrivateKey")
         self.Status = params.get("Status")
-        self.CCLevel = params.get("CCLevel")
+        self.CCStatus = params.get("CCStatus")
         self.CCEnable = params.get("CCEnable")
         self.CCThreshold = params.get("CCThreshold")
-        self.Region = params.get("Region")
-        self.RuleName = params.get("RuleName")
-        self.Cert = params.get("Cert")
+        self.CCLevel = params.get("CCLevel")
         self.ModifyTime = params.get("ModifyTime")
-        self.RuleId = params.get("RuleId")
-        self.Ip = params.get("Ip")
-        self.PrivateKey = params.get("PrivateKey")
-        self.CertType = params.get("CertType")
+        self.HttpsToHttpEnable = params.get("HttpsToHttpEnable")
         self.VirtualPort = params.get("VirtualPort")
-        self.CCStatus = params.get("CCStatus")
-        self.SSLId = params.get("SSLId")
-        self.Id = params.get("Id")
+        self.RewriteHttps = params.get("RewriteHttps")
+        self.ErrCode = params.get("ErrCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

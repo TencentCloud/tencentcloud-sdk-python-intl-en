@@ -17,6 +17,96 @@
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
+# 
+FAILEDOPERATION_ACCOUNTCOMMON = 'FailedOperation.AccountCommon'
+
+# 
+FAILEDOPERATION_ACCOUNTUSERNOTAUTHENTICATED = 'FailedOperation.AccountUserNotAuthenticated'
+
+# 
+FAILEDOPERATION_ASCOMMON = 'FailedOperation.AsCommon'
+
+# 
+FAILEDOPERATION_CLBUNEXPECTEDERROR = 'FailedOperation.CLBUnexpectedError'
+
+# 
+FAILEDOPERATION_CAMNOAUTH = 'FailedOperation.CamNoAuth'
+
+# 
+FAILEDOPERATION_CLUSTERNOTFOUND = 'FailedOperation.ClusterNotFound'
+
+# 
+FAILEDOPERATION_CLUSTERSTATE = 'FailedOperation.ClusterState'
+
+# 
+FAILEDOPERATION_CLUSTERUPGRADENODEVERSION = 'FailedOperation.ClusterUpgradeNodeVersion'
+
+# 
+FAILEDOPERATION_COMPONENTCLIENTHTTP = 'FailedOperation.ComponentClientHttp'
+
+# 
+FAILEDOPERATION_COMPONENTCLIENTUNPACK = 'FailedOperation.ComponentClientUnpack'
+
+# 
+FAILEDOPERATION_COMPONENTCLINETHTTP = 'FailedOperation.ComponentClinetHttp'
+
+# 
+FAILEDOPERATION_CVMCOMMON = 'FailedOperation.CvmCommon'
+
+# 
+FAILEDOPERATION_CVMVPCIDNOTMATCH = 'FailedOperation.CvmVpcidNotMatch'
+
+# 
+FAILEDOPERATION_DB = 'FailedOperation.Db'
+
+# 
+FAILEDOPERATION_DBRECORDNOTFOUND = 'FailedOperation.DbRecordNotFound'
+
+# 
+FAILEDOPERATION_DFWGETUSGQUOTA = 'FailedOperation.DfwGetUSGQuota'
+
+# 
+FAILEDOPERATION_KUBECLIENTCONNECTION = 'FailedOperation.KubeClientConnection'
+
+# 
+FAILEDOPERATION_KUBECOMMON = 'FailedOperation.KubeCommon'
+
+# 
+FAILEDOPERATION_KUBERNETESCREATEOPERATIONERROR = 'FailedOperation.KubernetesCreateOperationError'
+
+# 
+FAILEDOPERATION_KUBERNETESINTERNAL = 'FailedOperation.KubernetesInternal'
+
+# 
+FAILEDOPERATION_LBCOMMON = 'FailedOperation.LbCommon'
+
+# 
+FAILEDOPERATION_NETWORKSCALEERROR = 'FailedOperation.NetworkScaleError'
+
+# 
+FAILEDOPERATION_OSNOTSUPPORT = 'FailedOperation.OsNotSupport'
+
+# 
+FAILEDOPERATION_PARAM = 'FailedOperation.Param'
+
+# 
+FAILEDOPERATION_QUOTAMAXCLSLIMIT = 'FailedOperation.QuotaMaxClsLimit'
+
+# 
+FAILEDOPERATION_QUOTAMAXNODLIMIT = 'FailedOperation.QuotaMaxNodLimit'
+
+# 
+FAILEDOPERATION_QUOTAUSGLIMIT = 'FailedOperation.QuotaUSGLimit'
+
+# 
+FAILEDOPERATION_TASKALREADYRUNNING = 'FailedOperation.TaskAlreadyRunning'
+
+# 
+FAILEDOPERATION_TRADECOMMON = 'FailedOperation.TradeCommon'
+
+# 
+FAILEDOPERATION_VPCRECODRNOTFOUND = 'FailedOperation.VpcRecodrNotFound'
+
 # Internal error.
 INTERNALERROR = 'InternalError'
 
@@ -280,6 +370,9 @@ RESOURCENOTFOUND_KUBERNETESRESOURCENOTFOUND = 'ResourceNotFound.KubernetesResour
 
 # Resource is unavailable
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'
+
+# 
+RESOURCEUNAVAILABLE_CLUSTERINABNORMALSTAT = 'ResourceUnavailable.ClusterInAbnormalStat'
 
 # The cluster’s status does support this operation.
 RESOURCEUNAVAILABLE_CLUSTERSTATE = 'ResourceUnavailable.ClusterState'

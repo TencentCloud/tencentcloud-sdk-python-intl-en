@@ -497,9 +497,11 @@ Note: this field may return null, indicating that no valid value is obtained.
         :param EnableExternalNode: Specifies whether the cluster supports external nodes.
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :type EnableExternalNode: bool
-        :param ClusterLevel: 
+        :param ClusterLevel: Cluster models. It’s valid for managed clusters.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type ClusterLevel: str
-        :param AutoUpgradeClusterLevel: 
+        :param AutoUpgradeClusterLevel: The target cluster model for auto-upgrade
+Note: this field may return null, indicating that no valid value is obtained.
         :type AutoUpgradeClusterLevel: bool
         """
         self.ClusterId = None
@@ -979,6 +981,115 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.KubeControllerManager = params.get("KubeControllerManager")
         self.KubeScheduler = params.get("KubeScheduler")
         self.Etcd = params.get("Etcd")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClusterLevelAttribute(AbstractModel):
+    """Information of the managed cluster model
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Cluster model
+        :type Name: str
+        :param Alias: Model name
+        :type Alias: str
+        :param NodeCount: Number of nodes
+        :type NodeCount: int
+        :param PodCount: Number of Pods
+        :type PodCount: int
+        :param ConfigMapCount: Number of ConfigMap
+        :type ConfigMapCount: int
+        :param CRDCount: Number of CRDs
+        :type CRDCount: int
+        :param Enable: Whether it is enabled
+        :type Enable: bool
+        :param OtherCount: Number of other resources
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type OtherCount: int
+        """
+        self.Name = None
+        self.Alias = None
+        self.NodeCount = None
+        self.PodCount = None
+        self.ConfigMapCount = None
+        self.CRDCount = None
+        self.Enable = None
+        self.OtherCount = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Alias = params.get("Alias")
+        self.NodeCount = params.get("NodeCount")
+        self.PodCount = params.get("PodCount")
+        self.ConfigMapCount = params.get("ConfigMapCount")
+        self.CRDCount = params.get("CRDCount")
+        self.Enable = params.get("Enable")
+        self.OtherCount = params.get("OtherCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClusterLevelChangeRecord(AbstractModel):
+    """Cluster model adjustment history
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ID: Record ID
+        :type ID: str
+        :param ClusterID: Cluster ID
+        :type ClusterID: str
+        :param Status: Status (valid values: `trading`, `upgrading`, `success`, `failed`)
+        :type Status: str
+        :param Message: Status description
+        :type Message: str
+        :param OldLevel: Original model
+        :type OldLevel: str
+        :param NewLevel: New model
+        :type NewLevel: str
+        :param TriggerType: Trigger type (valid values: `manual`, `auto`)
+        :type TriggerType: str
+        :param StartedAt: Start time
+        :type StartedAt: str
+        :param EndedAt: End time
+        :type EndedAt: str
+        """
+        self.ID = None
+        self.ClusterID = None
+        self.Status = None
+        self.Message = None
+        self.OldLevel = None
+        self.NewLevel = None
+        self.TriggerType = None
+        self.StartedAt = None
+        self.EndedAt = None
+
+
+    def _deserialize(self, params):
+        self.ID = params.get("ID")
+        self.ClusterID = params.get("ClusterID")
+        self.Status = params.get("Status")
+        self.Message = params.get("Message")
+        self.OldLevel = params.get("OldLevel")
+        self.NewLevel = params.get("NewLevel")
+        self.TriggerType = params.get("TriggerType")
+        self.StartedAt = params.get("StartedAt")
+        self.EndedAt = params.get("EndedAt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1786,8 +1897,8 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         :param MountTarget: Mounting directory
 Note: This field may return null, indicating that no valid value was found.
         :type MountTarget: str
-        :param DiskPartition: The name of the device or partition to mount
-Note: this field may return `null`, indicating that no valid value is obtained.
+        :param DiskPartition: Mounted device name or partition name (only required when adding an existing node)
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type DiskPartition: str
         """
         self.DiskType = None
@@ -2769,6 +2880,130 @@ class DescribeClusterKubeconfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeClusterLevelAttributeRequest(AbstractModel):
+    """DescribeClusterLevelAttribute request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterID: Cluster ID (available for cluster model adjustment)
+        :type ClusterID: str
+        """
+        self.ClusterID = None
+
+
+    def _deserialize(self, params):
+        self.ClusterID = params.get("ClusterID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterLevelAttributeResponse(AbstractModel):
+    """DescribeClusterLevelAttribute response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number
+        :type TotalCount: int
+        :param Items: Cluster model
+        :type Items: list of ClusterLevelAttribute
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ClusterLevelAttribute()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterLevelChangeRecordsRequest(AbstractModel):
+    """DescribeClusterLevelChangeRecords request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterID: Cluster ID
+        :type ClusterID: str
+        :param StartAt: Start time
+        :type StartAt: str
+        :param EndAt: End time
+        :type EndAt: str
+        :param Offset: Offset. Default value: `0`
+        :type Offset: int
+        :param Limit: Maximum number of output entries. Default value: `20`
+        :type Limit: int
+        """
+        self.ClusterID = None
+        self.StartAt = None
+        self.EndAt = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ClusterID = params.get("ClusterID")
+        self.StartAt = params.get("StartAt")
+        self.EndAt = params.get("EndAt")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterLevelChangeRecordsResponse(AbstractModel):
+    """DescribeClusterLevelChangeRecords response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number
+        :type TotalCount: int
+        :param Items: Cluster model
+        :type Items: list of ClusterLevelChangeRecord
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ClusterLevelChangeRecord()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeClusterNodePoolDetailRequest(AbstractModel):
     """DescribeClusterNodePoolDetail request structure.
 
@@ -3540,6 +3775,67 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeResourceUsageRequest(AbstractModel):
+    """DescribeResourceUsage request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceUsageResponse(AbstractModel):
+    """DescribeResourceUsage response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CRDUsage: CRD usage
+        :type CRDUsage: :class:`tencentcloud.tke.v20180525.models.ResourceUsage`
+        :param PodUsage: Pod usage
+        :type PodUsage: int
+        :param ConfigMapUsage: ConfigMap usage
+        :type ConfigMapUsage: int
+        :param OtherUsage: Other resource usage
+        :type OtherUsage: :class:`tencentcloud.tke.v20180525.models.ResourceUsage`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.CRDUsage = None
+        self.PodUsage = None
+        self.ConfigMapUsage = None
+        self.OtherUsage = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CRDUsage") is not None:
+            self.CRDUsage = ResourceUsage()
+            self.CRDUsage._deserialize(params.get("CRDUsage"))
+        self.PodUsage = params.get("PodUsage")
+        self.ConfigMapUsage = params.get("ConfigMapUsage")
+        if params.get("OtherUsage") is not None:
+            self.OtherUsage = ResourceUsage()
+            self.OtherUsage._deserialize(params.get("OtherUsage"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRouteTableConflictsRequest(AbstractModel):
     """DescribeRouteTableConflicts request structure.
 
@@ -4174,6 +4470,55 @@ class Filter(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class GetClusterLevelPriceRequest(AbstractModel):
+    """GetClusterLevelPrice request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterLevel: The cluster model. It’s used for price query.
+        :type ClusterLevel: str
+        """
+        self.ClusterLevel = None
+
+
+    def _deserialize(self, params):
+        self.ClusterLevel = params.get("ClusterLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetClusterLevelPriceResponse(AbstractModel):
+    """GetClusterLevelPrice response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Cost: Discount price (unit: US cent)
+        :type Cost: int
+        :param TotalCost: Original price (unit: US cent)
+        :type TotalCost: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Cost = None
+        self.TotalCost = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Cost = params.get("Cost")
+        self.TotalCost = params.get("TotalCost")
+        self.RequestId = params.get("RequestId")
 
 
 class GetUpgradeInstanceProgressRequest(AbstractModel):
@@ -5887,6 +6232,71 @@ class ResourceDeleteOption(AbstractModel):
     def _deserialize(self, params):
         self.ResourceType = params.get("ResourceType")
         self.DeleteMode = params.get("DeleteMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceUsage(AbstractModel):
+    """Cluster resource usage
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Resource type
+        :type Name: str
+        :param Usage: Resource usage
+        :type Usage: int
+        :param Details: Resource usage details
+        :type Details: list of ResourceUsageDetail
+        """
+        self.Name = None
+        self.Usage = None
+        self.Details = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Usage = params.get("Usage")
+        if params.get("Details") is not None:
+            self.Details = []
+            for item in params.get("Details"):
+                obj = ResourceUsageDetail()
+                obj._deserialize(item)
+                self.Details.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceUsageDetail(AbstractModel):
+    """Resource usage details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Resource name
+        :type Name: str
+        :param Usage: Resource usage
+        :type Usage: int
+        """
+        self.Name = None
+        self.Usage = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Usage = params.get("Usage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

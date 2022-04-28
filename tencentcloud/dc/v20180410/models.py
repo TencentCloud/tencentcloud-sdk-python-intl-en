@@ -188,6 +188,34 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.RequestId = params.get("RequestId")
 
 
+class BFDInfo(AbstractModel):
+    """BFD configuration information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProbeFailedTimes: Number of health checks
+        :type ProbeFailedTimes: int
+        :param Interval: Health check interval
+        :type Interval: int
+        """
+        self.ProbeFailedTimes = None
+        self.Interval = None
+
+
+    def _deserialize(self, params):
+        self.ProbeFailedTimes = params.get("ProbeFailedTimes")
+        self.Interval = params.get("Interval")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BgpPeer(AbstractModel):
     """BGP parameter, including Asn and AuthKey.
 
@@ -402,6 +430,14 @@ Default value: Non-zero.
         :type TencentBackupAddress: str
         :param CloudAttachId: Cloud Attached Connection Service ID
         :type CloudAttachId: str
+        :param BfdEnable: Whether to enable BFD
+        :type BfdEnable: int
+        :param NqaEnable: Whether to enable NQA
+        :type NqaEnable: int
+        :param BfdInfo: BFD configuration information
+        :type BfdInfo: :class:`tencentcloud.dc.v20180410.models.BFDInfo`
+        :param NqaInfo: NQA configuration information
+        :type NqaInfo: :class:`tencentcloud.dc.v20180410.models.NQAInfo`
         """
         self.DirectConnectId = None
         self.DirectConnectTunnelName = None
@@ -419,6 +455,10 @@ Default value: Non-zero.
         self.CustomerAddress = None
         self.TencentBackupAddress = None
         self.CloudAttachId = None
+        self.BfdEnable = None
+        self.NqaEnable = None
+        self.BfdInfo = None
+        self.NqaInfo = None
 
 
     def _deserialize(self, params):
@@ -445,6 +485,14 @@ Default value: Non-zero.
         self.CustomerAddress = params.get("CustomerAddress")
         self.TencentBackupAddress = params.get("TencentBackupAddress")
         self.CloudAttachId = params.get("CloudAttachId")
+        self.BfdEnable = params.get("BfdEnable")
+        self.NqaEnable = params.get("NqaEnable")
+        if params.get("BfdInfo") is not None:
+            self.BfdInfo = BFDInfo()
+            self.BfdInfo._deserialize(params.get("BfdInfo"))
+        if params.get("NqaInfo") is not None:
+            self.NqaInfo = NQAInfo()
+            self.NqaInfo._deserialize(params.get("NqaInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1670,6 +1718,38 @@ class ModifyDirectConnectTunnelAttributeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class NQAInfo(AbstractModel):
+    """NQA configuration information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProbeFailedTimes: Number of health checks
+        :type ProbeFailedTimes: int
+        :param Interval: Health check interval
+        :type Interval: int
+        :param DestinationIp: IP address for the health check
+        :type DestinationIp: str
+        """
+        self.ProbeFailedTimes = None
+        self.Interval = None
+        self.DestinationIp = None
+
+
+    def _deserialize(self, params):
+        self.ProbeFailedTimes = params.get("ProbeFailedTimes")
+        self.Interval = params.get("Interval")
+        self.DestinationIp = params.get("DestinationIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RejectDirectConnectTunnelRequest(AbstractModel):

@@ -46,54 +46,6 @@ class Account(AbstractModel):
         
 
 
-class AccountInfo(AbstractModel):
-    """Account details
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Notes: Account remarks
-        :type Notes: str
-        :param Host: Account domain name
-        :type Host: str
-        :param User: Account name
-        :type User: str
-        :param ModifyTime: Account information modification time
-        :type ModifyTime: str
-        :param ModifyPasswordTime: Password modification time
-        :type ModifyPasswordTime: str
-        :param CreateTime: This parameter is no longer supported.
-        :type CreateTime: str
-        :param MaxUserConnections: The maximum number of instance connections supported by an account
-        :type MaxUserConnections: int
-        """
-        self.Notes = None
-        self.Host = None
-        self.User = None
-        self.ModifyTime = None
-        self.ModifyPasswordTime = None
-        self.CreateTime = None
-        self.MaxUserConnections = None
-
-
-    def _deserialize(self, params):
-        self.Notes = params.get("Notes")
-        self.Host = params.get("Host")
-        self.User = params.get("User")
-        self.ModifyTime = params.get("ModifyTime")
-        self.ModifyPasswordTime = params.get("ModifyPasswordTime")
-        self.CreateTime = params.get("CreateTime")
-        self.MaxUserConnections = params.get("MaxUserConnections")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class AddTimeWindowRequest(AbstractModel):
     """AddTimeWindow request structure.
 
@@ -117,6 +69,8 @@ class AddTimeWindowRequest(AbstractModel):
         :type Saturday: list of str
         :param Sunday: Maintenance window on Sunday. At least one time window is required in a week.
         :type Sunday: list of str
+        :param MaxDelayTime: Maximum delay threshold, which takes effect only for source instances and disaster recovery instances.
+        :type MaxDelayTime: int
         """
         self.InstanceId = None
         self.Monday = None
@@ -126,6 +80,7 @@ class AddTimeWindowRequest(AbstractModel):
         self.Friday = None
         self.Saturday = None
         self.Sunday = None
+        self.MaxDelayTime = None
 
 
     def _deserialize(self, params):
@@ -137,6 +92,7 @@ class AddTimeWindowRequest(AbstractModel):
         self.Friday = params.get("Friday")
         self.Saturday = params.get("Saturday")
         self.Sunday = params.get("Sunday")
+        self.MaxDelayTime = params.get("MaxDelayTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -229,7 +185,7 @@ class ApplyCDBProxyRequest(AbstractModel):
         :type Mem: int
         :param SecurityGroup: Security group
         :type SecurityGroup: list of str
-        :param Desc: Description
+        :param Desc: Description (up to 256 characters)
         :type Desc: str
         """
         self.InstanceId = None
@@ -329,6 +285,163 @@ class AssociateSecurityGroupsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class AuditFilter(AbstractModel):
+    """Audit rule filters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: Filter parameter names. Valid values:
+SrcIp: Client IP;
+User: Database account;
+DB: Database name.
+        :type Type: str
+        :param Compare: Filter match type. Valid value:
+`INC`: Include;
+`EXC`: Exclude;
+`EQ`: Equal to;
+`NEQ`: Not equal to.
+        :type Compare: str
+        :param Value: Filter match value
+        :type Value: str
+        """
+        self.Type = None
+        self.Compare = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Compare = params.get("Compare")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditPolicy(AbstractModel):
+    """Audit Policy
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PolicyId: Audit policy ID.
+        :type PolicyId: str
+        :param Status: Audit policy status. Valid values:
+`creating`;
+`running`,
+`paused`;
+`failed`.
+        :type Status: str
+        :param InstanceId: Database instance ID
+        :type InstanceId: str
+        :param CreateTime: Creation time of audit policy in the format of 2019-03-20 17:09:13
+        :type CreateTime: str
+        :param ModifyTime: Last modified time of audit policy in the format of 2019-03-20 17:09:13
+        :type ModifyTime: str
+        :param PolicyName: Audit policy name
+        :type PolicyName: str
+        :param RuleId: Audit rule ID
+        :type RuleId: str
+        :param RuleName: Audit rule name
+Note: This field may return `null`, indicating that no valid value was found.
+        :type RuleName: str
+        :param InstanceName: Database instance name
+Note: This field may return `null`, indicating that no valid value was found.
+        :type InstanceName: str
+        """
+        self.PolicyId = None
+        self.Status = None
+        self.InstanceId = None
+        self.CreateTime = None
+        self.ModifyTime = None
+        self.PolicyName = None
+        self.RuleId = None
+        self.RuleName = None
+        self.InstanceName = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.Status = params.get("Status")
+        self.InstanceId = params.get("InstanceId")
+        self.CreateTime = params.get("CreateTime")
+        self.ModifyTime = params.get("ModifyTime")
+        self.PolicyName = params.get("PolicyName")
+        self.RuleId = params.get("RuleId")
+        self.RuleName = params.get("RuleName")
+        self.InstanceName = params.get("InstanceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditRule(AbstractModel):
+    """Audit rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: Audit rule ID
+        :type RuleId: str
+        :param CreateTime: Creation time of audit rule in the format of 2019-03-20 17:09:13
+        :type CreateTime: str
+        :param ModifyTime: Last modified time of audit rule in the format of 2019-03-20 17:09:13
+        :type ModifyTime: str
+        :param RuleName: Audit rule name
+Note: This field may return `null`, indicating that no valid value was found.
+        :type RuleName: str
+        :param Description: Audit rule description
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Description: str
+        :param RuleFilters: Audit rule filters
+Note: This field may return `null`, indicating that no valid value was found.
+        :type RuleFilters: list of AuditFilter
+        :param AuditAll: Whether to enable full audit
+        :type AuditAll: bool
+        """
+        self.RuleId = None
+        self.CreateTime = None
+        self.ModifyTime = None
+        self.RuleName = None
+        self.Description = None
+        self.RuleFilters = None
+        self.AuditAll = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.CreateTime = params.get("CreateTime")
+        self.ModifyTime = params.get("ModifyTime")
+        self.RuleName = params.get("RuleName")
+        self.Description = params.get("Description")
+        if params.get("RuleFilters") is not None:
+            self.RuleFilters = []
+            for item in params.get("RuleFilters"):
+                obj = AuditFilter()
+                obj._deserialize(item)
+                self.RuleFilters.append(obj)
+        self.AuditAll = params.get("AuditAll")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class BackupConfig(AbstractModel):
@@ -775,7 +888,7 @@ class CloseCDBProxyRequest(AbstractModel):
         :type InstanceId: str
         :param ProxyGroupId: Proxy group ID
         :type ProxyGroupId: str
-        :param OnlyCloseRW: Whether only to disable read/write separation. Valid values: `true`, `false`
+        :param OnlyCloseRW: Whether only to disable read/write separation. Valid values: `true`, `false`. Default value: `false`.
         :type OnlyCloseRW: bool
         """
         self.InstanceId = None
@@ -977,72 +1090,6 @@ Note: this field may return `null`, indicating that no valid value can be found.
         
 
 
-class CreateAccountsRequest(AbstractModel):
-    """CreateAccounts request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
-        :type InstanceId: str
-        :param Accounts: TencentDB account.
-        :type Accounts: list of Account
-        :param Password: Password of the new account
-        :type Password: str
-        :param Description: Remarks
-        :type Description: str
-        :param MaxUserConnections: Maximum connections of the new account. Default value: `10240`. Maximum value: `10240`.
-        :type MaxUserConnections: int
-        """
-        self.InstanceId = None
-        self.Accounts = None
-        self.Password = None
-        self.Description = None
-        self.MaxUserConnections = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        if params.get("Accounts") is not None:
-            self.Accounts = []
-            for item in params.get("Accounts"):
-                obj = Account()
-                obj._deserialize(item)
-                self.Accounts.append(obj)
-        self.Password = params.get("Password")
-        self.Description = params.get("Description")
-        self.MaxUserConnections = params.get("MaxUserConnections")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateAccountsResponse(AbstractModel):
-    """CreateAccounts response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param AsyncRequestId: Async task request ID, which can be used to query the execution result of an async task.
-        :type AsyncRequestId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.AsyncRequestId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.AsyncRequestId = params.get("AsyncRequestId")
-        self.RequestId = params.get("RequestId")
-
-
 class CreateAuditPolicyRequest(AbstractModel):
     """CreateAuditPolicy request structure.
 
@@ -1218,6 +1265,8 @@ which is left empty by default. Specify this parameter when cloning a strong syn
         :type DryRun: bool
         :param CageId: Financial cage ID.
         :type CageId: str
+        :param ProjectId: Project ID. Default value: 0.
+        :type ProjectId: int
         """
         self.InstanceId = None
         self.SpecifiedRollbackTime = None
@@ -1239,6 +1288,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
         self.DeployGroupId = None
         self.DryRun = None
         self.CageId = None
+        self.ProjectId = None
 
 
     def _deserialize(self, params):
@@ -1267,6 +1317,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
         self.DeployGroupId = params.get("DeployGroupId")
         self.DryRun = params.get("DryRun")
         self.CageId = params.get("CageId")
+        self.ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1417,7 +1468,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type ResourceTags: list of TagInfo
         :param DeployGroupId: Placement group ID.
         :type DeployGroupId: str
-        :param ClientToken: A string that is used to guarantee the idempotency of the request, which is generated by the user and must be unique in each request on the same day. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
+        :param ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
         :type ClientToken: str
         :param DeviceType: Instance resource isolation type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance). Default value: `UNIVERSAL`.
         :type DeviceType: str
@@ -1439,6 +1490,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type AlarmPolicyIdList: list of str
         :param DryRun: Whether to check the request without creating any instance. Valid values: `true`, `false` (default). After being submitted, the request will be checked to see if it is in correct format and has all required parameters with valid values. An error code is returned if the check failed, and `RequestId` is returned if the check succeeded. After a successful check, no instance will be created if this parameter is set to `true`, whereas an instance will be created and if it is set to `false`.
         :type DryRun: bool
+        :param Vips: The list of IPs for sources instances. Only one IP address can be assigned to a single source instance. If all IPs are used up, the system will automatically assign IPs to the remaining source instances that do not have one.
+        :type Vips: list of str
         """
         self.GoodsNum = None
         self.Memory = None
@@ -1475,6 +1528,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.ParamTemplateType = None
         self.AlarmPolicyIdList = None
         self.DryRun = None
+        self.Vips = None
 
 
     def _deserialize(self, params):
@@ -1525,6 +1579,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.ParamTemplateType = params.get("ParamTemplateType")
         self.AlarmPolicyIdList = params.get("AlarmPolicyIdList")
         self.DryRun = params.get("DryRun")
+        self.Vips = params.get("Vips")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1556,67 +1611,6 @@ class CreateDBInstanceHourResponse(AbstractModel):
     def _deserialize(self, params):
         self.DealIds = params.get("DealIds")
         self.InstanceIds = params.get("InstanceIds")
-        self.RequestId = params.get("RequestId")
-
-
-class CreateDeployGroupRequest(AbstractModel):
-    """CreateDeployGroup request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param DeployGroupName: Name of a placement group, which can contain up to 60 characters.
-        :type DeployGroupName: str
-        :param Description: Description of a placement group, which can contain up to 200 characters.
-        :type Description: str
-        :param Affinity: Affinity policy of placement group. Currently, the value of this parameter can only be 1. Policy 1 indicates the upper limit of instances on one physical machine.
-        :type Affinity: list of int
-        :param LimitNum: Upper limit of instances on one physical machine as defined in affinity policy 1 of placement group.
-        :type LimitNum: int
-        :param DevClass: Model attribute of placement group. Valid values: SH12+SH02, TS85.
-        :type DevClass: list of str
-        """
-        self.DeployGroupName = None
-        self.Description = None
-        self.Affinity = None
-        self.LimitNum = None
-        self.DevClass = None
-
-
-    def _deserialize(self, params):
-        self.DeployGroupName = params.get("DeployGroupName")
-        self.Description = params.get("Description")
-        self.Affinity = params.get("Affinity")
-        self.LimitNum = params.get("LimitNum")
-        self.DevClass = params.get("DevClass")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateDeployGroupResponse(AbstractModel):
-    """CreateDeployGroup response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param DeployGroupId: Placement group ID.
-        :type DeployGroupId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.DeployGroupId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.DeployGroupId = params.get("DeployGroupId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1983,47 +1977,6 @@ class DeleteBackupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DeleteDeployGroupsRequest(AbstractModel):
-    """DeleteDeployGroups request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param DeployGroupIds: List of IDs of placement groups to be deleted.
-        :type DeployGroupIds: list of str
-        """
-        self.DeployGroupIds = None
-
-
-    def _deserialize(self, params):
-        self.DeployGroupIds = params.get("DeployGroupIds")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DeleteDeployGroupsResponse(AbstractModel):
-    """DeleteDeployGroups response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class DeleteParamTemplateRequest(AbstractModel):
     """DeleteParamTemplate request structure.
 
@@ -2106,61 +2059,6 @@ class DeleteTimeWindowResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DeployGroupInfo(AbstractModel):
-    """Placement group information
-
-    """
-
-    def __init__(self):
-        r"""
-        :param DeployGroupId: ID of a placement group.
-        :type DeployGroupId: str
-        :param DeployGroupName: Name of a placement group.
-        :type DeployGroupName: str
-        :param CreateTime: Creation time.
-        :type CreateTime: str
-        :param Quota: Instance quota of placement group, indicating the maximum number of instances that can be placed in one placement group.
-        :type Quota: int
-        :param Affinity: Affinity policy of placement group. Currently, only policy 1 is supported, indicating to distribute instances across physical machines.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Affinity: str
-        :param LimitNum: Upper limit of instances in one placement group on one physical machine as defined in affinity policy 1 of placement group.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type LimitNum: int
-        :param Description: Placement group details.
-        :type Description: str
-        :param DevClass: Physical model attribute of placement group.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type DevClass: str
-        """
-        self.DeployGroupId = None
-        self.DeployGroupName = None
-        self.CreateTime = None
-        self.Quota = None
-        self.Affinity = None
-        self.LimitNum = None
-        self.Description = None
-        self.DevClass = None
-
-
-    def _deserialize(self, params):
-        self.DeployGroupId = params.get("DeployGroupId")
-        self.DeployGroupName = params.get("DeployGroupName")
-        self.CreateTime = params.get("CreateTime")
-        self.Quota = params.get("Quota")
-        self.Affinity = params.get("Affinity")
-        self.LimitNum = params.get("LimitNum")
-        self.Description = params.get("Description")
-        self.DevClass = params.get("DevClass")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class DescribeAccountPrivilegesRequest(AbstractModel):
     """DescribeAccountPrivileges request structure.
 
@@ -2241,76 +2139,6 @@ class DescribeAccountPrivilegesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeAccountsRequest(AbstractModel):
-    """DescribeAccounts request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
-        :type InstanceId: str
-        :param Offset: Record offset. Default value: 0.
-        :type Offset: int
-        :param Limit: Number of results to be returned for a single request. Value range: 1-100. Default value: 20.
-        :type Limit: int
-        :param AccountRegexp: Regular expression for matching account names, which complies with the rules at MySQL official website.
-        :type AccountRegexp: str
-        """
-        self.InstanceId = None
-        self.Offset = None
-        self.Limit = None
-        self.AccountRegexp = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.AccountRegexp = params.get("AccountRegexp")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeAccountsResponse(AbstractModel):
-    """DescribeAccounts response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TotalCount: Number of eligible accounts.
-        :type TotalCount: int
-        :param Items: Details of eligible accounts.
-        :type Items: list of AccountInfo
-        :param MaxUserConnections: The maximum number of instance connections (set by the MySQL parameter `max_connections`)
-        :type MaxUserConnections: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.Items = None
-        self.MaxUserConnections = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("Items") is not None:
-            self.Items = []
-            for item in params.get("Items"):
-                obj = AccountInfo()
-                obj._deserialize(item)
-                self.Items.append(obj)
-        self.MaxUserConnections = params.get("MaxUserConnections")
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeAsyncRequestInfoRequest(AbstractModel):
     """DescribeAsyncRequestInfo request structure.
 
@@ -2359,6 +2187,153 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self.Status = params.get("Status")
         self.Info = params.get("Info")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAuditPoliciesRequest(AbstractModel):
+    """DescribeAuditPolicies request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
+        :type InstanceId: str
+        :param PolicyId: Audit policy ID.
+        :type PolicyId: str
+        :param PolicyName: Audit policy name. Fuzzy match query is supported.
+        :type PolicyName: str
+        :param Limit: Number of entries per page. Value range: 1-100. Default value: 20.
+        :type Limit: int
+        :param Offset: Pagination offset
+        :type Offset: int
+        :param RuleId: Audit rule ID, which can be used to query its associated audit policies.
+Note: At least one of the parameters (“RuleId”, “PolicyId”, PolicyId”, or “PolicyName”) must be passed in.
+        :type RuleId: str
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        """
+        self.InstanceId = None
+        self.PolicyId = None
+        self.PolicyName = None
+        self.Limit = None
+        self.Offset = None
+        self.RuleId = None
+        self.InstanceName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.PolicyId = params.get("PolicyId")
+        self.PolicyName = params.get("PolicyName")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.RuleId = params.get("RuleId")
+        self.InstanceName = params.get("InstanceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditPoliciesResponse(AbstractModel):
+    """DescribeAuditPolicies response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Number of eligible audit policies
+        :type TotalCount: int
+        :param Items: Audit policy details
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Items: list of AuditPolicy
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = AuditPolicy()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAuditRulesRequest(AbstractModel):
+    """DescribeAuditRules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: Audit rule ID.
+        :type RuleId: str
+        :param RuleName: Audit rule name. Fuzzy match query is supported.
+        :type RuleName: str
+        :param Limit: Number of entries per page. Value range: 1-100. Default value: 20.
+        :type Limit: int
+        :param Offset: Pagination offset. Default value: 0
+        :type Offset: int
+        """
+        self.RuleId = None
+        self.RuleName = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.RuleName = params.get("RuleName")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditRulesResponse(AbstractModel):
+    """DescribeAuditRules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Number of eligible audit rules
+        :type TotalCount: int
+        :param Items: Audit rule details
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Items: list of AuditRule
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = AuditRule()
+                obj._deserialize(item)
+                self.Items.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2786,7 +2761,7 @@ class DescribeCDBProxyRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID
         :type InstanceId: str
-        :param ProxyGroupId: Proxy ID
+        :param ProxyGroupId: Proxy group ID
         :type ProxyGroupId: str
         """
         self.InstanceId = None
@@ -3322,7 +3297,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type ZoneIds: list of int non-negative
         :param SubnetIds: Subnet ID.
         :type SubnetIds: list of int non-negative
-        :param CdbErrors: Lock flag.
+        :param CdbErrors: Whether to lock disk write. Valid values: `0`(unlock), `1`(lock). Default value: 0.
         :type CdbErrors: list of int
         :param OrderBy: Sort by field of the returned result set. Currently, supported values include "InstanceId", "InstanceName", "CreateTime", and "DeadlineTime".
         :type OrderBy: str
@@ -3350,6 +3325,12 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type TagKeysForSearch: list of str
         :param CageIds: Financial cage IDs.
         :type CageIds: list of str
+        :param TagValues: Tag value
+        :type TagValues: list of str
+        :param UniqueVpcIds: VPC character vpcId
+        :type UniqueVpcIds: list of str
+        :param UniqSubnetIds: VPC character subnetId
+        :type UniqSubnetIds: list of str
         """
         self.ProjectId = None
         self.InstanceTypes = None
@@ -3379,6 +3360,9 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.DeployGroupIds = None
         self.TagKeysForSearch = None
         self.CageIds = None
+        self.TagValues = None
+        self.UniqueVpcIds = None
+        self.UniqSubnetIds = None
 
 
     def _deserialize(self, params):
@@ -3410,6 +3394,9 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.DeployGroupIds = params.get("DeployGroupIds")
         self.TagKeysForSearch = params.get("TagKeysForSearch")
         self.CageIds = params.get("CageIds")
+        self.TagValues = params.get("TagValues")
+        self.UniqueVpcIds = params.get("UniqueVpcIds")
+        self.UniqSubnetIds = params.get("UniqSubnetIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3794,73 +3781,6 @@ class DescribeDefaultParamsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeDeployGroupListRequest(AbstractModel):
-    """DescribeDeployGroupList request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param DeployGroupId: ID of a placement group.
-        :type DeployGroupId: str
-        :param DeployGroupName: Name of a placement group.
-        :type DeployGroupName: str
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
-        :type Limit: int
-        :param Offset: Offset. Default value: 0.
-        :type Offset: int
-        """
-        self.DeployGroupId = None
-        self.DeployGroupName = None
-        self.Limit = None
-        self.Offset = None
-
-
-    def _deserialize(self, params):
-        self.DeployGroupId = params.get("DeployGroupId")
-        self.DeployGroupName = params.get("DeployGroupName")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeDeployGroupListResponse(AbstractModel):
-    """DescribeDeployGroupList response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Total: Number of eligible entries.
-        :type Total: int
-        :param Items: List of returned results.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Items: list of DeployGroupInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.Total = None
-        self.Items = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Total = params.get("Total")
-        if params.get("Items") is not None:
-            self.Items = []
-            for item in params.get("Items"):
-                obj = DeployGroupInfo()
-                obj._deserialize(item)
-                self.Items.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeDeviceMonitorInfoRequest(AbstractModel):
     """DescribeDeviceMonitorInfo request structure.
 
@@ -4018,9 +3938,9 @@ class DescribeInstanceParamRecordsRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters.
         :type InstanceId: str
-        :param Offset: Pagination offset.
+        :param Offset: Pagination offset. Default value: 0.
         :type Offset: int
-        :param Limit: Number of entries per page.
+        :param Limit: Number of entries per page. Default value: 20.
         :type Limit: int
         """
         self.InstanceId = None
@@ -4221,7 +4141,7 @@ class DescribeParamTemplateInfoResponse(AbstractModel):
         :type Items: list of ParameterDetail
         :param Description: Parameter template description
         :type Description: str
-        :param TemplateType: Parameter template type. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template).
+        :param TemplateType: Type of the parameter template. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template).
         :type TemplateType: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -5205,6 +5125,8 @@ class DescribeTimeWindowResponse(AbstractModel):
         :type Saturday: list of str
         :param Sunday: List of maintenance time windows on Sunday.
         :type Sunday: list of str
+        :param MaxDelayTime: Maximum data delay threshold
+        :type MaxDelayTime: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -5215,6 +5137,7 @@ class DescribeTimeWindowResponse(AbstractModel):
         self.Friday = None
         self.Saturday = None
         self.Sunday = None
+        self.MaxDelayTime = None
         self.RequestId = None
 
 
@@ -5226,6 +5149,7 @@ class DescribeTimeWindowResponse(AbstractModel):
         self.Friday = params.get("Friday")
         self.Saturday = params.get("Saturday")
         self.Sunday = params.get("Sunday")
+        self.MaxDelayTime = params.get("MaxDelayTime")
         self.RequestId = params.get("RequestId")
 
 
@@ -6440,19 +6364,19 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
         :type InstanceId: str
         :param Accounts: Database account, including username and domain name.
         :type Accounts: list of Account
-        :param GlobalPrivileges: Global permission. Valid values: "SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "PROCESS", "DROP", "REFERENCES", "INDEX", "ALTER", "SHOW DATABASES", "CREATE TEMPORARY TABLES", "LOCK TABLES", "EXECUTE", "CREATE VIEW", "SHOW VIEW", "CREATE ROUTINE", "ALTER ROUTINE", "EVENT", "TRIGGER","CREATE USER","RELOAD","REPLICATION CLIENT","REPLICATION SLAVE","UPDATE".
-Note: If this parameter is not passed in, it means to clear the permission.
+        :param GlobalPrivileges: Global permission. Valid values: "SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "PROCESS", "DROP", "REFERENCES", "INDEX", "ALTER", "SHOW DATABASES", "CREATE TEMPORARY TABLES", "LOCK TABLES", "EXECUTE", "CREATE VIEW", "SHOW VIEW", "CREATE ROUTINE", "ALTER ROUTINE", "EVENT", "TRIGGER", "CREATE USER", "RELOAD", "REPLICATION CLIENT", "REPLICATION SLAVE", "UPDATE".
+Note: When “ModifyAction” is empty, if `GlobalPrivileges` is not passed in, it indicates the global permission will become ineffective.
         :type GlobalPrivileges: list of str
-        :param DatabasePrivileges: Database permission. Valid values: "SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", 	"DROP", "REFERENCES", "INDEX", "ALTER", "CREATE TEMPORARY TABLES", "LOCK TABLES", "EXECUTE", "CREATE VIEW", "SHOW VIEW", "CREATE ROUTINE", "ALTER ROUTINE", "EVENT", "TRIGGER".
-Note: if this parameter is not passed in, it means to clear the permission.
+        :param DatabasePrivileges: Database permission. Valid values: "SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "DROP", "REFERENCES", "INDEX", "ALTER", "CREATE TEMPORARY TABLES", "LOCK TABLES", "EXECUTE", "CREATE VIEW", "SHOW VIEW", "CREATE ROUTINE", "ALTER ROUTINE", "EVENT", "TRIGGER".
+Note: When “ModifyAction” is empty, if `DatabasePrivileges` is not passed in, it indicates the permission of the database will become ineffective.
         :type DatabasePrivileges: list of DatabasePrivilege
-        :param TablePrivileges: Table permission in the database. Valid values: "SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", 	"DROP", "REFERENCES", "INDEX", "ALTER", "CREATE VIEW", "SHOW VIEW", "TRIGGER".
-Note: if this parameter is not passed in, it means to clear the permission.
+        :param TablePrivileges: Table permission in the database. Valid values: "SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "DROP", "REFERENCES", "INDEX", "ALTER", "CREATE VIEW", "SHOW VIEW", "TRIGGER".
+Note: When “ModifyAction” is empty, if `TablePrivileges` is not passed in, it indicates the permission of the table will become ineffective.
         :type TablePrivileges: list of TablePrivilege
-        :param ColumnPrivileges: Column permission in table. Valid values: "SELECT", "INSERT", "UPDATE", "REFERENCES".
-Note: if this parameter is not passed in, it means to clear the permission.
+        :param ColumnPrivileges: Column permission in the table. Valid values: "SELECT", "INSERT", "UPDATE", "REFERENCES".
+Note: When “ModifyAction” is empty, if `ColumnPrivileges` is not passed in, it indicates the permission of the column will become ineffective.
         :type ColumnPrivileges: list of ColumnPrivilege
-        :param ModifyAction: If this parameter is specified, permissions are modified in batches. Valid values: `grant`, `revoke`.
+        :param ModifyAction: When this parameter is not empty, it indicates that the permission will be modified. Valid values: `grant` (grant permission), `revoke` (revoke permission)
         :type ModifyAction: str
         """
         self.InstanceId = None
@@ -6810,9 +6734,9 @@ class ModifyCDBProxyRequest(AbstractModel):
         r"""
         :param ProxyGroupId: Unique ID of the database proxy group
         :type ProxyGroupId: str
-        :param IsKickout: Whether to remove delayed read-only instances from the proxy group. Valid values: `true`, `false`
+        :param IsKickout: Whether to remove delayed read-only instances from the proxy group. Valid values: `true`, `false`. Default value: `false`.
         :type IsKickout: bool
-        :param MinCount: The minimum number of read-only instances allowed by the proxy group
+        :param MinCount: The minimum number of read-only instances allowed by the proxy group. Minimum value: 1; maximum value: The number of instances.
         :type MinCount: int
         :param MaxDelay: Delay threshold. If `IsKickOut` is set to `true`, this parameter is required.
         :type MaxDelay: int
@@ -6820,9 +6744,9 @@ class ModifyCDBProxyRequest(AbstractModel):
         :type WeightMode: str
         :param RoWeightValues: Read-Only weight of an instance
         :type RoWeightValues: :class:`tencentcloud.cdb.v20170320.models.RoWeight`
-        :param FailOver: Whether to enable failover. If it is enabled, the connection address will route requests to the source instance in case of proxy failure. Valid values: `true`, `false`
+        :param FailOver: Whether to enable failover. If it is enabled, the connection address will route requests to the source instance in case of proxy failure. Valid values: `true`, `false`. Default value: `false`.
         :type FailOver: bool
-        :param AutoAddRo: Whether to automatically add newly created read-only instances to the proxy group. Valid values: `true`, `false`
+        :param AutoAddRo: Whether to automatically add newly created read-only instances to the proxy group. Valid values: `true`, `false` Default value: `false`.
         :type AutoAddRo: bool
         """
         self.ProxyGroupId = None
@@ -7072,72 +6996,6 @@ class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ModifyDBInstanceVipVportRequest(AbstractModel):
-    """ModifyDBInstanceVipVport request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters.
-        :type InstanceId: str
-        :param DstIp: Destination IP. Either this parameter or `DstPort` must be passed in.
-        :type DstIp: str
-        :param DstPort: Destination port number. Value range: [1024-65535]. Either this parameter or `DstIp` must be passed in.
-        :type DstPort: int
-        :param UniqVpcId: Unified VPC ID
-        :type UniqVpcId: str
-        :param UniqSubnetId: Unified subnet ID.
-        :type UniqSubnetId: str
-        :param ReleaseDuration: Repossession duration in hours for old IP in the original network when changing from the basic network to VPC or changing the VPC subnet. Value range: 0-168 hours. Default value: 24 hours.
-        :type ReleaseDuration: int
-        """
-        self.InstanceId = None
-        self.DstIp = None
-        self.DstPort = None
-        self.UniqVpcId = None
-        self.UniqSubnetId = None
-        self.ReleaseDuration = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.DstIp = params.get("DstIp")
-        self.DstPort = params.get("DstPort")
-        self.UniqVpcId = params.get("UniqVpcId")
-        self.UniqSubnetId = params.get("UniqSubnetId")
-        self.ReleaseDuration = params.get("ReleaseDuration")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyDBInstanceVipVportResponse(AbstractModel):
-    """ModifyDBInstanceVipVport response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param AsyncRequestId: Async task ID. (This returned field has been disused)
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type AsyncRequestId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.AsyncRequestId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.AsyncRequestId = params.get("AsyncRequestId")
-        self.RequestId = params.get("RequestId")
-
-
 class ModifyInstanceParamRequest(AbstractModel):
     """ModifyInstanceParam request structure.
 
@@ -7308,55 +7166,6 @@ class ModifyLocalBinlogConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ModifyNameOrDescByDpIdRequest(AbstractModel):
-    """ModifyNameOrDescByDpId request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param DeployGroupId: ID of a placement group.
-        :type DeployGroupId: str
-        :param DeployGroupName: Name of a placement group, which can contain up to 60 characters. The placement group name and description cannot both be empty.
-        :type DeployGroupName: str
-        :param Description: Description of a placement group, which can contain up to 200 characters. The placement group name and description cannot both be empty.
-        :type Description: str
-        """
-        self.DeployGroupId = None
-        self.DeployGroupName = None
-        self.Description = None
-
-
-    def _deserialize(self, params):
-        self.DeployGroupId = params.get("DeployGroupId")
-        self.DeployGroupName = params.get("DeployGroupName")
-        self.Description = params.get("Description")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyNameOrDescByDpIdResponse(AbstractModel):
-    """ModifyNameOrDescByDpId response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class ModifyParamTemplateRequest(AbstractModel):
     """ModifyParamTemplate request structure.
 
@@ -7366,9 +7175,9 @@ class ModifyParamTemplateRequest(AbstractModel):
         r"""
         :param TemplateId: Template ID.
         :type TemplateId: int
-        :param Name: Template name.
+        :param Name: Template name (up to 64 characters)
         :type Name: str
-        :param Description: Template description.
+        :param Description: Template description (up to 255 characters)
         :type Description: str
         :param ParamList: List of parameters.
         :type ParamList: list of Parameter
@@ -7497,16 +7306,20 @@ class ModifyTimeWindowRequest(AbstractModel):
         :type TimeRanges: list of str
         :param Weekdays: Specifies for which day to modify the time period. Value range: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday. If it is not specified or is left blank, the time period will be modified for every day by default.
         :type Weekdays: list of str
+        :param MaxDelayTime: Data delay threshold. It takes effect only for source instance and disaster recovery instance. Default value: 10.
+        :type MaxDelayTime: int
         """
         self.InstanceId = None
         self.TimeRanges = None
         self.Weekdays = None
+        self.MaxDelayTime = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.TimeRanges = params.get("TimeRanges")
         self.Weekdays = params.get("Weekdays")
+        self.MaxDelayTime = params.get("MaxDelayTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8468,6 +8281,47 @@ class ReloadBalanceProxyNodeRequest(AbstractModel):
 
 class ReloadBalanceProxyNodeResponse(AbstractModel):
     """ReloadBalanceProxyNode response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ResetRootAccountRequest(AbstractModel):
+    """ResetRootAccount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetRootAccountResponse(AbstractModel):
+    """ResetRootAccount response structure.
 
     """
 
@@ -10211,9 +10065,9 @@ class UpgradeCDBProxyRequest(AbstractModel):
         :type InstanceId: str
         :param ProxyGroupId: Database proxy ID
         :type ProxyGroupId: str
-        :param ProxyCount: Number of proxy nodes
+        :param ProxyCount: The number of proxy nodes
         :type ProxyCount: int
-        :param Cpu: Number of CPU cores per proxy node
+        :param Cpu: The number of CPU cores per proxy node
         :type Cpu: int
         :param Mem: Memory per proxy node
         :type Mem: int

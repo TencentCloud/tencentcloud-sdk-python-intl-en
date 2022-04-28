@@ -770,12 +770,20 @@ class DeleteImagesRequest(AbstractModel):
         r"""
         :param ImageIds: List of the IDs of the instances to be deleted.
         :type ImageIds: list of str
+        :param DeleteBindedSnap: Whether to delete the snapshot associated with the image
+        :type DeleteBindedSnap: bool
+        :param DryRun: Check whether deleting an image is supported
+        :type DryRun: bool
         """
         self.ImageIds = None
+        self.DeleteBindedSnap = None
+        self.DryRun = None
 
 
     def _deserialize(self, params):
         self.ImageIds = params.get("ImageIds")
+        self.DeleteBindedSnap = params.get("DeleteBindedSnap")
+        self.DryRun = params.get("DryRun")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1201,7 +1209,7 @@ class DescribeImagesRequest(AbstractModel):
         r"""
         :param ImageIds: List of image IDs, such as `img-gvbnzy6f`. For the format of array-type parameters, see [API Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1). You can obtain the image IDs in two ways: <br><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response. <br><li>View the image IDs in the [Image Console](https://console.cloud.tencent.com/cvm/image).
         :type ImageIds: list of str
-        :param Filters: Filters. Each request can have up to 10 `Filters` and 5 `Filters.Values`. You cannot specify `ImageIds` and `Filters` at the same time. Specific filters:
+        :param Filters: Filters. Each request can have up to 10 `Filters`, and 5 `Filters.Values` for each filter. `ImageIds` and `Filters` cannot be specified at the same time. See details:
 
 <li><strong>image-id</strong></li>
 <p style="padding-left: 30px;">Filter by the <strong>image ID</strong>.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
@@ -1210,9 +1218,11 @@ class DescribeImagesRequest(AbstractModel):
 <li><strong>image-name</strong></li>
 <p style="padding-left: 30px;">Filter by the <strong>image name</strong>.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
 <li><strong>platform</strong></li>
-<p style="padding-left: 30px;">Filter by the <strong>image operating system</strong>, such as CentOS.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
+<p style="padding-left: 30px;">Filter by the <strong>image operating system</strong>, such as `CentOS`.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
 <li><strong>tag-key</strong></li>
 <p style="padding-left: 30px;">Filter by the <strong>tag key</strong>.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
+<li><strong>tag-value</strong></li>
+<p style="padding-left: 30px;">Filter by the <strong>tag value</strong>.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
 <li><strong>tag:tag-key</strong></li>
 <p style="padding-left: 30px;">Filter by the <strong>tag key-value pair</strong>. Replace “tag-key” with the actual value. </p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
         :type Filters: list of Filter
@@ -2561,6 +2571,9 @@ Note: This field may return null, indicating that no valid value is found.
         :param SnapshotSet: Information on the snapshots associated with the image
 Note: This field may return null, indicating that no valid value is found.
         :type SnapshotSet: list of Snapshot
+        :param Tags: The list of tags bound to the image.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Tags: list of Tag
         """
         self.ImageId = None
         self.OsName = None
@@ -2577,6 +2590,7 @@ Note: This field may return null, indicating that no valid value is found.
         self.SyncPercent = None
         self.IsSupportCloudinit = None
         self.SnapshotSet = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -2600,6 +2614,12 @@ Note: This field may return null, indicating that no valid value is found.
                 obj = Snapshot()
                 obj._deserialize(item)
                 self.SnapshotSet.append(obj)
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5712,14 +5732,18 @@ class SyncImagesRequest(AbstractModel):
         :type ImageIds: list of str
         :param DestinationRegions: List of destination regions for synchronization. A destination region must meet the following requirements: <br><li>It cannot be the source region. <br><li>It must be valid. <br><li>Currently some regions do not support image synchronization. <br>For specific regions, see [Region](https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1).
         :type DestinationRegions: list of str
+        :param DryRun: Checks whether image synchronization can be initiated 
+        :type DryRun: bool
         """
         self.ImageIds = None
         self.DestinationRegions = None
+        self.DryRun = None
 
 
     def _deserialize(self, params):
         self.ImageIds = params.get("ImageIds")
         self.DestinationRegions = params.get("DestinationRegions")
+        self.DryRun = params.get("DryRun")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
