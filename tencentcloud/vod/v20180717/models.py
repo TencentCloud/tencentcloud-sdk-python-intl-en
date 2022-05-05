@@ -10583,12 +10583,20 @@ class DrmStreamingsInfo(AbstractModel):
         r"""
         :param SimpleAesDefinition: ID of the adaptive bitrate streaming template whose protection type is SimpleAES.
         :type SimpleAesDefinition: int
+        :param WidevineDefinition: The ID of the adaptive bitrate streaming template that encrypts the streams by Widewine.
+        :type WidevineDefinition: int
+        :param FairPlayDefinition: The ID of the adaptive bitrate streaming template that encrypts the streams by FairPlay.
+        :type FairPlayDefinition: int
         """
         self.SimpleAesDefinition = None
+        self.WidevineDefinition = None
+        self.FairPlayDefinition = None
 
 
     def _deserialize(self, params):
         self.SimpleAesDefinition = params.get("SimpleAesDefinition")
+        self.WidevineDefinition = params.get("WidevineDefinition")
+        self.FairPlayDefinition = params.get("FairPlayDefinition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10607,12 +10615,20 @@ class DrmStreamingsInfoForUpdate(AbstractModel):
         r"""
         :param SimpleAesDefinition: ID of the adaptive bitrate streaming template whose protection type is SimpleAES.
         :type SimpleAesDefinition: int
+        :param WidevineDefinition: The ID of the adaptive bitrate streaming template that encrypts the streams by Widewine.
+        :type WidevineDefinition: int
+        :param FairPlayDefinition: The ID of the adaptive bitrate streaming template that encrypts the streams by FairPlay.
+        :type FairPlayDefinition: int
         """
         self.SimpleAesDefinition = None
+        self.WidevineDefinition = None
+        self.FairPlayDefinition = None
 
 
     def _deserialize(self, params):
         self.SimpleAesDefinition = params.get("SimpleAesDefinition")
+        self.WidevineDefinition = params.get("WidevineDefinition")
+        self.FairPlayDefinition = params.get("FairPlayDefinition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18753,8 +18769,8 @@ class SearchMediaRequest(AbstractModel):
         :param SourceTypes: Media file source set. For valid values, please see [SourceType](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaSourceData).
 <li>Array length limit: 10.</li>
         :type SourceTypes: list of str
-        :param StreamIds: [Stream ID](https://intl.cloud.tencent.com/document/product/267/5959?from_cn_redirect=1) set. Any element in the set can be matched.
-<li>Array length limit: 10.</li>
+        :param StreamIds: The live stream code array. A media file will be returned if it matches any element in the array.
+<li>Array length limit: 10</li>
         :type StreamIds: list of str
         :param Vids: Unique ID of LVB recording file. Any element in the set can be matched.
 <li>Array length limit: 10.</li>
@@ -18805,8 +18821,8 @@ Search text, which fuzzily matches the media file name or description. The more 
         :param SourceType: (This is not recommended. `SourceTypes` should be used instead)
 Media file source. For valid values, please see [SourceType](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaSourceData).
         :type SourceType: str
-        :param StreamId: (This is not recommended. `StreamIds` should be used instead)
-[Stream ID](https://intl.cloud.tencent.com/document/product/267/5959?from_cn_redirect=1).
+        :param StreamId: (Not recommended. Consider using `StreamIds` instead.)
+The live stream code.
         :type StreamId: str
         :param Vid: (This is not recommended. `Vids` should be used instead)
 Unique ID of LVB recording file.

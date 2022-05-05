@@ -849,7 +849,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeCDBProxy(self, request):
-        """This API is used to query the information of database proxy.
+        """This API is used to query database proxy. It will be deprecated and replaced by the `QueryCDBProxy` API.
 
         :param request: Request instance for DescribeCDBProxy.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeCDBProxyRequest`

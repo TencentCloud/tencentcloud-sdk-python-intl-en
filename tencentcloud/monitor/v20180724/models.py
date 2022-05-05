@@ -4661,7 +4661,12 @@ class DescribeStatisticDataRequest(AbstractModel):
         :type MetricNames: list of str
         :param Conditions: Dimension condition. The `=` and `in` operators are supported
         :type Conditions: list of MidQueryCondition
-        :param Period: Statistical granularity in s. Default value: 300
+        :param Period: Statistical period in seconds. Default value: 300. Optional values: 60, 300, 3,600, and 86,400.
+Due to the storage period limit, the statistical period is subject to the time range of statistics:
+60s: The time range is less than 12 hours, and the timespan between `StartTime` and the current time cannot exceed 15 days.
+300s: The time range is less than three days, and the timespan between `StartTime` and the current time cannot exceed 31 days.
+3,600s: The time range is less than 30 days, and the timespan between `StartTime` and the current time cannot exceed 93 days.
+86,400s: The time range is less than 186 days, and the timespan between `StartTime` and the current time cannot exceed 186 days.
         :type Period: int
         :param StartTime: Start time, which is the current time by default, such as 2020-12-08T19:51:23+08:00
         :type StartTime: str
@@ -6566,12 +6571,16 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param EndTime: End time of the notification in seconds, which is calculated from 00:00:00.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type EndTime: int
+        :param Weekday: Notification cycle. The values 1-7 indicate Monday to Sunday.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Weekday: list of int
         """
         self.URL = None
         self.IsValid = None
         self.ValidationCode = None
         self.StartTime = None
         self.EndTime = None
+        self.Weekday = None
 
 
     def _deserialize(self, params):
@@ -6580,6 +6589,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.ValidationCode = params.get("ValidationCode")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.Weekday = params.get("Weekday")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6738,6 +6748,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param PhoneCallType: Dial type. `SYNC` (simultaneous dial), `CIRCLE` (polled dial). Default value: `CIRCLE`.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type PhoneCallType: str
+        :param Weekday: Notification cycle. The values 1-7 indicate Monday to Sunday.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Weekday: list of int
         """
         self.ReceiverType = None
         self.StartTime = None
@@ -6751,6 +6764,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.PhoneCircleInterval = None
         self.NeedPhoneArriveNotice = None
         self.PhoneCallType = None
+        self.Weekday = None
 
 
     def _deserialize(self, params):
@@ -6766,6 +6780,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.PhoneCircleInterval = params.get("PhoneCircleInterval")
         self.NeedPhoneArriveNotice = params.get("NeedPhoneArriveNotice")
         self.PhoneCallType = params.get("PhoneCallType")
+        self.Weekday = params.get("Weekday")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

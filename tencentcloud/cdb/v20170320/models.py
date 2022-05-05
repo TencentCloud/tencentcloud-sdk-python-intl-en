@@ -515,6 +515,8 @@ class BackupInfo(AbstractModel):
         :type Way: str
         :param ManualBackupName: Manual backup alias
         :type ManualBackupName: str
+        :param SaveMode: Backup retention type. Valid values: `save_mode_regular` (non-archive backup), save_mode_period`(archive backup).
+        :type SaveMode: str
         """
         self.Name = None
         self.Size = None
@@ -530,6 +532,7 @@ class BackupInfo(AbstractModel):
         self.Method = None
         self.Way = None
         self.ManualBackupName = None
+        self.SaveMode = None
 
 
     def _deserialize(self, params):
@@ -547,6 +550,7 @@ class BackupInfo(AbstractModel):
         self.Method = params.get("Method")
         self.Way = params.get("Way")
         self.ManualBackupName = params.get("ManualBackupName")
+        self.SaveMode = params.get("SaveMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1484,7 +1488,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type AutoSyncFlag: int
         :param CageId: Financial cage ID.
         :type CageId: str
-        :param ParamTemplateType: Type of the default parameter template. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template).
+        :param ParamTemplateType: Type of the default parameter template. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template). Default value: `HIGH_STABILITY`.
         :type ParamTemplateType: str
         :param AlarmPolicyIdList: The array of alarm policy names, such as ["policy-uyoee9wg"]. If the `AlarmPolicyList` parameter is specified, this parameter is invalid.
         :type AlarmPolicyIdList: list of str
@@ -2380,6 +2384,16 @@ class DescribeBackupConfigResponse(AbstractModel):
         :type BinlogExpireDays: int
         :param BackupTimeWindow: Time window for automatic instance backup.
         :type BackupTimeWindow: :class:`tencentcloud.cdb.v20170320.models.CommonTimeWindow`
+        :param EnableBackupPeriodSave: Switch for archive backup retention. Valid values: `off` (disable), `on` (enable). Default value:`off`.
+        :type EnableBackupPeriodSave: str
+        :param BackupPeriodSaveDays: Maximum days of archive backup retention. Valid range: 90-3650. Default value: 1080.
+        :type BackupPeriodSaveDays: int
+        :param BackupPeriodSaveInterval: Archive backup retention period. Valid values: `weekly` (a week), `monthly` (a month), `quarterly` (a quarter), `yearly` (a year). Default value: `monthly`.
+        :type BackupPeriodSaveInterval: str
+        :param BackupPeriodSaveCount: Number of archive backups. Minimum value: `1`, Maximum value: Number of non-archive backups in archive backup retention period. Default value: `1`.
+        :type BackupPeriodSaveCount: int
+        :param StartBackupPeriodSaveDate: The start time in the format: yyyy-mm-dd HH:MM:SS, which is used to enable archive backup retention policy.
+        :type StartBackupPeriodSaveDate: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -2389,6 +2403,11 @@ class DescribeBackupConfigResponse(AbstractModel):
         self.BackupMethod = None
         self.BinlogExpireDays = None
         self.BackupTimeWindow = None
+        self.EnableBackupPeriodSave = None
+        self.BackupPeriodSaveDays = None
+        self.BackupPeriodSaveInterval = None
+        self.BackupPeriodSaveCount = None
+        self.StartBackupPeriodSaveDate = None
         self.RequestId = None
 
 
@@ -2401,6 +2420,11 @@ class DescribeBackupConfigResponse(AbstractModel):
         if params.get("BackupTimeWindow") is not None:
             self.BackupTimeWindow = CommonTimeWindow()
             self.BackupTimeWindow._deserialize(params.get("BackupTimeWindow"))
+        self.EnableBackupPeriodSave = params.get("EnableBackupPeriodSave")
+        self.BackupPeriodSaveDays = params.get("BackupPeriodSaveDays")
+        self.BackupPeriodSaveInterval = params.get("BackupPeriodSaveInterval")
+        self.BackupPeriodSaveCount = params.get("BackupPeriodSaveCount")
+        self.StartBackupPeriodSaveDate = params.get("StartBackupPeriodSaveDate")
         self.RequestId = params.get("RequestId")
 
 
@@ -5768,7 +5792,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Vip: str
         :param Vport: Port number
         :type Vport: int
-        :param CdbError: Lock flag
+        :param CdbError: Whether the disk write is locked (It depends on whether the instance data in disk exceeds its quota). Valid values: `0` (unlocked), `1` (locked).
         :type CdbError: int
         :param UniqVpcId: VPC descriptor, such as "vpc-5v8wn9mg"
         :type UniqVpcId: str
@@ -6500,16 +6524,28 @@ class ModifyBackupConfigRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
         :type InstanceId: str
-        :param ExpireDays: Backup file retention period in days. Value range: 7-732.
+        :param ExpireDays: Backup file retention period in days. Value range: 7-1830.
         :type ExpireDays: int
         :param StartTime: (This parameter will be disused. The `BackupTimeWindow` parameter is recommended.) Backup time range in the format of 02:00-06:00, with the start time and end time on the hour. Valid values: 00:00-12:00, 02:00-06:00, 06:00-10:00, 10:00-14:00, 14:00-18:00, 18:00-22:00, 22:00-02:00.
         :type StartTime: str
         :param BackupMethod: Automatic backup mode. Only `physical` (physical cold backup) is supported
         :type BackupMethod: str
-        :param BinlogExpireDays: Binlog retention period in days. Value range: 7-732. It cannot be greater than the retention period of backup files.
+        :param BinlogExpireDays: Binlog retention period in days. Value range: 7-1830. It can’t be greater than the retention period of backup files.
         :type BinlogExpireDays: int
         :param BackupTimeWindow: Backup time window; for example, to set up backup between 10:00 and 14:00 on every Tuesday and Sunday, you should set this parameter as follows: {"Monday": "", "Tuesday": "10:00-14:00", "Wednesday": "", "Thursday": "", "Friday": "", "Saturday": "", "Sunday": "10:00-14:00"} (Note: You can set up backup on different days, but the backup time windows need to be the same. If this field is set, the `StartTime` field will be ignored)
         :type BackupTimeWindow: :class:`tencentcloud.cdb.v20170320.models.CommonTimeWindow`
+        :param EnableBackupPeriodSave: Switch for archive backup retention. Valid values: `off` (disable), `on` (enable). Default value:`off`.
+        :type EnableBackupPeriodSave: str
+        :param EnableBackupPeriodLongTermSave: Switch for long-term backup retention (This field can be ignored, for its feature hasn’t been launched). Valid values: `off` (disable), `on` (enable). Default value: `off`. Once enabled, the parameters (BackupPeriodSaveDays, BackupPeriodSaveInterval, and BackupPeriodSaveCount) will be invalid.
+        :type EnableBackupPeriodLongTermSave: str
+        :param BackupPeriodSaveDays: Maximum days of archive backup retention. Valid range: 90-3650. Default value: 1080.
+        :type BackupPeriodSaveDays: int
+        :param BackupPeriodSaveInterval: Archive backup retention period. Valid values: `weekly` (a week), `monthly` (a month), `quarterly` (a quarter), `yearly` (a year). Default value: `monthly`.
+        :type BackupPeriodSaveInterval: str
+        :param BackupPeriodSaveCount: Number of archive backups. Minimum value: `1`, Maximum value: Number of non-archive backups in archive backup retention period. Default value: `1`.
+        :type BackupPeriodSaveCount: int
+        :param StartBackupPeriodSaveDate: The start time in the format of yyyy-mm-dd HH:MM:SS, which is used to enable archive backup retention policy.
+        :type StartBackupPeriodSaveDate: str
         """
         self.InstanceId = None
         self.ExpireDays = None
@@ -6517,6 +6553,12 @@ class ModifyBackupConfigRequest(AbstractModel):
         self.BackupMethod = None
         self.BinlogExpireDays = None
         self.BackupTimeWindow = None
+        self.EnableBackupPeriodSave = None
+        self.EnableBackupPeriodLongTermSave = None
+        self.BackupPeriodSaveDays = None
+        self.BackupPeriodSaveInterval = None
+        self.BackupPeriodSaveCount = None
+        self.StartBackupPeriodSaveDate = None
 
 
     def _deserialize(self, params):
@@ -6528,6 +6570,12 @@ class ModifyBackupConfigRequest(AbstractModel):
         if params.get("BackupTimeWindow") is not None:
             self.BackupTimeWindow = CommonTimeWindow()
             self.BackupTimeWindow._deserialize(params.get("BackupTimeWindow"))
+        self.EnableBackupPeriodSave = params.get("EnableBackupPeriodSave")
+        self.EnableBackupPeriodLongTermSave = params.get("EnableBackupPeriodLongTermSave")
+        self.BackupPeriodSaveDays = params.get("BackupPeriodSaveDays")
+        self.BackupPeriodSaveInterval = params.get("BackupPeriodSaveInterval")
+        self.BackupPeriodSaveCount = params.get("BackupPeriodSaveCount")
+        self.StartBackupPeriodSaveDate = params.get("StartBackupPeriodSaveDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10065,9 +10113,9 @@ class UpgradeCDBProxyRequest(AbstractModel):
         :type InstanceId: str
         :param ProxyGroupId: Database proxy ID
         :type ProxyGroupId: str
-        :param ProxyCount: The number of proxy nodes
+        :param ProxyCount: Number of proxy nodes
         :type ProxyCount: int
-        :param Cpu: The number of CPU cores per proxy node
+        :param Cpu: Number of CPU cores per proxy node
         :type Cpu: int
         :param Mem: Memory per proxy node
         :type Mem: int

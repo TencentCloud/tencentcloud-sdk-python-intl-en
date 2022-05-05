@@ -190,9 +190,9 @@ class AlarmTarget(AbstractModel):
         :type Query: str
         :param Number: Monitoring object number, which is incremental from 1.
         :type Number: int
-        :param StartTimeOffset: Offset of the query start time from the current time in minutes. The value cannot be positive. Value range: -1440–0.
+        :param StartTimeOffset: Offset of the query start time from the alarm execution time in minutes. The value cannot be positive. Value range: -1440–0.
         :type StartTimeOffset: int
-        :param EndTimeOffset: Offset of the query end time from the current time in minutes. The value cannot be positive and must be greater than `StartTimeOffset`. Value range: -1440–0.
+        :param EndTimeOffset: Offset of the query end time from the alarm execution time in minutes. The value cannot be positive and must be greater than `StartTimeOffset`. Value range: -1440–0.
         :type EndTimeOffset: int
         :param LogsetId: Logset ID
         :type LogsetId: str
@@ -240,9 +240,9 @@ class AlarmTargetInfo(AbstractModel):
         :type Query: str
         :param Number: Monitoring object number
         :type Number: int
-        :param StartTimeOffset: Offset of the query start time from the current time. The value cannot be positive. Value range: -1440–0.
+        :param StartTimeOffset: Offset of the query start time from the alarm execution time in minutes. The value cannot be positive. Value range: -1440–0.
         :type StartTimeOffset: int
-        :param EndTimeOffset: Offset of the query end time from the current time. The value cannot be positive and must be greater than `StartTimeOffset`. Value range: -1440–0.
+        :param EndTimeOffset: Offset of the query end time from the alarm execution time in minutes. The value cannot be positive and must be greater than `StartTimeOffset`. Value range: -1440–0.
         :type EndTimeOffset: int
         """
         self.LogsetId = None
@@ -421,6 +421,47 @@ class Ckafka(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CloseKafkaConsumerRequest(AbstractModel):
+    """CloseKafkaConsumer request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FromTopicId: CLS topic identifier
+        :type FromTopicId: str
+        """
+        self.FromTopicId = None
+
+
+    def _deserialize(self, params):
+        self.FromTopicId = params.get("FromTopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseKafkaConsumerResponse(AbstractModel):
+    """CloseKafkaConsumer response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class Column(AbstractModel):
@@ -1006,10 +1047,16 @@ class CreateIndexRequest(AbstractModel):
         :type Rule: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
         :param Status: Whether to take effect. Default value: true
         :type Status: bool
+        :param IncludeInternalFields: Internal field marker of full-text index. Default value: `false`. Valid value: `false`: excluding internal fields; `true`: including internal fields
+        :type IncludeInternalFields: bool
+        :param MetadataFlag: Metadata flag. Default value: `0`. Valid value: `0`: full-text index (including the metadata field with key-value index enabled); `1`: full-text index (including all metadata fields); `2`: full-text index (excluding metadata fields).
+        :type MetadataFlag: int
         """
         self.TopicId = None
         self.Rule = None
         self.Status = None
+        self.IncludeInternalFields = None
+        self.MetadataFlag = None
 
 
     def _deserialize(self, params):
@@ -1018,6 +1065,8 @@ class CreateIndexRequest(AbstractModel):
             self.Rule = RuleInfo()
             self.Rule._deserialize(params.get("Rule"))
         self.Status = params.get("Status")
+        self.IncludeInternalFields = params.get("IncludeInternalFields")
+        self.MetadataFlag = params.get("MetadataFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1171,6 +1220,96 @@ class CreateMachineGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.GroupId = params.get("GroupId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateShipperRequest(AbstractModel):
+    """CreateShipper request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicId: ID of the log topic to which the shipping rule to be created belongs
+        :type TopicId: str
+        :param Bucket: Destination bucket in the shipping rule to be created
+        :type Bucket: str
+        :param Prefix: Prefix of the shipping directory in the shipping rule to be created
+        :type Prefix: str
+        :param ShipperName: Shipping rule name
+        :type ShipperName: str
+        :param Interval: Interval between shipping tasks (in sec). Default value: 300. Value range: 300-900
+        :type Interval: int
+        :param MaxSize: Maximum size of a file to be shipped, in MB. Default value: 256. Value range: 100-256
+        :type MaxSize: int
+        :param FilterRules: Filter rules for shipped logs. Only logs matching the rules can be shipped. All rules are in the AND relationship, and up to five rules can be added. If the array is empty, no filtering will be performed, and all logs will be shipped.
+        :type FilterRules: list of FilterRuleInfo
+        :param Partition: Rules for partitioning logs to be shipped. `strftime` can be used to define the presentation of time format.
+        :type Partition: str
+        :param Compress: Compression configuration of shipped log
+        :type Compress: :class:`tencentcloud.cls.v20201016.models.CompressInfo`
+        :param Content: Format configuration of shipped log content
+        :type Content: :class:`tencentcloud.cls.v20201016.models.ContentInfo`
+        """
+        self.TopicId = None
+        self.Bucket = None
+        self.Prefix = None
+        self.ShipperName = None
+        self.Interval = None
+        self.MaxSize = None
+        self.FilterRules = None
+        self.Partition = None
+        self.Compress = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        self.Bucket = params.get("Bucket")
+        self.Prefix = params.get("Prefix")
+        self.ShipperName = params.get("ShipperName")
+        self.Interval = params.get("Interval")
+        self.MaxSize = params.get("MaxSize")
+        if params.get("FilterRules") is not None:
+            self.FilterRules = []
+            for item in params.get("FilterRules"):
+                obj = FilterRuleInfo()
+                obj._deserialize(item)
+                self.FilterRules.append(obj)
+        self.Partition = params.get("Partition")
+        if params.get("Compress") is not None:
+            self.Compress = CompressInfo()
+            self.Compress._deserialize(params.get("Compress"))
+        if params.get("Content") is not None:
+            self.Content = ContentInfo()
+            self.Content._deserialize(params.get("Content"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateShipperResponse(AbstractModel):
+    """CreateShipper response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ShipperId: Shipping rule ID
+        :type ShipperId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ShipperId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ShipperId = params.get("ShipperId")
         self.RequestId = params.get("RequestId")
 
 
@@ -2237,6 +2376,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :type Rule: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
         :param ModifyTime: Index modification time. The default value is the index creation time.
         :type ModifyTime: str
+        :param IncludeInternalFields: Internal field marker of full-text index. Default value: `false`. Valid value: `false`: excluding internal fields; `true`: including internal fields
+Note: This field may return `null`, indicating that no valid value was found.
+        :type IncludeInternalFields: bool
+        :param MetadataFlag: Metadata flag. Default value: `0`. Valid value: `0`: full-text index (including the metadata field with key-value index enabled); `1`: full-text index (including all metadata fields); `2`: full-text index (excluding metadata fields).
+Note: This field may return `null`, indicating that no valid value was found.
+        :type MetadataFlag: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -2244,6 +2389,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Status = None
         self.Rule = None
         self.ModifyTime = None
+        self.IncludeInternalFields = None
+        self.MetadataFlag = None
         self.RequestId = None
 
 
@@ -2254,6 +2401,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
             self.Rule = RuleInfo()
             self.Rule._deserialize(params.get("Rule"))
         self.ModifyTime = params.get("ModifyTime")
+        self.IncludeInternalFields = params.get("IncludeInternalFields")
+        self.MetadataFlag = params.get("MetadataFlag")
         self.RequestId = params.get("RequestId")
 
 
@@ -3510,6 +3659,9 @@ class LogContextInfo(AbstractModel):
         :type PkgLogId: int
         :param BTime: Log timestamp
         :type BTime: int
+        :param HostName: Source host name of logs
+Note: This field may return `null`, indicating that no valid value was found.
+        :type HostName: str
         """
         self.Source = None
         self.Filename = None
@@ -3517,6 +3669,7 @@ class LogContextInfo(AbstractModel):
         self.PkgId = None
         self.PkgLogId = None
         self.BTime = None
+        self.HostName = None
 
 
     def _deserialize(self, params):
@@ -3526,6 +3679,7 @@ class LogContextInfo(AbstractModel):
         self.PkgId = params.get("PkgId")
         self.PkgLogId = params.get("PkgLogId")
         self.BTime = params.get("BTime")
+        self.HostName = params.get("HostName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3559,6 +3713,9 @@ class LogInfo(AbstractModel):
         :param LogJson: Serialized JSON string of log content
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type LogJson: str
+        :param HostName: Source host name of logs
+Note: This field may return `null`, indicating that no valid value was found.
+        :type HostName: str
         """
         self.Time = None
         self.TopicId = None
@@ -3568,6 +3725,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.PkgId = None
         self.PkgLogId = None
         self.LogJson = None
+        self.HostName = None
 
 
     def _deserialize(self, params):
@@ -3579,6 +3737,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.PkgId = params.get("PkgId")
         self.PkgLogId = params.get("PkgLogId")
         self.LogJson = params.get("LogJson")
+        self.HostName = params.get("HostName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4216,9 +4375,9 @@ class ModifyIndexRequest(AbstractModel):
         :type Status: bool
         :param Rule: Index rule
         :type Rule: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
-        :param IncludeInternalFields: 
+        :param IncludeInternalFields: Internal field marker of full-text index. Default value: `false`. Valid value: `false`: excluding internal fields; `true`: including internal fields
         :type IncludeInternalFields: bool
-        :param MetadataFlag: 
+        :param MetadataFlag: Metadata flag. Default value: `0`. Valid value: `0`: full-text index (including the metadata field with key-value index enabled); `1`: full-text index (including all metadata fields); `2`: full-text index (excluding metadata fields).
         :type MetadataFlag: int
         """
         self.TopicId = None
@@ -4482,6 +4641,76 @@ class ModifyShipperResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyTopicRequest(AbstractModel):
+    """ModifyTopic request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicId: Log topic ID
+        :type TopicId: str
+        :param TopicName: Log topic name
+        :type TopicName: str
+        :param Tags: Tag description list. This parameter is used to bind a tag to a log topic. Up to 10 tag key-value pairs are supported, and they must be unique.
+        :type Tags: list of Tag
+        :param Status: Whether to start collection for this log topic
+        :type Status: bool
+        :param AutoSplit: Whether to enable automatic split
+        :type AutoSplit: bool
+        :param MaxSplitPartitions: Maximum number of partitions to split into for this topic if automatic split is enabled
+        :type MaxSplitPartitions: int
+        :param Period: Lifecycle in days. Value range: 1-3600 (3640 indicates permanent retention)
+        :type Period: int
+        """
+        self.TopicId = None
+        self.TopicName = None
+        self.Tags = None
+        self.Status = None
+        self.AutoSplit = None
+        self.MaxSplitPartitions = None
+        self.Period = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        self.TopicName = params.get("TopicName")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.Status = params.get("Status")
+        self.AutoSplit = params.get("AutoSplit")
+        self.MaxSplitPartitions = params.get("MaxSplitPartitions")
+        self.Period = params.get("Period")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTopicResponse(AbstractModel):
+    """ModifyTopic response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class MonitorTime(AbstractModel):
     """Monitoring task execution time point in alarm policy
 
@@ -4561,6 +4790,51 @@ Currently, other recipient types are not supported.
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class OpenKafkaConsumerRequest(AbstractModel):
+    """OpenKafkaConsumer request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FromTopicId: `TopicId` created by the CLS console
+        :type FromTopicId: str
+        """
+        self.FromTopicId = None
+
+
+    def _deserialize(self, params):
+        self.FromTopicId = params.get("FromTopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenKafkaConsumerResponse(AbstractModel):
+    """OpenKafkaConsumer response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicID: `TopicId` to be consumed
+        :type TopicID: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TopicID = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TopicID = params.get("TopicID")
+        self.RequestId = params.get("RequestId")
 
 
 class PartitionInfo(AbstractModel):

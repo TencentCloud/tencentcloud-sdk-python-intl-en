@@ -26,6 +26,35 @@ class SesClient(AbstractClient):
     _service = 'ses'
 
 
+    def BatchSendEmail(self, request):
+        """This API is used to send a TEXT or HTML email to multiple recipients at a time for marketing or notification purposes. By default, you can send emails using a template only. To send custom content, please contact your sales rep to enable this feature. You need to create a recipient group with email addresses first and then send emails by group ID. SES supports scheduled and recurring email sending tasks. You need to pass in `TimedParam` for a scheduled task and `CycleParam` for a recurring one.
+
+        :param request: Request instance for BatchSendEmail.
+        :type request: :class:`tencentcloud.ses.v20201002.models.BatchSendEmailRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.BatchSendEmailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchSendEmail", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BatchSendEmailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateEmailAddress(self, request):
         """After the sender domain is verified, you need a sender address to send emails. For example, if your sender domain is mail.qcloud.com, your sender address can be service@mail.qcloud.com. If you want to display your name (such as "Tencent Cloud") in the inbox list of the recipients, the sender address should be in the format of `Tencent Cloud <email address>`. Please note that there must be a space between your name and the first angle bracket.
 
@@ -70,6 +99,36 @@ class SesClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateEmailIdentityResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateEmailTemplate(self, request):
+        """This API is used to create a TEXT or HTML email template. To create an HTML template, ensure that it does not include external CSS files. You can use {{variable name}} to specify a variable in the template.
+        Note: Only an approved template can be used to send emails.
+
+        :param request: Request instance for CreateEmailTemplate.
+        :type request: :class:`tencentcloud.ses.v20201002.models.CreateEmailTemplateRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.CreateEmailTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateEmailTemplate", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateEmailTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -592,6 +651,35 @@ class SesClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateEmailIdentityResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateEmailTemplate(self, request):
+        """This API is used to update an email template. An updated template must be approved again before it can be used.
+
+        :param request: Request instance for UpdateEmailTemplate.
+        :type request: :class:`tencentcloud.ses.v20201002.models.UpdateEmailTemplateRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.UpdateEmailTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateEmailTemplate", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateEmailTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

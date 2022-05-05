@@ -110,6 +110,9 @@ INVALIDPARAMETER_LOGSETCONFLICT = 'InvalidParameter.LogsetConflict'
 # The same machine group already exists.
 INVALIDPARAMETER_MACHINEGROUPCONFLICT = 'InvalidParameter.MachineGroupConflict'
 
+# Shipping rule naming conflict.
+INVALIDPARAMETER_SHIPPERCONFLICT = 'InvalidParameter.ShipperConflict'
+
 # There is already a log topic with the same name in the specified logset.
 INVALIDPARAMETER_TOPICCONFLICT = 'InvalidParameter.TopicConflict'
 
@@ -148,6 +151,9 @@ LIMITEXCEEDED_PARTITION = 'LimitExceeded.Partition'
 
 # The number of logs returned by the search API exceeds the upper limit (20 MB).
 LIMITEXCEEDED_SEARCHRESULTTOOLARGE = 'LimitExceeded.SearchResultTooLarge'
+
+# The number of shipping rules exceeds the limit.
+LIMITEXCEEDED_SHIPPER = 'LimitExceeded.Shipper'
 
 # The number of tags exceeds the limit.
 LIMITEXCEEDED_TAG = 'LimitExceeded.Tag'

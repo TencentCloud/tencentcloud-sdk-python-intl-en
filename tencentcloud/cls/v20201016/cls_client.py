@@ -55,6 +55,35 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CloseKafkaConsumer(self, request):
+        """This API is used to disable Kafka consumption.
+
+        :param request: Request instance for CloseKafkaConsumer.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CloseKafkaConsumerRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CloseKafkaConsumerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseKafkaConsumer", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CloseKafkaConsumerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAlarm(self, request):
         """This API is used to create an alarm policy.
 
@@ -273,6 +302,35 @@ class ClsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateMachineGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateShipper(self, request):
+        """This API is used to create a shipping rule. Note: To use this API, you need to check whether you have configured the role and permission for COS shipping tasks. If not, see **Viewing and Configuring Shipping Authorization** at https://intl.cloud.tencent.com/document/product/614/71623.?from_cn_redirect=1
+
+        :param request: Request instance for CreateShipper.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateShipperRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateShipperResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateShipper", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateShipperResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1404,6 +1462,64 @@ class ClsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyShipperResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyTopic(self, request):
+        """This API is used to modify a log topic.
+
+        :param request: Request instance for ModifyTopic.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyTopicRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyTopic", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyTopicResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def OpenKafkaConsumer(self, request):
+        """This API is used to enable the Kafka consumption feature.
+
+        :param request: Request instance for OpenKafkaConsumer.
+        :type request: :class:`tencentcloud.cls.v20201016.models.OpenKafkaConsumerRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.OpenKafkaConsumerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenKafkaConsumer", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.OpenKafkaConsumerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

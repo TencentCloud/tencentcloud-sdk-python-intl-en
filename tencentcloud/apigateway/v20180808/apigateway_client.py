@@ -730,7 +730,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DeleteUpstream(self, request):
-        """This API is used to delete an upstream. Note that you can only delete an upstream when it’s not bound with an API.
+        """This API is used to delete an upstream. Note that you can only delete an upstream when it’s not bound with any APIs.
 
         :param request: Request instance for DeleteUpstream.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DeleteUpstreamRequest`
@@ -1697,7 +1697,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeUpstreamBindApis(self, request):
-        """This API is used to query the list of APIs bound with an upstream.
+        """This API is used to query APIs bound with an upstream.
 
         :param request: Request instance for DescribeUpstreamBindApis.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeUpstreamBindApisRequest`
@@ -1726,7 +1726,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeUpstreams(self, request):
-        """This API is used to query the list of upstreams.
+        """This API is used to query details of upstreams under the current account.
 
         :param request: Request instance for DescribeUpstreams.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeUpstreamsRequest`

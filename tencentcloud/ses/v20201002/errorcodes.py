@@ -29,6 +29,9 @@ FAILEDOPERATION_EMAILCONTENTTOOLARGE = 'FailedOperation.EmailContentToolarge'
 # The number of emails exceeds the daily sending limit.
 FAILEDOPERATION_EXCEEDSENDLIMIT = 'FailedOperation.ExceedSendLimit'
 
+# The number of templates exceeds the upper limit.
+FAILEDOPERATION_EXCEEDTEMPLATELIMIT = 'FailedOperation.ExceedTemplateLimit'
+
 # You have sent too many emails to the same address in a short period.
 FAILEDOPERATION_FREQUENCYLIMIT = 'FailedOperation.FrequencyLimit'
 
@@ -77,6 +80,9 @@ FAILEDOPERATION_SENDEMAILERR = 'FailedOperation.SendEmailErr'
 # The request has not taken effect. Try again.
 FAILEDOPERATION_SERVICENOTAVAILABLE = 'FailedOperation.ServiceNotAvailable'
 
+# The template size is too large. Reduce the size.
+FAILEDOPERATION_TEMPLATECONTENTTOOLARGE = 'FailedOperation.TemplateContentToolarge'
+
 # The email has been blocked temporarily due to violations of rules.
 FAILEDOPERATION_TEMPORARYBLOCKED = 'FailedOperation.TemporaryBlocked'
 
@@ -106,6 +112,9 @@ INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
 # Incorrect attachment content. Make sure the base64 content is correct.
 INVALIDPARAMETERVALUE_ATTACHCONTENTISWRONG = 'InvalidParameterValue.AttachContentIsWrong'
+
+# The start time cannot be earlier than the current time.
+INVALIDPARAMETERVALUE_BEGINTIMEBEFORENOW = 'InvalidParameterValue.BeginTimeBeforeNow'
 
 # This sender domain has been created by another Tencent Cloud account.
 INVALIDPARAMETERVALUE_CREATEDBYOTHER = 'InvalidParameterValue.CreatedByOther'
@@ -143,7 +152,25 @@ INVALIDPARAMETERVALUE_REPEATEMAILADDRESS = 'InvalidParameterValue.RepeatEmailAdd
 # Duplicate recipient group name.
 INVALIDPARAMETERVALUE_REPEATRECEIVERNAME = 'InvalidParameterValue.RepeatReceiverName'
 
-# This template does not exist. Create one first.
+# The email subject must contain 1 to 100 characters.
+INVALIDPARAMETERVALUE_SUBJECTLENGTHERROR = 'InvalidParameterValue.SubjectLengthError'
+
+# The template resource is empty.
+INVALIDPARAMETERVALUE_TEMPLATECONTENTISNULL = 'InvalidParameterValue.TemplateContentIsNULL'
+
+# Incorrect template content. Make sure the Base64 content is correct.
+INVALIDPARAMETERVALUE_TEMPLATECONTENTISWRONG = 'InvalidParameterValue.TemplateContentIsWrong'
+
+# Variables must be in JSON format.
+INVALIDPARAMETERVALUE_TEMPLATEDATAERROR = 'InvalidParameterValue.TemplateDataError'
+
+# Invalid template name. Make sure the characters and length of the template name are valid.
+INVALIDPARAMETERVALUE_TEMPLATENAMEILLEGAL = 'InvalidParameterValue.TemplateNameIllegal'
+
+# The template name cannot be empty.
+INVALIDPARAMETERVALUE_TEMPLATENAMEISNULL = 'InvalidParameterValue.TemplateNameIsNULL'
+
+# The template does not exist. Please create a template.
 INVALIDPARAMETERVALUE_TEMPLATENOTEXIST = 'InvalidParameterValue.TemplateNotExist'
 
 # Incorrect search date. Make sure the date and its format are valid.
@@ -161,11 +188,20 @@ LIMITEXCEEDED_EXCEEDRECEIVERLIMIT = 'LimitExceeded.ExceedReceiverLimit'
 # Missing parameter.
 MISSINGPARAMETER = 'MissingParameter'
 
+# For a recurring sending task, you must select the start time and recurrence.
+MISSINGPARAMETER_CYCLEPARAMNECESSARY = 'MissingParameter.CycleParamNecessary'
+
 # The recipient email address is required.
 MISSINGPARAMETER_EMAILSNECESSARY = 'MissingParameter.EmailsNecessary'
 
 # The recipient group ID is required.
 MISSINGPARAMETER_RECEIVERIDNECESSARY = 'MissingParameter.ReceiverIdNecessary'
+
+# Sender address, recipient group, and email template are required.
+MISSINGPARAMETER_SENDPARAMNECESSARY = 'MissingParameter.SendParamNecessary'
+
+# For a scheduled sending task, you must select the start time.
+MISSINGPARAMETER_TIMEDPARAMNECESSARY = 'MissingParameter.TimedParamNecessary'
 
 # Operation denied.
 OPERATIONDENIED = 'OperationDenied'
@@ -184,6 +220,15 @@ OPERATIONDENIED_RECEIVERISOPERATING = 'OperationDenied.ReceiverIsOperating'
 
 # The recipient group does not exist.
 OPERATIONDENIED_RECEIVERNOTEXIST = 'OperationDenied.ReceiverNotExist'
+
+# The recipient group is empty or hasn’t been completely uploaded.
+OPERATIONDENIED_RECEIVERSTATUSERROR = 'OperationDenied.ReceiverStatusError'
+
+# The sender address does not exist or hasn’t been approved.
+OPERATIONDENIED_SENDADDRESSSTATUSERROR = 'OperationDenied.SendAddressStatusError'
+
+# The email template does not exist or hasn’t been approved.
+OPERATIONDENIED_TEMPLATESTATUSERROR = 'OperationDenied.TemplateStatusError'
 
 # The number of requests exceeds the frequency limit.
 REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'

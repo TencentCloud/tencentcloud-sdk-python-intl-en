@@ -1412,3 +1412,64 @@ class UpdatePrivateCAResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class UpdateProductDynamicRegisterRequest(AbstractModel):
+    """UpdateProductDynamicRegister request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: Product ID
+        :type ProductId: str
+        :param RegisterType: Dynamic registration type. Valid values: 0 - disabled; 1 - pre-create device; 2 - auto-create device.
+        :type RegisterType: int
+        :param RegisterLimit: Maximum dynamically registered devices
+        :type RegisterLimit: int
+        """
+        self.ProductId = None
+        self.RegisterType = None
+        self.RegisterLimit = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.RegisterType = params.get("RegisterType")
+        self.RegisterLimit = params.get("RegisterLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateProductDynamicRegisterResponse(AbstractModel):
+    """UpdateProductDynamicRegister response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegisterType: Dynamic registration type. Valid values: 0 - disabled; 1 - pre-create device; 2 - auto-create device.
+        :type RegisterType: int
+        :param ProductSecret: Product key for dynamic registration
+        :type ProductSecret: str
+        :param RegisterLimit: Maximum dynamically registered devices
+        :type RegisterLimit: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RegisterType = None
+        self.ProductSecret = None
+        self.RegisterLimit = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RegisterType = params.get("RegisterType")
+        self.ProductSecret = params.get("ProductSecret")
+        self.RegisterLimit = params.get("RegisterLimit")
+        self.RequestId = params.get("RequestId")

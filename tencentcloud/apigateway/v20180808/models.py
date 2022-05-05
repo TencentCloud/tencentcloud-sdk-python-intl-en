@@ -2146,6 +2146,8 @@ class CreateApiRequest(AbstractModel):
         :type TokenTimeout: int
         :param EIAMAppId: EIAM application ID.
         :type EIAMAppId: str
+        :param Owner: Owner of the resource
+        :type Owner: str
         """
         self.ServiceId = None
         self.ServiceType = None
@@ -2199,6 +2201,7 @@ class CreateApiRequest(AbstractModel):
         self.EIAMAuthType = None
         self.TokenTimeout = None
         self.EIAMAppId = None
+        self.Owner = None
 
 
     def _deserialize(self, params):
@@ -2296,6 +2299,7 @@ class CreateApiRequest(AbstractModel):
         self.EIAMAuthType = params.get("EIAMAuthType")
         self.TokenTimeout = params.get("TokenTimeout")
         self.EIAMAppId = params.get("EIAMAppId")
+        self.Owner = params.get("Owner")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2453,17 +2457,20 @@ class CreatePluginRequest(AbstractModel):
         r"""
         :param PluginName: Custom plugin name. A plugin name should contain 2-50 characters out of a-z, A-Z, 0-9, and _, which must begin with a letter and end with a letter or a number.
         :type PluginName: str
-        :param PluginType: Plugin type. Valid values: `IPControl`, `TrafficControl`, `Cors`, `CustomReq`, `CustomAuth`, `Routing`, `TrafficControlByParameter`.
+        :param PluginType: Plugin type. Valid values: `IPControl`, `TrafficControl`, `Cors`, `CustomReq`, `CustomAuth`, `Routing`, `TrafficControlByParameter`, `CircuitBreaker`, `ProxyCache`
         :type PluginType: str
         :param PluginData: Plugin definition statement in json format
         :type PluginData: str
         :param Description: Plugin description within 200 characters
         :type Description: str
+        :param Tags: Label
+        :type Tags: list of Tag
         """
         self.PluginName = None
         self.PluginType = None
         self.PluginData = None
         self.Description = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -2471,6 +2478,12 @@ class CreatePluginRequest(AbstractModel):
         self.PluginType = params.get("PluginType")
         self.PluginData = params.get("PluginData")
         self.Description = params.get("Description")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2629,23 +2642,29 @@ class CreateUpstreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Scheme: Backend protocol. Values: `HTTP`, `HTTPS`
+        :param Scheme: Backend protocol. Valid values: `HTTP`, `HTTPS`
         :type Scheme: str
-        :param Algorithm: The balancing method can only be `ROUND_ROBIN`.
+        :param Algorithm: Load balancing algorithm. Valid value: `ROUND-ROBIN`
         :type Algorithm: str
         :param UniqVpcId: Unique VPC ID
         :type UniqVpcId: str
-        :param UpstreamName: Name of the upstream 
+        :param UpstreamName: Upstream name
         :type UpstreamName: str
-        :param UpstreamDescription: Description of the upstream
+        :param UpstreamDescription: Upstream description
         :type UpstreamDescription: str
+        :param UpstreamType: Upstream access type. Valid values: `IP_PORT`, `K8S`
+        :type UpstreamType: str
         :param Retries: Retry attempts. It defaults to `3`.
         :type Retries: int
-        :param UpstreamHost: The host header in the request sending to the backend
+        :param UpstreamHost: The Host request header that forwarded from the gateway to backend
         :type UpstreamHost: str
         :param Nodes: Backend nodes
         :type Nodes: list of UpstreamNode
-        :param K8sService: The location of K8s service
+        :param Tags: Label
+        :type Tags: list of Tag
+        :param HealthChecker: Health check configuration
+        :type HealthChecker: :class:`tencentcloud.apigateway.v20180808.models.UpstreamHealthChecker`
+        :param K8sService: Configuration of TKE service
         :type K8sService: list of K8sService
         """
         self.Scheme = None
@@ -2653,9 +2672,12 @@ class CreateUpstreamRequest(AbstractModel):
         self.UniqVpcId = None
         self.UpstreamName = None
         self.UpstreamDescription = None
+        self.UpstreamType = None
         self.Retries = None
         self.UpstreamHost = None
         self.Nodes = None
+        self.Tags = None
+        self.HealthChecker = None
         self.K8sService = None
 
 
@@ -2665,6 +2687,7 @@ class CreateUpstreamRequest(AbstractModel):
         self.UniqVpcId = params.get("UniqVpcId")
         self.UpstreamName = params.get("UpstreamName")
         self.UpstreamDescription = params.get("UpstreamDescription")
+        self.UpstreamType = params.get("UpstreamType")
         self.Retries = params.get("Retries")
         self.UpstreamHost = params.get("UpstreamHost")
         if params.get("Nodes") is not None:
@@ -2673,6 +2696,15 @@ class CreateUpstreamRequest(AbstractModel):
                 obj = UpstreamNode()
                 obj._deserialize(item)
                 self.Nodes.append(obj)
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        if params.get("HealthChecker") is not None:
+            self.HealthChecker = UpstreamHealthChecker()
+            self.HealthChecker._deserialize(params.get("HealthChecker"))
         if params.get("K8sService") is not None:
             self.K8sService = []
             for item in params.get("K8sService"):
@@ -2695,8 +2727,8 @@ class CreateUpstreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UpstreamId: The unique upstream IP returned
-Note: This field may return `null`, indicating that no valid value was found.
+        :param UpstreamId: The unique upstream ID returned
+Note: This field may return `NULL`, indicating that no valid value was found.
         :type UpstreamId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3162,7 +3194,7 @@ class DeleteUpstreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UpstreamId: ID of the upstream to delete
+        :param UpstreamId: ID of the upstream to be deleted
         :type UpstreamId: str
         """
         self.UpstreamId = None
@@ -3186,8 +3218,8 @@ class DeleteUpstreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UpstreamId: ID of the upstream deleted
-Note: This field may return `null`, indicating that no valid value was found.
+        :param UpstreamId: ID of the deleted upstream
+Note: This field may return `NULL`, indicating that no valid value was found.
         :type UpstreamId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -5142,8 +5174,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param DeploymentType: Cluster type for service deployment
 Note: this field may return null, indicating that no valid values found.
         :type DeploymentType: str
-        :param SpecialUse: Whether it’s for special usage
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param SpecialUse: Whether the service if for special usage. Valid values: `DEFAULT` (general usage), `HTTP_DNS`.
+Note: This field may return `NULL`, indicating that no valid value was found.
         :type SpecialUse: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -5446,7 +5478,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeUpstreamBindApis(AbstractModel):
-    """Querying the list of APIs bound with an upstream.
+    """Queries APIs bound with an upstream
 
     """
 
@@ -5485,9 +5517,9 @@ class DescribeUpstreamBindApisRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: Number of results returned in a page
+        :param Limit: Number of entries per page
         :type Limit: int
-        :param Offset: Page offset
+        :param Offset: The starting position of paging
         :type Offset: int
         :param UpstreamId: Upstream ID
         :type UpstreamId: str
@@ -5543,7 +5575,7 @@ class DescribeUpstreamBindApisResponse(AbstractModel):
 
 
 class DescribeUpstreamInfo(AbstractModel):
-    """Information of the queried upstreams
+    """The returned result of upstream query
 
     """
 
@@ -5582,11 +5614,11 @@ class DescribeUpstreamsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: Number of results returned in a page
+        :param Limit: Number of entries per page
         :type Limit: int
-        :param Offset: Page offset
+        :param Offset: The starting position of paging
         :type Offset: int
-        :param Filters: Filters
+        :param Filters: Filters. Valid values: `UpstreamId` and `UpstreamName`
         :type Filters: list of Filter
         """
         self.Limit = None
@@ -7559,36 +7591,42 @@ class ModifyUpstreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UpstreamId: Unique ID of the upstream
+        :param UpstreamId: Unique upstream ID
         :type UpstreamId: str
-        :param UpstreamName: Name of the upstream 
+        :param UpstreamName: Upstream name
         :type UpstreamName: str
-        :param UpstreamDescription: Description of the upstream
+        :param UpstreamDescription: Upstream description
         :type UpstreamDescription: str
-        :param Scheme: Backend protocol. Values: `HTTP`, `HTTPS`
+        :param Scheme: Backend protocol. Valid values: `HTTP`, `HTTPS`
         :type Scheme: str
-        :param Algorithm: The balancing method can only be `ROUND_ROBIN`.
+        :param UpstreamType: Upstream access type. Valid values: `IP_PORT`, `K8S`
+        :type UpstreamType: str
+        :param Algorithm: Load balancing algorithm. Valid value: `ROUND_ROBIN`
         :type Algorithm: str
         :param UniqVpcId: Unique VPC ID.
         :type UniqVpcId: str
         :param Retries: Retry attempts. It defaults to `3`.
         :type Retries: int
-        :param UpstreamHost: The host header in the request sending to the backend
+        :param UpstreamHost: Gateway forwarding to the upstream Host request header
         :type UpstreamHost: str
         :param Nodes: List of backend nodes
         :type Nodes: list of UpstreamNode
-        :param K8sService: Configuration of K8s service
+        :param HealthChecker: Health check configuration
+        :type HealthChecker: :class:`tencentcloud.apigateway.v20180808.models.UpstreamHealthChecker`
+        :param K8sService: Configuration of TKE service
         :type K8sService: list of K8sService
         """
         self.UpstreamId = None
         self.UpstreamName = None
         self.UpstreamDescription = None
         self.Scheme = None
+        self.UpstreamType = None
         self.Algorithm = None
         self.UniqVpcId = None
         self.Retries = None
         self.UpstreamHost = None
         self.Nodes = None
+        self.HealthChecker = None
         self.K8sService = None
 
 
@@ -7597,6 +7635,7 @@ class ModifyUpstreamRequest(AbstractModel):
         self.UpstreamName = params.get("UpstreamName")
         self.UpstreamDescription = params.get("UpstreamDescription")
         self.Scheme = params.get("Scheme")
+        self.UpstreamType = params.get("UpstreamType")
         self.Algorithm = params.get("Algorithm")
         self.UniqVpcId = params.get("UniqVpcId")
         self.Retries = params.get("Retries")
@@ -7607,6 +7646,9 @@ class ModifyUpstreamRequest(AbstractModel):
                 obj = UpstreamNode()
                 obj._deserialize(item)
                 self.Nodes.append(obj)
+        if params.get("HealthChecker") is not None:
+            self.HealthChecker = UpstreamHealthChecker()
+            self.HealthChecker._deserialize(params.get("HealthChecker"))
         if params.get("K8sService") is not None:
             self.K8sService = []
             for item in params.get("K8sService"):
@@ -7629,8 +7671,8 @@ class ModifyUpstreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Information of the upstream after the modification
-Note: This field may return `null`, indicating that no valid value was found.
+        :param Result: Return modified upstream information
+Note: This field may return `NULL`, indicating that no valid value was found.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.UpstreamInfo`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -8263,6 +8305,9 @@ class ServiceConfig(AbstractModel):
         :type Path: str
         :param Method: API backend service request method, such as `GET`, which is required if `ServiceType` is `HTTP`. The frontend and backend methods can be different
         :type Method: str
+        :param UpstreamId: It’s required for `upstream`.
+Note: This field may return `NULL`, indicating that no valid value was found.
+        :type UpstreamId: str
         :param CosConfig: API backend COS configuration. It’s required if the `ServiceType` is ·`COS`.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type CosConfig: :class:`tencentcloud.apigateway.v20180808.models.CosConfig`
@@ -8272,6 +8317,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Url = None
         self.Path = None
         self.Method = None
+        self.UpstreamId = None
         self.CosConfig = None
 
 
@@ -8281,6 +8327,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Url = params.get("Url")
         self.Path = params.get("Path")
         self.Method = params.get("Method")
+        self.UpstreamId = params.get("UpstreamId")
         if params.get("CosConfig") is not None:
             self.CosConfig = CosConfig()
             self.CosConfig._deserialize(params.get("CosConfig"))
@@ -9276,7 +9323,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UpstreamHealthChecker(AbstractModel):
-    """Upstream health check configuration
+    """Upstream health check parameter configuration
 
     """
 
@@ -9355,25 +9402,25 @@ class UpstreamHealthCheckerReqHeaders(AbstractModel):
 
 
 class UpstreamInfo(AbstractModel):
-    """Information of an upstream
+    """Upstream details
 
     """
 
     def __init__(self):
         r"""
-        :param UpstreamId: Unique ID of the upstream
+        :param UpstreamId: Unique upstream ID
         :type UpstreamId: str
-        :param UpstreamName: Name of the upstream 
+        :param UpstreamName: Upstream name
         :type UpstreamName: str
-        :param UpstreamDescription: Description of the upstream
+        :param UpstreamDescription: Upstream description
         :type UpstreamDescription: str
-        :param Scheme: Protocol
+        :param Scheme: Backend protocol. Valid values: `HTTP`, `HTTPS`
         :type Scheme: str
-        :param Algorithm: Load balancing algorithm
+        :param Algorithm: Load balancing algorithm. Valid value: `ROUND_ROBIN`
         :type Algorithm: str
-        :param UniqVpcId: Unique VPC ID.
+        :param UniqVpcId: Unique VPC ID
         :type UniqVpcId: str
-        :param Retries: Number of retried attempts
+        :param Retries: Number of retry attempts
         :type Retries: int
         :param Nodes: Backend nodes
         :type Nodes: list of UpstreamNode
@@ -9385,13 +9432,13 @@ Note: This field may return `null`, indicating that no valid value was found.
         :param HealthChecker: Health check configuration
 Note: This field may return `null`, indicating that no valid value was found.
         :type HealthChecker: :class:`tencentcloud.apigateway.v20180808.models.UpstreamHealthChecker`
-        :param UpstreamType: Type of the upstream
+        :param UpstreamType: Upstream type. Valid values: `IP_PORT`, `K8S`
         :type UpstreamType: str
-        :param K8sServices: Configuration of K8s service
-Note: This field may return `null`, indicating that no valid value was found.
+        :param K8sServices: Configuration of TKE service
+Note: This field may return `NULL`, indicating that no valid value was found.
         :type K8sServices: list of K8sService
-        :param UpstreamHost: Host of the upstream
-Note: This field may return `null`, indicating that no valid value was found.
+        :param UpstreamHost: The Host header that the gateway forwards to the upstream
+Note: This field may return `NULL`, indicating that no valid value was found.
         :type UpstreamHost: str
         """
         self.UpstreamId = None
@@ -9452,38 +9499,38 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class UpstreamNode(AbstractModel):
-    """Metadata of backend nodes of the upstream
+    """Upstream node metadata
 
     """
 
     def __init__(self):
         r"""
-        :param Host: IP or domain name of the host
+        :param Host: IP or domain name
         :type Host: str
         :param Port: The port number. Range: [0, 65535]
         :type Port: int
         :param Weight: Value range: [0, 100]. `0` refers to disable it.
         :type Weight: int
-        :param VmInstanceId: VM instance ID
-Note: This field may return `null`, indicating that no valid value was found.
+        :param VmInstanceId: CVM Instance ID
+Note: This field may return `NULL`, indicating that no valid value was found.
         :type VmInstanceId: str
         :param Tags: Tag
 Note: This field may return `null`, indicating that no valid value was found.
         :type Tags: list of str
-        :param Healthy: Health status of the node. Value: `OFF`, `HEALTHY`, `UNHEALTHY` and `NO_DATA`. It’s not required for creating and editing actions.
-Note: This field may return `null`, indicating that no valid value was found.
+        :param Healthy: Health status of the node. Values: `OFF`, `HEALTHY`, `UNHEALTHY` and `NO_DATA`. It’s not required for creating and editing actions. It only supports VPC upstreams.
+Note: This field may return `NULL`, indicating that no valid value was found.
         :type Healthy: str
-        :param ServiceName: The K8s service name
-Note: This field may return `null`, indicating that no valid value was found.
+        :param ServiceName: TKE container name
+Note: This field may return `NULL`, indicating that no valid value was found.
         :type ServiceName: str
-        :param NameSpace: K8s namespace
-Note: This field may return `null`, indicating that no valid value was found.
+        :param NameSpace: TKE namespace
+Note: This field may return `NULL`, indicating that no valid value was found.
         :type NameSpace: str
         :param ClusterId: ID of the TKE cluster
 Note: This field may return `null`, indicating that no valid value was found.
         :type ClusterId: str
-        :param Source: Source of the node
-Note: This field may return `null`, indicating that no valid value was found.
+        :param Source: Node source. Valid value: `K8S`
+Note: This field may return `NULL`, indicating that no valid value was found.
         :type Source: str
         :param UniqueServiceName: The unique service name in API Gateway
 Note: This field may return `null`, indicating that no valid value was found.

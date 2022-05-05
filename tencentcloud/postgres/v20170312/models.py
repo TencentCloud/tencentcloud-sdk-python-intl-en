@@ -663,7 +663,7 @@ class CreateInstancesRequest(AbstractModel):
         :type AdminPassword: str
         :param ProjectId: Project ID
         :type ProjectId: int
-        :param DBVersion: PostgreSQL version number. If it is specified, an instance running the latest kernel of PostgreSQL `DBVersion` will be created.
+        :param DBVersion: PostgreSQL version. If it is specified, an instance running the latest kernel of PostgreSQL `DBVersion` will be created. You must pass in at least one of the following parameters: DBVersion, DBMajorVersion, DBKernelVersion.
         :type DBVersion: str
         :param InstanceChargeType: Instance billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID_BY_HOUR` (pay-as-you-go).
         :type InstanceChargeType: str
@@ -687,12 +687,18 @@ class CreateInstancesRequest(AbstractModel):
         :type TagList: list of Tag
         :param SecurityGroupIds: Security group IDs
         :type SecurityGroupIds: list of str
-        :param DBMajorVersion: PostgreSQL major version number. Valid values: `10`, `11`, `12`, `13`. If it is specified, an instance running the latest kernel of PostgreSQL `DBMajorVersion` will be created.
+        :param DBMajorVersion: PostgreSQL major version. Valid values: `10`, `11`, `12`, `13`. If it is specified, an instance running the latest kernel of PostgreSQL `DBMajorVersion` will be created. You must pass in at least one of the following parameters: DBMajorVersion, DBVersion, DBKernelVersion.
         :type DBMajorVersion: str
-        :param DBKernelVersion: PostgreSQL kernel version number. If it is specified, an instance running kernel `DBKernelVersion` will be created.
+        :param DBKernelVersion: PostgreSQL kernel version. If it is specified, an instance running the latest kernel of PostgreSQL `DBKernelVersion` will be created. You must pass in one of the following parameters: DBKernelVersion, DBVersion, DBMajorVersion.
         :type DBKernelVersion: str
         :param DBNodeSet: Instance node information, which is required if you purchase a multi-AZ deployed instance.
         :type DBNodeSet: list of DBNode
+        :param NeedSupportTDE: Whether to support transparent data encryption. Valid values: 1 (yes), 0 (no). Default value: 0.
+        :type NeedSupportTDE: int
+        :param KMSKeyId: KeyId of custom key, which is required if you select custom key encryption. It is also the unique CMK identifier.
+        :type KMSKeyId: str
+        :param KMSRegion: The region where the KMS service is enabled. When “KMSRegion” is left empty, the “KMS” of the local domain will be enabled by default. If the local domain is not supported, you need to select another region supported by KMS.
+        :type KMSRegion: str
         """
         self.SpecCode = None
         self.Storage = None
@@ -718,6 +724,9 @@ class CreateInstancesRequest(AbstractModel):
         self.DBMajorVersion = None
         self.DBKernelVersion = None
         self.DBNodeSet = None
+        self.NeedSupportTDE = None
+        self.KMSKeyId = None
+        self.KMSRegion = None
 
 
     def _deserialize(self, params):
@@ -755,6 +764,9 @@ class CreateInstancesRequest(AbstractModel):
                 obj = DBNode()
                 obj._deserialize(item)
                 self.DBNodeSet.append(obj)
+        self.NeedSupportTDE = params.get("NeedSupportTDE")
+        self.KMSKeyId = params.get("KMSKeyId")
+        self.KMSRegion = params.get("KMSRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -836,7 +848,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         :type NeedSupportIpv6: int
         :param ReadOnlyGroupId: RO group ID
         :type ReadOnlyGroupId: str
-        :param TagList: The information of tags to be associated with instances. This parameter is left empty by default.
+        :param TagList: The information of tags to be bound with the purchased instance, which is left empty by default (type: tag array).
         :type TagList: :class:`tencentcloud.postgres.v20170312.models.Tag`
         :param SecurityGroupIds: Security group ID
         :type SecurityGroupIds: list of str
@@ -1311,6 +1323,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param DBNodeSet: Instance node information
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type DBNodeSet: list of DBNode
+        :param IsSupportTDE: Whether the instance supports TDE data encryption. Valid values: 0 (no), 1 (yes)
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type IsSupportTDE: int
         """
         self.Region = None
         self.Zone = None
@@ -1348,6 +1363,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.NetworkAccessList = None
         self.DBMajorVersion = None
         self.DBNodeSet = None
+        self.IsSupportTDE = None
 
 
     def _deserialize(self, params):
@@ -1407,6 +1423,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj = DBNode()
                 obj._deserialize(item)
                 self.DBNodeSet.append(obj)
+        self.IsSupportTDE = params.get("IsSupportTDE")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5333,10 +5350,14 @@ class SpecInfo(AbstractModel):
         :type Zone: str
         :param SpecItemInfoList: Specification details list
         :type SpecItemInfoList: list of SpecItemInfo
+        :param SupportKMSRegions: Regions where KMS is supported
+Note: This field may return `null`, indicating that no valid value was found.
+        :type SupportKMSRegions: list of str
         """
         self.Region = None
         self.Zone = None
         self.SpecItemInfoList = None
+        self.SupportKMSRegions = None
 
 
     def _deserialize(self, params):
@@ -5348,6 +5369,7 @@ class SpecInfo(AbstractModel):
                 obj = SpecItemInfo()
                 obj._deserialize(item)
                 self.SpecItemInfoList.append(obj)
+        self.SupportKMSRegions = params.get("SupportKMSRegions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5390,6 +5412,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param KernelVersion: PostgreSQL kernel version number
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type KernelVersion: str
+        :param IsSupportTDE: Whether TDE data encryption is supported. Valid values: 0 (no), 1 (yes)
+Note: This field may return `null`, indicating that no valid value was found.
+        :type IsSupportTDE: int
         """
         self.SpecCode = None
         self.Version = None
@@ -5403,6 +5428,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Type = None
         self.MajorVersion = None
         self.KernelVersion = None
+        self.IsSupportTDE = None
 
 
     def _deserialize(self, params):
@@ -5418,6 +5444,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Type = params.get("Type")
         self.MajorVersion = params.get("MajorVersion")
         self.KernelVersion = params.get("KernelVersion")
+        self.IsSupportTDE = params.get("IsSupportTDE")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
