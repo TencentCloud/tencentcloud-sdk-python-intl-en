@@ -26,35 +26,6 @@ class TemClient(AbstractClient):
     _service = 'tem'
 
 
-    def CreateApplication(self, request):
-        """This API is used to create an application.
-
-        :param request: Request instance for CreateApplication.
-        :type request: :class:`tencentcloud.tem.v20210701.models.CreateApplicationRequest`
-        :rtype: :class:`tencentcloud.tem.v20210701.models.CreateApplicationResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateApplication", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateApplicationResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def CreateCosToken(self, request):
         """This API is used to generate a COS temporary key.
 
@@ -128,38 +99,6 @@ class TemClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateResourceResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DeleteApplication(self, request):
-        """This API is used to delete an application.
-          - Stop the application if it’s running
-          - Delete resources associated with this application
-          - Delele the application
-
-        :param request: Request instance for DeleteApplication.
-        :type request: :class:`tencentcloud.tem.v20210701.models.DeleteApplicationRequest`
-        :rtype: :class:`tencentcloud.tem.v20210701.models.DeleteApplicationResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteApplication", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteApplicationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

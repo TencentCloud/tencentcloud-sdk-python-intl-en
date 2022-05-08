@@ -1180,10 +1180,12 @@ class CreateTopicRequest(AbstractModel):
         :type MinInsyncReplicas: int
         :param UncleanLeaderElectionEnable: Whether to allow an unsynced replica to be elected as leader. false: no, true: yes. Default value: false
         :type UncleanLeaderElectionEnable: int
-        :param RetentionMs: Message retention period in ms, which is optional. The current minimum value is 60,000 ms
+        :param RetentionMs: Message retention period in milliseconds, which is optional. Min value: 60,000 ms.
         :type RetentionMs: int
         :param SegmentMs: Segment rolling duration in ms. The current minimum value is 3,600,000 ms
         :type SegmentMs: int
+        :param MaxMessageBytes: Max message size in bytes. Value range: 1,024 bytes (1 KB) to 8,388,608 bytes (8 MB).
+        :type MaxMessageBytes: int
         :param EnableAclRule: Preset ACL rule. `1`: enable, `0`: disable. Default value: `0`.
         :type EnableAclRule: int
         :param AclRuleName: Name of the preset ACL rule.
@@ -1205,6 +1207,7 @@ class CreateTopicRequest(AbstractModel):
         self.UncleanLeaderElectionEnable = None
         self.RetentionMs = None
         self.SegmentMs = None
+        self.MaxMessageBytes = None
         self.EnableAclRule = None
         self.AclRuleName = None
         self.RetentionBytes = None
@@ -1224,6 +1227,7 @@ class CreateTopicRequest(AbstractModel):
         self.UncleanLeaderElectionEnable = params.get("UncleanLeaderElectionEnable")
         self.RetentionMs = params.get("RetentionMs")
         self.SegmentMs = params.get("SegmentMs")
+        self.MaxMessageBytes = params.get("MaxMessageBytes")
         self.EnableAclRule = params.get("EnableAclRule")
         self.AclRuleName = params.get("AclRuleName")
         self.RetentionBytes = params.get("RetentionBytes")
@@ -2098,10 +2102,12 @@ class DescribeInstancesDetailRequest(AbstractModel):
         :type Limit: int
         :param TagKey: Tag key match.
         :type TagKey: str
-        :param Filters: Filter.
+        :param Filters: Filter. Valid values of `filter.Name` include `Ip`, `VpcId`, `SubNetId`, `InstanceType`, and `InstanceId`. Up to 10 values can be passed for `filter.Values`.
         :type Filters: list of Filter
         :param InstanceIds: This parameter has been deprecated and replaced with `InstanceIdList`.
         :type InstanceIds: str
+        :param InstanceIdList: Filter by instance ID.
+        :type InstanceIdList: list of str
         """
         self.InstanceId = None
         self.SearchWord = None
@@ -2111,6 +2117,7 @@ class DescribeInstancesDetailRequest(AbstractModel):
         self.TagKey = None
         self.Filters = None
         self.InstanceIds = None
+        self.InstanceIdList = None
 
 
     def _deserialize(self, params):
@@ -2127,6 +2134,7 @@ class DescribeInstancesDetailRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Filters.append(obj)
         self.InstanceIds = params.get("InstanceIds")
+        self.InstanceIdList = params.get("InstanceIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3983,7 +3991,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
         :type RetentionMs: int
         :param SegmentMs: Segment rolling duration in ms. The current minimum value is 86,400,000 ms.
         :type SegmentMs: int
-        :param MaxMessageBytes: Maximum topic message length in bytes. The maximum value is 8,388,608 bytes (i.e., 8 MB).
+        :param MaxMessageBytes: Max message size in bytes. Max value: 8,388,608 bytes (8 MB).
         :type MaxMessageBytes: int
         :param CleanUpPolicy: Message deletion policy. Valid values: delete, compact
         :type CleanUpPolicy: str
@@ -4283,7 +4291,7 @@ class Route(AbstractModel):
         :type AccessType: int
         :param RouteId: Route ID
         :type RouteId: int
-        :param VipType: VIP network type (1: public network TGW; 2: classic network; 3: VPC; 4: supporting network (Standard Edition); 5: SSL public network access; 6: BM VPC; 7: supporting network (Pro Edition))
+        :param VipType: VIP network type (1: Public network TGW; 2: Classic network; 3: VPC; 4: Supporting network (IDC environment); 5: SSL public network access; 6: BM VPC; 7: Supporting network (CVM environment)).
         :type VipType: int
         :param VipList: Virtual IP list
         :type VipList: list of VipEntity

@@ -74,100 +74,6 @@ class CosToken(AbstractModel):
         
 
 
-class CreateApplicationRequest(AbstractModel):
-    """CreateApplication request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ApplicationName: Application name
-        :type ApplicationName: str
-        :param Description: Description
-        :type Description: str
-        :param UseDefaultImageService: Whether to use the default image service. 1: yes; 0: no
-        :type UseDefaultImageService: int
-        :param RepoType: Type of the bound repository. 0: Personal Edition; 1: Enterprise Edition
-        :type RepoType: int
-        :param InstanceId: Instance ID of Enterprise Edition image service
-        :type InstanceId: str
-        :param RepoServer: Address of the bound image server
-        :type RepoServer: str
-        :param RepoName: Name of the bound image repository
-        :type RepoName: str
-        :param SourceChannel: Source channel
-        :type SourceChannel: int
-        :param SubnetList: Application subnet
-        :type SubnetList: list of str
-        :param CodingLanguage: Programming language 
-- JAVA
-- OTHER
-        :type CodingLanguage: str
-        :param DeployMode: Deployment mode 
-- IMAGE
-- JAR
-- WAR
-        :type DeployMode: str
-        :param EnableTracing: Whether to enable the call chain feature
-        :type EnableTracing: int
-        """
-        self.ApplicationName = None
-        self.Description = None
-        self.UseDefaultImageService = None
-        self.RepoType = None
-        self.InstanceId = None
-        self.RepoServer = None
-        self.RepoName = None
-        self.SourceChannel = None
-        self.SubnetList = None
-        self.CodingLanguage = None
-        self.DeployMode = None
-        self.EnableTracing = None
-
-
-    def _deserialize(self, params):
-        self.ApplicationName = params.get("ApplicationName")
-        self.Description = params.get("Description")
-        self.UseDefaultImageService = params.get("UseDefaultImageService")
-        self.RepoType = params.get("RepoType")
-        self.InstanceId = params.get("InstanceId")
-        self.RepoServer = params.get("RepoServer")
-        self.RepoName = params.get("RepoName")
-        self.SourceChannel = params.get("SourceChannel")
-        self.SubnetList = params.get("SubnetList")
-        self.CodingLanguage = params.get("CodingLanguage")
-        self.DeployMode = params.get("DeployMode")
-        self.EnableTracing = params.get("EnableTracing")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateApplicationResponse(AbstractModel):
-    """CreateApplication response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Result: Service code
-        :type Result: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.Result = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
-
-
 class CreateCosTokenRequest(AbstractModel):
     """CreateCosToken request structure.
 
@@ -317,11 +223,17 @@ class CreateResourceRequest(AbstractModel):
         :type ResourceId: str
         :param SourceChannel: Source channel
         :type SourceChannel: int
+        :param ResourceFrom: Source of the resource. Values: `existing` (choose an existing resource), `creating` (create a new resource)
+        :type ResourceFrom: str
+        :param ResourceConfig: Resource extra configuration
+        :type ResourceConfig: str
         """
         self.EnvironmentId = None
         self.ResourceType = None
         self.ResourceId = None
         self.SourceChannel = None
+        self.ResourceFrom = None
+        self.ResourceConfig = None
 
 
     def _deserialize(self, params):
@@ -329,6 +241,8 @@ class CreateResourceRequest(AbstractModel):
         self.ResourceType = params.get("ResourceType")
         self.ResourceId = params.get("ResourceId")
         self.SourceChannel = params.get("SourceChannel")
+        self.ResourceFrom = params.get("ResourceFrom")
+        self.ResourceConfig = params.get("ResourceConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -439,63 +353,6 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
-
-
-class DeleteApplicationRequest(AbstractModel):
-    """DeleteApplication request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ApplicationId: Service ID
-        :type ApplicationId: str
-        :param EnvironmentId: Environment ID
-        :type EnvironmentId: str
-        :param SourceChannel: Retain as default
-        :type SourceChannel: int
-        :param DeleteApplicationIfNoRunningVersion: Whether to delete this application automatically when there is no running version.
-        :type DeleteApplicationIfNoRunningVersion: bool
-        """
-        self.ApplicationId = None
-        self.EnvironmentId = None
-        self.SourceChannel = None
-        self.DeleteApplicationIfNoRunningVersion = None
-
-
-    def _deserialize(self, params):
-        self.ApplicationId = params.get("ApplicationId")
-        self.EnvironmentId = params.get("EnvironmentId")
-        self.SourceChannel = params.get("SourceChannel")
-        self.DeleteApplicationIfNoRunningVersion = params.get("DeleteApplicationIfNoRunningVersion")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DeleteApplicationResponse(AbstractModel):
-    """DeleteApplication response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Result: Returned result
-        :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.Result = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
 
 
 class DeleteIngressRequest(AbstractModel):
@@ -654,6 +511,8 @@ If `konajdk` is selected, the value can be:
 - ALPINE
 - TENCENTOS
         :type OsFlavour: str
+        :param EnablePrometheusConf: Specifies whether to enable Prometheus metric
+        :type EnablePrometheusConf: :class:`tencentcloud.tem.v20210701.models.EnablePrometheusConf`
         """
         self.ApplicationId = None
         self.InitPodNum = None
@@ -694,6 +553,7 @@ If `konajdk` is selected, the value can be:
         self.SpeedUp = None
         self.StartupProbe = None
         self.OsFlavour = None
+        self.EnablePrometheusConf = None
 
 
     def _deserialize(self, params):
@@ -780,6 +640,9 @@ If `konajdk` is selected, the value can be:
             self.StartupProbe = HealthCheckConfig()
             self.StartupProbe._deserialize(params.get("StartupProbe"))
         self.OsFlavour = params.get("OsFlavour")
+        if params.get("EnablePrometheusConf") is not None:
+            self.EnablePrometheusConf = EnablePrometheusConf()
+            self.EnablePrometheusConf._deserialize(params.get("EnablePrometheusConf"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -821,7 +684,7 @@ class DeployStrategyConf(AbstractModel):
         :type TotalBatchCount: int
         :param BetaBatchNum: Number of pods for the beta batch
         :type BetaBatchNum: int
-        :param DeployStrategyType: Batch deployment policy. `0`: automatically; `1`: manually; `2`: beta batch (manual)
+        :param DeployStrategyType: Batch deployment policy. `0`: automatically; `1`: manually; `2`: beta batch (manual), `3`: initial release
         :type DeployStrategyType: int
         :param BatchInterval: Interval between batches
         :type BatchInterval: int
@@ -1293,6 +1156,34 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         
 
 
+class EnablePrometheusConf(AbstractModel):
+    """Enable Prometheus monitoring
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Port: The listening port of the applicaiton
+        :type Port: int
+        :param Path: URL path for monitoring
+        :type Path: str
+        """
+        self.Port = None
+        self.Path = None
+
+
+    def _deserialize(self, params):
+        self.Port = params.get("Port")
+        self.Path = params.get("Path")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EsInfo(AbstractModel):
     """Auto scaling configuration
 
@@ -1514,6 +1405,11 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :type CreateTime: str
         :param Mixed: Whether to listen on both the HTTP 80 port and HTTPS 443 port. The default value is `false`. The optional value `true` means listening on both the HTTP 80 port and HTTPS 443 port.
         :type Mixed: bool
+        :param RewriteType: Redirection mode. Values:
+- `AUTO` (automatically redirect HTTP to HTTPS)
+- `NONE` (no redirection)
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type RewriteType: str
         """
         self.EnvironmentId = None
         self.ClusterNamespace = None
@@ -1526,6 +1422,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Vip = None
         self.CreateTime = None
         self.Mixed = None
+        self.RewriteType = None
 
 
     def _deserialize(self, params):
@@ -1550,6 +1447,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Vip = params.get("Vip")
         self.CreateTime = params.get("CreateTime")
         self.Mixed = params.get("Mixed")
+        self.RewriteType = params.get("RewriteType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1942,10 +1840,13 @@ class MountedSettingConf(AbstractModel):
         :type MountedPath: str
         :param Data: Configuration content
         :type Data: list of Pair
+        :param SecretDataName: Encrypt configuration name
+        :type SecretDataName: str
         """
         self.ConfigDataName = None
         self.MountedPath = None
         self.Data = None
+        self.SecretDataName = None
 
 
     def _deserialize(self, params):
@@ -1957,6 +1858,7 @@ class MountedSettingConf(AbstractModel):
                 obj = Pair()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.SecretDataName = params.get("SecretDataName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2024,11 +1926,15 @@ Note: This field may return `null`, indicating that no valid value can be found.
         :param Config: Configuration name
 Note: This field may return `null`, indicating that no valid value can be found.
         :type Config: str
+        :param Secret: Encrypt configuration name
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Secret: str
         """
         self.Key = None
         self.Value = None
         self.Type = None
         self.Config = None
+        self.Secret = None
 
 
     def _deserialize(self, params):
@@ -2036,6 +1942,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
         self.Value = params.get("Value")
         self.Type = params.get("Type")
         self.Config = params.get("Config")
+        self.Secret = params.get("Secret")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
