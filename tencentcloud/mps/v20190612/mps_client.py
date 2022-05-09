@@ -375,17 +375,18 @@ class MpsClient(AbstractClient):
 
 
     def CreateWorkflow(self, request):
-        """This API is used to set a processing rule for media files uploaded to the specified directory of a COS bucket, including:
-        1. Video transcoding (with watermark);
-        2. Animated image generating;
-        3. Time point screencapturing;
-        4. Sampled screencapturing;
-        5. Image sprite generating;
-        6. Video conversion to adaptive bitrate streaming;
-        7. Intelligent content audit (detection of porn, terrorism, and politically sensitive information);
-        8. Intelligent content recognition (face recognition, full text recognition, text keyword recognition, full speech recognition, and speech keyword recognition).
+        """This API is used to create a workflow for media files uploaded to a specified COS bucket. A workflow may include the following tasks:
+        1. Video transcoding (with watermark)
+        2. Animated image generating
+        3. Time point screencapturing
+        4. Sampled screencapturing
+        5. Image sprite generating
+        6. Adaptive bitrate streaming
+        7. Intelligent content moderation (detection of pornographic and sensitive content)
+        8. Intelligent content analysis (labeling, categorization, thumbnail generation, frame-specific labeling)
+        9. Intelligent content recognition (face, full text, text keyword, full speech, and speech keyword)
 
-        Note: Once successfully created, a workflow is disabled by default and needs to be enabled manually.
+        Note: A workflow is disabled upon creation. You need to manually enable it.
 
         :param request: Request instance for CreateWorkflow.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateWorkflowRequest`
@@ -1818,9 +1819,9 @@ class MpsClient(AbstractClient):
 
 
     def ProcessLiveStream(self, request):
-        """This API is used to initiate tasks to process live streaming media files. Such tasks include:
+        """This API is used to initiate live stream processing tasks. Such tasks may include the following:
 
-        * Intelligent content moderation (detecting porn, terrorism, and politically sensitive information in image and porn information in speech)
+        * Intelligent content moderation (detection of pornographic content in images and speech, detection of sensitive information)
         * Intelligent content recognition (face, full text, text keyword, full speech, and speech keyword)
 
         Live stream processing event notifications are written into specified CMQ queues in real time. Users need to obtain event notification results from such CMQ queues. Output files of the processing tasks are written into destination buckets specified by users.
@@ -1852,15 +1853,16 @@ class MpsClient(AbstractClient):
 
 
     def ProcessMedia(self, request):
-        """This API is used to initiate a processing task for media files in COS, including:
-        1. Video transcoding (with watermark);
-        2. Animated image generating;
-        3. Time point screencapturing;
-        4. Sampled screencapturing;
-        5. Image sprite generating;
-        6. Video conversion to adaptive bitrate streaming;
-        7. Intelligent content audit (detection of porn, terrorism, and politically sensitive information);
-        8. Intelligent content recognition (face recognition, full text recognition, text keyword recognition, full speech recognition, and speech keyword recognition).
+        """This API is used to initiate processing tasks for media files in COS. Such tasks may include the following:
+        1. Video transcoding (with watermark)
+        2. Animated image generating
+        3. Time point screencapturing
+        4. Sampled screencapturing
+        5. Image sprite generating
+        6. Adaptive bitrate streaming
+        7. Intelligent content moderation (detection of pornographic and sensitive content)
+        8. Intelligent content analysis (labeling, categorization, thumbnail generation, frame-specific labeling)
+        9. Intelligent content recognition (face, full text, text keyword, full speech, and speech keyword)
 
         :param request: Request instance for ProcessMedia.
         :type request: :class:`tencentcloud.mps.v20190612.models.ProcessMediaRequest`

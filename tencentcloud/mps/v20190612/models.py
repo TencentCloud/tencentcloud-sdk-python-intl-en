@@ -859,14 +859,16 @@ class AiContentReviewResult(AbstractModel):
     def __init__(self):
         r"""
         :param Type: Task type. Valid values:
-<li>Porn: Porn information detection in image</li>
-<li>Terrorism: Terrorism information detection in image</li>
-<li>Political: Politically sensitive information detection in image</li>
-<li>Porn.Asr: ASR-based porn information detection in text</li>
-<li>Porn.Ocr: OCR-based porn information detection in text</li>
-<li>Porn.Voice: Porn information detection in speech</li>
-<li>Political.Asr: ASR-based politically sensitive information detection in text</li>
-<li>Political.Ocr: OCR-based politically sensitive information detection in text</li>
+<li>Porn (in images)</li>
+<li>Terrorism (in images)</li>
+<li>Political (in images)</li>
+<li>Porn.Asr</li>
+<li>Porn.Ocr</li>
+<li>Political.Asr</li>
+<li>Political.Ocr</li>
+<li>Terrorism.Ocr</li>
+<li>Prohibited.Asr</li>
+<li>Prohibited.Ocr</li>
         :type Type: str
         :param SampleRate: Sample rate, which indicates the number of video frames captured per second for audit
         :type SampleRate: float
@@ -875,11 +877,11 @@ class AiContentReviewResult(AbstractModel):
         :param PornTask: Query result of an intelligent porn information detection in image task in video content audit, which is valid when task type is `Porn`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PornTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPornResult`
-        :param TerrorismTask: Query result of an intelligent terrorism information detection in image task in video content audit, which is valid when task type is `Terrorism`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param TerrorismTask: The result of detecting terrorism content in images, which is valid when the task type is `Terrorism`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type TerrorismTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskTerrorismResult`
-        :param PoliticalTask: Query result of an intelligent politically sensitive information detection in image task in video content audit, which is valid when task type is `Political`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param PoliticalTask: The result of detecting politically sensitive information in images, which is valid when the task type is `Political`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type PoliticalTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalResult`
         :param PornAsrTask: Query result of an ASR-based porn information detection in text task in video content audit, which is valid when task type is `Porn.Asr`.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -887,13 +889,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param PornOcrTask: Query result of an OCR-based porn information detection in text task in video content audit, which is valid when task type is `Porn.Ocr`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PornOcrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPornOcrResult`
-        :param PoliticalAsrTask: Query result of an ASR-based politically sensitive information detection in text task in video content audit, which is valid when task type is `Political.Asr`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param PoliticalAsrTask: The result of detecting politically sensitive information based on ASR, which is valid when the task type is `Political.Asr`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type PoliticalAsrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalAsrResult`
-        :param PoliticalOcrTask: Query result of an OCR-based politically sensitive information detection in text task in video content audit, which is valid when task type is `Political.Ocr`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param PoliticalOcrTask: The result of detecting politically sensitive information based on OCR, which is valid when the task type is `Political.Ocr`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type PoliticalOcrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalOcrResult`
-        :param TerrorismOcrTask: Query result of OCR-based terrorism information detection in text task in video content audit, which is valid if task type is `Terrorism.Ocr`.
+        :param TerrorismOcrTask: The result of detecting terrorism content based on OCR, which is valid when task type is `Terrorism.Ocr`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type TerrorismOcrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskTerrorismOcrResult`
         :param ProhibitedAsrTask: Query result of ASR-based prohibited information detection in speech task in video content audit, which is valid if task type is `Prohibited.Asr`.
         :type ProhibitedAsrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskProhibitedAsrResult`
@@ -1916,13 +1919,13 @@ class AiRecognitionTaskOcrWordsSegmentItem(AbstractModel):
 
 
 class AiReviewPoliticalAsrTaskInput(AbstractModel):
-    """Input parameter type of an ASR-based politically sensitive information detection in text task during content audit
+    """The input parameters for ASR-based detection of politically sensitive information.
 
     """
 
     def __init__(self):
         r"""
-        :param Definition: ID of a politically sensitive information detection template.
+        :param Definition: The template ID.
         :type Definition: int
         """
         self.Definition = None
@@ -1940,20 +1943,20 @@ class AiReviewPoliticalAsrTaskInput(AbstractModel):
 
 
 class AiReviewPoliticalAsrTaskOutput(AbstractModel):
-    """ASR-detected politically sensitive information in text
+    """The information about the sensitive content detected based on ASR.
 
     """
 
     def __init__(self):
         r"""
-        :param Confidence: Score of the ASR-detected politically sensitive information in text from 0 to 100.
+        :param Confidence: The confidence score for the ASR-based detection of sensitive information. Value range: 0-100.
         :type Confidence: float
-        :param Suggestion: Suggestion for the ASR-detected politically sensitive information in text. Valid values:
-<li>pass.</li>
-<li>review.</li>
-<li>block.</li>
+        :param Suggestion: The suggestion for handling the sensitive information detected based on ASR. Valid values:
+<li>pass</li>
+<li>review</li>
+<li>block</li>
         :type Suggestion: str
-        :param SegmentSet: List of video segments that contain ASR-detected politically sensitive information in text.
+        :param SegmentSet: The video segments that contain sensitive information detected based on ASR.
         :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
         """
         self.Confidence = None
@@ -1980,13 +1983,13 @@ class AiReviewPoliticalAsrTaskOutput(AbstractModel):
 
 
 class AiReviewPoliticalOcrTaskInput(AbstractModel):
-    """Input parameter type of an OCR-based politically sensitive information detection in text task during content audit
+    """The input parameters for OCR-based detection of politically sensitive information.
 
     """
 
     def __init__(self):
         r"""
-        :param Definition: ID of a politically sensitive information detection template.
+        :param Definition: The template ID.
         :type Definition: int
         """
         self.Definition = None
@@ -2004,20 +2007,20 @@ class AiReviewPoliticalOcrTaskInput(AbstractModel):
 
 
 class AiReviewPoliticalOcrTaskOutput(AbstractModel):
-    """OCR-detected politically sensitive information in text
+    """The information about the sensitive content detected based on OCR.
 
     """
 
     def __init__(self):
         r"""
-        :param Confidence: Score of the OCR-detected politically sensitive information in text from 0 to 100.
+        :param Confidence: The confidence score for the OCR-based detection of sensitive information. Value range: 0-100.
         :type Confidence: float
-        :param Suggestion: Suggestion for the OCR-detected politically sensitive information in text. Valid values:
-<li>pass.</li>
-<li>review.</li>
-<li>block.</li>
+        :param Suggestion: The suggestion for handling the sensitive information detected based on OCR. Valid values:
+<li>pass</li>
+<li>review</li>
+<li>block</li>
         :type Suggestion: str
-        :param SegmentSet: List of video segments that contain OCR-detected politically sensitive information in text.
+        :param SegmentSet: The video segments that contain sensitive information detected based on OCR.
         :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
         """
         self.Confidence = None
@@ -2044,13 +2047,13 @@ class AiReviewPoliticalOcrTaskOutput(AbstractModel):
 
 
 class AiReviewPoliticalTaskInput(AbstractModel):
-    """Input parameter type of a politically sensitive information detection task during content audit
+    """The input parameters for the detection of politically sensitive information.
 
     """
 
     def __init__(self):
         r"""
-        :param Definition: ID of a politically sensitive information detection template.
+        :param Definition: The template ID.
         :type Definition: int
         """
         self.Definition = None
@@ -2068,26 +2071,26 @@ class AiReviewPoliticalTaskInput(AbstractModel):
 
 
 class AiReviewPoliticalTaskOutput(AbstractModel):
-    """Politically sensitive information
+    """The sensitive information detected.
 
     """
 
     def __init__(self):
         r"""
-        :param Confidence: Score of the detected politically sensitive information in video from 0 to 100.
+        :param Confidence: The confidence score for the detection of sensitive information. Value range: 0-100.
         :type Confidence: float
-        :param Suggestion: Suggestion for the detected politically sensitive information. Valid values:
-<li>pass.</li>
-<li>review.</li>
-<li>block.</li>
+        :param Suggestion: The suggestion for handling the sensitive information detected. Valid values:
+<li>pass</li>
+<li>review</li>
+<li>block</li>
         :type Suggestion: str
-        :param Label: Tags for the results of video politically sensitive information detection. The relationship between the `LabelSet` parameter in the content audit template [controlling tasks of video politically sensitive information detection](https://intl.cloud.tencent.com/document/api/862/37615?from_cn_redirect=1#AiReviewPoliticalTaskOutput) and this parameter is as follows:
+        :param Label: The labels for the detected sensitive content. The relationship between the values of this parameter and those of the `LabelSet` parameter in [PoliticalImgReviewTemplateInfo](https://intl.cloud.tencent.com/document/api/862/37615?from_cn_redirect=1#AiReviewPoliticalTaskOutput) is as follows:
 violation_photo:
-<li>violation_photo: violating photo.</li>
+<li>violation_photo (banned icons)</li>
 Other values (politician/entertainment/sport/entrepreneur/scholar/celebrity/military):
-<li>politician: political figure.</li>
+<li>politician</li>
         :type Label: str
-        :param SegmentSet: List of video segments that contain the detected politically sensitive information.
+        :param SegmentSet: The video segments that contain sensitive information.
         :type SegmentSet: list of MediaContentReviewPoliticalSegmentItem
         """
         self.Confidence = None
@@ -2444,7 +2447,7 @@ class AiReviewProhibitedOcrTaskOutput(AbstractModel):
 
 
 class AiReviewTaskPoliticalAsrResult(AbstractModel):
-    """Result type of an ASR-based politically sensitive information detection in text task during content audit
+    """The result of ASR-based detection of politically sensitive information.
 
     """
 
@@ -2458,10 +2461,10 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
-        :param Input: Input for an ASR-based politically sensitive information detection in text task during content audit.
+        :param Input: The input parameter for ASR-based detection of politically sensitive information.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalAsrTaskInput`
-        :param Output: Output of an ASR-based politically sensitive information detection in text task during content audit.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Output: The output of ASR-based detection of politically sensitive information.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalAsrTaskOutput`
         """
         self.Status = None
@@ -2493,7 +2496,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class AiReviewTaskPoliticalOcrResult(AbstractModel):
-    """Result type of an OCR-based politically sensitive information detection in text task during content audit
+    """The result of OCR-based detection of politically sensitive information.
 
     """
 
@@ -2508,10 +2511,10 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
         :param Message: Error message.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Message: str
-        :param Input: Input for an OCR-based politically sensitive information detection in text task during content audit.
+        :param Input: The input parameter for OCR-based detection of politically sensitive information.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalOcrTaskInput`
-        :param Output: Output of an OCR-based politically sensitive information detection in text task during content audit.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Output: The output of OCR-based detection of politically sensitive information.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalOcrTaskOutput`
         """
         self.Status = None
@@ -2543,7 +2546,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class AiReviewTaskPoliticalResult(AbstractModel):
-    """Result type of a politically sensitive information detection task during content audit
+    """The result of sensitive information detection.
 
     """
 
@@ -2557,10 +2560,10 @@ class AiReviewTaskPoliticalResult(AbstractModel):
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
-        :param Input: Input for a politically sensitive information detection task during content audit.
+        :param Input: The input parameter for sensitive information detection.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalTaskInput`
-        :param Output: Output of a politically sensitive information detection task during content audit.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Output: The output of sensitive information detection.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalTaskOutput`
         """
         self.Status = None
@@ -2842,7 +2845,7 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
 
 
 class AiReviewTaskTerrorismOcrResult(AbstractModel):
-    """Result type of OCR-based terrorism information detection in text task in content audit
+    """The result of OCR-based detection of terrorism content.
 
     """
 
@@ -2859,9 +2862,10 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
-        :param Input: Input of OCR-based terrorism information detection in text task in content audit.
+        :param Input: The input parameter for OCR-based detection of terrorism content.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismOcrTaskInput`
-        :param Output: Output of OCR-based terrorism information detection in text task in content audit.
+        :param Output: The output of OCR-based detection of terrorism content.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismOcrTaskOutput`
         """
         self.Status = None
@@ -2893,7 +2897,7 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
 
 
 class AiReviewTaskTerrorismResult(AbstractModel):
-    """Result type of a terrorism information detection task during content audit
+    """The result of sensitive information detection.
 
     """
 
@@ -2907,10 +2911,10 @@ class AiReviewTaskTerrorismResult(AbstractModel):
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
-        :param Input: Input for a terrorism information detection task during content audit.
+        :param Input: The input parameter for sensitive information detection.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismTaskInput`
-        :param Output: Output of a terrorism information detection task during content audit.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Output: The output of sensitive information detection.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismTaskOutput`
         """
         self.Status = None
@@ -2942,13 +2946,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class AiReviewTerrorismOcrTaskInput(AbstractModel):
-    """Input parameter type of OCR-based terrorism information detection in text task in content audit
+    """The input parameter for OCR-based detection of sensitive information.
 
     """
 
     def __init__(self):
         r"""
-        :param Definition: Terrorism information detection template ID.
+        :param Definition: The template ID.
         :type Definition: int
         """
         self.Definition = None
@@ -2966,20 +2970,20 @@ class AiReviewTerrorismOcrTaskInput(AbstractModel):
 
 
 class AiReviewTerrorismOcrTaskOutput(AbstractModel):
-    """OCR-detected terrorism information in text
+    """The information about the sensitive content detected based on OCR.
 
     """
 
     def __init__(self):
         r"""
-        :param Confidence: Score of OCR-detected terrorism information in text between 0 and 100.
+        :param Confidence: The confidence score for the OCR-based detection of sensitive information. Value range: 1-100.
         :type Confidence: float
-        :param Suggestion: Suggestion for OCR-detected terrorism information in text. Valid values:
-<li>pass.</li>
-<li>review.</li>
-<li>block.</li>
+        :param Suggestion: The suggestion for handling the sensitive information detected based on OCR. Valid values:
+<li>pass</li>
+<li>review</li>
+<li>block</li>
         :type Suggestion: str
-        :param SegmentSet: List of video segments that contain OCR-detected terrorism information in text.
+        :param SegmentSet: The video segments that contain sensitive information detected based on OCR.
         :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
         """
         self.Confidence = None
@@ -3006,13 +3010,13 @@ class AiReviewTerrorismOcrTaskOutput(AbstractModel):
 
 
 class AiReviewTerrorismTaskInput(AbstractModel):
-    """Input parameter type of a terrorism information detection task during content audit
+    """The input parameter for the detection of sensitive information.
 
     """
 
     def __init__(self):
         r"""
-        :param Definition: ID of a terrorism information detection template.
+        :param Definition: The template ID.
         :type Definition: int
         """
         self.Definition = None
@@ -3030,31 +3034,31 @@ class AiReviewTerrorismTaskInput(AbstractModel):
 
 
 class AiReviewTerrorismTaskOutput(AbstractModel):
-    """Terrorism information
+    """The information about the sensitive content detected.
 
     """
 
     def __init__(self):
         r"""
-        :param Confidence: Score of the detected terrorism information in a video from 0 to 100.
+        :param Confidence: The confidence score for the detection of sensitive information. Value range: 0-100.
         :type Confidence: float
-        :param Suggestion: Suggestion for the detected terrorism information. Valid values:
-<li>pass.</li>
-<li>review.</li>
-<li>block.</li>
+        :param Suggestion: The suggestion for handling the sensitive information detected. Valid values:
+<li>pass</li>
+<li>review</li>
+<li>block</li>
         :type Suggestion: str
-        :param Label: Tags for detected terrorism information in a video. Valid values:
-<li>`guns`: weapons and guns</li>
-<li>`crowd`: crowds</li>
-<li>`police`: police forces</li>
-<li>`bloody`: bloodiness</li>
-<li>`banners`: terrorism flags</li>
-<li>`militant`: militants</li>
-<li>`explosion`: explosions and fires</li>
-<li>`terrorists`: terrorists</li>
-<li>`scenario`: terrorism images</li>
+        :param Label: The labels for the detected sensitive content. Valid values:
+<li>guns</li>
+<li>crowd</li>
+<li>police</li>
+<li>bloody</li>
+<li>banners (sensitive flags)</li>
+<li>militant</li>
+<li>explosion</li>
+<li>terrorists</li>
+<li>scenario (sensitive scenes) </li>
         :type Label: str
-        :param SegmentSet: List of video segments that contain the detected terrorism information.
+        :param SegmentSet: The video segments that contain sensitive information.
         :type SegmentSet: list of MediaContentReviewSegmentItem
         """
         self.Confidence = None
@@ -3771,11 +3775,11 @@ class ContentReviewTemplateItem(AbstractModel):
         :param PornConfigure: Porn information detection control parameter.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PornConfigure: :class:`tencentcloud.mps.v20190612.models.PornConfigureInfo`
-        :param TerrorismConfigure: Terrorism information detection control parameter.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param TerrorismConfigure: The parameters for detecting sensitive information.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type TerrorismConfigure: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfo`
-        :param PoliticalConfigure: Politically sensitive information detection control parameter.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param PoliticalConfigure: The parameters for detecting sensitive information.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type PoliticalConfigure: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfo`
         :param ProhibitedConfigure: Control parameter of prohibited information detection. Prohibited information includes:
 <li>Abusive;</li>
@@ -7107,10 +7111,10 @@ class FaceConfigureInfo(AbstractModel):
         :type Switch: str
         :param Score: Face recognition filter score. If this score is reached or exceeded, a recognition result will be returned. Value range: 0-100. Default value: 95.
         :type Score: float
-        :param DefaultLibraryLabelSet: Default figure filter tag, which specifies the default figure tag that needs to be returned. If this parameter is left empty or an empty value is entered, all results of the default figures will be returned. Valid values:
-<li>entertainment: Entertainment celebrity;</li>
-<li>sport: Sports celebrity;</li>
-<li>politician: Politically sensitive figure.</li>
+        :param DefaultLibraryLabelSet: The default face filter labels, which specify the types of faces to return. If this parameter is left empty, the detection results for all labels are returned. Valid values:
+<li>entertainment (people in the entertainment industry)</li>
+<li>sport (sports celebrities)</li>
+<li>politician</li>
         :type DefaultLibraryLabelSet: list of str
         :param UserDefineLibraryLabelSet: Custom face tags for filter, which specify the face recognition results to return. If this parameter is not specified or left empty, the recognition results for all custom face tags are returned.
 Up to 100 tags are allowed, each containing no more than 16 characters.
@@ -7157,10 +7161,10 @@ class FaceConfigureInfoForUpdate(AbstractModel):
         :type Switch: str
         :param Score: Face recognition filter score. If this score is reached or exceeded, a recognition result will be returned. Value range: 0-100.
         :type Score: float
-        :param DefaultLibraryLabelSet: Default figure filter tag, which specifies the default figure tag that needs to be returned. If this parameter is left empty or an empty value is entered, all results of the default figures will be returned. Valid values:
-<li>entertainment: Entertainment celebrity;</li>
-<li>sport: Sports celebrity;</li>
-<li>politician: Politically sensitive figure.</li>
+        :param DefaultLibraryLabelSet: The default face filter labels, which specify the types of faces to return. If this parameter is left empty, the detection results for all labels are returned. Valid values:
+<li>entertainment (people in the entertainment industry)</li>
+<li>sport (sports celebrities)</li>
+<li>politician</li>
         :type DefaultLibraryLabelSet: list of str
         :param UserDefineLibraryLabelSet: Custom face tags for filter, which specify the face recognition results to return. If this parameter is not specified or left empty, the recognition results for all custom face tags are returned.
 Up to 100 tags are allowed, each containing no more than 16 characters.
@@ -7655,7 +7659,7 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
 
 
 class LiveStreamAiReviewImagePoliticalResult(AbstractModel):
-    """Result of politically sensitive information detection in image in AI-based live stream content audit
+    """The result of detecting sensitive information in live streaming videos.
 
     """
 
@@ -7665,20 +7669,20 @@ class LiveStreamAiReviewImagePoliticalResult(AbstractModel):
         :type StartPtsTime: float
         :param EndPtsTime: End PTS time of a suspected segment in seconds.
         :type EndPtsTime: float
-        :param Confidence: Score of a suspected politically sensitive segment.
+        :param Confidence: The confidence score for the detected sensitive segments.
         :type Confidence: float
         :param Suggestion: Suggestion for porn information detection of a suspected segment. Valid values:
 <li>pass</li>
 <li>review</li>
 <li>block</li>
         :type Suggestion: str
-        :param Label: Tag of the detected politically sensitive information in video. Valid values:
-<li>politician: Politically sensitive figure.</li>
-<li>violation_photo: Violating photo.</li>
+        :param Label: The labels for the detected sensitive information. Valid values:
+<li>politician</li>
+<li>violation_photo (banned icons)</li>
         :type Label: str
-        :param Name: Name of a politically sensitive figure or violating photo.
+        :param Name: The name of a sensitive person or banned icon.
         :type Name: str
-        :param AreaCoordSet: Zone coordinates (at the pixel level) of a politically sensitive figure or violating photo: [x1, y1, x2, y2], i.e., the coordinates of the top-left and bottom-right corners.
+        :param AreaCoordSet: The coordinates (pixel) of the detected sensitive people or banned icons. The format is [x1, y1, x2, y2], which indicates the coordinates of the top-left and bottom-right corners.
         :type AreaCoordSet: list of int
         :param Url: URL of a suspected image (which will not be permanently stored
 and will be deleted after `PicUrlExpireTime`).
@@ -7773,7 +7777,7 @@ and will be deleted after `PicUrlExpireTime`).
 
 
 class LiveStreamAiReviewImageTerrorismResult(AbstractModel):
-    """Result of terrorism information detection in image in AI-based live stream content audit
+    """The result of detecting sensitive information in live streaming videos.
 
     """
 
@@ -7783,22 +7787,22 @@ class LiveStreamAiReviewImageTerrorismResult(AbstractModel):
         :type StartPtsTime: float
         :param EndPtsTime: End PTS time of a suspected segment in seconds.
         :type EndPtsTime: float
-        :param Confidence: Score of a suspected terrorism segment.
+        :param Confidence: The confidence score for the detected sensitive segments.
         :type Confidence: float
-        :param Suggestion: Suggestion for terrorism information detection of a suspected segment. Valid values:
+        :param Suggestion: The suggestion for handling the sensitive segments. Valid values:
 <li>pass</li>
 <li>review</li>
 <li>block</li>
         :type Suggestion: str
-        :param Label: Tag of the detected terrorism information in a video. Valid values:
-<li>guns: Weapons and guns.</li>
-<li>crowd: Crowd.</li>
-<li>police: Police force.</li>
-<li>bloody: Bloody scenes.</li>
-<li>banners: Terrorism flags.</li>
-<li>militant: Militants.</li>
-<li>explosion: Explosions and fires.</li>
-<li>terrorists: Terrorists.</li>
+        :param Label: The labels for the detected sensitive content. Valid values:
+<li>guns</li>
+<li>crowd</li>
+<li>police</li>
+<li>bloody</li>
+<li>banners (sensitive flags)</li>
+<li>militant</li>
+<li>explosion</li>
+<li>terrorists</li>
         :type Label: str
         :param Url: URL of a suspected image (which will not be permanently stored
 and will be deleted after `PicUrlExpireTime`).
@@ -7868,17 +7872,17 @@ class LiveStreamAiReviewResultItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: Content audit type. Valid values:
-<li>ImagePorn: Porn information detection in image</li>
-<li>ImageTerrorism: Terrorism information detection in image</li>
-<li>ImagePolitical: Politically sensitive information detection in image</li>
-<li>PornVoice: Porn information detection in speech</li>
+        :param Type: The type of the moderation result. Valid values:
+<li>ImagePorn</li>
+<li>ImageTerrorism</li>
+<li>ImagePolitical</li>
+<li>PornVoice (pornographic content in speech)</li>
         :type Type: str
         :param ImagePornResultSet: Result of porn information detection in image, which is valid when `Type` is `ImagePorn`.
         :type ImagePornResultSet: list of LiveStreamAiReviewImagePornResult
-        :param ImageTerrorismResultSet: Result of terrorism information detection in image, which is valid when `Type` is `ImageTerrorism`.
+        :param ImageTerrorismResultSet: The result of detecting sensitive information in images, which is valid if `Type` is `ImageTerrorism`.
         :type ImageTerrorismResultSet: list of LiveStreamAiReviewImageTerrorismResult
-        :param ImagePoliticalResultSet: Result of politically sensitive information detection in image, which is valid when `Type` is `ImagePolitical`.
+        :param ImagePoliticalResultSet: The result of detecting sensitive information in images, which is valid if `Type` is `ImagePolitical`.
         :type ImagePoliticalResultSet: list of LiveStreamAiReviewImagePoliticalResult
         :param VoicePornResultSet: Result of porn information detection in speech, which is valid when `Type` is `PornVoice`.
         :type VoicePornResultSet: list of LiveStreamAiReviewVoicePornResult
@@ -8695,7 +8699,7 @@ and will be deleted after `PicUrlExpireTime`).
 
 
 class MediaContentReviewPoliticalSegmentItem(AbstractModel):
-    """Suspected politically sensitive segment identified during content audit
+    """The information about the sensitive segments detected.
 
     """
 
@@ -8705,44 +8709,44 @@ class MediaContentReviewPoliticalSegmentItem(AbstractModel):
         :type StartTimeOffset: float
         :param EndTimeOffset: End time offset of a suspected segment in seconds.
         :type EndTimeOffset: float
-        :param Confidence: Score of a suspected politically sensitive segment.
+        :param Confidence: The confidence score for the detected sensitive segments.
         :type Confidence: float
-        :param Suggestion: Suggestion for politically sensitive information detection of a suspected segment. Valid values:
-<li>pass.</li>
-<li>review.</li>
-<li>block.</li>
+        :param Suggestion: The suggestion for handling the sensitive segments. Valid values:
+<li>pass</li>
+<li>review</li>
+<li>block</li>
         :type Suggestion: str
-        :param Name: Name of a politically sensitive figure or violating photo.
+        :param Name: The name of a sensitive person or banned icon.
         :type Name: str
-        :param Label: Tags for the results of politically sensitive information detection of suspected video segments. The relationship between the `LabelSet` parameter in the content audit template [controlling tasks of video politically sensitive information detection](https://intl.cloud.tencent.com/document/api/862/37615?from_cn_redirect=1#PoliticalImgReviewTemplateInfo) and this parameter is as follows:
+        :param Label: The labels for the detected sensitive segments. The relationship between the values of this parameter and those of the `LabelSet` parameter in [PoliticalImgReviewTemplateInfo](https://intl.cloud.tencent.com/document/api/862/37615?from_cn_redirect=1#PoliticalImgReviewTemplateInfo) is as follows:
 violation_photo:
-<li>violation_photo: violating photo.</li>
+<li>violation_photo (banned icons)</li>
 politician:
-<li>nation_politician: head of state/government;</li>
-<li>province_politician: province/state leader;</li>
-<li>bureau_politician: ministry leader;</li>
-<li>county_politician: county/city leader;</li>
-<li>rural_politician: town leader;</li>
-<li>sensitive_politician: politically sensitive figure.</li>
-<li>foreign_politician: head of a foreign country/government.</li>
+<li>nation_politician (state leader)</li>
+<li>province_politician (provincial officials)</li>
+<li>bureau_politician (bureau-level officials)</li>
+<li>county_politician (county-level officials)</li>
+<li>rural_politician (township-level officials)</li>
+<li>sensitive_politician (sensitive people)</li>
+<li>foreign_politician (state leaders of other countries)</li>
 entertainment:
-<li>sensitive_entertainment: sensitive entertainment celebrity.</li>
+<li>sensitive_entertainment (sensitive people in the entertainment industry</li>
 sport:
-<li>sensitive_sport: sensitive sports figure.</li>
+<li>sensitive_sport (sensitive sports celebrities)</li>
 entrepreneur:
-<li>sensitive_entrepreneur: sensitive business figure.</li>
+<li>sensitive_entrepreneur</li>
 scholar:
-<li>sensitive_scholar: sensitive educator.</li>
+<li>sensitive_scholar</li>
 celebrity:
-<li>sensitive_celebrity: sensitive well-known figure;</li>
-<li>historical_celebrity: well-known historical figure.</li>
+<li>sensitive_celebrity</li>
+<li>historical_celebrity (sensitive historical figures)</li>
 military:
-<li>sensitive_military: militarily sensitive figure.</li>
+<li>sensitive_military (sensitive people in military)</li>
         :type Label: str
         :param Url: URL of a suspected image (which will not be permanently stored
  and will be deleted after `PicUrlExpireTime`).
         :type Url: str
-        :param AreaCoordSet: Zone coordinates (at the pixel level) of a politically sensitive figure or violating photo: [x1, y1, x2, y2], i.e., the coordinates of the top-left and bottom-right corners.
+        :param AreaCoordSet: The coordinates (pixel) of the detected sensitive people or banned icons. The format is [x1, y1, x2, y2], which indicates the coordinates of the top-left and bottom-right corners.
         :type AreaCoordSet: list of int
         :param PicUrlExpireTime: Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type PicUrlExpireTime: str
@@ -8778,7 +8782,7 @@ military:
 
 
 class MediaContentReviewSegmentItem(AbstractModel):
-    """Suspected porn/terrorism segment identified during content audit
+    """The information about the detected pornographic/sensitive segments.
 
     """
 
@@ -9544,7 +9548,7 @@ class MediaSnapshotByTimePicInfoItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TimeOffset: Time offset corresponding to the screenshot in the video in <font color=red>milliseconds</font>.
+        :param TimeOffset: The timestamp (seconds) of the screenshot.
         :type TimeOffset: float
         :param Path: Path to the screenshot.
         :type Path: str
@@ -11106,15 +11110,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PoliticalAsrReviewTemplateInfo(AbstractModel):
-    """Control parameter of a politically sensitive information detection in speech task
+    """The parameters for detecting sensitive information based on ASR.
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of a politically sensitive information detection in speech task. Valid values:
-<li>ON: Enables a politically sensitive information detection in speech task;</li>
-<li>OFF: Disables a politically sensitive information detection in speech task.</li>
+        :param Switch: Whether to detect sensitive information based on ASR. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
         :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
         :type BlockConfidence: int
@@ -11140,15 +11144,15 @@ class PoliticalAsrReviewTemplateInfo(AbstractModel):
 
 
 class PoliticalAsrReviewTemplateInfoForUpdate(AbstractModel):
-    """Control parameter of a politically sensitive information detection in speech task.
+    """The parameters for detecting sensitive information based on ASR.
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of a politically sensitive information detection in speech task. Valid values:
-<li>ON: Enables a politically sensitive information detection in speech task;</li>
-<li>OFF: Disables a politically sensitive information detection in speech task.</li>
+        :param Switch: Whether to detect sensitive information based on ASR. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
         :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
         :type BlockConfidence: int
@@ -11174,20 +11178,17 @@ class PoliticalAsrReviewTemplateInfoForUpdate(AbstractModel):
 
 
 class PoliticalConfigureInfo(AbstractModel):
-    """Control parameter of a politically sensitive information detection task
+    """The parameters for detecting sensitive information.
 
     """
 
     def __init__(self):
         r"""
-        :param ImgReviewInfo: Control parameter of politically sensitive information detection in image.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param ImgReviewInfo: The parameters for detecting sensitive information in images.
         :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.PoliticalImgReviewTemplateInfo`
-        :param AsrReviewInfo: Control parameter of politically sensitive information detection in speech.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param AsrReviewInfo: The parameters for detecting sensitive information based on ASR.
         :type AsrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PoliticalAsrReviewTemplateInfo`
-        :param OcrReviewInfo: Control parameter of politically sensitive information detection in text.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param OcrReviewInfo: The parameters for detecting sensitive information based on OCR.
         :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PoliticalOcrReviewTemplateInfo`
         """
         self.ImgReviewInfo = None
@@ -11215,17 +11216,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PoliticalConfigureInfoForUpdate(AbstractModel):
-    """Control parameter of a politically sensitive information detection task.
+    """The parameters for detecting sensitive information.
 
     """
 
     def __init__(self):
         r"""
-        :param ImgReviewInfo: Control parameter of politically sensitive information detection in image.
+        :param ImgReviewInfo: The parameters for detecting sensitive information in images.
         :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.PoliticalImgReviewTemplateInfoForUpdate`
-        :param AsrReviewInfo: Control parameter of politically sensitive information detection in speech.
+        :param AsrReviewInfo: The parameters for detecting sensitive information based on ASR.
         :type AsrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PoliticalAsrReviewTemplateInfoForUpdate`
-        :param OcrReviewInfo: Control parameter of politically sensitive information detection in text.
+        :param OcrReviewInfo: The parameters for detecting sensitive information based on OCR.
         :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PoliticalOcrReviewTemplateInfoForUpdate`
         """
         self.ImgReviewInfo = None
@@ -11253,25 +11254,25 @@ class PoliticalConfigureInfoForUpdate(AbstractModel):
 
 
 class PoliticalImgReviewTemplateInfo(AbstractModel):
-    """Control parameter of a politically sensitive information detection in image task
+    """The parameters for detecting sensitive information in images.
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of a politically sensitive information detection in image task. Valid values:
-<li>ON: Enables a politically sensitive information detection in image task;</li>
-<li>OFF: Disables a politically sensitive information detection in image task.</li>
+        :param Switch: Whether to detect sensitive information in images. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
-        :param LabelSet: Filter tags for politically sensitive information detection of video images. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
-<li>violation_photo: violating photo;</li>
-<li>politician: political figure;</li>
-<li>entertainment: entertainment celebrity;</li>
-<li>sport: sports figure;</li>
-<li>entrepreneur: business figure;</li>
-<li>scholar: educator;</li>
-<li>celebrity: well-known figure;</li>
-<li>military: military figure.</li>
+        :param LabelSet: The filter labels for sensitive information detection in images, which specify the types of sensitive information to return. If this parameter is left empty, the detection results for all labels are returned. Valid values:
+<li>violation_photo (banned icons)</li>
+<li>politician</li>
+<li>entertainment (people in the entertainment industry)</li>
+<li>sport (people in the sports industry)</li>
+<li>entrepreneur</li>
+<li>scholar</li>
+<li>celebrity</li>
+<li>military (people in military)</li>
         :type LabelSet: list of str
         :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 97 will be used by default. Value range: 0-100.
         :type BlockConfidence: int
@@ -11299,25 +11300,25 @@ class PoliticalImgReviewTemplateInfo(AbstractModel):
 
 
 class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
-    """Control parameter of a politically sensitive information detection in image task.
+    """The parameters for detecting sensitive information in images.
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of a politically sensitive information detection in image task. Valid values:
-<li>ON: Enables a politically sensitive information detection in image task;</li>
-<li>OFF: Disables a politically sensitive information detection in image task.</li>
+        :param Switch: Whether to detect sensitive information in images. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
-        :param LabelSet: Filter tags for politically sensitive information detection of video images. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
-<li>violation_photo: violating photo;</li>
-<li>politician: political figure;</li>
-<li>entertainment: entertainment celebrity;</li>
-<li>sport: sports figure;</li>
-<li>entrepreneur: business figure;</li>
-<li>scholar: educator;</li>
-<li>celebrity: well-known figure;</li>
-<li>military: military figure.</li>
+        :param LabelSet: The filter labels for sensitive information detection in images, which specify the types of sensitive information to return. If this parameter is left empty, the detection results for all labels are returned. Valid values:
+<li>violation_photo (banned icons)</li>
+<li>politician</li>
+<li>entertainment (people in the entertainment industry)</li>
+<li>sport (people in the sports industry)</li>
+<li>entrepreneur</li>
+<li>scholar</li>
+<li>celebrity</li>
+<li>military (people in military)</li>
         :type LabelSet: list of str
         :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
         :type BlockConfidence: int
@@ -11345,15 +11346,15 @@ class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
 
 
 class PoliticalOcrReviewTemplateInfo(AbstractModel):
-    """Control parameter of a politically sensitive information detection in text task
+    """The parameters for detecting sensitive information based on OCR.
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of a politically sensitive information detection in text task. Valid values:
-<li>ON: Enables a politically sensitive information detection in text task;</li>
-<li>OFF: Disables a politically sensitive information detection in text task.</li>
+        :param Switch: Whether to detect sensitive information based on OCR. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
         :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
         :type BlockConfidence: int
@@ -11379,15 +11380,15 @@ class PoliticalOcrReviewTemplateInfo(AbstractModel):
 
 
 class PoliticalOcrReviewTemplateInfoForUpdate(AbstractModel):
-    """Control parameter of a politically sensitive information detection in text task.
+    """The parameters for detecting sensitive information based on OCR.
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of a politically sensitive information detection in text task. Valid values:
-<li>ON: Enables a politically sensitive information detection in text task;</li>
-<li>OFF: Disables a politically sensitive information detection in text task.</li>
+        :param Switch: Whether to detect sensitive information based on OCR. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
         :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
         :type BlockConfidence: int
@@ -12953,16 +12954,15 @@ class TaskSimpleInfo(AbstractModel):
 
 
 class TerrorismConfigureInfo(AbstractModel):
-    """Control parameter of a terrorism information detection task
+    """The parameters for detecting sensitive information.
 
     """
 
     def __init__(self):
         r"""
-        :param ImgReviewInfo: Control parameter of a terrorism information detection in image task.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param ImgReviewInfo: The parameters for detecting sensitive information in images.
         :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismImgReviewTemplateInfo`
-        :param OcrReviewInfo: Control parameter of terrorism information detection in text task.
+        :param OcrReviewInfo: The parameters for detecting sensitive information based on OCR.
         :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismOcrReviewTemplateInfo`
         """
         self.ImgReviewInfo = None
@@ -12986,15 +12986,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TerrorismConfigureInfoForUpdate(AbstractModel):
-    """Control parameter of a terrorism information detection task.
+    """The parameters for detecting sensitive information.
 
     """
 
     def __init__(self):
         r"""
-        :param ImgReviewInfo: Control parameter of a terrorism information detection in image task.
+        :param ImgReviewInfo: The parameters for detecting sensitive information in images.
         :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismImgReviewTemplateInfoForUpdate`
-        :param OcrReviewInfo: Control parameter of terrorism information detection in text task.
+        :param OcrReviewInfo: The parameters for detecting sensitive information based on OCR.
         :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismOcrReviewTemplateInfoForUpdate`
         """
         self.ImgReviewInfo = None
@@ -13018,26 +13018,26 @@ class TerrorismConfigureInfoForUpdate(AbstractModel):
 
 
 class TerrorismImgReviewTemplateInfo(AbstractModel):
-    """Control parameter of a terrorism information detection in image task
+    """The parameters for detecting sensitive information in images.
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of a terrorism information detection in image task. Valid values:
-<li>ON: Enables a terrorism information detection in image task;</li>
-<li>OFF: Disables a terrorism information detection in image task.</li>
+        :param Switch: Whether to detect sensitive information in images. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
-        :param LabelSet: Filter tags for terrorism information detection in images. If a specified tag is detected, the tag is returned. If no filter tag is specified, all detected tags are returned. Valid values:
-<li>`guns`: weapons and guns</li>
-<li>`crowd`: crowds</li>
-<li>`bloody`: bloodiness</li>
-<li>`police`: police forces</li>
-<li>`banners`: terrorism flags</li>
-<li>`militant`: militants</li>
-<li>`explosion`: explosions and fires</li>
-<li>`terrorists`: terrorists</li>
-<li>`scenario`: terrorism images</li>
+        :param LabelSet: The filter labels for sensitive information detection in images, which specify the types of sensitive information to return. If this parameter is left empty, the detection results for all labels are returned. Valid values:
+<li>guns</li>
+<li>crowd</li>
+<li>bloody</li>
+<li>police</li>
+<li>banners (sensitive flags)</li>
+<li>militant</li>
+<li>explosion</li>
+<li>terrorists</li>
+<li>scenario (sensitive scenes) </li>
         :type LabelSet: list of str
         :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 90 will be used by default. Value range: 0-100.
         :type BlockConfidence: int
@@ -13065,26 +13065,26 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 
 
 class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
-    """Control parameter of a terrorism information detection in image task.
+    """The parameters for detecting sensitive information in images.
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of a terrorism information detection in image task. Valid values:
-<li>ON: Enables a terrorism information detection in image task;</li>
-<li>OFF: Disables a terrorism information detection in image task.</li>
+        :param Switch: Whether to detect sensitive information in images. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
-        :param LabelSet: Filter tags for terrorism information detection in images. If a specified tag is detected, the tag is returned. If no filter tag is specified, all detected tags are returned. Valid values:
-<li>`guns`: weapons and guns</li>
-<li>`crowd`: crowds</li>
-<li>`bloody`: bloodiness</li>
-<li>`police`: police forces</li>
-<li>`banners`: terrorism flags</li>
-<li>`militant`: militants</li>
-<li>`explosion`: explosions and fires</li>
-<li>`terrorists`: terrorists</li>
-<li>`scenario`: terrorism images</li>
+        :param LabelSet: The filter labels for sensitive information detection in images, which specify the types of sensitive information to return. If this parameter is left empty, the detection results for all labels are returned. Valid values:
+<li>guns</li>
+<li>crowd</li>
+<li>bloody</li>
+<li>police</li>
+<li>banners (sensitive flags)</li>
+<li>militant</li>
+<li>explosion</li>
+<li>terrorists</li>
+<li>scenario (sensitive scenes) </li>
         :type LabelSet: list of str
         :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
         :type BlockConfidence: int
@@ -13112,15 +13112,15 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
 
 
 class TerrorismOcrReviewTemplateInfo(AbstractModel):
-    """Control parameter of terrorism information detection in text task
+    """The parameters for detecting sensitive information based on OCR.
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of terrorism information detection in text task. Valid values:
-<li>ON: enables terrorism information detection in text task;</li>
-<li>OFF: disables terrorism information detection in text task.</li>
+        :param Switch: Whether to detect sensitive information based on OCR. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
         :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
         :type BlockConfidence: int
@@ -13146,15 +13146,15 @@ class TerrorismOcrReviewTemplateInfo(AbstractModel):
 
 
 class TerrorismOcrReviewTemplateInfoForUpdate(AbstractModel):
-    """Control parameter of terrorism information detection in text task
+    """The parameters for detecting sensitive information based on OCR.
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: Switch of terrorism information detection in text task. Valid values:
-<li>ON: enables terrorism information detection in text task;</li>
-<li>OFF: disables terrorism information detection in text task.</li>
+        :param Switch: Whether to detect sensitive information based on OCR. Valid values:
+<li>ON</li>
+<li>OFF</li>
         :type Switch: str
         :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
         :type BlockConfidence: int
@@ -13913,6 +13913,11 @@ If the value is 0, the bitrate of the video will be the same as that of the sour
         :param Vcrf: The control factor of video constant bitrate. Value range: [0, 51]. This parameter will be disabled if you enter `0`.
 It is not recommended to specify this parameter if there are no special requirements.
         :type Vcrf: int
+        :param ContentAdaptStream: Whether to enable adaptive encoding. Valid values:
+<li>0: Disable</li>
+<li>1: Enable</li>
+Default value: 0. If this parameter is set to `1`, multiple streams with different resolutions and bitrates will be generated automatically. The highest resolution, bitrate, and quality of the streams are determined by the values of `width` and `height`, `Bitrate`, and `Vcrf` in `VideoTemplate` respectively. If these parameters are not set in `VideoTemplate`, the highest resolution generated will be the same as that of the source video, and the highest video quality will be close to VMAF 95. To use this parameter or learn about the billing details of adaptive encoding, please contact your sales rep.
+        :type ContentAdaptStream: int
         """
         self.Codec = None
         self.Fps = None
@@ -13923,6 +13928,7 @@ It is not recommended to specify this parameter if there are no special requirem
         self.Gop = None
         self.FillType = None
         self.Vcrf = None
+        self.ContentAdaptStream = None
 
 
     def _deserialize(self, params):
@@ -13935,6 +13941,7 @@ It is not recommended to specify this parameter if there are no special requirem
         self.Gop = params.get("Gop")
         self.FillType = params.get("FillType")
         self.Vcrf = params.get("Vcrf")
+        self.ContentAdaptStream = params.get("ContentAdaptStream")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
