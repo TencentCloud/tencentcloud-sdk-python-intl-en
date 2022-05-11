@@ -14,35 +14,35 @@
 # limitations under the License.
 
 
+# CAM signature/authentication error.
+AUTHFAILURE = 'AuthFailure'
+
 # Identity verification has not been completed, so this operation is not allowed.
 AUTHFAILURE_UNREALNAMEAUTHENTICATED = 'AuthFailure.UnRealNameAuthenticated'
 
-# No On-Cloud MixTranscoding template is set for this room.
-FAILEDOPERATION_MIXSESSIONNOTEXIST = 'FailedOperation.MixSessionNotExist'
+# CAM authentication failed.
+AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
 
-# The TencentCloud API On-Cloud MixTranscoding template conflicts with On-Cloud MixTranscoding settings in the SDK.
-FAILEDOPERATION_REQUESTREJECTION = 'FailedOperation.RequestRejection'
+# Unsupported operation.
+AUTHFAILURE_UNSUPPORTEDOPERATION = 'AuthFailure.UnsupportedOperation'
+
+# Operation failed.
+FAILEDOPERATION = 'FailedOperation'
+
+# Unsupported on-cloud recording method.
+FAILEDOPERATION_CRUNSUPPORTMETHOD = 'FailedOperation.CRUnsupportMethod'
+
+# Maximum number of concurrent on-cloud recording tasks reached. Contact us to raise the limit.
+FAILEDOPERATION_RESTRICTEDCONCURRENCY = 'FailedOperation.RestrictedConcurrency'
 
 # The room does not exist.
 FAILEDOPERATION_ROOMNOTEXIST = 'FailedOperation.RoomNotExist'
 
-# Application ID does not exist.
-FAILEDOPERATION_SDKAPPIDNOTEXIST = 'FailedOperation.SdkAppIdNotExist'
-
 # Internal error.
 INTERNALERROR = 'InternalError'
 
-# Failed to access the backend service.
-INTERNALERROR_BACKENDFAIL = 'InternalError.BackendFail'
-
-# Backend service access timed out.
-INTERNALERROR_BACKENDTIMEOUT = 'InternalError.BackendTimeOut'
-
-# An error occurred while querying the database.
-INTERNALERROR_DBERROR = 'InternalError.DBError'
-
-# An error occurred while querying ES.
-INTERNALERROR_ESQUERYERROR = 'InternalError.EsQueryError'
+# On-cloud recording internal error.
+INTERNALERROR_CRINTERNALERROR = 'InternalError.CRInternalError'
 
 # Failed to query the room.
 INTERNALERROR_GETROOMCACHEIPERROR = 'InternalError.GetRoomCacheIpError'
@@ -50,71 +50,8 @@ INTERNALERROR_GETROOMCACHEIPERROR = 'InternalError.GetRoomCacheIpError'
 # Failed to get room information.
 INTERNALERROR_GETROOMFROMCACHEERROR = 'InternalError.GetRoomFromCacheError'
 
-# Failed to parse the HTTP request.
-INTERNALERROR_HTTPPARASEFALIED = 'InternalError.HttpParaseFalied'
-
-# API error.
-INTERNALERROR_INTERFACEERR = 'InternalError.InterfaceErr'
-
-# Unsupported method.
-INTERNALERROR_METHODERR = 'InternalError.MethodErr'
-
-# Invalid parameter.
-INVALIDPARAMETER = 'InvalidParameter'
-
-# `AppId` verification failed.
-INVALIDPARAMETER_APPID = 'InvalidParameter.AppId'
-
-# Invalid audio codec parameter.
-INVALIDPARAMETER_AUDIOENCODEPARAMS = 'InvalidParameter.AudioEncodeParams'
-
-# Failed to parse the body parameter.
-INVALIDPARAMETER_BODYPARAMSERROR = 'InvalidParameter.BodyParamsError'
-
-# The image is too large.
-INVALIDPARAMETER_CHECKCONTENTFAILED = 'InvalidParameter.CheckContentFailed'
-
-# Invalid file extension.
-INVALIDPARAMETER_CHECKSUFFIXFAILED = 'InvalidParameter.CheckSuffixFailed'
-
-# Invalid `EncodeParams`.
-INVALIDPARAMETER_ENCODEPARAMS = 'InvalidParameter.EncodeParams'
-
-# Invalid `EndTs`.
-INVALIDPARAMETER_ENDTS = 'InvalidParameter.EndTs'
-
-# Invalid `MainVideoRightAlign` (parameter specifying whether to display the big image on the right).
-INVALIDPARAMETER_MAINVIDEORIGHTALIGN = 'InvalidParameter.MainVideoRightAlign'
-
-# Invalid stream type of the big image.
-INVALIDPARAMETER_MAINVIDEOSTREAMTYPE = 'InvalidParameter.MainVideoStreamType'
-
-# Incorrect `OutputParams` parameter.
-INVALIDPARAMETER_OUTPUTPARAMS = 'InvalidParameter.OutputParams'
-
-# Invalid `PageNumber`.
-INVALIDPARAMETER_PAGENUMBER = 'InvalidParameter.PageNumber'
-
-# Invalid `PageSize`.
-INVALIDPARAMETER_PAGESIZE = 'InvalidParameter.PageSize'
-
-# The value of `PageSize` exceeds 100.
-INVALIDPARAMETER_PAGESIZEOVERSIZE = 'InvalidParameter.PageSizeOversize'
-
-# Incorrect parameters for custom layout.
-INVALIDPARAMETER_PRESETLAYOUTCONFIG = 'InvalidParameter.PresetLayoutConfig'
-
-# Incorrect parameters for audio-only stream pushing.
-INVALIDPARAMETER_PUREAUDIOSTREAM = 'InvalidParameter.PureAudioStream'
-
-# The range for query exceeded the limit.
-INVALIDPARAMETER_QUERYSCALEOVERSIZE = 'InvalidParameter.QueryScaleOversize'
-
-# Incorrect parameters for audio-only recording.
-INVALIDPARAMETER_RECORDAUDIOONLY = 'InvalidParameter.RecordAudioOnly'
-
-# Incorrect `RecordId` parameter.
-INVALIDPARAMETER_RECORDID = 'InvalidParameter.RecordId'
+# Parameter value is out of range.
+INVALIDPARAMETER_OUTOFRANGE = 'InvalidParameter.OutOfRange'
 
 # `RoomId` is incorrect.
 INVALIDPARAMETER_ROOMID = 'InvalidParameter.RoomId'
@@ -122,92 +59,47 @@ INVALIDPARAMETER_ROOMID = 'InvalidParameter.RoomId'
 # `SdkAppId` is incorrect.
 INVALIDPARAMETER_SDKAPPID = 'InvalidParameter.SdkAppId'
 
-# Invalid small image layout parameter.
-INVALIDPARAMETER_SMALLVIDEOLAYOUTPARAMS = 'InvalidParameter.SmallVideoLayoutParams'
-
-# Invalid `StreamType` under `SmallVideoLayoutParams`.
-INVALIDPARAMETER_SMALLVIDEOSTREAMTYPE = 'InvalidParameter.SmallVideoStreamType'
-
-# The start time for query exceeded the limit.
-INVALIDPARAMETER_STARTTIMEEXPIRE = 'InvalidParameter.StartTimeExpire'
-
-# Invalid `StartTs`.
-INVALIDPARAMETER_STARTTS = 'InvalidParameter.StartTs'
-
-# The start time for query exceeded the limit.
-INVALIDPARAMETER_STARTTSOVERSIZE = 'InvalidParameter.StartTsOversize'
-
-# Incorrect `StreamId` parameter.
-INVALIDPARAMETER_STREAMID = 'InvalidParameter.StreamId'
-
-# Failed to parse the URL parameter.
-INVALIDPARAMETER_URLPARAMSERROR = 'InvalidParameter.UrlParamsError'
-
-# Invalid `UserId`.
-INVALIDPARAMETER_USERID = 'InvalidParameter.UserId'
-
 # `UserIds` is incorrect.
 INVALIDPARAMETER_USERIDS = 'InvalidParameter.UserIds'
-
-# The number of users exceeds 6.
-INVALIDPARAMETER_USERIDSMORETHANSIX = 'InvalidParameter.UserIdsMorethanSix'
-
-# Invalid video resolution.
-INVALIDPARAMETER_VIDEORESOLUTION = 'InvalidParameter.VideoResolution'
 
 # Invalid RoomId.
 INVALIDPARAMETERVALUE_ROOMID = 'InvalidParameterValue.RoomId'
 
-# Missing parameter.
-MISSINGPARAMETER = 'MissingParameter'
+# `AccessKey` parameter missing.
+MISSINGPARAMETER_ACCESSKEY = 'MissingParameter.AccessKey'
 
-# `AppId` missing.
-MISSINGPARAMETER_APPID = 'MissingParameter.AppId'
+# `Bucket` parameter missing.
+MISSINGPARAMETER_BUCKET = 'MissingParameter.Bucket'
 
-# Audio output parameters are missing in `EncodeParams`.
-MISSINGPARAMETER_AUDIOENCODEPARAMS = 'MissingParameter.AudioEncodeParams'
+# `CloudStorage` parameter missing.
+MISSINGPARAMETER_CLOUDSTORAGE = 'MissingParameter.CloudStorage'
 
-# BizId missing in relayed push parameters.
-MISSINGPARAMETER_BIZID = 'MissingParameter.BizId'
+# `RecordMode` parameter missing.
+MISSINGPARAMETER_RECORDMODE = 'MissingParameter.RecordMode'
 
-# `CommId` is missing.
-MISSINGPARAMETER_COMMID = 'MissingParameter.CommId'
+# `RecordParams` parameter missing.
+MISSINGPARAMETER_RECORDPARAMS = 'MissingParameter.RecordParams'
 
-# `SdkAppId` or `CommID` missing.
-MISSINGPARAMETER_COMMIDORSDKAPPID = 'MissingParameter.CommIdOrSdkAppId'
-
-# Missing `EncodeParams` parameter.
-MISSINGPARAMETER_ENCODEPARAMS = 'MissingParameter.EncodeParams'
-
-# `endTS_s` is missing.
-MISSINGPARAMETER_ENDTS = 'MissingParameter.EndTs'
-
-# Missing `OutputParams` parameter.
-MISSINGPARAMETER_OUTPUTPARAMS = 'MissingParameter.OutputParams'
-
-# Custom layout parameter missing.
-MISSINGPARAMETER_PRESETLAYOUTCONFIG = 'MissingParameter.PresetLayoutConfig'
-
-# Relaying parameter missing.
-MISSINGPARAMETER_PUBLISHCDNPARAMS = 'MissingParameter.PublishCdnParams'
-
-# Destination missing in relayed push parameters.
-MISSINGPARAMETER_PUBLISHCDNURLS = 'MissingParameter.PublishCdnUrls'
+# `Region` parameter missing.
+MISSINGPARAMETER_REGION = 'MissingParameter.Region'
 
 # `RoomId` is missing.
 MISSINGPARAMETER_ROOMID = 'MissingParameter.RoomId'
 
-# `RoomNum` is missing.
-MISSINGPARAMETER_ROOMNUM = 'MissingParameter.RoomNum'
-
 # `SdkAppId` is missing.
 MISSINGPARAMETER_SDKAPPID = 'MissingParameter.SdkAppId'
 
-# `startTS_s` is missing.
-MISSINGPARAMETER_STARTTS = 'MissingParameter.StartTs'
+# `SecretKey` parameter missing.
+MISSINGPARAMETER_SECRETKEY = 'MissingParameter.SecretKey'
 
-# The `StreamId` parameter is missing in `OutputParams`.
-MISSINGPARAMETER_STREAMID = 'MissingParameter.StreamId'
+# `StorageParams` parameter missing.
+MISSINGPARAMETER_STORAGEPARAMS = 'MissingParameter.StorageParams'
+
+# `StreamType` parameter missing.
+MISSINGPARAMETER_STREAMTYPE = 'MissingParameter.StreamType'
+
+# `TaskId` parameter missing.
+MISSINGPARAMETER_TASKID = 'MissingParameter.TaskId'
 
 # Missing `UserId` parameter.
 MISSINGPARAMETER_USERID = 'MissingParameter.UserId'
@@ -215,11 +107,14 @@ MISSINGPARAMETER_USERID = 'MissingParameter.UserId'
 # `UserIds` is missing.
 MISSINGPARAMETER_USERIDS = 'MissingParameter.UserIds'
 
-# Video output parameters are missing in `EncodeParams`.
-MISSINGPARAMETER_VIDEOENCODEPARAMS = 'MissingParameter.VideoEncodeParams'
+# `UserSig` parameter missing.
+MISSINGPARAMETER_USERSIG = 'MissingParameter.UserSig'
+
+# `Vendor` parameter missing.
+MISSINGPARAMETER_VENDOR = 'MissingParameter.Vendor'
+
+# The resource does not exist.
+RESOURCENOTFOUND = 'ResourceNotFound'
 
 # No permission to manipulate `SdkAppId`.
 UNAUTHORIZEDOPERATION_SDKAPPID = 'UnauthorizedOperation.SdkAppId'
-
-# Unknown parameter error.
-UNKNOWNPARAMETER = 'UnknownParameter'

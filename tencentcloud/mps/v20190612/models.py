@@ -3793,6 +3793,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type CreateTime: str
         :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type UpdateTime: str
+        :param Type: 
+        :type Type: str
         """
         self.Definition = None
         self.Name = None
@@ -3804,6 +3806,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.UserDefineConfigure = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.Type = None
 
 
     def _deserialize(self, params):
@@ -3827,6 +3830,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self.UserDefineConfigure._deserialize(params.get("UserDefineConfigure"))
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7682,7 +7686,7 @@ class LiveStreamAiReviewImagePoliticalResult(AbstractModel):
         :type Label: str
         :param Name: The name of a sensitive person or banned icon.
         :type Name: str
-        :param AreaCoordSet: The coordinates (pixel) of the detected sensitive people or banned icons. The format is [x1, y1, x2, y2], which indicates the coordinates of the top-left and bottom-right corners.
+        :param AreaCoordSet: The pixel coordinates of the detected sensitive people or banned icons. The format is [x1, y1, x2, y2], which indicates the coordinates of the top-left and bottom-right corners.
         :type AreaCoordSet: list of int
         :param Url: URL of a suspected image (which will not be permanently stored
 and will be deleted after `PicUrlExpireTime`).
@@ -8746,7 +8750,7 @@ military:
         :param Url: URL of a suspected image (which will not be permanently stored
  and will be deleted after `PicUrlExpireTime`).
         :type Url: str
-        :param AreaCoordSet: The coordinates (pixel) of the detected sensitive people or banned icons. The format is [x1, y1, x2, y2], which indicates the coordinates of the top-left and bottom-right corners.
+        :param AreaCoordSet: The pixel coordinates of the detected sensitive people or banned icons. The format is [x1, y1, x2, y2], which indicates the coordinates of the top-left and bottom-right corners.
         :type AreaCoordSet: list of int
         :param PicUrlExpireTime: Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type PicUrlExpireTime: str

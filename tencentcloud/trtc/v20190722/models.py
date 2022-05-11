@@ -18,26 +18,34 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
-class AbnormalEvent(AbstractModel):
-    """Types of exception events that can cause an exceptional experience
+class AudioParams(AbstractModel):
+    """The audio transcoding parameters for recording.
 
     """
 
     def __init__(self):
         r"""
-        :param AbnormalEventId: Exception event ID. For specific values, please see Appendix. Exceptional Experience ID Mapping Table.
-        :type AbnormalEventId: int
-        :param PeerId: Remote user ID. If this parameter is left empty, it indicates that the exception event is not caused by the remote user.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type PeerId: str
+        :param SampleRate: The audio sample rate.
+1: 48000 Hz (default)
+2: 44100 Hz
+3: 16000 Hz
+        :type SampleRate: int
+        :param Channel: The number of sound channels.
+1: Mono-channel
+2: Dual-channel (default)
+        :type Channel: int
+        :param BitRate: The audio bitrate (bps). Value range: [32000, 128000]. Default: 64000.
+        :type BitRate: int
         """
-        self.AbnormalEventId = None
-        self.PeerId = None
+        self.SampleRate = None
+        self.Channel = None
+        self.BitRate = None
 
 
     def _deserialize(self, params):
-        self.AbnormalEventId = params.get("AbnormalEventId")
-        self.PeerId = params.get("PeerId")
+        self.SampleRate = params.get("SampleRate")
+        self.Channel = params.get("Channel")
+        self.BitRate = params.get("BitRate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -47,42 +55,142 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
-class AbnormalExperience(AbstractModel):
-    """Exceptional user experience and possible causes
+class CloudStorage(AbstractModel):
+    """The cloud storage information.
 
     """
 
     def __init__(self):
         r"""
-        :param UserId: User ID
+        :param Vendor: The cloud storage provider.
+0: Tencent Cloud COS. The storage services of other providers are not supported currently.
+        :type Vendor: int
+        :param Region: The region of cloud storage.
+        :type Region: str
+        :param Bucket: The storage bucket.
+        :type Bucket: str
+        :param AccessKey: The access_key of the cloud storage account.
+        :type AccessKey: str
+        :param SecretKey: The secret_key of the cloud storage account.
+        :type SecretKey: str
+        :param FileNamePrefix: The bucket to save data, which is an array of strings that can contain letters (a-z and A-Z) and numbers (0-9). For example, if the value of this parameter is `["prefix1", "prefix2"]`, the recording file `xxx.m3u8` will be saved as `prefix1/prefix2/TaskId/xxx.m3u8`.
+        :type FileNamePrefix: list of str
+        """
+        self.Vendor = None
+        self.Region = None
+        self.Bucket = None
+        self.AccessKey = None
+        self.SecretKey = None
+        self.FileNamePrefix = None
+
+
+    def _deserialize(self, params):
+        self.Vendor = params.get("Vendor")
+        self.Region = params.get("Region")
+        self.Bucket = params.get("Bucket")
+        self.AccessKey = params.get("AccessKey")
+        self.SecretKey = params.get("SecretKey")
+        self.FileNamePrefix = params.get("FileNamePrefix")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudVod(AbstractModel):
+    """The VOD parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TencentVod: The Tencent Cloud VOD parameters.
+        :type TencentVod: :class:`tencentcloud.trtc.v20190722.models.TencentVod`
+        """
+        self.TencentVod = None
+
+
+    def _deserialize(self, params):
+        if params.get("TencentVod") is not None:
+            self.TencentVod = TencentVod()
+            self.TencentVod._deserialize(params.get("TencentVod"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudRecordingRequest(AbstractModel):
+    """CreateCloudRecording request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: The [SDKAppID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are recorded.
+        :type SdkAppId: int
+        :param RoomId: The [room ID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are recorded.
+        :type RoomId: str
+        :param UserId: The [user ID](https://intl.cloud.tencent.com/document/product/647/37714) of the recording robot in the TRTC room, which cannot be the same as a user ID already in use. We recommend you include this user ID in the room ID.
         :type UserId: str
-        :param ExperienceId: Exceptional experience ID
-        :type ExperienceId: int
-        :param RoomId: Room ID in string type
-        :type RoomId: str
-        :param AbnormalEventList: Exception event array
-        :type AbnormalEventList: list of AbnormalEvent
-        :param EventTime: Report time of the exception event
-        :type EventTime: int
+        :param UserSig: The signature (similar to login password) required for the recording robot to enter the room. For information on how to calculate the signature, see [What is UserSig?](https://intl.cloud.tencent.com/document/product/647/38104). |
+        :type UserSig: str
+        :param RecordParams: The on-cloud recording parameters.
+        :type RecordParams: :class:`tencentcloud.trtc.v20190722.models.RecordParams`
+        :param StorageParams: The cloud storage parameters.
+        :type StorageParams: :class:`tencentcloud.trtc.v20190722.models.StorageParams`
+        :param RoomIdType: The type of the TRTC room ID, which must be the same as the ID type of the room whose streams are recorded.
+0: String
+1: 32-bit integer (default)
+        :type RoomIdType: int
+        :param MixTranscodeParams: The stream mixing parameters, which are valid if the mixed-stream recording mode is used.
+        :type MixTranscodeParams: :class:`tencentcloud.trtc.v20190722.models.MixTranscodeParams`
+        :param MixLayoutParams: The layout parameters, which are valid if the mixed-stream recording mode is used.
+        :type MixLayoutParams: :class:`tencentcloud.trtc.v20190722.models.MixLayoutParams`
+        :param ResourceExpiredHour: The amount of time (in hours) during which API requests can be made after recording starts. Calculation starts when a recording task is started (when the recording task ID is returned). Once the period elapses, the query, modification, and stop recording APIs can no longer be called, but the recording task will continue. The default value is `72` (three days), and the maximum and minimum values allowed are `720` (30 days) and `6` respectively. If you do not set this parameter, the query, modification, and stop recording APIs can be called within 72 hours after recording starts.
+        :type ResourceExpiredHour: int
+        :param PrivateMapKey: The permission ticket for a TRTC room. This parameter is required if advanced permission control is enabled in the console, in which case the TRTC backend will verify users’ [PrivateMapKey](https://intl.cloud.tencent.com/document/product/647/32240?from_cn_redirect=1), which include an encrypted room ID and permission bit list. A user providing only `UserSig` and not `PrivateMapKey` will be unable to enter the room.
+        :type PrivateMapKey: str
         """
+        self.SdkAppId = None
+        self.RoomId = None
         self.UserId = None
-        self.ExperienceId = None
-        self.RoomId = None
-        self.AbnormalEventList = None
-        self.EventTime = None
+        self.UserSig = None
+        self.RecordParams = None
+        self.StorageParams = None
+        self.RoomIdType = None
+        self.MixTranscodeParams = None
+        self.MixLayoutParams = None
+        self.ResourceExpiredHour = None
+        self.PrivateMapKey = None
 
 
     def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.RoomId = params.get("RoomId")
         self.UserId = params.get("UserId")
-        self.ExperienceId = params.get("ExperienceId")
-        self.RoomId = params.get("RoomId")
-        if params.get("AbnormalEventList") is not None:
-            self.AbnormalEventList = []
-            for item in params.get("AbnormalEventList"):
-                obj = AbnormalEvent()
-                obj._deserialize(item)
-                self.AbnormalEventList.append(obj)
-        self.EventTime = params.get("EventTime")
+        self.UserSig = params.get("UserSig")
+        if params.get("RecordParams") is not None:
+            self.RecordParams = RecordParams()
+            self.RecordParams._deserialize(params.get("RecordParams"))
+        if params.get("StorageParams") is not None:
+            self.StorageParams = StorageParams()
+            self.StorageParams._deserialize(params.get("StorageParams"))
+        self.RoomIdType = params.get("RoomIdType")
+        if params.get("MixTranscodeParams") is not None:
+            self.MixTranscodeParams = MixTranscodeParams()
+            self.MixTranscodeParams._deserialize(params.get("MixTranscodeParams"))
+        if params.get("MixLayoutParams") is not None:
+            self.MixLayoutParams = MixLayoutParams()
+            self.MixLayoutParams._deserialize(params.get("MixLayoutParams"))
+        self.ResourceExpiredHour = params.get("ResourceExpiredHour")
+        self.PrivateMapKey = params.get("PrivateMapKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -92,45 +200,46 @@ class AbnormalExperience(AbstractModel):
         
 
 
-class CreatePictureRequest(AbstractModel):
-    """CreatePicture request structure.
+class CreateCloudRecordingResponse(AbstractModel):
+    """CreateCloudRecording response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param SdkAppId: Application ID
+        :param TaskId: The task ID assigned by the recording service, which uniquely identifies a recording process and becomes invalid after a recording task ends. After a recording task starts, if you want to perform other actions on the task, you need to specify the task ID when making API requests.
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteCloudRecordingRequest(AbstractModel):
+    """DeleteCloudRecording request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: The `SDKAppID` of the room whose streams are recorded.
         :type SdkAppId: int
-        :param Content: Base64-encoded image content
-        :type Content: str
-        :param Suffix: Image file extension
-        :type Suffix: str
-        :param Height: Image height
-        :type Height: int
-        :param Width: Image width
-        :type Width: int
-        :param XPosition: X-axis value of the image’s position
-        :type XPosition: int
-        :param YPosition: Y-axis value of the image’s position
-        :type YPosition: int
+        :param TaskId: The unique ID of the recording task, which is returned after recording starts successfully.
+        :type TaskId: str
         """
         self.SdkAppId = None
-        self.Content = None
-        self.Suffix = None
-        self.Height = None
-        self.Width = None
-        self.XPosition = None
-        self.YPosition = None
+        self.TaskId = None
 
 
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
-        self.Content = params.get("Content")
-        self.Suffix = params.get("Suffix")
-        self.Height = params.get("Height")
-        self.Width = params.get("Width")
-        self.XPosition = params.get("XPosition")
-        self.YPosition = params.get("YPosition")
+        self.TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -140,176 +249,46 @@ class CreatePictureRequest(AbstractModel):
         
 
 
-class CreatePictureResponse(AbstractModel):
-    """CreatePicture response structure.
+class DeleteCloudRecordingResponse(AbstractModel):
+    """DeleteCloudRecording response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param PictureId: Image ID
-        :type PictureId: int
+        :param TaskId: The task ID assigned by the recording service, which uniquely identifies a recording process and becomes invalid after a recording task ends.
+        :type TaskId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.PictureId = None
+        self.TaskId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        self.PictureId = params.get("PictureId")
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
-class CreateTroubleInfoRequest(AbstractModel):
-    """CreateTroubleInfo request structure.
+class DescribeCloudRecordingRequest(AbstractModel):
+    """DescribeCloudRecording request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param SdkAppId: Application ID
-        :type SdkAppId: str
-        :param RoomId: Room ID
-        :type RoomId: str
-        :param TeacherUserId: Teacher user ID
-        :type TeacherUserId: str
-        :param StudentUserId: Student user ID
-        :type StudentUserId: str
-        :param TroubleUserId: ID of the user (teacher or student) with exception.
-        :type TroubleUserId: str
-        :param TroubleType: Exception type.
-1: exceptional video
-2: exceptional audio
-3: exceptional video and audio
-5: exceptional room entry
-4: course switch
-6: help seeking
-7: problem feedback
-8: complaint
-        :type TroubleType: int
-        :param TroubleTime: UNIX timestamp when the exception occurred in seconds.
-        :type TroubleTime: int
-        :param TroubleMsg: Exception details
-        :type TroubleMsg: str
-        """
-        self.SdkAppId = None
-        self.RoomId = None
-        self.TeacherUserId = None
-        self.StudentUserId = None
-        self.TroubleUserId = None
-        self.TroubleType = None
-        self.TroubleTime = None
-        self.TroubleMsg = None
-
-
-    def _deserialize(self, params):
-        self.SdkAppId = params.get("SdkAppId")
-        self.RoomId = params.get("RoomId")
-        self.TeacherUserId = params.get("TeacherUserId")
-        self.StudentUserId = params.get("StudentUserId")
-        self.TroubleUserId = params.get("TroubleUserId")
-        self.TroubleType = params.get("TroubleType")
-        self.TroubleTime = params.get("TroubleTime")
-        self.TroubleMsg = params.get("TroubleMsg")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateTroubleInfoResponse(AbstractModel):
-    """CreateTroubleInfo response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class DeletePictureRequest(AbstractModel):
-    """DeletePicture request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param PictureId: Image ID
-        :type PictureId: int
-        :param SdkAppId: Application ID
+        :param SdkAppId: The `SDKAppID` of the room whose streams are recorded.
         :type SdkAppId: int
-        """
-        self.PictureId = None
-        self.SdkAppId = None
-
-
-    def _deserialize(self, params):
-        self.PictureId = params.get("PictureId")
-        self.SdkAppId = params.get("SdkAppId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DeletePictureResponse(AbstractModel):
-    """DeletePicture response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeAbnormalEventRequest(AbstractModel):
-    """DescribeAbnormalEvent request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param SdkAppId: User `SDKAppID`, which can be used to query 20 exceptional experience events (in one or more rooms)
-        :type SdkAppId: str
-        :param StartTime: Query start time (s) in the format of Unix timestamp, e.g., 1592448600
-        :type StartTime: int
-        :param EndTime: Query end time (s) in the format of Unix timestamp, e.g., 1592449080
-        :type EndTime: int
-        :param RoomId: Room ID, which can be used to query up to 20 exceptional experience events in a specific room
-        :type RoomId: str
+        :param TaskId: The unique ID of the recording task, which is returned after recording starts successfully.
+        :type TaskId: str
         """
         self.SdkAppId = None
-        self.StartTime = None
-        self.EndTime = None
-        self.RoomId = None
+        self.TaskId = None
 
 
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.RoomId = params.get("RoomId")
+        self.TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -319,661 +298,41 @@ class DescribeAbnormalEventRequest(AbstractModel):
         
 
 
-class DescribeAbnormalEventResponse(AbstractModel):
-    """DescribeAbnormalEvent response structure.
+class DescribeCloudRecordingResponse(AbstractModel):
+    """DescribeCloudRecording response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Total: Number of returned data entries.
-        :type Total: int
-        :param AbnormalExperienceList: Exceptional experience list.
-        :type AbnormalExperienceList: list of AbnormalExperience
+        :param TaskId: The unique ID of the recording task.
+        :type TaskId: str
+        :param Status: The status of the on-cloud recording task.
+Idle: The task is idle.
+InProgress: The task is in progress.
+Exited: The task is being ended.
+        :type Status: str
+        :param StorageFileList: The information of the recording files.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type StorageFileList: list of StorageFile
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Total = None
-        self.AbnormalExperienceList = None
+        self.TaskId = None
+        self.Status = None
+        self.StorageFileList = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        self.Total = params.get("Total")
-        if params.get("AbnormalExperienceList") is not None:
-            self.AbnormalExperienceList = []
-            for item in params.get("AbnormalExperienceList"):
-                obj = AbnormalExperience()
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        if params.get("StorageFileList") is not None:
+            self.StorageFileList = []
+            for item in params.get("StorageFileList"):
+                obj = StorageFile()
                 obj._deserialize(item)
-                self.AbnormalExperienceList.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeCallDetailRequest(AbstractModel):
-    """DescribeCallDetail request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param CommId: Unique ID of a call: sdkappid_roomgString_createTime. The `roomgString` refers to the room ID, and `createTime` refers to the creation time of a room in the format of UNIX timestamp in seconds, such as 1400353843_218695_1590065777. Its value can be obtained from the `DescribeRoomInformation` API (related document: https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1).
-        :type CommId: str
-        :param StartTime: Query start time (s) in the format of Unix timestamp (e.g., 1590065777), which must be a time point in the last 14 days. The start and end time for query must not be more than 1 hour apart.
-        :type StartTime: int
-        :param EndTime: Query end time (s) in the format of Unix timestamp, e.g., 1590065877
-        :type EndTime: int
-        :param SdkAppId: `SDKAppID` of the users to query, e.g., 1400353843
-        :type SdkAppId: str
-        :param UserIds: User array to query, which contains up to 6 users. If it is left empty, 6 users will be returned by default.
-        :type UserIds: list of str
-        :param DataType: Metric to query. The user list will be returned if it is left empty; all metrics will be returned if its value is `all`.
-appCpu: CPU utilization of the application;
-sysCpu: CPU utilization of the system;
-aBit: upstream/downstream audio bitrate;
-aBlock: audio lag duration;
-bigvBit: upstream/downstream video bitrate;
-bigvCapFps: frame rate for capturing videos;
-bigvEncFps: frame rate for sending videos;
-bigvDecFps: rendering frame rate;
-bigvBlock: video lag duration;
-aLoss: upstream/downstream audio packet loss;
-bigvLoss: upstream/downstream video packet loss;
-bigvWidth: upstream/downstream resolution in width;
-bigvHeight: upstream/downstream resolution in height.
-        :type DataType: list of str
-        :param PageNumber: Page index starting from 0. If either `PageNumber` or `PageSize` is left empty, 6 data entries will be returned by default.
-        :type PageNumber: str
-        :param PageSize: Number of entries per page. If either `PageNumber` or `PageSize` is left empty, 6 data entries will be returned by default. When either `DataType` or `UserId` is not null, `PageSize` is up to 6. When `DataType` and `UserId` are null, `PageSize` is up to 100.
-        :type PageSize: str
-        """
-        self.CommId = None
-        self.StartTime = None
-        self.EndTime = None
-        self.SdkAppId = None
-        self.UserIds = None
-        self.DataType = None
-        self.PageNumber = None
-        self.PageSize = None
-
-
-    def _deserialize(self, params):
-        self.CommId = params.get("CommId")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.SdkAppId = params.get("SdkAppId")
-        self.UserIds = params.get("UserIds")
-        self.DataType = params.get("DataType")
-        self.PageNumber = params.get("PageNumber")
-        self.PageSize = params.get("PageSize")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeCallDetailResponse(AbstractModel):
-    """DescribeCallDetail response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Total: Total number of returned users
-        :type Total: int
-        :param UserList: User information list
-        :type UserList: list of UserInformation
-        :param Data: Quality data
-        :type Data: list of QualityData
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.Total = None
-        self.UserList = None
-        self.Data = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Total = params.get("Total")
-        if params.get("UserList") is not None:
-            self.UserList = []
-            for item in params.get("UserList"):
-                obj = UserInformation()
-                obj._deserialize(item)
-                self.UserList.append(obj)
-        if params.get("Data") is not None:
-            self.Data = []
-            for item in params.get("Data"):
-                obj = QualityData()
-                obj._deserialize(item)
-                self.Data.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeDetailEventRequest(AbstractModel):
-    """DescribeDetailEvent request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param CommId: Unique ID of a call: sdkappid_roomgString_createTime. The `roomgString` refers to the room ID, and `createTime` refers to the creation time of a room in the format of UNIX timestamp in seconds. Its value can be obtained from the `DescribeRoomInformation` API (related document: https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1).
-        :type CommId: str
-        :param StartTime: Query start time (s) in the format of Unix timestamp (e.g., 1588055615), which must be a time point in the last 14 days
-        :type StartTime: int
-        :param EndTime: Query end time (s) in the format of Unix timestamp, e.g., 1588058615
-        :type EndTime: int
-        :param UserId: User ID
-        :type UserId: str
-        :param RoomId: Room ID
-        :type RoomId: str
-        """
-        self.CommId = None
-        self.StartTime = None
-        self.EndTime = None
-        self.UserId = None
-        self.RoomId = None
-
-
-    def _deserialize(self, params):
-        self.CommId = params.get("CommId")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.UserId = params.get("UserId")
-        self.RoomId = params.get("RoomId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeDetailEventResponse(AbstractModel):
-    """DescribeDetailEvent response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Data: List of returned events. An empty array will be returned if no data can be found.
-        :type Data: list of EventList
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.Data = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Data") is not None:
-            self.Data = []
-            for item in params.get("Data"):
-                obj = EventList()
-                obj._deserialize(item)
-                self.Data.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeHistoryScaleRequest(AbstractModel):
-    """DescribeHistoryScale request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param SdkAppId: `SDKAppID` of the users to query, e.g., 1400188366
-        :type SdkAppId: str
-        :param StartTime: Query start time (s) in the format of Unix timestamp (e.g., 1587571000), which must be a time point in the last 5 days
-        :type StartTime: int
-        :param EndTime: Query end time (s) in the format of Unix timestamp, e.g., 1588034999
-        :type EndTime: int
-        """
-        self.SdkAppId = None
-        self.StartTime = None
-        self.EndTime = None
-
-
-    def _deserialize(self, params):
-        self.SdkAppId = params.get("SdkAppId")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeHistoryScaleResponse(AbstractModel):
-    """DescribeHistoryScale response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Total: Number of returned data entries
-        :type Total: int
-        :param ScaleList: Returned data
-        :type ScaleList: list of ScaleInfomation
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.Total = None
-        self.ScaleList = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Total = params.get("Total")
-        if params.get("ScaleList") is not None:
-            self.ScaleList = []
-            for item in params.get("ScaleList"):
-                obj = ScaleInfomation()
-                obj._deserialize(item)
-                self.ScaleList.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribePictureRequest(AbstractModel):
-    """DescribePicture request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param SdkAppId: Application ID
-        :type SdkAppId: int
-        :param PictureId: Image ID. If it is left empty, the IDs of all images under the application are returned.
-        :type PictureId: int
-        :param PageSize: Number of records per page. `10` is used if it is left empty.
-        :type PageSize: int
-        :param PageNo: Page number. `1` is used if it is left empty.
-        :type PageNo: int
-        """
-        self.SdkAppId = None
-        self.PictureId = None
-        self.PageSize = None
-        self.PageNo = None
-
-
-    def _deserialize(self, params):
-        self.SdkAppId = params.get("SdkAppId")
-        self.PictureId = params.get("PictureId")
-        self.PageSize = params.get("PageSize")
-        self.PageNo = params.get("PageNo")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribePictureResponse(AbstractModel):
-    """DescribePicture response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Total: Number of records returned
-        :type Total: int
-        :param PictureInfo: Image information list
-        :type PictureInfo: list of PictureInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.Total = None
-        self.PictureInfo = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Total = params.get("Total")
-        if params.get("PictureInfo") is not None:
-            self.PictureInfo = []
-            for item in params.get("PictureInfo"):
-                obj = PictureInfo()
-                obj._deserialize(item)
-                self.PictureInfo.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeRecordStatisticRequest(AbstractModel):
-    """DescribeRecordStatistic request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param StartTime: Query start date in the format of YYYY-MM-DD
-        :type StartTime: str
-        :param EndTime: Query end date in the format of YYYY-MM-DD
-The period queried in a request cannot be longer than 31 days.
-        :type EndTime: str
-        :param SdkAppId: Application ID, which is optional. If it is specified, duration statistics for the specified application are returned; otherwise, the total durations of all applications are returned.
-        :type SdkAppId: int
-        """
-        self.StartTime = None
-        self.EndTime = None
-        self.SdkAppId = None
-
-
-    def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.SdkAppId = params.get("SdkAppId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeRecordStatisticResponse(AbstractModel):
-    """DescribeRecordStatistic response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param SdkAppIdUsages: Duration statistics of the queried application(s)
-        :type SdkAppIdUsages: list of SdkAppIdRecordUsage
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.SdkAppIdUsages = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("SdkAppIdUsages") is not None:
-            self.SdkAppIdUsages = []
-            for item in params.get("SdkAppIdUsages"):
-                obj = SdkAppIdRecordUsage()
-                obj._deserialize(item)
-                self.SdkAppIdUsages.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeRoomInformationRequest(AbstractModel):
-    """DescribeRoomInformation request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param SdkAppId: User `sdkappid`
-        :type SdkAppId: str
-        :param StartTime: Query start time (s) in the format of Unix timestamp (e.g., 1588031999), which must be a time point in the last 14 days
-        :type StartTime: int
-        :param EndTime: Query end time (s) in the format of Unix timestamp, e.g., 1588034999
-        :type EndTime: int
-        :param RoomId: Room ID in string type
-        :type RoomId: str
-        :param PageNumber: Page index starting from 0 (if either `PageNumber` or `PageSize` is left empty, 10 data entries will be returned by default)
-        :type PageNumber: str
-        :param PageSize: Number of entries per page (if either `PageNumber` or `PageSize` is left empty, 10 data entries will be returned by default. Maximum value: 100)
-        :type PageSize: str
-        """
-        self.SdkAppId = None
-        self.StartTime = None
-        self.EndTime = None
-        self.RoomId = None
-        self.PageNumber = None
-        self.PageSize = None
-
-
-    def _deserialize(self, params):
-        self.SdkAppId = params.get("SdkAppId")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.RoomId = params.get("RoomId")
-        self.PageNumber = params.get("PageNumber")
-        self.PageSize = params.get("PageSize")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeRoomInformationResponse(AbstractModel):
-    """DescribeRoomInformation response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Total: Total number of data entries displayed on the current page
-        :type Total: int
-        :param RoomList: Room information list
-        :type RoomList: list of RoomState
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.Total = None
-        self.RoomList = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Total = params.get("Total")
-        if params.get("RoomList") is not None:
-            self.RoomList = []
-            for item in params.get("RoomList"):
-                obj = RoomState()
-                obj._deserialize(item)
-                self.RoomList.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeTrtcInteractiveTimeRequest(AbstractModel):
-    """DescribeTrtcInteractiveTime request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param StartTime: Query start date in the format of YYYY-MM-DD
-        :type StartTime: str
-        :param EndTime: Query end date in the format of YYYY-MM-DD
-The period queried in a request cannot be longer than 31 days.
-        :type EndTime: str
-        :param SdkAppId: Application ID, which is optional. If it is specified, duration statistics for the specified application are returned; otherwise, the total durations of all applications are returned.
-        :type SdkAppId: int
-        """
-        self.StartTime = None
-        self.EndTime = None
-        self.SdkAppId = None
-
-
-    def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.SdkAppId = params.get("SdkAppId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeTrtcInteractiveTimeResponse(AbstractModel):
-    """DescribeTrtcInteractiveTime response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Usages: Duration statistics of the queried application(s)
-        :type Usages: list of OneSdkAppIdUsagesInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.Usages = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Usages") is not None:
-            self.Usages = []
-            for item in params.get("Usages"):
-                obj = OneSdkAppIdUsagesInfo()
-                obj._deserialize(item)
-                self.Usages.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeTrtcMcuTranscodeTimeRequest(AbstractModel):
-    """DescribeTrtcMcuTranscodeTime request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param StartTime: Query start date in the format of YYYY-MM-DD
-        :type StartTime: str
-        :param EndTime: Query end date in the format of YYYY-MM-DD
-The period queried in a request cannot be longer than 31 days.
-        :type EndTime: str
-        :param SdkAppId: Application ID, which is optional. If it is specified, duration statistics for the specified application are returned; otherwise, the total durations of all applications are returned.
-        :type SdkAppId: int
-        """
-        self.StartTime = None
-        self.EndTime = None
-        self.SdkAppId = None
-
-
-    def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.SdkAppId = params.get("SdkAppId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeTrtcMcuTranscodeTimeResponse(AbstractModel):
-    """DescribeTrtcMcuTranscodeTime response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Usages: Duration statistics of the queried application(s)
-        :type Usages: list of OneSdkAppIdTranscodeTimeUsagesInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.Usages = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Usages") is not None:
-            self.Usages = []
-            for item in params.get("Usages"):
-                obj = OneSdkAppIdTranscodeTimeUsagesInfo()
-                obj._deserialize(item)
-                self.Usages.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeUserInformationRequest(AbstractModel):
-    """DescribeUserInformation request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param CommId: Unique ID of a call: sdkappid_roomgString_createTime. The `roomgString` refers to the room ID, and `createTime` refers to the creation time of a room in the format of UNIX timestamp in seconds, such as 1400353843_218695_1590065777. Its value can be obtained from the `DescribeRoomInformation` API (related document: https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1).
-        :type CommId: str
-        :param StartTime: Query start time (s) in the format of Unix timestamp (e.g., 1590065777), which must be a time point in the last 14 days
-        :type StartTime: int
-        :param EndTime: Query end time (s) in the format of Unix timestamp (e.g., 1590065877)
-        :type EndTime: int
-        :param SdkAppId: `SDKAppID` of the users to query, e.g., 1400353843
-        :type SdkAppId: str
-        :param UserIds: The array of user IDs for query. You can enter up to 6 user IDs. If it is left empty, data of 6 users will be returned.
-        :type UserIds: list of str
-        :param PageNumber: Page index starting from 0. If either `PageNumber` or `PageSize` is left empty, 6 data entries will be returned.
-        :type PageNumber: str
-        :param PageSize: Number of entries per page. If either `PageNumber` or `PageSize` is left empty, 6 data entries will be returned. `PageSize` is up to 100.
-        :type PageSize: str
-        """
-        self.CommId = None
-        self.StartTime = None
-        self.EndTime = None
-        self.SdkAppId = None
-        self.UserIds = None
-        self.PageNumber = None
-        self.PageSize = None
-
-
-    def _deserialize(self, params):
-        self.CommId = params.get("CommId")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.SdkAppId = params.get("SdkAppId")
-        self.UserIds = params.get("UserIds")
-        self.PageNumber = params.get("PageNumber")
-        self.PageSize = params.get("PageSize")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeUserInformationResponse(AbstractModel):
-    """DescribeUserInformation response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Total: Total number of users whose information will be returned
-        :type Total: int
-        :param UserList: User information list
-Note: this field may return `null`, indicating that no valid value was found.
-        :type UserList: list of UserInformation
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.Total = None
-        self.UserList = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Total = params.get("Total")
-        if params.get("UserList") is not None:
-            self.UserList = []
-            for item in params.get("UserList"):
-                obj = UserInformation()
-                obj._deserialize(item)
-                self.UserList.append(obj)
+                self.StorageFileList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1067,262 +426,65 @@ class DismissRoomResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class EncodeParams(AbstractModel):
-    """Output stream encoding parameters for MCU On-Cloud MixTranscoding
+class MixLayout(AbstractModel):
+    """The custom layout parameters.
 
     """
 
     def __init__(self):
         r"""
-        :param AudioSampleRate: Output audio sample rate (Hz) for On-Cloud MixTranscoding. Valid values: 48000, 44100, 32000, 24000, 16000, 8000
-        :type AudioSampleRate: int
-        :param AudioBitrate: Output audio bitrate (Kbps) for On-Cloud MixTranscoding. Value range: 8-500
-        :type AudioBitrate: int
-        :param AudioChannels: Number of sound channels of output stream for On-Cloud MixTranscoding. Valid values: 1, 2. 1 represents mono-channel, and 2 represents dual-channel.
-        :type AudioChannels: int
-        :param VideoWidth: Output stream width in pixels for On-Cloud MixTranscoding, which is required for audio/video output. Value range: [0, 1920].
-        :type VideoWidth: int
-        :param VideoHeight: Output stream height in pixels for On-Cloud MixTranscoding, which is required for audio/video output. Value range: [0, 1080].
-        :type VideoHeight: int
-        :param VideoBitrate: Output bitrate (Kbps) for On-Cloud MixTranscoding, which is required for audio-video output. Value range: 1-10000
-        :type VideoBitrate: int
-        :param VideoFramerate: Output stream frame rate for On-Cloud MixTranscoding in FPS. This parameter is required for audio/video outputs. Value range: [1, 60].
-        :type VideoFramerate: int
-        :param VideoGop: Output stream GOP in seconds for On-Cloud MixTranscoding, which is required for audio/video output. Value range: [1, 5].
-        :type VideoGop: int
-        :param BackgroundColor: Output background color for On-Cloud MixTranscoding. Valid values: decimal integers. Commonly used colors include:
-Red: 0xff0000, whose decimal number is 16724736
-Yellow: 0xffff00, whose decimal number is 16776960
-Green: 0x33cc00, whose decimal number is 3394560
-Blue: 0x0066ff, whose decimal number is 26367
-Black: 0x000000, whose decimal number is 0
-White: 0xFFFFFF, whose decimal number is 16777215
-Grey: 0x999999, whose decimal number is 10066329
-        :type BackgroundColor: int
-        :param BackgroundImageId: Output stream background image for stream mix. Its value is the ID of image uploaded through the TRTC Console.
-        :type BackgroundImageId: int
-        :param AudioCodec: Output audio codec for On-Cloud MixTranscoding. Valid values: 0, 1, 2. 0 (default): LC-AAC; 1: HE-AAC; 2: HE-AACv2. If this parameter is set to 2 (HE-AACv2), On-Cloud MixTranscoding can produce only dual-channel streams. If it is set to 1 (HE-AAC) or 2 (HE-AACv2), the valid values for the audio sample rate of output streams are 48000, 44100, 32000, 24000, and 16000.
-        :type AudioCodec: int
-        :param BackgroundImageUrl: URL of the background image for the mixed stream, which can be in PNG, JPG, JPEG, or BMP format and does not support the alpha channel. The URL must not exceed 512 bytes. When both `BackgroundImageUrl` and `BackgroundImageId` are specified, the former will be used. The background image must not exceed 10 MB.
-        :type BackgroundImageUrl: str
-        """
-        self.AudioSampleRate = None
-        self.AudioBitrate = None
-        self.AudioChannels = None
-        self.VideoWidth = None
-        self.VideoHeight = None
-        self.VideoBitrate = None
-        self.VideoFramerate = None
-        self.VideoGop = None
-        self.BackgroundColor = None
-        self.BackgroundImageId = None
-        self.AudioCodec = None
-        self.BackgroundImageUrl = None
-
-
-    def _deserialize(self, params):
-        self.AudioSampleRate = params.get("AudioSampleRate")
-        self.AudioBitrate = params.get("AudioBitrate")
-        self.AudioChannels = params.get("AudioChannels")
-        self.VideoWidth = params.get("VideoWidth")
-        self.VideoHeight = params.get("VideoHeight")
-        self.VideoBitrate = params.get("VideoBitrate")
-        self.VideoFramerate = params.get("VideoFramerate")
-        self.VideoGop = params.get("VideoGop")
-        self.BackgroundColor = params.get("BackgroundColor")
-        self.BackgroundImageId = params.get("BackgroundImageId")
-        self.AudioCodec = params.get("AudioCodec")
-        self.BackgroundImageUrl = params.get("BackgroundImageUrl")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class EventList(AbstractModel):
-    """List of SDK or WebRTC events.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Content: Data content
-        :type Content: list of EventMessage
-        :param PeerId: Sender `userId`
-        :type PeerId: str
-        """
-        self.Content = None
-        self.PeerId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Content") is not None:
-            self.Content = []
-            for item in params.get("Content"):
-                obj = EventMessage()
-                obj._deserialize(item)
-                self.Content.append(obj)
-        self.PeerId = params.get("PeerId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class EventMessage(AbstractModel):
-    """Event information, including event timestamp and event ID.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Type: Video stream type:
-0: non-video event;
-2: big image;
-3: small image;
-7: relayed stream image.
-        :type Type: int
-        :param Time: Event reporting time in the format of UNIX timestamp, such as 1589891188801ms
-        :type Time: int
-        :param EventId: Event ID. Events divide into SDK events and WebRTC events. For more information, please see Appendix - Event ID Mapping Table at https://intl.cloud.tencent.com/document/product/647/44916?from_cn_redirect=1
-        :type EventId: int
-        :param ParamOne: First event parameter, such as video resolution width
-        :type ParamOne: int
-        :param ParamTwo: Second event parameter, such as video resolution height
-        :type ParamTwo: int
-        """
-        self.Type = None
-        self.Time = None
-        self.EventId = None
-        self.ParamOne = None
-        self.ParamTwo = None
-
-
-    def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.Time = params.get("Time")
-        self.EventId = params.get("EventId")
-        self.ParamOne = params.get("ParamOne")
-        self.ParamTwo = params.get("ParamTwo")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class LayoutParams(AbstractModel):
-    """MCU On-Cloud MixTranscoding layout parameters
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Template: On-cloud stream mix layout template ID. 0: floating template (default value); 1: grid template; 2: screen sharing template; 3: picture-in-picture template; 4: custom template.
-        :type Template: int
-        :param MainVideoUserId: ID of the user in the big image, which takes effect in a screen sharing, floating, or picture-in-picture template.
-        :type MainVideoUserId: str
-        :param MainVideoStreamType: Stream type of the big image, which takes effect in a screen sharing, floating, or picture-in-picture template. 0: camera; 1: screen sharing. If a web user's stream is displayed in the big image on the left, enter 0 for this parameter.
-        :type MainVideoStreamType: int
-        :param SmallVideoLayoutParams: Layout parameter of the small image, which takes effect in a picture-in-picture template.
-        :type SmallVideoLayoutParams: :class:`tencentcloud.trtc.v20190722.models.SmallVideoLayoutParams`
-        :param MainVideoRightAlign: You can set the layout parameter as 1 or 0 in the screen sharing template. 1: big image on the right and small images on the left, 0: big image on the left and small images on the right. The default value is 0. 
-        :type MainVideoRightAlign: int
-        :param MixVideoUids: A user list, which takes effect for floating, grid, or screen sharing templates. When the user list has been set, the stream mix output for users in this user list will include both audio and video; the stream mix output for users not in the list will only include audio. Up to 16 users can be set.
-        :type MixVideoUids: list of str
-        :param PresetLayoutConfig: Valid in custom template, used to specify the video image position of a user in mixed streams.
-        :type PresetLayoutConfig: list of PresetLayoutConfig
-        :param PlaceHolderMode: Valid in custom templates. 1: the placeholding feature is enabled; 0 (default): the feature is disabled. When the feature is enabled, but a user for whom a position is reserved is not sending video data, the position will show the corresponding placeholder image.
-        :type PlaceHolderMode: int
-        :param PureAudioHoldPlaceMode: Whether an audio-only stream occupies an image spot, which takes effect in a floating, grid, or screen sharing template. Valid values: 0 (default): when a floating or grid template is used, users sending audio only occupy image spots; when a screen sharing template is used, users (except the user whose screen is shared) sending audio only do not occupy image spots; 1: users sending audio only occupy image spots; 2: users sending audio only do not occupy image spots.
-        :type PureAudioHoldPlaceMode: int
-        :param WaterMarkParams: Watermark parameters
-        :type WaterMarkParams: :class:`tencentcloud.trtc.v20190722.models.WaterMarkParams`
-        """
-        self.Template = None
-        self.MainVideoUserId = None
-        self.MainVideoStreamType = None
-        self.SmallVideoLayoutParams = None
-        self.MainVideoRightAlign = None
-        self.MixVideoUids = None
-        self.PresetLayoutConfig = None
-        self.PlaceHolderMode = None
-        self.PureAudioHoldPlaceMode = None
-        self.WaterMarkParams = None
-
-
-    def _deserialize(self, params):
-        self.Template = params.get("Template")
-        self.MainVideoUserId = params.get("MainVideoUserId")
-        self.MainVideoStreamType = params.get("MainVideoStreamType")
-        if params.get("SmallVideoLayoutParams") is not None:
-            self.SmallVideoLayoutParams = SmallVideoLayoutParams()
-            self.SmallVideoLayoutParams._deserialize(params.get("SmallVideoLayoutParams"))
-        self.MainVideoRightAlign = params.get("MainVideoRightAlign")
-        self.MixVideoUids = params.get("MixVideoUids")
-        if params.get("PresetLayoutConfig") is not None:
-            self.PresetLayoutConfig = []
-            for item in params.get("PresetLayoutConfig"):
-                obj = PresetLayoutConfig()
-                obj._deserialize(item)
-                self.PresetLayoutConfig.append(obj)
-        self.PlaceHolderMode = params.get("PlaceHolderMode")
-        self.PureAudioHoldPlaceMode = params.get("PureAudioHoldPlaceMode")
-        if params.get("WaterMarkParams") is not None:
-            self.WaterMarkParams = WaterMarkParams()
-            self.WaterMarkParams._deserialize(params.get("WaterMarkParams"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyPictureRequest(AbstractModel):
-    """ModifyPicture request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param PictureId: Image ID
-        :type PictureId: int
-        :param SdkAppId: Application ID
-        :type SdkAppId: int
-        :param Height: Image height
-        :type Height: int
-        :param Width: Image width
+        :param Top: The Y axis of the window’s top-left corner. Value range: [0, 1920]. The value cannot be larger than the canvas height.
+        :type Top: int
+        :param Left: The X axis of the window’s top-left corner. Value range: [0, 1920]. The value cannot be larger than the canvas width.
+        :type Left: int
+        :param Width: The relative width of the window. Value range: [0, 1920]. The sum of the values of this parameter and `Left` cannot exceed the canvas width.
         :type Width: int
-        :param XPosition: X-axis value of the image’s position
-        :type XPosition: int
-        :param YPosition: Y-axis value of the image’s position
-        :type YPosition: int
+        :param Height: The relative height of the window. Value range: [0, 1920]. The sum of the values of this parameter and `Top` cannot exceed the canvas height.
+        :type Height: int
+        :param UserId: The user ID (string) of the anchor whose video is shown in the window. If you do not set this parameter, anchors’ videos will be shown in their room entry sequence.
+        :type UserId: str
+        :param Alpha: The degree of transparency of the canvas. Value range: [0, 255]. 0 means fully opaque, and 255 means fully transparent.
+        :type Alpha: int
+        :param RenderMode: 0: Stretch. In this mode, the image is stretched to fill the space available. The whole image is visible after scaling. However, if the original aspect ratio is different from the target, the image may be distorted.
+
+1: Crop (default). In this mode, if the original aspect ratio is different from the target, the image will be cropped according to the target before being stretched to fill the space available. The image will not be distorted.
+
+2: Blank. This mode stretches the image while keeping its original aspect ratio. If the original aspect ratio is different from the target, there may be blank spaces to the top and bottom or to the left and right of the window.
+
+3: Smart stretch. This mode is similar to the crop mode, except that it restricts cropping to 20% of the image’s width or height at most.
+        :type RenderMode: int
+        :param MediaId: The type of the stream subscribed to.
+0: Primary stream (default)
+1: Substream
+        :type MediaId: int
+        :param ImageLayer: The image layer. 0 is the default value and means the bottommost layer.
+        :type ImageLayer: int
+        :param SubBackgroundImage: The download URL of the background image for a window. The image must be in JPG or PNG format and cannot be larger than 5 MB. If the image’s aspect ratio is different from that of the window, the image will be rendered according to the value of `RenderMode`.
+        :type SubBackgroundImage: str
         """
-        self.PictureId = None
-        self.SdkAppId = None
-        self.Height = None
+        self.Top = None
+        self.Left = None
         self.Width = None
-        self.XPosition = None
-        self.YPosition = None
+        self.Height = None
+        self.UserId = None
+        self.Alpha = None
+        self.RenderMode = None
+        self.MediaId = None
+        self.ImageLayer = None
+        self.SubBackgroundImage = None
 
 
     def _deserialize(self, params):
-        self.PictureId = params.get("PictureId")
-        self.SdkAppId = params.get("SdkAppId")
-        self.Height = params.get("Height")
+        self.Top = params.get("Top")
+        self.Left = params.get("Left")
         self.Width = params.get("Width")
-        self.XPosition = params.get("XPosition")
-        self.YPosition = params.get("YPosition")
+        self.Height = params.get("Height")
+        self.UserId = params.get("UserId")
+        self.Alpha = params.get("Alpha")
+        self.RenderMode = params.get("RenderMode")
+        self.MediaId = params.get("MediaId")
+        self.ImageLayer = params.get("ImageLayer")
+        self.SubBackgroundImage = params.get("SubBackgroundImage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1332,337 +494,222 @@ class ModifyPictureRequest(AbstractModel):
         
 
 
-class ModifyPictureResponse(AbstractModel):
-    """ModifyPicture response structure.
+class MixLayoutParams(AbstractModel):
+    """The layout parameters for mixed-stream recording.
 
     """
 
     def __init__(self):
         r"""
+        :param MixLayoutMode: Layout mode:
+1: Floating
+2: Screen sharing
+3: Grid (default)
+4: Custom
+
+Floating: By default, the video of the first anchor (you can also specify an anchor) who enters the room is scaled to fill the screen. When other anchors enter the room, their videos appear smaller and are superimposed over the large video from left to right starting from the bottom of the canvas according to their room entry sequence. If the total number of videos is 17 or less, there will be four windows in each row (4 x 4); if it is greater than 17, there will be five windows in each row (5 x 5). Up to 25 videos can be displayed. A user who publishes only audio will still be displayed in one window.
+
+Screen sharing: The video of a specified anchor occupies a larger part of the canvas on the left side (if you do not specify an anchor, the left window will display the canvas background). The videos of other anchors are smaller and are positioned on the right side. If the total number of videos is 17 or less, the small videos are positioned from top to bottom in up to two columns on the right side, with eight videos per column at most. If there are more than 17 videos, the additional videos are positioned at the bottom of the canvas from left to right. Up to 25 videos can be displayed. A user who publishes only audio will still be displayed in one window.
+
+Grid: The videos of anchors are scaled and positioned automatically according to the total number of anchors in a room. Each video has the same size. Up to 25 videos can be displayed.
+
+Custom: Specify the layout of videos by using the `MixLayoutList` parameter.
+        :type MixLayoutMode: int
+        :param MixLayoutList: The custom layout details. This parameter is valid if `MixLayoutMode` is set to `4`. Up to 25 videos can be displayed.
+        :type MixLayoutList: list of MixLayout
+        :param BackGroundColor: The background color, which is a hexadecimal value (starting with "#", followed by the color value) converted from an 8-bit RGB value. For example, the RGB value of orange is `R:255 G:165 B:0`, and its hexadecimal value is `#FFA500`. The default color is black.
+        :type BackGroundColor: str
+        :param MaxResolutionUserId: The user whose video is displayed in the big window. This parameter is valid if `MixLayoutMode` is set to `1` (floating) or `2` (screen sharing). If it is left empty, the first anchor entering the room is displayed in the big window in the floating mode and the canvas background is displayed in the screen sharing mode.
+        :type MaxResolutionUserId: str
+        :param MediaId: The stream type.
+0: Primary stream (default)
+1: Substream (screen sharing stream)
+This parameter specifies the type of the stream displayed in the big window. If it appears in `MixLayoutList`, it indicates the type of the stream of a specified user.
+        :type MediaId: int
+        :param BackgroundImageUrl: The download URL of the background image for the canvas, which must be in JPG or PNG format and cannot be larger than 5 MB.
+        :type BackgroundImageUrl: str
+        :param PlaceHolderMode: `1` means to use placeholders, and `0` (default) means to not use placeholders. If this parameter is set to `1`, when a user is not publishing video, a placeholder image will be displayed in the window reserved for the user.
+        :type PlaceHolderMode: int
+        :param BackgroundImageRenderMode: The render mode to use when the aspect ratio of a video is different from that of the window. This parameter is defined the same as `RenderMode` in `MixLayoufList`.
+        :type BackgroundImageRenderMode: int
+        :param DefaultSubBackgroundImage: The download URL of the default background image for a window. The image must be in JPG or PNG format and cannot be larger than 5 MB. If the image’s aspect ratio is different from that of the window, the image will be rendered according to the value of `RenderMode`.
+        :type DefaultSubBackgroundImage: str
+        :param WaterMarkList: The watermark layout. Up to 25 watermarks are supported.
+        :type WaterMarkList: list of WaterMark
+        """
+        self.MixLayoutMode = None
+        self.MixLayoutList = None
+        self.BackGroundColor = None
+        self.MaxResolutionUserId = None
+        self.MediaId = None
+        self.BackgroundImageUrl = None
+        self.PlaceHolderMode = None
+        self.BackgroundImageRenderMode = None
+        self.DefaultSubBackgroundImage = None
+        self.WaterMarkList = None
+
+
+    def _deserialize(self, params):
+        self.MixLayoutMode = params.get("MixLayoutMode")
+        if params.get("MixLayoutList") is not None:
+            self.MixLayoutList = []
+            for item in params.get("MixLayoutList"):
+                obj = MixLayout()
+                obj._deserialize(item)
+                self.MixLayoutList.append(obj)
+        self.BackGroundColor = params.get("BackGroundColor")
+        self.MaxResolutionUserId = params.get("MaxResolutionUserId")
+        self.MediaId = params.get("MediaId")
+        self.BackgroundImageUrl = params.get("BackgroundImageUrl")
+        self.PlaceHolderMode = params.get("PlaceHolderMode")
+        self.BackgroundImageRenderMode = params.get("BackgroundImageRenderMode")
+        self.DefaultSubBackgroundImage = params.get("DefaultSubBackgroundImage")
+        if params.get("WaterMarkList") is not None:
+            self.WaterMarkList = []
+            for item in params.get("WaterMarkList"):
+                obj = WaterMark()
+                obj._deserialize(item)
+                self.WaterMarkList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MixTranscodeParams(AbstractModel):
+    """The audio and video parameters for recording.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VideoParams: The video transcoding parameters for recording. If you set this parameter, you must specify all its fields. If you do not set it, the default will be used.
+        :type VideoParams: :class:`tencentcloud.trtc.v20190722.models.VideoParams`
+        :param AudioParams: The audio transcoding parameters for recording. If you set this parameter, you must specify all its fields. If you do not set it, the default will be used.
+        :type AudioParams: :class:`tencentcloud.trtc.v20190722.models.AudioParams`
+        """
+        self.VideoParams = None
+        self.AudioParams = None
+
+
+    def _deserialize(self, params):
+        if params.get("VideoParams") is not None:
+            self.VideoParams = VideoParams()
+            self.VideoParams._deserialize(params.get("VideoParams"))
+        if params.get("AudioParams") is not None:
+            self.AudioParams = AudioParams()
+            self.AudioParams._deserialize(params.get("AudioParams"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCloudRecordingRequest(AbstractModel):
+    """ModifyCloudRecording request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: The `SDKAppID` of the room whose streams are recorded.
+        :type SdkAppId: int
+        :param TaskId: The unique ID of the recording task, which is returned after recording starts successfully.
+        :type TaskId: str
+        :param MixLayoutParams: The new stream mixing layout to use.
+        :type MixLayoutParams: :class:`tencentcloud.trtc.v20190722.models.MixLayoutParams`
+        :param SubscribeStreamUserIds: The allowlist/blocklist for stream subscription.
+        :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
+        """
+        self.SdkAppId = None
+        self.TaskId = None
+        self.MixLayoutParams = None
+        self.SubscribeStreamUserIds = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.TaskId = params.get("TaskId")
+        if params.get("MixLayoutParams") is not None:
+            self.MixLayoutParams = MixLayoutParams()
+            self.MixLayoutParams._deserialize(params.get("MixLayoutParams"))
+        if params.get("SubscribeStreamUserIds") is not None:
+            self.SubscribeStreamUserIds = SubscribeStreamUserIds()
+            self.SubscribeStreamUserIds._deserialize(params.get("SubscribeStreamUserIds"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCloudRecordingResponse(AbstractModel):
+    """ModifyCloudRecording response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: The task ID assigned by the recording service, which uniquely identifies a recording process and becomes invalid after a recording task ends.
+        :type TaskId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.TaskId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
-class OneSdkAppIdTranscodeTimeUsagesInfo(AbstractModel):
-    """Relaying and transcoding duration statistics
+class RecordParams(AbstractModel):
+    """The on-cloud recording parameters.
 
     """
 
     def __init__(self):
         r"""
-        :param SdkAppIdTranscodeTimeUsages: Array of relaying and transcoding durations
-        :type SdkAppIdTranscodeTimeUsages: list of SdkAppIdTrtcMcuTranscodeTimeUsage
-        :param TotalNum: Number of records returned
-        :type TotalNum: int
-        :param SdkAppId: ID of the application queried. Its value may be an application ID or `total`, which indicates that the total durations of all applications are queried.
-        :type SdkAppId: str
-        """
-        self.SdkAppIdTranscodeTimeUsages = None
-        self.TotalNum = None
-        self.SdkAppId = None
-
-
-    def _deserialize(self, params):
-        if params.get("SdkAppIdTranscodeTimeUsages") is not None:
-            self.SdkAppIdTranscodeTimeUsages = []
-            for item in params.get("SdkAppIdTranscodeTimeUsages"):
-                obj = SdkAppIdTrtcMcuTranscodeTimeUsage()
-                obj._deserialize(item)
-                self.SdkAppIdTranscodeTimeUsages.append(obj)
-        self.TotalNum = params.get("TotalNum")
-        self.SdkAppId = params.get("SdkAppId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class OneSdkAppIdUsagesInfo(AbstractModel):
-    """Array of billable audio/video interaction durations of a specific application (`SdkAppId`) and array length
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TotalNum: Number of records returned for the `SdkAppId`
-        :type TotalNum: int
-        :param SdkAppIdTrtcTimeUsages: Array of durations
-        :type SdkAppIdTrtcTimeUsages: list of SdkAppIdTrtcUsage
-        :param SdkAppId: Application ID
-        :type SdkAppId: str
-        """
-        self.TotalNum = None
-        self.SdkAppIdTrtcTimeUsages = None
-        self.SdkAppId = None
-
-
-    def _deserialize(self, params):
-        self.TotalNum = params.get("TotalNum")
-        if params.get("SdkAppIdTrtcTimeUsages") is not None:
-            self.SdkAppIdTrtcTimeUsages = []
-            for item in params.get("SdkAppIdTrtcTimeUsages"):
-                obj = SdkAppIdTrtcUsage()
-                obj._deserialize(item)
-                self.SdkAppIdTrtcTimeUsages.append(obj)
-        self.SdkAppId = params.get("SdkAppId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class OutputParams(AbstractModel):
-    """MCU On-Cloud MixTranscoding output parameters
-
-    """
-
-    def __init__(self):
-        r"""
-        :param StreamId: Custom live stream ID, which must be different from the ID of relayed stream.
-        :type StreamId: str
-        :param PureAudioStream: Value range: [0, 1]. If it is 0, live streams are audio and video; if it is 1, live streams are only audio. Default value: 0.
-        :type PureAudioStream: int
-        :param RecordId: Prefix of custom recording file names. Please enable the recording feature in the TRTC console first. https://intl.cloud.tencent.com/document/product/647/50768?from_cn_redirect=1
-        :type RecordId: str
-        :param RecordAudioOnly: Whether to record audio only. Valid values: 0, 1. `0`: no meaning; `1`: records into MP3 files. This parameter is not recommended. Instead, you are advised to create an audio-only recording template in the TRTC console.
-        :type RecordAudioOnly: int
-        """
-        self.StreamId = None
-        self.PureAudioStream = None
-        self.RecordId = None
-        self.RecordAudioOnly = None
-
-
-    def _deserialize(self, params):
-        self.StreamId = params.get("StreamId")
-        self.PureAudioStream = params.get("PureAudioStream")
-        self.RecordId = params.get("RecordId")
-        self.RecordAudioOnly = params.get("RecordAudioOnly")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class PictureInfo(AbstractModel):
-    """Image information list
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Height: Image height
-        :type Height: int
-        :param Width: Image width
-        :type Width: int
-        :param XPosition: X-axis value of the image’s position
-        :type XPosition: int
-        :param YPosition: Y-axis value of the image’s position
-        :type YPosition: int
-        :param SdkAppId: Application ID
-        :type SdkAppId: int
-        :param PictureId: Image ID
-        :type PictureId: int
-        """
-        self.Height = None
-        self.Width = None
-        self.XPosition = None
-        self.YPosition = None
-        self.SdkAppId = None
-        self.PictureId = None
-
-
-    def _deserialize(self, params):
-        self.Height = params.get("Height")
-        self.Width = params.get("Width")
-        self.XPosition = params.get("XPosition")
-        self.YPosition = params.get("YPosition")
-        self.SdkAppId = params.get("SdkAppId")
-        self.PictureId = params.get("PictureId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class PresetLayoutConfig(AbstractModel):
-    """Valid in custom template, used to specify the video image position of a user in mixed streams.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param UserId: Used to assign users to preset positions; if not assigned, users will occupy the positions set in `PresetLayoutConfig` in room entry sequence.
-        :type UserId: str
-        :param StreamType: Stream type of the user when a specified user is assigned to the image. 0: camera; 1: screen sharing. Set this parameter to 0 when the small image is occupied by a web user.
+        :param RecordMode: The recording mode.
+1: Single-stream recording. Records the audio and video of each subscribed user (`UserId`) in a room and saves the recording files (M3U8/TS) to the cloud.
+2: Mixed-stream recording. Mixes the audios and videos of subscribed users (`UserId`) in a room, records the mixed stream, and saves the recording files (M3U8/TS) to the cloud.
+        :type RecordMode: int
+        :param MaxIdleTime: The time period (seconds) to wait after there are no anchors in a room to stop recording automatically. The value cannot be smaller than 5 or larger than 86400 (24 hours). Default value: 30.
+        :type MaxIdleTime: int
+        :param StreamType: The media type of the streams to record.
+0: Audio and video streams (default)
+1: Audio streams only
+2: Video streams only
         :type StreamType: int
-        :param ImageWidth: Width of the output image in pixels. If this parameter is not set, 0 is used by default.
-        :type ImageWidth: int
-        :param ImageHeight: Height of the output image in pixels. If this parameter is not set, 0 is used by default.
-        :type ImageHeight: int
-        :param LocationX: X offset of the output image in pixels. The sum of `LocationX` and `ImageWidth` cannot exceed the total width of the mixed stream. If this parameter is not set, 0 is used by default.
-        :type LocationX: int
-        :param LocationY: Y offset of the output image in pixels. The sum of `LocationY` and `ImageHeight` cannot exceed the total height of the mixed stream. If this parameter is not set, 0 is used by default.
-        :type LocationY: int
-        :param ZOrder: Output order of the image. `0` is used if it is left empty.
-        :type ZOrder: int
-        :param RenderMode: Render mode of the output image. 0: cropping; 1: scaling; 2: scaling on a black background. If this parameter is not set, 0 is used by default.
-        :type RenderMode: int
-        :param MixInputType: Media type of the mixed stream of the user occupying the current position. 0 (default): audio and video; 1: audio; 2: video. You are advised to specify a user ID when using this parameter.
-        :type MixInputType: int
-        :param PlaceImageId: ID of the placeholder image. If the placeholding feature is enabled, and a user for whom an image position is reserved is not sending video data, the position will show the placeholder image. The ID is generated after the placeholder image is uploaded in the TRTC console. https://intl.cloud.tencent.com/document/product/647/50769?from_cn_redirect=1
-        :type PlaceImageId: int
+        :param SubscribeStreamUserIds: The allowlist/blocklist for stream subscription.
+        :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
+        :param OutputFormat: The format of recording files. 0 (default): HLS; 1: HLS + MP4 (recorded in HLS and converted to MP4).
+        :type OutputFormat: int
         """
-        self.UserId = None
+        self.RecordMode = None
+        self.MaxIdleTime = None
         self.StreamType = None
-        self.ImageWidth = None
-        self.ImageHeight = None
-        self.LocationX = None
-        self.LocationY = None
-        self.ZOrder = None
-        self.RenderMode = None
-        self.MixInputType = None
-        self.PlaceImageId = None
+        self.SubscribeStreamUserIds = None
+        self.OutputFormat = None
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
+        self.RecordMode = params.get("RecordMode")
+        self.MaxIdleTime = params.get("MaxIdleTime")
         self.StreamType = params.get("StreamType")
-        self.ImageWidth = params.get("ImageWidth")
-        self.ImageHeight = params.get("ImageHeight")
-        self.LocationX = params.get("LocationX")
-        self.LocationY = params.get("LocationY")
-        self.ZOrder = params.get("ZOrder")
-        self.RenderMode = params.get("RenderMode")
-        self.MixInputType = params.get("MixInputType")
-        self.PlaceImageId = params.get("PlaceImageId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class PublishCdnParams(AbstractModel):
-    """Relayed push parameters of a non-Tencent Cloud CDN
-
-    """
-
-    def __init__(self):
-        r"""
-        :param BizId: Tencent Cloud LVB BizId
-        :type BizId: int
-        :param PublishCdnUrls: Destination of non-Tencent Cloud CDN relayed push. It is possible to push to only one non-Tencent Cloud CDN address at a time.
-        :type PublishCdnUrls: list of str
-        """
-        self.BizId = None
-        self.PublishCdnUrls = None
-
-
-    def _deserialize(self, params):
-        self.BizId = params.get("BizId")
-        self.PublishCdnUrls = params.get("PublishCdnUrls")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class QualityData(AbstractModel):
-    """Quality data returned by ES
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Content: Data content
-        :type Content: list of TimeValue
-        :param UserId: User ID
-        :type UserId: str
-        :param PeerId: Peer ID. An empty value indicates that the returned data is upstream.
-        :type PeerId: str
-        :param DataType: Data type
-        :type DataType: str
-        """
-        self.Content = None
-        self.UserId = None
-        self.PeerId = None
-        self.DataType = None
-
-
-    def _deserialize(self, params):
-        if params.get("Content") is not None:
-            self.Content = []
-            for item in params.get("Content"):
-                obj = TimeValue()
-                obj._deserialize(item)
-                self.Content.append(obj)
-        self.UserId = params.get("UserId")
-        self.PeerId = params.get("PeerId")
-        self.DataType = params.get("DataType")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class RecordUsage(AbstractModel):
-    """Recording duration statistics
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TimeKey: Time point for the statistics, e.g., `2020-09-07` or `2020-09-07 00:05:05`
-        :type TimeKey: str
-        :param Class1VideoTime: SD video duration (s)
-        :type Class1VideoTime: int
-        :param Class2VideoTime: HD video duration (s)
-        :type Class2VideoTime: int
-        :param Class3VideoTime: FHD video duration (s)
-        :type Class3VideoTime: int
-        :param AudioTime: Audio duration (s)
-        :type AudioTime: int
-        """
-        self.TimeKey = None
-        self.Class1VideoTime = None
-        self.Class2VideoTime = None
-        self.Class3VideoTime = None
-        self.AudioTime = None
-
-
-    def _deserialize(self, params):
-        self.TimeKey = params.get("TimeKey")
-        self.Class1VideoTime = params.get("Class1VideoTime")
-        self.Class2VideoTime = params.get("Class2VideoTime")
-        self.Class3VideoTime = params.get("Class3VideoTime")
-        self.AudioTime = params.get("AudioTime")
+        if params.get("SubscribeStreamUserIds") is not None:
+            self.SubscribeStreamUserIds = SubscribeStreamUserIds()
+            self.SubscribeStreamUserIds._deserialize(params.get("SubscribeStreamUserIds"))
+        self.OutputFormat = params.get("OutputFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1770,244 +817,38 @@ class RemoveUserResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class RoomState(AbstractModel):
-    """Room information list
+class StorageFile(AbstractModel):
+    """The information of the recording files, which is returned by the `DescribeCloudRecording` API.
 
     """
 
     def __init__(self):
         r"""
-        :param CommId: Call ID (unique call ID)
-        :type CommId: str
-        :param RoomString: Room ID of string type
-        :type RoomString: str
-        :param CreateTime: Room creation time
-        :type CreateTime: int
-        :param DestroyTime: Room termination time
-        :type DestroyTime: int
-        :param IsFinished: Whether the room is terminated
-        :type IsFinished: bool
-        :param UserId: Room creator ID
+        :param UserId: The user whose stream is recorded into the file. In the mixed-stream recording mode, this parameter will be empty.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type UserId: str
-        """
-        self.CommId = None
-        self.RoomString = None
-        self.CreateTime = None
-        self.DestroyTime = None
-        self.IsFinished = None
-        self.UserId = None
-
-
-    def _deserialize(self, params):
-        self.CommId = params.get("CommId")
-        self.RoomString = params.get("RoomString")
-        self.CreateTime = params.get("CreateTime")
-        self.DestroyTime = params.get("DestroyTime")
-        self.IsFinished = params.get("IsFinished")
-        self.UserId = params.get("UserId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ScaleInfomation(AbstractModel):
-    """Historical scale information
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Time: Start time for each day
-        :type Time: int
-        :param UserNumber: Number of users in room. If a user enters the room for multiple times, the user will be counted as one user.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type UserNumber: int
-        :param UserCount: Number of room entries. Every time when a user enters the room, it will be counted as one room entry.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type UserCount: int
-        :param RoomNumbers: Number of rooms under `sdkappid` on a day
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type RoomNumbers: int
-        """
-        self.Time = None
-        self.UserNumber = None
-        self.UserCount = None
-        self.RoomNumbers = None
-
-
-    def _deserialize(self, params):
-        self.Time = params.get("Time")
-        self.UserNumber = params.get("UserNumber")
-        self.UserCount = params.get("UserCount")
-        self.RoomNumbers = params.get("RoomNumbers")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SdkAppIdRecordUsage(AbstractModel):
-    """Recording duration statistics of a specific application (`SdkAppId`)
-
-    """
-
-    def __init__(self):
-        r"""
-        :param SdkAppId: Application ID
-        :type SdkAppId: str
-        :param Usages: Durations for the period queried
-        :type Usages: list of RecordUsage
-        """
-        self.SdkAppId = None
-        self.Usages = None
-
-
-    def _deserialize(self, params):
-        self.SdkAppId = params.get("SdkAppId")
-        if params.get("Usages") is not None:
-            self.Usages = []
-            for item in params.get("Usages"):
-                obj = RecordUsage()
-                obj._deserialize(item)
-                self.Usages.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SdkAppIdTrtcMcuTranscodeTimeUsage(AbstractModel):
-    """Billable relaying and transcoding duration statistics
-    If the period queried is 1 day or shorter, the statistics returned are on a 5-minute basis. If the period queried is longer than 1 day, the statistics returned are on a daily basis.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TimeKey: Time point for the statistics. e.g., `2020-09-07` or `2020-09-07 00:05:05`
-        :type TimeKey: str
-        :param AudioTime: Audio duration (s)
-        :type AudioTime: int
-        :param VideoTimeSd: SD video duration (s)
-        :type VideoTimeSd: int
-        :param VideoTimeHd: HD video duration (s)
-        :type VideoTimeHd: int
-        :param VideoTimeFhd: FHD video duration (s)
-        :type VideoTimeFhd: int
-        """
-        self.TimeKey = None
-        self.AudioTime = None
-        self.VideoTimeSd = None
-        self.VideoTimeHd = None
-        self.VideoTimeFhd = None
-
-
-    def _deserialize(self, params):
-        self.TimeKey = params.get("TimeKey")
-        self.AudioTime = params.get("AudioTime")
-        self.VideoTimeSd = params.get("VideoTimeSd")
-        self.VideoTimeHd = params.get("VideoTimeHd")
-        self.VideoTimeFhd = params.get("VideoTimeFhd")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SdkAppIdTrtcUsage(AbstractModel):
-    """Audio/Video interaction duration statistics
-    If the period queried is 1 day or shorter, the statistics returned are on a 5-minute basis. If the period queried is longer than 1 day, the statistics returned are on a daily basis.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TimeKey: Time point for the statistics. e.g., `2020-09-07` or `2020-09-07 00:05:05`
-        :type TimeKey: str
-        :param AudioTime: Audio duration (s)
-        :type AudioTime: int
-        :param AudioVideoTime: Audio/Video duration (s)
-This parameter is returned only for users who signed up before October 11, 2019 and have not switched to the [new billing standards](https://intl.cloud.tencent.com/document/product/647/17157?from_cn_redirect=1).
-        :type AudioVideoTime: int
-        :param VideoTimeSd: SD video duration (s)
-        :type VideoTimeSd: int
-        :param VideoTimeHd: HD video duration (s)
-        :type VideoTimeHd: int
-        :param VideoTimeHdp: FHD video duration (s)
-        :type VideoTimeHdp: int
-        """
-        self.TimeKey = None
-        self.AudioTime = None
-        self.AudioVideoTime = None
-        self.VideoTimeSd = None
-        self.VideoTimeHd = None
-        self.VideoTimeHdp = None
-
-
-    def _deserialize(self, params):
-        self.TimeKey = params.get("TimeKey")
-        self.AudioTime = params.get("AudioTime")
-        self.AudioVideoTime = params.get("AudioVideoTime")
-        self.VideoTimeSd = params.get("VideoTimeSd")
-        self.VideoTimeHd = params.get("VideoTimeHd")
-        self.VideoTimeHdp = params.get("VideoTimeHdp")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SmallVideoLayoutParams(AbstractModel):
-    """Layout parameter of the small image, which takes effect in a picture-in-picture template
-
-    """
-
-    def __init__(self):
-        r"""
-        :param UserId: ID of the user in the small image.
-        :type UserId: str
-        :param StreamType: Stream type of the small image. 0: camera; 1: screen sharing. If a web user's stream is displayed in the small image, enter 0 for this parameter.
-        :type StreamType: int
-        :param ImageWidth: Output width of the small image in pixels. If this parameter is left empty, 0 will be used by default.
-        :type ImageWidth: int
-        :param ImageHeight: Output height of the small image in pixels. If this parameter is left empty, 0 will be used by default.
-        :type ImageHeight: int
-        :param LocationX: Output X-axis offset of the small image in pixels. The sum of `LocationX` and `ImageWidth` cannot exceed the total width of the output mixed stream. If this parameter is left empty, 0 will be used by default.
-        :type LocationX: int
-        :param LocationY: Output Y-axis offset of the small image in pixels. The sum of `LocationY` and `ImageHeight` cannot exceed the total height of the output mixed stream. If this parameter is left empty, 0 will be used by default.
-        :type LocationY: int
+        :param FileName: The filename.
+        :type FileName: str
+        :param TrackType: The type of the media recorded.
+video
+audio
+audio_video
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type TrackType: str
+        :param BeginTimeStamp: The start time (Unix timestamp) of the recording file.
+        :type BeginTimeStamp: int
         """
         self.UserId = None
-        self.StreamType = None
-        self.ImageWidth = None
-        self.ImageHeight = None
-        self.LocationX = None
-        self.LocationY = None
+        self.FileName = None
+        self.TrackType = None
+        self.BeginTimeStamp = None
 
 
     def _deserialize(self, params):
         self.UserId = params.get("UserId")
-        self.StreamType = params.get("StreamType")
-        self.ImageWidth = params.get("ImageWidth")
-        self.ImageHeight = params.get("ImageHeight")
-        self.LocationX = params.get("LocationX")
-        self.LocationY = params.get("LocationY")
+        self.FileName = params.get("FileName")
+        self.TrackType = params.get("TrackType")
+        self.BeginTimeStamp = params.get("BeginTimeStamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2017,49 +858,29 @@ class SmallVideoLayoutParams(AbstractModel):
         
 
 
-class StartMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
-    """StartMCUMixTranscodeByStrRoomId request structure.
+class StorageParams(AbstractModel):
+    """The storage parameters.
 
     """
 
     def __init__(self):
         r"""
-        :param SdkAppId: `SDKAppId` of TRTC
-        :type SdkAppId: int
-        :param StrRoomId: Room ID in string type
-        :type StrRoomId: str
-        :param OutputParams: On-Cloud MixTranscoding output parameters
-        :type OutputParams: :class:`tencentcloud.trtc.v20190722.models.OutputParams`
-        :param EncodeParams: On-Cloud MixTranscoding output encoding parameters
-        :type EncodeParams: :class:`tencentcloud.trtc.v20190722.models.EncodeParams`
-        :param LayoutParams: On-Cloud MixTranscoding output layout parameters
-        :type LayoutParams: :class:`tencentcloud.trtc.v20190722.models.LayoutParams`
-        :param PublishCdnParams: Relayed push parameters of a non-Tencent Cloud CDN
-        :type PublishCdnParams: :class:`tencentcloud.trtc.v20190722.models.PublishCdnParams`
+        :param CloudStorage: The cloud storage information.
+        :type CloudStorage: :class:`tencentcloud.trtc.v20190722.models.CloudStorage`
+        :param CloudVod: The VOD information.
+        :type CloudVod: :class:`tencentcloud.trtc.v20190722.models.CloudVod`
         """
-        self.SdkAppId = None
-        self.StrRoomId = None
-        self.OutputParams = None
-        self.EncodeParams = None
-        self.LayoutParams = None
-        self.PublishCdnParams = None
+        self.CloudStorage = None
+        self.CloudVod = None
 
 
     def _deserialize(self, params):
-        self.SdkAppId = params.get("SdkAppId")
-        self.StrRoomId = params.get("StrRoomId")
-        if params.get("OutputParams") is not None:
-            self.OutputParams = OutputParams()
-            self.OutputParams._deserialize(params.get("OutputParams"))
-        if params.get("EncodeParams") is not None:
-            self.EncodeParams = EncodeParams()
-            self.EncodeParams._deserialize(params.get("EncodeParams"))
-        if params.get("LayoutParams") is not None:
-            self.LayoutParams = LayoutParams()
-            self.LayoutParams._deserialize(params.get("LayoutParams"))
-        if params.get("PublishCdnParams") is not None:
-            self.PublishCdnParams = PublishCdnParams()
-            self.PublishCdnParams._deserialize(params.get("PublishCdnParams"))
+        if params.get("CloudStorage") is not None:
+            self.CloudStorage = CloudStorage()
+            self.CloudStorage._deserialize(params.get("CloudStorage"))
+        if params.get("CloudVod") is not None:
+            self.CloudVod = CloudVod()
+            self.CloudVod._deserialize(params.get("CloudVod"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2069,66 +890,33 @@ class StartMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
         
 
 
-class StartMCUMixTranscodeByStrRoomIdResponse(AbstractModel):
-    """StartMCUMixTranscodeByStrRoomId response structure.
+class SubscribeStreamUserIds(AbstractModel):
+    """The allowlist/blocklist for stream subscription. You cannot set both an allowlist and blocklist for audio or video subscription. Up to 25 streams can be subscribed to at the same time. In the mixed-stream recording mode, up to 24 videos can be displayed.
 
     """
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
+        :param SubscribeAudioUserIds: The allowlist for audio subscription. For example, `["1", "2", "3"]` means to subscribe to the audios of users 1, 2, and 3. If this parameter is left empty, the audios of all anchors (max 32) in the room will be received.
+        :type SubscribeAudioUserIds: list of str
+        :param UnSubscribeAudioUserIds: The blocklist for audio subscription. For example, `["1", "2", "3"]` means to not subscribe to the audios of users 1, 2, and 3. If this parameter is left empty, the audios of all anchors (max 32) in the room will be received.
+        :type UnSubscribeAudioUserIds: list of str
+        :param SubscribeVideoUserIds: The allowlist for video subscription. For example, `["1", "2", "3"]` means to subscribe to the videos of users 1, 2, and 3. If this parameter is left empty, the videos of all anchors (max 32) in the room will be received.
+        :type SubscribeVideoUserIds: list of str
+        :param UnSubscribeVideoUserIds: The blocklist for video subscription. For example, `["1", "2", "3"]` means to not subscribe to the videos of users 1, 2, and 3. If this parameter is left empty, the videos of all anchors (max 32) in the room will be received.
+        :type UnSubscribeVideoUserIds: list of str
         """
-        self.RequestId = None
+        self.SubscribeAudioUserIds = None
+        self.UnSubscribeAudioUserIds = None
+        self.SubscribeVideoUserIds = None
+        self.UnSubscribeVideoUserIds = None
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class StartMCUMixTranscodeRequest(AbstractModel):
-    """StartMCUMixTranscode request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param SdkAppId: `SDKAppId` of TRTC.
-        :type SdkAppId: int
-        :param RoomId: Room ID.
-        :type RoomId: int
-        :param OutputParams: On-Cloud MixTranscoding output control parameters.
-        :type OutputParams: :class:`tencentcloud.trtc.v20190722.models.OutputParams`
-        :param EncodeParams: On-Cloud MixTranscoding output encoding parameters.
-        :type EncodeParams: :class:`tencentcloud.trtc.v20190722.models.EncodeParams`
-        :param LayoutParams: On-Cloud MixTranscoding output layout parameters.
-        :type LayoutParams: :class:`tencentcloud.trtc.v20190722.models.LayoutParams`
-        :param PublishCdnParams: Relayed push parameters of a non-Tencent Cloud CDN
-        :type PublishCdnParams: :class:`tencentcloud.trtc.v20190722.models.PublishCdnParams`
-        """
-        self.SdkAppId = None
-        self.RoomId = None
-        self.OutputParams = None
-        self.EncodeParams = None
-        self.LayoutParams = None
-        self.PublishCdnParams = None
-
-
-    def _deserialize(self, params):
-        self.SdkAppId = params.get("SdkAppId")
-        self.RoomId = params.get("RoomId")
-        if params.get("OutputParams") is not None:
-            self.OutputParams = OutputParams()
-            self.OutputParams._deserialize(params.get("OutputParams"))
-        if params.get("EncodeParams") is not None:
-            self.EncodeParams = EncodeParams()
-            self.EncodeParams._deserialize(params.get("EncodeParams"))
-        if params.get("LayoutParams") is not None:
-            self.LayoutParams = LayoutParams()
-            self.LayoutParams._deserialize(params.get("LayoutParams"))
-        if params.get("PublishCdnParams") is not None:
-            self.PublishCdnParams = PublishCdnParams()
-            self.PublishCdnParams._deserialize(params.get("PublishCdnParams"))
+        self.SubscribeAudioUserIds = params.get("SubscribeAudioUserIds")
+        self.UnSubscribeAudioUserIds = params.get("UnSubscribeAudioUserIds")
+        self.SubscribeVideoUserIds = params.get("SubscribeVideoUserIds")
+        self.UnSubscribeVideoUserIds = params.get("UnSubscribeVideoUserIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2138,42 +926,46 @@ class StartMCUMixTranscodeRequest(AbstractModel):
         
 
 
-class StartMCUMixTranscodeResponse(AbstractModel):
-    """StartMCUMixTranscode response structure.
+class TencentVod(AbstractModel):
+    """The Tencent Cloud VOD parameters.
 
     """
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
+        :param Procedure: The operation to perform on the media uploaded. The value of this parameter is the name of a task flow template. You can create a custom task flow template in Tencent Cloud VOD.
+        :type Procedure: str
+        :param ExpireTime: The expiration time of the media file, which is a time period (seconds) from the current time. For example, `86400` means to save the media file for one day. To save the file permanently, set this parameter to `0`.
+        :type ExpireTime: int
+        :param StorageRegion: The storage region. Set this parameter if you have special requirements on the storage region.
+        :type StorageRegion: str
+        :param ClassId: The category ID, which is returned after you create a category by calling an API. You can use categories to manage media files.
+The default value is `0`, which means others.
+        :type ClassId: int
+        :param SubAppId: The VOD subapplication ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :type SubAppId: int
+        :param SessionContext: The task flow context, which is passed through after the task is completed.
+        :type SessionContext: str
+        :param SourceContext: The upload context, which is passed through after upload is completed.
+        :type SourceContext: str
         """
-        self.RequestId = None
+        self.Procedure = None
+        self.ExpireTime = None
+        self.StorageRegion = None
+        self.ClassId = None
+        self.SubAppId = None
+        self.SessionContext = None
+        self.SourceContext = None
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class StopMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
-    """StopMCUMixTranscodeByStrRoomId request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param SdkAppId: `SDKAppId` of TRTC
-        :type SdkAppId: int
-        :param StrRoomId: Room ID in string type
-        :type StrRoomId: str
-        """
-        self.SdkAppId = None
-        self.StrRoomId = None
-
-
-    def _deserialize(self, params):
-        self.SdkAppId = params.get("SdkAppId")
-        self.StrRoomId = params.get("StrRoomId")
+        self.Procedure = params.get("Procedure")
+        self.ExpireTime = params.get("ExpireTime")
+        self.StorageRegion = params.get("StorageRegion")
+        self.ClassId = params.get("ClassId")
+        self.SubAppId = params.get("SubAppId")
+        self.SessionContext = params.get("SessionContext")
+        self.SourceContext = params.get("SourceContext")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2183,42 +975,37 @@ class StopMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
         
 
 
-class StopMCUMixTranscodeByStrRoomIdResponse(AbstractModel):
-    """StopMCUMixTranscodeByStrRoomId response structure.
+class VideoParams(AbstractModel):
+    """The video transcoding parameters for recording.
 
     """
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
+        :param Width: The video width in pixels. The value of this parameter cannot be larger than 1920, and the result of multiplying `Width` and `Height` cannot exceed 1920 x 1080. The default value is `360`.
+        :type Width: int
+        :param Height: The video height in pixels. The value of this parameter cannot be larger than 1920, and the result of multiplying `Width` and `Height` cannot exceed 1920 x 1080. The default value is `640`.
+        :type Height: int
+        :param Fps: The video frame rate. Value range: [1, 60]. Default: 15.
+        :type Fps: int
+        :param BitRate: The video bitrate (bps). Value range: [64000, 8192000]. Default: 550000.
+        :type BitRate: int
+        :param Gop: The keyframe interval (seconds). Default value: 10.
+        :type Gop: int
         """
-        self.RequestId = None
+        self.Width = None
+        self.Height = None
+        self.Fps = None
+        self.BitRate = None
+        self.Gop = None
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class StopMCUMixTranscodeRequest(AbstractModel):
-    """StopMCUMixTranscode request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param SdkAppId: `SDKAppId` of TRTC.
-        :type SdkAppId: int
-        :param RoomId: Room ID.
-        :type RoomId: int
-        """
-        self.SdkAppId = None
-        self.RoomId = None
-
-
-    def _deserialize(self, params):
-        self.SdkAppId = params.get("SdkAppId")
-        self.RoomId = params.get("RoomId")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.Fps = params.get("Fps")
+        self.BitRate = params.get("BitRate")
+        self.Gop = params.get("Gop")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2228,42 +1015,27 @@ class StopMCUMixTranscodeRequest(AbstractModel):
         
 
 
-class StopMCUMixTranscodeResponse(AbstractModel):
-    """StopMCUMixTranscode response structure.
+class WaterMark(AbstractModel):
+    """The watermark layout.
 
     """
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
+        :param WaterMarkType: The watermark type. 0 (default): image; 1: text (not supported yet).
+        :type WaterMarkType: int
+        :param WaterMarkImage: The information of watermark images. This parameter is required if the watermark type is image.
+        :type WaterMarkImage: :class:`tencentcloud.trtc.v20190722.models.WaterMarkImage`
         """
-        self.RequestId = None
+        self.WaterMarkType = None
+        self.WaterMarkImage = None
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class TimeValue(AbstractModel):
-    """Returned quality data in the format of time:value
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Time: Time in the format of UNIX timestamp, such as 1590065877s.
-        :type Time: int
-        :param Value: Parameter value returned in the current time. For example, if `bigvCapFps` is set to 0 when the current time is 1590065877s (UNIX timestamp), the value of this parameter is 0.
-        :type Value: float
-        """
-        self.Time = None
-        self.Value = None
-
-
-    def _deserialize(self, params):
-        self.Time = params.get("Time")
-        self.Value = params.get("Value")
+        self.WaterMarkType = params.get("WaterMarkType")
+        if params.get("WaterMarkImage") is not None:
+            self.WaterMarkImage = WaterMarkImage()
+            self.WaterMarkImage._deserialize(params.get("WaterMarkImage"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2273,93 +1045,37 @@ class TimeValue(AbstractModel):
         
 
 
-class UserInformation(AbstractModel):
-    """User information, including when the user enters/exits a room
+class WaterMarkImage(AbstractModel):
+    """The information of watermark images.
 
     """
 
     def __init__(self):
         r"""
-        :param RoomStr: Room ID
-        :type RoomStr: str
-        :param UserId: User ID
-        :type UserId: str
-        :param JoinTs: The time when the user enters the room
-        :type JoinTs: int
-        :param LeaveTs: The time when the user exits the room. If the user is still in the room, the current time will be returned
-        :type LeaveTs: int
-        :param DeviceType: Device type
-        :type DeviceType: str
-        :param SdkVersion: SDK version number
-        :type SdkVersion: str
-        :param ClientIp: Client IP
-        :type ClientIp: str
-        :param Finished: Determine whether a user has left the room
-        :type Finished: bool
-        """
-        self.RoomStr = None
-        self.UserId = None
-        self.JoinTs = None
-        self.LeaveTs = None
-        self.DeviceType = None
-        self.SdkVersion = None
-        self.ClientIp = None
-        self.Finished = None
-
-
-    def _deserialize(self, params):
-        self.RoomStr = params.get("RoomStr")
-        self.UserId = params.get("UserId")
-        self.JoinTs = params.get("JoinTs")
-        self.LeaveTs = params.get("LeaveTs")
-        self.DeviceType = params.get("DeviceType")
-        self.SdkVersion = params.get("SdkVersion")
-        self.ClientIp = params.get("ClientIp")
-        self.Finished = params.get("Finished")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class WaterMarkParams(AbstractModel):
-    """Watermark parameters for On-Cloud MixTranscoding
-
-    """
-
-    def __init__(self):
-        r"""
-        :param WaterMarkId: Image ID of the watermark, which is generated after the image is uploaded to the TRTC console
-        :type WaterMarkId: int
-        :param WaterMarkWidth: Width (px) of the watermark for On-Cloud MixTranscoding
-        :type WaterMarkWidth: int
-        :param WaterMarkHeight: Height (px) of the watermark for On-Cloud MixTranscoding
-        :type WaterMarkHeight: int
-        :param LocationX: Horizontal offset (px) of the watermark
-        :type LocationX: int
-        :param LocationY: Vertical offset (px) of the watermark
-        :type LocationY: int
-        :param WaterMarkUrl: URL of the watermark image for the mixed stream, which can be in PNG, JPG, JPEG, or BMP format and does not support the alpha channel. The URL must not exceed 512 bytes. When both `WaterMarkUrl` and `WaterMarkId` are specified, the former will be used. The watermark image cannot exceed 10 MB.
+        :param WaterMarkUrl: The download URLs of the watermark images, which must be in JPG or PNG format and cannot be larger than 5 MB.
         :type WaterMarkUrl: str
+        :param Top: The Y axis of the image's top-left corner. Value range: [0, 2560]. The value cannot be larger than the canvas height.
+        :type Top: int
+        :param Left: The X axis of the image’s top-left corner. Value range: [0, 2560]. The value cannot be larger than the canvas width.
+        :type Left: int
+        :param Width: The relative width of the image. Value range: [0, 2560]. The sum of the values of this parameter and `Left` cannot exceed the canvas width.
+        :type Width: int
+        :param Height: The relative height of the image. Value range: [0, 2560]. The sum of the values of this parameter and `Top` cannot exceed the canvas height.
+        :type Height: int
         """
-        self.WaterMarkId = None
-        self.WaterMarkWidth = None
-        self.WaterMarkHeight = None
-        self.LocationX = None
-        self.LocationY = None
         self.WaterMarkUrl = None
+        self.Top = None
+        self.Left = None
+        self.Width = None
+        self.Height = None
 
 
     def _deserialize(self, params):
-        self.WaterMarkId = params.get("WaterMarkId")
-        self.WaterMarkWidth = params.get("WaterMarkWidth")
-        self.WaterMarkHeight = params.get("WaterMarkHeight")
-        self.LocationX = params.get("LocationX")
-        self.LocationY = params.get("LocationY")
         self.WaterMarkUrl = params.get("WaterMarkUrl")
+        self.Top = params.get("Top")
+        self.Left = params.get("Left")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

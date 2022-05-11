@@ -234,6 +234,10 @@ For databases with a database-schema-table structure:
         :type DatabaseInfo: str
         :param Tags: Tag of the instance to be migrated.
         :type Tags: list of TagItem
+        :param SrcNodeType: Source instance type. `simple`: Primary/Secondary node; `cluster`: Cluster node. If this field is left empty, the value defaults to primary/secondary node.
+        :type SrcNodeType: str
+        :param SrcInfoMulti: Source instance information, which is correlated with the migration task type.
+        :type SrcInfoMulti: list of SrcInfo
         """
         self.JobName = None
         self.MigrateOption = None
@@ -245,6 +249,8 @@ For databases with a database-schema-table structure:
         self.DstInfo = None
         self.DatabaseInfo = None
         self.Tags = None
+        self.SrcNodeType = None
+        self.SrcInfoMulti = None
 
 
     def _deserialize(self, params):
@@ -269,6 +275,13 @@ For databases with a database-schema-table structure:
                 obj = TagItem()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.SrcNodeType = params.get("SrcNodeType")
+        if params.get("SrcInfoMulti") is not None:
+            self.SrcInfoMulti = []
+            for item in params.get("SrcInfoMulti"):
+                obj = SrcInfo()
+                obj._deserialize(item)
+                self.SrcInfoMulti.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -318,6 +331,8 @@ class CreateSubscribeRequest(AbstractModel):
         :type AutoRenew: int
         :param Tags: Instance resource tags
         :type Tags: list of TagItem
+        :param Name: A custom instance name.
+        :type Name: str
         """
         self.Product = None
         self.PayType = None
@@ -325,6 +340,7 @@ class CreateSubscribeRequest(AbstractModel):
         self.Count = None
         self.AutoRenew = None
         self.Tags = None
+        self.Name = None
 
 
     def _deserialize(self, params):
@@ -339,6 +355,7 @@ class CreateSubscribeRequest(AbstractModel):
                 obj = TagItem()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -725,6 +742,11 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param AutoRenewFlag: Whether auto-renewal is enabled. 0: do not enable, 1: enable
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type AutoRenewFlag: int
+        :param SubscribeVersion: Data subscription edition. `txdts`: Legacy edition; `kafka`: Kafka edition.
+        :type SubscribeVersion: str
+        :param Errors: Error message.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Errors: list of SubsErr
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -754,6 +776,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Region = None
         self.Tags = None
         self.AutoRenewFlag = None
+        self.SubscribeVersion = None
+        self.Errors = None
         self.RequestId = None
 
 
@@ -794,6 +818,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.SubscribeVersion = params.get("SubscribeVersion")
+        if params.get("Errors") is not None:
+            self.Errors = []
+            for item in params.get("Errors"):
+                obj = SubsErr()
+                obj._deserialize(item)
+                self.Errors.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1116,6 +1147,9 @@ class MigrateJobInfo(AbstractModel):
         :param Tags: Tag
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Tags: list of TagItem
+        :param SrcInfoMulti: Information of the source instance, a cluster edition instance whose access type is not `cdb`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type SrcInfoMulti: list of SrcInfo
         """
         self.JobId = None
         self.JobName = None
@@ -1134,6 +1168,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Detail = None
         self.ErrorInfo = None
         self.Tags = None
+        self.SrcInfoMulti = None
 
 
     def _deserialize(self, params):
@@ -1172,6 +1207,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj = TagItem()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        if params.get("SrcInfoMulti") is not None:
+            self.SrcInfoMulti = []
+            for item in params.get("SrcInfoMulti"):
+                obj = SrcInfo()
+                obj._deserialize(item)
+                self.SrcInfoMulti.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1321,6 +1362,10 @@ For databases with a database-schema-table structure:
 
 This field does not need to be set when the entire instance is to be migrated
         :type DatabaseInfo: str
+        :param SrcNodeType: Source instance type. `simple`: Primary/Secondary node; `cluster`: Cluster node. If this field is left empty, the value defaults to primary/secondary node.
+        :type SrcNodeType: str
+        :param SrcInfoMulti: Source instance information, which is correlated with the migration task type.
+        :type SrcInfoMulti: list of SrcInfo
         """
         self.JobId = None
         self.JobName = None
@@ -1330,6 +1375,8 @@ This field does not need to be set when the entire instance is to be migrated
         self.DstAccessType = None
         self.DstInfo = None
         self.DatabaseInfo = None
+        self.SrcNodeType = None
+        self.SrcInfoMulti = None
 
 
     def _deserialize(self, params):
@@ -1347,6 +1394,13 @@ This field does not need to be set when the entire instance is to be migrated
             self.DstInfo = DstInfo()
             self.DstInfo._deserialize(params.get("DstInfo"))
         self.DatabaseInfo = params.get("DatabaseInfo")
+        self.SrcNodeType = params.get("SrcNodeType")
+        if params.get("SrcInfoMulti") is not None:
+            self.SrcInfoMulti = []
+            for item in params.get("SrcInfoMulti"):
+                obj = SrcInfo()
+                obj._deserialize(item)
+                self.SrcInfoMulti.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1821,6 +1875,31 @@ class StopMigrateJobResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class SubsErr(AbstractModel):
+    """Error message displayed when the subscription configuration was queried.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Message: Error message.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Message: str
+        """
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SubscribeInfo(AbstractModel):
