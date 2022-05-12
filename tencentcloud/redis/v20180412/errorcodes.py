@@ -14,11 +14,23 @@
 # limitations under the License.
 
 
+# CAM signature/authentication error.
+AUTHFAILURE = 'AuthFailure'
+
+# Invalid authorization.
+AUTHFAILURE_INVALIDAUTHORIZATION = 'AuthFailure.InvalidAuthorization'
+
 # No exact description for this error code for the time being.
 FAILEDOPERATION_REDOFLOWFAILED = 'FailedOperation.RedoFlowFailed'
 
 # Internal system error, which is irrelevant to the business.
 FAILEDOPERATION_SYSTEMERROR = 'FailedOperation.SystemError'
+
+# The instance does not support this API.
+FAILEDOPERATION_UNSUPPORTERROR = 'FailedOperation.UnSupportError'
+
+# Invalid data is entered for weekday.
+FAILEDOPERATION_UNKNOWN = 'FailedOperation.Unknown'
 
 # Internal system error with the database operation, which may be update, insert, select, etc.
 INTERNALERROR_DBOPERATIONFAILED = 'InternalError.DbOperationFailed'
@@ -32,11 +44,17 @@ INVALIDPARAMETER = 'InvalidParameter'
 # The parameter is empty.
 INVALIDPARAMETER_EMPTYPARAM = 'InvalidParameter.EmptyParam'
 
+# Invalid parameter.
+INVALIDPARAMETER_ILLEGALPARAMETERERROR = 'InvalidParameter.IllegalParameterError'
+
 # Invalid service parameter.
 INVALIDPARAMETER_INVALIDPARAMETER = 'InvalidParameter.InvalidParameter'
 
 # The API has no CAM permissions.
 INVALIDPARAMETER_PERMISSIONDENIED = 'InvalidParameter.PermissionDenied'
+
+# Incorrect parameter value.
+INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
 # Password verification error due to incorrect password.
 INVALIDPARAMETERVALUE_PASSWORDERROR = 'InvalidParameterValue.PasswordError'

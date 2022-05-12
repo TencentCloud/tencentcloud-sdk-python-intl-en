@@ -68,6 +68,55 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class AllocateWanAddressRequest(AbstractModel):
+    """AllocateWanAddress request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocateWanAddressResponse(AbstractModel):
+    """AllocateWanAddress response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Async task ID
+        :type FlowId: int
+        :param WanStatus: Status of enabling public network access
+        :type WanStatus: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.WanStatus = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.WanStatus = params.get("WanStatus")
+        self.RequestId = params.get("RequestId")
+
+
 class BigKeyInfo(AbstractModel):
     """Big key details
 
@@ -142,6 +191,55 @@ class BigKeyTypeInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ChangeReplicaToMasterRequest(AbstractModel):
+    """ChangeReplicaToMaster request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param GroupId: Replica group ID, which is required for multi-AZ instances.
+        :type GroupId: int
+        """
+        self.InstanceId = None
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChangeReplicaToMasterResponse(AbstractModel):
+    """ChangeReplicaToMaster response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: Async task ID
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
 
 
 class CommandTake(AbstractModel):
@@ -707,6 +805,97 @@ class DescribeInstanceMonitorTopNCmdTookResponse(AbstractModel):
                 obj = CommandTake()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceNodeInfoRequest(AbstractModel):
+    """DescribeInstanceNodeInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Limit: List size
+        :type Limit: int
+        :param Offset: The offset value
+        :type Offset: int
+        """
+        self.InstanceId = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceNodeInfoResponse(AbstractModel):
+    """DescribeInstanceNodeInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProxyCount: The number of proxy nodes
+        :type ProxyCount: int
+        :param Proxy: Proxy node information
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Proxy: list of ProxyNodes
+        :param RedisCount: The number of redis nodes
+        :type RedisCount: int
+        :param Redis: Redis node information
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Redis: list of RedisNodes
+        :param TendisCount: The number of tendis nodes
+        :type TendisCount: int
+        :param Tendis: Tendis node information
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Tendis: list of TendisNodes
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ProxyCount = None
+        self.Proxy = None
+        self.RedisCount = None
+        self.Redis = None
+        self.TendisCount = None
+        self.Tendis = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ProxyCount = params.get("ProxyCount")
+        if params.get("Proxy") is not None:
+            self.Proxy = []
+            for item in params.get("Proxy"):
+                obj = ProxyNodes()
+                obj._deserialize(item)
+                self.Proxy.append(obj)
+        self.RedisCount = params.get("RedisCount")
+        if params.get("Redis") is not None:
+            self.Redis = []
+            for item in params.get("Redis"):
+                obj = RedisNodes()
+                obj._deserialize(item)
+                self.Redis.append(obj)
+        self.TendisCount = params.get("TendisCount")
+        if params.get("Tendis") is not None:
+            self.Tendis = []
+            for item in params.get("Tendis"):
+                obj = TendisNodes()
+                obj._deserialize(item)
+                self.Tendis.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1435,6 +1624,67 @@ class ProductConf(AbstractModel):
         
 
 
+class ProxyNodes(AbstractModel):
+    """Proxy node information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeId: Node ID
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type NodeId: str
+        """
+        self.NodeId = None
+
+
+    def _deserialize(self, params):
+        self.NodeId = params.get("NodeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RedisNodes(AbstractModel):
+    """Redis node information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeId: Node ID
+        :type NodeId: str
+        :param NodeRole: Node role
+        :type NodeRole: str
+        :param ClusterId: Shard ID
+        :type ClusterId: int
+        :param ZoneId: AZ ID
+        :type ZoneId: int
+        """
+        self.NodeId = None
+        self.NodeRole = None
+        self.ClusterId = None
+        self.ZoneId = None
+
+
+    def _deserialize(self, params):
+        self.NodeId = params.get("NodeId")
+        self.NodeRole = params.get("NodeRole")
+        self.ClusterId = params.get("ClusterId")
+        self.ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RegionConf(AbstractModel):
     """Region information
 
@@ -1478,6 +1728,55 @@ class RegionConf(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ReleaseWanAddressRequest(AbstractModel):
+    """ReleaseWanAddress request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReleaseWanAddressResponse(AbstractModel):
+    """ReleaseWanAddress response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Async task ID
+        :type FlowId: int
+        :param WanStatus: Status of disabling public network access
+        :type WanStatus: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.WanStatus = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.WanStatus = params.get("WanStatus")
+        self.RequestId = params.get("RequestId")
 
 
 class SourceCommand(AbstractModel):
@@ -1531,6 +1830,34 @@ class SourceInfo(AbstractModel):
         self.Ip = params.get("Ip")
         self.Conn = params.get("Conn")
         self.Cmd = params.get("Cmd")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TendisNodes(AbstractModel):
+    """Tendis node information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeId: Node ID
+        :type NodeId: str
+        :param NodeRole: Node role
+        :type NodeRole: str
+        """
+        self.NodeId = None
+        self.NodeRole = None
+
+
+    def _deserialize(self, params):
+        self.NodeId = params.get("NodeId")
+        self.NodeRole = params.get("NodeRole")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

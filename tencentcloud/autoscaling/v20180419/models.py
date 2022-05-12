@@ -298,15 +298,22 @@ class AutoScalingAdvice(AbstractModel):
         r"""
         :param AutoScalingGroupId: Scaling group ID
         :type AutoScalingGroupId: str
+        :param Level: Scaling group warning level. Valid values:<br>
+<li>NORMAL: Normal<br>
+<li>WARNING: Warning<br>
+<li>CRITICAL: Serious warning<br>
+        :type Level: str
         :param Advices: A collection of suggestions for scaling group configurations.
         :type Advices: list of Advice
         """
         self.AutoScalingGroupId = None
+        self.Level = None
         self.Advices = None
 
 
     def _deserialize(self, params):
         self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.Level = params.get("Level")
         if params.get("Advices") is not None:
             self.Advices = []
             for item in params.get("Advices"):
@@ -333,7 +340,17 @@ class AutoScalingGroup(AbstractModel):
         :type AutoScalingGroupId: str
         :param AutoScalingGroupName: Auto scaling group name
         :type AutoScalingGroupName: str
-        :param AutoScalingGroupStatus: Current status of the auto scaling group. Value range: <br><li>NORMAL: normal <br><li>CVM_ABNORMAL: Exception with the launch configuration <br><li>LB_ABNORMAL: exception with the load balancer <br><li>VPC_ABNORMAL: exception with the VPC <br><li>INSUFFICIENT_BALANCE: insufficient balance <br><li>LB_BACKEND_REGION_NOT_MATCH: the backend region of the CLB instance is not the same as the one of AS service.<br>
+        :param AutoScalingGroupStatus: Current scaling group status. Valid values:<br>
+<li>NORMAL: Normal<br>
+<li>CVM_ABNORMAL: Abnormal launch configuration<br>
+<li>LB_ABNORMAL: Abnormal load balancer<br>
+<li>LB_LISTENER_ABNORMAL: Abnormal load balancer listener<br>
+<li>LB_LOCATION_ABNORMAL: Abnormal forwarding configuration of the load balancer listener<br>
+<li>VPC_ABNORMAL: VPC network error<br>
+<li>SUBNET_ABNORMAL: VPC subnet exception<br>
+<li>INSUFFICIENT_BALANCE: Insufficient account balance<br>
+<li>LB_BACKEND_REGION_NOT_MATCH: The CLB backend and the AS service are not in the same region.<br>
+<li>LB_BACKEND_VPC_NOT_MATCH: The CLB instance and the scaling group are not in the same VPC.
         :type AutoScalingGroupStatus: str
         :param CreatedTime: Creation time in UTC format
         :type CreatedTime: str
@@ -478,34 +495,6 @@ A valid value will be returned only when `InstanceAllocationPolicy` is set to `S
             self.SpotMixedAllocationPolicy = SpotMixedAllocationPolicy()
             self.SpotMixedAllocationPolicy._deserialize(params.get("SpotMixedAllocationPolicy"))
         self.CapacityRebalance = params.get("CapacityRebalance")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class AutoScalingGroupAbstract(AbstractModel):
-    """Brief information of an auto scaling group.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param AutoScalingGroupId: Auto scaling group ID.
-        :type AutoScalingGroupId: str
-        :param AutoScalingGroupName: Auto scaling group name.
-        :type AutoScalingGroupName: str
-        """
-        self.AutoScalingGroupId = None
-        self.AutoScalingGroupName = None
-
-
-    def _deserialize(self, params):
-        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
-        self.AutoScalingGroupName = params.get("AutoScalingGroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -912,170 +901,6 @@ class CreateAutoScalingGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class CreateLaunchConfigurationRequest(AbstractModel):
-    """CreateLaunchConfiguration request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param LaunchConfigurationName: Display name of the launch configuration, which can contain Chinese characters, letters, numbers, underscores, separators ("-"), and decimal points with a maximum length of 60 bytes.
-        :type LaunchConfigurationName: str
-        :param ImageId: Valid [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-8toqc6s3`. There are four types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><li>Marketplace images </li><br/>You can obtain the available image IDs in the following ways: <br/><li>For `public images`, `custom images`, and `shared images`, log in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE) to query the image IDs; for `marketplace images`, query the image IDs through [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>This value can be obtained from the `ImageId` field in the return value of the [DescribeImages API](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1).</li>
-        :type ImageId: str
-        :param ProjectId: Project ID of the launch configuration. The default project is used if it’s left blank.
-Note that this project ID is not the same as the project ID of the scaling group. 
-        :type ProjectId: int
-        :param InstanceType: Instance model. Different instance models specify different resource specifications. The specific value can be obtained by calling the [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) API to get the latest specification table or referring to the descriptions in [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
-`InstanceType` and `InstanceTypes` are mutually exclusive, and one and only one of them must be entered.
-        :type InstanceType: str
-        :param SystemDisk: System disk configuration of the instance. If this parameter is not specified, the default value will be assigned to it.
-        :type SystemDisk: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
-        :param DataDisks: Information of the instance's data disk configuration. If this parameter is not specified, no data disk is purchased by default. Up to 11 data disks can be supported.
-        :type DataDisks: list of DataDisk
-        :param InternetAccessible: Configuration information of public network bandwidth. If this parameter is not specified, the default public network bandwidth is 0 Mbps.
-        :type InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
-        :param LoginSettings: Login settings of the instance. This parameter is used to set the login password and key for the instance, or to keep the original login settings for the image. By default, a random password is generated and sent to the user via the internal message.
-        :type LoginSettings: :class:`tencentcloud.autoscaling.v20180419.models.LoginSettings`
-        :param SecurityGroupIds: The security group to which the instance belongs. This parameter can be obtained by calling the `SecurityGroupId` field in the returned value of [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1). If this parameter is not specified, no security group will be bound by default.
-        :type SecurityGroupIds: list of str
-        :param EnhancedService: Enhanced service. This parameter is used to specify whether to enable Cloud Security, Cloud Monitoring and other services. If this parameter is not specified, Cloud Monitoring and Cloud Security will be enabled by default.
-        :type EnhancedService: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
-        :param UserData: Base64-encoded custom data of up to 16 KB.
-        :type UserData: str
-        :param InstanceChargeType: Instance billing mode. CVM instances take `POSTPAID_BY_HOUR` by default. Valid values:
-<br><li>POSTPAID_BY_HOUR: pay-as-you-go hourly
-<br><li>SPOTPAID: spot instance
-        :type InstanceChargeType: str
-        :param InstanceMarketOptions: Market-related options of the instance, such as the parameters related to stop instances. If the billing method of instance is specified as bidding, this parameter must be passed in.
-        :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
-        :param InstanceTypes: List of instance models. Different instance models specify different resource specifications. Up to 10 instance models can be supported.
-`InstanceType` and `InstanceTypes` are mutually exclusive, and one and only one of them must be entered.
-        :type InstanceTypes: list of str
-        :param InstanceTypesCheckPolicy: Instance type verification policy. Value range: ALL, ANY. Default value: ANY.
-<br><li> ALL: The verification will success only if all instance types (InstanceType) are available; otherwise, an error will be reported.
-<br><li> ANY: The verification will success if any instance type (InstanceType) is available; otherwise, an error will be reported.
-
-Common reasons why an instance type is unavailable include stock-out of the instance type or the corresponding cloud disk.
-If a model in InstanceTypes does not exist or has been discontinued, a verification error will be reported regardless of the value of InstanceTypesCheckPolicy.
-        :type InstanceTypesCheckPolicy: str
-        :param InstanceTags: List of tags. This parameter is used to bind up to 10 tags to newly added instances.
-        :type InstanceTags: list of InstanceTag
-        :param CamRoleName: CAM role name, which can be obtained from the roleName field in the return value of the DescribeRoleList API.
-        :type CamRoleName: str
-        :param HostNameSettings: CVM HostName settings.
-        :type HostNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
-        :param InstanceNameSettings: Settings of CVM instance names
-If this field is configured in a launch configuration, the `InstanceName` of a CVM created by the scaling group will be generated according to the configuration; otherwise, it will be in the `as-{{AutoScalingGroupName }}` format.
-        :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
-        :param InstanceChargePrepaid: Sets prepaid billing mode, also known as monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. This parameter is mandatory for prepaid instances.
-        :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
-        :param DiskTypePolicy: Selection policy of cloud disks. Default value: ORIGINAL. Valid values:
-<br><li>ORIGINAL: uses the configured cloud disk type
-<br><li>AUTOMATIC: automatically chooses an available cloud disk type
-        :type DiskTypePolicy: str
-        """
-        self.LaunchConfigurationName = None
-        self.ImageId = None
-        self.ProjectId = None
-        self.InstanceType = None
-        self.SystemDisk = None
-        self.DataDisks = None
-        self.InternetAccessible = None
-        self.LoginSettings = None
-        self.SecurityGroupIds = None
-        self.EnhancedService = None
-        self.UserData = None
-        self.InstanceChargeType = None
-        self.InstanceMarketOptions = None
-        self.InstanceTypes = None
-        self.InstanceTypesCheckPolicy = None
-        self.InstanceTags = None
-        self.CamRoleName = None
-        self.HostNameSettings = None
-        self.InstanceNameSettings = None
-        self.InstanceChargePrepaid = None
-        self.DiskTypePolicy = None
-
-
-    def _deserialize(self, params):
-        self.LaunchConfigurationName = params.get("LaunchConfigurationName")
-        self.ImageId = params.get("ImageId")
-        self.ProjectId = params.get("ProjectId")
-        self.InstanceType = params.get("InstanceType")
-        if params.get("SystemDisk") is not None:
-            self.SystemDisk = SystemDisk()
-            self.SystemDisk._deserialize(params.get("SystemDisk"))
-        if params.get("DataDisks") is not None:
-            self.DataDisks = []
-            for item in params.get("DataDisks"):
-                obj = DataDisk()
-                obj._deserialize(item)
-                self.DataDisks.append(obj)
-        if params.get("InternetAccessible") is not None:
-            self.InternetAccessible = InternetAccessible()
-            self.InternetAccessible._deserialize(params.get("InternetAccessible"))
-        if params.get("LoginSettings") is not None:
-            self.LoginSettings = LoginSettings()
-            self.LoginSettings._deserialize(params.get("LoginSettings"))
-        self.SecurityGroupIds = params.get("SecurityGroupIds")
-        if params.get("EnhancedService") is not None:
-            self.EnhancedService = EnhancedService()
-            self.EnhancedService._deserialize(params.get("EnhancedService"))
-        self.UserData = params.get("UserData")
-        self.InstanceChargeType = params.get("InstanceChargeType")
-        if params.get("InstanceMarketOptions") is not None:
-            self.InstanceMarketOptions = InstanceMarketOptionsRequest()
-            self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
-        self.InstanceTypes = params.get("InstanceTypes")
-        self.InstanceTypesCheckPolicy = params.get("InstanceTypesCheckPolicy")
-        if params.get("InstanceTags") is not None:
-            self.InstanceTags = []
-            for item in params.get("InstanceTags"):
-                obj = InstanceTag()
-                obj._deserialize(item)
-                self.InstanceTags.append(obj)
-        self.CamRoleName = params.get("CamRoleName")
-        if params.get("HostNameSettings") is not None:
-            self.HostNameSettings = HostNameSettings()
-            self.HostNameSettings._deserialize(params.get("HostNameSettings"))
-        if params.get("InstanceNameSettings") is not None:
-            self.InstanceNameSettings = InstanceNameSettings()
-            self.InstanceNameSettings._deserialize(params.get("InstanceNameSettings"))
-        if params.get("InstanceChargePrepaid") is not None:
-            self.InstanceChargePrepaid = InstanceChargePrepaid()
-            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
-        self.DiskTypePolicy = params.get("DiskTypePolicy")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateLaunchConfigurationResponse(AbstractModel):
-    """CreateLaunchConfiguration response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param LaunchConfigurationId: This parameter is returned when a launch configuration is created through this API, indicating the launch configuration ID.
-        :type LaunchConfigurationId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.LaunchConfigurationId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.LaunchConfigurationId = params.get("LaunchConfigurationId")
-        self.RequestId = params.get("RequestId")
-
-
 class CreateLifecycleHookRequest(AbstractModel):
     """CreateLifecycleHook request structure.
 
@@ -1380,8 +1205,8 @@ class DataDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskType: Data disk type. For more information on limits of data disk types, see [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/31636). Valid values:<br><li>`LOCAL_BASIC`: local disk <br><li>`LOCAL_SSD`: local SSD disk <br><li>`CLOUD_BASIC`: HDD cloud disk <br><li>`CLOUD_PREMIUM`: premium cloud storage<br><li>`CLOUD_SSD`: SSD cloud disk <br><br>The default value should be the same as the `DiskType` field under `SystemDisk`.
-Note: this field may return `null`, indicating that no valid value can be obtained.
+        :param DiskType: Data disk type. See [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/31636). Valid values:<br><li>`LOCAL_BASIC`: Local disk<br><li>`LOCAL_SSD`: Local SSD disk<br><li>`CLOUD_BASIC`: HDD cloud disk<br><li>`CLOUD_PREMIUM`: Premium cloud storage<br><li>`CLOUD_SSD`: SSD cloud disk<br><li>`CLOUD_HSSD`: Enhanced SSD<br><li>`CLOUD_TSSD`: Tremendous SSD<br><br>The default value should be the same as the `DiskType` field under `SystemDisk`.
+Note: This field may return `null`, indicating that no valid value can be obtained.
         :type DiskType: str
         :param DiskSize: Data disk size (in GB). The minimum adjustment increment is 10 GB. The value range varies by data disk type. For more information on limits, see [CVM Instance Configuration](https://intl.cloud.tencent.com/document/product/213/2177?from_cn_redirect=1). The default value is 0, indicating that no data disk is purchased. For more information, see the product documentation.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -1392,11 +1217,20 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param DeleteWithInstance: Specifies whether the data disk is terminated along with the termination of the associated CVM instance.  Values: <br><li>`TRUE` (only available for pay-as-you-go cloud disks that are billed by hour) and `FALSE`.
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :type DeleteWithInstance: bool
+        :param Encrypt: Data disk encryption. Valid values: <br><li>`TRUE`: Encrypted<br><li>`FALSE`: Not encrypted
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type Encrypt: bool
+        :param ThroughputPerformance: Cloud disk performance (MB/s). This parameter is used to purchase extra performance for the cloud disk. For details on the feature and limits, see [Enhanced SSD Performance](https://intl.cloud.tencent.com/document/product/362/51896?from_cn_redirect=1#. E5.A2.9E.E5.BC.BA.E5.9E.8B-ssd-.E4.BA.91.E7.A1.AC.E7.9B.98.E9.A2.9D.E5.A4.96 .E6.80.A7.E8.83.BD).
+This feature is only available to enhanced SSD (`CLOUD_HSSD`) and tremendous SSD (`CLOUD_TSSD`) disks with a capacity greater than 460 GB.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type ThroughputPerformance: int
         """
         self.DiskType = None
         self.DiskSize = None
         self.SnapshotId = None
         self.DeleteWithInstance = None
+        self.Encrypt = None
+        self.ThroughputPerformance = None
 
 
     def _deserialize(self, params):
@@ -1404,6 +1238,8 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         self.DiskSize = params.get("DiskSize")
         self.SnapshotId = params.get("SnapshotId")
         self.DeleteWithInstance = params.get("DeleteWithInstance")
+        self.Encrypt = params.get("Encrypt")
+        self.ThroughputPerformance = params.get("ThroughputPerformance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2035,81 +1871,6 @@ class DescribeAutoScalingInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeLaunchConfigurationsRequest(AbstractModel):
-    """DescribeLaunchConfigurations request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param LaunchConfigurationIds: Queries by one or more launch configuration IDs in the format of `asc-ouy1ax38`. The maximum quantity per request is 100. This parameter does not support specifying both `LaunchConfigurationIds` and `Filters` at the same time.
-        :type LaunchConfigurationIds: list of str
-        :param Filters: Filters.
-<li> launch-configuration-id - String - Required: No - (Filter) Filter by launch configuration ID.</li>
-<li> launch-configuration-name - String - Required: No - (Filter) Filter by launch configuration name.</li>
-<li> launch-configuration-name - String - Required: No - (Filter) Fuzzy search by launch configuration name.</li>
-The maximum number of `Filters` in each request is 10. The upper limit for `Filter.Values` is 5. This parameter cannot specify `LaunchConfigurationIds` and `Filters` at the same time.
-        :type Filters: list of Filter
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
-        :type Limit: int
-        :param Offset: Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
-        :type Offset: int
-        """
-        self.LaunchConfigurationIds = None
-        self.Filters = None
-        self.Limit = None
-        self.Offset = None
-
-
-    def _deserialize(self, params):
-        self.LaunchConfigurationIds = params.get("LaunchConfigurationIds")
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeLaunchConfigurationsResponse(AbstractModel):
-    """DescribeLaunchConfigurations response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TotalCount: Number of eligible launch configurations.
-        :type TotalCount: int
-        :param LaunchConfigurationSet: List of launch configuration details.
-        :type LaunchConfigurationSet: list of LaunchConfiguration
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.LaunchConfigurationSet = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("LaunchConfigurationSet") is not None:
-            self.LaunchConfigurationSet = []
-            for item in params.get("LaunchConfigurationSet"):
-                obj = LaunchConfiguration()
-                obj._deserialize(item)
-                self.LaunchConfigurationSet.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeLifecycleHooksRequest(AbstractModel):
     """DescribeLifecycleHooks request structure.
 
@@ -2563,47 +2324,6 @@ class DetailedStatusMessage(AbstractModel):
         
 
 
-class DisableAutoScalingGroupRequest(AbstractModel):
-    """DisableAutoScalingGroup request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param AutoScalingGroupId: Auto scaling group ID
-        :type AutoScalingGroupId: str
-        """
-        self.AutoScalingGroupId = None
-
-
-    def _deserialize(self, params):
-        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DisableAutoScalingGroupResponse(AbstractModel):
-    """DisableAutoScalingGroup response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class EnableAutoScalingGroupRequest(AbstractModel):
     """EnableAutoScalingGroup request structure.
 
@@ -3051,34 +2771,6 @@ The name contains 2 to 40 characters, and supports multiple dots (.). The string
         
 
 
-class InstanceTag(AbstractModel):
-    """Instance tag. This parameter is used to bind tags to newly added instances.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Key: Tag key
-        :type Key: str
-        :param Value: Tag value
-        :type Value: str
-        """
-        self.Key = None
-        self.Value = None
-
-
-    def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Value = params.get("Value")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class InternetAccessible(AbstractModel):
     """This describes the internet accessibility of the instance created by a launch configuration and declares the internet usage billing method of the instance and the maximum bandwidth
 
@@ -3110,171 +2802,6 @@ Note: this field may return null, indicating that no valid value was found.
         self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         self.PublicIpAssigned = params.get("PublicIpAssigned")
         self.BandwidthPackageId = params.get("BandwidthPackageId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class LaunchConfiguration(AbstractModel):
-    """Information set of eligible launch configurations.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ProjectId: Project ID of the instance.
-        :type ProjectId: int
-        :param LaunchConfigurationId: Launch configuration ID.
-        :type LaunchConfigurationId: str
-        :param LaunchConfigurationName: Launch configuration name.
-        :type LaunchConfigurationName: str
-        :param InstanceType: Instance model.
-        :type InstanceType: str
-        :param SystemDisk: Information of the instance's system disk configuration.
-        :type SystemDisk: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
-        :param DataDisks: Information of the instance's data disk configuration.
-        :type DataDisks: list of DataDisk
-        :param LoginSettings: Instance login settings.
-        :type LoginSettings: :class:`tencentcloud.autoscaling.v20180419.models.LimitedLoginSettings`
-        :param InternetAccessible: Information of the public network bandwidth configuration.
-        :type InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
-        :param SecurityGroupIds: Security group of the instance.
-        :type SecurityGroupIds: list of str
-        :param AutoScalingGroupAbstractSet: Auto scaling group associated with the launch configuration.
-        :type AutoScalingGroupAbstractSet: list of AutoScalingGroupAbstract
-        :param UserData: Custom data.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type UserData: str
-        :param CreatedTime: Creation time of the launch configuration.
-        :type CreatedTime: str
-        :param EnhancedService: Conditions of enhancement services for the instance and their settings.
-        :type EnhancedService: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
-        :param ImageId: Image ID.
-        :type ImageId: str
-        :param LaunchConfigurationStatus: Current status of the launch configuration. Value range: <br><li>NORMAL: normal <br><li>IMAGE_ABNORMAL: Exception with the image of the launch configuration <br><li>CBS_SNAP_ABNORMAL: Exception with the data disk snapshot of the launch configuration <br><li>SECURITY_GROUP_ABNORMAL: Exception with the security group of the launch configuration<br>
-        :type LaunchConfigurationStatus: str
-        :param InstanceChargeType: Instance billing type. CVM instances are POSTPAID_BY_HOUR by default.
-<br><li>POSTPAID_BY_HOUR: Pay-as-you-go on an hourly basis
-<br><li>SPOTPAID: Bidding
-        :type InstanceChargeType: str
-        :param InstanceMarketOptions: Market-related options of the instance, such as the parameters related to stop instances. If the billing method of instance is specified as bidding, this parameter must be passed in.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
-        :param InstanceTypes: List of instance models.
-        :type InstanceTypes: list of str
-        :param InstanceTags: List of tags.
-        :type InstanceTags: list of InstanceTag
-        :param VersionNumber: Version number.
-        :type VersionNumber: int
-        :param UpdatedTime: Update time.
-        :type UpdatedTime: str
-        :param CamRoleName: CAM role name, which can be obtained from the roleName field in the return value of the DescribeRoleList API.
-        :type CamRoleName: str
-        :param LastOperationInstanceTypesCheckPolicy: Value of InstanceTypesCheckPolicy upon the last operation.
-        :type LastOperationInstanceTypesCheckPolicy: str
-        :param HostNameSettings: CVM HostName settings.
-        :type HostNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
-        :param InstanceNameSettings: Settings of CVM instance names.
-        :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
-        :param InstanceChargePrepaid: Sets prepaid billing mode, also known as monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. This parameter is mandatory for prepaid instances.
-        :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
-        :param DiskTypePolicy: Specifies how to select the cloud disk type. 
-<br><li>ORIGINAL: uses the configured cloud disk type
-<br><li>AUTOMATIC: automatically chooses an available cloud disk type in the current availability zone
-        :type DiskTypePolicy: str
-        """
-        self.ProjectId = None
-        self.LaunchConfigurationId = None
-        self.LaunchConfigurationName = None
-        self.InstanceType = None
-        self.SystemDisk = None
-        self.DataDisks = None
-        self.LoginSettings = None
-        self.InternetAccessible = None
-        self.SecurityGroupIds = None
-        self.AutoScalingGroupAbstractSet = None
-        self.UserData = None
-        self.CreatedTime = None
-        self.EnhancedService = None
-        self.ImageId = None
-        self.LaunchConfigurationStatus = None
-        self.InstanceChargeType = None
-        self.InstanceMarketOptions = None
-        self.InstanceTypes = None
-        self.InstanceTags = None
-        self.VersionNumber = None
-        self.UpdatedTime = None
-        self.CamRoleName = None
-        self.LastOperationInstanceTypesCheckPolicy = None
-        self.HostNameSettings = None
-        self.InstanceNameSettings = None
-        self.InstanceChargePrepaid = None
-        self.DiskTypePolicy = None
-
-
-    def _deserialize(self, params):
-        self.ProjectId = params.get("ProjectId")
-        self.LaunchConfigurationId = params.get("LaunchConfigurationId")
-        self.LaunchConfigurationName = params.get("LaunchConfigurationName")
-        self.InstanceType = params.get("InstanceType")
-        if params.get("SystemDisk") is not None:
-            self.SystemDisk = SystemDisk()
-            self.SystemDisk._deserialize(params.get("SystemDisk"))
-        if params.get("DataDisks") is not None:
-            self.DataDisks = []
-            for item in params.get("DataDisks"):
-                obj = DataDisk()
-                obj._deserialize(item)
-                self.DataDisks.append(obj)
-        if params.get("LoginSettings") is not None:
-            self.LoginSettings = LimitedLoginSettings()
-            self.LoginSettings._deserialize(params.get("LoginSettings"))
-        if params.get("InternetAccessible") is not None:
-            self.InternetAccessible = InternetAccessible()
-            self.InternetAccessible._deserialize(params.get("InternetAccessible"))
-        self.SecurityGroupIds = params.get("SecurityGroupIds")
-        if params.get("AutoScalingGroupAbstractSet") is not None:
-            self.AutoScalingGroupAbstractSet = []
-            for item in params.get("AutoScalingGroupAbstractSet"):
-                obj = AutoScalingGroupAbstract()
-                obj._deserialize(item)
-                self.AutoScalingGroupAbstractSet.append(obj)
-        self.UserData = params.get("UserData")
-        self.CreatedTime = params.get("CreatedTime")
-        if params.get("EnhancedService") is not None:
-            self.EnhancedService = EnhancedService()
-            self.EnhancedService._deserialize(params.get("EnhancedService"))
-        self.ImageId = params.get("ImageId")
-        self.LaunchConfigurationStatus = params.get("LaunchConfigurationStatus")
-        self.InstanceChargeType = params.get("InstanceChargeType")
-        if params.get("InstanceMarketOptions") is not None:
-            self.InstanceMarketOptions = InstanceMarketOptionsRequest()
-            self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
-        self.InstanceTypes = params.get("InstanceTypes")
-        if params.get("InstanceTags") is not None:
-            self.InstanceTags = []
-            for item in params.get("InstanceTags"):
-                obj = InstanceTag()
-                obj._deserialize(item)
-                self.InstanceTags.append(obj)
-        self.VersionNumber = params.get("VersionNumber")
-        self.UpdatedTime = params.get("UpdatedTime")
-        self.CamRoleName = params.get("CamRoleName")
-        self.LastOperationInstanceTypesCheckPolicy = params.get("LastOperationInstanceTypesCheckPolicy")
-        if params.get("HostNameSettings") is not None:
-            self.HostNameSettings = HostNameSettings()
-            self.HostNameSettings._deserialize(params.get("HostNameSettings"))
-        if params.get("InstanceNameSettings") is not None:
-            self.InstanceNameSettings = InstanceNameSettings()
-            self.InstanceNameSettings._deserialize(params.get("InstanceNameSettings"))
-        if params.get("InstanceChargePrepaid") is not None:
-            self.InstanceChargePrepaid = InstanceChargePrepaid()
-            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
-        self.DiskTypePolicy = params.get("DiskTypePolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3377,64 +2904,6 @@ class LifecycleHook(AbstractModel):
             self.NotificationTarget = NotificationTarget()
             self.NotificationTarget._deserialize(params.get("NotificationTarget"))
         self.LifecycleTransitionType = params.get("LifecycleTransitionType")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class LimitedLoginSettings(AbstractModel):
-    """This describes the configuration and information related to instance login. For security reasons, sensitive information is not described.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param KeyIds: List of key IDs.
-        :type KeyIds: list of str
-        """
-        self.KeyIds = None
-
-
-    def _deserialize(self, params):
-        self.KeyIds = params.get("KeyIds")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class LoginSettings(AbstractModel):
-    """This describes the configuration and information related to instance login.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Password: Login password of the instance. The rule of password complexity varies by operating system: <br><li>For Linux instances, the password must be a combination of 8-16 characters comprised of at least two of the following types: [a-z, A-Z], [0-9] and [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]. <br><li>For Windows instances, the password must be a combination of 12-16 characters comprised of at least three of the following types: [a-z], [A-Z], [0-9] and [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? /]. <br><br>If this parameter is not specified, a password will be randomly generated and sent to you via internal message.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Password: str
-        :param KeyIds: List of key IDs. An instance associated with the key can be accessed using the corresponding private key. KeyId can be obtained via the API DescribeKeyPairs. A key and a password cannot be specified at the same time, and specifying the key is not supported in Windows. You can specify only one key when purchasing an instance.
-        :type KeyIds: list of str
-        :param KeepImageLogin: Keep the original settings for an image. You cannot specify this parameter if Password or KeyIds.N is specified. You can specify this parameter to TRUE only when you create an instance using a custom image, shared image, or image imported from external resources. Value range: <br><li>TRUE: Keep the login settings for the image <br><li>FALSE: Do not keep the login settings for the image <br><br>Default value: FALSE.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type KeepImageLogin: bool
-        """
-        self.Password = None
-        self.KeyIds = None
-        self.KeepImageLogin = None
-
-
-    def _deserialize(self, params):
-        self.Password = params.get("Password")
-        self.KeyIds = params.get("KeyIds")
-        self.KeepImageLogin = params.get("KeepImageLogin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3829,6 +3298,81 @@ This field requires passing in the `InstanceName` field. Other fields that are n
 
 class ModifyLaunchConfigurationAttributesResponse(AbstractModel):
     """ModifyLaunchConfigurationAttributes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLifecycleHookRequest(AbstractModel):
+    """ModifyLifecycleHook request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LifecycleHookId: Lifecycle hook ID.
+        :type LifecycleHookId: str
+        :param LifecycleHookName: Lifecycle hook name.
+        :type LifecycleHookName: str
+        :param LifecycleTransition: The time when the lifecycle hook is applied. Valid values:
+<li> `INSTANCE_LAUNCHING`: After the instance launch
+<li> `INSTANCE_TERMINATING`: Before the instance termination
+        :type LifecycleTransition: str
+        :param DefaultResult: Actions after the lifecycle hook times out. Valid values:
+<li> `CONTINUE`: Continue the scaling activity after the timeout
+<li> `ABANDON`: Terminate the scaling activity after the timeout
+        :type DefaultResult: str
+        :param HeartbeatTimeout: The maximum length of time (in seconds) that can elapse before the lifecycle hook times out. Value range: 30 - 7,200 seconds.
+        :type HeartbeatTimeout: int
+        :param NotificationMetadata: Additional information sent by AS to the notification target.
+        :type NotificationMetadata: str
+        :param LifecycleTransitionType: The scenario where the lifecycle hook is applied. `EXTENSION`: The lifecycle hook will be triggered when `AttachInstances`, `DetachInstances` or `RemoveInstances` is called. `NORMAL`: The lifecycle hook is not triggered by the above APIs.
+        :type LifecycleTransitionType: str
+        :param NotificationTarget: Information of the notification target.
+        :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
+        """
+        self.LifecycleHookId = None
+        self.LifecycleHookName = None
+        self.LifecycleTransition = None
+        self.DefaultResult = None
+        self.HeartbeatTimeout = None
+        self.NotificationMetadata = None
+        self.LifecycleTransitionType = None
+        self.NotificationTarget = None
+
+
+    def _deserialize(self, params):
+        self.LifecycleHookId = params.get("LifecycleHookId")
+        self.LifecycleHookName = params.get("LifecycleHookName")
+        self.LifecycleTransition = params.get("LifecycleTransition")
+        self.DefaultResult = params.get("DefaultResult")
+        self.HeartbeatTimeout = params.get("HeartbeatTimeout")
+        self.NotificationMetadata = params.get("NotificationMetadata")
+        self.LifecycleTransitionType = params.get("LifecycleTransitionType")
+        if params.get("NotificationTarget") is not None:
+            self.NotificationTarget = NotificationTarget()
+            self.NotificationTarget._deserialize(params.get("NotificationTarget"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLifecycleHookResponse(AbstractModel):
+    """ModifyLifecycleHook response structure.
 
     """
 
@@ -4295,104 +3839,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
-
-
-class ScaleInInstancesRequest(AbstractModel):
-    """ScaleInInstances request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param AutoScalingGroupId: Scaling group ID
-        :type AutoScalingGroupId: str
-        :param ScaleInNumber: Number of instances to be reduced
-        :type ScaleInNumber: int
-        """
-        self.AutoScalingGroupId = None
-        self.ScaleInNumber = None
-
-
-    def _deserialize(self, params):
-        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
-        self.ScaleInNumber = params.get("ScaleInNumber")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ScaleInInstancesResponse(AbstractModel):
-    """ScaleInInstances response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ActivityId: Scaling activity ID
-        :type ActivityId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.ActivityId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.ActivityId = params.get("ActivityId")
-        self.RequestId = params.get("RequestId")
-
-
-class ScaleOutInstancesRequest(AbstractModel):
-    """ScaleOutInstances request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param AutoScalingGroupId: Scaling group ID
-        :type AutoScalingGroupId: str
-        :param ScaleOutNumber: Number of instances to be added
-        :type ScaleOutNumber: int
-        """
-        self.AutoScalingGroupId = None
-        self.ScaleOutNumber = None
-
-
-    def _deserialize(self, params):
-        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
-        self.ScaleOutNumber = params.get("ScaleOutNumber")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ScaleOutInstancesResponse(AbstractModel):
-    """ScaleOutInstances response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ActivityId: Scaling activity ID
-        :type ActivityId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.ActivityId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.ActivityId = params.get("ActivityId")
-        self.RequestId = params.get("RequestId")
 
 
 class ScalingPolicy(AbstractModel):
@@ -4867,162 +4313,6 @@ class TargetAttribute(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
-
-
-class UpgradeLaunchConfigurationRequest(AbstractModel):
-    """UpgradeLaunchConfiguration request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param LaunchConfigurationId: Launch configuration ID.
-        :type LaunchConfigurationId: str
-        :param ImageId: Valid [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-8toqc6s3`. There are four types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><li>Marketplace images </li><br/>You can obtain the available image IDs in the following ways: <br/><li>For `public images`, `custom images`, and `shared images`, log in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE) to query the image IDs; for `marketplace images`, query the image IDs through [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>This value can be obtained from the `ImageId` field in the return value of the [DescribeImages API](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1).</li>
-        :type ImageId: str
-        :param InstanceTypes: List of instance models. Different instance models specify different resource specifications. Up to 5 instance models can be supported.
-        :type InstanceTypes: list of str
-        :param LaunchConfigurationName: Display name of the launch configuration, which can contain Chinese characters, letters, numbers, underscores, separators ("-"), and decimal points with a maximum length of 60 bytes.
-        :type LaunchConfigurationName: str
-        :param DataDisks: Information of the instance's data disk configuration. If this parameter is not specified, no data disk is purchased by default. Up to 11 data disks can be supported.
-        :type DataDisks: list of DataDisk
-        :param EnhancedService: Enhanced service. This parameter is used to specify whether to enable Cloud Security, Cloud Monitoring and other services. If this parameter is not specified, Cloud Monitoring and Cloud Security will be enabled by default.
-        :type EnhancedService: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
-        :param InstanceChargeType: Instance billing mode. CVM instances take `POSTPAID_BY_HOUR` by default. Valid values:
-<br><li>POSTPAID_BY_HOUR: pay-as-you-go hourly
-<br><li>SPOTPAID: spot instance
-        :type InstanceChargeType: str
-        :param InstanceMarketOptions: Market-related options of the instance, such as the parameters related to stop instances. If the billing method of instance is specified as bidding, this parameter must be passed in.
-        :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
-        :param InstanceTypesCheckPolicy: Instance type verification policy. Value range: ALL, ANY. Default value: ANY.
-<br><li> ALL: The verification will success only if all instance types (InstanceType) are available; otherwise, an error will be reported.
-<br><li> ANY: The verification will success if any instance type (InstanceType) is available; otherwise, an error will be reported.
-
-Common reasons why an instance type is unavailable include stock-out of the instance type and the corresponding cloud disk.
-If a model in InstanceTypes does not exist or has been deactivated, a verification error will be reported regardless of the value of InstanceTypesCheckPolicy.
-        :type InstanceTypesCheckPolicy: str
-        :param InternetAccessible: Configuration information of public network bandwidth. If this parameter is not specified, the default public network bandwidth is 0 Mbps.
-        :type InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
-        :param LoginSettings: Login settings of the instance. This parameter is used to set the login password and key for the instance, or to keep the original login settings for the image. By default, a random password is generated and sent to the user via the internal message.
-        :type LoginSettings: :class:`tencentcloud.autoscaling.v20180419.models.LoginSettings`
-        :param ProjectId: Project ID of the instance. Leave it blank as the default.
-        :type ProjectId: int
-        :param SecurityGroupIds: The security group of instance. This parameter can be obtained by calling the `SecurityGroupId` field in the returned value of [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1). If this parameter is not specified, no security group will be bound by default.
-        :type SecurityGroupIds: list of str
-        :param SystemDisk: System disk configuration of the instance. If this parameter is not specified, the default value will be assigned to it.
-        :type SystemDisk: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
-        :param UserData: Base64-encoded custom data of up to 16 KB.
-        :type UserData: str
-        :param InstanceTags: List of tags. This parameter is used to bind up to 10 tags to newly added instances.
-        :type InstanceTags: list of InstanceTag
-        :param CamRoleName: CAM role name, which can be obtained from the roleName field in the return value of the DescribeRoleList API.
-        :type CamRoleName: str
-        :param HostNameSettings: CVM HostName settings.
-        :type HostNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
-        :param InstanceNameSettings: Settings of CVM instance names.
-        :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
-        :param InstanceChargePrepaid: Advance payment mode, also known as monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. This parameter is mandatory for prepaid instances.
-        :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
-        :param DiskTypePolicy: Selection policy of cloud disks. Default value: ORIGINAL. Valid values:
-<br><li>ORIGINAL: uses the configured cloud disk type
-<br><li>AUTOMATIC: automatically chooses an available cloud disk type
-        :type DiskTypePolicy: str
-        """
-        self.LaunchConfigurationId = None
-        self.ImageId = None
-        self.InstanceTypes = None
-        self.LaunchConfigurationName = None
-        self.DataDisks = None
-        self.EnhancedService = None
-        self.InstanceChargeType = None
-        self.InstanceMarketOptions = None
-        self.InstanceTypesCheckPolicy = None
-        self.InternetAccessible = None
-        self.LoginSettings = None
-        self.ProjectId = None
-        self.SecurityGroupIds = None
-        self.SystemDisk = None
-        self.UserData = None
-        self.InstanceTags = None
-        self.CamRoleName = None
-        self.HostNameSettings = None
-        self.InstanceNameSettings = None
-        self.InstanceChargePrepaid = None
-        self.DiskTypePolicy = None
-
-
-    def _deserialize(self, params):
-        self.LaunchConfigurationId = params.get("LaunchConfigurationId")
-        self.ImageId = params.get("ImageId")
-        self.InstanceTypes = params.get("InstanceTypes")
-        self.LaunchConfigurationName = params.get("LaunchConfigurationName")
-        if params.get("DataDisks") is not None:
-            self.DataDisks = []
-            for item in params.get("DataDisks"):
-                obj = DataDisk()
-                obj._deserialize(item)
-                self.DataDisks.append(obj)
-        if params.get("EnhancedService") is not None:
-            self.EnhancedService = EnhancedService()
-            self.EnhancedService._deserialize(params.get("EnhancedService"))
-        self.InstanceChargeType = params.get("InstanceChargeType")
-        if params.get("InstanceMarketOptions") is not None:
-            self.InstanceMarketOptions = InstanceMarketOptionsRequest()
-            self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
-        self.InstanceTypesCheckPolicy = params.get("InstanceTypesCheckPolicy")
-        if params.get("InternetAccessible") is not None:
-            self.InternetAccessible = InternetAccessible()
-            self.InternetAccessible._deserialize(params.get("InternetAccessible"))
-        if params.get("LoginSettings") is not None:
-            self.LoginSettings = LoginSettings()
-            self.LoginSettings._deserialize(params.get("LoginSettings"))
-        self.ProjectId = params.get("ProjectId")
-        self.SecurityGroupIds = params.get("SecurityGroupIds")
-        if params.get("SystemDisk") is not None:
-            self.SystemDisk = SystemDisk()
-            self.SystemDisk._deserialize(params.get("SystemDisk"))
-        self.UserData = params.get("UserData")
-        if params.get("InstanceTags") is not None:
-            self.InstanceTags = []
-            for item in params.get("InstanceTags"):
-                obj = InstanceTag()
-                obj._deserialize(item)
-                self.InstanceTags.append(obj)
-        self.CamRoleName = params.get("CamRoleName")
-        if params.get("HostNameSettings") is not None:
-            self.HostNameSettings = HostNameSettings()
-            self.HostNameSettings._deserialize(params.get("HostNameSettings"))
-        if params.get("InstanceNameSettings") is not None:
-            self.InstanceNameSettings = InstanceNameSettings()
-            self.InstanceNameSettings._deserialize(params.get("InstanceNameSettings"))
-        if params.get("InstanceChargePrepaid") is not None:
-            self.InstanceChargePrepaid = InstanceChargePrepaid()
-            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
-        self.DiskTypePolicy = params.get("DiskTypePolicy")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class UpgradeLaunchConfigurationResponse(AbstractModel):
-    """UpgradeLaunchConfiguration response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
 
 
 class UpgradeLifecycleHookRequest(AbstractModel):

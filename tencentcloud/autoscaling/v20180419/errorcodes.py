@@ -59,15 +59,6 @@ INTERNALERROR_CALLEEERROR = 'InternalError.CalleeError'
 # An internal request error occurred.
 INTERNALERROR_REQUESTERROR = 'InternalError.RequestError'
 
-# The image was not found.
-INVALIDIMAGEID_NOTFOUND = 'InvalidImageId.NotFound'
-
-# Invalid launch configuration.
-INVALIDLAUNCHCONFIGURATION = 'InvalidLaunchConfiguration'
-
-# The launch configuration ID is invalid.
-INVALIDLAUNCHCONFIGURATIONID = 'InvalidLaunchConfigurationId'
-
 # Invalid parameter.
 INVALIDPARAMETER = 'InvalidParameter'
 
@@ -173,9 +164,6 @@ INVALIDPARAMETERVALUE_INVALIDINSTANCEID = 'InvalidParameterValue.InvalidInstance
 # Invalid instance type.
 INVALIDPARAMETERVALUE_INVALIDINSTANCETYPE = 'InvalidParameterValue.InvalidInstanceType'
 
-# Invalid launch configuration
-INVALIDPARAMETERVALUE_INVALIDLAUNCHCONFIGURATION = 'InvalidParameterValue.InvalidLaunchConfiguration'
-
 # Invalid launch configuration ID.
 INVALIDPARAMETERVALUE_INVALIDLAUNCHCONFIGURATIONID = 'InvalidParameterValue.InvalidLaunchConfigurationId'
 
@@ -190,9 +178,6 @@ INVALIDPARAMETERVALUE_INVALIDSCHEDULEDACTIONID = 'InvalidParameterValue.InvalidS
 
 # The scheduled task name contains invalid characters.
 INVALIDPARAMETERVALUE_INVALIDSCHEDULEDACTIONNAMEINCLUDEILLEGALCHAR = 'InvalidParameterValue.InvalidScheduledActionNameIncludeIllegalChar'
-
-# Invalid snapshot ID.
-INVALIDPARAMETERVALUE_INVALIDSNAPSHOTID = 'InvalidParameterValue.InvalidSnapshotId'
 
 # Invalid subnet ID.
 INVALIDPARAMETERVALUE_INVALIDSUBNETID = 'InvalidParameterValue.InvalidSubnetId'
@@ -287,9 +272,6 @@ LIMITEXCEEDED_DESIREDCAPACITYLIMITEXCEEDED = 'LimitExceeded.DesiredCapacityLimit
 # Too many values for the specified filter
 LIMITEXCEEDED_FILTERVALUESTOOLONG = 'LimitExceeded.FilterValuesTooLong'
 
-# You are short of the launch configuration quota.
-LIMITEXCEEDED_LAUNCHCONFIGURATIONQUOTANOTENOUGH = 'LimitExceeded.LaunchConfigurationQuotaNotEnough'
-
 # The maximum number of instances exceeds the limit.
 LIMITEXCEEDED_MAXSIZELIMITEXCEEDED = 'LimitExceeded.MaxSizeLimitExceeded'
 
@@ -307,9 +289,6 @@ MISSINGPARAMETER = 'MissingParameter'
 
 # A parameter is missing in a specific scenario.
 MISSINGPARAMETER_INSCENARIO = 'MissingParameter.InScenario'
-
-# The `InstanceMarketOptions` parameter of the spot instance is missing.
-MISSINGPARAMETER_INSTANCEMARKETOPTIONS = 'MissingParameter.InstanceMarketOptions'
 
 # The auto scaling group is performing a scaling activity.
 RESOURCEINUSE_ACTIVITYINPROGRESS = 'ResourceInUse.ActivityInProgress'
