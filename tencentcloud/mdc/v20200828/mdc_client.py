@@ -55,6 +55,35 @@ class MdcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateStreamLinkOutputInfo(self, request):
+        """This API is used to create a StreamLink output.
+
+        :param request: Request instance for CreateStreamLinkOutputInfo.
+        :type request: :class:`tencentcloud.mdc.v20200828.models.CreateStreamLinkOutputInfoRequest`
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateStreamLinkOutputInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateStreamLinkOutputInfo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateStreamLinkOutputInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteStreamLinkFlow(self, request):
         """This API is used to delete a StreamLink flow.
 
@@ -142,6 +171,151 @@ class MdcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeStreamLinkFlowLogs(self, request):
+        """This API is used to query the logs of a StreamLink flow.
+
+        :param request: Request instance for DescribeStreamLinkFlowLogs.
+        :type request: :class:`tencentcloud.mdc.v20200828.models.DescribeStreamLinkFlowLogsRequest`
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeStreamLinkFlowLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamLinkFlowLogs", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStreamLinkFlowLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeStreamLinkFlowMediaStatistics(self, request):
+        """This API is used to query the media quality of a StreamLink flow.
+
+        :param request: Request instance for DescribeStreamLinkFlowMediaStatistics.
+        :type request: :class:`tencentcloud.mdc.v20200828.models.DescribeStreamLinkFlowMediaStatisticsRequest`
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeStreamLinkFlowMediaStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamLinkFlowMediaStatistics", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStreamLinkFlowMediaStatisticsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeStreamLinkFlowRealtimeStatus(self, request):
+        """This API is used to query the current status of a flow.
+
+        :param request: Request instance for DescribeStreamLinkFlowRealtimeStatus.
+        :type request: :class:`tencentcloud.mdc.v20200828.models.DescribeStreamLinkFlowRealtimeStatusRequest`
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeStreamLinkFlowRealtimeStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamLinkFlowRealtimeStatus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStreamLinkFlowRealtimeStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeStreamLinkFlowSRTStatistics(self, request):
+        """This API is used to query the SRT streaming performance of a StreamLink flow.
+
+        :param request: Request instance for DescribeStreamLinkFlowSRTStatistics.
+        :type request: :class:`tencentcloud.mdc.v20200828.models.DescribeStreamLinkFlowSRTStatisticsRequest`
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeStreamLinkFlowSRTStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamLinkFlowSRTStatistics", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStreamLinkFlowSRTStatisticsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeStreamLinkFlowStatistics(self, request):
+        """This API is used to query the media quality of a StreamLink flow.
+
+        :param request: Request instance for DescribeStreamLinkFlowStatistics.
+        :type request: :class:`tencentcloud.mdc.v20200828.models.DescribeStreamLinkFlowStatisticsRequest`
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeStreamLinkFlowStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamLinkFlowStatistics", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStreamLinkFlowStatisticsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeStreamLinkFlows(self, request):
         """This API is used to query the configuration information of multiple StreamLink flows in batches.
 
@@ -215,6 +389,64 @@ class MdcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyStreamLinkFlowResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyStreamLinkInput(self, request):
+        """This API is used to modify an input of a StreamLink flow.
+
+        :param request: Request instance for ModifyStreamLinkInput.
+        :type request: :class:`tencentcloud.mdc.v20200828.models.ModifyStreamLinkInputRequest`
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.ModifyStreamLinkInputResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyStreamLinkInput", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyStreamLinkInputResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyStreamLinkOutputInfo(self, request):
+        """This API is used to modify an output of a StreamLink flow.
+
+        :param request: Request instance for ModifyStreamLinkOutputInfo.
+        :type request: :class:`tencentcloud.mdc.v20200828.models.ModifyStreamLinkOutputInfoRequest`
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.ModifyStreamLinkOutputInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyStreamLinkOutputInfo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyStreamLinkOutputInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

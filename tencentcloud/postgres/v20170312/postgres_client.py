@@ -809,6 +809,35 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeEncryptionKeys(self, request):
+        """This API is used to get instance key list.
+
+        :param request: Request instance for DescribeEncryptionKeys.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeEncryptionKeysRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeEncryptionKeysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEncryptionKeys", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEncryptionKeysResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeOrders(self, request):
         """This API is used to get order information.
 

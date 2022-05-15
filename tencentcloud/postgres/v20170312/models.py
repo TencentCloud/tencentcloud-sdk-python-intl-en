@@ -2477,6 +2477,57 @@ class DescribeDatabasesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEncryptionKeysRequest(AbstractModel):
+    """DescribeEncryptionKeys request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: Instance ID
+        :type DBInstanceId: str
+        """
+        self.DBInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEncryptionKeysResponse(AbstractModel):
+    """DescribeEncryptionKeys response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EncryptionKeys: Instance key list
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type EncryptionKeys: list of EncryptionKey
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.EncryptionKeys = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("EncryptionKeys") is not None:
+            self.EncryptionKeys = []
+            for item in params.get("EncryptionKeys"):
+                obj = EncryptionKey()
+                obj._deserialize(item)
+                self.EncryptionKeys.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeOrdersRequest(AbstractModel):
     """DescribeOrders request structure.
 
@@ -3177,6 +3228,56 @@ class DurationAnalysis(AbstractModel):
     def _deserialize(self, params):
         self.TimeSegment = params.get("TimeSegment")
         self.Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EncryptionKey(AbstractModel):
+    """KMS key information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param KeyId: Encrypted KeyId of KMS instance
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type KeyId: str
+        :param KeyAlias: Encryption key alias of KMS instance 
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type KeyAlias: str
+        :param DEKCipherTextBlob: Instance DEK ciphertext
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type DEKCipherTextBlob: str
+        :param IsEnabled: Whether the key is enabled. Valid values: `1` (yes), `0` (no)
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type IsEnabled: int
+        :param KeyRegion: Region where KMS key resides
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type KeyRegion: str
+        :param CreateTime: DEK key creation time
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type CreateTime: str
+        """
+        self.KeyId = None
+        self.KeyAlias = None
+        self.DEKCipherTextBlob = None
+        self.IsEnabled = None
+        self.KeyRegion = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.KeyAlias = params.get("KeyAlias")
+        self.DEKCipherTextBlob = params.get("DEKCipherTextBlob")
+        self.IsEnabled = params.get("IsEnabled")
+        self.KeyRegion = params.get("KeyRegion")
+        self.CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
