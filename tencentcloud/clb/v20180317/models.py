@@ -945,10 +945,10 @@ Note: if the name of a new CLB instance already exists, a default name will be g
         :param ProjectId: Project ID of the CLB instance, which can be obtained through the [`DescribeProject`](https://intl.cloud.tencent.com/document/product/378/4400?from_cn_redirect=1) API. If this field is not specified, it will default to the default project.
         :type ProjectId: int
         :param MasterZoneId: Sets the primary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`, which is applicable only to public network CLB.
-Note: A primary AZ carries traffic by default, while a secondary AZ does not. It only works when the primary AZ is faulty.
+Note: By default, the traffic goes to the primary AZ. The secondary AZs only carry traffic when the primary AZ is unavailable. The optimal secondary AZ is chosen automatically. You can query the primary and secondary AZ of a region by calling [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1).
         :type MasterZoneId: str
-        :param SlaveZoneId: Sets the secondary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`, which is applicable only to public network CLB instances.
-Note: A secondary AZ carries traffic when the primary AZ fails. 
+        :param SlaveZoneId: Specifies the secondary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`. It is applicable only to public network CLB.
+Note: The traffic only goes to the secondary AZ when the primary AZ is unavailable. You can query the list of primary and secondary AZ of a region by calling [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1).
         :type SlaveZoneId: str
         :param ZoneId: Specifies an AZ ID for creating a CLB instance, such as `ap-guangzhou-1`, which is applicable only to public network CLB instances.
         :type ZoneId: str
@@ -1319,8 +1319,8 @@ Note: if the name of the new CLB instance already exists, a default name will be
         :type AddressIPVersion: str
         :param Number: Number of CLBs to be created. Default value: 1.
         :type Number: int
-        :param MasterZoneId: Sets the primary AZ ID for cross-AZ disaster recovery, such as 100001 or ap-guangzhou-1, which is applicable only to public network CLB.
-Note: A primary AZ carries traffic, while a secondary AZ does not carry traffic by default and will be used only if the primary AZ becomes unavailable. The platform will automatically select the optimal secondary AZ. The list of primary AZs in a specific region can be queried through the DescribeMasterZones API.
+        :param MasterZoneId: Sets the primary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`, which is applicable only to public network CLB.
+Note: By default, the traffic goes to the primary AZ. The secondary AZs only carry traffic when the primary AZ is unavailable. The optimal secondary AZ is chosen automatically. You can query the primary and secondary AZ of a region by calling [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1).
         :type MasterZoneId: str
         :param ZoneId: Specifies an AZ ID for creating a CLB instance, such as `ap-guangzhou-1`, which is applicable only to public network CLB instances.
         :type ZoneId: str
@@ -1351,8 +1351,8 @@ Note: A primary AZ carries traffic, while a secondary AZ does not carry traffic 
         :type SnatIps: list of SnatIp
         :param ClusterTag: Tag for the STGW exclusive cluster.
         :type ClusterTag: str
-        :param SlaveZoneId: Sets the secondary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`, which is applicable only to public network CLB instances.
-Note: A secondary AZ will load traffic if the primary AZ has failures. The API `DescribeMasterZones` is used to query the primary and secondary AZ list of a region.
+        :param SlaveZoneId: Specifies the secondary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`. It is applicable only to public network CLB.
+Note: The traffic only goes to the secondary AZ when the primary AZ is unavailable. You can query the list of primary and secondary AZ of a region by calling [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1).
         :type SlaveZoneId: str
         :param EipAddressId: Unique ID of an EIP, which can only be used when binding the EIP of a private network CLB instance. E.g., `eip-11112222`.
         :type EipAddressId: str
@@ -1441,6 +1441,8 @@ class CreateLoadBalancerResponse(AbstractModel):
     def __init__(self):
         r"""
         :param LoadBalancerIds: Array of unique CLB instance IDs.
+This field may return `null` in some cases, such as there is delay during instance creation. You can query the IDs of the created instances by invoking `DescribeTaskStatus` with the `RequestId` or `DealName` returned by this API.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type LoadBalancerIds: list of str
         :param DealName: Order ID.
 Note: this field may return `null`, indicating that no valid values can be obtained.
@@ -3981,9 +3983,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param HttpVersion: Health check protocol (a custom check parameter), which is required if the value of CheckType is HTTP. This parameter represents the HTTP version of the real server. Value range: HTTP/1.0, HTTP/1.1. (Applicable only to TCP listeners.)
 Note: This field may return null, indicating that no valid values can be obtained.
         :type HttpVersion: str
-        :param SourceIpType: Specifies the type of IP for health check. `0` (default): Use the CLB VIP as the source IP. `1`: Use the IP range starting with 100.64 as the source IP.
+        :param SourceIpType: Specifies the type of IP for health check. `0` (default): CLB VIP. `1`: Use the IP range starting with 100.64 as the source IP.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type SourceIpType: int
+        :param ExtendedCode: GRPC health check status code, which is only applicable to rules with GRPC as the backend forwarding protocol. It can be a single number (such as `20`), multiple numbers (such as `20,25`) or a range (such as `0-99`). The default value is `12`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ExtendedCode: str
         """
         self.HealthSwitch = None
         self.TimeOut = None
@@ -4001,6 +4006,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.CheckType = None
         self.HttpVersion = None
         self.SourceIpType = None
+        self.ExtendedCode = None
 
 
     def _deserialize(self, params):
@@ -4020,6 +4026,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.CheckType = params.get("CheckType")
         self.HttpVersion = params.get("HttpVersion")
         self.SourceIpType = params.get("SourceIpType")
+        self.ExtendedCode = params.get("ExtendedCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5957,11 +5964,13 @@ class Quota(AbstractModel):
     def __init__(self):
         r"""
         :param QuotaId: Quota name. Valid values:
-<li> TOTAL_OPEN_CLB_QUOTA: quota of public network CLB instances in the current region</li>
-<li> TOTAL_INTERNAL_CLB_QUOTA: quota of private network CLB instances in the current region</li>
-<li> TOTAL_LISTENER_QUOTA: quota of listeners under one CLB instance</li>
-<li> TOTAL_LISTENER_RULE_QUOTA: quota of forwarding rules under one listener</li>
-<li> TOTAL_TARGET_BIND_QUOTA: quota of CVM instances can be bound under one forwarding rule</li>
+<li> `TOTAL_OPEN_CLB_QUOTA`: Quota of public network CLB instances in the current region</li>
+<li> `TOTAL_INTERNAL_CLB_QUOTA`: Quota of private network CLB instances in the current region</li>
+<li> `TOTAL_LISTENER_QUOTA`: Quota of listeners under one CLB instance</li>
+<li> `TOTAL_LISTENER_RULE_QUOTA`: Quota of forwarding rules under one listener</li>
+<li> `TOTAL_TARGET_BIND_QUOTA`: Quota of CVM instances can be bound under one forwarding rule</li>
+<li> `TOTAL_SNAP_IP_QUOTA`: Quota of SNAT IPs for cross-region binding 2.0 under one CLB instance </li>
+<li> `TOTAL_ISP_CLB_QUOTA`: Quota of triple-ISP (CMCC/CUCC/CTCC) CLB instances in the current region</li>
         :type QuotaId: str
         :param QuotaCurrent: Currently used quantity. If it is `null`, it is meaningless.
 Note: this field may return null, indicating that no valid values can be obtained.

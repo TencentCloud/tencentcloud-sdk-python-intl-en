@@ -45,12 +45,15 @@ Note:
         :param ExternalId: External role ID, which can be obtained by clicking the role name in the [CAM console](https://console.cloud.tencent.com/cam/role).
 It can contain 2-128 letters, digits, and symbols (=,.@:/-). Regex: [\w+=,.@:\/-]*
         :type ExternalId: str
+        :param Tags: List of session tags. Up to 50 tags are allowed. The tag keys can not duplicate.
+        :type Tags: list of Tag
         """
         self.RoleArn = None
         self.RoleSessionName = None
         self.DurationSeconds = None
         self.Policy = None
         self.ExternalId = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -59,6 +62,12 @@ It can contain 2-128 letters, digits, and symbols (=,.@:/-). Regex: [\w+=,.@:\/-
         self.DurationSeconds = params.get("DurationSeconds")
         self.Policy = params.get("Policy")
         self.ExternalId = params.get("ExternalId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -167,6 +176,77 @@ class AssumeRoleWithSAMLResponse(AbstractModel):
             self.Credentials._deserialize(params.get("Credentials"))
         self.ExpiredTime = params.get("ExpiredTime")
         self.Expiration = params.get("Expiration")
+        self.RequestId = params.get("RequestId")
+
+
+class AssumeRoleWithWebIdentityRequest(AbstractModel):
+    """AssumeRoleWithWebIdentity request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProviderId: Identity provider name
+        :type ProviderId: str
+        :param WebIdentityToken: OIDC token issued by the IdP
+        :type WebIdentityToken: str
+        :param RoleArn: Role access description name
+        :type RoleArn: str
+        :param RoleSessionName: Session name
+        :type RoleSessionName: str
+        :param DurationSeconds: The validity period of the temporary credential in seconds. Default value: 7,200s. Maximum value: 43,200s.
+        :type DurationSeconds: int
+        """
+        self.ProviderId = None
+        self.WebIdentityToken = None
+        self.RoleArn = None
+        self.RoleSessionName = None
+        self.DurationSeconds = None
+
+
+    def _deserialize(self, params):
+        self.ProviderId = params.get("ProviderId")
+        self.WebIdentityToken = params.get("WebIdentityToken")
+        self.RoleArn = params.get("RoleArn")
+        self.RoleSessionName = params.get("RoleSessionName")
+        self.DurationSeconds = params.get("DurationSeconds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssumeRoleWithWebIdentityResponse(AbstractModel):
+    """AssumeRoleWithWebIdentity response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ExpiredTime: Expiration time of the temporary credential (timestamp)
+        :type ExpiredTime: int
+        :param Expiration: Expiration time of the temporary credential
+        :type Expiration: str
+        :param Credentials: Temporary credential
+        :type Credentials: :class:`tencentcloud.sts.v20180813.models.Credentials`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ExpiredTime = None
+        self.Expiration = None
+        self.Credentials = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ExpiredTime = params.get("ExpiredTime")
+        self.Expiration = params.get("Expiration")
+        if params.get("Credentials") is not None:
+            self.Credentials = Credentials()
+            self.Credentials._deserialize(params.get("Credentials"))
         self.RequestId = params.get("RequestId")
 
 
@@ -316,3 +396,31 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ExpiredTime = params.get("ExpiredTime")
         self.Expiration = params.get("Expiration")
         self.RequestId = params.get("RequestId")
+
+
+class Tag(AbstractModel):
+    """Information on tags
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: Tag key. It’s up to 128 characters and case-sensitive.
+        :type Key: str
+        :param Value: Tag value. It’s up to 256 characters and case-sensitive.
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

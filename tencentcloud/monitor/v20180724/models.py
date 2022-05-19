@@ -408,6 +408,12 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param FilterDimensionsParam: Information on the filter dimension associated with a policy.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type FilterDimensionsParam: str
+        :param IsOneClick: Whether it is a quick alarm policy.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type IsOneClick: int
+        :param OneClickStatus: Whether the quick alarm policy is enabled.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type OneClickStatus: int
         """
         self.PolicyId = None
         self.PolicyName = None
@@ -439,6 +445,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.OriginId = None
         self.TagInstances = None
         self.FilterDimensionsParam = None
+        self.IsOneClick = None
+        self.OneClickStatus = None
 
 
     def _deserialize(self, params):
@@ -493,6 +501,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
                 obj._deserialize(item)
                 self.TagInstances.append(obj)
         self.FilterDimensionsParam = params.get("FilterDimensionsParam")
+        self.IsOneClick = params.get("IsOneClick")
+        self.OneClickStatus = params.get("OneClickStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2218,6 +2228,8 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
         :type NeedCorrespondence: int
         :param TriggerTasks: Filter alarm policy by triggered task (such as auto scaling task). Up to 10 tasks can be specified.
         :type TriggerTasks: list of AlarmPolicyTriggerTask
+        :param OneClickPolicyType: Filter by quick alarm policy. If this parameter is left empty, all policies are displayed. `ONECLICK`: Display quick alarm policies; `NOT_ONECLICK`: Display non-quick alarm policies.
+        :type OneClickPolicyType: list of str
         """
         self.Module = None
         self.PageNumber = None
@@ -2239,6 +2251,7 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
         self.InstanceGroupId = None
         self.NeedCorrespondence = None
         self.TriggerTasks = None
+        self.OneClickPolicyType = None
 
 
     def _deserialize(self, params):
@@ -2267,6 +2280,7 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
                 obj = AlarmPolicyTriggerTask()
                 obj._deserialize(item)
                 self.TriggerTasks.append(obj)
+        self.OneClickPolicyType = params.get("OneClickPolicyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

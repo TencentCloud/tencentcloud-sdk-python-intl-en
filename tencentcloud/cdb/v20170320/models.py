@@ -1494,6 +1494,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type AlarmPolicyIdList: list of str
         :param DryRun: Whether to check the request without creating any instance. Valid values: `true`, `false` (default). After being submitted, the request will be checked to see if it is in correct format and has all required parameters with valid values. An error code is returned if the check failed, and `RequestId` is returned if the check succeeded. After a successful check, no instance will be created if this parameter is set to `true`, whereas an instance will be created and if it is set to `false`.
         :type DryRun: bool
+        :param EngineType: Instance engine type. Valid values: `InnoDB` (default); `RocksDB`.
+        :type EngineType: str
         :param Vips: The list of IPs for sources instances. Only one IP address can be assigned to a single source instance. If all IPs are used up, the system will automatically assign IPs to the remaining source instances that do not have one.
         :type Vips: list of str
         """
@@ -1532,6 +1534,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.ParamTemplateType = None
         self.AlarmPolicyIdList = None
         self.DryRun = None
+        self.EngineType = None
         self.Vips = None
 
 
@@ -1583,6 +1586,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.ParamTemplateType = params.get("ParamTemplateType")
         self.AlarmPolicyIdList = params.get("AlarmPolicyIdList")
         self.DryRun = params.get("DryRun")
+        self.EngineType = params.get("EngineType")
         self.Vips = params.get("Vips")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

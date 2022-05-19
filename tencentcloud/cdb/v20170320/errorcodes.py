@@ -377,7 +377,7 @@ OPERATIONDENIED_NOTSUPPORTMODIFYLOCALROOTHOSTERROR = 'OperationDenied.NotSupport
 # There are other orders being submitted. Please try again later.
 OPERATIONDENIED_OTHERODERINPROCESS = 'OperationDenied.OtherOderInProcess'
 
-# 
+# This operation is not allowed during database proxy upgrade task.
 OPERATIONDENIED_PROXYUPGRADETASKSTATUSERROR = 'OperationDenied.ProxyUpgradeTaskStatusError'
 
 # The maximum number of results has been reached. Please narrow down your query.

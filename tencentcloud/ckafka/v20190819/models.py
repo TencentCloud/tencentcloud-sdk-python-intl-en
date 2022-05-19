@@ -1419,6 +1419,65 @@ class DeleteAclResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteRouteRequest(AbstractModel):
+    """DeleteRoute request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Unique instance ID.
+        :type InstanceId: str
+        :param RouteId: Route ID.
+        :type RouteId: int
+        :param CallerAppid: AppId of the caller.
+        :type CallerAppid: int
+        :param DeleteRouteTime: The time when a route was deleted.
+        :type DeleteRouteTime: str
+        """
+        self.InstanceId = None
+        self.RouteId = None
+        self.CallerAppid = None
+        self.DeleteRouteTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RouteId = params.get("RouteId")
+        self.CallerAppid = params.get("CallerAppid")
+        self.DeleteRouteTime = params.get("DeleteRouteTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRouteResponse(AbstractModel):
+    """DeleteRoute response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Returned result.
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = JgwOperateResponse()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteRouteTriggerTimeRequest(AbstractModel):
     """DeleteRouteTriggerTime request structure.
 
@@ -2796,7 +2855,7 @@ class FetchMessageByOffsetRequest(AbstractModel):
         :type Topic: str
         :param Partition: Partition ID
         :type Partition: int
-        :param Offset: Offset information
+        :param Offset: Offset information, which is required.
         :type Offset: int
         """
         self.InstanceId = None

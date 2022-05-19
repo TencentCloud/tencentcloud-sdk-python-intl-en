@@ -688,6 +688,63 @@ class CreateGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateOIDCConfigRequest(AbstractModel):
+    """CreateOIDCConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdentityUrl: IdP URL.
+        :type IdentityUrl: str
+        :param IdentityKey: Public key for signature, which must be Base64-encoded.
+        :type IdentityKey: str
+        :param ClientId: Client ID.
+        :type ClientId: list of str
+        :param Name: Name.
+        :type Name: str
+        :param Description: Description.
+        :type Description: str
+        """
+        self.IdentityUrl = None
+        self.IdentityKey = None
+        self.ClientId = None
+        self.Name = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.IdentityUrl = params.get("IdentityUrl")
+        self.IdentityKey = params.get("IdentityKey")
+        self.ClientId = params.get("ClientId")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOIDCConfigResponse(AbstractModel):
+    """CreateOIDCConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreatePolicyRequest(AbstractModel):
     """CreatePolicy request structure.
 
@@ -1119,6 +1176,47 @@ class DeleteGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteOIDCConfigRequest(AbstractModel):
+    """DeleteOIDCConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: OIDC IdP name.
+        :type Name: str
+        """
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteOIDCConfigResponse(AbstractModel):
+    """DeleteOIDCConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeletePolicyRequest(AbstractModel):
     """DeletePolicy request structure.
 
@@ -1464,6 +1562,75 @@ class DeleteUserResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeOIDCConfigRequest(AbstractModel):
+    """DescribeOIDCConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Name.
+        :type Name: str
+        """
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOIDCConfigResponse(AbstractModel):
+    """DescribeOIDCConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProviderType: IdP type. 11: Role IdP.
+        :type ProviderType: int
+        :param IdentityUrl: IdP URL.
+        :type IdentityUrl: str
+        :param IdentityKey: Public key for signature.
+        :type IdentityKey: str
+        :param ClientId: Client ID.
+        :type ClientId: list of str
+        :param Status: Status. 0: Not set; 2: Disabled; 11: Enabled.
+        :type Status: int
+        :param Description: Description.
+        :type Description: str
+        :param Name: Name.
+        :type Name: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ProviderType = None
+        self.IdentityUrl = None
+        self.IdentityKey = None
+        self.ClientId = None
+        self.Status = None
+        self.Description = None
+        self.Name = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ProviderType = params.get("ProviderType")
+        self.IdentityUrl = params.get("IdentityUrl")
+        self.IdentityKey = params.get("IdentityKey")
+        self.ClientId = params.get("ClientId")
+        self.Status = params.get("Status")
+        self.Description = params.get("Description")
+        self.Name = params.get("Name")
         self.RequestId = params.get("RequestId")
 
 
@@ -4423,6 +4590,63 @@ class UpdateGroupRequest(AbstractModel):
 
 class UpdateGroupResponse(AbstractModel):
     """UpdateGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateOIDCConfigRequest(AbstractModel):
+    """UpdateOIDCConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdentityUrl: IdP URL.
+        :type IdentityUrl: str
+        :param IdentityKey: Public key for signature, which must be Base64-encoded.
+        :type IdentityKey: str
+        :param ClientId: Client ID.
+        :type ClientId: list of str
+        :param Name: Name.
+        :type Name: str
+        :param Description: Description.
+        :type Description: str
+        """
+        self.IdentityUrl = None
+        self.IdentityKey = None
+        self.ClientId = None
+        self.Name = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.IdentityUrl = params.get("IdentityUrl")
+        self.IdentityKey = params.get("IdentityKey")
+        self.ClientId = params.get("ClientId")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateOIDCConfigResponse(AbstractModel):
+    """UpdateOIDCConfig response structure.
 
     """
 

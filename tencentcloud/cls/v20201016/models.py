@@ -640,10 +640,14 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param Json: JSON format content description
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Json: :class:`tencentcloud.cls.v20201016.models.JsonInfo`
+        :param Parquet: `Parquet` format description
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type Parquet: :class:`tencentcloud.cls.v20201016.models.ParquetInfo`
         """
         self.Format = None
         self.Csv = None
         self.Json = None
+        self.Parquet = None
 
 
     def _deserialize(self, params):
@@ -654,6 +658,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         if params.get("Json") is not None:
             self.Json = JsonInfo()
             self.Json._deserialize(params.get("Json"))
+        if params.get("Parquet") is not None:
+            self.Parquet = ParquetInfo()
+            self.Parquet._deserialize(params.get("Parquet"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1332,7 +1339,7 @@ class CreateTopicRequest(AbstractModel):
         :type AutoSplit: bool
         :param MaxSplitPartitions: Maximum number of partitions to split into for this topic if automatic split is enabled. Default value: 50
         :type MaxSplitPartitions: int
-        :param StorageType: Log topic storage type. Valid values: `hot` (real-time storage); `cold` (IA storage). Default value: `hot`.
+        :param StorageType: Log topic storage type. Valid values: `hot` (STANDARD storage); `cold` (IA storage). Default value: `hot`.
         :type StorageType: str
         :param Period: Lifecycle in days. Value range: 1-3600 (3640 indicates permanent retention)
         :type Period: int
@@ -3080,7 +3087,7 @@ class DescribeTopicsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: <br><li> `topicName` filters by **log topic name**. Type: String. Required: No<br><li> `logsetName` filters by **logset name**. Type: String. Required: No<br><li> `topicId` filters by **log topic ID**. Type: String. Required: No<br><li> `logsetId` filters by **logset ID**. You can call DescribeLogsets to query the list of created logsets or log in to the console to view them. You can also call CreateLogset to create a logset. Type: String. Required: No<br><li> `tagKey` filters by **tag key**. Type: String. Required: No<br><li> `tag:tagKey` filters by **tag key-value pair**. The tagKey should be replaced with a specified tag key, such as tag:exampleKey. Type: String. Required: No<br><li> `storageType` filters by **log topic storage type**. Valid values: `hot` (real-time storage); `cold`: (IA storage). Type: String. Required: No. Each request can contain up to 10 `Filters` and 100 `Filter.Values`.
+        :param Filters: <br><li> `topicName` filters by **log topic name**. Type: String. Required: No<br><li> `logsetName` filters by **logset name**. Type: String. Required: No<br><li> `topicId` filters by **log topic ID**. Type: String. Required: No<br><li> `logsetId` filters by **logset ID**. You can call the `DescribeLogsets` API to query the list of created logsets or log in to the console to view them. You can also call the `CreateLogset` API to create a logset. Type: String. Required: No<br><li> `tagKey` filters by **tag key**. Type: String. Required: No<br><li> `tag:tagKey` filters by **tag key-value pair**. The tagKey should be replaced with a specified tag key, such as “tag:exampleKey”. Type: String. Required: No<br><li> `storageType` filters by **log topic storage type**. Valid values: `hot` (STANDARD storage); `cold`: (IA storage). Type: String. Required: No. Each request can contain up to 10 `Filters` and 100 `Filter.Values`.
         :type Filters: list of Filter
         :param Offset: Page offset. Default value: 0.
         :type Offset: int
@@ -4835,6 +4842,68 @@ class OpenKafkaConsumerResponse(AbstractModel):
     def _deserialize(self, params):
         self.TopicID = params.get("TopicID")
         self.RequestId = params.get("RequestId")
+
+
+class ParquetInfo(AbstractModel):
+    """`Parquet` contents
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ParquetKeyInfo: `ParquetKeyInfo` array
+        :type ParquetKeyInfo: list of ParquetKeyInfo
+        """
+        self.ParquetKeyInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("ParquetKeyInfo") is not None:
+            self.ParquetKeyInfo = []
+            for item in params.get("ParquetKeyInfo"):
+                obj = ParquetKeyInfo()
+                obj._deserialize(item)
+                self.ParquetKeyInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParquetKeyInfo(AbstractModel):
+    """`Parquet` content description
+
+    """
+
+    def __init__(self):
+        r"""
+        :param KeyName: Key name
+        :type KeyName: str
+        :param KeyType: Supported data types: string, boolean, int32, int64, float, and double
+        :type KeyType: str
+        :param KeyNonExistingField: Assignment information returned upon resolution failure
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type KeyNonExistingField: str
+        """
+        self.KeyName = None
+        self.KeyType = None
+        self.KeyNonExistingField = None
+
+
+    def _deserialize(self, params):
+        self.KeyName = params.get("KeyName")
+        self.KeyType = params.get("KeyType")
+        self.KeyNonExistingField = params.get("KeyNonExistingField")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class PartitionInfo(AbstractModel):

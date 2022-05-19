@@ -329,11 +329,11 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
         :param Format: Adaptive bitstream format. Valid value:
 <li>HLS.</li>
         :type Format: str
-        :param DrmType: DRM type. Valid values:
-<li>FairPlay;</li>
-<li>SimpleAES;</li>
-<li>Widevine.</li>
-If this field is a blank string, DRM will not be performed on the video.
+        :param DrmType: The DRM type. Valid values:
+<li>SimpleAES</li>
+<li>Widevine</li>
+<li>FairPlay</li>
+If this parameter is an empty string, it indicates that the video is not protected by DRM.
         :type DrmType: str
         :param StreamInfos: Parameter information of input stream for adaptive bitrate streaming. Up to 10 streams can be input.
         :type StreamInfos: list of AdaptiveStreamTemplate
@@ -4989,7 +4989,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ClipTask2017(AbstractModel):
-    """Video clipping task information. This structure is only used for tasks initiated by the [ClipVideo](https://intl.cloud.tencent.com/document/product/266/10156?from_cn_redirect=1) API in v2017.
+    """The details of a video editing task. This parameter is only valid for tasks initiated by the v2017 video editing API.
 
     """
 
@@ -5435,7 +5435,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ConcatTask2017(AbstractModel):
-    """Video splicing task information. This structure is only used for tasks initiated by the [ConcatVideo](https://intl.cloud.tencent.com/document/product/266/7821?from_cn_redirect=1) API in v2017.
+    """The details of a video splicing task. This parameter is only valid for tasks initiated by the v2017 video splicing API.
 
     """
 
@@ -6040,9 +6040,11 @@ Note: the frame rate of all substreams must be the same; otherwise, the frame ra
         :type StreamInfos: list of AdaptiveStreamTemplate
         :param Name: Template name. Length limit: 64 characters.
         :type Name: str
-        :param DrmType: DRM scheme type. Valid values:
-<li>SimpleAES.</li>
-If this field is an empty string, DRM will not be performed on the video.
+        :param DrmType: The DRM type. Valid values:
+<li>SimpleAES</li>
+<li>Widevine</li>
+<li>FairPlay</li>
+If this parameter is an empty string, it indicates that the video is not protected by DRM.
         :type DrmType: str
         :param DisableHigherVideoBitrate: Whether to prohibit transcoding video from low bitrate to high bitrate. Valid values:
 <li>0: no,</li>
@@ -6352,7 +6354,7 @@ class CreateContentReviewTemplateResponse(AbstractModel):
 
 
 class CreateImageSpriteTask2017(AbstractModel):
-    """Image sprite generating task. This structure is only used for tasks initiated by the [CreateImageSprite](https://intl.cloud.tencent.com/document/product/266/8101?from_cn_redirect=1) API in v2017.
+    """The details of an image sprite task. This parameter is only valid for tasks initiated by the v2017 image sprite API.
 
     """
 
@@ -8920,6 +8922,64 @@ class DescribeDailyPlayStatFileListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeImageReviewUsageDataRequest(AbstractModel):
+    """DescribeImageReviewUsageData request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: The start date for the query in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format).
+        :type StartTime: str
+        :param EndTime: The end date for the query in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format). The end date must be later than the start date.
+        :type EndTime: str
+        :param SubAppId: The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeImageReviewUsageDataResponse(AbstractModel):
+    """DescribeImageReviewUsageData response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageReviewUsageDataSet: The image recognition usage statistics (the number of times the image recognition feature is used in the time period specified).
+        :type ImageReviewUsageDataSet: list of ImageReviewUsageDataItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ImageReviewUsageDataSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ImageReviewUsageDataSet") is not None:
+            self.ImageReviewUsageDataSet = []
+            for item in params.get("ImageReviewUsageDataSet"):
+                obj = ImageReviewUsageDataItem()
+                obj._deserialize(item)
+                self.ImageReviewUsageDataSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeImageSpriteTemplatesRequest(AbstractModel):
     """DescribeImageSpriteTemplates request structure.
 
@@ -8989,6 +9049,69 @@ class DescribeImageSpriteTemplatesResponse(AbstractModel):
                 obj = ImageSpriteTemplate()
                 obj._deserialize(item)
                 self.ImageSpriteTemplateSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLicenseUsageDataRequest(AbstractModel):
+    """DescribeLicenseUsageData request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: The start date for the query in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format).
+        :type StartTime: str
+        :param EndTime: The end date for the query in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format). The end date must be later than the start date.
+        :type EndTime: str
+        :param LicenseType: The license type, which is DRM by default. Valid values:
+<li> DRM</li>
+        :type LicenseType: str
+        :param SubAppId: The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.LicenseType = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.LicenseType = params.get("LicenseType")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLicenseUsageDataResponse(AbstractModel):
+    """DescribeLicenseUsageData response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LicenseUsageDataSet: The license request statistics (the number of license requests in the time period specified)
+        :type LicenseUsageDataSet: list of LicenseUsageDataItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.LicenseUsageDataSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LicenseUsageDataSet") is not None:
+            self.LicenseUsageDataSet = []
+            for item in params.get("LicenseUsageDataSet"):
+                obj = LicenseUsageDataItem()
+                obj._deserialize(item)
+                self.LicenseUsageDataSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -9144,14 +9267,15 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: End date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). The end date must be on or after the start date.
         :type EndTime: str
-        :param Type: Type of media processing task. Valid values:
-<li>`Transcoding`: basic transcoding</li>
-<li>`Transcoding-TESHD`: TESHD transcoding</li>
-<li>`Editing`: video editing</li>
-<li>`AdaptiveBitrateStreaming`: adaptive bitrate streaming</li>
-<li>`ContentAudit`: content moderation</li>
-<li>`RemoveWatermark`: watermark removal</li>
-<li>`Transcode`: transcoding, including basic transcoding, TESHD transcoding, and video editing. This value is not recommended.</li>
+        :param Type: The type of media processing task. Valid values:
+<li>Transcoding: General transcoding</li>
+<li>Transcoding-TESHD: TESHD transcoding</li>
+<li>Editing: Video editing</li>
+<li>Editing-TESHD: TESHD editing</li>
+<li>AdaptiveBitrateStreaming: Adaptive bitrate streaming</li>
+<li>ContentAudit: Content moderation</li>
+<li>RemoveWatermark: Watermark removal</li>
+<li>Transcode: Transcoding, including general transcoding, TESHD transcoding, and video editing. This value is not recommended.</li>
         :type Type: str
         :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
@@ -9952,21 +10076,22 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskType: Task type. Valid values:
-<li>Procedure: video processing task</li>
-<li>EditMedia: video editing task</li>
-<li>SplitMedia: video splitting task</li>
-<li>ComposeMedia: media file producing task</li>
-<li>WechatPublish: WeChat publishing task</li>
-<li>WechatMiniProgramPublish: video publishing on WeChat Mini Program</li>
-<li>PullUpload: pulling media files for upload</li>
+        :param TaskType: The task type. Valid values:
+<li>Procedure: Video processing</li>
+<li>EditMedia: Video editing</li>
+<li>SplitMedia: Video splitting</li>
+<li>ComposeMedia: Media file producing</li>
+<li>WechatPublish: WeChat publishing</li>
+<li>WechatMiniProgramPublish: Publishing videos on WeChat Mini Program</li>
+<li>PullUpload: Pulling media files for upload</li>
+<li>FastClipMedia: Quick clipping</li>
 
-Support v2017 task types:
-<li>Transcode: transcoding task</li>
-<li>SnapshotByTimeOffset: screencapturing task</li>
-<li>Concat: video splicing task</li>
-<li>Clip: video clipping task</li>
-<li>ImageSprites: image sprite generating task</li>
+Task types for v2017:
+<li>Transcode: Transcoding</li>
+<li>SnapshotByTimeOffset: Screencapturing</li>
+<li>Concat: Video splicing</li>
+<li>Clip: Video clipping</li>
+<li>ImageSprites: Image sprite generating</li>
         :type TaskType: str
         :param Status: Task status. Valid values:
 <li>WAITING: waiting;</li>
@@ -11589,6 +11714,34 @@ class ImageContentReviewInput(AbstractModel):
         
 
 
+class ImageReviewUsageDataItem(AbstractModel):
+    """The usage statistics for the image recognition feature.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Time: The start time (in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)) of the data returned. For example, if the granularity is a day, `2018-12-01T00:00:00+08:00` indicates that the data is for the whole day of December 1, 2018.
+        :type Time: str
+        :param Count: The number of times the image recognition feature is used.
+        :type Count: int
+        """
+        self.Time = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageSpriteTaskInput(AbstractModel):
     """Input parameter type of image sprite generating task
 
@@ -11867,6 +12020,34 @@ class ImageWatermarkTemplate(AbstractModel):
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.RepeatType = params.get("RepeatType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LicenseUsageDataItem(AbstractModel):
+    """The license request statistics.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Time: The start time (in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)) of the data returned. For example, if the granularity is a day, `2018-12-01T00:00:00+08:00` indicates that the data is for the whole day of December 1, 2018.
+        :type Time: str
+        :param Count: The number of license requests.
+        :type Count: int
+        """
+        self.Time = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18605,6 +18786,64 @@ class RestoreMediaTask(AbstractModel):
         
 
 
+class ReviewImageRequest(AbstractModel):
+    """ReviewImage request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: The unique ID of the media file. For this API to work, the file must be an image.
+        :type FileId: str
+        :param Definition: The ID of the image recognition template. Currently, this can only be `10`.
+        :type Definition: int
+        :param SubAppId: The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.FileId = None
+        self.Definition = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReviewImageResponse(AbstractModel):
+    """ReviewImage response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReviewResultSet: The image recognition result.
+        :type ReviewResultSet: list of ContentReviewResult
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ReviewResultSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ReviewResultSet") is not None:
+            self.ReviewResultSet = []
+            for item in params.get("ReviewResultSet"):
+                obj = ContentReviewResult()
+                obj._deserialize(item)
+                self.ReviewResultSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class SampleSnapshotTaskInput(AbstractModel):
     """Input parameter type of sampling screencapturing task
 
@@ -19100,7 +19339,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class SnapshotByTimeOffsetTask2017(AbstractModel):
-    """Time point screencapturing task information. This structure is only used for tasks initiated by the [CreateSnapshotByTimeOffset](https://intl.cloud.tencent.com/document/product/266/8102?from_cn_redirect=1) API in v2017.
+    """The details of a time point screenshot task. This parameter is only valid for the v2017 time point screenshot API.
 
     """
 
@@ -20065,19 +20304,20 @@ class TaskStatData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskType: Task type
-<li>`Transcoding`: basic transcoding</li>
-<li>`Transcoding-TESHD`: TESHD transcoding</li>
-<li>`Editing`: video editing</li>
-<li>`AdaptiveBitrateStreaming`: adaptive bitrate streaming</li>
-<li>`ContentAudit`: content moderation</li>
-<li>`RemoveWatermark`: watermark removal</li>
-<li>`Transcode`: transcoding, including basic transcoding, TESHD transcoding, and video editing. This value is not recommended.</li>
+        :param TaskType: The task type.
+<li>Transcoding: General transcoding</li>
+<li>Transcoding-TESHD: TESHD transcoding</li>
+<li>Editing: Video editing</li>
+<li>Editing-TESHD: TESHD editing</li>
+<li>AdaptiveBitrateStreaming: Adaptive bitrate streaming</li>
+<li>ContentAudit: Content moderation</li>
+<li>RemoveWatermark: Watermark removal</li>
+<li>Transcode: Transcoding, including general transcoding, TESHD transcoding, and video editing. This value is not recommended.</li>
         :type TaskType: str
         :param Summary: Task statistics overview (usage unit: second).
         :type Summary: list of TaskStatDataItem
-        :param Details: Detailed statistics of different tasks
-Transcoding statistics:
+        :param Details: The detailed statistics of different tasks.
+Transcoding:
 <li>Remuxing</li>
 <li>Audio</li>
 <li>Standard.H264.SD</li>
@@ -20111,13 +20351,23 @@ Transcoding statistics:
 <li>Edit.H265.FHD</li>
 <li>Edit.H265.2K</li>
 <li>Edit.H265.4K</li>
+<li>Edit.TESHD-10.H264.SD</li>
+<li>Edit.TESHD-10.H264.HD</li>
+<li>Edit.TESHD-10.H264.FHD</li>
+<li>Edit.TESHD-10.H264.2K</li>
+<li>Edit.TESHD-10.H264.4K</li>
+<li>Edit.TESHD-10.H265.SD</li>
+<li>Edit.TESHD-10.H265.HD</li>
+<li>Edit.TESHD-10.H265.FHD</li>
+<li>Edit.TESHD-10.H265.2K</li>
+<li>Edit.TESHD-10.H265.4K</li>
 Watermark removal:
-<li>`480P`: 640 × 480 and below</li>
-<li>`720P`: 1280 × 720 and below</li>
-<li>`1080P`: 1920 × 1080 and below</li>
-<li>`2K`: 2560 × 1440 and below</li>
-<li>`4K`: 3840 × 2160 and below</li>
-<li>`8K`: 7680 × 4320 and below</li>
+<li>480P: 640 x 480 and below</li>
+<li>720P: 1280 x 720 and below</li>
+<li>1080P: 1920 x 1080 and below</li>
+<li>2K: 2560 x 1440 and below</li>
+<li>4K: 3840 x 2160 and below</li>
+<li>8K: 7680 x 4320 and below</li>
         :type Details: list of SpecificationDataItem
         """
         self.TaskType = None
@@ -20638,7 +20888,7 @@ class TranscodePlayInfo2017(AbstractModel):
 
 
 class TranscodeTask2017(AbstractModel):
-    """Video transcoding task information. This structure is only used for tasks initiated by the [ConvertVodFile](https://intl.cloud.tencent.com/document/product/266/7822?from_cn_redirect=1) API in v2017.
+    """The details of a video transcoding task. This parameter is only valid for tasks initiated by the v2017 video transcoding API.
 
     """
 
@@ -21281,11 +21531,14 @@ class VideoTemplateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Codec: Video stream encoder. Valid values:
+        :param Codec: The video codec. Valid values:
 <li>libx264: H.264</li>
 <li>libx265: H.265</li>
 <li>av1: AOMedia Video 1</li>
-Currently, a resolution within 640x480 must be specified for H.265. and the `av1` container only supports mp4.
+<li>H.266: H.266</li>
+<font color=red>Notes:</font>
+<li>The AOMedia Video 1 and H.266 codecs can only be used for MP4 files.</li>
+<li> Only CRF is supported for H.266 currently.</li>
         :type Codec: str
         :param Fps: Video frame rate in Hz. Value range: [0,100].
 If the value is 0, the frame rate will be the same as that of the source video.
@@ -21322,9 +21575,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
 <li>gauss: applies Gaussian blur to the uncovered area, without changing the image's aspect ratio.</li>
 Default value: black
         :type FillType: str
-        :param Vcrf: Video Constant Rate Factor (CRF). Value range: 1-51.
-If this parameter is specified, CRF will be used to control video bitrate for transcoding and the original video bitrate will not be used.
-We don’t recommend specifying this parameter unless you have special requirements.
+        :param Vcrf: The video constant rate factor (CRF). Value range: 1-51.
+
+<font color=red>Notes:</font>
+<li>If this parameter is specified, CRF encoding will be used and the bitrate parameter will be ignored.</li>
+<li>If `Codec` is `H.266`, this parameter is required (`28` is recommended).</li>
+<li>We don’t recommend using this parameter unless you have special requirements.</li>
         :type Vcrf: int
         :param Gop: I-frame interval in frames. Valid values: 0 and 1-100000.
 When this parameter is set to 0 or left empty, `Gop` will be automatically set.

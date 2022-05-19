@@ -1513,6 +1513,38 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeImageReviewUsageData(self, request):
+        """This API is used to query your daily usage of the image recognition feature in a specified time period.
+           1. You can query statistics from the last 365 days.
+           2. The maximum query period is 90 days.
+           3. If the period specified is longer than one day, the statistics returned will be on a daily basis; otherwise, they will be on a 5-minute basis.
+
+        :param request: Request instance for DescribeImageReviewUsageData.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeImageReviewUsageDataRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeImageReviewUsageDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageReviewUsageData", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeImageReviewUsageDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeImageSpriteTemplates(self, request):
         """This API is used to query the list of image sprite generating templates and supports paged queries by filters.
 
@@ -1528,6 +1560,38 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageSpriteTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLicenseUsageData(self, request):
+        """This API is used to query daily playback license requests in a specified time period.
+           1. You can query statistics from the last 365 days.
+           2. The maximum query period is 90 days.
+           3. If the period specified is longer than one day, the statistics returned will be on a daily basis; otherwise, they will be on a 5-minute basis.
+
+        :param request: Request instance for DescribeLicenseUsageData.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeLicenseUsageDataRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeLicenseUsageDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLicenseUsageData", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLicenseUsageDataResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2916,9 +2980,11 @@ class VodClient(AbstractClient):
 
 
     def ProcessImage(self, request):
-        """This API is used to initiate an image processing task. Image processing operations include the following:
+        """This API is <font color='red'>no longer used</font>. To initiate image recognition tasks, please use [ReviewImage](https://intl.cloud.tencent.com/document/api/266/73217?from_cn_redirect=1).
 
-        1. Intelligent recognition of pornographic, terrorism, and politically sensitive content
+        This API is used to initiate an image processing task. Image processing operations include the following:
+
+        1. Intelligent recognition of pornographic, terroristic, and politically sensitive content
 
         ><li>File size: < 5 MB</li>
         ><li>Resolution: Preferably higher than 256 x 256. Resolution lower than this may compromise the recognition performance.</li>
@@ -3161,6 +3227,39 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetProcedureTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ReviewImage(self, request):
+        """This API is used to initiate an image recognition task to identify pornographic, terroristic, and politically sensitive content in images saved in VOD.
+
+        ><li>File size: < 5 MB</li>
+        ><li>Resolution: Preferably higher than 256 x 256. Resolution lower than this may compromise the recognition performance.</li>
+        ><li>Supported image formats: PNG, JPG, JPEG, BMP, GIF, WEBP</li>
+
+        :param request: Request instance for ReviewImage.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ReviewImageRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ReviewImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReviewImage", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReviewImageResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

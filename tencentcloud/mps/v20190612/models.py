@@ -43,6 +43,11 @@ class AIAnalysisTemplateItem(AbstractModel):
         :type CreateTime: str
         :param UpdateTime: Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
         :type UpdateTime: str
+        :param Type: The template type. Valid values:
+* Preset
+* Custom
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type Type: str
         """
         self.Definition = None
         self.Name = None
@@ -53,6 +58,7 @@ class AIAnalysisTemplateItem(AbstractModel):
         self.FrameTagConfigure = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.Type = None
 
 
     def _deserialize(self, params):
@@ -73,6 +79,7 @@ class AIAnalysisTemplateItem(AbstractModel):
             self.FrameTagConfigure._deserialize(params.get("FrameTagConfigure"))
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -114,6 +121,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type CreateTime: str
         :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type UpdateTime: str
+        :param Type: The template type. Valid values:
+* Preset
+* Custom
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type Type: str
         """
         self.Definition = None
         self.Name = None
@@ -125,6 +137,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.AsrWordsConfigure = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.Type = None
 
 
     def _deserialize(self, params):
@@ -148,6 +161,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self.AsrWordsConfigure._deserialize(params.get("AsrWordsConfigure"))
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3793,7 +3807,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type CreateTime: str
         :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type UpdateTime: str
-        :param Type: 
+        :param Type: The template type. Valid values:
+* Preset
+* Custom
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Type: str
         """
         self.Definition = None
@@ -5607,16 +5624,22 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
         :type Limit: int
+        :param Type: The filter for querying templates. If this parameter is left empty, both preset and custom templates are returned. Valid values:
+* Preset
+* Custom
+        :type Type: str
         """
         self.Definitions = None
         self.Offset = None
         self.Limit = None
+        self.Type = None
 
 
     def _deserialize(self, params):
         self.Definitions = params.get("Definitions")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5669,16 +5692,22 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of returned entries. Default value: 10. Maximum value: 50.
         :type Limit: int
+        :param Type: The filter for querying templates. If this parameter is left empty, both preset and custom templates are returned. Valid values:
+* Preset
+* Custom
+        :type Type: str
         """
         self.Definitions = None
         self.Offset = None
         self.Limit = None
+        self.Type = None
 
 
     def _deserialize(self, params):
         self.Definitions = params.get("Definitions")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5867,16 +5896,22 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of returned entries. Default value: 10. Maximum value: 50.
         :type Limit: int
+        :param Type: The filter for querying templates. If this parameter is left empty, both preset and custom templates are returned. Valid values:
+* Preset
+* Custom
+        :type Type: str
         """
         self.Definitions = None
         self.Offset = None
         self.Limit = None
+        self.Type = None
 
 
     def _deserialize(self, params):
         self.Definitions = params.get("Definitions")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
