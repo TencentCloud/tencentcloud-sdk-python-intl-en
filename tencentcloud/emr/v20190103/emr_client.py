@@ -113,6 +113,35 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeResourceSchedule(self, request):
+        """This API is used to get data from the YARN Resource Scheduling page.
+
+        :param request: Request instance for DescribeResourceSchedule.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeResourceScheduleRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeResourceScheduleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourceSchedule", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeResourceScheduleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def InquiryPriceCreateInstance(self, request):
         """This API is used to query price of instance creation.
 
@@ -171,35 +200,6 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def InquiryPriceScaleOutInstance(self, request):
-        """This API is used to query price of scale-out.
-
-        :param request: Request instance for InquiryPriceScaleOutInstance.
-        :type request: :class:`tencentcloud.emr.v20190103.models.InquiryPriceScaleOutInstanceRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.InquiryPriceScaleOutInstanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("InquiryPriceScaleOutInstance", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.InquiryPriceScaleOutInstanceResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def InquiryPriceUpdateInstance(self, request):
         """This API is used to query price of scaling.
 
@@ -229,21 +229,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ScaleOutInstance(self, request):
-        """This API is used to scale out instance.
+    def ModifyResourceScheduleConfig(self, request):
+        """This API is used to modify the resource configuration of YARN Resource Scheduling.
 
-        :param request: Request instance for ScaleOutInstance.
-        :type request: :class:`tencentcloud.emr.v20190103.models.ScaleOutInstanceRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.ScaleOutInstanceResponse`
+        :param request: Request instance for ModifyResourceScheduleConfig.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyResourceScheduleConfigRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyResourceScheduleConfigResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("ScaleOutInstance", params, headers=headers)
+            body = self.call("ModifyResourceScheduleConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ScaleOutInstanceResponse()
+                model = models.ModifyResourceScheduleConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -258,21 +258,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def TerminateInstance(self, request):
-        """This API is used to terminate an EMR instance. It is only supported in the official paid edition of EMR.
+    def ModifyResourceScheduler(self, request):
+        """This API is used to modify the YARN resource scheduler (the change will take effect after you click Apply).
 
-        :param request: Request instance for TerminateInstance.
-        :type request: :class:`tencentcloud.emr.v20190103.models.TerminateInstanceRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.TerminateInstanceResponse`
+        :param request: Request instance for ModifyResourceScheduler.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyResourceSchedulerRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyResourceSchedulerResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("TerminateInstance", params, headers=headers)
+            body = self.call("ModifyResourceScheduler", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.TerminateInstanceResponse()
+                model = models.ModifyResourceSchedulerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
