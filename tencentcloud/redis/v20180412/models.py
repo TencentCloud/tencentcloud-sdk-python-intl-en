@@ -1552,6 +1552,55 @@ class ModfiyInstancePasswordResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyInstanceReadOnlyRequest(AbstractModel):
+    """ModifyInstanceReadOnly request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param InputMode: Instance input mode. Valid values: `0` (read/write), `1` (read-only)
+        :type InputMode: str
+        """
+        self.InstanceId = None
+        self.InputMode = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InputMode = params.get("InputMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceReadOnlyResponse(AbstractModel):
+    """ModifyInstanceReadOnly response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: Task ID
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class ProductConf(AbstractModel):
     """Product information
 

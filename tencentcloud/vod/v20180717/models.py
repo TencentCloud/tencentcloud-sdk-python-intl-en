@@ -11350,6 +11350,40 @@ You can specify up to 100 labels, with each containing up to 16 characters.
         
 
 
+class FileDeleteResultItem(AbstractModel):
+    """The result of file deletion.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: The ID of the file deleted.
+        :type FileId: str
+        :param DeleteParts: The type of the file deleted.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type DeleteParts: list of MediaDeleteItem
+        """
+        self.FileId = None
+        self.DeleteParts = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        if params.get("DeleteParts") is not None:
+            self.DeleteParts = []
+            for item in params.get("DeleteParts"):
+                obj = MediaDeleteItem()
+                obj._deserialize(item)
+                self.DeleteParts.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FileDeleteTask(AbstractModel):
     """File deleting task
 
@@ -11359,12 +11393,21 @@ class FileDeleteTask(AbstractModel):
         r"""
         :param FileIdSet: List of IDs of deleted files.
         :type FileIdSet: list of str
+        :param FileDeleteResultInfo: The information of the files deleted.
+        :type FileDeleteResultInfo: list of FileDeleteResultItem
         """
         self.FileIdSet = None
+        self.FileDeleteResultInfo = None
 
 
     def _deserialize(self, params):
         self.FileIdSet = params.get("FileIdSet")
+        if params.get("FileDeleteResultInfo") is not None:
+            self.FileDeleteResultInfo = []
+            for item in params.get("FileDeleteResultInfo"):
+                obj = FileDeleteResultItem()
+                obj._deserialize(item)
+                self.FileDeleteResultInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12064,7 +12107,7 @@ class LiveRealTimeClipRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StreamId: [LVB code](https://intl.cloud.tencent.com/document/product/267/5959?from_cn_redirect=1) of a stream.
+        :param StreamId: The live stream code.
         :type StreamId: str
         :param StartTime: Start time of stream clipping in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type StartTime: str
@@ -21623,11 +21666,14 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Codec: Video stream encoder. Valid values:
+        :param Codec: The video codec. Valid values:
 <li>libx264: H.264</li>
 <li>libx265: H.265</li>
 <li>av1: AOMedia Video 1</li>
-Currently, a resolution within 640x480 must be specified for H.265. and the `av1` container only supports mp4.
+<li>H.266: H.266</li>
+<font color=red>Notes:</font>
+<li>The AOMedia Video 1 and H.266 codecs can only be used for MP4 files.</li>
+<li> Only CRF is supported for H.266 currently.</li>
         :type Codec: str
         :param Fps: Video frame rate in Hz. Value range: [0,100].
 If the value is 0, the frame rate will be the same as that of the source video.
@@ -21653,8 +21699,12 @@ If the value is 0, the bitrate of the video will be the same as that of the sour
 <li>white: fills the uncovered area with white color, without changing the image's aspect ratio.</li>
 <li>gauss: applies Gaussian blur to the uncovered area, without changing the image's aspect ratio.</li>
         :type FillType: str
-        :param Vcrf: Video Constant Rate Factor (CRF). Value range: 0-51. This parameter will be disabled if you enter 0.
-We don’t recommend specifying this parameter unless you have special requirements.
+        :param Vcrf: The video constant rate factor (CRF). Value range: 1-51. `0` means to disable this parameter.
+
+<font color=red>Notes:</font>
+<li>If this parameter is specified, CRF encoding will be used and the bitrate parameter will be ignored.</li>
+<li>If `Codec` is `H.266`, this parameter is required (`28` is recommended).</li>
+<li>We don’t recommend using this parameter unless you have special requirements.</li>
         :type Vcrf: int
         :param Gop: I-frame interval in frames. Valid values: 0 and 1-100000.
 When this parameter is set to 0 or left empty, `Gop` will be automatically set.

@@ -32,6 +32,9 @@ FAILEDOPERATION_UNSUPPORTERROR = 'FailedOperation.UnSupportError'
 # Invalid data is entered for weekday.
 FAILEDOPERATION_UNKNOWN = 'FailedOperation.Unknown'
 
+# Internal error.
+INTERNALERROR = 'InternalError'
+
 # Internal system error with the database operation, which may be update, insert, select, etc.
 INTERNALERROR_DBOPERATIONFAILED = 'InternalError.DbOperationFailed'
 
@@ -68,11 +71,17 @@ INVALIDPARAMETERVALUE_REDUCECAPACITYNOTALLOWED = 'InvalidParameterValue.ReduceCa
 # The global replication group doesn’t exist.
 INVALIDPARAMETERVALUE_REPLICATIONGROUPNOTEXISTS = 'InvalidParameterValue.ReplicationGroupNotExists'
 
+# The instance specification doesn’t exist.
+INVALIDPARAMETERVALUE_SPECNOTEXIST = 'InvalidParameterValue.SpecNotExist'
+
 # The instance type is not supported.
 INVALIDPARAMETERVALUE_UNSUPPORTEDTYPE = 'InvalidParameterValue.UnSupportedType'
 
 # The requested capacity is out of the purchasable capacity range.
 LIMITEXCEEDED_MEMSIZENOTINRANGE = 'LimitExceeded.MemSizeNotInRange'
+
+# The resource doesn’t exist.
+RESOURCENOTFOUND = 'ResourceNotFound'
 
 # No Redis instance is found by the serialId.
 RESOURCENOTFOUND_INSTANCENOTEXISTS = 'ResourceNotFound.InstanceNotExists'
