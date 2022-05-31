@@ -2639,7 +2639,7 @@ class CreateFlowLogRequest(AbstractModel):
         r"""
         :param FlowLogName: The name of the flow log instance.
         :type FlowLogName: str
-        :param ResourceType: The type of resource associated with the flow log. Valid values: `VPC`, `SUBNET`, `NETWORKINTERFACE`, and `CCN`.
+        :param ResourceType: The type of resource associated with the flow log. Valid values: `VPC`, `SUBNET`, `NETWORKINTERFACE`, `CCN`, `NAT`, and `DCG`.
         :type ResourceType: str
         :param ResourceId: The unique ID of the resource.
         :type ResourceId: str
@@ -2834,106 +2834,6 @@ class CreateLocalGatewayResponse(AbstractModel):
         if params.get("LocalGateway") is not None:
             self.LocalGateway = LocalGateway()
             self.LocalGateway._deserialize(params.get("LocalGateway"))
-        self.RequestId = params.get("RequestId")
-
-
-class CreateNatGatewayDestinationIpPortTranslationNatRuleRequest(AbstractModel):
-    """CreateNatGatewayDestinationIpPortTranslationNatRule request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param NatGatewayId: The ID of the NAT gateway, such as `nat-df45454`.
-        :type NatGatewayId: str
-        :param DestinationIpPortTranslationNatRules: The port forwarding rules of the NAT gateway.
-        :type DestinationIpPortTranslationNatRules: list of DestinationIpPortTranslationNatRule
-        """
-        self.NatGatewayId = None
-        self.DestinationIpPortTranslationNatRules = None
-
-
-    def _deserialize(self, params):
-        self.NatGatewayId = params.get("NatGatewayId")
-        if params.get("DestinationIpPortTranslationNatRules") is not None:
-            self.DestinationIpPortTranslationNatRules = []
-            for item in params.get("DestinationIpPortTranslationNatRules"):
-                obj = DestinationIpPortTranslationNatRule()
-                obj._deserialize(item)
-                self.DestinationIpPortTranslationNatRules.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateNatGatewayDestinationIpPortTranslationNatRuleResponse(AbstractModel):
-    """CreateNatGatewayDestinationIpPortTranslationNatRule response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class CreateNatGatewaySourceIpTranslationNatRuleRequest(AbstractModel):
-    """CreateNatGatewaySourceIpTranslationNatRule request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param NatGatewayId: The ID of the NAT Gateway, such as `nat-df45454`
-        :type NatGatewayId: str
-        :param SourceIpTranslationNatRules: The SNAT forwarding rule of the NAT Gateway
-        :type SourceIpTranslationNatRules: list of SourceIpTranslationNatRule
-        """
-        self.NatGatewayId = None
-        self.SourceIpTranslationNatRules = None
-
-
-    def _deserialize(self, params):
-        self.NatGatewayId = params.get("NatGatewayId")
-        if params.get("SourceIpTranslationNatRules") is not None:
-            self.SourceIpTranslationNatRules = []
-            for item in params.get("SourceIpTranslationNatRules"):
-                obj = SourceIpTranslationNatRule()
-                obj._deserialize(item)
-                self.SourceIpTranslationNatRules.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateNatGatewaySourceIpTranslationNatRuleResponse(AbstractModel):
-    """CreateNatGatewaySourceIpTranslationNatRule response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -9189,50 +9089,6 @@ class DescribeVpnGatewaysResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DestinationIpPortTranslationNatRule(AbstractModel):
-    """The port forwarding rules of the NAT gateway
-
-    """
-
-    def __init__(self):
-        r"""
-        :param IpProtocol: Network protocol. Available choices: `TCP`, `UDP`.
-        :type IpProtocol: str
-        :param PublicIpAddress: EIP.
-        :type PublicIpAddress: str
-        :param PublicPort: Public port.
-        :type PublicPort: int
-        :param PrivateIpAddress: Private network address.
-        :type PrivateIpAddress: str
-        :param PrivatePort: Private network port.
-        :type PrivatePort: int
-        :param Description: NAT gateway forwarding rule description.
-        :type Description: str
-        """
-        self.IpProtocol = None
-        self.PublicIpAddress = None
-        self.PublicPort = None
-        self.PrivateIpAddress = None
-        self.PrivatePort = None
-        self.Description = None
-
-
-    def _deserialize(self, params):
-        self.IpProtocol = params.get("IpProtocol")
-        self.PublicIpAddress = params.get("PublicIpAddress")
-        self.PublicPort = params.get("PublicPort")
-        self.PrivateIpAddress = params.get("PrivateIpAddress")
-        self.PrivatePort = params.get("PrivatePort")
-        self.Description = params.get("Description")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class DetachCcnInstancesRequest(AbstractModel):
     """DetachCcnInstances request structure.
 
@@ -9592,6 +9448,47 @@ class DisableCcnRoutesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DisableFlowLogsRequest(AbstractModel):
+    """DisableFlowLogs request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowLogIds: Flow log ID.
+        :type FlowLogIds: list of str
+        """
+        self.FlowLogIds = None
+
+
+    def _deserialize(self, params):
+        self.FlowLogIds = params.get("FlowLogIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableFlowLogsResponse(AbstractModel):
+    """DisableFlowLogs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DisassociateAddressRequest(AbstractModel):
     """DisassociateAddress request structure.
 
@@ -9884,6 +9781,47 @@ class EnableCcnRoutesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class EnableFlowLogsRequest(AbstractModel):
+    """EnableFlowLogs request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowLogIds: Flow log ID.
+        :type FlowLogIds: list of str
+        """
+        self.FlowLogIds = None
+
+
+    def _deserialize(self, params):
+        self.FlowLogIds = params.get("FlowLogIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableFlowLogsResponse(AbstractModel):
+    """EnableFlowLogs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class EnableVpcEndPointConnectRequest(AbstractModel):
     """EnableVpcEndPointConnect request structure.
 
@@ -10142,7 +10080,7 @@ class FlowLog(AbstractModel):
         :type FlowLogId: str
         :param FlowLogName: The name of the flow log instance.
         :type FlowLogName: str
-        :param ResourceType: The type of resource associated with the flow log. Valid values: `VPC`, `SUBNET`, `NETWORKINTERFACE`, and `CCN`.
+        :param ResourceType: The type of resource associated with the flow log. Valid values: `VPC`, `SUBNET`, `NETWORKINTERFACE`, `CCN`, `NAT`, and `DCG`.
         :type ResourceType: str
         :param ResourceId: The unique ID of the resource
         :type ResourceId: str
@@ -14945,66 +14883,6 @@ class SetCcnRegionBandwidthLimitsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
-
-
-class SourceIpTranslationNatRule(AbstractModel):
-    """SNAT rule of a NAT Gateway
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ResourceId: Resource ID
-        :type ResourceId: str
-        :param ResourceType: Resource type. Valid values: SUBNET, NETWORKINTERFACE
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ResourceType: str
-        :param PrivateIpAddress: Source IP/IP range
-        :type PrivateIpAddress: str
-        :param PublicIpAddresses: Elastic IP address pool
-        :type PublicIpAddresses: list of str
-        :param Description: Description
-        :type Description: str
-        :param NatGatewaySnatId: SNAT rule ID
-        :type NatGatewaySnatId: str
-        :param NatGatewayId: NAT Gateway ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type NatGatewayId: str
-        :param VpcId: VPC ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type VpcId: str
-        :param CreatedTime: Creation time of a SNAT rule for a NAT Gateway
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type CreatedTime: str
-        """
-        self.ResourceId = None
-        self.ResourceType = None
-        self.PrivateIpAddress = None
-        self.PublicIpAddresses = None
-        self.Description = None
-        self.NatGatewaySnatId = None
-        self.NatGatewayId = None
-        self.VpcId = None
-        self.CreatedTime = None
-
-
-    def _deserialize(self, params):
-        self.ResourceId = params.get("ResourceId")
-        self.ResourceType = params.get("ResourceType")
-        self.PrivateIpAddress = params.get("PrivateIpAddress")
-        self.PublicIpAddresses = params.get("PublicIpAddresses")
-        self.Description = params.get("Description")
-        self.NatGatewaySnatId = params.get("NatGatewaySnatId")
-        self.NatGatewayId = params.get("NatGatewayId")
-        self.VpcId = params.get("VpcId")
-        self.CreatedTime = params.get("CreatedTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
 
 
 class Subnet(AbstractModel):
