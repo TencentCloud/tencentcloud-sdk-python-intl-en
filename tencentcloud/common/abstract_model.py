@@ -18,6 +18,15 @@ import sys
 
 class AbstractModel(object):
     """Base class for all models."""
+    _headers = None
+
+    @property
+    def headers(self):
+        return self._headers
+
+    @headers.setter
+    def headers(self, headers):
+        self._headers = headers
 
     def _serialize(self, allow_none=False):
         """Get all params which are not None if None is not allowed."""
@@ -26,6 +35,8 @@ class AbstractModel(object):
                 d = vars(obj)
                 ret = {}
                 for k in d:
+                    if k.startswith("_"):
+                        continue
                     r = dfs(d[k])
                     if allow_none or r is not None:
                         ret[k[0].upper() + k[1:]] = r
