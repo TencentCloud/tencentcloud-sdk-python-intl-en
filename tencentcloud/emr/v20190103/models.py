@@ -18,6 +18,52 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AddUsersForUserManagerRequest(AbstractModel):
+    """AddUsersForUserManager request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserManagerUserList: User information list
+        :type UserManagerUserList: list of UserInfoForUserManager
+        """
+        self.UserManagerUserList = None
+
+
+    def _deserialize(self, params):
+        if params.get("UserManagerUserList") is not None:
+            self.UserManagerUserList = []
+            for item in params.get("UserManagerUserList"):
+                obj = UserInfoForUserManager()
+                obj._deserialize(item)
+                self.UserManagerUserList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddUsersForUserManagerResponse(AbstractModel):
+    """AddUsersForUserManager response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class COSSettings(AbstractModel):
     """COS-related configuration
 
@@ -330,6 +376,18 @@ Note: This field may return `null`, indicating that no valid value was found.
         :param ClusterExternalServiceInfo: Cluster dependency
 Note: This field may return `null`, indicating that no valid value was found.
         :type ClusterExternalServiceInfo: list of ClusterExternalServiceInfo
+        :param UniqVpcId: The VPC ID string type of the cluster
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type UniqVpcId: str
+        :param UniqSubnetId: The subnet ID string type of the cluster
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type UniqSubnetId: str
+        :param TopologyInfoList: Node information
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type TopologyInfoList: list of TopologyInfo
+        :param IsMultiZoneCluster: Multi-AZ cluster
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type IsMultiZoneCluster: bool
         """
         self.Id = None
         self.ClusterId = None
@@ -368,6 +426,10 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.VpcName = None
         self.SubnetName = None
         self.ClusterExternalServiceInfo = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.TopologyInfoList = None
+        self.IsMultiZoneCluster = None
 
 
     def _deserialize(self, params):
@@ -420,6 +482,15 @@ Note: This field may return `null`, indicating that no valid value was found.
                 obj = ClusterExternalServiceInfo()
                 obj._deserialize(item)
                 self.ClusterExternalServiceInfo.append(obj)
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        if params.get("TopologyInfoList") is not None:
+            self.TopologyInfoList = []
+            for item in params.get("TopologyInfoList"):
+                obj = TopologyInfo()
+                obj._deserialize(item)
+                self.TopologyInfoList.append(obj)
+        self.IsMultiZoneCluster = params.get("IsMultiZoneCluster")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -458,13 +529,9 @@ class CreateInstanceRequest(AbstractModel):
 <li>29: EMR v2.5.1</li>
 <li>30: EMR v2.6.0</li>
         :type ProductId: int
-        :param VPCSettings: Configuration information of VPC. This parameter is used to specify the VPC ID, subnet ID, etc.
-        :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
         :param Software: List of deployed components. The list of component options varies by EMR product ID (i.e., `ProductId`; for specific meanings, please see the `ProductId` input parameter). For more information, please see [Component Version](https://intl.cloud.tencent.com/document/product/589/20279?from_cn_redirect=1).
 Enter an instance value: `hive` or `flink`.
         :type Software: list of str
-        :param ResourceSpec: Node resource specification.
-        :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
         :param SupportHA: Whether to enable high node availability. Valid values:
 <li>0: does not enable high availability of node.</li>
 <li>1: enables high availability of node.</li>
@@ -476,8 +543,6 @@ Enter an instance value: `hive` or `flink`.
         :param PayMode: Instance billing mode. Valid values:
 <li>0: pay-as-you-go.</li>
         :type PayMode: int
-        :param Placement: Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.
-        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
         :param TimeSpan: Purchase duration of instance, which needs to be used together with `TimeUnit`.
 <li>When `TimeUnit` is `s`, this parameter can only be filled with 3600, indicating a pay-as-you-go instance.</li>
 <li>When `TimeUnit` is `m`, the number entered in this parameter indicates the purchase duration of the monthly-subscription instance; for example, 1 means one month</li>
@@ -490,8 +555,14 @@ Enter an instance value: `hive` or `flink`.
 <li>If the key is set, the password will be only used for login to the native component WebUI.</li>
 <li>If the key is not set, the password will be used for login to all purchased nodes and the native component WebUI.</li>
         :type LoginSettings: :class:`tencentcloud.emr.v20190103.models.LoginSettings`
+        :param VPCSettings: Configuration information of VPC. This parameter is used to specify the VPC ID, subnet ID, etc.
+        :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
+        :param ResourceSpec: Node resource specification.
+        :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
         :param COSSettings: Parameter required for enabling COS access.
         :type COSSettings: :class:`tencentcloud.emr.v20190103.models.COSSettings`
+        :param Placement: Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.
+        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
         :param SgId: Security group to which an instance belongs in the format of `sg-xxxxxxxx`. This parameter can be obtained from the `SecurityGroupId` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) API.
         :type SgId: str
         :param PreExecutedFileSettings: [Bootstrap action](https://intl.cloud.tencent.com/document/product/589/35656?from_cn_redirect=1) script settings
@@ -538,19 +609,25 @@ Hadoop-Hbase
         :type SceneName: str
         :param ExternalService: Shared component information
         :type ExternalService: list of ExternalService
+        :param VersionID: 
+        :type VersionID: int
+        :param MultiZone: `true` indicates that the multi-AZ deployment mode is enabled. This parameter is available only in cluster creation and cannot be changed after setting.
+        :type MultiZone: bool
+        :param MultiZoneSettings: Node resource specs. The actual number of AZs is set, with the first AZ as the primary AZ, the second as the backup AZ, and the third as the arbitrator AZ. If the multi-AZ mode is not enabled, set the value to `1`.
+        :type MultiZoneSettings: list of MultiZoneSetting
         """
         self.ProductId = None
-        self.VPCSettings = None
         self.Software = None
-        self.ResourceSpec = None
         self.SupportHA = None
         self.InstanceName = None
         self.PayMode = None
-        self.Placement = None
         self.TimeSpan = None
         self.TimeUnit = None
         self.LoginSettings = None
+        self.VPCSettings = None
+        self.ResourceSpec = None
         self.COSSettings = None
+        self.Placement = None
         self.SgId = None
         self.PreExecutedFileSettings = None
         self.AutoRenew = None
@@ -568,31 +645,34 @@ Hadoop-Hbase
         self.ApplicationRole = None
         self.SceneName = None
         self.ExternalService = None
+        self.VersionID = None
+        self.MultiZone = None
+        self.MultiZoneSettings = None
 
 
     def _deserialize(self, params):
         self.ProductId = params.get("ProductId")
-        if params.get("VPCSettings") is not None:
-            self.VPCSettings = VPCSettings()
-            self.VPCSettings._deserialize(params.get("VPCSettings"))
         self.Software = params.get("Software")
-        if params.get("ResourceSpec") is not None:
-            self.ResourceSpec = NewResourceSpec()
-            self.ResourceSpec._deserialize(params.get("ResourceSpec"))
         self.SupportHA = params.get("SupportHA")
         self.InstanceName = params.get("InstanceName")
         self.PayMode = params.get("PayMode")
-        if params.get("Placement") is not None:
-            self.Placement = Placement()
-            self.Placement._deserialize(params.get("Placement"))
         self.TimeSpan = params.get("TimeSpan")
         self.TimeUnit = params.get("TimeUnit")
         if params.get("LoginSettings") is not None:
             self.LoginSettings = LoginSettings()
             self.LoginSettings._deserialize(params.get("LoginSettings"))
+        if params.get("VPCSettings") is not None:
+            self.VPCSettings = VPCSettings()
+            self.VPCSettings._deserialize(params.get("VPCSettings"))
+        if params.get("ResourceSpec") is not None:
+            self.ResourceSpec = NewResourceSpec()
+            self.ResourceSpec._deserialize(params.get("ResourceSpec"))
         if params.get("COSSettings") is not None:
             self.COSSettings = COSSettings()
             self.COSSettings._deserialize(params.get("COSSettings"))
+        if params.get("Placement") is not None:
+            self.Placement = Placement()
+            self.Placement._deserialize(params.get("Placement"))
         self.SgId = params.get("SgId")
         if params.get("PreExecutedFileSettings") is not None:
             self.PreExecutedFileSettings = []
@@ -627,6 +707,14 @@ Hadoop-Hbase
                 obj = ExternalService()
                 obj._deserialize(item)
                 self.ExternalService.append(obj)
+        self.VersionID = params.get("VersionID")
+        self.MultiZone = params.get("MultiZone")
+        if params.get("MultiZoneSettings") is not None:
+            self.MultiZoneSettings = []
+            for item in params.get("MultiZoneSettings"):
+                obj = MultiZoneSetting()
+                obj._deserialize(item)
+                self.MultiZoneSettings.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -816,6 +904,85 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInstancesListRequest(AbstractModel):
+    """DescribeInstancesList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DisplayStrategy: Cluster filtering policy. Valid values: <li>clusterList: Queries the list of clusters excluding terminated ones.</li><li>monitorManage: Queries the list of clusters excluding those terminated, under creation and not successfully created.</li><li>cloudHardwareManage/componentManage: Two reserved values, which have the same implications as those of `monitorManage`.</li>
+        :type DisplayStrategy: str
+        :param Offset: Page number. Default value: `0`, indicating the first page.
+        :type Offset: int
+        :param Limit: Number of returned results per page. Default value: `10`; maximum value: `100`.
+        :type Limit: int
+        :param OrderField: Sorting field. Valid values: <li>clusterId: Sorting by instance ID. </li><li>addTime: Sorting by instance creation time.</li><li>status: Sorting by instance status code.</li>
+        :type OrderField: str
+        :param Asc: Sort ascending or descending based on `OrderField`. Valid values:<li>0: Descending.</li><li>1: Ascending.</li>Default value: `0`.
+        :type Asc: int
+        :param Filters: Custom query
+        :type Filters: list of Filters
+        """
+        self.DisplayStrategy = None
+        self.Offset = None
+        self.Limit = None
+        self.OrderField = None
+        self.Asc = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.DisplayStrategy = params.get("DisplayStrategy")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.OrderField = params.get("OrderField")
+        self.Asc = params.get("Asc")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstancesListResponse(AbstractModel):
+    """DescribeInstancesList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCnt: Number of eligible instances.
+        :type TotalCnt: int
+        :param InstancesList: Cluster instance list.
+        :type InstancesList: list of EmrListInstance
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCnt = None
+        self.InstancesList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCnt = params.get("TotalCnt")
+        if params.get("InstancesList") is not None:
+            self.InstancesList = []
+            for item in params.get("InstancesList"):
+                obj = EmrListInstance()
+                obj._deserialize(item)
+                self.InstancesList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeInstancesRequest(AbstractModel):
     """DescribeInstances request structure.
 
@@ -963,6 +1130,197 @@ class DescribeResourceScheduleResponse(AbstractModel):
         self.FSInfo = params.get("FSInfo")
         self.CSInfo = params.get("CSInfo")
         self.RequestId = params.get("RequestId")
+
+
+class DescribeUsersForUserManagerRequest(AbstractModel):
+    """DescribeUsersForUserManager request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NeedKeytabInfo: Whether the Keytab file information is required. This field is only valid for clusters with Kerberos enabled and defaults to `false`.
+        :type NeedKeytabInfo: bool
+        """
+        self.NeedKeytabInfo = None
+
+
+    def _deserialize(self, params):
+        self.NeedKeytabInfo = params.get("NeedKeytabInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUsersForUserManagerResponse(AbstractModel):
+    """DescribeUsersForUserManager response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EmrListInstance(AbstractModel):
+    """Returned cluster list sample
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param StatusDesc: Status description
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type StatusDesc: str
+        :param ClusterName: Cluster name
+        :type ClusterName: str
+        :param ZoneId: Cluster region
+        :type ZoneId: int
+        :param AppId: User APPID
+        :type AppId: int
+        :param AddTime: Creation time
+        :type AddTime: str
+        :param RunTime: Running time
+        :type RunTime: str
+        :param MasterIp: Cluster IP
+        :type MasterIp: str
+        :param EmrVersion: Cluster version
+        :type EmrVersion: str
+        :param ChargeType: Cluster billing mode
+        :type ChargeType: int
+        :param Id: EMR ID
+        :type Id: int
+        :param ProductId: Product ID
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type ProductId: int
+        :param ProjectId: Project ID
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type ProjectId: int
+        :param RegionId: Region
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type RegionId: int
+        :param SubnetId: Subnet ID
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type SubnetId: int
+        :param VpcId: VPC ID
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type VpcId: int
+        :param Zone: Region
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type Zone: str
+        :param Status: Status code
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type Status: int
+        :param Tags: Instance tag
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type Tags: list of Tag
+        :param AlarmInfo: Alarm information
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type AlarmInfo: str
+        :param IsWoodpeckerCluster: Whether it is a Woodpecker cluster
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type IsWoodpeckerCluster: int
+        :param VpcName: VPC name
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type VpcName: str
+        :param SubnetName: Subnet name
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type SubnetName: str
+        :param UniqVpcId: VPC ID string
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type UniqVpcId: str
+        :param UniqSubnetId: Subnet ID string
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type UniqSubnetId: str
+        :param ClusterClass: Cluster type
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type ClusterClass: str
+        :param IsMultiZoneCluster: Whether it is a multi-AZ cluster
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type IsMultiZoneCluster: bool
+        """
+        self.ClusterId = None
+        self.StatusDesc = None
+        self.ClusterName = None
+        self.ZoneId = None
+        self.AppId = None
+        self.AddTime = None
+        self.RunTime = None
+        self.MasterIp = None
+        self.EmrVersion = None
+        self.ChargeType = None
+        self.Id = None
+        self.ProductId = None
+        self.ProjectId = None
+        self.RegionId = None
+        self.SubnetId = None
+        self.VpcId = None
+        self.Zone = None
+        self.Status = None
+        self.Tags = None
+        self.AlarmInfo = None
+        self.IsWoodpeckerCluster = None
+        self.VpcName = None
+        self.SubnetName = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.ClusterClass = None
+        self.IsMultiZoneCluster = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.StatusDesc = params.get("StatusDesc")
+        self.ClusterName = params.get("ClusterName")
+        self.ZoneId = params.get("ZoneId")
+        self.AppId = params.get("AppId")
+        self.AddTime = params.get("AddTime")
+        self.RunTime = params.get("RunTime")
+        self.MasterIp = params.get("MasterIp")
+        self.EmrVersion = params.get("EmrVersion")
+        self.ChargeType = params.get("ChargeType")
+        self.Id = params.get("Id")
+        self.ProductId = params.get("ProductId")
+        self.ProjectId = params.get("ProjectId")
+        self.RegionId = params.get("RegionId")
+        self.SubnetId = params.get("SubnetId")
+        self.VpcId = params.get("VpcId")
+        self.Zone = params.get("Zone")
+        self.Status = params.get("Status")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.AlarmInfo = params.get("AlarmInfo")
+        self.IsWoodpeckerCluster = params.get("IsWoodpeckerCluster")
+        self.VpcName = params.get("VpcName")
+        self.SubnetName = params.get("SubnetName")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.ClusterClass = params.get("ClusterClass")
+        self.IsMultiZoneCluster = params.get("IsMultiZoneCluster")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class EmrProductConfigOutter(AbstractModel):
@@ -1129,6 +1487,34 @@ class ExternalService(AbstractModel):
         
 
 
+class Filters(AbstractModel):
+    """Custom query filter of the EMR cluster instance list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Field name
+        :type Name: str
+        :param Values: Filters by the field value
+        :type Values: list of str
+        """
+        self.Name = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InquiryPriceCreateInstanceRequest(AbstractModel):
     """InquiryPriceCreateInstance request structure.
 
@@ -1143,8 +1529,6 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 <li>When `TimeUnit` is `s`, this parameter can only be filled with 3600, indicating a pay-as-you-go instance.</li>
 <li>When `TimeUnit` is `m`, the number entered in this parameter indicates the purchase duration of the monthly-subscription instance; for example, 1 means one month</li>
         :type TimeSpan: int
-        :param ResourceSpec: Node specification queried for price.
-        :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
         :param Currency: Currency.
         :type Currency: str
         :param PayMode: Instance billing mode. Valid values:
@@ -1160,6 +1544,8 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 <li>When `ProductId` is 4, the required components include hadoop-2.8.4, knox-1.2.0, and zookeeper-3.4.9</li>
 <li>When `ProductId` is 7, the required components include hadoop-3.1.2, knox-1.2.0, and zookeeper-3.4.9</li>
         :type Software: list of str
+        :param ResourceSpec: Node specification queried for price.
+        :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
         :param Placement: Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.
         :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
         :param VPCSettings: Configuration information of VPC. This parameter is used to specify the VPC ID, subnet ID, etc.
@@ -1187,14 +1573,18 @@ Hadoop-Hbase
         :type SceneName: str
         :param ExternalService: Shared component information
         :type ExternalService: list of ExternalService
+        :param VersionID: 
+        :type VersionID: int
+        :param MultiZoneSettings: AZ specs
+        :type MultiZoneSettings: list of MultiZoneSetting
         """
         self.TimeUnit = None
         self.TimeSpan = None
-        self.ResourceSpec = None
         self.Currency = None
         self.PayMode = None
         self.SupportHA = None
         self.Software = None
+        self.ResourceSpec = None
         self.Placement = None
         self.VPCSettings = None
         self.MetaType = None
@@ -1203,18 +1593,20 @@ Hadoop-Hbase
         self.ProductId = None
         self.SceneName = None
         self.ExternalService = None
+        self.VersionID = None
+        self.MultiZoneSettings = None
 
 
     def _deserialize(self, params):
         self.TimeUnit = params.get("TimeUnit")
         self.TimeSpan = params.get("TimeSpan")
-        if params.get("ResourceSpec") is not None:
-            self.ResourceSpec = NewResourceSpec()
-            self.ResourceSpec._deserialize(params.get("ResourceSpec"))
         self.Currency = params.get("Currency")
         self.PayMode = params.get("PayMode")
         self.SupportHA = params.get("SupportHA")
         self.Software = params.get("Software")
+        if params.get("ResourceSpec") is not None:
+            self.ResourceSpec = NewResourceSpec()
+            self.ResourceSpec._deserialize(params.get("ResourceSpec"))
         if params.get("Placement") is not None:
             self.Placement = Placement()
             self.Placement._deserialize(params.get("Placement"))
@@ -1234,6 +1626,13 @@ Hadoop-Hbase
                 obj = ExternalService()
                 obj._deserialize(item)
                 self.ExternalService.append(obj)
+        self.VersionID = params.get("VersionID")
+        if params.get("MultiZoneSettings") is not None:
+            self.MultiZoneSettings = []
+            for item in params.get("MultiZoneSettings"):
+                obj = MultiZoneSetting()
+                obj._deserialize(item)
+                self.MultiZoneSettings.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1662,6 +2061,49 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class MultiZoneSetting(AbstractModel):
+    """Parameter information of each AZ
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneTag: "master", "standby", "third-party"
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type ZoneTag: str
+        :param VPCSettings: None
+        :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
+        :param Placement: None
+        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
+        :param ResourceSpec: None
+        :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
+        """
+        self.ZoneTag = None
+        self.VPCSettings = None
+        self.Placement = None
+        self.ResourceSpec = None
+
+
+    def _deserialize(self, params):
+        self.ZoneTag = params.get("ZoneTag")
+        if params.get("VPCSettings") is not None:
+            self.VPCSettings = VPCSettings()
+            self.VPCSettings._deserialize(params.get("VPCSettings"))
+        if params.get("Placement") is not None:
+            self.Placement = Placement()
+            self.Placement._deserialize(params.get("Placement"))
+        if params.get("ResourceSpec") is not None:
+            self.ResourceSpec = NewResourceSpec()
+            self.ResourceSpec._deserialize(params.get("ResourceSpec"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NewResourceSpec(AbstractModel):
     """Resource description
 
@@ -1849,6 +2291,18 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param SupportModifyPayMode: Whether to support billing mode change. `0`: no; `1`: yes
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type SupportModifyPayMode: int
+        :param RootStorageType: System disk type
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RootStorageType: int
+        :param Zone: AZ information
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Zone: str
+        :param SubnetInfo: Subnet
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type SubnetInfo: :class:`tencentcloud.emr.v20190103.models.SubnetInfo`
+        :param Clients: Client
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type Clients: str
         """
         self.AppId = None
         self.SerialNo = None
@@ -1890,6 +2344,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.IsDynamicSpec = None
         self.DynamicPodSpec = None
         self.SupportModifyPayMode = None
+        self.RootStorageType = None
+        self.Zone = None
+        self.SubnetInfo = None
+        self.Clients = None
 
 
     def _deserialize(self, params):
@@ -1945,6 +2403,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.IsDynamicSpec = params.get("IsDynamicSpec")
         self.DynamicPodSpec = params.get("DynamicPodSpec")
         self.SupportModifyPayMode = params.get("SupportModifyPayMode")
+        self.RootStorageType = params.get("RootStorageType")
+        self.Zone = params.get("Zone")
+        if params.get("SubnetInfo") is not None:
+            self.SubnetInfo = SubnetInfo()
+            self.SubnetInfo._deserialize(params.get("SubnetInfo"))
+        self.Clients = params.get("Clients")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2243,6 +2707,66 @@ class SearchItem(AbstractModel):
         
 
 
+class ShortNodeInfo(AbstractModel):
+    """Node information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeType: Node type: Master/Core/Task/Router/Common
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type NodeType: str
+        :param NodeSize: Number of nodes
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type NodeSize: int
+        """
+        self.NodeType = None
+        self.NodeSize = None
+
+
+    def _deserialize(self, params):
+        self.NodeType = params.get("NodeType")
+        self.NodeSize = params.get("NodeSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubnetInfo(AbstractModel):
+    """Subnet information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubnetName: Subnet information (name)
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type SubnetName: str
+        :param SubnetId: Subnet information (ID)
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type SubnetId: str
+        """
+        self.SubnetName = None
+        self.SubnetId = None
+
+
+    def _deserialize(self, params):
+        self.SubnetName = params.get("SubnetName")
+        self.SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Tag(AbstractModel):
     """Tag
 
@@ -2316,6 +2840,56 @@ class TerminateTasksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class TopologyInfo(AbstractModel):
+    """Cluster node topology information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: AZ ID
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type ZoneId: int
+        :param Zone: AZ information
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type Zone: str
+        :param SubnetInfoList: Subnet information
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type SubnetInfoList: list of SubnetInfo
+        :param NodeInfoList: Node information
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type NodeInfoList: list of ShortNodeInfo
+        """
+        self.ZoneId = None
+        self.Zone = None
+        self.SubnetInfoList = None
+        self.NodeInfoList = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.Zone = params.get("Zone")
+        if params.get("SubnetInfoList") is not None:
+            self.SubnetInfoList = []
+            for item in params.get("SubnetInfoList"):
+                obj = SubnetInfo()
+                obj._deserialize(item)
+                self.SubnetInfoList.append(obj)
+        if params.get("NodeInfoList") is not None:
+            self.NodeInfoList = []
+            for item in params.get("NodeInfoList"):
+                obj = ShortNodeInfo()
+                obj._deserialize(item)
+                self.NodeInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UpdateInstanceSettings(AbstractModel):
     """Target resource specification
 
@@ -2343,6 +2917,42 @@ class UpdateInstanceSettings(AbstractModel):
         self.CPUCores = params.get("CPUCores")
         self.ResourceId = params.get("ResourceId")
         self.InstanceType = params.get("InstanceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserInfoForUserManager(AbstractModel):
+    """Added user information list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserName: Username
+        :type UserName: str
+        :param UserGroup: The group to which the user belongs
+        :type UserGroup: str
+        :param PassWord: 
+        :type PassWord: str
+        :param ReMark: 
+        :type ReMark: str
+        """
+        self.UserName = None
+        self.UserGroup = None
+        self.PassWord = None
+        self.ReMark = None
+
+
+    def _deserialize(self, params):
+        self.UserName = params.get("UserName")
+        self.UserGroup = params.get("UserGroup")
+        self.PassWord = params.get("PassWord")
+        self.ReMark = params.get("ReMark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

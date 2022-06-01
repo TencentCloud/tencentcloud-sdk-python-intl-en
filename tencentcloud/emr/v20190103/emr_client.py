@@ -26,6 +26,35 @@ class EmrClient(AbstractClient):
     _service = 'emr'
 
 
+    def AddUsersForUserManager(self, request):
+        """This API is used to add user lists (user management).
+
+        :param request: Request instance for AddUsersForUserManager.
+        :type request: :class:`tencentcloud.emr.v20190103.models.AddUsersForUserManagerRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.AddUsersForUserManagerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddUsersForUserManager", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddUsersForUserManagerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateInstance(self, request):
         """This API is used to create an EMR cluster instance.
 
@@ -113,6 +142,35 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstancesList(self, request):
+        """This API is used to query EMR cluster instances.
+
+        :param request: Request instance for DescribeInstancesList.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeInstancesListRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeInstancesListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstancesList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstancesListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeResourceSchedule(self, request):
         """This API is used to get data from the YARN Resource Scheduling page.
 
@@ -128,6 +186,35 @@ class EmrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResourceScheduleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUsersForUserManager(self, request):
+        """This API is used to export users in batches.
+
+        :param request: Request instance for DescribeUsersForUserManager.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeUsersForUserManagerRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeUsersForUserManagerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUsersForUserManager", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUsersForUserManagerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

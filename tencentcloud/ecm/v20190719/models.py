@@ -8500,6 +8500,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type EniType: int
         :param EcmRegion: ECM region (EcmRegion)
         :type EcmRegion: str
+        :param Business: Type of the resource bound with an ENI. Valid values: `cvm` and `eks`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Business: str
         """
         self.NetworkInterfaceId = None
         self.NetworkInterfaceName = None
@@ -8518,6 +8521,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.TagSet = None
         self.EniType = None
         self.EcmRegion = None
+        self.Business = None
 
 
     def _deserialize(self, params):
@@ -8555,6 +8559,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 self.TagSet.append(obj)
         self.EniType = params.get("EniType")
         self.EcmRegion = params.get("EcmRegion")
+        self.Business = params.get("Business")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

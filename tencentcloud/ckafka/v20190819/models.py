@@ -1043,6 +1043,81 @@ class CreateConsumerResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateInstancePreData(AbstractModel):
+    """Data returned by the `CreateInstancePre` API.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: The value returned by `CreateInstancePre` is 0, which is fixed and cannot be used as the query condition of `CheckTaskStatus`. It is only used to ensure the consistency with the backend data structure.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type FlowId: int
+        :param DealNames: Order number list.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type DealNames: list of str
+        :param InstanceId: Instance ID.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        """
+        self.FlowId = None
+        self.DealNames = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.DealNames = params.get("DealNames")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInstancePreResp(AbstractModel):
+    """Response structure of creating a prepaid instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReturnCode: Returned code. 0: Normal; other values: Error.
+        :type ReturnCode: str
+        :param ReturnMessage: The message indicating whether the operation is successful.
+        :type ReturnMessage: str
+        :param Data: Data returned by the operation.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Data: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreData`
+        :param DeleteRouteTimestamp: Deletion time.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type DeleteRouteTimestamp: str
+        """
+        self.ReturnCode = None
+        self.ReturnMessage = None
+        self.Data = None
+        self.DeleteRouteTimestamp = None
+
+
+    def _deserialize(self, params):
+        self.ReturnCode = params.get("ReturnCode")
+        self.ReturnMessage = params.get("ReturnMessage")
+        if params.get("Data") is not None:
+            self.Data = CreateInstancePreData()
+            self.Data._deserialize(params.get("Data"))
+        self.DeleteRouteTimestamp = params.get("DeleteRouteTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreatePartitionRequest(AbstractModel):
     """CreatePartition request structure.
 
@@ -3964,6 +4039,65 @@ class ModifyInstanceAttributesResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = JgwOperateResponse()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyInstancePreRequest(AbstractModel):
+    """ModifyInstancePre request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance name.
+        :type InstanceId: str
+        :param DiskSize: Estimated disk capacity, which can be increased by increment.
+        :type DiskSize: int
+        :param BandWidth: Estimated bandwidth, which can be increased by increment.
+        :type BandWidth: int
+        :param Partition: Estimated partition count, which can be increased by increment.
+        :type Partition: int
+        """
+        self.InstanceId = None
+        self.DiskSize = None
+        self.BandWidth = None
+        self.Partition = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DiskSize = params.get("DiskSize")
+        self.BandWidth = params.get("BandWidth")
+        self.Partition = params.get("Partition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstancePreResponse(AbstractModel):
+    """ModifyInstancePre response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Response structure of modifying the configurations of a prepaid instance.
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreResp`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = CreateInstancePreResp()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
