@@ -44,6 +44,9 @@ FAILEDOPERATION_QUERYORDERFAILED = 'FailedOperation.QueryOrderFailed'
 # Billing error. Failed to query price.
 FAILEDOPERATION_QUERYPRICEFAILED = 'FailedOperation.QueryPriceFailed'
 
+# Failed to operate the network or the session timed out.
+FAILEDOPERATION_VPCERROR = 'FailedOperation.VPCError'
+
 # Internal error.
 INTERNALERROR = 'InternalError'
 
@@ -211,6 +214,9 @@ RESOURCENOTFOUND_INCREBACKUPMIGRATIONNOTEXIST = 'ResourceNotFound.IncreBackupMig
 
 # The instance does not exist.
 RESOURCENOTFOUND_INSTANCENOTFOUND = 'ResourceNotFound.InstanceNotFound'
+
+# Parameter not found.
+RESOURCENOTFOUND_PARAMSNOTFOUND = 'ResourceNotFound.ParamsNotFound'
 
 # The VPC does not exist.
 RESOURCENOTFOUND_VPCNOTEXIST = 'ResourceNotFound.VpcNotExist'

@@ -35,12 +35,15 @@ class AccountCreateInfo(AbstractModel):
         :type Remark: str
         :param IsAdmin: Whether it is an admin account. Default value: no
         :type IsAdmin: bool
+        :param Authentication: Valid values: `win-windows authentication`, `sql-sqlserver authentication`. Default value: `sql-sqlserver authentication`.
+        :type Authentication: str
         """
         self.UserName = None
         self.Password = None
         self.DBPrivileges = None
         self.Remark = None
         self.IsAdmin = None
+        self.Authentication = None
 
 
     def _deserialize(self, params):
@@ -54,6 +57,7 @@ class AccountCreateInfo(AbstractModel):
                 self.DBPrivileges.append(obj)
         self.Remark = params.get("Remark")
         self.IsAdmin = params.get("IsAdmin")
+        self.Authentication = params.get("Authentication")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -88,6 +92,10 @@ class AccountDetail(AbstractModel):
         :type Dbs: list of DBPrivilege
         :param IsAdmin: Whether it is an admin account
         :type IsAdmin: bool
+        :param Authentication: Valid values: `win-windows authentication`, `sql-sqlserver authentication`.
+        :type Authentication: str
+        :param Host: The host required for `win-windows authentication` account
+        :type Host: str
         """
         self.Name = None
         self.Remark = None
@@ -98,6 +106,8 @@ class AccountDetail(AbstractModel):
         self.InternalStatus = None
         self.Dbs = None
         self.IsAdmin = None
+        self.Authentication = None
+        self.Host = None
 
 
     def _deserialize(self, params):
@@ -115,6 +125,8 @@ class AccountDetail(AbstractModel):
                 obj._deserialize(item)
                 self.Dbs.append(obj)
         self.IsAdmin = params.get("IsAdmin")
+        self.Authentication = params.get("Authentication")
+        self.Host = params.get("Host")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -191,9 +203,12 @@ class AccountPrivilegeModifyInfo(AbstractModel):
         :type UserName: str
         :param DBPrivileges: Account permission change information
         :type DBPrivileges: list of DBPrivilegeModifyInfo
+        :param IsAdmin: Whether it is an admin account
+        :type IsAdmin: bool
         """
         self.UserName = None
         self.DBPrivileges = None
+        self.IsAdmin = None
 
 
     def _deserialize(self, params):
@@ -204,6 +219,7 @@ class AccountPrivilegeModifyInfo(AbstractModel):
                 obj = DBPrivilegeModifyInfo()
                 obj._deserialize(item)
                 self.DBPrivileges.append(obj)
+        self.IsAdmin = params.get("IsAdmin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -274,6 +290,8 @@ class Backup(AbstractModel):
         :type BackupName: str
         :param GroupId: Group ID of unarchived backup files, which can be used as a request parameter in the `DescribeBackupFiles` API to get details of unarchived backup files in the specified group. This parameter is invalid for archived backup files.
         :type GroupId: str
+        :param BackupFormat: Backup file format. Valid values:`pkg` (archive file), `single` (unarchived files).
+        :type BackupFormat: str
         """
         self.FileName = None
         self.Size = None
@@ -288,6 +306,7 @@ class Backup(AbstractModel):
         self.BackupWay = None
         self.BackupName = None
         self.GroupId = None
+        self.BackupFormat = None
 
 
     def _deserialize(self, params):
@@ -304,6 +323,7 @@ class Backup(AbstractModel):
         self.BackupWay = params.get("BackupWay")
         self.BackupName = params.get("BackupName")
         self.GroupId = params.get("GroupId")
+        self.BackupFormat = params.get("BackupFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1114,6 +1134,17 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param BackupModel: Backup mode. Valid values: `master_pkg` (archive the backup files of the primary node (default value)), `master_no_pkg` (do not archive the backup files of the primary node), `slave_pkg` (archive the backup files of the replica node (valid for Always On clusters)), `slave_no_pkg` (do not archive the backup files of the replica node (valid for Always On clusters)). This parameter is invalid for read-only instances.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type BackupModel: str
+        :param InstanceNote: Instance backup info
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type InstanceNote: str
+        :param BackupCycle: Backup cycle
+        :type BackupCycle: list of int
+        :param BackupCycleType: Backup cycle type. Valid values: `daily`, `weekly`, `monthly`.
+        :type BackupCycleType: str
+        :param BackupSaveDays: Data (log) backup retention period
+        :type BackupSaveDays: int
+        :param InstanceType: Instance type. Valid values: `HA` (high-availability), `RO` (read-only), `SI` (basic edition), `BI` (business intelligence service).
+        :type InstanceType: str
         """
         self.InstanceId = None
         self.Name = None
@@ -1153,6 +1184,11 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.HAFlag = None
         self.ResourceTags = None
         self.BackupModel = None
+        self.InstanceNote = None
+        self.BackupCycle = None
+        self.BackupCycleType = None
+        self.BackupSaveDays = None
+        self.InstanceType = None
 
 
     def _deserialize(self, params):
@@ -1199,6 +1235,11 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
         self.BackupModel = params.get("BackupModel")
+        self.InstanceNote = params.get("InstanceNote")
+        self.BackupCycle = params.get("BackupCycle")
+        self.BackupCycleType = params.get("BackupCycleType")
+        self.BackupSaveDays = params.get("BackupSaveDays")
+        self.InstanceType = params.get("InstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1833,12 +1874,15 @@ class DescribeBackupFilesRequest(AbstractModel):
         :type Offset: int
         :param DatabaseName: Filter backups by database name. If the parameter is left empty, this filter criterion will not take effect.
         :type DatabaseName: str
+        :param OrderBy: List items sorting by backup size. Valid values: `desc`(descending order), `asc` (ascending order). Default value: `desc`.
+        :type OrderBy: str
         """
         self.InstanceId = None
         self.GroupId = None
         self.Limit = None
         self.Offset = None
         self.DatabaseName = None
+        self.OrderBy = None
 
 
     def _deserialize(self, params):
@@ -1847,6 +1891,7 @@ class DescribeBackupFilesRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
         self.DatabaseName = params.get("DatabaseName")
+        self.OrderBy = params.get("OrderBy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2067,6 +2112,10 @@ class DescribeBackupsRequest(AbstractModel):
         :type DatabaseName: str
         :param Group: Whether to group backup files by backup task. Valid value: `0` (no), `1` (yes). Default value: `0`. This parameter is valid only for unarchived backup files.
         :type Group: int
+        :param Type: Backup type. Valid values: `1` (data backup), `2` (log backup). Default value: `1`.
+        :type Type: int
+        :param BackupFormat: Filter by backup file format. Valid values: `pkg` (archive file), `single` (Unarchived files).
+        :type BackupFormat: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -2079,6 +2128,8 @@ class DescribeBackupsRequest(AbstractModel):
         self.BackupId = None
         self.DatabaseName = None
         self.Group = None
+        self.Type = None
+        self.BackupFormat = None
 
 
     def _deserialize(self, params):
@@ -2093,6 +2144,8 @@ class DescribeBackupsRequest(AbstractModel):
         self.BackupId = params.get("BackupId")
         self.DatabaseName = params.get("DatabaseName")
         self.Group = params.get("Group")
+        self.Type = params.get("Type")
+        self.BackupFormat = params.get("BackupFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2226,6 +2279,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type SearchKey: str
         :param UidSet: Unique Uid of an instance
         :type UidSet: list of str
+        :param InstanceType: Instance type. Valid values: `HA` (high-availability), `RO` (read-only), `SI` (basic edition), `BI` (business intelligence service).
+        :type InstanceType: str
         """
         self.ProjectId = None
         self.Status = None
@@ -2242,6 +2297,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.TagKeys = None
         self.SearchKey = None
         self.UidSet = None
+        self.InstanceType = None
 
 
     def _deserialize(self, params):
@@ -2260,6 +2316,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.TagKeys = params.get("TagKeys")
         self.SearchKey = params.get("SearchKey")
         self.UidSet = params.get("UidSet")
+        self.InstanceType = params.get("InstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3998,7 +4055,7 @@ class ModifyBackupStrategyRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID.
         :type InstanceId: str
-        :param BackupType: Backup mode, which supports daily backup only. Valid value: daily.
+        :param BackupType: Backup type. Valid values: `weekly` (when length(BackupDay) <=7 && length(BackupDay) >=2), `daily` (when length(BackupDay)=1). Default value: `daily`.
         :type BackupType: str
         :param BackupTime: Backup time. Value range: an integer from 0 to 23.
         :type BackupTime: int
@@ -4006,12 +4063,18 @@ class ModifyBackupStrategyRequest(AbstractModel):
         :type BackupDay: int
         :param BackupModel: Backup mode. Valid values: `master_pkg` (archive the backup files of the primary node), `master_no_pkg` (do not archive the backup files of the primary node), `slave_pkg` (archive the backup files of the replica node), `slave_no_pkg` (do not archive the backup files of the replica node). Backup files of the replica node are supported only when Always On disaster recovery is enabled.
         :type BackupModel: str
+        :param BackupCycle: The days of the week on which backup will be performed when “BackupType” is `weekly`. If data backup retention period is less than 7 days, the values will be 1-7, indicating that backup will be performed everyday by default; if data backup retention period is greater than or equal to 7 days, the values will be at least any two days, indicating that backup will be performed at least twice in a week by default.
+        :type BackupCycle: list of int non-negative
+        :param BackupSaveDays: Data (log) backup retention period. Value range: 3-1830 days, default value: 7 days.
+        :type BackupSaveDays: int
         """
         self.InstanceId = None
         self.BackupType = None
         self.BackupTime = None
         self.BackupDay = None
         self.BackupModel = None
+        self.BackupCycle = None
+        self.BackupSaveDays = None
 
 
     def _deserialize(self, params):
@@ -4020,6 +4083,8 @@ class ModifyBackupStrategyRequest(AbstractModel):
         self.BackupTime = params.get("BackupTime")
         self.BackupDay = params.get("BackupDay")
         self.BackupModel = params.get("BackupModel")
+        self.BackupCycle = params.get("BackupCycle")
+        self.BackupSaveDays = params.get("BackupSaveDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5520,6 +5585,8 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type HAType: str
         :param MultiZones: Change the instance deployment scheme. Valid values: `SameZones` (change to single-AZ deployment, which does not support cross-AZ disaster recovery), `MultiZones` (change to multi-AZ deployment, which supports cross-AZ disaster recovery).
         :type MultiZones: str
+        :param WaitSwitch: The time when configuration adjustment task is performed. Valid values: `0` (execute immediately), `1` (execute during maintenance time). Default value: `1`.
+        :type WaitSwitch: int
         """
         self.InstanceId = None
         self.Memory = None
@@ -5530,6 +5597,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.DBVersion = None
         self.HAType = None
         self.MultiZones = None
+        self.WaitSwitch = None
 
 
     def _deserialize(self, params):
@@ -5542,6 +5610,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.DBVersion = params.get("DBVersion")
         self.HAType = params.get("HAType")
         self.MultiZones = params.get("MultiZones")
+        self.WaitSwitch = params.get("WaitSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
