@@ -2828,15 +2828,19 @@ class NamespaceUsage(AbstractModel):
         :param TotalConcurrencyMem: Total memory quota of the namespace
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type TotalConcurrencyMem: int
-        :param TotalAllocatedConcurrencyMem: Memory usage of the namespace
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param TotalAllocatedConcurrencyMem: Concurrency usage of the namespace
+Note: This field may return `null`, indicating that no valid value can be obtained.
         :type TotalAllocatedConcurrencyMem: int
+        :param TotalAllocatedProvisionedMem: Provisioned concurrency usage of the namespace
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type TotalAllocatedProvisionedMem: int
         """
         self.Functions = None
         self.Namespace = None
         self.FunctionsCount = None
         self.TotalConcurrencyMem = None
         self.TotalAllocatedConcurrencyMem = None
+        self.TotalAllocatedProvisionedMem = None
 
 
     def _deserialize(self, params):
@@ -2845,6 +2849,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.FunctionsCount = params.get("FunctionsCount")
         self.TotalConcurrencyMem = params.get("TotalConcurrencyMem")
         self.TotalAllocatedConcurrencyMem = params.get("TotalAllocatedConcurrencyMem")
+        self.TotalAllocatedProvisionedMem = params.get("TotalAllocatedProvisionedMem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
