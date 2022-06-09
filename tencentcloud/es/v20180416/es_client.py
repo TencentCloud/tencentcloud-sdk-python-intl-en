@@ -26,6 +26,35 @@ class EsClient(AbstractClient):
     _service = 'es'
 
 
+    def CreateIndex(self, request):
+        """This API is used to create indices.
+
+        :param request: Request instance for CreateIndex.
+        :type request: :class:`tencentcloud.es.v20180416.models.CreateIndexRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.CreateIndexResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateIndex", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateIndexResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateInstance(self, request):
         """This API is used to create an ES cluster instance with the specified specification.
 
@@ -55,6 +84,35 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteIndex(self, request):
+        """This API is used to delete indices.
+
+        :param request: Request instance for DeleteIndex.
+        :type request: :class:`tencentcloud.es.v20180416.models.DeleteIndexRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DeleteIndexResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteIndex", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteIndexResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteInstance(self, request):
         """This API is used to terminate a cluster instance.
 
@@ -70,6 +128,64 @@ class EsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeIndexList(self, request):
+        """This API is used to obtain the index list.
+
+        :param request: Request instance for DescribeIndexList.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeIndexListRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeIndexListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIndexList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIndexListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeIndexMeta(self, request):
+        """This API is used to obtain index metadata.
+
+        :param request: Request instance for DescribeIndexMeta.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeIndexMetaRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeIndexMetaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIndexMeta", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIndexMetaResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -331,6 +447,35 @@ class EsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateDictionariesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateIndex(self, request):
+        """This API is used to update indices.
+
+        :param request: Request instance for UpdateIndex.
+        :type request: :class:`tencentcloud.es.v20180416.models.UpdateIndexRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.UpdateIndexResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateIndex", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateIndexResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

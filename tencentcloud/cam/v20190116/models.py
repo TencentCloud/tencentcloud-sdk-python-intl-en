@@ -4572,6 +4572,109 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class TagRoleRequest(AbstractModel):
+    """TagRole request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Tags: Tag.
+        :type Tags: list of RoleTags
+        :param RoleName: Role name. Specify either the role name or role ID.
+        :type RoleName: str
+        :param RoleId: Role ID. Specify either the role ID or role name.
+        :type RoleId: str
+        """
+        self.Tags = None
+        self.RoleName = None
+        self.RoleId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = RoleTags()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.RoleName = params.get("RoleName")
+        self.RoleId = params.get("RoleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagRoleResponse(AbstractModel):
+    """TagRole response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UntagRoleRequest(AbstractModel):
+    """UntagRole request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagKeys: Tag key.
+        :type TagKeys: list of str
+        :param RoleName: Role name. Specify either the role name or role ID.
+        :type RoleName: str
+        :param RoleId: Role ID. Specify either the role ID or role name.
+        :type RoleId: str
+        """
+        self.TagKeys = None
+        self.RoleName = None
+        self.RoleId = None
+
+
+    def _deserialize(self, params):
+        self.TagKeys = params.get("TagKeys")
+        self.RoleName = params.get("RoleName")
+        self.RoleId = params.get("RoleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UntagRoleResponse(AbstractModel):
+    """UntagRole response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class UpdateAssumeRolePolicyRequest(AbstractModel):
     """UpdateAssumeRolePolicy request structure.
 

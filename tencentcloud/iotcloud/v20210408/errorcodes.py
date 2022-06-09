@@ -41,17 +41,29 @@ INVALIDPARAMETERVALUE_DEFINEDPSKNOTBASE64 = 'InvalidParameterValue.DefinedPskNot
 # The device already exists.
 INVALIDPARAMETERVALUE_DEVICEALREADYEXIST = 'InvalidParameterValue.DeviceAlreadyExist'
 
+# This product name already exists.
+INVALIDPARAMETERVALUE_PRODUCTALREADYEXIST = 'InvalidParameterValue.ProductAlreadyExist'
+
 # Unsupported product type.
 INVALIDPARAMETERVALUE_PRODUCTTYPENOTSUPPORT = 'InvalidParameterValue.ProductTypeNotSupport'
 
+# This TID product already exists.
+INVALIDPARAMETERVALUE_TIDPRODUCTALREADYEXIST = 'InvalidParameterValue.TidProductAlreadyExist'
+
 # Unable to operate because the CA certificate is already bound to a product.
 LIMITEXCEEDED_CAALREADYBINDPRODUCT = 'LimitExceeded.CAAlreadyBindProduct'
+
+# 
+LIMITEXCEEDED_CACERTNAMEREPEAT = 'LimitExceeded.CACertNameRepeat'
 
 # The CA certificate already exists.
 LIMITEXCEEDED_CAREPEAT = 'LimitExceeded.CARepeat'
 
 # Device quantity exceeded the limit.
 LIMITEXCEEDED_DEVICEEXCEEDLIMIT = 'LimitExceeded.DeviceExceedLimit'
+
+# The number of products exceeds the limit.
+LIMITEXCEEDED_PRODUCTEXCEEDLIMIT = 'LimitExceeded.ProductExceedLimit'
 
 # The CA certificate does not exist.
 RESOURCENOTFOUND_CACERTNOTEXIST = 'ResourceNotFound.CACertNotExist'
@@ -61,6 +73,9 @@ RESOURCENOTFOUND_DEVICENOTEXIST = 'ResourceNotFound.DeviceNotExist'
 
 # The product does not exist.
 RESOURCENOTFOUND_PRODUCTNOTEXIST = 'ResourceNotFound.ProductNotExist'
+
+# The TSL model does not exist.
+RESOURCENOTFOUND_THINGMODELNOTEXIST = 'ResourceNotFound.ThingModelNotExist'
 
 # Unable to delete this device as gateway devices have been bound to it.
 UNAUTHORIZEDOPERATION_DEVICEHASALREADYBINDGATEWAY = 'UnauthorizedOperation.DeviceHasAlreadyBindGateway'
@@ -88,6 +103,9 @@ UNAUTHORIZEDOPERATION_PRODUCTISFORBIDDEN = 'UnauthorizedOperation.ProductIsForbi
 
 # The product does not support key authentication.
 UNAUTHORIZEDOPERATION_PRODUCTNOTSUPPORTPSK = 'UnauthorizedOperation.ProductNotSupportPSK'
+
+# The user identity is not verified.
+UNAUTHORIZEDOPERATION_USERNOTAUTHENTICAED = 'UnauthorizedOperation.UserNotAuthenticaed'
 
 # Device OTA update is in progress.
 UNSUPPORTEDOPERATION_DEVICEOTATASKINPROGRESS = 'UnsupportedOperation.DeviceOtaTaskInProgress'

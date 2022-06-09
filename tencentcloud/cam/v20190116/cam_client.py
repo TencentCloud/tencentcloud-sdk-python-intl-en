@@ -1940,6 +1940,64 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def TagRole(self, request):
+        """This API is used to bind tags to a role.
+
+        :param request: Request instance for TagRole.
+        :type request: :class:`tencentcloud.cam.v20190116.models.TagRoleRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.TagRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TagRole", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TagRoleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UntagRole(self, request):
+        """This API is used to unbind tags from a role.
+
+        :param request: Request instance for UntagRole.
+        :type request: :class:`tencentcloud.cam.v20190116.models.UntagRoleRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.UntagRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UntagRole", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UntagRoleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpdateAssumeRolePolicy(self, request):
         """This API (UpdateAssumeRolePolicy) is used to modify the trust policy of a role.
 

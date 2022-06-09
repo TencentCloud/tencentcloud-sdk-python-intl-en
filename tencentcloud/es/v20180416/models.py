@@ -18,6 +18,51 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class BackingIndexMetaField(AbstractModel):
+    """Backing index metadata fields
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IndexName: Backing index name
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type IndexName: str
+        :param IndexStatus: Backing index status
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type IndexStatus: str
+        :param IndexStorage: Backing index size
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type IndexStorage: int
+        :param IndexPhrase: Current lifecycle phase of backing index
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type IndexPhrase: str
+        :param IndexCreateTime: Backing index creation time
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type IndexCreateTime: str
+        """
+        self.IndexName = None
+        self.IndexStatus = None
+        self.IndexStorage = None
+        self.IndexPhrase = None
+        self.IndexCreateTime = None
+
+
+    def _deserialize(self, params):
+        self.IndexName = params.get("IndexName")
+        self.IndexStatus = params.get("IndexStatus")
+        self.IndexStorage = params.get("IndexStorage")
+        self.IndexPhrase = params.get("IndexPhrase")
+        self.IndexCreateTime = params.get("IndexCreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClusterView(AbstractModel):
     """Cluster view data
 
@@ -154,6 +199,67 @@ class CosBackup(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateIndexRequest(AbstractModel):
+    """CreateIndex request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: ES cluster ID
+        :type InstanceId: str
+        :param IndexType: Type of the index to create. `auto`: Automated; `normal`: General.
+        :type IndexType: str
+        :param IndexName: Name of the index to create
+        :type IndexName: str
+        :param IndexMetaJson: JSON-formatted index metadata to create, such as `mappings` and `settings`
+        :type IndexMetaJson: str
+        :param Username: Username for cluster access
+        :type Username: str
+        :param Password: Password for cluster access
+        :type Password: str
+        """
+        self.InstanceId = None
+        self.IndexType = None
+        self.IndexName = None
+        self.IndexMetaJson = None
+        self.Username = None
+        self.Password = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.IndexType = params.get("IndexType")
+        self.IndexName = params.get("IndexName")
+        self.IndexMetaJson = params.get("IndexMetaJson")
+        self.Username = params.get("Username")
+        self.Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateIndexResponse(AbstractModel):
+    """CreateIndex response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class CreateInstanceRequest(AbstractModel):
@@ -347,6 +453,67 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.RequestId = params.get("RequestId")
 
 
+class DeleteIndexRequest(AbstractModel):
+    """DeleteIndex request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: ES cluster ID
+        :type InstanceId: str
+        :param IndexType: Type of the index to delete. `auto`: Automated; `normal`: General.
+        :type IndexType: str
+        :param IndexName: Name of the index to delete
+        :type IndexName: str
+        :param Username: Username for cluster access
+        :type Username: str
+        :param Password: Password for cluster access
+        :type Password: str
+        :param BackingIndexName: Backing index name
+        :type BackingIndexName: str
+        """
+        self.InstanceId = None
+        self.IndexType = None
+        self.IndexName = None
+        self.Username = None
+        self.Password = None
+        self.BackingIndexName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.IndexType = params.get("IndexType")
+        self.IndexName = params.get("IndexName")
+        self.Username = params.get("Username")
+        self.Password = params.get("Password")
+        self.BackingIndexName = params.get("BackingIndexName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteIndexResponse(AbstractModel):
+    """DeleteIndex response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteInstanceRequest(AbstractModel):
     """DeleteInstance request structure.
 
@@ -385,6 +552,162 @@ class DeleteInstanceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeIndexListRequest(AbstractModel):
+    """DescribeIndexList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IndexType: Index type. `auto`: Automated; `normal`: General.
+        :type IndexType: str
+        :param InstanceId: ES cluster ID
+        :type InstanceId: str
+        :param IndexName: Index name. `null` indicates that all indexes are requested.
+        :type IndexName: str
+        :param Username: Username for cluster access
+        :type Username: str
+        :param Password: Password for cluster access
+        :type Password: str
+        :param Offset: The starting position of paging
+        :type Offset: int
+        :param Limit: The number of results per page
+        :type Limit: int
+        :param OrderBy: Sorting condition field, which can be `IndexName`, `IndexStorage`, or `IndexCreateTime`.
+        :type OrderBy: str
+        :param IndexStatusList: Filtering by index status
+        :type IndexStatusList: list of str
+        :param Order: Sorting mode, which can be `asc` and `desc`.
+        :type Order: str
+        """
+        self.IndexType = None
+        self.InstanceId = None
+        self.IndexName = None
+        self.Username = None
+        self.Password = None
+        self.Offset = None
+        self.Limit = None
+        self.OrderBy = None
+        self.IndexStatusList = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.IndexType = params.get("IndexType")
+        self.InstanceId = params.get("InstanceId")
+        self.IndexName = params.get("IndexName")
+        self.Username = params.get("Username")
+        self.Password = params.get("Password")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.OrderBy = params.get("OrderBy")
+        self.IndexStatusList = params.get("IndexStatusList")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIndexListResponse(AbstractModel):
+    """DescribeIndexList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IndexMetaFields: Index metadata field
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type IndexMetaFields: list of IndexMetaField
+        :param TotalCount: Total number of results
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.IndexMetaFields = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("IndexMetaFields") is not None:
+            self.IndexMetaFields = []
+            for item in params.get("IndexMetaFields"):
+                obj = IndexMetaField()
+                obj._deserialize(item)
+                self.IndexMetaFields.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeIndexMetaRequest(AbstractModel):
+    """DescribeIndexMeta request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: ES cluster ID
+        :type InstanceId: str
+        :param IndexType: Index type. `auto`: Automated; `normal`: General.
+        :type IndexType: str
+        :param IndexName: Index name. `null` indicates that all indexes are requested.
+        :type IndexName: str
+        :param Username: Username for cluster access
+        :type Username: str
+        :param Password: Password for cluster access
+        :type Password: str
+        """
+        self.InstanceId = None
+        self.IndexType = None
+        self.IndexName = None
+        self.Username = None
+        self.Password = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.IndexType = params.get("IndexType")
+        self.IndexName = params.get("IndexName")
+        self.Username = params.get("Username")
+        self.Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIndexMetaResponse(AbstractModel):
+    """DescribeIndexMeta response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IndexMetaField: Index metadata field
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type IndexMetaField: :class:`tencentcloud.es.v20180416.models.IndexMetaField`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.IndexMetaField = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("IndexMetaField") is not None:
+            self.IndexMetaField = IndexMetaField()
+            self.IndexMetaField._deserialize(params.get("IndexMetaField"))
         self.RequestId = params.get("RequestId")
 
 
@@ -773,6 +1096,34 @@ class EsAcl(AbstractModel):
         
 
 
+class EsConfigSetInfo(AbstractModel):
+    """Configuration set information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: Configuration set type, such as `LDAP` and `AD`.
+        :type Type: str
+        :param EsConfig: "{\"order\":0,\"url\":\"ldap://10.0.1.72:389\",\"bind_dn\":\"cn=admin,dc=tencent,dc=com\",\"user_search.base_dn\":\"dc=tencent,dc=com\",\"user_search.filter\":\"(cn={0})\",\"group_search.base_dn\":\"dc=tencent,dc=com\"}"
+        :type EsConfig: str
+        """
+        self.Type = None
+        self.EsConfig = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.EsConfig = params.get("EsConfig")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EsDictionaryInfo(AbstractModel):
     """ES dictionary information
 
@@ -904,6 +1255,242 @@ class GetRequestTargetNodeTypesResponse(AbstractModel):
     def _deserialize(self, params):
         self.TargetNodeTypes = params.get("TargetNodeTypes")
         self.RequestId = params.get("RequestId")
+
+
+class IndexMetaField(AbstractModel):
+    """Index metadata field
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IndexType: Index type
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type IndexType: str
+        :param IndexName: Index name
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type IndexName: str
+        :param IndexStatus: Index status
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type IndexStatus: str
+        :param IndexStorage: Index size (in byte)
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type IndexStorage: int
+        :param IndexCreateTime: Index creation time
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type IndexCreateTime: str
+        :param BackingIndices: Backing index
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type BackingIndices: list of BackingIndexMetaField
+        :param ClusterId: Cluster ID
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type ClusterId: str
+        :param ClusterName: Cluster name
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type ClusterName: str
+        :param ClusterVersion: Cluster version
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type ClusterVersion: str
+        :param IndexPolicyField: Index lifecycle policy field
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type IndexPolicyField: :class:`tencentcloud.es.v20180416.models.IndexPolicyField`
+        :param IndexOptionsField: Index automation field
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type IndexOptionsField: :class:`tencentcloud.es.v20180416.models.IndexOptionsField`
+        :param IndexSettingsField: Index setting field
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type IndexSettingsField: :class:`tencentcloud.es.v20180416.models.IndexSettingsField`
+        :param AppId: Cluster APP ID
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type AppId: int
+        """
+        self.IndexType = None
+        self.IndexName = None
+        self.IndexStatus = None
+        self.IndexStorage = None
+        self.IndexCreateTime = None
+        self.BackingIndices = None
+        self.ClusterId = None
+        self.ClusterName = None
+        self.ClusterVersion = None
+        self.IndexPolicyField = None
+        self.IndexOptionsField = None
+        self.IndexSettingsField = None
+        self.AppId = None
+
+
+    def _deserialize(self, params):
+        self.IndexType = params.get("IndexType")
+        self.IndexName = params.get("IndexName")
+        self.IndexStatus = params.get("IndexStatus")
+        self.IndexStorage = params.get("IndexStorage")
+        self.IndexCreateTime = params.get("IndexCreateTime")
+        if params.get("BackingIndices") is not None:
+            self.BackingIndices = []
+            for item in params.get("BackingIndices"):
+                obj = BackingIndexMetaField()
+                obj._deserialize(item)
+                self.BackingIndices.append(obj)
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.ClusterVersion = params.get("ClusterVersion")
+        if params.get("IndexPolicyField") is not None:
+            self.IndexPolicyField = IndexPolicyField()
+            self.IndexPolicyField._deserialize(params.get("IndexPolicyField"))
+        if params.get("IndexOptionsField") is not None:
+            self.IndexOptionsField = IndexOptionsField()
+            self.IndexOptionsField._deserialize(params.get("IndexOptionsField"))
+        if params.get("IndexSettingsField") is not None:
+            self.IndexSettingsField = IndexSettingsField()
+            self.IndexSettingsField._deserialize(params.get("IndexSettingsField"))
+        self.AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IndexOptionsField(AbstractModel):
+    """Index automation field
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ExpireMaxAge: Max age for expiry purpose
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type ExpireMaxAge: str
+        :param ExpireMaxSize: Max size for expiry purpose
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type ExpireMaxSize: str
+        :param RolloverMaxAge: Rollover cycle
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type RolloverMaxAge: str
+        :param RolloverDynamic: Whether to enable the dynamic rollover
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type RolloverDynamic: str
+        :param ShardNumDynamic: Whether to enable dynamic sharding
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type ShardNumDynamic: str
+        :param TimestampField: Timestamp field
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type TimestampField: str
+        :param WriteMode: Write mode
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type WriteMode: str
+        """
+        self.ExpireMaxAge = None
+        self.ExpireMaxSize = None
+        self.RolloverMaxAge = None
+        self.RolloverDynamic = None
+        self.ShardNumDynamic = None
+        self.TimestampField = None
+        self.WriteMode = None
+
+
+    def _deserialize(self, params):
+        self.ExpireMaxAge = params.get("ExpireMaxAge")
+        self.ExpireMaxSize = params.get("ExpireMaxSize")
+        self.RolloverMaxAge = params.get("RolloverMaxAge")
+        self.RolloverDynamic = params.get("RolloverDynamic")
+        self.ShardNumDynamic = params.get("ShardNumDynamic")
+        self.TimestampField = params.get("TimestampField")
+        self.WriteMode = params.get("WriteMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IndexPolicyField(AbstractModel):
+    """Index lifecycle policy field
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WarmEnable: Whether to enable the warm phase
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type WarmEnable: str
+        :param WarmMinAge: Min age before data transitions to the warm phase
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type WarmMinAge: str
+        :param ColdEnable: Whether to enable the cold phase
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type ColdEnable: str
+        :param ColdMinAge: Min age before data transitions to the cold phase
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type ColdMinAge: str
+        :param FrozenEnable: Whether to enable the frozen phase
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type FrozenEnable: str
+        :param FrozenMinAge: Min age before data transitions to the frozen phase
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type FrozenMinAge: str
+        """
+        self.WarmEnable = None
+        self.WarmMinAge = None
+        self.ColdEnable = None
+        self.ColdMinAge = None
+        self.FrozenEnable = None
+        self.FrozenMinAge = None
+
+
+    def _deserialize(self, params):
+        self.WarmEnable = params.get("WarmEnable")
+        self.WarmMinAge = params.get("WarmMinAge")
+        self.ColdEnable = params.get("ColdEnable")
+        self.ColdMinAge = params.get("ColdMinAge")
+        self.FrozenEnable = params.get("FrozenEnable")
+        self.FrozenMinAge = params.get("FrozenMinAge")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IndexSettingsField(AbstractModel):
+    """Index configuration fields
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NumberOfShards: Number of primary shards
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type NumberOfShards: str
+        :param NumberOfReplicas: Number of replica shards
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type NumberOfReplicas: str
+        :param RefreshInterval: Index refresh interval
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type RefreshInterval: str
+        """
+        self.NumberOfShards = None
+        self.NumberOfReplicas = None
+        self.RefreshInterval = None
+
+
+    def _deserialize(self, params):
+        self.NumberOfShards = params.get("NumberOfShards")
+        self.NumberOfReplicas = params.get("NumberOfReplicas")
+        self.RefreshInterval = params.get("RefreshInterval")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class InstanceInfo(AbstractModel):
@@ -2045,9 +2632,9 @@ class UpdateDictionariesRequest(AbstractModel):
         :type Synonym: list of str
         :param QQDict: COS address of the QQ dictionary
         :type QQDict: list of str
-        :param UpdateType: 0: Install; 1: Delete
+        :param UpdateType: `0` (default): Install, `1`: Delete
         :type UpdateType: int
-        :param ForceRestart: Whether to force restart the cluster
+        :param ForceRestart: Whether to force restart the cluster. The default value is `false`.
         :type ForceRestart: bool
         """
         self.InstanceId = None
@@ -2078,6 +2665,67 @@ class UpdateDictionariesRequest(AbstractModel):
 
 class UpdateDictionariesResponse(AbstractModel):
     """UpdateDictionaries response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateIndexRequest(AbstractModel):
+    """UpdateIndex request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: ES cluster ID
+        :type InstanceId: str
+        :param IndexType: Type of the index to update. `auto`: Automated; `normal`: General.
+        :type IndexType: str
+        :param IndexName: Name of the index to update
+        :type IndexName: str
+        :param UpdateMetaJson: JSON-formatted index metadata to update, such as `mappings` and `settings`.
+        :type UpdateMetaJson: str
+        :param Username: Username for cluster access
+        :type Username: str
+        :param Password: Password for cluster access
+        :type Password: str
+        """
+        self.InstanceId = None
+        self.IndexType = None
+        self.IndexName = None
+        self.UpdateMetaJson = None
+        self.Username = None
+        self.Password = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.IndexType = params.get("IndexType")
+        self.IndexName = params.get("IndexName")
+        self.UpdateMetaJson = params.get("UpdateMetaJson")
+        self.Username = params.get("Username")
+        self.Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateIndexResponse(AbstractModel):
+    """UpdateIndex response structure.
 
     """
 
@@ -2164,6 +2812,8 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
         :type CerebroPublicAccess: str
         :param CerebroPrivateAccess: Cerebro private network access status
         :type CerebroPrivateAccess: str
+        :param EsConfigSet: Added or modified configuration set information
+        :type EsConfigSet: :class:`tencentcloud.es.v20180416.models.EsConfigSetInfo`
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -2194,6 +2844,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
         self.EnableCerebro = None
         self.CerebroPublicAccess = None
         self.CerebroPrivateAccess = None
+        self.EsConfigSet = None
 
 
     def _deserialize(self, params):
@@ -2244,6 +2895,9 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
         self.EnableCerebro = params.get("EnableCerebro")
         self.CerebroPublicAccess = params.get("CerebroPublicAccess")
         self.CerebroPrivateAccess = params.get("CerebroPrivateAccess")
+        if params.get("EsConfigSet") is not None:
+            self.EsConfigSet = EsConfigSetInfo()
+            self.EsConfigSet._deserialize(params.get("EsConfigSet"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2288,9 +2942,9 @@ class UpdatePluginsRequest(AbstractModel):
         :type InstallPluginList: list of str
         :param RemovePluginList: List of names of the plugins to be uninstalled
         :type RemovePluginList: list of str
-        :param ForceRestart: Whether to force restart
+        :param ForceRestart: Whether to force restart the cluster. The default value is `false`.
         :type ForceRestart: bool
-        :param ForceUpdate: Whether to reinstall
+        :param ForceUpdate: Whether to reinstall the cluster. The default value is `false`.
         :type ForceUpdate: bool
         :param PluginType: 0: system plugin
         :type PluginType: int

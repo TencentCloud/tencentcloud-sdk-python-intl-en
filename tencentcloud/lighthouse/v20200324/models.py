@@ -529,34 +529,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
-class ContainerEnv(AbstractModel):
-    """Container environment variables
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Key: Environment variable key
-        :type Key: str
-        :param Value: Environment variable value
-        :type Value: str
-        """
-        self.Key = None
-        self.Value = None
-
-
-    def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Value = params.get("Value")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class CreateBlueprintRequest(AbstractModel):
     """CreateBlueprint request structure.
 
@@ -713,102 +685,6 @@ class CreateInstanceSnapshotResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class CreateInstancesRequest(AbstractModel):
-    """CreateInstances request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param BundleId: ID of the Lighthouse package
-        :type BundleId: str
-        :param BlueprintId: ID of the Lighthouse image
-        :type BlueprintId: str
-        :param InstanceChargePrepaid: Monthly subscription information for the instance, including the purchase period, setting of auto-renewal, etc.
-        :type InstanceChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
-        :param InstanceName: The display name of the Lighthouse instance
-        :type InstanceName: str
-        :param InstanceCount: Number of the Lighthouse instances to purchase. For monthly subscribed instances, the value can be 1 to 30. The default value is `1`. Note that this number can not exceed the remaining quota under the current account.
-        :type InstanceCount: int
-        :param Zones: List of availability zones. A random AZ is selected by default.
-        :type Zones: list of str
-        :param DryRun: Whether the request is a dry run only.
-`true`: dry run only. The request will not create instance(s). A dry run can check whether all the required parameters are specified, whether the request format is right, whether the request exceeds service limits, and whether the specified CVMs are available.
-If the dry run fails, the corresponding error code will be returned.
-If the dry run succeeds, the RequestId will be returned.
-`false` (default value): send a normal request and create instance(s) if all the requirements are met.
-        :type DryRun: bool
-        :param ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idem-potency of the request cannot be guaranteed.
-        :type ClientToken: str
-        :param LoginConfiguration: Login password of the instance. It’s only available for Windows instances. If it’s not specified, it means that the user choose to set the login password after the instance creation.
-        :type LoginConfiguration: :class:`tencentcloud.lighthouse.v20200324.models.LoginConfiguration`
-        :param Containers: Configuration of the containers to create
-        :type Containers: list of DockerContainerConfiguration
-        """
-        self.BundleId = None
-        self.BlueprintId = None
-        self.InstanceChargePrepaid = None
-        self.InstanceName = None
-        self.InstanceCount = None
-        self.Zones = None
-        self.DryRun = None
-        self.ClientToken = None
-        self.LoginConfiguration = None
-        self.Containers = None
-
-
-    def _deserialize(self, params):
-        self.BundleId = params.get("BundleId")
-        self.BlueprintId = params.get("BlueprintId")
-        if params.get("InstanceChargePrepaid") is not None:
-            self.InstanceChargePrepaid = InstanceChargePrepaid()
-            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
-        self.InstanceName = params.get("InstanceName")
-        self.InstanceCount = params.get("InstanceCount")
-        self.Zones = params.get("Zones")
-        self.DryRun = params.get("DryRun")
-        self.ClientToken = params.get("ClientToken")
-        if params.get("LoginConfiguration") is not None:
-            self.LoginConfiguration = LoginConfiguration()
-            self.LoginConfiguration._deserialize(params.get("LoginConfiguration"))
-        if params.get("Containers") is not None:
-            self.Containers = []
-            for item in params.get("Containers"):
-                obj = DockerContainerConfiguration()
-                obj._deserialize(item)
-                self.Containers.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateInstancesResponse(AbstractModel):
-    """CreateInstances response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceIdSet: List of IDs created by using this API. The returning of IDs does not mean that the instances are created successfully.
-
-You can call `DescribeInstances` API, and find the instance ID in the `InstancesSet` returned to check its status. If the `status` is `running`, the instance is created successfully.
-        :type InstanceIdSet: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.InstanceIdSet = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.InstanceIdSet = params.get("InstanceIdSet")
-        self.RequestId = params.get("RequestId")
-
-
 class CreateKeyPairRequest(AbstractModel):
     """CreateKeyPair request structure.
 
@@ -854,46 +730,6 @@ class CreateKeyPairResponse(AbstractModel):
             self.KeyPair = KeyPair()
             self.KeyPair._deserialize(params.get("KeyPair"))
         self.RequestId = params.get("RequestId")
-
-
-class DataDiskPrice(AbstractModel):
-    """Data disk price
-
-    """
-
-    def __init__(self):
-        r"""
-        :param DiskId: Cloud disk ID.
-        :type DiskId: str
-        :param OriginalDiskPrice: Cloud disk unit price.
-        :type OriginalDiskPrice: float
-        :param OriginalPrice: Total cloud disk price.
-        :type OriginalPrice: float
-        :param Discount: Discount.
-        :type Discount: float
-        :param DiscountPrice: Discounted total price.
-        :type DiscountPrice: float
-        """
-        self.DiskId = None
-        self.OriginalDiskPrice = None
-        self.OriginalPrice = None
-        self.Discount = None
-        self.DiscountPrice = None
-
-
-    def _deserialize(self, params):
-        self.DiskId = params.get("DiskId")
-        self.OriginalDiskPrice = params.get("OriginalDiskPrice")
-        self.OriginalPrice = params.get("OriginalPrice")
-        self.Discount = params.get("Discount")
-        self.DiscountPrice = params.get("DiscountPrice")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
 
 
 class DeleteBlueprintsRequest(AbstractModel):
@@ -1853,56 +1689,6 @@ class DescribeFirewallRulesTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeGeneralResourceQuotasRequest(AbstractModel):
-    """DescribeGeneralResourceQuotas request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ResourceNames: List of resource names. Valid values: USER_KEY_PAIR, INSTANCE, SNAPSHOT.
-        :type ResourceNames: list of str
-        """
-        self.ResourceNames = None
-
-
-    def _deserialize(self, params):
-        self.ResourceNames = params.get("ResourceNames")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeGeneralResourceQuotasResponse(AbstractModel):
-    """DescribeGeneralResourceQuotas response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param GeneralResourceQuotaSet: List of general resource quota details.
-        :type GeneralResourceQuotaSet: list of GeneralResourceQuota
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.GeneralResourceQuotaSet = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("GeneralResourceQuotaSet") is not None:
-            self.GeneralResourceQuotaSet = []
-            for item in params.get("GeneralResourceQuotaSet"):
-                obj = GeneralResourceQuota()
-                obj._deserialize(item)
-                self.GeneralResourceQuotaSet.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeInstanceLoginKeyPairAttributeRequest(AbstractModel):
     """DescribeInstanceLoginKeyPairAttribute request structure.
 
@@ -2094,93 +1880,6 @@ class DescribeInstancesDiskNumResponse(AbstractModel):
                 obj._deserialize(item)
                 self.AttachDetailSet.append(obj)
         self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeInstancesRequest(AbstractModel):
-    """DescribeInstances request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceIds: Instance ID list. Each request can contain up to 100 instances at a time.
-        :type InstanceIds: list of str
-        :param Filters: Filter list
-<li>instance-name</li>Filter by the instance name
-Type: String
-Required: no
-<li>private-ip-address</li>Filter by the private IP of instance primary ENI
-Type: String
-Required: no
-<li>public-ip-address</li>Filter by the public IP of instance primary ENI
-Type: String
-Required: no
-<li>zone</li>Filter by the availability zone
-Type: String
-Required: no
-<li>instance-state</li>Filter by **instance status**.
-Type: String
-Required: no
-Each request can contain up to 10 filters, each of which can have 100 values. You cannot specify both `InstanceIds` and `Filters` at the same time.
-        :type Filters: list of Filter
-        :param Offset: Offset. Default value: 0. For more information on `Offset`, please see the relevant section in [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
-        :type Offset: int
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, please see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
-        :type Limit: int
-        """
-        self.InstanceIds = None
-        self.Filters = None
-        self.Offset = None
-        self.Limit = None
-
-
-    def _deserialize(self, params):
-        self.InstanceIds = params.get("InstanceIds")
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeInstancesResponse(AbstractModel):
-    """DescribeInstances response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TotalCount: Number of eligible instances.
-        :type TotalCount: int
-        :param InstanceSet: List of instance details.
-        :type InstanceSet: list of Instance
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.InstanceSet = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("InstanceSet") is not None:
-            self.InstanceSet = []
-            for item in params.get("InstanceSet"):
-                obj = Instance()
-                obj._deserialize(item)
-                self.InstanceSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2731,6 +2430,34 @@ class DescribeZonesRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param OrderField: Sorting field. Valid values:
+<li>`ZONE`: Sort by the availability zone.
+<li>`INSTANCE_DISPLAY_LABEL`: Sort by the labels of availability zones. Labels include `HIDDEN`, `NORMAL` and `SELECTED`.
+The default value is `ZONE`.
+        :type OrderField: str
+        :param Order: Specifies how availability zones are listed. Valid values:
+<li>ASC: Ascending sort. 
+<li>DESC: Descending sort.
+The default value is `ASC`.
+        :type Order: str
+        """
+        self.OrderField = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.OrderField = params.get("OrderField")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeZonesResponse(AbstractModel):
     """DescribeZones response structure.
@@ -3210,131 +2937,6 @@ class DiskReturnable(AbstractModel):
         
 
 
-class DockerContainerConfiguration(AbstractModel):
-    """Configuration used to create Docker containers
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ContainerImage: Container image address
-        :type ContainerImage: str
-        :param ContainerName: Container name
-        :type ContainerName: str
-        :param Envs: List of environment variables
-        :type Envs: list of ContainerEnv
-        :param PublishPorts: List of mappings of container ports and host ports
-        :type PublishPorts: list of DockerContainerPublishPort
-        :param Volumes: List of container mount volumes
-        :type Volumes: list of DockerContainerVolume
-        :param Command: The command to run
-        :type Command: str
-        """
-        self.ContainerImage = None
-        self.ContainerName = None
-        self.Envs = None
-        self.PublishPorts = None
-        self.Volumes = None
-        self.Command = None
-
-
-    def _deserialize(self, params):
-        self.ContainerImage = params.get("ContainerImage")
-        self.ContainerName = params.get("ContainerName")
-        if params.get("Envs") is not None:
-            self.Envs = []
-            for item in params.get("Envs"):
-                obj = ContainerEnv()
-                obj._deserialize(item)
-                self.Envs.append(obj)
-        if params.get("PublishPorts") is not None:
-            self.PublishPorts = []
-            for item in params.get("PublishPorts"):
-                obj = DockerContainerPublishPort()
-                obj._deserialize(item)
-                self.PublishPorts.append(obj)
-        if params.get("Volumes") is not None:
-            self.Volumes = []
-            for item in params.get("Volumes"):
-                obj = DockerContainerVolume()
-                obj._deserialize(item)
-                self.Volumes.append(obj)
-        self.Command = params.get("Command")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DockerContainerPublishPort(AbstractModel):
-    """Port mapping of the Docker container
-
-    """
-
-    def __init__(self):
-        r"""
-        :param HostPort: Host port
-        :type HostPort: int
-        :param ContainerPort: Container port
-        :type ContainerPort: int
-        :param Ip: External IP. It defaults to 0.0.0.0.
-Note: This field may return `null`, indicating that no valid value was found.
-        :type Ip: str
-        :param Protocol: The protocol defaults to `tcp`. Valid values: `tcp`, `udp` and `sctp`.
-Note: This field may return `null`, indicating that no valid value was found.
-        :type Protocol: str
-        """
-        self.HostPort = None
-        self.ContainerPort = None
-        self.Ip = None
-        self.Protocol = None
-
-
-    def _deserialize(self, params):
-        self.HostPort = params.get("HostPort")
-        self.ContainerPort = params.get("ContainerPort")
-        self.Ip = params.get("Ip")
-        self.Protocol = params.get("Protocol")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DockerContainerVolume(AbstractModel):
-    """Docker container mount volume
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ContainerPath: Container path
-        :type ContainerPath: str
-        :param HostPath: Host path
-        :type HostPath: str
-        """
-        self.ContainerPath = None
-        self.HostPath = None
-
-
-    def _deserialize(self, params):
-        self.ContainerPath = params.get("ContainerPath")
-        self.HostPath = params.get("HostPath")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class Filter(AbstractModel):
     """>Key-Value pair filter for conditional filtering queries, such as filtering name
     > * If there are multiple `Filter` parameters, the relationship among them is the logical `AND`.
@@ -3448,39 +3050,6 @@ class FirewallRuleInfo(AbstractModel):
         self.CidrBlock = params.get("CidrBlock")
         self.Action = params.get("Action")
         self.FirewallRuleDescription = params.get("FirewallRuleDescription")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class GeneralResourceQuota(AbstractModel):
-    """General resource quota information.
-
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ResourceName: Resource name.
-        :type ResourceName: str
-        :param ResourceQuotaAvailable: Number of available resources.
-        :type ResourceQuotaAvailable: int
-        :param ResourceQuotaTotal: Total number of resources.
-        :type ResourceQuotaTotal: int
-        """
-        self.ResourceName = None
-        self.ResourceQuotaAvailable = None
-        self.ResourceQuotaTotal = None
-
-
-    def _deserialize(self, params):
-        self.ResourceName = params.get("ResourceName")
-        self.ResourceQuotaAvailable = params.get("ResourceQuotaAvailable")
-        self.ResourceQuotaTotal = params.get("ResourceQuotaTotal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3761,229 +3330,6 @@ class InquirePriceRenewDisksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class InquirePriceRenewInstancesRequest(AbstractModel):
-    """InquirePriceRenewInstances request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceIds: Instance to be renewed.
-        :type InstanceIds: list of str
-        :param InstanceChargePrepaid: Prepaid mode, i.e., monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. It is required for prepaid instances.
-        :type InstanceChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
-        :param RenewDataDisk: Whether to renew the data disk
-        :type RenewDataDisk: bool
-        :param AlignInstanceExpiredTime: Whether the data disk has the same expiration time as the instance
-        :type AlignInstanceExpiredTime: bool
-        """
-        self.InstanceIds = None
-        self.InstanceChargePrepaid = None
-        self.RenewDataDisk = None
-        self.AlignInstanceExpiredTime = None
-
-
-    def _deserialize(self, params):
-        self.InstanceIds = params.get("InstanceIds")
-        if params.get("InstanceChargePrepaid") is not None:
-            self.InstanceChargePrepaid = InstanceChargePrepaid()
-            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
-        self.RenewDataDisk = params.get("RenewDataDisk")
-        self.AlignInstanceExpiredTime = params.get("AlignInstanceExpiredTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class InquirePriceRenewInstancesResponse(AbstractModel):
-    """InquirePriceRenewInstances response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Price: Price query information.
-        :type Price: :class:`tencentcloud.lighthouse.v20200324.models.Price`
-        :param DataDiskPriceSet: List of data disk price information.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type DataDiskPriceSet: list of DataDiskPrice
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.Price = None
-        self.DataDiskPriceSet = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Price") is not None:
-            self.Price = Price()
-            self.Price._deserialize(params.get("Price"))
-        if params.get("DataDiskPriceSet") is not None:
-            self.DataDiskPriceSet = []
-            for item in params.get("DataDiskPriceSet"):
-                obj = DataDiskPrice()
-                obj._deserialize(item)
-                self.DataDiskPriceSet.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class Instance(AbstractModel):
-    """Instance information.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceId: Instance ID.
-        :type InstanceId: str
-        :param BundleId: Package ID.
-        :type BundleId: str
-        :param BlueprintId: Image ID.
-        :type BlueprintId: str
-        :param CPU: Number of instance CPU cores.
-        :type CPU: int
-        :param Memory: Instance memory capacity in GB.
-        :type Memory: int
-        :param InstanceName: Instance name.
-        :type InstanceName: str
-        :param InstanceChargeType: Instance billing mode. Valid values: 
-PREPAID: prepaid (i.e., monthly subscription).
-        :type InstanceChargeType: str
-        :param SystemDisk: Instance system disk information.
-        :type SystemDisk: :class:`tencentcloud.lighthouse.v20200324.models.SystemDisk`
-        :param PrivateAddresses: Private IP of instance primary ENI. 
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type PrivateAddresses: list of str
-        :param PublicAddresses: Public IP of instance primary ENI. 
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type PublicAddresses: list of str
-        :param InternetAccessible: Instance bandwidth information.
-        :type InternetAccessible: :class:`tencentcloud.lighthouse.v20200324.models.InternetAccessible`
-        :param RenewFlag: Auto-Renewal flag. Valid values: 
-NOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically  
-NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically.
-        :type RenewFlag: str
-        :param LoginSettings: Instance login settings.
-        :type LoginSettings: :class:`tencentcloud.lighthouse.v20200324.models.LoginSettings`
-        :param InstanceState: Instance status. Valid values: 
-<li>PENDING: creating</li><li>LAUNCH_FAILED: creation failed</li><li>RUNNING: running</li><li>STOPPED: shut down</li><li>STARTING: starting</li><li>STOPPING: shutting down</li><li>REBOOTING: rebooting</li><li>SHUTDOWN: shut down and to be terminated</li><li>TERMINATING: terminating</li>
-        :type InstanceState: str
-        :param Uuid: Globally unique ID of instance.
-        :type Uuid: str
-        :param LatestOperation: Last instance operation, such as `StopInstances` and `ResetInstance`. Note: this field may return null, indicating that no valid values can be obtained.
-        :type LatestOperation: str
-        :param LatestOperationState: Last instance operation status. Valid values: 
-SUCCESS: operation succeeded 
-OPERATING: the operation is being executed 
-FAILED: operation failed 
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type LatestOperationState: str
-        :param LatestOperationRequestId: Unique request ID for the last operation of the instance. 
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type LatestOperationRequestId: str
-        :param IsolatedTime: Isolation time according to ISO 8601 standard. UTC time is used. 
-Format: YYYY-MM-DDThh:mm:ssZ.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type IsolatedTime: str
-        :param CreatedTime: Creation time according to ISO 8601 standard. UTC time is used. 
-Format: YYYY-MM-DDThh:mm:ssZ.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CreatedTime: str
-        :param ExpiredTime: Expiration time according to ISO 8601 standard. UTC time is used. 
-Format: YYYY-MM-DDThh:mm:ssZ.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ExpiredTime: str
-        :param PlatformType: OS type, such as LINUX_UNIX and WINDOWS.
-        :type PlatformType: str
-        :param Platform: OS type.
-        :type Platform: str
-        :param OsName: OS name.
-        :type OsName: str
-        :param Zone: AZ.
-        :type Zone: str
-        :param Tags: The list of tags associated with the instance
-        :type Tags: list of Tag
-        """
-        self.InstanceId = None
-        self.BundleId = None
-        self.BlueprintId = None
-        self.CPU = None
-        self.Memory = None
-        self.InstanceName = None
-        self.InstanceChargeType = None
-        self.SystemDisk = None
-        self.PrivateAddresses = None
-        self.PublicAddresses = None
-        self.InternetAccessible = None
-        self.RenewFlag = None
-        self.LoginSettings = None
-        self.InstanceState = None
-        self.Uuid = None
-        self.LatestOperation = None
-        self.LatestOperationState = None
-        self.LatestOperationRequestId = None
-        self.IsolatedTime = None
-        self.CreatedTime = None
-        self.ExpiredTime = None
-        self.PlatformType = None
-        self.Platform = None
-        self.OsName = None
-        self.Zone = None
-        self.Tags = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.BundleId = params.get("BundleId")
-        self.BlueprintId = params.get("BlueprintId")
-        self.CPU = params.get("CPU")
-        self.Memory = params.get("Memory")
-        self.InstanceName = params.get("InstanceName")
-        self.InstanceChargeType = params.get("InstanceChargeType")
-        if params.get("SystemDisk") is not None:
-            self.SystemDisk = SystemDisk()
-            self.SystemDisk._deserialize(params.get("SystemDisk"))
-        self.PrivateAddresses = params.get("PrivateAddresses")
-        self.PublicAddresses = params.get("PublicAddresses")
-        if params.get("InternetAccessible") is not None:
-            self.InternetAccessible = InternetAccessible()
-            self.InternetAccessible._deserialize(params.get("InternetAccessible"))
-        self.RenewFlag = params.get("RenewFlag")
-        if params.get("LoginSettings") is not None:
-            self.LoginSettings = LoginSettings()
-            self.LoginSettings._deserialize(params.get("LoginSettings"))
-        self.InstanceState = params.get("InstanceState")
-        self.Uuid = params.get("Uuid")
-        self.LatestOperation = params.get("LatestOperation")
-        self.LatestOperationState = params.get("LatestOperationState")
-        self.LatestOperationRequestId = params.get("LatestOperationRequestId")
-        self.IsolatedTime = params.get("IsolatedTime")
-        self.CreatedTime = params.get("CreatedTime")
-        self.ExpiredTime = params.get("ExpiredTime")
-        self.PlatformType = params.get("PlatformType")
-        self.Platform = params.get("Platform")
-        self.OsName = params.get("OsName")
-        self.Zone = params.get("Zone")
-        if params.get("Tags") is not None:
-            self.Tags = []
-            for item in params.get("Tags"):
-                obj = Tag()
-                obj._deserialize(item)
-                self.Tags.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class InstanceChargePrepaid(AbstractModel):
     """Instance billing mode
 
@@ -4151,40 +3497,6 @@ class InstanceTrafficPackage(AbstractModel):
         
 
 
-class InternetAccessible(AbstractModel):
-    """Public network accessibility of the instance created by the launch configuration, public network usage billing mode of the instance, maximum bandwidth, etc.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InternetChargeType: Network billing mode. Valid values:
-<li>Bill by traffic package: TRAFFIC_POSTPAID_BY_HOUR</li>
-<li>Bill by bandwidth: BANDWIDTH_POSTPAID_BY_HOUR</li>
-        :type InternetChargeType: str
-        :param InternetMaxBandwidthOut: Public network outbound bandwidth cap in Mbps.
-        :type InternetMaxBandwidthOut: int
-        :param PublicIpAssigned: Whether to assign a public IP.
-        :type PublicIpAssigned: bool
-        """
-        self.InternetChargeType = None
-        self.InternetMaxBandwidthOut = None
-        self.PublicIpAssigned = None
-
-
-    def _deserialize(self, params):
-        self.InternetChargeType = params.get("InternetChargeType")
-        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
-        self.PublicIpAssigned = params.get("PublicIpAssigned")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class KeyPair(AbstractModel):
     """Key pair information.
 
@@ -4223,36 +3535,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.AssociatedInstanceIds = params.get("AssociatedInstanceIds")
         self.CreatedTime = params.get("CreatedTime")
         self.PrivateKey = params.get("PrivateKey")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class LoginConfiguration(AbstractModel):
-    """Login password information
-
-    """
-
-
-class LoginSettings(AbstractModel):
-    """Instance login configuration and information.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param KeyIds: Key ID list. After a key is associated, you can use it to access the instance. Note: this field may return [], indicating that no valid values can be obtained.
-        :type KeyIds: list of str
-        """
-        self.KeyIds = None
-
-
-    def _deserialize(self, params):
-        self.KeyIds = params.get("KeyIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5337,69 +4619,6 @@ class StopInstancesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
-
-
-class SystemDisk(AbstractModel):
-    """Information of the block device where the OS is installed, namely, the system disk.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param DiskType: System disk type.
-Valid values: 
-<li> LOCAL_BASIC: local disk</li><li> LOCAL_SSD: local SSD disk</li><li> CLOUD_BASIC: HDD cloud disk</li><li> CLOUD_SSD: SSD cloud disk</li><li> CLOUD_PREMIUM: Premium Cloud Storage</li>
-        :type DiskType: str
-        :param DiskSize: System disk size in GB.
-        :type DiskSize: int
-        :param DiskId: System disk ID.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type DiskId: str
-        """
-        self.DiskType = None
-        self.DiskSize = None
-        self.DiskId = None
-
-
-    def _deserialize(self, params):
-        self.DiskType = params.get("DiskType")
-        self.DiskSize = params.get("DiskSize")
-        self.DiskId = params.get("DiskId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class Tag(AbstractModel):
-    """Information on tags
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Key: Tag key.
-        :type Key: str
-        :param Value: Tag value.
-        :type Value: str
-        """
-        self.Key = None
-        self.Value = None
-
-
-    def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Value = params.get("Value")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
 
 
 class TerminateDisksRequest(AbstractModel):

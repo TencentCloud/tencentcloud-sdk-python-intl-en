@@ -84,6 +84,35 @@ class IotcloudClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateProduct(self, request):
+        """This API is used to create a new IoT communication product.
+
+        :param request: Request instance for CreateProduct.
+        :type request: :class:`tencentcloud.iotcloud.v20210408.models.CreateProductRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20210408.models.CreateProductResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateProduct", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateProductResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteDevice(self, request):
         """This API is used to delete an IoT Hub device.
 
@@ -360,6 +389,35 @@ class IotcloudClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProductCAResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeProducts(self, request):
+        """This API is used to obtain the product list.
+
+        :param request: Request instance for DescribeProducts.
+        :type request: :class:`tencentcloud.iotcloud.v20210408.models.DescribeProductsRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20210408.models.DescribeProductsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProducts", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProductsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

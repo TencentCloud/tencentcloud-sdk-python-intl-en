@@ -38,6 +38,9 @@ FAILEDOPERATION_POLICYVERSIONFULL = 'FailedOperation.PolicyVersionFull'
 # Failed to bind the tag.
 FAILEDOPERATION_TAGRESOURCEFAILED = 'FailedOperation.TagResourceFailed'
 
+# Failed to unbind the tag
+FAILEDOPERATION_UNTAGRESOURCEFAILED = 'FailedOperation.UnTagResourceFailed'
+
 # No mobile number is bound to the account
 FAILEDOPERATION_USERNOTBINDPHONE = 'FailedOperation.UserNotBindPhone'
 
@@ -46,6 +49,9 @@ FAILEDOPERATION_USERNOTBINDWECHAT = 'FailedOperation.UserNotBindWechat'
 
 # User does not have permission.
 FAILEDOPERATION_USERUNBINDNOPERMISSION = 'FailedOperation.UserUnbindNoPermission'
+
+# Internal error
+INTERNALERROR = 'InternalError'
 
 # Internal error.
 INTERNALERROR_SYSTEMERROR = 'InternalError.SystemError'

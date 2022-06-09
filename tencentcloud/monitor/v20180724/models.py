@@ -414,6 +414,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param OneClickStatus: Whether the quick alarm policy is enabled.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type OneClickStatus: int
+        :param AdvancedMetricNumber: The number of advanced metrics.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type AdvancedMetricNumber: int
         """
         self.PolicyId = None
         self.PolicyName = None
@@ -447,6 +450,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.FilterDimensionsParam = None
         self.IsOneClick = None
         self.OneClickStatus = None
+        self.AdvancedMetricNumber = None
 
 
     def _deserialize(self, params):
@@ -503,6 +507,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.FilterDimensionsParam = params.get("FilterDimensionsParam")
         self.IsOneClick = params.get("IsOneClick")
         self.OneClickStatus = params.get("OneClickStatus")
+        self.AdvancedMetricNumber = params.get("AdvancedMetricNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -665,6 +670,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param RuleType: Trigger condition type. `STATIC`: static threshold; `dynamic`: dynamic threshold. If you do not specify this parameter when creating or editing a policy, `STATIC` is used by default.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type RuleType: str
+        :param IsAdvanced: Whether it is an advanced metric. 0: No; 1: Yes.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type IsAdvanced: int
+        :param IsOpen: Whether the advanced metric feature is enabled. 0: No; 1: Yes.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type IsOpen: int
+        :param ProductId: Integration center product ID.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ProductId: str
         """
         self.MetricName = None
         self.Period = None
@@ -677,6 +691,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.Description = None
         self.Unit = None
         self.RuleType = None
+        self.IsAdvanced = None
+        self.IsOpen = None
+        self.ProductId = None
 
 
     def _deserialize(self, params):
@@ -693,6 +710,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.Description = params.get("Description")
         self.Unit = params.get("Unit")
         self.RuleType = params.get("RuleType")
+        self.IsAdvanced = params.get("IsAdvanced")
+        self.IsOpen = params.get("IsOpen")
+        self.ProductId = params.get("ProductId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5056,6 +5076,15 @@ class Metric(AbstractModel):
         :param MetricConfig: Metric configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MetricConfig: :class:`tencentcloud.monitor.v20180724.models.MetricConfig`
+        :param IsAdvanced: Whether it is an advanced metric. 1: Yes; 0: No.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type IsAdvanced: int
+        :param IsOpen: Whether the advanced metric feature is enabled. 1: Yes; 0: No.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type IsOpen: int
+        :param ProductId: Integration center product ID.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ProductId: int
         """
         self.Namespace = None
         self.MetricName = None
@@ -5065,6 +5094,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Dimensions = None
         self.Unit = None
         self.MetricConfig = None
+        self.IsAdvanced = None
+        self.IsOpen = None
+        self.ProductId = None
 
 
     def _deserialize(self, params):
@@ -5078,6 +5110,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("MetricConfig") is not None:
             self.MetricConfig = MetricConfig()
             self.MetricConfig._deserialize(params.get("MetricConfig"))
+        self.IsAdvanced = params.get("IsAdvanced")
+        self.IsOpen = params.get("IsOpen")
+        self.ProductId = params.get("ProductId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

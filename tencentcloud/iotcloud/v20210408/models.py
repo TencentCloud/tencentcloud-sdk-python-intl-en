@@ -291,6 +291,71 @@ class CreatePrivateCAResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateProductRequest(AbstractModel):
+    """CreateProduct request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductName: Product name, which cannot be same as that of an existing product. Naming rule: [a-zA-Z0-9:_-]{1,32}.
+        :type ProductName: str
+        :param ProductProperties: Product properties
+        :type ProductProperties: :class:`tencentcloud.iotcloud.v20210408.models.ProductProperties`
+        :param Skey: Skey, which is required to create a CLAA product.
+        :type Skey: str
+        """
+        self.ProductName = None
+        self.ProductProperties = None
+        self.Skey = None
+
+
+    def _deserialize(self, params):
+        self.ProductName = params.get("ProductName")
+        if params.get("ProductProperties") is not None:
+            self.ProductProperties = ProductProperties()
+            self.ProductProperties._deserialize(params.get("ProductProperties"))
+        self.Skey = params.get("Skey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateProductResponse(AbstractModel):
+    """CreateProduct response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductName: Product name
+        :type ProductName: str
+        :param ProductId: Product ID, the globally unique ID assigned by Tencent Cloud.
+        :type ProductId: str
+        :param ProductProperties: Product properties
+        :type ProductProperties: :class:`tencentcloud.iotcloud.v20210408.models.ProductProperties`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ProductName = None
+        self.ProductId = None
+        self.ProductProperties = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ProductName = params.get("ProductName")
+        self.ProductId = params.get("ProductId")
+        if params.get("ProductProperties") is not None:
+            self.ProductProperties = ProductProperties()
+            self.ProductProperties._deserialize(params.get("ProductProperties"))
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteDeviceRequest(AbstractModel):
     """DeleteDevice request structure.
 
@@ -913,6 +978,64 @@ class DescribeProductResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeProductsRequest(AbstractModel):
+    """DescribeProducts request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: Offset, starting from 0
+        :type Offset: int
+        :param Limit: Number of entries returned per page. Valid range: 10–250.
+        :type Limit: int
+        """
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProductsResponse(AbstractModel):
+    """DescribeProducts response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number of products
+        :type TotalCount: int
+        :param Products: List of product details
+        :type Products: list of ProductInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Products = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Products") is not None:
+            self.Products = []
+            for item in params.get("Products"):
+                obj = ProductInfo()
+                obj._deserialize(item)
+                self.Products.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DeviceInfo(AbstractModel):
     """Device details
 
@@ -1104,6 +1227,46 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.Type = params.get("Type")
         self.Value = params.get("Value")
         self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProductInfo(AbstractModel):
+    """Product details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: Product ID
+        :type ProductId: str
+        :param ProductName: Product name
+        :type ProductName: str
+        :param ProductMetadata: Product metadata
+        :type ProductMetadata: :class:`tencentcloud.iotcloud.v20210408.models.ProductMetadata`
+        :param ProductProperties: Product properties
+        :type ProductProperties: :class:`tencentcloud.iotcloud.v20210408.models.ProductProperties`
+        """
+        self.ProductId = None
+        self.ProductName = None
+        self.ProductMetadata = None
+        self.ProductProperties = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.ProductName = params.get("ProductName")
+        if params.get("ProductMetadata") is not None:
+            self.ProductMetadata = ProductMetadata()
+            self.ProductMetadata._deserialize(params.get("ProductMetadata"))
+        if params.get("ProductProperties") is not None:
+            self.ProductProperties = ProductProperties()
+            self.ProductProperties._deserialize(params.get("ProductProperties"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

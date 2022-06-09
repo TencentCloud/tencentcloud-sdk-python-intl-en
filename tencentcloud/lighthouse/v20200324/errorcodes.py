@@ -17,9 +17,6 @@
 # Error with CAM signature/authentication.
 AUTHFAILURE = 'AuthFailure'
 
-# Operation failed.
-FAILEDOPERATION = 'FailedOperation'
-
 # Failed to create the image.
 FAILEDOPERATION_CREATEBLUEPRINTFAILED = 'FailedOperation.CreateBlueprintFailed'
 
@@ -43,9 +40,6 @@ FAILEDOPERATION_SNAPSHOTOPERATIONFAILED = 'FailedOperation.SnapshotOperationFail
 
 # The operation failed. The custom image could not be created.
 FAILEDOPERATION_UNABLETOCREATEBLUEPRINT = 'FailedOperation.UnableToCreateBlueprint'
-
-# Failed to create the instance
-FAILEDOPERATION_UNABLETOCREATEINSTANCES = 'FailedOperation.UnableToCreateInstances'
 
 # Internal error.
 INTERNALERROR = 'InternalError'
@@ -71,9 +65,6 @@ INTERNALERROR_DESCRIBEINSTANCESTRAFFICPACKAGESFAILED = 'InternalError.DescribeIn
 # Failed to get the snapshot quota lock.
 INTERNALERROR_GETSNAPSHOTALLOCQUOTALOCKERROR = 'InternalError.GetSnapshotAllocQuotaLockError'
 
-# Failed to find this API
-INTERNALERROR_INVALIDACTIONNOTFOUND = 'InternalError.InvalidActionNotFound'
-
 # The package price is incorrect.
 INTERNALERROR_INVALIDBUNDLEPRICE = 'InternalError.InvalidBundlePrice'
 
@@ -91,9 +82,6 @@ INTERNALERROR_TRADEGETPRICEFAILED = 'InternalError.TradeGetPriceFailed'
 
 # Incorrect parameter.
 INVALIDPARAMETER = 'InvalidParameter'
-
-# The package and the image do not match.
-INVALIDPARAMETER_BUNDLEANDBLUEPRINTNOTMATCH = 'InvalidParameter.BundleAndBlueprintNotMatch'
 
 # Undefined service package ID.
 INVALIDPARAMETER_BUNDLEIDNOTFOUND = 'InvalidParameter.BundleIdNotFound'
@@ -146,6 +134,9 @@ INVALIDPARAMETERVALUE_BLUEPRINTIDMALFORMED = 'InvalidParameterValue.BlueprintIdM
 # The ID format of the CCN instance is invalid.
 INVALIDPARAMETERVALUE_CCNIDMALFORMED = 'InvalidParameterValue.CcnIdMalformed'
 
+# The disk name is too long.
+INVALIDPARAMETERVALUE_DISKNAMETOOLONG = 'InvalidParameterValue.DiskNameTooLong'
+
 # The disk size has changed.
 INVALIDPARAMETERVALUE_DISKSIZENOTMATCH = 'InvalidParameterValue.DiskSizeNotMatch'
 
@@ -176,9 +167,6 @@ INVALIDPARAMETERVALUE_INVALIDBLUEPRINTSTATE = 'InvalidParameterValue.InvalidBlue
 # The image type is invalid.
 INVALIDPARAMETERVALUE_INVALIDBLUEPRINTTYPE = 'InvalidParameterValue.InvalidBlueprintType'
 
-# Invalid package parameter.
-INVALIDPARAMETERVALUE_INVALIDBUNDLE = 'InvalidParameterValue.InvalidBundle'
-
 # The console display type is invalid.
 INVALIDPARAMETERVALUE_INVALIDCONSOLEDISPLAYTYPES = 'InvalidParameterValue.InvalidConsoleDisplayTypes'
 
@@ -187,9 +175,6 @@ INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = 'InvalidParameterValue.InvalidDis
 
 # The value of setting whether to use the default key pair for login is incorrect.
 INVALIDPARAMETERVALUE_INVALIDINSTANCELOGINKEYPAIRPERMITLOGIN = 'InvalidParameterValue.InvalidInstanceLoginKeyPairPermitLogin'
-
-# Invalid parametric value: the IP address format is invalid.
-INVALIDPARAMETERVALUE_INVALIDIPFORMAT = 'InvalidParameterValue.InvalidIpFormat'
 
 # Invalid parametric value.
 INVALIDPARAMETERVALUE_INVALIDKEYPAIRNAMEEMPTY = 'InvalidParameterValue.InvalidKeyPairNameEmpty'
@@ -200,14 +185,8 @@ INVALIDPARAMETERVALUE_INVALIDKEYPAIRNAMEINCLUDEILLEGALCHAR = 'InvalidParameterVa
 # The parameter length is invalid.
 INVALIDPARAMETERVALUE_INVALIDKEYPAIRNAMETOOLONG = 'InvalidParameterValue.InvalidKeyPairNameTooLong'
 
-# Invalid package combination.
-INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = 'InvalidParameterValue.InvalidParameterCombination'
-
 # The password in the parameter is invalid.
 INVALIDPARAMETERVALUE_INVALIDPASSWORD = 'InvalidParameterValue.InvalidPassword'
-
-# Incorrect quota resource name.
-INVALIDPARAMETERVALUE_INVALIDRESOURCEQUOTARESOURCENAME = 'InvalidParameterValue.InvalidResourceQuotaResourceName'
 
 # Invalid `Zone` value.
 INVALIDPARAMETERVALUE_INVALIDZONE = 'InvalidParameterValue.InvalidZone'
@@ -245,17 +224,11 @@ INVALIDPARAMETERVALUE_TOOLONG = 'InvalidParameterValue.TooLong'
 # Invalid AZ.
 INVALIDPARAMETERVALUE_ZONEINVALID = 'InvalidParameterValue.ZoneInvalid'
 
-# Reached the quota limit.
-LIMITEXCEEDED = 'LimitExceeded'
-
 # Reached the upper limit of attached data disks of the instance
 LIMITEXCEEDED_ATTACHDATADISKQUOTALIMITEXCEEDED = 'LimitExceeded.AttachDataDiskQuotaLimitExceeded'
 
 # The firewall rule quota is exceeded.
 LIMITEXCEEDED_FIREWALLRULESLIMITEXCEEDED = 'LimitExceeded.FirewallRulesLimitExceeded'
-
-# Run out of the instance quota.
-LIMITEXCEEDED_INSTANCEQUOTALIMITEXCEEDED = 'LimitExceeded.InstanceQuotaLimitExceeded'
 
 # The key pair quota is exceeded.
 LIMITEXCEEDED_KEYPAIRLIMITEXCEEDED = 'LimitExceeded.KeyPairLimitExceeded'
@@ -332,20 +305,17 @@ RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 # The image resource is not available.
 RESOURCEUNAVAILABLE_BLUEPRINTUNAVAILABLE = 'ResourceUnavailable.BlueprintUnavailable'
 
-# The package is not available.
-RESOURCEUNAVAILABLE_BUNDLEUNAVAILABLE = 'ResourceUnavailable.BundleUnavailable'
-
-# There is no available configuration in the package.
-RESOURCESSOLDOUT_PURCHASESOURCEHASNOBUNDLECONFIGS = 'ResourcesSoldOut.PurchaseSourceHasNoBundleConfigs'
-
-# There is no available configuration in the package.
-RESOURCESSOLDOUT_ZONESHASNOBUNDLECONFIGS = 'ResourcesSoldOut.ZonesHasNoBundleConfigs'
-
 # MFA has expired.
 UNAUTHORIZEDOPERATION_MFAEXPIRED = 'UnauthorizedOperation.MFAExpired'
 
 # MFA does not exist.
 UNAUTHORIZEDOPERATION_MFANOTFOUND = 'UnauthorizedOperation.MFANotFound'
+
+# 
+UNAUTHORIZEDOPERATION_NOPERMISSION = 'UnauthorizedOperation.NoPermission'
+
+# Unknown parameter error.
+UNKNOWNPARAMETER = 'UnknownParameter'
 
 # Unsupported operation.
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
@@ -389,9 +359,6 @@ UNSUPPORTEDOPERATION_FIREWALLVERSIONMISMATCH = 'UnsupportedOperation.FirewallVer
 # Unsupported operation: the instance has expired.
 UNSUPPORTEDOPERATION_INSTANCEEXPIRED = 'UnsupportedOperation.InstanceExpired'
 
-# The password can not be set upon creation of a LinuxUnix instance.
-UNSUPPORTEDOPERATION_INSTANCELINUXUNIXCREATINGNOTSUPPORTPASSWORD = 'UnsupportedOperation.InstanceLinuxUnixCreatingNotSupportPassword'
-
 # The disk's status does not support this operation.
 UNSUPPORTEDOPERATION_INVALIDDISKSTATE = 'UnsupportedOperation.InvalidDiskState'
 
@@ -424,6 +391,9 @@ UNSUPPORTEDOPERATION_RESETATTACHCCNFAILED = 'UnsupportedOperation.ResetAttachCcn
 
 # The snapshot is busy.
 UNSUPPORTEDOPERATION_SNAPSHOTBUSY = 'UnsupportedOperation.SnapshotBusy'
+
+# 
+UNSUPPORTEDOPERATION_SYSTEMBUSY = 'UnsupportedOperation.SystemBusy'
 
 # Windows instances do not support binding key pairs.
 UNSUPPORTEDOPERATION_WINDOWSNOTALLOWTOASSOCIATEKEYPAIR = 'UnsupportedOperation.WindowsNotAllowToAssociateKeyPair'
