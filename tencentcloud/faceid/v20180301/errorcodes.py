@@ -29,7 +29,7 @@ FAILEDOPERATION_ACTIONFACELEFT = 'FailedOperation.ActionFaceLeft'
 # The face is too far right from the screen.
 FAILEDOPERATION_ACTIONFACERIGHT = 'FailedOperation.ActionFaceRight'
 
-# The first motion is not detected.
+# No movement is detected.
 FAILEDOPERATION_ACTIONFIRSTACTION = 'FailedOperation.ActionFirstAction'
 
 # The lighting is too dim.
@@ -157,6 +157,9 @@ FAILEDOPERATION_SILENTTOOSHORT = 'FailedOperation.SilentTooShort'
 
 # Unknown internal error.
 FAILEDOPERATION_UNKNOWN = 'FailedOperation.UnKnown'
+
+# Internal error.
+INTERNALERROR = 'InternalError'
 
 # The lighting is too dim.
 INTERNALERROR_ACTIONLIGHTDARK = 'InternalError.ActionLightDark'
