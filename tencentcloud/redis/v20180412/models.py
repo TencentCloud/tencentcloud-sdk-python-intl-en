@@ -1916,6 +1916,120 @@ class TendisNodes(AbstractModel):
         
 
 
+class UpgradeProxyVersionRequest(AbstractModel):
+    """UpgradeProxyVersion request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param CurrentProxyVersion: The current proxy version
+        :type CurrentProxyVersion: str
+        :param UpgradeProxyVersion: Upgradeable redis version
+        :type UpgradeProxyVersion: str
+        :param InstanceTypeUpgradeNow: `1` (upgrade immediately), `0` (upgrade during maintenance time)
+        :type InstanceTypeUpgradeNow: int
+        """
+        self.InstanceId = None
+        self.CurrentProxyVersion = None
+        self.UpgradeProxyVersion = None
+        self.InstanceTypeUpgradeNow = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.CurrentProxyVersion = params.get("CurrentProxyVersion")
+        self.UpgradeProxyVersion = params.get("UpgradeProxyVersion")
+        self.InstanceTypeUpgradeNow = params.get("InstanceTypeUpgradeNow")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeProxyVersionResponse(AbstractModel):
+    """UpgradeProxyVersion response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Async task ID
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class UpgradeSmallVersionRequest(AbstractModel):
+    """UpgradeSmallVersion request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param CurrentRedisVersion: The current redis version
+        :type CurrentRedisVersion: str
+        :param UpgradeRedisVersion: Upgradeable redis version
+        :type UpgradeRedisVersion: str
+        :param InstanceTypeUpgradeNow: `1` (upgrade immediately), `0` (upgrade during maintenance time)
+        :type InstanceTypeUpgradeNow: int
+        """
+        self.InstanceId = None
+        self.CurrentRedisVersion = None
+        self.UpgradeRedisVersion = None
+        self.InstanceTypeUpgradeNow = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.CurrentRedisVersion = params.get("CurrentRedisVersion")
+        self.UpgradeRedisVersion = params.get("UpgradeRedisVersion")
+        self.InstanceTypeUpgradeNow = params.get("InstanceTypeUpgradeNow")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeSmallVersionResponse(AbstractModel):
+    """UpgradeSmallVersion response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Async task ID
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class ZoneCapacityConf(AbstractModel):
     """Product information in the availability zone
 

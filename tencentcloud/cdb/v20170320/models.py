@@ -3359,6 +3359,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type UniqueVpcIds: list of str
         :param UniqSubnetIds: VPC character subnetId
         :type UniqSubnetIds: list of str
+        :param Tags: Tag key value
+        :type Tags: list of Tag
         """
         self.ProjectId = None
         self.InstanceTypes = None
@@ -3391,6 +3393,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.TagValues = None
         self.UniqueVpcIds = None
         self.UniqSubnetIds = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -3425,6 +3428,12 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.TagValues = params.get("TagValues")
         self.UniqueVpcIds = params.get("UniqueVpcIds")
         self.UniqSubnetIds = params.get("UniqSubnetIds")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6392,7 +6401,7 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
         :type InstanceId: str
         :param Accounts: Database account, including username and domain name.
         :type Accounts: list of Account
-        :param GlobalPrivileges: Global permission. Valid values: "SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "PROCESS", "DROP", "REFERENCES", "INDEX", "ALTER", "SHOW DATABASES", "CREATE TEMPORARY TABLES", "LOCK TABLES", "EXECUTE", "CREATE VIEW", "SHOW VIEW", "CREATE ROUTINE", "ALTER ROUTINE", "EVENT", "TRIGGER", "CREATE USER", "RELOAD", "REPLICATION CLIENT", "REPLICATION SLAVE", "UPDATE".
+        :param GlobalPrivileges: Global permission. Valid values: "SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "PROCESS", "DROP", "REFERENCES", "INDEX", "ALTER", "SHOW DATABASES", "CREATE TEMPORARY TABLES", "LOCK TABLES", "EXECUTE", "CREATE VIEW", "SHOW VIEW", "CREATE ROUTINE", "ALTER ROUTINE", "EVENT", "TRIGGER", "CREATE USER", "RELOAD", "REPLICATION CLIENT", "REPLICATION SLAVE".
 Note: When “ModifyAction” is empty, if `GlobalPrivileges` is not passed in, it indicates the global permission will become ineffective.
         :type GlobalPrivileges: list of str
         :param DatabasePrivileges: Database permission. Valid values: "SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "DROP", "REFERENCES", "INDEX", "ALTER", "CREATE TEMPORARY TABLES", "LOCK TABLES", "EXECUTE", "CREATE VIEW", "SHOW VIEW", "CREATE ROUTINE", "ALTER ROUTINE", "EVENT", "TRIGGER".
@@ -9113,6 +9122,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
         :param DeviceTypeName: Instance resource isolation type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance).
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :type DeviceTypeName: str
+        :param EngineType: Engine type. Valid values: `Innodb`,`RocksDB`.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type EngineType: str
         """
         self.Device = None
         self.Type = None
@@ -9130,6 +9142,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
         self.Tag = None
         self.DeviceType = None
         self.DeviceTypeName = None
+        self.EngineType = None
 
 
     def _deserialize(self, params):
@@ -9149,6 +9162,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
         self.Tag = params.get("Tag")
         self.DeviceType = params.get("DeviceType")
         self.DeviceTypeName = params.get("DeviceTypeName")
+        self.EngineType = params.get("EngineType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9896,6 +9910,34 @@ class TablePrivilege(AbstractModel):
         self.Database = params.get("Database")
         self.Table = params.get("Table")
         self.Privileges = params.get("Privileges")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Tag(AbstractModel):
+    """Tag structure
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: Tag key
+        :type Key: str
+        :param Value: Tag value
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
