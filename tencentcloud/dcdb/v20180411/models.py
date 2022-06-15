@@ -1283,6 +1283,51 @@ class DcnDetailItem(AbstractModel):
         
 
 
+class Deal(AbstractModel):
+    """Order information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealName: Order ID.
+        :type DealName: str
+        :param OwnerUin: Account
+        :type OwnerUin: str
+        :param Count: Number of items
+        :type Count: int
+        :param FlowId: The associated process ID, which can be used to query the process execution status.
+        :type FlowId: int
+        :param InstanceIds: The ID of the created instance, which is required only for the order that creates an instance.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type InstanceIds: list of str
+        :param PayMode: Billing mode. Valid values: `0` (postpaid), `1` (prepaid).
+        :type PayMode: int
+        """
+        self.DealName = None
+        self.OwnerUin = None
+        self.Count = None
+        self.FlowId = None
+        self.InstanceIds = None
+        self.PayMode = None
+
+
+    def _deserialize(self, params):
+        self.DealName = params.get("DealName")
+        self.OwnerUin = params.get("OwnerUin")
+        self.Count = params.get("Count")
+        self.FlowId = params.get("FlowId")
+        self.InstanceIds = params.get("InstanceIds")
+        self.PayMode = params.get("PayMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteAccountRequest(AbstractModel):
     """DeleteAccount request structure.
 
@@ -1601,6 +1646,70 @@ class DescribeDBParametersResponse(AbstractModel):
                 obj = ParamDesc()
                 obj._deserialize(item)
                 self.Params.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDBSecurityGroupsRequest(AbstractModel):
+    """DescribeDBSecurityGroups request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Product: Database engine name. Valid value: `dcdb`.
+        :type Product: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self.Product = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBSecurityGroupsResponse(AbstractModel):
+    """DescribeDBSecurityGroups response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Groups: Security group details
+        :type Groups: list of SecurityGroup
+        :param VIP: Instance VIP
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VIP: str
+        :param VPort: Instance Port
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type VPort: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Groups = None
+        self.VIP = None
+        self.VPort = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Groups") is not None:
+            self.Groups = []
+            for item in params.get("Groups"):
+                obj = SecurityGroup()
+                obj._deserialize(item)
+                self.Groups.append(obj)
+        self.VIP = params.get("VIP")
+        self.VPort = params.get("VPort")
         self.RequestId = params.get("RequestId")
 
 
@@ -2380,6 +2489,60 @@ class DescribeFlowResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeOrdersRequest(AbstractModel):
+    """DescribeOrders request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealNames: List of long order IDs to be queried, which are returned by the APIs for creating, renewing, or scaling instances.
+        :type DealNames: list of str
+        """
+        self.DealNames = None
+
+
+    def _deserialize(self, params):
+        self.DealNames = params.get("DealNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOrdersResponse(AbstractModel):
+    """DescribeOrders response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Returned number of orders
+        :type TotalCount: int
+        :param Deals: Order information list
+        :type Deals: list of Deal
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Deals = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Deals") is not None:
+            self.Deals = []
+            for item in params.get("Deals"):
+                obj = Deal()
+                obj._deserialize(item)
+                self.Deals.append(obj)
         self.RequestId = params.get("RequestId")
 
 

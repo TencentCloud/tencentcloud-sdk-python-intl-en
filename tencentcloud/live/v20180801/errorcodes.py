@@ -386,9 +386,6 @@ RESOURCENOTFOUND_PUSHDOMAINNORECORD = 'ResourceNotFound.PushDomainNoRecord'
 # The service has been suspended due to account arrears. Please top up it to a positive balance to activate the service first.
 RESOURCENOTFOUND_STOPSERVICE = 'ResourceNotFound.StopService'
 
-# Inactive stream.
-RESOURCENOTFOUND_STREAMNOTALIVE = 'ResourceNotFound.StreamNotAlive'
-
 # The `TaskId` does not exist.
 RESOURCENOTFOUND_TASKID = 'ResourceNotFound.TaskId'
 

@@ -3037,10 +3037,13 @@ class SpecificationInfo(AbstractModel):
         :type Zone: str
         :param SpecItems: Purchasable specification information
         :type SpecItems: list of SpecItem
+        :param SupportMultiAZ: Whether cross-AZ deployment is supported. Valid values: `1` (yes), `0` (no).
+        :type SupportMultiAZ: int
         """
         self.Region = None
         self.Zone = None
         self.SpecItems = None
+        self.SupportMultiAZ = None
 
 
     def _deserialize(self, params):
@@ -3052,6 +3055,7 @@ class SpecificationInfo(AbstractModel):
                 obj = SpecItem()
                 obj._deserialize(item)
                 self.SpecItems.append(obj)
+        self.SupportMultiAZ = params.get("SupportMultiAZ")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

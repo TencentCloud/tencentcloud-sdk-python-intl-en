@@ -245,108 +245,6 @@ The time accuracy matches with the query granularity.
         
 
 
-class BillAreaInfo(AbstractModel):
-    """Region information, `DescribeAreaBillBandwidthAndFluxList` output parameter
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Name: Region name
-        :type Name: str
-        :param Countrys: Detailed country information
-        :type Countrys: list of BillCountryInfo
-        """
-        self.Name = None
-        self.Countrys = None
-
-
-    def _deserialize(self, params):
-        self.Name = params.get("Name")
-        if params.get("Countrys") is not None:
-            self.Countrys = []
-            for item in params.get("Countrys"):
-                obj = BillCountryInfo()
-                obj._deserialize(item)
-                self.Countrys.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class BillCountryInfo(AbstractModel):
-    """The bandwidth information of a country, `DescribeAreaBillBandwidthAndFluxList` output parameter
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Name: Country
-        :type Name: str
-        :param BandInfoList: Detailed bandwidth information
-        :type BandInfoList: list of BillDataInfo
-        """
-        self.Name = None
-        self.BandInfoList = None
-
-
-    def _deserialize(self, params):
-        self.Name = params.get("Name")
-        if params.get("BandInfoList") is not None:
-            self.BandInfoList = []
-            for item in params.get("BandInfoList"):
-                obj = BillDataInfo()
-                obj._deserialize(item)
-                self.BandInfoList.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class BillDataInfo(AbstractModel):
-    """Bandwidth and traffic information.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Time: Time point in the format of `yyyy-mm-dd HH:MM:SS`.
-        :type Time: str
-        :param Bandwidth: Bandwidth in Mbps.
-        :type Bandwidth: float
-        :param Flux: Traffic in MB.
-        :type Flux: float
-        :param PeakTime: Time point of peak value in the format of `yyyy-mm-dd HH:MM:SS`. As raw data is at a 5-minute granularity, if data at a 1-hour or 1-day granularity is queried, the time point of peak bandwidth value at the corresponding granularity will be returned.
-        :type PeakTime: str
-        """
-        self.Time = None
-        self.Bandwidth = None
-        self.Flux = None
-        self.PeakTime = None
-
-
-    def _deserialize(self, params):
-        self.Time = params.get("Time")
-        self.Bandwidth = params.get("Bandwidth")
-        self.Flux = params.get("Flux")
-        self.PeakTime = params.get("PeakTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class BindLiveDomainCertRequest(AbstractModel):
     """BindLiveDomainCert request structure.
 
@@ -1422,6 +1320,8 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
         :param RemoveWatermark: Whether to remove the watermark. This parameter is invalid if `IsDelayLive` is `1`.
         :type RemoveWatermark: bool
+        :param FlvSpecialParam: A special parameter for FLV recording.
+        :type FlvSpecialParam: :class:`tencentcloud.live.v20180801.models.FlvSpecialParam`
         """
         self.TemplateName = None
         self.Description = None
@@ -1433,6 +1333,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         self.HlsSpecialParam = None
         self.Mp3Param = None
         self.RemoveWatermark = None
+        self.FlvSpecialParam = None
 
 
     def _deserialize(self, params):
@@ -1458,6 +1359,9 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
             self.Mp3Param = RecordParam()
             self.Mp3Param._deserialize(params.get("Mp3Param"))
         self.RemoveWatermark = params.get("RemoveWatermark")
+        if params.get("FlvSpecialParam") is not None:
+            self.FlvSpecialParam = FlvSpecialParam()
+            self.FlvSpecialParam._deserialize(params.get("FlvSpecialParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2697,122 +2601,6 @@ class DeleteRecordTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeAllStreamPlayInfoListRequest(AbstractModel):
-    """DescribeAllStreamPlayInfoList request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param QueryTime: Query time point accurate to the minute. You can query data within the last month. As there is a 5-minute delay in the data, you're advised to pass in a time point 5 minutes earlier than needed. Format: yyyy-mm-dd HH:MM:00. As the accuracy is to the minute, please set the value of second to `00`.
-        :type QueryTime: str
-        :param PlayDomains: Playback domain name list. If this parameter is left empty, full data will be queried.
-        :type PlayDomains: list of str
-        """
-        self.QueryTime = None
-        self.PlayDomains = None
-
-
-    def _deserialize(self, params):
-        self.QueryTime = params.get("QueryTime")
-        self.PlayDomains = params.get("PlayDomains")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeAllStreamPlayInfoListResponse(AbstractModel):
-    """DescribeAllStreamPlayInfoList response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param QueryTime: Query point in time in the returned input parameters.
-        :type QueryTime: str
-        :param DataInfoList: Data information list.
-        :type DataInfoList: list of MonitorStreamPlayInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.QueryTime = None
-        self.DataInfoList = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.QueryTime = params.get("QueryTime")
-        if params.get("DataInfoList") is not None:
-            self.DataInfoList = []
-            for item in params.get("DataInfoList"):
-                obj = MonitorStreamPlayInfo()
-                obj._deserialize(item)
-                self.DataInfoList.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeAreaBillBandwidthAndFluxListRequest(AbstractModel):
-    """DescribeAreaBillBandwidthAndFluxList request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param StartTime: Start time point in the format of yyyy-mm-dd HH:MM:SS.
-        :type StartTime: str
-        :param EndTime: End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 1 days.
-        :type EndTime: str
-        :param PlayDomains: LVB playback domain name. If it is left blank, the full data will be queried.
-        :type PlayDomains: list of str
-        """
-        self.StartTime = None
-        self.EndTime = None
-        self.PlayDomains = None
-
-
-    def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.PlayDomains = params.get("PlayDomains")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeAreaBillBandwidthAndFluxListResponse(AbstractModel):
-    """DescribeAreaBillBandwidthAndFluxList response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param DataInfoList: Detailed data information.
-        :type DataInfoList: list of BillAreaInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.DataInfoList = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("DataInfoList") is not None:
-            self.DataInfoList = []
-            for item in params.get("DataInfoList"):
-                obj = BillAreaInfo()
-                obj._deserialize(item)
-                self.DataInfoList.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeConcurrentRecordStreamNumRequest(AbstractModel):
     """DescribeConcurrentRecordStreamNum request structure.
 
@@ -3336,76 +3124,6 @@ class DescribeLiveDomainCertResponse(AbstractModel):
         if params.get("DomainCertInfo") is not None:
             self.DomainCertInfo = DomainCertInfo()
             self.DomainCertInfo._deserialize(params.get("DomainCertInfo"))
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeLiveDomainPlayInfoListRequest(AbstractModel):
-    """DescribeLiveDomainPlayInfoList request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param PlayDomains: Playback domain name list.
-        :type PlayDomains: list of str
-        """
-        self.PlayDomains = None
-
-
-    def _deserialize(self, params):
-        self.PlayDomains = params.get("PlayDomains")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeLiveDomainPlayInfoListResponse(AbstractModel):
-    """DescribeLiveDomainPlayInfoList response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Time: Data time in the format of `yyyy-mm-dd HH:MM:SS`.
-        :type Time: str
-        :param TotalBandwidth: Real-time total bandwidth.
-        :type TotalBandwidth: float
-        :param TotalFlux: Real-time total traffic.
-        :type TotalFlux: float
-        :param TotalRequest: Total number of requests.
-        :type TotalRequest: int
-        :param TotalOnline: Real-time total number of connections.
-        :type TotalOnline: int
-        :param DomainInfoList: Data by domain name.
-        :type DomainInfoList: list of DomainInfoList
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.Time = None
-        self.TotalBandwidth = None
-        self.TotalFlux = None
-        self.TotalRequest = None
-        self.TotalOnline = None
-        self.DomainInfoList = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Time = params.get("Time")
-        self.TotalBandwidth = params.get("TotalBandwidth")
-        self.TotalFlux = params.get("TotalFlux")
-        self.TotalRequest = params.get("TotalRequest")
-        self.TotalOnline = params.get("TotalOnline")
-        if params.get("DomainInfoList") is not None:
-            self.DomainInfoList = []
-            for item in params.get("DomainInfoList"):
-                obj = DomainInfoList()
-                obj._deserialize(item)
-                self.DomainInfoList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -5064,119 +4782,6 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeProIspPlaySumInfoListRequest(AbstractModel):
-    """DescribeProIspPlaySumInfoList request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param StartTime: Start time (Beijing time).
-In the format of `yyyy-mm-dd HH:MM:SS`.
-        :type StartTime: str
-        :param EndTime: End time (Beijing time).
-In the format of `yyyy-mm-dd HH:MM:SS`.
-Note: `EndTime` and `StartTime` only support querying data for the last day.
-        :type EndTime: str
-        :param StatType: Statistics type. Valid values: Province (district), Isp (ISP), CountryOrArea (country or region).
-        :type StatType: str
-        :param PlayDomains: Playback domain name list. If it is left empty, it refers to all playback domain names.
-        :type PlayDomains: list of str
-        :param PageNum: Page number. Value range: [1,1000]. Default value: 1.
-        :type PageNum: int
-        :param PageSize: Number of entries per page. Value range: [1,1000]. Default value: 20.
-        :type PageSize: int
-        :param MainlandOrOversea: Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.
-        :type MainlandOrOversea: str
-        :param OutLanguage: Language used in the output field. Valid values: Chinese (default), English. Currently, country/region, district, and ISP parameters support multiple languages.
-        :type OutLanguage: str
-        """
-        self.StartTime = None
-        self.EndTime = None
-        self.StatType = None
-        self.PlayDomains = None
-        self.PageNum = None
-        self.PageSize = None
-        self.MainlandOrOversea = None
-        self.OutLanguage = None
-
-
-    def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.StatType = params.get("StatType")
-        self.PlayDomains = params.get("PlayDomains")
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        self.MainlandOrOversea = params.get("MainlandOrOversea")
-        self.OutLanguage = params.get("OutLanguage")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeProIspPlaySumInfoListResponse(AbstractModel):
-    """DescribeProIspPlaySumInfoList response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TotalFlux: Total traffic.
-        :type TotalFlux: float
-        :param TotalRequest: Total number of requests.
-        :type TotalRequest: int
-        :param StatType: Statistics type.
-        :type StatType: str
-        :param PageSize: Number of results per page.
-        :type PageSize: int
-        :param PageNum: Page number.
-        :type PageNum: int
-        :param TotalNum: Total number of results.
-        :type TotalNum: int
-        :param TotalPage: Total number of pages.
-        :type TotalPage: int
-        :param DataInfoList: Aggregated data list by district, ISP, or country/region.
-        :type DataInfoList: list of ProIspPlaySumInfo
-        :param AvgFluxPerSecond: Download speed in MB/s. Calculation method: total traffic/total duration.
-        :type AvgFluxPerSecond: float
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.TotalFlux = None
-        self.TotalRequest = None
-        self.StatType = None
-        self.PageSize = None
-        self.PageNum = None
-        self.TotalNum = None
-        self.TotalPage = None
-        self.DataInfoList = None
-        self.AvgFluxPerSecond = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalFlux = params.get("TotalFlux")
-        self.TotalRequest = params.get("TotalRequest")
-        self.StatType = params.get("StatType")
-        self.PageSize = params.get("PageSize")
-        self.PageNum = params.get("PageNum")
-        self.TotalNum = params.get("TotalNum")
-        self.TotalPage = params.get("TotalPage")
-        if params.get("DataInfoList") is not None:
-            self.DataInfoList = []
-            for item in params.get("DataInfoList"):
-                obj = ProIspPlaySumInfo()
-                obj._deserialize(item)
-                self.DataInfoList.append(obj)
-        self.AvgFluxPerSecond = params.get("AvgFluxPerSecond")
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeProvinceIspPlayInfoListRequest(AbstractModel):
     """DescribeProvinceIspPlayInfoList request structure.
 
@@ -5843,48 +5448,6 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         
 
 
-class DomainDetailInfo(AbstractModel):
-    """Statistics of each domain name.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param MainlandOrOversea: In or outside Mainland China:
-Mainland: data in Mainland China.
-Oversea: data outside Mainland China.
-        :type MainlandOrOversea: str
-        :param Bandwidth: Bandwidth in Mbps.
-        :type Bandwidth: float
-        :param Flux: Traffic in MB.
-        :type Flux: float
-        :param Online: Number of viewers.
-        :type Online: int
-        :param Request: Number of requests.
-        :type Request: int
-        """
-        self.MainlandOrOversea = None
-        self.Bandwidth = None
-        self.Flux = None
-        self.Online = None
-        self.Request = None
-
-
-    def _deserialize(self, params):
-        self.MainlandOrOversea = params.get("MainlandOrOversea")
-        self.Bandwidth = params.get("Bandwidth")
-        self.Flux = params.get("Flux")
-        self.Online = params.get("Online")
-        self.Request = params.get("Request")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class DomainInfo(AbstractModel):
     """LVB domain name information
 
@@ -5966,88 +5529,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
-class DomainInfoList(AbstractModel):
-    """Multi-domain name information list
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Domain: Domain name.
-        :type Domain: str
-        :param DetailInfoList: Details.
-        :type DetailInfoList: list of DomainDetailInfo
-        """
-        self.Domain = None
-        self.DetailInfoList = None
-
-
-    def _deserialize(self, params):
-        self.Domain = params.get("Domain")
-        if params.get("DetailInfoList") is not None:
-            self.DetailInfoList = []
-            for item in params.get("DetailInfoList"):
-                obj = DomainDetailInfo()
-                obj._deserialize(item)
-                self.DetailInfoList.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DropLiveStreamRequest(AbstractModel):
-    """DropLiveStream request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param StreamName: Stream name.
-        :type StreamName: str
-        :param DomainName: Your acceleration domain name.
-        :type DomainName: str
-        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
-        :type AppName: str
-        """
-        self.StreamName = None
-        self.DomainName = None
-        self.AppName = None
-
-
-    def _deserialize(self, params):
-        self.StreamName = params.get("StreamName")
-        self.DomainName = params.get("DomainName")
-        self.AppName = params.get("AppName")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DropLiveStreamResponse(AbstractModel):
-    """DropLiveStream response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class EnableLiveDomainRequest(AbstractModel):
     """EnableLiveDomain request structure.
 
@@ -6087,6 +5568,30 @@ class EnableLiveDomainResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class FlvSpecialParam(AbstractModel):
+    """Special FLV recording setting.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UploadInRecording: Whether to enable upload while recording. This parameter is only valid for FLV recording.
+        :type UploadInRecording: bool
+        """
+        self.UploadInRecording = None
+
+
+    def _deserialize(self, params):
+        self.UploadInRecording = params.get("UploadInRecording")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ForbidLiveDomainRequest(AbstractModel):
@@ -6143,10 +5648,10 @@ class ForbidLiveStreamRequest(AbstractModel):
         :type DomainName: str
         :param StreamName: Stream name.
         :type StreamName: str
-        :param ResumeTime: Time to resume the stream in UTC format, such as 2018-11-29T19:00:00Z.
+        :param ResumeTime: The time (in UTC format) to resume the stream, such as 2018-11-29T19:00:00Z.
 Notes:
-1. The duration of forbidding is 7 days by default and can be up to 90 days.
-2. The Beijing time is in UTC+8. This value should be in the format as required by ISO 8601. For more information, please see [ISO Date and Time Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+1. The default stream disabling period is seven days. A stream can be disabled for up to 90 days.
+2. Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
         :type ResumeTime: str
         :param Reason: Reason for forbidding.
 Note: Be sure to enter the reason for forbidding to avoid any faulty operations.
@@ -6848,6 +6353,8 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
         :param RemoveWatermark: Whether to remove the watermark. This parameter is invalid if `IsDelayLive` is `1`.
         :type RemoveWatermark: bool
+        :param FlvSpecialParam: A special parameter for FLV recording.
+        :type FlvSpecialParam: :class:`tencentcloud.live.v20180801.models.FlvSpecialParam`
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -6859,6 +6366,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         self.HlsSpecialParam = None
         self.Mp3Param = None
         self.RemoveWatermark = None
+        self.FlvSpecialParam = None
 
 
     def _deserialize(self, params):
@@ -6884,6 +6392,9 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
             self.Mp3Param = RecordParam()
             self.Mp3Param._deserialize(params.get("Mp3Param"))
         self.RemoveWatermark = params.get("RemoveWatermark")
+        if params.get("FlvSpecialParam") is not None:
+            self.FlvSpecialParam = FlvSpecialParam()
+            self.FlvSpecialParam._deserialize(params.get("FlvSpecialParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7134,54 +6645,6 @@ class ModifyLiveTranscodeTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class MonitorStreamPlayInfo(AbstractModel):
-    """Monitored playback data
-
-    """
-
-    def __init__(self):
-        r"""
-        :param PlayDomain: Playback domain name.
-        :type PlayDomain: str
-        :param StreamName: Stream ID.
-        :type StreamName: str
-        :param Rate: Playback bitrate. 0 indicates the original bitrate.
-        :type Rate: int
-        :param Protocol: Playback protocol. Valid values: Unknown, Flv, Hls, Rtmp, Huyap2p.
-        :type Protocol: str
-        :param Bandwidth: Bandwidth in Mbps.
-        :type Bandwidth: float
-        :param Online: Number of online viewers. A data point is sampled per minute, and the number of TCP connections across the sample points is calculated.
-        :type Online: int
-        :param Request: Number of requests.
-        :type Request: int
-        """
-        self.PlayDomain = None
-        self.StreamName = None
-        self.Rate = None
-        self.Protocol = None
-        self.Bandwidth = None
-        self.Online = None
-        self.Request = None
-
-
-    def _deserialize(self, params):
-        self.PlayDomain = params.get("PlayDomain")
-        self.StreamName = params.get("StreamName")
-        self.Rate = params.get("Rate")
-        self.Protocol = params.get("Protocol")
-        self.Bandwidth = params.get("Bandwidth")
-        self.Online = params.get("Online")
-        self.Request = params.get("Request")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class PlayAuthKeyInfo(AbstractModel):
     """Playback authentication key information.
 
@@ -7387,42 +6850,6 @@ class ProIspPlayCodeDataInfo(AbstractModel):
         self.Code3xx = params.get("Code3xx")
         self.Code4xx = params.get("Code4xx")
         self.Code5xx = params.get("Code5xx")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ProIspPlaySumInfo(AbstractModel):
-    """Queries playback information by district/ISP.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Name: District/ISP/country/region.
-        :type Name: str
-        :param TotalFlux: Total traffic in MB.
-        :type TotalFlux: float
-        :param TotalRequest: Total number of requests.
-        :type TotalRequest: int
-        :param AvgFluxPerSecond: Average download traffic in MB/s.
-        :type AvgFluxPerSecond: float
-        """
-        self.Name = None
-        self.TotalFlux = None
-        self.TotalRequest = None
-        self.AvgFluxPerSecond = None
-
-
-    def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.TotalFlux = params.get("TotalFlux")
-        self.TotalRequest = params.get("TotalRequest")
-        self.AvgFluxPerSecond = params.get("AvgFluxPerSecond")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7691,13 +7118,16 @@ class RecordTemplateInfo(AbstractModel):
         :param IsDelayLive: 0: LVB,
 1: LCB.
         :type IsDelayLive: int
-        :param HlsSpecialParam: Custom HLS recording parameter
+        :param HlsSpecialParam: A special parameter for HLS recording.
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
         :param Mp3Param: MP3 recording parameter.
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
         :param RemoveWatermark: Whether the watermark is removed.
 Note: This field may return `null`, indicating that no valid value was found.
         :type RemoveWatermark: bool
+        :param FlvSpecialParam: A special parameter for FLV recording.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type FlvSpecialParam: :class:`tencentcloud.live.v20180801.models.FlvSpecialParam`
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -7710,6 +7140,7 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.HlsSpecialParam = None
         self.Mp3Param = None
         self.RemoveWatermark = None
+        self.FlvSpecialParam = None
 
 
     def _deserialize(self, params):
@@ -7736,6 +7167,9 @@ Note: This field may return `null`, indicating that no valid value was found.
             self.Mp3Param = RecordParam()
             self.Mp3Param._deserialize(params.get("Mp3Param"))
         self.RemoveWatermark = params.get("RemoveWatermark")
+        if params.get("FlvSpecialParam") is not None:
+            self.FlvSpecialParam = FlvSpecialParam()
+            self.FlvSpecialParam._deserialize(params.get("FlvSpecialParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

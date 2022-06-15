@@ -25,13 +25,17 @@ class AddUsersForUserManagerRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param InstanceId: Cluster string ID
+        :type InstanceId: str
         :param UserManagerUserList: User information list
         :type UserManagerUserList: list of UserInfoForUserManager
         """
+        self.InstanceId = None
         self.UserManagerUserList = None
 
 
     def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
         if params.get("UserManagerUserList") is not None:
             self.UserManagerUserList = []
             for item in params.get("UserManagerUserList"):
@@ -54,13 +58,23 @@ class AddUsersForUserManagerResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SuccessUserList: The user list that is successfully added
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type SuccessUserList: list of str
+        :param FailedUserList: The user list that is not successfully added
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type FailedUserList: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.SuccessUserList = None
+        self.FailedUserList = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.SuccessUserList = params.get("SuccessUserList")
+        self.FailedUserList = params.get("FailedUserList")
         self.RequestId = params.get("RequestId")
 
 
@@ -1139,13 +1153,31 @@ class DescribeUsersForUserManagerRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param InstanceId: Cluster instance ID
+        :type InstanceId: str
+        :param PageNo: Page number
+        :type PageNo: int
+        :param PageSize: Page size
+        :type PageSize: int
+        :param UserManagerFilter: User list query filter
+        :type UserManagerFilter: :class:`tencentcloud.emr.v20190103.models.UserManagerFilter`
         :param NeedKeytabInfo: Whether the Keytab file information is required. This field is only valid for clusters with Kerberos enabled and defaults to `false`.
         :type NeedKeytabInfo: bool
         """
+        self.InstanceId = None
+        self.PageNo = None
+        self.PageSize = None
+        self.UserManagerFilter = None
         self.NeedKeytabInfo = None
 
 
     def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.PageNo = params.get("PageNo")
+        self.PageSize = params.get("PageSize")
+        if params.get("UserManagerFilter") is not None:
+            self.UserManagerFilter = UserManagerFilter()
+            self.UserManagerFilter._deserialize(params.get("UserManagerFilter"))
         self.NeedKeytabInfo = params.get("NeedKeytabInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -1163,13 +1195,27 @@ class DescribeUsersForUserManagerResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param TotalCnt: Total number
+        :type TotalCnt: int
+        :param UserManagerUserList: User information list
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type UserManagerUserList: list of UserManagerUserBriefInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.TotalCnt = None
+        self.UserManagerUserList = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TotalCnt = params.get("TotalCnt")
+        if params.get("UserManagerUserList") is not None:
+            self.UserManagerUserList = []
+            for item in params.get("UserManagerUserList"):
+                obj = UserManagerUserBriefInfo()
+                obj._deserialize(item)
+                self.UserManagerUserList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2953,6 +2999,77 @@ class UserInfoForUserManager(AbstractModel):
         self.UserGroup = params.get("UserGroup")
         self.PassWord = params.get("PassWord")
         self.ReMark = params.get("ReMark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserManagerFilter(AbstractModel):
+    """User management list filter
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserName: Username
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type UserName: str
+        """
+        self.UserName = None
+
+
+    def _deserialize(self, params):
+        self.UserName = params.get("UserName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserManagerUserBriefInfo(AbstractModel):
+    """Brief user information in user management
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserName: Username
+        :type UserName: str
+        :param UserGroup: The group to which the user belongs
+        :type UserGroup: str
+        :param UserType: `Manager` represents an admin, and `NormalUser` represents a general user.
+        :type UserType: str
+        :param CreateTime: Account creation time
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type CreateTime: str
+        :param SupportDownLoadKeyTab: Whether the corresponding Keytab file of the user is available for download. This parameter applies only to a Kerberos-enabled cluster.
+        :type SupportDownLoadKeyTab: bool
+        :param DownLoadKeyTabUrl: Download link of the Keytab file
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type DownLoadKeyTabUrl: str
+        """
+        self.UserName = None
+        self.UserGroup = None
+        self.UserType = None
+        self.CreateTime = None
+        self.SupportDownLoadKeyTab = None
+        self.DownLoadKeyTabUrl = None
+
+
+    def _deserialize(self, params):
+        self.UserName = params.get("UserName")
+        self.UserGroup = params.get("UserGroup")
+        self.UserType = params.get("UserType")
+        self.CreateTime = params.get("CreateTime")
+        self.SupportDownLoadKeyTab = params.get("SupportDownLoadKeyTab")
+        self.DownLoadKeyTabUrl = params.get("DownLoadKeyTabUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

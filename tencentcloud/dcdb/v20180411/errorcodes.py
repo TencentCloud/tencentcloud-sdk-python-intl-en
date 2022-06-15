@@ -152,6 +152,9 @@ INTERNALERROR_OPERATEDATABASEFAILED = 'InternalError.OperateDatabaseFailed'
 # An error occurred when reading data from the database.
 INTERNALERROR_QUERYDATABASEFAILED = 'InternalError.QueryDatabaseFailed'
 
+# Failed to query the order information.
+INTERNALERROR_QUERYORDERFAILED = 'InternalError.QueryOrderFailed'
+
 # An error occurred when reading data from the database.
 INTERNALERROR_READDATABASEFAILED = 'InternalError.ReadDatabaseFailed'
 
@@ -175,6 +178,9 @@ INVALIDPARAMETER_CHARACTERERROR = 'InvalidParameter.CharacterError'
 
 # Failed to verify input parameters.
 INVALIDPARAMETER_CHECKPARAMNOTPASS = 'InvalidParameter.CheckParamNotPass'
+
+# The order ID to be queried is not specified.
+INVALIDPARAMETER_DEALNAMENOTGIVEN = 'InvalidParameter.DealNameNotGiven'
 
 # The specified task information was not found.
 INVALIDPARAMETER_FLOWNOTFOUND = 'InvalidParameter.FlowNotFound'
@@ -238,6 +244,9 @@ INVALIDPARAMETERVALUE_SUPERUSERFORBIDDEN = 'InvalidParameterValue.SuperUserForbi
 
 # The specified account does not exist.
 RESOURCENOTFOUND_ACCOUNTDOESNOTEXIST = 'ResourceNotFound.AccountDoesNotExist'
+
+# The instance doesn’t exist.
+RESOURCENOTFOUND_INSTANCENOTFOUND = 'ResourceNotFound.InstanceNotFound'
 
 # The specified database instance was not found.
 RESOURCENOTFOUND_NOINSTANCEFOUND = 'ResourceNotFound.NoInstanceFound'

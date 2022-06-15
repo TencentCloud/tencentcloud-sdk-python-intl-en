@@ -158,5 +158,8 @@ INVALIDPARAMETERVALUE_ZONEERROR = 'InvalidParameterValue.ZoneError'
 # The resource does not exist.
 RESOURCENOTFOUND = 'ResourceNotFound'
 
+# Unsupported operation
+UNSUPPORTEDOPERATION = 'UnsupportedOperation'
+
 # The current version does not support the operation.
 UNSUPPORTEDOPERATION_VERSIONNOTSUPPORT = 'UnsupportedOperation.VersionNotSupport'
