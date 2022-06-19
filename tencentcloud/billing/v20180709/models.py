@@ -279,6 +279,27 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :type ComponentCode: str
         :param ContractPrice: Contract price
         :type ContractPrice: str
+        :param InstanceType: The special instance (resource pack, reserved instance, savings plan, or spot instance) that is applied to deduction. Valid values:
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type InstanceType: str
+        :param RiTimeSpan: The usage duration deducted by a reserved instance. The unit of measurement for deduction is the same as that for usage duration.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type RiTimeSpan: str
+        :param OriginalCostWithRI: The amount deducted by a reserved instance based on the original component cost.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type OriginalCostWithRI: str
+        :param SPDeductionRate: The discount multiplier that applies to the component based on the remaining commitment of the savings plan.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type SPDeductionRate: str
+        :param SPDeduction: The savings plan deduction amount.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type SPDeduction: str
+        :param OriginalCostWithSP: The amount deducted by a savings plan based on the original component cost.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type OriginalCostWithSP: str
+        :param BlendedDiscount: The blended discount multiplier that combines the official website discount, reserved instance discount, and savings plan discount. If no reserved instance and savings plan discounts are available, the blended discount multiplier equals the discount multiplier.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type BlendedDiscount: str
         """
         self.ComponentCodeName = None
         self.ItemCodeName = None
@@ -299,6 +320,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.ItemCode = None
         self.ComponentCode = None
         self.ContractPrice = None
+        self.InstanceType = None
+        self.RiTimeSpan = None
+        self.OriginalCostWithRI = None
+        self.SPDeductionRate = None
+        self.SPDeduction = None
+        self.OriginalCostWithSP = None
+        self.BlendedDiscount = None
 
 
     def _deserialize(self, params):
@@ -321,6 +349,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.ItemCode = params.get("ItemCode")
         self.ComponentCode = params.get("ComponentCode")
         self.ContractPrice = params.get("ContractPrice")
+        self.InstanceType = params.get("InstanceType")
+        self.RiTimeSpan = params.get("RiTimeSpan")
+        self.OriginalCostWithRI = params.get("OriginalCostWithRI")
+        self.SPDeductionRate = params.get("SPDeductionRate")
+        self.SPDeduction = params.get("SPDeduction")
+        self.OriginalCostWithSP = params.get("OriginalCostWithSP")
+        self.BlendedDiscount = params.get("BlendedDiscount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -405,6 +440,22 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type ProductCode: str
         :param RegionId: 
         :type RegionId: int
+        :param InstanceType: The special instance (resource pack, reserved instance, savings plan, or spot instance) that is applied to deduction. Valid values:
+
+ri=Standard RI
+
+svp=Savings Plan
+
+si=Spot Instances
+
+rp=Resource Pack
+        :type InstanceType: str
+        :param OriginalCostWithRI: The amount deducted by a reserved instance based on the original component cost.
+        :type OriginalCostWithRI: str
+        :param SPDeduction: The savings plan deduction amount.
+        :type SPDeduction: str
+        :param OriginalCostWithSP: The amount deducted by a savings plan based on the original component cost.
+        :type OriginalCostWithSP: str
         """
         self.BusinessCodeName = None
         self.ProductCodeName = None
@@ -439,6 +490,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.BusinessCode = None
         self.ProductCode = None
         self.RegionId = None
+        self.InstanceType = None
+        self.OriginalCostWithRI = None
+        self.SPDeduction = None
+        self.OriginalCostWithSP = None
 
 
     def _deserialize(self, params):
@@ -480,6 +535,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.BusinessCode = params.get("BusinessCode")
         self.ProductCode = params.get("ProductCode")
         self.RegionId = params.get("RegionId")
+        self.InstanceType = params.get("InstanceType")
+        self.OriginalCostWithRI = params.get("OriginalCostWithRI")
+        self.SPDeduction = params.get("SPDeduction")
+        self.OriginalCostWithSP = params.get("OriginalCostWithSP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

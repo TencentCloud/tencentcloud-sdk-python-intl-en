@@ -140,6 +140,71 @@ class CancelDcnJobResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CloneAccountRequest(AbstractModel):
+    """CloneAccount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param SrcUser: Source user account name
+        :type SrcUser: str
+        :param SrcHost: Source user host
+        :type SrcHost: str
+        :param DstUser: Target user account name
+        :type DstUser: str
+        :param DstHost: Target user host
+        :type DstHost: str
+        :param DstDesc: Target account description
+        :type DstDesc: str
+        """
+        self.InstanceId = None
+        self.SrcUser = None
+        self.SrcHost = None
+        self.DstUser = None
+        self.DstHost = None
+        self.DstDesc = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SrcUser = params.get("SrcUser")
+        self.SrcHost = params.get("SrcHost")
+        self.DstUser = params.get("DstUser")
+        self.DstHost = params.get("DstHost")
+        self.DstDesc = params.get("DstDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneAccountResponse(AbstractModel):
+    """CloneAccount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Async task flow ID.
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class CloseDBExtranetAccessRequest(AbstractModel):
     """CloseDBExtranetAccess request structure.
 
@@ -216,6 +281,34 @@ class ColumnPrivilege(AbstractModel):
         self.Table = params.get("Table")
         self.Column = params.get("Column")
         self.Privileges = params.get("Privileges")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConstraintRange(AbstractModel):
+    """Range of constraint type values
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Min: Minimum value when the constraint type is `section`
+        :type Min: str
+        :param Max: Maximum value when the constraint type is `section`
+        :type Max: str
+        """
+        self.Min = None
+        self.Max = None
+
+
+    def _deserialize(self, params):
+        self.Min = params.get("Min")
+        self.Max = params.get("Max")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -503,6 +596,55 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.RequestId = params.get("RequestId")
 
 
+class DBAccount(AbstractModel):
+    """TencentDB account information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserName: Username
+        :type UserName: str
+        :param Host: Host from which a user can log in (corresponding to the `host` field for a MySQL user; a user is uniquely identified by username and host; this parameter is in IP format and ends with % for IP range; % can be entered; if this parameter is left empty, % will be used by default).
+        :type Host: str
+        :param Description: User remarks
+        :type Description: str
+        :param CreateTime: Creation time
+        :type CreateTime: str
+        :param UpdateTime: Last updated time
+        :type UpdateTime: str
+        :param ReadOnly: Read-only flag. 0: no; 1: for the account's SQL requests, the replica will be used first, and if it is unavailable, the primary will be used; 2: the replica will be used first, and if it is unavailable, the operation will fail.
+        :type ReadOnly: int
+        :param DelayThresh: This field is meaningful for read-only accounts, indicating that a replica should be selected if its delay from the primary is less than this value.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DelayThresh: int
+        """
+        self.UserName = None
+        self.Host = None
+        self.Description = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.ReadOnly = None
+        self.DelayThresh = None
+
+
+    def _deserialize(self, params):
+        self.UserName = params.get("UserName")
+        self.Host = params.get("Host")
+        self.Description = params.get("Description")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.ReadOnly = params.get("ReadOnly")
+        self.DelayThresh = params.get("DelayThresh")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DBInstance(AbstractModel):
     """TencentDB instance details.
 
@@ -775,6 +917,54 @@ class DBParamValue(AbstractModel):
         
 
 
+class Database(AbstractModel):
+    """Database information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DbName: Database name
+        :type DbName: str
+        """
+        self.DbName = None
+
+
+    def _deserialize(self, params):
+        self.DbName = params.get("DbName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DatabaseFunction(AbstractModel):
+    """Database function information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Func: Function name
+        :type Func: str
+        """
+        self.Func = None
+
+
+    def _deserialize(self, params):
+        self.Func = params.get("Func")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DatabasePrivilege(AbstractModel):
     """Database permission
 
@@ -794,6 +984,78 @@ class DatabasePrivilege(AbstractModel):
     def _deserialize(self, params):
         self.Privileges = params.get("Privileges")
         self.Database = params.get("Database")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DatabaseProcedure(AbstractModel):
+    """Database stored procedure information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Proc: Stored procedure name
+        :type Proc: str
+        """
+        self.Proc = None
+
+
+    def _deserialize(self, params):
+        self.Proc = params.get("Proc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DatabaseTable(AbstractModel):
+    """Database table information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Table: Table name
+        :type Table: str
+        """
+        self.Table = None
+
+
+    def _deserialize(self, params):
+        self.Table = params.get("Table")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DatabaseView(AbstractModel):
+    """Database view information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param View: View name
+        :type View: str
+        """
+        self.View = None
+
+
+    def _deserialize(self, params):
+        self.View = params.get("View")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -895,6 +1157,51 @@ class DcnDetailItem(AbstractModel):
         
 
 
+class Deal(AbstractModel):
+    """Order information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealName: Order number
+        :type DealName: str
+        :param OwnerUin: Account
+        :type OwnerUin: str
+        :param Count: Number of items
+        :type Count: int
+        :param FlowId: ID of the associated process, which can be used to query the process execution status.
+        :type FlowId: int
+        :param InstanceIds: This field is populated only for orders that create instances, indicating the ID of the created instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceIds: list of str
+        :param PayMode: Payment mode. Valid values: 0 (postpaid), 1 (prepaid)
+        :type PayMode: int
+        """
+        self.DealName = None
+        self.OwnerUin = None
+        self.Count = None
+        self.FlowId = None
+        self.InstanceIds = None
+        self.PayMode = None
+
+
+    def _deserialize(self, params):
+        self.DealName = params.get("DealName")
+        self.OwnerUin = params.get("OwnerUin")
+        self.Count = params.get("Count")
+        self.FlowId = params.get("FlowId")
+        self.InstanceIds = params.get("InstanceIds")
+        self.PayMode = params.get("PayMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteAccountRequest(AbstractModel):
     """DeleteAccount request structure.
 
@@ -941,6 +1248,141 @@ class DeleteAccountResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAccountPrivilegesRequest(AbstractModel):
+    """DescribeAccountPrivileges request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the form of `tdsql-ow728lmc`, which can be obtained by querying the instance details through `DescribeDBInstances`.
+        :type InstanceId: str
+        :param UserName: Login username.
+        :type UserName: str
+        :param Host: Access host allowed for a user. An account is uniquely identified by username and host.
+        :type Host: str
+        :param DbName: Database name. `\*` indicates that global permissions will be queried (i.e., `\*.\*`), in which case the `Type` and `Object ` parameters will be ignored.
+        :type DbName: str
+        :param Type: Type. Valid values: table, view, proc, func, \*. If `DbName` is a specific database name and `Type` is `\*`, the permissions of the database will be queried (i.e., `db.\*`), in which case the `Object` parameter will be ignored.
+        :type Type: str
+        :param Object: Type name. For example, if `Type` is `table`, `Object` indicates a specific table name; if both `DbName` and `Type` are specific names, it indicates a specific object name and cannot be `\*` or empty.
+        :type Object: str
+        :param ColName: If `Type` is `table` and `ColName` is `\*`, the permissions of the table will be queried; if `ColName` is a specific field name, the permissions of the corresponding field will be queried.
+        :type ColName: str
+        """
+        self.InstanceId = None
+        self.UserName = None
+        self.Host = None
+        self.DbName = None
+        self.Type = None
+        self.Object = None
+        self.ColName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.UserName = params.get("UserName")
+        self.Host = params.get("Host")
+        self.DbName = params.get("DbName")
+        self.Type = params.get("Type")
+        self.Object = params.get("Object")
+        self.ColName = params.get("ColName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccountPrivilegesResponse(AbstractModel):
+    """DescribeAccountPrivileges response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Privileges: Permission list.
+        :type Privileges: list of str
+        :param UserName: Database account username
+        :type UserName: str
+        :param Host: Database account host
+        :type Host: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.Privileges = None
+        self.UserName = None
+        self.Host = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Privileges = params.get("Privileges")
+        self.UserName = params.get("UserName")
+        self.Host = params.get("Host")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAccountsRequest(AbstractModel):
+    """DescribeAccounts request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the form of `tdsql-ow728lmc`, which can be obtained by querying the instance details through `DescribeDBInstances`.
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccountsResponse(AbstractModel):
+    """DescribeAccounts response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID, which is passed through from the input parameters.
+        :type InstanceId: str
+        :param Users: Instance user list.
+        :type Users: list of DBAccount
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.Users = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Users") is not None:
+            self.Users = []
+            for item in params.get("Users"):
+                obj = DBAccount()
+                obj._deserialize(item)
+                self.Users.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1144,6 +1586,60 @@ class DescribeDBLogFilesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBParametersRequest(AbstractModel):
+    """DescribeDBParameters request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBParametersResponse(AbstractModel):
+    """DescribeDBParameters response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.
+        :type InstanceId: str
+        :param Params: Requests the current parameter values of the database
+        :type Params: list of ParamDesc
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.Params = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Params") is not None:
+            self.Params = []
+            for item in params.get("Params"):
+                obj = ParamDesc()
+                obj._deserialize(item)
+                self.Params.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBSecurityGroupsRequest(AbstractModel):
     """DescribeDBSecurityGroups request structure.
 
@@ -1205,6 +1701,317 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 self.Groups.append(obj)
         self.VIP = params.get("VIP")
         self.VPort = params.get("VPort")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDBSlowLogsRequest(AbstractModel):
+    """DescribeDBSlowLogs request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.
+        :type InstanceId: str
+        :param Offset: Data entry number starting from which to return results
+        :type Offset: int
+        :param Limit: Number of results to be returned
+        :type Limit: int
+        :param StartTime: Query start time in the format of 2016-07-23 14:55:20
+        :type StartTime: str
+        :param EndTime: Query end time in the format of 2016-08-22 14:55:20
+        :type EndTime: str
+        :param Db: Specific name of the database to be queried
+        :type Db: str
+        :param OrderBy: Sorting metric. Valid values: query_time_sum, query_count
+        :type OrderBy: str
+        :param OrderByType: Sorting order. Valid values: desc, asc
+        :type OrderByType: str
+        :param Slave: Query slow queries from either the primary or the replica. Valid values: 0 (primary), 1 (replica)
+        :type Slave: int
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Db = None
+        self.OrderBy = None
+        self.OrderByType = None
+        self.Slave = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Db = params.get("Db")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+        self.Slave = params.get("Slave")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBSlowLogsResponse(AbstractModel):
+    """DescribeDBSlowLogs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: Slow query log data
+        :type Data: list of SlowLogData
+        :param LockTimeSum: Total statement lock time
+        :type LockTimeSum: float
+        :param QueryCount: Total number of statement queries
+        :type QueryCount: int
+        :param Total: Total number of results
+        :type Total: int
+        :param QueryTimeSum: Total statement query time
+        :type QueryTimeSum: float
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Data = None
+        self.LockTimeSum = None
+        self.QueryCount = None
+        self.Total = None
+        self.QueryTimeSum = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = SlowLogData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.LockTimeSum = params.get("LockTimeSum")
+        self.QueryCount = params.get("QueryCount")
+        self.Total = params.get("Total")
+        self.QueryTimeSum = params.get("QueryTimeSum")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDatabaseObjectsRequest(AbstractModel):
+    """DescribeDatabaseObjects request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `dcdbt-ow7t8lmc`.
+        :type InstanceId: str
+        :param DbName: Database name, which can be obtained through the `DescribeDatabases` API.
+        :type DbName: str
+        """
+        self.InstanceId = None
+        self.DbName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DbName = params.get("DbName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatabaseObjectsResponse(AbstractModel):
+    """DescribeDatabaseObjects response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Passed through from input parameters.
+        :type InstanceId: str
+        :param DbName: Database name.
+        :type DbName: str
+        :param Tables: Table list.
+        :type Tables: list of DatabaseTable
+        :param Views: View list.
+        :type Views: list of DatabaseView
+        :param Procs: Stored procedure list.
+        :type Procs: list of DatabaseProcedure
+        :param Funcs: Function list.
+        :type Funcs: list of DatabaseFunction
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.DbName = None
+        self.Tables = None
+        self.Views = None
+        self.Procs = None
+        self.Funcs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DbName = params.get("DbName")
+        if params.get("Tables") is not None:
+            self.Tables = []
+            for item in params.get("Tables"):
+                obj = DatabaseTable()
+                obj._deserialize(item)
+                self.Tables.append(obj)
+        if params.get("Views") is not None:
+            self.Views = []
+            for item in params.get("Views"):
+                obj = DatabaseView()
+                obj._deserialize(item)
+                self.Views.append(obj)
+        if params.get("Procs") is not None:
+            self.Procs = []
+            for item in params.get("Procs"):
+                obj = DatabaseProcedure()
+                obj._deserialize(item)
+                self.Procs.append(obj)
+        if params.get("Funcs") is not None:
+            self.Funcs = []
+            for item in params.get("Funcs"):
+                obj = DatabaseFunction()
+                obj._deserialize(item)
+                self.Funcs.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDatabaseTableRequest(AbstractModel):
+    """DescribeDatabaseTable request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `dcdbt-ow7t8lmc`.
+        :type InstanceId: str
+        :param DbName: Database name, which can be obtained through the `DescribeDatabases` API.
+        :type DbName: str
+        :param Table: Table name, which can be obtained through the `DescribeDatabaseObjects` API.
+        :type Table: str
+        """
+        self.InstanceId = None
+        self.DbName = None
+        self.Table = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DbName = params.get("DbName")
+        self.Table = params.get("Table")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatabaseTableResponse(AbstractModel):
+    """DescribeDatabaseTable response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance name.
+        :type InstanceId: str
+        :param DbName: Database name.
+        :type DbName: str
+        :param Table: Table name.
+        :type Table: str
+        :param Cols: Column information.
+        :type Cols: list of TableColumn
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.DbName = None
+        self.Table = None
+        self.Cols = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DbName = params.get("DbName")
+        self.Table = params.get("Table")
+        if params.get("Cols") is not None:
+            self.Cols = []
+            for item in params.get("Cols"):
+                obj = TableColumn()
+                obj._deserialize(item)
+                self.Cols.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDatabasesRequest(AbstractModel):
+    """DescribeDatabases request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `dcdbt-ow7t8lmc`.
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatabasesResponse(AbstractModel):
+    """DescribeDatabases response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Databases: The database list of this instance.
+        :type Databases: list of Database
+        :param InstanceId: Passed through from input parameters.
+        :type InstanceId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Databases = None
+        self.InstanceId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Databases") is not None:
+            self.Databases = []
+            for item in params.get("Databases"):
+                obj = Database()
+                obj._deserialize(item)
+                self.Databases.append(obj)
+        self.InstanceId = params.get("InstanceId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1366,6 +2173,60 @@ class DescribeInstanceNodeInfoResponse(AbstractModel):
                 obj = NodeInfo()
                 obj._deserialize(item)
                 self.NodesInfo.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeOrdersRequest(AbstractModel):
+    """DescribeOrders request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealNames: List of long order numbers to be queried, which are returned for the APIs for creating, renewing, or scaling instances.
+        :type DealNames: list of str
+        """
+        self.DealNames = None
+
+
+    def _deserialize(self, params):
+        self.DealNames = params.get("DealNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOrdersResponse(AbstractModel):
+    """DescribeOrders response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Returned number of orders.
+        :type TotalCount: int
+        :param Deals: Order information list.
+        :type Deals: list of Deal
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Deals = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Deals") is not None:
+            self.Deals = []
+            for item in params.get("Deals"):
+                obj = Deal()
+                obj._deserialize(item)
+                self.Deals.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1883,6 +2744,118 @@ class ModifyDBInstancesProjectResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDBParametersRequest(AbstractModel):
+    """ModifyDBParameters request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.
+        :type InstanceId: str
+        :param Params: Parameter list. Each element is a combination of `Param` and `Value`.
+        :type Params: list of DBParamValue
+        """
+        self.InstanceId = None
+        self.Params = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Params") is not None:
+            self.Params = []
+            for item in params.get("Params"):
+                obj = DBParamValue()
+                obj._deserialize(item)
+                self.Params.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBParametersResponse(AbstractModel):
+    """ModifyDBParameters response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.
+        :type InstanceId: str
+        :param Result: Parameter modification result
+        :type Result: list of ParamModifyResult
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = ParamModifyResult()
+                obj._deserialize(item)
+                self.Result.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDBSyncModeRequest(AbstractModel):
+    """ModifyDBSyncMode request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: ID of the instance for which to modify the sync mode. The ID is in the format of `tdsql-ow728lmc`.
+        :type InstanceId: str
+        :param SyncMode: Sync mode. Valid values: `0` (async), `1` (strong sync), `2` (downgradable strong sync).
+        :type SyncMode: int
+        """
+        self.InstanceId = None
+        self.SyncMode = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SyncMode = params.get("SyncMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBSyncModeResponse(AbstractModel):
+    """ModifyDBSyncMode response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Async task ID. The task status can be queried through the `DescribeFlow` API.
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifySyncTaskAttributeRequest(AbstractModel):
     """ModifySyncTaskAttribute request structure.
 
@@ -1947,6 +2920,125 @@ class NodeInfo(AbstractModel):
     def _deserialize(self, params):
         self.NodeId = params.get("NodeId")
         self.Role = params.get("Role")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParamConstraint(AbstractModel):
+    """Parameter constraint
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: Constraint type, such as `enum` and `section`.
+        :type Type: str
+        :param Enum: List of valid values when constraint type is `enum`
+        :type Enum: str
+        :param Range: Range when constraint type is `section`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Range: :class:`tencentcloud.mariadb.v20170312.models.ConstraintRange`
+        :param String: List of valid values when constraint type is `string`
+        :type String: str
+        """
+        self.Type = None
+        self.Enum = None
+        self.Range = None
+        self.String = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Enum = params.get("Enum")
+        if params.get("Range") is not None:
+            self.Range = ConstraintRange()
+            self.Range._deserialize(params.get("Range"))
+        self.String = params.get("String")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParamDesc(AbstractModel):
+    """Database parameter description
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Param: Parameter name
+        :type Param: str
+        :param Value: Current parameter value
+        :type Value: str
+        :param SetValue: Previously set value, which is the same as `value` after the parameter takes effect.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SetValue: str
+        :param Default: Default value
+        :type Default: str
+        :param Constraint: Parameter constraint
+        :type Constraint: :class:`tencentcloud.mariadb.v20170312.models.ParamConstraint`
+        :param HaveSetValue: Whether a value has been set. false: no, true: yes
+        :type HaveSetValue: bool
+        :param NeedRestart: Whether restart is required. false: no;
+true: yes.
+        :type NeedRestart: bool
+        """
+        self.Param = None
+        self.Value = None
+        self.SetValue = None
+        self.Default = None
+        self.Constraint = None
+        self.HaveSetValue = None
+        self.NeedRestart = None
+
+
+    def _deserialize(self, params):
+        self.Param = params.get("Param")
+        self.Value = params.get("Value")
+        self.SetValue = params.get("SetValue")
+        self.Default = params.get("Default")
+        if params.get("Constraint") is not None:
+            self.Constraint = ParamConstraint()
+            self.Constraint._deserialize(params.get("Constraint"))
+        self.HaveSetValue = params.get("HaveSetValue")
+        self.NeedRestart = params.get("NeedRestart")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParamModifyResult(AbstractModel):
+    """Parameter modification result
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Param: Renames parameter
+        :type Param: str
+        :param Code: Result of parameter modification. 0: success; -1: failure; -2: invalid parameter value.
+        :type Code: int
+        """
+        self.Param = None
+        self.Code = None
+
+
+    def _deserialize(self, params):
+        self.Param = params.get("Param")
+        self.Code = params.get("Code")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2154,6 +3246,131 @@ class SecurityGroupBound(AbstractModel):
         self.CidrIp = params.get("CidrIp")
         self.PortRange = params.get("PortRange")
         self.IpProtocol = params.get("IpProtocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SlowLogData(AbstractModel):
+    """Information of a slow query that has been logged
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CheckSum: Statement checksum for querying details
+        :type CheckSum: str
+        :param Db: Database name
+        :type Db: str
+        :param FingerPrint: Abstracted SQL statement
+        :type FingerPrint: str
+        :param LockTimeAvg: Average lock time
+        :type LockTimeAvg: str
+        :param LockTimeMax: Maximum lock time
+        :type LockTimeMax: str
+        :param LockTimeMin: Minimum lock time
+        :type LockTimeMin: str
+        :param LockTimeSum: Total lock time
+        :type LockTimeSum: str
+        :param QueryCount: Number of queries
+        :type QueryCount: str
+        :param QueryTimeAvg: Average query time
+        :type QueryTimeAvg: str
+        :param QueryTimeMax: Maximum query time
+        :type QueryTimeMax: str
+        :param QueryTimeMin: Minimum query time
+        :type QueryTimeMin: str
+        :param QueryTimeSum: Total query time
+        :type QueryTimeSum: str
+        :param RowsExaminedSum: Number of scanned rows
+        :type RowsExaminedSum: str
+        :param RowsSentSum: Number of sent rows
+        :type RowsSentSum: str
+        :param TsMax: Last execution time
+        :type TsMax: str
+        :param TsMin: First execution time
+        :type TsMin: str
+        :param User: Account
+        :type User: str
+        :param ExampleSql: Sample SQL
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExampleSql: str
+        :param Host: Host address of account
+        :type Host: str
+        """
+        self.CheckSum = None
+        self.Db = None
+        self.FingerPrint = None
+        self.LockTimeAvg = None
+        self.LockTimeMax = None
+        self.LockTimeMin = None
+        self.LockTimeSum = None
+        self.QueryCount = None
+        self.QueryTimeAvg = None
+        self.QueryTimeMax = None
+        self.QueryTimeMin = None
+        self.QueryTimeSum = None
+        self.RowsExaminedSum = None
+        self.RowsSentSum = None
+        self.TsMax = None
+        self.TsMin = None
+        self.User = None
+        self.ExampleSql = None
+        self.Host = None
+
+
+    def _deserialize(self, params):
+        self.CheckSum = params.get("CheckSum")
+        self.Db = params.get("Db")
+        self.FingerPrint = params.get("FingerPrint")
+        self.LockTimeAvg = params.get("LockTimeAvg")
+        self.LockTimeMax = params.get("LockTimeMax")
+        self.LockTimeMin = params.get("LockTimeMin")
+        self.LockTimeSum = params.get("LockTimeSum")
+        self.QueryCount = params.get("QueryCount")
+        self.QueryTimeAvg = params.get("QueryTimeAvg")
+        self.QueryTimeMax = params.get("QueryTimeMax")
+        self.QueryTimeMin = params.get("QueryTimeMin")
+        self.QueryTimeSum = params.get("QueryTimeSum")
+        self.RowsExaminedSum = params.get("RowsExaminedSum")
+        self.RowsSentSum = params.get("RowsSentSum")
+        self.TsMax = params.get("TsMax")
+        self.TsMin = params.get("TsMin")
+        self.User = params.get("User")
+        self.ExampleSql = params.get("ExampleSql")
+        self.Host = params.get("Host")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TableColumn(AbstractModel):
+    """Database column information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Col: Column name
+        :type Col: str
+        :param Type: Column type
+        :type Type: str
+        """
+        self.Col = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Col = params.get("Col")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

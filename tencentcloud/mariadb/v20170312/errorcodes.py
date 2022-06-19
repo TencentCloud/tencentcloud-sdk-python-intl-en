@@ -92,6 +92,15 @@ INTERNALERROR_DBOPERATIONFAILED = 'InternalError.DbOperationFailed'
 # Failed to query the information of a dedicated cluster.
 INTERNALERROR_FENCEERROR = 'InternalError.FenceError'
 
+# Failed to get database instance parameters.
+INTERNALERROR_GETDBCONFIGFAILED = 'InternalError.GetDbConfigFailed'
+
+# Failed to get the database list.
+INTERNALERROR_GETDBLISTFAILED = 'InternalError.GetDbListFailed'
+
+# Failed to get the database object.
+INTERNALERROR_GETDBOBJECTFAILED = 'InternalError.GetDbObjectFailed'
+
 # Failed to get the backend instance information.
 INTERNALERROR_GETINSTANCEINFOFAILED = 'InternalError.GetInstanceInfoFailed'
 
@@ -101,8 +110,14 @@ INTERNALERROR_GETRIGHTFAILED = 'InternalError.GetRightFailed'
 # Failed to query security group details.
 INTERNALERROR_GETSECURITYGROUPDETAILFAILED = 'InternalError.GetSecurityGroupDetailFailed'
 
+# Failed to get the error log.
+INTERNALERROR_GETSLOWLOGFAILED = 'InternalError.GetSlowLogFailed'
+
 # Failed to query the VPC subnet information.
 INTERNALERROR_GETSUBNETFAILED = 'InternalError.GetSubnetFailed'
+
+# Failed to get the table structure.
+INTERNALERROR_GETTABLEINFOFAILED = 'InternalError.GetTableInfoFailed'
 
 # Failed to get the account list.
 INTERNALERROR_GETUSERLISTFAILED = 'InternalError.GetUserListFailed'
@@ -137,11 +152,17 @@ INTERNALERROR_LISTINSTANCERESPRESOURCECOUNTNOTMATCHERROR = 'InternalError.ListIn
 # An error occurred when querying an instance.
 INTERNALERROR_LISTINSTANCESERROR = 'InternalError.ListInstancesError'
 
+# Failed to get the slow log.
+INTERNALERROR_LOGDBFAILED = 'InternalError.LogDBFailed'
+
 # Database operation failed.
 INTERNALERROR_OPERATEDATABASEFAILED = 'InternalError.OperateDatabaseFailed'
 
 # An error occurred when reading data from the database.
 INTERNALERROR_QUERYDATABASEFAILED = 'InternalError.QueryDatabaseFailed'
+
+# Failed to query the order information.
+INTERNALERROR_QUERYORDERFAILED = 'InternalError.QueryOrderFailed'
 
 # An error occurred when reading data from the database.
 INTERNALERROR_READDATABASEFAILED = 'InternalError.ReadDatabaseFailed'
@@ -167,11 +188,17 @@ INVALIDPARAMETER_CHARACTERERROR = 'InvalidParameter.CharacterError'
 # Verification of input parameters failed.
 INVALIDPARAMETER_CHECKPARAMNOTPASS = 'InvalidParameter.CheckParamNotPass'
 
+# The order ID to be queried is not specified.
+INVALIDPARAMETER_DEALNAMENOTGIVEN = 'InvalidParameter.DealNameNotGiven'
+
 # An error occurred while verifying parameter validity.
 INVALIDPARAMETER_GENERICPARAMETERERROR = 'InvalidParameter.GenericParameterError'
 
 # Invalid parameters
 INVALIDPARAMETER_ILLEGALPARAMETERERROR = 'InvalidParameter.IllegalParameterError'
+
+# The time parameter is incorrect.
+INVALIDPARAMETER_ILLEGALTIME = 'InvalidParameter.IllegalTime'
 
 # Failed to find the requested instance.
 INVALIDPARAMETER_INSTANCENOTFOUND = 'InvalidParameter.InstanceNotFound'
@@ -193,6 +220,9 @@ INVALIDPARAMETER_VPCNOTFOUND = 'InvalidParameter.VpcNotFound'
 
 # The account to be created already exists.
 INVALIDPARAMETERVALUE_ACCOUNTALREADYEXISTS = 'InvalidParameterValue.AccountAlreadyExists'
+
+# The instance does not support this sync mode.
+INVALIDPARAMETERVALUE_BADSYNCMODE = 'InvalidParameterValue.BadSyncMode'
 
 # The specified permission could not be granted to this account.
 INVALIDPARAMETERVALUE_BADUSERRIGHT = 'InvalidParameterValue.BadUserRight'
@@ -250,6 +280,9 @@ RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = 'ResourceUnavailable.InstanceStatus
 
 # You have no permission to manipulate this API or resource.
 UNAUTHORIZEDOPERATION_PERMISSIONDENIED = 'UnauthorizedOperation.PermissionDenied'
+
+# The operation is not supported.
+UNSUPPORTEDOPERATION_INVALIDOPERATION = 'UnsupportedOperation.InvalidOperation'
 
 # The proxy program is too old. Please contact customer service for upgrade and try again.
 UNSUPPORTEDOPERATION_OLDPROXYVERSION = 'UnsupportedOperation.OldProxyVersion'
