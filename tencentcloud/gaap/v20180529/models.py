@@ -1538,7 +1538,7 @@ class CreateRuleRequest(AbstractModel):
         :param ForwardProtocol: Protocol types of the forwarding from acceleration connection to origin server, which supports HTTP or HTTPS.
 If this field is not passed in, it indicates that the ForwardProtocol of the corresponding listener will be used.
         :type ForwardProtocol: str
-        :param ForwardHost: The forwarding host. If it’s not specified, the default host is used, that is the host with which the client initiates HTTP requests.
+        :param ForwardHost: The host to which the acceleration connection forwards. If this parameter is not specified, the default host will be used, i.e., the host with which the client initiates HTTP requests.
         :type ForwardHost: str
         :param ServerNameIndicationSwitch: Specifies whether to enable Server Name Indication (SNI). Valid values: `ON` (enable) and `OFF` (disable).
         :type ServerNameIndicationSwitch: str
@@ -6675,16 +6675,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param Concurrent: Concurrence. Unit: requests/second.
         :type Concurrent: int
         :param Status: Connection status. Valid values:
-`RUNNING`: running
-`CREATING`: creating
-`DESTROYING`: terminating
-`OPENING`: enabling
-`CLOSING`: disabling
-`CLOSED`: disabled
-`ADJUSTING`: adjusting configuration
-`ISOLATING`: isolating
-`ISOLATED`: isolated
-`CLONING`: copying
+`RUNNING`: Running
+`CREATING`: Creating
+`DESTROYING`: Terminating
+`OPENING`: Enabling
+`CLOSING`: Disabling
+`CLOSED`: Disabled
+`ADJUSTING`: Adjusting configuration
+`ISOLATING`: Isolating
+`ISOLATED`: Isolated
+`CLONING`: Copying
+`RECOVERING`: Maintaining
         :type Status: str
         :param Domain: Accessed domain name.
         :type Domain: str
@@ -6737,8 +6738,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param IPAddressVersion: IP version. Valid values: `IPv4`, `IPv6`.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type IPAddressVersion: str
-        :param NetworkType: Network type. `normal`: general BGP; `cn2`: dedicated BGP; `triple`: Non-BGP (provided by the top 3 ISPs in the Chinese mainland).
-Note: this field may return `null`, indicating that no valid value can be obtained.
+        :param NetworkType: Network type. `normal`: general BGP; `cn2`: dedicated BGP; `triple`: Non-BGP (provided by the top 3 ISPs in the Chinese mainland); `secure_eip`: custom security EIP.
+Note: This field may return `null`, indicating that no valid value can be obtained.
         :type NetworkType: str
         :param PackageType: Package type of connections. Valid values: `Thunder` (general connection), `Accelerator` (silver connection), 
 and `CrossBorder` (cross-MLC-border connection).

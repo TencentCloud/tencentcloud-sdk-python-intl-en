@@ -305,11 +305,17 @@ class AssignIpv6AddressesRequest(AbstractModel):
         :type Ipv6Addresses: list of Ipv6Address
         :param Ipv6AddressCount: Number of automatically assigned IPv6 addresses. The total number of private IP addresses cannot exceed the quota. The quota is calculated together with that of `Ipv6Addresses`, a required input parameter alternative to this one.
         :type Ipv6AddressCount: int
+        :param Ipv6ISP: Ipv6 ISP. Valid values:
+`CTCC`: China Telecom
+`CUCC`: China Unicom
+`CMCC`: China Mobile
+        :type Ipv6ISP: str
         """
         self.EcmRegion = None
         self.NetworkInterfaceId = None
         self.Ipv6Addresses = None
         self.Ipv6AddressCount = None
+        self.Ipv6ISP = None
 
 
     def _deserialize(self, params):
@@ -322,6 +328,7 @@ class AssignIpv6AddressesRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Ipv6Addresses.append(obj)
         self.Ipv6AddressCount = params.get("Ipv6AddressCount")
+        self.Ipv6ISP = params.get("Ipv6ISP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

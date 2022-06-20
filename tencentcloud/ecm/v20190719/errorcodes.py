@@ -344,6 +344,9 @@ LIMITEXCEEDED_ADDRESSQUOTALIMITEXCEEDED = 'LimitExceeded.AddressQuotaLimitExceed
 # The maximum number of applications has been reached. The maximum number of applications that can be made by a Tencent Cloud account per day in each region is equal to twice the quota.
 LIMITEXCEEDED_ADDRESSQUOTALIMITEXCEEDEDDAILYALLOCATE = 'LimitExceeded.AddressQuotaLimitExceededDailyAllocate'
 
+# Exceeded the upper limit of the assigned IPv6 IP ranges.
+LIMITEXCEEDED_CIDRBLOCK = 'LimitExceeded.CidrBlock'
+
 # The number of purchasable ENIs is insufficient.
 LIMITEXCEEDED_ENIQUOTALIMITEXCEEDED = 'LimitExceeded.EniQuotaLimitExceeded'
 
