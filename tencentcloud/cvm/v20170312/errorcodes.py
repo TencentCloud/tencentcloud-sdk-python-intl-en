@@ -29,7 +29,7 @@ FAILEDOPERATION_ACCOUNTALREADYEXISTS = 'FailedOperation.AccountAlreadyExists'
 # You cannot share images with yourself.
 FAILEDOPERATION_ACCOUNTISYOURSELF = 'FailedOperation.AccountIsYourSelf'
 
-# 
+# BYOL images cannot be shared.
 FAILEDOPERATION_BYOLIMAGESHAREFAILED = 'FailedOperation.BYOLImageShareFailed'
 
 # The specified spread placement group does not exist.
@@ -554,7 +554,7 @@ LIMITEXCEEDED_SINGLEUSGQUOTA = 'LimitExceeded.SingleUSGQuota'
 # The spot instance offerings are out of stock.
 LIMITEXCEEDED_SPOTQUOTA = 'LimitExceeded.SpotQuota'
 
-# 
+# Exceeded the upper limit of resources bound to the tag.
 LIMITEXCEEDED_TAGRESOURCEQUOTA = 'LimitExceeded.TagResourceQuota'
 
 # Failed to return instances because of the quota limit.
@@ -758,7 +758,7 @@ UNSUPPORTEDOPERATION_INVALIDDATADISK = 'UnsupportedOperation.InvalidDataDisk'
 # The specified disk is not supported.
 UNSUPPORTEDOPERATION_INVALIDDISK = 'UnsupportedOperation.InvalidDisk'
 
-# 
+# The image license type does not match the instance. Select another image.
 UNSUPPORTEDOPERATION_INVALIDIMAGELICENSETYPEFORRESET = 'UnsupportedOperation.InvalidImageLicenseTypeForReset'
 
 # This operation is not supported for the instance with a termination schedule. Please cancel the scheduled termination time in the instance details page and try again.

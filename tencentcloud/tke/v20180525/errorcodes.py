@@ -17,94 +17,106 @@
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
-# 
+# Failed to obtain user authentication information.
 FAILEDOPERATION_ACCOUNTCOMMON = 'FailedOperation.AccountCommon'
 
-# 
+# The account is not verified.
 FAILEDOPERATION_ACCOUNTUSERNOTAUTHENTICATED = 'FailedOperation.AccountUserNotAuthenticated'
 
-# 
+# An error occurs while creating scaling group resources.
 FAILEDOPERATION_ASCOMMON = 'FailedOperation.AsCommon'
 
-# 
+# Unknown CLB error.
 FAILEDOPERATION_CLBUNEXPECTEDERROR = 'FailedOperation.CLBUnexpectedError'
 
-# 
+# Not authorized to access this API
 FAILEDOPERATION_CAMNOAUTH = 'FailedOperation.CamNoAuth'
 
-# 
+# The cluster is not found.
 FAILEDOPERATION_CLUSTERNOTFOUND = 'FailedOperation.ClusterNotFound'
 
-# 
+# Cluster status error.
 FAILEDOPERATION_CLUSTERSTATE = 'FailedOperation.ClusterState'
 
-# 
+# The version of the cluster node is too old.
 FAILEDOPERATION_CLUSTERUPGRADENODEVERSION = 'FailedOperation.ClusterUpgradeNodeVersion'
 
-# 
+# Internal HTTP client error.
 FAILEDOPERATION_COMPONENTCLIENTHTTP = 'FailedOperation.ComponentClientHttp'
 
-# 
+# Internal HTTP decapsulation failed.
 FAILEDOPERATION_COMPONENTCLIENTUNPACK = 'FailedOperation.ComponentClientUnpack'
 
-# 
+# Failed to request (HTTP request) other Tencent Cloud services.
 FAILEDOPERATION_COMPONENTCLINETHTTP = 'FailedOperation.ComponentClinetHttp'
 
-# 
+# Failed to create the node due to a CVM error
 FAILEDOPERATION_CVMCOMMON = 'FailedOperation.CvmCommon'
 
-# 
+# Some of the specified CVMs are not found.
+FAILEDOPERATION_CVMNUMBERNOTMATCH = 'FailedOperation.CvmNumberNotMatch'
+
+# The CVM does not match the VPC ID.
 FAILEDOPERATION_CVMVPCIDNOTMATCH = 'FailedOperation.CvmVpcidNotMatch'
 
-# 
+# Database error.
 FAILEDOPERATION_DB = 'FailedOperation.Db'
 
-# 
+# Record not found.
 FAILEDOPERATION_DBRECORDNOTFOUND = 'FailedOperation.DbRecordNotFound'
 
-# 
+# Failed to obtain security group quota.
 FAILEDOPERATION_DFWGETUSGQUOTA = 'FailedOperation.DfwGetUSGQuota'
 
-# 
+# Failed to connect to the customer Kubernetes cluster.
 FAILEDOPERATION_KUBECLIENTCONNECTION = 'FailedOperation.KubeClientConnection'
 
-# 
+# Kubernetes API error.
 FAILEDOPERATION_KUBECOMMON = 'FailedOperation.KubeCommon'
 
 # 
+FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = 'FailedOperation.KubernetesClientBuildError'
+
+# An error occurs while creating the cluster client.
 FAILEDOPERATION_KUBERNETESCREATEOPERATIONERROR = 'FailedOperation.KubernetesCreateOperationError'
 
-# 
+# Unknown Kubernetes error.
 FAILEDOPERATION_KUBERNETESINTERNAL = 'FailedOperation.KubernetesInternal'
 
-# 
+# An unknown error occurs while calling the underlying CLB.
 FAILEDOPERATION_LBCOMMON = 'FailedOperation.LbCommon'
 
-# 
+# Network extension error.
 FAILEDOPERATION_NETWORKSCALEERROR = 'FailedOperation.NetworkScaleError'
 
-# 
+# The image OS is not supported.
 FAILEDOPERATION_OSNOTSUPPORT = 'FailedOperation.OsNotSupport'
 
-# 
+# Invalid parameter.
 FAILEDOPERATION_PARAM = 'FailedOperation.Param'
 
-# 
+# Reached the quota limit.
 FAILEDOPERATION_QUOTAMAXCLSLIMIT = 'FailedOperation.QuotaMaxClsLimit'
 
-# 
+# Reached the quota limit.
 FAILEDOPERATION_QUOTAMAXNODLIMIT = 'FailedOperation.QuotaMaxNodLimit'
 
-# 
+# Insufficient security group quota.
 FAILEDOPERATION_QUOTAUSGLIMIT = 'FailedOperation.QuotaUSGLimit'
 
-# 
+# A same task is in progress.
 FAILEDOPERATION_TASKALREADYRUNNING = 'FailedOperation.TaskAlreadyRunning'
 
-# 
+# Query failed.
 FAILEDOPERATION_TRADECOMMON = 'FailedOperation.TradeCommon'
 
-# 
+# Unknown VPC error.
+FAILEDOPERATION_VPCUNEXPECTEDERROR = 'FailedOperation.VPCUnexpectedError'
+
+# VPC error.
+FAILEDOPERATION_VPCCOMMON = 'FailedOperation.VpcCommon'
+
+# VPC record not found.
 FAILEDOPERATION_VPCRECODRNOTFOUND = 'FailedOperation.VpcRecodrNotFound'
 
 # Internal error.
@@ -329,6 +341,9 @@ INVALIDPARAMETER_GATEWAYALREADYASSOCIATEDCIDR = 'InvalidParameter.GatewayAlready
 # Invalid private CIDR block.
 INVALIDPARAMETER_INVALIDPRIVATENETWORKCIDR = 'InvalidParameter.InvalidPrivateNetworkCIDR'
 
+# The iage OS is not supported.
+INVALIDPARAMETER_OSNOTSUPPORT = 'InvalidParameter.OsNotSupport'
+
 # Invalid parameter.
 INVALIDPARAMETER_PARAM = 'InvalidParameter.Param'
 
@@ -371,7 +386,7 @@ RESOURCENOTFOUND_KUBERNETESRESOURCENOTFOUND = 'ResourceNotFound.KubernetesResour
 # Resource is unavailable
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 
-# 
+# Abnormal cluster status.
 RESOURCEUNAVAILABLE_CLUSTERINABNORMALSTAT = 'ResourceUnavailable.ClusterInAbnormalStat'
 
 # The cluster’s status does support this operation.

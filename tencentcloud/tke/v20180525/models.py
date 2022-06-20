@@ -88,6 +88,8 @@ class AddExistedInstancesRequest(AbstractModel):
 
 The array length of `InstanceAdvancedSettingsOverride` should be the same as the array length of `InstanceIds`. If its array length is greater than the `InstanceIds` array length, an error will be reported. If its array length is less than the `InstanceIds` array length, the instance without corresponding configuration will use the default configuration.
         :type InstanceAdvancedSettingsOverrides: list of InstanceAdvancedSettings
+        :param ImageId: Node image (it is required when creating a node)
+        :type ImageId: str
         """
         self.ClusterId = None
         self.InstanceIds = None
@@ -99,6 +101,7 @@ The array length of `InstanceAdvancedSettingsOverride` should be the same as the
         self.NodePool = None
         self.SkipValidateOptions = None
         self.InstanceAdvancedSettingsOverrides = None
+        self.ImageId = None
 
 
     def _deserialize(self, params):
@@ -125,6 +128,7 @@ The array length of `InstanceAdvancedSettingsOverride` should be the same as the
                 obj = InstanceAdvancedSettings()
                 obj._deserialize(item)
                 self.InstanceAdvancedSettingsOverrides.append(obj)
+        self.ImageId = params.get("ImageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -850,7 +854,7 @@ class ClusterBasicSettings(AbstractModel):
         :type TagSpecification: list of TagSpecification
         :param OsCustomizeType: Container image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)
         :type OsCustomizeType: str
-        :param NeedWorkSecurityGroup: Whether to enable the node’s default security group (default: `No`, Aphla feature)
+        :param NeedWorkSecurityGroup: Whether to enable the node’s default security group (default: `No`, Alpha feature)
         :type NeedWorkSecurityGroup: bool
         :param SubnetId: When the Cilium Overlay add-on is selected, TKE will take two IPs from the subnet to create the private network CLB.
         :type SubnetId: str
@@ -923,6 +927,8 @@ class ClusterCIDRSettings(AbstractModel):
         :type EniSubnetIds: list of str
         :param ClaimExpiredSeconds: Repossession time of ENI IP addresses in VPC-CNI network mode, whose range is [300,15768000)
         :type ClaimExpiredSeconds: int
+        :param IgnoreServiceCIDRConflict: Whether to ignore ServiceCIDR conflict errors. It is only valid in VPC-CNI mode. Default value: `false`.
+        :type IgnoreServiceCIDRConflict: bool
         """
         self.ClusterCIDR = None
         self.IgnoreClusterCIDRConflict = None
@@ -931,6 +937,7 @@ class ClusterCIDRSettings(AbstractModel):
         self.ServiceCIDR = None
         self.EniSubnetIds = None
         self.ClaimExpiredSeconds = None
+        self.IgnoreServiceCIDRConflict = None
 
 
     def _deserialize(self, params):
@@ -941,6 +948,7 @@ class ClusterCIDRSettings(AbstractModel):
         self.ServiceCIDR = params.get("ServiceCIDR")
         self.EniSubnetIds = params.get("EniSubnetIds")
         self.ClaimExpiredSeconds = params.get("ClaimExpiredSeconds")
+        self.IgnoreServiceCIDRConflict = params.get("IgnoreServiceCIDRConflict")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1129,6 +1137,9 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         :param Subnets: The container subnet associated with the cluster
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :type Subnets: list of str
+        :param IgnoreServiceCIDRConflict: Whether to ignore ServiceCIDR conflict errors. It is only valid in VPC-CNI mode. Default value: `false`.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type IgnoreServiceCIDRConflict: bool
         """
         self.ClusterCIDR = None
         self.IgnoreClusterCIDRConflict = None
@@ -1140,6 +1151,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         self.KubeProxyMode = None
         self.ServiceCIDR = None
         self.Subnets = None
+        self.IgnoreServiceCIDRConflict = None
 
 
     def _deserialize(self, params):
@@ -1153,6 +1165,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         self.KubeProxyMode = params.get("KubeProxyMode")
         self.ServiceCIDR = params.get("ServiceCIDR")
         self.Subnets = params.get("Subnets")
+        self.IgnoreServiceCIDRConflict = params.get("IgnoreServiceCIDRConflict")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1286,78 +1299,6 @@ class CommonName(AbstractModel):
         
 
 
-class CreateClusterAsGroupRequest(AbstractModel):
-    """CreateClusterAsGroup request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param AutoScalingGroupPara: The pass-through parameters for scaling group creation, in the format of a JSON string. For more information, see the [CreateAutoScalingGroup](https://intl.cloud.tencent.com/document/api/377/20440?from_cn_redirect=1) API. The **LaunchConfigurationId** is created with the LaunchConfigurePara parameter, which does not support data entry.
-        :type AutoScalingGroupPara: str
-        :param LaunchConfigurePara: The pass-through parameters for launch configuration creation, in the format of a JSON string. For more information, see the [CreateLaunchConfiguration](https://intl.cloud.tencent.com/document/api/377/20447?from_cn_redirect=1) API. **ImageId** is not required as it is already included in the cluster dimension. **UserData** is not required as it's set through the **UserScript**.
-        :type LaunchConfigurePara: str
-        :param InstanceAdvancedSettings: Advanced configuration information of the node
-        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
-        :param Labels: Node label array
-        :type Labels: list of Label
-        """
-        self.ClusterId = None
-        self.AutoScalingGroupPara = None
-        self.LaunchConfigurePara = None
-        self.InstanceAdvancedSettings = None
-        self.Labels = None
-
-
-    def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.AutoScalingGroupPara = params.get("AutoScalingGroupPara")
-        self.LaunchConfigurePara = params.get("LaunchConfigurePara")
-        if params.get("InstanceAdvancedSettings") is not None:
-            self.InstanceAdvancedSettings = InstanceAdvancedSettings()
-            self.InstanceAdvancedSettings._deserialize(params.get("InstanceAdvancedSettings"))
-        if params.get("Labels") is not None:
-            self.Labels = []
-            for item in params.get("Labels"):
-                obj = Label()
-                obj._deserialize(item)
-                self.Labels.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateClusterAsGroupResponse(AbstractModel):
-    """CreateClusterAsGroup response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param LaunchConfigurationId: Launch configuration ID
-        :type LaunchConfigurationId: str
-        :param AutoScalingGroupId: Scaling group ID
-        :type AutoScalingGroupId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.LaunchConfigurationId = None
-        self.AutoScalingGroupId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.LaunchConfigurationId = params.get("LaunchConfigurationId")
-        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
-        self.RequestId = params.get("RequestId")
-
-
 class CreateClusterEndpointRequest(AbstractModel):
     """CreateClusterEndpoint request structure.
 
@@ -1371,16 +1312,28 @@ class CreateClusterEndpointRequest(AbstractModel):
         :type SubnetId: str
         :param IsExtranet: Whether public network access is enabled or not (True = public network access, FALSE = private network access, with the default value as FALSE).
         :type IsExtranet: bool
+        :param Domain: The domain name
+        :type Domain: str
+        :param SecurityGroup: The security group in use. Required only for public network access.
+        :type SecurityGroup: str
+        :param ExtensiveParameters: The LB parameter. Required only for public network access.
+        :type ExtensiveParameters: str
         """
         self.ClusterId = None
         self.SubnetId = None
         self.IsExtranet = None
+        self.Domain = None
+        self.SecurityGroup = None
+        self.ExtensiveParameters = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.SubnetId = params.get("SubnetId")
         self.IsExtranet = params.get("IsExtranet")
+        self.Domain = params.get("Domain")
+        self.SecurityGroup = params.get("SecurityGroup")
+        self.ExtensiveParameters = params.get("ExtensiveParameters")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1587,6 +1540,10 @@ class CreateClusterNodePoolRequest(AbstractModel):
         :type Labels: list of Label
         :param Taints: Taints
         :type Taints: list of Taint
+        :param ContainerRuntime: Node pool runtime type and version
+        :type ContainerRuntime: str
+        :param RuntimeVersion: Runtime version
+        :type RuntimeVersion: str
         :param NodePoolOs: Operating system of the node pool
         :type NodePoolOs: str
         :param OsCustomizeType: Container image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)
@@ -1602,6 +1559,8 @@ class CreateClusterNodePoolRequest(AbstractModel):
         self.Name = None
         self.Labels = None
         self.Taints = None
+        self.ContainerRuntime = None
+        self.RuntimeVersion = None
         self.NodePoolOs = None
         self.OsCustomizeType = None
         self.Tags = None
@@ -1628,6 +1587,8 @@ class CreateClusterNodePoolRequest(AbstractModel):
                 obj = Taint()
                 obj._deserialize(item)
                 self.Taints.append(obj)
+        self.ContainerRuntime = params.get("ContainerRuntime")
+        self.RuntimeVersion = params.get("RuntimeVersion")
         self.NodePoolOs = params.get("NodePoolOs")
         self.OsCustomizeType = params.get("OsCustomizeType")
         if params.get("Tags") is not None:
@@ -4744,6 +4705,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param PreStartUserScript: Specifies the base64-encoded custom script to be executed before initialization of the node. It’s only valid for adding existing nodes for now.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type PreStartUserScript: str
+        :param Taints: Node taint
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type Taints: list of Taint
         """
         self.MountTarget = None
         self.DockerGraphPath = None
@@ -4754,6 +4718,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.ExtraArgs = None
         self.DesiredPodNumber = None
         self.PreStartUserScript = None
+        self.Taints = None
 
 
     def _deserialize(self, params):
@@ -4778,6 +4743,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
             self.ExtraArgs._deserialize(params.get("ExtraArgs"))
         self.DesiredPodNumber = params.get("DesiredPodNumber")
         self.PreStartUserScript = params.get("PreStartUserScript")
+        if params.get("Taints") is not None:
+            self.Taints = []
+            for item in params.get("Taints"):
+                obj = Taint()
+                obj._deserialize(item)
+                self.Taints.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

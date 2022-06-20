@@ -26,6 +26,35 @@ class TeoClient(AbstractClient):
     _service = 'teo'
 
 
+    def CreatePrefetchTask(self, request):
+        """This API is used to create a pre-warming task.
+
+        :param request: Request instance for CreatePrefetchTask.
+        :type request: :class:`tencentcloud.teo.v20220106.models.CreatePrefetchTaskRequest`
+        :rtype: :class:`tencentcloud.teo.v20220106.models.CreatePrefetchTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePrefetchTask", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePrefetchTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreatePurgeTask(self, request):
         """This API is used to create a cache purging task.
 
@@ -41,6 +70,35 @@ class TeoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePurgeTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePrefetchTasks(self, request):
+        """This API is used to query the pre-warming task status.
+
+        :param request: Request instance for DescribePrefetchTasks.
+        :type request: :class:`tencentcloud.teo.v20220106.models.DescribePrefetchTasksRequest`
+        :rtype: :class:`tencentcloud.teo.v20220106.models.DescribePrefetchTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrefetchTasks", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePrefetchTasksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -99,6 +157,35 @@ class TeoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeZonesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DownloadL7Logs(self, request):
+        """This API is used to query layer-7 logs.
+
+        :param request: Request instance for DownloadL7Logs.
+        :type request: :class:`tencentcloud.teo.v20220106.models.DownloadL7LogsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220106.models.DownloadL7LogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DownloadL7Logs", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DownloadL7LogsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

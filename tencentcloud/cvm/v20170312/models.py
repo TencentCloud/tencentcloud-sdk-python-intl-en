@@ -3814,6 +3814,9 @@ class KeyPair(AbstractModel):
         :type AssociatedInstanceIds: list of str
         :param CreatedTime: Creation time, which follows the `ISO8601` standard and uses `UTC` time in the format of `YYYY-MM-DDThh:mm:ssZ`.
         :type CreatedTime: str
+        :param Tags: The list of tags bound to the key.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type Tags: list of Tag
         """
         self.KeyId = None
         self.KeyName = None
@@ -3823,6 +3826,7 @@ class KeyPair(AbstractModel):
         self.PrivateKey = None
         self.AssociatedInstanceIds = None
         self.CreatedTime = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -3834,6 +3838,12 @@ class KeyPair(AbstractModel):
         self.PrivateKey = params.get("PrivateKey")
         self.AssociatedInstanceIds = params.get("AssociatedInstanceIds")
         self.CreatedTime = params.get("CreatedTime")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
