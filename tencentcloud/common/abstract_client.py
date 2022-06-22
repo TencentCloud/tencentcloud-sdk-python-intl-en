@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright 1999-2017 Tencent Ltd.
+# Copyright 2017-2021 Tencent Ltd.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,6 +23,8 @@ import sys
 import time
 import uuid
 import warnings
+import logging
+import logging.handlers
 
 try:
     from urllib.parse import urlencode
@@ -31,6 +33,7 @@ except ImportError:
 
 import tencentcloud
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
+from tencentcloud.common.exception import TencentCloudSDKException as SDKError
 from tencentcloud.common.http.request import ApiRequest
 from tencentcloud.common.http.request import RequestInternal
 from tencentcloud.common.profile.client_profile import ClientProfile
@@ -41,14 +44,28 @@ warnings.filterwarnings("ignore")
 _json_content = 'application/json'
 _multipart_content = 'multipart/form-data'
 _form_urlencoded_content = 'application/x-www-form-urlencoded'
+_octet_stream = "application/octet-stream"
+
+
+class EmptyHandler(logging.Handler):
+    def emit(self, message):
+        pass
+
+
+LOGGER_NAME = "tencentcloud_sdk_common"
+logger = logging.getLogger(LOGGER_NAME)
+logger.addHandler(EmptyHandler())
+
 
 class AbstractClient(object):
     _requestPath = '/'
     _params = {}
     _apiVersion = ''
     _endpoint = ''
+    _service = ''
     _sdkVersion = 'SDK_PYTHON_%s' % tencentcloud.__version__
     _default_content_type = _form_urlencoded_content
+    FMT = '%(asctime)s %(process)d %(filename)s L%(lineno)s %(levelname)s %(message)s'
 
     def __init__(self, credential, region, profile=None):
         if credential is None:
@@ -57,18 +74,14 @@ class AbstractClient(object):
         self.credential = credential
         self.region = region
         self.profile = ClientProfile() if profile is None else profile
-        self.request = ApiRequest(self._get_endpoint(), self.profile.httpProfile.reqTimeout)
+        is_http = True if self.profile.httpProfile.scheme == "http" else False
+        self.request = ApiRequest(self._get_endpoint(),
+                                  req_timeout=self.profile.httpProfile.reqTimeout,
+                                  proxy=self.profile.httpProfile.proxy,
+                                  is_http=is_http,
+                                  certification=self.profile.httpProfile.certification)
         if self.profile.httpProfile.keepAlive:
             self.request.set_keep_alive()
-
-        # self.secretId = self.credential.secretId
-        # self.secretKey = self.credential.secretKey
-        # self.defaultRegion = self.region or ''
-        # self.reqMethod = self.profile.httpProfile.reqMethod
-        # self.signMethod = self.profile.signMethod
-        # self.requestHost = '.'.join((self._service_name, self.profile.httpProfile.endpoint))
-        # self.apiRequest = ApiRequest(self.requestHost, req_timeout=self.profile.httpProfile.reqTimeout)
-        # self.token = self.credential.token or ''
 
     def _fix_params(self, params):
         if not isinstance(params, (dict,)):
@@ -127,8 +140,8 @@ class AbstractClient(object):
         if self.credential.token:
             params['Token'] = self.credential.token
 
-        if self.credential.secretId:
-            params['SecretId'] = self.credential.secretId
+        if self.credential.secret_id:
+            params['SecretId'] = self.credential.secret_id
 
         if self.profile.signMethod:
             params['SignatureMethod'] = self.profile.signMethod
@@ -137,7 +150,7 @@ class AbstractClient(object):
             params['Language'] = self.profile.language
 
         signInParam = self._format_sign_string(params)
-        params['Signature'] = Sign.sign(str(self.credential.secretKey),
+        params['Signature'] = Sign.sign(str(self.credential.secret_key),
                                         str(signInParam),
                                         str(self.profile.signMethod))
 
@@ -153,17 +166,20 @@ class AbstractClient(object):
         options = options or {}
         if options.get("IsMultipart"):
             content_type = _multipart_content
+        if options.get("IsOctetStream"):
+            content_type = _octet_stream
         req.header["Content-Type"] = content_type
 
-        endpoint = self._get_endpoint()
-        service = endpoint.split('.')[0]
-        timestamp = int(time.time())
-        date = datetime.utcfromtimestamp(timestamp).strftime('%Y-%m-%d')
+        if req.method == "GET" and content_type == _multipart_content:
+            raise SDKError("ClientError",
+                           "Invalid request method GET for multipart.")
 
+        endpoint = self._get_endpoint()
+        timestamp = int(time.time())
         req.header["Host"] = endpoint
         req.header["X-TC-Action"] = action[0].upper() + action[1:]
         req.header["X-TC-RequestClient"] = self._sdkVersion
-        req.header["X-TC-Timestamp"] = timestamp
+        req.header["X-TC-Timestamp"] = str(timestamp)
         req.header["X-TC-Version"] = self._apiVersion
         if self.profile.unsignedPayload is True:
             req.header["X-TC-Content-SHA256"] = "UNSIGNED-PAYLOAD"
@@ -174,41 +190,40 @@ class AbstractClient(object):
         if self.profile.language:
             req.header['X-TC-Language'] = self.profile.language
 
+        if req.method == 'GET':
+            params = copy.deepcopy(self._fix_params(params))
+            req.data = urlencode(params)
+        elif content_type == _json_content:
+            req.data = json.dumps(params)
+        elif content_type == _multipart_content:
+            boundary = uuid.uuid4().hex
+            req.header["Content-Type"] = content_type + "; boundary=" + boundary
+            req.data = self._get_multipart_body(params, boundary, options)
+
+        service = endpoint.split('.')[0]
+        date = datetime.utcfromtimestamp(timestamp).strftime('%Y-%m-%d')
         signature = self._get_tc3_signature(params, req, date, service, options)
 
-        auth = "TC3-HMAC-SHA256"
-        auth += " Credential=%s/%s/%s/tc3_request" % (self.credential.secretId, date, service)
-        auth += ", SignedHeaders=content-type;host, Signature=%s" % signature
+        auth = "TC3-HMAC-SHA256 Credential=%s/%s/%s/tc3_request, SignedHeaders=content-type;host, Signature=%s" % (
+            self.credential.secret_id, date, service, signature)
         req.header["Authorization"] = auth
 
     def _get_tc3_signature(self, params, req, date, service, options=None):
         options = options or {}
         canonical_uri = req.uri
-        canonical_querystring = ''
+        canonical_querystring = ""
+        payload = req.data
 
-        if req.method == 'GET' and options.get("IsMultipart") is not True:
-            params = copy.deepcopy(self._fix_params(params))
-            req.data = urlencode(params)
+        if req.method == 'GET':
             canonical_querystring = req.data
             payload = ""
-        else:
-            ct = req.header["Content-Type"]
-            if ct == _json_content:
-                req.data = json.dumps(params)
-            elif ct == _multipart_content:
-                boundary = uuid.uuid4().hex
-                req.header["Content-Type"] = ct + "; boundary=" + boundary
-                req.data = self._get_multipart_body(params, boundary, options)
-            else:
-                raise Exception("Unsupported content type: %s" % ct)
-
-            payload = req.data
 
         if req.header.get("X-TC-Content-SHA256") == "UNSIGNED-PAYLOAD":
             payload = "UNSIGNED-PAYLOAD"
 
         if sys.version_info[0] == 3 and isinstance(payload, type("")):
             payload = payload.encode("utf8")
+
         payload_hash = hashlib.sha256(payload).hexdigest()
 
         canonical_headers = 'content-type:%s\nhost:%s\n' % (
@@ -231,8 +246,7 @@ class AbstractClient(object):
                                           credential_scope,
                                           digest)
 
-        signature = Sign.sign_tc3(self.credential.secretKey, date, service, string2sign)
-        return signature
+        return Sign.sign_tc3(self.credential.secret_key, date, service, string2sign)
 
     # it must return bytes instead of string
     def _get_multipart_body(self, params, boundary, options=None):
@@ -272,26 +286,138 @@ class AbstractClient(object):
         msg = '%s%s%s?%s' % (self.profile.httpProfile.reqMethod, self._get_endpoint(), self._requestPath, strParam)
         return msg
 
+    def _get_service_domain(self):
+        rootDomain = self.profile.httpProfile.rootDomain
+        return self._service + "." + rootDomain
+
     def _get_endpoint(self):
         endpoint = self.profile.httpProfile.endpoint
         if endpoint is None:
-            endpoint = self._endpoint
+            endpoint = self._get_service_domain()
         return endpoint
 
     def call(self, action, params, options=None, headers=None):
-        endpoint = self._get_endpoint()
+        req = RequestInternal(self._get_endpoint(),
+                              self.profile.httpProfile.reqMethod,
+                              self._requestPath,
+                              header=headers)
+        self._build_req_inter(action, params, req, options)
 
-        req_inter = RequestInternal(endpoint,
-                                    self.profile.httpProfile.reqMethod,
-                                    self._requestPath,
-                                    header=headers)
-        self._build_req_inter(action, params, req_inter, options)
-
-        resp_inter = self.request.send_request(req_inter)
+        resp_inter = self.request.send_request(req)
         self._check_status(resp_inter)
         data = resp_inter.data
-        if sys.version_info[0] > 2:
-            data = data.decode()
-        else:
-            data = data.decode('UTF-8')
         return data
+
+    def call_octet_stream(self, action, headers, body):
+        """
+        Invoke API with application/ocet-stream content-type.
+
+        Note:
+        1. only specific API can be invoked in such manner.
+        2. only TC3-HMAC-SHA256 signature method can be specified.
+        3. only POST request method can be specified
+
+        :type action: str
+        :param action: Specific API action name.
+        :type headers: dict
+        :param headers: Header parameters for this API.
+        :type body: bytes
+        :param body: Bytes of requested body
+        """
+        if self.profile.signMethod != "TC3-HMAC-SHA256":
+            raise SDKError("ClientError", "Invalid signature method.")
+        if self.profile.httpProfile.reqMethod != "POST":
+            raise SDKError("ClientError", "Invalid request method.")
+
+        req = RequestInternal(self._get_endpoint(),
+                              self.profile.httpProfile.reqMethod,
+                              self._requestPath)
+        for key in headers:
+            req.header[key] = headers[key]
+        req.data = body
+        options = {"IsOctetStream": True}
+        self._build_req_inter(action, None, req, options)
+
+        resp = self.request.send_request(req)
+        self._check_status(resp)
+        data = resp.data
+
+        json_rsp = json.loads(data)
+        if "Error" in json_rsp["Response"]:
+            code = json_rsp["Response"]["Error"]["Code"]
+            message = json_rsp["Response"]["Error"]["Message"]
+            reqid = json_rsp["Response"]["RequestId"]
+            raise TencentCloudSDKException(code, message, reqid)
+        return json_rsp
+
+    def call_json(self, action, params, headers=None):
+        """
+        Call api with json object and return with json object.
+
+        :type action: str
+        :param action: api name e.g. ``DescribeInstances``
+        :type params: dict
+        :param params: params with this action
+        :type header: dict
+        :param header: request header, like {"X-TC-TraceId": "ffe0c072-8a5d-4e17-8887-a8a60252abca"}
+        """
+        body = self.call(action, params, headers=headers)
+        response = json.loads(body)
+        if "Error" not in response["Response"]:
+            return response
+        else:
+            code = response["Response"]["Error"]["Code"]
+            message = response["Response"]["Error"]["Message"]
+            reqid = response["Response"]["RequestId"]
+            raise TencentCloudSDKException(code, message, reqid)
+
+    def set_stream_logger(self, stream=None, level=logging.DEBUG, log_format=None):
+        """
+        Add a stream handler
+
+        :type stream: IO[str]
+        :param stream: e.g. ``sys.stdout`` ``sys.stdin`` ``sys.stderr``
+        :type level: int
+        :param level: Logging level, e.g. ``logging.INFO``
+        :type log_format: str
+        :param log_format: Log message format
+        """
+        log = logging.getLogger(LOGGER_NAME)
+        log.setLevel(level)
+        sh = logging.StreamHandler(stream)
+        sh.setLevel(level)
+        if log_format is None:
+            log_format = self.FMT
+        formatter = logging.Formatter(log_format)
+        sh.setFormatter(formatter)
+        log.addHandler(sh)
+
+    def set_file_logger(self, file_path, level=logging.DEBUG, log_format=None):
+        """
+        Add a file handler
+
+        :type file_path: str
+        :param file_path: path of log file
+        :type level: int
+        :param level: Logging level, e.g. ``logging.INFO``
+        :type log_format: str
+        :param log_format: Log message format
+        """
+        log = logging.getLogger(LOGGER_NAME)
+        log.setLevel(level)
+        mb = 1024 * 1024
+        fh = logging.handlers.RotatingFileHandler(file_path, maxBytes=512*mb, backupCount=10)
+        fh.setLevel(level)
+        if log_format is None:
+            log_format = self.FMT
+        formatter = logging.Formatter(log_format)
+        fh.setFormatter(formatter)
+        log.addHandler(fh)
+
+    def set_default_logger(self):
+        """
+        Set default log handler
+        """
+        log = logging.getLogger(LOGGER_NAME)
+        log.handlers = []
+        logger.addHandler(EmptyHandler())
