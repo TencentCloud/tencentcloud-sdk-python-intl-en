@@ -155,6 +155,9 @@ INVALIDPARAMETERVALUE_DUPLICATE = 'InvalidParameterValue.Duplicate'
 # The parameter value already exists.
 INVALIDPARAMETERVALUE_DUPLICATEPARA = 'InvalidParameterValue.DuplicatePara'
 
+# 
+INVALIDPARAMETERVALUE_EIPBRANDWIDTHOUTINVALID = 'InvalidParameterValue.EIPBrandWidthOutInvalid'
+
 # Missing parameters.
 INVALIDPARAMETERVALUE_EMPTY = 'InvalidParameterValue.Empty'
 
@@ -218,6 +221,12 @@ INVALIDPARAMETERVALUE_MISSINGASSOCIATEENTITY = 'InvalidParameterValue.MissingAss
 # A request cannot contain IP addresses with different cluster types.
 INVALIDPARAMETERVALUE_MIXEDADDRESSIPSETTYPE = 'InvalidParameterValue.MixedAddressIpSetType'
 
+# The SNAT forwarding rule of the NAT gateway does not exist.
+INVALIDPARAMETERVALUE_NATGATEWAYSNATRULENOTEXISTS = 'InvalidParameterValue.NatGatewaySnatRuleNotExists'
+
+# The NAT Gateway already has an identical SNAT rule.
+INVALIDPARAMETERVALUE_NATSNATRULEEXISTS = 'InvalidParameterValue.NatSnatRuleExists'
+
 # The probe destination IP and network probe are in the same VPC.
 INVALIDPARAMETERVALUE_NETDETECTINVPC = 'InvalidParameterValue.NetDetectInVpc'
 
@@ -260,11 +269,47 @@ INVALIDPARAMETERVALUE_RESOURCENOTSUPPORT = 'InvalidParameterValue.ResourceNotSup
 # Subnet CIDR conflict.
 INVALIDPARAMETERVALUE_SUBNETCONFLICT = 'InvalidParameterValue.SubnetConflict'
 
+# The subnet IP range overlaps with the the secondary CIDR block.
+INVALIDPARAMETERVALUE_SUBNETOVERLAPASSISTCIDR = 'InvalidParameterValue.SubnetOverlapAssistCidr'
+
 # Invalid subnet CIDR.
 INVALIDPARAMETERVALUE_SUBNETRANGE = 'InvalidParameterValue.SubnetRange'
 
+# 
+INVALIDPARAMETERVALUE_TAGDUPLICATEKEY = 'InvalidParameterValue.TagDuplicateKey'
+
+# 
+INVALIDPARAMETERVALUE_TAGDUPLICATERESOURCETYPE = 'InvalidParameterValue.TagDuplicateResourceType'
+
+# 
+INVALIDPARAMETERVALUE_TAGINVALIDKEY = 'InvalidParameterValue.TagInvalidKey'
+
+# 
+INVALIDPARAMETERVALUE_TAGINVALIDKEYLEN = 'InvalidParameterValue.TagInvalidKeyLen'
+
+# 
+INVALIDPARAMETERVALUE_TAGINVALIDVAL = 'InvalidParameterValue.TagInvalidVal'
+
+# 
+INVALIDPARAMETERVALUE_TAGKEYNOTEXISTS = 'InvalidParameterValue.TagKeyNotExists'
+
+# 
+INVALIDPARAMETERVALUE_TAGNOTALLOCATEDQUOTA = 'InvalidParameterValue.TagNotAllocatedQuota'
+
 # The tag and value do not exist.
 INVALIDPARAMETERVALUE_TAGNOTEXISTED = 'InvalidParameterValue.TagNotExisted'
+
+# 
+INVALIDPARAMETERVALUE_TAGNOTSUPPORTTAG = 'InvalidParameterValue.TagNotSupportTag'
+
+# 
+INVALIDPARAMETERVALUE_TAGRESOURCEFORMATERROR = 'InvalidParameterValue.TagResourceFormatError'
+
+# 
+INVALIDPARAMETERVALUE_TAGTIMESTAMPEXCEEDED = 'InvalidParameterValue.TagTimestampExceeded'
+
+# 
+INVALIDPARAMETERVALUE_TAGVALNOTEXISTS = 'InvalidParameterValue.TagValNotExists'
 
 # Invalid parameter value. The parameter value is too long.
 INVALIDPARAMETERVALUE_TOOLONG = 'InvalidParameterValue.TooLong'
@@ -289,6 +334,15 @@ INVALIDPARAMETERVALUE_ZONECONFLICT = 'InvalidParameterValue.ZoneConflict'
 
 # The specified private IP of the specified ENI has already been bound to an EIP. A private IP cannot be bound to more than one EIP.
 INVALIDPRIVATEIPADDRESS_ALREADYBINDEIP = 'InvalidPrivateIpAddress.AlreadyBindEip'
+
+# Invalid routing policy ID (RouteId).
+INVALIDROUTEID_NOTFOUND = 'InvalidRouteId.NotFound'
+
+# Invalid route table. The route table ID is invalid.
+INVALIDROUTETABLEID_MALFORMED = 'InvalidRouteTableId.Malformed'
+
+# Invalid route table. The VPC resource does not exist. Please check and enter the correct resource information.
+INVALIDROUTETABLEID_NOTFOUND = 'InvalidRouteTableId.NotFound'
 
 # Invalid security group. The security group instance ID is invalid.
 INVALIDSECURITYGROUPID_MALFORMED = 'InvalidSecurityGroupID.Malformed'
@@ -317,11 +371,17 @@ LIMITEXCEEDED_ACCOUNTRETURNQUOTA = 'LimitExceeded.AccountReturnQuota'
 # The number of assigned IP addresses has reached the upper limit.
 LIMITEXCEEDED_ADDRESS = 'LimitExceeded.Address'
 
+# The number of EIPs applied for exceeds the upper limit.
+LIMITEXCEEDED_ADDRESSQUOTALIMITEXCEEDED = 'LimitExceeded.AddressQuotaLimitExceeded'
+
 # Exceeded the upper limit of the bandwidth package quota.
 LIMITEXCEEDED_BANDWIDTHPACKAGEQUOTA = 'LimitExceeded.BandwidthPackageQuota'
 
 # The number of assigned IP ranges of the VPC has reached the upper limit.
 LIMITEXCEEDED_CIDRBLOCK = 'LimitExceeded.CidrBlock'
+
+# The number of EIPs applied for exceeds the daily upper limit.
+LIMITEXCEEDED_DAILYALLOCATEADDRESSQUOTALIMITEXCEEDED = 'LimitExceeded.DailyAllocateAddressQuotaLimitExceeded'
 
 # Exceeded the upper limit of the EIPs bound to the instance.
 LIMITEXCEEDED_INSTANCEADDRESSQUOTA = 'LimitExceeded.InstanceAddressQuota'
@@ -332,14 +392,41 @@ LIMITEXCEEDED_MODIFYADDRESSINTERNETCHARGETYPEQUOTA = 'LimitExceeded.ModifyAddres
 # Ran out of the monthly quota of chances to retrieve IPs.
 LIMITEXCEEDED_MONTHLYADDRESSRECOVERYQUOTA = 'LimitExceeded.MonthlyAddressRecoveryQuota'
 
+# Reached the upper limit of NAT gateways.
+LIMITEXCEEDED_NATGATEWAYLIMITEXCEEDED = 'LimitExceeded.NatGatewayLimitExceeded'
+
+# The number of NAT gateways created by the VPC has reached the upper limit.
+LIMITEXCEEDED_NATGATEWAYPERVPCLIMITEXCEEDED = 'LimitExceeded.NatGatewayPerVpcLimitExceeded'
+
 # Exceeded the character limit of a filter name.
 LIMITEXCEEDED_NUMBEROFFILTERS = 'LimitExceeded.NumberOfFilters'
+
+# The number of EIPs bound to the NAT gateway has reached the upper limit.
+LIMITEXCEEDED_PUBLICIPADDRESSPERNATGATEWAYLIMITEXCEEDED = 'LimitExceeded.PublicIpAddressPerNatGatewayLimitExceeded'
 
 # The number of security group rules exceeds the upper limit.
 LIMITEXCEEDED_SECURITYGROUPPOLICYSET = 'LimitExceeded.SecurityGroupPolicySet'
 
 # The number of subnet IP ranges assigned in the subnet has reached the upper limit.
 LIMITEXCEEDED_SUBNETCIDRBLOCK = 'LimitExceeded.SubnetCidrBlock'
+
+# 
+LIMITEXCEEDED_TAGKEYEXCEEDED = 'LimitExceeded.TagKeyExceeded'
+
+# 
+LIMITEXCEEDED_TAGKEYPERRESOURCEEXCEEDED = 'LimitExceeded.TagKeyPerResourceExceeded'
+
+# 
+LIMITEXCEEDED_TAGNOTENOUGHQUOTA = 'LimitExceeded.TagNotEnoughQuota'
+
+# 
+LIMITEXCEEDED_TAGQUOTA = 'LimitExceeded.TagQuota'
+
+# 
+LIMITEXCEEDED_TAGQUOTAEXCEEDED = 'LimitExceeded.TagQuotaExceeded'
+
+# 
+LIMITEXCEEDED_TAGTAGSEXCEEDED = 'LimitExceeded.TagTagsExceeded'
 
 # Missing parameter.
 MISSINGPARAMETER = 'MissingParameter'
@@ -452,6 +539,12 @@ UNSUPPORTEDOPERATION_CONFLICTWITHDOCKERROUTE = 'UnsupportedOperation.ConflictWit
 # No direct connect gateway exists in the specified VPC.
 UNSUPPORTEDOPERATION_DCGATEWAYSNOTFOUNDINVPC = 'UnsupportedOperation.DcGatewaysNotFoundInVpc'
 
+# 
+UNSUPPORTEDOPERATION_DELDEFAULTROUTE = 'UnsupportedOperation.DelDefaultRoute'
+
+# 
+UNSUPPORTEDOPERATION_DELROUTEWITHSUBNET = 'UnsupportedOperation.DelRouteWithSubnet'
+
 # Direct connect gateway is updating the BGP Community attribute.
 UNSUPPORTEDOPERATION_DIRECTCONNECTGATEWAYISUPDATINGCOMMUNITY = 'UnsupportedOperation.DirectConnectGatewayIsUpdatingCommunity'
 
@@ -515,6 +608,9 @@ UNSUPPORTEDOPERATION_INVALIDRESOURCEPROTOCOL = 'UnsupportedOperation.InvalidReso
 # Invalid resource status.
 UNSUPPORTEDOPERATION_INVALIDSTATE = 'UnsupportedOperation.InvalidState'
 
+# The route in the current status cannot be published to CCN. Please retry later.
+UNSUPPORTEDOPERATION_INVALIDSTATUSNOTIFYCCN = 'UnsupportedOperation.InvalidStatusNotifyCcn'
+
 # The account of the instance associated with the current CCN is not a Financial Cloud account.
 UNSUPPORTEDOPERATION_ISNOTFINANCEACCOUNT = 'UnsupportedOperation.IsNotFinanceAccount'
 
@@ -526,6 +622,12 @@ UNSUPPORTEDOPERATION_LOCALGATEWAYALREADYEXISTS = 'UnsupportedOperation.LocalGate
 
 # The resource mutual exclusion operation is being executed.
 UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = 'UnsupportedOperation.MutexOperationTaskRunning'
+
+# The private IP specified in the SNAT/DNAT forwarding rule has been bound with another rule.
+UNSUPPORTEDOPERATION_NATGATEWAYRULEPIPEXISTS = 'UnsupportedOperation.NatGatewayRulePipExists'
+
+# The specified NAT Gateway type does not support configuring a SNAT rule.
+UNSUPPORTEDOPERATION_NATGATEWAYTYPENOTSUPPORTSNAT = 'UnsupportedOperation.NatGatewayTypeNotSupportSNAT'
 
 # The NAT instance does not support this operation.
 UNSUPPORTEDOPERATION_NATNOTSUPPORTED = 'UnsupportedOperation.NatNotSupported'
@@ -542,6 +644,12 @@ UNSUPPORTEDOPERATION_NOTPENDINGCCNINSTANCE = 'UnsupportedOperation.NotPendingCcn
 # Unsupported operation: the current CCN instance is not billed on a pay-as-you-go basis.
 UNSUPPORTEDOPERATION_NOTPOSTPAIDCCNOPERATION = 'UnsupportedOperation.NotPostpaidCcnOperation'
 
+# 
+UNSUPPORTEDOPERATION_NOTSUPPORTDELETEDEFAULTROUTETABLE = 'UnsupportedOperation.NotSupportDeleteDefaultRouteTable'
+
+# The specified routing policy cannot be published to or withdrawn from CCN.
+UNSUPPORTEDOPERATION_NOTIFYCCN = 'UnsupportedOperation.NotifyCcn'
+
 # Only the Ckafka Pro Edition is supported.
 UNSUPPORTEDOPERATION_ONLYSUPPORTPROFESSIONKAFKA = 'UnsupportedOperation.OnlySupportProfessionKafka'
 
@@ -550,6 +658,18 @@ UNSUPPORTEDOPERATION_PREPAIDCCNONLYSUPPORTINTERREGIONLIMIT = 'UnsupportedOperati
 
 # The specified value is a primary IP.
 UNSUPPORTEDOPERATION_PRIMARYIP = 'UnsupportedOperation.PrimaryIp'
+
+# At least one EIP exists on the NAT gateway, and the EIP cannot be unbound.
+UNSUPPORTEDOPERATION_PUBLICIPADDRESSDISASSOCIATE = 'UnsupportedOperation.PublicIpAddressDisassociate'
+
+# The EIP bound to the NAT gateway is not a BGP IP.
+UNSUPPORTEDOPERATION_PUBLICIPADDRESSISNOTBGPIP = 'UnsupportedOperation.PublicIpAddressIsNotBGPIp'
+
+# The EIP bound to the NAT gateway does not exist.
+UNSUPPORTEDOPERATION_PUBLICIPADDRESSISNOTEXISTED = 'UnsupportedOperation.PublicIpAddressIsNotExisted'
+
+# The EIP bound to the NAT gateway is not bill-by-traffic.
+UNSUPPORTEDOPERATION_PUBLICIPADDRESSNOTBILLEDBYTRAFFIC = 'UnsupportedOperation.PublicIpAddressNotBilledByTraffic'
 
 # The current account can not use this service in the current region.
 UNSUPPORTEDOPERATION_PURCHASELIMIT = 'UnsupportedOperation.PurchaseLimit'
@@ -566,6 +686,18 @@ UNSUPPORTEDOPERATION_SUBENINOTSUPPORTTRUNKING = 'UnsupportedOperation.SubEniNotS
 # System route. Operation is prohibited.
 UNSUPPORTEDOPERATION_SYSTEMROUTE = 'UnsupportedOperation.SystemRoute'
 
+# 
+UNSUPPORTEDOPERATION_TAGALLOCATE = 'UnsupportedOperation.TagAllocate'
+
+# 
+UNSUPPORTEDOPERATION_TAGFREE = 'UnsupportedOperation.TagFree'
+
+# 
+UNSUPPORTEDOPERATION_TAGNOTPERMIT = 'UnsupportedOperation.TagNotPermit'
+
+# 
+UNSUPPORTEDOPERATION_TAGSYSTEMRESERVEDTAGKEY = 'UnsupportedOperation.TagSystemReservedTagKey'
+
 # The account ID does not exist.
 UNSUPPORTEDOPERATION_UINNOTFOUND = 'UnsupportedOperation.UinNotFound'
 
@@ -580,6 +712,9 @@ UNSUPPORTEDOPERATION_UNASSIGNCIDRBLOCK = 'UnsupportedOperation.UnassignCidrBlock
 
 # EIP is not bound.
 UNSUPPORTEDOPERATION_UNBINDEIP = 'UnsupportedOperation.UnbindEIP'
+
+# Overdue payments are found under this account. Please complete the payment first.
+UNSUPPORTEDOPERATION_UNPAIDORDERALREADYEXISTS = 'UnsupportedOperation.UnpaidOrderAlreadyExists'
 
 # The specified instance type does not support ENIs.
 UNSUPPORTEDOPERATION_UNSUPPORTEDINSTANCEFAMILY = 'UnsupportedOperation.UnsupportedInstanceFamily'

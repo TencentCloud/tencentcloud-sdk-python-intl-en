@@ -349,6 +349,185 @@ class BGPIPInstanceUsages(AbstractModel):
         
 
 
+class BGPInstance(AbstractModel):
+    """Anti-DDoS Pro instance details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceDetail: Anti-DDoS instance details
+        :type InstanceDetail: :class:`tencentcloud.antiddos.v20200309.models.InstanceRelation`
+        :param SpecificationLimit: Anti-DDoS instance specifications
+        :type SpecificationLimit: :class:`tencentcloud.antiddos.v20200309.models.BGPInstanceSpecification`
+        :param Usage: Anti-DDoS instance usage statistics
+        :type Usage: :class:`tencentcloud.antiddos.v20200309.models.BGPInstanceUsages`
+        :param Region: Region of the Anti-DDoS instance
+        :type Region: :class:`tencentcloud.antiddos.v20200309.models.RegionInfo`
+        :param Status: Status of the Anti-DDoS instance. Valid values:
+`idle`: running
+`attacking`: under attacks
+`blocking`: blocked
+`creating`: creating
+`deblocking`: unblocked
+`isolate`: isolated
+        :type Status: str
+        :param CreatedTime: Purchase Time
+        :type CreatedTime: str
+        :param ExpiredTime: Expiration time
+        :type ExpiredTime: str
+        :param Name: Name of the Anti-DDoS instance
+        :type Name: str
+        :param PackInfo: Package details of the Anti-DDoS instance.
+Note: This field is `null` for an Anti-DDoS instance without using a package.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type PackInfo: :class:`tencentcloud.antiddos.v20200309.models.PackInfo`
+        :param EipProductInfos: Details of the cloud product used by the EIP bound to the Anti-DDoS Pro instance
+        :type EipProductInfos: list of EipProductInfo
+        :param BoundStatus: Binding status of the Anti-DDoS Pro instance
+`idle`: the instance is bound.
+ `bounding`: the instance is in binding.
+`failed`: the binding failed.
+]
+        :type BoundStatus: str
+        :param DDoSLevel: Layer-4 protection level
+        :type DDoSLevel: str
+        :param CCEnable: CC protection switch
+        :type CCEnable: int
+        """
+        self.InstanceDetail = None
+        self.SpecificationLimit = None
+        self.Usage = None
+        self.Region = None
+        self.Status = None
+        self.CreatedTime = None
+        self.ExpiredTime = None
+        self.Name = None
+        self.PackInfo = None
+        self.EipProductInfos = None
+        self.BoundStatus = None
+        self.DDoSLevel = None
+        self.CCEnable = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceDetail") is not None:
+            self.InstanceDetail = InstanceRelation()
+            self.InstanceDetail._deserialize(params.get("InstanceDetail"))
+        if params.get("SpecificationLimit") is not None:
+            self.SpecificationLimit = BGPInstanceSpecification()
+            self.SpecificationLimit._deserialize(params.get("SpecificationLimit"))
+        if params.get("Usage") is not None:
+            self.Usage = BGPInstanceUsages()
+            self.Usage._deserialize(params.get("Usage"))
+        if params.get("Region") is not None:
+            self.Region = RegionInfo()
+            self.Region._deserialize(params.get("Region"))
+        self.Status = params.get("Status")
+        self.CreatedTime = params.get("CreatedTime")
+        self.ExpiredTime = params.get("ExpiredTime")
+        self.Name = params.get("Name")
+        if params.get("PackInfo") is not None:
+            self.PackInfo = PackInfo()
+            self.PackInfo._deserialize(params.get("PackInfo"))
+        if params.get("EipProductInfos") is not None:
+            self.EipProductInfos = []
+            for item in params.get("EipProductInfos"):
+                obj = EipProductInfo()
+                obj._deserialize(item)
+                self.EipProductInfos.append(obj)
+        self.BoundStatus = params.get("BoundStatus")
+        self.DDoSLevel = params.get("DDoSLevel")
+        self.CCEnable = params.get("CCEnable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BGPInstanceSpecification(AbstractModel):
+    """Anti-DDoS Pro instance specifications
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProtectBandwidth: Base protection bandwidth (in Gbps)
+        :type ProtectBandwidth: int
+        :param ProtectCountLimit: Number of protection chances
+        :type ProtectCountLimit: int
+        :param ProtectIPNumberLimit: Number of protection IPs
+        :type ProtectIPNumberLimit: int
+        :param AutoRenewFlag: Auto-renewal status. Valid values:
+`0`: disabled
+`1`: enabled
+]
+        :type AutoRenewFlag: int
+        :param UnionPackFlag: Protection type of Anti-DDoS Pro. Valid values: `0` (general protection) and `1` (Lighthouse-based protection).
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type UnionPackFlag: int
+        :param ServiceBandWidth: 
+        :type ServiceBandWidth: int
+        """
+        self.ProtectBandwidth = None
+        self.ProtectCountLimit = None
+        self.ProtectIPNumberLimit = None
+        self.AutoRenewFlag = None
+        self.UnionPackFlag = None
+        self.ServiceBandWidth = None
+
+
+    def _deserialize(self, params):
+        self.ProtectBandwidth = params.get("ProtectBandwidth")
+        self.ProtectCountLimit = params.get("ProtectCountLimit")
+        self.ProtectIPNumberLimit = params.get("ProtectIPNumberLimit")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.UnionPackFlag = params.get("UnionPackFlag")
+        self.ServiceBandWidth = params.get("ServiceBandWidth")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BGPInstanceUsages(AbstractModel):
+    """Anti-DDoS Pro instance usage statistics
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProtectCountUsage: Number of used protection chances
+        :type ProtectCountUsage: int
+        :param ProtectIPNumberUsage: Number of protected IPs
+        :type ProtectIPNumberUsage: int
+        :param Last7DayAttackCount: Number of attack times in the last 7 days
+        :type Last7DayAttackCount: int
+        """
+        self.ProtectCountUsage = None
+        self.ProtectIPNumberUsage = None
+        self.Last7DayAttackCount = None
+
+
+    def _deserialize(self, params):
+        self.ProtectCountUsage = params.get("ProtectCountUsage")
+        self.ProtectIPNumberUsage = params.get("ProtectIPNumberUsage")
+        self.Last7DayAttackCount = params.get("Last7DayAttackCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BlackWhiteIpRelation(AbstractModel):
     """IP blocklist/allowlist
 
@@ -514,6 +693,67 @@ class CCPrecisionPlyRecord(AbstractModel):
         
 
 
+class CCPrecisionPolicy(AbstractModel):
+    """CC precise protection policy information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PolicyId: Policy ID
+        :type PolicyId: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Ip: IP address
+        :type Ip: str
+        :param Protocol: Protocol
+        :type Protocol: str
+        :param Domain: Domain name
+        :type Domain: str
+        :param PolicyAction: Action of limiting request frequency. Valid values: `alg` (limit request frequency via verification codes) and `drop`(drop requests).
+        :type PolicyAction: str
+        :param PolicyList: List of policies
+        :type PolicyList: list of CCPrecisionPlyRecord
+        :param CreateTime: Creation time
+        :type CreateTime: str
+        :param ModifyTime: Modification time
+        :type ModifyTime: str
+        """
+        self.PolicyId = None
+        self.InstanceId = None
+        self.Ip = None
+        self.Protocol = None
+        self.Domain = None
+        self.PolicyAction = None
+        self.PolicyList = None
+        self.CreateTime = None
+        self.ModifyTime = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.InstanceId = params.get("InstanceId")
+        self.Ip = params.get("Ip")
+        self.Protocol = params.get("Protocol")
+        self.Domain = params.get("Domain")
+        self.PolicyAction = params.get("PolicyAction")
+        if params.get("PolicyList") is not None:
+            self.PolicyList = []
+            for item in params.get("PolicyList"):
+                obj = CCPrecisionPlyRecord()
+                obj._deserialize(item)
+                self.PolicyList.append(obj)
+        self.CreateTime = params.get("CreateTime")
+        self.ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CCReqLimitPolicyRecord(AbstractModel):
     """Configuration fields of CC frequency limit policies
 
@@ -614,6 +854,66 @@ class CCThresholdPolicy(AbstractModel):
         
 
 
+class CcBlackWhiteIpPolicy(AbstractModel):
+    """Layer-4 access control list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PolicyId: Policy ID
+        :type PolicyId: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Ip: IP address
+        :type Ip: str
+        :param Domain: Domain name
+        :type Domain: str
+        :param Protocol: Protocol
+        :type Protocol: str
+        :param Type: IP type. Valid values: `black` (blocklisted IP), `white`(allowlisted IP).
+        :type Type: str
+        :param BlackWhiteIp: Blocklist/Allowlist IP address
+        :type BlackWhiteIp: str
+        :param Mask: Mask
+        :type Mask: int
+        :param CreateTime: Creation time
+        :type CreateTime: str
+        :param ModifyTime: Modification time
+        :type ModifyTime: str
+        """
+        self.PolicyId = None
+        self.InstanceId = None
+        self.Ip = None
+        self.Domain = None
+        self.Protocol = None
+        self.Type = None
+        self.BlackWhiteIp = None
+        self.Mask = None
+        self.CreateTime = None
+        self.ModifyTime = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.InstanceId = params.get("InstanceId")
+        self.Ip = params.get("Ip")
+        self.Domain = params.get("Domain")
+        self.Protocol = params.get("Protocol")
+        self.Type = params.get("Type")
+        self.BlackWhiteIp = params.get("BlackWhiteIp")
+        self.Mask = params.get("Mask")
+        self.CreateTime = params.get("CreateTime")
+        self.ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CcGeoIPBlockConfig(AbstractModel):
     """Anti-DDoS regional blocking configuration
 
@@ -648,6 +948,66 @@ class CcGeoIPBlockConfig(AbstractModel):
         self.Action = params.get("Action")
         self.Id = params.get("Id")
         self.AreaList = params.get("AreaList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CcGeoIpPolicyNew(AbstractModel):
+    """Information of the policy list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PolicyId: Policy ID
+        :type PolicyId: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Ip: IP address
+        :type Ip: str
+        :param Domain: 
+        :type Domain: str
+        :param Protocol: Protocol. Valid values: `HTTP` and `HTTPS`.
+        :type Protocol: str
+        :param Action: Action. Valid values: `drop` and `alg`.
+        :type Action: str
+        :param RegionType: Region type. Valid values: `china`, `oversea` and `customized`.
+        :type RegionType: str
+        :param AreaList: ID list of regions to be blocked
+        :type AreaList: list of int non-negative
+        :param CreateTime: Creation time
+        :type CreateTime: str
+        :param ModifyTime: Modification time
+        :type ModifyTime: str
+        """
+        self.PolicyId = None
+        self.InstanceId = None
+        self.Ip = None
+        self.Domain = None
+        self.Protocol = None
+        self.Action = None
+        self.RegionType = None
+        self.AreaList = None
+        self.CreateTime = None
+        self.ModifyTime = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.InstanceId = params.get("InstanceId")
+        self.Ip = params.get("Ip")
+        self.Domain = params.get("Domain")
+        self.Protocol = params.get("Protocol")
+        self.Action = params.get("Action")
+        self.RegionType = params.get("RegionType")
+        self.AreaList = params.get("AreaList")
+        self.CreateTime = params.get("CreateTime")
+        self.ModifyTime = params.get("ModifyTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2659,6 +3019,84 @@ class DescribeCCLevelPolicyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCCPrecisionPlyListRequest(AbstractModel):
+    """DescribeCCPrecisionPlyList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Business: Anti-DDoS service type. Valid values: `bgpip-multip` (Anti-DDoS Pro) and `bgpip` (Anti-DDoS Advanced).
+        :type Business: str
+        :param Offset: Starting offset of the page. Value: (number of pages – 1) * items per page.
+        :type Offset: int
+        :param Limit: Number of results returned in one page
+        :type Limit: int
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Ip: IP address, which is required when an Anti-DDoS Advanced instance is used.
+        :type Ip: str
+        :param Domain: Domain name, which is required when an Anti-DDoS Advanced instance is used.
+        :type Domain: str
+        :param Protocol: Protocol, which is required when an Anti-DDoS Advanced instance is used.
+        :type Protocol: str
+        """
+        self.Business = None
+        self.Offset = None
+        self.Limit = None
+        self.InstanceId = None
+        self.Ip = None
+        self.Domain = None
+        self.Protocol = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.InstanceId = params.get("InstanceId")
+        self.Ip = params.get("Ip")
+        self.Domain = params.get("Domain")
+        self.Protocol = params.get("Protocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCCPrecisionPlyListResponse(AbstractModel):
+    """DescribeCCPrecisionPlyList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: Number of policy lists
+        :type Total: int
+        :param PrecisionPolicyList: Information of the policy list
+        :type PrecisionPolicyList: list of CCPrecisionPolicy
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.PrecisionPolicyList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("PrecisionPolicyList") is not None:
+            self.PrecisionPolicyList = []
+            for item in params.get("PrecisionPolicyList"):
+                obj = CCPrecisionPolicy()
+                obj._deserialize(item)
+                self.PrecisionPolicyList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCCThresholdListRequest(AbstractModel):
     """DescribeCCThresholdList request structure.
 
@@ -2828,6 +3266,170 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Data = params.get("Data")
         self.Id = params.get("Id")
         self.MetricName = params.get("MetricName")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCcBlackWhiteIpListRequest(AbstractModel):
+    """DescribeCcBlackWhiteIpList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Business: Anti-DDoS service type. Valid values: `bgpip-multip` (Anti-DDoS Pro) and `bgpip` (Anti-DDoS Advanced).
+        :type Business: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Offset: Starting offset of the page. Value: (number of pages – 1) * items per page.
+        :type Offset: int
+        :param Limit: Number of results returned in one page
+        :type Limit: int
+        :param Ip: IP address, which is required when an Anti-DDoS Advanced instance is used.
+        :type Ip: str
+        :param Domain: Domain name, which is required when an Anti-DDoS Advanced instance is used.
+        :type Domain: str
+        :param Protocol: Protocol, which is required when an Anti-DDoS Advanced instance is used.
+        :type Protocol: str
+        :param FilterIp: Specifies a blocklist/allowlist IP.
+        :type FilterIp: str
+        :param FilterType: Specifies whether is an IP blocklist or IP allowlist.
+        :type FilterType: str
+        """
+        self.Business = None
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+        self.Ip = None
+        self.Domain = None
+        self.Protocol = None
+        self.FilterIp = None
+        self.FilterType = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Ip = params.get("Ip")
+        self.Domain = params.get("Domain")
+        self.Protocol = params.get("Protocol")
+        self.FilterIp = params.get("FilterIp")
+        self.FilterType = params.get("FilterType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCcBlackWhiteIpListResponse(AbstractModel):
+    """DescribeCcBlackWhiteIpList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: Number of policy lists
+        :type Total: int
+        :param CcBlackWhiteIpList: Information of the policy list
+        :type CcBlackWhiteIpList: list of CcBlackWhiteIpPolicy
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.CcBlackWhiteIpList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("CcBlackWhiteIpList") is not None:
+            self.CcBlackWhiteIpList = []
+            for item in params.get("CcBlackWhiteIpList"):
+                obj = CcBlackWhiteIpPolicy()
+                obj._deserialize(item)
+                self.CcBlackWhiteIpList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCcGeoIPBlockConfigListRequest(AbstractModel):
+    """DescribeCcGeoIPBlockConfigList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Business: Anti-DDoS service type. Valid values: `bgpip-multip` (Anti-DDoS Pro) and `bgpip` (Anti-DDoS Advanced).
+        :type Business: str
+        :param Offset: Starting offset of the page. Value: (number of pages – 1) * items per page.
+        :type Offset: int
+        :param Limit: Number of results returned in one page
+        :type Limit: int
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Ip: IP address, which is required when an Anti-DDoS Advanced instance is used.
+        :type Ip: str
+        :param Domain: Domain name, which is required when an Anti-DDoS Advanced instance is used.
+        :type Domain: str
+        :param Protocol: Protocol, which is required when an Anti-DDoS Advanced instance is used.
+        :type Protocol: str
+        """
+        self.Business = None
+        self.Offset = None
+        self.Limit = None
+        self.InstanceId = None
+        self.Ip = None
+        self.Domain = None
+        self.Protocol = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.InstanceId = params.get("InstanceId")
+        self.Ip = params.get("Ip")
+        self.Domain = params.get("Domain")
+        self.Protocol = params.get("Protocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCcGeoIPBlockConfigListResponse(AbstractModel):
+    """DescribeCcGeoIPBlockConfigList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: Number of policy lists
+        :type Total: int
+        :param CcGeoIpPolicyList: Information of the policy list
+        :type CcGeoIpPolicyList: list of CcGeoIpPolicyNew
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.CcGeoIpPolicyList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("CcGeoIpPolicyList") is not None:
+            self.CcGeoIpPolicyList = []
+            for item in params.get("CcGeoIpPolicyList"):
+                obj = CcGeoIpPolicyNew()
+                obj._deserialize(item)
+                self.CcGeoIpPolicyList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3142,6 +3744,92 @@ class DescribeListBGPIPInstancesResponse(AbstractModel):
             self.InstanceList = []
             for item in params.get("InstanceList"):
                 obj = BGPIPInstance()
+                obj._deserialize(item)
+                self.InstanceList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeListBGPInstancesRequest(AbstractModel):
+    """DescribeListBGPInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: Starting offset of the page. Value: (number of pages – 1) * items per page.
+        :type Offset: int
+        :param Limit: Number of items per page. The default value is 20 when `Limit = 0`. The maximum value is 100.
+        :type Limit: int
+        :param FilterIp: IP filter
+        :type FilterIp: str
+        :param FilterInstanceId: Anti-DDoS instance ID filter. For example, `bgp-00000001`.
+        :type FilterInstanceId: str
+        :param FilterRegion: Region filter. For example, `ap-guangzhou`.
+        :type FilterRegion: str
+        :param FilterName: Name filter
+        :type FilterName: str
+        :param FilterLine: Line filter. Valid values: 1: BGP; 2: Non-BGP.
+        :type FilterLine: int
+        :param FilterStatus: Filters by instance status. `idle`: Running; `attacking`: Being attacked; `blocking`: Being blocked.
+        :type FilterStatus: str
+        :param FilterBoundStatus: Filters by binding status. `bounding`: the instance is bound; `failed`: the binding failed.
+        :type FilterBoundStatus: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.FilterIp = None
+        self.FilterInstanceId = None
+        self.FilterRegion = None
+        self.FilterName = None
+        self.FilterLine = None
+        self.FilterStatus = None
+        self.FilterBoundStatus = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.FilterIp = params.get("FilterIp")
+        self.FilterInstanceId = params.get("FilterInstanceId")
+        self.FilterRegion = params.get("FilterRegion")
+        self.FilterName = params.get("FilterName")
+        self.FilterLine = params.get("FilterLine")
+        self.FilterStatus = params.get("FilterStatus")
+        self.FilterBoundStatus = params.get("FilterBoundStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeListBGPInstancesResponse(AbstractModel):
+    """DescribeListBGPInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: Total number of lists
+        :type Total: int
+        :param InstanceList: List of Anti-DDoS Pro instances
+        :type InstanceList: list of BGPInstance
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.InstanceList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("InstanceList") is not None:
+            self.InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = BGPInstance()
                 obj._deserialize(item)
                 self.InstanceList.append(obj)
         self.RequestId = params.get("RequestId")
@@ -3972,6 +4660,52 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.EipBoundRscEni = params.get("EipBoundRscEni")
         self.EipBoundRscVip = params.get("EipBoundRscVip")
         self.ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EipProductInfo(AbstractModel):
+    """Details of the cloud product used by the EIP
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ip: IP address
+        :type Ip: str
+        :param BizType: Cloud product category. Valid values:
+`public`: CVM
+`bm`: BM
+`eni`: ENI
+`vpngw`: VPN gateway
+ `natgw`: NAT gateway
+`waf`: WAF
+`fpc`: financial products
+`gaap`: GAAP 
+`other`: hosted IP
+]
+        :type BizType: str
+        :param DeviceType: Cloud sub-product category. Valid values: `cvm` (CVM), `lb` (Load balancer), `eni` (ENI), `vpngw` (VPN gateway), `natgw` (NAT gateway), `waf` (WAF), `fpc` (financial products), `gaap` (GAAP), `eip` (BM EIP) and `other` (hosted IP).
+        :type DeviceType: str
+        :param InstanceId: Cloud instance ID of the IP. This field InstanceId will be `eni-*` if the instance ID is bound to an ENI IP; `none` if there is no instance ID to bind to a hosted IP.
+        :type InstanceId: str
+        """
+        self.Ip = None
+        self.BizType = None
+        self.DeviceType = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.Ip = params.get("Ip")
+        self.BizType = params.get("BizType")
+        self.DeviceType = params.get("DeviceType")
+        self.InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

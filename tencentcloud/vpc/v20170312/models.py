@@ -997,6 +997,116 @@ class AssociateDirectConnectGatewayNatGatewayResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AssociateNatGatewayAddressRequest(AbstractModel):
+    """AssociateNatGatewayAddress request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NatGatewayId: The ID of the NAT gateway, such as `nat-df45454`.
+        :type NatGatewayId: str
+        :param AddressCount: The number of EIPs you want to apply for. The system will create the same number of EIPs as you require. Either `AddressCount` or `PublicAddresses` must be passed in.
+        :type AddressCount: int
+        :param PublicIpAddresses: Array of the EIPs bound to the NAT gateway. Either `AddressCount` or `PublicAddresses` must be passed in.
+        :type PublicIpAddresses: list of str
+        :param Zone: The availability zone of the EIP, which is passed in when the EIP is automatically assigned.
+        :type Zone: str
+        :param StockPublicIpAddressesBandwidthOut: The bandwidth size (in Mbps) of the EIP bound to the NAT gateway, which defaults to the maximum value applicable for the current user type.
+        :type StockPublicIpAddressesBandwidthOut: int
+        :param PublicIpAddressesBandwidthOut: The requested size of the public network IP bandwidth (in Mbps), which defaults to the maximum value applicable for the current user type.
+        :type PublicIpAddressesBandwidthOut: int
+        :param PublicIpFromSameZone: 
+        :type PublicIpFromSameZone: bool
+        """
+        self.NatGatewayId = None
+        self.AddressCount = None
+        self.PublicIpAddresses = None
+        self.Zone = None
+        self.StockPublicIpAddressesBandwidthOut = None
+        self.PublicIpAddressesBandwidthOut = None
+        self.PublicIpFromSameZone = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.AddressCount = params.get("AddressCount")
+        self.PublicIpAddresses = params.get("PublicIpAddresses")
+        self.Zone = params.get("Zone")
+        self.StockPublicIpAddressesBandwidthOut = params.get("StockPublicIpAddressesBandwidthOut")
+        self.PublicIpAddressesBandwidthOut = params.get("PublicIpAddressesBandwidthOut")
+        self.PublicIpFromSameZone = params.get("PublicIpFromSameZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssociateNatGatewayAddressResponse(AbstractModel):
+    """AssociateNatGatewayAddress response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class AssociateNetworkAclSubnetsRequest(AbstractModel):
+    """AssociateNetworkAclSubnets request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NetworkAclId: Network ACL instance ID. Example: acl-12345678.
+        :type NetworkAclId: str
+        :param SubnetIds: Array of subnet instance IDs. Example: [subnet-12345678]
+        :type SubnetIds: list of str
+        """
+        self.NetworkAclId = None
+        self.SubnetIds = None
+
+
+    def _deserialize(self, params):
+        self.NetworkAclId = params.get("NetworkAclId")
+        self.SubnetIds = params.get("SubnetIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssociateNetworkAclSubnetsResponse(AbstractModel):
+    """AssociateNetworkAclSubnets response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AssociateNetworkInterfaceSecurityGroupsRequest(AbstractModel):
     """AssociateNetworkInterfaceSecurityGroups request structure.
 
@@ -2238,6 +2348,61 @@ class CreateAndAttachNetworkInterfaceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateAssistantCidrRequest(AbstractModel):
+    """CreateAssistantCidr request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: `VPC` instance `ID`, e.g. `vpc-6v2ht8q5`.
+        :type VpcId: str
+        :param CidrBlocks: CIDR set, e.g. ["10.0.0.0/16", "172.16.0.0/16"]
+        :type CidrBlocks: list of str
+        """
+        self.VpcId = None
+        self.CidrBlocks = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.CidrBlocks = params.get("CidrBlocks")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAssistantCidrResponse(AbstractModel):
+    """CreateAssistantCidr response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AssistantCidrSet: A set of secondary CIDR blocks.
+Note: This field may return null, indicating that no valid value was found.
+        :type AssistantCidrSet: list of AssistantCidr
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AssistantCidrSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AssistantCidrSet") is not None:
+            self.AssistantCidrSet = []
+            for item in params.get("AssistantCidrSet"):
+                obj = AssistantCidr()
+                obj._deserialize(item)
+                self.AssistantCidrSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class CreateBandwidthPackageRequest(AbstractModel):
     """CreateBandwidthPackage request structure.
 
@@ -2837,6 +3002,209 @@ class CreateLocalGatewayResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateNatGatewayDestinationIpPortTranslationNatRuleRequest(AbstractModel):
+    """CreateNatGatewayDestinationIpPortTranslationNatRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NatGatewayId: The ID of the NAT gateway, such as `nat-df45454`.
+        :type NatGatewayId: str
+        :param DestinationIpPortTranslationNatRules: The port forwarding rules of the NAT gateway.
+        :type DestinationIpPortTranslationNatRules: list of DestinationIpPortTranslationNatRule
+        """
+        self.NatGatewayId = None
+        self.DestinationIpPortTranslationNatRules = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        if params.get("DestinationIpPortTranslationNatRules") is not None:
+            self.DestinationIpPortTranslationNatRules = []
+            for item in params.get("DestinationIpPortTranslationNatRules"):
+                obj = DestinationIpPortTranslationNatRule()
+                obj._deserialize(item)
+                self.DestinationIpPortTranslationNatRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateNatGatewayDestinationIpPortTranslationNatRuleResponse(AbstractModel):
+    """CreateNatGatewayDestinationIpPortTranslationNatRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateNatGatewayRequest(AbstractModel):
+    """CreateNatGateway request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NatGatewayName: NAT gateway name
+        :type NatGatewayName: str
+        :param VpcId: The ID of the VPC instance. You can obtain the parameter value from the VpcId field in the returned result of DescribeVpcs API.
+        :type VpcId: str
+        :param InternetMaxBandwidthOut: The maximum outbound bandwidth of the NAT gateway (unit: Mbps). Supported parameter values: `20, 50, 100, 200, 500, 1000, 2000, 5000`. Default: `100Mbps`.
+        :type InternetMaxBandwidthOut: int
+        :param MaxConcurrentConnection: The concurrent connection cap of the NAT gateway. Supported parameter values: `1000000, 3000000, 10000000`. The default value is `100000`.
+        :type MaxConcurrentConnection: int
+        :param AddressCount: The number of EIPs that needs to be applied for. The system will create N number of EIPs according to your requirements. Either AddressCount or PublicAddresses must be passed in.
+        :type AddressCount: int
+        :param PublicIpAddresses: The EIP array bound to the NAT gateway. Either AddressCount or PublicAddresses must be passed in.
+        :type PublicIpAddresses: list of str
+        :param Zone: The availability zone, such as `ap-guangzhou-1`.
+        :type Zone: str
+        :param Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
+        :type Tags: list of Tag
+        :param SubnetId: Subnet of the NAT gateway
+        :type SubnetId: str
+        :param StockPublicIpAddressesBandwidthOut: The bandwidth size (in Mbps) of the EIP bound to the NAT gateway, which defaults to the maximum value applicable for the current user type.
+        :type StockPublicIpAddressesBandwidthOut: int
+        :param PublicIpAddressesBandwidthOut: The requested size of the public network IP bandwidth (in Mbps), which defaults to the maximum value applicable for the current user type.
+        :type PublicIpAddressesBandwidthOut: int
+        :param PublicIpFromSameZone: 
+        :type PublicIpFromSameZone: bool
+        """
+        self.NatGatewayName = None
+        self.VpcId = None
+        self.InternetMaxBandwidthOut = None
+        self.MaxConcurrentConnection = None
+        self.AddressCount = None
+        self.PublicIpAddresses = None
+        self.Zone = None
+        self.Tags = None
+        self.SubnetId = None
+        self.StockPublicIpAddressesBandwidthOut = None
+        self.PublicIpAddressesBandwidthOut = None
+        self.PublicIpFromSameZone = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayName = params.get("NatGatewayName")
+        self.VpcId = params.get("VpcId")
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self.MaxConcurrentConnection = params.get("MaxConcurrentConnection")
+        self.AddressCount = params.get("AddressCount")
+        self.PublicIpAddresses = params.get("PublicIpAddresses")
+        self.Zone = params.get("Zone")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.SubnetId = params.get("SubnetId")
+        self.StockPublicIpAddressesBandwidthOut = params.get("StockPublicIpAddressesBandwidthOut")
+        self.PublicIpAddressesBandwidthOut = params.get("PublicIpAddressesBandwidthOut")
+        self.PublicIpFromSameZone = params.get("PublicIpFromSameZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateNatGatewayResponse(AbstractModel):
+    """CreateNatGateway response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NatGatewaySet: NAT gateway object array.
+        :type NatGatewaySet: list of NatGateway
+        :param TotalCount: The number of NAT gateway objects meeting the conditions.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.NatGatewaySet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NatGatewaySet") is not None:
+            self.NatGatewaySet = []
+            for item in params.get("NatGatewaySet"):
+                obj = NatGateway()
+                obj._deserialize(item)
+                self.NatGatewaySet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateNatGatewaySourceIpTranslationNatRuleRequest(AbstractModel):
+    """CreateNatGatewaySourceIpTranslationNatRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NatGatewayId: The ID of the NAT Gateway, such as `nat-df45454`
+        :type NatGatewayId: str
+        :param SourceIpTranslationNatRules: The SNAT forwarding rule of the NAT Gateway
+        :type SourceIpTranslationNatRules: list of SourceIpTranslationNatRule
+        """
+        self.NatGatewayId = None
+        self.SourceIpTranslationNatRules = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        if params.get("SourceIpTranslationNatRules") is not None:
+            self.SourceIpTranslationNatRules = []
+            for item in params.get("SourceIpTranslationNatRules"):
+                obj = SourceIpTranslationNatRule()
+                obj._deserialize(item)
+                self.SourceIpTranslationNatRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateNatGatewaySourceIpTranslationNatRuleResponse(AbstractModel):
+    """CreateNatGatewaySourceIpTranslationNatRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateNetDetectRequest(AbstractModel):
     """CreateNetDetect request structure.
 
@@ -2917,6 +3285,57 @@ class CreateNetDetectResponse(AbstractModel):
         if params.get("NetDetect") is not None:
             self.NetDetect = NetDetect()
             self.NetDetect._deserialize(params.get("NetDetect"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateNetworkAclRequest(AbstractModel):
+    """CreateNetworkAcl request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: ID of the VPC instance. You can obtain the parameter value from the VpcId field in the returned result of the DescribeVpcs API.
+        :type VpcId: str
+        :param NetworkAclName: Name of the network ACL. The maximum length is 60 bytes.
+        :type NetworkAclName: str
+        """
+        self.VpcId = None
+        self.NetworkAclName = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.NetworkAclName = params.get("NetworkAclName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateNetworkAclResponse(AbstractModel):
+    """CreateNetworkAcl response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NetworkAcl: Network ACL instance
+        :type NetworkAcl: :class:`tencentcloud.vpc.v20170312.models.NetworkAcl`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.NetworkAcl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NetworkAcl") is not None:
+            self.NetworkAcl = NetworkAcl()
+            self.NetworkAcl._deserialize(params.get("NetworkAcl"))
         self.RequestId = params.get("RequestId")
 
 
@@ -4435,6 +4854,51 @@ class DeleteAddressTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteAssistantCidrRequest(AbstractModel):
+    """DeleteAssistantCidr request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: `VPC` instance `ID`, e.g. `vpc-6v2ht8q5`.
+        :type VpcId: str
+        :param CidrBlocks: CIDR set, e.g. ["10.0.0.0/16", "172.16.0.0/16"]
+        :type CidrBlocks: list of str
+        """
+        self.VpcId = None
+        self.CidrBlocks = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.CidrBlocks = params.get("CidrBlocks")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAssistantCidrResponse(AbstractModel):
+    """DeleteAssistantCidr response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteBandwidthPackageRequest(AbstractModel):
     """DeleteBandwidthPackage request structure.
 
@@ -4779,6 +5243,142 @@ class DeleteLocalGatewayResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteNatGatewayDestinationIpPortTranslationNatRuleRequest(AbstractModel):
+    """DeleteNatGatewayDestinationIpPortTranslationNatRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NatGatewayId: The ID of the NAT gateway, such as `nat-df45454`.
+        :type NatGatewayId: str
+        :param DestinationIpPortTranslationNatRules: The port forwarding rules of the NAT gateway.
+        :type DestinationIpPortTranslationNatRules: list of DestinationIpPortTranslationNatRule
+        """
+        self.NatGatewayId = None
+        self.DestinationIpPortTranslationNatRules = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        if params.get("DestinationIpPortTranslationNatRules") is not None:
+            self.DestinationIpPortTranslationNatRules = []
+            for item in params.get("DestinationIpPortTranslationNatRules"):
+                obj = DestinationIpPortTranslationNatRule()
+                obj._deserialize(item)
+                self.DestinationIpPortTranslationNatRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteNatGatewayDestinationIpPortTranslationNatRuleResponse(AbstractModel):
+    """DeleteNatGatewayDestinationIpPortTranslationNatRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteNatGatewayRequest(AbstractModel):
+    """DeleteNatGateway request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NatGatewayId: The ID of the NAT gateway, such as `nat-df45454`.
+        :type NatGatewayId: str
+        """
+        self.NatGatewayId = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteNatGatewayResponse(AbstractModel):
+    """DeleteNatGateway response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteNatGatewaySourceIpTranslationNatRuleRequest(AbstractModel):
+    """DeleteNatGatewaySourceIpTranslationNatRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NatGatewayId: The ID of the NAT Gateway, such as `nat-df45454`
+        :type NatGatewayId: str
+        :param NatGatewaySnatIds: The list of SNAT rule IDs of a NAT Gateway, such as `snat-df43254`
+        :type NatGatewaySnatIds: list of str
+        """
+        self.NatGatewayId = None
+        self.NatGatewaySnatIds = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.NatGatewaySnatIds = params.get("NatGatewaySnatIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteNatGatewaySourceIpTranslationNatRuleResponse(AbstractModel):
+    """DeleteNatGatewaySourceIpTranslationNatRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteNetDetectRequest(AbstractModel):
     """DeleteNetDetect request structure.
 
@@ -4805,6 +5405,47 @@ class DeleteNetDetectRequest(AbstractModel):
 
 class DeleteNetDetectResponse(AbstractModel):
     """DeleteNetDetect response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteNetworkAclRequest(AbstractModel):
+    """DeleteNetworkAcl request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NetworkAclId: Network ACL instance ID. Example: acl-12345678.
+        :type NetworkAclId: str
+        """
+        self.NetworkAclId = None
+
+
+    def _deserialize(self, params):
+        self.NetworkAclId = params.get("NetworkAclId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteNetworkAclResponse(AbstractModel):
+    """DeleteNetworkAcl response structure.
 
     """
 
@@ -7056,6 +7697,75 @@ class DescribeGatewayFlowMonitorDetailResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeGatewayFlowQosRequest(AbstractModel):
+    """DescribeGatewayFlowQos request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GatewayId: Gateway instance ID, which currently supports these types:
+ID of Direct Connect gateway instance, e.g. `dcg-ltjahce6`;
+ID of NAT gateway instance, e.g. `nat-ltjahce6`;
+ID of VPN gateway instance, e.g. `vpn-ltjahce6`.
+        :type GatewayId: str
+        :param IpAddresses: CVM private IP addresses with limited bandwidth.
+        :type IpAddresses: list of str
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        """
+        self.GatewayId = None
+        self.IpAddresses = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.GatewayId = params.get("GatewayId")
+        self.IpAddresses = params.get("IpAddresses")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGatewayFlowQosResponse(AbstractModel):
+    """DescribeGatewayFlowQos response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GatewayQosSet: List of instance details.
+        :type GatewayQosSet: list of GatewayQos
+        :param TotalCount: Number of eligible instances.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.GatewayQosSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("GatewayQosSet") is not None:
+            self.GatewayQosSet = []
+            for item in params.get("GatewayQosSet"):
+                obj = GatewayQos()
+                obj._deserialize(item)
+                self.GatewayQosSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeHaVipsRequest(AbstractModel):
     """DescribeHaVips request structure.
 
@@ -7306,6 +8016,235 @@ class DescribeLocalGatewayResponse(AbstractModel):
                 obj = LocalGateway()
                 obj._deserialize(item)
                 self.LocalGatewaySet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest(AbstractModel):
+    """DescribeNatGatewayDestinationIpPortTranslationNatRules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NatGatewayIds: NAT gateway ID.
+        :type NatGatewayIds: list of str
+        :param Filters: Filter conditions:
+`NatGatewayIds` and `Filters` cannot be specified at the same time.
+<li> nat-gateway-id, the NAT gateway ID, such as `nat-0yi4hekt`.</li>
+<li> vpc-id, the VPC ID, such as `vpc-0yi4hekt`.</li>
+<li> public-ip-address, the EIP, such as `139.199.232.238`.</li>
+<li>public-port, the public network port.</li>
+<li>private-ip-address, the private IP, such as `10.0.0.1`.</li>
+<li>private-port, the private network port.</li>
+<li>description, the rule description.</li>
+        :type Filters: list of Filter
+        :param Offset: Offset. The default value is 0.
+        :type Offset: int
+        :param Limit: Number of values to be returned. The default value is 20. Maximum is 100.
+        :type Limit: int
+        """
+        self.NatGatewayIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayIds = params.get("NatGatewayIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNatGatewayDestinationIpPortTranslationNatRulesResponse(AbstractModel):
+    """DescribeNatGatewayDestinationIpPortTranslationNatRules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NatGatewayDestinationIpPortTranslationNatRuleSet: The object array of port forwarding rules for the NAT gateway.
+        :type NatGatewayDestinationIpPortTranslationNatRuleSet: list of NatGatewayDestinationIpPortTranslationNatRule
+        :param TotalCount: The number of object arrays of NAT port forwarding rules meeting the conditions.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.NatGatewayDestinationIpPortTranslationNatRuleSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NatGatewayDestinationIpPortTranslationNatRuleSet") is not None:
+            self.NatGatewayDestinationIpPortTranslationNatRuleSet = []
+            for item in params.get("NatGatewayDestinationIpPortTranslationNatRuleSet"):
+                obj = NatGatewayDestinationIpPortTranslationNatRule()
+                obj._deserialize(item)
+                self.NatGatewayDestinationIpPortTranslationNatRuleSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNatGatewaySourceIpTranslationNatRulesRequest(AbstractModel):
+    """DescribeNatGatewaySourceIpTranslationNatRules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NatGatewayId: The unique ID of the NAT Gateway, such as `nat-123xx454`.
+        :type NatGatewayId: str
+        :param Filters: Filter conditions:
+<li> resource-id, the subnet ID (such as `subnet-0yi4hekt`) or CVM ID</li>
+<li> public-ip-address, the EIP, such as `139.199.232.238`</li>
+<li>description, the rule description</li>
+        :type Filters: list of Filter
+        :param Offset: Offset. Default is 0.
+        :type Offset: int
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        """
+        self.NatGatewayId = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNatGatewaySourceIpTranslationNatRulesResponse(AbstractModel):
+    """DescribeNatGatewaySourceIpTranslationNatRules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceIpTranslationNatRuleSet: Object array of the SNAT rule for a NAT Gateway.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SourceIpTranslationNatRuleSet: list of SourceIpTranslationNatRule
+        :param TotalCount: The number of object arrays of eligible forwarding rules for a NAT Gateway
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SourceIpTranslationNatRuleSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SourceIpTranslationNatRuleSet") is not None:
+            self.SourceIpTranslationNatRuleSet = []
+            for item in params.get("SourceIpTranslationNatRuleSet"):
+                obj = SourceIpTranslationNatRule()
+                obj._deserialize(item)
+                self.SourceIpTranslationNatRuleSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNatGatewaysRequest(AbstractModel):
+    """DescribeNatGateways request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NatGatewayIds: The unified ID of the NAT gateways, such as `nat-123xx454`.
+        :type NatGatewayIds: list of str
+        :param Filters: Filter condition. `NatGatewayIds` and `Filters` cannot be specified at the same time.
+<li>nat-gateway-id - String - (Filter condition) The ID of the protocol port template instance, such as `nat-123xx454`.</li>
+<li>vpc-id - String - (Filter condition) The unique ID of the VPC, such as `vpc-123xx454`.</li>
+<li>nat-gateway-name - String - (Filter condition) The name of the protocol port template instance, such as `test_nat`.</li>
+<li>tag-key - String - (Filter condition) The tag key, such as `test-key`.</li>
+        :type Filters: list of Filter
+        :param Offset: Offset. The default value is 0.
+        :type Offset: int
+        :param Limit: Number of values to be returned. The default value is 20. Maximum is 100.
+        :type Limit: int
+        """
+        self.NatGatewayIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayIds = params.get("NatGatewayIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNatGatewaysResponse(AbstractModel):
+    """DescribeNatGateways response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NatGatewaySet: NAT gateway object array.
+        :type NatGatewaySet: list of NatGateway
+        :param TotalCount: The number of NAT gateway object sets meeting the conditions.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.NatGatewaySet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NatGatewaySet") is not None:
+            self.NatGatewaySet = []
+            for item in params.get("NatGatewaySet"):
+                obj = NatGateway()
+                obj._deserialize(item)
+                self.NatGatewaySet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
@@ -8727,6 +9666,55 @@ class DescribeVpcResourceDashboardResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeVpcTaskResultRequest(AbstractModel):
+    """DescribeVpcTaskResult request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: `RequestId` returned by an async task
+        :type TaskId: str
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVpcTaskResultResponse(AbstractModel):
+    """DescribeVpcTaskResult response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: Execution result of an async task Valid values: `SUCCESS`: the task has been successfully executed; `FAILED`: the job execution failed; `RUNNING`: the job is executing.
+        :type Status: str
+        :param Output: Output of the async task execution result
+        :type Output: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Status = None
+        self.Output = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Output = params.get("Output")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeVpcsRequest(AbstractModel):
     """DescribeVpcs request structure.
 
@@ -9087,6 +10075,50 @@ class DescribeVpnGatewaysResponse(AbstractModel):
                 obj._deserialize(item)
                 self.VpnGatewaySet.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class DestinationIpPortTranslationNatRule(AbstractModel):
+    """The port forwarding rules of the NAT gateway
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IpProtocol: Network protocol. Available choices: `TCP`, `UDP`.
+        :type IpProtocol: str
+        :param PublicIpAddress: EIP.
+        :type PublicIpAddress: str
+        :param PublicPort: Public port.
+        :type PublicPort: int
+        :param PrivateIpAddress: Private network address.
+        :type PrivateIpAddress: str
+        :param PrivatePort: Private network port.
+        :type PrivatePort: int
+        :param Description: NAT gateway forwarding rule description.
+        :type Description: str
+        """
+        self.IpProtocol = None
+        self.PublicIpAddress = None
+        self.PublicPort = None
+        self.PrivateIpAddress = None
+        self.PrivatePort = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.IpProtocol = params.get("IpProtocol")
+        self.PublicIpAddress = params.get("PublicIpAddress")
+        self.PublicPort = params.get("PublicPort")
+        self.PrivateIpAddress = params.get("PrivateIpAddress")
+        self.PrivatePort = params.get("PrivatePort")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DetachCcnInstancesRequest(AbstractModel):
@@ -9489,6 +10521,50 @@ class DisableFlowLogsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DisableGatewayFlowMonitorRequest(AbstractModel):
+    """DisableGatewayFlowMonitor request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GatewayId: Gateway instance ID, which currently supports these types:
+ID of Direct Connect gateway instance, e.g. `dcg-ltjahce6`;
+ID of NAT gateway instance, e.g. `nat-ltjahce6`;
+ID of VPN gateway instance, e.g. `vpn-ltjahce6`.
+        :type GatewayId: str
+        """
+        self.GatewayId = None
+
+
+    def _deserialize(self, params):
+        self.GatewayId = params.get("GatewayId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableGatewayFlowMonitorResponse(AbstractModel):
+    """DisableGatewayFlowMonitor response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DisassociateAddressRequest(AbstractModel):
     """DisassociateAddress request structure.
 
@@ -9572,6 +10648,96 @@ class DisassociateDirectConnectGatewayNatGatewayRequest(AbstractModel):
 
 class DisassociateDirectConnectGatewayNatGatewayResponse(AbstractModel):
     """DisassociateDirectConnectGatewayNatGateway response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DisassociateNatGatewayAddressRequest(AbstractModel):
+    """DisassociateNatGatewayAddress request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NatGatewayId: The ID of the NAT gateway, such as `nat-df45454`.
+        :type NatGatewayId: str
+        :param PublicIpAddresses: Array of the EIPs to be unbound from the NAT gateway.
+        :type PublicIpAddresses: list of str
+        """
+        self.NatGatewayId = None
+        self.PublicIpAddresses = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.PublicIpAddresses = params.get("PublicIpAddresses")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisassociateNatGatewayAddressResponse(AbstractModel):
+    """DisassociateNatGatewayAddress response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DisassociateNetworkAclSubnetsRequest(AbstractModel):
+    """DisassociateNetworkAclSubnets request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NetworkAclId: Network ACL instance ID. Example: acl-12345678.
+        :type NetworkAclId: str
+        :param SubnetIds: Array of subnet instance IDs. Example: [subnet-12345678].
+        :type SubnetIds: list of str
+        """
+        self.NetworkAclId = None
+        self.SubnetIds = None
+
+
+    def _deserialize(self, params):
+        self.NetworkAclId = params.get("NetworkAclId")
+        self.SubnetIds = params.get("SubnetIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisassociateNetworkAclSubnetsResponse(AbstractModel):
+    """DisassociateNetworkAclSubnets response structure.
 
     """
 
@@ -9807,6 +10973,50 @@ class EnableFlowLogsRequest(AbstractModel):
 
 class EnableFlowLogsResponse(AbstractModel):
     """EnableFlowLogs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EnableGatewayFlowMonitorRequest(AbstractModel):
+    """EnableGatewayFlowMonitor request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GatewayId: Gateway instance ID, which currently supports these types:
+ID of Direct Connect gateway instance, e.g. `dcg-ltjahce6`;
+ID of NAT gateway instance, e.g. `nat-ltjahce6`;
+ID of VPN gateway instance, e.g. `vpn-ltjahce6`.
+        :type GatewayId: str
+        """
+        self.GatewayId = None
+
+
+    def _deserialize(self, params):
+        self.GatewayId = params.get("GatewayId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableGatewayFlowMonitorResponse(AbstractModel):
+    """EnableGatewayFlowMonitor response structure.
 
     """
 
@@ -10212,6 +11422,42 @@ class GatewayFlowMonitorDetail(AbstractModel):
         self.OutPkg = params.get("OutPkg")
         self.InTraffic = params.get("InTraffic")
         self.OutTraffic = params.get("OutTraffic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GatewayQos(AbstractModel):
+    """Gateway bandwidth limit information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: VPC instance ID.
+        :type VpcId: str
+        :param IpAddress: CVM Private IP.
+        :type IpAddress: str
+        :param Bandwidth: Bandwidth limit value.
+        :type Bandwidth: int
+        :param CreateTime: The creation time.
+        :type CreateTime: str
+        """
+        self.VpcId = None
+        self.IpAddress = None
+        self.Bandwidth = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.IpAddress = params.get("IpAddress")
+        self.Bandwidth = params.get("Bandwidth")
+        self.CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11400,6 +12646,65 @@ class ModifyAddressesBandwidthResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyAssistantCidrRequest(AbstractModel):
+    """ModifyAssistantCidr request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: `VPC` instance `ID`, e.g. `vpc-6v2ht8q5`.
+        :type VpcId: str
+        :param NewCidrBlocks: Array of the secondary CIDR blocks to be added, such as ["10.0.0.0/16", "172.16.0.0/16"]. Either or both of `NewCidrBlocks` and `OldCidrBlocks` must be specified.
+        :type NewCidrBlocks: list of str
+        :param OldCidrBlocks: Array of the secondary CIDR blocks to be deleted, such as ["10.0.0.0/16", "172.16.0.0/16"]. Either or both of `NewCidrBlocks` and `OldCidrBlocks` must be specified.
+        :type OldCidrBlocks: list of str
+        """
+        self.VpcId = None
+        self.NewCidrBlocks = None
+        self.OldCidrBlocks = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.NewCidrBlocks = params.get("NewCidrBlocks")
+        self.OldCidrBlocks = params.get("OldCidrBlocks")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAssistantCidrResponse(AbstractModel):
+    """ModifyAssistantCidr response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AssistantCidrSet: A set of secondary CIDR blocks.
+Note: This field may return null, indicating that no valid value was found.
+        :type AssistantCidrSet: list of AssistantCidr
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AssistantCidrSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AssistantCidrSet") is not None:
+            self.AssistantCidrSet = []
+            for item in params.get("AssistantCidrSet"):
+                obj = AssistantCidr()
+                obj._deserialize(item)
+                self.AssistantCidrSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyBandwidthPackageAttributeRequest(AbstractModel):
     """ModifyBandwidthPackageAttribute request structure.
 
@@ -11748,6 +13053,58 @@ class ModifyFlowLogAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyGatewayFlowQosRequest(AbstractModel):
+    """ModifyGatewayFlowQos request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GatewayId: Gateway instance ID, which currently supports these types:
+ID of Direct Connect gateway instance, e.g. `dcg-ltjahce6`;
+ID of NAT gateway instance, e.g. `nat-ltjahce6`;
+ID of VPN gateway instance, e.g. `vpn-ltjahce6`.
+        :type GatewayId: str
+        :param Bandwidth: Bandwidth limit value.
+        :type Bandwidth: int
+        :param IpAddresses: CVM private IP addresses with limited bandwidth.
+        :type IpAddresses: list of str
+        """
+        self.GatewayId = None
+        self.Bandwidth = None
+        self.IpAddresses = None
+
+
+    def _deserialize(self, params):
+        self.GatewayId = params.get("GatewayId")
+        self.Bandwidth = params.get("Bandwidth")
+        self.IpAddresses = params.get("IpAddresses")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyGatewayFlowQosResponse(AbstractModel):
+    """ModifyGatewayFlowQos response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyHaVipAttributeRequest(AbstractModel):
     """ModifyHaVipAttribute request structure.
 
@@ -11896,6 +13253,163 @@ class ModifyLocalGatewayResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyNatGatewayAttributeRequest(AbstractModel):
+    """ModifyNatGatewayAttribute request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NatGatewayId: The ID of the NAT gateway, such as `nat-df45454`.
+        :type NatGatewayId: str
+        :param NatGatewayName: The NAT gateway name, such as `test_nat`.
+        :type NatGatewayName: str
+        :param InternetMaxBandwidthOut: The maximum outbound bandwidth of the NAT gateway. Unit: Mbps.
+        :type InternetMaxBandwidthOut: int
+        :param ModifySecurityGroup: Whether to modify the security group bound to the NAT Gateway
+        :type ModifySecurityGroup: bool
+        :param SecurityGroupIds: The final security groups bound to the NAT Gateway, such as `['sg-1n232323', 'sg-o4242424']`. An empty list indicates that all the security groups have been deleted.
+        :type SecurityGroupIds: list of str
+        """
+        self.NatGatewayId = None
+        self.NatGatewayName = None
+        self.InternetMaxBandwidthOut = None
+        self.ModifySecurityGroup = None
+        self.SecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.NatGatewayName = params.get("NatGatewayName")
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self.ModifySecurityGroup = params.get("ModifySecurityGroup")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNatGatewayAttributeResponse(AbstractModel):
+    """ModifyNatGatewayAttribute response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyNatGatewayDestinationIpPortTranslationNatRuleRequest(AbstractModel):
+    """ModifyNatGatewayDestinationIpPortTranslationNatRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NatGatewayId: The ID of the NAT gateway, such as `nat-df45454`.
+        :type NatGatewayId: str
+        :param SourceNatRule: The port forwarding rule of the source NAT gateway.
+        :type SourceNatRule: :class:`tencentcloud.vpc.v20170312.models.DestinationIpPortTranslationNatRule`
+        :param DestinationNatRule: The port forwarding rule of the destination NAT gateway.
+        :type DestinationNatRule: :class:`tencentcloud.vpc.v20170312.models.DestinationIpPortTranslationNatRule`
+        """
+        self.NatGatewayId = None
+        self.SourceNatRule = None
+        self.DestinationNatRule = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        if params.get("SourceNatRule") is not None:
+            self.SourceNatRule = DestinationIpPortTranslationNatRule()
+            self.SourceNatRule._deserialize(params.get("SourceNatRule"))
+        if params.get("DestinationNatRule") is not None:
+            self.DestinationNatRule = DestinationIpPortTranslationNatRule()
+            self.DestinationNatRule._deserialize(params.get("DestinationNatRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNatGatewayDestinationIpPortTranslationNatRuleResponse(AbstractModel):
+    """ModifyNatGatewayDestinationIpPortTranslationNatRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyNatGatewaySourceIpTranslationNatRuleRequest(AbstractModel):
+    """ModifyNatGatewaySourceIpTranslationNatRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NatGatewayId: The ID of the NAT Gateway, such as `nat-df453454`
+        :type NatGatewayId: str
+        :param SourceIpTranslationNatRule: The SNAT forwarding rule of the NAT Gateway
+        :type SourceIpTranslationNatRule: :class:`tencentcloud.vpc.v20170312.models.SourceIpTranslationNatRule`
+        """
+        self.NatGatewayId = None
+        self.SourceIpTranslationNatRule = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        if params.get("SourceIpTranslationNatRule") is not None:
+            self.SourceIpTranslationNatRule = SourceIpTranslationNatRule()
+            self.SourceIpTranslationNatRule._deserialize(params.get("SourceIpTranslationNatRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNatGatewaySourceIpTranslationNatRuleResponse(AbstractModel):
+    """ModifyNatGatewaySourceIpTranslationNatRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyNetDetectRequest(AbstractModel):
     """ModifyNetDetect request structure.
 
@@ -11954,6 +13468,98 @@ If `NextHopType` is set to `CCN`, the parameter value is the CCN ID, such as `cc
 
 class ModifyNetDetectResponse(AbstractModel):
     """ModifyNetDetect response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyNetworkAclAttributeRequest(AbstractModel):
+    """ModifyNetworkAclAttribute request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NetworkAclId: Network ACL instance ID. Example: acl-12345678.
+        :type NetworkAclId: str
+        :param NetworkAclName: Name of the network ACL. The maximum length is 60 bytes.
+        :type NetworkAclName: str
+        """
+        self.NetworkAclId = None
+        self.NetworkAclName = None
+
+
+    def _deserialize(self, params):
+        self.NetworkAclId = params.get("NetworkAclId")
+        self.NetworkAclName = params.get("NetworkAclName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNetworkAclAttributeResponse(AbstractModel):
+    """ModifyNetworkAclAttribute response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyNetworkAclEntriesRequest(AbstractModel):
+    """ModifyNetworkAclEntries request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NetworkAclId: Network ACL instance ID. Example: acl-12345678.
+        :type NetworkAclId: str
+        :param NetworkAclEntrySet: Network ACL rule set.
+        :type NetworkAclEntrySet: :class:`tencentcloud.vpc.v20170312.models.NetworkAclEntrySet`
+        """
+        self.NetworkAclId = None
+        self.NetworkAclEntrySet = None
+
+
+    def _deserialize(self, params):
+        self.NetworkAclId = params.get("NetworkAclId")
+        if params.get("NetworkAclEntrySet") is not None:
+            self.NetworkAclEntrySet = NetworkAclEntrySet()
+            self.NetworkAclEntrySet._deserialize(params.get("NetworkAclEntrySet"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNetworkAclEntriesResponse(AbstractModel):
+    """ModifyNetworkAclEntries response structure.
 
     """
 
@@ -12842,6 +14448,215 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.RequestId = params.get("RequestId")
 
 
+class NatGateway(AbstractModel):
+    """NAT gateway object.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NatGatewayId: NAT gateway ID.
+        :type NatGatewayId: str
+        :param NatGatewayName: NAT gateway name.
+        :type NatGatewayName: str
+        :param CreatedTime: NAT gateway creation time.
+        :type CreatedTime: str
+        :param State: The status of the NAT gateway.
+ 'PENDING': Creating, 'DELETING': Deleting, 'AVAILABLE': Operating, 'UPDATING': Upgrading,
+‘FAILED’: Failed.
+        :type State: str
+        :param InternetMaxBandwidthOut: The maximum outbound bandwidth of the gateway. Unit: Mbps.
+        :type InternetMaxBandwidthOut: int
+        :param MaxConcurrentConnection: The concurrent connections cap of the gateway.
+        :type MaxConcurrentConnection: int
+        :param PublicIpAddressSet: The public IP object array of the bound NAT gateway.
+        :type PublicIpAddressSet: list of NatGatewayAddress
+        :param NetworkState: The NAT gateway status. `AVAILABLE`: Operating, `UNAVAILABLE`: Unavailable, `INSUFFICIENT`: Account is in arrears and the service is suspended.
+        :type NetworkState: str
+        :param DestinationIpPortTranslationNatRuleSet: The port forwarding rules of the NAT gateway.
+        :type DestinationIpPortTranslationNatRuleSet: list of DestinationIpPortTranslationNatRule
+        :param VpcId: VPC instance ID.
+        :type VpcId: str
+        :param Zone: The availability zone in which the NAT gateway is located.
+        :type Zone: str
+        :param DirectConnectGatewayIds: IDs of direct connect gateway associated.
+        :type DirectConnectGatewayIds: list of str
+        :param SubnetId: Subnet ID.
+        :type SubnetId: str
+        :param TagSet: Tag key-value pair.
+        :type TagSet: list of Tag
+        :param SecurityGroupSet: The list of the security groups bound to the NAT Gateway
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SecurityGroupSet: list of str
+        :param SourceIpTranslationNatRuleSet: SNAT forwarding rule of the NAT Gateway.
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type SourceIpTranslationNatRuleSet: list of SourceIpTranslationNatRule
+        :param IsExclusive: Whether the NAT Gateway is dedicated.
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type IsExclusive: bool
+        :param ExclusiveGatewayBandwidth: Bandwidth of the gateway cluster where the dedicated NAT Gateway resides. Unit: Mbps. This field does not exist when the `IsExclusive` field is set to `false`.
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type ExclusiveGatewayBandwidth: int
+        """
+        self.NatGatewayId = None
+        self.NatGatewayName = None
+        self.CreatedTime = None
+        self.State = None
+        self.InternetMaxBandwidthOut = None
+        self.MaxConcurrentConnection = None
+        self.PublicIpAddressSet = None
+        self.NetworkState = None
+        self.DestinationIpPortTranslationNatRuleSet = None
+        self.VpcId = None
+        self.Zone = None
+        self.DirectConnectGatewayIds = None
+        self.SubnetId = None
+        self.TagSet = None
+        self.SecurityGroupSet = None
+        self.SourceIpTranslationNatRuleSet = None
+        self.IsExclusive = None
+        self.ExclusiveGatewayBandwidth = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.NatGatewayName = params.get("NatGatewayName")
+        self.CreatedTime = params.get("CreatedTime")
+        self.State = params.get("State")
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self.MaxConcurrentConnection = params.get("MaxConcurrentConnection")
+        if params.get("PublicIpAddressSet") is not None:
+            self.PublicIpAddressSet = []
+            for item in params.get("PublicIpAddressSet"):
+                obj = NatGatewayAddress()
+                obj._deserialize(item)
+                self.PublicIpAddressSet.append(obj)
+        self.NetworkState = params.get("NetworkState")
+        if params.get("DestinationIpPortTranslationNatRuleSet") is not None:
+            self.DestinationIpPortTranslationNatRuleSet = []
+            for item in params.get("DestinationIpPortTranslationNatRuleSet"):
+                obj = DestinationIpPortTranslationNatRule()
+                obj._deserialize(item)
+                self.DestinationIpPortTranslationNatRuleSet.append(obj)
+        self.VpcId = params.get("VpcId")
+        self.Zone = params.get("Zone")
+        self.DirectConnectGatewayIds = params.get("DirectConnectGatewayIds")
+        self.SubnetId = params.get("SubnetId")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
+        self.SecurityGroupSet = params.get("SecurityGroupSet")
+        if params.get("SourceIpTranslationNatRuleSet") is not None:
+            self.SourceIpTranslationNatRuleSet = []
+            for item in params.get("SourceIpTranslationNatRuleSet"):
+                obj = SourceIpTranslationNatRule()
+                obj._deserialize(item)
+                self.SourceIpTranslationNatRuleSet.append(obj)
+        self.IsExclusive = params.get("IsExclusive")
+        self.ExclusiveGatewayBandwidth = params.get("ExclusiveGatewayBandwidth")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NatGatewayAddress(AbstractModel):
+    """The EIP bound to the NAT gateway
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AddressId: The unique ID of the Elastic IP (EIP), such as `eip-11112222`.
+        :type AddressId: str
+        :param PublicIpAddress: The public IP address, such as `123.121.34.33`.
+        :type PublicIpAddress: str
+        :param IsBlocked: The block status of the resource. `true` indicates the EIP is blocked. `false` indicates that the EIP is not blocked.
+        :type IsBlocked: bool
+        """
+        self.AddressId = None
+        self.PublicIpAddress = None
+        self.IsBlocked = None
+
+
+    def _deserialize(self, params):
+        self.AddressId = params.get("AddressId")
+        self.PublicIpAddress = params.get("PublicIpAddress")
+        self.IsBlocked = params.get("IsBlocked")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NatGatewayDestinationIpPortTranslationNatRule(AbstractModel):
+    """The port forwarding rules of the NAT gateway
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IpProtocol: Network protocol. Available choices: `TCP`, `UDP`.
+        :type IpProtocol: str
+        :param PublicIpAddress: EIP.
+        :type PublicIpAddress: str
+        :param PublicPort: Public port.
+        :type PublicPort: int
+        :param PrivateIpAddress: Private network address.
+        :type PrivateIpAddress: str
+        :param PrivatePort: Private network port.
+        :type PrivatePort: int
+        :param Description: NAT gateway forwarding rule description.
+        :type Description: str
+        :param NatGatewayId: NAT gateway ID.
+Note: This field may return null, indicating no valid value.
+        :type NatGatewayId: str
+        :param VpcId: VPC ID.
+Note: This field may return null, indicating no valid value.
+        :type VpcId: str
+        :param CreatedTime: The creation time of the NAT gateway forwarding rule.
+Note: This field may return null, indicating no valid value.
+        :type CreatedTime: str
+        """
+        self.IpProtocol = None
+        self.PublicIpAddress = None
+        self.PublicPort = None
+        self.PrivateIpAddress = None
+        self.PrivatePort = None
+        self.Description = None
+        self.NatGatewayId = None
+        self.VpcId = None
+        self.CreatedTime = None
+
+
+    def _deserialize(self, params):
+        self.IpProtocol = params.get("IpProtocol")
+        self.PublicIpAddress = params.get("PublicIpAddress")
+        self.PublicPort = params.get("PublicPort")
+        self.PrivateIpAddress = params.get("PrivateIpAddress")
+        self.PrivatePort = params.get("PrivatePort")
+        self.Description = params.get("Description")
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.VpcId = params.get("VpcId")
+        self.CreatedTime = params.get("CreatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NetDetect(AbstractModel):
     """The network detection object.
 
@@ -13114,6 +14929,44 @@ class NetworkAclEntry(AbstractModel):
         
 
 
+class NetworkAclEntrySet(AbstractModel):
+    """Network ACL rule set
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ingress: Inbound rules.
+        :type Ingress: list of NetworkAclEntry
+        :param Egress: Outbound rules.
+        :type Egress: list of NetworkAclEntry
+        """
+        self.Ingress = None
+        self.Egress = None
+
+
+    def _deserialize(self, params):
+        if params.get("Ingress") is not None:
+            self.Ingress = []
+            for item in params.get("Ingress"):
+                obj = NetworkAclEntry()
+                obj._deserialize(item)
+                self.Ingress.append(obj)
+        if params.get("Egress") is not None:
+            self.Egress = []
+            for item in params.get("Egress"):
+                obj = NetworkAclEntry()
+                obj._deserialize(item)
+                self.Egress.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NetworkInterface(AbstractModel):
     """ENI
 
@@ -13270,6 +15123,51 @@ class NetworkInterfaceAttachment(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class NotifyRoutesRequest(AbstractModel):
+    """NotifyRoutes request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RouteTableId: The unique ID of the route table
+        :type RouteTableId: str
+        :param RouteItemIds: The unique ID of the routing policy
+        :type RouteItemIds: list of str
+        """
+        self.RouteTableId = None
+        self.RouteItemIds = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableId = params.get("RouteTableId")
+        self.RouteItemIds = params.get("RouteItemIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NotifyRoutesResponse(AbstractModel):
+    """NotifyRoutes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class Price(AbstractModel):
@@ -13862,6 +15760,51 @@ class ResetAttachCcnInstancesRequest(AbstractModel):
 
 class ResetAttachCcnInstancesResponse(AbstractModel):
     """ResetAttachCcnInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ResetNatGatewayConnectionRequest(AbstractModel):
+    """ResetNatGatewayConnection request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NatGatewayId: NAT gateway ID.
+        :type NatGatewayId: str
+        :param MaxConcurrentConnection: Concurrent connections cap of the NAT gateway, such as 1000000, 3000000, 10000000.
+        :type MaxConcurrentConnection: int
+        """
+        self.NatGatewayId = None
+        self.MaxConcurrentConnection = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.MaxConcurrentConnection = params.get("MaxConcurrentConnection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetNatGatewayConnectionResponse(AbstractModel):
+    """ResetNatGatewayConnection response structure.
 
     """
 
@@ -14885,6 +16828,66 @@ class SetCcnRegionBandwidthLimitsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SourceIpTranslationNatRule(AbstractModel):
+    """SNAT rule of a NAT Gateway
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceId: Resource ID
+        :type ResourceId: str
+        :param ResourceType: Resource type. Valid values: SUBNET, NETWORKINTERFACE
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ResourceType: str
+        :param PrivateIpAddress: Source IP/IP range
+        :type PrivateIpAddress: str
+        :param PublicIpAddresses: Elastic IP address pool
+        :type PublicIpAddresses: list of str
+        :param Description: Description
+        :type Description: str
+        :param NatGatewaySnatId: SNAT rule ID
+        :type NatGatewaySnatId: str
+        :param NatGatewayId: NAT Gateway ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type NatGatewayId: str
+        :param VpcId: VPC ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type VpcId: str
+        :param CreatedTime: Creation time of a SNAT rule for a NAT Gateway
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type CreatedTime: str
+        """
+        self.ResourceId = None
+        self.ResourceType = None
+        self.PrivateIpAddress = None
+        self.PublicIpAddresses = None
+        self.Description = None
+        self.NatGatewaySnatId = None
+        self.NatGatewayId = None
+        self.VpcId = None
+        self.CreatedTime = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.ResourceType = params.get("ResourceType")
+        self.PrivateIpAddress = params.get("PrivateIpAddress")
+        self.PublicIpAddresses = params.get("PublicIpAddresses")
+        self.Description = params.get("Description")
+        self.NatGatewaySnatId = params.get("NatGatewaySnatId")
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.VpcId = params.get("VpcId")
+        self.CreatedTime = params.get("CreatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Subnet(AbstractModel):
     """Subnet object
 
@@ -15835,3 +17838,48 @@ DISABLE: do not enable the route
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class WithdrawNotifyRoutesRequest(AbstractModel):
+    """WithdrawNotifyRoutes request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RouteTableId: The unique ID of the route table
+        :type RouteTableId: str
+        :param RouteItemIds: The unique ID of the routing policy
+        :type RouteItemIds: list of str
+        """
+        self.RouteTableId = None
+        self.RouteItemIds = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableId = params.get("RouteTableId")
+        self.RouteItemIds = params.get("RouteItemIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WithdrawNotifyRoutesResponse(AbstractModel):
+    """WithdrawNotifyRoutes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
