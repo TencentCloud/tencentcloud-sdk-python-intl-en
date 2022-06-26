@@ -248,6 +248,35 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateInstances(self, request):
+        """This API is used to create one or more Lighthouse instances.
+
+        :param request: Request instance for CreateInstances.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.CreateInstancesRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.CreateInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateKeyPair(self, request):
         """This API is used to create a key pair.
 
@@ -751,6 +780,35 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeGeneralResourceQuotas(self, request):
+        """This API is used to query the quota information of general resources.
+
+        :param request: Request instance for DescribeGeneralResourceQuotas.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeGeneralResourceQuotasRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeGeneralResourceQuotasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGeneralResourceQuotas", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeGeneralResourceQuotasResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstanceLoginKeyPairAttribute(self, request):
         """This API is used to query the attributes of the default login key of an instance.
 
@@ -809,6 +867,40 @@ class LighthouseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceVncUrlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInstances(self, request):
+        """This API is used to query the details of one or multiple instances.
+
+        * You can query the details of an instance according to its ID, name, or private IP.
+        * For more information on filters, please see [Filters](https://intl.cloud.tencent.com/document/product/1207/47576?from_cn_redirect=1#Filter).
+        * If no parameter is defined, the status of a certain number of instances under the current account will be returned. The number is specified by `Limit` and is 20 by default.
+        * The latest operation (LatestOperation) and the latest operation status (LatestOperationState) of the instance can be queried.
+
+        :param request: Request instance for DescribeInstances.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeInstancesRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1366,6 +1458,35 @@ class LighthouseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquirePriceRenewDisksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def InquirePriceRenewInstances(self, request):
+        """This API is used to query the price of renewed instance.
+
+        :param request: Request instance for InquirePriceRenewInstances.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.InquirePriceRenewInstancesRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InquirePriceRenewInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquirePriceRenewInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquirePriceRenewInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

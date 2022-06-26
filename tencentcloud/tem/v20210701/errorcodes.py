@@ -35,6 +35,9 @@ INTERNALERROR_DEFAULTINTERNALERROR = 'InternalError.DefaultInternalError'
 # 
 INTERNALERROR_DELETEINGRESSERROR = 'InternalError.DeleteIngressError'
 
+# Failed to delete the application
+INTERNALERROR_DELETESERVICEERROR = 'InternalError.DeleteServiceError'
+
 # Failed to invoke the version deployment
 INTERNALERROR_DEPLOYVERSIONERROR = 'InternalError.DeployVersionError'
 
@@ -50,6 +53,9 @@ INTERNALERROR_DESCRIBESERVICELISTERROR = 'InternalError.DescribeServiceListError
 # Failed to restart
 INTERNALERROR_RESTARTAPPLICATIONERROR = 'InternalError.RestartApplicationError'
 
+# 
+INTERNALERROR_STOPAPPLICATIONERROR = 'InternalError.StopApplicationError'
+
 # Failed to update the ingress
 INTERNALERROR_UPDATEINGRESSERROR = 'InternalError.UpdateIngressError'
 
@@ -58,6 +64,9 @@ INVALIDPARAMETERVALUE_AUTOSCALERLARGERTHANONE = 'InvalidParameterValue.AutoScale
 
 # The version number is invalid.
 INVALIDPARAMETERVALUE_INVALIDDEPLOYVERSION = 'InvalidParameterValue.InvalidDeployVersion'
+
+# 
+INVALIDPARAMETERVALUE_INVALIDSERVICENAME = 'InvalidParameterValue.InvalidServiceName'
 
 # The environment already exists.
 INVALIDPARAMETERVALUE_NAMESPACEDUPLICATEERROR = 'InvalidParameterValue.NamespaceDuplicateError'
@@ -72,13 +81,31 @@ INVALIDPARAMETERVALUE_NAMESPACEREACHMAXIMUM = 'InvalidParameterValue.NamespaceRe
 INVALIDPARAMETERVALUE_NAMESPACERESOURCEREACHMAXIMUM = 'InvalidParameterValue.NamespaceResourceReachMaximum'
 
 # 
+INVALIDPARAMETERVALUE_PUBLICREPOTYPEPARAMETERERROR = 'InvalidParameterValue.PublicRepoTypeParameterError'
+
+# There are running pods in this application.
+INVALIDPARAMETERVALUE_SERVICEFOUNDRUNNINGVERSION = 'InvalidParameterValue.ServiceFoundRunningVersion'
+
+# 
+INVALIDPARAMETERVALUE_SERVICELOWERCASE = 'InvalidParameterValue.ServiceLowerCase'
+
+# This application name already exists.
+INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = 'InvalidParameterValue.ServiceNameDuplicateError'
+
+# 
 INVALIDPARAMETERVALUE_SERVICEPODREACHMAXIMUM = 'InvalidParameterValue.ServicePodReachMaximum'
+
+# 
+INVALIDPARAMETERVALUE_SERVICEREACHMAXIMUM = 'InvalidParameterValue.ServiceReachMaximum'
 
 # Linkage tracing is not available for non-JAVA applications.
 INVALIDPARAMETERVALUE_TRAITSTRACINGNOTSUPPORTED = 'InvalidParameterValue.TraitsTracingNotSupported'
 
 # The version must be in lower case.
 INVALIDPARAMETERVALUE_VERSIONLOWERCASE = 'InvalidParameterValue.VersionLowerCase'
+
+# There is still traffic routed to this version.
+INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = 'InvalidParameterValue.VersionRouteRateNotZero'
 
 # The deployment version cannot be empty.
 MISSINGPARAMETER_DEPLOYVERSIONNULL = 'MissingParameter.DeployVersionNull'
@@ -91,6 +118,12 @@ MISSINGPARAMETER_PKGNAMENULL = 'MissingParameter.PkgNameNull'
 
 # The service ID cannot be empty.
 MISSINGPARAMETER_SERVICEIDNULL = 'MissingParameter.ServiceIdNull'
+
+# 
+MISSINGPARAMETER_SVCREPONOTREADY = 'MissingParameter.SvcRepoNotReady'
+
+# 
+RESOURCEINUSE_RESOURCEALREADYLOCKED = 'ResourceInUse.ResourceAlreadyLocked'
 
 # This resource is already bound.
 RESOURCEINUSE_RESOURCEALREADYUSED = 'ResourceInUse.ResourceAlreadyUsed'
@@ -110,5 +143,14 @@ RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = 'ResourceNotFound.ServiceRunnin
 # The environment corresponding to this version is not found.
 RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = 'ResourceNotFound.VersionNamespaceNotFound'
 
+# The environment corresponding to this version is not found.
+RESOURCENOTFOUND_VERSIONSERVICENOTFOUND = 'ResourceNotFound.VersionServiceNotFound'
+
 # Waiting for the installation of addon
 RESOURCEUNAVAILABLE_WAITFORKRUISE = 'ResourceUnavailable.WaitForKruise'
+
+# Unauthorized
+UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = 'UnauthorizedOperation.UnauthorizedOperation'
+
+# 
+UNSUPPORTEDOPERATION_UNSUPPORTACTION = 'UnsupportedOperation.UnsupportAction'

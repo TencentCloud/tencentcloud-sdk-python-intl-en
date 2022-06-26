@@ -4162,6 +4162,72 @@ forbid: forbidden.
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLiveTimeShiftBillInfoListRequest(AbstractModel):
+    """DescribeLiveTimeShiftBillInfoList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: The start time for query. You can query data from the past three months. The longest time period that can be queried is one month.
+
+It must be in UTC format.
+Example: 2019-01-08T10:00:00Z.
+Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
+        :type StartTime: str
+        :param EndTime: The end time for query. You can query data from the past three months. The longest time period that can be queried is one month.
+
+It must be in UTC format.
+Example: 2019-01-08T10:00:00Z.
+Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
+        :type EndTime: str
+        :param PushDomains: The push domains to query. If you leave this empty, the time shifting billing data of all push domains will be returned.
+        :type PushDomains: list of str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.PushDomains = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.PushDomains = params.get("PushDomains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLiveTimeShiftBillInfoListResponse(AbstractModel):
+    """DescribeLiveTimeShiftBillInfoList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataInfoList: The time shifting billing data.
+        :type DataInfoList: list of TimeShiftBillData
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = TimeShiftBillData()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
     """DescribeLiveTranscodeDetailInfo request structure.
 
@@ -7796,6 +7862,46 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.AiTransCode = params.get("AiTransCode")
         self.AdaptBitratePercent = params.get("AdaptBitratePercent")
         self.ShortEdgeAsHeight = params.get("ShortEdgeAsHeight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimeShiftBillData(AbstractModel):
+    """The time shifting billing data.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: The push domain name.
+        :type Domain: str
+        :param Duration: The time-shift video length (minutes).
+        :type Duration: float
+        :param StoragePeriod: The time-shift days.
+        :type StoragePeriod: float
+        :param Time: The time for the data returned. Format: YYYY-MM-DDThh:mm:ssZ.
+        :type Time: str
+        :param TotalDuration: 
+        :type TotalDuration: float
+        """
+        self.Domain = None
+        self.Duration = None
+        self.StoragePeriod = None
+        self.Time = None
+        self.TotalDuration = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Duration = params.get("Duration")
+        self.StoragePeriod = params.get("StoragePeriod")
+        self.Time = params.get("Time")
+        self.TotalDuration = params.get("TotalDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

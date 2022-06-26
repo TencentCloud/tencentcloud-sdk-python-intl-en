@@ -404,6 +404,35 @@ class SesClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetSendEmailStatus(self, request):
+        """This API is used to get email sending status. Only data within 30 days can be queried.
+
+        :param request: Request instance for GetSendEmailStatus.
+        :type request: :class:`tencentcloud.ses.v20201002.models.GetSendEmailStatusRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.GetSendEmailStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetSendEmailStatus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetSendEmailStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetStatisticsReport(self, request):
         """This API is used to get the email sending statistics over a recent period, including data on sent emails, delivery success rate, open rate, bounce rate, and so on.
 

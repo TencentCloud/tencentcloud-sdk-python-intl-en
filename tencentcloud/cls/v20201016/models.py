@@ -600,22 +600,27 @@ class ConsumerContent(AbstractModel):
         :param EnableTag: Whether to ship tag information
 Note: This field may return `null`, indicating that no valid value was found.
         :type EnableTag: bool
-        :param MetaFields: List of metadata to ship. Currently, only __SOURCE__, __FILENAME__, and __TIMESTAMP__ are supported.
-Note: This field may return `null`, indicating that no valid value was found.
+        :param MetaFields: List of metadata to ship. Only \_\_SOURCE\_\_, \_\_FILENAME\_\_, and \_\_TIMESTAMP\_\_ are supported.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MetaFields: list of str
         :param TagJsonNotTiled: This parameter is required if `EnableTag` is `true`, and is used to specify whether the tag information is JSON tiled. Valid values: `true` (not tiled); `false` (tiled)
 Note: This field may return `null`, indicating that no valid value was found.
         :type TagJsonNotTiled: bool
+        :param TimestampAccuracy: Shipping timestamp precision in seconds (default) or milliseconds
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TimestampAccuracy: int
         """
         self.EnableTag = None
         self.MetaFields = None
         self.TagJsonNotTiled = None
+        self.TimestampAccuracy = None
 
 
     def _deserialize(self, params):
         self.EnableTag = params.get("EnableTag")
         self.MetaFields = params.get("MetaFields")
         self.TagJsonNotTiled = params.get("TagJsonNotTiled")
+        self.TimestampAccuracy = params.get("TimestampAccuracy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3391,7 +3396,9 @@ class FullTextInfo(AbstractModel):
         r"""
         :param CaseSensitive: Case sensitivity
         :type CaseSensitive: bool
-        :param Tokenizer: Full-Text index delimiter. Each character in the string represents a delimiter.
+        :param Tokenizer: Separator of the full-text index. Each character represents a separator;
+Supports only English punctuation marks and (\n\t\r);
+We recommend you use (@&?|#()='",;:<>[]{}/ \n\t\r\) as separators;
         :type Tokenizer: str
         :param ContainZH: Whether Chinese characters are contained
 Note: this field may return `null`, indicating that no valid values can be obtained.
@@ -5607,7 +5614,10 @@ class ValueInfo(AbstractModel):
         r"""
         :param Type: Field type. Valid values: `long`, `text`, `double`
         :type Type: str
-        :param Tokenizer: Field delimiter, which is meaningful only if the field type is `text`. Each character in the entered string represents a delimiter.
+        :param Tokenizer: Separator of fields. Each character represents a separator;
+Supports only English punctuation marks and (\n\t\r);
+`long` and `double` fields need to be null;
+We recommend you use (@&?|#()='",;:<>[]{}/ \n\t\r\\) as separators for `text` fields;
         :type Tokenizer: str
         :param SqlFlag: Whether the analysis feature is enabled for the field
         :type SqlFlag: bool

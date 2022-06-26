@@ -1623,9 +1623,9 @@ class ClsClient(AbstractClient):
 
     def UploadLog(self, request, body):
         """## Note
-        To ensure log data reliability and help you use CLS more efficiently, you are advised to use the optimized API [Uploading Structured Logs](https://intl.cloud.tencent.com/document/api/614/16873) to upload logs.
+        To ensure log data reliability and help you use CLS more efficiently, we recommend you use the optimized API [Uploading Structured Logs](https://intl.cloud.tencent.com/document/api/614/16873?from_cn_redirect=1) to upload logs.
 
-        For the optimized API, we have developed an SDK (available in multiple languages) that provides features including async sending, resource control, automatic retry, graceful shutdown, and detection-based reporting. For details, see [Collection via SDK](https://intl.cloud.tencent.com/document/product/614/67157?from_cn_redirect=1).
+        For the optimized API, we have developed an SDK (available in multiple languages) that provides features including async sending, resource control, automatic retry, graceful shutdown, and detection-based reporting. For details, see [Collection via SDK](https://intl.cloud.tencent.com/document/product/614/45006).
 
         `UploadLog` allows you to synchronously upload log data. If you still want to continue to use this API instead of the optimized one, read this document.
 
@@ -1643,14 +1643,13 @@ class ClsClient(AbstractClient):
 
         In this mode, data will be written to a target partition that meets the range requirements based on the carried hash value (`X-CLS-HashKey`). For example, a log source can be bound to a topic partition through `HashKey`, strictly guaranteeing the sequence of the data written to and consumed in this partition.
 
-        In addition, CLS allows you to upload logs in the following two modes:
 
 
         #### Input parameters (pb binary streams in `body`)
 
         | Parameter | Type | Location | Required | Description |
         | ------------ | ------- | ---- | ---- | ------------------------------------------------------------ |
-        | logGroupList | message | pb    | Yes   | The `logGroup` list, which describes the encapsulated log groups. We recommend you enter up to 5 `logGroup` values.                     |
+        | logGroupList | message | pb    | Yes   | The `logGroup` list, which describes the encapsulated log groups. We recommend you enter up to five `logGroup` values.                     |
 
         `LogGroup` description:
 

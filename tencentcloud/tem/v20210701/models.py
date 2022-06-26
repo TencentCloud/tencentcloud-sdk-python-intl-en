@@ -74,6 +74,100 @@ class CosToken(AbstractModel):
         
 
 
+class CreateApplicationRequest(AbstractModel):
+    """CreateApplication request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationName: Application name
+        :type ApplicationName: str
+        :param Description: Description
+        :type Description: str
+        :param UseDefaultImageService: Whether to use the default image service. 1: yes; 0: no
+        :type UseDefaultImageService: int
+        :param RepoType: Type of the bound repository. 0: Personal Edition; 1: Enterprise Edition
+        :type RepoType: int
+        :param InstanceId: Instance ID of Enterprise Edition image service
+        :type InstanceId: str
+        :param RepoServer: Address of the bound image server
+        :type RepoServer: str
+        :param RepoName: Name of the bound image repository
+        :type RepoName: str
+        :param SourceChannel: Source channel
+        :type SourceChannel: int
+        :param SubnetList: Application subnet
+        :type SubnetList: list of str
+        :param CodingLanguage: Programming language 
+- JAVA
+- OTHER
+        :type CodingLanguage: str
+        :param DeployMode: Deployment mode 
+- IMAGE
+- JAR
+- WAR
+        :type DeployMode: str
+        :param EnableTracing: Whether to enable the call chain feature
+        :type EnableTracing: int
+        """
+        self.ApplicationName = None
+        self.Description = None
+        self.UseDefaultImageService = None
+        self.RepoType = None
+        self.InstanceId = None
+        self.RepoServer = None
+        self.RepoName = None
+        self.SourceChannel = None
+        self.SubnetList = None
+        self.CodingLanguage = None
+        self.DeployMode = None
+        self.EnableTracing = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationName = params.get("ApplicationName")
+        self.Description = params.get("Description")
+        self.UseDefaultImageService = params.get("UseDefaultImageService")
+        self.RepoType = params.get("RepoType")
+        self.InstanceId = params.get("InstanceId")
+        self.RepoServer = params.get("RepoServer")
+        self.RepoName = params.get("RepoName")
+        self.SourceChannel = params.get("SourceChannel")
+        self.SubnetList = params.get("SubnetList")
+        self.CodingLanguage = params.get("CodingLanguage")
+        self.DeployMode = params.get("DeployMode")
+        self.EnableTracing = params.get("EnableTracing")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateApplicationResponse(AbstractModel):
+    """CreateApplication response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Service code
+        :type Result: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateCosTokenRequest(AbstractModel):
     """CreateCosToken request structure.
 
@@ -353,6 +447,63 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DeleteApplicationRequest(AbstractModel):
+    """DeleteApplication request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: Service ID
+        :type ApplicationId: str
+        :param EnvironmentId: Environment ID
+        :type EnvironmentId: str
+        :param SourceChannel: Retain as default
+        :type SourceChannel: int
+        :param DeleteApplicationIfNoRunningVersion: Whether to delete this application automatically when there is no running version.
+        :type DeleteApplicationIfNoRunningVersion: bool
+        """
+        self.ApplicationId = None
+        self.EnvironmentId = None
+        self.SourceChannel = None
+        self.DeleteApplicationIfNoRunningVersion = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.SourceChannel = params.get("SourceChannel")
+        self.DeleteApplicationIfNoRunningVersion = params.get("DeleteApplicationIfNoRunningVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteApplicationResponse(AbstractModel):
+    """DeleteApplication response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Returned result
+        :type Result: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
 
 
 class DeleteIngressRequest(AbstractModel):
