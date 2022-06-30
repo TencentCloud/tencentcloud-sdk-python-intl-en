@@ -155,7 +155,7 @@ INVALIDPARAMETERVALUE_DUPLICATE = 'InvalidParameterValue.Duplicate'
 # The parameter value already exists.
 INVALIDPARAMETERVALUE_DUPLICATEPARA = 'InvalidParameterValue.DuplicatePara'
 
-# 
+# Exceeded the upper limit.
 INVALIDPARAMETERVALUE_EIPBRANDWIDTHOUTINVALID = 'InvalidParameterValue.EIPBrandWidthOutInvalid'
 
 # Missing parameters.
@@ -380,7 +380,7 @@ LIMITEXCEEDED_BANDWIDTHPACKAGEQUOTA = 'LimitExceeded.BandwidthPackageQuota'
 # The number of assigned IP ranges of the VPC has reached the upper limit.
 LIMITEXCEEDED_CIDRBLOCK = 'LimitExceeded.CidrBlock'
 
-# The number of EIPs applied for exceeds the daily upper limit.
+# The number of EIPs applied for per day exceeds the upper limit.
 LIMITEXCEEDED_DAILYALLOCATEADDRESSQUOTALIMITEXCEEDED = 'LimitExceeded.DailyAllocateAddressQuotaLimitExceeded'
 
 # Exceeded the upper limit of the EIPs bound to the instance.
@@ -647,6 +647,9 @@ UNSUPPORTEDOPERATION_NOTPOSTPAIDCCNOPERATION = 'UnsupportedOperation.NotPostpaid
 # 
 UNSUPPORTEDOPERATION_NOTSUPPORTDELETEDEFAULTROUTETABLE = 'UnsupportedOperation.NotSupportDeleteDefaultRouteTable'
 
+# 
+UNSUPPORTEDOPERATION_NOTSUPPORTEDUPDATECCNROUTEPUBLISH = 'UnsupportedOperation.NotSupportedUpdateCcnRoutePublish'
+
 # The specified routing policy cannot be published to or withdrawn from CCN.
 UNSUPPORTEDOPERATION_NOTIFYCCN = 'UnsupportedOperation.NotifyCcn'
 
@@ -680,7 +683,7 @@ UNSUPPORTEDOPERATION_RESOURCEMISMATCH = 'UnsupportedOperation.ResourceMismatch'
 # The endpoint created by the specified endpoint service cannot be bound to a security group.
 UNSUPPORTEDOPERATION_SPECIALENDPOINTSERVICE = 'UnsupportedOperation.SpecialEndPointService'
 
-# 
+# The relayed ENI does not support this operation.
 UNSUPPORTEDOPERATION_SUBENINOTSUPPORTTRUNKING = 'UnsupportedOperation.SubEniNotSupportTrunking'
 
 # System route. Operation is prohibited.

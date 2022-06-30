@@ -74,6 +74,9 @@ FAILEDOPERATION_DELETESUBSCRIPTIONS = 'FailedOperation.DeleteSubscriptions'
 # Failed to delete the topic.
 FAILEDOPERATION_DELETETOPICS = 'FailedOperation.DeleteTopics'
 
+# Failed to query the subscription data.
+FAILEDOPERATION_DESCRIBESUBSCRIPTION = 'FailedOperation.DescribeSubscription'
+
 # Failed to get the environment attributes.
 FAILEDOPERATION_GETENVIRONMENTATTRIBUTESFAILED = 'FailedOperation.GetEnvironmentAttributesFailed'
 
@@ -194,6 +197,12 @@ LIMITEXCEEDED_ENVIRONMENTS = 'LimitExceeded.Environments'
 # The number of namespaces under the instance exceeds the limit.
 LIMITEXCEEDED_NAMESPACES = 'LimitExceeded.Namespaces'
 
+# 
+LIMITEXCEEDED_RETENTIONSIZE = 'LimitExceeded.RetentionSize'
+
+# 
+LIMITEXCEEDED_RETENTIONTIME = 'LimitExceeded.RetentionTime'
+
 # The number of subscribers under the instance exceeds the limit.
 LIMITEXCEEDED_SUBSCRIPTIONS = 'LimitExceeded.Subscriptions'
 
@@ -205,6 +214,9 @@ MISSINGPARAMETER = 'MissingParameter'
 
 # A required parameter is missing.
 MISSINGPARAMETER_NEEDMOREPARAMS = 'MissingParameter.NeedMoreParams'
+
+# The subscription is still being consumed.
+OPERATIONDENIED_CONSUMERRUNNING = 'OperationDenied.ConsumerRunning'
 
 # Operations on the default environment are not allowed.
 OPERATIONDENIED_DEFAULTENVIRONMENT = 'OperationDenied.DefaultEnvironment'
@@ -271,3 +283,18 @@ RESOURCEUNAVAILABLE_CREATEFAILED = 'ResourceUnavailable.CreateFailed'
 
 # You must top up before proceeding.
 RESOURCEUNAVAILABLE_FUNDREQUIRED = 'ResourceUnavailable.FundRequired'
+
+# The system is being upgraded.
+RESOURCEUNAVAILABLE_SYSTEMUPGRADE = 'ResourceUnavailable.SystemUpgrade'
+
+# The resources have been sold out.
+RESOURCESSOLDOUT = 'ResourcesSoldOut'
+
+# Unauthorized operation.
+UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
+
+# Unknown parameter.
+UNKNOWNPARAMETER = 'UnknownParameter'
+
+# Unsupported operation.
+UNSUPPORTEDOPERATION = 'UnsupportedOperation'

@@ -1671,6 +1671,12 @@ Value range: 0.0-0.5.
         :type AdaptBitratePercent: float
         :param ShortEdgeAsHeight: Whether to use the short side as the video height. 0: no, 1: yes. Default value: 0.
         :type ShortEdgeAsHeight: int
+        :param DRMType: The DRM encryption type. Valid values: fairplay, normalaes, widevine.
+If you do not pass this parameter or pass in an empty string, the existing configuration will be reset.
+        :type DRMType: str
+        :param DRMTracks: The tracks to encrypt. Valid values: AUDIO, SD, HD, UHD1, UHD2. You can choose only one video track (SD, HD, UHD1, or UHD2).
+If you do not pass this parameter or pass in an empty string, the existing configuration will be reset.
+        :type DRMTracks: str
         """
         self.TemplateName = None
         self.VideoBitrate = None
@@ -1692,6 +1698,8 @@ Value range: 0.0-0.5.
         self.AiTransCode = None
         self.AdaptBitratePercent = None
         self.ShortEdgeAsHeight = None
+        self.DRMType = None
+        self.DRMTracks = None
 
 
     def _deserialize(self, params):
@@ -1715,6 +1723,8 @@ Value range: 0.0-0.5.
         self.AiTransCode = params.get("AiTransCode")
         self.AdaptBitratePercent = params.get("AdaptBitratePercent")
         self.ShortEdgeAsHeight = params.get("ShortEdgeAsHeight")
+        self.DRMType = params.get("DRMType")
+        self.DRMTracks = params.get("DRMTracks")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6643,6 +6653,12 @@ Value range: 0.0-0.5.
         :type AdaptBitratePercent: float
         :param ShortEdgeAsHeight: Whether to use the short side as the video height. 0: no, 1: yes. Default value: 0.
         :type ShortEdgeAsHeight: int
+        :param DRMType: The DRM encryption type. Valid values: fairplay, normalaes, widevine.
+If you do not pass this parameter or pass in an empty string, the existing configuration will be reset.
+        :type DRMType: str
+        :param DRMTracks: The tracks to encrypt. Valid values: AUDIO, SD, HD, UHD1, UHD2. You can choose only one video track (SD, HD, UHD1, or UHD2).
+If you do not pass this parameter or pass in an empty string, the existing configuration will be reset.
+        :type DRMTracks: str
         """
         self.TemplateId = None
         self.Vcodec = None
@@ -6663,6 +6679,8 @@ Value range: 0.0-0.5.
         self.FpsToOrig = None
         self.AdaptBitratePercent = None
         self.ShortEdgeAsHeight = None
+        self.DRMType = None
+        self.DRMTracks = None
 
 
     def _deserialize(self, params):
@@ -6685,6 +6703,8 @@ Value range: 0.0-0.5.
         self.FpsToOrig = params.get("FpsToOrig")
         self.AdaptBitratePercent = params.get("AdaptBitratePercent")
         self.ShortEdgeAsHeight = params.get("ShortEdgeAsHeight")
+        self.DRMType = params.get("DRMType")
+        self.DRMTracks = params.get("DRMTracks")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7816,6 +7836,12 @@ Value range: 0.0-0.5.
         :param ShortEdgeAsHeight: Whether to take the shorter side as height. 0: no, 1: yes. Default value: 0.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type ShortEdgeAsHeight: int
+        :param DRMType: The DRM encryption type. Valid values: fairplay, normalaes, widevine.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DRMType: str
+        :param DRMTracks: The tracks to encrypt. Valid values: AUDIO, SD, HD, UHD1, UHD2. Separate multiple tracks with “|”. You can choose only one video track (SD, HD, UHD1, or UHD2).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DRMTracks: str
         """
         self.Vcodec = None
         self.VideoBitrate = None
@@ -7838,6 +7864,8 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.AiTransCode = None
         self.AdaptBitratePercent = None
         self.ShortEdgeAsHeight = None
+        self.DRMType = None
+        self.DRMTracks = None
 
 
     def _deserialize(self, params):
@@ -7862,6 +7890,8 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.AiTransCode = params.get("AiTransCode")
         self.AdaptBitratePercent = params.get("AdaptBitratePercent")
         self.ShortEdgeAsHeight = params.get("ShortEdgeAsHeight")
+        self.DRMType = params.get("DRMType")
+        self.DRMTracks = params.get("DRMTracks")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7886,7 +7916,7 @@ class TimeShiftBillData(AbstractModel):
         :type StoragePeriod: float
         :param Time: The time for the data returned. Format: YYYY-MM-DDThh:mm:ssZ.
         :type Time: str
-        :param TotalDuration: 
+        :param TotalDuration: The total time-shift duration (minutes).
         :type TotalDuration: float
         """
         self.Domain = None

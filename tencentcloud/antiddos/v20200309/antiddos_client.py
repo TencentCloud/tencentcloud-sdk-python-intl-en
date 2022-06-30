@@ -1650,6 +1650,35 @@ class AntiddosClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeOverviewDDoSEventList(self, request):
+        """This API is used to obtain the list of DDoS attacks.
+
+        :param request: Request instance for DescribeOverviewDDoSEventList.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeOverviewDDoSEventListRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeOverviewDDoSEventListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOverviewDDoSEventList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeOverviewDDoSEventListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DisassociateDDoSEipAddress(self, request):
         """This API is used to unbind an Anti-DDoS EIP.
 

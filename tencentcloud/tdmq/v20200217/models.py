@@ -72,6 +72,30 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class BindCluster(AbstractModel):
+    """Dedicated cluster information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterName: Physical cluster name
+        :type ClusterName: str
+        """
+        self.ClusterName = None
+
+
+    def _deserialize(self, params):
+        self.ClusterName = params.get("ClusterName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClearCmqQueueRequest(AbstractModel):
     """ClearCmqQueue request structure.
 
@@ -771,6 +795,99 @@ Note: this field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self.FirstQueryInterval = params.get("FirstQueryInterval")
         self.MaxQueryCount = params.get("MaxQueryCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Consumer(AbstractModel):
+    """Consumer
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConnectedSince: The time when the consumer started connecting.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ConnectedSince: str
+        :param ConsumerAddr: Consumer address.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ConsumerAddr: str
+        :param ConsumerName: Consumer name.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ConsumerName: str
+        :param ClientVersion: Consumer version.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ClientVersion: str
+        :param Partition: Serial number of the topic partition connected to the consumer.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Partition: int
+        """
+        self.ConnectedSince = None
+        self.ConsumerAddr = None
+        self.ConsumerName = None
+        self.ClientVersion = None
+        self.Partition = None
+
+
+    def _deserialize(self, params):
+        self.ConnectedSince = params.get("ConnectedSince")
+        self.ConsumerAddr = params.get("ConsumerAddr")
+        self.ConsumerName = params.get("ConsumerName")
+        self.ClientVersion = params.get("ClientVersion")
+        self.Partition = params.get("Partition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConsumersSchedule(AbstractModel):
+    """Consumption progress details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Partitions: Current partition ID.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Partitions: int
+        :param NumberOfEntries: Number of messages.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type NumberOfEntries: int
+        :param MsgBacklog: Number of retained messages.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MsgBacklog: int
+        :param MsgRateOut: Sum of the numbers of messages delivered by the consumer per second.
+        :type MsgRateOut: str
+        :param MsgThroughputOut: Number of bytes of messages consumed by the consumer per second.
+        :type MsgThroughputOut: str
+        :param MsgRateExpired: Percentage of messages discarded due to timeout.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MsgRateExpired: str
+        """
+        self.Partitions = None
+        self.NumberOfEntries = None
+        self.MsgBacklog = None
+        self.MsgRateOut = None
+        self.MsgThroughputOut = None
+        self.MsgRateExpired = None
+
+
+    def _deserialize(self, params):
+        self.Partitions = params.get("Partitions")
+        self.NumberOfEntries = params.get("NumberOfEntries")
+        self.MsgBacklog = params.get("MsgBacklog")
+        self.MsgRateOut = params.get("MsgRateOut")
+        self.MsgThroughputOut = params.get("MsgThroughputOut")
+        self.MsgRateExpired = params.get("MsgRateExpired")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2198,6 +2315,176 @@ class DeleteRolesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteSubscriptionsRequest(AbstractModel):
+    """DeleteSubscriptions request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubscriptionTopicSets: Set of subscriptions. Up to 20 subscriptions can be deleted at a time.
+        :type SubscriptionTopicSets: list of SubscriptionTopic
+        :param ClusterId: Pulsar cluster ID.
+        :type ClusterId: str
+        :param EnvironmentId: Environment (namespace) name.
+        :type EnvironmentId: str
+        :param Force: Whether to force deletion. Default value: false
+        :type Force: bool
+        """
+        self.SubscriptionTopicSets = None
+        self.ClusterId = None
+        self.EnvironmentId = None
+        self.Force = None
+
+
+    def _deserialize(self, params):
+        if params.get("SubscriptionTopicSets") is not None:
+            self.SubscriptionTopicSets = []
+            for item in params.get("SubscriptionTopicSets"):
+                obj = SubscriptionTopic()
+                obj._deserialize(item)
+                self.SubscriptionTopicSets.append(obj)
+        self.ClusterId = params.get("ClusterId")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.Force = params.get("Force")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSubscriptionsResponse(AbstractModel):
+    """DeleteSubscriptions response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubscriptionTopicSets: Array of successfully deleted subscriptions.
+        :type SubscriptionTopicSets: list of SubscriptionTopic
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SubscriptionTopicSets = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SubscriptionTopicSets") is not None:
+            self.SubscriptionTopicSets = []
+            for item in params.get("SubscriptionTopicSets"):
+                obj = SubscriptionTopic()
+                obj._deserialize(item)
+                self.SubscriptionTopicSets.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteTopicsRequest(AbstractModel):
+    """DeleteTopics request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicSets: Set of topics. Up to 20 topics can be deleted at a time.
+        :type TopicSets: list of TopicRecord
+        :param ClusterId: Pulsar cluster ID.
+        :type ClusterId: str
+        :param EnvironmentId: Environment (namespace) name.
+        :type EnvironmentId: str
+        :param Force: Whether to force deletion. Default value: false
+        :type Force: bool
+        """
+        self.TopicSets = None
+        self.ClusterId = None
+        self.EnvironmentId = None
+        self.Force = None
+
+
+    def _deserialize(self, params):
+        if params.get("TopicSets") is not None:
+            self.TopicSets = []
+            for item in params.get("TopicSets"):
+                obj = TopicRecord()
+                obj._deserialize(item)
+                self.TopicSets.append(obj)
+        self.ClusterId = params.get("ClusterId")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.Force = params.get("Force")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTopicsResponse(AbstractModel):
+    """DeleteTopics response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicSets: Array of deleted topics.
+        :type TopicSets: list of TopicRecord
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TopicSets = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TopicSets") is not None:
+            self.TopicSets = []
+            for item in params.get("TopicSets"):
+                obj = TopicRecord()
+                obj._deserialize(item)
+                self.TopicSets.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBindClustersRequest(AbstractModel):
+    """DescribeBindClusters request structure.
+
+    """
+
+
+class DescribeBindClustersResponse(AbstractModel):
+    """DescribeBindClusters response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Number of dedicated clusters
+        :type TotalCount: int
+        :param ClusterSet: List of dedicated clusters
+        :type ClusterSet: list of BindCluster
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ClusterSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ClusterSet") is not None:
+            self.ClusterSet = []
+            for item in params.get("ClusterSet"):
+                obj = BindCluster()
+                obj._deserialize(item)
+                self.ClusterSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBindVpcsRequest(AbstractModel):
     """DescribeBindVpcs request structure.
 
@@ -2304,6 +2591,81 @@ class DescribeClusterDetailResponse(AbstractModel):
         if params.get("ClusterSet") is not None:
             self.ClusterSet = Cluster()
             self.ClusterSet._deserialize(params.get("ClusterSet"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClustersRequest(AbstractModel):
+    """DescribeClusters request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: Offset. If this parameter is left empty, 0 will be used by default.
+        :type Offset: int
+        :param Limit: Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.
+        :type Limit: int
+        :param ClusterIdList: Filter by list of cluster IDs
+        :type ClusterIdList: list of str
+        :param IsTagFilter: Whether to filter by tag
+        :type IsTagFilter: bool
+        :param Filters: Filter. Currently, you can filter only by tag.
+        :type Filters: list of Filter
+        """
+        self.Offset = None
+        self.Limit = None
+        self.ClusterIdList = None
+        self.IsTagFilter = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ClusterIdList = params.get("ClusterIdList")
+        self.IsTagFilter = params.get("IsTagFilter")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClustersResponse(AbstractModel):
+    """DescribeClusters response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Number of clusters
+        :type TotalCount: int
+        :param ClusterSet: List of cluster information
+        :type ClusterSet: list of Cluster
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ClusterSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ClusterSet") is not None:
+            self.ClusterSet = []
+            for item in params.get("ClusterSet"):
+                obj = Cluster()
+                obj._deserialize(item)
+                self.ClusterSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2417,6 +2779,86 @@ class DescribeCmqQueueDetailResponse(AbstractModel):
         if params.get("QueueDescribe") is not None:
             self.QueueDescribe = CmqQueue()
             self.QueueDescribe._deserialize(params.get("QueueDescribe"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCmqQueuesRequest(AbstractModel):
+    """DescribeCmqQueues request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: Starting position of the list of queues to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default
+        :type Offset: int
+        :param Limit: Number of queues to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.
+        :type Limit: int
+        :param QueueName: Filter by `QueueName`
+        :type QueueName: str
+        :param QueueNameList: List of CMQ queue names
+        :type QueueNameList: list of str
+        :param IsTagFilter: For filtering by tag, this must be configured to `true`.
+        :type IsTagFilter: bool
+        :param Filters: Filter. Currently, you can filter only by tag.
+        :type Filters: list of Filter
+        """
+        self.Offset = None
+        self.Limit = None
+        self.QueueName = None
+        self.QueueNameList = None
+        self.IsTagFilter = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.QueueName = params.get("QueueName")
+        self.QueueNameList = params.get("QueueNameList")
+        self.IsTagFilter = params.get("IsTagFilter")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCmqQueuesResponse(AbstractModel):
+    """DescribeCmqQueues response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Quantity
+        :type TotalCount: int
+        :param QueueList: List of queues
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type QueueList: list of CmqQueue
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.QueueList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("QueueList") is not None:
+            self.QueueList = []
+            for item in params.get("QueueList"):
+                obj = CmqQueue()
+                obj._deserialize(item)
+                self.QueueList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2534,6 +2976,86 @@ class DescribeCmqTopicDetailResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCmqTopicsRequest(AbstractModel):
+    """DescribeCmqTopics request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: Starting position of the list of queues to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default
+        :type Offset: int
+        :param Limit: Number of queues to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.
+        :type Limit: int
+        :param TopicName: Fuzzy search by `TopicName`
+        :type TopicName: str
+        :param TopicNameList: Filter by list of CMQ topic names
+        :type TopicNameList: list of str
+        :param IsTagFilter: For filtering by tag, this must be configured to `true`.
+        :type IsTagFilter: bool
+        :param Filters: Filter. Currently, you can filter only by tag.
+        :type Filters: list of Filter
+        """
+        self.Offset = None
+        self.Limit = None
+        self.TopicName = None
+        self.TopicNameList = None
+        self.IsTagFilter = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.TopicName = params.get("TopicName")
+        self.TopicNameList = params.get("TopicNameList")
+        self.IsTagFilter = params.get("IsTagFilter")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCmqTopicsResponse(AbstractModel):
+    """DescribeCmqTopics response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicList: List of topics
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TopicList: list of CmqTopic
+        :param TotalCount: Total number of topics
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TopicList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TopicList") is not None:
+            self.TopicList = []
+            for item in params.get("TopicList"):
+                obj = CmqTopic()
+                obj._deserialize(item)
+                self.TopicList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEnvironmentAttributesRequest(AbstractModel):
     """DescribeEnvironmentAttributes request structure.
 
@@ -2608,6 +3130,166 @@ class DescribeEnvironmentAttributesResponse(AbstractModel):
         self.EnvironmentId = params.get("EnvironmentId")
         self.Replicas = params.get("Replicas")
         self.Remark = params.get("Remark")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeEnvironmentRolesRequest(AbstractModel):
+    """DescribeEnvironmentRoles request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: Environment (namespace) name (required).
+        :type EnvironmentId: str
+        :param Offset: Offset. If this parameter is left empty, 0 will be used by default.
+        :type Offset: int
+        :param Limit: Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.
+        :type Limit: int
+        :param ClusterId: Pulsar cluster ID (required)
+        :type ClusterId: str
+        :param RoleName: Role name
+        :type RoleName: str
+        :param Filters: * RoleName
+Filter by role name for exact query.
+Type: String
+Required: no
+        :type Filters: list of Filter
+        """
+        self.EnvironmentId = None
+        self.Offset = None
+        self.Limit = None
+        self.ClusterId = None
+        self.RoleName = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ClusterId = params.get("ClusterId")
+        self.RoleName = params.get("RoleName")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEnvironmentRolesResponse(AbstractModel):
+    """DescribeEnvironmentRoles response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Number of records.
+        :type TotalCount: int
+        :param EnvironmentRoleSets: Set of namespace roles.
+        :type EnvironmentRoleSets: list of EnvironmentRole
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.EnvironmentRoleSets = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("EnvironmentRoleSets") is not None:
+            self.EnvironmentRoleSets = []
+            for item in params.get("EnvironmentRoleSets"):
+                obj = EnvironmentRole()
+                obj._deserialize(item)
+                self.EnvironmentRoleSets.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeEnvironmentsRequest(AbstractModel):
+    """DescribeEnvironments request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: Fuzzy search by namespace name.
+        :type EnvironmentId: str
+        :param Offset: Offset. If this parameter is left empty, 0 will be used by default.
+        :type Offset: int
+        :param Limit: Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.
+        :type Limit: int
+        :param ClusterId: Pulsar cluster ID
+        :type ClusterId: str
+        :param Filters: * EnvironmentId
+Filter by namespace for exact query.
+Type: String
+Required: no
+        :type Filters: list of Filter
+        """
+        self.EnvironmentId = None
+        self.Offset = None
+        self.Limit = None
+        self.ClusterId = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ClusterId = params.get("ClusterId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEnvironmentsResponse(AbstractModel):
+    """DescribeEnvironments response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Number of namespaces.
+        :type TotalCount: int
+        :param EnvironmentSet: Array set of namespaces.
+        :type EnvironmentSet: list of Environment
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.EnvironmentSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("EnvironmentSet") is not None:
+            self.EnvironmentSet = []
+            for item in params.get("EnvironmentSet"):
+                obj = Environment()
+                obj._deserialize(item)
+                self.EnvironmentSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2826,6 +3508,316 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRocketMQClustersRequest(AbstractModel):
+    """DescribeRocketMQClusters request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: Offset
+        :type Offset: int
+        :param Limit: Maximum number
+        :type Limit: int
+        :param IdKeyword: Search by cluster ID
+        :type IdKeyword: str
+        :param NameKeyword: Search by cluster name
+        :type NameKeyword: str
+        :param ClusterIdList: Filter by list of cluster IDs
+        :type ClusterIdList: list of str
+        :param IsTagFilter: For filtering by tag, this must be configured to `true`
+        :type IsTagFilter: bool
+        :param Filters: Filter. Currently, you can filter only by tag.
+        :type Filters: list of Filter
+        """
+        self.Offset = None
+        self.Limit = None
+        self.IdKeyword = None
+        self.NameKeyword = None
+        self.ClusterIdList = None
+        self.IsTagFilter = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.IdKeyword = params.get("IdKeyword")
+        self.NameKeyword = params.get("NameKeyword")
+        self.ClusterIdList = params.get("ClusterIdList")
+        self.IsTagFilter = params.get("IsTagFilter")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQClustersResponse(AbstractModel):
+    """DescribeRocketMQClusters response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterList: Cluster information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ClusterList: list of RocketMQClusterDetail
+        :param TotalCount: Total number
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ClusterList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterList") is not None:
+            self.ClusterList = []
+            for item in params.get("ClusterList"):
+                obj = RocketMQClusterDetail()
+                obj._deserialize(item)
+                self.ClusterList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRocketMQGroupsRequest(AbstractModel):
+    """DescribeRocketMQGroups request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param NamespaceId: Namespace
+        :type NamespaceId: str
+        :param Offset: Offset
+        :type Offset: int
+        :param Limit: Maximum number
+        :type Limit: int
+        :param FilterTopic: Topic name, which can be used to query all subscription groups under the topic
+        :type FilterTopic: str
+        :param FilterGroup: Consumer group query by consumer group name. Fuzzy query is supported
+        :type FilterGroup: str
+        :param SortedBy: Sort by specified field. Valid values: tps, accumulative.
+        :type SortedBy: str
+        :param SortOrder: Sort in ascending or descending order. Valid values: asc, desc.
+        :type SortOrder: str
+        :param FilterOneGroup: Subscription group name. After it is specified, only the information of the corresponding subscription group will be returned.
+        :type FilterOneGroup: str
+        """
+        self.ClusterId = None
+        self.NamespaceId = None
+        self.Offset = None
+        self.Limit = None
+        self.FilterTopic = None
+        self.FilterGroup = None
+        self.SortedBy = None
+        self.SortOrder = None
+        self.FilterOneGroup = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NamespaceId = params.get("NamespaceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.FilterTopic = params.get("FilterTopic")
+        self.FilterGroup = params.get("FilterGroup")
+        self.SortedBy = params.get("SortedBy")
+        self.SortOrder = params.get("SortOrder")
+        self.FilterOneGroup = params.get("FilterOneGroup")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQGroupsResponse(AbstractModel):
+    """DescribeRocketMQGroups response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number
+        :type TotalCount: int
+        :param Groups: List of subscription groups
+        :type Groups: list of RocketMQGroup
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Groups = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Groups") is not None:
+            self.Groups = []
+            for item in params.get("Groups"):
+                obj = RocketMQGroup()
+                obj._deserialize(item)
+                self.Groups.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRocketMQNamespacesRequest(AbstractModel):
+    """DescribeRocketMQNamespaces request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param Offset: Offset
+        :type Offset: int
+        :param Limit: Maximum number
+        :type Limit: int
+        :param NameKeyword: Search by name
+        :type NameKeyword: str
+        """
+        self.ClusterId = None
+        self.Offset = None
+        self.Limit = None
+        self.NameKeyword = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.NameKeyword = params.get("NameKeyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQNamespacesResponse(AbstractModel):
+    """DescribeRocketMQNamespaces response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Namespaces: List of namespaces
+        :type Namespaces: list of RocketMQNamespace
+        :param TotalCount: Total number
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Namespaces = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Namespaces") is not None:
+            self.Namespaces = []
+            for item in params.get("Namespaces"):
+                obj = RocketMQNamespace()
+                obj._deserialize(item)
+                self.Namespaces.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRocketMQTopicsRequest(AbstractModel):
+    """DescribeRocketMQTopics request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: Query offset
+        :type Offset: int
+        :param Limit: Query limit
+        :type Limit: int
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param NamespaceId: Namespace
+        :type NamespaceId: str
+        :param FilterType: Filter by topic type. Valid values: Normal, GlobalOrder, PartitionedOrder, Transaction.
+        :type FilterType: list of str
+        :param FilterName: Search by topic name. Fuzzy query is supported.
+        :type FilterName: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.ClusterId = None
+        self.NamespaceId = None
+        self.FilterType = None
+        self.FilterName = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ClusterId = params.get("ClusterId")
+        self.NamespaceId = params.get("NamespaceId")
+        self.FilterType = params.get("FilterType")
+        self.FilterName = params.get("FilterName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQTopicsResponse(AbstractModel):
+    """DescribeRocketMQTopics response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number of records
+        :type TotalCount: int
+        :param Topics: List of topic information
+        :type Topics: list of RocketMQTopic
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Topics = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Topics") is not None:
+            self.Topics = []
+            for item in params.get("Topics"):
+                obj = RocketMQTopic()
+                obj._deserialize(item)
+                self.Topics.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRolesRequest(AbstractModel):
     """DescribeRoles request structure.
 
@@ -2904,6 +3896,285 @@ class DescribeRolesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSubscriptionsRequest(AbstractModel):
+    """DescribeSubscriptions request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: Environment (namespace) name.
+        :type EnvironmentId: str
+        :param TopicName: Topic name.
+        :type TopicName: str
+        :param Offset: Offset. If this parameter is left empty, 0 will be used by default.
+        :type Offset: int
+        :param Limit: Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.
+        :type Limit: int
+        :param SubscriptionName: Fuzzy match by subscriber name.
+        :type SubscriptionName: str
+        :param Filters: Data filter.
+        :type Filters: list of FilterSubscription
+        :param ClusterId: Pulsar cluster ID
+        :type ClusterId: str
+        """
+        self.EnvironmentId = None
+        self.TopicName = None
+        self.Offset = None
+        self.Limit = None
+        self.SubscriptionName = None
+        self.Filters = None
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.TopicName = params.get("TopicName")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SubscriptionName = params.get("SubscriptionName")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = FilterSubscription()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSubscriptionsResponse(AbstractModel):
+    """DescribeSubscriptions response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubscriptionSets: Array set of subscribers.
+        :type SubscriptionSets: list of Subscription
+        :param TotalCount: Quantity.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SubscriptionSets = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SubscriptionSets") is not None:
+            self.SubscriptionSets = []
+            for item in params.get("SubscriptionSets"):
+                obj = Subscription()
+                obj._deserialize(item)
+                self.SubscriptionSets.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTopicsRequest(AbstractModel):
+    """DescribeTopics request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: Environment (namespace) name.
+        :type EnvironmentId: str
+        :param TopicName: Fuzzy match by topic name.
+        :type TopicName: str
+        :param Offset: Offset. If this parameter is left empty, 0 will be used by default.
+        :type Offset: int
+        :param Limit: Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.
+        :type Limit: int
+        :param TopicType: Topic type description:
+0: general message;
+1: globally sequential message;
+2: partitionally sequential message;
+3: retry letter queue;
+4: dead letter queue;
+5: transaction message.
+        :type TopicType: int
+        :param ClusterId: Pulsar cluster ID
+        :type ClusterId: str
+        :param Filters: * TopicName
+Query by topic name for exact search.
+Type: String
+Required: no
+        :type Filters: list of Filter
+        """
+        self.EnvironmentId = None
+        self.TopicName = None
+        self.Offset = None
+        self.Limit = None
+        self.TopicType = None
+        self.ClusterId = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.TopicName = params.get("TopicName")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.TopicType = params.get("TopicType")
+        self.ClusterId = params.get("ClusterId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTopicsResponse(AbstractModel):
+    """DescribeTopics response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicSets: Array set of topics.
+        :type TopicSets: list of Topic
+        :param TotalCount: Number of topics.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TopicSets = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TopicSets") is not None:
+            self.TopicSets = []
+            for item in params.get("TopicSets"):
+                obj = Topic()
+                obj._deserialize(item)
+                self.TopicSets.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class Environment(AbstractModel):
+    """Namespace information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: Namespace name
+        :type EnvironmentId: str
+        :param Remark: Remarks
+        :type Remark: str
+        :param MsgTTL: TTL for unconsumed messages in seconds. Maximum value: 1296000 seconds (i.e., 15 days)
+        :type MsgTTL: int
+        :param CreateTime: Creation time
+        :type CreateTime: str
+        :param UpdateTime: Modification time
+        :type UpdateTime: str
+        :param NamespaceId: Namespace ID
+        :type NamespaceId: str
+        :param NamespaceName: Namespace name
+        :type NamespaceName: str
+        :param TopicNum: Number of topics
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TopicNum: int
+        :param RetentionPolicy: Message retention policy
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RetentionPolicy: :class:`tencentcloud.tdmq.v20200217.models.RetentionPolicy`
+        """
+        self.EnvironmentId = None
+        self.Remark = None
+        self.MsgTTL = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.NamespaceId = None
+        self.NamespaceName = None
+        self.TopicNum = None
+        self.RetentionPolicy = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.Remark = params.get("Remark")
+        self.MsgTTL = params.get("MsgTTL")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.NamespaceId = params.get("NamespaceId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.TopicNum = params.get("TopicNum")
+        if params.get("RetentionPolicy") is not None:
+            self.RetentionPolicy = RetentionPolicy()
+            self.RetentionPolicy._deserialize(params.get("RetentionPolicy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnvironmentRole(AbstractModel):
+    """Set of environment roles
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: Environment (namespace).
+        :type EnvironmentId: str
+        :param RoleName: Role name.
+        :type RoleName: str
+        :param Permissions: Permissions, which is a non-empty string array of `produce` and `consume` at the most.
+        :type Permissions: list of str
+        :param RoleDescribe: Role description.
+        :type RoleDescribe: str
+        :param CreateTime: Creation time.
+        :type CreateTime: str
+        :param UpdateTime: Update time.
+        :type UpdateTime: str
+        """
+        self.EnvironmentId = None
+        self.RoleName = None
+        self.Permissions = None
+        self.RoleDescribe = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.RoleName = params.get("RoleName")
+        self.Permissions = params.get("Permissions")
+        self.RoleDescribe = params.get("RoleDescribe")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     """Filter parameter
 
@@ -2923,6 +4194,42 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FilterSubscription(AbstractModel):
+    """Filters subscriptions
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConsumerHasCount: Whether to display only subscriptions that include real consumers.
+        :type ConsumerHasCount: bool
+        :param ConsumerHasBacklog: Whether to display only subscriptions with retained messages.
+        :type ConsumerHasBacklog: bool
+        :param ConsumerHasExpired: Whether to display only subscriptions with messages discarded after expiration.
+        :type ConsumerHasExpired: bool
+        :param SubscriptionNames: Filter by subscription name for exact search.
+        :type SubscriptionNames: list of str
+        """
+        self.ConsumerHasCount = None
+        self.ConsumerHasBacklog = None
+        self.ConsumerHasExpired = None
+        self.SubscriptionNames = None
+
+
+    def _deserialize(self, params):
+        self.ConsumerHasCount = params.get("ConsumerHasCount")
+        self.ConsumerHasBacklog = params.get("ConsumerHasBacklog")
+        self.ConsumerHasExpired = params.get("ConsumerHasExpired")
+        self.SubscriptionNames = params.get("SubscriptionNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3682,6 +4989,91 @@ class ModifyTopicResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class PartitionsTopic(AbstractModel):
+    """Partitioned topic
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AverageMsgSize: Average size of the messages published in the last interval in bytes.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AverageMsgSize: str
+        :param ConsumerCount: Number of consumers.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ConsumerCount: str
+        :param LastConfirmedEntry: Total number of recorded messages.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type LastConfirmedEntry: str
+        :param LastLedgerCreatedTimestamp: Time when the last ledger was created.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type LastLedgerCreatedTimestamp: str
+        :param MsgRateIn: Number of messages published by local and replicated publishers per second.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MsgRateIn: str
+        :param MsgRateOut: Sum of the numbers of messages delivered by local and replicated consumers per second.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MsgRateOut: str
+        :param MsgThroughputIn: Number of bytes of messages published by local and replicated publishers per second.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MsgThroughputIn: str
+        :param MsgThroughputOut: Number of bytes of messages delivered by local and replicated consumers per second.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MsgThroughputOut: str
+        :param NumberOfEntries: Total number of recorded messages.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type NumberOfEntries: str
+        :param Partitions: Subpartition ID.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Partitions: int
+        :param ProducerCount: Number of producers.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ProducerCount: str
+        :param TotalSize: Total amount of all stored messages in bytes.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TotalSize: str
+        :param TopicType: Topic type description.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TopicType: int
+        """
+        self.AverageMsgSize = None
+        self.ConsumerCount = None
+        self.LastConfirmedEntry = None
+        self.LastLedgerCreatedTimestamp = None
+        self.MsgRateIn = None
+        self.MsgRateOut = None
+        self.MsgThroughputIn = None
+        self.MsgThroughputOut = None
+        self.NumberOfEntries = None
+        self.Partitions = None
+        self.ProducerCount = None
+        self.TotalSize = None
+        self.TopicType = None
+
+
+    def _deserialize(self, params):
+        self.AverageMsgSize = params.get("AverageMsgSize")
+        self.ConsumerCount = params.get("ConsumerCount")
+        self.LastConfirmedEntry = params.get("LastConfirmedEntry")
+        self.LastLedgerCreatedTimestamp = params.get("LastLedgerCreatedTimestamp")
+        self.MsgRateIn = params.get("MsgRateIn")
+        self.MsgRateOut = params.get("MsgRateOut")
+        self.MsgThroughputIn = params.get("MsgThroughputIn")
+        self.MsgThroughputOut = params.get("MsgThroughputOut")
+        self.NumberOfEntries = params.get("NumberOfEntries")
+        self.Partitions = params.get("Partitions")
+        self.ProducerCount = params.get("ProducerCount")
+        self.TotalSize = params.get("TotalSize")
+        self.TopicType = params.get("TopicType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PublishCmqMsgRequest(AbstractModel):
     """PublishCmqMsg request structure.
 
@@ -4131,6 +5523,43 @@ class RocketMQClusterConfig(AbstractModel):
         
 
 
+class RocketMQClusterDetail(AbstractModel):
+    """Tenant RocketMQ cluster details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Info: Cluster's basic information
+        :type Info: :class:`tencentcloud.tdmq.v20200217.models.RocketMQClusterInfo`
+        :param Config: Cluster configuration information
+        :type Config: :class:`tencentcloud.tdmq.v20200217.models.RocketMQClusterConfig`
+        :param Status: Cluster status. 0: creating; 1: normal; 2: terminating; 3: deleted; 4. isolated; 5. creation failed; 6: deletion failed
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Status: int
+        """
+        self.Info = None
+        self.Config = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self.Info = RocketMQClusterInfo()
+            self.Info._deserialize(params.get("Info"))
+        if params.get("Config") is not None:
+            self.Config = RocketMQClusterConfig()
+            self.Config._deserialize(params.get("Config"))
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RocketMQClusterInfo(AbstractModel):
     """RocketMQ cluster's basic information
 
@@ -4212,6 +5641,159 @@ class RocketMQClusterRecentStats(AbstractModel):
         self.ProducedMsgNum = params.get("ProducedMsgNum")
         self.ConsumedMsgNum = params.get("ConsumedMsgNum")
         self.AccumulativeMsgNum = params.get("AccumulativeMsgNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RocketMQGroup(AbstractModel):
+    """RocketMQ consumer group information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Consumer group name
+        :type Name: str
+        :param ConsumerNum: Number of online consumers
+        :type ConsumerNum: int
+        :param TPS: Consumption TPS
+        :type TPS: int
+        :param TotalAccumulative: Total number of retained messages
+        :type TotalAccumulative: int
+        :param ConsumptionMode: 0: cluster consumption mode; 1: broadcast consumption mode; -1: unknown
+        :type ConsumptionMode: int
+        :param ReadEnabled: Whether to allow consumption
+        :type ReadEnabled: bool
+        :param RetryPartitionNum: Number of partitions in the retry letter topic
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RetryPartitionNum: int
+        :param CreateTime: Creation time in milliseconds
+        :type CreateTime: int
+        :param UpdateTime: Modification time in milliseconds
+        :type UpdateTime: int
+        :param ClientProtocol: Client protocol
+        :type ClientProtocol: str
+        :param Remark: Remarks
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Remark: str
+        :param ConsumerType: Consumer type. Enumerated values: ACTIVELY, PASSIVELY
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ConsumerType: str
+        :param BroadcastEnabled: Whether to enable broadcast consumption
+        :type BroadcastEnabled: bool
+        """
+        self.Name = None
+        self.ConsumerNum = None
+        self.TPS = None
+        self.TotalAccumulative = None
+        self.ConsumptionMode = None
+        self.ReadEnabled = None
+        self.RetryPartitionNum = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.ClientProtocol = None
+        self.Remark = None
+        self.ConsumerType = None
+        self.BroadcastEnabled = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.ConsumerNum = params.get("ConsumerNum")
+        self.TPS = params.get("TPS")
+        self.TotalAccumulative = params.get("TotalAccumulative")
+        self.ConsumptionMode = params.get("ConsumptionMode")
+        self.ReadEnabled = params.get("ReadEnabled")
+        self.RetryPartitionNum = params.get("RetryPartitionNum")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.ClientProtocol = params.get("ClientProtocol")
+        self.Remark = params.get("Remark")
+        self.ConsumerType = params.get("ConsumerType")
+        self.BroadcastEnabled = params.get("BroadcastEnabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RocketMQNamespace(AbstractModel):
+    """RocketMQ namespace information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NamespaceId: Namespace name, which can contain 3–64 letters, digits, hyphens, and underscores
+        :type NamespaceId: str
+        :param Ttl: Retention period for unconsumed messages in milliseconds. Valid range: 60 seconds–15 days.
+        :type Ttl: int
+        :param RetentionTime: Retention period for persisted messages in milliseconds
+        :type RetentionTime: int
+        :param Remark: Remarks
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Remark: str
+        """
+        self.NamespaceId = None
+        self.Ttl = None
+        self.RetentionTime = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.NamespaceId = params.get("NamespaceId")
+        self.Ttl = params.get("Ttl")
+        self.RetentionTime = params.get("RetentionTime")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RocketMQTopic(AbstractModel):
+    """RocketMQ topic information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Topic name
+        :type Name: str
+        :param Remark: Remarks
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Remark: str
+        :param PartitionNum: Number of read/write partitions
+        :type PartitionNum: int
+        :param CreateTime: Creation time in milliseconds
+        :type CreateTime: int
+        :param UpdateTime: Creation time in milliseconds
+        :type UpdateTime: int
+        """
+        self.Name = None
+        self.Remark = None
+        self.PartitionNum = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Remark = params.get("Remark")
+        self.PartitionNum = params.get("PartitionNum")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4553,6 +6135,166 @@ class Sort(AbstractModel):
         
 
 
+class Subscription(AbstractModel):
+    """Subscriber
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicName: Topic name.
+        :type TopicName: str
+        :param EnvironmentId: Environment (namespace) name.
+        :type EnvironmentId: str
+        :param ConnectedSince: The time when the consumer started connecting.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ConnectedSince: str
+        :param ConsumerAddr: Consumer address.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ConsumerAddr: str
+        :param ConsumerCount: Number of consumers.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ConsumerCount: str
+        :param ConsumerName: Consumer name.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ConsumerName: str
+        :param MsgBacklog: Number of retained messages.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MsgBacklog: str
+        :param MsgRateExpired: Proportion of messages under this subscription that were discarded but not sent after TTL.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MsgRateExpired: str
+        :param MsgRateOut: Sum of the numbers of messages delivered by the consumer per second.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MsgRateOut: str
+        :param MsgThroughputOut: Number of bytes of messages consumed by the consumer per second.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MsgThroughputOut: str
+        :param SubscriptionName: Subscription name.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SubscriptionName: str
+        :param ConsumerSets: Set of consumers.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ConsumerSets: list of Consumer
+        :param IsOnline: Whether it is online.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IsOnline: bool
+        :param ConsumersScheduleSets: Set of consumption progress information.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ConsumersScheduleSets: list of ConsumersSchedule
+        :param Remark: Remarks.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Remark: str
+        :param CreateTime: Creation time.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: str
+        :param UpdateTime: Modification time.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type UpdateTime: str
+        :param SubType: Subscription type. Valid values: `Exclusive`, `Shared`, `Failover`, and `Key_Shared`. An empty string or `NULL`: Unknown.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type SubType: str
+        :param BlockedSubscriptionOnUnackedMsgs: Whether messages are blocked as the limit of unacknowledged messages has been reached.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type BlockedSubscriptionOnUnackedMsgs: bool
+        :param MaxUnackedMsgNum: Maximum number of unacknowledged messages.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type MaxUnackedMsgNum: int
+        """
+        self.TopicName = None
+        self.EnvironmentId = None
+        self.ConnectedSince = None
+        self.ConsumerAddr = None
+        self.ConsumerCount = None
+        self.ConsumerName = None
+        self.MsgBacklog = None
+        self.MsgRateExpired = None
+        self.MsgRateOut = None
+        self.MsgThroughputOut = None
+        self.SubscriptionName = None
+        self.ConsumerSets = None
+        self.IsOnline = None
+        self.ConsumersScheduleSets = None
+        self.Remark = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.SubType = None
+        self.BlockedSubscriptionOnUnackedMsgs = None
+        self.MaxUnackedMsgNum = None
+
+
+    def _deserialize(self, params):
+        self.TopicName = params.get("TopicName")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.ConnectedSince = params.get("ConnectedSince")
+        self.ConsumerAddr = params.get("ConsumerAddr")
+        self.ConsumerCount = params.get("ConsumerCount")
+        self.ConsumerName = params.get("ConsumerName")
+        self.MsgBacklog = params.get("MsgBacklog")
+        self.MsgRateExpired = params.get("MsgRateExpired")
+        self.MsgRateOut = params.get("MsgRateOut")
+        self.MsgThroughputOut = params.get("MsgThroughputOut")
+        self.SubscriptionName = params.get("SubscriptionName")
+        if params.get("ConsumerSets") is not None:
+            self.ConsumerSets = []
+            for item in params.get("ConsumerSets"):
+                obj = Consumer()
+                obj._deserialize(item)
+                self.ConsumerSets.append(obj)
+        self.IsOnline = params.get("IsOnline")
+        if params.get("ConsumersScheduleSets") is not None:
+            self.ConsumersScheduleSets = []
+            for item in params.get("ConsumersScheduleSets"):
+                obj = ConsumersSchedule()
+                obj._deserialize(item)
+                self.ConsumersScheduleSets.append(obj)
+        self.Remark = params.get("Remark")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.SubType = params.get("SubType")
+        self.BlockedSubscriptionOnUnackedMsgs = params.get("BlockedSubscriptionOnUnackedMsgs")
+        self.MaxUnackedMsgNum = params.get("MaxUnackedMsgNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubscriptionTopic(AbstractModel):
+    """Subscription
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: Environment (namespace) name.
+        :type EnvironmentId: str
+        :param TopicName: Topic name.
+        :type TopicName: str
+        :param SubscriptionName: Subscription name.
+        :type SubscriptionName: str
+        """
+        self.EnvironmentId = None
+        self.TopicName = None
+        self.SubscriptionName = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.TopicName = params.get("TopicName")
+        self.SubscriptionName = params.get("SubscriptionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Tag(AbstractModel):
     """Type of the tag key/value
 
@@ -4572,6 +6314,178 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Topic(AbstractModel):
+    """Topic instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AverageMsgSize: Average size of the messages published in the last interval in bytes.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AverageMsgSize: str
+        :param ConsumerCount: Number of consumers.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ConsumerCount: str
+        :param LastConfirmedEntry: Total number of recorded messages.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type LastConfirmedEntry: str
+        :param LastLedgerCreatedTimestamp: Time when the last ledger was created.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type LastLedgerCreatedTimestamp: str
+        :param MsgRateIn: Number of messages published by local and replicated publishers per second.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MsgRateIn: str
+        :param MsgRateOut: Sum of the numbers of messages delivered by local and replicated consumers per second.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MsgRateOut: str
+        :param MsgThroughputIn: Number of bytes of messages published by local and replicated publishers per second.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MsgThroughputIn: str
+        :param MsgThroughputOut: Number of bytes of messages delivered by local and replicated consumers per second.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MsgThroughputOut: str
+        :param NumberOfEntries: Total number of recorded messages.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type NumberOfEntries: str
+        :param Partitions: Number of partitions ≤ 0: there are no subpartitions in the topic.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Partitions: int
+        :param ProducerCount: Number of producers.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ProducerCount: str
+        :param TotalSize: Total amount of all stored messages in bytes.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TotalSize: str
+        :param SubTopicSets: Subpartitions in a partitioned topic.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SubTopicSets: list of PartitionsTopic
+        :param TopicType: Topic type description:
+0: general message;
+1: globally sequential message;
+2: partitionally sequential message;
+3: retry letter queue;
+4: dead letter queue;
+5: transaction message.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TopicType: int
+        :param EnvironmentId: Environment (namespace) name.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type EnvironmentId: str
+        :param TopicName: Topic name.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TopicName: str
+        :param Remark: Remarks (up to 128 characters).
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Remark: str
+        :param CreateTime: Creation time.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: str
+        :param UpdateTime: Modification time.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type UpdateTime: str
+        :param ProducerLimit: Maximum number of producers.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ProducerLimit: str
+        :param ConsumerLimit: Maximum number of consumers.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ConsumerLimit: str
+        :param PulsarTopicType: `0`: Non-persistent and non-partitioned
+`1`: Non-persistent and partitioned
+`2`: Persistent and non-partitioned
+`3`: Persistent and partitioned
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type PulsarTopicType: int
+        """
+        self.AverageMsgSize = None
+        self.ConsumerCount = None
+        self.LastConfirmedEntry = None
+        self.LastLedgerCreatedTimestamp = None
+        self.MsgRateIn = None
+        self.MsgRateOut = None
+        self.MsgThroughputIn = None
+        self.MsgThroughputOut = None
+        self.NumberOfEntries = None
+        self.Partitions = None
+        self.ProducerCount = None
+        self.TotalSize = None
+        self.SubTopicSets = None
+        self.TopicType = None
+        self.EnvironmentId = None
+        self.TopicName = None
+        self.Remark = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.ProducerLimit = None
+        self.ConsumerLimit = None
+        self.PulsarTopicType = None
+
+
+    def _deserialize(self, params):
+        self.AverageMsgSize = params.get("AverageMsgSize")
+        self.ConsumerCount = params.get("ConsumerCount")
+        self.LastConfirmedEntry = params.get("LastConfirmedEntry")
+        self.LastLedgerCreatedTimestamp = params.get("LastLedgerCreatedTimestamp")
+        self.MsgRateIn = params.get("MsgRateIn")
+        self.MsgRateOut = params.get("MsgRateOut")
+        self.MsgThroughputIn = params.get("MsgThroughputIn")
+        self.MsgThroughputOut = params.get("MsgThroughputOut")
+        self.NumberOfEntries = params.get("NumberOfEntries")
+        self.Partitions = params.get("Partitions")
+        self.ProducerCount = params.get("ProducerCount")
+        self.TotalSize = params.get("TotalSize")
+        if params.get("SubTopicSets") is not None:
+            self.SubTopicSets = []
+            for item in params.get("SubTopicSets"):
+                obj = PartitionsTopic()
+                obj._deserialize(item)
+                self.SubTopicSets.append(obj)
+        self.TopicType = params.get("TopicType")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.TopicName = params.get("TopicName")
+        self.Remark = params.get("Remark")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.ProducerLimit = params.get("ProducerLimit")
+        self.ConsumerLimit = params.get("ConsumerLimit")
+        self.PulsarTopicType = params.get("PulsarTopicType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopicRecord(AbstractModel):
+    """Topic's key information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: Environment (namespace) name.
+        :type EnvironmentId: str
+        :param TopicName: Topic name.
+        :type TopicName: str
+        """
+        self.EnvironmentId = None
+        self.TopicName = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.TopicName = params.get("TopicName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

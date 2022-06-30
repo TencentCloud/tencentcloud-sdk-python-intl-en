@@ -193,6 +193,11 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param V6Flag: Whether it’s an IPv6 address. `1`: Yes; `0`: No.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type V6Flag: int
+        :param BGPIPChannelFlag: Whether it’s an Anti-DDoS Advanced instance from Tencent Cloud channels. `1`: Yes; `0`: No.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type BGPIPChannelFlag: int
+        :param TagInfoList: 
+        :type TagInfoList: list of TagInfo
         """
         self.InstanceDetail = None
         self.SpecificationLimit = None
@@ -213,6 +218,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Domain = None
         self.DamDDoSStatus = None
         self.V6Flag = None
+        self.BGPIPChannelFlag = None
+        self.TagInfoList = None
 
 
     def _deserialize(self, params):
@@ -251,6 +258,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Domain = params.get("Domain")
         self.DamDDoSStatus = params.get("DamDDoSStatus")
         self.V6Flag = params.get("V6Flag")
+        self.BGPIPChannelFlag = params.get("BGPIPChannelFlag")
+        if params.get("TagInfoList") is not None:
+            self.TagInfoList = []
+            for item in params.get("TagInfoList"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.TagInfoList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3684,6 +3698,12 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         :type FilterDamDDoSStatus: int
         :param FilterStatus: Filters by status of bound resources. `idle`: normal; `attacking`: being attacked; `blocking`: blocked
         :type FilterStatus: str
+        :param FilterCname: Filters by the instance CNAME
+        :type FilterCname: str
+        :param FilterInstanceIdList: Filters by the instance ID
+        :type FilterInstanceIdList: list of str
+        :param FilterTag: 
+        :type FilterTag: :class:`tencentcloud.antiddos.v20200309.models.TagFilter`
         """
         self.Offset = None
         self.Limit = None
@@ -3696,6 +3716,9 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         self.FilterEipEipAddressStatus = None
         self.FilterDamDDoSStatus = None
         self.FilterStatus = None
+        self.FilterCname = None
+        self.FilterInstanceIdList = None
+        self.FilterTag = None
 
 
     def _deserialize(self, params):
@@ -3710,6 +3733,11 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         self.FilterEipEipAddressStatus = params.get("FilterEipEipAddressStatus")
         self.FilterDamDDoSStatus = params.get("FilterDamDDoSStatus")
         self.FilterStatus = params.get("FilterStatus")
+        self.FilterCname = params.get("FilterCname")
+        self.FilterInstanceIdList = params.get("FilterInstanceIdList")
+        if params.get("FilterTag") is not None:
+            self.FilterTag = TagFilter()
+            self.FilterTag._deserialize(params.get("FilterTag"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4119,12 +4147,15 @@ class DescribeListIPAlarmConfigRequest(AbstractModel):
         :type FilterAlarmType: int
         :param FilterIp: IP filter
         :type FilterIp: str
+        :param FilterCname: CNAME of the Anti-DDoS Advanced instance
+        :type FilterCname: str
         """
         self.Offset = None
         self.Limit = None
         self.FilterInstanceId = None
         self.FilterAlarmType = None
         self.FilterIp = None
+        self.FilterCname = None
 
 
     def _deserialize(self, params):
@@ -4133,6 +4164,7 @@ class DescribeListIPAlarmConfigRequest(AbstractModel):
         self.FilterInstanceId = params.get("FilterInstanceId")
         self.FilterAlarmType = params.get("FilterAlarmType")
         self.FilterIp = params.get("FilterIp")
+        self.FilterCname = params.get("FilterCname")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4547,6 +4579,76 @@ class DescribeListWaterPrintConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeOverviewDDoSEventListRequest(AbstractModel):
+    """DescribeOverviewDDoSEventList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: Start time
+        :type StartTime: str
+        :param EndTime: End time
+        :type EndTime: str
+        :param AttackStatus: Filters by the attack status. `start`: The attack is ongoing; `end`: The attack ends.
+        :type AttackStatus: str
+        :param Offset: The offset value
+        :type Offset: int
+        :param Limit: Total number of records
+        :type Limit: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.AttackStatus = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.AttackStatus = params.get("AttackStatus")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOverviewDDoSEventListResponse(AbstractModel):
+    """DescribeOverviewDDoSEventList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: Total number of records
+        :type Total: int
+        :param EventList: Event list
+        :type EventList: list of OverviewDDoSEvent
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.EventList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("EventList") is not None:
+            self.EventList = []
+            for item in params.get("EventList"):
+                obj = OverviewDDoSEvent()
+                obj._deserialize(item)
+                self.EventList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DisassociateDDoSEipAddressRequest(AbstractModel):
     """DisassociateDDoSEipAddress request structure.
 
@@ -4807,14 +4909,22 @@ class IPLineInfo(AbstractModel):
         :type Type: str
         :param Eip: 
         :type Eip: str
+        :param Cname: CNAME of the instance
+        :type Cname: str
+        :param ResourceFlag: Flag of the instance. `0`: Anti-DDoS Pro instance; `1`: Anti-DDoS Advanced instance; `2`: Non-Anti-DDoS Advanced instance.
+        :type ResourceFlag: int
         """
         self.Type = None
         self.Eip = None
+        self.Cname = None
+        self.ResourceFlag = None
 
 
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Eip = params.get("Eip")
+        self.Cname = params.get("Cname")
+        self.ResourceFlag = params.get("ResourceFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5007,14 +5117,17 @@ UDP
         :type Protocol: str
         :param RealServers: List of real servers
         :type RealServers: list of SourceServer
-        :param InstanceDetails: Anti-DDoS instance configured
+        :param InstanceDetails: Information of the Anti-DDoS instance
         :type InstanceDetails: list of InstanceRelation
+        :param InstanceDetailRule: Information of the Anti-DDoS instance configured
+        :type InstanceDetailRule: list of RuleInstanceRelation
         """
         self.BackendPort = None
         self.FrontendPort = None
         self.Protocol = None
         self.RealServers = None
         self.InstanceDetails = None
+        self.InstanceDetailRule = None
 
 
     def _deserialize(self, params):
@@ -5033,6 +5146,12 @@ UDP
                 obj = InstanceRelation()
                 obj._deserialize(item)
                 self.InstanceDetails.append(obj)
+        if params.get("InstanceDetailRule") is not None:
+            self.InstanceDetailRule = []
+            for item in params.get("InstanceDetailRule"):
+                obj = RuleInstanceRelation()
+                obj._deserialize(item)
+                self.InstanceDetailRule.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5055,13 +5174,16 @@ class Layer7Rule(AbstractModel):
         :type ProxyTypeList: list of ProxyTypeInfo
         :param RealServers: List of real servers
         :type RealServers: list of SourceServer
-        :param InstanceDetails: Anti-DDoS instance configured
+        :param InstanceDetails: Information of the Anti-DDoS instance
         :type InstanceDetails: list of InstanceRelation
+        :param InstanceDetailRule: Information of the Anti-DDoS instance configured
+        :type InstanceDetailRule: list of RuleInstanceRelation
         """
         self.Domain = None
         self.ProxyTypeList = None
         self.RealServers = None
         self.InstanceDetails = None
+        self.InstanceDetailRule = None
 
 
     def _deserialize(self, params):
@@ -5084,6 +5206,12 @@ class Layer7Rule(AbstractModel):
                 obj = InstanceRelation()
                 obj._deserialize(item)
                 self.InstanceDetails.append(obj)
+        if params.get("InstanceDetailRule") is not None:
+            self.InstanceDetailRule = []
+            for item in params.get("InstanceDetailRule"):
+                obj = RuleInstanceRelation()
+                obj._deserialize(item)
+                self.InstanceDetailRule.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5140,7 +5268,7 @@ class ModifyCCPrecisionPolicyRequest(AbstractModel):
         :type InstanceId: str
         :param PolicyId: Policy ID
         :type PolicyId: str
-        :param PolicyAction: Action of limiting request frequency. Valid values: `alg` (limit request frequency via verification codes) and `drop`(drop requests).
+        :param PolicyAction: Specifies the action. `alg`: Verify the access request via CAPTCHA; `drop`: Drop the access request.
         :type PolicyAction: str
         :param PolicyList: Policy records
         :type PolicyList: list of CCPrecisionPlyRecord
@@ -5618,6 +5746,70 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         
 
 
+class OverviewDDoSEvent(AbstractModel):
+    """DDoS events recorded
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: Event ID
+        :type Id: str
+        :param Vip: IP
+        :type Vip: str
+        :param StartTime: Start time
+        :type StartTime: str
+        :param EndTime: End time
+        :type EndTime: str
+        :param AttackType: Attack type
+        :type AttackType: str
+        :param AttackStatus: Attack status. `0`: The attack is ongoing; `1`: The attack ends.
+        :type AttackStatus: int
+        :param Mbps: Attack traffic, in Mbps
+        :type Mbps: int
+        :param Pps: Attack packets, in PPS
+        :type Pps: int
+        :param Business: Anti-DDoS service type. `bgp-multip`: Anti-DDoS Pro; `bgpip`: Anti-DDoS Advanced; `basic`: Anti-DDoS Basic.
+        :type Business: str
+        :param InstanceId: Anti-DDoS instance ID
+        :type InstanceId: str
+        :param InstanceName: Anti-DDoS instance name
+        :type InstanceName: str
+        """
+        self.Id = None
+        self.Vip = None
+        self.StartTime = None
+        self.EndTime = None
+        self.AttackType = None
+        self.AttackStatus = None
+        self.Mbps = None
+        self.Pps = None
+        self.Business = None
+        self.InstanceId = None
+        self.InstanceName = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Vip = params.get("Vip")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.AttackType = params.get("AttackType")
+        self.AttackStatus = params.get("AttackStatus")
+        self.Mbps = params.get("Mbps")
+        self.Pps = params.get("Pps")
+        self.Business = params.get("Business")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PackInfo(AbstractModel):
     """Package information
 
@@ -6082,6 +6274,38 @@ class RegionInfo(AbstractModel):
         
 
 
+class RuleInstanceRelation(AbstractModel):
+    """Information of the Anti-DDoS instance using layer-4/7 forwarding rules
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EipList: Instance IP
+        :type EipList: list of str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Cname: Instance CNAME
+        :type Cname: str
+        """
+        self.EipList = None
+        self.InstanceId = None
+        self.Cname = None
+
+
+    def _deserialize(self, params):
+        self.EipList = params.get("EipList")
+        self.InstanceId = params.get("InstanceId")
+        self.Cname = params.get("Cname")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SchedulingDomainInfo(AbstractModel):
     """Scheduling domain name details
 
@@ -6326,6 +6550,62 @@ class SwitchWaterPrintConfigResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class TagFilter(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagKey: 
+        :type TagKey: str
+        :param TagValue: 
+        :type TagValue: list of str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagInfo(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagKey: 
+        :type TagKey: str
+        :param TagValue: 
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class WaterPrintConfig(AbstractModel):

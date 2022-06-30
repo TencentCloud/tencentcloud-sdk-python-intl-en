@@ -41,7 +41,7 @@ FAILEDOPERATION_CONFINUSED = 'FailedOperation.ConfInUsed'
 # The domain name cannot be deleted because it incurred traffic in the last 2 days and is in locked state.
 FAILEDOPERATION_DELETEDOMAININLOCKEDTIME = 'FailedOperation.DeleteDomainInLockedTime'
 
-# 
+# Failed to configure the domain rule.
 FAILEDOPERATION_DOMAINGSLBFAIL = 'FailedOperation.DomainGslbFail'
 
 # Unable to get the watermark URL.

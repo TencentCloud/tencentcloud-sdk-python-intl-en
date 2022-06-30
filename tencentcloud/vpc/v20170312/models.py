@@ -1006,7 +1006,7 @@ class AssociateNatGatewayAddressRequest(AbstractModel):
         r"""
         :param NatGatewayId: The ID of the NAT gateway, such as `nat-df45454`.
         :type NatGatewayId: str
-        :param AddressCount: The number of EIPs you want to apply for. The system will create the same number of EIPs as you require. Either `AddressCount` or `PublicAddresses` must be passed in.
+        :param AddressCount: The number of EIPs you want to apply for. Either `AddressCount` or `PublicAddresses` must be passed in.
         :type AddressCount: int
         :param PublicIpAddresses: Array of the EIPs bound to the NAT gateway. Either `AddressCount` or `PublicAddresses` must be passed in.
         :type PublicIpAddresses: list of str
@@ -1014,9 +1014,9 @@ class AssociateNatGatewayAddressRequest(AbstractModel):
         :type Zone: str
         :param StockPublicIpAddressesBandwidthOut: The bandwidth size (in Mbps) of the EIP bound to the NAT gateway, which defaults to the maximum value applicable for the current user type.
         :type StockPublicIpAddressesBandwidthOut: int
-        :param PublicIpAddressesBandwidthOut: The requested size of the public network IP bandwidth (in Mbps), which defaults to the maximum value applicable for the current user type.
+        :param PublicIpAddressesBandwidthOut: The size of the public network IP bandwidth to be applied for (in Mbps), which defaults to the maximum value applicable for the current user type.
         :type PublicIpAddressesBandwidthOut: int
-        :param PublicIpFromSameZone: 
+        :param PublicIpFromSameZone: Whether the public IP and the NAT gateway must be in the same availability zone. Valid values: `true` and `false`. This parameter is valid only when `Zone` is specified.
         :type PublicIpFromSameZone: bool
         """
         self.NatGatewayId = None
@@ -3061,27 +3061,27 @@ class CreateNatGatewayRequest(AbstractModel):
         r"""
         :param NatGatewayName: NAT gateway name
         :type NatGatewayName: str
-        :param VpcId: The ID of the VPC instance. You can obtain the parameter value from the VpcId field in the returned result of DescribeVpcs API.
+        :param VpcId: The ID of the VPC instance, which can be obtained from the `VpcId` field in response of the `DescribeVpcs` API.
         :type VpcId: str
-        :param InternetMaxBandwidthOut: The maximum outbound bandwidth of the NAT gateway (unit: Mbps). Supported parameter values: `20, 50, 100, 200, 500, 1000, 2000, 5000`. Default: `100Mbps`.
+        :param InternetMaxBandwidthOut: The maximum outbound bandwidth of the NAT gateway (unit: Mbps). Supported parameter values: `20, 50, 100, 200, 500, 1000, 2000, 5000`. Default: `100`.
         :type InternetMaxBandwidthOut: int
-        :param MaxConcurrentConnection: The concurrent connection cap of the NAT gateway. Supported parameter values: `1000000, 3000000, 10000000`. The default value is `100000`.
+        :param MaxConcurrentConnection: The concurrent connection cap of the NAT gateway. Values: `1000000, 3000000, 10000000`. The default value is `1000000`.
         :type MaxConcurrentConnection: int
-        :param AddressCount: The number of EIPs that needs to be applied for. The system will create N number of EIPs according to your requirements. Either AddressCount or PublicAddresses must be passed in.
+        :param AddressCount: The number of EIPs that you want to apply for. Either `AddressCount` or `PublicIpAddresses` must be passed in.
         :type AddressCount: int
-        :param PublicIpAddresses: The EIP array bound to the NAT gateway. Either AddressCount or PublicAddresses must be passed in.
+        :param PublicIpAddresses: The EIP array bound to the NAT gateway. Either AddressCount or PublicIpAddresses must be passed in.
         :type PublicIpAddresses: list of str
         :param Zone: The availability zone, such as `ap-guangzhou-1`.
         :type Zone: str
-        :param Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
+        :param Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}]
         :type Tags: list of Tag
         :param SubnetId: Subnet of the NAT gateway
         :type SubnetId: str
         :param StockPublicIpAddressesBandwidthOut: The bandwidth size (in Mbps) of the EIP bound to the NAT gateway, which defaults to the maximum value applicable for the current user type.
         :type StockPublicIpAddressesBandwidthOut: int
-        :param PublicIpAddressesBandwidthOut: The requested size of the public network IP bandwidth (in Mbps), which defaults to the maximum value applicable for the current user type.
+        :param PublicIpAddressesBandwidthOut: The size of the public network IP bandwidth to be applied for (in Mbps), which defaults to the maximum value applicable for the current user type.
         :type PublicIpAddressesBandwidthOut: int
-        :param PublicIpFromSameZone: 
+        :param PublicIpFromSameZone: Whether the public IP and the NAT gateway must be in the same availability zone. Valid values: `true` and `false`. This parameter is valid only when `Zone` is specified.
         :type PublicIpFromSameZone: bool
         """
         self.NatGatewayName = None
@@ -3134,7 +3134,7 @@ class CreateNatGatewayResponse(AbstractModel):
         r"""
         :param NatGatewaySet: NAT gateway object array.
         :type NatGatewaySet: list of NatGateway
-        :param TotalCount: The number of NAT gateway objects meeting the conditions.
+        :param TotalCount: The number of eligible NAT gateway objects.
         :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3362,6 +3362,8 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
         :param Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
         :type Tags: list of Tag
+        :param TrunkingFlag: Configuration of the ENI trunking mode. Valid values: `Enable` and `Disable`. Default value: `Disable`.
+        :type TrunkingFlag: str
         """
         self.VpcId = None
         self.NetworkInterfaceName = None
@@ -3371,6 +3373,7 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         self.SecurityGroupIds = None
         self.PrivateIpAddresses = None
         self.Tags = None
+        self.TrunkingFlag = None
 
 
     def _deserialize(self, params):
@@ -3392,6 +3395,7 @@ class CreateNetworkInterfaceRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.TrunkingFlag = params.get("TrunkingFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8029,19 +8033,19 @@ class DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest(AbstractMode
         r"""
         :param NatGatewayIds: NAT gateway ID.
         :type NatGatewayIds: list of str
-        :param Filters: Filter conditions:
+        :param Filters: Filters:
 `NatGatewayIds` and `Filters` cannot be specified at the same time.
-<li> nat-gateway-id, the NAT gateway ID, such as `nat-0yi4hekt`.</li>
-<li> vpc-id, the VPC ID, such as `vpc-0yi4hekt`.</li>
-<li> public-ip-address, the EIP, such as `139.199.232.238`.</li>
-<li>public-port, the public network port.</li>
-<li>private-ip-address, the private IP, such as `10.0.0.1`.</li>
-<li>private-port, the private network port.</li>
-<li>description, the rule description.</li>
+<li> `nat-gateway-id`: The NAT gateway ID, such as `nat-0yi4hekt`.</li>
+<li> `vpc-id`: The VPC ID, such as `vpc-0yi4hekt`.</li>
+<li> `public-ip-address`: The EIP, such as `139.199.232.238`.</li>
+<li>`public-port`: The public network port.</li>
+<li>`private-ip-address`: The private IP, such as `10.0.0.1`.</li>
+<li>`private-port`. The private network port.</li>
+<li>`description`. The rule description.</li>
         :type Filters: list of Filter
-        :param Offset: Offset. The default value is 0.
+        :param Offset: Offset. Default value: 0.
         :type Offset: int
-        :param Limit: Number of values to be returned. The default value is 20. Maximum is 100.
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
         """
         self.NatGatewayIds = None
@@ -8078,7 +8082,7 @@ class DescribeNatGatewayDestinationIpPortTranslationNatRulesResponse(AbstractMod
         r"""
         :param NatGatewayDestinationIpPortTranslationNatRuleSet: The object array of port forwarding rules for the NAT gateway.
         :type NatGatewayDestinationIpPortTranslationNatRuleSet: list of NatGatewayDestinationIpPortTranslationNatRule
-        :param TotalCount: The number of object arrays of NAT port forwarding rules meeting the conditions.
+        :param TotalCount: The number of eligible object arrays of NAT port forwarding rules.
         :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -8099,6 +8103,72 @@ class DescribeNatGatewayDestinationIpPortTranslationNatRulesResponse(AbstractMod
         self.RequestId = params.get("RequestId")
 
 
+class DescribeNatGatewayDirectConnectGatewayRouteRequest(AbstractModel):
+    """DescribeNatGatewayDirectConnectGatewayRoute request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NatGatewayId: Unique ID of the NAT gateway
+        :type NatGatewayId: str
+        :param VpcId: Unique ID of VPC
+        :type VpcId: str
+        :param Limit: Valid range: 0-200
+        :type Limit: int
+        :param Offset: Greater than 0
+        :type Offset: int
+        """
+        self.NatGatewayId = None
+        self.VpcId = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.VpcId = params.get("VpcId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNatGatewayDirectConnectGatewayRouteResponse(AbstractModel):
+    """DescribeNatGatewayDirectConnectGatewayRoute response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NatDirectConnectGatewayRouteSet: Route data
+        :type NatDirectConnectGatewayRouteSet: list of NatDirectConnectGatewayRoute
+        :param Total: Total number of routes
+        :type Total: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.NatDirectConnectGatewayRouteSet = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NatDirectConnectGatewayRouteSet") is not None:
+            self.NatDirectConnectGatewayRouteSet = []
+            for item in params.get("NatDirectConnectGatewayRouteSet"):
+                obj = NatDirectConnectGatewayRoute()
+                obj._deserialize(item)
+                self.NatDirectConnectGatewayRouteSet.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeNatGatewaySourceIpTranslationNatRulesRequest(AbstractModel):
     """DescribeNatGatewaySourceIpTranslationNatRules request structure.
 
@@ -8108,12 +8178,12 @@ class DescribeNatGatewaySourceIpTranslationNatRulesRequest(AbstractModel):
         r"""
         :param NatGatewayId: The unique ID of the NAT Gateway, such as `nat-123xx454`.
         :type NatGatewayId: str
-        :param Filters: Filter conditions:
-<li> resource-id, the subnet ID (such as `subnet-0yi4hekt`) or CVM ID</li>
-<li> public-ip-address, the EIP, such as `139.199.232.238`</li>
-<li>description, the rule description</li>
+        :param Filters: Filter:
+<li>`resource-id`: The subnet ID (such as `subnet-0yi4hekt`) or CVM ID</li>
+<li>`public-ip-address`: The EIP, such as `139.199.232.238`</li>
+<li>`description` The rule description</li>
         :type Filters: list of Filter
-        :param Offset: Offset. Default is 0.
+        :param Offset: Offset. Default value: 0.
         :type Offset: int
         :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
@@ -8150,10 +8220,10 @@ class DescribeNatGatewaySourceIpTranslationNatRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SourceIpTranslationNatRuleSet: Object array of the SNAT rule for a NAT Gateway.
+        :param SourceIpTranslationNatRuleSet: Array of objects of a NAT gateway's SNAT rules.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type SourceIpTranslationNatRuleSet: list of SourceIpTranslationNatRule
-        :param TotalCount: The number of object arrays of eligible forwarding rules for a NAT Gateway
+        :param TotalCount: The number of eligible object arrays of a NAT gateway's forwarding rules.
         :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -8183,15 +8253,15 @@ class DescribeNatGatewaysRequest(AbstractModel):
         r"""
         :param NatGatewayIds: The unified ID of the NAT gateways, such as `nat-123xx454`.
         :type NatGatewayIds: list of str
-        :param Filters: Filter condition. `NatGatewayIds` and `Filters` cannot be specified at the same time.
-<li>nat-gateway-id - String - (Filter condition) The ID of the protocol port template instance, such as `nat-123xx454`.</li>
-<li>vpc-id - String - (Filter condition) The unique ID of the VPC, such as `vpc-123xx454`.</li>
-<li>nat-gateway-name - String - (Filter condition) The name of the protocol port template instance, such as `test_nat`.</li>
-<li>tag-key - String - (Filter condition) The tag key, such as `test-key`.</li>
+        :param Filters: Filters. `NatGatewayIds` and `Filters` cannot be specified at the same time.
+<li>nat-gateway-id - String - (Filter) The ID of the protocol port template instance, such as `nat-123xx454`.</li>
+<li>vpc-id - String - (Filter) The unique ID of the VPC, such as `vpc-123xx454`.</li>
+<li>nat-gateway-name - String - (Filter) The ID of the protocol port template instance, such as `test_nat`.</li>
+<li>tag-key - String - (Filter) The tag key, such as `test-key`.</li>
         :type Filters: list of Filter
-        :param Offset: Offset. The default value is 0.
+        :param Offset: Offset. Default value: 0.
         :type Offset: int
-        :param Limit: Number of values to be returned. The default value is 20. Maximum is 100.
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
         """
         self.NatGatewayIds = None
@@ -8228,7 +8298,7 @@ class DescribeNatGatewaysResponse(AbstractModel):
         r"""
         :param NatGatewaySet: NAT gateway object array.
         :type NatGatewaySet: list of NatGateway
-        :param TotalCount: The number of NAT gateway object sets meeting the conditions.
+        :param TotalCount: The number of eligible NAT gateway objects.
         :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -8515,6 +8585,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param ExtendEniPrivateIpAddressQuantity: Quota of IP addresses that can be allocated to each extension-mounted ENI.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ExtendEniPrivateIpAddressQuantity: int
+        :param SubEniQuantity: The quota of relayed ENIs
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type SubEniQuantity: int
+        :param SubEniPrivateIpAddressQuantity: The quota of IPs that can be assigned to each relayed ENI.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type SubEniPrivateIpAddressQuantity: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -8522,6 +8598,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.EniPrivateIpAddressQuantity = None
         self.ExtendEniQuantity = None
         self.ExtendEniPrivateIpAddressQuantity = None
+        self.SubEniQuantity = None
+        self.SubEniPrivateIpAddressQuantity = None
         self.RequestId = None
 
 
@@ -8530,6 +8608,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.EniPrivateIpAddressQuantity = params.get("EniPrivateIpAddressQuantity")
         self.ExtendEniQuantity = params.get("ExtendEniQuantity")
         self.ExtendEniPrivateIpAddressQuantity = params.get("ExtendEniPrivateIpAddressQuantity")
+        self.SubEniQuantity = params.get("SubEniQuantity")
+        self.SubEniPrivateIpAddressQuantity = params.get("SubEniPrivateIpAddressQuantity")
         self.RequestId = params.get("RequestId")
 
 
@@ -8542,18 +8622,20 @@ class DescribeNetworkInterfacesRequest(AbstractModel):
         r"""
         :param NetworkInterfaceIds: Queries the ID of the ENI instance, such as `eni-pxir56ns`. Each request can have a maximum of 100 instances. `NetworkInterfaceIds` and `Filters` cannot be specified at the same time.
         :type NetworkInterfaceIds: list of str
-        :param Filters: Filter condition. `NetworkInterfaceIds` and `Filters` cannot be specified at the same time.
-<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>
-<li>subnet-id - String - (Filter condition) Subnet instance ID, such as `subnet-f49l6u0z`.</li>
-<li>network-interface-id - String - (Filter condition) ENI instance ID, such as `eni-5k56k7k7`.</li>
-<li>attachment.instance-id - String - (Filter condition) CVM instance ID, such as `ins-3nqpdn3i`.</li>
-<li>groups.security-group-id - String - (Filter condition) Instance ID of the security group, such as `sg-f9ekbxeq`.</li>
-<li>network-interface-name - String - (Filter condition) ENI instance name.</li>
-<li>network-interface-description - String - (Filter condition) ENI instance description.</li>
-<li>address-ip - String - (Filter condition) Private IPv4 address.</li>
-<li>tag-key - String - Required: no - (Filter condition) Filters by tag key. For more information, see Example 2.</li>
-<li> `tag:tag-key` - String - Required: no - (Filter condition) Filters by tag key pair. For this parameter, `tag-key` will be replaced with a specific tag key. For more information, see Example 3.</li>
-<li>is-primary - Boolean - Required: no - (Filter condition) Filters based on whether it is a primary ENI. If the value is ‘true’, filter only the primary ENI. If the value is ‘false’, filter only the secondary ENI. If the secondary filter parameter is provided, filter the both.</li>
+        :param Filters: Filter. `NetworkInterfaceIds` and `Filters` cannot be specified at the same time.
+<li>`vpc-id` - String - VPC instance ID, such as `vpc-f49l6u0z`.</li>
+<li>`subnet-id` - String - Subnet instance ID, such as `subnet-f49l6u0z`.</li>
+<li>`network-interface-id` - String - ENI instance ID, such as `eni-5k56k7k7`.</li>
+<li>`attachment.instance-id` - String - ID of the bound CVM instance, such as `ins-3nqpdn3i`.</li>
+<li>`groups.security-group-id` - String - ID of the bound security group, such as `sg-f9ekbxeq`.</li>
+<li>`network-interface-name` - String - ENI instance name.</li>
+<li>`network-interface-description` - String - ENI instance description.</li>
+<li>`address-ip` - String - Private IPv4 address. A single IP will be fuzzily matched with the suffix, while multiple IPs will be exactly matched. It can be used with `ip-exact-match` to query and exactly match a single IP.</li>
+<li>`ip-exact-match` - Boolean - Exact match by private IPv4 address. The first value will be returned if multiple values are found.</li>
+<li>`tag-key` - String - Optional - Filter by tag key. See Example 2 for the detailed usage.</li>
+<li>`tag:tag-key` - String - Optional - Filter by tag key pair. Use a specific tag key to replace `tag-key`. See Example 3 for the detailed usage.</li>
+<li>`is-primary` - Boolean - Optional - Filter based on whether it is a primary ENI. If the value is `true`, filter only the primary ENI. If the value is `false`, filter only the secondary ENI. If this parameter is not specified, filter the both.</li>
+<li>`eni-type` - String - Optional - Filter by ENI type. "0" - secondary ENI, "1" - primary ENI, "2": relayed ENI</li>
         :type Filters: list of Filter
         :param Offset: Offset. Default value: 0.
         :type Offset: int
@@ -10084,17 +10166,17 @@ class DestinationIpPortTranslationNatRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IpProtocol: Network protocol. Available choices: `TCP`, `UDP`.
+        :param IpProtocol: Network protocol. Valid values: `TCP`, `UDP`.
         :type IpProtocol: str
         :param PublicIpAddress: EIP.
         :type PublicIpAddress: str
-        :param PublicPort: Public port.
+        :param PublicPort: Public network port.
         :type PublicPort: int
         :param PrivateIpAddress: Private network address.
         :type PrivateIpAddress: str
         :param PrivatePort: Private network port.
         :type PrivatePort: int
-        :param Description: NAT gateway forwarding rule description.
+        :param Description: Description of NAT gateway forwarding rules.
         :type Description: str
         """
         self.IpProtocol = None
@@ -10426,6 +10508,34 @@ class DirectConnectGatewayCcnRoute(AbstractModel):
         self.ASPath = params.get("ASPath")
         self.Description = params.get("Description")
         self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DirectConnectSubnet(AbstractModel):
+    """IDC subnet information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DirectConnectGatewayId: The direct connect gateway ID.
+        :type DirectConnectGatewayId: str
+        :param CidrBlock: IDC subnet IP range
+        :type CidrBlock: str
+        """
+        self.DirectConnectGatewayId = None
+        self.CidrBlock = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectGatewayId = params.get("DirectConnectGatewayId")
+        self.CidrBlock = params.get("CidrBlock")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13266,7 +13376,7 @@ class ModifyNatGatewayAttributeRequest(AbstractModel):
         :type NatGatewayName: str
         :param InternetMaxBandwidthOut: The maximum outbound bandwidth of the NAT gateway. Unit: Mbps.
         :type InternetMaxBandwidthOut: int
-        :param ModifySecurityGroup: Whether to modify the security group bound to the NAT Gateway
+        :param ModifySecurityGroup: Whether to modify the security group bound to the NAT gateway
         :type ModifySecurityGroup: bool
         :param SecurityGroupIds: The final security groups bound to the NAT Gateway, such as `['sg-1n232323', 'sg-o4242424']`. An empty list indicates that all the security groups have been deleted.
         :type SecurityGroupIds: list of str
@@ -13590,11 +13700,14 @@ class ModifyNetworkInterfaceAttributeRequest(AbstractModel):
         :type NetworkInterfaceDescription: str
         :param SecurityGroupIds: The specified security groups to be bound with, such as ['sg-1dd51d'].
         :type SecurityGroupIds: list of str
+        :param TrunkingFlag: Configuration of the ENI trunking mode. Valid values: `Enable` and `Disable`. Default value: `Disable`.
+        :type TrunkingFlag: str
         """
         self.NetworkInterfaceId = None
         self.NetworkInterfaceName = None
         self.NetworkInterfaceDescription = None
         self.SecurityGroupIds = None
+        self.TrunkingFlag = None
 
 
     def _deserialize(self, params):
@@ -13602,6 +13715,7 @@ class ModifyNetworkInterfaceAttributeRequest(AbstractModel):
         self.NetworkInterfaceName = params.get("NetworkInterfaceName")
         self.NetworkInterfaceDescription = params.get("NetworkInterfaceDescription")
         self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.TrunkingFlag = params.get("TrunkingFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14448,6 +14562,47 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.RequestId = params.get("RequestId")
 
 
+class NatDirectConnectGatewayRoute(AbstractModel):
+    """Query the returned object of a NAT route
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DestinationCidrBlock: The `IPv4` `CIDR` of the subnet.
+        :type DestinationCidrBlock: str
+        :param GatewayType: The type of the next-hop gateway. Supported types:
+`DIRECTCONNECT`: Direct connect gateway
+        :type GatewayType: str
+        :param GatewayId: ID of the next-hop gateway
+        :type GatewayId: str
+        :param CreateTime: The creation time of the route
+        :type CreateTime: str
+        :param UpdateTime: The update time of the route
+        :type UpdateTime: str
+        """
+        self.DestinationCidrBlock = None
+        self.GatewayType = None
+        self.GatewayId = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.DestinationCidrBlock = params.get("DestinationCidrBlock")
+        self.GatewayType = params.get("GatewayType")
+        self.GatewayId = params.get("GatewayId")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NatGateway(AbstractModel):
     """NAT gateway object.
 
@@ -14462,8 +14617,8 @@ class NatGateway(AbstractModel):
         :param CreatedTime: NAT gateway creation time.
         :type CreatedTime: str
         :param State: The status of the NAT gateway.
- 'PENDING': Creating, 'DELETING': Deleting, 'AVAILABLE': Operating, 'UPDATING': Upgrading,
-‘FAILED’: Failed.
+ `PENDING`: Being created, `DELETING`: Being deleted, `AVAILABLE`: Running, `UPDATING`: Being upgraded,
+`FAILED`: Failed.
         :type State: str
         :param InternetMaxBandwidthOut: The maximum outbound bandwidth of the gateway. Unit: Mbps.
         :type InternetMaxBandwidthOut: int
@@ -14471,7 +14626,7 @@ class NatGateway(AbstractModel):
         :type MaxConcurrentConnection: int
         :param PublicIpAddressSet: The public IP object array of the bound NAT gateway.
         :type PublicIpAddressSet: list of NatGatewayAddress
-        :param NetworkState: The NAT gateway status. `AVAILABLE`: Operating, `UNAVAILABLE`: Unavailable, `INSUFFICIENT`: Account is in arrears and the service is suspended.
+        :param NetworkState: The NAT gateway status. `AVAILABLE`: Operating, `UNAVAILABLE`: Unavailable, `INSUFFICIENT`: Service suspended due to account overdue.
         :type NetworkState: str
         :param DestinationIpPortTranslationNatRuleSet: The port forwarding rules of the NAT gateway.
         :type DestinationIpPortTranslationNatRuleSet: list of DestinationIpPortTranslationNatRule
@@ -14479,23 +14634,25 @@ class NatGateway(AbstractModel):
         :type VpcId: str
         :param Zone: The availability zone in which the NAT gateway is located.
         :type Zone: str
-        :param DirectConnectGatewayIds: IDs of direct connect gateway associated.
+        :param DirectConnectGatewayIds: ID of the direct connect gateway bound.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type DirectConnectGatewayIds: list of str
         :param SubnetId: Subnet ID.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type SubnetId: str
-        :param TagSet: Tag key-value pair.
+        :param TagSet: Tag key-value pairs.
         :type TagSet: list of Tag
         :param SecurityGroupSet: The list of the security groups bound to the NAT Gateway
-Note: this field may return `null`, indicating that no valid values can be obtained.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type SecurityGroupSet: list of str
-        :param SourceIpTranslationNatRuleSet: SNAT forwarding rule of the NAT Gateway.
-Note: this field may return `null`, indicating that no valid value can be obtained.
+        :param SourceIpTranslationNatRuleSet: SNAT forwarding rule of the NAT gateway.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type SourceIpTranslationNatRuleSet: list of SourceIpTranslationNatRule
-        :param IsExclusive: Whether the NAT Gateway is dedicated.
-Note: this field may return `null`, indicating that no valid value can be obtained.
+        :param IsExclusive: Whether the NAT gateway is dedicated.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type IsExclusive: bool
         :param ExclusiveGatewayBandwidth: Bandwidth of the gateway cluster where the dedicated NAT Gateway resides. Unit: Mbps. This field does not exist when the `IsExclusive` field is set to `false`.
-Note: this field may return `null`, indicating that no valid value can be obtained.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type ExclusiveGatewayBandwidth: int
         """
         self.NatGatewayId = None
@@ -14611,20 +14768,20 @@ class NatGatewayDestinationIpPortTranslationNatRule(AbstractModel):
         :type PublicIpAddress: str
         :param PublicPort: Public port.
         :type PublicPort: int
-        :param PrivateIpAddress: Private network address.
+        :param PrivateIpAddress: Private IP.
         :type PrivateIpAddress: str
-        :param PrivatePort: Private network port.
+        :param PrivatePort: Private port.
         :type PrivatePort: int
         :param Description: NAT gateway forwarding rule description.
         :type Description: str
         :param NatGatewayId: NAT gateway ID.
-Note: This field may return null, indicating no valid value.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type NatGatewayId: str
         :param VpcId: VPC ID.
-Note: This field may return null, indicating no valid value.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type VpcId: str
         :param CreatedTime: The creation time of the NAT gateway forwarding rule.
-Note: This field may return null, indicating no valid value.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type CreatedTime: str
         """
         self.IpProtocol = None
@@ -15314,6 +15471,64 @@ class ReferredSecurityGroup(AbstractModel):
         
 
 
+class RefreshDirectConnectGatewayRouteToNatGatewayRequest(AbstractModel):
+    """RefreshDirectConnectGatewayRouteToNatGateway request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param NatGatewayId: The NAT gateway ID.
+        :type NatGatewayId: str
+        :param DryRun: Whether it is pre-refresh. Valid values: `True` (yes) and `False` (no)
+        :type DryRun: bool
+        """
+        self.VpcId = None
+        self.NatGatewayId = None
+        self.DryRun = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.DryRun = params.get("DryRun")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RefreshDirectConnectGatewayRouteToNatGatewayResponse(AbstractModel):
+    """RefreshDirectConnectGatewayRouteToNatGateway response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DirectConnectSubnetSet: IDC subnet information
+        :type DirectConnectSubnetSet: list of DirectConnectSubnet
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DirectConnectSubnetSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DirectConnectSubnetSet") is not None:
+            self.DirectConnectSubnetSet = []
+            for item in params.get("DirectConnectSubnetSet"):
+                obj = DirectConnectSubnet()
+                obj._deserialize(item)
+                self.DirectConnectSubnetSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class RejectAttachCcnInstancesRequest(AbstractModel):
     """RejectAttachCcnInstances request structure.
 
@@ -15782,7 +15997,7 @@ class ResetNatGatewayConnectionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NatGatewayId: NAT gateway ID.
+        :param NatGatewayId: The NAT gateway ID.
         :type NatGatewayId: str
         :param MaxConcurrentConnection: Concurrent connections cap of the NAT gateway, such as 1000000, 3000000, 10000000.
         :type MaxConcurrentConnection: int
@@ -16838,7 +17053,7 @@ class SourceIpTranslationNatRule(AbstractModel):
         :param ResourceId: Resource ID
         :type ResourceId: str
         :param ResourceType: Resource type. Valid values: SUBNET, NETWORKINTERFACE
-Note: this field may return `null`, indicating that no valid values can be obtained.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type ResourceType: str
         :param PrivateIpAddress: Source IP/IP range
         :type PrivateIpAddress: str
@@ -16848,14 +17063,14 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :type Description: str
         :param NatGatewaySnatId: SNAT rule ID
         :type NatGatewaySnatId: str
-        :param NatGatewayId: NAT Gateway ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param NatGatewayId: NAT gateway ID.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type NatGatewayId: str
-        :param VpcId: VPC ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param VpcId: VPC ID.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type VpcId: str
-        :param CreatedTime: Creation time of a SNAT rule for a NAT Gateway
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param CreatedTime: The creation time of a NAT gateway's SNAT rule.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type CreatedTime: str
         """
         self.ResourceId = None
