@@ -26,21 +26,21 @@ class CdnClient(AbstractClient):
     _service = 'cdn'
 
 
-    def AddCdnDomain(self, request):
-        """This API is used to add a CDN acceleration domain name.
+    def AddCLSTopicDomains(self, request):
+        """This API is used to add one or more domains to a specified log topic.
 
-        :param request: Request instance for AddCdnDomain.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.AddCdnDomainRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.AddCdnDomainResponse`
+        :param request: Request instance for AddCLSTopicDomains.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.AddCLSTopicDomainsRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.AddCLSTopicDomainsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("AddCdnDomain", params, headers=headers)
+            body = self.call("AddCLSTopicDomains", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.AddCdnDomainResponse()
+                model = models.AddCLSTopicDomainsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -201,7 +201,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeCdnData(self, request):
-        """This API (DescribeCdnData) is used to query CDN real-time access monitoring data and supports the following metrics:
+        """This API is used to query CDN real-time access monitoring data and supports the following metrics:
 
         + Traffic (in bytes)
         + Bandwidth (in bps)
@@ -509,7 +509,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeOriginData(self, request):
-        """This API (DescribeOriginData) is used to query CDN real-time origin-pull monitoring data and supports the following metrics:
+        """This API is used to query CDN real-time origin-pull monitoring data and supports the following metrics:
 
         + Origin-pull traffic (in bytes)
         + Origin-pull bandwidth (in bps)

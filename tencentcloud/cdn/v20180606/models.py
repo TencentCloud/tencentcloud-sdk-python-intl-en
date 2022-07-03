@@ -99,238 +99,38 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
-class AddCdnDomainRequest(AbstractModel):
-    """AddCdnDomain request structure.
+class AddCLSTopicDomainsRequest(AbstractModel):
+    """AddCLSTopicDomains request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param Domain: Domain name
-        :type Domain: str
-        :param ServiceType: Acceleration domain name service type
-`web`: Webpage file downloads
-`download`: Large file downloads
-`media`: Audio and video on demand acceleration
-`hybrid`: Dynamic and static content acceleration
-`dynamic`: Dynamic content acceleration
-        :type ServiceType: str
-        :param Origin: Origin server configuration
-        :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`
-        :param ProjectId: Project ID. Default value: 0, indicating `Default Project`
-        :type ProjectId: int
-        :param IpFilter: IP blocklist/allowlist configuration
-        :type IpFilter: :class:`tencentcloud.cdn.v20180606.models.IpFilter`
-        :param IpFreqLimit: IP access limit configuration
-        :type IpFreqLimit: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`
-        :param StatusCodeCache: Status code cache configuration
-        :type StatusCodeCache: :class:`tencentcloud.cdn.v20180606.models.StatusCodeCache`
-        :param Compression: Smart compression configuration
-        :type Compression: :class:`tencentcloud.cdn.v20180606.models.Compression`
-        :param BandwidthAlert: Bandwidth cap configuration
-        :type BandwidthAlert: :class:`tencentcloud.cdn.v20180606.models.BandwidthAlert`
-        :param RangeOriginPull: Range GETs configuration
-        :type RangeOriginPull: :class:`tencentcloud.cdn.v20180606.models.RangeOriginPull`
-        :param FollowRedirect: 301/302 origin-pull follow-redirect configuration
-        :type FollowRedirect: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`
-        :param ErrorPage: Error code redirect configuration (This feature is in beta and not generally available yet.)
-        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`
-        :param RequestHeader: Request header configuration
-        :type RequestHeader: :class:`tencentcloud.cdn.v20180606.models.RequestHeader`
-        :param ResponseHeader: Response header configuration
-        :type ResponseHeader: :class:`tencentcloud.cdn.v20180606.models.ResponseHeader`
-        :param DownstreamCapping: Download speed configuration
-        :type DownstreamCapping: :class:`tencentcloud.cdn.v20180606.models.DownstreamCapping`
-        :param CacheKey: Node cache key configuration
-        :type CacheKey: :class:`tencentcloud.cdn.v20180606.models.CacheKey`
-        :param ResponseHeaderCache: Header cache configuration
-        :type ResponseHeaderCache: :class:`tencentcloud.cdn.v20180606.models.ResponseHeaderCache`
-        :param VideoSeek: Video dragging configuration
-        :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
-        :param Cache: Cache expiration time configuration
-        :type Cache: :class:`tencentcloud.cdn.v20180606.models.Cache`
-        :param OriginPullOptimization: Cross-border linkage optimization configuration
-        :type OriginPullOptimization: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`
-        :param Https: HTTPS acceleration configuration
-        :type Https: :class:`tencentcloud.cdn.v20180606.models.Https`
-        :param Authentication: Timestamp hotlink protection configuration
-        :type Authentication: :class:`tencentcloud.cdn.v20180606.models.Authentication`
-        :param Seo: SEO configuration
-        :type Seo: :class:`tencentcloud.cdn.v20180606.models.Seo`
-        :param ForceRedirect: Access protocol forced redirect configuration
-        :type ForceRedirect: :class:`tencentcloud.cdn.v20180606.models.ForceRedirect`
-        :param Referer: Referer hotlink protection configuration
-        :type Referer: :class:`tencentcloud.cdn.v20180606.models.Referer`
-        :param MaxAge: Browser cache configuration (This feature is in beta and not generally available yet.)
-        :type MaxAge: :class:`tencentcloud.cdn.v20180606.models.MaxAge`
-        :param Ipv6: IPv6 configuration (This feature is in beta and not generally available yet.)
-        :type Ipv6: :class:`tencentcloud.cdn.v20180606.models.Ipv6`
-        :param SpecificConfig: Specific region configuration
-Applicable to cases where the acceleration domain name configuration differs for regions in and outside mainland China.
-        :type SpecificConfig: :class:`tencentcloud.cdn.v20180606.models.SpecificConfig`
-        :param Area: Domain name acceleration region
-mainland: acceleration inside mainland China
-overseas: acceleration outside mainland China
-global: global acceleration
-Overseas acceleration service must be enabled to use overseas acceleration and global acceleration.
-        :type Area: str
-        :param OriginPullTimeout: Origin-pull timeout configuration
-        :type OriginPullTimeout: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`
-        :param Tag: Tag configuration
-        :type Tag: list of Tag
-        :param Ipv6Access: IPv6 access configuration
-        :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
-        :param OfflineCache: Offline cache
-        :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
-        :param Quic: QUIC access, which is a paid service. You can check the product document and Billing Overview for more information.
-        :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`
-        :param AwsPrivateAccess: Access authentication for S3 origin
-        :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
-        :param OssPrivateAccess: Access authentication for OSS origin
-        :type OssPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
+        :param LogsetId: Logset ID
+        :type LogsetId: str
+        :param TopicId: Log topic ID
+        :type TopicId: str
+        :param DomainAreaConfigs: Region configuration for domains
+        :type DomainAreaConfigs: list of DomainAreaConfig
+        :param Channel: Specifies whether to access CDN or ECDN. Valid values: `cdn` (default) and `ecdn`.
+        :type Channel: str
         """
-        self.Domain = None
-        self.ServiceType = None
-        self.Origin = None
-        self.ProjectId = None
-        self.IpFilter = None
-        self.IpFreqLimit = None
-        self.StatusCodeCache = None
-        self.Compression = None
-        self.BandwidthAlert = None
-        self.RangeOriginPull = None
-        self.FollowRedirect = None
-        self.ErrorPage = None
-        self.RequestHeader = None
-        self.ResponseHeader = None
-        self.DownstreamCapping = None
-        self.CacheKey = None
-        self.ResponseHeaderCache = None
-        self.VideoSeek = None
-        self.Cache = None
-        self.OriginPullOptimization = None
-        self.Https = None
-        self.Authentication = None
-        self.Seo = None
-        self.ForceRedirect = None
-        self.Referer = None
-        self.MaxAge = None
-        self.Ipv6 = None
-        self.SpecificConfig = None
-        self.Area = None
-        self.OriginPullTimeout = None
-        self.Tag = None
-        self.Ipv6Access = None
-        self.OfflineCache = None
-        self.Quic = None
-        self.AwsPrivateAccess = None
-        self.OssPrivateAccess = None
+        self.LogsetId = None
+        self.TopicId = None
+        self.DomainAreaConfigs = None
+        self.Channel = None
 
 
     def _deserialize(self, params):
-        self.Domain = params.get("Domain")
-        self.ServiceType = params.get("ServiceType")
-        if params.get("Origin") is not None:
-            self.Origin = Origin()
-            self.Origin._deserialize(params.get("Origin"))
-        self.ProjectId = params.get("ProjectId")
-        if params.get("IpFilter") is not None:
-            self.IpFilter = IpFilter()
-            self.IpFilter._deserialize(params.get("IpFilter"))
-        if params.get("IpFreqLimit") is not None:
-            self.IpFreqLimit = IpFreqLimit()
-            self.IpFreqLimit._deserialize(params.get("IpFreqLimit"))
-        if params.get("StatusCodeCache") is not None:
-            self.StatusCodeCache = StatusCodeCache()
-            self.StatusCodeCache._deserialize(params.get("StatusCodeCache"))
-        if params.get("Compression") is not None:
-            self.Compression = Compression()
-            self.Compression._deserialize(params.get("Compression"))
-        if params.get("BandwidthAlert") is not None:
-            self.BandwidthAlert = BandwidthAlert()
-            self.BandwidthAlert._deserialize(params.get("BandwidthAlert"))
-        if params.get("RangeOriginPull") is not None:
-            self.RangeOriginPull = RangeOriginPull()
-            self.RangeOriginPull._deserialize(params.get("RangeOriginPull"))
-        if params.get("FollowRedirect") is not None:
-            self.FollowRedirect = FollowRedirect()
-            self.FollowRedirect._deserialize(params.get("FollowRedirect"))
-        if params.get("ErrorPage") is not None:
-            self.ErrorPage = ErrorPage()
-            self.ErrorPage._deserialize(params.get("ErrorPage"))
-        if params.get("RequestHeader") is not None:
-            self.RequestHeader = RequestHeader()
-            self.RequestHeader._deserialize(params.get("RequestHeader"))
-        if params.get("ResponseHeader") is not None:
-            self.ResponseHeader = ResponseHeader()
-            self.ResponseHeader._deserialize(params.get("ResponseHeader"))
-        if params.get("DownstreamCapping") is not None:
-            self.DownstreamCapping = DownstreamCapping()
-            self.DownstreamCapping._deserialize(params.get("DownstreamCapping"))
-        if params.get("CacheKey") is not None:
-            self.CacheKey = CacheKey()
-            self.CacheKey._deserialize(params.get("CacheKey"))
-        if params.get("ResponseHeaderCache") is not None:
-            self.ResponseHeaderCache = ResponseHeaderCache()
-            self.ResponseHeaderCache._deserialize(params.get("ResponseHeaderCache"))
-        if params.get("VideoSeek") is not None:
-            self.VideoSeek = VideoSeek()
-            self.VideoSeek._deserialize(params.get("VideoSeek"))
-        if params.get("Cache") is not None:
-            self.Cache = Cache()
-            self.Cache._deserialize(params.get("Cache"))
-        if params.get("OriginPullOptimization") is not None:
-            self.OriginPullOptimization = OriginPullOptimization()
-            self.OriginPullOptimization._deserialize(params.get("OriginPullOptimization"))
-        if params.get("Https") is not None:
-            self.Https = Https()
-            self.Https._deserialize(params.get("Https"))
-        if params.get("Authentication") is not None:
-            self.Authentication = Authentication()
-            self.Authentication._deserialize(params.get("Authentication"))
-        if params.get("Seo") is not None:
-            self.Seo = Seo()
-            self.Seo._deserialize(params.get("Seo"))
-        if params.get("ForceRedirect") is not None:
-            self.ForceRedirect = ForceRedirect()
-            self.ForceRedirect._deserialize(params.get("ForceRedirect"))
-        if params.get("Referer") is not None:
-            self.Referer = Referer()
-            self.Referer._deserialize(params.get("Referer"))
-        if params.get("MaxAge") is not None:
-            self.MaxAge = MaxAge()
-            self.MaxAge._deserialize(params.get("MaxAge"))
-        if params.get("Ipv6") is not None:
-            self.Ipv6 = Ipv6()
-            self.Ipv6._deserialize(params.get("Ipv6"))
-        if params.get("SpecificConfig") is not None:
-            self.SpecificConfig = SpecificConfig()
-            self.SpecificConfig._deserialize(params.get("SpecificConfig"))
-        self.Area = params.get("Area")
-        if params.get("OriginPullTimeout") is not None:
-            self.OriginPullTimeout = OriginPullTimeout()
-            self.OriginPullTimeout._deserialize(params.get("OriginPullTimeout"))
-        if params.get("Tag") is not None:
-            self.Tag = []
-            for item in params.get("Tag"):
-                obj = Tag()
+        self.LogsetId = params.get("LogsetId")
+        self.TopicId = params.get("TopicId")
+        if params.get("DomainAreaConfigs") is not None:
+            self.DomainAreaConfigs = []
+            for item in params.get("DomainAreaConfigs"):
+                obj = DomainAreaConfig()
                 obj._deserialize(item)
-                self.Tag.append(obj)
-        if params.get("Ipv6Access") is not None:
-            self.Ipv6Access = Ipv6Access()
-            self.Ipv6Access._deserialize(params.get("Ipv6Access"))
-        if params.get("OfflineCache") is not None:
-            self.OfflineCache = OfflineCache()
-            self.OfflineCache._deserialize(params.get("OfflineCache"))
-        if params.get("Quic") is not None:
-            self.Quic = Quic()
-            self.Quic._deserialize(params.get("Quic"))
-        if params.get("AwsPrivateAccess") is not None:
-            self.AwsPrivateAccess = AwsPrivateAccess()
-            self.AwsPrivateAccess._deserialize(params.get("AwsPrivateAccess"))
-        if params.get("OssPrivateAccess") is not None:
-            self.OssPrivateAccess = OssPrivateAccess()
-            self.OssPrivateAccess._deserialize(params.get("OssPrivateAccess"))
+                self.DomainAreaConfigs.append(obj)
+        self.Channel = params.get("Channel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -340,8 +140,8 @@ Overseas acceleration service must be enabled to use overseas acceleration and g
         
 
 
-class AddCdnDomainResponse(AbstractModel):
-    """AddCdnDomain response structure.
+class AddCLSTopicDomainsResponse(AbstractModel):
+    """AddCLSTopicDomains response structure.
 
     """
 
@@ -2210,17 +2010,17 @@ class CdnData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Metric: Queries the specified metric:
-flux: traffic (in bytes)
-bandwidth: bandwidth (in bps)
-request: number of requests
-fluxHitRate: traffic hit rate (in %)
-statusCode: status code. The aggregate data for 2xx, 3xx, 4xx, and 5xx status codes will be returned (in entries)
-2XX: Returns the aggregate list of 2xx status codes and the data for status codes starting with 2 (in entries)
-3XX: Returns the aggregate list of 3xx status codes and the data for status codes starting with 3 (in entries)
-4XX: Returns the aggregate list of 4xx status codes and the data for status codes starting with 4 (in entries)
-5XX: Returns the aggregate list of 5xx status codes and the data for status codes starting with 5 (in entries)
-Alternatively, you can specify a status code for querying.
+        :param Metric: Queries by the specified metric:
+`flux`: Traffic (in bytes)
+`bandwidth`: Bandwidth (in bps)
+`request`: Number of requests
+`fluxHitRate`: Traffic hit rate (in %)
+`statusCode`: Status code. The aggregate data for 2xx, 3xx, 4xx, and 5xx status codes will be returned (in entries)
+`2XX`: Returns the aggregate list of 2xx status codes and the data for status codes starting with 2 (in entries)
+`3XX`: Returns the aggregate list of 3xx status codes and the data for status codes starting with 3 (in entries)
+`4XX`: Returns the aggregate list of 4xx status codes and the data for status codes starting with 4 (in entries)
+`5XX`: Returns the aggregate list of 5xx status codes and the data for status codes starting with 5 (in entries)
+You can also specify a status code for querying.
         :type Metric: str
         :param DetailData: Detailed data combination
         :type DetailData: list of TimestampData
@@ -2836,13 +2636,13 @@ class DescribeBillingDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: Query start time, e.g., 2018-09-04 10:40:00. The returned result will be later than or equal to the specified time
-The time will be rounded forward based on the granularity parameter `Interval`. For example, if the query start time is 2018-09-04 10:40:00 and the query time granularity is 1-hour, the time for the first returned entry will be 2018-09-04 10:00:00
-The range between the start time and end time should be less than or equal to 90 days
+        :param StartTime: Start time of the query, e.g., 2018-09-04 10:40:00.
+The specified start time will be rounded down based on the granularity parameter `Interval`. For example, if you set the start time to 2018-09-04 10:40:00 with 1-hour granularity, the time will be rounded down to 2018-09-04 10:00:00.
+The period between the start time and end time can be up to 90 days.
         :type StartTime: str
-        :param EndTime: Query end time, e.g. 2018-09-04 10:40:00. The returned result will be earlier than or equal to the specified time
-The time will be rounded forward based on the granularity parameter `Interval`. For example, if the query end time is 2018-09-04 10:40:00 and the query time granularity is 1-hour, the time for the last returned entry will be 2018-09-04 10:00:00
-The range between the start time and end time should be less than or equal to 90 days
+        :param EndTime: End time of the query, e.g. 2018-09-04 10:40:00.
+The specified end time will be rounded down based on the granularity parameter `Interval`. For example, if you set the end time to 2018-09-04 10:40:00 with 1-hour granularity, the time will be rounded down to 2018-09-04 10:00:00.
+The period between the start time and end time can be up to 90 days.
         :type EndTime: str
         :param Interval: Time granularity, which can be:
 `min`: 1-minute granularity. The query period cannot exceed 24 hours.
@@ -2850,29 +2650,31 @@ The range between the start time and end time should be less than or equal to 90
 `hour`: 1-hour granularity. The query period cannot exceed 31 days.
 `day`: 1-day granularity. The query period cannot exceed 31 days.
 
-Querying 1-minute granularity data is not supported if the `Area` field is `overseas`.
+`min` is not supported if the `Area` field is `overseas`.
         :type Interval: str
         :param Domain: Domain name whose billing data is to be queried
         :type Domain: str
-        :param Project: Project ID, which can be viewed [here](https://console.cloud.tencent.com/project)
-If the `Domain` parameter is populated with specific domain name information, then the billing data of this domain name instead of the specified project will be returned
+        :param Project: Specifies the project ID to be queried. [Check project ID in the console](https://console.cloud.tencent.com/project)
+If the `Domain` parameter is passed in, the `Proejct` parameter is ignored. Only the billing data of the specified domain name is returned. 
         :type Project: int
         :param Area: Acceleration region whose billing data is to be queried:
-mainland: in the mainland of China
-overseas: outside the mainland of China
+`mainland`: Regions within the Chinese mainland
+`overseas`: Regions outside the Chinese mainland
 If this parameter is left empty, `mainland` will be used by default
         :type Area: str
         :param District: Country/region to be queried if `Area` is `overseas`
-For district or country/region codes, please see [District Code Mappings](https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E7.9C.81.E4.BB.BD.E6.98.A0.E5.B0.84)
+To view codes of provinces or countries/regions, see [Province Code Mappings](https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E7.9C.81.E4.BB.BD.E6.98.A0.E5.B0.84)
 If this parameter is left empty, all countries/regions will be queried
         :type District: int
         :param Metric: Billing statistics type
-flux: bill-by-traffic
-bandwidth: bill-by-bandwidth
+`flux`: Bill by traffic
+`bandwidth`: Bill by bandwidth
 Default value: `bandwidth`
         :type Metric: str
         :param Product: Specifies the product to query, either `cdn` (default) or `ecdn`.
         :type Product: str
+        :param TimeZone: 
+        :type TimeZone: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -2883,6 +2685,7 @@ Default value: `bandwidth`
         self.District = None
         self.Metric = None
         self.Product = None
+        self.TimeZone = None
 
 
     def _deserialize(self, params):
@@ -2895,6 +2698,7 @@ Default value: `bandwidth`
         self.District = params.get("District")
         self.Metric = params.get("Metric")
         self.Product = params.get("Product")
+        self.TimeZone = params.get("TimeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2912,10 +2716,10 @@ class DescribeBillingDataResponse(AbstractModel):
     def __init__(self):
         r"""
         :param Interval: Time granularity, which is specified by the parameter passed in during the query:
-min: 1-minute
-5min: 5-minute
-hour: 1-hour
-day: 1-day
+`min`: 1 minute
+`5min`: 5 minutes
+`hour`: 1 hour
+`day`: 1 day
         :type Interval: str
         :param Data: Data details
         :type Data: list of ResourceBillingData
@@ -2945,83 +2749,85 @@ class DescribeCdnDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: Queries start time, such as 2018-09-04 10:40:00; the returned result is later than or equal to the specified time.
-According to the specified time granularity, forward rounding is applied; for example, if the query end time is 2018-09-04 10:40:00 and the query time granularity is 1 hour, the time for the first returned entry will be 2018-09-04 10:00:00.
-The gap between the start time and end time should be less than or equal to 90 days.
+        :param StartTime: Start time of the query, e.g., 2018-09-04 10:40:00.
+The specified start time will be rounded down based on the granularity parameter `Interval`. For example, if you set the start time to 2018-09-04 10:40:00 with 1-hour granularity, the time will be rounded down to 2018-09-04 10:00:00.
+The period between the start time and end time can be up to 90 days.
         :type StartTime: str
-        :param EndTime: Queries end time, such as 2018-09-04 10:40:00; the returned result is earlier than or equal to the specified time.
-According to the specified time granularity, forward rounding is applied; for example, if the query start time is 2018-09-04 10:40:00 and the query time granularity is 1 hour, the time for the last returned entry will be 2018-09-04 10:00:00.
-The gap between the start time and end time should be less than or equal to 90 days.
+        :param EndTime: End time of the query, e.g. 2018-09-04 10:40:00.
+The specified end time will be rounded down based on the granularity parameter `Interval`. For example, if you set the end time to 2018-09-04 10:40:00 with 1-hour granularity, the time will be rounded down to 2018-09-04 10:00:00.
+The period between the start time and end time can be up to 90 days.
         :type EndTime: str
         :param Metric: Specifies the metric to query, which can be:
-`flux`: traffic (in bytes)
-`fluxIn`: upstream traffic (in bytes), only used for the `ecdn` product
-`fluxOut`: downstream traffic (in bytes), only used for the `ecdn` product
-`bandwidth`: bandwidth (in bps)
-`bandwidthIn`: upstream bandwidth (in bps), only used for the `ecdn` product
-`bandwidthOut`: downstream bandwidth (in bps), only used for the `ecdn` product
-`request`: number of requests
-`hitRequest`: number of hit requests
-`requestHitRate`: request hit rate (in % with two decimal digits)
-`hitFlux`: hit traffic (in bytes)
-`fluxHitRate`: traffic hit rate (in % with two decimal digits)
-`statusCode`: status code. Number of 2xx, 3xx, 4xx, and 5xx status codes returned during the queried period.
-`2xx`: lists the number of all status codes starting with **2** returned during the queried period based on the specified interval (if any)
-`3xx`: lists the number of all status codes starting with **3** returned during the queried period based on the specified interval (if any)
-`4xx`: lists the number of all status codes starting with **4** returned during the queried period based on the specified interval (if any)
-`5xx`: lists the number of all status codes starting with **5** returned during the queried period based on the specified interval (if any)
+`flux`: Traffic (in bytes)
+`fluxIn`: Upstream traffic (in bytes), only used for the `ecdn` product
+`fluxOut`: Downstream traffic (in bytes), only used for the `ecdn` product
+`bandwidth`: Bandwidth (in bps)
+`bandwidthIn`: Upstream bandwidth (in bps), only used for the `ecdn` product
+`bandwidthOut`: Downstream bandwidth (in bps), only used for the `ecdn` product
+`request`: Number of requests
+`hitRequest`: Number of hit requests
+`requestHitRate`: Request hit rate (in % with two decimal digits)
+`hitFlux`: Hit traffic (in bytes)
+`fluxHitRate`: Traffic hit rate (in % with two decimal digits)
+`statusCode`: Status code. The aggregate data for 2xx, 3xx, 4xx, and 5xx status codes will be returned (in entries)
+`2xx`: Returns the aggregate list of 2xx status codes and the data for status codes starting with 2 (in entries)
+`3xx`: Returns the aggregate list of 3xx status codes and the data for status codes starting with 3 (in entries)
+`4xx`: Returns the aggregate list of 4xx status codes and the data for status codes starting with 4 (in entries)
+`5xx`: Returns the aggregate list of 5xx status codes and the data for status codes starting with 5 (in entries)
 Specifies the status code to query. The return will be empty if the status code has never been generated.
         :type Metric: str
-        :param Domains: Queries the information of specified domain names
-Specifies a domain name to query
-Specifies multiple domain names to query (30 at most at a time)
-Queries all Specifies an account to query all domain names
+        :param Domains: Specifies the list of domain names to be queried
+You can specify one or more domain names.
+Up to 30 domain names can be queried in one request.
+If this parameter is not specified, it means to query all domain names under the current account.
         :type Domains: list of str
-        :param Project: Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)
-Please note that if domain names are specified, this parameter will be ignored.
+        :param Project: Specifies the project ID to be queried. [Check project ID in the console](https://console.cloud.tencent.com/project)
+Note that `Project` will be ignored if `Domains` is specified.
         :type Project: int
-        :param Interval: Time granularity; valid values:
-`min`: data with 1-minute granularity is returned when the queried period is no longer than 24 hours. This value is not supported if the service region you want to query is outside Mainland China;
-`5min`: data with 5-minute granularity is returned when the queried period is no longer than 31 days;
-`hour`: data with 1-hour granularity is returned when the queried period is no longer than 31 days;
-`day`: data with 1-day granularity is returned when the queried period is longer than 31 days.
+        :param Interval: Sampling interval. The available options vary for different query period. See below: 
+`min`: Return data with 1-minute granularity. It’s available when the query period is  within 24 hours and `Area` is `mainland`.
+`5min`: Return data with 5-minute granularity. It’s available when the query period is within 31 days.
+`hour`: Return data with 1-hour granularity. It’s available when the query period is within 31 days.
+`day`: Return data with 1-day granularity. It’s available when the query period is longer than 31 days.
         :type Interval: str
         :param Detail: The aggregate data for multiple domain names is returned by default (false) during a multi-domain-name query.
-You can set it to true to return the details for each Domain (the statusCode metric is currently not supported)
+You can set it to true to return the details for each Domain (the statusCode metric is currently not supported).
         :type Detail: bool
-        :param Isp: Specifies an ISP when you query the CDN data within Mainland China. If this is left blank, all ISPs will be queried.
+        :param Isp: Specifies an ISP when you query the CDN data within the Chinese mainland. If this is left blank, all ISPs will be queried.
 To view ISP codes, see [ISP Code Mappings](https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)
-If you have specified an ISP, you cannot specify a province or an IP protocol for the same query.
+Note that only one of `District`, `Isp` and `IpProtocol` can be specified.
         :type Isp: int
-        :param District: Specifies a province when you query the CDN data within Mainland China. If this is left blank, all provinces will be queried.
-Specifies a country/region when you query the CDN data outside Mainland China. If this is left blank, all countries/regions will be queried.
-To view codes of provinces or countries/regions, see [Province Code Mappings](https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)
-If you have specified a province for your query on CDN data within mainland China, you cannot specify an ISP or an IP protocol for the same query.
+        :param District: Specifies a province when you query the CDN data within the Chinese mainland. If this is left blank, all provinces will be queried.
+Specifies a country/region when you query the CDN data outside the Chinese mainland. If this is left blank, all countries/regions will be queried.
+To view codes of provinces or countries/regions, see [Province Code Mappings](https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8).
+When `Area` is `mainland`, you can query by the province. Note that only one of `District`, `Isp` and `IpProtocol` can be specified.
         :type District: int
         :param Protocol: Specifies the protocol to be queried; if you leave it blank, all protocols will be queried.
-all: All protocols
-http: specifies the HTTP metric to be queried
-https: specifies the HTTPS metric to be queried
+`all`: All protocols
+`http`: Query HTTP data
+`https`: Query HTTPS data
         :type Protocol: str
-        :param DataSource: Specifies the data source to be queried, which can be seen as the allowlist function.
+        :param DataSource: Specifies the data source to be queried. It’s only open to beta users now. 
         :type DataSource: str
-        :param IpProtocol: Specified IP protocol to be queried. If this parameter is left empty, all protocols will be queried
-all: all protocols
-ipv4: specifies to query IPv4 metrics
-ipv6: specifies to query IPv6 metrics
-If the IP protocol to be queried is specified, the district and ISP cannot be specified at the same time
-Note: non-IPv6 allowlisted users cannot specify `ipv4` and `ipv6` for query
+        :param IpProtocol: Specifies the IP protocol to be queried. If it’s not specified, data of all IP protocols are returned.
+`all`: All protocols
+`ipv4`: Query IPv4 data
+`ipv6`: Query IPv6 data
+If `IpProtocol` is specified, `District` parameter can not be specified at the same time.
+Note: `ipv4` and `ipv6` are only available to beta users. 
         :type IpProtocol: str
-        :param Area: Specifies a service region. If this value is left blank, CDN data within Mainland China will be queried.
-`mainland`: specifies to query CDN data within Mainland China;
-`overseas`: specifies to query CDN data outside Mainland China.
+        :param Area: Specifies the service area. If it’s not specified, CDN data of the Chinese mainland are returned.
+`mainland`: Query CDN data in the Chinese mainland.
+`overseas`: Query CDN data outside the Chinese mainland.
         :type Area: str
-        :param AreaType: Specifies a region type for your query on CDN data outside Mainland China. If this parameter is left blank, data on the service region will be queried. This parameter is valid only when `Area` is `overseas`.
-`server`: specifies to query data on the service region where Tencent Cloud CDN nodes are located;
-`client`: specifies to query data on the client region where the request devices are located.
+        :param AreaType: Specify whether to query by the region of the server or client. This parameter is valid only when `Area` is `overseas`.
+`server`: Query by the location of server (Tencent Cloud CDN nodes)
+`client`: Query by the location of the client (where the request devices are located)
         :type AreaType: str
         :param Product: Specifies the product to query, either `cdn` (default) or `ecdn`.
         :type Product: str
+        :param TimeZone: Specifies a time zone to query. The default time zone is UTC+08:00.
+        :type TimeZone: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -3038,6 +2844,7 @@ Note: non-IPv6 allowlisted users cannot specify `ipv4` and `ipv6` for query
         self.Area = None
         self.AreaType = None
         self.Product = None
+        self.TimeZone = None
 
 
     def _deserialize(self, params):
@@ -3056,6 +2863,7 @@ Note: non-IPv6 allowlisted users cannot specify `ipv4` and `ipv6` for query
         self.Area = params.get("Area")
         self.AreaType = params.get("AreaType")
         self.Product = params.get("Product")
+        self.TimeZone = params.get("TimeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3072,11 +2880,11 @@ class DescribeCdnDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Interval: Time granularity of the returned data. Specify one of the following during querying:
-min: 1 minute
-5min: 5 minutes
-hour: 1 hour
-day: 1 day
+        :param Interval: Time granularity of the returned data. 
+`min`: 1 minute
+`5min`: 5 minutes
+`hour`: 1 hour
+`day`: 1 day
         :type Interval: str
         :param Data: Returned data details of the specified conditional query
         :type Data: list of ResourceData
@@ -3479,14 +3287,14 @@ class DescribeIpStatusRequest(AbstractModel):
         :param Domain: Acceleration domain name
         :type Domain: str
         :param Layer: Node type.
-edge: edge server
-last: intermediate server
+`edge`: Edge server
+`last`: Intermediate server
 If this parameter is left empty, edge server information will be returned by default
         :type Layer: str
-        :param Area: Region to be queried.
-mainland: domestic nodes
-overseas: overseas nodes
-global: global nodes
+        :param Area: Specifies a region to query.
+`mainland`: Nodes in the Chinese mainland
+`overseas`: Nodes outside the Chinese mainland
+`global`: Global nodes
         :type Area: str
         :param Segment: Whether to return a value as an IP range
         :type Segment: bool
@@ -3695,46 +3503,48 @@ class DescribeOriginDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: Query start time, such as 2018-09-04 10:40:00; the returned result is later than or equal to the specified time.
-According to the specified time granularity, forward rounding is applied; for example, if the query end time is 2018-09-04 10:40:00 and the query time granularity is 1 hour, the time for the first returned entry will be 2018-09-04 10:00:00.
-The gap between the start time and end time should be less than or equal to 90 days.
+        :param StartTime: Start time of the query, e.g., 2018-09-04 10:40:00.
+The specified start time will be rounded down based on the granularity parameter `Interval`. For example, if you set the start time to 2018-09-04 10:40:00 with 1-hour granularity, the time will be rounded down to 2018-09-04 10:00:00.
+The period between the start time and end time can be up to 90 days.
         :type StartTime: str
-        :param EndTime: Query end time, such as 2018-09-04 10:40:00; the returned result is earlier than or equal to the specified time.
-According to the specified time granularity, forward rounding is applied; for example, if the query start time is 2018-09-04 10:40:00 and the query time granularity is 1 hour, the time for the last returned entry will be 2018-09-04 10:00:00.
-The gap between the start time and end time should be less than or equal to 90 days.
+        :param EndTime: End time of the query, e.g. 2018-09-04 10:40:00.
+The specified end time will be rounded down based on the granularity parameter `Interval`. For example, if you set the end time to 2018-09-04 10:40:00 with 1-hour granularity, the time will be rounded down to 2018-09-04 10:00:00.
+The period between the start time and end time can be up to 90 days.
         :type EndTime: str
-        :param Metric: Specifies the query metric, which can be:
-flux: origin-pull traffic (in bytes)
-bandwidth: origin-pull bandwidth (in bps)
-request: number of origin-pull requests
-failRequest: number of failed origin-pull requests
-failRate: origin-pull failure rate (in %)
-statusCode: origin-pull status code. The aggregate data for 2xx, 3xx, 4xx, and 5xx origin-pull status codes will be returned (in entries)
-2xx: Returns the aggregate list of 2xx origin-pull status codes and the data for origin-pull status codes starting with 2 (in entries)
-3xx: Returns the aggregate list of 3xx origin-pull status codes and the data for origin-pull status codes starting with 3 (in entries)
-4xx: Returns the aggregate list of 4xx origin-pull status codes and the data for origin-pull status codes starting with 4 (in entries)
-5xx: Returns the aggregate list of 5xx origin-pull status codes and the data for origin-pull status codes starting with 5 (in entries)
+        :param Metric: Specifies the metric to query, which can be:
+`flux`: Origin-pull traffic (in bytes)
+`bandwidth`: Origin-pull bandwidth (in bps)
+`request`: Number of origin-pull requests
+`failRequest`: Number of failed origin-pull requests
+`failRate`: Origin-pull failure rate (in %)
+`statusCode`: Origin-pull status code. The aggregate data for 2xx, 3xx, 4xx, and 5xx origin-pull status codes will be returned (in entries)
+`2xx`: Returns the aggregate list of 2xx origin-pull status codes and the data for origin-pull status codes starting with 2 (in entries)
+`3xx`: Returns the aggregate list of 3xx origin-pull status codes and the data for origin-pull status codes starting with 3 (in entries)
+`4xx`: Returns the aggregate list of 4xx origin-pull status codes and the data for origin-pull status codes starting with 4 (in entries)
+`5xx`: Returns the aggregate list of 5xx origin-pull status codes and the data for origin-pull status codes starting with 5 (in entries)
 It is supported to specify a status code for query. The return will be empty if the status code has never been generated.
         :type Metric: str
-        :param Domains: Specifies the list of domain names to be queried; up to 30 domain names can be queried at a time.
+        :param Domains: Specifies the list of domain names to query. You can query up to 30 domain names at a time.
         :type Domains: list of str
-        :param Project: Project ID, which can be viewed [here](https://console.cloud.tencent.com/project)
-If the domain name is not specified, the specified project will be queried. Up to 30 acceleration domain names can be queried at a time
-If the domain name information is specified, the domain name will prevail
+        :param Project: Specifies the project ID to be queried. [Check project ID in the console](https://console.cloud.tencent.com/project)
+If the domain name is not specified, the specified project will be queried. Up to 30 acceleration domain names can be queried at a time.
+If the domain name information is specified, this parameter can be ignored.
         :type Project: int
-        :param Interval: Time granularity; valid values:
-`min`: data with 1-minute granularity is returned when the queried period is no longer than 24 hours. This value is not supported if the service region you want to query is outside Mainland China;
-`5min`: data with 5-minute granularity is returned when the queried period is no longer than 31 days;
-`hour`: data with 1-hour granularity is returned when the queried period is no longer than 31 days;
-`day`: data with 1-day granularity is returned when the queried period is longer than 31 days.
+        :param Interval: Time granularity, which can be:
+`min`: Return data with 1-minute granularity. It’s available when the query period is  within 24 hours and `Area` is `mainland`.
+`5min`: Return data with 5-minute granularity. It’s available when the query period is within 31 days.
+`hour`: Return data with 1-hour granularity. It’s available when the query period is within 31 days.
+`day`: Return data with 1-day granularity. It’s available when the query period is longer than 31 days.
         :type Interval: str
         :param Detail: The aggregate data for multiple domain names is returned by default (false) when multiple `Domains` are passed in.
 You can set it to true to return the details for each Domain (the statusCode metric is currently not supported)
         :type Detail: bool
-        :param Area: Specifies a service region. If this value is left blank, CDN data within Mainland China will be queried.
-`mainland`: specifies to query CDN data within Mainland China;
-`overseas`: specifies to query CDN data outside Mainland China.
+        :param Area: Specifies the service region. If this value is left blank, it means to query CDN data within the Chinese mainland.
+`mainland`: Query CDN data in the Chinese mainland.
+`overseas`: Query CDN data outside the Chinese mainland.
         :type Area: str
+        :param TimeZone: Specifies a time zone to query. The default time zone is UTC+08:00.
+        :type TimeZone: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -3744,6 +3554,7 @@ You can set it to true to return the details for each Domain (the statusCode met
         self.Interval = None
         self.Detail = None
         self.Area = None
+        self.TimeZone = None
 
 
     def _deserialize(self, params):
@@ -3755,6 +3566,7 @@ You can set it to true to return the details for each Domain (the statusCode met
         self.Interval = params.get("Interval")
         self.Detail = params.get("Detail")
         self.Area = params.get("Area")
+        self.TimeZone = params.get("TimeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3771,7 +3583,7 @@ class DescribeOriginDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Interval: Time granularity of data statistics, which supports min (1 minute), 5min (5 minutes), hour (1 hour), and day (1 day).
+        :param Interval: Time granularity of data statistics, which supports `min` (1 minute), `5min` (5 minutes), `hour` (1 hour), and `day` (1 day).
         :type Interval: str
         :param Data: Origin-pull data details of each resource.
         :type Data: list of ResourceOriginData
@@ -4860,7 +4672,7 @@ class DisableClsLogTopicResponse(AbstractModel):
 
 
 class DomainAreaConfig(AbstractModel):
-    """Domain name region configuration
+    """Region configuration for domain names
 
     """
 
@@ -4868,7 +4680,7 @@ class DomainAreaConfig(AbstractModel):
         r"""
         :param Domain: Domain name
         :type Domain: str
-        :param Area: Region list, where the element can be `mainland/overseas`
+        :param Area: Region list, where the element can be `mainland`/`overseas`
         :type Area: list of str
         """
         self.Domain = None
@@ -5875,15 +5687,15 @@ class IpStatus(AbstractModel):
         r"""
         :param Ip: Node IP
         :type Ip: str
-        :param District: Node region
+        :param District: Region of the node
         :type District: str
-        :param Isp: Node ISP
+        :param Isp: ISP of the node
         :type Isp: str
-        :param City: Node city
+        :param City: City of the node
         :type City: str
-        :param Status: Node status
-online: the node is online; scheduling service running
-offline: the node is offline
+        :param Status: Status of the node
+`online`: The node is active and scheduling normally.
+`offline`: The node is inactive.
         :type Status: str
         """
         self.Ip = None
@@ -7686,8 +7498,8 @@ Default value: `TencentCdn`
 `global`: prefetches resources to global nodes
 Default value: `mainland`. You can prefetch a URL to nodes in a region provided that CDN service has been enabled for the domain name in the URL in the region.
         :type Area: str
-        :param Layer: If this parameter is `middle` or left empty, prefetch will be performed onto the intermediate node.
-Note: resources prefetched outside the Chinese mainland will be cached to CDN nodes outside the Chinese mainland and the traffic generated will incur costs.
+        :param Layer: By default, prefetch for regions in the Chinese mainland is performed onto the intermediate nodes, while prefetch for regions outside the Chinese mainland is performed onto the edge nodes and the traffic generated will be billed.
+If this parameter is `middle` or left empty, prefetch will be performed onto the intermediate node.
         :type Layer: str
         :param ParseM3U8: Whether to recursively resolve the M3U8 index file and prefetch the TS shards in it.
 Notes:
@@ -8263,11 +8075,11 @@ class ResourceBillingData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Resource: Resource name, which is categorized as follows based on different query conditions:
-Specific domain name: domain name details
-multiDomains: aggregated details of multiple domain names
-Project ID: displays the ID of the specified project to be queried
-all: the details at the account level
+        :param Resource: Resource name, which is classified as follows based on different query filters:
+When a domain name is specified: Details of the domain name
+`multiDomains`: Aggregated details of multiple domain names
+A specific project ID: ID of the specifically queried project
+`all`: Details at the account level
         :type Resource: str
         :param BillingData: Billing data details
         :type BillingData: list of CdnData
@@ -8294,17 +8106,17 @@ all: the details at the account level
 
 
 class ResourceData(AbstractModel):
-    """This API is used to query an object and its access details
+    """This API is used to query an object and its access details.
 
     """
 
     def __init__(self):
         r"""
-        :param Resource: Resource name, which is classified as follows based on different query filters:
-A single domain name: queries domain name details by a domain name. The details of the domain name will be displayed when the passed parameter `detail` is `true` (the `detail` parameter defaults to `false`).
-Multiple domain names: queries domain name details by multiple domain names. The aggregated details of the domain names will be displayed.
-Project ID: queries domain name details by a project ID. The aggregated details of the domain names of the project will be displayed.
-`all`: account-level data, which is aggregated details of all domain names of an account.
+        :param Resource: Resource name. 
+A single domain name: Queries domain name details by a domain name. The details of the domain name will be displayed when the passed parameter `detail` is `true`.
+Multiple domain names: Queries domain name details by multiple domain names. The aggregated details of the domain names will be displayed.
+Project ID: Queries domain name details by a project ID. The aggregated details of the domain names of the project will be displayed.
+`all`: Account-level data, which is aggregated details of all domain names of an account.
         :type Resource: str
         :param CdnData: Data details of a resource
         :type CdnData: list of CdnData
@@ -8331,17 +8143,17 @@ Project ID: queries domain name details by a project ID. The aggregated details 
 
 
 class ResourceOriginData(AbstractModel):
-    """This API is used to query an object and its origin-pull details
+    """This API is used to query an object and its origin-pull details.
 
     """
 
     def __init__(self):
         r"""
-        :param Resource: Resource name, which is classified as follows based on different query conditions:
-A specific domain name: This indicates the details of this domain name
-multiDomains: This indicates the aggregate details of multiple domain names
-Project ID: This displays the ID of the specifically queried project
-all: This indicates the details at the account level
+        :param Resource: Resource name, which is classified as follows based on different query filters:
+A specific domain name: Details of the domain name
+`multiDomains`: Aggregated details of multiple domain names
+Project ID: ID of the specifically queried project
+`all`: Details at the account level
         :type Resource: str
         :param OriginData: Origin-pull data details
         :type OriginData: list of CdnData
@@ -9696,18 +9508,18 @@ class StopCdnDomainResponse(AbstractModel):
 
 
 class SummarizedData(AbstractModel):
-    """Aggregate values of details; each metric has different aggregation methods based on its characteristics
+    """Aggregated value, which is aggregated from all data of each metric. Aggregation methods are used depending on the metric attributes.
 
     """
 
     def __init__(self):
         r"""
         :param Name: Aggregation method, which can be:
-sum: aggregate summation
-max: maximum value; in bandwidth mode, the peak bandwidth is calculated based on the aggregate data with 5-minute granularity.
-avg: average value
+`sum`: Aggregate summation
+`max`: Maximum value. In bandwidth mode, the peak bandwidth is calculated based on the data aggregated in 5 minutes.
+`avg`: Average value
         :type Name: str
-        :param Value: Aggregate data value
+        :param Value: Aggregated value
         :type Value: float
         """
         self.Name = None
@@ -9763,8 +9575,8 @@ class TimestampData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Time: Statistical point in time in forward rounding mode
-Taking the 5-minute granularity as an example, 13:35:00 indicates that the statistical interval is between 13:35:00 and 13:39:59.
+        :param Time: The start point of the sampling period. 
+For example, if the time is set to 13:35:00, and `interval` is `5min`, the data returned is collected between 13:35:00 and 13:39:59
         :type Time: str
         :param Value: Data value
         :type Value: float
