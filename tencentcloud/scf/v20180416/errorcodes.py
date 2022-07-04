@@ -32,7 +32,7 @@ FAILEDOPERATION_AUTHFAILURE = 'FailedOperation.AuthFailure'
 # Failed to query the role information.
 FAILEDOPERATION_CALLROLEFAILED = 'FailedOperation.CallRoleFailed'
 
-# 
+# CopyAsyncRun parameter error
 FAILEDOPERATION_COPYASYNCRUN = 'FailedOperation.CopyAsyncRun'
 
 # Failed to replicate the function.
@@ -101,10 +101,10 @@ FAILEDOPERATION_PROVISIONCREATETIMER = 'FailedOperation.ProvisionCreateTimer'
 # Failed to delete the scheduled provisioned concurrency scaling action
 FAILEDOPERATION_PROVISIONDELETETIMER = 'FailedOperation.ProvisionDeleteTimer'
 
-# 
+# Running out of available provisioned concurrency quota
 FAILEDOPERATION_PROVISIONEDEXCEEDAVAILABLE = 'FailedOperation.ProvisionedExceedAvailable'
 
-# 
+# The provisioned concurrency exceeds the limit.
 FAILEDOPERATION_PROVISIONEDEXCEEDRESERVED = 'FailedOperation.ProvisionedExceedReserved'
 
 # The function version already has a provisioned concurrency setting task in progress. Please try again later.
@@ -116,13 +116,13 @@ FAILEDOPERATION_PUBLISHLAYERVERSION = 'FailedOperation.PublishLayerVersion'
 # You cannot publish a version in the current function state. Please try again when the state is normal.
 FAILEDOPERATION_PUBLISHVERSION = 'FailedOperation.PublishVersion'
 
-# 
+# The value of ReservedExceedTotal exceeds the limit.
 FAILEDOPERATION_RESERVEDEXCEEDTOTAL = 'FailedOperation.ReservedExceedTotal'
 
 # The function already has a reserved concurrency setting task in progress. Please try again later.
 FAILEDOPERATION_RESERVEDINPROGRESS = 'FailedOperation.ReservedInProgress'
 
-# 
+# ServiceClosed. Please check and try again.
 FAILEDOPERATION_SERVICECLOSED = 'FailedOperation.ServiceClosed'
 
 # This topic does not exsit.
@@ -174,6 +174,9 @@ INVALIDPARAMETER_PARAMERROR = 'InvalidParameter.ParamError'
 INVALIDPARAMETER_PAYLOAD = 'InvalidParameter.Payload'
 
 # 
+INVALIDPARAMETER_REQUESTTOOLARGE = 'InvalidParameter.RequestTooLarge'
+
+# RoleCheck parameter error
 INVALIDPARAMETER_ROLECHECK = 'InvalidParameter.RoleCheck'
 
 # Incorrect `RoutingConfig` parameter.

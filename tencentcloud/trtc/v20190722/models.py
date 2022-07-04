@@ -18,6 +18,74 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AgentParams(AbstractModel):
+    """The information of the relaying robot in the room.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserId: The [user ID](https://intl.cloud.tencent.com/document/product/647/37714) of the relaying robot in the TRTC room, which cannot be the same as a user ID already in use. We recommend you include the room ID in this user ID.
+        :type UserId: str
+        :param UserSig: The signature (similar to a login password) required for the relaying robot to enter the room. For information on how to calculate the signature, see [What is UserSig?](https://intl.cloud.tencent.com/document/product/647/38104). |
+        :type UserSig: str
+        :param MaxIdleTime: The timeout period (seconds) for relaying to stop automatically after all the users whose streams are mixed leave the room. The value cannot be smaller than 5 or larger than 86400 (24 hours). Default value: 30.
+        :type MaxIdleTime: int
+        """
+        self.UserId = None
+        self.UserSig = None
+        self.MaxIdleTime = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.UserSig = params.get("UserSig")
+        self.MaxIdleTime = params.get("MaxIdleTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AudioEncode(AbstractModel):
+    """The audio encoding parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SampleRate: The audio sample rate (Hz). Valid values: 48000, 44100, 32000, 24000, 16000, 8000.
+        :type SampleRate: int
+        :param Channel: The number of sound channels. Valid values: 1 (mono), 2 (dual).
+        :type Channel: int
+        :param BitRate: The audio bitrate (Kbps). Value range: 8-500.
+        :type BitRate: int
+        :param Codec: The audio codec. Valid values: 0 (LC-AAC), 1 (HE-AAC), 2 (HE-AACv2). The default value is 0. If this parameter is set to 2, `Channel` must be 2. If it is set to 1 or 2, `SampleRate` can only be 48000, 44100, 32000, 24000, or 16000.
+        :type Codec: int
+        """
+        self.SampleRate = None
+        self.Channel = None
+        self.BitRate = None
+        self.Codec = None
+
+
+    def _deserialize(self, params):
+        self.SampleRate = params.get("SampleRate")
+        self.Channel = params.get("Channel")
+        self.BitRate = params.get("BitRate")
+        self.Codec = params.get("Codec")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AudioParams(AbstractModel):
     """The audio transcoding parameters for recording.
 
@@ -426,6 +494,355 @@ class DismissRoomResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class MaxVideoUser(AbstractModel):
+    """The information of the large video in screen sharing or floating layout mode.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserMediaStream: The stream information.
+        :type UserMediaStream: :class:`tencentcloud.trtc.v20190722.models.UserMediaStream`
+        """
+        self.UserMediaStream = None
+
+
+    def _deserialize(self, params):
+        if params.get("UserMediaStream") is not None:
+            self.UserMediaStream = UserMediaStream()
+            self.UserMediaStream._deserialize(params.get("UserMediaStream"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuAudioParams(AbstractModel):
+    """The audio parameters for relaying.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AudioEncode: The audio encoding parameters.
+        :type AudioEncode: :class:`tencentcloud.trtc.v20190722.models.AudioEncode`
+        :param SubscribeAudioList: The users whose audios are mixed. For the `StartPublishCdnStream` API, if you do not pass this parameter or leave it empty, the audios of all anchors will be mixed. For the `UpdatePublishCdnStream` API, if you do not pass this parameter, TRTC will not change the users whose audios are mixed; if you pass in an empty string, the audios of all anchors will be mixed.
+        :type SubscribeAudioList: list of McuUserInfoParams
+        """
+        self.AudioEncode = None
+        self.SubscribeAudioList = None
+
+
+    def _deserialize(self, params):
+        if params.get("AudioEncode") is not None:
+            self.AudioEncode = AudioEncode()
+            self.AudioEncode._deserialize(params.get("AudioEncode"))
+        if params.get("SubscribeAudioList") is not None:
+            self.SubscribeAudioList = []
+            for item in params.get("SubscribeAudioList"):
+                obj = McuUserInfoParams()
+                obj._deserialize(item)
+                self.SubscribeAudioList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuLayout(AbstractModel):
+    """The layout parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserMediaStream: The information of the stream that is displayed. If you do not pass this parameter, TRTC will display the videos of anchors in the room according to their room entry sequence.
+        :type UserMediaStream: :class:`tencentcloud.trtc.v20190722.models.UserMediaStream`
+        :param ImageWidth: The video width (pixels). If you do not pass this parameter, 0 will be used.
+        :type ImageWidth: int
+        :param ImageHeight: The video height (pixels). If you do not pass this parameter, 0 will be used.
+        :type ImageHeight: int
+        :param LocationX: The horizontal offset (pixels) of the video. The sum of `LocationX` and `ImageWidth` cannot exceed the width of the canvas. If you do not pass this parameter, 0 will be used.
+        :type LocationX: int
+        :param LocationY: The vertical offset of the video. The sum of `LocationY` and `ImageHeight` cannot exceed the height of the canvas. If you do not pass this parameter, 0 will be used.
+        :type LocationY: int
+        :param ZOrder: The image layer of the video. If you do not pass this parameter, 0 will be used.
+        :type ZOrder: int
+        :param RenderMode: The rendering mode of the video. 0 (the video is scaled and the excess parts are cropped), 1 (the video is scaled), 2 (the video is scaled and the blank spaces are filled with black bars). If you do not pass this parameter, 0 will be used.
+        :type RenderMode: int
+        :param BackGroundColor: The background color of the video. Below are the values for some common colors:
+Red: 0xcc0033
+Yellow: 0xcc9900
+Green: 0xcccc33
+Blue: 0x99CCFF
+Black: 0x000000
+White: 0xFFFFFF
+Grey: 0x999999
+        :type BackGroundColor: str
+        :param BackgroundImageUrl: The URL of the background image for the video. This parameter allows you to specify an image to display when the user’s camera is turned off or before the user enters the room. If the dimensions of the image specified are different from those of the video window, the image will be stretched to fit the space. This parameter has a higher priority than `BackGroundColor`.
+        :type BackgroundImageUrl: str
+        """
+        self.UserMediaStream = None
+        self.ImageWidth = None
+        self.ImageHeight = None
+        self.LocationX = None
+        self.LocationY = None
+        self.ZOrder = None
+        self.RenderMode = None
+        self.BackGroundColor = None
+        self.BackgroundImageUrl = None
+
+
+    def _deserialize(self, params):
+        if params.get("UserMediaStream") is not None:
+            self.UserMediaStream = UserMediaStream()
+            self.UserMediaStream._deserialize(params.get("UserMediaStream"))
+        self.ImageWidth = params.get("ImageWidth")
+        self.ImageHeight = params.get("ImageHeight")
+        self.LocationX = params.get("LocationX")
+        self.LocationY = params.get("LocationY")
+        self.ZOrder = params.get("ZOrder")
+        self.RenderMode = params.get("RenderMode")
+        self.BackGroundColor = params.get("BackGroundColor")
+        self.BackgroundImageUrl = params.get("BackgroundImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuLayoutParams(AbstractModel):
+    """The layout parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MixLayoutMode: The layout mode. Valid values: 1 (floating), 2 (screen sharing), 3 (grid), 4 (custom). Floating, screen sharing, and grid are dynamic layouts. Custom layouts are static layouts.
+        :type MixLayoutMode: int
+        :param PureAudioHoldPlaceMode: Whether to display users who publish only audio. 0: Yes; 1: No. This parameter is valid only if dynamic layouts are used. If you do not pass this parameter, 0 will be used.
+        :type PureAudioHoldPlaceMode: int
+        :param MixLayoutList: The details of a custom layout.
+        :type MixLayoutList: list of McuLayout
+        :param MaxVideoUser: The information of the large video in screen sharing or floating layout mode.
+        :type MaxVideoUser: :class:`tencentcloud.trtc.v20190722.models.MaxVideoUser`
+        """
+        self.MixLayoutMode = None
+        self.PureAudioHoldPlaceMode = None
+        self.MixLayoutList = None
+        self.MaxVideoUser = None
+
+
+    def _deserialize(self, params):
+        self.MixLayoutMode = params.get("MixLayoutMode")
+        self.PureAudioHoldPlaceMode = params.get("PureAudioHoldPlaceMode")
+        if params.get("MixLayoutList") is not None:
+            self.MixLayoutList = []
+            for item in params.get("MixLayoutList"):
+                obj = McuLayout()
+                obj._deserialize(item)
+                self.MixLayoutList.append(obj)
+        if params.get("MaxVideoUser") is not None:
+            self.MaxVideoUser = MaxVideoUser()
+            self.MaxVideoUser._deserialize(params.get("MaxVideoUser"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuPublishCdnParam(AbstractModel):
+    """The relaying parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PublishCdnUrl: The URLs of the CDNs to relay to.
+        :type PublishCdnUrl: str
+        :param IsTencentCdn: Whether to relay to Tencent Cloud’s CDN. 0 (default): No; 1: Yes. An optimized route will be assigned if you relay to Tencent Cloud’s CDN.
+        :type IsTencentCdn: int
+        """
+        self.PublishCdnUrl = None
+        self.IsTencentCdn = None
+
+
+    def _deserialize(self, params):
+        self.PublishCdnUrl = params.get("PublishCdnUrl")
+        self.IsTencentCdn = params.get("IsTencentCdn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuUserInfoParams(AbstractModel):
+    """The users whose streams are mixed.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserInfo: The user information.
+        :type UserInfo: :class:`tencentcloud.trtc.v20190722.models.MixUserInfo`
+        """
+        self.UserInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("UserInfo") is not None:
+            self.UserInfo = MixUserInfo()
+            self.UserInfo._deserialize(params.get("UserInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuVideoParams(AbstractModel):
+    """The video parameters for relaying.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VideoEncode: The video encoding parameters.
+        :type VideoEncode: :class:`tencentcloud.trtc.v20190722.models.VideoEncode`
+        :param LayoutParams: The layout parameters.
+        :type LayoutParams: :class:`tencentcloud.trtc.v20190722.models.McuLayoutParams`
+        :param BackGroundColor: The canvas color. Below are the values for some common colors:
+Red: 0xcc0033
+Yellow: 0xcc9900
+Green: 0xcccc33
+Blue: 0x99CCFF
+Black: 0x000000
+White: 0xFFFFFF
+Grey: 0x999999
+        :type BackGroundColor: str
+        :param BackgroundImageUrl: The URL of the background image for the canvas. This parameter has a higher priority than `BackGroundColor`.
+        :type BackgroundImageUrl: str
+        :param WaterMarkList: The watermark information for the mixed stream.
+        :type WaterMarkList: list of McuWaterMarkParams
+        """
+        self.VideoEncode = None
+        self.LayoutParams = None
+        self.BackGroundColor = None
+        self.BackgroundImageUrl = None
+        self.WaterMarkList = None
+
+
+    def _deserialize(self, params):
+        if params.get("VideoEncode") is not None:
+            self.VideoEncode = VideoEncode()
+            self.VideoEncode._deserialize(params.get("VideoEncode"))
+        if params.get("LayoutParams") is not None:
+            self.LayoutParams = McuLayoutParams()
+            self.LayoutParams._deserialize(params.get("LayoutParams"))
+        self.BackGroundColor = params.get("BackGroundColor")
+        self.BackgroundImageUrl = params.get("BackgroundImageUrl")
+        if params.get("WaterMarkList") is not None:
+            self.WaterMarkList = []
+            for item in params.get("WaterMarkList"):
+                obj = McuWaterMarkParams()
+                obj._deserialize(item)
+                self.WaterMarkList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuWaterMarkImage(AbstractModel):
+    """The information of the watermark image.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WaterMarkUrl: The URL of the watermark image, which must be in PNG, JPG, or JPEG format and cannot exceed 5 MB.
+        :type WaterMarkUrl: str
+        :param WaterMarkWidth: The watermark width (pixels).
+        :type WaterMarkWidth: int
+        :param WaterMarkHeight: The watermark height (pixels).
+        :type WaterMarkHeight: int
+        :param LocationX: The horizontal offset (pixels) of the watermark.
+        :type LocationX: int
+        :param LocationY: The vertical offset (pixels) of the watermark.
+        :type LocationY: int
+        :param ZOrder: The image layer of the watermark. If you do not pass this parameter, 0 will be used.
+        :type ZOrder: int
+        """
+        self.WaterMarkUrl = None
+        self.WaterMarkWidth = None
+        self.WaterMarkHeight = None
+        self.LocationX = None
+        self.LocationY = None
+        self.ZOrder = None
+
+
+    def _deserialize(self, params):
+        self.WaterMarkUrl = params.get("WaterMarkUrl")
+        self.WaterMarkWidth = params.get("WaterMarkWidth")
+        self.WaterMarkHeight = params.get("WaterMarkHeight")
+        self.LocationX = params.get("LocationX")
+        self.LocationY = params.get("LocationY")
+        self.ZOrder = params.get("ZOrder")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuWaterMarkParams(AbstractModel):
+    """The Watermark information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WaterMarkImage: The information of the watermark image.
+        :type WaterMarkImage: :class:`tencentcloud.trtc.v20190722.models.McuWaterMarkImage`
+        """
+        self.WaterMarkImage = None
+
+
+    def _deserialize(self, params):
+        if params.get("WaterMarkImage") is not None:
+            self.WaterMarkImage = McuWaterMarkImage()
+            self.WaterMarkImage._deserialize(params.get("WaterMarkImage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MixLayout(AbstractModel):
     """The custom layout parameters.
 
@@ -602,6 +1019,38 @@ class MixTranscodeParams(AbstractModel):
         if params.get("AudioParams") is not None:
             self.AudioParams = AudioParams()
             self.AudioParams._deserialize(params.get("AudioParams"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MixUserInfo(AbstractModel):
+    """The user information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserId: User ID.
+        :type UserId: str
+        :param RoomId: If a dynamic layout is used, the value of this parameter should be the ID of the main room. If a custom layout is used, the value of this parameter should be the same as the room ID in `MixLayoutList`.
+        :type RoomId: str
+        :param RoomIdType: The type of the `RoomId` parameter. 0: integer; 1: string.
+        :type RoomIdType: int
+        """
+        self.UserId = None
+        self.RoomId = None
+        self.RoomIdType = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.RoomId = params.get("RoomId")
+        self.RoomIdType = params.get("RoomIdType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -817,6 +1266,171 @@ class RemoveUserResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SingleSubscribeParams(AbstractModel):
+    """The information of a single stream relayed.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserMediaStream: The stream information.
+        :type UserMediaStream: :class:`tencentcloud.trtc.v20190722.models.UserMediaStream`
+        """
+        self.UserMediaStream = None
+
+
+    def _deserialize(self, params):
+        if params.get("UserMediaStream") is not None:
+            self.UserMediaStream = UserMediaStream()
+            self.UserMediaStream._deserialize(params.get("UserMediaStream"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartPublishCdnStreamRequest(AbstractModel):
+    """StartPublishCdnStream request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: The [SDKAppID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are relayed.
+        :type SdkAppId: int
+        :param RoomId: The ID of the room whose streams are relayed (the main room).
+        :type RoomId: str
+        :param RoomIdType: The type of the `RoomId` parameter, which must be the same as the ID type of the room whose streams are relayed. 0: integer; 1: string.
+        :type RoomIdType: int
+        :param AgentParams: The information of the relaying robot in the room.
+        :type AgentParams: :class:`tencentcloud.trtc.v20190722.models.AgentParams`
+        :param WithTranscoding: Whether to transcode the streams. 0: No; 1: Yes.
+        :type WithTranscoding: int
+        :param AudioParams: The audio encoding parameters for relaying.
+        :type AudioParams: :class:`tencentcloud.trtc.v20190722.models.McuAudioParams`
+        :param VideoParams: The video encoding parameters for relaying. If you do not pass this parameter, only audio will be relayed.
+        :type VideoParams: :class:`tencentcloud.trtc.v20190722.models.McuVideoParams`
+        :param SingleSubscribeParams: The information of a single stream relayed. When you relay a single stream, set `WithTranscoding` to 0.
+        :type SingleSubscribeParams: :class:`tencentcloud.trtc.v20190722.models.SingleSubscribeParams`
+        :param PublishCdnParams: The CDN information.
+        :type PublishCdnParams: list of McuPublishCdnParam
+        """
+        self.SdkAppId = None
+        self.RoomId = None
+        self.RoomIdType = None
+        self.AgentParams = None
+        self.WithTranscoding = None
+        self.AudioParams = None
+        self.VideoParams = None
+        self.SingleSubscribeParams = None
+        self.PublishCdnParams = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.RoomId = params.get("RoomId")
+        self.RoomIdType = params.get("RoomIdType")
+        if params.get("AgentParams") is not None:
+            self.AgentParams = AgentParams()
+            self.AgentParams._deserialize(params.get("AgentParams"))
+        self.WithTranscoding = params.get("WithTranscoding")
+        if params.get("AudioParams") is not None:
+            self.AudioParams = McuAudioParams()
+            self.AudioParams._deserialize(params.get("AudioParams"))
+        if params.get("VideoParams") is not None:
+            self.VideoParams = McuVideoParams()
+            self.VideoParams._deserialize(params.get("VideoParams"))
+        if params.get("SingleSubscribeParams") is not None:
+            self.SingleSubscribeParams = SingleSubscribeParams()
+            self.SingleSubscribeParams._deserialize(params.get("SingleSubscribeParams"))
+        if params.get("PublishCdnParams") is not None:
+            self.PublishCdnParams = []
+            for item in params.get("PublishCdnParams"):
+                obj = McuPublishCdnParam()
+                obj._deserialize(item)
+                self.PublishCdnParams.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartPublishCdnStreamResponse(AbstractModel):
+    """StartPublishCdnStream response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: The task ID, which is generated by the Tencent Cloud server. You need to pass in the task ID when making a request to update or stop a relaying task.
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class StopPublishCdnStreamRequest(AbstractModel):
+    """StopPublishCdnStream request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: The [SDKAppID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are relayed.
+        :type SdkAppId: int
+        :param TaskId: The task ID.
+        :type TaskId: str
+        """
+        self.SdkAppId = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopPublishCdnStreamResponse(AbstractModel):
+    """StopPublishCdnStream response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: The task ID.
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class StorageFile(AbstractModel):
     """The information of the recording files, which is returned by the `DescribeCloudRecording` API.
 
@@ -966,6 +1580,160 @@ The default value is `0`, which means others.
         self.SubAppId = params.get("SubAppId")
         self.SessionContext = params.get("SessionContext")
         self.SourceContext = params.get("SourceContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdatePublishCdnStreamRequest(AbstractModel):
+    """UpdatePublishCdnStream request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: The [SDKAppID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are relayed.
+        :type SdkAppId: int
+        :param TaskId: The task ID.
+        :type TaskId: str
+        :param SequenceNumber: The sequence of a request. This parameter ensures the requests to change the parameters of the same relaying task are in the correct order. It increases each time a new request is made.
+        :type SequenceNumber: int
+        :param WithTranscoding: Whether to transcode the streams. 0: No; 1: Yes.
+        :type WithTranscoding: int
+        :param AudioParams: Pass this parameter to change the users whose audios are mixed. If you do not pass this parameter, no changes will be made.
+        :type AudioParams: :class:`tencentcloud.trtc.v20190722.models.McuAudioParams`
+        :param VideoParams: Pass this parameter to change video parameters other than the codec, including the video layout, background image, background color, and watermark information. This parameter is valid only if streams are transcoded. If you do not pass it, no changes will be made.
+        :type VideoParams: :class:`tencentcloud.trtc.v20190722.models.McuVideoParams`
+        :param SingleSubscribeParams: Pass this parameter to change the single stream that is relayed. This parameter is valid only if streams are not transcoded. If you do not pass this parameter, no changes will be made.
+        :type SingleSubscribeParams: :class:`tencentcloud.trtc.v20190722.models.SingleSubscribeParams`
+        :param PublishCdnParams: Pass this parameter to change the CDNs to relay to. If you do not pass this parameter, no changes will be made.
+        :type PublishCdnParams: list of McuPublishCdnParam
+        """
+        self.SdkAppId = None
+        self.TaskId = None
+        self.SequenceNumber = None
+        self.WithTranscoding = None
+        self.AudioParams = None
+        self.VideoParams = None
+        self.SingleSubscribeParams = None
+        self.PublishCdnParams = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.TaskId = params.get("TaskId")
+        self.SequenceNumber = params.get("SequenceNumber")
+        self.WithTranscoding = params.get("WithTranscoding")
+        if params.get("AudioParams") is not None:
+            self.AudioParams = McuAudioParams()
+            self.AudioParams._deserialize(params.get("AudioParams"))
+        if params.get("VideoParams") is not None:
+            self.VideoParams = McuVideoParams()
+            self.VideoParams._deserialize(params.get("VideoParams"))
+        if params.get("SingleSubscribeParams") is not None:
+            self.SingleSubscribeParams = SingleSubscribeParams()
+            self.SingleSubscribeParams._deserialize(params.get("SingleSubscribeParams"))
+        if params.get("PublishCdnParams") is not None:
+            self.PublishCdnParams = []
+            for item in params.get("PublishCdnParams"):
+                obj = McuPublishCdnParam()
+                obj._deserialize(item)
+                self.PublishCdnParams.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdatePublishCdnStreamResponse(AbstractModel):
+    """UpdatePublishCdnStream response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: The task ID.
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class UserMediaStream(AbstractModel):
+    """The stream information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserInfo: The user information.
+        :type UserInfo: :class:`tencentcloud.trtc.v20190722.models.MixUserInfo`
+        :param StreamType: The stream type. 0: Camera; 1: Screen sharing. If you do not pass this parameter, 0 will be used.
+        :type StreamType: int
+        """
+        self.UserInfo = None
+        self.StreamType = None
+
+
+    def _deserialize(self, params):
+        if params.get("UserInfo") is not None:
+            self.UserInfo = MixUserInfo()
+            self.UserInfo._deserialize(params.get("UserInfo"))
+        self.StreamType = params.get("StreamType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoEncode(AbstractModel):
+    """The video encoding parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Width: The width of the output stream (pixels). This parameter is required if audio and video are relayed. Value range: [0, 1920].
+        :type Width: int
+        :param Height: The height of the output stream (pixels). This parameter is required if audio and video are relayed. Value range: [0, 1080].
+        :type Height: int
+        :param Fps: The frame rate (fps) of the output stream. This parameter is required if audio and video are relayed. Value range: [0, 60].
+        :type Fps: int
+        :param BitRate: The bitrate (Kbps) of the output stream. This parameter is required if audio and video are relayed. Value range: [0, 10000].
+        :type BitRate: int
+        :param Gop: The GOP (seconds) of the output stream. This parameter is required if audio and video are relayed. Value range: [1, 5].
+        :type Gop: int
+        """
+        self.Width = None
+        self.Height = None
+        self.Fps = None
+        self.BitRate = None
+        self.Gop = None
+
+
+    def _deserialize(self, params):
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.Fps = params.get("Fps")
+        self.BitRate = params.get("BitRate")
+        self.Gop = params.get("Gop")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -642,9 +642,9 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
         :type Readiness: :class:`tencentcloud.tem.v20210701.models.HealthCheckConfig`
         :param DeployStrategyConf: Configuration of batch release policies
         :type DeployStrategyConf: :class:`tencentcloud.tem.v20210701.models.DeployStrategyConf`
-        :param HorizontalAutoscaler: Auto scaling policy
+        :param HorizontalAutoscaler: Auto scaling policy. (Disused. Please use APIs for auto scaling policy combinations)
         :type HorizontalAutoscaler: list of HorizontalAutoscaler
-        :param CronHorizontalAutoscaler: Scheduled auto scaling policy
+        :param CronHorizontalAutoscaler: Scheduled scaling policy (Disused. Please use APIs for auto scaling policy combinations)
         :type CronHorizontalAutoscaler: list of CronHorizontalAutoscaler
         :param LogEnable: Specifies whether to enable logging. `1`: enable; `0`: do not enable
         :type LogEnable: int
@@ -664,6 +664,8 @@ If `konajdk` is selected, the value can be:
         :type OsFlavour: str
         :param EnablePrometheusConf: Specifies whether to enable Prometheus metric
         :type EnablePrometheusConf: :class:`tencentcloud.tem.v20210701.models.EnablePrometheusConf`
+        :param EnableTracing: `1`: Enable APM collection; `0`: Disable APM collection
+        :type EnableTracing: int
         """
         self.ApplicationId = None
         self.InitPodNum = None
@@ -705,6 +707,7 @@ If `konajdk` is selected, the value can be:
         self.StartupProbe = None
         self.OsFlavour = None
         self.EnablePrometheusConf = None
+        self.EnableTracing = None
 
 
     def _deserialize(self, params):
@@ -794,6 +797,7 @@ If `konajdk` is selected, the value can be:
         if params.get("EnablePrometheusConf") is not None:
             self.EnablePrometheusConf = EnablePrometheusConf()
             self.EnablePrometheusConf._deserialize(params.get("EnablePrometheusConf"))
+        self.EnableTracing = params.get("EnableTracing")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1492,19 +1496,22 @@ class HorizontalAutoscaler(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MinReplicas: Minimum number of instances
+        :param MinReplicas: (Optional) Minimum number of instances
         :type MinReplicas: int
-        :param MaxReplicas: Maximum number of instances
+        :param MaxReplicas: (Optional) Maximum number of instances
         :type MaxReplicas: int
         :param Metrics: Metrics (CPU or memory)
         :type Metrics: str
         :param Threshold: Threshold (percentage)
         :type Threshold: int
+        :param Enabled: Whether it is enabled
+        :type Enabled: bool
         """
         self.MinReplicas = None
         self.MaxReplicas = None
         self.Metrics = None
         self.Threshold = None
+        self.Enabled = None
 
 
     def _deserialize(self, params):
@@ -1512,6 +1519,7 @@ class HorizontalAutoscaler(AbstractModel):
         self.MaxReplicas = params.get("MaxReplicas")
         self.Metrics = params.get("Metrics")
         self.Threshold = params.get("Threshold")
+        self.Enabled = params.get("Enabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

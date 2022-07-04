@@ -349,12 +349,15 @@ class CreateKeyRequest(AbstractModel):
         :type Type: int
         :param Tags: Tag list
         :type Tags: list of Tag
+        :param HsmClusterId: ID of the HSM cluster. This field is only valid for Exclusive and Managed KMS instances.
+        :type HsmClusterId: str
         """
         self.Alias = None
         self.Description = None
         self.KeyUsage = None
         self.Type = None
         self.Tags = None
+        self.HsmClusterId = None
 
 
     def _deserialize(self, params):
@@ -368,6 +371,7 @@ class CreateKeyRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.HsmClusterId = params.get("HsmClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -400,6 +404,9 @@ class CreateKeyResponse(AbstractModel):
         :type TagCode: int
         :param TagMsg: Tag operation return information
         :type TagMsg: str
+        :param HsmClusterId: ID of the HSM cluster. This field is only valid for Exclusive and Managed KMS instances.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type HsmClusterId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -411,6 +418,7 @@ class CreateKeyResponse(AbstractModel):
         self.KeyUsage = None
         self.TagCode = None
         self.TagMsg = None
+        self.HsmClusterId = None
         self.RequestId = None
 
 
@@ -423,6 +431,7 @@ class CreateKeyResponse(AbstractModel):
         self.KeyUsage = params.get("KeyUsage")
         self.TagCode = params.get("TagCode")
         self.TagMsg = params.get("TagMsg")
+        self.HsmClusterId = params.get("HsmClusterId")
         self.RequestId = params.get("RequestId")
 
 
@@ -517,7 +526,7 @@ class DecryptRequest(AbstractModel):
         :type EncryptionContext: str
         :param EncryptionPublicKey: PEM-encoded public key (2048-bit RSA/SM2 key), which can be used to encrypt the `Plaintext` returned. If this field is left empty, the `Plaintext` will not be encrypted.
         :type EncryptionPublicKey: str
-        :param EncryptionAlgorithm: Asymmetric encryption algorithm. Valid values: `SM2(C1C3C2)`, `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, and `RSAES_OAEP_SHA_256`. This field is used in combination with `EncryptionPublicKey` for encryption. If it is left empty, a SM2 public key will be used by default.
+        :param EncryptionAlgorithm: Asymmetric encryption algorithm. Valid values: `SM2` (C1C3C2 ciphertext is returned), `SM2_C1C3C2_ASN1` (C1C3C2 ASN1 ciphertext is returned), `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, and `RSAES_OAEP_SHA_256`. This field is used in combination with `EncryptionPublicKey` for encryption. If it is left empty, an SM2 public key will be used by default.
         :type EncryptionAlgorithm: str
         """
         self.CiphertextBlob = None
@@ -1558,7 +1567,7 @@ class GenerateDataKeyRequest(AbstractModel):
         :type EncryptionContext: str
         :param EncryptionPublicKey: PEM-encoded public key (2048-bit RSA/SM2 key), which can be used to encrypt the `Plaintext` returned. If this field is left empty, the `Plaintext` will not be encrypted.
         :type EncryptionPublicKey: str
-        :param EncryptionAlgorithm: Asymmetric encryption algorithm. Valid values: `SM2(C1C3C2)`, `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, and `RSAES_OAEP_SHA_256`. This field is used with `EncryptionPublicKey` for encryption. If it is left empty, a SM2 public key will be used by default.
+        :param EncryptionAlgorithm: Asymmetric encryption algorithm. Valid values: `SM2` (C1C3C2 ciphertext is returned)`, `SM2_C1C3C2_ASN1` (C1C3C2 ASN1 ciphertext is returned), `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, and `RSAES_OAEP_SHA_256`. This field is used in combination with `EncryptionPublicKey` for encryption. If it is left empty, an SM2 public key will be used by default.
         :type EncryptionAlgorithm: str
         """
         self.KeyId = None
@@ -1879,6 +1888,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ProResourceId: Unique ID of the Ultimate Edition purchase record. If the Ultimate Edition is not activated, the returned value will be null.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProResourceId: str
+        :param ExclusiveVSMEnabled: Whether to activate Managed KMS
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type ExclusiveVSMEnabled: bool
+        :param ExclusiveHSMEnabled: Whether to activate Exclusive KMS
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type ExclusiveHSMEnabled: bool
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -1888,6 +1903,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ProExpireTime = None
         self.ProRenewFlag = None
         self.ProResourceId = None
+        self.ExclusiveVSMEnabled = None
+        self.ExclusiveHSMEnabled = None
         self.RequestId = None
 
 
@@ -1898,6 +1915,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ProExpireTime = params.get("ProExpireTime")
         self.ProRenewFlag = params.get("ProRenewFlag")
         self.ProResourceId = params.get("ProResourceId")
+        self.ExclusiveVSMEnabled = params.get("ExclusiveVSMEnabled")
+        self.ExclusiveHSMEnabled = params.get("ExclusiveHSMEnabled")
         self.RequestId = params.get("RequestId")
 
 
@@ -2017,6 +2036,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type ValidTo: int
         :param ResourceId: Resource ID in the format of `creatorUin/$creatorUin/$keyId`.
         :type ResourceId: str
+        :param HsmClusterId: ID of the HSM cluster. This field is only valid for Exclusive and Managed KMS instances.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type HsmClusterId: str
         """
         self.KeyId = None
         self.Alias = None
@@ -2033,6 +2055,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Origin = None
         self.ValidTo = None
         self.ResourceId = None
+        self.HsmClusterId = None
 
 
     def _deserialize(self, params):
@@ -2051,6 +2074,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Origin = params.get("Origin")
         self.ValidTo = params.get("ValidTo")
         self.ResourceId = params.get("ResourceId")
+        self.HsmClusterId = params.get("HsmClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2135,6 +2159,8 @@ class ListKeyDetailRequest(AbstractModel):
         :type KeyUsage: str
         :param TagFilters: Tag filter condition
         :type TagFilters: list of TagFilter
+        :param HsmClusterId: ID of the HSM cluster. This field is only valid for Exclusive and Managed KMS instances.
+        :type HsmClusterId: str
         """
         self.Offset = None
         self.Limit = None
@@ -2145,6 +2171,7 @@ class ListKeyDetailRequest(AbstractModel):
         self.Origin = None
         self.KeyUsage = None
         self.TagFilters = None
+        self.HsmClusterId = None
 
 
     def _deserialize(self, params):
@@ -2162,6 +2189,7 @@ class ListKeyDetailRequest(AbstractModel):
                 obj = TagFilter()
                 obj._deserialize(item)
                 self.TagFilters.append(obj)
+        self.HsmClusterId = params.get("HsmClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2215,16 +2243,20 @@ class ListKeysRequest(AbstractModel):
         :type Limit: int
         :param Role: Filter by creator role. 0 (default value): the CMK is created by the user; 1: the CMK is created automatically by an authorized Tencent Cloud service
         :type Role: int
+        :param HsmClusterId: ID of the HSM cluster. This field is only valid for Exclusive and Managed KMS instances.
+        :type HsmClusterId: str
         """
         self.Offset = None
         self.Limit = None
         self.Role = None
+        self.HsmClusterId = None
 
 
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.Role = params.get("Role")
+        self.HsmClusterId = params.get("HsmClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

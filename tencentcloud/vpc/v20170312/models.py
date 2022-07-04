@@ -2822,6 +2822,8 @@ class CreateFlowLogRequest(AbstractModel):
         :type StorageType: str
         :param FlowLogStorage: Information of the flow log consumer, which is required when the consumer type is `ckafka`.
         :type FlowLogStorage: :class:`tencentcloud.vpc.v20170312.models.FlowLogStorage`
+        :param CloudLogRegion: The region corresponding to the flow log storage ID. If not passed in, this field defaults to the current region.
+        :type CloudLogRegion: str
         """
         self.FlowLogName = None
         self.ResourceType = None
@@ -2833,6 +2835,7 @@ class CreateFlowLogRequest(AbstractModel):
         self.Tags = None
         self.StorageType = None
         self.FlowLogStorage = None
+        self.CloudLogRegion = None
 
 
     def _deserialize(self, params):
@@ -2853,6 +2856,7 @@ class CreateFlowLogRequest(AbstractModel):
         if params.get("FlowLogStorage") is not None:
             self.FlowLogStorage = FlowLogStorage()
             self.FlowLogStorage._deserialize(params.get("FlowLogStorage"))
+        self.CloudLogRegion = params.get("CloudLogRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6344,9 +6348,9 @@ class DescribeAddressesRequest(AbstractModel):
 <li> tag-value - String - Optional - Filter by tag value.</li>
 <li> tag:tag-key - String - Optional - Filter by tag key-value pair. Use a specific tag key to replace `tag-key`.</li>
         :type Filters: list of Filter
-        :param Offset: The Offset. The default value is 0. For more information on `Offset`, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/product/11646).
+        :param Offset: The Offset. The default value is 0. For more information about `Offset`, see the relevant section in the API documentation.
         :type Offset: int
-        :param Limit: Number of returned results. The default value is 20. The maximum is 100. For more information on `Limit`, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/product/11646).
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API documentation.
         :type Limit: int
         """
         self.AddressIds = None
@@ -7544,6 +7548,8 @@ class DescribeFlowLogsRequest(AbstractModel):
 <li>tag-key - String - Required: No - (Filter condition) Filter by tag key.</li>
 <li> tag:tag-key - String - Required: No - (Filter condition) Filter by tag key-value pair. The tag-key should be replaced with a specified tag key.</li>
         :type Filters: :class:`tencentcloud.vpc.v20170312.models.Filter`
+        :param CloudLogRegion: The region corresponding to the flow log storage ID.
+        :type CloudLogRegion: str
         """
         self.VpcId = None
         self.FlowLogId = None
@@ -7558,6 +7564,7 @@ class DescribeFlowLogsRequest(AbstractModel):
         self.Offset = None
         self.Limit = None
         self.Filters = None
+        self.CloudLogRegion = None
 
 
     def _deserialize(self, params):
@@ -7576,6 +7583,7 @@ class DescribeFlowLogsRequest(AbstractModel):
         if params.get("Filters") is not None:
             self.Filters = Filter()
             self.Filters._deserialize(params.get("Filters"))
+        self.CloudLogRegion = params.get("CloudLogRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11424,6 +11432,9 @@ Note: this field may return `null`, indicating that no valid value can be found.
         :param FlowLogStorage: Information of the consumer, which is returned when the consumer type is `ckafka`.
 Note: this field may return `null`, indicating that no valid value can be found.
         :type FlowLogStorage: :class:`tencentcloud.vpc.v20170312.models.FlowLogStorage`
+        :param CloudLogRegion: The region corresponding to the flow log storage ID.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CloudLogRegion: str
         """
         self.VpcId = None
         self.FlowLogId = None
@@ -11439,6 +11450,7 @@ Note: this field may return `null`, indicating that no valid value can be found.
         self.Enable = None
         self.StorageType = None
         self.FlowLogStorage = None
+        self.CloudLogRegion = None
 
 
     def _deserialize(self, params):
@@ -11463,6 +11475,7 @@ Note: this field may return `null`, indicating that no valid value can be found.
         if params.get("FlowLogStorage") is not None:
             self.FlowLogStorage = FlowLogStorage()
             self.FlowLogStorage._deserialize(params.get("FlowLogStorage"))
+        self.CloudLogRegion = params.get("CloudLogRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

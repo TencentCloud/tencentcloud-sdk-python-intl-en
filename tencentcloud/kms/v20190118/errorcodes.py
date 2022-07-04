@@ -29,6 +29,9 @@ FAILEDOPERATION_DECRYPTERROR = 'FailedOperation.DecryptError'
 # Encryption failed.
 FAILEDOPERATION_ENCRYPTIONERROR = 'FailedOperation.EncryptionError'
 
+# 
+FAILEDOPERATION_TAGGINGERROR = 'FailedOperation.TaggingError'
+
 # Internal error.
 INTERNALERROR = 'InternalError'
 
@@ -55,6 +58,9 @@ INVALIDPARAMETERVALUE_INVALIDALIAS = 'InvalidParameterValue.InvalidAlias'
 
 # Incorrect ciphertext format
 INVALIDPARAMETERVALUE_INVALIDCIPHERTEXT = 'InvalidParameterValue.InvalidCiphertext'
+
+# Invalid HSM cluster ID.
+INVALIDPARAMETERVALUE_INVALIDHSMCLUSTERID = 'InvalidParameterValue.InvalidHsmClusterId'
 
 # Invalid `KeyId`.
 INVALIDPARAMETERVALUE_INVALIDKEYID = 'InvalidParameterValue.InvalidKeyId'
