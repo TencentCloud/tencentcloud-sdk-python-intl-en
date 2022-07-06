@@ -20,28 +20,28 @@ AUTHFAILURE = 'AuthFailure'
 # Invalid authorization.
 AUTHFAILURE_INVALIDAUTHORIZATION = 'AuthFailure.InvalidAuthorization'
 
-# Failed to add the security group information of an instance.
+# Failed to add the security group information of the instance.
 FAILEDOPERATION_ADDINSTANCEINFOFAILED = 'FailedOperation.AddInstanceInfoFailed'
 
 # Failed to associate the security group.
 FAILEDOPERATION_ASSOCIATESECURITYGROUPSFAILED = 'FailedOperation.AssociateSecurityGroupsFailed'
 
-# Failed to clear the security group information of an instance.
+# Failed to clear the security group information of the instance.
 FAILEDOPERATION_CLEARINSTANCEINFOFAILED = 'FailedOperation.ClearInstanceInfoFailed'
 
 # Failed to submit the task.
 FAILEDOPERATION_COMMITFLOWERROR = 'FailedOperation.CommitFlowError'
 
-# Failed to unassociate the security group.
+# Failed to unbind the security group.
 FAILEDOPERATION_DISASSOCIATESECURITYGROUPSFAILED = 'FailedOperation.DisassociateSecurityGroupsFailed'
 
-# This operation is not allowed under the current DTS state.
+# This operation is not allowed under the current DTS status.
 FAILEDOPERATION_DTSSTATUSABNORMAL = 'FailedOperation.DtsStatusAbnormal'
 
 # No process exists.
 FAILEDOPERATION_FLOWNOTEXISTS = 'FailedOperation.FlowNotExists'
 
-# Failed to query the security group details. Please try again later.
+# Failed to query the security group details. Try again later.
 FAILEDOPERATION_GETSECURITYGROUPDETAILFAILED = 'FailedOperation.GetSecurityGroupDetailFailed'
 
 # Payment failed.
@@ -50,7 +50,7 @@ FAILEDOPERATION_PAYFAILED = 'FailedOperation.PayFailed'
 # No exact description for this error code for the time being.
 FAILEDOPERATION_REDOFLOWFAILED = 'FailedOperation.RedoFlowFailed'
 
-# Failed to set a rule.
+# Failed to set the rule.
 FAILEDOPERATION_SETRULELOCATIONFAILED = 'FailedOperation.SetRuleLocationFailed'
 
 # Internal system error, which is irrelevant to the business.
@@ -62,7 +62,7 @@ FAILEDOPERATION_UNSUPPORTERROR = 'FailedOperation.UnSupportError'
 # Invalid data is entered for weekday.
 FAILEDOPERATION_UNKNOWN = 'FailedOperation.Unknown'
 
-# Failed to update the security group information of an instance.
+# Failed to update the security group information of the instance.
 FAILEDOPERATION_UPDATEINSTANCEINFOFAILED = 'FailedOperation.UpdateInstanceInfoFailed'
 
 # Failed to update the security group.
@@ -71,31 +71,31 @@ FAILEDOPERATION_UPDATESECURITYGROUPSFAILED = 'FailedOperation.UpdateSecurityGrou
 # Internal error.
 INTERNALERROR = 'InternalError'
 
-# CAM authentication error.
+# A CAM authentication error occurred.
 INTERNALERROR_CAMAUTHOSSRESPONSERETURNCODEERROR = 'InternalError.CamAuthOssResponseReturnCodeError'
 
 # Internal system error with the database operation, which may be update, insert, select, etc.
 INTERNALERROR_DBOPERATIONFAILED = 'InternalError.DbOperationFailed'
 
-# Failed to execute the HTTP request. Please try again later.
+# Failed to execute the HTTP request. Try again later.
 INTERNALERROR_EXECHTTPREQUESTERROR = 'InternalError.ExecHttpRequestError'
 
-# 
+# You do not have the operation permission.
 INTERNALERROR_INSTANCEOPERATEPERMISSIONERROR = 'InternalError.InstanceOperatePermissionError'
 
 # Internal error.
 INTERNALERROR_INTERNALERROR = 'InternalError.InternalError'
 
-# An error occurred while obtaining the instance list. Please try again later.
+# An error occurred while obtaining the list of instances. Try again later.
 INTERNALERROR_LISTINSTANCESERROR = 'InternalError.ListInstancesError'
 
-# Network error
+# A network error occurred.
 INTERNALERROR_NETWORKERR = 'InternalError.NetWorkErr'
 
 # Incorrect parameter.
 INVALIDPARAMETER = 'InvalidParameter'
 
-# 
+# The corresponding API was not found.
 INVALIDPARAMETER_ACTIONNOTFOUND = 'InvalidParameter.ActionNotFound'
 
 # The parameter is empty.
@@ -104,7 +104,7 @@ INVALIDPARAMETER_EMPTYPARAM = 'InvalidParameter.EmptyParam'
 # Invalid parameter.
 INVALIDPARAMETER_ILLEGALPARAMETERERROR = 'InvalidParameter.IllegalParameterError'
 
-# 
+# The security groups of the instance exceeds the limit.
 INVALIDPARAMETER_INSTANCESGOVERLIMITERROR = 'InvalidParameter.InstanceSGOverLimitError'
 
 # Invalid service parameter.
@@ -116,7 +116,7 @@ INVALIDPARAMETER_NOTSUPPORTED = 'InvalidParameter.NotSupported'
 # Only VPCs are provided in the Shanghai Finance AZ.
 INVALIDPARAMETER_ONLYVPCONSPECZONEID = 'InvalidParameter.OnlyVPCOnSpecZoneId'
 
-# Invalid time format or time range
+# The time format or time range is invalid.
 INVALIDPARAMETER_PERIOD = 'InvalidParameter.Period'
 
 # The API has no CAM permissions.
@@ -131,10 +131,10 @@ INVALIDPARAMETERVALUE_BACKUPNOTEXISTS = 'InvalidParameterValue.BackupNotExists'
 # The instance is not in a VPC.
 INVALIDPARAMETERVALUE_BASENETWORKACCESSDENY = 'InvalidParameterValue.BaseNetWorkAccessDeny'
 
-# Incorrect type of instances requested for purchase (TypeId - 1: cluster edition; 2: primary-secondary edition, i.e., the legacy primary-secondary edition).
+# The type of instances requested for purchase is incorrect (TypeId - 1: Cluster Edition; 2: Master-Replica Edition, i.e., the legacy Master-Replica Edition).
 INVALIDPARAMETERVALUE_INVALIDINSTANCETYPEID = 'InvalidParameterValue.InvalidInstanceTypeId'
 
-# In a VPC, vpcid or subnet ID is invalid.
+# The `vpcid` or subnet ID in the VPC is invalid.
 INVALIDPARAMETERVALUE_INVALIDSUBNETID = 'InvalidParameterValue.InvalidSubnetId'
 
 # The requested capacity is out of the purchasable capacity range.
@@ -146,7 +146,7 @@ INVALIDPARAMETERVALUE_PASSWORDEMPTY = 'InvalidParameterValue.PasswordEmpty'
 # Password verification error due to incorrect password.
 INVALIDPARAMETERVALUE_PASSWORDERROR = 'InvalidParameterValue.PasswordError'
 
-#  
+# Tencent internal accounts are not allowed to use password-free instances.
 INVALIDPARAMETERVALUE_PASSWORDFREEDENIED = 'InvalidParameterValue.PasswordFreeDenied'
 
 # When the password is set, the old password passed in by MC does not match the previously set password.
@@ -158,7 +158,7 @@ INVALIDPARAMETERVALUE_REDUCECAPACITYNOTALLOWED = 'InvalidParameterValue.ReduceCa
 # The global replication group doesn’t exist.
 INVALIDPARAMETERVALUE_REPLICATIONGROUPNOTEXISTS = 'InvalidParameterValue.ReplicationGroupNotExists'
 
-# Incorrect request parameter or security group ID.
+# The request parameter or security group ID is incorrect.
 INVALIDPARAMETERVALUE_SECURITYGROUPIDSNOTEXISTS = 'InvalidParameterValue.SecurityGroupIdsNotExists'
 
 # The instance specification doesn’t exist.
@@ -167,13 +167,13 @@ INVALIDPARAMETERVALUE_SPECNOTEXIST = 'InvalidParameterValue.SpecNotExist'
 # The instance type is not supported.
 INVALIDPARAMETERVALUE_UNSUPPORTEDTYPE = 'InvalidParameterValue.UnSupportedType'
 
-# Invalid VPC subnet ID of `uniqVpcId`.
+# The `uniqVpcId` or subnet ID in the VPC is invalid.
 INVALIDPARAMETERVALUE_UNVPCIDNOTEXISTS = 'InvalidParameterValue.UnVpcIdNotExists'
 
-# Invalid data is entered for weekday.
+# Invalid data is entered for `weekday`.
 INVALIDPARAMETERVALUE_WEEKDAYSISINVALID = 'InvalidParameterValue.WeekDaysIsInvalid'
 
-# 
+# The quota limit has been reached.
 LIMITEXCEEDED = 'LimitExceeded'
 
 # The requested capacity is out of the purchasable specification range (`memSize` should be an integer multiple of 1,024 in MB).
@@ -185,7 +185,7 @@ LIMITEXCEEDED_INVALIDPARAMETERGOODSNUMNOTINRANGE = 'LimitExceeded.InvalidParamet
 # The requested capacity is out of the purchasable capacity range.
 LIMITEXCEEDED_MEMSIZENOTINRANGE = 'LimitExceeded.MemSizeNotInRange'
 
-# The requested length of purchase is more than 3 years and exceeds the maximum value.
+# The requested length of purchase is more than three years and exceeds the maximum value.
 LIMITEXCEEDED_PERIODEXCEEDMAXLIMIT = 'LimitExceeded.PeriodExceedMaxLimit'
 
 # The length of purchase is invalid. It must be at least one month.
@@ -194,19 +194,19 @@ LIMITEXCEEDED_PERIODLESSTHANMINLIMIT = 'LimitExceeded.PeriodLessThanMinLimit'
 # The instance is locked by another process.
 RESOURCEINUSE_INSTANCEBEENLOCKED = 'ResourceInUse.InstanceBeenLocked'
 
-# 
+# The resource is insufficient.
 RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 
 # The resource doesn’t exist.
 RESOURCENOTFOUND = 'ResourceNotFound'
 
-# The uin value is blank.
+# The UIN value is empty.
 RESOURCENOTFOUND_ACCOUNTDOESNOTEXISTS = 'ResourceNotFound.AccountDoesNotExists'
 
 # No Redis instance is found by the serialId.
 RESOURCENOTFOUND_INSTANCENOTEXISTS = 'ResourceNotFound.InstanceNotExists'
 
-# Instance not found.
+# The instance was not found.
 RESOURCENOTFOUND_INSTANCENOTFOUND = 'ResourceNotFound.InstanceNotFound'
 
 # The request order number does not exist.
@@ -224,7 +224,7 @@ RESOURCEUNAVAILABLE_CALLOSSERROR = 'ResourceUnavailable.CallOssError'
 # Failed to get the security group information.
 RESOURCEUNAVAILABLE_GETSECURITYERROR = 'ResourceUnavailable.GetSecurityError'
 
-# Instance configuration error.
+# An instance configuration error occurred.
 RESOURCEUNAVAILABLE_INSTANCECONFERROR = 'ResourceUnavailable.InstanceConfError'
 
 # The instance has already been repossessed.
@@ -239,9 +239,6 @@ RESOURCEUNAVAILABLE_INSTANCELOCKEDERROR = 'ResourceUnavailable.InstanceLockedErr
 # The order does not exist.
 RESOURCEUNAVAILABLE_INSTANCENODEAL = 'ResourceUnavailable.InstanceNoDeal'
 
-# Instances in this status do not support the operation.
-RESOURCEUNAVAILABLE_INSTANCENOTSUPPORTOPERATION = 'ResourceUnavailable.InstanceNotSupportOperation'
-
 # Instance status error.
 RESOURCEUNAVAILABLE_INSTANCESTATEERROR = 'ResourceUnavailable.InstanceStateError'
 
@@ -251,7 +248,10 @@ RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = 'ResourceUnavailable.InstanceStatus
 # Operation unsupported: the instance is exceptional.
 RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = 'ResourceUnavailable.InstanceStatusError'
 
-# Insufficient IP resources in the VPC.
+# 
+RESOURCEUNAVAILABLE_INSTANCEUNLOCKEDERROR = 'ResourceUnavailable.InstanceUnLockedError'
+
+# The IP resources in the VPC are insufficient.
 RESOURCEUNAVAILABLE_NOENOUGHVIPINVPC = 'ResourceUnavailable.NoEnoughVipInVPC'
 
 # The requested region currently does not provide the Redis service.
@@ -260,13 +260,13 @@ RESOURCEUNAVAILABLE_NOREDISSERVICE = 'ResourceUnavailable.NoRedisService'
 # The requested region currently does not provide the requested type of Redis service.
 RESOURCEUNAVAILABLE_NOTYPEIDREDISSERVICE = 'ResourceUnavailable.NoTypeIdRedisService'
 
-# 
+# Resources of the specified type in the region are sold out.
 RESOURCEUNAVAILABLE_SALEOUT = 'ResourceUnavailable.SaleOut'
 
 # The product has not been connected to any security group.
 RESOURCEUNAVAILABLE_SECURITYGROUPNOTSUPPORTED = 'ResourceUnavailable.SecurityGroupNotSupported'
 
-# Unauthorized operation.
+# The operation is unauthorized.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
 # No CAM permissions.
@@ -275,14 +275,17 @@ UNAUTHORIZEDOPERATION_NOCAMAUTHED = 'UnauthorizedOperation.NoCAMAuthed'
 # The user is not in the allowlist.
 UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = 'UnauthorizedOperation.UserNotInWhiteList'
 
-# 
+# The operation is not supported.
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
 # The Redis cluster edition is not allowed to connect to a security group.
 UNSUPPORTEDOPERATION_CLUSTERINSTANCEACCESSEDDENY = 'UnsupportedOperation.ClusterInstanceAccessedDeny'
 
-# Auto-renewal flag error.
+# 
+UNSUPPORTEDOPERATION_INSTANCENOTOPERATION = 'UnsupportedOperation.InstanceNotOperation'
+
+# There is an error with the auto-renewal flag.
 UNSUPPORTEDOPERATION_ISAUTORENEWERROR = 'UnsupportedOperation.IsAutoRenewError'
 
-# Only cluster edition instances support backup exporting.
+# Only Cluster Edition instances support backup exporting.
 UNSUPPORTEDOPERATION_ONLYCLUSTERINSTANCECANEXPORTBACKUP = 'UnsupportedOperation.OnlyClusterInstanceCanExportBackup'

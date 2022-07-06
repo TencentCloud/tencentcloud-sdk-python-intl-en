@@ -472,6 +472,55 @@ class AddressTemplateSpecification(AbstractModel):
         
 
 
+class AdjustPublicAddressRequest(AbstractModel):
+    """AdjustPublicAddress request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: The unique ID of the CVM instance, such as `ins-11112222`.
+        :type InstanceId: str
+        :param AddressId: The unique ID of the EIP, such as `eip-11112222`.
+        :type AddressId: str
+        """
+        self.InstanceId = None
+        self.AddressId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AddressId = params.get("AddressId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AdjustPublicAddressResponse(AbstractModel):
+    """AdjustPublicAddress response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: The async task ID. You can use the [DescribeTaskResult](https://intl.cloud.tencent.com/document/api/215/36271?from_cn_redirect=1) API to query the task status.
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class AlgType(AbstractModel):
     """ALG protocol type
 
@@ -1069,9 +1118,9 @@ class AssociateNetworkAclSubnetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NetworkAclId: Network ACL instance ID. Example: acl-12345678.
+        :param NetworkAclId: Network ACL instance ID, such as `acl-12345678`.
         :type NetworkAclId: str
-        :param SubnetIds: Array of subnet instance IDs. Example: [subnet-12345678]
+        :param SubnetIds: Array of subnet instance IDs, such as [subnet-12345678]
         :type SubnetIds: list of str
         """
         self.NetworkAclId = None
@@ -2355,9 +2404,9 @@ class CreateAssistantCidrRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: `VPC` instance `ID`, e.g. `vpc-6v2ht8q5`.
+        :param VpcId: `VPC` instance `ID`, such as `vpc-6v2ht8q5`.
         :type VpcId: str
-        :param CidrBlocks: CIDR set, e.g. ["10.0.0.0/16", "172.16.0.0/16"]
+        :param CidrBlocks: Array of CIDR blocks, such as ["10.0.0.0/16", "172.16.0.0/16"]
         :type CidrBlocks: list of str
         """
         self.VpcId = None
@@ -2383,8 +2432,8 @@ class CreateAssistantCidrResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AssistantCidrSet: A set of secondary CIDR blocks.
-Note: This field may return null, indicating that no valid value was found.
+        :param AssistantCidrSet: Array of secondary CIDR blocks.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type AssistantCidrSet: list of AssistantCidr
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3299,9 +3348,9 @@ class CreateNetworkAclRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: ID of the VPC instance. You can obtain the parameter value from the VpcId field in the returned result of the DescribeVpcs API.
+        :param VpcId: VPC instance ID, which can be obtained from the `VpcId` field returned by `DescribeVpcs` API.
         :type VpcId: str
-        :param NetworkAclName: Name of the network ACL. The maximum length is 60 bytes.
+        :param NetworkAclName: Network ACL name, which can contain up to 60 bytes.
         :type NetworkAclName: str
         """
         self.VpcId = None
@@ -4869,9 +4918,9 @@ class DeleteAssistantCidrRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: `VPC` instance `ID`, e.g. `vpc-6v2ht8q5`.
+        :param VpcId: `VPC` instance `ID`, such as `vpc-6v2ht8q5`.
         :type VpcId: str
-        :param CidrBlocks: CIDR set, e.g. ["10.0.0.0/16", "172.16.0.0/16"]
+        :param CidrBlocks: Array of CIDR blocks, such as ["10.0.0.0/16", "172.16.0.0/16"]
         :type CidrBlocks: list of str
         """
         self.VpcId = None
@@ -5435,7 +5484,7 @@ class DeleteNetworkAclRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NetworkAclId: Network ACL instance ID. Example: acl-12345678.
+        :param NetworkAclId: Network ACL instance ID, such as `acl-12345678`.
         :type NetworkAclId: str
         """
         self.NetworkAclId = None
@@ -7716,10 +7765,10 @@ class DescribeGatewayFlowQosRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GatewayId: Gateway instance ID, which currently supports these types:
-ID of Direct Connect gateway instance, e.g. `dcg-ltjahce6`;
-ID of NAT gateway instance, e.g. `nat-ltjahce6`;
-ID of VPN gateway instance, e.g. `vpn-ltjahce6`.
+        :param GatewayId: Gateway instance ID. Supported types:
+Direct connect gateway instance, such as `dcg-ltjahce6`;
+NAT gateway instance, such as `nat-ltjahce6`;
+VPN gateway instance, such as `vpn-ltjahce6`.
         :type GatewayId: str
         :param IpAddresses: CVM private IP addresses with limited bandwidth.
         :type IpAddresses: list of str
@@ -7755,7 +7804,7 @@ class DescribeGatewayFlowQosResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GatewayQosSet: List of instance details.
+        :param GatewayQosSet: List of instance details
         :type GatewayQosSet: list of GatewayQos
         :param TotalCount: Number of eligible instances.
         :type TotalCount: int
@@ -9787,7 +9836,7 @@ class DescribeVpcTaskResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: Execution result of an async task Valid values: `SUCCESS`: the task has been successfully executed; `FAILED`: the job execution failed; `RUNNING`: the job is executing.
+        :param Status: The execution results of an async task. Valid values: `SUCCESS`(task executed successfully), `FAILED` (task execution failed), and `RUNNING` (task in progress). 
         :type Status: str
         :param Output: Output of the async task execution result
         :type Output: str
@@ -10646,10 +10695,10 @@ class DisableGatewayFlowMonitorRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GatewayId: Gateway instance ID, which currently supports these types:
-ID of Direct Connect gateway instance, e.g. `dcg-ltjahce6`;
-ID of NAT gateway instance, e.g. `nat-ltjahce6`;
-ID of VPN gateway instance, e.g. `vpn-ltjahce6`.
+        :param GatewayId: Gateway instance ID. Supported types:
+Direct connect gateway instance, such as `dcg-ltjahce6`;
+NAT gateway instance, such as `nat-ltjahce6`;
+VPN gateway instance, such as `vpn-ltjahce6`.
         :type GatewayId: str
         """
         self.GatewayId = None
@@ -10833,9 +10882,9 @@ class DisassociateNetworkAclSubnetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NetworkAclId: Network ACL instance ID. Example: acl-12345678.
+        :param NetworkAclId: Network ACL instance ID, such as `acl-12345678`.
         :type NetworkAclId: str
-        :param SubnetIds: Array of subnet instance IDs. Example: [subnet-12345678].
+        :param SubnetIds: Array of subnet instance IDs, such as [subnet-12345678].
         :type SubnetIds: list of str
         """
         self.NetworkAclId = None
@@ -11113,10 +11162,10 @@ class EnableGatewayFlowMonitorRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GatewayId: Gateway instance ID, which currently supports these types:
-ID of Direct Connect gateway instance, e.g. `dcg-ltjahce6`;
-ID of NAT gateway instance, e.g. `nat-ltjahce6`;
-ID of VPN gateway instance, e.g. `vpn-ltjahce6`.
+        :param GatewayId: Gateway instance ID. Supported types:
+Direct connect gateway instance, such as `dcg-ltjahce6`;
+NAT gateway instance, such as `nat-ltjahce6`;
+VPN gateway instance, such as `vpn-ltjahce6`.
         :type GatewayId: str
         """
         self.GatewayId = None
@@ -11555,7 +11604,7 @@ class GatewayFlowMonitorDetail(AbstractModel):
 
 
 class GatewayQos(AbstractModel):
-    """Gateway bandwidth limit information
+    """Information of the gateway bandwidth limit
 
     """
 
@@ -11567,7 +11616,7 @@ class GatewayQos(AbstractModel):
         :type IpAddress: str
         :param Bandwidth: Bandwidth limit value.
         :type Bandwidth: int
-        :param CreateTime: The creation time.
+        :param CreateTime: Creation time.
         :type CreateTime: str
         """
         self.VpcId = None
@@ -12776,11 +12825,11 @@ class ModifyAssistantCidrRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: `VPC` instance `ID`, e.g. `vpc-6v2ht8q5`.
+        :param VpcId: `VPC` instance `ID`, such as `vpc-6v2ht8q5`.
         :type VpcId: str
-        :param NewCidrBlocks: Array of the secondary CIDR blocks to be added, such as ["10.0.0.0/16", "172.16.0.0/16"]. Either or both of `NewCidrBlocks` and `OldCidrBlocks` must be specified.
+        :param NewCidrBlocks: Array of the secondary CIDR blocks to be added, such as ["10.0.0.0/16", "172.16.0.0/16"]. At least one of `NewCidrBlocks` and `OldCidrBlocks` must be specified.
         :type NewCidrBlocks: list of str
-        :param OldCidrBlocks: Array of the secondary CIDR blocks to be deleted, such as ["10.0.0.0/16", "172.16.0.0/16"]. Either or both of `NewCidrBlocks` and `OldCidrBlocks` must be specified.
+        :param OldCidrBlocks: Array of the secondary CIDR blocks to be deleted, such as ["10.0.0.0/16", "172.16.0.0/16"]. At least one of `NewCidrBlocks` or `OldCidrBlocks` must be specified.
         :type OldCidrBlocks: list of str
         """
         self.VpcId = None
@@ -12808,8 +12857,8 @@ class ModifyAssistantCidrResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AssistantCidrSet: A set of secondary CIDR blocks.
-Note: This field may return null, indicating that no valid value was found.
+        :param AssistantCidrSet: Array of secondary CIDR blocks.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type AssistantCidrSet: list of AssistantCidr
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -13183,12 +13232,12 @@ class ModifyGatewayFlowQosRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GatewayId: Gateway instance ID, which currently supports these types:
-ID of Direct Connect gateway instance, e.g. `dcg-ltjahce6`;
-ID of NAT gateway instance, e.g. `nat-ltjahce6`;
-ID of VPN gateway instance, e.g. `vpn-ltjahce6`.
+        :param GatewayId: Gateway instance ID. Supported types:
+Direct connect gateway instance, such as `dcg-ltjahce6`;
+NAT gateway instance, such as `nat-ltjahce6`;
+VPN gateway instance, such as `vpn-ltjahce6`.
         :type GatewayId: str
-        :param Bandwidth: Bandwidth limit value.
+        :param Bandwidth: Bandwidth limit value in Mbps. Valid values: >0: Set the limit to the specified value. 0: Block all traffic. -1: No bandwidth limit.
         :type Bandwidth: int
         :param IpAddresses: CVM private IP addresses with limited bandwidth.
         :type IpAddresses: list of str
@@ -13613,9 +13662,9 @@ class ModifyNetworkAclAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NetworkAclId: Network ACL instance ID. Example: acl-12345678.
+        :param NetworkAclId: Network ACL instance ID, such as `acl-12345678`.
         :type NetworkAclId: str
-        :param NetworkAclName: Name of the network ACL. The maximum length is 60 bytes.
+        :param NetworkAclName: Network ACL name, which can contain up to 60 bytes.
         :type NetworkAclName: str
         """
         self.NetworkAclId = None
@@ -13658,9 +13707,9 @@ class ModifyNetworkAclEntriesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NetworkAclId: Network ACL instance ID. Example: acl-12345678.
+        :param NetworkAclId: Network ACL instance ID, such as `acl-12345678`.
         :type NetworkAclId: str
-        :param NetworkAclEntrySet: Network ACL rule set.
+        :param NetworkAclEntrySet: Network ACL rule set. `NetworkAclEntrySet` and `NetworkAclQuintupleSet` cannot be entered at the same time.
         :type NetworkAclEntrySet: :class:`tencentcloud.vpc.v20170312.models.NetworkAclEntrySet`
         """
         self.NetworkAclId = None
@@ -15304,7 +15353,7 @@ class NotifyRoutesRequest(AbstractModel):
         r"""
         :param RouteTableId: The unique ID of the route table
         :type RouteTableId: str
-        :param RouteItemIds: The unique ID of the routing policy
+        :param RouteItemIds: The unique ID of the route
         :type RouteItemIds: list of str
         """
         self.RouteTableId = None

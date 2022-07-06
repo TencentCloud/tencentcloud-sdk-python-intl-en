@@ -1139,6 +1139,180 @@ class CreateLiveCertResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateLivePullStreamTaskRequest(AbstractModel):
+    """CreateLivePullStreamTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceType: The source type. Valid values:
+PullLivePushLive: Live streaming
+PullVodPushLive: Video files
+        :type SourceType: str
+        :param SourceUrls: The source URL(s).
+If `SourceType` is `PullLivePushLive`, you can specify only one source URL.
+If `SourceType` is `PullVodPushLive`, you can specify at most 30 source URLs.
+Supported file formats: FLV, MP4, HLS.
+Supported protocols: HTTP, HTTPS, RTMP, RTMPS, RTSP, SRT.
+Notes:
+1. We recommend you use FLV files as the source. Poorly interleaved MP4 files may result in playback stuttering. You can also re-interleave your MP4 files before adding them as the source.
+2. Do not use private network domains or malicious URLs. CSS will block accounts that do.
+3. To avoid push and playback issues, make sure the source files are properly interleaved.
+4. Supported video coding formats: H.264, H.265.
+5. Supported audio coding format: AAC.
+6. Use small video files, preferably not longer than one hour. Large files may take a long time to load or resume after pause. Relay may fail if the time consumed exceeds 15 seconds.
+        :type SourceUrls: list of str
+        :param DomainName: The push domain name.
+The pulled stream is pushed to this domain.
+Use a push domain you have added in the CSS console.
+        :type DomainName: str
+        :param AppName: The application to push to.
+The pulled stream is pushed to this application.
+        :type AppName: str
+        :param StreamName: The stream name.
+The pulled stream is pushed under this name.
+        :type StreamName: str
+        :param StartTime: The start time.
+It must be in UTC format.
+Example: 2019-01-08T10:00:00Z.
+Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
+        :type StartTime: str
+        :param EndTime: The end time. Notes:
+1. The end time must be later than the start time.
+2. The end time and start time must be later than the current time.
+3. The end time and start time must be less than seven days apart.
+It must be in UTC format.
+Example: 2019-01-08T10:00:00Z.
+Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
+        :type EndTime: str
+        :param Operator: The operator.
+        :type Operator: str
+        :param PushArgs: The push parameter.
+This is a custom parameter carried during push.
+Example:
+bak=1&test=2
+        :type PushArgs: str
+        :param CallbackEvents: The events to listen for. If you do not pass this parameter, all events will be listened for.
+TaskStart: Callback for starting a task
+TaskExit: Callback for ending a task
+VodSourceFileStart: Callback for starting to pull from video files
+VodSourceFileFinish: Callback for stopping pulling from video files
+ResetTaskConfig: Callback for modifying a task
+
+`TaskAlarm` indicates a warning event. `AlarmType` examples:
+PullFileUnstable: Pull from video files is unstable.
+PushStreamUnstable: Push is unstable.
+PullFileFailed: Error pulling from video files.
+PushStreamFailed: Push error.
+FileEndEarly: The video file ended prematurely.
+        :type CallbackEvents: list of str
+        :param VodLoopTimes: The number of times to loop video files. Default value: -1.
+-1: Loop indefinitely
+0: Do not loop
+> 0: The number of loop times. A task will end either when the videos are looped for the specified number of times or at the specified task end time, whichever is earlier.
+This parameter is valid only when the source is video files.
+        :type VodLoopTimes: str
+        :param VodRefreshType: The behavior after the source video files (`SourceUrls`) are changed.
+ImmediateNewSource: Play the new videos immediately
+ContinueBreakPoint: Play the new videos after the current video is finished playing (the remaining videos in the old playlist will not be played).
+
+This parameter is valid only if the source before the change is video files.
+        :type VodRefreshType: str
+        :param CallbackUrl: A custom callback URL.
+Callbacks about pull and relay events will be sent to this URL.
+        :type CallbackUrl: str
+        :param ExtraCmd: Other parameters.
+For example, you can use `ignore_region` to ignore the region passed in and assign a region based on load distribution.
+        :type ExtraCmd: str
+        :param Comment: The remarks for a task, not longer than 512 bytes.
+        :type Comment: str
+        :param ToUrl: The complete destination URL.
+If you specify this parameter, make sure you pass in an empty string for `DomainName`, `AppName`, and `StreamName`.
+
+Note: Make sure that the expiration time of the signature is later than the task end time.
+        :type ToUrl: str
+        :param BackupSourceType: The backup source type.
+PullLivePushLive: Live streaming
+PullVodPushLive: Video files
+Notes:
+1. Backup sources are supported only if the primary source type is live streaming.
+2. When pull from the primary source is interrupted, the system will pull from the backup source.
+3. If the backup source is a video file, each time the video is finished, the system will check if the primary source is recovered and will switch back if it is.
+        :type BackupSourceType: str
+        :param BackupSourceUrl: The URL of the backup source.
+You can specify only one backup source URL.
+        :type BackupSourceUrl: str
+        """
+        self.SourceType = None
+        self.SourceUrls = None
+        self.DomainName = None
+        self.AppName = None
+        self.StreamName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Operator = None
+        self.PushArgs = None
+        self.CallbackEvents = None
+        self.VodLoopTimes = None
+        self.VodRefreshType = None
+        self.CallbackUrl = None
+        self.ExtraCmd = None
+        self.Comment = None
+        self.ToUrl = None
+        self.BackupSourceType = None
+        self.BackupSourceUrl = None
+
+
+    def _deserialize(self, params):
+        self.SourceType = params.get("SourceType")
+        self.SourceUrls = params.get("SourceUrls")
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Operator = params.get("Operator")
+        self.PushArgs = params.get("PushArgs")
+        self.CallbackEvents = params.get("CallbackEvents")
+        self.VodLoopTimes = params.get("VodLoopTimes")
+        self.VodRefreshType = params.get("VodRefreshType")
+        self.CallbackUrl = params.get("CallbackUrl")
+        self.ExtraCmd = params.get("ExtraCmd")
+        self.Comment = params.get("Comment")
+        self.ToUrl = params.get("ToUrl")
+        self.BackupSourceType = params.get("BackupSourceType")
+        self.BackupSourceUrl = params.get("BackupSourceUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLivePullStreamTaskResponse(AbstractModel):
+    """CreateLivePullStreamTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: The task ID.
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateLiveRecordRequest(AbstractModel):
     """CreateLiveRecord request structure.
 
@@ -2137,6 +2311,51 @@ class DeleteLiveDomainRequest(AbstractModel):
 
 class DeleteLiveDomainResponse(AbstractModel):
     """DeleteLiveDomain response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLivePullStreamTaskRequest(AbstractModel):
+    """DeleteLivePullStreamTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: The task ID.
+        :type TaskId: str
+        :param Operator: The operator.
+        :type Operator: str
+        """
+        self.TaskId = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLivePullStreamTaskResponse(AbstractModel):
+    """DeleteLivePullStreamTask response structure.
 
     """
 
@@ -3438,6 +3657,87 @@ class DescribeLivePlayAuthKeyResponse(AbstractModel):
         if params.get("PlayAuthKeyInfo") is not None:
             self.PlayAuthKeyInfo = PlayAuthKeyInfo()
             self.PlayAuthKeyInfo._deserialize(params.get("PlayAuthKeyInfo"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLivePullStreamTasksRequest(AbstractModel):
+    """DescribeLivePullStreamTasks request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: The task ID. 
+A task ID is returned by the `CreateLivePullStreamTask` API.
+If you do not pass this parameter, all tasks will be returned, sorted by last updated time in descending order.
+        :type TaskId: str
+        :param PageNum: The number of page to start from. Default value: 1.
+        :type PageNum: int
+        :param PageSize: The maximum number of records per page. Default value: 10.
+Valid values: Any integer between 1 and 20.
+        :type PageSize: int
+        """
+        self.TaskId = None
+        self.PageNum = None
+        self.PageSize = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLivePullStreamTasksResponse(AbstractModel):
+    """DescribeLivePullStreamTasks response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskInfos: The information of stream pulling tasks.
+        :type TaskInfos: list of PullStreamTaskInfo
+        :param PageNum: The page number.
+        :type PageNum: int
+        :param PageSize: The number of records per page.
+        :type PageSize: int
+        :param TotalNum: The total number of records.
+        :type TotalNum: int
+        :param TotalPage: The total number of pages.
+        :type TotalPage: int
+        :param LimitTaskNum: The maximum number of tasks allowed.
+        :type LimitTaskNum: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskInfos = None
+        self.PageNum = None
+        self.PageSize = None
+        self.TotalNum = None
+        self.TotalPage = None
+        self.LimitTaskNum = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TaskInfos") is not None:
+            self.TaskInfos = []
+            for item in params.get("TaskInfos"):
+                obj = PullStreamTaskInfo()
+                obj._deserialize(item)
+                self.TaskInfos.append(obj)
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        self.TotalNum = params.get("TotalNum")
+        self.TotalPage = params.get("TotalPage")
+        self.LimitTaskNum = params.get("LimitTaskNum")
         self.RequestId = params.get("RequestId")
 
 
@@ -6342,6 +6642,139 @@ class ModifyLivePlayDomainResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyLivePullStreamTaskRequest(AbstractModel):
+    """ModifyLivePullStreamTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: The task ID.
+        :type TaskId: str
+        :param Operator: The operator.
+        :type Operator: str
+        :param SourceUrls: The source URL(s).
+If `SourceType` is `PullLivePushLive`, you can specify only one source URL.
+If `SourceType` is `PullVodPushLive`, you can specify at most 30 source URLs.
+        :type SourceUrls: list of str
+        :param StartTime: The start time.
+It must be in UTC format.
+Example: 2019-01-08T10:00:00Z.
+Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
+        :type StartTime: str
+        :param EndTime: The end time. Notes:
+1. The end time must be later than the start time.
+2. The end time and start time must be later than the current time.
+3. The end time and start time must be less than seven days apart.
+It must be in UTC format.
+Example: 2019-01-08T10:00:00Z.
+Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
+        :type EndTime: str
+        :param VodLoopTimes: The number of times to loop video files.
+-1: Loop indefinitely
+0: Do not loop
+> 0: The number of loop times. A task will end either when the videos are looped for the specified number of times or at the specified task end time, whichever is earlier.
+This parameter is valid only if the source is video files.
+        :type VodLoopTimes: int
+        :param VodRefreshType: The behavior after the source video files (`SourceUrls`) are changed.
+ImmediateNewSource: Play the new videos immediately
+ContinueBreakPoint: Finish the current video first and then pull from the new source.
+This parameter is valid only if the source is video files.
+        :type VodRefreshType: str
+        :param Status: Whether to enable or pause the task. Valid values:
+enable
+pause
+        :type Status: str
+        :param CallbackEvents: The events to listen for. If you do not pass this parameter, all events will be listened for.
+TaskStart: Callback for starting a task
+TaskExit: Callback for ending a task
+VodSourceFileStart: Callback for starting to pull from video files
+VodSourceFileFinish: Callback for stopping pulling from video files
+ResetTaskConfig: Callback for modifying a task
+        :type CallbackEvents: list of str
+        :param CallbackUrl: A custom callback URL.
+Callbacks will be sent to this URL.
+        :type CallbackUrl: str
+        :param FileIndex: The index of the video to start from.
+The value of this parameter cannot be smaller than 1 or larger than the number of elements in `SourceUrls`.
+        :type FileIndex: int
+        :param OffsetTime: The playback offset (seconds).
+Notes:
+1. This parameter should be used together with `FileIndex`.
+        :type OffsetTime: int
+        :param Comment: The remarks for the task.
+        :type Comment: str
+        :param BackupSourceType: The backup source type.
+PullLivePushLive: Live streaming
+PullVodPushLive: Video files
+Notes:
+1. Backup sources are supported only if the primary source type is live streaming.
+2. When pull from the primary source is interrupted, the system will pull from the backup source.
+3. If the backup source is a video file, each time the video is finished, the system will check if the primary source is recovered and will switch back if it is.
+        :type BackupSourceType: str
+        :param BackupSourceUrl: The URL of the backup source.
+You can specify only one backup source URL.
+        :type BackupSourceUrl: str
+        """
+        self.TaskId = None
+        self.Operator = None
+        self.SourceUrls = None
+        self.StartTime = None
+        self.EndTime = None
+        self.VodLoopTimes = None
+        self.VodRefreshType = None
+        self.Status = None
+        self.CallbackEvents = None
+        self.CallbackUrl = None
+        self.FileIndex = None
+        self.OffsetTime = None
+        self.Comment = None
+        self.BackupSourceType = None
+        self.BackupSourceUrl = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Operator = params.get("Operator")
+        self.SourceUrls = params.get("SourceUrls")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.VodLoopTimes = params.get("VodLoopTimes")
+        self.VodRefreshType = params.get("VodRefreshType")
+        self.Status = params.get("Status")
+        self.CallbackEvents = params.get("CallbackEvents")
+        self.CallbackUrl = params.get("CallbackUrl")
+        self.FileIndex = params.get("FileIndex")
+        self.OffsetTime = params.get("OffsetTime")
+        self.Comment = params.get("Comment")
+        self.BackupSourceType = params.get("BackupSourceType")
+        self.BackupSourceUrl = params.get("BackupSourceUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLivePullStreamTaskResponse(AbstractModel):
+    """ModifyLivePullStreamTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyLivePushAuthKeyRequest(AbstractModel):
     """ModifyLivePushAuthKey request structure.
 
@@ -6970,6 +7403,166 @@ In UTC format, such as 2018-06-29T19:00:00Z.
         
 
 
+class PullStreamTaskInfo(AbstractModel):
+    """The information of a stream pulling task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: The task ID.
+        :type TaskId: str
+        :param SourceType: The source type. Valid values:
+PullLivePushLive: Live streaming
+PullVodPushLive: Video files
+        :type SourceType: str
+        :param SourceUrls: The source URL(s).
+If `SourceType` is `PullLiveToLive`, there can be only one source URL.
+If `SourceType` is `PullVodToLive`, there can be at most 10 source URLs.
+        :type SourceUrls: list of str
+        :param DomainName: The push domain name.
+The pulled stream is pushed to this domain.
+        :type DomainName: str
+        :param AppName: The application to push to.
+The pulled stream is pushed to this application.
+        :type AppName: str
+        :param StreamName: The stream name.
+The pulled stream is pushed under this name.
+        :type StreamName: str
+        :param PushArgs: The push parameter.
+A custom push parameter.
+        :type PushArgs: str
+        :param StartTime: The start time.
+It must be in UTC format.
+Example: 2019-01-08T10:00:00Z.
+Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
+        :type StartTime: str
+        :param EndTime: The end time. Notes:
+1. The end time must be later than the start time.
+2. The end time and start time must be later than the current time.
+3. The end time and start time must be less than seven days apart.
+It must be in UTC format.
+Example: 2019-01-08T10:00:00Z.
+Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
+        :type EndTime: str
+        :param Region: The region of the source (please choose the nearest region).
+ap-beijing: North China (Beijing)
+ap-shanghai: East China (Shanghai)
+ap-guangzhou: South China (Guangzhou)
+ap-mumbai: India
+        :type Region: str
+        :param VodLoopTimes: The number of times to loop video files.
+-1: Loop indefinitely
+0: Do not loop
+> 0: The number of loop times. A task will end either when the videos are looped for the specified number of times or at the specified task end time, whichever is earlier.
+This parameter is valid only if the source is video files.
+        :type VodLoopTimes: int
+        :param VodRefreshType: The behavior after the source video files (`SourceUrls`) are changed.
+ImmediateNewSource: Play the new videos immediately
+ContinueBreakPoint: Finish the current video first and then pull from the new source.
+
+This parameter is valid only if the source is video files.
+        :type VodRefreshType: str
+        :param CreateTime: The task creation time.
+It must be in UTC format.
+Example: 2019-01-08T10:00:00Z.
+Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
+        :type CreateTime: str
+        :param UpdateTime: The last updated time.
+It must be in UTC format.
+Example: 2019-01-08T10:00:00Z.
+Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
+        :type UpdateTime: str
+        :param CreateBy: The task creator.
+        :type CreateBy: str
+        :param UpdateBy: The operator of the last update.
+        :type UpdateBy: str
+        :param CallbackUrl: The callback URL.
+        :type CallbackUrl: str
+        :param CallbackEvents: The events to listen for.
+TaskStart: Callback for starting a task
+TaskExit: Callback for ending a task
+VodSourceFileStart: Callback for starting to pull from video files
+VodSourceFileFinish: Callback for stopping pulling from video files
+ResetTaskConfig: Callback for modifying a task
+        :type CallbackEvents: list of str
+        :param CallbackInfo: Note: This parameter is not returned currently.
+The information of the last callback.
+        :type CallbackInfo: str
+        :param ErrorInfo: Note: This parameter is not returned currently.
+Error message.
+        :type ErrorInfo: str
+        :param Status: The task status.
+enable: Enabled
+pause: Paused
+        :type Status: str
+        :param RecentPullInfo: Note: This parameter is returned only if one task is queried.
+The latest pull information.
+The information includes the source URL, offset, and report time.
+        :type RecentPullInfo: :class:`tencentcloud.live.v20180801.models.RecentPullInfo`
+        :param Comment: The remarks for the task.
+        :type Comment: str
+        """
+        self.TaskId = None
+        self.SourceType = None
+        self.SourceUrls = None
+        self.DomainName = None
+        self.AppName = None
+        self.StreamName = None
+        self.PushArgs = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Region = None
+        self.VodLoopTimes = None
+        self.VodRefreshType = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.CreateBy = None
+        self.UpdateBy = None
+        self.CallbackUrl = None
+        self.CallbackEvents = None
+        self.CallbackInfo = None
+        self.ErrorInfo = None
+        self.Status = None
+        self.RecentPullInfo = None
+        self.Comment = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.SourceType = params.get("SourceType")
+        self.SourceUrls = params.get("SourceUrls")
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+        self.PushArgs = params.get("PushArgs")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Region = params.get("Region")
+        self.VodLoopTimes = params.get("VodLoopTimes")
+        self.VodRefreshType = params.get("VodRefreshType")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.CreateBy = params.get("CreateBy")
+        self.UpdateBy = params.get("UpdateBy")
+        self.CallbackUrl = params.get("CallbackUrl")
+        self.CallbackEvents = params.get("CallbackEvents")
+        self.CallbackInfo = params.get("CallbackInfo")
+        self.ErrorInfo = params.get("ErrorInfo")
+        self.Status = params.get("Status")
+        if params.get("RecentPullInfo") is not None:
+            self.RecentPullInfo = RecentPullInfo()
+            self.RecentPullInfo._deserialize(params.get("RecentPullInfo"))
+        self.Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PushAuthKeyInfo(AbstractModel):
     """Push authentication key information.
 
@@ -7091,6 +7684,44 @@ Example: H.264.
         self.MetaAudioSpeed = params.get("MetaAudioSpeed")
         self.MetaVideoSpeed = params.get("MetaVideoSpeed")
         self.MetaFps = params.get("MetaFps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecentPullInfo(AbstractModel):
+    """The latest pull information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileUrl: The URL of the file currently pulled.
+        :type FileUrl: str
+        :param OffsetTime: The offset of the file currently pulled.
+        :type OffsetTime: int
+        :param ReportTime: The time when the offset is reported, in UTC format.
+Example: 2020-07-23T03:20:39Z
+Note: Beijing time is 8 hours ahead of UTC.
+        :type ReportTime: str
+        :param LoopedTimes: The number of times looped.
+        :type LoopedTimes: int
+        """
+        self.FileUrl = None
+        self.OffsetTime = None
+        self.ReportTime = None
+        self.LoopedTimes = None
+
+
+    def _deserialize(self, params):
+        self.FileUrl = params.get("FileUrl")
+        self.OffsetTime = params.get("OffsetTime")
+        self.ReportTime = params.get("ReportTime")
+        self.LoopedTimes = params.get("LoopedTimes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

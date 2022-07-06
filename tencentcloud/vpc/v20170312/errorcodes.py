@@ -269,46 +269,46 @@ INVALIDPARAMETERVALUE_RESOURCENOTSUPPORT = 'InvalidParameterValue.ResourceNotSup
 # Subnet CIDR conflict.
 INVALIDPARAMETERVALUE_SUBNETCONFLICT = 'InvalidParameterValue.SubnetConflict'
 
-# The subnet IP range overlaps with the the secondary CIDR block.
+# The subnet IP range overlaps with the secondary CIDR block.
 INVALIDPARAMETERVALUE_SUBNETOVERLAPASSISTCIDR = 'InvalidParameterValue.SubnetOverlapAssistCidr'
 
 # Invalid subnet CIDR.
 INVALIDPARAMETERVALUE_SUBNETRANGE = 'InvalidParameterValue.SubnetRange'
 
-# 
+# Duplicate tag keys.
 INVALIDPARAMETERVALUE_TAGDUPLICATEKEY = 'InvalidParameterValue.TagDuplicateKey'
 
-# 
+# Duplicate tag resource type.
 INVALIDPARAMETERVALUE_TAGDUPLICATERESOURCETYPE = 'InvalidParameterValue.TagDuplicateResourceType'
 
-# 
+# Invalid tag key.
 INVALIDPARAMETERVALUE_TAGINVALIDKEY = 'InvalidParameterValue.TagInvalidKey'
 
-# 
+# Invalid tag key length.
 INVALIDPARAMETERVALUE_TAGINVALIDKEYLEN = 'InvalidParameterValue.TagInvalidKeyLen'
 
-# 
+# Invalid tag key.
 INVALIDPARAMETERVALUE_TAGINVALIDVAL = 'InvalidParameterValue.TagInvalidVal'
 
-# 
+# The tag key does not exist.
 INVALIDPARAMETERVALUE_TAGKEYNOTEXISTS = 'InvalidParameterValue.TagKeyNotExists'
 
-# 
+# Tags are not assigned quotas.
 INVALIDPARAMETERVALUE_TAGNOTALLOCATEDQUOTA = 'InvalidParameterValue.TagNotAllocatedQuota'
 
 # The tag and value do not exist.
 INVALIDPARAMETERVALUE_TAGNOTEXISTED = 'InvalidParameterValue.TagNotExisted'
 
-# 
+# Unsupported tag.
 INVALIDPARAMETERVALUE_TAGNOTSUPPORTTAG = 'InvalidParameterValue.TagNotSupportTag'
 
-# 
+# 'The tag resource format error.
 INVALIDPARAMETERVALUE_TAGRESOURCEFORMATERROR = 'InvalidParameterValue.TagResourceFormatError'
 
-# 
+# Exceeded the quota of tag timestamp.
 INVALIDPARAMETERVALUE_TAGTIMESTAMPEXCEEDED = 'InvalidParameterValue.TagTimestampExceeded'
 
-# 
+# The tag value does not exist.
 INVALIDPARAMETERVALUE_TAGVALNOTEXISTS = 'InvalidParameterValue.TagValNotExists'
 
 # Invalid parameter value. The parameter value is too long.
@@ -335,7 +335,7 @@ INVALIDPARAMETERVALUE_ZONECONFLICT = 'InvalidParameterValue.ZoneConflict'
 # The specified private IP of the specified ENI has already been bound to an EIP. A private IP cannot be bound to more than one EIP.
 INVALIDPRIVATEIPADDRESS_ALREADYBINDEIP = 'InvalidPrivateIpAddress.AlreadyBindEip'
 
-# Invalid routing policy ID (RouteId).
+# Invalid RouteId.
 INVALIDROUTEID_NOTFOUND = 'InvalidRouteId.NotFound'
 
 # Invalid route table. The route table ID is invalid.
@@ -377,11 +377,17 @@ LIMITEXCEEDED_ADDRESSQUOTALIMITEXCEEDED = 'LimitExceeded.AddressQuotaLimitExceed
 # Exceeded the upper limit of the bandwidth package quota.
 LIMITEXCEEDED_BANDWIDTHPACKAGEQUOTA = 'LimitExceeded.BandwidthPackageQuota'
 
+# Run out of the chances to change the IP.
+LIMITEXCEEDED_CHANGEADDRESSQUOTA = 'LimitExceeded.ChangeAddressQuota'
+
 # The number of assigned IP ranges of the VPC has reached the upper limit.
 LIMITEXCEEDED_CIDRBLOCK = 'LimitExceeded.CidrBlock'
 
 # The number of EIPs applied for per day exceeds the upper limit.
 LIMITEXCEEDED_DAILYALLOCATEADDRESSQUOTALIMITEXCEEDED = 'LimitExceeded.DailyAllocateAddressQuotaLimitExceeded'
+
+# Run out of the daily chances to change the IP.
+LIMITEXCEEDED_DAILYCHANGEADDRESSQUOTA = 'LimitExceeded.DailyChangeAddressQuota'
 
 # Exceeded the upper limit of the EIPs bound to the instance.
 LIMITEXCEEDED_INSTANCEADDRESSQUOTA = 'LimitExceeded.InstanceAddressQuota'
@@ -410,22 +416,22 @@ LIMITEXCEEDED_SECURITYGROUPPOLICYSET = 'LimitExceeded.SecurityGroupPolicySet'
 # The number of subnet IP ranges assigned in the subnet has reached the upper limit.
 LIMITEXCEEDED_SUBNETCIDRBLOCK = 'LimitExceeded.SubnetCidrBlock'
 
-# 
+# Reached the upper limit of tag keys.
 LIMITEXCEEDED_TAGKEYEXCEEDED = 'LimitExceeded.TagKeyExceeded'
 
-# 
+# Reached the upper limit of tags keys per resource.
 LIMITEXCEEDED_TAGKEYPERRESOURCEEXCEEDED = 'LimitExceeded.TagKeyPerResourceExceeded'
 
-# 
+# Insufficient tag quota.
 LIMITEXCEEDED_TAGNOTENOUGHQUOTA = 'LimitExceeded.TagNotEnoughQuota'
 
-# 
+# Exceeded the tag quota. Unable to create resources.
 LIMITEXCEEDED_TAGQUOTA = 'LimitExceeded.TagQuota'
 
-# 
+# Reached the upper limit of tag quota.
 LIMITEXCEEDED_TAGQUOTAEXCEEDED = 'LimitExceeded.TagQuotaExceeded'
 
-# 
+# Reached the number limit of tag keys.
 LIMITEXCEEDED_TAGTAGSEXCEEDED = 'LimitExceeded.TagTagsExceeded'
 
 # Missing parameter.
@@ -539,10 +545,10 @@ UNSUPPORTEDOPERATION_CONFLICTWITHDOCKERROUTE = 'UnsupportedOperation.ConflictWit
 # No direct connect gateway exists in the specified VPC.
 UNSUPPORTEDOPERATION_DCGATEWAYSNOTFOUNDINVPC = 'UnsupportedOperation.DcGatewaysNotFoundInVpc'
 
-# 
+# Unable to delete: This is the default route table.
 UNSUPPORTEDOPERATION_DELDEFAULTROUTE = 'UnsupportedOperation.DelDefaultRoute'
 
-# 
+# Unable to delete: This is a route table associated with a subnet.
 UNSUPPORTEDOPERATION_DELROUTEWITHSUBNET = 'UnsupportedOperation.DelRouteWithSubnet'
 
 # Direct connect gateway is updating the BGP Community attribute.
@@ -608,7 +614,7 @@ UNSUPPORTEDOPERATION_INVALIDRESOURCEPROTOCOL = 'UnsupportedOperation.InvalidReso
 # Invalid resource status.
 UNSUPPORTEDOPERATION_INVALIDSTATE = 'UnsupportedOperation.InvalidState'
 
-# The route in the current status cannot be published to CCN. Please retry later.
+# The current status of the route does not support publishing to CCN. Please retry later.
 UNSUPPORTEDOPERATION_INVALIDSTATUSNOTIFYCCN = 'UnsupportedOperation.InvalidStatusNotifyCcn'
 
 # The account of the instance associated with the current CCN is not a Financial Cloud account.
@@ -644,7 +650,7 @@ UNSUPPORTEDOPERATION_NOTPENDINGCCNINSTANCE = 'UnsupportedOperation.NotPendingCcn
 # Unsupported operation: the current CCN instance is not billed on a pay-as-you-go basis.
 UNSUPPORTEDOPERATION_NOTPOSTPAIDCCNOPERATION = 'UnsupportedOperation.NotPostpaidCcnOperation'
 
-# 
+# The default route table cannot be deleted.
 UNSUPPORTEDOPERATION_NOTSUPPORTDELETEDEFAULTROUTETABLE = 'UnsupportedOperation.NotSupportDeleteDefaultRouteTable'
 
 # 
@@ -689,16 +695,16 @@ UNSUPPORTEDOPERATION_SUBENINOTSUPPORTTRUNKING = 'UnsupportedOperation.SubEniNotS
 # System route. Operation is prohibited.
 UNSUPPORTEDOPERATION_SYSTEMROUTE = 'UnsupportedOperation.SystemRoute'
 
-# 
+# Tags are being assigned.
 UNSUPPORTEDOPERATION_TAGALLOCATE = 'UnsupportedOperation.TagAllocate'
 
-# 
+# Tags are being released.
 UNSUPPORTEDOPERATION_TAGFREE = 'UnsupportedOperation.TagFree'
 
-# 
+# Unauthorized for this tag.
 UNSUPPORTEDOPERATION_TAGNOTPERMIT = 'UnsupportedOperation.TagNotPermit'
 
-# 
+# The specified tag key is reserved for system usage.
 UNSUPPORTEDOPERATION_TAGSYSTEMRESERVEDTAGKEY = 'UnsupportedOperation.TagSystemReservedTagKey'
 
 # The account ID does not exist.

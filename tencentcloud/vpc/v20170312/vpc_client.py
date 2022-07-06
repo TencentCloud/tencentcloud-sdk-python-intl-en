@@ -84,6 +84,35 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AdjustPublicAddress(self, request):
+        """This API is used to change the IP address. It supports changing the common public IPs and EIPs billed by monthly subscribed bandwidth of a CVM instance.
+
+        :param request: Request instance for AdjustPublicAddress.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AdjustPublicAddressRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AdjustPublicAddressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AdjustPublicAddress", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AdjustPublicAddressResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AllocateAddresses(self, request):
         """This API is used to apply for one or more [Elastic IP Addresses](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIPs for short).
         * An EIP is a static IP address that is dedicated for dynamic cloud computing. You can quickly re-map an EIP to another instance under your account to protect against instance failures.
@@ -712,7 +741,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateAssistantCidr(self, request):
-        """This API (CreateAssistantCidr) is used to batch create secondary CIDR blocks. (To use this API that is in Beta, please submit a ticket.)
+        """This API is used to batch create secondary CIDR blocks. This API is in beta test. To use it, please submit a ticket.
 
         :param request: Request instance for CreateAssistantCidr.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateAssistantCidrRequest`
@@ -1130,7 +1159,7 @@ class VpcClient(AbstractClient):
 
     def CreateNetworkAcl(self, request):
         """This API is used to create a <a href="https://intl.cloud.tencent.com/document/product/215/20088?from_cn_redirect=1">network ACL</a>.
-        * The inbound and outbound rules for a new network ACL are "Deny All" by default. You need to call `ModifyNetworkAclEntries` after creation to set rules for the network ACL as needed.
+        * The inbound and outbound rules for a new network ACL are "Deny All" by default. You need to call `ModifyNetworkAclEntries` to set rules for the new network ACL as needed.
 
         :param request: Request instance for CreateNetworkAcl.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateNetworkAclRequest`
@@ -1767,7 +1796,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteAssistantCidr(self, request):
-        """This API (DeleteAssistantCidr) is used to delete secondary CIDR blocks. (To use this API that is in Beta, please submit a ticket.)
+        """This API is used to delete secondary CIDR blocks. This API is in beta test. To use it, please submit a ticket.
 
         :param request: Request instance for DeleteAssistantCidr.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteAssistantCidrRequest`
@@ -3298,7 +3327,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeGatewayFlowQos(self, request):
-        """This API (DescribeGatewayFlowQos) is used to query the QoS bandwidth limit of inbound IP flow in a gateway.
+        """This API is used to query the inbound IP bandwidth limit of a gateway.
 
         :param request: Request instance for DescribeGatewayFlowQos.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeGatewayFlowQosRequest`
@@ -4494,7 +4523,7 @@ class VpcClient(AbstractClient):
 
 
     def DisableGatewayFlowMonitor(self, request):
-        """This API (DisableGatewayFlowMonitor) is used to disable gateway flow monitor.
+        """This API is used to disable gateway traffic monitor.
 
         :param request: Request instance for DisableGatewayFlowMonitor.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DisableGatewayFlowMonitorRequest`
@@ -4789,7 +4818,7 @@ class VpcClient(AbstractClient):
 
 
     def EnableGatewayFlowMonitor(self, request):
-        """This API (EnableGatewayFlowMonitor) is used to enable gateway flow monitor.
+        """This API is used to enable gateway traffic monitor.
 
         :param request: Request instance for EnableGatewayFlowMonitor.
         :type request: :class:`tencentcloud.vpc.v20170312.models.EnableGatewayFlowMonitorRequest`
@@ -5233,7 +5262,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyAssistantCidr(self, request):
-        """This API (ModifyAssistantCidr) is used to batch modify (e.g. add and delete) secondary CIDR blocks. (To use this API that is in Beta, please submit a ticket.)
+        """This API is used to modify (add or delete) secondary CIDR blocks in batch. This API is in beta test. To use it, please submit a ticket.
 
         :param request: Request instance for ModifyAssistantCidr.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyAssistantCidrRequest`
@@ -5465,7 +5494,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyGatewayFlowQos(self, request):
-        """This API (ModifyGatewayFlowQos) is used to adjust the QoS bandwidth limit in a gateway.
+        """This API is used to adjust the bandwidth limit of a gateway.
 
         :param request: Request instance for ModifyGatewayFlowQos.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyGatewayFlowQosRequest`
@@ -5726,7 +5755,9 @@ class VpcClient(AbstractClient):
 
 
     def ModifyNetworkAclEntries(self, request):
-        """This API is used to modify (add or delete) the inbound and outbound rules of a network ACL.
+        """This API is used to modify (add or delete) the inbound and outbound rules of a network ACL. In `NetworkAclEntrySet` parameters,
+        * Passing in the new inbound/outbound rules will reset the original rules.
+        * Passing in the inbound rules will only reset the original inbound rules and not affect the original outbound rules, and vice versa.
 
         :param request: Request instance for ModifyNetworkAclEntries.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyNetworkAclEntriesRequest`
@@ -6235,7 +6266,7 @@ class VpcClient(AbstractClient):
 
 
     def NotifyRoutes(self, request):
-        """This API is used to publish a route to CCN. This can also be done by clicking the **Publish to CCN** button on the route table page.
+        """This API is used to publish a route to CCN. This can also be done by clicking "Publish to CCN" in the operation column on the page of route table list.
 
         :param request: Request instance for NotifyRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.NotifyRoutesRequest`
@@ -6856,7 +6887,7 @@ class VpcClient(AbstractClient):
 
 
     def WithdrawNotifyRoutes(self, request):
-        """This API is used to withdraw a route from CCN. This can also be done by clicking the **Withdraw from CCN** button on the route table page.
+        """This API is used to withdraw a route from CCN.
 
         :param request: Request instance for WithdrawNotifyRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.WithdrawNotifyRoutesRequest`

@@ -296,6 +296,42 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateLivePullStreamTask(self, request):
+        """This API is used to create a task to pull streams from video files or an external live streaming source and publish them to a specified destination URL.
+        Notes:
+        1. By default, you can have at most 20 stream pulling tasks at a time. You can submit a ticket to raise the limit.
+        2. Only H.264 and H.265 are supported for video. If the source video is in a different format, please transcode it first.
+        3. Only AAC is supported for audio. If the source audio is in a different format, please transcode it first.
+        4. You can enable auto deletion in the console to delete expired tasks automatically.
+        5. The pull and relay feature is a paid feature. For its billing details, see [Relay](https://intl.cloud.tencent.com/document/product/267/53308?from_cn_redirect=1).
+        6. CSS is only responsible for pulling and relaying content. Please make sure that your content is authorized and complies with relevant laws and regulations. In case of copyright infringement or violation of laws or regulations, CSS will suspend its service for you and reserves the right to seek legal remedies.
+
+        :param request: Request instance for CreateLivePullStreamTask.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateLivePullStreamTaskRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateLivePullStreamTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLivePullStreamTask", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLivePullStreamTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateLiveRecord(self, request):
         """- Prerequisites
           1. Recording files are stored on the VOD platform, so if you need to use the recording feature, you must first activate the VOD service.
@@ -690,6 +726,38 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLiveDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLivePullStreamTask(self, request):
+        """This API is used to delete a task created by `CreateLivePullStreamTask`.
+        Notes:
+        1. For the `TaskId` request parameter, pass in the task ID returned by the `CreateLivePullStreamTask` API.
+        2. You can query the ID of a task using the `DescribeLivePullStreamTasks` API.
+
+        :param request: Request instance for DeleteLivePullStreamTask.
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteLivePullStreamTaskRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteLivePullStreamTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLivePullStreamTask", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLivePullStreamTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1449,6 +1517,36 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLivePlayAuthKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLivePullStreamTasks(self, request):
+        """This API is used to query the stream pulling tasks created by `CreateLivePullStreamTask`.
+        The tasks returned are sorted by last updated time in descending order.
+
+        :param request: Request instance for DescribeLivePullStreamTasks.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLivePullStreamTasksRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLivePullStreamTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLivePullStreamTasks", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLivePullStreamTasksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2604,6 +2702,37 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLivePlayDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyLivePullStreamTask(self, request):
+        """This API is used to modify a stream pulling task.
+        1. You cannot modify the destination URL. To publish to a new destination, please create a new task.
+        2. You cannot modify the source type. To use a different source type, please create a new task.
+
+        :param request: Request instance for ModifyLivePullStreamTask.
+        :type request: :class:`tencentcloud.live.v20180801.models.ModifyLivePullStreamTaskRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyLivePullStreamTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLivePullStreamTask", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLivePullStreamTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

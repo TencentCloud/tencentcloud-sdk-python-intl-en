@@ -20,6 +20,15 @@ AUTHFAILURE = 'AuthFailure'
 # Operation failed
 FAILEDOPERATION = 'FailedOperation'
 
+# Dependency exception.
+FAILEDOPERATION_DEPENDENCEERROR = 'FailedOperation.DependenceError'
+
+# An error occurs while obtaining the database data.
+FAILEDOPERATION_GETDBDATAERROR = 'FailedOperation.GetDBDataError'
+
+# An error occurs while obtaining TcrClient.
+FAILEDOPERATION_GETTCRCLIENT = 'FailedOperation.GetTcrClient'
+
 # Internal error. Please check and try again.
 INTERNALERROR = 'InternalError'
 

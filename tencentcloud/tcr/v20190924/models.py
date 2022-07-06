@@ -252,16 +252,20 @@ class CreateReplicationInstanceRequest(AbstractModel):
         :type ReplicationRegionId: int
         :param ReplicationRegionName: Region name of the replication instance
         :type ReplicationRegionName: str
+        :param SyncTag: Whether to sync TCR cloud tags to the COS Bucket
+        :type SyncTag: bool
         """
         self.RegistryId = None
         self.ReplicationRegionId = None
         self.ReplicationRegionName = None
+        self.SyncTag = None
 
 
     def _deserialize(self, params):
         self.RegistryId = params.get("RegistryId")
         self.ReplicationRegionId = params.get("ReplicationRegionId")
         self.ReplicationRegionName = params.get("ReplicationRegionName")
+        self.SyncTag = params.get("SyncTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
