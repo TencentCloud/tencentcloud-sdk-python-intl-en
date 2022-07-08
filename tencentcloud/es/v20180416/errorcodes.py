@@ -47,7 +47,7 @@ FAILEDOPERATION_NOTAUTHENTICATED = 'FailedOperation.NotAuthenticated'
 # Cannot increase the number of disks during rolling restart of scaled-out compute resources.
 FAILEDOPERATION_UNSUPPORTRESETNODETYPEANDSCALEOUTDISK = 'FailedOperation.UnsupportResetNodeTypeAndScaleoutDisk'
 
-# Cannot modify the disk capacity during rolling restart of scaled-in compute resources.
+# The disk capacity can’t be modified during rolling restart of scaled-in compute resources.
 FAILEDOPERATION_UNSUPPORTRESETSCALEDOWNANDMODIFYDISK = 'FailedOperation.UnsupportResetScaledownAndModifyDisk'
 
 # Cannot adjust the node configuration and disk capacity reversely.

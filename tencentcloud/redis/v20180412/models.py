@@ -3134,6 +3134,104 @@ class DescribeTaskInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTaskListRequest(AbstractModel):
+    """DescribeTaskList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        :param Limit: Maximum number of results returned per page. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset, which is an integral multiple of `Limit` (rounded down automatically).
+        :type Offset: int
+        :param ProjectIds: Project ID
+        :type ProjectIds: list of int
+        :param TaskTypes: Task type
+        :type TaskTypes: list of str
+        :param BeginTime: Start time
+        :type BeginTime: str
+        :param EndTime: End time
+        :type EndTime: str
+        :param TaskStatus: Task status
+        :type TaskStatus: list of int
+        :param Result: Task status
+        :type Result: list of int
+        :param OperatorUin: Operator UIN
+        :type OperatorUin: list of int
+        :param OperateUin: 
+        :type OperateUin: list of str
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.Limit = None
+        self.Offset = None
+        self.ProjectIds = None
+        self.TaskTypes = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.TaskStatus = None
+        self.Result = None
+        self.OperatorUin = None
+        self.OperateUin = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.ProjectIds = params.get("ProjectIds")
+        self.TaskTypes = params.get("TaskTypes")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.TaskStatus = params.get("TaskStatus")
+        self.Result = params.get("Result")
+        self.OperatorUin = params.get("OperatorUin")
+        self.OperateUin = params.get("OperateUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTaskListResponse(AbstractModel):
+    """DescribeTaskList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number of tasks
+        :type TotalCount: int
+        :param Tasks: Task details
+        :type Tasks: list of TaskInfoDetail
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Tasks = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = TaskInfoDetail()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTendisSlowLogRequest(AbstractModel):
     """DescribeTendisSlowLog request structure.
 
@@ -4671,6 +4769,65 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class KillMasterGroupRequest(AbstractModel):
+    """KillMasterGroup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Password: 1. The password must contain 8–30 characters. A password of 12 or more characters is recommended.
+2. It cannot start with a slash (/).
+3. It must contain characters in at least two of the following types:
+    a. Lowercase letters (a–z)
+    b. Uppercase letters (A–Z)
+    c. Digits (0–9)
+    d. ()`~!@#$%^&*-+=_|{}[]:;<>,.?/
+        :type Password: str
+        :param ShardIds: Node information of a single-AZ deployed instance
+        :type ShardIds: list of int
+        """
+        self.InstanceId = None
+        self.Password = None
+        self.ShardIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Password = params.get("Password")
+        self.ShardIds = params.get("ShardIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KillMasterGroupResponse(AbstractModel):
+    """KillMasterGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: Async task ID
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
 
 
 class ManualBackupInstanceRequest(AbstractModel):
@@ -6459,6 +6616,71 @@ class SwitchInstanceVipResponse(AbstractModel):
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
+
+
+class TaskInfoDetail(AbstractModel):
+    """Task details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: Task ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskId: int
+        :param StartTime: Start time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StartTime: str
+        :param TaskType: Task type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskType: str
+        :param InstanceName: Instance name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceName: str
+        :param InstanceId: Instance ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param ProjectId: Project ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProjectId: int
+        :param Progress: Task progress
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Progress: float
+        :param EndTime: End time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EndTime: str
+        :param Result: Task status
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Result: int
+        """
+        self.TaskId = None
+        self.StartTime = None
+        self.TaskType = None
+        self.InstanceName = None
+        self.InstanceId = None
+        self.ProjectId = None
+        self.Progress = None
+        self.EndTime = None
+        self.Result = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.StartTime = params.get("StartTime")
+        self.TaskType = params.get("TaskType")
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceId = params.get("InstanceId")
+        self.ProjectId = params.get("ProjectId")
+        self.Progress = params.get("Progress")
+        self.EndTime = params.get("EndTime")
+        self.Result = params.get("Result")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TendisNodes(AbstractModel):

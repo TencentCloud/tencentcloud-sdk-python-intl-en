@@ -1518,12 +1518,12 @@ class InstanceInfo(AbstractModel):
         :type SubnetUid: str
         :param Status: Instance status. 0: processing; 1: normal; -1: stopped; -2: terminating; -3: terminated
         :type Status: int
+        :param RenewFlag: This parameter is not used on the global website
+        :type RenewFlag: str
         :param ChargeType: Instance billing method. Valid values: POSTPAID_BY_HOUR (pay-as-you-go hourly); CDHPAID (billed based on CDH, i.e., only CDH is billed but not the instances on CDH)
         :type ChargeType: str
         :param ChargePeriod: This parameter is not used on the global website
         :type ChargePeriod: int
-        :param RenewFlag: This parameter is not used on the global website
-        :type RenewFlag: str
         :param NodeType: Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
         :type NodeType: str
         :param NodeNum: Number of nodes
@@ -1686,6 +1686,9 @@ Note: This field may return `null`, indicating that no valid value was found.
         :param EsPrivateDomain: Private domain of the HTTPS cluster
 Note: This field may return `null`, indicating that no valid value was found.
         :type EsPrivateDomain: str
+        :param EsConfigSets: Configuration set info of the cluster.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EsConfigSets: list of EsConfigSetInfo
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1696,9 +1699,9 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.VpcUid = None
         self.SubnetUid = None
         self.Status = None
+        self.RenewFlag = None
         self.ChargeType = None
         self.ChargePeriod = None
-        self.RenewFlag = None
         self.NodeType = None
         self.NodeNum = None
         self.CpuNum = None
@@ -1761,6 +1764,7 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.HealthStatus = None
         self.EsPrivateUrl = None
         self.EsPrivateDomain = None
+        self.EsConfigSets = None
 
 
     def _deserialize(self, params):
@@ -1773,9 +1777,9 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.VpcUid = params.get("VpcUid")
         self.SubnetUid = params.get("SubnetUid")
         self.Status = params.get("Status")
+        self.RenewFlag = params.get("RenewFlag")
         self.ChargeType = params.get("ChargeType")
         self.ChargePeriod = params.get("ChargePeriod")
-        self.RenewFlag = params.get("RenewFlag")
         self.NodeType = params.get("NodeType")
         self.NodeNum = params.get("NodeNum")
         self.CpuNum = params.get("CpuNum")
@@ -1867,6 +1871,12 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.HealthStatus = params.get("HealthStatus")
         self.EsPrivateUrl = params.get("EsPrivateUrl")
         self.EsPrivateDomain = params.get("EsPrivateDomain")
+        if params.get("EsConfigSets") is not None:
+            self.EsConfigSets = []
+            for item in params.get("EsConfigSets"):
+                obj = EsConfigSetInfo()
+                obj._deserialize(item)
+                self.EsConfigSets.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

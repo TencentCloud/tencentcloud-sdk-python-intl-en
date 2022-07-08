@@ -46,6 +46,29 @@ class APIGWParams(AbstractModel):
         
 
 
+class CheckRuleRequest(AbstractModel):
+    """CheckRule request structure.
+
+    """
+
+
+class CheckRuleResponse(AbstractModel):
+    """CheckRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CheckTransformationRequest(AbstractModel):
     """CheckTransformation request structure.
 
@@ -284,6 +307,122 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateConnectionRequest(AbstractModel):
+    """CreateConnection request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConnectionDescription: Connector description
+        :type ConnectionDescription: :class:`tencentcloud.eb.v20210416.models.ConnectionDescription`
+        :param EventBusId: Event bus ID
+        :type EventBusId: str
+        :param ConnectionName: Connector name
+        :type ConnectionName: str
+        :param Description: Description
+        :type Description: str
+        :param Enable: Switch
+        :type Enable: bool
+        :param Type: Type
+        :type Type: str
+        """
+        self.ConnectionDescription = None
+        self.EventBusId = None
+        self.ConnectionName = None
+        self.Description = None
+        self.Enable = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        if params.get("ConnectionDescription") is not None:
+            self.ConnectionDescription = ConnectionDescription()
+            self.ConnectionDescription._deserialize(params.get("ConnectionDescription"))
+        self.EventBusId = params.get("EventBusId")
+        self.ConnectionName = params.get("ConnectionName")
+        self.Description = params.get("Description")
+        self.Enable = params.get("Enable")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateConnectionResponse(AbstractModel):
+    """CreateConnection response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConnectionId: Connector ID
+        :type ConnectionId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ConnectionId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ConnectionId = params.get("ConnectionId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateEventBusRequest(AbstractModel):
+    """CreateEventBus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventBusName: Event bus name, which can contain 2–60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter
+        :type EventBusName: str
+        :param Description: Event bus description, which can contain up to 200 characters of any type
+        :type Description: str
+        """
+        self.EventBusName = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.EventBusName = params.get("EventBusName")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEventBusResponse(AbstractModel):
+    """CreateEventBus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventBusId: Event bus ID
+        :type EventBusId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.EventBusId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.EventBusId = params.get("EventBusId")
+        self.RequestId = params.get("RequestId")
 
 
 class CreateRuleRequest(AbstractModel):
@@ -855,6 +994,79 @@ class Filter(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class GetEventBusRequest(AbstractModel):
+    """GetEventBus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventBusId: Event bus ID
+        :type EventBusId: str
+        """
+        self.EventBusId = None
+
+
+    def _deserialize(self, params):
+        self.EventBusId = params.get("EventBusId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetEventBusResponse(AbstractModel):
+    """GetEventBus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ModTime: Update time
+        :type ModTime: str
+        :param Description: Event bus description
+        :type Description: str
+        :param ClsTopicId: Log topic ID
+        :type ClsTopicId: str
+        :param AddTime: Creation time
+        :type AddTime: str
+        :param ClsLogsetId: Logset ID
+        :type ClsLogsetId: str
+        :param EventBusName: Event bus name
+        :type EventBusName: str
+        :param EventBusId: Event bus ID
+        :type EventBusId: str
+        :param Type: (Disused) Event bus type
+        :type Type: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ModTime = None
+        self.Description = None
+        self.ClsTopicId = None
+        self.AddTime = None
+        self.ClsLogsetId = None
+        self.EventBusName = None
+        self.EventBusId = None
+        self.Type = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ModTime = params.get("ModTime")
+        self.Description = params.get("Description")
+        self.ClsTopicId = params.get("ClsTopicId")
+        self.AddTime = params.get("AddTime")
+        self.ClsLogsetId = params.get("ClsLogsetId")
+        self.EventBusName = params.get("EventBusName")
+        self.EventBusId = params.get("EventBusId")
+        self.Type = params.get("Type")
+        self.RequestId = params.get("RequestId")
 
 
 class GetRuleRequest(AbstractModel):
@@ -1709,6 +1921,55 @@ class UpdateConnectionRequest(AbstractModel):
 
 class UpdateConnectionResponse(AbstractModel):
     """UpdateConnection response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateEventBusRequest(AbstractModel):
+    """UpdateEventBus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventBusId: Event bus ID
+        :type EventBusId: str
+        :param Description: Event bus description, which can contain up to 200 characters of any type
+        :type Description: str
+        :param EventBusName: Event bus name, which can contain 2–60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter
+        :type EventBusName: str
+        """
+        self.EventBusId = None
+        self.Description = None
+        self.EventBusName = None
+
+
+    def _deserialize(self, params):
+        self.EventBusId = params.get("EventBusId")
+        self.Description = params.get("Description")
+        self.EventBusName = params.get("EventBusName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateEventBusResponse(AbstractModel):
+    """UpdateEventBus response structure.
 
     """
 

@@ -26,6 +26,35 @@ class EbClient(AbstractClient):
     _service = 'eb'
 
 
+    def CheckRule(self, request):
+        """This API is used to check a rule.
+
+        :param request: Request instance for CheckRule.
+        :type request: :class:`tencentcloud.eb.v20210416.models.CheckRuleRequest`
+        :rtype: :class:`tencentcloud.eb.v20210416.models.CheckRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckRule", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CheckRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CheckTransformation(self, request):
         """This API is used to test rules and data on the ETL configuration page.
 
@@ -41,6 +70,64 @@ class EbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CheckTransformationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateConnection(self, request):
+        """This API is used to create an event connector.
+
+        :param request: Request instance for CreateConnection.
+        :type request: :class:`tencentcloud.eb.v20210416.models.CreateConnectionRequest`
+        :rtype: :class:`tencentcloud.eb.v20210416.models.CreateConnectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateConnection", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateConnectionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateEventBus(self, request):
+        """This API is used to create an event bus.
+
+        :param request: Request instance for CreateEventBus.
+        :type request: :class:`tencentcloud.eb.v20210416.models.CreateEventBusRequest`
+        :rtype: :class:`tencentcloud.eb.v20210416.models.CreateEventBusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateEventBus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateEventBusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -287,6 +374,35 @@ class EbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetEventBus(self, request):
+        """This API is used to get the details of an event bus.
+
+        :param request: Request instance for GetEventBus.
+        :type request: :class:`tencentcloud.eb.v20210416.models.GetEventBusRequest`
+        :rtype: :class:`tencentcloud.eb.v20210416.models.GetEventBusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetEventBus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetEventBusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetRule(self, request):
         """This API is used to get the details of an event rule.
 
@@ -476,6 +592,35 @@ class EbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateConnectionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateEventBus(self, request):
+        """This API is used to update an event bus.
+
+        :param request: Request instance for UpdateEventBus.
+        :type request: :class:`tencentcloud.eb.v20210416.models.UpdateEventBusRequest`
+        :rtype: :class:`tencentcloud.eb.v20210416.models.UpdateEventBusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateEventBus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateEventBusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
