@@ -2979,43 +2979,6 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ProcessImage(self, request):
-        """This API is <font color='red'>no longer used</font>. To initiate image recognition tasks, please use [ReviewImage](https://intl.cloud.tencent.com/document/api/266/73217?from_cn_redirect=1).
-
-        This API is used to initiate an image processing task. Image processing operations include the following:
-
-        1. Intelligent recognition of pornographic, terroristic, and politically sensitive content
-
-        ><li>File size: < 5 MB</li>
-        ><li>Resolution: Preferably higher than 256 x 256. Resolution lower than this may compromise the recognition performance.</li>
-        ><li>Supported image formats: PNG, JPG, JPEG, BMP, GIF, WEBP</li>
-
-        :param request: Request instance for ProcessImage.
-        :type request: :class:`tencentcloud.vod.v20180717.models.ProcessImageRequest`
-        :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessImageResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ProcessImage", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ProcessImageResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def ProcessMedia(self, request):
         """This API is used to initiate a media processing task on a VOD file. The task may include:
         1. Video transcoding (with watermark)
@@ -3030,6 +2993,12 @@ class VodClient(AbstractClient):
         10. Recognition of opening and closing credits, faces, full text, text keywords, full speech, speech keywords, and objects
 
         If event notifications are used, the event type is [ProcedureStateChanged](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1).
+
+        A digital watermark has the following restrictions:
+        <li>Digital watermarks can only be image watermarks.</li>
+        <li>Digital watermarks must be looped.</li>
+        <li>If you use digital watermarks, the output video must be in HLS format.</li>
+        <li>Digital watermarks can only be displayed in the upper half of a video.</li>
 
         :param request: Request instance for ProcessMedia.
         :type request: :class:`tencentcloud.vod.v20180717.models.ProcessMediaRequest`
@@ -3185,6 +3154,7 @@ class VodClient(AbstractClient):
         """1. This API is used to prefetch a list of specified URLs.
         2. The URL domain names must have already been registered with VOD.
         3. Up to 20 URLs can be specified in one request.
+        4. By default, the maximum number of URLs that can be refreshed per day is 10,000.
 
         :param request: Request instance for PushUrlCache.
         :type request: :class:`tencentcloud.vod.v20180717.models.PushUrlCacheRequest`
@@ -3198,6 +3168,38 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PushUrlCacheResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RefreshUrlCache(self, request):
+        """1. This API is used to purge URLs.
+        2. The URL domain names must have already been registered with VOD.
+        3. Up to 20 URLs can be specified in one request.
+        4. By default, the maximum number of URLs allowed for purge per day is 100,000.
+
+        :param request: Request instance for RefreshUrlCache.
+        :type request: :class:`tencentcloud.vod.v20180717.models.RefreshUrlCacheRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.RefreshUrlCacheResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RefreshUrlCache", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RefreshUrlCacheResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3241,25 +3243,21 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ReviewImage(self, request):
-        """This API is used to initiate an image recognition task to identify pornographic, terroristic, and politically sensitive content in images saved in VOD.
+    def RestoreMedia(self, request):
+        """This API is used to restore files from ARCHIVE or DEEP ARCHIVE. Files stored in ARCHIVE or DEEP ARCHIVE must be restored before they can be accessed. Restored files are available for a limited period of time.
 
-        ><li>File size: < 5 MB</li>
-        ><li>Resolution: Preferably higher than 256 x 256. Resolution lower than this may compromise the recognition performance.</li>
-        ><li>Supported image formats: PNG, JPG, JPEG, BMP, GIF, WEBP</li>
-
-        :param request: Request instance for ReviewImage.
-        :type request: :class:`tencentcloud.vod.v20180717.models.ReviewImageRequest`
-        :rtype: :class:`tencentcloud.vod.v20180717.models.ReviewImageResponse`
+        :param request: Request instance for RestoreMedia.
+        :type request: :class:`tencentcloud.vod.v20180717.models.RestoreMediaRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.RestoreMediaResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("ReviewImage", params, headers=headers)
+            body = self.call("RestoreMedia", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ReviewImageResponse()
+                model = models.RestoreMediaResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

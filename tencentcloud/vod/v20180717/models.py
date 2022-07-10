@@ -283,11 +283,14 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         :param WatermarkSet: List of up to 10 image or text watermarks.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type WatermarkSet: list of WatermarkInput
+        :param TraceWatermark: Digital watermark.
+        :type TraceWatermark: :class:`tencentcloud.vod.v20180717.models.TraceWatermarkInput`
         :param SubtitleSet: List of subtitle IDs (maximum: 16)
         :type SubtitleSet: list of str
         """
         self.Definition = None
         self.WatermarkSet = None
+        self.TraceWatermark = None
         self.SubtitleSet = None
 
 
@@ -299,6 +302,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = WatermarkInput()
                 obj._deserialize(item)
                 self.WatermarkSet.append(obj)
+        if params.get("TraceWatermark") is not None:
+            self.TraceWatermark = TraceWatermarkInput()
+            self.TraceWatermark._deserialize(params.get("TraceWatermark"))
         self.SubtitleSet = params.get("SubtitleSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -4295,6 +4301,8 @@ class ApplyUploadRequest(AbstractModel):
         r"""
         :param MediaType: Media type. For the detailed valid values, please see [Upload Overview](https://intl.cloud.tencent.com/document/product/266/9760?from_cn_redirect=1#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B).
         :type MediaType: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param MediaName: Media name.
         :type MediaName: str
         :param CoverType: Cover type. For the detailed valid values, please see [Upload Overview](https://intl.cloud.tencent.com/document/product/266/9760?from_cn_redirect=1#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B).
@@ -4314,10 +4322,9 @@ class ApplyUploadRequest(AbstractModel):
         :type SessionContext: str
         :param ExtInfo: Reserved parameter for special purposes.
         :type ExtInfo: str
-        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.MediaType = None
+        self.SubAppId = None
         self.MediaName = None
         self.CoverType = None
         self.Procedure = None
@@ -4327,11 +4334,11 @@ class ApplyUploadRequest(AbstractModel):
         self.SourceContext = None
         self.SessionContext = None
         self.ExtInfo = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.MediaType = params.get("MediaType")
+        self.SubAppId = params.get("SubAppId")
         self.MediaName = params.get("MediaName")
         self.CoverType = params.get("CoverType")
         self.Procedure = params.get("Procedure")
@@ -4341,7 +4348,6 @@ class ApplyUploadRequest(AbstractModel):
         self.SourceContext = params.get("SourceContext")
         self.SessionContext = params.get("SessionContext")
         self.ExtInfo = params.get("ExtInfo")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4537,7 +4543,7 @@ class AttachMediaSubtitlesRequest(AbstractModel):
         :type AdaptiveDynamicStreamingDefinition: int
         :param SubtitleIds: Unique IDs of the subtitles
         :type SubtitleIds: list of str
-        :param SubAppId: VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access the resources in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.FileId = None
@@ -4586,22 +4592,23 @@ class AudioTemplateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Codec: Audio stream encoder.
-When the outer `Container` parameter is `mp3`, the valid value is:
-<li>libmp3lame.</li>
-When the outer `Container` parameter is `ogg` or `flac`, the valid value is:
-<li>flac.</li>
-When the outer `Container` parameter is `m4a`, the valid values include:
-<li>libfdk_aac;</li>
-<li>libmp3lame;</li>
-<li>ac3.</li>
-When the outer `Container` parameter is `mp4` or `flv`, the valid values include:
-<li>libfdk_aac: more suitable for mp4;</li>
-<li>libmp3lame: More suitable for flv;</li>
-<li>mp2.</li>
-When the outer `Container` parameter is `hls`, the valid values include:
-<li>libfdk_aac;</li>
-<li>libmp3lame.</li>
+        :param Codec: The audio codec.
+If `Container` parameter is `mp3`, the valid value is:
+<li>libmp3lame</li>
+If `Container` is `ogg` or `flac`, the valid value is:
+<li>flac</li>
+If `Container` is `m4a`, the valid values are:
+<li>libfdk_aac</li>
+<li>libmp3lame</li>
+<li>ac3</li>
+If `Container` is `mp4` or `flv`, the valid values are:
+<li>libfdk_aac: more suitable for mp4</li>
+<li>libmp3lame: More suitable for flv</li>
+<li>mp2</li>
+If `Container` is `hls`, the valid values are:
+<li>libfdk_aac</li>
+If `Format` is `HLS` or `MPEG-DASH`, the valid values are:
+<li>libfdk_aac</li>
         :type Codec: str
         :param Bitrate: Audio stream bitrate in Kbps. Value range: 0 and [26, 256].
 If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.
@@ -4647,22 +4654,23 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Codec: Audio stream encoder.
-When the outer `Container` parameter is `mp3`, the valid value is:
-<li>libmp3lame.</li>
-When the outer `Container` parameter is `ogg` or `flac`, the valid value is:
-<li>flac.</li>
-When the outer `Container` parameter is `m4a`, the valid values include:
-<li>libfdk_aac;</li>
-<li>libmp3lame;</li>
-<li>ac3.</li>
-When the outer `Container` parameter is `mp4` or `flv`, the valid values include:
-<li>libfdk_aac: more suitable for mp4;</li>
-<li>libmp3lame: More suitable for flv;</li>
-<li>mp2.</li>
-When the outer `Container` parameter is `hls`, the valid values include:
-<li>libfdk_aac;</li>
-<li>libmp3lame.</li>
+        :param Codec: The audio codec.
+If `Container` parameter is `mp3`, the valid value is:
+<li>libmp3lame</li>
+If `Container` is `ogg` or `flac`, the valid value is:
+<li>flac</li>
+If `Container` is `m4a`, the valid values are:
+<li>libfdk_aac</li>
+<li>libmp3lame</li>
+<li>ac3</li>
+If `Container` is `mp4` or `flv`, the valid values are:
+<li>libfdk_aac: more suitable for mp4</li>
+<li>libmp3lame: More suitable for flv</li>
+<li>mp2</li>
+If `Container` is `hls`, the valid values are:
+<li>libfdk_aac</li>
+If `Format` is `HLS` or `MPEG-DASH`, the valid values are:
+<li>libfdk_aac</li>
         :type Codec: str
         :param Bitrate: Audio stream bitrate in Kbps. Value range: 0 and [26, 256]. If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.
         :type Bitrate: int
@@ -5031,7 +5039,7 @@ class CommitUploadRequest(AbstractModel):
         r"""
         :param VodSessionKey: VOD session, which takes the returned value (VodSessionKey) of the `ApplyUpload` API.
         :type VodSessionKey: str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.VodSessionKey = None
@@ -5059,11 +5067,9 @@ class CommitUploadResponse(AbstractModel):
         r"""
         :param FileId: Unique ID of media file.
         :type FileId: str
-        :param MediaUrl: Media playback address.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param MediaUrl: The media playback URL.
         :type MediaUrl: str
-        :param CoverUrl: Media cover address.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param CoverUrl: The thumbnail URL.
         :type CoverUrl: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -5161,21 +5167,21 @@ class ComposeMediaRequest(AbstractModel):
         :type Tracks: list of MediaTrack
         :param Output: Information of output media file.
         :type Output: :class:`tencentcloud.vod.v20180717.models.ComposeMediaOutput`
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Canvas: Canvas used for composing video file.
         :type Canvas: :class:`tencentcloud.vod.v20180717.models.Canvas`
         :param SessionContext: Used to pass through user request information. `ComposeMediaComplete` callback will return the value of this parameter. It contains up to 1,000 characters.
         :type SessionContext: str
         :param SessionId: Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.
         :type SessionId: str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.Tracks = None
         self.Output = None
+        self.SubAppId = None
         self.Canvas = None
         self.SessionContext = None
         self.SessionId = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
@@ -5188,12 +5194,12 @@ class ComposeMediaRequest(AbstractModel):
         if params.get("Output") is not None:
             self.Output = ComposeMediaOutput()
             self.Output._deserialize(params.get("Output"))
+        self.SubAppId = params.get("SubAppId")
         if params.get("Canvas") is not None:
             self.Canvas = Canvas()
             self.Canvas._deserialize(params.get("Canvas"))
         self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5517,117 +5523,6 @@ class ConfirmEventsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ContentReviewOcrResult(AbstractModel):
-    """The result for OCR-based image recognition.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Confidence: The confidence score for the OCR-based recognition result. Value range: 0-100.
-        :type Confidence: float
-        :param Suggestion: The suggestion for handling the suspicious content detected based on OCR. Valid values:
-<li>pass/li>
-<li>review</li>
-<li>block</li>
-        :type Suggestion: str
-        :param KeywordSet: The list of suspicious keywords detected based on OCR.
-        :type KeywordSet: list of str
-        :param AreaCoordSet: The coordinates (pixel) of the top-left and bottom-right corners of the frame where a suspicious keyword appears. Format: [x1, y1, x2, y2].
-        :type AreaCoordSet: list of int
-        """
-        self.Confidence = None
-        self.Suggestion = None
-        self.KeywordSet = None
-        self.AreaCoordSet = None
-
-
-    def _deserialize(self, params):
-        self.Confidence = params.get("Confidence")
-        self.Suggestion = params.get("Suggestion")
-        self.KeywordSet = params.get("KeywordSet")
-        self.AreaCoordSet = params.get("AreaCoordSet")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ContentReviewResult(AbstractModel):
-    """The result for intelligent image recognition.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Type: The result type. Valid values:
-<li>Porn.Image: Recognition of pornographic content in the image</li>
-<li>Terrorism.Image: Recognition of terrorism content in the image</li>
-<li>Political.Image: Recognition of politically sensitive content in the image</li>
-<li>Porn.Ocr: OCR-based recognition of pornographic content in the image</li>
-<li>Terrorism.Ocr: OCR-based recognition of terrorism content in the image</li>
-<li>Political.Ocr: OCR-based recognition of politically sensitive content in the image</li>
-        :type Type: str
-        :param PornImageResult: The pornographic content detected in the image. This parameter is valid if `Type` is `Porn.Image`.
-Note: This field may return `null`, indicating that no valid value was found.
-        :type PornImageResult: :class:`tencentcloud.vod.v20180717.models.PornImageResult`
-        :param TerrorismImageResult: The terrorism content detected in the image. This parameter is valid if `Type` is `Terrorism.Image`.
-Note: This field may return `null`, indicating that no valid value was found.
-        :type TerrorismImageResult: :class:`tencentcloud.vod.v20180717.models.TerrorismImageResult`
-        :param PoliticalImageResult: The politically sensitive content detected in the image. This parameter is valid if `Type` is `Political.Image`.
-Note: This field may return `null`, indicating that no valid value was found.
-        :type PoliticalImageResult: :class:`tencentcloud.vod.v20180717.models.PoliticalImageResult`
-        :param PornOcrResult: The pornographic content detected in the image based on OCR. This parameter is valid if `Type` is `Porn.Ocr`.
-Note: This field may return `null`, indicating that no valid value was found.
-        :type PornOcrResult: :class:`tencentcloud.vod.v20180717.models.ContentReviewOcrResult`
-        :param TerrorismOcrResult: The terrorism content detected in the image based on OCR. This parameter is valid if `Type` is `Terrorism.Ocr`.
-Note: This field may return `null`, indicating that no valid value was found.
-        :type TerrorismOcrResult: :class:`tencentcloud.vod.v20180717.models.ContentReviewOcrResult`
-        :param PoliticalOcrResult: The politically sensitive content detected in the image based on OCR. This parameter is valid if `Type` is `Political.Ocr`.
-Note: This field may return `null`, indicating that no valid value was found.
-        :type PoliticalOcrResult: :class:`tencentcloud.vod.v20180717.models.ContentReviewOcrResult`
-        """
-        self.Type = None
-        self.PornImageResult = None
-        self.TerrorismImageResult = None
-        self.PoliticalImageResult = None
-        self.PornOcrResult = None
-        self.TerrorismOcrResult = None
-        self.PoliticalOcrResult = None
-
-
-    def _deserialize(self, params):
-        self.Type = params.get("Type")
-        if params.get("PornImageResult") is not None:
-            self.PornImageResult = PornImageResult()
-            self.PornImageResult._deserialize(params.get("PornImageResult"))
-        if params.get("TerrorismImageResult") is not None:
-            self.TerrorismImageResult = TerrorismImageResult()
-            self.TerrorismImageResult._deserialize(params.get("TerrorismImageResult"))
-        if params.get("PoliticalImageResult") is not None:
-            self.PoliticalImageResult = PoliticalImageResult()
-            self.PoliticalImageResult._deserialize(params.get("PoliticalImageResult"))
-        if params.get("PornOcrResult") is not None:
-            self.PornOcrResult = ContentReviewOcrResult()
-            self.PornOcrResult._deserialize(params.get("PornOcrResult"))
-        if params.get("TerrorismOcrResult") is not None:
-            self.TerrorismOcrResult = ContentReviewOcrResult()
-            self.TerrorismOcrResult._deserialize(params.get("TerrorismOcrResult"))
-        if params.get("PoliticalOcrResult") is not None:
-            self.PoliticalOcrResult = ContentReviewOcrResult()
-            self.PoliticalOcrResult._deserialize(params.get("PoliticalOcrResult"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class ContentReviewTemplateItem(AbstractModel):
     """Intelligent recognition template details
 
@@ -5844,6 +5739,8 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Name: Video content analysis template name. Length limit: 64 characters.
         :type Name: str
         :param Comment: Video content analysis template description. Length limit: 256 characters.
@@ -5858,9 +5755,8 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
         :type FrameTagConfigure: :class:`tencentcloud.vod.v20180717.models.FrameTagConfigureInfo`
         :param HighlightConfigure: Control parameter of an intelligent highlight generating task.
         :type HighlightConfigure: :class:`tencentcloud.vod.v20180717.models.HighlightsConfigureInfo`
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
+        self.SubAppId = None
         self.Name = None
         self.Comment = None
         self.ClassificationConfigure = None
@@ -5868,10 +5764,10 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
         self.CoverConfigure = None
         self.FrameTagConfigure = None
         self.HighlightConfigure = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Comment = params.get("Comment")
         if params.get("ClassificationConfigure") is not None:
@@ -5889,7 +5785,6 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
         if params.get("HighlightConfigure") is not None:
             self.HighlightConfigure = HighlightsConfigureInfo()
             self.HighlightConfigure._deserialize(params.get("HighlightConfigure"))
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5927,6 +5822,8 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Name: Video content recognition template name. Length limit: 64 characters.
         :type Name: str
         :param Comment: Description of video content recognition template. Length limit: 256 characters.
@@ -5949,9 +5846,8 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
         :type ObjectConfigure: :class:`tencentcloud.vod.v20180717.models.ObjectConfigureInfo`
         :param ScreenshotInterval: Frame capturing interval in seconds. If this parameter is left empty, 1 second will be used by default. Minimum value: 0.5 seconds.
         :type ScreenshotInterval: float
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
+        self.SubAppId = None
         self.Name = None
         self.Comment = None
         self.HeadTailConfigure = None
@@ -5963,10 +5859,10 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
         self.AsrWordsConfigure = None
         self.ObjectConfigure = None
         self.ScreenshotInterval = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Comment = params.get("Comment")
         if params.get("HeadTailConfigure") is not None:
@@ -5994,7 +5890,6 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
             self.ObjectConfigure = ObjectConfigureInfo()
             self.ObjectConfigure._deserialize(params.get("ObjectConfigure"))
         self.ScreenshotInterval = params.get("ScreenshotInterval")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6032,12 +5927,15 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Format: Adaptive bitstream format. Valid values:
-<li>HLS.</li>
+        :param Format: The adaptive bitrate streaming format. Valid values:
+<li>HLS</li>
+<li>MPEG-DASH</li>
         :type Format: str
         :param StreamInfos: Parameter information of output substream for adaptive bitrate streaming. Up to 10 substreams can be output.
 Note: the frame rate of all substreams must be the same; otherwise, the frame rate of the first substream will be used as the output frame rate.
         :type StreamInfos: list of AdaptiveStreamTemplate
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Name: Template name. Length limit: 64 characters.
         :type Name: str
         :param DrmType: The DRM type. Valid values:
@@ -6058,17 +5956,15 @@ Default value: no.
         :type DisableHigherVideoResolution: int
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.Format = None
         self.StreamInfos = None
+        self.SubAppId = None
         self.Name = None
         self.DrmType = None
         self.DisableHigherVideoBitrate = None
         self.DisableHigherVideoResolution = None
         self.Comment = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
@@ -6079,12 +5975,12 @@ Default value: no.
                 obj = AdaptiveStreamTemplate()
                 obj._deserialize(item)
                 self.StreamInfos.append(obj)
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.DrmType = params.get("DrmType")
         self.DisableHigherVideoBitrate = params.get("DisableHigherVideoBitrate")
         self.DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
         self.Comment = params.get("Comment")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6124,6 +6020,8 @@ class CreateAnimatedGraphicsTemplateRequest(AbstractModel):
         r"""
         :param Fps: Video frame rate in Hz. Value range: [1, 30].
         :type Fps: int
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Width: Maximum value of the width (or long side) of an animated image in px. Value range: 0 and [128, 4,096].
 <li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
 <li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
@@ -6151,10 +6049,9 @@ Default value: open.
         :type Name: str
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
-        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.Fps = None
+        self.SubAppId = None
         self.Width = None
         self.Height = None
         self.ResolutionAdaptive = None
@@ -6162,11 +6059,11 @@ Default value: open.
         self.Quality = None
         self.Name = None
         self.Comment = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Fps = params.get("Fps")
+        self.SubAppId = params.get("SubAppId")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.ResolutionAdaptive = params.get("ResolutionAdaptive")
@@ -6174,7 +6071,6 @@ Default value: open.
         self.Quality = params.get("Quality")
         self.Name = params.get("Name")
         self.Comment = params.get("Comment")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6216,7 +6112,7 @@ class CreateClassRequest(AbstractModel):
         :type ParentId: int
         :param ClassName: Category name. Length limit: 1-64 characters.
         :type ClassName: str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.ParentId = None
@@ -6269,6 +6165,8 @@ class CreateContentReviewTemplateRequest(AbstractModel):
 <li>ON: yes</li>
 <li>OFF: no</li>
         :type ReviewWallSwitch: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Name: Name of an intelligent content recognition template. Length limit: 64 characters.
         :type Name: str
         :param Comment: Description of an intelligent content recognition template. Length limit: 256 characters.
@@ -6287,10 +6185,9 @@ class CreateContentReviewTemplateRequest(AbstractModel):
         :type UserDefineConfigure: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfo`
         :param ScreenshotInterval: Frame capturing interval in seconds. If this parameter is left empty, 1 second will be used by default. Minimum value: 0.5 seconds.
         :type ScreenshotInterval: float
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.ReviewWallSwitch = None
+        self.SubAppId = None
         self.Name = None
         self.Comment = None
         self.PornConfigure = None
@@ -6299,11 +6196,11 @@ class CreateContentReviewTemplateRequest(AbstractModel):
         self.ProhibitedConfigure = None
         self.UserDefineConfigure = None
         self.ScreenshotInterval = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.ReviewWallSwitch = params.get("ReviewWallSwitch")
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Comment = params.get("Comment")
         if params.get("PornConfigure") is not None:
@@ -6322,7 +6219,6 @@ class CreateContentReviewTemplateRequest(AbstractModel):
             self.UserDefineConfigure = UserDefineConfigureInfo()
             self.UserDefineConfigure._deserialize(params.get("UserDefineConfigure"))
         self.ScreenshotInterval = params.get("ScreenshotInterval")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6433,6 +6329,8 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
         :type RowCount: int
         :param ColumnCount: Subimage column count of an image sprite.
         :type ColumnCount: int
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Name: Name of an image sprite generating template. Length limit: 64 characters.
         :type Name: str
         :param Comment: Template description. Length limit: 256 characters.
@@ -6461,20 +6359,18 @@ Default value: 0.
 <li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
 Default value: open.
         :type ResolutionAdaptive: str
-        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.SampleType = None
         self.SampleInterval = None
         self.RowCount = None
         self.ColumnCount = None
+        self.SubAppId = None
         self.Name = None
         self.Comment = None
         self.FillType = None
         self.Width = None
         self.Height = None
         self.ResolutionAdaptive = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
@@ -6482,13 +6378,13 @@ Default value: open.
         self.SampleInterval = params.get("SampleInterval")
         self.RowCount = params.get("RowCount")
         self.ColumnCount = params.get("ColumnCount")
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Comment = params.get("Comment")
         self.FillType = params.get("FillType")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.ResolutionAdaptive = params.get("ResolutionAdaptive")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6533,6 +6429,8 @@ class CreatePersonSampleRequest(AbstractModel):
 2. Review: used for inappropriate information recognition; equivalent to `Review.Face`
 3. All: equivalent to 1+2.
         :type Usages: list of str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Description: Description of a sample. Length limit: 1024 characters.
         :type Description: str
         :param FaceContents: String generated after the sample image is encoded by [Base64](https://tools.ietf.org/html/rfc4648). Only JPEG and PNG images are supported. Array length limit: 5 images.
@@ -6542,24 +6440,22 @@ Note: the image must be a relatively clear full-face photo of a person and has a
 <li>Array length limit: 20 tags</li>
 <li>Length limit of a tag: 128 characters</li>
         :type Tags: list of str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.Name = None
         self.Usages = None
+        self.SubAppId = None
         self.Description = None
         self.FaceContents = None
         self.Tags = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Usages = params.get("Usages")
+        self.SubAppId = params.get("SubAppId")
         self.Description = params.get("Description")
         self.FaceContents = params.get("FaceContents")
         self.Tags = params.get("Tags")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6689,6 +6585,8 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 <li>If `SampleType` is `Percent`, sampling will be performed at an interval of the specified percentage.</li>
 <li>If `SampleType` is `Time`, sampling will be performed at the specified time interval in seconds.</li>
         :type SampleInterval: int
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Name: Name of a sampled screencapturing template. Length limit: 64 characters.
         :type Name: str
         :param Width: Maximum value of the width (or long side) of a screenshot in px. Value range: 0 and [128, 4,096].
@@ -6714,8 +6612,6 @@ Default value: open.
         :type Format: str
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
-        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
 <li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
@@ -6726,26 +6622,26 @@ Default value: black.
         """
         self.SampleType = None
         self.SampleInterval = None
+        self.SubAppId = None
         self.Name = None
         self.Width = None
         self.Height = None
         self.ResolutionAdaptive = None
         self.Format = None
         self.Comment = None
-        self.SubAppId = None
         self.FillType = None
 
 
     def _deserialize(self, params):
         self.SampleType = params.get("SampleType")
         self.SampleInterval = params.get("SampleInterval")
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Format = params.get("Format")
         self.Comment = params.get("Comment")
-        self.SubAppId = params.get("SubAppId")
         self.FillType = params.get("FillType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -6784,6 +6680,8 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Name: Name of a time point screencapturing template. Length limit: 64 characters.
         :type Name: str
         :param Width: Maximum value of the width (or long side) of a screenshot in px. Value range: 0 and [128, 4,096].
@@ -6809,8 +6707,6 @@ Default value: open.
         :type Format: str
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
-        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
 <li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
@@ -6819,24 +6715,24 @@ Default value: open.
 Default value: black.
         :type FillType: str
         """
+        self.SubAppId = None
         self.Name = None
         self.Width = None
         self.Height = None
         self.ResolutionAdaptive = None
         self.Format = None
         self.Comment = None
-        self.SubAppId = None
         self.FillType = None
 
 
     def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Format = params.get("Format")
         self.Comment = params.get("Comment")
-        self.SubAppId = params.get("SubAppId")
         self.FillType = params.get("FillType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -6877,7 +6773,7 @@ class CreateStorageRegionRequest(AbstractModel):
         r"""
         :param StorageRegion: The region to enable storage in, which must be a storage region supported by VOD.
         :type StorageRegion: str
-        :param SubAppId: The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.StorageRegion = None
@@ -6971,6 +6867,8 @@ class CreateSuperPlayerConfigRequest(AbstractModel):
         r"""
         :param Name: Player configuration name, which can contain up to 64 letters, digits, underscores, and hyphens (such as test_ABC-123) and must be unique under a user.
         :type Name: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param AudioVideoType: Type of audio/video played. Valid values:
 <li>AdaptiveDynamicStreaming</li>
 <li>Transcode</li>
@@ -7014,10 +6912,9 @@ This parameter is required if `AudioVideoType` is `Transcode`.
         :type Scheme: str
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.Name = None
+        self.SubAppId = None
         self.AudioVideoType = None
         self.DrmSwitch = None
         self.AdaptiveDynamicStreamingDefinition = None
@@ -7028,11 +6925,11 @@ This parameter is required if `AudioVideoType` is `Transcode`.
         self.Domain = None
         self.Scheme = None
         self.Comment = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
+        self.SubAppId = params.get("SubAppId")
         self.AudioVideoType = params.get("AudioVideoType")
         self.DrmSwitch = params.get("DrmSwitch")
         self.AdaptiveDynamicStreamingDefinition = params.get("AdaptiveDynamicStreamingDefinition")
@@ -7050,7 +6947,6 @@ This parameter is required if `AudioVideoType` is `Transcode`.
         self.Domain = params.get("Domain")
         self.Scheme = params.get("Scheme")
         self.Comment = params.get("Comment")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7086,6 +6982,8 @@ class CreateTranscodeTemplateRequest(AbstractModel):
         r"""
         :param Container: Container. Valid values: mp4; flv; hls; mp3; flac; ogg; m4a. Among them, mp3, flac, ogg, and m4a are for audio files.
         :type Container: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Name: Transcoding template name. Length limit: 64 characters.
         :type Name: str
         :param Comment: Template description. Length limit: 256 characters.
@@ -7106,10 +7004,9 @@ Default value: 0.
         :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfo`
         :param TEHDConfig: TESHD transcoding parameter.
         :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfig`
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.Container = None
+        self.SubAppId = None
         self.Name = None
         self.Comment = None
         self.RemoveVideo = None
@@ -7117,11 +7014,11 @@ Default value: 0.
         self.VideoTemplate = None
         self.AudioTemplate = None
         self.TEHDConfig = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Container = params.get("Container")
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Comment = params.get("Comment")
         self.RemoveVideo = params.get("RemoveVideo")
@@ -7135,7 +7032,6 @@ Default value: 0.
         if params.get("TEHDConfig") is not None:
             self.TEHDConfig = TEHDConfig()
             self.TEHDConfig._deserialize(params.get("TEHDConfig"))
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7175,24 +7071,24 @@ class CreateVodDomainRequest(AbstractModel):
         r"""
         :param Domain: Domain name to add to VOD. Note: a wildcard domain name is not supported.
         :type Domain: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param AccelerateArea: Region to enable acceleration. Valid values:
 <li>`Chinese Mainland`</li>
 <li>`Outside Chinese Mainland`</li>
 <li>`Global`</li>
 If `AccelerateArea` is not specified, VOD will enable acceleration in or outside Chinese mainland based on the regional information a user has configured with Tencent Cloud.
         :type AccelerateArea: str
-        :param SubAppId: VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.Domain = None
-        self.AccelerateArea = None
         self.SubAppId = None
+        self.AccelerateArea = None
 
 
     def _deserialize(self, params):
         self.Domain = params.get("Domain")
-        self.AccelerateArea = params.get("AccelerateArea")
         self.SubAppId = params.get("SubAppId")
+        self.AccelerateArea = params.get("AccelerateArea")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7231,6 +7127,8 @@ class CreateWatermarkTemplateRequest(AbstractModel):
 <li>text: text watermark;</li>
 <li>svg: SVG watermark.</li>
         :type Type: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Name: Watermarking template name. Length limit: 64 characters.
         :type Name: str
         :param Comment: Template description. Length limit: 256 characters.
@@ -7258,10 +7156,9 @@ Default value: 0 px.
         :type TextTemplate: :class:`tencentcloud.vod.v20180717.models.TextWatermarkTemplateInput`
         :param SvgTemplate: SVG watermarking template. This field is required when `Type` is `svg` and is invalid when `Type` is `image` or `text`.
         :type SvgTemplate: :class:`tencentcloud.vod.v20180717.models.SvgWatermarkInput`
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.Type = None
+        self.SubAppId = None
         self.Name = None
         self.Comment = None
         self.CoordinateOrigin = None
@@ -7270,11 +7167,11 @@ Default value: 0 px.
         self.ImageTemplate = None
         self.TextTemplate = None
         self.SvgTemplate = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Type = params.get("Type")
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Comment = params.get("Comment")
         self.CoordinateOrigin = params.get("CoordinateOrigin")
@@ -7289,7 +7186,6 @@ Default value: 0 px.
         if params.get("SvgTemplate") is not None:
             self.SvgTemplate = SvgWatermarkInput()
             self.SvgTemplate._deserialize(params.get("SvgTemplate"))
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7343,7 +7239,7 @@ class CreateWordSamplesRequest(AbstractModel):
         :type Usages: list of str
         :param Words: Keyword. Array length limit: 100.
         :type Words: list of AiSampleWordInfo
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.Usages = None
@@ -7395,7 +7291,7 @@ class DeleteAIAnalysisTemplateRequest(AbstractModel):
         r"""
         :param Definition: Unique ID of video content analysis template.
         :type Definition: int
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.Definition = None
@@ -7440,7 +7336,7 @@ class DeleteAIRecognitionTemplateRequest(AbstractModel):
         r"""
         :param Definition: Unique ID of video content recognition template.
         :type Definition: int
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.Definition = None
@@ -7485,7 +7381,7 @@ class DeleteAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         r"""
         :param Definition: Unique ID of adaptive bitrate streaming template.
         :type Definition: int
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.Definition = None
@@ -7530,7 +7426,7 @@ class DeleteAnimatedGraphicsTemplateRequest(AbstractModel):
         r"""
         :param Definition: Unique ID of an animated image generating template.
         :type Definition: int
-        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.Definition = None
@@ -7575,7 +7471,7 @@ class DeleteClassRequest(AbstractModel):
         r"""
         :param ClassId: Category ID
         :type ClassId: int
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.ClassId = None
@@ -7620,7 +7516,7 @@ class DeleteContentReviewTemplateRequest(AbstractModel):
         r"""
         :param Definition: Unique ID of an intelligent content recognition template.
         :type Definition: int
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.Definition = None
@@ -7665,7 +7561,7 @@ class DeleteImageSpriteTemplateRequest(AbstractModel):
         r"""
         :param Definition: Unique ID of an image sprite generating template.
         :type Definition: int
-        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.Definition = None
@@ -7710,25 +7606,25 @@ class DeleteMediaRequest(AbstractModel):
         r"""
         :param FileId: Unique media file ID.
         :type FileId: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param DeleteParts: Content to be deleted. The default value is "[]", which indicates to delete the media file and all its corresponding files generated by video processing.
         :type DeleteParts: list of MediaDeleteItem
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.FileId = None
-        self.DeleteParts = None
         self.SubAppId = None
+        self.DeleteParts = None
 
 
     def _deserialize(self, params):
         self.FileId = params.get("FileId")
+        self.SubAppId = params.get("SubAppId")
         if params.get("DeleteParts") is not None:
             self.DeleteParts = []
             for item in params.get("DeleteParts"):
                 obj = MediaDeleteItem()
                 obj._deserialize(item)
                 self.DeleteParts.append(obj)
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7764,7 +7660,7 @@ class DeletePersonSampleRequest(AbstractModel):
         r"""
         :param PersonId: ID of a sample.
         :type PersonId: str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.PersonId = None
@@ -7809,7 +7705,7 @@ class DeleteProcedureTemplateRequest(AbstractModel):
         r"""
         :param Name: Task flow name.
         :type Name: str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.Name = None
@@ -7854,7 +7750,7 @@ class DeleteSampleSnapshotTemplateRequest(AbstractModel):
         r"""
         :param Definition: Unique ID of a sampled screencapturing template.
         :type Definition: int
-        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.Definition = None
@@ -7899,7 +7795,7 @@ class DeleteSnapshotByTimeOffsetTemplateRequest(AbstractModel):
         r"""
         :param Definition: Unique ID of a specified time point screencapturing template.
         :type Definition: int
-        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.Definition = None
@@ -7944,7 +7840,7 @@ class DeleteSuperPlayerConfigRequest(AbstractModel):
         r"""
         :param Name: Player configuration name.
         :type Name: str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.Name = None
@@ -7989,7 +7885,7 @@ class DeleteTranscodeTemplateRequest(AbstractModel):
         r"""
         :param Definition: Unique ID of transcoding template.
         :type Definition: int
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.Definition = None
@@ -8034,7 +7930,7 @@ class DeleteVodDomainRequest(AbstractModel):
         r"""
         :param Domain: Domain name to delete from VOD
         :type Domain: str
-        :param SubAppId: VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.Domain = None
@@ -8079,7 +7975,7 @@ class DeleteWatermarkTemplateRequest(AbstractModel):
         r"""
         :param Definition: Unique ID of watermarking template.
         :type Definition: int
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.Definition = None
@@ -8124,7 +8020,7 @@ class DeleteWordSamplesRequest(AbstractModel):
         r"""
         :param Keywords: Keyword. Array length limit: 100 words.
         :type Keywords: list of str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.Keywords = None
@@ -8167,26 +8063,26 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Definitions: Unique ID filter of video content analysis templates. Array length limit: 100.
         :type Definitions: list of int
         :param Offset: Pagination offset. Default value: 0.
         :type Offset: int
         :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
         :type Limit: int
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
+        self.SubAppId = None
         self.Definitions = None
         self.Offset = None
         self.Limit = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
         self.Definitions = params.get("Definitions")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8233,26 +8129,26 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Definitions: Unique ID filter of video content recognition templates. Array length limit: 100.
         :type Definitions: list of int
         :param Offset: Pagination offset. Default value: 0.
         :type Offset: int
         :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
         :type Limit: int
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
+        self.SubAppId = None
         self.Definitions = None
         self.Offset = None
         self.Limit = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
         self.Definitions = params.get("Definitions")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8299,6 +8195,8 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Definitions: Unique ID filter of transcoding to adaptive bitrate streaming templates. Array length limit: 100.
         :type Definitions: list of int non-negative
         :param Offset: Paged offset. Default value: 0.
@@ -8309,22 +8207,20 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
 <li>Preset: preset template;</li>
 <li>Custom: custom template.</li>
         :type Type: str
-        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
+        self.SubAppId = None
         self.Definitions = None
         self.Offset = None
         self.Limit = None
         self.Type = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
         self.Definitions = params.get("Definitions")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.Type = params.get("Type")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8371,7 +8267,7 @@ class DescribeAllClassRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.SubAppId = None
@@ -8422,6 +8318,8 @@ class DescribeAnimatedGraphicsTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Definitions: Unique ID filter of animated image generating templates. Array length limit: 100.
         :type Definitions: list of int non-negative
         :param Offset: Paged offset. Default value: 0.
@@ -8432,22 +8330,20 @@ class DescribeAnimatedGraphicsTemplatesRequest(AbstractModel):
 <li>Preset: preset template;</li>
 <li>Custom: custom template.</li>
         :type Type: str
-        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
+        self.SubAppId = None
         self.Definitions = None
         self.Offset = None
         self.Limit = None
         self.Type = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
         self.Definitions = params.get("Definitions")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.Type = params.get("Type")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8503,6 +8399,8 @@ class DescribeCDNStatDetailsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: End time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
         :type EndTime: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param DomainNames: List of domain names. The usage data of up to 20 domain names can be queried at a time. The usage data of all domain names is returned by default.
         :type DomainNames: list of str
         :param Area: Service region. Valid values:
@@ -8568,30 +8466,28 @@ Default value: Chinese Mainland
 <li>1440: 1-day granularity. The data at 1-day granularity in the query period will be returned. If the query period is larger than 24 hours, only data at 1-day granularity can be queried.</li>
 If the difference between `StartTime` and `EndTime` is larger than 24 hours, the default value of `DataInterval` is 1440.
         :type DataInterval: int
-        :param SubAppId: VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.Metric = None
         self.StartTime = None
         self.EndTime = None
+        self.SubAppId = None
         self.DomainNames = None
         self.Area = None
         self.Districts = None
         self.Isps = None
         self.DataInterval = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Metric = params.get("Metric")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.SubAppId = params.get("SubAppId")
         self.DomainNames = params.get("DomainNames")
         self.Area = params.get("Area")
         self.Districts = params.get("Districts")
         self.Isps = params.get("Isps")
         self.DataInterval = params.get("DataInterval")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8646,6 +8542,9 @@ class DescribeCDNUsageDataRequest(AbstractModel):
 <li>Flux: traffic in bytes.</li>
 <li>Bandwidth: bandwidth in bps.</li>
         :type DataType: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+You can set this parameter to 1 to query the total usage of all applications (including the primary application) as an admin (only 1-day granularity is supported).</b>
+        :type SubAppId: int
         :param DataInterval: Time granularity of usage data in minutes. Valid values:
 <li>5: 5-minute granularity. The data at 5-minute granularity in the query period will be returned.</li>
 <li>60: 1-hour granularity. The data at 1-hour granularity in the query period will be returned.</li>
@@ -8654,25 +8553,22 @@ Default value: 1440. Data at 1-day granularity will be returned.
         :type DataInterval: int
         :param DomainNames: List of domain names. The usage data of up to 20 domain names can be queried at a time. You can specify multiple domain names and query their combined usage data. The usage data of all domain names will be returned by default.
         :type DomainNames: list of str
-        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-When the value of this field is 1, the total usage of all subapplications (including primary application) are queried by an admin. In this case, only 1-day granularity is supported.
-        :type SubAppId: int
         """
         self.StartTime = None
         self.EndTime = None
         self.DataType = None
+        self.SubAppId = None
         self.DataInterval = None
         self.DomainNames = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
         self.DataType = params.get("DataType")
+        self.SubAppId = params.get("SubAppId")
         self.DataInterval = params.get("DataInterval")
         self.DomainNames = params.get("DomainNames")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8725,28 +8621,28 @@ class DescribeCdnLogsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: End time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F), which must be after the start time.
         :type EndTime: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Limit: Maximum return results of pulling paginated queries. Default value: 100; maximum value: 1000
         :type Limit: int
         :param Offset: Page number offset from the beginning of paginated queries. Default value: 0
         :type Offset: int
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.DomainName = None
         self.StartTime = None
         self.EndTime = None
+        self.SubAppId = None
         self.Limit = None
         self.Offset = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.DomainName = params.get("DomainName")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.SubAppId = params.get("SubAppId")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8805,26 +8701,26 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Definitions: Unique IDs for filters of an intelligent content recognition template. Array length limit: 100.
         :type Definitions: list of int
         :param Offset: Pagination offset. Default value: 0.
         :type Offset: int
         :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
         :type Limit: int
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
+        self.SubAppId = None
         self.Definitions = None
         self.Offset = None
         self.Limit = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
         self.Definitions = params.get("Definitions")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8875,7 +8771,7 @@ class DescribeDailyPlayStatFileListRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: End date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
         :type EndTime: str
-        :param SubAppId: VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.StartTime = None
@@ -8933,7 +8829,7 @@ class DescribeImageReviewUsageDataRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: The end date for the query in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format). The end date must be later than the start date.
         :type EndTime: str
-        :param SubAppId: The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.StartTime = None
@@ -8987,6 +8883,8 @@ class DescribeImageSpriteTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Definitions: Unique ID filter of image sprite generating templates. Array length limit: 100.
         :type Definitions: list of int non-negative
         :param Offset: Paged offset. Default value: 0.
@@ -8997,22 +8895,20 @@ class DescribeImageSpriteTemplatesRequest(AbstractModel):
 <li>Preset: preset template;</li>
 <li>Custom: custom template.</li>
         :type Type: str
-        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
+        self.SubAppId = None
         self.Definitions = None
         self.Offset = None
         self.Limit = None
         self.Type = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
         self.Definitions = params.get("Definitions")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.Type = params.get("Type")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9200,27 +9096,27 @@ class DescribeMediaPlayStatDetailsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: The end time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
         :type EndTime: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Interval: Granularity. Valid values:
 <li>Hour</li>
 <li>Day</li>
 The default value depends on the time period queried. If the time period is shorter than one day, the default value is `Hour`; if the time period is one day or longer, the default value is `Day`.
         :type Interval: str
-        :param SubAppId: The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.FileId = None
         self.StartTime = None
         self.EndTime = None
-        self.Interval = None
         self.SubAppId = None
+        self.Interval = None
 
 
     def _deserialize(self, params):
         self.FileId = params.get("FileId")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
-        self.Interval = params.get("Interval")
         self.SubAppId = params.get("SubAppId")
+        self.Interval = params.get("Interval")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9333,6 +9229,8 @@ class DescribePersonSamplesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Type: Type of samples to pull. Valid values:
 <li>UserDefine: custom sample library</li>
 <li>Default: default sample library</li>
@@ -9350,26 +9248,24 @@ Note: samples from the default library can only be pulled by providing the name 
         :type Offset: int
         :param Limit: Number of entries to be returned. Default value: 100. Maximum value: 100.
         :type Limit: int
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
+        self.SubAppId = None
         self.Type = None
         self.PersonIds = None
         self.Names = None
         self.Tags = None
         self.Offset = None
         self.Limit = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
         self.Type = params.get("Type")
         self.PersonIds = params.get("PersonIds")
         self.Names = params.get("Names")
         self.Tags = params.get("Tags")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9492,7 +9388,7 @@ class DescribeReviewDetailsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: End date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I). The end date must be after the start date.
         :type EndTime: str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.StartTime = None
@@ -9554,6 +9450,8 @@ class DescribeSampleSnapshotTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Definitions: Unique ID filter of sampled screencapturing templates. Array length limit: 100.
         :type Definitions: list of int non-negative
         :param Offset: Paged offset. Default value: 0.
@@ -9564,22 +9462,20 @@ class DescribeSampleSnapshotTemplatesRequest(AbstractModel):
 <li>Preset: preset template;</li>
 <li>Custom: custom template.</li>
         :type Type: str
-        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
+        self.SubAppId = None
         self.Definitions = None
         self.Offset = None
         self.Limit = None
         self.Type = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
         self.Definitions = params.get("Definitions")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.Type = params.get("Type")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9626,6 +9522,8 @@ class DescribeSnapshotByTimeOffsetTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Definitions: Unique ID filter of time point screencapturing templates. Array length limit: 100.
         :type Definitions: list of int non-negative
         :param Offset: Paged offset. Default value: 0.
@@ -9636,22 +9534,20 @@ class DescribeSnapshotByTimeOffsetTemplatesRequest(AbstractModel):
 <li>Preset: preset template;</li>
 <li>Custom: custom template.</li>
         :type Type: str
-        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
+        self.SubAppId = None
         self.Definitions = None
         self.Offset = None
         self.Limit = None
         self.Type = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
         self.Definitions = params.get("Definitions")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.Type = params.get("Type")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9698,7 +9594,7 @@ class DescribeStorageDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.SubAppId = None
@@ -9726,10 +9622,14 @@ class DescribeStorageDataResponse(AbstractModel):
         :type MediaCount: int
         :param TotalStorage: Total current storage capacity in bytes.
         :type TotalStorage: int
-        :param InfrequentStorage: Current Standard_IA storage capacity in bytes.
-        :type InfrequentStorage: int
         :param StandardStorage: Current Standard storage capacity in bytes.
         :type StandardStorage: int
+        :param InfrequentStorage: Current Standard_IA storage capacity in bytes.
+        :type InfrequentStorage: int
+        :param ArchiveStorage: The current ARCHIVE storage usage in bytes.
+        :type ArchiveStorage: int
+        :param DeepArchiveStorage: The current DEEP ARCHIVE storage usage in bytes.
+        :type DeepArchiveStorage: int
         :param StorageStat: Storage usage by billing region.
         :type StorageStat: list of StorageStatData
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
@@ -9737,8 +9637,10 @@ class DescribeStorageDataResponse(AbstractModel):
         """
         self.MediaCount = None
         self.TotalStorage = None
-        self.InfrequentStorage = None
         self.StandardStorage = None
+        self.InfrequentStorage = None
+        self.ArchiveStorage = None
+        self.DeepArchiveStorage = None
         self.StorageStat = None
         self.RequestId = None
 
@@ -9746,8 +9648,10 @@ class DescribeStorageDataResponse(AbstractModel):
     def _deserialize(self, params):
         self.MediaCount = params.get("MediaCount")
         self.TotalStorage = params.get("TotalStorage")
-        self.InfrequentStorage = params.get("InfrequentStorage")
         self.StandardStorage = params.get("StandardStorage")
+        self.InfrequentStorage = params.get("InfrequentStorage")
+        self.ArchiveStorage = params.get("ArchiveStorage")
+        self.DeepArchiveStorage = params.get("DeepArchiveStorage")
         if params.get("StorageStat") is not None:
             self.StorageStat = []
             for item in params.get("StorageStat"):
@@ -9768,6 +9672,9 @@ class DescribeStorageDetailsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: End time in ISO 8601 format, which should be larger than the start time. For more information, please see [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
         :type EndTime: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+You can set this parameter to 1 to query the total usage of all applications (including the primary application) as an admin.</b>
+        :type SubAppId: int
         :param Interval: Time granularity. Valid values:
 <li>Minute: 5-minute granularity</li>
 <li>Day: 1-day granularity</li>
@@ -9789,9 +9696,6 @@ The value is set according to query period length by default. 5-minute granulari
 <li>`DeepArchiveBulkRetrieval`: DEEP ARCHIVE data retrieved using bulk retrievals</li>
 Default value: `TotalStorage`
         :type StorageType: str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-When the value of this field is 1, the total usage of all subapplications (including primary application) are queried by an admin.
-        :type SubAppId: int
         :param Area: Storage region to query. Valid values:
 <li>Chinese Mainland</li>
 <li>Outside Chinese Mainland</li>
@@ -9800,18 +9704,18 @@ Default value: Chinese Mainland
         """
         self.StartTime = None
         self.EndTime = None
+        self.SubAppId = None
         self.Interval = None
         self.StorageType = None
-        self.SubAppId = None
         self.Area = None
 
 
     def _deserialize(self, params):
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.SubAppId = params.get("SubAppId")
         self.Interval = params.get("Interval")
         self.StorageType = params.get("StorageType")
-        self.SubAppId = params.get("SubAppId")
         self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -9855,7 +9759,7 @@ class DescribeStorageRegionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubAppId: The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.SubAppId = None
@@ -10215,6 +10119,8 @@ class DescribeTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Status: Filter: Task status. Valid values: WAITING (waiting), PROCESSING (processing), FINISH (completed).
         :type Status: str
         :param FileId: Filter: file ID.
@@ -10231,9 +10137,8 @@ class DescribeTasksRequest(AbstractModel):
         :type Limit: int
         :param ScrollToken: Scrolling identifier which is used for pulling in batches. If a single request cannot pull all the data entries, the API will return `ScrollToken`, and if the next request carries it, the next pull will start from the next entry.
         :type ScrollToken: str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
+        self.SubAppId = None
         self.Status = None
         self.FileId = None
         self.CreateTime = None
@@ -10241,10 +10146,10 @@ class DescribeTasksRequest(AbstractModel):
         self.Sort = None
         self.Limit = None
         self.ScrollToken = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
         self.Status = params.get("Status")
         self.FileId = params.get("FileId")
         if params.get("CreateTime") is not None:
@@ -10258,7 +10163,6 @@ class DescribeTasksRequest(AbstractModel):
             self.Sort._deserialize(params.get("Sort"))
         self.Limit = params.get("Limit")
         self.ScrollToken = params.get("ScrollToken")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10305,6 +10209,8 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Definitions: Unique ID filter of transcoding templates. Array length limit: 100.
         :type Definitions: list of int
         :param Type: Template type filter. Valid values:
@@ -10323,26 +10229,24 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
         :type Limit: int
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
+        self.SubAppId = None
         self.Definitions = None
         self.Type = None
         self.ContainerType = None
         self.TEHDType = None
         self.Offset = None
         self.Limit = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
         self.Definitions = params.get("Definitions")
         self.Type = params.get("Type")
         self.ContainerType = params.get("ContainerType")
         self.TEHDType = params.get("TEHDType")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10457,34 +10361,34 @@ class DescribeWatermarkTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Definitions: Unique ID filter of watermarking templates. Array length limit: 100.
-        :type Definitions: list of int
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Type: Watermark type filter. Valid values:
 <li>image: image watermark;</li>
 <li>text: text watermark.</li>
         :type Type: str
         :param Offset: Pagination offset. Default value: 0.
         :type Offset: int
+        :param Definitions: Unique ID filter of watermarking templates. Array length limit: 100.
+        :type Definitions: list of int
         :param Limit: Number of returned entries
 <li>Default value: 10;</li>
 <li>Maximum value: 100.</li>
         :type Limit: int
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
-        self.Definitions = None
+        self.SubAppId = None
         self.Type = None
         self.Offset = None
+        self.Definitions = None
         self.Limit = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
-        self.Definitions = params.get("Definitions")
+        self.SubAppId = params.get("SubAppId")
         self.Type = params.get("Type")
         self.Offset = params.get("Offset")
+        self.Definitions = params.get("Definitions")
         self.Limit = params.get("Limit")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10532,6 +10436,8 @@ class DescribeWordSamplesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Usages: <b>Keyword usage. Valid values:</b>
 1. Recognition.Ocr: OCR-based content recognition
 2. Recognition.Asr: ASR-based content recognition
@@ -10550,24 +10456,22 @@ You can select multiple elements, which are connected by OR logic. If a use case
         :type Offset: int
         :param Limit: Number of entries to be returned. Default value: 100. Maximum value: 100.
         :type Limit: int
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
+        self.SubAppId = None
         self.Usages = None
         self.Keywords = None
         self.Tags = None
         self.Offset = None
         self.Limit = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
         self.Usages = params.get("Usages")
         self.Keywords = params.get("Keywords")
         self.Tags = params.get("Tags")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11196,30 +11100,30 @@ class ExecuteFunctionRequest(AbstractModel):
         :type FunctionName: str
         :param FunctionArg: API parameter. For specific parameter format, negotiate with the backend before calling.
         :type FunctionArg: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
         :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
         :type SessionId: str
         :param ExtInfo: Reserved field for special purposes.
         :type ExtInfo: str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.FunctionName = None
         self.FunctionArg = None
+        self.SubAppId = None
         self.SessionContext = None
         self.SessionId = None
         self.ExtInfo = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.FunctionName = params.get("FunctionName")
         self.FunctionArg = params.get("FunctionArg")
+        self.SubAppId = params.get("SubAppId")
         self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
         self.ExtInfo = params.get("ExtInfo")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11470,7 +11374,7 @@ class ForbidMediaDistributionRequest(AbstractModel):
         :type FileIds: list of str
         :param Operation: forbid: forbids, recover: unblocks.
         :type Operation: str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.FileIds = None
@@ -11723,31 +11627,6 @@ class HighlightsConfigureInfoForUpdate(AbstractModel):
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ImageContentReviewInput(AbstractModel):
-    """The request parameters for an image recognition task.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Definition: The ID of the image recognition template to use. Valid values:
-<li>10: All recognition types enabled</li>
-        :type Definition: int
-        """
-        self.Definition = None
-
-
-    def _deserialize(self, params):
-        self.Definition = params.get("Definition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12113,6 +11992,8 @@ class LiveRealTimeClipRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: End time of stream clipping in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type EndTime: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param IsPersistence: Whether to clip persistently. 0: no, 1: yes. Default: no.
         :type IsPersistence: int
         :param ExpireTime: Storage expiration time of video generated by persistent clipping in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I). `9999-12-31T23:59:59Z` means `never expire`. After the expiration, the media file and its related resources (such as transcoding results and image sprites) will be permanently deleted. This parameter will be valid only when `IsPersistence` is 1. By default, the video will never expire.
@@ -12125,32 +12006,30 @@ class LiveRealTimeClipRequest(AbstractModel):
         :type Host: str
         :param ExtInfo: Reserved field. Do not enter a value for it.
         :type ExtInfo: str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.StreamId = None
         self.StartTime = None
         self.EndTime = None
+        self.SubAppId = None
         self.IsPersistence = None
         self.ExpireTime = None
         self.Procedure = None
         self.MetaDataRequired = None
         self.Host = None
         self.ExtInfo = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.StreamId = params.get("StreamId")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.SubAppId = params.get("SubAppId")
         self.IsPersistence = params.get("IsPersistence")
         self.ExpireTime = params.get("ExpireTime")
         self.Procedure = params.get("Procedure")
         self.MetaDataRequired = params.get("MetaDataRequired")
         self.Host = params.get("Host")
         self.ExtInfo = params.get("ExtInfo")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12210,7 +12089,7 @@ class ManageTaskRequest(AbstractModel):
         :param OperationType: Operation type. Valid value:
 <li>Abort: terminate a task. You can only terminate initiated tasks in `WAITING` status.</li>
         :type OperationType: str
-        :param SubAppId: VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.TaskId = None
@@ -14578,24 +14457,24 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Width: Maximum value of the width of a video stream in px.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Width: int
-        :param Size: Total size of a media file in bytes (which is the sum of size of m3u8 and ts files if the video is in HLS format).
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Size: The file size (bytes).
+<li>If the file is an HLS file, the value of this parameter is the sum of the size of the M3U8 and TS files.</li>
         :type Size: int
         :param Duration: Video duration in seconds.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Duration: float
-        :param Container: Container, such as m4a and mp4.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Container: str
         :param Md5: MD5 value of video.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Md5: str
-        :param AudioStreamSet: Audio stream information.
+        :param Container: Container, such as m4a and mp4.
 Note: this field may return null, indicating that no valid values can be obtained.
-        :type AudioStreamSet: list of MediaAudioStreamItem
+        :type Container: str
         :param VideoStreamSet: Video stream information.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VideoStreamSet: list of MediaVideoStreamItem
+        :param AudioStreamSet: Audio stream information.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AudioStreamSet: list of MediaAudioStreamItem
         """
         self.Url = None
         self.Definition = None
@@ -14604,10 +14483,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Width = None
         self.Size = None
         self.Duration = None
-        self.Container = None
         self.Md5 = None
-        self.AudioStreamSet = None
+        self.Container = None
         self.VideoStreamSet = None
+        self.AudioStreamSet = None
 
 
     def _deserialize(self, params):
@@ -14618,20 +14497,20 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Width = params.get("Width")
         self.Size = params.get("Size")
         self.Duration = params.get("Duration")
-        self.Container = params.get("Container")
         self.Md5 = params.get("Md5")
-        if params.get("AudioStreamSet") is not None:
-            self.AudioStreamSet = []
-            for item in params.get("AudioStreamSet"):
-                obj = MediaAudioStreamItem()
-                obj._deserialize(item)
-                self.AudioStreamSet.append(obj)
+        self.Container = params.get("Container")
         if params.get("VideoStreamSet") is not None:
             self.VideoStreamSet = []
             for item in params.get("VideoStreamSet"):
                 obj = MediaVideoStreamItem()
                 obj._deserialize(item)
                 self.VideoStreamSet.append(obj)
+        if params.get("AudioStreamSet") is not None:
+            self.AudioStreamSet = []
+            for item in params.get("AudioStreamSet"):
+                obj = MediaAudioStreamItem()
+                obj._deserialize(item)
+                self.AudioStreamSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14729,6 +14608,8 @@ class ModifyAIAnalysisTemplateRequest(AbstractModel):
         r"""
         :param Definition: Unique ID of video content analysis template.
         :type Definition: int
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Name: Video content analysis template name. Length limit: 64 characters.
         :type Name: str
         :param Comment: Video content analysis template description. Length limit: 256 characters.
@@ -14743,10 +14624,9 @@ class ModifyAIAnalysisTemplateRequest(AbstractModel):
         :type FrameTagConfigure: :class:`tencentcloud.vod.v20180717.models.FrameTagConfigureInfoForUpdate`
         :param HighlightConfigure: Control parameter of an intelligent highlight generating task.
         :type HighlightConfigure: :class:`tencentcloud.vod.v20180717.models.HighlightsConfigureInfoForUpdate`
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.Definition = None
+        self.SubAppId = None
         self.Name = None
         self.Comment = None
         self.ClassificationConfigure = None
@@ -14754,11 +14634,11 @@ class ModifyAIAnalysisTemplateRequest(AbstractModel):
         self.CoverConfigure = None
         self.FrameTagConfigure = None
         self.HighlightConfigure = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Comment = params.get("Comment")
         if params.get("ClassificationConfigure") is not None:
@@ -14776,7 +14656,6 @@ class ModifyAIAnalysisTemplateRequest(AbstractModel):
         if params.get("HighlightConfigure") is not None:
             self.HighlightConfigure = HighlightsConfigureInfoForUpdate()
             self.HighlightConfigure._deserialize(params.get("HighlightConfigure"))
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14812,6 +14691,8 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
         r"""
         :param Definition: Unique ID of video content recognition template.
         :type Definition: int
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Name: Video content recognition template name. Length limit: 64 characters.
         :type Name: str
         :param Comment: Description of video content recognition template. Length limit: 256 characters.
@@ -14834,10 +14715,9 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
         :type ObjectConfigure: :class:`tencentcloud.vod.v20180717.models.ObjectConfigureInfoForUpdate`
         :param ScreenshotInterval: Frame capturing interval in seconds. Minimum value: 0.5 seconds.
         :type ScreenshotInterval: float
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.Definition = None
+        self.SubAppId = None
         self.Name = None
         self.Comment = None
         self.HeadTailConfigure = None
@@ -14849,11 +14729,11 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
         self.AsrWordsConfigure = None
         self.ObjectConfigure = None
         self.ScreenshotInterval = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Comment = params.get("Comment")
         if params.get("HeadTailConfigure") is not None:
@@ -14881,7 +14761,6 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
             self.ObjectConfigure = ObjectConfigureInfoForUpdate()
             self.ObjectConfigure._deserialize(params.get("ObjectConfigure"))
         self.ScreenshotInterval = params.get("ScreenshotInterval")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14917,10 +14796,13 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         r"""
         :param Definition: Unique ID of adaptive bitrate streaming template.
         :type Definition: int
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Name: Template name. Length limit: 64 characters.
         :type Name: str
-        :param Format: Adaptive bitstream format. Valid values:
-<li>HLS.</li>
+        :param Format: The adaptive bitrate streaming format. Valid values:
+<li>HLS</li>
+<li>MPEG-DASH</li>
         :type Format: str
         :param DisableHigherVideoBitrate: Whether to prohibit transcoding video from low bitrate to high bitrate. Valid values:
 <li>0: no,</li>
@@ -14935,21 +14817,20 @@ Note: the frame rate of all streams must be the same; otherwise, the frame rate 
         :type StreamInfos: list of AdaptiveStreamTemplate
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.Definition = None
+        self.SubAppId = None
         self.Name = None
         self.Format = None
         self.DisableHigherVideoBitrate = None
         self.DisableHigherVideoResolution = None
         self.StreamInfos = None
         self.Comment = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Format = params.get("Format")
         self.DisableHigherVideoBitrate = params.get("DisableHigherVideoBitrate")
@@ -14961,7 +14842,6 @@ Note: the frame rate of all streams must be the same; otherwise, the frame rate 
                 obj._deserialize(item)
                 self.StreamInfos.append(obj)
         self.Comment = params.get("Comment")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14997,6 +14877,8 @@ class ModifyAnimatedGraphicsTemplateRequest(AbstractModel):
         r"""
         :param Definition: Unique ID of an animated image generating template.
         :type Definition: int
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Name: Name of an animated image generating template. Length limit: 64 characters.
         :type Name: str
         :param Width: Maximum value of the width (or long side) of an animated image in px. Value range: 0 and [128, 4,096].
@@ -15026,10 +14908,9 @@ Default value: open.
         :type Quality: float
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
-        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.Definition = None
+        self.SubAppId = None
         self.Name = None
         self.Width = None
         self.Height = None
@@ -15038,11 +14919,11 @@ Default value: open.
         self.Fps = None
         self.Quality = None
         self.Comment = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
@@ -15051,7 +14932,6 @@ Default value: open.
         self.Fps = params.get("Fps")
         self.Quality = params.get("Quality")
         self.Comment = params.get("Comment")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15089,7 +14969,7 @@ class ModifyClassRequest(AbstractModel):
         :type ClassId: int
         :param ClassName: Category name, which can contain 1–64 characters.
         :type ClassName: str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.ClassId = None
@@ -15136,6 +15016,8 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
         r"""
         :param Definition: Unique ID of an intelligent content recognition template.
         :type Definition: int
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Name: Name of an intelligent content recognition template. Length limit: 64 characters.
         :type Name: str
         :param Comment: Description of an intelligent content recognition template. Length limit: 256 characters.
@@ -15158,10 +15040,9 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
 <li>ON: yes</li>
 <li>OFF: no</li>
         :type ReviewWallSwitch: str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.Definition = None
+        self.SubAppId = None
         self.Name = None
         self.Comment = None
         self.TerrorismConfigure = None
@@ -15171,11 +15052,11 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
         self.UserDefineConfigure = None
         self.ScreenshotInterval = None
         self.ReviewWallSwitch = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Comment = params.get("Comment")
         if params.get("TerrorismConfigure") is not None:
@@ -15195,7 +15076,6 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
             self.UserDefineConfigure._deserialize(params.get("UserDefineConfigure"))
         self.ScreenshotInterval = params.get("ScreenshotInterval")
         self.ReviewWallSwitch = params.get("ReviewWallSwitch")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15231,7 +15111,7 @@ class ModifyDefaultStorageRegionRequest(AbstractModel):
         r"""
         :param StorageRegion: The default storage region, which must be a region you have storage access to. You can use the `DescribeStorageRegions` API to query such regions.
         :type StorageRegion: str
-        :param SubAppId: The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.StorageRegion = None
@@ -15276,6 +15156,8 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
         r"""
         :param Definition: Unique ID of an image sprite generating template.
         :type Definition: int
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Name: Name of an image sprite generating template. Length limit: 64 characters.
         :type Name: str
         :param Width: Subimage width of an image sprite in px. Value range: [128, 4,096].
@@ -15306,10 +15188,9 @@ Default value: black.
         :type FillType: str
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
-        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.Definition = None
+        self.SubAppId = None
         self.Name = None
         self.Width = None
         self.Height = None
@@ -15320,11 +15201,11 @@ Default value: black.
         self.ColumnCount = None
         self.FillType = None
         self.Comment = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
@@ -15335,7 +15216,6 @@ Default value: black.
         self.ColumnCount = params.get("ColumnCount")
         self.FillType = params.get("FillType")
         self.Comment = params.get("Comment")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15371,6 +15251,8 @@ class ModifyMediaInfoRequest(AbstractModel):
         r"""
         :param FileId: Unique media file ID.
         :type FileId: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Name: Media filename, which can contain up to 64 characters.
         :type Name: str
         :param Description: Media file description, which can contain up to 128 characters.
@@ -15402,10 +15284,9 @@ In the same request, `ClearTags` and `AddTags` cannot be present at the same tim
         :param ClearSubtitles: The value `1` indicates to delete all subtitle information of the media file. Other values are meaningless.
 `ClearSubtitles` and `AddSubtitles` cannot co-exist in the same request.
         :type ClearSubtitles: int
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.FileId = None
+        self.SubAppId = None
         self.Name = None
         self.Description = None
         self.ClassId = None
@@ -15420,11 +15301,11 @@ In the same request, `ClearTags` and `AddTags` cannot be present at the same tim
         self.AddSubtitles = None
         self.DeleteSubtitleIds = None
         self.ClearSubtitles = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.FileId = params.get("FileId")
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Description = params.get("Description")
         self.ClassId = params.get("ClassId")
@@ -15449,7 +15330,6 @@ In the same request, `ClearTags` and `AddTags` cannot be present at the same tim
                 self.AddSubtitles.append(obj)
         self.DeleteSubtitleIds = params.get("DeleteSubtitleIds")
         self.ClearSubtitles = params.get("ClearSubtitles")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15505,7 +15385,7 @@ class ModifyMediaStorageClassRequest(AbstractModel):
 <li>ARCHIVE</li>
 <li>DEEP_ARCHIVE</li>
         :type StorageClass: str
-        :param SubAppId: VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         :param RestoreTier: The retrieval mode. When switching files from DEEP ARCHIVE or ARCHIVE to STANDARD, you need to specify the retrieval mode. For details, see [Data retrieval and retrieval mode](https://intl.cloud.tencent.com/document/product/266/43051#data-retrieval-and-retrieval-mode.3Ca-id.3D.22retake.22.3E.3C.2Fa.3E).
 If the current storage class is ARCHIVE, the valid values for this parameter are as follows:
@@ -15563,6 +15443,8 @@ class ModifyPersonSampleRequest(AbstractModel):
         r"""
         :param PersonId: ID of a sample.
         :type PersonId: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Name: Name. Length limit: 128 characters.
         :type Name: str
         :param Description: Description. Length limit: 1,024 characters.
@@ -15576,20 +15458,19 @@ class ModifyPersonSampleRequest(AbstractModel):
         :type FaceOperationInfo: :class:`tencentcloud.vod.v20180717.models.AiSampleFaceOperation`
         :param TagOperationInfo: Tag operation information.
         :type TagOperationInfo: :class:`tencentcloud.vod.v20180717.models.AiSampleTagOperation`
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.PersonId = None
+        self.SubAppId = None
         self.Name = None
         self.Description = None
         self.Usages = None
         self.FaceOperationInfo = None
         self.TagOperationInfo = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.PersonId = params.get("PersonId")
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Description = params.get("Description")
         self.Usages = params.get("Usages")
@@ -15599,7 +15480,6 @@ class ModifyPersonSampleRequest(AbstractModel):
         if params.get("TagOperationInfo") is not None:
             self.TagOperationInfo = AiSampleTagOperation()
             self.TagOperationInfo._deserialize(params.get("TagOperationInfo"))
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15651,6 +15531,8 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
         r"""
         :param Definition: Unique ID of a sampled screencapturing template.
         :type Definition: int
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Name: Name of a sampled screencapturing template. Length limit: 64 characters.
         :type Name: str
         :param Width: Maximum value of the width (or long side) of a screenshot in px. Value range: 0 and [128, 4,096].
@@ -15684,8 +15566,6 @@ Default value: open.
         :type Format: str
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
-        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
 <li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
@@ -15695,6 +15575,7 @@ Default value: black.
         :type FillType: str
         """
         self.Definition = None
+        self.SubAppId = None
         self.Name = None
         self.Width = None
         self.Height = None
@@ -15703,12 +15584,12 @@ Default value: black.
         self.SampleInterval = None
         self.Format = None
         self.Comment = None
-        self.SubAppId = None
         self.FillType = None
 
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
@@ -15717,7 +15598,6 @@ Default value: black.
         self.SampleInterval = params.get("SampleInterval")
         self.Format = params.get("Format")
         self.Comment = params.get("Comment")
-        self.SubAppId = params.get("SubAppId")
         self.FillType = params.get("FillType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -15754,6 +15634,8 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
         r"""
         :param Definition: Unique ID of a specified time point screencapturing template.
         :type Definition: int
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Name: Name of a time point screencapturing template. Length limit: 64 characters.
         :type Name: str
         :param Width: Maximum value of the width (or long side) of a screenshot in px. Value range: 0 and [128, 4,096].
@@ -15779,8 +15661,6 @@ Default value: open.
         :type Format: str
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
-        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
 <li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
@@ -15790,25 +15670,25 @@ Default value: black.
         :type FillType: str
         """
         self.Definition = None
+        self.SubAppId = None
         self.Name = None
         self.Width = None
         self.Height = None
         self.ResolutionAdaptive = None
         self.Format = None
         self.Comment = None
-        self.SubAppId = None
         self.FillType = None
 
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Format = params.get("Format")
         self.Comment = params.get("Comment")
-        self.SubAppId = params.get("SubAppId")
         self.FillType = params.get("FillType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -15843,7 +15723,7 @@ class ModifySubAppIdInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubAppId: Subapplication ID.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         :param Name: Subapplication name. Length limit: 40 characters.
         :type Name: str
@@ -15892,7 +15772,7 @@ class ModifySubAppIdStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubAppId: Subapplication ID.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         :param Status: Subapplication status. Valid values:
 <li>On: enabled</li>
@@ -16043,6 +15923,8 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         r"""
         :param Definition: Unique ID of transcoding template.
         :type Definition: int
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Container: Container. Valid values: mp4; flv; hls; mp3; flac; ogg; m4a. Among them, mp3, flac, ogg, and m4a are for audio files.
         :type Container: str
         :param Name: Transcoding template name. Length limit: 64 characters.
@@ -16063,10 +15945,9 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfoForUpdate`
         :param TEHDConfig: TESHD transcoding parameter.
         :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfigForUpdate`
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.Definition = None
+        self.SubAppId = None
         self.Container = None
         self.Name = None
         self.Comment = None
@@ -16075,11 +15956,11 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         self.VideoTemplate = None
         self.AudioTemplate = None
         self.TEHDConfig = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
         self.Container = params.get("Container")
         self.Name = params.get("Name")
         self.Comment = params.get("Comment")
@@ -16094,7 +15975,6 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         if params.get("TEHDConfig") is not None:
             self.TEHDConfig = TEHDConfigForUpdate()
             self.TEHDConfig._deserialize(params.get("TEHDConfig"))
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16139,7 +16019,7 @@ class ModifyVodDomainAccelerateConfigRequest(AbstractModel):
 <li>`Enabled`: enable</li>
 <li>`Disabled`: disable</li>
         :type Status: str
-        :param SubAppId: VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.Domain = None
@@ -16188,28 +16068,28 @@ class ModifyVodDomainConfigRequest(AbstractModel):
         r"""
         :param Domain: Domain name
         :type Domain: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param RefererAuthPolicy: [Referer hotlink protection](https://intl.cloud.tencent.com/document/product/266/14046?from_cn_redirect=1) policy
         :type RefererAuthPolicy: :class:`tencentcloud.vod.v20180717.models.RefererAuthPolicy`
         :param UrlSignatureAuthPolicy: [Key hotlink protection](https://intl.cloud.tencent.com/document/product/266/14047?from_cn_redirect=1) policy
         :type UrlSignatureAuthPolicy: :class:`tencentcloud.vod.v20180717.models.UrlSignatureAuthPolicy`
-        :param SubAppId: VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.Domain = None
+        self.SubAppId = None
         self.RefererAuthPolicy = None
         self.UrlSignatureAuthPolicy = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Domain = params.get("Domain")
+        self.SubAppId = params.get("SubAppId")
         if params.get("RefererAuthPolicy") is not None:
             self.RefererAuthPolicy = RefererAuthPolicy()
             self.RefererAuthPolicy._deserialize(params.get("RefererAuthPolicy"))
         if params.get("UrlSignatureAuthPolicy") is not None:
             self.UrlSignatureAuthPolicy = UrlSignatureAuthPolicy()
             self.UrlSignatureAuthPolicy._deserialize(params.get("UrlSignatureAuthPolicy"))
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16245,6 +16125,8 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
         r"""
         :param Definition: Unique ID of watermarking template.
         :type Definition: int
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Name: Watermarking template name. Length limit: 64 characters.
         :type Name: str
         :param Comment: Template description. Length limit: 256 characters.
@@ -16269,10 +16151,9 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
         :type TextTemplate: :class:`tencentcloud.vod.v20180717.models.TextWatermarkTemplateInputForUpdate`
         :param SvgTemplate: SVG watermarking template. This field is only valid for SVG watermarking templates.
         :type SvgTemplate: :class:`tencentcloud.vod.v20180717.models.SvgWatermarkInputForUpdate`
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.Definition = None
+        self.SubAppId = None
         self.Name = None
         self.Comment = None
         self.CoordinateOrigin = None
@@ -16281,11 +16162,11 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
         self.ImageTemplate = None
         self.TextTemplate = None
         self.SvgTemplate = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Comment = params.get("Comment")
         self.CoordinateOrigin = params.get("CoordinateOrigin")
@@ -16300,7 +16181,6 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
         if params.get("SvgTemplate") is not None:
             self.SvgTemplate = SvgWatermarkInputForUpdate()
             self.SvgTemplate._deserialize(params.get("SvgTemplate"))
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16341,6 +16221,8 @@ class ModifyWordSampleRequest(AbstractModel):
         r"""
         :param Keyword: Keyword. Length limit: 128 characters.
         :type Keyword: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Usages: <b>Keyword usage. Valid values:</b>
 1. Recognition.Ocr: OCR-based content recognition
 2. Recognition.Asr: ASR-based content recognition
@@ -16353,22 +16235,20 @@ class ModifyWordSampleRequest(AbstractModel):
         :type Usages: list of str
         :param TagOperationInfo: Tag operation information.
         :type TagOperationInfo: :class:`tencentcloud.vod.v20180717.models.AiSampleTagOperation`
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.Keyword = None
+        self.SubAppId = None
         self.Usages = None
         self.TagOperationInfo = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Keyword = params.get("Keyword")
+        self.SubAppId = params.get("SubAppId")
         self.Usages = params.get("Usages")
         if params.get("TagOperationInfo") is not None:
             self.TagOperationInfo = AiSampleTagOperation()
             self.TagOperationInfo._deserialize(params.get("TagOperationInfo"))
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17074,45 +16954,6 @@ class PoliticalConfigureInfoForUpdate(AbstractModel):
         
 
 
-class PoliticalImageResult(AbstractModel):
-    """The result for the recognition of politically sensitive content in the image.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Confidence: The confidence score for the politically sensitive content recognition result. Value range: 0-100.
-        :type Confidence: float
-        :param Suggestion: The suggestion for handling the detected politically sensitive content. Valid values:
-<li>pass/li>
-<li>review</li>
-<li>block</li>
-        :type Suggestion: str
-        :param Name: The name of the politically sensitive content or banned icon detected.
-        :type Name: str
-        :param AreaCoordSet: The coordinates (pixel) of the top-left and bottom-right corners of the frame where politically sensitive content or a banned icon appears. Format: [x1, y1, x2, y2].
-        :type AreaCoordSet: list of int
-        """
-        self.Confidence = None
-        self.Suggestion = None
-        self.Name = None
-        self.AreaCoordSet = None
-
-
-    def _deserialize(self, params):
-        self.Confidence = params.get("Confidence")
-        self.Suggestion = params.get("Suggestion")
-        self.Name = params.get("Name")
-        self.AreaCoordSet = params.get("AreaCoordSet")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class PoliticalImgReviewTemplateInfo(AbstractModel):
     """Parameters for recognition of politically sensitive content in images
 
@@ -17411,45 +17252,6 @@ class PornConfigureInfoForUpdate(AbstractModel):
         if params.get("OcrReviewInfo") is not None:
             self.OcrReviewInfo = PornOcrReviewTemplateInfoForUpdate()
             self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class PornImageResult(AbstractModel):
-    """The result for the recognition of pornographic content in the image.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Confidence: The confidence score for the pornographic content recognition result. Value range: 0-100.
-        :type Confidence: float
-        :param Suggestion: The suggestion for handling the detected pornographic content. Valid values:
-<li>pass/li>
-<li>review</li>
-<li>block</li>
-        :type Suggestion: str
-        :param Label: The label for the detected pornographic content. Valid values:
-<li>porn</li>
-<li>sexy</li>
-<li>vulgar</li>
-<li>intimacy</li>
-        :type Label: str
-        """
-        self.Confidence = None
-        self.Suggestion = None
-        self.Label = None
-
-
-    def _deserialize(self, params):
-        self.Confidence = params.get("Confidence")
-        self.Suggestion = params.get("Suggestion")
-        self.Label = params.get("Label")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17816,70 +17618,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
-class ProcessImageRequest(AbstractModel):
-    """ProcessImage request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param FileId: The unique ID of the media file. For this API to work, the file must be an image.
-        :type FileId: str
-        :param Operation: Operation. `ContentReview` is the only valid value currently.
-        :type Operation: str
-        :param ContentReviewInput: Image recognition parameters. This parameter is valid if `Operation` is `ContentReview`.
-        :type ContentReviewInput: :class:`tencentcloud.vod.v20180717.models.ImageContentReviewInput`
-        :param SubAppId: The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
-        :type SubAppId: int
-        """
-        self.FileId = None
-        self.Operation = None
-        self.ContentReviewInput = None
-        self.SubAppId = None
-
-
-    def _deserialize(self, params):
-        self.FileId = params.get("FileId")
-        self.Operation = params.get("Operation")
-        if params.get("ContentReviewInput") is not None:
-            self.ContentReviewInput = ImageContentReviewInput()
-            self.ContentReviewInput._deserialize(params.get("ContentReviewInput"))
-        self.SubAppId = params.get("SubAppId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ProcessImageResponse(AbstractModel):
-    """ProcessImage response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ContentReviewResultSet: The image recognition result.
-        :type ContentReviewResultSet: list of ContentReviewResult
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.ContentReviewResultSet = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("ContentReviewResultSet") is not None:
-            self.ContentReviewResultSet = []
-            for item in params.get("ContentReviewResultSet"):
-                obj = ContentReviewResult()
-                obj._deserialize(item)
-                self.ContentReviewResultSet.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class ProcessMediaByProcedureRequest(AbstractModel):
     """ProcessMediaByProcedure request structure.
 
@@ -17891,6 +17629,8 @@ class ProcessMediaByProcedureRequest(AbstractModel):
         :type FileId: str
         :param ProcedureName: [Task flow template](https://intl.cloud.tencent.com/document/product/266/11700?from_cn_redirect=1#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF) name.
         :type ProcedureName: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param TasksPriority: Task flow priority. The higher the value, the higher the priority. Value range: -10-10. If this parameter is left empty, 0 will be used.
         :type TasksPriority: int
         :param TasksNotifyMode: Notification mode for task flow status change. Valid values: Finish, Change, None. If this parameter is left empty, `Finish` will be used.
@@ -17901,28 +17641,26 @@ class ProcessMediaByProcedureRequest(AbstractModel):
         :type SessionId: str
         :param ExtInfo: Reserved field for special purposes.
         :type ExtInfo: str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.FileId = None
         self.ProcedureName = None
+        self.SubAppId = None
         self.TasksPriority = None
         self.TasksNotifyMode = None
         self.SessionContext = None
         self.SessionId = None
         self.ExtInfo = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.FileId = params.get("FileId")
         self.ProcedureName = params.get("ProcedureName")
+        self.SubAppId = params.get("SubAppId")
         self.TasksPriority = params.get("TasksPriority")
         self.TasksNotifyMode = params.get("TasksNotifyMode")
         self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
         self.ExtInfo = params.get("ExtInfo")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18053,6 +17791,8 @@ class ProcessMediaRequest(AbstractModel):
         r"""
         :param FileId: Media file ID, i.e., the globally unique ID of a file in VOD assigned by the VOD backend after successful upload. This field can be obtained through the [video upload completion event notification](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) or [VOD Console](https://console.cloud.tencent.com/vod/media).
         :type FileId: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param MediaProcessTask: Parameter of video processing task.
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
         :param AiContentReviewTask: Parameters for intelligent recognition
@@ -18071,10 +17811,9 @@ class ProcessMediaRequest(AbstractModel):
         :type SessionId: str
         :param ExtInfo: Reserved field for special purposes.
         :type ExtInfo: str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.FileId = None
+        self.SubAppId = None
         self.MediaProcessTask = None
         self.AiContentReviewTask = None
         self.AiAnalysisTask = None
@@ -18084,11 +17823,11 @@ class ProcessMediaRequest(AbstractModel):
         self.SessionContext = None
         self.SessionId = None
         self.ExtInfo = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.FileId = params.get("FileId")
+        self.SubAppId = params.get("SubAppId")
         if params.get("MediaProcessTask") is not None:
             self.MediaProcessTask = MediaProcessTaskInput()
             self.MediaProcessTask._deserialize(params.get("MediaProcessTask"))
@@ -18106,7 +17845,6 @@ class ProcessMediaRequest(AbstractModel):
         self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
         self.ExtInfo = params.get("ExtInfo")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18401,9 +18139,11 @@ class PullUploadRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MediaUrl: URL of the media to be pulled. Supported media format: HLS; unsupported media format: DASH.
-For more information about supported extensions, please see [Media Types](https://intl.cloud.tencent.com/document/product/266/9760?from_cn_redirect=1#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B).
+        :param MediaUrl: The URL of the media to pull, which can be in HLS format, but not DASH format.
+For more information about supported extensions, see [Media types](https://intl.cloud.tencent.com/document/product/266/9760#media-types). Please make sure the URL is accessible.
         :type MediaUrl: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param MediaName: Media name.
         :type MediaName: str
         :param CoverUrl: URL of video cover to be pulled. Only gif, jpeg, and png formats are supported.
@@ -18424,12 +18164,11 @@ For more information about supported extensions, please see [Media Types](https:
         :type SessionId: str
         :param ExtInfo: Reserved field for special purposes.
         :type ExtInfo: str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         :param SourceContext: Source context, which is used to pass through the user request information. The [upload callback](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) API will return the value of this field. It can contain up to 250 characters.
         :type SourceContext: str
         """
         self.MediaUrl = None
+        self.SubAppId = None
         self.MediaName = None
         self.CoverUrl = None
         self.Procedure = None
@@ -18439,12 +18178,12 @@ For more information about supported extensions, please see [Media Types](https:
         self.SessionContext = None
         self.SessionId = None
         self.ExtInfo = None
-        self.SubAppId = None
         self.SourceContext = None
 
 
     def _deserialize(self, params):
         self.MediaUrl = params.get("MediaUrl")
+        self.SubAppId = params.get("SubAppId")
         self.MediaName = params.get("MediaName")
         self.CoverUrl = params.get("CoverUrl")
         self.Procedure = params.get("Procedure")
@@ -18454,7 +18193,6 @@ For more information about supported extensions, please see [Media Types](https:
         self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
         self.ExtInfo = params.get("ExtInfo")
-        self.SubAppId = params.get("SubAppId")
         self.SourceContext = params.get("SourceContext")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -18569,7 +18307,7 @@ class PushUrlCacheRequest(AbstractModel):
         r"""
         :param Urls: List of prefetched URLs. Up to 20 ones can be specified at a time.
         :type Urls: list of str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.Urls = None
@@ -18647,6 +18385,51 @@ When `Status` is set to `Enabled`, `BlankRefererAllowed` must be specified.
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RefreshUrlCacheRequest(AbstractModel):
+    """RefreshUrlCache request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Urls: The URLs to purge. You can specify up to 20 URLs per request.
+        :type Urls: list of str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
+        """
+        self.Urls = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Urls = params.get("Urls")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RefreshUrlCacheResponse(AbstractModel):
+    """RefreshUrlCache response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ResetProcedureTemplateRequest(AbstractModel):
@@ -18778,6 +18561,65 @@ class ResourceTag(AbstractModel):
         
 
 
+class RestoreMediaRequest(AbstractModel):
+    """RestoreMedia request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileIds: The IDs of media files.
+        :type FileIds: list of str
+        :param RestoreDay: The number of days during which the restored files will remain available.
+        :type RestoreDay: int
+        :param RestoreTier: The retrieval mode. If the current storage class is ARCHIVE, the valid values for this parameter are as follows:
+<li>Expedited: The files are made available in five minutes.</li>
+<li>Standard: The files are made available in five hours.</li>
+<li>Bulk: The files are made available in 12 hours.</li>
+If the current storage class is DEEP ARCHIVE, the valid values for this parameter are as follows:
+<li>Standard: The files are made available in 24 hours.</li>
+<li>Bulk: The files are made available in 48 hours.</li>
+        :type RestoreTier: str
+        :param SubAppId: The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.FileIds = None
+        self.RestoreDay = None
+        self.RestoreTier = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.FileIds = params.get("FileIds")
+        self.RestoreDay = params.get("RestoreDay")
+        self.RestoreTier = params.get("RestoreTier")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestoreMediaResponse(AbstractModel):
+    """RestoreMedia response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class RestoreMediaTask(AbstractModel):
     """Video retrieval task information
 
@@ -18827,64 +18669,6 @@ class RestoreMediaTask(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
-
-
-class ReviewImageRequest(AbstractModel):
-    """ReviewImage request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param FileId: The unique ID of the media file. For this API to work, the file must be an image.
-        :type FileId: str
-        :param Definition: The ID of the image recognition template. Currently, this can only be `10`.
-        :type Definition: int
-        :param SubAppId: The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
-        :type SubAppId: int
-        """
-        self.FileId = None
-        self.Definition = None
-        self.SubAppId = None
-
-
-    def _deserialize(self, params):
-        self.FileId = params.get("FileId")
-        self.Definition = params.get("Definition")
-        self.SubAppId = params.get("SubAppId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ReviewImageResponse(AbstractModel):
-    """ReviewImage response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ReviewResultSet: The image recognition result.
-        :type ReviewResultSet: list of ContentReviewResult
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.ReviewResultSet = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("ReviewResultSet") is not None:
-            self.ReviewResultSet = []
-            for item in params.get("ReviewResultSet"):
-                obj = ContentReviewResult()
-                obj._deserialize(item)
-                self.ReviewResultSet.append(obj)
-        self.RequestId = params.get("RequestId")
 
 
 class SampleSnapshotTaskInput(AbstractModel):
@@ -19020,6 +18804,8 @@ class SearchMediaRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param FileIds: File ID set. Any element in the set can be matched.
 <li>Array length limit: 10.</li>
 <li>ID length limit: 40 characters.</li>
@@ -19039,8 +18825,8 @@ class SearchMediaRequest(AbstractModel):
         :param ClassIds: Category ID set. The categories of the specified IDs and all subcategories in the set are matched.
 <li>Array length limit: 10.</li>
         :type ClassIds: list of int
-        :param Tags: Tag set, which matches any element in the set.
-<li>Tag length limit: 8 characters.</li>
+        :param Tags: The tag set. A file is considered a match if it has any of the tags in the tag set.
+<li>Tag length limit: 16 characters.</li>
 <li>Array length limit: 10.</li>
         :type Tags: list of str
         :param Categories: File type. Any element in the set can be matched.
@@ -19089,8 +18875,6 @@ class SearchMediaRequest(AbstractModel):
 <li>Length limit for a single region: 20 characters</li>
 <li>Array length limit: 20</li>
         :type StorageRegions: list of str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         :param StorageClasses: An array of storage classes. Valid values:
 <li>STANDARD</li>
 <li>STANDARD_IA</li>
@@ -19122,6 +18906,7 @@ End time in the creation time range.
 <li>In ISO 8601 format. For more information, please see [ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).</li>
         :type EndTime: str
         """
+        self.SubAppId = None
         self.FileIds = None
         self.Names = None
         self.NamePrefixes = None
@@ -19139,7 +18924,6 @@ End time in the creation time range.
         self.Limit = None
         self.Filters = None
         self.StorageRegions = None
-        self.SubAppId = None
         self.StorageClasses = None
         self.Text = None
         self.SourceType = None
@@ -19150,6 +18934,7 @@ End time in the creation time range.
 
 
     def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
         self.FileIds = params.get("FileIds")
         self.Names = params.get("Names")
         self.NamePrefixes = params.get("NamePrefixes")
@@ -19173,7 +18958,6 @@ End time in the creation time range.
         self.Limit = params.get("Limit")
         self.Filters = params.get("Filters")
         self.StorageRegions = params.get("StorageRegions")
-        self.SubAppId = params.get("SubAppId")
         self.StorageClasses = params.get("StorageClasses")
         self.Text = params.get("Text")
         self.SourceType = params.get("SourceType")
@@ -19282,28 +19066,28 @@ class SimpleHlsClipRequest(AbstractModel):
         r"""
         :param Url: URL of the HLS video in VOD that needs to be clipped.
         :type Url: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param StartTimeOffset: Start offset time of clipping in seconds. Default value: 0, which means to clip from the beginning of the video. A negative number indicates how many seconds from the end of the video clipping will start at. For example, -10 means that clipping will start at the 10th second from the end.
         :type StartTimeOffset: float
         :param EndTimeOffset: End offset time of clipping in seconds. Default value: 0, which means to clip till the end of the video. A negative number indicates how many seconds from the end of the video clipping will end. For example, -10 means that clipping will end at the 10th second from the end.
         :type EndTimeOffset: float
         :param IsPersistence: Whether to store the video clip persistently. 0: no (default), 1: yes.
         :type IsPersistence: int
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.Url = None
+        self.SubAppId = None
         self.StartTimeOffset = None
         self.EndTimeOffset = None
         self.IsPersistence = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Url = params.get("Url")
+        self.SubAppId = params.get("SubAppId")
         self.StartTimeOffset = params.get("StartTimeOffset")
         self.EndTimeOffset = params.get("EndTimeOffset")
         self.IsPersistence = params.get("IsPersistence")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -20575,48 +20359,6 @@ class TerrorismConfigureInfoForUpdate(AbstractModel):
         
 
 
-class TerrorismImageResult(AbstractModel):
-    """The result for the recognition of terrorism content in the image.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Confidence: The confidence score for the terrorism content recognition result. Value range: 0-100.
-        :type Confidence: float
-        :param Suggestion: The suggestion for handling the detected terrorism content. Valid values:
-<li>pass/li>
-<li>review</li>
-<li>block</li>
-        :type Suggestion: str
-        :param Label: The label for the detected terrorism content. Valid values:
-<li>guns</li>
-<li>crowd</li>
-<li>police</li>
-<li>bloody</li>
-<li>banners</li>
-<li>explosion</li>
-<li>scenario (terrorist scenes) </li>
-        :type Label: str
-        """
-        self.Confidence = None
-        self.Suggestion = None
-        self.Label = None
-
-
-    def _deserialize(self, params):
-        self.Confidence = params.get("Confidence")
-        self.Suggestion = params.get("Suggestion")
-        self.Label = params.get("Label")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class TerrorismImgReviewTemplateInfo(AbstractModel):
     """Parameters for recognition of terrorism content in images
 
@@ -20890,6 +20632,30 @@ class TimeRange(AbstractModel):
         
 
 
+class TraceWatermarkInput(AbstractModel):
+    """The information of a digital watermark.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: The watermark template ID.
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TranscodePlayInfo2017(AbstractModel):
     """Video transcoding playback information (v2017)
 
@@ -21008,27 +20774,30 @@ class TranscodeTaskInput(AbstractModel):
         :param WatermarkSet: List of up to 10 image or text watermarks.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type WatermarkSet: list of WatermarkInput
-        :param MosaicSet: List of blurs. Up to 10 ones can be supported.
-        :type MosaicSet: list of MosaicInput
+        :param TraceWatermark: Digital watermark.
+        :type TraceWatermark: :class:`tencentcloud.vod.v20180717.models.TraceWatermarkInput`
         :param HeadTailSet: List of video opening/closing credits configuration template IDs. You can enter up to 10 IDs.
         :type HeadTailSet: list of HeadTailTaskInput
-        :param StartTimeOffset: Start time offset of a transcoded video, in seconds.
-<li>If this parameter is left empty or set to 0, the transcoded video will start at the same time as the original video.</li>
-<li>If this parameter is set to a positive number (n for example), the transcoded video will start at the nth second of the original video.</li>
-<li>If this parameter is set to a negative number (-n for example), the transcoded video will start at the nth second before the end of the original video.</li>
-        :type StartTimeOffset: float
+        :param MosaicSet: List of blurs. Up to 10 ones can be supported.
+        :type MosaicSet: list of MosaicInput
         :param EndTimeOffset: End time offset of a transcoded video, in seconds.
 <li>If this parameter is left empty or set to 0, the transcoded video will end at the same time as the original video.</li>
 <li>If this parameter is set to a positive number (n for example), the transcoded video will end at the nth second of the original video.</li>
 <li>If this parameter is set to a negative number (-n for example), the transcoded video will end at the nth second before the end of the original video.</li>
         :type EndTimeOffset: float
+        :param StartTimeOffset: Start time offset of a transcoded video, in seconds.
+<li>If this parameter is left empty or set to 0, the transcoded video will start at the same time as the original video.</li>
+<li>If this parameter is set to a positive number (n for example), the transcoded video will start at the nth second of the original video.</li>
+<li>If this parameter is set to a negative number (-n for example), the transcoded video will start at the nth second before the end of the original video.</li>
+        :type StartTimeOffset: float
         """
         self.Definition = None
         self.WatermarkSet = None
-        self.MosaicSet = None
+        self.TraceWatermark = None
         self.HeadTailSet = None
-        self.StartTimeOffset = None
+        self.MosaicSet = None
         self.EndTimeOffset = None
+        self.StartTimeOffset = None
 
 
     def _deserialize(self, params):
@@ -21039,20 +20808,23 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = WatermarkInput()
                 obj._deserialize(item)
                 self.WatermarkSet.append(obj)
-        if params.get("MosaicSet") is not None:
-            self.MosaicSet = []
-            for item in params.get("MosaicSet"):
-                obj = MosaicInput()
-                obj._deserialize(item)
-                self.MosaicSet.append(obj)
+        if params.get("TraceWatermark") is not None:
+            self.TraceWatermark = TraceWatermarkInput()
+            self.TraceWatermark._deserialize(params.get("TraceWatermark"))
         if params.get("HeadTailSet") is not None:
             self.HeadTailSet = []
             for item in params.get("HeadTailSet"):
                 obj = HeadTailTaskInput()
                 obj._deserialize(item)
                 self.HeadTailSet.append(obj)
-        self.StartTimeOffset = params.get("StartTimeOffset")
+        if params.get("MosaicSet") is not None:
+            self.MosaicSet = []
+            for item in params.get("MosaicSet"):
+                obj = MosaicInput()
+                obj._deserialize(item)
+                self.MosaicSet.append(obj)
         self.EndTimeOffset = params.get("EndTimeOffset")
+        self.StartTimeOffset = params.get("StartTimeOffset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

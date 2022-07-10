@@ -523,7 +523,7 @@ class CreateDBInstancesRequest(AbstractModel):
         :type Zone: str
         :param ProjectId: Project ID.
         :type ProjectId: int
-        :param DBVersion: PostgreSQL version number. If it is specified, an instance running the latest kernel of PostgreSQL `DBVersion` will be created.
+        :param DBVersion: PostgreSQL version. If it is specified, an instance running the latest kernel of PostgreSQL `DBVersion` will be created. You must pass in at least one of the following parameters: DBVersion, DBMajorVersion, DBKernelVersion.
         :type DBVersion: str
         :param InstanceChargeType: Instance billing type.
         :type InstanceChargeType: str
@@ -547,9 +547,9 @@ class CreateDBInstancesRequest(AbstractModel):
         :type TagList: list of Tag
         :param SecurityGroupIds: Security group ID
         :type SecurityGroupIds: list of str
-        :param DBMajorVersion: PostgreSQL major version number. Valid values: `10`, `11`, `12`, `13`. If it is specified, an instance running the latest kernel of PostgreSQL `DBMajorVersion` will be created.
+        :param DBMajorVersion: PostgreSQL major version. If it is specified, an instance running the latest kernel of PostgreSQL `DBMajorVersion` will be created. You must pass in at least one of the following parameters: DBMajorVersion, DBVersion, DBKernelVersion.
         :type DBMajorVersion: str
-        :param DBKernelVersion: PostgreSQL kernel version number. If it is specified, an instance running kernel `DBKernelVersion` will be created.
+        :param DBKernelVersion: PostgreSQL kernel version. If it is specified, an instance running the latest kernel of PostgreSQL `DBKernelVersion` will be created. You must pass in one of the following parameters: DBKernelVersion, DBVersion, DBMajorVersion.
         :type DBKernelVersion: str
         """
         self.SpecCode = None
@@ -697,7 +697,7 @@ class CreateInstancesRequest(AbstractModel):
         :type NeedSupportTDE: int
         :param KMSKeyId: KeyId of custom key, which is required if you select custom key encryption. It is also the unique CMK identifier.
         :type KMSKeyId: str
-        :param KMSRegion: The region where the KMS service is enabled. When “KMSRegion” is left empty, the “KMS” of the local domain will be enabled by default. If the local domain is not supported, you need to select another region supported by KMS.
+        :param KMSRegion: The region where the KMS service is enabled. When `KMSRegion` is left empty, the KMS of the current region will be enabled by default. If the current region is not supported, you need to select another region supported by KMS.
         :type KMSRegion: str
         """
         self.SpecCode = None
@@ -1729,9 +1729,9 @@ class DescribeAccountsRequest(AbstractModel):
         r"""
         :param DBInstanceId: Instance ID in the format of postgres-6fego161
         :type DBInstanceId: str
-        :param Limit: Number of entries returned per page. Default value: 20. Value range: 1-100.
+        :param Limit: Number of entries returned per page. Default value: 10. Value range: 1–100.
         :type Limit: int
-        :param Offset: Page number for data return in paged query. Pagination starts from 0
+        :param Offset: Data offset, which starts from 0.
         :type Offset: int
         :param OrderBy: Whether to sort by creation time or username. Valid values: `createTime` (sort by creation time), `name` (sort by username)
         :type OrderBy: str
@@ -2219,17 +2219,17 @@ db-tag-key: filter by tag key (in string format)
         :type Filters: list of Filter
         :param Limit: The maximum number of results returned per page. Value range: 1-100. Default: `10`
         :type Limit: int
+        :param Offset: Data offset, which starts from 0.
+        :type Offset: int
         :param OrderBy: Sorting metric, such as instance name or creation time. Valid values: DBInstanceId, CreateTime, Name, EndTime
         :type OrderBy: str
-        :param Offset: Pagination offset, starting from 0
-        :type Offset: int
         :param OrderByType: Sorting order. Valid values: `asc` (ascending), `desc` (descending)
         :type OrderByType: str
         """
         self.Filters = None
         self.Limit = None
-        self.OrderBy = None
         self.Offset = None
+        self.OrderBy = None
         self.OrderByType = None
 
 
@@ -2241,8 +2241,8 @@ db-tag-key: filter by tag key (in string format)
                 obj._deserialize(item)
                 self.Filters.append(obj)
         self.Limit = params.get("Limit")
-        self.OrderBy = params.get("OrderBy")
         self.Offset = params.get("Offset")
+        self.OrderBy = params.get("OrderBy")
         self.OrderByType = params.get("OrderByType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -3163,7 +3163,7 @@ class DisIsolateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DBInstanceIdSet: Resource ID list
+        :param DBInstanceIdSet: List of resource IDs. Note that currently you cannot remove multiple instances from isolation at the same time. Only one instance ID can be passed in here.
         :type DBInstanceIdSet: list of str
         :param Period: The valid period (in months) of the monthly-subscribed instance when removing it from isolation
         :type Period: int
@@ -3569,17 +3569,21 @@ class InquiryPriceCreateDBInstancesResponse(AbstractModel):
         :type OriginalPrice: int
         :param Price: Discounted price in 0.01 CNY.
         :type Price: int
+        :param Currency: Currency, such as USD for US dollar.
+        :type Currency: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.OriginalPrice = None
         self.Price = None
+        self.Currency = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.OriginalPrice = params.get("OriginalPrice")
         self.Price = params.get("Price")
+        self.Currency = params.get("Currency")
         self.RequestId = params.get("RequestId")
 
 
@@ -3622,17 +3626,21 @@ class InquiryPriceRenewDBInstanceResponse(AbstractModel):
         :type OriginalPrice: int
         :param Price: Actual amount payable; for example, 24650 indicates 246.5 CNY
         :type Price: int
+        :param Currency: Currency, such as USD for US dollar.
+        :type Currency: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.OriginalPrice = None
         self.Price = None
+        self.Currency = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.OriginalPrice = params.get("OriginalPrice")
         self.Price = params.get("Price")
+        self.Currency = params.get("Currency")
         self.RequestId = params.get("RequestId")
 
 
@@ -3683,17 +3691,21 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
         :type OriginalPrice: int
         :param Price: Actual amount payable
         :type Price: int
+        :param Currency: Currency, such as USD for US dollar.
+        :type Currency: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.OriginalPrice = None
         self.Price = None
+        self.Currency = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.OriginalPrice = params.get("OriginalPrice")
         self.Price = params.get("Price")
+        self.Currency = params.get("Currency")
         self.RequestId = params.get("RequestId")
 
 
@@ -3704,7 +3716,7 @@ class IsolateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DBInstanceIdSet: Instance ID set
+        :param DBInstanceIdSet: List of instance IDs. Note that currently you cannot isolate multiple instances at the same time. Only one instance ID can be passed in here.
         :type DBInstanceIdSet: list of str
         """
         self.DBInstanceIdSet = None
@@ -3855,11 +3867,11 @@ class ModifyDBInstanceDeploymentRequest(AbstractModel):
         :type DBInstanceId: str
         :param DBNodeSet: Instance node information.
         :type DBNodeSet: list of DBNode
-        :param SwitchTag: Switch time. Valid values: `0` (switch immediately), `1` (switch at a specified time). Default value: `0`.
+        :param SwitchTag: Switch time. Valid values: `0` (switch now), `1` (switch at a specified time), `2` (switch during maintenance time). Default value: `0`.
         :type SwitchTag: int
-        :param SwitchStartTime: The earliest time to start a switch in the format of "HH:MM:SS", such as "01:00:00".
+        :param SwitchStartTime: Switch start time in the format of `HH:MM:SS`, such as 01:00:00. When `SwitchTag` is 0 or 2, this parameter becomes invalid.
         :type SwitchStartTime: str
-        :param SwitchEndTime: The latest time to start a switch in the format of "HH:MM:SS", such as "01:30:00".
+        :param SwitchEndTime: Switch end time in the format of `HH:MM:SS`, such as 01:30:00. When `SwitchTag` is 0 or 2, this parameter becomes invalid.
         :type SwitchEndTime: str
         """
         self.DBInstanceId = None
@@ -4073,11 +4085,11 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
         :type VoucherIds: list of str
         :param ActivityId: Campaign ID.
         :type ActivityId: int
-        :param SwitchTag: Switch time after instance configurations are modified. Valid values: `0` (switch immediately), `1` (switch at a specified time). Default value: `0`.
+        :param SwitchTag: Switch time after instance configurations are modified. Valid values: `0` (switch now), `1` (switch at a specified time), `2` (switch during maintenance time). Default value: `0`.
         :type SwitchTag: int
-        :param SwitchStartTime: The earliest time to start a switch in the format of "HH:MM:SS", such as "01:00:00".
+        :param SwitchStartTime: Switch start time in the format of `HH:MM:SS`, such as 01:00:00. When `SwitchTag` is 0 or 2, this parameter becomes invalid.
         :type SwitchStartTime: str
-        :param SwitchEndTime: The latest time to start a switch in the format of "HH:MM:SS", such as "01:30:00".
+        :param SwitchEndTime: Switch end time in the format of `HH:MM:SS`, such as 01:30:00. When `SwitchTag` is 0 or 2, this parameter becomes invalid.
         :type SwitchEndTime: str
         """
         self.DBInstanceId = None
@@ -4142,9 +4154,9 @@ class ModifyDBInstancesProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DBInstanceIdSet: TencentDB for PostgreSQL instance ID array
+        :param DBInstanceIdSet: List of instance IDs. Note that currently you cannot manipulate multiple instances at the same time. Only one instance ID can be passed in here.
         :type DBInstanceIdSet: list of str
-        :param ProjectId: New project ID of TencentDB for PostgreSQL instance
+        :param ProjectId: ID of the new project
         :type ProjectId: str
         """
         self.DBInstanceIdSet = None
@@ -5359,7 +5371,7 @@ class SetAutoRenewFlagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DBInstanceIdSet: Instance ID array
+        :param DBInstanceIdSet: List of instance IDs. Note that currently you cannot manipulate multiple instances at the same time. Only one instance ID can be passed in here.
         :type DBInstanceIdSet: list of str
         :param AutoRenewFlag: Renewal flag. 0: normal renewal, 1: auto-renewal, 2: no renewal upon expiration
         :type AutoRenewFlag: int
