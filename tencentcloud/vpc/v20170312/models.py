@@ -9865,13 +9865,13 @@ class DescribeVpcsRequest(AbstractModel):
         :type VpcIds: list of str
         :param Filters: Filter condition. `VpcIds` and `Filters` cannot be specified at the same time.
 Valid filters include:
-<li>`vpc-name`: VPC instance name</li>
-<li>`is-default`: indicates whether it is the default VPC</li>
+<li>`vpc-name`: VPC instance name, which supports fuzzy search.</li>
+<li>`is-default`: Indicates whether it is the default VPC</li>
 <li>`vpc-id`: VPC instance ID, such as `vpc-f49l6u0z`</li>
 <li>`cidr-block`: VPC CIDR block</li>
-<li>`tag-key`: (optional) tag key</li>
-<li>`tag:tag-key`: (optional) tag key-value pair. Replace the `tag-key` with a specified tag value. For its usage, refer to the Example 2.</li>
-  **Note:** if one filter has multiple values, the logical relationship between these values is `OR`. The logical relationship between filters is `AND`.
+<li>`tag-key`: (Optional) tag key</li>
+<li>`tag:tag-key`: (Optional) tag key-value pair. Replace the `tag-key` with a specified tag value. For its usage, refer to Example 2.</li>
+  **Note:** If one filter has multiple values, the logical relationship between these values is `OR`. The logical relationship between filters is `AND`.
         :type Filters: list of Filter
         :param Offset: Offset. Default value: 0.
         :type Offset: str

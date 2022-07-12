@@ -26,11 +26,20 @@ AUTHFAILURE = 'AuthFailure'
 # The ENI information is not available in this address.
 FAILEDOPERATION_ADDRESSENIINFONOTFOUND = 'FailedOperation.AddressEniInfoNotFound'
 
+# 
+FAILEDOPERATION_BALANCEINSUFFICIENT = 'FailedOperation.BalanceInsufficient'
+
 # Unsupported region.
 FAILEDOPERATION_INVALIDREGION = 'FailedOperation.InvalidRegion'
 
+# 
+FAILEDOPERATION_MASTERENINOTFOUND = 'FailedOperation.MasterEniNotFound'
+
 # Network probe timed out. Please retry later.
 FAILEDOPERATION_NETDETECTTIMEOUT = 'FailedOperation.NetDetectTimeOut'
+
+# 
+FAILEDOPERATION_TASKFAILED = 'FailedOperation.TaskFailed'
 
 # An internal error occurred.
 INTERNALERROR = 'InternalError'
@@ -437,6 +446,12 @@ LIMITEXCEEDED_TAGTAGSEXCEEDED = 'LimitExceeded.TagTagsExceeded'
 # Missing parameter.
 MISSINGPARAMETER = 'MissingParameter'
 
+# 
+OPERATIONDENIED_ADDRESSINARREARS = 'OperationDenied.AddressInArrears'
+
+# 
+OPERATIONDENIED_MUTEXTASKRUNNING = 'OperationDenied.MutexTaskRunning'
+
 # The resource is occupied.
 RESOURCEINUSE = 'ResourceInUse'
 
@@ -463,6 +478,9 @@ RESOURCEUNAVAILABLE_SERVICEWHITELISTNOTADDED = 'ResourceUnavailable.ServiceWhite
 
 # Unauthorized operation.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
+
+# 
+UNAUTHORIZEDOPERATION_ANYCASTEIP = 'UnauthorizedOperation.AnycastEip'
 
 # The binding relationship does not exist.
 UNAUTHORIZEDOPERATION_ATTACHMENTNOTFOUND = 'UnauthorizedOperation.AttachmentNotFound'
@@ -626,6 +644,9 @@ UNSUPPORTEDOPERATION_ISPNOTSUPPORTED = 'UnsupportedOperation.IspNotSupported'
 # The specified CDC instance already has a local gateway.
 UNSUPPORTEDOPERATION_LOCALGATEWAYALREADYEXISTS = 'UnsupportedOperation.LocalGatewayAlreadyExists'
 
+# 
+UNSUPPORTEDOPERATION_MODIFYADDRESSATTRIBUTE = 'UnsupportedOperation.ModifyAddressAttribute'
+
 # The resource mutual exclusion operation is being executed.
 UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = 'UnsupportedOperation.MutexOperationTaskRunning'
 
@@ -653,11 +674,14 @@ UNSUPPORTEDOPERATION_NOTPOSTPAIDCCNOPERATION = 'UnsupportedOperation.NotPostpaid
 # The default route table cannot be deleted.
 UNSUPPORTEDOPERATION_NOTSUPPORTDELETEDEFAULTROUTETABLE = 'UnsupportedOperation.NotSupportDeleteDefaultRouteTable'
 
-# 
+# The current CCN instance does not support publishing update routes.
 UNSUPPORTEDOPERATION_NOTSUPPORTEDUPDATECCNROUTEPUBLISH = 'UnsupportedOperation.NotSupportedUpdateCcnRoutePublish'
 
 # The specified routing policy cannot be published to or withdrawn from CCN.
 UNSUPPORTEDOPERATION_NOTIFYCCN = 'UnsupportedOperation.NotifyCcn'
+
+# 
+UNSUPPORTEDOPERATION_OFFLINECHARGETYPE = 'UnsupportedOperation.OfflineChargeType'
 
 # Only the Ckafka Pro Edition is supported.
 UNSUPPORTEDOPERATION_ONLYSUPPORTPROFESSIONKAFKA = 'UnsupportedOperation.OnlySupportProfessionKafka'
@@ -685,6 +709,9 @@ UNSUPPORTEDOPERATION_PURCHASELIMIT = 'UnsupportedOperation.PurchaseLimit'
 
 # The resource ID entered does not match with any resource bound with the IP. Check and try again.
 UNSUPPORTEDOPERATION_RESOURCEMISMATCH = 'UnsupportedOperation.ResourceMismatch'
+
+# 
+UNSUPPORTEDOPERATION_ROLENOTFOUND = 'UnsupportedOperation.RoleNotFound'
 
 # The endpoint created by the specified endpoint service cannot be bound to a security group.
 UNSUPPORTEDOPERATION_SPECIALENDPOINTSERVICE = 'UnsupportedOperation.SpecialEndPointService'
