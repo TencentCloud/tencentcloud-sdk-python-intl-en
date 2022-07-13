@@ -3161,9 +3161,9 @@ class DescribeTaskListRequest(AbstractModel):
         :type TaskStatus: list of int
         :param Result: Task status
         :type Result: list of int
-        :param OperatorUin: Operator UIN
+        :param OperatorUin: The field `OperatorUin` has been disused and replaced by `OperateUin`.
         :type OperatorUin: list of int
-        :param OperateUin: 
+        :param OperateUin: Operator Uin
         :type OperateUin: list of str
         """
         self.InstanceId = None
