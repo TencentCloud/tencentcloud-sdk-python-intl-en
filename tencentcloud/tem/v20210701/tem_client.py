@@ -261,6 +261,35 @@ class TemClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeApplicationsStatus(self, request):
+        """This API is used to query the status of all applications in an envrionment.
+
+        :param request: Request instance for DescribeApplicationsStatus.
+        :type request: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationsStatusRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationsStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApplicationsStatus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApplicationsStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeEnvironments(self, request):
         """This API is used to get the list of tenant environments.
 

@@ -946,6 +946,60 @@ class DescribeApplicationPodsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeApplicationsStatusRequest(AbstractModel):
+    """DescribeApplicationsStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceChannel: Source channel. Please keep the default value.
+        :type SourceChannel: int
+        :param EnvironmentId: Environment ID
+        :type EnvironmentId: str
+        """
+        self.SourceChannel = None
+        self.EnvironmentId = None
+
+
+    def _deserialize(self, params):
+        self.SourceChannel = params.get("SourceChannel")
+        self.EnvironmentId = params.get("EnvironmentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApplicationsStatusResponse(AbstractModel):
+    """DescribeApplicationsStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Returned result.
+        :type Result: list of ServiceVersionBrief
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = ServiceVersionBrief()
+                obj._deserialize(item)
+                self.Result.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEnvironmentsRequest(AbstractModel):
     """DescribeEnvironments request structure.
 
@@ -2403,6 +2457,93 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.RestartCount = params.get("RestartCount")
         self.Ready = params.get("Ready")
         self.ContainerState = params.get("ContainerState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceVersionBrief(AbstractModel):
+    """List of application versions
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VersionName: Version name
+        :type VersionName: str
+        :param Status: Status of version
+        :type Status: str
+        :param EnableEs: (Disused) Whether to enable elastic scaling
+        :type EnableEs: int
+        :param CurrentInstances: Number of current instances
+        :type CurrentInstances: int
+        :param VersionId: Version ID
+        :type VersionId: str
+        :param LogOutputConf: (Disused) Log output configuration
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LogOutputConf: :class:`tencentcloud.tem.v20210701.models.LogOutputConf`
+        :param ExpectedInstances: Expected number of instances
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExpectedInstances: int
+        :param DeployMode: Deployment mode
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DeployMode: str
+        :param BuildTaskId: Task ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BuildTaskId: str
+        :param EnvironmentId: Environment ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EnvironmentId: str
+        :param EnvironmentName: Environment name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EnvironmentName: str
+        :param ApplicationId: Application ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ApplicationId: str
+        :param ApplicationName: Application name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ApplicationName: str
+        :param UnderDeploying: Whether the application is being deployed
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UnderDeploying: bool
+        """
+        self.VersionName = None
+        self.Status = None
+        self.EnableEs = None
+        self.CurrentInstances = None
+        self.VersionId = None
+        self.LogOutputConf = None
+        self.ExpectedInstances = None
+        self.DeployMode = None
+        self.BuildTaskId = None
+        self.EnvironmentId = None
+        self.EnvironmentName = None
+        self.ApplicationId = None
+        self.ApplicationName = None
+        self.UnderDeploying = None
+
+
+    def _deserialize(self, params):
+        self.VersionName = params.get("VersionName")
+        self.Status = params.get("Status")
+        self.EnableEs = params.get("EnableEs")
+        self.CurrentInstances = params.get("CurrentInstances")
+        self.VersionId = params.get("VersionId")
+        if params.get("LogOutputConf") is not None:
+            self.LogOutputConf = LogOutputConf()
+            self.LogOutputConf._deserialize(params.get("LogOutputConf"))
+        self.ExpectedInstances = params.get("ExpectedInstances")
+        self.DeployMode = params.get("DeployMode")
+        self.BuildTaskId = params.get("BuildTaskId")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.EnvironmentName = params.get("EnvironmentName")
+        self.ApplicationId = params.get("ApplicationId")
+        self.ApplicationName = params.get("ApplicationName")
+        self.UnderDeploying = params.get("UnderDeploying")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
