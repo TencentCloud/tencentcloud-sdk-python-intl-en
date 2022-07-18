@@ -26,14 +26,20 @@ FAILEDOPERATION_CREATEORDER = 'FailedOperation.CreateOrder'
 # Failed to access the database. Please try again later. If the problem persists, please contact customer service.
 FAILEDOPERATION_DATABASEACCESSERROR = 'FailedOperation.DatabaseAccessError'
 
-# Failed to create a task ({{1}}). Please try again later. If the problem persists, please contact customer service.
+# Failed to create a task. Try again later. If the problem persists, contact customer service.
 FAILEDOPERATION_FLOWCREATEERROR = 'FailedOperation.FlowCreateError'
 
 # Failed to query the backup policy. Please try again later. If the problem persists, please contact customer service.
 FAILEDOPERATION_GETBACKUPSTRATEGYERROR = 'FailedOperation.GetBackupStrategyError'
 
-# Operation failed ({{1}}). Please try again later. If the problem persists, please contact customer service.
+# Insufficient account balance.
+FAILEDOPERATION_INSUFFICIENTBALANCE = 'FailedOperation.InsufficientBalance'
+
+# Operation failed. Try again later. If the problem persists, contact customer service.
 FAILEDOPERATION_OPERATIONFAILEDERROR = 'FailedOperation.OperationFailedError'
+
+# 
+FAILEDOPERATION_QUERYSPECBYSPECCODEERROR = 'FailedOperation.QuerySpecBySpecCodeError'
 
 # Failed to create the order and make a payment. Please try again later. If the problem persists, please contact customer service.
 FAILEDOPERATION_TRADECREATEORDERERROR = 'FailedOperation.TradeCreateOrderError'
@@ -76,6 +82,9 @@ INTERNALERROR_UNKNOWNERROR = 'InternalError.UnknownError'
 
 # Parameter error.
 INVALIDPARAMETER = 'InvalidParameter'
+
+# This API was not found.
+INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = 'InvalidParameter.ControllerNotFoundError'
 
 # The current instance cannot be isolated.
 INVALIDPARAMETER_ISOLATENOTALLOWED = 'InvalidParameter.IsolateNotAllowed'
@@ -122,13 +131,16 @@ INVALIDPARAMETERVALUE_INVALIDDBVERSION = 'InvalidParameterValue.InvalidDBVersion
 # Invalid parameter value.
 INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = 'InvalidParameterValue.InvalidParameterValueError'
 
-# Invalid region ({{1}}).
+# The region is invalid.
 INVALIDPARAMETERVALUE_INVALIDREGIONIDERROR = 'InvalidParameterValue.InvalidRegionIdError'
 
 # Invalid instance specification.
 INVALIDPARAMETERVALUE_INVALIDSPEC = 'InvalidParameterValue.InvalidSpec'
 
-# The parameters (`{{1}}` and `{{2}}`) cannot be set at the same time.
+# Invalid availability zone ({{1}}).
+INVALIDPARAMETERVALUE_INVALIDZONEIDERROR = 'InvalidParameterValue.InvalidZoneIdError'
+
+# These two parameters cannot be set at the same time.
 INVALIDPARAMETERVALUE_PARAMBOTHSETERROR = 'InvalidParameterValue.ParamBothSetError'
 
 # Incorrect parameter.
@@ -152,37 +164,40 @@ INVALIDPARAMETERVALUE_VPCNOTFOUND = 'InvalidParameterValue.VpcNotFound'
 # The number of instances exceeds the limit.
 LIMITEXCEEDED_USERINSTANCELIMIT = 'LimitExceeded.UserInstanceLimit'
 
-# This operation is not allowed for the current cluster. Reason: {{1}}.
+# The current cluster does not allow the operation.
 OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = 'OperationDenied.ClusterOpNotAllowedError'
 
-# For the cluster ({{1}}) in this status, the operation is not allowed.
+# For the cluster in this status, the operation is not allowed.
 OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = 'OperationDenied.ClusterStatusDeniedError'
 
-# For the instance ({{1}}) in this status, the operation is not allowed.
+# For the instance in this status, the operation is not allowed.
 OPERATIONDENIED_INSTANCESTATUSDENIEDERROR = 'OperationDenied.InstanceStatusDeniedError'
 
 # Insufficient account balance.
 OPERATIONDENIED_INSUFFICIENTBALANCEERROR = 'OperationDenied.InsufficientBalanceError'
 
-# For the serverless cluster in this status ({{1}}), the operation is not allowed.
+# For the serverless cluster in this status, the operation is not allowed.
 OPERATIONDENIED_SERVERLESSCLUSTERSTATUSDENIED = 'OperationDenied.ServerlessClusterStatusDenied'
 
-# For the serverless instance in this status ({{1}}), the operation is not allowed.
+# For the serverless instance in this status, the operation is not allowed.
 OPERATIONDENIED_SERVERLESSINSTANCESTATUSDENIED = 'OperationDenied.ServerlessInstanceStatusDenied'
+
+# The task conflict check failed.
+OPERATIONDENIED_TASKCONFLICTERROR = 'OperationDenied.TaskConflictError'
 
 # You need to verify your identity to make a purchase.
 OPERATIONDENIED_USERNOTAUTHENTICATEDERROR = 'OperationDenied.UserNotAuthenticatedError'
 
-# Unsupported version: {{1}}
+# Serverless is not supported on this version.
 OPERATIONDENIED_VERSIONNOTSUPPORTERROR = 'OperationDenied.VersionNotSupportError'
 
-# The cluster ({{1}}) does not exist.
+# The cluster does not exist.
 RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = 'ResourceNotFound.ClusterNotFoundError'
 
-# The instance ({{1}}) does not exist.
+# The instance does not exist.
 RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = 'ResourceNotFound.InstanceNotFoundError'
 
-# The resource corresponding to the parameter ({{1}}) doesn’t exist.
+# The resource corresponding to the parameter does not exist.
 RESOURCENOTFOUND_RESOURCEERROR = 'ResourceNotFound.ResourceError'
 
 # Failed to lock the instance, so the operation cannot be performed temporarily.
@@ -190,6 +205,9 @@ RESOURCEUNAVAILABLE_INSTANCELOCKFAIL = 'ResourceUnavailable.InstanceLockFail'
 
 # The instance is exceptional, so the operation cannot be performed temporarily.
 RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = 'ResourceUnavailable.InstanceStatusAbnormal'
+
+# Users who haven't completed identity verification cannot make purchases.
+UNAUTHORIZEDOPERATION_NOTREALNAMEACCOUNT = 'UnauthorizedOperation.NotRealNameAccount'
 
 # CAM authentication failed.
 UNAUTHORIZEDOPERATION_PERMISSIONDENIED = 'UnauthorizedOperation.PermissionDenied'

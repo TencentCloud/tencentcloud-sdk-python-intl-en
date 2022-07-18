@@ -113,7 +113,7 @@ FAILEDOPERATION_SENDMESSAGETIMEOUTERROR = 'FailedOperation.SendMessageTimeoutErr
 # Failed to send the message.
 FAILEDOPERATION_SENDMSGFAILED = 'FailedOperation.SendMsgFailed'
 
-# 
+# Failed to set the message retention policy.
 FAILEDOPERATION_SETRETENTIONPOLICY = 'FailedOperation.SetRetentionPolicy'
 
 # Failed to configure the message TTL.
@@ -197,10 +197,10 @@ LIMITEXCEEDED_ENVIRONMENTS = 'LimitExceeded.Environments'
 # The number of namespaces under the instance exceeds the limit.
 LIMITEXCEEDED_NAMESPACES = 'LimitExceeded.Namespaces'
 
-# 
+# The remaining quota has been exceeded. Please enter a valid value.
 LIMITEXCEEDED_RETENTIONSIZE = 'LimitExceeded.RetentionSize'
 
-# 
+# The message retention period limit has been exceeded. Please enter a valid value.
 LIMITEXCEEDED_RETENTIONTIME = 'LimitExceeded.RetentionTime'
 
 # The number of subscribers under the instance exceeds the limit.
@@ -215,7 +215,7 @@ MISSINGPARAMETER = 'MissingParameter'
 # A required parameter is missing.
 MISSINGPARAMETER_NEEDMOREPARAMS = 'MissingParameter.NeedMoreParams'
 
-# The subscription is still being consumed.
+# Messages in the subscribed topic are being consumed.
 OPERATIONDENIED_CONSUMERRUNNING = 'OperationDenied.ConsumerRunning'
 
 # Operations on the default environment are not allowed.
@@ -293,7 +293,7 @@ RESOURCESSOLDOUT = 'ResourcesSoldOut'
 # Unauthorized operation.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
-# Unknown parameter.
+# Unknown parameter error.
 UNKNOWNPARAMETER = 'UnknownParameter'
 
 # Unsupported operation.

@@ -1466,7 +1466,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type RoGroup: :class:`tencentcloud.cdb.v20170320.models.RoGroup`
         :param AutoRenewFlag: This field is meaningless when purchasing pay-as-you-go instances.
         :type AutoRenewFlag: int
-        :param InstanceName: Instance name.
+        :param InstanceName: Instance name. For multiple instances purchased at one time, they will be distinguished by the name suffix number, such as instnaceName=db and goodsNum=3, their instance name is db1, db2 respectively.
         :type InstanceName: str
         :param ResourceTags: Instance tag information.
         :type ResourceTags: list of TagInfo
@@ -7187,7 +7187,7 @@ class ModifyLocalBinlogConfigRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
         :type InstanceId: str
-        :param SaveHours: Retention period of local binlog. Value range: [72,168].
+        :param SaveHours: Retention period of local binlog. Value range: [120,168].
         :type SaveHours: int
         :param MaxUsage: Space utilization of local binlog. Value range: [30,50].
         :type MaxUsage: int
@@ -7433,6 +7433,67 @@ class OfflineIsolatedInstancesRequest(AbstractModel):
 
 class OfflineIsolatedInstancesResponse(AbstractModel):
     """OfflineIsolatedInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class OpenAuditServiceRequest(AbstractModel):
+    """OpenAuditService request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: TencentDB for MySQL instance ID
+        :type InstanceId: str
+        :param LogExpireDay: Retention period of audit logs. Valid values:
+7: seven days (a week);
+30: 30 days (a month);
+180: 180 days (six months);
+365: 365 days (a year);
+1095: 1095 days (three years);
+1825: 1825 days (five years).
+        :type LogExpireDay: int
+        :param HighLogExpireDay: Retention period of high-frequency audit logs. Valid values:
+7: seven days (a week);
+30: 30 days (a month);
+180: 180 days (six months);
+365: 365 days (a year);
+1095: 1095 days (three years);
+1825: 1825 days (five years).
+        :type HighLogExpireDay: int
+        """
+        self.InstanceId = None
+        self.LogExpireDay = None
+        self.HighLogExpireDay = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.LogExpireDay = params.get("LogExpireDay")
+        self.HighLogExpireDay = params.get("HighLogExpireDay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenAuditServiceResponse(AbstractModel):
+    """OpenAuditService response structure.
 
     """
 

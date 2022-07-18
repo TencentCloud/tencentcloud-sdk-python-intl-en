@@ -67,7 +67,7 @@ class ActivateInstanceRequest(AbstractModel):
         r"""
         :param ClusterId: Cluster ID
         :type ClusterId: str
-        :param InstanceIdList: Array of instance IDs
+        :param InstanceIdList: List of instance IDs in the format of `cynosdbmysql-ins-n7ocdslw` as displayed in the TDSQL-C for MySQL console. You can use the instance list querying API to query the ID, i.e., the `InstanceId` value in the output parameters.
         :type InstanceIdList: list of str
         """
         self.ClusterId = None
@@ -118,26 +118,26 @@ class AddInstancesRequest(AbstractModel):
         :type ClusterId: str
         :param Cpu: Number of CPU cores
         :type Cpu: int
-        :param Memory: Memory
+        :param Memory: Memory in GB
         :type Memory: int
-        :param ReadOnlyCount: Number of added read-only instances
+        :param ReadOnlyCount: Number of added read-only instances. Value range: (0,16].
         :type ReadOnlyCount: int
-        :param InstanceGrpId: Instance group ID, which is used when you add an instance in an existing RO group. If this parameter is left empty, an RO group will be created.
+        :param InstanceGrpId: Instance group ID, which is used when you add an instance to an existing RO group. If this parameter is left empty, an RO group will be created. We recommend you not pass in this value on the current version.
         :type InstanceGrpId: str
-        :param VpcId: VPC ID
+        :param VpcId: VPC ID. This parameter has been disused.
         :type VpcId: str
-        :param SubnetId: Subnet ID
+        :param SubnetId: Subnet ID. If `VpcId` is set, `SubnetId` is required. This parameter has been disused.
         :type SubnetId: str
-        :param Port: Port used when adding RO group
+        :param Port: The port used when adding an RO group. Value range: [0,65535).
         :type Port: int
-        :param InstanceName: Instance name
+        :param InstanceName: Instance name. String length range: [0,64).
         :type InstanceName: str
         :param AutoVoucher: Whether to automatically select a voucher. 1: yes; 0: no. Default value: 0
         :type AutoVoucher: int
         :param DbType: Database type. Valid values: 
 <li> MYSQL </li>
         :type DbType: str
-        :param OrderSource: Order source
+        :param OrderSource: Order source. String length range: [0,64).
         :type OrderSource: str
         :param DealMode: Transaction mode. Valid values: `0` (place and pay for an order), `1` (place an order)
         :type DealMode: int
@@ -329,6 +329,46 @@ class BillingResourceInfo(AbstractModel):
         
 
 
+class BinlogItem(AbstractModel):
+    """Binlog description
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileName: Binlog filename
+        :type FileName: str
+        :param FileSize: File size in bytes
+        :type FileSize: int
+        :param StartTime: Transaction start time
+        :type StartTime: str
+        :param FinishTime: Transaction end time
+        :type FinishTime: str
+        :param BinlogId: Binlog file ID
+        :type BinlogId: int
+        """
+        self.FileName = None
+        self.FileSize = None
+        self.StartTime = None
+        self.FinishTime = None
+        self.BinlogId = None
+
+
+    def _deserialize(self, params):
+        self.FileName = params.get("FileName")
+        self.FileSize = params.get("FileSize")
+        self.StartTime = params.get("StartTime")
+        self.FinishTime = params.get("FinishTime")
+        self.BinlogId = params.get("BinlogId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClusterInstanceDetail(AbstractModel):
     """Cluster instance information
 
@@ -428,6 +468,255 @@ class CreateAccountsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateClustersRequest(AbstractModel):
+    """CreateClusters request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zone: AZ
+        :type Zone: str
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param SubnetId: Subnet ID
+        :type SubnetId: str
+        :param DbType: Database type. Valid values: 
+<li> MYSQL </li>
+        :type DbType: str
+        :param DbVersion: Database version. Valid values: 
+<li> Valid values for `MYSQL`: 5.7 </li>
+        :type DbVersion: str
+        :param ProjectId: Project ID
+        :type ProjectId: int
+        :param Cpu: It is required when `DbMode` is set to `NORMAL` or left empty.
+Number of CPU cores of a non-serverless instance
+        :type Cpu: int
+        :param Memory: It is required when `DbMode` is set to `NORMAL` or left empty.
+Memory of a non-serverless instance in GB
+        :type Memory: int
+        :param Storage: This parameter has been deprecated.
+Storage capacity in GB.
+        :type Storage: int
+        :param ClusterName: Cluster name
+        :type ClusterName: str
+        :param AdminPassword: Account password (it must contain 8-64 characters in at least three of the following four types: uppercase letters, lowercase letters, digits, and symbols (~!@#$%^&*_-+=`|\(){}[]:;'<>,.?/).)
+        :type AdminPassword: str
+        :param Port: Port. Default value: 5432
+        :type Port: int
+        :param PayMode: Billing mode. 0: pay-as-you-go; 1: monthly subscription. Default value: 0
+        :type PayMode: int
+        :param Count: Number of purchased items. Currently, only 1 can be passed in. If this parameter is left empty, 1 will be used by default.
+        :type Count: int
+        :param RollbackStrategy: Rollback type:
+noneRollback: no rollback
+snapRollback: rollback by snapshot
+timeRollback: rollback by time point
+        :type RollbackStrategy: str
+        :param RollbackId: `snapshotId` for snapshot rollback or `queryId` for time point rollback. 0 indicates to determine whether the time point is valid
+        :type RollbackId: int
+        :param OriginalClusterId: Pass in the source cluster ID during rollback to find the source `poolId`
+        :type OriginalClusterId: str
+        :param ExpectTime: Specified time for time point rollback or snapshot time for snapshot rollback
+        :type ExpectTime: str
+        :param ExpectTimeThresh: This parameter has been deprecated.
+Specified allowed time range for time point rollback
+        :type ExpectTimeThresh: int
+        :param StorageLimit: The maximum storage of a non-serverless instance in GB
+If `DbType` is `MYSQL` and the storage billing mode is prepaid, the parameter value cannot exceed the maximum storage corresponding to the CPU and memory specifications.
+        :type StorageLimit: int
+        :param InstanceCount: Number of instances
+        :type InstanceCount: int
+        :param TimeSpan: Purchase duration of monthly subscription plan
+        :type TimeSpan: int
+        :param TimeUnit: Purchase duration unit of monthly subscription plan
+        :type TimeUnit: str
+        :param AutoRenewFlag: Whether auto-renewal is enabled for monthly subscription plan
+        :type AutoRenewFlag: int
+        :param AutoVoucher: Whether to automatically select a voucher. 1: yes; 0: no. Default value: 0
+        :type AutoVoucher: int
+        :param HaCount: Number of instances (this parameter has been disused and is retained only for compatibility with existing instances)
+        :type HaCount: int
+        :param OrderSource: Order source
+        :type OrderSource: str
+        :param ResourceTags: Array of tags to be bound to the created cluster
+        :type ResourceTags: list of Tag
+        :param DbMode: Database type
+Valid values when `DbType` is `MYSQL` (default value: NORMAL):
+<li>NORMAL</li>
+<li>SERVERLESS</li>
+        :type DbMode: str
+        :param MinCpu: This parameter is required if `DbMode` is `SERVERLESS`
+Minimum number of CPU cores. For the value range, please see the returned result of `DescribeServerlessInstanceSpecs`
+        :type MinCpu: float
+        :param MaxCpu: This parameter is required if `DbMode` is `SERVERLESS`:
+Maximum number of CPU cores. For the value range, please see the returned result of `DescribeServerlessInstanceSpecs`
+        :type MaxCpu: float
+        :param AutoPause: This parameter specifies whether the cluster will be automatically paused if `DbMode` is `SERVERLESS`. Valid values:
+<li>yes</li>
+<li>no</li>
+Default value: yes
+        :type AutoPause: str
+        :param AutoPauseDelay: This parameter specifies the delay for automatic cluster pause in seconds if `DbMode` is `SERVERLESS`. Value range: [600,691200]
+Default value: 600
+        :type AutoPauseDelay: int
+        :param StoragePayMode: The billing mode of cluster storage. Valid values: `0` (postpaid), `1` (prepaid). Default value: `0`.
+If `DbType` is `MYSQL` and the billing mode of cluster compute is pay-as-you-go (or the `DbMode` is `SERVERLESS`), the billing mode of cluster storage must be postpaid.
+Clusters with storage billed in prepaid mode cannot be cloned or rolled back.
+        :type StoragePayMode: int
+        :param SecurityGroupIds: Array of security group IDs
+        :type SecurityGroupIds: list of str
+        :param AlarmPolicyIds: Array of alarm policy IDs
+        :type AlarmPolicyIds: list of str
+        :param ClusterParams: Array of parameters
+        :type ClusterParams: list of ParamItem
+        :param DealMode: Transaction mode. Valid values: `0` (place and pay for an order), `1` (place an order)
+        :type DealMode: int
+        :param ParamTemplateId: Parameter template ID
+        :type ParamTemplateId: int
+        """
+        self.Zone = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.DbType = None
+        self.DbVersion = None
+        self.ProjectId = None
+        self.Cpu = None
+        self.Memory = None
+        self.Storage = None
+        self.ClusterName = None
+        self.AdminPassword = None
+        self.Port = None
+        self.PayMode = None
+        self.Count = None
+        self.RollbackStrategy = None
+        self.RollbackId = None
+        self.OriginalClusterId = None
+        self.ExpectTime = None
+        self.ExpectTimeThresh = None
+        self.StorageLimit = None
+        self.InstanceCount = None
+        self.TimeSpan = None
+        self.TimeUnit = None
+        self.AutoRenewFlag = None
+        self.AutoVoucher = None
+        self.HaCount = None
+        self.OrderSource = None
+        self.ResourceTags = None
+        self.DbMode = None
+        self.MinCpu = None
+        self.MaxCpu = None
+        self.AutoPause = None
+        self.AutoPauseDelay = None
+        self.StoragePayMode = None
+        self.SecurityGroupIds = None
+        self.AlarmPolicyIds = None
+        self.ClusterParams = None
+        self.DealMode = None
+        self.ParamTemplateId = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.DbType = params.get("DbType")
+        self.DbVersion = params.get("DbVersion")
+        self.ProjectId = params.get("ProjectId")
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.ClusterName = params.get("ClusterName")
+        self.AdminPassword = params.get("AdminPassword")
+        self.Port = params.get("Port")
+        self.PayMode = params.get("PayMode")
+        self.Count = params.get("Count")
+        self.RollbackStrategy = params.get("RollbackStrategy")
+        self.RollbackId = params.get("RollbackId")
+        self.OriginalClusterId = params.get("OriginalClusterId")
+        self.ExpectTime = params.get("ExpectTime")
+        self.ExpectTimeThresh = params.get("ExpectTimeThresh")
+        self.StorageLimit = params.get("StorageLimit")
+        self.InstanceCount = params.get("InstanceCount")
+        self.TimeSpan = params.get("TimeSpan")
+        self.TimeUnit = params.get("TimeUnit")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.AutoVoucher = params.get("AutoVoucher")
+        self.HaCount = params.get("HaCount")
+        self.OrderSource = params.get("OrderSource")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
+        self.DbMode = params.get("DbMode")
+        self.MinCpu = params.get("MinCpu")
+        self.MaxCpu = params.get("MaxCpu")
+        self.AutoPause = params.get("AutoPause")
+        self.AutoPauseDelay = params.get("AutoPauseDelay")
+        self.StoragePayMode = params.get("StoragePayMode")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.AlarmPolicyIds = params.get("AlarmPolicyIds")
+        if params.get("ClusterParams") is not None:
+            self.ClusterParams = []
+            for item in params.get("ClusterParams"):
+                obj = ParamItem()
+                obj._deserialize(item)
+                self.ClusterParams.append(obj)
+        self.DealMode = params.get("DealMode")
+        self.ParamTemplateId = params.get("ParamTemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateClustersResponse(AbstractModel):
+    """CreateClusters response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TranId: Freezing transaction ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TranId: str
+        :param DealNames: Order ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DealNames: list of str
+        :param ResourceIds: List of resource IDs (This field has been deprecated. Please use `dealNames` in the `DescribeResourcesByDealName` API to get resource IDs.)
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ResourceIds: list of str
+        :param ClusterIds: List of cluster IDs (This field has been deprecated. Please use `dealNames` in the `DescribeResourcesByDealName` API to get cluster IDs.)
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ClusterIds: list of str
+        :param BigDealIds: Big order ID.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type BigDealIds: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TranId = None
+        self.DealNames = None
+        self.ResourceIds = None
+        self.ClusterIds = None
+        self.BigDealIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TranId = params.get("TranId")
+        self.DealNames = params.get("DealNames")
+        self.ResourceIds = params.get("ResourceIds")
+        self.ClusterIds = params.get("ClusterIds")
+        self.BigDealIds = params.get("BigDealIds")
         self.RequestId = params.get("RequestId")
 
 
@@ -1304,6 +1593,55 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBackupDownloadUrlRequest(AbstractModel):
+    """DescribeBackupDownloadUrl request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param BackupId: Backup ID
+        :type BackupId: int
+        """
+        self.ClusterId = None
+        self.BackupId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.BackupId = params.get("BackupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupDownloadUrlResponse(AbstractModel):
+    """DescribeBackupDownloadUrl response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DownloadUrl: Backup download address
+        :type DownloadUrl: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DownloadUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DownloadUrl = params.get("DownloadUrl")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBackupListRequest(AbstractModel):
     """DescribeBackupList request structure.
 
@@ -1368,6 +1706,171 @@ class DescribeBackupListResponse(AbstractModel):
                 obj = BackupFileInfo()
                 obj._deserialize(item)
                 self.BackupList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBinlogDownloadUrlRequest(AbstractModel):
+    """DescribeBinlogDownloadUrl request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param BinlogId: Binlog file ID
+        :type BinlogId: int
+        """
+        self.ClusterId = None
+        self.BinlogId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.BinlogId = params.get("BinlogId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBinlogDownloadUrlResponse(AbstractModel):
+    """DescribeBinlogDownloadUrl response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DownloadUrl: Download address
+        :type DownloadUrl: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DownloadUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DownloadUrl = params.get("DownloadUrl")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBinlogSaveDaysRequest(AbstractModel):
+    """DescribeBinlogSaveDays request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBinlogSaveDaysResponse(AbstractModel):
+    """DescribeBinlogSaveDays response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BinlogSaveDays: Binlog retention period in days
+        :type BinlogSaveDays: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.BinlogSaveDays = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BinlogSaveDays = params.get("BinlogSaveDays")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBinlogsRequest(AbstractModel):
+    """DescribeBinlogs request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param StartTime: Start time
+        :type StartTime: str
+        :param EndTime: End time
+        :type EndTime: str
+        :param Offset: Offset
+        :type Offset: int
+        :param Limit: Maximum number
+        :type Limit: int
+        """
+        self.ClusterId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBinlogsResponse(AbstractModel):
+    """DescribeBinlogs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number of records
+        :type TotalCount: int
+        :param Binlogs: Binlog list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Binlogs: list of BinlogItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Binlogs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Binlogs") is not None:
+            self.Binlogs = []
+            for item in params.get("Binlogs"):
+                obj = BinlogItem()
+                obj._deserialize(item)
+                self.Binlogs.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1479,7 +1982,7 @@ class DescribeClustersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DbType: Engine type. Valid values: MYSQL, POSTGRESQL
+        :param DbType: Engine type. Currently, `MYSQL` is supported.
         :type DbType: str
         :param Limit: Number of returned results. Default value: 20. Maximum value: 100
         :type Limit: int
@@ -1652,6 +2155,96 @@ class DescribeInstanceDetailResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInstanceSlowQueriesRequest(AbstractModel):
+    """DescribeInstanceSlowQueries request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param StartTime: Transaction start time
+        :type StartTime: str
+        :param EndTime: Transaction end time
+        :type EndTime: str
+        :param Limit: Maximum number
+        :type Limit: int
+        :param Offset: Offset
+        :type Offset: int
+        :param Username: Username
+        :type Username: str
+        :param Host: Client host
+        :type Host: str
+        :param Database: Database name
+        :type Database: str
+        :param OrderBy: Sorting field. Valid values: QueryTime, LockTime, RowsExamined, RowsSent.
+        :type OrderBy: str
+        :param OrderByType: Sorting order. Valid values: asc, desc.
+        :type OrderByType: str
+        """
+        self.InstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Limit = None
+        self.Offset = None
+        self.Username = None
+        self.Host = None
+        self.Database = None
+        self.OrderBy = None
+        self.OrderByType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Username = params.get("Username")
+        self.Host = params.get("Host")
+        self.Database = params.get("Database")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceSlowQueriesResponse(AbstractModel):
+    """DescribeInstanceSlowQueries response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number
+        :type TotalCount: int
+        :param SlowQueries: Slow query record
+        :type SlowQueries: list of SlowQueriesItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.SlowQueries = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("SlowQueries") is not None:
+            self.SlowQueries = []
+            for item in params.get("SlowQueries"):
+                obj = SlowQueriesItem()
+                obj._deserialize(item)
+                self.SlowQueries.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeInstanceSpecsRequest(AbstractModel):
     """DescribeInstanceSpecs request structure.
 
@@ -1724,7 +2317,7 @@ class DescribeInstancesRequest(AbstractModel):
         :type OrderByType: str
         :param Filters: Filter. If more than one filter exists, the logical relationship between these filters is `AND`.
         :type Filters: list of QueryFilter
-        :param DbType: Engine type. Valid values: MYSQL, POSTGRESQL
+        :param DbType: Engine type. Currently, `MYSQL` is supported.
         :type DbType: str
         :param Status: Instance status. Valid values:
 creating
@@ -2068,6 +2661,83 @@ class DescribeRollbackTimeValidityResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ExportInstanceSlowQueriesRequest(AbstractModel):
+    """ExportInstanceSlowQueries request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param StartTime: Transaction start time
+        :type StartTime: str
+        :param EndTime: Transaction end time
+        :type EndTime: str
+        :param Limit: Maximum number
+        :type Limit: int
+        :param Offset: Offset
+        :type Offset: int
+        :param Username: Username
+        :type Username: str
+        :param Host: Client host
+        :type Host: str
+        :param Database: Database name
+        :type Database: str
+        :param FileType: File type. Valid values: csv, original.
+        :type FileType: str
+        """
+        self.InstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Limit = None
+        self.Offset = None
+        self.Username = None
+        self.Host = None
+        self.Database = None
+        self.FileType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Username = params.get("Username")
+        self.Host = params.get("Host")
+        self.Database = params.get("Database")
+        self.FileType = params.get("FileType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportInstanceSlowQueriesResponse(AbstractModel):
+    """ExportInstanceSlowQueries response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileContent: Slow query export content
+        :type FileContent: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FileContent = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FileContent = params.get("FileContent")
+        self.RequestId = params.get("RequestId")
+
+
 class InstanceSpec(AbstractModel):
     """Details of purchasable instance specifications. `Cpu` and `Memory` determine the instance specification during instance creation. The value range of the storage capacity is [MinStorageSize,MaxStorageSize]
 
@@ -2113,8 +2783,7 @@ class IsolateClusterRequest(AbstractModel):
         r"""
         :param ClusterId: Cluster ID
         :type ClusterId: str
-        :param DbType: Database type. Valid values: 
-<li> MYSQL </li>
+        :param DbType: This parameter has been disused.
         :type DbType: str
         """
         self.ClusterId = None
@@ -2171,8 +2840,7 @@ class IsolateInstanceRequest(AbstractModel):
         :type ClusterId: str
         :param InstanceIdList: Instance ID array
         :type InstanceIdList: list of str
-        :param DbType: Database type. Valid values: 
-<li> MYSQL </li>
+        :param DbType: This parameter has been disused.
         :type DbType: str
         """
         self.ClusterId = None
@@ -2232,11 +2900,11 @@ class ModifyBackupConfigRequest(AbstractModel):
         :type BackupTimeBeg: int
         :param BackupTimeEnd: Full backup end time. Value range: [0-24*3600]. For example, 0:00 AM, 1:00 AM, and 2:00 AM are represented by 0, 3600, and 7200, respectively.
         :type BackupTimeEnd: int
-        :param ReserveDuration: Backup retention period in seconds. Backups will be cleared after this period elapses. 7 days is represented by 3600*24*7 = 604800
+        :param ReserveDuration: Backup retention period in seconds. Backups will be cleared after this period elapses. 7 days is represented by 3600*24*7 = 604800. Maximum value: 158112000.
         :type ReserveDuration: int
-        :param BackupFreq: Backup frequency. It is an array of 7 elements corresponding to Monday through Sunday. full: full backup; increment: incremental backup
+        :param BackupFreq: Backup frequency. It is an array of 7 elements corresponding to Monday through Sunday. full: full backup; increment: incremental backup. This parameter cannot be modified currently and doesn't need to be entered.
         :type BackupFreq: list of str
-        :param BackupType: Backup mode. logic: logic backup; snapshot: snapshot backup
+        :param BackupType: Backup mode. logic: logic backup; snapshot: snapshot backup. This parameter cannot be modified currently and doesn't need to be entered.
         :type BackupType: str
         """
         self.ClusterId = None
@@ -2265,6 +2933,55 @@ class ModifyBackupConfigRequest(AbstractModel):
 
 class ModifyBackupConfigResponse(AbstractModel):
     """ModifyBackupConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyBackupNameRequest(AbstractModel):
+    """ModifyBackupName request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param BackupId: Backup file ID
+        :type BackupId: int
+        :param BackupName: Backup name, which can contain up to 60 characters.
+        :type BackupName: str
+        """
+        self.ClusterId = None
+        self.BackupId = None
+        self.BackupName = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.BackupId = params.get("BackupId")
+        self.BackupName = params.get("BackupName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBackupNameResponse(AbstractModel):
+    """ModifyBackupName response structure.
 
     """
 
@@ -2334,7 +3051,7 @@ class ModifyClusterParamRequest(AbstractModel):
         r"""
         :param ClusterId: Cluster ID
         :type ClusterId: str
-        :param ParamList: The list of parameters to be modified
+        :param ParamList: List of the parameters to be modified. Each element in the list is a combination of `ParamName`, `CurrentValue`, and `OldValue`.
         :type ParamList: list of ParamItem
         :param IsInMaintainPeriod: Valid values: `yes` (execute during maintenance time), `no` (execute now)
         :type IsInMaintainPeriod: str
@@ -2392,7 +3109,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
         r"""
         :param InstanceId: Instance group ID
         :type InstanceId: str
-        :param SecurityGroupIds: List of IDs of the security groups to be modified, which is an array of one or more security group IDs.
+        :param SecurityGroupIds: List of IDs of security groups to be modified, which is an array of one or more security group IDs.
         :type SecurityGroupIds: list of str
         :param Zone: AZ
         :type Zone: str
@@ -2490,7 +3207,7 @@ class ModifyMaintainPeriodConfigRequest(AbstractModel):
         :type MaintainStartTime: int
         :param MaintainDuration: Maintenance duration in seconds. For example, one hour is represented by 3600
         :type MaintainDuration: int
-        :param MaintainWeekDays: Maintenance days of the week
+        :param MaintainWeekDays: Maintenance days of the week. Valid values: [Mon, Tue, Wed, Thu, Fri, Sat, Sun].
         :type MaintainWeekDays: list of str
         """
         self.InstanceId = None
@@ -3031,7 +3748,7 @@ class SetRenewFlagRequest(AbstractModel):
         r"""
         :param ResourceIds: ID of the instance to be manipulated
         :type ResourceIds: list of str
-        :param AutoRenewFlag: Auto-Renewal flag
+        :param AutoRenewFlag: Auto-renewal flag. 0: normal renewal, 1: auto-renewal, 2: no renewal.
         :type AutoRenewFlag: int
         """
         self.ResourceIds = None
@@ -3069,6 +3786,70 @@ class SetRenewFlagResponse(AbstractModel):
     def _deserialize(self, params):
         self.Count = params.get("Count")
         self.RequestId = params.get("RequestId")
+
+
+class SlowQueriesItem(AbstractModel):
+    """Slow query information of the instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Timestamp: Execution timestamp
+        :type Timestamp: int
+        :param QueryTime: Execution duration in seconds
+        :type QueryTime: float
+        :param SqlText: SQL statement
+        :type SqlText: str
+        :param UserHost: Client host
+        :type UserHost: str
+        :param UserName: Username
+        :type UserName: str
+        :param Database: Database name
+        :type Database: str
+        :param LockTime: Lock duration in seconds
+        :type LockTime: float
+        :param RowsExamined: Number of scanned rows
+        :type RowsExamined: int
+        :param RowsSent: Number of returned rows
+        :type RowsSent: int
+        :param SqlTemplate: SQL template
+        :type SqlTemplate: str
+        :param SqlMd5: MD5 value of the SQL statement
+        :type SqlMd5: str
+        """
+        self.Timestamp = None
+        self.QueryTime = None
+        self.SqlText = None
+        self.UserHost = None
+        self.UserName = None
+        self.Database = None
+        self.LockTime = None
+        self.RowsExamined = None
+        self.RowsSent = None
+        self.SqlTemplate = None
+        self.SqlMd5 = None
+
+
+    def _deserialize(self, params):
+        self.Timestamp = params.get("Timestamp")
+        self.QueryTime = params.get("QueryTime")
+        self.SqlText = params.get("SqlText")
+        self.UserHost = params.get("UserHost")
+        self.UserName = params.get("UserName")
+        self.Database = params.get("Database")
+        self.LockTime = params.get("LockTime")
+        self.RowsExamined = params.get("RowsExamined")
+        self.RowsSent = params.get("RowsSent")
+        self.SqlTemplate = params.get("SqlTemplate")
+        self.SqlMd5 = params.get("SqlMd5")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Tag(AbstractModel):
@@ -3110,16 +3891,15 @@ class UpgradeInstanceRequest(AbstractModel):
         :type InstanceId: str
         :param Cpu: Database CPU
         :type Cpu: int
-        :param Memory: Database memory
+        :param Memory: Database memory in GB
         :type Memory: int
         :param UpgradeType: Upgrade type. Valid values: upgradeImmediate, upgradeInMaintain
         :type UpgradeType: str
-        :param StorageLimit: Storage upper limit. 0 indicates to use the standard configuration
+        :param StorageLimit: This parameter has been disused.
         :type StorageLimit: int
         :param AutoVoucher: Whether to automatically select a voucher. 1: yes; 0: no. Default value: 0
         :type AutoVoucher: int
-        :param DbType: Database type. Valid values: 
-<li> MYSQL </li>
+        :param DbType: This parameter has been disused.
         :type DbType: str
         :param DealMode: Transaction mode. Valid values: `0` (place and pay for an order), `1` (place an order)
         :type DealMode: int

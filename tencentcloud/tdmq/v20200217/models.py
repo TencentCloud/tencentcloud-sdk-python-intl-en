@@ -73,13 +73,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class BindCluster(AbstractModel):
-    """Dedicated cluster information
+    """Information of dedicated clusters
 
     """
 
     def __init__(self):
         r"""
-        :param ClusterName: Physical cluster name
+        :param ClusterName: Name of a physical cluster.
         :type ClusterName: str
         """
         self.ClusterName = None
@@ -812,19 +812,19 @@ class Consumer(AbstractModel):
     def __init__(self):
         r"""
         :param ConnectedSince: The time when the consumer started connecting.
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ConnectedSince: str
         :param ConsumerAddr: Consumer address.
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ConsumerAddr: str
         :param ConsumerName: Consumer name.
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ConsumerName: str
         :param ClientVersion: Consumer version.
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ClientVersion: str
         :param Partition: Serial number of the topic partition connected to the consumer.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Partition: int
         """
         self.ConnectedSince = None
@@ -856,21 +856,21 @@ class ConsumersSchedule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Partitions: Current partition ID.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Partitions: ID of the current partition.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Partitions: int
-        :param NumberOfEntries: Number of messages.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param NumberOfEntries: The number of messages.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type NumberOfEntries: int
-        :param MsgBacklog: Number of retained messages.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param MsgBacklog: The number of heaped messages.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MsgBacklog: int
-        :param MsgRateOut: Sum of the numbers of messages delivered by the consumer per second.
+        :param MsgRateOut: The total number of messages delivered by the consumer per second.
         :type MsgRateOut: str
-        :param MsgThroughputOut: Number of bytes of messages consumed by the consumer per second.
+        :param MsgThroughputOut: The size (in bytes) of messages consumed by the consumer per second.
         :type MsgThroughputOut: str
         :param MsgRateExpired: Percentage of messages discarded due to timeout.
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MsgRateExpired: str
         """
         self.Partitions = None
@@ -1002,7 +1002,7 @@ class CreateCmqQueueRequest(AbstractModel):
         :type Trace: bool
         :param Tags: Tag array.
         :type Tags: list of Tag
-        :param RetentionSizeInMB: Queue storage space configured for message rewind. Value range: 1,024-10,240 MB (if message rewind is enabled). The value “0” indicates that message rewind is not enabled.
+        :param RetentionSizeInMB: Queue storage space configured for message rewind. Value range: 10,240-512,000 MB (if message rewind is enabled). The value “0” indicates that message rewind is not enabled.
         :type RetentionSizeInMB: int
         """
         self.QueueName = None
@@ -1229,7 +1229,7 @@ class CreateEnvironmentRequest(AbstractModel):
         r"""
         :param EnvironmentId: Environment (namespace) name, which can contain up to 16 letters, digits, hyphens, and underscores.
         :type EnvironmentId: str
-        :param MsgTTL: Unconsumed message expiration time in seconds. Minimum value: 60; maximum value: 1296000 (15 days).
+        :param MsgTTL: Retention period for unconsumed messages in seconds. Value range: 60s to 1,296,000s.
         :type MsgTTL: int
         :param Remark: Remarks (up to 128 characters).
         :type Remark: str
@@ -1723,15 +1723,16 @@ class CreateTopicRequest(AbstractModel):
         :type EnvironmentId: str
         :param TopicName: Topic name, which can contain up to 64 letters, digits, hyphens, and underscores.
         :type TopicName: str
-        :param Partitions: 0: non-partitioned topic; other values: number of partitions in the partitioned topic (up to 128).
+        :param Partitions: The value “1” indicates a non-partitioned topic (a topic with no partitions) will be created. A value between 1 (exclusive) and 128 (inclusive) indicates the partition count of a partitioned topic.
         :type Partitions: int
         :param Remark: Remarks (up to 128 characters).
         :type Remark: str
-        :param TopicType: 0: general message;
-1: globally sequential message;
-2: partitionally sequential message;
-3: retry letter queue;
-4: dead letter queue.
+        :param TopicType: This input parameter will be disused soon. You can use `PulsarTopicType` instead.
+0: General message;
+1: Globally sequential message;
+2: Partitionally sequential message;
+3: Retry letter topic;
+4: Dead letter topic.
         :type TopicType: int
         :param ClusterId: Pulsar cluster ID
         :type ClusterId: str
@@ -1779,18 +1780,17 @@ class CreateTopicResponse(AbstractModel):
         :type EnvironmentId: str
         :param TopicName: Topic name.
         :type TopicName: str
-        :param Partitions: 0: non-partitioned topic; other values: number of partitions in the partitioned topic.
+        :param Partitions: Valid value: 0 or 1. Non-partitioned topic: No partitions. A value greater than 1: The partition count of a partitioned topic. `0` is returned for existing non-partitioned topics, and `1` is returned for incremental non-partitioned topics.
         :type Partitions: int
         :param Remark: Remarks (up to 128 characters).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Remark: str
-        :param TopicType: 0: general message;
-1: globally sequential message;
-2: partitionally sequential message;
-3: retry letter queue;
-4: dead letter queue;
-5: transaction message.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param TopicType: 0: General message;
+1: Globally sequential message;
+2: Partitionally sequential message;
+3: Retry letter topic;
+4: Dead letter topic.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TopicType: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2322,13 +2322,13 @@ class DeleteSubscriptionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubscriptionTopicSets: Set of subscriptions. Up to 20 subscriptions can be deleted at a time.
+        :param SubscriptionTopicSets: Subscription set. Up to 20 subscriptions can be deleted at a time.
         :type SubscriptionTopicSets: list of SubscriptionTopic
         :param ClusterId: Pulsar cluster ID.
         :type ClusterId: str
         :param EnvironmentId: Environment (namespace) name.
         :type EnvironmentId: str
-        :param Force: Whether to force deletion. Default value: false
+        :param Force: Whether to forcibly delete a subscription. Default value: `false`.
         :type Force: bool
         """
         self.SubscriptionTopicSets = None
@@ -2389,13 +2389,13 @@ class DeleteTopicsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TopicSets: Set of topics. Up to 20 topics can be deleted at a time.
+        :param TopicSets: Topic set. Up to 20 topics can be deleted at a time.
         :type TopicSets: list of TopicRecord
         :param ClusterId: Pulsar cluster ID.
         :type ClusterId: str
         :param EnvironmentId: Environment (namespace) name.
         :type EnvironmentId: str
-        :param Force: Whether to force deletion. Default value: false
+        :param Force: Whether to forcibly delete a topic. Default value: `false`.
         :type Force: bool
         """
         self.TopicSets = None
@@ -2462,7 +2462,7 @@ class DescribeBindClustersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of dedicated clusters
+        :param TotalCount: The number of dedicated clusters
         :type TotalCount: int
         :param ClusterSet: List of dedicated clusters
         :type ClusterSet: list of BindCluster
@@ -2601,15 +2601,15 @@ class DescribeClustersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: Offset. If this parameter is left empty, 0 will be used by default.
+        :param Offset: Start offset, which defaults to 0 if left empty.
         :type Offset: int
-        :param Limit: Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.
+        :param Limit: The number of results to be returned, which defaults to 10 if left empty. The maximum value is 20.
         :type Limit: int
-        :param ClusterIdList: Filter by list of cluster IDs
+        :param ClusterIdList: Filter by cluster ID.
         :type ClusterIdList: list of str
-        :param IsTagFilter: Whether to filter by tag
+        :param IsTagFilter: Whether to filter by tag.
         :type IsTagFilter: bool
-        :param Filters: Filter. Currently, you can filter only by tag.
+        :param Filters: Filter. Currently, you can filter by tag.
         :type Filters: list of Filter
         """
         self.Offset = None
@@ -2646,9 +2646,9 @@ class DescribeClustersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of clusters
+        :param TotalCount: The number of clusters.
         :type TotalCount: int
-        :param ClusterSet: List of cluster information
+        :param ClusterSet: Cluster information list
         :type ClusterSet: list of Cluster
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2789,17 +2789,17 @@ class DescribeCmqQueuesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: Starting position of the list of queues to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default
+        :param Offset: Starting position of a queue list to be returned on the current page in case of paginated return. If a value is entered, `limit` must be specified. If this parameter is left empty, 0 will be used by default.
         :type Offset: int
-        :param Limit: Number of queues to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.
+        :param Limit: The number of queues to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.
         :type Limit: int
         :param QueueName: Filter by `QueueName`
         :type QueueName: str
-        :param QueueNameList: List of CMQ queue names
+        :param QueueNameList: Filter by CMQ queue name.
         :type QueueNameList: list of str
-        :param IsTagFilter: For filtering by tag, this must be configured to `true`.
+        :param IsTagFilter: For filtering by tag, this parameter must be set to `true`.
         :type IsTagFilter: bool
-        :param Filters: Filter. Currently, you can filter only by tag.
+        :param Filters: Filter. Currently, you can filter by tag. The tag name must be prefixed with “tag:”, such as “tag: owner”, “tag: environment”, or “tag: business”.
         :type Filters: list of Filter
         """
         self.Offset = None
@@ -2838,10 +2838,10 @@ class DescribeCmqQueuesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Quantity
+        :param TotalCount: The number of queues.
         :type TotalCount: int
-        :param QueueList: List of queues
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param QueueList: Queue list.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type QueueList: list of CmqQueue
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2983,17 +2983,17 @@ class DescribeCmqTopicsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: Starting position of the list of queues to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default
+        :param Offset: Starting position of a queue list to be returned on the current page in case of paginated return. If a value is entered, `limit` must be specified. If this parameter is left empty, 0 will be used by default.
         :type Offset: int
-        :param Limit: Number of queues to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.
+        :param Limit: The number of queues to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.
         :type Limit: int
         :param TopicName: Fuzzy search by `TopicName`
         :type TopicName: str
-        :param TopicNameList: Filter by list of CMQ topic names
+        :param TopicNameList: Filter by CMQ topic name.
         :type TopicNameList: list of str
-        :param IsTagFilter: For filtering by tag, this must be configured to `true`.
+        :param IsTagFilter: For filtering by tag, this parameter must be set to `true`.
         :type IsTagFilter: bool
-        :param Filters: Filter. Currently, you can filter only by tag.
+        :param Filters: Filter. Currently, you can filter by tag. The tag name must be prefixed with “tag:”, such as “tag: owner”, “tag: environment”, or “tag: business”.
         :type Filters: list of Filter
         """
         self.Offset = None
@@ -3032,10 +3032,10 @@ class DescribeCmqTopicsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TopicList: List of topics
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param TopicList: Topic list.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TopicList: list of CmqTopic
-        :param TotalCount: Total number of topics
+        :param TotalCount: The total number of topics.
         :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3140,20 +3140,20 @@ class DescribeEnvironmentRolesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnvironmentId: Environment (namespace) name (required).
+        :param EnvironmentId: Environment/namespace name (required).
         :type EnvironmentId: str
-        :param Offset: Offset. If this parameter is left empty, 0 will be used by default.
+        :param Offset: Offset, which defaults to 0 if left empty.
         :type Offset: int
-        :param Limit: Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.
+        :param Limit: The number of results to be returned, which defaults to 10 if left empty. The maximum value is 20.
         :type Limit: int
-        :param ClusterId: Pulsar cluster ID (required)
+        :param ClusterId: Pulsar cluster ID (required).
         :type ClusterId: str
-        :param RoleName: Role name
+        :param RoleName: Role name.
         :type RoleName: str
         :param Filters: * RoleName
 Filter by role name for exact query.
 Type: String
-Required: no
+Required: No
         :type Filters: list of Filter
         """
         self.EnvironmentId = None
@@ -3192,9 +3192,9 @@ class DescribeEnvironmentRolesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of records.
+        :param TotalCount: The number of records.
         :type TotalCount: int
-        :param EnvironmentRoleSets: Set of namespace roles.
+        :param EnvironmentRoleSets: Namespace role set.
         :type EnvironmentRoleSets: list of EnvironmentRole
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3224,16 +3224,16 @@ class DescribeEnvironmentsRequest(AbstractModel):
         r"""
         :param EnvironmentId: Fuzzy search by namespace name.
         :type EnvironmentId: str
-        :param Offset: Offset. If this parameter is left empty, 0 will be used by default.
+        :param Offset: Offset, which defaults to 0 if left empty.
         :type Offset: int
-        :param Limit: Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.
+        :param Limit: The number of results to be returned, which defaults to 10 if left empty. The maximum value is 20.
         :type Limit: int
         :param ClusterId: Pulsar cluster ID
         :type ClusterId: str
         :param Filters: * EnvironmentId
 Filter by namespace for exact query.
 Type: String
-Required: no
+Required: No
         :type Filters: list of Filter
         """
         self.EnvironmentId = None
@@ -3270,9 +3270,9 @@ class DescribeEnvironmentsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of namespaces.
+        :param TotalCount: The number of namespaces.
         :type TotalCount: int
-        :param EnvironmentSet: Array set of namespaces.
+        :param EnvironmentSet: Array of namespace sets.
         :type EnvironmentSet: list of Environment
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3515,17 +3515,17 @@ class DescribeRocketMQClustersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: Offset
+        :param Offset: Offset.
         :type Offset: int
-        :param Limit: Maximum number
+        :param Limit: The max number of returned results.
         :type Limit: int
-        :param IdKeyword: Search by cluster ID
+        :param IdKeyword: Search by cluster ID.
         :type IdKeyword: str
-        :param NameKeyword: Search by cluster name
+        :param NameKeyword: Search by cluster name.
         :type NameKeyword: str
-        :param ClusterIdList: Filter by list of cluster IDs
+        :param ClusterIdList: Filter by cluster ID.
         :type ClusterIdList: list of str
-        :param IsTagFilter: For filtering by tag, this must be configured to `true`
+        :param IsTagFilter: For filtering by tag, this parameter must be set to `true`.
         :type IsTagFilter: bool
         :param Filters: Filter. Currently, you can filter only by tag.
         :type Filters: list of Filter
@@ -3568,10 +3568,10 @@ class DescribeRocketMQClustersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterList: Cluster information
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ClusterList: Cluster information.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ClusterList: list of RocketMQClusterDetail
-        :param TotalCount: Total number
+        :param TotalCount: The total number of returned results.
         :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3599,23 +3599,23 @@ class DescribeRocketMQGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: Cluster ID
+        :param ClusterId: Cluster ID.
         :type ClusterId: str
-        :param NamespaceId: Namespace
+        :param NamespaceId: Namespace.
         :type NamespaceId: str
-        :param Offset: Offset
+        :param Offset: Offset.
         :type Offset: int
-        :param Limit: Maximum number
+        :param Limit: The max number of returned results.
         :type Limit: int
         :param FilterTopic: Topic name, which can be used to query all subscription groups under the topic
         :type FilterTopic: str
         :param FilterGroup: Consumer group query by consumer group name. Fuzzy query is supported
         :type FilterGroup: str
-        :param SortedBy: Sort by specified field. Valid values: tps, accumulative.
+        :param SortedBy: Sort by specified field. Valid values: `tps`, `accumulative`.
         :type SortedBy: str
-        :param SortOrder: Sort in ascending or descending order. Valid values: asc, desc.
+        :param SortOrder: Sort in ascending or descending order. Valid values: `asc`, `desc`.
         :type SortOrder: str
-        :param FilterOneGroup: Subscription group name. After it is specified, only the information of the corresponding subscription group will be returned.
+        :param FilterOneGroup: Subscription group name. After it is specified, the information of only this subscription group will be returned.
         :type FilterOneGroup: str
         """
         self.ClusterId = None
@@ -3655,7 +3655,7 @@ class DescribeRocketMQGroupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number
+        :param TotalCount: The total number of subscription groups.
         :type TotalCount: int
         :param Groups: List of subscription groups
         :type Groups: list of RocketMQGroup
@@ -3685,13 +3685,13 @@ class DescribeRocketMQNamespacesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: Cluster ID
+        :param ClusterId: Cluster ID.
         :type ClusterId: str
-        :param Offset: Offset
+        :param Offset: Offset.
         :type Offset: int
-        :param Limit: Maximum number
+        :param Limit: The max number of returned results.
         :type Limit: int
-        :param NameKeyword: Search by name
+        :param NameKeyword: Search by name.
         :type NameKeyword: str
         """
         self.ClusterId = None
@@ -3723,7 +3723,7 @@ class DescribeRocketMQNamespacesResponse(AbstractModel):
         r"""
         :param Namespaces: List of namespaces
         :type Namespaces: list of RocketMQNamespace
-        :param TotalCount: Total number
+        :param TotalCount: The total number of returned results.
         :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3751,15 +3751,15 @@ class DescribeRocketMQTopicsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: Query offset
+        :param Offset: Offset for query.
         :type Offset: int
-        :param Limit: Query limit
+        :param Limit: Query limit.
         :type Limit: int
-        :param ClusterId: Cluster ID
+        :param ClusterId: Cluster ID.
         :type ClusterId: str
-        :param NamespaceId: Namespace
+        :param NamespaceId: Namespace.
         :type NamespaceId: str
-        :param FilterType: Filter by topic type. Valid values: Normal, GlobalOrder, PartitionedOrder, Transaction.
+        :param FilterType: Filter by topic type. Valid values: `Normal`, `GlobalOrder`, `PartitionedOrder`, `Transaction`.
         :type FilterType: list of str
         :param FilterName: Search by topic name. Fuzzy query is supported.
         :type FilterName: str
@@ -3795,7 +3795,7 @@ class DescribeRocketMQTopicsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number of records
+        :param TotalCount: The total number of query records.
         :type TotalCount: int
         :param Topics: List of topic information
         :type Topics: list of RocketMQTopic
@@ -3907,9 +3907,9 @@ class DescribeSubscriptionsRequest(AbstractModel):
         :type EnvironmentId: str
         :param TopicName: Topic name.
         :type TopicName: str
-        :param Offset: Offset. If this parameter is left empty, 0 will be used by default.
+        :param Offset: Offset, which defaults to 0 if left empty.
         :type Offset: int
-        :param Limit: Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.
+        :param Limit: The number of results to be returned, which defaults to 10 if left empty. The maximum value is 20.
         :type Limit: int
         :param SubscriptionName: Fuzzy match by subscriber name.
         :type SubscriptionName: str
@@ -3956,9 +3956,9 @@ class DescribeSubscriptionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubscriptionSets: Array set of subscribers.
+        :param SubscriptionSets: Array of subscriber sets.
         :type SubscriptionSets: list of Subscription
-        :param TotalCount: Quantity.
+        :param TotalCount: The total number of returned results.
         :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3990,25 +3990,27 @@ class DescribeTopicsRequest(AbstractModel):
         :type EnvironmentId: str
         :param TopicName: Fuzzy match by topic name.
         :type TopicName: str
-        :param Offset: Offset. If this parameter is left empty, 0 will be used by default.
+        :param Offset: Offset, which defaults to 0 if left empty.
         :type Offset: int
-        :param Limit: Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.
+        :param Limit: The number of results to be returned, which defaults to 10 if left empty. The maximum value is 20.
         :type Limit: int
         :param TopicType: Topic type description:
-0: general message;
-1: globally sequential message;
-2: partitionally sequential message;
-3: retry letter queue;
-4: dead letter queue;
-5: transaction message.
+0: Non-persistent and non-partitioned topic;
+1: Non-persistent and partitioned topic;
+2: Persistent and non-partitioned topic;
+3: Persistent and partitioned topic.
         :type TopicType: int
-        :param ClusterId: Pulsar cluster ID
+        :param ClusterId: Pulsar cluster ID.
         :type ClusterId: str
         :param Filters: * TopicName
 Query by topic name for exact search.
 Type: String
-Required: no
+Required: No
         :type Filters: list of Filter
+        :param TopicCreator: Topic creator:
+1: User
+2: System
+        :type TopicCreator: int
         """
         self.EnvironmentId = None
         self.TopicName = None
@@ -4017,6 +4019,7 @@ Required: no
         self.TopicType = None
         self.ClusterId = None
         self.Filters = None
+        self.TopicCreator = None
 
 
     def _deserialize(self, params):
@@ -4032,6 +4035,7 @@ Required: no
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.TopicCreator = params.get("TopicCreator")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4048,9 +4052,9 @@ class DescribeTopicsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TopicSets: Array set of topics.
+        :param TopicSets: Array of topic sets.
         :type TopicSets: list of Topic
-        :param TotalCount: Number of topics.
+        :param TotalCount: The number of topics.
         :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -4078,25 +4082,25 @@ class Environment(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnvironmentId: Namespace name
+        :param EnvironmentId: Namespace name.
         :type EnvironmentId: str
-        :param Remark: Remarks
+        :param Remark: Description.
         :type Remark: str
-        :param MsgTTL: TTL for unconsumed messages in seconds. Maximum value: 1296000 seconds (i.e., 15 days)
+        :param MsgTTL: Retention period for unconsumed messages in seconds. Maximum value: 1,296,000 seconds (15 days).
         :type MsgTTL: int
-        :param CreateTime: Creation time
+        :param CreateTime: Creation time.
         :type CreateTime: str
-        :param UpdateTime: Modification time
+        :param UpdateTime: Last modified.
         :type UpdateTime: str
-        :param NamespaceId: Namespace ID
+        :param NamespaceId: Namespace ID.
         :type NamespaceId: str
-        :param NamespaceName: Namespace name
+        :param NamespaceName: Namespace name.
         :type NamespaceName: str
-        :param TopicNum: Number of topics
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param TopicNum: The number of topics.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TopicNum: int
-        :param RetentionPolicy: Message retention policy
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param RetentionPolicy: Message retention policy.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type RetentionPolicy: :class:`tencentcloud.tdmq.v20200217.models.RetentionPolicy`
         """
         self.EnvironmentId = None
@@ -4204,19 +4208,19 @@ class Filter(AbstractModel):
 
 
 class FilterSubscription(AbstractModel):
-    """Filters subscriptions
+    """Filter subscriptions
 
     """
 
     def __init__(self):
         r"""
-        :param ConsumerHasCount: Whether to display only subscriptions that include real consumers.
+        :param ConsumerHasCount: Whether to only display subscriptions that include real consumers.
         :type ConsumerHasCount: bool
-        :param ConsumerHasBacklog: Whether to display only subscriptions with retained messages.
+        :param ConsumerHasBacklog: Whether to only display subscriptions with heaped messages.
         :type ConsumerHasBacklog: bool
-        :param ConsumerHasExpired: Whether to display only subscriptions with messages discarded after expiration.
+        :param ConsumerHasExpired: Whether to only display subscriptions with messages discarded after expiration.
         :type ConsumerHasExpired: bool
-        :param SubscriptionNames: Filter by subscription name for exact search.
+        :param SubscriptionNames: Filter by subscription name for exact query.
         :type SubscriptionNames: list of str
         """
         self.ConsumerHasCount = None
@@ -4333,7 +4337,7 @@ class ModifyCmqQueueAttributeRequest(AbstractModel):
         :type Trace: bool
         :param Transaction: Whether to enable transaction. 1: yes; 0: no
         :type Transaction: int
-        :param RetentionSizeInMB: Queue storage space configured for message rewind. Value range: 1,024-10,240 MB (if message rewind is enabled). The value “0” indicates that message rewind is not enabled.
+        :param RetentionSizeInMB: Queue storage space configured for message rewind. Value range: 10,240-512,000 MB (if message rewind is enabled). The value “0” indicates that message rewind is not enabled.
         :type RetentionSizeInMB: int
         """
         self.QueueName = None
@@ -4522,7 +4526,7 @@ class ModifyEnvironmentAttributesRequest(AbstractModel):
         r"""
         :param EnvironmentId: Namespace name.
         :type EnvironmentId: str
-        :param MsgTTL: TTL for unconsumed messages in seconds. Maximum value: 1296000 seconds.
+        :param MsgTTL: Retention period for unconsumed messages in seconds. Value range: 60s to 1,296,000s.
         :type MsgTTL: int
         :param Remark: Remarks (up to 128 characters).
         :type Remark: str
@@ -4997,43 +5001,43 @@ class PartitionsTopic(AbstractModel):
     def __init__(self):
         r"""
         :param AverageMsgSize: Average size of the messages published in the last interval in bytes.
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type AverageMsgSize: str
-        :param ConsumerCount: Number of consumers.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ConsumerCount: The number of consumers.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ConsumerCount: str
-        :param LastConfirmedEntry: Total number of recorded messages.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param LastConfirmedEntry: The total number of recorded messages.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type LastConfirmedEntry: str
         :param LastLedgerCreatedTimestamp: Time when the last ledger was created.
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type LastLedgerCreatedTimestamp: str
-        :param MsgRateIn: Number of messages published by local and replicated publishers per second.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param MsgRateIn: The number of messages published by local and replicated publishers per second.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MsgRateIn: str
-        :param MsgRateOut: Sum of the numbers of messages delivered by local and replicated consumers per second.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param MsgRateOut: The total number of messages delivered by local and replicated consumers per second.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MsgRateOut: str
-        :param MsgThroughputIn: Number of bytes of messages published by local and replicated publishers per second.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param MsgThroughputIn: The size (in bytes) of messages published by local and replicated publishers per second.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MsgThroughputIn: str
-        :param MsgThroughputOut: Number of bytes of messages delivered by local and replicated consumers per second.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param MsgThroughputOut: The size (in bytes) of messages delivered by local and replicated consumers per second.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MsgThroughputOut: str
-        :param NumberOfEntries: Total number of recorded messages.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param NumberOfEntries: The total number of recorded messages.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type NumberOfEntries: str
         :param Partitions: Subpartition ID.
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Partitions: int
-        :param ProducerCount: Number of producers.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ProducerCount: The number of producers.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ProducerCount: str
-        :param TotalSize: Total amount of all stored messages in bytes.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param TotalSize: Total size of all stored messages in bytes.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TotalSize: str
         :param TopicType: Topic type description.
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TopicType: int
         """
         self.AverageMsgSize = None
@@ -5083,9 +5087,9 @@ class PublishCmqMsgRequest(AbstractModel):
         r"""
         :param TopicName: Topic name
         :type TopicName: str
-        :param MsgContent: Message content
+        :param MsgContent: Message content. The total message size is up to 1,024 KB.
         :type MsgContent: str
-        :param MsgTag: Message tag
+        :param MsgTag: Message tag. You can pass in multiple tags or a single route. Each tag or route can contain up to 64 characters.
         :type MsgTag: list of str
         """
         self.TopicName = None
@@ -5211,11 +5215,20 @@ class ReceiveMessageRequest(AbstractModel):
         :type ReceiverQueueSize: int
         :param SubInitialPosition: Default value: Latest. It is used to determine the position where the consumer initially receives messages. Valid values: Earliest, Latest.
         :type SubInitialPosition: str
+        :param MaxNumMessages: This parameter is used to specify the maximum number of received messages in a batch for `BatchReceivePolicy`. The default value is 0, indicating that `BatchReceivePolicy` is disabled.
+        :type MaxNumMessages: int
+        :param MaxNumBytes: This parameter is used to specify the maximum body size (in bytes) of received messages in a batch for `BatchReceivePolicy`. The default value is 0, indicating that `BatchReceivePolicy` is disabled.
+        :type MaxNumBytes: int
+        :param Timeout: This parameter is used to specify the maximum wait timeout (in milliseconds) for receiving a batch of messages for `BatchReceivePolicy`. The default value is 0, indicating that `BatchReceivePolicy` is disabled.
+        :type Timeout: int
         """
         self.Topic = None
         self.SubscriptionName = None
         self.ReceiverQueueSize = None
         self.SubInitialPosition = None
+        self.MaxNumMessages = None
+        self.MaxNumBytes = None
+        self.Timeout = None
 
 
     def _deserialize(self, params):
@@ -5223,6 +5236,9 @@ class ReceiveMessageRequest(AbstractModel):
         self.SubscriptionName = params.get("SubscriptionName")
         self.ReceiverQueueSize = params.get("ReceiverQueueSize")
         self.SubInitialPosition = params.get("SubInitialPosition")
+        self.MaxNumMessages = params.get("MaxNumMessages")
+        self.MaxNumBytes = params.get("MaxNumBytes")
+        self.Timeout = params.get("Timeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5251,6 +5267,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SubName: Returned subscriber name, which will be used when an acknowledgment consumer is created.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SubName: str
+        :param MessageIDList: MessageIDs returned by `BatchReceivePolicy` at a time, which are separated by “###”.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MessageIDList: str
+        :param MessagesPayload: Message contents returned by `BatchReceivePolicy` at a time, which are separated by “###”.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MessagesPayload: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -5259,6 +5281,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.AckTopic = None
         self.ErrorMsg = None
         self.SubName = None
+        self.MessageIDList = None
+        self.MessagesPayload = None
         self.RequestId = None
 
 
@@ -5268,6 +5292,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.AckTopic = params.get("AckTopic")
         self.ErrorMsg = params.get("ErrorMsg")
         self.SubName = params.get("SubName")
+        self.MessageIDList = params.get("MessageIDList")
+        self.MessagesPayload = params.get("MessagesPayload")
         self.RequestId = params.get("RequestId")
 
 
@@ -5524,18 +5550,18 @@ class RocketMQClusterConfig(AbstractModel):
 
 
 class RocketMQClusterDetail(AbstractModel):
-    """Tenant RocketMQ cluster details
+    """Details of the tenant’s RocketMQ cluster
 
     """
 
     def __init__(self):
         r"""
-        :param Info: Cluster's basic information
+        :param Info: Basic cluster information.
         :type Info: :class:`tencentcloud.tdmq.v20200217.models.RocketMQClusterInfo`
-        :param Config: Cluster configuration information
+        :param Config: Cluster configuration information.
         :type Config: :class:`tencentcloud.tdmq.v20200217.models.RocketMQClusterConfig`
-        :param Status: Cluster status. 0: creating; 1: normal; 2: terminating; 3: deleted; 4. isolated; 5. creation failed; 6: deletion failed
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Status: Cluster status. 0: Creating; 1: Normal; 2: Terminating; 3: Deleted; 4. Isolated; 5. Creation failed; 6: Deletion failed.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Status: int
         """
         self.Info = None
@@ -5657,34 +5683,34 @@ class RocketMQGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Consumer group name
+        :param Name: Consumer group name.
         :type Name: str
-        :param ConsumerNum: Number of online consumers
+        :param ConsumerNum: The number of online consumers.
         :type ConsumerNum: int
-        :param TPS: Consumption TPS
+        :param TPS: Consumption TPS.
         :type TPS: int
-        :param TotalAccumulative: Total number of retained messages
+        :param TotalAccumulative: The total number of heaped messages.
         :type TotalAccumulative: int
-        :param ConsumptionMode: 0: cluster consumption mode; 1: broadcast consumption mode; -1: unknown
+        :param ConsumptionMode: 0: Cluster consumption mode; 1: Broadcast consumption mode; -1: Unknown.
         :type ConsumptionMode: int
-        :param ReadEnabled: Whether to allow consumption
+        :param ReadEnabled: Whether to allow consumption.
         :type ReadEnabled: bool
-        :param RetryPartitionNum: Number of partitions in the retry letter topic
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param RetryPartitionNum: The number of partitions in a retry topic.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type RetryPartitionNum: int
-        :param CreateTime: Creation time in milliseconds
+        :param CreateTime: Creation time in milliseconds.
         :type CreateTime: int
-        :param UpdateTime: Modification time in milliseconds
+        :param UpdateTime: Modification time in milliseconds.
         :type UpdateTime: int
-        :param ClientProtocol: Client protocol
+        :param ClientProtocol: Client protocol.
         :type ClientProtocol: str
-        :param Remark: Remarks
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Remark: Description.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Remark: str
-        :param ConsumerType: Consumer type. Enumerated values: ACTIVELY, PASSIVELY
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ConsumerType: Consumer type. Enumerated values: `ACTIVELY` or `PASSIVELY`.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ConsumerType: str
-        :param BroadcastEnabled: Whether to enable broadcast consumption
+        :param BroadcastEnabled: Whether to enable broadcast consumption.
         :type BroadcastEnabled: bool
         """
         self.Name = None
@@ -5732,20 +5758,28 @@ class RocketMQNamespace(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NamespaceId: Namespace name, which can contain 3–64 letters, digits, hyphens, and underscores
+        :param NamespaceId: Namespace name, which can contain 3–64 letters, digits, hyphens, and underscores.
         :type NamespaceId: str
         :param Ttl: Retention period for unconsumed messages in milliseconds. Valid range: 60 seconds–15 days.
         :type Ttl: int
-        :param RetentionTime: Retention period for persisted messages in milliseconds
+        :param RetentionTime: Retention period for persistently stored messages in milliseconds.
         :type RetentionTime: int
-        :param Remark: Remarks
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Remark: Description.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Remark: str
+        :param PublicEndpoint: Public network access point address.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PublicEndpoint: str
+        :param VpcEndpoint: VPC access point address.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VpcEndpoint: str
         """
         self.NamespaceId = None
         self.Ttl = None
         self.RetentionTime = None
         self.Remark = None
+        self.PublicEndpoint = None
+        self.VpcEndpoint = None
 
 
     def _deserialize(self, params):
@@ -5753,6 +5787,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Ttl = params.get("Ttl")
         self.RetentionTime = params.get("RetentionTime")
         self.Remark = params.get("Remark")
+        self.PublicEndpoint = params.get("PublicEndpoint")
+        self.VpcEndpoint = params.get("VpcEndpoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5769,16 +5805,16 @@ class RocketMQTopic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Topic name
+        :param Name: Topic name.
         :type Name: str
-        :param Remark: Remarks
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Remark: Description.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Remark: str
-        :param PartitionNum: Number of read/write partitions
+        :param PartitionNum: The number of read/write partitions.
         :type PartitionNum: int
-        :param CreateTime: Creation time in milliseconds
+        :param CreateTime: Creation time in milliseconds.
         :type CreateTime: int
-        :param UpdateTime: Creation time in milliseconds
+        :param UpdateTime: Creation time in milliseconds.
         :type UpdateTime: int
         """
         self.Name = None
@@ -6147,58 +6183,58 @@ class Subscription(AbstractModel):
         :param EnvironmentId: Environment (namespace) name.
         :type EnvironmentId: str
         :param ConnectedSince: The time when the consumer started connecting.
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type ConnectedSince: str
         :param ConsumerAddr: Consumer address.
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ConsumerAddr: str
-        :param ConsumerCount: Number of consumers.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ConsumerCount: The number of consumers.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ConsumerCount: str
         :param ConsumerName: Consumer name.
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ConsumerName: str
-        :param MsgBacklog: Number of retained messages.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param MsgBacklog: The number of heaped messages.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MsgBacklog: str
-        :param MsgRateExpired: Proportion of messages under this subscription that were discarded but not sent after TTL.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param MsgRateExpired: Percentage of messages under this subscription that were discarded but not sent after TTL.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MsgRateExpired: str
-        :param MsgRateOut: Sum of the numbers of messages delivered by the consumer per second.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param MsgRateOut: The total number of messages delivered by the consumer per second.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MsgRateOut: str
-        :param MsgThroughputOut: Number of bytes of messages consumed by the consumer per second.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param MsgThroughputOut: The size (in bytes) of messages consumed by the consumer per second.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MsgThroughputOut: str
         :param SubscriptionName: Subscription name.
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SubscriptionName: str
         :param ConsumerSets: Set of consumers.
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ConsumerSets: list of Consumer
-        :param IsOnline: Whether it is online.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param IsOnline: Whether the consumer is online.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type IsOnline: bool
         :param ConsumersScheduleSets: Set of consumption progress information.
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ConsumersScheduleSets: list of ConsumersSchedule
         :param Remark: Remarks.
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Remark: str
         :param CreateTime: Creation time.
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateTime: str
-        :param UpdateTime: Modification time.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param UpdateTime: Last modified.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type UpdateTime: str
         :param SubType: Subscription type. Valid values: `Exclusive`, `Shared`, `Failover`, and `Key_Shared`. An empty string or `NULL`: Unknown.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SubType: str
         :param BlockedSubscriptionOnUnackedMsgs: Whether messages are blocked as the limit of unacknowledged messages has been reached.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type BlockedSubscriptionOnUnackedMsgs: bool
-        :param MaxUnackedMsgNum: Maximum number of unacknowledged messages.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param MaxUnackedMsgNum: The maximum number of unacknowledged messages.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MaxUnackedMsgNum: int
         """
         self.TopicName = None
@@ -6331,79 +6367,79 @@ class Topic(AbstractModel):
     def __init__(self):
         r"""
         :param AverageMsgSize: Average size of the messages published in the last interval in bytes.
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type AverageMsgSize: str
-        :param ConsumerCount: Number of consumers.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ConsumerCount: The number of consumers.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ConsumerCount: str
-        :param LastConfirmedEntry: Total number of recorded messages.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param LastConfirmedEntry: The total number of recorded messages.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type LastConfirmedEntry: str
         :param LastLedgerCreatedTimestamp: Time when the last ledger was created.
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type LastLedgerCreatedTimestamp: str
-        :param MsgRateIn: Number of messages published by local and replicated publishers per second.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param MsgRateIn: The number of messages published by local and replicated publishers per second.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MsgRateIn: str
-        :param MsgRateOut: Sum of the numbers of messages delivered by local and replicated consumers per second.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param MsgRateOut: The total number of messages delivered by local and replicated consumers per second.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MsgRateOut: str
-        :param MsgThroughputIn: Number of bytes of messages published by local and replicated publishers per second.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param MsgThroughputIn: The size (in bytes) of messages published by local and replicated publishers per second.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MsgThroughputIn: str
-        :param MsgThroughputOut: Number of bytes of messages delivered by local and replicated consumers per second.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param MsgThroughputOut: The size (in bytes) of messages delivered by local and replicated consumers per second.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MsgThroughputOut: str
-        :param NumberOfEntries: Total number of recorded messages.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param NumberOfEntries: The total number of recorded messages.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type NumberOfEntries: str
-        :param Partitions: Number of partitions ≤ 0: there are no subpartitions in the topic.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Partitions: Partition count ≤ 0: there are no subpartitions in the topic.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Partitions: int
-        :param ProducerCount: Number of producers.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ProducerCount: The number of producers.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ProducerCount: str
-        :param TotalSize: Total amount of all stored messages in bytes.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param TotalSize: The size of all stored messages in bytes.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TotalSize: str
         :param SubTopicSets: Subpartitions in a partitioned topic.
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SubTopicSets: list of PartitionsTopic
         :param TopicType: Topic type description:
-0: general message;
-1: globally sequential message;
-2: partitionally sequential message;
-3: retry letter queue;
-4: dead letter queue;
-5: transaction message.
-Note: this field may return null, indicating that no valid values can be obtained.
+0: General message;
+1: Globally sequential message;
+2: Partitionally sequential message;
+3: Retry letter topic;
+4: Dead letter topic;
+5: Transaction message.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TopicType: int
         :param EnvironmentId: Environment (namespace) name.
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type EnvironmentId: str
         :param TopicName: Topic name.
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TopicName: str
         :param Remark: Remarks (up to 128 characters).
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Remark: str
         :param CreateTime: Creation time.
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateTime: str
-        :param UpdateTime: Modification time.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param UpdateTime: Last modified.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type UpdateTime: str
-        :param ProducerLimit: Maximum number of producers.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ProducerLimit: The maximum number of producers.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ProducerLimit: str
-        :param ConsumerLimit: Maximum number of consumers.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ConsumerLimit: The maximum number of consumers.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ConsumerLimit: str
         :param PulsarTopicType: `0`: Non-persistent and non-partitioned
 `1`: Non-persistent and partitioned
 `2`: Persistent and non-partitioned
 `3`: Persistent and partitioned
-Note: This field may return `null`, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type PulsarTopicType: int
         """
         self.AverageMsgSize = None

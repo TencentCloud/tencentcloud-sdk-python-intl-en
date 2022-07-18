@@ -1912,7 +1912,26 @@ class TdmqClient(AbstractClient):
 
 
     def ReceiveMessage(self, request):
-        """This API is used to receive messages sent to the specified topic.
+        """This API is used to receive messages sent to a specified topic. If this API is called when there are no messages in the topic, the `ReceiveTimeout` exception will be reported.
+
+        Instructions on how to use `BatchReceivePolicy`:
+
+        `BatchReceive` has the three parameters:
+
+        ● `MaxNumMessages`: The maximum number of messages returned by `Receive` when `BatchReceive` is used.
+        ● `MaxNumBytes`: The maximum size (in bytes) of the message returned by `Receive` when `BatchReceive` is used.
+        ● `Timeout`: The maximum timeout period (in milliseconds) of calling `Receive` when `BatchReceive` is used.
+
+        By default, if you don’t specify any of the three parameters, the `BatchReceive` feature is disabled; if one of the three parameter values is above zero, `BatchReceive` is enabled. `BatchReceive` will be disabled when any of the three parameter values reaches the threshold you specify.
+
+        Note: The values of both `MaxNumMessages` and `MaxNumBytes` are subject to the value of `ReceiveQueueSize`. If the values of `ReceiveQueueSize` and `MaxNumMessages` are 5 and 10, respectively, you can receive up to five rather than 10 messages when `BatchReceive` is used.
+
+
+
+        The API configured with `BatchReceivePolicy` returns multiple messages at a time.
+
+        1. These messages are separated by “###”. After receiving them, you can separate them with split tools in different languages.
+        2. MessageIDs are separated by “###”. After receiving the messages, you can separate the MessageIDs with split tools in different languages, so that you can obtain the `MessageID` field information required for calling the `AcknowledgeMessage` API.
 
         :param request: Request instance for ReceiveMessage.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ReceiveMessageRequest`
