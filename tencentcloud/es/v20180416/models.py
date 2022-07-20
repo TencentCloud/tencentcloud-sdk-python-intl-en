@@ -2153,6 +2153,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type DiskCount: int
         :param DiskEncrypt: Whether to encrypt node disk. 0: no (default); 1: yes.
         :type DiskEncrypt: int
+        :param CpuNum: CPU number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CpuNum: int
+        :param MemSize: Memory size in GB
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MemSize: int
         """
         self.NodeNum = None
         self.NodeType = None
@@ -2162,6 +2168,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.LocalDiskInfo = None
         self.DiskCount = None
         self.DiskEncrypt = None
+        self.CpuNum = None
+        self.MemSize = None
 
 
     def _deserialize(self, params):
@@ -2175,6 +2183,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.LocalDiskInfo._deserialize(params.get("LocalDiskInfo"))
         self.DiskCount = params.get("DiskCount")
         self.DiskEncrypt = params.get("DiskEncrypt")
+        self.CpuNum = params.get("CpuNum")
+        self.MemSize = params.get("MemSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
