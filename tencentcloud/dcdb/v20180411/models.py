@@ -422,6 +422,10 @@ class CreateAccountRequest(AbstractModel):
         :param DelayThresh: If the secondary delay exceeds the set value of this parameter, the secondary will be deemed to have failed.
 It is recommended that this parameter be set to a value greater than 10. This parameter takes effect when `ReadOnly` is 1 or 2.
         :type DelayThresh: int
+        :param SlaveConst: Whether to specify a replica server for read-only account. Valid values: `0` (No replica server is specified, which means that the proxy will select another available replica server to keep connection with the client if the current replica server doesn’t meet the requirement). `1` (The replica server is specified, which means that the connection will be disconnected if the specified replica server doesn’t meet the requirement.)
+        :type SlaveConst: int
+        :param MaxUserConnections: Maximum number of connections. If left empty or `0` is passed in, the connections will be unlimited. This parameter configuration is not supported for kernel version 10.1.
+        :type MaxUserConnections: int
         """
         self.InstanceId = None
         self.UserName = None
@@ -430,6 +434,8 @@ It is recommended that this parameter be set to a value greater than 10. This pa
         self.ReadOnly = None
         self.Description = None
         self.DelayThresh = None
+        self.SlaveConst = None
+        self.MaxUserConnections = None
 
 
     def _deserialize(self, params):
@@ -440,6 +446,8 @@ It is recommended that this parameter be set to a value greater than 10. This pa
         self.ReadOnly = params.get("ReadOnly")
         self.Description = params.get("Description")
         self.DelayThresh = params.get("DelayThresh")
+        self.SlaveConst = params.get("SlaveConst")
+        self.MaxUserConnections = params.get("MaxUserConnections")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -656,6 +664,8 @@ class DBAccount(AbstractModel):
         :param DelayThresh: If the replica delay exceeds the set value of this parameter, the replica will be considered to have failed.
 Set this parameter to a value above 10. This parameter takes effect when `ReadOnly` is 1 or 2.
         :type DelayThresh: int
+        :param SlaveConst: Whether to specify a replica server for read-only account. Valid values: `0` (No replica server is specified, which means that the proxy will select another available replica server to keep connection with the client if the current replica server doesn’t meet the requirement). `1` (The replica server is specified, which means that the connection will be disconnected if the specified replica server doesn’t meet the requirement.)
+        :type SlaveConst: int
         """
         self.UserName = None
         self.Host = None
@@ -664,6 +674,7 @@ Set this parameter to a value above 10. This parameter takes effect when `ReadOn
         self.UpdateTime = None
         self.ReadOnly = None
         self.DelayThresh = None
+        self.SlaveConst = None
 
 
     def _deserialize(self, params):
@@ -674,6 +685,7 @@ Set this parameter to a value above 10. This parameter takes effect when `ReadOn
         self.UpdateTime = params.get("UpdateTime")
         self.ReadOnly = params.get("ReadOnly")
         self.DelayThresh = params.get("DelayThresh")
+        self.SlaveConst = params.get("SlaveConst")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

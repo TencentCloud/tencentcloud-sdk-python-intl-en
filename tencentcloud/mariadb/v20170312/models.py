@@ -404,6 +404,10 @@ class CreateAccountRequest(AbstractModel):
         :type Description: str
         :param DelayThresh: Determines whether the secondary is unavailable based on the passed-in time
         :type DelayThresh: int
+        :param SlaveConst: Whether to specify a replica server for read-only account. Valid values: `0` (No replica server is specified, which means that the proxy will select another available replica server to keep connection with the client if the current replica server doesn’t meet the requirement). `1` (The replica server is specified, which means that the connection will be disconnected if the specified replica server doesn’t meet the requirement.)
+        :type SlaveConst: int
+        :param MaxUserConnections: Maximum number of connections. If left empty or `0` is passed in, the connections will be unlimited. This parameter configuration is not supported for kernel version 10.1.
+        :type MaxUserConnections: int
         """
         self.InstanceId = None
         self.UserName = None
@@ -412,6 +416,8 @@ class CreateAccountRequest(AbstractModel):
         self.ReadOnly = None
         self.Description = None
         self.DelayThresh = None
+        self.SlaveConst = None
+        self.MaxUserConnections = None
 
 
     def _deserialize(self, params):
@@ -422,6 +428,8 @@ class CreateAccountRequest(AbstractModel):
         self.ReadOnly = params.get("ReadOnly")
         self.Description = params.get("Description")
         self.DelayThresh = params.get("DelayThresh")
+        self.SlaveConst = params.get("SlaveConst")
+        self.MaxUserConnections = params.get("MaxUserConnections")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -618,6 +626,8 @@ class DBAccount(AbstractModel):
         :param DelayThresh: This field is meaningful for read-only accounts, indicating that a replica should be selected if its delay from the primary is less than this value.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DelayThresh: int
+        :param SlaveConst: Whether to specify a replica server for read-only account. Valid values: `0` (No replica server is specified, which means that the proxy will select another available replica server to keep connection with the client if the current replica server doesn’t meet the requirement). `1` (The replica server is specified, which means that the connection will be disconnected if the specified replica server doesn’t meet the requirement.)
+        :type SlaveConst: int
         """
         self.UserName = None
         self.Host = None
@@ -626,6 +636,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.UpdateTime = None
         self.ReadOnly = None
         self.DelayThresh = None
+        self.SlaveConst = None
 
 
     def _deserialize(self, params):
@@ -636,6 +647,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.UpdateTime = params.get("UpdateTime")
         self.ReadOnly = params.get("ReadOnly")
         self.DelayThresh = params.get("DelayThresh")
+        self.SlaveConst = params.get("SlaveConst")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2285,6 +2297,55 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Groups.append(obj)
         self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DestroyDBInstanceRequest(AbstractModel):
+    """DestroyDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of “tdsqlshard-c1nl9rpv”. It is the same as the instance ID displayed in the TencentDB for MariaDB console.
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DestroyDBInstanceResponse(AbstractModel):
+    """DestroyDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID, which is the same as the request parameter `InstanceId`.
+        :type InstanceId: str
+        :param FlowId: Async task ID, which can be used in the [DescribeFlow](https://intl.cloud.tencent.com/document/product/557/56485?from_cn_redirect=1) API to query the async task result.
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
 
 

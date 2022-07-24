@@ -2378,7 +2378,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: Size of the instance list. If no value is specified for this parameter, it will be 20 by default. If the specified value is greater than the `DescribeInstancesPageLimit` configuration item in the specific configuration file `etc/conf/component.properties` (which is 1,000 by default if the configuration cannot be read), then the configuration item shall prevail.
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 1000.
         :type Limit: int
         :param Offset: Offset, which is an integral multiple of `Limit`.
         :type Offset: int
@@ -2426,6 +2426,8 @@ class DescribeInstancesRequest(AbstractModel):
         :type InstanceTags: list of InstanceTagInfo
         :param TagKeys: Filters resources by tag key. If this parameter is not specified or is an empty array, resources will not be filtered.
         :type TagKeys: list of str
+        :param ProductVersions: Product editions to be filtered. Valid values: `local` (local disk edition), `cloud` (cloud disk edition), `cdc` (dedicated cluster edition). If this parameter is not passed in, the product will not be filtered by default.
+        :type ProductVersions: list of str
         """
         self.Limit = None
         self.Offset = None
@@ -2451,6 +2453,7 @@ class DescribeInstancesRequest(AbstractModel):
         self.MonitorVersion = None
         self.InstanceTags = None
         self.TagKeys = None
+        self.ProductVersions = None
 
 
     def _deserialize(self, params):
@@ -2483,6 +2486,7 @@ class DescribeInstancesRequest(AbstractModel):
                 obj._deserialize(item)
                 self.InstanceTags.append(obj)
         self.TagKeys = params.get("TagKeys")
+        self.ProductVersions = params.get("ProductVersions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

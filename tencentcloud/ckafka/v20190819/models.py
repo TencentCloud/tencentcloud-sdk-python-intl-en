@@ -1874,6 +1874,24 @@ class DescribeCkafkaZoneRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param CdcId: Cloud Dedicated Cluster (CDC) business parameter.
+        :type CdcId: str
+        """
+        self.CdcId = None
+
+
+    def _deserialize(self, params):
+        self.CdcId = params.get("CdcId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeCkafkaZoneResponse(AbstractModel):
     """DescribeCkafkaZone response structure.
@@ -2385,16 +2403,20 @@ class DescribeRegionRequest(AbstractModel):
         :type Limit: int
         :param Business: Business field, which can be ignored.
         :type Business: str
+        :param CdcId: CDC business field, which can be ignored.
+        :type CdcId: str
         """
         self.Offset = None
         self.Limit = None
         self.Business = None
+        self.CdcId = None
 
 
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.Business = params.get("Business")
+        self.CdcId = params.get("CdcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3639,6 +3661,11 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param PublicNetwork: Public network bandwidth.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type PublicNetwork: int
+        :param ClusterType: Instance type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ClusterType: str
+        :param Features: 
+        :type Features: list of str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -3670,6 +3697,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.PartitionNumber = None
         self.PublicNetworkChargeType = None
         self.PublicNetwork = None
+        self.ClusterType = None
+        self.Features = None
 
 
     def _deserialize(self, params):
@@ -3713,6 +3742,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.PartitionNumber = params.get("PartitionNumber")
         self.PublicNetworkChargeType = params.get("PublicNetworkChargeType")
         self.PublicNetwork = params.get("PublicNetwork")
+        self.ClusterType = params.get("ClusterType")
+        self.Features = params.get("Features")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4608,7 +4639,7 @@ class SendMessageRequest(AbstractModel):
         r"""
         :param DataHubId: Datahub access ID.
         :type DataHubId: str
-        :param Message: Message content that is sent.
+        :param Message: Content of the message that has been sent. Up to 500 messages can be sent in a single request.
         :type Message: list of BatchContent
         """
         self.DataHubId = None
