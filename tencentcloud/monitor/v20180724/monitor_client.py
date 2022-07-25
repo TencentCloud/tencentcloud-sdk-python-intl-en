@@ -26,6 +26,35 @@ class MonitorClient(AbstractClient):
     _service = 'monitor'
 
 
+    def BindPrometheusManagedGrafana(self, request):
+        """This API is used to bind a Grafana instance.
+
+        :param request: Request instance for BindPrometheusManagedGrafana.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.BindPrometheusManagedGrafanaRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.BindPrometheusManagedGrafanaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindPrometheusManagedGrafana", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BindPrometheusManagedGrafanaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def BindingPolicyObject(self, request):
         """This API is used to bind an alarm policy to a specific object.
 
@@ -113,6 +142,66 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAlertRule(self, request):
+        """This API is used to create a Prometheus alerting rule.
+
+        Note that alert object and alert message are special fields of Prometheus Rule Annotations, which need to be passed in through `annotations` and correspond to `summary` and `description` keys respectively. For more information, see [Alerting rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/).
+
+        :param request: Request instance for CreateAlertRule.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.CreateAlertRuleRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.CreateAlertRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAlertRule", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAlertRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateExporterIntegration(self, request):
+        """This API is used to create an exporter integration.
+
+        :param request: Request instance for CreateExporterIntegration.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.CreateExporterIntegrationRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.CreateExporterIntegrationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateExporterIntegration", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateExporterIntegrationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreatePolicyGroup(self, request):
         """This API is used to add a policy group.
 
@@ -128,6 +217,153 @@ class MonitorClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePolicyGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreatePrometheusAgent(self, request):
+        """This API is used to create a Prometheus CVM agent.
+
+        :param request: Request instance for CreatePrometheusAgent.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusAgentRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusAgentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePrometheusAgent", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePrometheusAgentResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreatePrometheusMultiTenantInstancePostPayMode(self, request):
+        """This API is used to create a pay-as-you-go Prometheus instance.
+
+        :param request: Request instance for CreatePrometheusMultiTenantInstancePostPayMode.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusMultiTenantInstancePostPayModeRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusMultiTenantInstancePostPayModeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePrometheusMultiTenantInstancePostPayMode", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePrometheusMultiTenantInstancePostPayModeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreatePrometheusScrapeJob(self, request):
+        """This API is used to create a Prometheus scrape task.
+
+        :param request: Request instance for CreatePrometheusScrapeJob.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusScrapeJobRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusScrapeJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePrometheusScrapeJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePrometheusScrapeJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateRecordingRule(self, request):
+        """This API is used to create a Prometheus recording rule.
+
+        :param request: Request instance for CreateRecordingRule.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.CreateRecordingRuleRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.CreateRecordingRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRecordingRule", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateRecordingRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateServiceDiscovery(self, request):
+        """This API is used to create a Prometheus scrape configuration in TKE.
+        <p>Note: The prerequisite is that the corresponding TKE service has been integrated through the Prometheus console. For more information, see
+        <a href="https://intl.cloud.tencent.com/document/product/248/48859?from_cn_redirect=1" target="_blank">Agent Management</a>.</p>
+
+        :param request: Request instance for CreateServiceDiscovery.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.CreateServiceDiscoveryRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.CreateServiceDiscoveryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateServiceDiscovery", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateServiceDiscoveryResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -200,6 +436,64 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteAlertRules(self, request):
+        """This API is used to batch delete Prometheus alerting rules.
+
+        :param request: Request instance for DeleteAlertRules.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteAlertRulesRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DeleteAlertRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAlertRules", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAlertRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteExporterIntegration(self, request):
+        """This API is used to delete an exporter integration.
+
+        :param request: Request instance for DeleteExporterIntegration.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteExporterIntegrationRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DeleteExporterIntegrationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteExporterIntegration", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteExporterIntegrationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeletePolicyGroup(self, request):
         """This API is used to delete an alarm policy group.
 
@@ -215,6 +509,64 @@ class MonitorClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePolicyGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeletePrometheusScrapeJobs(self, request):
+        """This API is used to delete a Prometheus scrape task.
+
+        :param request: Request instance for DeletePrometheusScrapeJobs.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DeletePrometheusScrapeJobsRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DeletePrometheusScrapeJobsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeletePrometheusScrapeJobs", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeletePrometheusScrapeJobsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteRecordingRules(self, request):
+        """This API is used to batch delete Prometheus recording rules.
+
+        :param request: Request instance for DeleteRecordingRules.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteRecordingRulesRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DeleteRecordingRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRecordingRules", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteRecordingRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -492,6 +844,35 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAlertRules(self, request):
+        """This API is used to query a Prometheus alerting rule.
+
+        :param request: Request instance for DescribeAlertRules.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlertRulesRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeAlertRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAlertRules", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAlertRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAllNamespaces(self, request):
         """This API is used to query all namespaces.
 
@@ -623,6 +1004,35 @@ class MonitorClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeConditionsTemplateListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeExporterIntegrations(self, request):
+        """This API is used to query the list of exporter integrations.
+
+        :param request: Request instance for DescribeExporterIntegrations.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeExporterIntegrationsRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeExporterIntegrationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExporterIntegrations", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeExporterIntegrationsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -782,6 +1192,157 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePrometheusAgents(self, request):
+        """This API is used to list Prometheus CVM agents.
+
+        :param request: Request instance for DescribePrometheusAgents.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusAgentsRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusAgentsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrometheusAgents", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePrometheusAgentsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePrometheusInstances(self, request):
+        """This API is used to query the details of one or multiple instances.
+        <ul>
+        <li>You can query the details of an instance by its ID, name, or status.</li>
+        <li>If this parameter is empty, the information of a certain number of instances under the current account will be returned. The number is specified by `Limit` and is 20 by default.</li>
+        </ul>
+
+        :param request: Request instance for DescribePrometheusInstances.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusInstancesRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrometheusInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePrometheusInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePrometheusScrapeJobs(self, request):
+        """This API is used to list Prometheus scrape tasks.
+
+        :param request: Request instance for DescribePrometheusScrapeJobs.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusScrapeJobsRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusScrapeJobsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrometheusScrapeJobs", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePrometheusScrapeJobsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRecordingRules(self, request):
+        """This API is used to query Prometheus recording rules by filter.
+
+        :param request: Request instance for DescribeRecordingRules.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeRecordingRulesRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeRecordingRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRecordingRules", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRecordingRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeServiceDiscovery(self, request):
+        """This API is used to list Prometheus scrape configurations in TKE.
+        <p>Note: The prerequisite is that the corresponding TKE service has been integrated through the Prometheus console. For more information, see
+        <a href="https://intl.cloud.tencent.com/document/product/248/48859?from_cn_redirect=1" target="_blank">Agent Management</a>.</p>
+
+        :param request: Request instance for DescribeServiceDiscovery.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeServiceDiscoveryRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeServiceDiscoveryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeServiceDiscovery", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeServiceDiscoveryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeStatisticData(self, request):
         """This API is used to query monitoring data by dimension conditions.
 
@@ -797,6 +1358,35 @@ class MonitorClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStatisticDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DestroyPrometheusInstance(self, request):
+        """This API is used to delete the data of a Prometheus instance. The specified instance must be terminated first.
+
+        :param request: Request instance for DestroyPrometheusInstance.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DestroyPrometheusInstanceRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DestroyPrometheusInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DestroyPrometheusInstance", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DestroyPrometheusInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -829,6 +1419,35 @@ class MonitorClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetMonitorDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetPrometheusAgentManagementCommand(self, request):
+        """This API is used to get the command line for Prometheus agent management.
+
+        :param request: Request instance for GetPrometheusAgentManagementCommand.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.GetPrometheusAgentManagementCommandRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.GetPrometheusAgentManagementCommandResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetPrometheusAgentManagementCommand", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetPrometheusAgentManagementCommandResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1075,6 +1694,35 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyPrometheusInstanceAttributes(self, request):
+        """This API is used to modify the attributes of a Prometheus instance.
+
+        :param request: Request instance for ModifyPrometheusInstanceAttributes.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyPrometheusInstanceAttributesRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.ModifyPrometheusInstanceAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPrometheusInstanceAttributes", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyPrometheusInstanceAttributesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def PutMonitorData(self, request):
         """The default API request rate limit is 50 requests/sec.
         The default upper limit on metrics of a single tenant is 100.
@@ -1169,6 +1817,35 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def TerminatePrometheusInstances(self, request):
+        """This API is used to terminate a pay-as-you-go Prometheus instance.
+
+        :param request: Request instance for TerminatePrometheusInstances.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.TerminatePrometheusInstancesRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.TerminatePrometheusInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TerminatePrometheusInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TerminatePrometheusInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UnBindingAllPolicyObject(self, request):
         """This API is used to delete all bound objects.
 
@@ -1213,6 +1890,269 @@ class MonitorClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnBindingPolicyObjectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnbindPrometheusManagedGrafana(self, request):
+        """This API is used to unbind a Grafana instance from an instance.
+
+        :param request: Request instance for UnbindPrometheusManagedGrafana.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.UnbindPrometheusManagedGrafanaRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.UnbindPrometheusManagedGrafanaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UnbindPrometheusManagedGrafana", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnbindPrometheusManagedGrafanaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UninstallGrafanaDashboard(self, request):
+        """This API is used to delete a Grafana dashboard.
+
+        :param request: Request instance for UninstallGrafanaDashboard.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.UninstallGrafanaDashboardRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.UninstallGrafanaDashboardResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UninstallGrafanaDashboard", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UninstallGrafanaDashboardResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateAlertRule(self, request):
+        """This API is used to update a Prometheus alerting rule.
+
+        Note that alert object and alert message are special fields of Prometheus Rule Annotations, which need to be passed in through `annotations` and correspond to `summary` and `description` keys respectively. For more information, see [Alerting rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/).
+
+        :param request: Request instance for UpdateAlertRule.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateAlertRuleRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.UpdateAlertRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateAlertRule", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateAlertRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateAlertRuleState(self, request):
+        """This API is used to update the status of a Prometheus alerting rule.
+
+        :param request: Request instance for UpdateAlertRuleState.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateAlertRuleStateRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.UpdateAlertRuleStateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateAlertRuleState", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateAlertRuleStateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateExporterIntegration(self, request):
+        """This API is used to update the exporter integration configuration.
+
+        :param request: Request instance for UpdateExporterIntegration.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateExporterIntegrationRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.UpdateExporterIntegrationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateExporterIntegration", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateExporterIntegrationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdatePrometheusAgentStatus(self, request):
+        """This API is used to update the status of a Prometheus CVM agent.
+
+        :param request: Request instance for UpdatePrometheusAgentStatus.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.UpdatePrometheusAgentStatusRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.UpdatePrometheusAgentStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdatePrometheusAgentStatus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdatePrometheusAgentStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdatePrometheusScrapeJob(self, request):
+        """This API is used to update a Prometheus scrape task.
+
+        :param request: Request instance for UpdatePrometheusScrapeJob.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.UpdatePrometheusScrapeJobRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.UpdatePrometheusScrapeJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdatePrometheusScrapeJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdatePrometheusScrapeJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateRecordingRule(self, request):
+        """This API is used to update a Prometheus recording rule.
+
+        :param request: Request instance for UpdateRecordingRule.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateRecordingRuleRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.UpdateRecordingRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateRecordingRule", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateRecordingRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpgradeGrafanaDashboard(self, request):
+        """This API is used to update a Grafana dashboard.
+
+        :param request: Request instance for UpgradeGrafanaDashboard.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.UpgradeGrafanaDashboardRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.UpgradeGrafanaDashboardResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeGrafanaDashboard", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpgradeGrafanaDashboardResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

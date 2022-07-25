@@ -202,7 +202,7 @@ class GaapClient(AbstractClient):
 
 
     def CloseSecurityPolicy(self, request):
-        """This API is used to disable security policies.
+        """This API is used to disable a security policy.
 
         :param request: Request instance for CloseSecurityPolicy.
         :type request: :class:`tencentcloud.gaap.v20180529.models.CloseSecurityPolicyRequest`
@@ -638,7 +638,7 @@ class GaapClient(AbstractClient):
 
 
     def DeleteCertificate(self, request):
-        """This API (DeleteCertificate) is used to delete certificates.
+        """This API is used to delete a certificate.
 
         :param request: Request instance for DeleteCertificate.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DeleteCertificateRequest`
@@ -812,7 +812,7 @@ class GaapClient(AbstractClient):
 
 
     def DeleteSecurityPolicy(self, request):
-        """This API is used to delete security policies.
+        """This API is used to delete a security policy.
 
         :param request: Request instance for DeleteSecurityPolicy.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DeleteSecurityPolicyRequest`
@@ -2466,7 +2466,7 @@ class GaapClient(AbstractClient):
 
 
     def OpenSecurityPolicy(self, request):
-        """This API is used to enable security policies.
+        """This API is used to enable a security policy.
 
         :param request: Request instance for OpenSecurityPolicy.
         :type request: :class:`tencentcloud.gaap.v20180529.models.OpenSecurityPolicyRequest`

@@ -752,6 +752,51 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class BindPrometheusManagedGrafanaRequest(AbstractModel):
+    """BindPrometheusManagedGrafana request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Prometheus instance ID
+        :type InstanceId: str
+        :param GrafanaId: Grafana instance ID
+        :type GrafanaId: str
+        """
+        self.InstanceId = None
+        self.GrafanaId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.GrafanaId = params.get("GrafanaId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindPrometheusManagedGrafanaResponse(AbstractModel):
+    """BindPrometheusManagedGrafana response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class BindingPolicyObjectDimension(AbstractModel):
     """Dimensions of instances bound to a policy
 
@@ -1238,6 +1283,162 @@ class CreateAlarmPolicyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateAlertRuleRequest(AbstractModel):
+    """CreateAlertRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Prometheus instance ID
+        :type InstanceId: str
+        :param RuleName: Rule name
+        :type RuleName: str
+        :param Expr: Rule expression
+        :type Expr: str
+        :param Receivers: List of alert notification template IDs
+        :type Receivers: list of str
+        :param RuleState: Rule status code. Valid values:
+<li>2=RuleEnabled</li>
+<li>3=RuleDisabled</li>
+        :type RuleState: int
+        :param Duration: Rule alert duration
+        :type Duration: str
+        :param Labels: List of tags
+        :type Labels: list of PrometheusRuleKV
+        :param Annotations: List of annotations.
+
+Alert object and alert message are special fields of Prometheus Rule Annotations, which need to be passed in through `annotations` and correspond to `summary` and `description` keys respectively.
+        :type Annotations: list of PrometheusRuleKV
+        :param Type: Alerting rule template category
+        :type Type: str
+        """
+        self.InstanceId = None
+        self.RuleName = None
+        self.Expr = None
+        self.Receivers = None
+        self.RuleState = None
+        self.Duration = None
+        self.Labels = None
+        self.Annotations = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RuleName = params.get("RuleName")
+        self.Expr = params.get("Expr")
+        self.Receivers = params.get("Receivers")
+        self.RuleState = params.get("RuleState")
+        self.Duration = params.get("Duration")
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = PrometheusRuleKV()
+                obj._deserialize(item)
+                self.Labels.append(obj)
+        if params.get("Annotations") is not None:
+            self.Annotations = []
+            for item in params.get("Annotations"):
+                obj = PrometheusRuleKV()
+                obj._deserialize(item)
+                self.Annotations.append(obj)
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAlertRuleResponse(AbstractModel):
+    """CreateAlertRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: Rule ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RuleId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RuleId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateExporterIntegrationRequest(AbstractModel):
+    """CreateExporterIntegration request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Kind: Type
+        :type Kind: str
+        :param Content: Integrated configuration
+        :type Content: str
+        :param KubeType: Kubernetes cluster type. Valid values:
+<li> 1 = TKE </li>
+<li> 2 = EKS </li>
+<li> 3 = MEKS </li>
+        :type KubeType: int
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        """
+        self.InstanceId = None
+        self.Kind = None
+        self.Content = None
+        self.KubeType = None
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Kind = params.get("Kind")
+        self.Content = params.get("Content")
+        self.KubeType = params.get("KubeType")
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateExporterIntegrationResponse(AbstractModel):
+    """CreateExporterIntegration response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Names: 
+        :type Names: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Names = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Names = params.get("Names")
+        self.RequestId = params.get("RequestId")
+
+
 class CreatePolicyGroupCondition(AbstractModel):
     """Alarm threshold condition passed in when a policy is created.
 
@@ -1425,6 +1626,311 @@ class CreatePolicyGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreatePrometheusAgentRequest(AbstractModel):
+    """CreatePrometheusAgent request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Name: Agent name
+        :type Name: str
+        """
+        self.InstanceId = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrometheusAgentResponse(AbstractModel):
+    """CreatePrometheusAgent response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AgentId: 
+        :type AgentId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AgentId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AgentId = params.get("AgentId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
+    """CreatePrometheusMultiTenantInstancePostPayMode request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param SubnetId: Subnet ID
+        :type SubnetId: str
+        :param DataRetentionTime: Data retention period in days. Valid values: 15, 30, 45.
+        :type DataRetentionTime: int
+        :param Zone: AZ
+        :type Zone: str
+        :param TagSpecification: Instance tag
+        :type TagSpecification: list of PrometheusTag
+        :param GrafanaInstanceId: The Grafana instance to be associated
+        :type GrafanaInstanceId: str
+        """
+        self.InstanceName = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.DataRetentionTime = None
+        self.Zone = None
+        self.TagSpecification = None
+        self.GrafanaInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceName = params.get("InstanceName")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.DataRetentionTime = params.get("DataRetentionTime")
+        self.Zone = params.get("Zone")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = PrometheusTag()
+                obj._deserialize(item)
+                self.TagSpecification.append(obj)
+        self.GrafanaInstanceId = params.get("GrafanaInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrometheusMultiTenantInstancePostPayModeResponse(AbstractModel):
+    """CreatePrometheusMultiTenantInstancePostPayMode response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreatePrometheusScrapeJobRequest(AbstractModel):
+    """CreatePrometheusScrapeJob request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param AgentId: Agent ID
+        :type AgentId: str
+        :param Config: Task content
+        :type Config: str
+        """
+        self.InstanceId = None
+        self.AgentId = None
+        self.Config = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AgentId = params.get("AgentId")
+        self.Config = params.get("Config")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrometheusScrapeJobResponse(AbstractModel):
+    """CreatePrometheusScrapeJob response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 
+        :type JobId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateRecordingRuleRequest(AbstractModel):
+    """CreateRecordingRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Recording rule name
+        :type Name: str
+        :param Group: Recording rule group content in YAML format
+        :type Group: str
+        :param InstanceId: Prometheus instance ID
+        :type InstanceId: str
+        :param RuleState: Rule status code. Valid values:
+<li>1=RuleDeleted</li>
+<li>2=RuleEnabled</li>
+<li>3=RuleDisabled</li>
+Default value: 2 (enabled).
+        :type RuleState: int
+        """
+        self.Name = None
+        self.Group = None
+        self.InstanceId = None
+        self.RuleState = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Group = params.get("Group")
+        self.InstanceId = params.get("InstanceId")
+        self.RuleState = params.get("RuleState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRecordingRuleResponse(AbstractModel):
+    """CreateRecordingRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: Rule ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RuleId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RuleId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateServiceDiscoveryRequest(AbstractModel):
+    """CreateServiceDiscovery request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Prometheus instance ID
+        :type InstanceId: str
+        :param KubeClusterId: <li>TKE: ID of the integrated TKE cluster</li>
+        :type KubeClusterId: str
+        :param KubeType: Kubernetes cluster type:
+<li> 1 = TKE </li>
+        :type KubeType: int
+        :param Type: Scrape configuration type. Valid values:
+<li> 1 = ServiceMonitor</li>
+<li> 2 = PodMonitor</li>
+<li> 3 = JobMonitor</li>
+        :type Type: int
+        :param Yaml: Scrape configuration information
+        :type Yaml: str
+        """
+        self.InstanceId = None
+        self.KubeClusterId = None
+        self.KubeType = None
+        self.Type = None
+        self.Yaml = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.KubeClusterId = params.get("KubeClusterId")
+        self.KubeType = params.get("KubeType")
+        self.Type = params.get("Type")
+        self.Yaml = params.get("Yaml")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateServiceDiscoveryResponse(AbstractModel):
+    """CreateServiceDiscovery response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceDiscovery: The scrape configuration information returned after successful creation
+        :type ServiceDiscovery: :class:`tencentcloud.monitor.v20180724.models.ServiceDiscoveryItem`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ServiceDiscovery = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ServiceDiscovery") is not None:
+            self.ServiceDiscovery = ServiceDiscoveryItem()
+            self.ServiceDiscovery._deserialize(params.get("ServiceDiscovery"))
+        self.RequestId = params.get("RequestId")
+
+
 class DataPoint(AbstractModel):
     """Monitoring data point
 
@@ -1552,6 +2058,111 @@ class DeleteAlarmPolicyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteAlertRulesRequest(AbstractModel):
+    """DeleteAlertRules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleIds: List of rule IDs
+        :type RuleIds: list of str
+        :param InstanceId: Prometheus instance ID
+        :type InstanceId: str
+        """
+        self.RuleIds = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.RuleIds = params.get("RuleIds")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAlertRulesResponse(AbstractModel):
+    """DeleteAlertRules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteExporterIntegrationRequest(AbstractModel):
+    """DeleteExporterIntegration request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param KubeType: Kubernetes cluster type. Valid values:
+<li> 1 = TKE </li>
+<li> 2 = EKS </li>
+<li> 3 = MEKS </li>
+        :type KubeType: int
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param Kind: Type
+        :type Kind: str
+        :param Name: Name
+        :type Name: str
+        """
+        self.InstanceId = None
+        self.KubeType = None
+        self.ClusterId = None
+        self.Kind = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.KubeType = params.get("KubeType")
+        self.ClusterId = params.get("ClusterId")
+        self.Kind = params.get("Kind")
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteExporterIntegrationResponse(AbstractModel):
+    """DeleteExporterIntegration response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeletePolicyGroupRequest(AbstractModel):
     """DeletePolicyGroup request structure.
 
@@ -1582,6 +2193,100 @@ class DeletePolicyGroupRequest(AbstractModel):
 
 class DeletePolicyGroupResponse(AbstractModel):
     """DeletePolicyGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeletePrometheusScrapeJobsRequest(AbstractModel):
+    """DeletePrometheusScrapeJobs request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param AgentId: Agent ID
+        :type AgentId: str
+        :param JobIds: List of task IDs
+        :type JobIds: list of str
+        """
+        self.InstanceId = None
+        self.AgentId = None
+        self.JobIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AgentId = params.get("AgentId")
+        self.JobIds = params.get("JobIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePrometheusScrapeJobsResponse(AbstractModel):
+    """DeletePrometheusScrapeJobs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteRecordingRulesRequest(AbstractModel):
+    """DeleteRecordingRules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleIds: List of rule IDs
+        :type RuleIds: list of str
+        :param InstanceId: Prometheus instance ID
+        :type InstanceId: str
+        """
+        self.RuleIds = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.RuleIds = params.get("RuleIds")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRecordingRulesResponse(AbstractModel):
+    """DeleteRecordingRules response structure.
 
     """
 
@@ -1834,7 +2539,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
         :type StartTime: int
         :param EndTime: End time, which is the current timestamp and the time when the alarm `FirstOccurTime` first occurs. An alarm record can be searched only if its `FirstOccurTime` is earlier than the `EndTime`.
         :type EndTime: int
-        :param MonitorTypes: Filter by monitoring type. Valid value: `MT_QCE` (Tencent Cloud service monitoring). If this parameter is left empty, all types will be queried by default.
+        :param MonitorTypes: Filter by monitor type. Valid values: "MT_QCE" (Tencent Cloud service monitoring), "MT_TAW" (application performance monitoring), "MT_RUM" (frontend performance monitoring), "MT_PROBE" (cloud automated testing). If this parameter is left empty, all types will be queried by default.
         :type MonitorTypes: list of str
         :param AlarmObject: Filter by alarm object. Fuzzy search with string is supported
         :type AlarmObject: str
@@ -2388,6 +3093,87 @@ class DescribeAlarmPolicyResponse(AbstractModel):
         if params.get("Policy") is not None:
             self.Policy = AlarmPolicy()
             self.Policy._deserialize(params.get("Policy"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAlertRulesRequest(AbstractModel):
+    """DescribeAlertRules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Prometheus instance ID
+        :type InstanceId: str
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param RuleId: Rule ID
+        :type RuleId: str
+        :param RuleState: Rule status code. Valid values:
+<li>2=RuleEnabled</li>
+<li>3=RuleDisabled</li>
+        :type RuleState: int
+        :param RuleName: Rule name
+        :type RuleName: str
+        :param Type: Alerting rule template category
+        :type Type: str
+        """
+        self.InstanceId = None
+        self.Limit = None
+        self.Offset = None
+        self.RuleId = None
+        self.RuleState = None
+        self.RuleName = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.RuleId = params.get("RuleId")
+        self.RuleState = params.get("RuleState")
+        self.RuleName = params.get("RuleName")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAlertRulesResponse(AbstractModel):
+    """DescribeAlertRules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Number of alerting rules
+        :type TotalCount: int
+        :param AlertRuleSet: Alerting rule details
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AlertRuleSet: list of PrometheusRuleSet
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.AlertRuleSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AlertRuleSet") is not None:
+            self.AlertRuleSet = []
+            for item in params.get("AlertRuleSet"):
+                obj = PrometheusRuleSet()
+                obj._deserialize(item)
+                self.AlertRuleSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3058,6 +3844,75 @@ Note: This field may return `null`, indicating that no valid values can be obtai
                 obj = TemplateGroup()
                 obj._deserialize(item)
                 self.TemplateGroupList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeExporterIntegrationsRequest(AbstractModel):
+    """DescribeExporterIntegrations request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param KubeType: Kubernetes cluster type. Valid values:
+<li> 1 = TKE </li>
+<li> 2 = EKS </li>
+<li> 3 = MEKS </li>
+        :type KubeType: int
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param Kind: Type
+        :type Kind: str
+        :param Name: Name
+        :type Name: str
+        """
+        self.InstanceId = None
+        self.KubeType = None
+        self.ClusterId = None
+        self.Kind = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.KubeType = params.get("KubeType")
+        self.ClusterId = params.get("ClusterId")
+        self.Kind = params.get("Kind")
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExporterIntegrationsResponse(AbstractModel):
+    """DescribeExporterIntegrations response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IntegrationSet: List of integration configurations
+        :type IntegrationSet: list of IntegrationConfiguration
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.IntegrationSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("IntegrationSet") is not None:
+            self.IntegrationSet = []
+            for item in params.get("IntegrationSet"):
+                obj = IntegrationConfiguration()
+                obj._deserialize(item)
+                self.IntegrationSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4680,6 +5535,394 @@ Note: This field may return null, indicating that no valid value was found.
         self.RequestId = params.get("RequestId")
 
 
+class DescribePrometheusAgentsRequest(AbstractModel):
+    """DescribePrometheusAgents request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Name: Agent name
+        :type Name: str
+        :param AgentIds: List of agent IDs
+        :type AgentIds: list of str
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.Name = None
+        self.AgentIds = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Name = params.get("Name")
+        self.AgentIds = params.get("AgentIds")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrometheusAgentsResponse(AbstractModel):
+    """DescribePrometheusAgents response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AgentSet: List of agents
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AgentSet: list of PrometheusAgent
+        :param TotalCount: Total number of agents
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AgentSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AgentSet") is not None:
+            self.AgentSet = []
+            for item in params.get("AgentSet"):
+                obj = PrometheusAgent()
+                obj._deserialize(item)
+                self.AgentSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePrometheusInstancesRequest(AbstractModel):
+    """DescribePrometheusInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: Queries by instance ID or IDs. Instance ID is in the format of `prom-xxxxxxxx`. Up to 100 instances can be queried in one request.
+        :type InstanceIds: list of str
+        :param InstanceStatus: Filter by instance status
+<ul>
+<li>1: Creating</li>
+<li>2: Running</li>
+<li>3: Abnormal</li>
+<li>4: Rebooting</li>
+<li>5: Terminating</li>
+<li>6: Service suspended</li>
+<li>8: Suspending service for overdue payment</li>
+<li>9: Service suspended for overdue payment</li>
+</ul>
+        :type InstanceStatus: list of int
+        :param InstanceName: Filter by instance name
+        :type InstanceName: str
+        :param Zones: Filter by AZ in the format of `ap-guangzhou-1`
+        :type Zones: list of str
+        :param TagFilters: Filter by tag key-value pair. The `tag-key` should be replaced with a specific tag key.
+        :type TagFilters: list of PrometheusTag
+        :param IPv4Address: Filter by instance IPv4 address
+        :type IPv4Address: list of str
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param InstanceChargeType: Filter by billing mode
+<li>2: Monthly subscription</li>
+<li>3: Pay-as-you-go</li>
+        :type InstanceChargeType: int
+        """
+        self.InstanceIds = None
+        self.InstanceStatus = None
+        self.InstanceName = None
+        self.Zones = None
+        self.TagFilters = None
+        self.IPv4Address = None
+        self.Limit = None
+        self.Offset = None
+        self.InstanceChargeType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        self.InstanceStatus = params.get("InstanceStatus")
+        self.InstanceName = params.get("InstanceName")
+        self.Zones = params.get("Zones")
+        if params.get("TagFilters") is not None:
+            self.TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = PrometheusTag()
+                obj._deserialize(item)
+                self.TagFilters.append(obj)
+        self.IPv4Address = params.get("IPv4Address")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrometheusInstancesResponse(AbstractModel):
+    """DescribePrometheusInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceSet: List of instance details.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceSet: list of PrometheusInstancesItem
+        :param TotalCount: Number of eligible instances.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceSet") is not None:
+            self.InstanceSet = []
+            for item in params.get("InstanceSet"):
+                obj = PrometheusInstancesItem()
+                obj._deserialize(item)
+                self.InstanceSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePrometheusScrapeJobsRequest(AbstractModel):
+    """DescribePrometheusScrapeJobs request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param AgentId: Agent ID
+        :type AgentId: str
+        :param Name: Task name
+        :type Name: str
+        :param JobIds: List of task IDs
+        :type JobIds: list of str
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.AgentId = None
+        self.Name = None
+        self.JobIds = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AgentId = params.get("AgentId")
+        self.Name = params.get("Name")
+        self.JobIds = params.get("JobIds")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrometheusScrapeJobsResponse(AbstractModel):
+    """DescribePrometheusScrapeJobs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScrapeJobSet: List of tasks
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ScrapeJobSet: list of PrometheusScrapeJob
+        :param TotalCount: Total number of tasks
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ScrapeJobSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ScrapeJobSet") is not None:
+            self.ScrapeJobSet = []
+            for item in params.get("ScrapeJobSet"):
+                obj = PrometheusScrapeJob()
+                obj._deserialize(item)
+                self.ScrapeJobSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRecordingRulesRequest(AbstractModel):
+    """DescribeRecordingRules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Prometheus instance ID
+        :type InstanceId: str
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param RuleId: Rule ID
+        :type RuleId: str
+        :param RuleState: Rule status code. Valid values:
+<li>1=RuleDeleted</li>
+<li>2=RuleEnabled</li>
+<li>3=RuleDisabled</li>
+        :type RuleState: int
+        :param Name: Rule name
+        :type Name: str
+        """
+        self.InstanceId = None
+        self.Limit = None
+        self.Offset = None
+        self.RuleId = None
+        self.RuleState = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.RuleId = params.get("RuleId")
+        self.RuleState = params.get("RuleState")
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRecordingRulesResponse(AbstractModel):
+    """DescribeRecordingRules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Number of rule groups
+        :type TotalCount: int
+        :param RecordingRuleSet: Rule group details
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RecordingRuleSet: list of RecordingRuleSet
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.RecordingRuleSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("RecordingRuleSet") is not None:
+            self.RecordingRuleSet = []
+            for item in params.get("RecordingRuleSet"):
+                obj = RecordingRuleSet()
+                obj._deserialize(item)
+                self.RecordingRuleSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeServiceDiscoveryRequest(AbstractModel):
+    """DescribeServiceDiscovery request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Prometheus instance ID
+        :type InstanceId: str
+        :param KubeClusterId: <li>TKE: ID of the integrated TKE cluster</li>
+        :type KubeClusterId: str
+        :param KubeType: Kubernetes cluster type:
+<li> 1 = TKE </li>
+        :type KubeType: int
+        """
+        self.InstanceId = None
+        self.KubeClusterId = None
+        self.KubeType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.KubeClusterId = params.get("KubeClusterId")
+        self.KubeType = params.get("KubeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeServiceDiscoveryResponse(AbstractModel):
+    """DescribeServiceDiscovery response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceDiscoverySet: List of returned scrape configurations
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ServiceDiscoverySet: list of ServiceDiscoveryItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ServiceDiscoverySet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ServiceDiscoverySet") is not None:
+            self.ServiceDiscoverySet = []
+            for item in params.get("ServiceDiscoverySet"):
+                obj = ServiceDiscoveryItem()
+                obj._deserialize(item)
+                self.ServiceDiscoverySet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeStatisticDataRequest(AbstractModel):
     """DescribeStatisticData request structure.
 
@@ -4777,6 +6020,47 @@ class DescribeStatisticDataResponse(AbstractModel):
                 obj = MetricData()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DestroyPrometheusInstanceRequest(AbstractModel):
+    """DestroyPrometheusInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID. The instance must be terminated first.
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DestroyPrometheusInstanceResponse(AbstractModel):
+    """DestroyPrometheusInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -4965,6 +6249,57 @@ class GetMonitorDataResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetPrometheusAgentManagementCommandRequest(AbstractModel):
+    """GetPrometheusAgentManagementCommand request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Prometheus instance ID
+        :type InstanceId: str
+        :param AgentId: Prometheus Agent ID
+        :type AgentId: str
+        """
+        self.InstanceId = None
+        self.AgentId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AgentId = params.get("AgentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetPrometheusAgentManagementCommandResponse(AbstractModel):
+    """GetPrometheusAgentManagementCommand response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Command: Agent management command
+        :type Command: :class:`tencentcloud.monitor.v20180724.models.ManagementCommand`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Command = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Command") is not None:
+            self.Command = ManagementCommand()
+            self.Command._deserialize(params.get("Command"))
+        self.RequestId = params.get("RequestId")
+
+
 class Instance(AbstractModel):
     """Array of instance dimension combinations
 
@@ -5043,6 +6378,99 @@ class InstanceGroups(AbstractModel):
     def _deserialize(self, params):
         self.Id = params.get("Id")
         self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntegrationConfiguration(AbstractModel):
+    """Export integration configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Name
+        :type Name: str
+        :param Kind: Type
+        :type Kind: str
+        :param Content: Content
+        :type Content: str
+        :param Status: Status
+        :type Status: int
+        :param Category: Instance type
+        :type Category: str
+        :param InstanceDesc: Instance description
+        :type InstanceDesc: str
+        :param GrafanaDashboardURL: Dashboard URL
+        :type GrafanaDashboardURL: str
+        """
+        self.Name = None
+        self.Kind = None
+        self.Content = None
+        self.Status = None
+        self.Category = None
+        self.InstanceDesc = None
+        self.GrafanaDashboardURL = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Kind = params.get("Kind")
+        self.Content = params.get("Content")
+        self.Status = params.get("Status")
+        self.Category = params.get("Category")
+        self.InstanceDesc = params.get("InstanceDesc")
+        self.GrafanaDashboardURL = params.get("GrafanaDashboardURL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ManagementCommand(AbstractModel):
+    """Prometheus agent management command line
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Install: Agent installation command
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Install: str
+        :param Restart: Agent restart command
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Restart: str
+        :param Stop: Agent stop command
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Stop: str
+        :param StatusCheck: Agent status detection command
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StatusCheck: str
+        :param LogCheck: Agent log detection command
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LogCheck: str
+        """
+        self.Install = None
+        self.Restart = None
+        self.Stop = None
+        self.StatusCheck = None
+        self.LogCheck = None
+
+
+    def _deserialize(self, params):
+        self.Install = params.get("Install")
+        self.Restart = params.get("Restart")
+        self.Stop = params.get("Stop")
+        self.StatusCheck = params.get("StatusCheck")
+        self.LogCheck = params.get("LogCheck")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5976,6 +7404,55 @@ class ModifyPolicyGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyPrometheusInstanceAttributesRequest(AbstractModel):
+    """ModifyPrometheusInstanceAttributes request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param DataRetentionTime: Storage period. Valid values: 15, 30, 45. This parameter is not applicable to monthly subscribed instances.
+        :type DataRetentionTime: int
+        """
+        self.InstanceName = None
+        self.InstanceId = None
+        self.DataRetentionTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceId = params.get("InstanceId")
+        self.DataRetentionTime = params.get("DataRetentionTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPrometheusInstanceAttributesResponse(AbstractModel):
+    """ModifyPrometheusInstanceAttributes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class MonitorTypeNamespace(AbstractModel):
     """Policy type
 
@@ -6229,6 +7706,486 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         
 
 
+class PrometheusAgent(AbstractModel):
+    """prometheus agent
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Agent name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
+        :param AgentId: Agent ID
+        :type AgentId: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Ipv4: Agent IP
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Ipv4: str
+        :param HeartbeatTime: Heartbeat time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HeartbeatTime: str
+        :param LastError: Last error
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LastError: str
+        :param AgentVersion: Agent version
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AgentVersion: str
+        :param Status: Agent status
+        :type Status: int
+        """
+        self.Name = None
+        self.AgentId = None
+        self.InstanceId = None
+        self.Ipv4 = None
+        self.HeartbeatTime = None
+        self.LastError = None
+        self.AgentVersion = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.AgentId = params.get("AgentId")
+        self.InstanceId = params.get("InstanceId")
+        self.Ipv4 = params.get("Ipv4")
+        self.HeartbeatTime = params.get("HeartbeatTime")
+        self.LastError = params.get("LastError")
+        self.AgentVersion = params.get("AgentVersion")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusInstanceGrantInfo(AbstractModel):
+    """Instance authorization information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HasChargeOperation: Whether there is permission to operate on the billing information. Valid values: 1 (yes), 2 (no).
+        :type HasChargeOperation: int
+        :param HasVpcDisplay: Whether there is permission to display the VPC information. Valid values: 1 (yes), 2 (no).
+        :type HasVpcDisplay: int
+        :param HasGrafanaStatusChange: Whether there is permission to change the Grafana status. Valid values: 1 (yes), 2 (no).
+        :type HasGrafanaStatusChange: int
+        :param HasAgentManage: Whether there is permission to manage agents. Valid values: 1 (yes), 2 (no).
+        :type HasAgentManage: int
+        :param HasTkeManage: Whether there is permission to manage TKE integrations. Valid values: 1 (yes), 2 (no).
+        :type HasTkeManage: int
+        :param HasApiOperation: Whether there is permission to display the API information. Valid values: 1 (yes), 2 (no).
+        :type HasApiOperation: int
+        """
+        self.HasChargeOperation = None
+        self.HasVpcDisplay = None
+        self.HasGrafanaStatusChange = None
+        self.HasAgentManage = None
+        self.HasTkeManage = None
+        self.HasApiOperation = None
+
+
+    def _deserialize(self, params):
+        self.HasChargeOperation = params.get("HasChargeOperation")
+        self.HasVpcDisplay = params.get("HasVpcDisplay")
+        self.HasGrafanaStatusChange = params.get("HasGrafanaStatusChange")
+        self.HasAgentManage = params.get("HasAgentManage")
+        self.HasTkeManage = params.get("HasTkeManage")
+        self.HasApiOperation = params.get("HasApiOperation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusInstancesItem(AbstractModel):
+    """Prometheus service response body
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param InstanceName: Instance name.
+        :type InstanceName: str
+        :param InstanceChargeType: Instance billing mode. Valid values:
+<ul>
+<li>2: Monthly subscription</li>
+<li>3: Pay-as-you-go</li>
+</ul>
+        :type InstanceChargeType: int
+        :param RegionId: Region ID
+        :type RegionId: int
+        :param Zone: AZ
+        :type Zone: str
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param SubnetId: Subnet ID
+        :type SubnetId: str
+        :param DataRetentionTime: Storage period
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DataRetentionTime: int
+        :param InstanceStatus: Instance status. Valid values:
+<ul>
+<li>1: Creating</li>
+<li>2: Running</li>
+<li>3: Abnormal</li>
+<li>4: Rebooting</li>
+<li>5: Terminating</li>
+<li>6: Service suspended</li>
+<li>8: Suspending service for overdue payment</li>
+<li>9: Service suspended for overdue payment</li>
+</ul>
+        :type InstanceStatus: int
+        :param GrafanaURL: Grafana dashboard URL
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GrafanaURL: str
+        :param CreatedAt: Creation time
+        :type CreatedAt: str
+        :param EnableGrafana: Whether Grafana is enabled
+<li>0: Disabled</li>
+<li>1: Enabled</li>
+        :type EnableGrafana: int
+        :param IPv4Address: Instance IPv4 address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IPv4Address: str
+        :param TagSpecification: List of tags associated with the instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TagSpecification: list of PrometheusTag
+        :param ExpireTime: Expiration time of the purchased instance
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExpireTime: str
+        :param ChargeStatus: Billing status
+<ul>
+<li>1: Normal</li>
+<li>2: Expired</li>
+<li>3: Terminated</li>
+<li>4: Assigning</li>
+<li>5: Assignment failed</li>
+</ul>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ChargeStatus: int
+        :param SpecName: Specification name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SpecName: str
+        :param AutoRenewFlag: Auto-renewal flag
+<ul>
+<li>0: Auto-renewal not enabled</li>
+<li>1: Auto-renewal enabled</li>
+<li>2: Auto-renewal prohibited</li>
+<li>-1: Invalid</ii>
+</ul>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AutoRenewFlag: int
+        :param IsNearExpire: Expiring soon
+<ul>
+<li>0: No</li>
+<li>1: Yes</li>
+</ul>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsNearExpire: int
+        :param AuthToken: The token required for data writing
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AuthToken: str
+        :param RemoteWrite: Prometheus remote write address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RemoteWrite: str
+        :param ApiRootPath: Prometheus HTTP API root address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ApiRootPath: str
+        :param ProxyAddress: Proxy address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProxyAddress: str
+        :param GrafanaStatus: Grafana status
+<ul>
+<li>1: Creating</li>
+<li>2: Running</li>
+<li>3: Abnormal</li>
+<li>4: Restarting</li>
+<li>5: Terminating</li>
+<li>6: Service suspended</li>
+<li>7: Deleted</li>
+</ul>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GrafanaStatus: int
+        :param GrafanaIpWhiteList: Grafana IP allowlist, where IPs are separated by comma.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GrafanaIpWhiteList: str
+        :param Grant: Instance authorization information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Grant: :class:`tencentcloud.monitor.v20180724.models.PrometheusInstanceGrantInfo`
+        :param GrafanaInstanceId: ID of the bound Grafana instance
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GrafanaInstanceId: str
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.InstanceChargeType = None
+        self.RegionId = None
+        self.Zone = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.DataRetentionTime = None
+        self.InstanceStatus = None
+        self.GrafanaURL = None
+        self.CreatedAt = None
+        self.EnableGrafana = None
+        self.IPv4Address = None
+        self.TagSpecification = None
+        self.ExpireTime = None
+        self.ChargeStatus = None
+        self.SpecName = None
+        self.AutoRenewFlag = None
+        self.IsNearExpire = None
+        self.AuthToken = None
+        self.RemoteWrite = None
+        self.ApiRootPath = None
+        self.ProxyAddress = None
+        self.GrafanaStatus = None
+        self.GrafanaIpWhiteList = None
+        self.Grant = None
+        self.GrafanaInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.RegionId = params.get("RegionId")
+        self.Zone = params.get("Zone")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.DataRetentionTime = params.get("DataRetentionTime")
+        self.InstanceStatus = params.get("InstanceStatus")
+        self.GrafanaURL = params.get("GrafanaURL")
+        self.CreatedAt = params.get("CreatedAt")
+        self.EnableGrafana = params.get("EnableGrafana")
+        self.IPv4Address = params.get("IPv4Address")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = PrometheusTag()
+                obj._deserialize(item)
+                self.TagSpecification.append(obj)
+        self.ExpireTime = params.get("ExpireTime")
+        self.ChargeStatus = params.get("ChargeStatus")
+        self.SpecName = params.get("SpecName")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.IsNearExpire = params.get("IsNearExpire")
+        self.AuthToken = params.get("AuthToken")
+        self.RemoteWrite = params.get("RemoteWrite")
+        self.ApiRootPath = params.get("ApiRootPath")
+        self.ProxyAddress = params.get("ProxyAddress")
+        self.GrafanaStatus = params.get("GrafanaStatus")
+        self.GrafanaIpWhiteList = params.get("GrafanaIpWhiteList")
+        if params.get("Grant") is not None:
+            self.Grant = PrometheusInstanceGrantInfo()
+            self.Grant._deserialize(params.get("Grant"))
+        self.GrafanaInstanceId = params.get("GrafanaInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusRuleKV(AbstractModel):
+    """KV parameter of the Prometheus alerting rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: Key
+        :type Key: str
+        :param Value: Value
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusRuleSet(AbstractModel):
+    """Set of Prometheus alerting rules
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: Rule ID
+        :type RuleId: str
+        :param RuleName: Rule name
+        :type RuleName: str
+        :param RuleState: Rule status code
+        :type RuleState: int
+        :param Type: Rule category
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        :param Labels: List of rule tags
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Labels: list of PrometheusRuleKV
+        :param Annotations: List of rule annotations
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Annotations: list of PrometheusRuleKV
+        :param Expr: Rule expression
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Expr: str
+        :param Duration: Rule alert duration
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Duration: str
+        :param Receivers: List of alert recipient groups
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Receivers: list of str
+        :param Health: Rule status. Valid values:
+<li>unknown: Unknown</li>
+<li>pending: Loading</li>
+<li>ok: Running</li>
+<li>err: Error</li>
+        :type Health: str
+        :param CreatedAt: Rule creation time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreatedAt: str
+        :param UpdatedAt: Rule update time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdatedAt: str
+        """
+        self.RuleId = None
+        self.RuleName = None
+        self.RuleState = None
+        self.Type = None
+        self.Labels = None
+        self.Annotations = None
+        self.Expr = None
+        self.Duration = None
+        self.Receivers = None
+        self.Health = None
+        self.CreatedAt = None
+        self.UpdatedAt = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.RuleName = params.get("RuleName")
+        self.RuleState = params.get("RuleState")
+        self.Type = params.get("Type")
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = PrometheusRuleKV()
+                obj._deserialize(item)
+                self.Labels.append(obj)
+        if params.get("Annotations") is not None:
+            self.Annotations = []
+            for item in params.get("Annotations"):
+                obj = PrometheusRuleKV()
+                obj._deserialize(item)
+                self.Annotations.append(obj)
+        self.Expr = params.get("Expr")
+        self.Duration = params.get("Duration")
+        self.Receivers = params.get("Receivers")
+        self.Health = params.get("Health")
+        self.CreatedAt = params.get("CreatedAt")
+        self.UpdatedAt = params.get("UpdatedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusScrapeJob(AbstractModel):
+    """Prometheus scrape task
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Task name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
+        :param AgentId: Agent ID
+        :type AgentId: str
+        :param JobId: Task ID
+        :type JobId: str
+        :param Config: Configuration
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Config: str
+        """
+        self.Name = None
+        self.AgentId = None
+        self.JobId = None
+        self.Config = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.AgentId = params.get("AgentId")
+        self.JobId = params.get("JobId")
+        self.Config = params.get("Config")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusTag(AbstractModel):
+    """TMP tag
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: Tag key
+        :type Key: str
+        :param Value: Tag value
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PutMonitorDataRequest(AbstractModel):
     """PutMonitorData request structure.
 
@@ -6367,6 +8324,54 @@ class ReceiverInfo(AbstractModel):
         
 
 
+class RecordingRuleSet(AbstractModel):
+    """Response structure information of the Prometheus recording rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: Rule ID
+        :type RuleId: str
+        :param RuleState: Rule status code
+        :type RuleState: int
+        :param Name: Rule name
+        :type Name: str
+        :param Group: Rule group
+        :type Group: str
+        :param Total: Number of rules
+        :type Total: int
+        :param CreatedAt: Rule creation time
+        :type CreatedAt: str
+        :param UpdatedAt: Rule update time
+        :type UpdatedAt: str
+        """
+        self.RuleId = None
+        self.RuleState = None
+        self.Name = None
+        self.Group = None
+        self.Total = None
+        self.CreatedAt = None
+        self.UpdatedAt = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.RuleState = params.get("RuleState")
+        self.Name = params.get("Name")
+        self.Group = params.get("Group")
+        self.Total = params.get("Total")
+        self.CreatedAt = params.get("CreatedAt")
+        self.UpdatedAt = params.get("UpdatedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SendCustomAlarmMsgRequest(AbstractModel):
     """SendCustomAlarmMsg request structure.
 
@@ -6414,6 +8419,57 @@ class SendCustomAlarmMsgResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class ServiceDiscoveryItem(AbstractModel):
+    """Prometheus scrape configuration information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Scrape configuration name
+        :type Name: str
+        :param Namespace: Namespace of the scrape configuration
+        :type Namespace: str
+        :param Kind: Scrape configuration type: ServiceMonitor/PodMonitor
+        :type Kind: str
+        :param NamespaceSelector: Namespace selection method
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NamespaceSelector: str
+        :param Selector: Label selection method
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Selector: str
+        :param Endpoints: `Endpoints` information (PodMonitor does not have this parameter)
+        :type Endpoints: str
+        :param Yaml: Scrape configuration information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Yaml: str
+        """
+        self.Name = None
+        self.Namespace = None
+        self.Kind = None
+        self.NamespaceSelector = None
+        self.Selector = None
+        self.Endpoints = None
+        self.Yaml = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Namespace = params.get("Namespace")
+        self.Kind = params.get("Kind")
+        self.NamespaceSelector = params.get("NamespaceSelector")
+        self.Selector = params.get("Selector")
+        self.Endpoints = params.get("Endpoints")
+        self.Yaml = params.get("Yaml")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SetDefaultAlarmPolicyRequest(AbstractModel):
@@ -6598,6 +8654,47 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         
 
 
+class TerminatePrometheusInstancesRequest(AbstractModel):
+    """TerminatePrometheusInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: List of instance IDs
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TerminatePrometheusInstancesResponse(AbstractModel):
+    """TerminatePrometheusInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class URLNotice(AbstractModel):
     """Cloud Monitor alarm notification template - callback notification details
 
@@ -6739,6 +8836,554 @@ class UnBindingPolicyObjectRequest(AbstractModel):
 
 class UnBindingPolicyObjectResponse(AbstractModel):
     """UnBindingPolicyObject response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UnbindPrometheusManagedGrafanaRequest(AbstractModel):
+    """UnbindPrometheusManagedGrafana request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Prometheus instance ID
+        :type InstanceId: str
+        :param GrafanaId: Grafana instance ID
+        :type GrafanaId: str
+        """
+        self.InstanceId = None
+        self.GrafanaId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.GrafanaId = params.get("GrafanaId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnbindPrometheusManagedGrafanaResponse(AbstractModel):
+    """UnbindPrometheusManagedGrafana response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UninstallGrafanaDashboardRequest(AbstractModel):
+    """UninstallGrafanaDashboard request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param IntegrationCodes: Prometheus integration code, indicating to delete the corresponding dashboard. Valid values:
+<li>spring_mvc</li>
+<li>mysql</li>
+<li>go</li>
+<li>redis</li>
+<li>jvm</li>
+<li>pgsql</li>
+<li>mongo</li>
+<li>kafka</li>
+<li>es</li>
+<li>flink</li>
+<li>blackbox</li>
+<li>consule</li>
+<li>memcached</li>
+<li>zk</li>
+<li>tps</li>
+<li>istio</li>
+<li>etcd</li>
+        :type IntegrationCodes: list of str
+        """
+        self.InstanceId = None
+        self.IntegrationCodes = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.IntegrationCodes = params.get("IntegrationCodes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UninstallGrafanaDashboardResponse(AbstractModel):
+    """UninstallGrafanaDashboard response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateAlertRuleRequest(AbstractModel):
+    """UpdateAlertRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: Prometheus alerting rule ID
+        :type RuleId: str
+        :param InstanceId: Prometheus instance ID
+        :type InstanceId: str
+        :param RuleState: Rule status code. Valid values:
+<li>1=RuleDeleted</li>
+<li>2=RuleEnabled</li>
+<li>3=RuleDisabled</li>
+Default value: 2 (enabled).
+        :type RuleState: int
+        :param RuleName: Alerting rule name
+        :type RuleName: str
+        :param Expr: Alerting rule expression
+        :type Expr: str
+        :param Duration: Alerting rule duration
+        :type Duration: str
+        :param Receivers: List of alerting rule recipient groups
+        :type Receivers: list of str
+        :param Labels: List of alerting rule tags
+        :type Labels: list of PrometheusRuleKV
+        :param Annotations: List of alerting rule annotations.
+
+Alert object and alert message are special fields of Prometheus Rule Annotations, which need to be passed in through `annotations` and correspond to `summary` and `description` keys respectively.
+        :type Annotations: list of PrometheusRuleKV
+        :param Type: Alerting rule template category
+        :type Type: str
+        """
+        self.RuleId = None
+        self.InstanceId = None
+        self.RuleState = None
+        self.RuleName = None
+        self.Expr = None
+        self.Duration = None
+        self.Receivers = None
+        self.Labels = None
+        self.Annotations = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.InstanceId = params.get("InstanceId")
+        self.RuleState = params.get("RuleState")
+        self.RuleName = params.get("RuleName")
+        self.Expr = params.get("Expr")
+        self.Duration = params.get("Duration")
+        self.Receivers = params.get("Receivers")
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = PrometheusRuleKV()
+                obj._deserialize(item)
+                self.Labels.append(obj)
+        if params.get("Annotations") is not None:
+            self.Annotations = []
+            for item in params.get("Annotations"):
+                obj = PrometheusRuleKV()
+                obj._deserialize(item)
+                self.Annotations.append(obj)
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateAlertRuleResponse(AbstractModel):
+    """UpdateAlertRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: Rule ID
+        :type RuleId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RuleId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateAlertRuleStateRequest(AbstractModel):
+    """UpdateAlertRuleState request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleIds: List of rule IDs
+        :type RuleIds: list of str
+        :param InstanceId: Prometheus instance ID
+        :type InstanceId: str
+        :param RuleState: Rule status code. Valid values:
+<li>2=RuleEnabled</li>
+<li>3=RuleDisabled</li>
+Default value: 2 (enabled).
+        :type RuleState: int
+        """
+        self.RuleIds = None
+        self.InstanceId = None
+        self.RuleState = None
+
+
+    def _deserialize(self, params):
+        self.RuleIds = params.get("RuleIds")
+        self.InstanceId = params.get("InstanceId")
+        self.RuleState = params.get("RuleState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateAlertRuleStateResponse(AbstractModel):
+    """UpdateAlertRuleState response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateExporterIntegrationRequest(AbstractModel):
+    """UpdateExporterIntegration request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param KubeType: Kubernetes cluster type. Valid values:
+<li> 1 = TKE </li>
+<li> 2 = EKS </li>
+<li> 3 = MEKS </li>
+        :type KubeType: int
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param Kind: Type
+        :type Kind: str
+        :param Content: Configuration content
+        :type Content: str
+        """
+        self.InstanceId = None
+        self.KubeType = None
+        self.ClusterId = None
+        self.Kind = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.KubeType = params.get("KubeType")
+        self.ClusterId = params.get("ClusterId")
+        self.Kind = params.get("Kind")
+        self.Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateExporterIntegrationResponse(AbstractModel):
+    """UpdateExporterIntegration response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdatePrometheusAgentStatusRequest(AbstractModel):
+    """UpdatePrometheusAgentStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param AgentIds: List of agent IDs
+        :type AgentIds: list of str
+        :param Status: Status to update
+<li> 1 = enabled </li>
+<li> 2 = disabled </li>
+        :type Status: int
+        """
+        self.InstanceId = None
+        self.AgentIds = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AgentIds = params.get("AgentIds")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdatePrometheusAgentStatusResponse(AbstractModel):
+    """UpdatePrometheusAgentStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdatePrometheusScrapeJobRequest(AbstractModel):
+    """UpdatePrometheusScrapeJob request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param AgentId: Agent ID
+        :type AgentId: str
+        :param JobId: Scrape task ID
+        :type JobId: str
+        :param Config: Scrape task configuration
+        :type Config: str
+        """
+        self.InstanceId = None
+        self.AgentId = None
+        self.JobId = None
+        self.Config = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AgentId = params.get("AgentId")
+        self.JobId = params.get("JobId")
+        self.Config = params.get("Config")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdatePrometheusScrapeJobResponse(AbstractModel):
+    """UpdatePrometheusScrapeJob response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateRecordingRuleRequest(AbstractModel):
+    """UpdateRecordingRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Recording rule name
+        :type Name: str
+        :param Group: Recording rule group content, which is in YAML format and is Base64-encoded.
+        :type Group: str
+        :param InstanceId: Prometheus instance ID
+        :type InstanceId: str
+        :param RuleId: Prometheus recording rule ID
+        :type RuleId: str
+        :param RuleState: Rule status code. Valid values:
+<li>1=RuleDeleted</li>
+<li>2=RuleEnabled</li>
+<li>3=RuleDisabled</li>
+Default value: 2 (enabled).
+        :type RuleState: int
+        """
+        self.Name = None
+        self.Group = None
+        self.InstanceId = None
+        self.RuleId = None
+        self.RuleState = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Group = params.get("Group")
+        self.InstanceId = params.get("InstanceId")
+        self.RuleId = params.get("RuleId")
+        self.RuleState = params.get("RuleState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateRecordingRuleResponse(AbstractModel):
+    """UpdateRecordingRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: Rule ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RuleId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RuleId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.RequestId = params.get("RequestId")
+
+
+class UpgradeGrafanaDashboardRequest(AbstractModel):
+    """UpgradeGrafanaDashboard request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param IntegrationCodes: Prometheus integration code, indicating to upgrade to the corresponding dashboard. Valid values:
+<li>spring_mvc</li>
+<li>mysql</li>
+<li>go</li>
+<li>redis</li>
+<li>jvm</li>
+<li>pgsql</li>
+<li>mongo</li>
+<li>kafka</li>
+<li>es</li>
+<li>flink</li>
+<li>blackbox</li>
+<li>consule</li>
+<li>memcached</li>
+<li>zk</li>
+<li>tps</li>
+<li>istio</li>
+<li>etcd</li>
+        :type IntegrationCodes: list of str
+        """
+        self.InstanceId = None
+        self.IntegrationCodes = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.IntegrationCodes = params.get("IntegrationCodes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeGrafanaDashboardResponse(AbstractModel):
+    """UpgradeGrafanaDashboard response structure.
 
     """
 

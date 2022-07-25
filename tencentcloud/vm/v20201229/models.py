@@ -62,6 +62,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SubLabel: This field is used to return a subtag under the current tag (Lable).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SubLabel: str
+        :param RecognitionResults: List of recognized category labels
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type RecognitionResults: list of RecognitionResult
         """
         self.HitFlag = None
         self.Label = None
@@ -75,6 +78,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.MoanResults = None
         self.LanguageResults = None
         self.SubLabel = None
+        self.RecognitionResults = None
 
 
     def _deserialize(self, params):
@@ -105,6 +109,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self.LanguageResults.append(obj)
         self.SubLabel = params.get("SubLabel")
+        if params.get("RecognitionResults") is not None:
+            self.RecognitionResults = []
+            for item in params.get("RecognitionResults"):
+                obj = RecognitionResult()
+                obj._deserialize(item)
+                self.RecognitionResults.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -500,14 +510,14 @@ Note: this field may return null, indicating that no valid values can be obtaine
 <br>Valid values: **FINISH** (task completed), **PENDING** (task pending), **RUNNING** (task in progress), **ERROR** (task error), **CANCELLED** (task canceled).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Status: str
-        :param Type: This field is used to return the video moderation type passed in when the video moderation API is called. Valid values: **VIDEO** (video on demand), **LIVE_VIDEO** (video live streaming). Default value: VIDEO.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Type: This field is used to return the type of video for moderation. Valid values: `VIDEO` (video on demand), `LIVE_VIDEO` (video live streaming). Default value: `VIDEO`.
+Note: This field may return `null`, indicating that no valid value can be obtained.
         :type Type: str
         :param Suggestion: This field is used to return the operation suggestion for the maliciousness tag. When you get the determination result, the returned value indicates the operation suggested by the system. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Block**, **Review**, **Pass**.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Suggestion: str
-        :param Labels: This field is used to return the maliciousness tag in the detection result.<br>Returned values: **Normal**: normal; **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Labels: This field is used to return the maliciousness tag in the detection result.<br>Values: `Normal`: normal; `Porn`: pornographic; `Abuse`: abusive; `Ad`: advertising; `Custom`: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.
+Note: This field may return `null`, indicating that no valid value can be obtained.
         :type Labels: list of TaskLabel
         :param MediaInfo: This field is used to return the details of the input media file, including encoding/decoding formats and segment length. For details, see the description of the `MediaInfo` data structure.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -535,6 +545,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ErrorDescription: If the task status is `Error`, this field will return the error message; otherwise, null will be returned by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ErrorDescription: str
+        :param Label: If the recognition result is normal, this parameter is returned with the value `Normal`. If malicious content is recognized, the tag with the highest priority in the result of `Labels` is returned.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type Label: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -554,6 +567,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.AudioSegments = None
         self.ErrorType = None
         self.ErrorDescription = None
+        self.Label = None
         self.RequestId = None
 
 
@@ -593,6 +607,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 self.AudioSegments.append(obj)
         self.ErrorType = params.get("ErrorType")
         self.ErrorDescription = params.get("ErrorDescription")
+        self.Label = params.get("Label")
         self.RequestId = params.get("RequestId")
 
 
@@ -1019,6 +1034,41 @@ class MediaInfo(AbstractModel):
         
 
 
+class RecognitionResult(AbstractModel):
+    """Information of the category label
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Label: Values: `Teenager`, `Gender`
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type Label: str
+        :param Tags: List of recognized category labels
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type Tags: list of Tag
+        """
+        self.Label = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.Label = params.get("Label")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StorageInfo(AbstractModel):
     """Data storage information
 
@@ -1044,6 +1094,48 @@ class StorageInfo(AbstractModel):
         if params.get("BucketInfo") is not None:
             self.BucketInfo = BucketInfo()
             self.BucketInfo._deserialize(params.get("BucketInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Tag(AbstractModel):
+    """Tag of the audio slice
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: The value of this parameter varies by `Label`.
+When `Label` is `Teenager`, `Name` can be `Teenager`. 
+When `Label` is `Gender`, `Name` can be `Male` and `Female`.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type Name: str
+        :param Score: Confidence rate. Value: 1 to 100. 
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type Score: int
+        :param StartTime: Start time for the recognition (ms)
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type StartTime: float
+        :param EndTime: End time for the recognition (ms)
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type EndTime: float
+        """
+        self.Name = None
+        self.Score = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Score = params.get("Score")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

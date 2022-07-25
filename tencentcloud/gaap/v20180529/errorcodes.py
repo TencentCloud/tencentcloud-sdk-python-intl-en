@@ -140,6 +140,12 @@ FAILEDOPERATION_RESOURCEUPGRADING = 'FailedOperation.ResourceUpgrading'
 # Rule already exists.
 FAILEDOPERATION_RULEALREADYEXISTED = 'FailedOperation.RuleAlreadyExisted'
 
+# 
+FAILEDOPERATION_TAGRESOURCESFAILED = 'FailedOperation.TagResourcesFailed'
+
+# Failed to unbind the tag.
+FAILEDOPERATION_UNTAGRESOURCESFAILED = 'FailedOperation.UnTagResourcesFailed'
+
 # Unverified user.
 FAILEDOPERATION_USERNOTAUTHENTICATED = 'FailedOperation.UserNotAuthenticated'
 
@@ -220,6 +226,9 @@ INVALIDPARAMETERVALUE_UNKNOWNDESTREGION = 'InvalidParameterValue.UnknownDestRegi
 
 # The quota limit should not be exceeded.
 LIMITEXCEEDED = 'LimitExceeded'
+
+# 
+LIMITEXCEEDED_TAGQUOTA = 'LimitExceeded.TagQuota'
 
 # Missing parameter.
 MISSINGPARAMETER = 'MissingParameter'

@@ -26,6 +26,24 @@ DRYRUNOPERATION = 'DryRunOperation'
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
+# Failed to access STS.
+FAILEDOPERATION_ACCESSSTSFAIL = 'FailedOperation.AccessSTSFail'
+
+# Failed to access the TKE cluster.
+FAILEDOPERATION_ACCESSTKEFAIL = 'FailedOperation.AccessTKEFail'
+
+# Failed to access the tag service.
+FAILEDOPERATION_ACCESSTAGFAIL = 'FailedOperation.AccessTagFail'
+
+# For the agent in this status, the operation is not allowed.
+FAILEDOPERATION_AGENTNOTALLOWED = 'FailedOperation.AgentNotAllowed'
+
+# The agent version does not support this operation. Upgrade the agent.
+FAILEDOPERATION_AGENTVERSIONNOTSUPPORTED = 'FailedOperation.AgentVersionNotSupported'
+
+# There are agents running on this instance.
+FAILEDOPERATION_AGENTSNOTINUNINSTALLSTAGE = 'FailedOperation.AgentsNotInUninstallStage'
+
 # Failed to delete the filter rule.
 FAILEDOPERATION_ALERTFILTERRULEDELETEFAILED = 'FailedOperation.AlertFilterRuleDeleteFailed'
 
@@ -43,6 +61,15 @@ FAILEDOPERATION_ALERTPOLICYMODIFYFAILED = 'FailedOperation.AlertPolicyModifyFail
 
 # Failed to delete the trigger condition.
 FAILEDOPERATION_ALERTTRIGGERRULEDELETEFAILED = 'FailedOperation.AlertTriggerRuleDeleteFailed'
+
+# The YAML format is incorrect.
+FAILEDOPERATION_BADYAMLFORMAT = 'FailedOperation.BadYamlFormat'
+
+# Failed to create the instance.
+FAILEDOPERATION_CREATEINSTANCE = 'FailedOperation.CreateInstance'
+
+# This account is not allowed to create instances.
+FAILEDOPERATION_CREATEINSTANCELIMITED = 'FailedOperation.CreateInstanceLimited'
 
 # The data table field doesn't exist.
 FAILEDOPERATION_DATACOLUMNNOTFOUND = 'FailedOperation.DataColumnNotFound'
@@ -86,8 +113,38 @@ FAILEDOPERATION_DRUIDTABLENOTFOUND = 'FailedOperation.DruidTableNotFound'
 # The name already exists.
 FAILEDOPERATION_DUPLICATENAME = 'FailedOperation.DuplicateName'
 
+# An error occurred while generating the resource ID.
+FAILEDOPERATION_GENERATEINSTANCEIDFAILED = 'FailedOperation.GenerateInstanceIDFailed'
+
+# The instance does not exist.
+FAILEDOPERATION_INSTANCENOTFOUND = 'FailedOperation.InstanceNotFound'
+
+# The instance is not running.
+FAILEDOPERATION_INSTANCENOTRUNNING = 'FailedOperation.InstanceNotRunning'
+
+# The resource already exists.
+FAILEDOPERATION_RESOURCEEXIST = 'FailedOperation.ResourceExist'
+
+# The resource does not exist.
+FAILEDOPERATION_RESOURCENOTFOUND = 'FailedOperation.ResourceNotFound'
+
+# The resource is being manipulated.
+FAILEDOPERATION_RESOURCEOPERATING = 'FailedOperation.ResourceOperating'
+
+# Failed to send the authorization request.
+FAILEDOPERATION_SENDREQUEST = 'FailedOperation.SendRequest'
+
 # The service is not enabled and can be used only after being enabled.
 FAILEDOPERATION_SERVICENOTENABLED = 'FailedOperation.ServiceNotEnabled'
+
+# There is no access to TKE.
+FAILEDOPERATION_TKECLIENTAUTHFAIL = 'FailedOperation.TKEClientAuthFail'
+
+# The TKE endpoint is inaccessible.
+FAILEDOPERATION_TKEENDPOINTSTATUSERROR = 'FailedOperation.TKEEndpointStatusError'
+
+# A conflict occurred while updating the TKE resource.
+FAILEDOPERATION_TKERESOURCECONFLICT = 'FailedOperation.TKEResourceConflict'
 
 # Internal error.
 INTERNALERROR = 'InternalError'
