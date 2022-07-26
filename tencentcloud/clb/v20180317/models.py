@@ -942,13 +942,13 @@ class CloneLoadBalancerRequest(AbstractModel):
         :param LoadBalancerName: Clones the name of the CLB instance. The name must be 1-60 characters containing letters, numbers, "-" or "_".
 Note: if the name of a new CLB instance already exists, a default name will be generated automatically.
         :type LoadBalancerName: str
-        :param ProjectId: Project ID of the CLB instance, which can be obtained through the [`DescribeProject`](https://intl.cloud.tencent.com/document/product/378/4400?from_cn_redirect=1) API. If this field is not specified, it will default to the default project.
+        :param ProjectId: ID of the project to which a CLB instance belongs, which can be obtained through the `DescribeProject` API. If this parameter is not passed in, the default project will be used.
         :type ProjectId: int
         :param MasterZoneId: Sets the primary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`, which is applicable only to public network CLB.
-Note: By default, the traffic goes to the primary AZ. The secondary AZs only carry traffic when the primary AZ is unavailable. The optimal secondary AZ is chosen automatically. You can query the primary and secondary AZ of a region by calling [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1).
+Note: A primary AZ loads traffic, while a secondary AZ does not load traffic by default and will be used only if the primary AZ becomes unavailable. The platform will automatically select the optimal secondary AZ. You can use the `DescribeResource` API to query the primary AZ list of a region.
         :type MasterZoneId: str
         :param SlaveZoneId: Specifies the secondary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`. It is applicable only to public network CLB.
-Note: The traffic only goes to the secondary AZ when the primary AZ is unavailable. You can query the list of primary and secondary AZ of a region by calling [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1).
+Note: A secondary AZ will load traffic if the primary AZ is faulty. You can use the `DescribeMasterZones` API to query the primary and secondary AZ list of a region.
         :type SlaveZoneId: str
         :param ZoneId: Specifies an AZ ID for creating a CLB instance, such as `ap-guangzhou-1`, which is applicable only to public network CLB instances.
         :type ZoneId: str
@@ -1309,11 +1309,11 @@ OPEN: public network; INTERNAL: private network.
         :param LoadBalancerName: CLB instance name, which takes effect only when only one instance is to be created in the request. It can consist 1 to 60 letters, digits, hyphens (-), or underscores (_).
 Note: if the name of the new CLB instance already exists, a default name will be generated automatically.
         :type LoadBalancerName: str
-        :param VpcId: Network ID of the target CLB real server, such as `vpc-12345678`, which can be obtained through the [DescribeVpcEx](https://intl.cloud.tencent.com/document/product/215/1372?from_cn_redirect=1) API. If this parameter is not specified, it will default to `DefaultVPC`. This parameter is required for creating a CLB instance.
+        :param VpcId: Network ID of the target device on the CLB backend, such as `vpc-12345678`, which can be obtained through the `DescribeVpcEx` API. If this parameter is not entered, `DefaultVPC` is used by default. This parameter is required when creating a private network instance.
         :type VpcId: str
         :param SubnetId: A subnet ID must be specified when you purchase a private network CLB instance in a VPC, and the VIP of this instance will be generated in this subnet. This parameter is required for creating a CLB instance.
         :type SubnetId: str
-        :param ProjectId: Project ID of the CLB instance, which can be obtained through the [DescribeProject](https://intl.cloud.tencent.com/document/product/378/4400?from_cn_redirect=1) API. If this parameter is not specified, it will default to the default project.
+        :param ProjectId: ID of the project to which a CLB instance belongs, which can be obtained through the `DescribeProject` API. If this parameter is not entered, the default project will be used.
         :type ProjectId: int
         :param AddressIPVersion: IP version. Valid values: `IPV4` (default), `IPV6` (IPV6 NAT64 version) or `IPv6FullChain` (IPv6 version). This parameter is only for public network CLB instances.
         :type AddressIPVersion: str
@@ -1328,7 +1328,7 @@ Note: By default, the traffic goes to the primary AZ. The secondary AZs only car
         :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
         :param VipIsp: This parameter is applicable only to public network CLB instances. Valid values: CMCC (China Mobile), CTCC (China Telecom), CUCC (China Unicom). If this parameter is not specified, BGP will be used by default. ISPs supported in a region can be queried with the `DescribeSingleIsp` API. If an ISP is specified, only bill-by-bandwidth-package (BANDWIDTH_PACKAGE) can be used as the network billing mode.
         :type VipIsp: str
-        :param Tags: Tags a CLB instance when purchasing it.
+        :param Tags: Tags the CLB instance when purchasing it. Up to 20 tag key value pairs are supported.
         :type Tags: list of TagInfo
         :param Vip: Specifies a VIP for the CLB instance.
 <ul><li>`VpcId` is optional for creating shared clusters of public network CLB instances. For IPv6 CLB instance type, `SubnetId` is required; for IPv4 and IPv6 NAT64 types, it can be left empty.</li>
@@ -3735,6 +3735,7 @@ class DescribeTaskStatusRequest(AbstractModel):
         :param TaskId: Request ID, i.e., the RequestId parameter returned by the API.
         :type TaskId: str
         :param DealName: Order ID.
+Note: Either `TaskId` or `DealName` is required.
         :type DealName: str
         """
         self.TaskId = None
@@ -4269,6 +4270,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param DeregisterTargetRst: Whether to send the TCP RST packet to the client when unbinding a real server. This parameter is applicable to TCP listeners only.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type DeregisterTargetRst: bool
+        :param AttrFlags: Attribute of listener
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type AttrFlags: list of str
         """
         self.ListenerId = None
         self.Protocol = None
@@ -4288,6 +4292,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.KeepaliveEnable = None
         self.Toa = None
         self.DeregisterTargetRst = None
+        self.AttrFlags = None
 
 
     def _deserialize(self, params):
@@ -4320,6 +4325,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.KeepaliveEnable = params.get("KeepaliveEnable")
         self.Toa = params.get("Toa")
         self.DeregisterTargetRst = params.get("DeregisterTargetRst")
+        self.AttrFlags = params.get("AttrFlags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

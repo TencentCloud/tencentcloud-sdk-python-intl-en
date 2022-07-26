@@ -142,6 +142,35 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CheckEdgeClusterCIDR(self, request):
+        """This API is used to check if the CIDR block of a TKE Edge cluster conflicts with other CIDR blocks.
+
+        :param request: Request instance for CheckEdgeClusterCIDR.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CheckEdgeClusterCIDRRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CheckEdgeClusterCIDRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckEdgeClusterCIDR", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CheckEdgeClusterCIDRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CheckInstancesUpgradeAble(self, request):
         """This API is used to check which nodes can be upgraded in the given node list.
 
@@ -374,6 +403,35 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateECMInstances(self, request):
+        """This API is used to create an ECM instance.
+
+        :param request: Request instance for CreateECMInstances.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreateECMInstancesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateECMInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateECMInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateECMInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreatePrometheusAlertRule(self, request):
         """This API is used to create an alarm rule.
 
@@ -389,6 +447,35 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePrometheusAlertRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateTKEEdgeCluster(self, request):
+        """This API is used to create a TKE Edge cluster.
+
+        :param request: Request instance for CreateTKEEdgeCluster.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreateTKEEdgeClusterRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateTKEEdgeClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTKEEdgeCluster", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateTKEEdgeClusterResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -635,6 +722,93 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteECMInstances(self, request):
+        """This API is used to delete one or more ECM instances.
+
+        :param request: Request instance for DeleteECMInstances.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteECMInstancesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteECMInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteECMInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteECMInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteEdgeCVMInstances(self, request):
+        """This API is used to delete one or more edge CVM instances.
+
+        :param request: Request instance for DeleteEdgeCVMInstances.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteEdgeCVMInstancesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteEdgeCVMInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteEdgeCVMInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteEdgeCVMInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteEdgeClusterInstances(self, request):
+        """This API is used to delete one or more edge compute instances.
+
+        :param request: Request instance for DeleteEdgeClusterInstances.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteEdgeClusterInstancesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteEdgeClusterInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteEdgeClusterInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteEdgeClusterInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeletePrometheusAlertRule(self, request):
         """This API is used to delete an alarm rule.
 
@@ -664,6 +838,35 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteTKEEdgeCluster(self, request):
+        """This API is used to delete a TKE Edge cluster.
+
+        :param request: Request instance for DeleteTKEEdgeCluster.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteTKEEdgeClusterRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteTKEEdgeClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteTKEEdgeCluster", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteTKEEdgeClusterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAvailableClusterVersion(self, request):
         """This API is used to obtain all versions that the cluster can upgrade to.
 
@@ -679,6 +882,35 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAvailableClusterVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAvailableTKEEdgeVersion(self, request):
+        """This API is used to query the K8s versions supported by TKE Edge.
+
+        :param request: Request instance for DescribeAvailableTKEEdgeVersion.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeAvailableTKEEdgeVersionRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeAvailableTKEEdgeVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAvailableTKEEdgeVersion", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAvailableTKEEdgeVersionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1186,6 +1418,151 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeECMInstances(self, request):
+        """This API is used to obtain the ECM instance information.
+
+        :param request: Request instance for DescribeECMInstances.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeECMInstancesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeECMInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeECMInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeECMInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeEdgeAvailableExtraArgs(self, request):
+        """This API is used to query the custom parameters available for an edge cluster.
+
+        :param request: Request instance for DescribeEdgeAvailableExtraArgs.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeAvailableExtraArgsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeAvailableExtraArgsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEdgeAvailableExtraArgs", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEdgeAvailableExtraArgsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeEdgeCVMInstances(self, request):
+        """This API is used to obtain the edge CVM instance information.
+
+        :param request: Request instance for DescribeEdgeCVMInstances.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeCVMInstancesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeCVMInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEdgeCVMInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEdgeCVMInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeEdgeClusterExtraArgs(self, request):
+        """This API is used to query custom parameters of an edge cluster.
+
+        :param request: Request instance for DescribeEdgeClusterExtraArgs.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeClusterExtraArgsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeClusterExtraArgsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEdgeClusterExtraArgs", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEdgeClusterExtraArgsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeEdgeClusterInstances(self, request):
+        """This API is used to query the TKE Edge cluster node information.
+
+        :param request: Request instance for DescribeEdgeClusterInstances.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeClusterInstancesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeClusterInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEdgeClusterInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEdgeClusterInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeEnableVpcCniProgress(self, request):
         """This API is used to query the task progress of enabling VPC-CNI mode.
 
@@ -1389,8 +1766,124 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTKEEdgeClusterCredential(self, request):
+        """This API is used to obtain the authentication information of a TKE Edge cluster.
+
+        :param request: Request instance for DescribeTKEEdgeClusterCredential.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeTKEEdgeClusterCredentialRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeTKEEdgeClusterCredentialResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTKEEdgeClusterCredential", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTKEEdgeClusterCredentialResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTKEEdgeClusterStatus(self, request):
+        """This API is used to query the current status and process information of a TKE Edge cluster.
+
+        :param request: Request instance for DescribeTKEEdgeClusterStatus.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeTKEEdgeClusterStatusRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeTKEEdgeClusterStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTKEEdgeClusterStatus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTKEEdgeClusterStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTKEEdgeClusters(self, request):
+        """This API is used to query the list of TKE Edge clusters.
+
+        :param request: Request instance for DescribeTKEEdgeClusters.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeTKEEdgeClustersRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeTKEEdgeClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTKEEdgeClusters", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTKEEdgeClustersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTKEEdgeExternalKubeconfig(self, request):
+        """This API is used to obtain the kubeconfig for access to a TKE Edge cluster through the public network.
+
+        :param request: Request instance for DescribeTKEEdgeExternalKubeconfig.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeTKEEdgeExternalKubeconfigRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeTKEEdgeExternalKubeconfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTKEEdgeExternalKubeconfig", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTKEEdgeExternalKubeconfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTKEEdgeScript(self, request):
-        """This API is used to query the URL of TKE edge script.
+        """This API is used to query the URL of TKE edge script. You can add external nodes to a TKE Edge cluster by downloading the URL.
 
         :param request: Request instance for DescribeTKEEdgeScript.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeTKEEdgeScriptRequest`
@@ -1549,6 +2042,35 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableVpcCniNetworkTypeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ForwardTKEEdgeApplicationRequestV3(self, request):
+        """This API is used to work with the add-ons of a TKE Edge cluster.
+
+        :param request: Request instance for ForwardTKEEdgeApplicationRequestV3.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ForwardTKEEdgeApplicationRequestV3Request`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ForwardTKEEdgeApplicationRequestV3Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ForwardTKEEdgeApplicationRequestV3", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ForwardTKEEdgeApplicationRequestV3Response()
                 model._deserialize(response["Response"])
                 return model
             else:
