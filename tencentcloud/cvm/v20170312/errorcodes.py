@@ -203,6 +203,9 @@ INVALIDKEYPAIRNAMETOOLONG = 'InvalidKeyPairNameTooLong'
 # A parameter error occurred.
 INVALIDPARAMETER = 'InvalidParameter'
 
+# Up to one parameter can be specified.
+INVALIDPARAMETER_ATMOSTONE = 'InvalidParameter.AtMostOne'
+
 # RootDisk ID should not be passed to DataDiskIds.
 INVALIDPARAMETER_DATADISKIDCONTAINSROOTDISK = 'InvalidParameter.DataDiskIdContainsRootDisk'
 
@@ -272,6 +275,9 @@ INVALIDPARAMETERCONFLICT = 'InvalidParameterConflict'
 # Incorrect parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
+# The number of request parameters are not equal.
+INVALIDPARAMETERVALUE_AMOUNTNOTEQUAL = 'InvalidParameterValue.AmountNotEqual'
+
 # The shared bandwidth package ID is invalid. Please provide a standard shared bandwidth package ID in the format similar to bwp-xxxxxxxx. In this format, the letter x stands for a lowercase character or a number.
 INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDMALFORMED = 'InvalidParameterValue.BandwidthPackageIdMalformed'
 
@@ -287,11 +293,17 @@ INVALIDPARAMETERVALUE_CAMROLENAMEMALFORMED = 'InvalidParameterValue.CamRoleNameM
 # Corresponding CHC hosts not found.
 INVALIDPARAMETERVALUE_CHCHOSTSNOTFOUND = 'InvalidParameterValue.ChcHostsNotFound'
 
+# No network is configured for this CHC.
+INVALIDPARAMETERVALUE_CHCNETWORKEMPTY = 'InvalidParameterValue.ChcNetworkEmpty'
+
 # The minimum capacity of a SSD data disk is 100 GB.
 INVALIDPARAMETERVALUE_CLOUDSSDDATADISKSIZETOOSMALL = 'InvalidParameterValue.CloudSsdDataDiskSizeTooSmall'
 
 # Invalid number of cores.
 INVALIDPARAMETERVALUE_CORECOUNTVALUE = 'InvalidParameterValue.CoreCountValue'
+
+# A deployment VPC already exists.
+INVALIDPARAMETERVALUE_DEPLOYVPCALREADYEXISTS = 'InvalidParameterValue.DeployVpcAlreadyExists'
 
 # Incorrect placement group ID format.
 INVALIDPARAMETERVALUE_DISASTERRECOVERGROUPIDMALFORMED = 'InvalidParameterValue.DisasterRecoverGroupIdMalformed'
@@ -299,7 +311,7 @@ INVALIDPARAMETERVALUE_DISASTERRECOVERGROUPIDMALFORMED = 'InvalidParameterValue.D
 # Duplicate parameter value.
 INVALIDPARAMETERVALUE_DUPLICATE = 'InvalidParameterValue.Duplicate'
 
-# 
+# Duplicate tags.
 INVALIDPARAMETERVALUE_DUPLICATETAGS = 'InvalidParameterValue.DuplicateTags'
 
 # Non-GPU instances cannot be changed to the GPU instance.
@@ -313,6 +325,9 @@ INVALIDPARAMETERVALUE_IPV6ADDRESSMALFORMED = 'InvalidParameterValue.IPv6AddressM
 
 # The value of HostName is invalid.
 INVALIDPARAMETERVALUE_ILLEGALHOSTNAME = 'InvalidParameterValue.IllegalHostName'
+
+# Incorrect request parameter format.
+INVALIDPARAMETERVALUE_INCORRECTFORMAT = 'InvalidParameterValue.IncorrectFormat'
 
 # The specified instance type does not exist.
 INVALIDPARAMETERVALUE_INSTANCETYPENOTFOUND = 'InvalidParameterValue.InstanceTypeNotFound'
@@ -446,7 +461,7 @@ INVALIDPARAMETERVALUE_SUBNETNOTEXIST = 'InvalidParameterValue.SubnetNotExist'
 # The specified tag does not exist
 INVALIDPARAMETERVALUE_TAGKEYNOTFOUND = 'InvalidParameterValue.TagKeyNotFound'
 
-# 
+# Tag quota limit exceeded.
 INVALIDPARAMETERVALUE_TAGQUOTALIMITEXCEEDED = 'InvalidParameterValue.TagQuotaLimitExceeded'
 
 # Invalid thread count per core.
@@ -521,6 +536,9 @@ LIMITEXCEEDED_CVMSVIFSPERSECGROUPLIMITEXCEEDED = 'LimitExceeded.CvmsVifsPerSecGr
 # The quota of the specified placement group is insufficient.
 LIMITEXCEEDED_DISASTERRECOVERGROUP = 'LimitExceeded.DisasterRecoverGroup'
 
+# The number of EIPs of an ENI contained in a specific instance has exceeded the maximum allowed EIPs of the target instance type. Please delete some EIPs and try again.
+LIMITEXCEEDED_EIPNUMLIMIT = 'LimitExceeded.EipNumLimit'
+
 # The number of ENIs on a specified instance exceeds the maximum ENIs allowed for the target instance type. Delete some ENIs and try again.
 LIMITEXCEEDED_ENINUMLIMIT = 'LimitExceeded.EniNumLimit'
 
@@ -584,6 +602,9 @@ MUTEXOPERATION_TASKRUNNING = 'MutexOperation.TaskRunning'
 # A CHC instance without network configured is not allowed for the installation of a cloud image
 OPERATIONDENIED_CHCINSTALLCLOUDIMAGEWITHOUTDEPLOYNETWORK = 'OperationDenied.ChcInstallCloudImageWithoutDeployNetwork'
 
+# Operation denied: This is a restricted account.
+OPERATIONDENIED_INNERUSERPROHIBITACTION = 'OperationDenied.InnerUserProhibitAction'
+
 # The instance has an operation in progress. Please try again later.
 OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = 'OperationDenied.InstanceOperationInProgress'
 
@@ -620,7 +641,7 @@ RESOURCENOTFOUND_HPCCLUSTER = 'ResourceNotFound.HpcCluster'
 # The specified placement group does not exist.
 RESOURCENOTFOUND_INVALIDPLACEMENTSET = 'ResourceNotFound.InvalidPlacementSet'
 
-# 
+# This instance type is not supported in the AZ.
 RESOURCENOTFOUND_INVALIDZONEINSTANCETYPE = 'ResourceNotFound.InvalidZoneInstanceType'
 
 # No default CBS resources are available.
@@ -788,6 +809,9 @@ UNSUPPORTEDOPERATION_MODIFYVPCWITHCLB = 'UnsupportedOperation.ModifyVPCWithCLB'
 # This instance type does not support spot instances.
 UNSUPPORTEDOPERATION_NOINSTANCETYPESUPPORTSPOT = 'UnsupportedOperation.NoInstanceTypeSupportSpot'
 
+# 
+UNSUPPORTEDOPERATION_NOVPCNETWORK = 'UnsupportedOperation.NoVpcNetwork'
+
 # Failed to configure the scheduled action for the current instance. 
 UNSUPPORTEDOPERATION_NOTSUPPORTIMPORTINSTANCESACTIONTIMER = 'UnsupportedOperation.NotSupportImportInstancesActionTimer'
 
@@ -821,8 +845,14 @@ UNSUPPORTEDOPERATION_SHAREDIMAGEEXPORTUNSUPPORTED = 'UnsupportedOperation.Shared
 # This special instance type does not support the operation.
 UNSUPPORTEDOPERATION_SPECIALINSTANCETYPE = 'UnsupportedOperation.SpecialInstanceType'
 
+# 
+UNSUPPORTEDOPERATION_SPOTUNSUPPORTEDREGION = 'UnsupportedOperation.SpotUnsupportedRegion'
+
 # The instance does not support the **no charges when shut down** feature.
 UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = 'UnsupportedOperation.StoppedModeStopCharging'
+
+# Configuration adjustment of the same type is not supported for instances with no charges when shut down.
+UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGINGSAMEFAMILY = 'UnsupportedOperation.StoppedModeStopChargingSameFamily'
 
 # The specified model does not support cross-model configuration adjustment.
 UNSUPPORTEDOPERATION_UNSUPPORTEDCHANGEINSTANCEFAMILY = 'UnsupportedOperation.UnsupportedChangeInstanceFamily'

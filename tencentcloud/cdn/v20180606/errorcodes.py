@@ -68,7 +68,7 @@ INTERNALERROR_SCDNUSERSUSPEND = 'InternalError.ScdnUserSuspend'
 # Tag internal error. Please submit a ticket for troubleshooting.
 INTERNALERROR_TAGSYSTEMERROR = 'InternalError.TagSystemError'
 
-# To enable HTTPS, access port 443 must be enabled.
+# The access port 443 must be enabled for HTTPS configuration.
 INVALIDPARAMETER_ACCESSPORTOPENEDHTTPS = 'InvalidParameter.AccessPortOpenedHttps'
 
 # Please delete the rate limiting configuration before you switch the acceleration region.
@@ -119,19 +119,19 @@ INVALIDPARAMETER_CDNHOSTINVALIDSTATUS = 'InvalidParameter.CdnHostInvalidStatus'
 # Internal API error. Please submit a ticket for troubleshooting.
 INVALIDPARAMETER_CDNINTERFACEERROR = 'InvalidParameter.CdnInterfaceError'
 
-# The parameter “Interval” is wrong. Please check and try again.
+# Parameter error: Interval. Please check and try again.
 INVALIDPARAMETER_CDNINVALIDPARAMINTERVAL = 'InvalidParameter.CdnInvalidParamInterval'
 
 # Parameter error: Metric. Please check and try again.
 INVALIDPARAMETER_CDNINVALIDPARAMMETRIC = 'InvalidParameter.CdnInvalidParamMetric'
 
-# The field “ServiceType” is invalid. Please check and try again.
+# Invalid field: ServiceType. Please check and try again.
 INVALIDPARAMETER_CDNINVALIDPARAMSERVICETYPE = 'InvalidParameter.CdnInvalidParamServiceType'
 
-# 
+# The configuration is not supported.
 INVALIDPARAMETER_CDNKEYRULESEXCLUDECUSTOMREQUIRESFULLLEGO = 'InvalidParameter.CdnKeyRulesExcludeCustomRequiresFullLego'
 
-# The field “QueryString” is invalid. Please check and try again.
+# Invalid field: QueryString. Please check and try again.
 INVALIDPARAMETER_CDNKEYRULESINVALIDQUERYSTRINGVALUE = 'InvalidParameter.CdnKeyRulesInvalidQueryStringValue'
 
 # Parameter error. Please see the sample parameters in the documentation.
@@ -203,7 +203,7 @@ INVALIDPARAMETER_CLSTOPICCONFLICT = 'InvalidParameter.ClsTopicConflict'
 # API internal error. Please try again or contact the customer service for assistance.
 INVALIDPARAMETER_ECDNINTERFACEERROR = 'InvalidParameter.EcdnInterfaceError'
 
-# 
+# The maximum number of regex sub-patterns is exceeded.
 INVALIDPARAMETER_PATHREGEXTOOMANYSUBPATTERN = 'InvalidParameter.PathRegexTooManySubPattern'
 
 # This platform does not support remote authentication.
@@ -296,10 +296,10 @@ RESOURCENOTFOUND_CLSTOPICNOTEXIST = 'ResourceNotFound.ClsTopicNotExist'
 # The domain name does not exist. Please check and try again.
 RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = 'ResourceNotFound.EcdnDomainNotExists'
 
-# The domain name has been connected to Chinese mainland service region. If you need to switch the service region to "Global", please verify its ownership for domain name retrieval.
+# The domain name has been connected to the Mainland China service region. If you need to switch the service region to "Global", please verify its ownership for domain name retrieval.
 RESOURCEUNAVAILABLE_CDNHOSTBELONGSTOOTHERSINMAINLAND = 'ResourceUnavailable.CdnHostBelongsToOthersInMainland'
 
-# The domain name has been connected to the service region outside Chinese mainland. If you need to switch the service region to "Global", please verify its ownership for domain name retrieval.
+# The domain name has been connected to the service region outside Mainland China. If you need to switch the service region to "Global", please verify its ownership for domain name retrieval.
 RESOURCEUNAVAILABLE_CDNHOSTBELONGSTOOTHERSINOVERSEAS = 'ResourceUnavailable.CdnHostBelongsToOthersInOverseas'
 
 # The domain name is locked.
@@ -311,7 +311,7 @@ RESOURCEUNAVAILABLE_CDNHOSTISNOTOFFLINE = 'ResourceUnavailable.CdnHostIsNotOffli
 # The domain name has been deactivated. Prefetch requests cannot be submitted.
 RESOURCEUNAVAILABLE_CDNHOSTISNOTONLINE = 'ResourceUnavailable.CdnHostIsNotOnline'
 
-# The domain name does not have an ICP filing.
+# ICP filing is required for the domain name and the synchronization takes 2 hours. If it is already filed, please try later.
 RESOURCEUNAVAILABLE_CDNHOSTNOICP = 'ResourceUnavailable.CdnHostNoIcp'
 
 # The SCDN service is not activated. Please purchase or renew an SCDN packet and try again.
@@ -326,7 +326,7 @@ UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = 'UnauthorizedOperation.CdnCamUnauthor
 # This account is not authorized to activate CLS.
 UNAUTHORIZEDOPERATION_CDNCLSNOTREGISTERED = 'UnauthorizedOperation.CdnClsNotRegistered'
 
-# The domain name is not secure and cannot be connected.
+# The domain name is not compliant and cannot be connected.
 UNAUTHORIZEDOPERATION_CDNHOSTINICPBLACKLIST = 'UnauthorizedOperation.CdnHostInIcpBlacklist'
 
 # The domain name has been connected by another account. For more information, please submit a ticket.
@@ -350,7 +350,7 @@ UNAUTHORIZEDOPERATION_CDNUSERAUTHWAIT = 'UnauthorizedOperation.CdnUserAuthWait'
 # Service internal error. Please submit a ticket for troubleshooting.
 UNAUTHORIZEDOPERATION_CDNUSERINVALIDCREDENTIAL = 'UnauthorizedOperation.CdnUserInvalidCredential'
 
-# The account has been isolated due to overdue payment. Please pay the bill and try again.
+# The account has been isolated due to arrears. Please pay the bill and try again.
 UNAUTHORIZEDOPERATION_CDNUSERISISOLATED = 'UnauthorizedOperation.CdnUserIsIsolated'
 
 # The CDN service has been suspended. Please restart it and try again.

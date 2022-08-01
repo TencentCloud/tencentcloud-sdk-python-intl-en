@@ -5411,6 +5411,8 @@ They represent weighted round robin and least connections, respectively. Default
         :type Scheduler: str
         :param SniSwitch: Whether to enable the SNI feature. This parameter is applicable only to HTTPS listeners. Note: The SNI feature can be enabled but cannot be disabled once enabled.
         :type SniSwitch: int
+        :param TargetType: Target backend type. `NODE`: A single node; `TARGETGROUP`: A target group.
+        :type TargetType: str
         :param KeepaliveEnable: Whether to enable a persistent connection. This parameter is applicable only to HTTP and HTTPS listeners.
         :type KeepaliveEnable: int
         :param DeregisterTargetRst: Whether to send the TCP RST packet to the client when unbinding a real server. This parameter is applicable to TCP listeners only.
@@ -5426,6 +5428,7 @@ They represent weighted round robin and least connections, respectively. Default
         self.Certificate = None
         self.Scheduler = None
         self.SniSwitch = None
+        self.TargetType = None
         self.KeepaliveEnable = None
         self.DeregisterTargetRst = None
         self.SessionType = None
@@ -5444,6 +5447,7 @@ They represent weighted round robin and least connections, respectively. Default
             self.Certificate._deserialize(params.get("Certificate"))
         self.Scheduler = params.get("Scheduler")
         self.SniSwitch = params.get("SniSwitch")
+        self.TargetType = params.get("TargetType")
         self.KeepaliveEnable = params.get("KeepaliveEnable")
         self.DeregisterTargetRst = params.get("DeregisterTargetRst")
         self.SessionType = params.get("SessionType")
@@ -6940,14 +6944,14 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Type: str
         :param InstanceId: Unique ID of a CVM instance, which is required when binding a CVM instance. It can be obtained from the `InstanceId` field in the response of the `DescribeInstances` API. It indicates binding the primary IP of the primary ENI.
-Note: either `InstanceId` or `EniIp` must be passed in.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+Note: Either `InstanceId` or `EniIp` can be passed in.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type InstanceId: str
         :param Weight: The new forwarding weight of the real server. Value range: [0, 100]. Default: 10. This parameter takes priority over `Weight` in [`RsWeightRule`](https://intl.cloud.tencent.com/document/api/214/30694?from_cn_redirect=1#RsWeightRule). If it’s left empty, the value of `Weight` in `RsWeightRule` will be used.
         :type Weight: int
         :param EniIp: It is required when binding an IP. ENI IPs and other private IPs are supported. To bind an ENI IP, the ENI should be bound to a CVM instance before being bound to a CLB instance.
-Note: either `InstanceId` or `EniIp` must be passed in. It is required when binding a dual-stack IPv6 CVM instance.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+Note: Either `InstanceId` or `EniIp` can be passed in. `EniIp` is required in a cross-region binding or when the dual-stack IPV6 CVM is bound.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type EniIp: str
         """
         self.Port = None

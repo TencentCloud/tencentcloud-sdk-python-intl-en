@@ -1425,7 +1425,7 @@ class CreateExporterIntegrationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Names: 
+        :param Names: The list of successfully created integrations.
         :type Names: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1661,7 +1661,7 @@ class CreatePrometheusAgentResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AgentId: 
+        :param AgentId: ID of a successfully created agent.
         :type AgentId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1788,7 +1788,7 @@ class CreatePrometheusScrapeJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 
+        :param JobId: ID of a successfully created scrape task.
         :type JobId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str

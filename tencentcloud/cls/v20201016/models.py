@@ -18,6 +18,34 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AlarmAnalysisConfig(AbstractModel):
+    """Alarm configuration for the multidimensional analysis
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: Key
+        :type Key: str
+        :param Value: Value
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AlarmInfo(AbstractModel):
     """Alarm policy description
 
@@ -282,20 +310,29 @@ class AnalysisDimensional(AbstractModel):
         r"""
         :param Name: Analysis name
         :type Name: str
-        :param Type: Analysis type. Valid values: `query`, `field`
+        :param Type: Type of data being analyzed. Valid values: `query`; `field`; `original`
         :type Type: str
         :param Content: Analysis content
         :type Content: str
+        :param ConfigInfo: Configuration
+        :type ConfigInfo: list of AlarmAnalysisConfig
         """
         self.Name = None
         self.Type = None
         self.Content = None
+        self.ConfigInfo = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Type = params.get("Type")
         self.Content = params.get("Content")
+        if params.get("ConfigInfo") is not None:
+            self.ConfigInfo = []
+            for item in params.get("ConfigInfo"):
+                obj = AlarmAnalysisConfig()
+                obj._deserialize(item)
+                self.ConfigInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3203,7 +3240,7 @@ class ExportInfo(AbstractModel):
         :type Format: str
         :param Count: Number of logs to be exported
         :type Count: int
-        :param Status: Log download status. Valid values: `Processing`: exporting; `Complete`: completed; `Failed`: failed; `Expired`: expired (3-day validity period).
+        :param Status: Log download status. Valid values: `Processing`, `Completed`, `Failed`, `Expired` (three-day validity period), and `Queuing`.
         :type Status: str
         :param From: Log export start time
         :type From: int
@@ -3289,6 +3326,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param Backtracking: Size of the data to be rewound in incremental collection mode. Default value: -1 (full collection)
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Backtracking: int
+        :param IsGBK: Whether to be encoded in GBK format. Valid values: `0` (No) and `1` (Yes).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsGBK: int
+        :param JsonStandard: Whether to be formatted as JSON (standard). Valid values: `0` (No) and `1` (Yes).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type JsonStandard: int
         """
         self.TimeKey = None
         self.TimeFormat = None
@@ -3300,6 +3343,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.UnMatchUpLoadSwitch = None
         self.UnMatchLogKey = None
         self.Backtracking = None
+        self.IsGBK = None
+        self.JsonStandard = None
 
 
     def _deserialize(self, params):
@@ -3318,6 +3363,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.UnMatchUpLoadSwitch = params.get("UnMatchUpLoadSwitch")
         self.UnMatchLogKey = params.get("UnMatchLogKey")
         self.Backtracking = params.get("Backtracking")
+        self.IsGBK = params.get("IsGBK")
+        self.JsonStandard = params.get("JsonStandard")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5131,8 +5178,9 @@ Notes:
 * This parameter is valid only when the query statement (`Query`) does not contain an SQL statement.
 * To limit the number of analysis results, see <a href="https://intl.cloud.tencent.com/document/product/614/58977?from_cn_redirect=1" target="_blank">SQL LIMIT Syntax</a>.
         :type Limit: int
-        :param Context: You can pass through the `Context` value (validity: 1 hour) returned by the last API to continue to get logs, which can get up to 10,000 raw logs.
+        :param Context: You can pass through the `Context` value (validity: an hour) returned by the API last time to continue to get logs (up to 10,000 raw logs).
 Notes:
+* Do not modify any other parameters while passing through the `Context` parameter.
 * This parameter is valid only when the query statement (`Query`) does not contain an SQL statement.
 * To continue to get analysis results, see <a href="https://intl.cloud.tencent.com/document/product/614/58977?from_cn_redirect=1" target="_blank">SQL LIMIT Syntax</a>.
         :type Context: str

@@ -171,6 +171,128 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         
 
 
+class ActivityResItem(AbstractModel):
+    """The execution results of the subtasks of a scheme.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TranscodeTask: The result of a transcoding task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TranscodeTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskTranscodeResult`
+        :param AnimatedGraphicTask: The result of an animated image generating task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AnimatedGraphicTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAnimatedGraphicResult`
+        :param SnapshotByTimeOffsetTask: The result of a time point screenshot task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SnapshotByTimeOffsetTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSampleSnapshotResult`
+        :param SampleSnapshotTask: The result of a sampled screenshot task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SampleSnapshotTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSampleSnapshotResult`
+        :param ImageSpriteTask: The result of an image sprite task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ImageSpriteTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskImageSpriteResult`
+        :param AdaptiveDynamicStreamingTask: The result of an adaptive bitrate streaming task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AdaptiveDynamicStreamingTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAdaptiveDynamicStreamingResult`
+        :param RecognitionTask: The result of a content recognition task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RecognitionTask: :class:`tencentcloud.mps.v20190612.models.ScheduleRecognitionTaskResult`
+        :param ReviewTask: The result of a content moderation task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReviewTask: :class:`tencentcloud.mps.v20190612.models.ScheduleReviewTaskResult`
+        :param AnalysisTask: The result of a content analysis task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AnalysisTask: :class:`tencentcloud.mps.v20190612.models.ScheduleAnalysisTaskResult`
+        """
+        self.TranscodeTask = None
+        self.AnimatedGraphicTask = None
+        self.SnapshotByTimeOffsetTask = None
+        self.SampleSnapshotTask = None
+        self.ImageSpriteTask = None
+        self.AdaptiveDynamicStreamingTask = None
+        self.RecognitionTask = None
+        self.ReviewTask = None
+        self.AnalysisTask = None
+
+
+    def _deserialize(self, params):
+        if params.get("TranscodeTask") is not None:
+            self.TranscodeTask = MediaProcessTaskTranscodeResult()
+            self.TranscodeTask._deserialize(params.get("TranscodeTask"))
+        if params.get("AnimatedGraphicTask") is not None:
+            self.AnimatedGraphicTask = MediaProcessTaskAnimatedGraphicResult()
+            self.AnimatedGraphicTask._deserialize(params.get("AnimatedGraphicTask"))
+        if params.get("SnapshotByTimeOffsetTask") is not None:
+            self.SnapshotByTimeOffsetTask = MediaProcessTaskSampleSnapshotResult()
+            self.SnapshotByTimeOffsetTask._deserialize(params.get("SnapshotByTimeOffsetTask"))
+        if params.get("SampleSnapshotTask") is not None:
+            self.SampleSnapshotTask = MediaProcessTaskSampleSnapshotResult()
+            self.SampleSnapshotTask._deserialize(params.get("SampleSnapshotTask"))
+        if params.get("ImageSpriteTask") is not None:
+            self.ImageSpriteTask = MediaProcessTaskImageSpriteResult()
+            self.ImageSpriteTask._deserialize(params.get("ImageSpriteTask"))
+        if params.get("AdaptiveDynamicStreamingTask") is not None:
+            self.AdaptiveDynamicStreamingTask = MediaProcessTaskAdaptiveDynamicStreamingResult()
+            self.AdaptiveDynamicStreamingTask._deserialize(params.get("AdaptiveDynamicStreamingTask"))
+        if params.get("RecognitionTask") is not None:
+            self.RecognitionTask = ScheduleRecognitionTaskResult()
+            self.RecognitionTask._deserialize(params.get("RecognitionTask"))
+        if params.get("ReviewTask") is not None:
+            self.ReviewTask = ScheduleReviewTaskResult()
+            self.ReviewTask._deserialize(params.get("ReviewTask"))
+        if params.get("AnalysisTask") is not None:
+            self.AnalysisTask = ScheduleAnalysisTaskResult()
+            self.AnalysisTask._deserialize(params.get("AnalysisTask"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ActivityResult(AbstractModel):
+    """The execution result of a scheme.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ActivityType: The type of the scheme’s subtask.
+<li>Transcode: Transcoding</li>
+<li>SampleSnapshot: Sampled screenshot</li>
+<li>AnimatedGraphics: Animated image generating</li>
+<li>SnapshotByTimeOffset: Time point screenshot</li>
+<li>ImageSprites: Image sprite generating</li>
+<li>AdaptiveDynamicStreaming: Adaptive bitrate streaming</li>
+<li>AiContentReview: Content moderation</li>
+<li>AIRecognition: Content recognition</li>
+<li>AIAnalysis: Content analysis</li>
+        :type ActivityType: str
+        :param ActivityResItem: The execution results of the subtasks of the scheme.
+        :type ActivityResItem: :class:`tencentcloud.mps.v20190612.models.ActivityResItem`
+        """
+        self.ActivityType = None
+        self.ActivityResItem = None
+
+
+    def _deserialize(self, params):
+        self.ActivityType = params.get("ActivityType")
+        if params.get("ActivityResItem") is not None:
+            self.ActivityResItem = ActivityResItem()
+            self.ActivityResItem._deserialize(params.get("ActivityResItem"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AdaptiveDynamicStreamingInfoItem(AbstractModel):
     """Adaptive bitrate streaming information
 
@@ -3529,6 +3651,41 @@ Default value: open.
         
 
 
+class ArtifactRepairConfig(AbstractModel):
+    """Artifact removal (smoothing) configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable the feature. Valid values:
+<li>ON</li>
+<li>OFF</li>
+Default value: ON.
+        :type Switch: str
+        :param Type: The strength. Valid values:
+<li>weak</li>
+<li>strong</li>
+Default value: weak.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        """
+        self.Switch = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AsrFullTextConfigureInfo(AbstractModel):
     """Control parameter of a full speech recognition task.
 
@@ -3815,6 +3972,42 @@ class ClassificationConfigureInfoForUpdate(AbstractModel):
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ColorEnhanceConfig(AbstractModel):
+    """Color enhancement configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable the feature. Valid values:
+<li>ON</li>
+<li>OFF</li>
+Default value: ON.
+        :type Switch: str
+        :param Type: The strength. Valid values:
+<li>weak</li>
+<li>normal</li>
+<li>strong</li>
+Default value: weak.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        """
+        self.Switch = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4819,6 +5012,8 @@ Default value: 0.
         :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
         :param TEHDConfig: TESHD transcoding parameter. To enable it, please contact your Tencent Cloud sales rep.
         :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
+        :param EnhanceConfig: Audio/Video enhancement configuration.
+        :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
         """
         self.Container = None
         self.Name = None
@@ -4828,6 +5023,7 @@ Default value: 0.
         self.VideoTemplate = None
         self.AudioTemplate = None
         self.TEHDConfig = None
+        self.EnhanceConfig = None
 
 
     def _deserialize(self, params):
@@ -4845,6 +5041,9 @@ Default value: 0.
         if params.get("TEHDConfig") is not None:
             self.TEHDConfig = TEHDConfig()
             self.TEHDConfig._deserialize(params.get("TEHDConfig"))
+        if params.get("EnhanceConfig") is not None:
+            self.EnhanceConfig = EnhanceConfig()
+            self.EnhanceConfig._deserialize(params.get("EnhanceConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6365,9 +6564,11 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskType: Task type. Currently valid values:
-<li>WorkflowTask: Video workflow processing task.</li>
-<li>LiveStreamProcessTask: Live stream processing task.</li>
+        :param TaskType: The task type. Valid values:
+<li>WorkflowTask</li>
+<li>EditMediaTask</li>
+<li>LiveStreamProcessTask</li>
+<li>ScheduleTask (scheme)</li>
         :type TaskType: str
         :param Status: Task status. Valid values:
 <li>WAITING: Waiting;</li>
@@ -6380,11 +6581,11 @@ class DescribeTaskDetailResponse(AbstractModel):
         :type BeginProcessTime: str
         :param FinishTime: End time of task execution in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type FinishTime: str
+        :param EditMediaTask: Video editing task information. This field has a value only when `TaskType` is `EditMediaTask`.
+        :type EditMediaTask: :class:`tencentcloud.mps.v20190612.models.EditMediaTask`
         :param WorkflowTask: Information of a video processing task. This field has a value only when `TaskType` is `WorkflowTask`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type WorkflowTask: :class:`tencentcloud.mps.v20190612.models.WorkflowTask`
-        :param EditMediaTask: Video editing task information. This field has a value only when `TaskType` is `EditMediaTask`.
-        :type EditMediaTask: :class:`tencentcloud.mps.v20190612.models.EditMediaTask`
         :param LiveStreamProcessTask: Information of a live stream processing task. This field has a value only when `TaskType` is `LiveStreamProcessTask`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LiveStreamProcessTask: :class:`tencentcloud.mps.v20190612.models.LiveStreamProcessTask`
@@ -6399,6 +6600,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type SessionContext: str
         :param ExtInfo: Extended information field, used in specific scenarios.
         :type ExtInfo: str
+        :param ScheduleTask: The information of a scheme. This parameter is valid only if `TaskType` is `ScheduleTask`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ScheduleTask: :class:`tencentcloud.mps.v20190612.models.ScheduleTask`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -6407,14 +6611,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.CreateTime = None
         self.BeginProcessTime = None
         self.FinishTime = None
-        self.WorkflowTask = None
         self.EditMediaTask = None
+        self.WorkflowTask = None
         self.LiveStreamProcessTask = None
         self.TaskNotifyConfig = None
         self.TasksPriority = None
         self.SessionId = None
         self.SessionContext = None
         self.ExtInfo = None
+        self.ScheduleTask = None
         self.RequestId = None
 
 
@@ -6424,12 +6629,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.CreateTime = params.get("CreateTime")
         self.BeginProcessTime = params.get("BeginProcessTime")
         self.FinishTime = params.get("FinishTime")
-        if params.get("WorkflowTask") is not None:
-            self.WorkflowTask = WorkflowTask()
-            self.WorkflowTask._deserialize(params.get("WorkflowTask"))
         if params.get("EditMediaTask") is not None:
             self.EditMediaTask = EditMediaTask()
             self.EditMediaTask._deserialize(params.get("EditMediaTask"))
+        if params.get("WorkflowTask") is not None:
+            self.WorkflowTask = WorkflowTask()
+            self.WorkflowTask._deserialize(params.get("WorkflowTask"))
         if params.get("LiveStreamProcessTask") is not None:
             self.LiveStreamProcessTask = LiveStreamProcessTask()
             self.LiveStreamProcessTask._deserialize(params.get("LiveStreamProcessTask"))
@@ -6440,6 +6645,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.SessionId = params.get("SessionId")
         self.SessionContext = params.get("SessionContext")
         self.ExtInfo = params.get("ExtInfo")
+        if params.get("ScheduleTask") is not None:
+            self.ScheduleTask = ScheduleTask()
+            self.ScheduleTask._deserialize(params.get("ScheduleTask"))
         self.RequestId = params.get("RequestId")
 
 
@@ -6486,11 +6694,14 @@ class DescribeTasksResponse(AbstractModel):
         :type TaskSet: list of TaskSimpleInfo
         :param ScrollToken: Scrolling identifier. If a request does not return all the data entries, this field indicates the ID of the next entry. If this field is an empty string, there is no more data.
         :type ScrollToken: str
+        :param TotalCount: The total number of records that meet the conditions.
+        :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.TaskSet = None
         self.ScrollToken = None
+        self.TotalCount = None
         self.RequestId = None
 
 
@@ -6502,6 +6713,7 @@ class DescribeTasksResponse(AbstractModel):
                 obj._deserialize(item)
                 self.TaskSet.append(obj)
         self.ScrollToken = params.get("ScrollToken")
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -6530,6 +6742,12 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
         :type Limit: int
+        :param TranscodeType: The template type (replacing `TEHDType`). Valid values:
+<li>Common: Common transcoding template</li>
+<li>TEHD: TESHD template</li>
+<li>Enhance: Audio/Video enhancement template.</li>
+This parameter is left empty by default, which indicates to return all types of templates.
+        :type TranscodeType: str
         """
         self.Definitions = None
         self.Type = None
@@ -6537,6 +6755,7 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
         self.TEHDType = None
         self.Offset = None
         self.Limit = None
+        self.TranscodeType = None
 
 
     def _deserialize(self, params):
@@ -6546,6 +6765,7 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
         self.TEHDType = params.get("TEHDType")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.TranscodeType = params.get("TranscodeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7139,6 +7359,33 @@ class EnableWorkflowResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class EnhanceConfig(AbstractModel):
+    """Audio/Video enhancement configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VideoEnhance: Video enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VideoEnhance: :class:`tencentcloud.mps.v20190612.models.VideoEnhanceConfig`
+        """
+        self.VideoEnhance = None
+
+
+    def _deserialize(self, params):
+        if params.get("VideoEnhance") is not None:
+            self.VideoEnhance = VideoEnhanceConfig()
+            self.VideoEnhance._deserialize(params.get("VideoEnhance"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExecuteFunctionRequest(AbstractModel):
     """ExecuteFunction request structure.
 
@@ -7287,6 +7534,73 @@ Up to 100 tags are allowed, each containing no more than 16 characters.
         
 
 
+class FaceEnhanceConfig(AbstractModel):
+    """Face enhancement configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable the feature. Valid values:
+<li>ON</li>
+<li>OFF</li>
+Default value: ON.
+        :type Switch: str
+        :param Intensity: The strength. Value range: 0.0-1.0
+Default value: 0.0.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Intensity: float
+        """
+        self.Switch = None
+        self.Intensity = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Intensity = params.get("Intensity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FrameRateConfig(AbstractModel):
+    """Frame interpolation configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable the feature. Valid values:
+<li>ON</li>
+<li>OFF</li>
+Default value: ON.
+        :type Switch: str
+        :param Fps: The frame rate (Hz). Value range: [0, 100].
+Default value: 0.
+Note: For transcoding, this parameter will overwrite `Fps` of `VideoTemplate`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Fps: int
+        """
+        self.Switch = None
+        self.Fps = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Fps = params.get("Fps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FrameTagConfigureInfo(AbstractModel):
     """Control parameter of intelligent frame-specific tagging task
 
@@ -7339,6 +7653,43 @@ class FrameTagConfigureInfoForUpdate(AbstractModel):
         
 
 
+class HdrConfig(AbstractModel):
+    """HDR configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable the feature. Valid values:
+<li>ON</li>
+<li>OFF</li>
+Default value: ON.
+        :type Switch: str
+        :param Type: The strength. Valid values:
+<li>HDR10</li>
+<li>HLG</li>
+Default value: HDR10.
+Note: The video codec must be `libx265`.
+Note: The bit depth for video encoding is 10 bits.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        """
+        self.Switch = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HeadTailParameter(AbstractModel):
     """Opening and closing credits parameters
 
@@ -7368,6 +7719,42 @@ class HeadTailParameter(AbstractModel):
                 obj = MediaInputInfo()
                 obj._deserialize(item)
                 self.TailSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageQualityEnhanceConfig(AbstractModel):
+    """Overall enhancement configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable the feature. Valid values:
+<li>ON</li>
+<li>OFF</li>
+Default value: ON.
+        :type Switch: str
+        :param Type: The strength. Valid values:
+<li>weak</li>
+<li>normal</li>
+<li>strong</li>
+Default value: weak.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        """
+        self.Switch = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8371,6 +8758,40 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         self.TopicName = params.get("TopicName")
         self.NotifyType = params.get("NotifyType")
         self.NotifyUrl = params.get("NotifyUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LowLightEnhanceConfig(AbstractModel):
+    """Low-light enhancement configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable the feature. Valid values:
+<li>ON</li>
+<li>OFF</li>
+Default value: ON.
+        :type Switch: str
+        :param Type: The strength. Valid values:
+<li>normal</li>
+Default value: normal.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        """
+        self.Switch = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10577,6 +10998,8 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfoForUpdate`
         :param TEHDConfig: TESHD transcoding parameter. To enable it, please contact your Tencent Cloud sales rep.
         :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`
+        :param EnhanceConfig: Audio/Video enhancement settings.
+        :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
         """
         self.Definition = None
         self.Container = None
@@ -10587,6 +11010,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         self.VideoTemplate = None
         self.AudioTemplate = None
         self.TEHDConfig = None
+        self.EnhanceConfig = None
 
 
     def _deserialize(self, params):
@@ -10605,6 +11029,9 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         if params.get("TEHDConfig") is not None:
             self.TEHDConfig = TEHDConfigForUpdate()
             self.TEHDConfig._deserialize(params.get("TEHDConfig"))
+        if params.get("EnhanceConfig") is not None:
+            self.EnhanceConfig = EnhanceConfig()
+            self.EnhanceConfig._deserialize(params.get("EnhanceConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11163,8 +11590,10 @@ class ParseNotificationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventType: Supported event type. Valid values:
-<li>WorkflowTask: Video workflow processing task.</li>
+        :param EventType: The event type. Valid values:
+<li>WorkflowTask</li>
+<li>EditMediaTask</li>
+<li>ScheduleTask (scheme)</li>
         :type EventType: str
         :param WorkflowTaskEvent: Information of a video processing task. This field has a value only when `TaskType` is `WorkflowTask`.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -11175,6 +11604,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type SessionId: str
         :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
+        :param ScheduleTaskEvent: The information of a scheme. This parameter is valid only if `TaskType` is `ScheduleTask`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ScheduleTaskEvent: :class:`tencentcloud.mps.v20190612.models.ScheduleTask`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -11183,6 +11615,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.EditMediaTaskEvent = None
         self.SessionId = None
         self.SessionContext = None
+        self.ScheduleTaskEvent = None
         self.RequestId = None
 
 
@@ -11196,6 +11629,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self.EditMediaTaskEvent._deserialize(params.get("EditMediaTaskEvent"))
         self.SessionId = params.get("SessionId")
         self.SessionContext = params.get("SessionContext")
+        if params.get("ScheduleTaskEvent") is not None:
+            self.ScheduleTaskEvent = ScheduleTask()
+            self.ScheduleTaskEvent._deserialize(params.get("ScheduleTaskEvent"))
         self.RequestId = params.get("RequestId")
 
 
@@ -11912,6 +12348,11 @@ class ProcessMediaRequest(AbstractModel):
         :type SessionId: str
         :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
+        :param ScheduleId: The scheme ID.
+Notes: 1. If output information is not specified for a scheme, the request parameters `OutputStorage` and `OutputDir` will be used.
+2. If a notification is not configured for a scheme, the request parameter `TaskNotifyConfig` will be used.
+3. The trigger configured for a scheme is for automatically starting a scheme. It stops working when you manually call this API to start a scheme.
+        :type ScheduleId: int
         """
         self.InputInfo = None
         self.OutputStorage = None
@@ -11924,6 +12365,7 @@ class ProcessMediaRequest(AbstractModel):
         self.TasksPriority = None
         self.SessionId = None
         self.SessionContext = None
+        self.ScheduleId = None
 
 
     def _deserialize(self, params):
@@ -11952,6 +12394,7 @@ class ProcessMediaRequest(AbstractModel):
         self.TasksPriority = params.get("TasksPriority")
         self.SessionId = params.get("SessionId")
         self.SessionContext = params.get("SessionContext")
+        self.ScheduleId = params.get("ScheduleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12575,6 +13018,282 @@ Default value: black.
         
 
 
+class ScheduleAnalysisTaskResult(AbstractModel):
+    """The result of a content analysis task of a scheme.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: The task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: The error code. An empty string indicates the task is successful; any other value returned indicates the task has failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :type ErrCodeExt: str
+        :param ErrCode: The error code. 0 indicates the task is successful; other values indicate the task has failed. This parameter is not recommended. Please use `ErrCodeExt` instead.
+        :type ErrCode: int
+        :param Message: The error message.
+        :type Message: str
+        :param Input: The input of the content analysis task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
+        :param Output: The output of the content analysis task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: list of AiAnalysisResult
+        """
+        self.Status = None
+        self.ErrCodeExt = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiAnalysisTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = []
+            for item in params.get("Output"):
+                obj = AiAnalysisResult()
+                obj._deserialize(item)
+                self.Output.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScheduleRecognitionTaskResult(AbstractModel):
+    """The result of a content recognition task of a scheme.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: The task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: The error code. An empty string indicates the task is successful; any other value returned indicates the task has failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :type ErrCodeExt: str
+        :param ErrCode: The error code. 0 indicates the task is successful; other values indicate the task has failed. This parameter is not recommended. Please use `ErrCodeExt` instead.
+        :type ErrCode: int
+        :param Message: The error message.
+        :type Message: str
+        :param Input: The input of the content recognition task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        :param Output: The output of the content recognition task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: list of AiRecognitionResult
+        """
+        self.Status = None
+        self.ErrCodeExt = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiRecognitionTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = []
+            for item in params.get("Output"):
+                obj = AiRecognitionResult()
+                obj._deserialize(item)
+                self.Output.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScheduleReviewTaskResult(AbstractModel):
+    """The result of a content moderation task of a scheme.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: The task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: The error code. An empty string indicates the task is successful; any other value returned indicates the task has failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :type ErrCodeExt: str
+        :param ErrCode: The error code. 0 indicates the task is successful; other values indicate the task has failed. This parameter is not recommended. Please use `ErrCodeExt` instead.
+        :type ErrCode: int
+        :param Message: The error message.
+        :type Message: str
+        :param Input: The input of the content moderation task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        :param Output: The output of the content moderation task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: list of AiContentReviewResult
+        """
+        self.Status = None
+        self.ErrCodeExt = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiContentReviewTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = []
+            for item in params.get("Output"):
+                obj = AiContentReviewResult()
+                obj._deserialize(item)
+                self.Output.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScheduleTask(AbstractModel):
+    """The information of a scheme.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: The scheme ID.
+        :type TaskId: str
+        :param Status: The scheme status. Valid values:
+<li>PROCESSING</li>
+<li>FINISH</li>
+        :type Status: str
+        :param InputInfo: The information of the file processed.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param MetaData: The metadata of the source video.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MetaData: :class:`tencentcloud.mps.v20190612.models.MediaMetaData`
+        :param ActivityResultSet: The output of the scheme.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ActivityResultSet: list of ActivityResult
+        """
+        self.TaskId = None
+        self.Status = None
+        self.InputInfo = None
+        self.MetaData = None
+        self.ActivityResultSet = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        if params.get("InputInfo") is not None:
+            self.InputInfo = MediaInputInfo()
+            self.InputInfo._deserialize(params.get("InputInfo"))
+        if params.get("MetaData") is not None:
+            self.MetaData = MediaMetaData()
+            self.MetaData._deserialize(params.get("MetaData"))
+        if params.get("ActivityResultSet") is not None:
+            self.ActivityResultSet = []
+            for item in params.get("ActivityResultSet"):
+                obj = ActivityResult()
+                obj._deserialize(item)
+                self.ActivityResultSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScratchRepairConfig(AbstractModel):
+    """Banding removal configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable the feature. Valid values:
+<li>ON</li>
+<li>OFF</li>
+Default value: ON.
+        :type Switch: str
+        :param Intensity: The strength. Value range: 0.0-1.0
+Default value: 0.0
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Intensity: float
+        """
+        self.Switch = None
+        self.Intensity = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Intensity = params.get("Intensity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SharpEnhanceConfig(AbstractModel):
+    """Detail enhancement configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable the feature. Valid values:
+<li>ON</li>
+<li>OFF</li>
+Default value: ON.
+        :type Switch: str
+        :param Intensity: The strength. Value range: 0.0-1.0
+Default value: 0.0
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Intensity: float
+        """
+        self.Switch = None
+        self.Intensity = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Intensity = params.get("Intensity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SnapshotByTimeOffsetTaskInput(AbstractModel):
     """Input parameter type of a time point screencapturing task
 
@@ -12712,6 +13431,48 @@ Default value: black.
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         self.FillType = params.get("FillType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SuperResolutionConfig(AbstractModel):
+    """Super resolution configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable the feature. Valid values:
+<li>ON</li>
+<li>OFF</li>
+Default value: ON.
+        :type Switch: str
+        :param Type: The strength. Valid values:
+<li>lq: For low-resolution videos with obvious noise</li>
+<li>hq: For high-resolution videos</li>
+Default value: lq.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        :param Size: The ratio of the target resolution to the original resolution. Valid values:
+<li>2</li>
+Default value: 2.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Size: int
+        """
+        self.Switch = None
+        self.Type = None
+        self.Size = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
+        self.Size = params.get("Size")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12943,6 +13704,7 @@ class TaskNotifyConfig(AbstractModel):
 <li>CMQ: This value is no longer used. Please use `TDMQ-CMQ` instead.</li>
 <li>TDMQ-CMQ: Message queue</li>
 <li>URL: If `NotifyType` is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`. HTTP and JSON are used for the callbacks. The packet contains the response parameters of the `ParseNotification` API.</li>
+<li>SCF: We do not recommend this notification type, which you need to configure in the SCF console.</li>
 Default value: `TDMQ-CMQ`.
         :type NotifyType: str
         :param NotifyUrl: HTTP callback URL, required if `NotifyType` is set to `URL`
@@ -13502,6 +14264,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type CreateTime: str
         :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type UpdateTime: str
+        :param EnhanceConfig: Audio/Video enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
         """
         self.Definition = None
         self.Container = None
@@ -13516,6 +14281,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ContainerType = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.EnhanceConfig = None
 
 
     def _deserialize(self, params):
@@ -13538,6 +14304,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ContainerType = params.get("ContainerType")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        if params.get("EnhanceConfig") is not None:
+            self.EnhanceConfig = EnhanceConfig()
+            self.EnhanceConfig._deserialize(params.get("EnhanceConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13884,6 +14653,138 @@ There can be up to 10 tags, each with a length limit of 16 characters.
         
 
 
+class VideoDenoiseConfig(AbstractModel):
+    """Image noise removal configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable the feature. Valid values:
+<li>ON</li>
+<li>OFF</li>
+Default value: ON.
+        :type Switch: str
+        :param Type: The strength. Valid values:
+<li>weak</li>
+<li>strong</li>
+Default value: weak.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        """
+        self.Switch = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoEnhanceConfig(AbstractModel):
+    """Video enhancement configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FrameRate: Frame interpolation configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FrameRate: :class:`tencentcloud.mps.v20190612.models.FrameRateConfig`
+        :param SuperResolution: Super resolution configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SuperResolution: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
+        :param Hdr: HDR configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Hdr: :class:`tencentcloud.mps.v20190612.models.HdrConfig`
+        :param Denoise: Image noise removal configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Denoise: :class:`tencentcloud.mps.v20190612.models.VideoDenoiseConfig`
+        :param ImageQualityEnhance: Overall enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ImageQualityEnhance: :class:`tencentcloud.mps.v20190612.models.ImageQualityEnhanceConfig`
+        :param ColorEnhance: Color enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ColorEnhance: :class:`tencentcloud.mps.v20190612.models.ColorEnhanceConfig`
+        :param SharpEnhance: Detail enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SharpEnhance: :class:`tencentcloud.mps.v20190612.models.SharpEnhanceConfig`
+        :param FaceEnhance: Face enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FaceEnhance: :class:`tencentcloud.mps.v20190612.models.FaceEnhanceConfig`
+        :param LowLightEnhance: Low-light enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LowLightEnhance: :class:`tencentcloud.mps.v20190612.models.LowLightEnhanceConfig`
+        :param ScratchRepair: Banding removal configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ScratchRepair: :class:`tencentcloud.mps.v20190612.models.ScratchRepairConfig`
+        :param ArtifactRepair: Artifact removal (smoothing) configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ArtifactRepair: :class:`tencentcloud.mps.v20190612.models.ArtifactRepairConfig`
+        """
+        self.FrameRate = None
+        self.SuperResolution = None
+        self.Hdr = None
+        self.Denoise = None
+        self.ImageQualityEnhance = None
+        self.ColorEnhance = None
+        self.SharpEnhance = None
+        self.FaceEnhance = None
+        self.LowLightEnhance = None
+        self.ScratchRepair = None
+        self.ArtifactRepair = None
+
+
+    def _deserialize(self, params):
+        if params.get("FrameRate") is not None:
+            self.FrameRate = FrameRateConfig()
+            self.FrameRate._deserialize(params.get("FrameRate"))
+        if params.get("SuperResolution") is not None:
+            self.SuperResolution = SuperResolutionConfig()
+            self.SuperResolution._deserialize(params.get("SuperResolution"))
+        if params.get("Hdr") is not None:
+            self.Hdr = HdrConfig()
+            self.Hdr._deserialize(params.get("Hdr"))
+        if params.get("Denoise") is not None:
+            self.Denoise = VideoDenoiseConfig()
+            self.Denoise._deserialize(params.get("Denoise"))
+        if params.get("ImageQualityEnhance") is not None:
+            self.ImageQualityEnhance = ImageQualityEnhanceConfig()
+            self.ImageQualityEnhance._deserialize(params.get("ImageQualityEnhance"))
+        if params.get("ColorEnhance") is not None:
+            self.ColorEnhance = ColorEnhanceConfig()
+            self.ColorEnhance._deserialize(params.get("ColorEnhance"))
+        if params.get("SharpEnhance") is not None:
+            self.SharpEnhance = SharpEnhanceConfig()
+            self.SharpEnhance._deserialize(params.get("SharpEnhance"))
+        if params.get("FaceEnhance") is not None:
+            self.FaceEnhance = FaceEnhanceConfig()
+            self.FaceEnhance._deserialize(params.get("FaceEnhance"))
+        if params.get("LowLightEnhance") is not None:
+            self.LowLightEnhance = LowLightEnhanceConfig()
+            self.LowLightEnhance._deserialize(params.get("LowLightEnhance"))
+        if params.get("ScratchRepair") is not None:
+            self.ScratchRepair = ScratchRepairConfig()
+            self.ScratchRepair._deserialize(params.get("ScratchRepair"))
+        if params.get("ArtifactRepair") is not None:
+            self.ArtifactRepair = ArtifactRepairConfig()
+            self.ArtifactRepair._deserialize(params.get("ArtifactRepair"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VideoTemplateInfo(AbstractModel):
     """Video stream configuration parameter
 
@@ -13891,21 +14792,25 @@ class VideoTemplateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Codec: Video stream codec. Valid values:
+        :param Codec: The video codec. Valid values:
 <li>`libx264`: H.264</li>
 <li>`libx265`: H.265</li>
 <li>`av1`: AOMedia Video 1</li>
+Note: You must specify a resolution (not higher than 640 x 480) if the H.265 codec is used.
+Note: You can only use the AOMedia Video 1 codec for MP4 files.
         :type Codec: str
-        :param Fps: Video frame rate in Hz. Value range: [0, 100].
+        :param Fps: The video frame rate (Hz). Value range: [0, 100].
 If the value is 0, the frame rate will be the same as that of the source video.
+Note: For adaptive bitrate streaming, the value range of this parameter is [0, 60].
         :type Fps: int
-        :param Bitrate: Video stream bitrate (Kbps). Valid values: `0`; [75, 35000]
-If the value is `0`, the original video bitrate will be used.
+        :param Bitrate: The video bitrate (Kbps). Value range: 0 and [128, 35000].
+If the value is 0, the bitrate of the video will be the same as that of the source video.
         :type Bitrate: int
         :param ResolutionAdaptive: Resolution adaption. Valid values:
-<li>open: Enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
-<li>close: Disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
+<li>open: Enabled. When resolution adaption is enabled, `Width` indicates the long side of a video, while `Height` indicates the short side.</li>
+<li>close: Disabled. When resolution adaption is disabled, `Width` indicates the width of a video, while `Height` indicates the height.</li>
 Default value: open.
+Note: When resolution adaption is enabled, `Width` cannot be smaller than `Height`.
         :type ResolutionAdaptive: str
         :param Width: Maximum value of the width (or long side) of a video stream in px. Value range: 0 and [128, 4,096].
 <li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
@@ -13924,12 +14829,13 @@ Default value: 0.
         :param Gop: Frame interval between I keyframes. Value range: 0 and [1,100000].
 If this parameter is 0 or left empty, the system will automatically set the GOP length.
         :type Gop: int
-        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
-<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
-<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
-<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>
-<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>
+        :param FillType: The fill mode, which indicates how a video is resized when the video’s original aspect ratio is different from the target aspect ratio. Valid values:
+<li>stretch: Stretch the image frame by frame to fill the entire screen. The video image may become "squashed" or "stretched" after transcoding.</li>
+<li>black: Keep the image's original aspect ratio and fill the blank space with black bars.</li>
+<li>white: Keep the image’s original aspect ratio and fill the blank space with white bars.</li>
+<li>gauss: Keep the image’s original aspect ratio and apply Gaussian blur to the blank space.</li>
 Default value: black.
+Note: Only `stretch` and `black` are supported for adaptive bitrate streaming.
         :type FillType: str
         :param Vcrf: The control factor of video constant bitrate. Value range: [1, 51]
 If this parameter is specified, CRF (a bitrate control method) will be used for transcoding. (Video bitrate will no longer take effect.)
@@ -13973,10 +14879,12 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Codec: Video stream codec. Valid values:
+        :param Codec: The video codec. Valid values:
 <li>libx264: H.264</li>
 <li>libx265: H.265</li>
-Currently, a resolution within 640*480p must be specified for H.265.
+<li>av1: AOMedia Video 1</li>
+Note: You must specify a resolution (not higher than 640 x 480) if the H.265 codec is used.
+Note: You can only use the AOMedia Video 1 codec for MP4 files.
         :type Codec: str
         :param Fps: Video frame rate in Hz. Value range: [0, 100].
 If the value is 0, the frame rate will be the same as that of the source video.
@@ -13985,8 +14893,9 @@ If the value is 0, the frame rate will be the same as that of the source video.
 If the value is 0, the bitrate of the video will be the same as that of the source video.
         :type Bitrate: int
         :param ResolutionAdaptive: Resolution adaption. Valid values:
-<li>open: Enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
-<li>close: Disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
+<li>open: Enabled. When resolution adaption is enabled, `Width` indicates the long side of a video, while `Height` indicates the short side.</li>
+<li>close: Disabled. When resolution adaption is disabled, `Width` indicates the width of a video, while `Height` indicates the height.</li>
+Note: When resolution adaption is enabled, `Width` cannot be smaller than `Height`.
         :type ResolutionAdaptive: str
         :param Width: Maximum value of the width (or long side) of a video stream in px. Value range: 0 and [128, 4,096].
 <li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>

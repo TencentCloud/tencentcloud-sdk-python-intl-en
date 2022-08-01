@@ -35,7 +35,7 @@ class AccountCreateInfo(AbstractModel):
         :type Remark: str
         :param IsAdmin: Whether it is an admin account. Default value: no
         :type IsAdmin: bool
-        :param Authentication: Valid values: `win-windows authentication`, `sql-sqlserver authentication`. Default value: `sql-sqlserver authentication`.
+        :param Authentication: Valid values: `win-windows authentication`, `sql-sqlserver authentication`. Default value: `sql-sqlserver authentication`
         :type Authentication: str
         """
         self.UserName = None
@@ -292,6 +292,12 @@ class Backup(AbstractModel):
         :type GroupId: str
         :param BackupFormat: Backup file format. Valid values:`pkg` (archive file), `single` (unarchived files).
         :type BackupFormat: str
+        :param Region: The code of current region where the instance resides
+        :type Region: str
+        :param CrossBackupAddr: The download address of cross-region backup in target region
+        :type CrossBackupAddr: list of CrossBackupAddr
+        :param CrossBackupStatus: The target region and status of cross-region backup
+        :type CrossBackupStatus: list of CrossRegionStatus
         """
         self.FileName = None
         self.Size = None
@@ -307,6 +313,9 @@ class Backup(AbstractModel):
         self.BackupName = None
         self.GroupId = None
         self.BackupFormat = None
+        self.Region = None
+        self.CrossBackupAddr = None
+        self.CrossBackupStatus = None
 
 
     def _deserialize(self, params):
@@ -324,6 +333,19 @@ class Backup(AbstractModel):
         self.BackupName = params.get("BackupName")
         self.GroupId = params.get("GroupId")
         self.BackupFormat = params.get("BackupFormat")
+        self.Region = params.get("Region")
+        if params.get("CrossBackupAddr") is not None:
+            self.CrossBackupAddr = []
+            for item in params.get("CrossBackupAddr"):
+                obj = CrossBackupAddr()
+                obj._deserialize(item)
+                self.CrossBackupAddr.append(obj)
+        if params.get("CrossBackupStatus") is not None:
+            self.CrossBackupStatus = []
+            for item in params.get("CrossBackupStatus"):
+                obj = CrossRegionStatus()
+                obj._deserialize(item)
+                self.CrossBackupStatus.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -350,12 +372,18 @@ class BackupFile(AbstractModel):
         :type DBs: list of str
         :param DownloadLink: Download address
         :type DownloadLink: str
+        :param Region: The code of the region where current instance resides
+        :type Region: str
+        :param CrossBackupAddr: The target region and download address of cross-region backup
+        :type CrossBackupAddr: list of CrossBackupAddr
         """
         self.Id = None
         self.FileName = None
         self.Size = None
         self.DBs = None
         self.DownloadLink = None
+        self.Region = None
+        self.CrossBackupAddr = None
 
 
     def _deserialize(self, params):
@@ -364,6 +392,13 @@ class BackupFile(AbstractModel):
         self.Size = params.get("Size")
         self.DBs = params.get("DBs")
         self.DownloadLink = params.get("DownloadLink")
+        self.Region = params.get("Region")
+        if params.get("CrossBackupAddr") is not None:
+            self.CrossBackupAddr = []
+            for item in params.get("CrossBackupAddr"):
+                obj = CrossBackupAddr()
+                obj._deserialize(item)
+                self.CrossBackupAddr.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -951,6 +986,66 @@ class CreateMigrationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CrossBackupAddr(AbstractModel):
+    """All Download addresses of cross-region backup
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CrossRegion: The target region of cross-region backup
+        :type CrossRegion: str
+        :param CrossInternalAddr: The address used to download the cross-region backup over a private network
+        :type CrossInternalAddr: str
+        :param CrossExternalAddr: The address used to download the cross-region backup over a public network
+        :type CrossExternalAddr: str
+        """
+        self.CrossRegion = None
+        self.CrossInternalAddr = None
+        self.CrossExternalAddr = None
+
+
+    def _deserialize(self, params):
+        self.CrossRegion = params.get("CrossRegion")
+        self.CrossInternalAddr = params.get("CrossInternalAddr")
+        self.CrossExternalAddr = params.get("CrossExternalAddr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CrossRegionStatus(AbstractModel):
+    """The target region and status of cross-region backup
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CrossRegion: The target region of cross-region backup
+        :type CrossRegion: str
+        :param CrossStatus: Synchronization status of cross-region backup. Valid values: `0` (creating), `1` (succeeded), `2`: (failed), `4` (syncing)
+        :type CrossStatus: int
+        """
+        self.CrossRegion = None
+        self.CrossStatus = None
+
+
+    def _deserialize(self, params):
+        self.CrossRegion = params.get("CrossRegion")
+        self.CrossStatus = params.get("CrossStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DBCreateInfo(AbstractModel):
     """Database creation information
 
@@ -1145,6 +1240,16 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :type BackupSaveDays: int
         :param InstanceType: Instance type. Valid values: `HA` (high-availability), `RO` (read-only), `SI` (basic edition), `BI` (business intelligence service).
         :type InstanceType: str
+        :param CrossRegions: The target region of cross-region backup. If this parameter left empty, it indicates that cross-region backup is disabled.
+        :type CrossRegions: list of str
+        :param CrossBackupEnabled: Cross-region backup status. Valid values: `enable` (enabled), `disable` (disabed)
+        :type CrossBackupEnabled: str
+        :param CrossBackupSaveDays: The retention period of cross-region backup. Default value: 7 days
+        :type CrossBackupSaveDays: int
+        :param DnsPodDomain: 
+        :type DnsPodDomain: str
+        :param TgwWanVPort: 
+        :type TgwWanVPort: int
         """
         self.InstanceId = None
         self.Name = None
@@ -1189,6 +1294,11 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.BackupCycleType = None
         self.BackupSaveDays = None
         self.InstanceType = None
+        self.CrossRegions = None
+        self.CrossBackupEnabled = None
+        self.CrossBackupSaveDays = None
+        self.DnsPodDomain = None
+        self.TgwWanVPort = None
 
 
     def _deserialize(self, params):
@@ -1240,6 +1350,11 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.BackupCycleType = params.get("BackupCycleType")
         self.BackupSaveDays = params.get("BackupSaveDays")
         self.InstanceType = params.get("InstanceType")
+        self.CrossRegions = params.get("CrossRegions")
+        self.CrossBackupEnabled = params.get("CrossBackupEnabled")
+        self.CrossBackupSaveDays = params.get("CrossBackupSaveDays")
+        self.DnsPodDomain = params.get("DnsPodDomain")
+        self.TgwWanVPort = params.get("TgwWanVPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

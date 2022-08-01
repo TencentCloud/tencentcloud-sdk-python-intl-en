@@ -86,7 +86,7 @@ class ClbClient(AbstractClient):
 
 
     def BatchDeregisterTargets(self, request):
-        """This API is used to unbind layer-4 and layer-7 real servers in batches. Up to 500 servers can be unbound in a batch.
+        """This API is used to batch unbind real servers of the layer-4 and layer-7 VPC-based CLBs. Up to 500 real servers can be unbound in a batch.
 
         :param request: Request instance for BatchDeregisterTargets.
         :type request: :class:`tencentcloud.clb.v20180317.models.BatchDeregisterTargetsRequest`
@@ -144,7 +144,7 @@ class ClbClient(AbstractClient):
 
 
     def BatchRegisterTargets(self, request):
-        """This API is used to bind CVM instances or ENIs in batches. Up to 500 servers can be bound in a batch. It supports cross-region binding, and layer-4 and layer-7 (TCP/UDP/HTTP/HTTPS) protocols.
+        """This API is used to batch bind CVM instances or ENIs. Up to 500 servers can be bound in a batch. It supports cross-region binding, layer-4 and layer-7 (TCP/UDP/HTTP/HTTPS) protocols, and VPC-based CLBs only.
 
         :param request: Request instance for BatchRegisterTargets.
         :type request: :class:`tencentcloud.clb.v20180317.models.BatchRegisterTargetsRequest`

@@ -992,7 +992,7 @@ class ClusterCIDRSettings(AbstractModel):
         :type ClusterCIDR: str
         :param IgnoreClusterCIDRConflict: Whether to ignore ClusterCIDR conflict errors, which are not ignored by default
         :type IgnoreClusterCIDRConflict: bool
-        :param MaxNodePodNum: Maximum number of pods on each node in the cluster
+        :param MaxNodePodNum: Maximum number of Pods on each node. Value range: 16 to 256. When its power is not 2, it will round upward to the closest power of 2.
         :type MaxNodePodNum: int
         :param MaxClusterServiceNum: The maximum number of services in a cluster. The range is from 32 to 32768. When its power is not 2, it will round upward to the closest power of 2. Default value is 256.
         :type MaxClusterServiceNum: int
@@ -5742,6 +5742,10 @@ Note: This field may return null, indicating that no valid value was found.
         :param InstanceChargeType: Instance billing method. Valid values: POSTPAID_BY_HOUR (pay-as-you-go hourly); CDHPAID (billed based on CDH, i.e., only CDH is billed but not the instances on CDH)
 Note: This field may return null, indicating that no valid value was found.
         :type InstanceChargeType: str
+        :param IPv6Addresses: IPv6 address of the instance
+Note: This field may return `null`, indicating that no valid values can be obtained.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type IPv6Addresses: list of str
         """
         self.Usable = None
         self.UnusableReason = None
@@ -5757,6 +5761,7 @@ Note: This field may return null, indicating that no valid value was found.
         self.InstanceType = None
         self.AutoscalingGroupId = None
         self.InstanceChargeType = None
+        self.IPv6Addresses = None
 
 
     def _deserialize(self, params):
@@ -5774,6 +5779,7 @@ Note: This field may return null, indicating that no valid value was found.
         self.InstanceType = params.get("InstanceType")
         self.AutoscalingGroupId = params.get("AutoscalingGroupId")
         self.InstanceChargeType = params.get("InstanceChargeType")
+        self.IPv6Addresses = params.get("IPv6Addresses")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

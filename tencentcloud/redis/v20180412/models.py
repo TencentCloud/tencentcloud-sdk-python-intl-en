@@ -625,6 +625,10 @@ If the instance `TypeId` is CKV 3.2, the password can contain 8–30 letters and
         :type TemplateId: str
         :param DryRun: false: send a normal request and create an instance directly after the check is passed (default value); true: send a check request without creating an instance.
         :type DryRun: bool
+        :param ProductVersion: Valid values: `local` (local disk edition), `cloud` (cloud disk edition), `cdc` (dedicated cluster edition). Default value: `local` (local disk edition)
+        :type ProductVersion: str
+        :param RedisClusterId: Dedicated cluster ID, which is required when `ProductVersion` is "cdc".
+        :type RedisClusterId: str
         """
         self.TypeId = None
         self.MemSize = None
@@ -649,6 +653,8 @@ If the instance `TypeId` is CKV 3.2, the password can contain 8–30 letters and
         self.ZoneName = None
         self.TemplateId = None
         self.DryRun = None
+        self.ProductVersion = None
+        self.RedisClusterId = None
 
 
     def _deserialize(self, params):
@@ -685,6 +691,8 @@ If the instance `TypeId` is CKV 3.2, the password can contain 8–30 letters and
         self.ZoneName = params.get("ZoneName")
         self.TemplateId = params.get("TemplateId")
         self.DryRun = params.get("DryRun")
+        self.ProductVersion = params.get("ProductVersion")
+        self.RedisClusterId = params.get("RedisClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3722,6 +3730,8 @@ If `TypeId` indicates the standard architecture, `MemSize` indicates the total m
         :type ReplicasReadonly: bool
         :param ZoneName: Name of the AZ where the instance resides. For more information, see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).
         :type ZoneName: str
+        :param ProductVersion: Valid values: `local` (local disk edition), `cloud` (cloud disk edition), `cdc` (dedicated cluster edition). Default value: `local` (local disk edition)
+        :type ProductVersion: str
         """
         self.TypeId = None
         self.MemSize = None
@@ -3733,6 +3743,7 @@ If `TypeId` indicates the standard architecture, `MemSize` indicates the total m
         self.RedisReplicasNum = None
         self.ReplicasReadonly = None
         self.ZoneName = None
+        self.ProductVersion = None
 
 
     def _deserialize(self, params):
@@ -3746,6 +3757,7 @@ If `TypeId` indicates the standard architecture, `MemSize` indicates the total m
         self.RedisReplicasNum = params.get("RedisReplicasNum")
         self.ReplicasReadonly = params.get("ReplicasReadonly")
         self.ZoneName = params.get("ZoneName")
+        self.ProductVersion = params.get("ProductVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

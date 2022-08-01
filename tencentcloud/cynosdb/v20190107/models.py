@@ -312,14 +312,18 @@ class BillingResourceInfo(AbstractModel):
         :type ClusterId: str
         :param InstanceIds: Instance ID list
         :type InstanceIds: list of str
+        :param DealName: Order ID
+        :type DealName: str
         """
         self.ClusterId = None
         self.InstanceIds = None
+        self.DealName = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.InstanceIds = params.get("InstanceIds")
+        self.DealName = params.get("DealName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -488,55 +492,55 @@ class CreateClustersRequest(AbstractModel):
 <li> MYSQL </li>
         :type DbType: str
         :param DbVersion: Database version. Valid values: 
-<li> Valid values for `MYSQL`: 5.7 </li>
+<li> Valid values for `MYSQL`: 5.7 and 8.0 </li>
         :type DbVersion: str
-        :param ProjectId: Project ID
+        :param ProjectId: Project ID.
         :type ProjectId: int
         :param Cpu: It is required when `DbMode` is set to `NORMAL` or left empty.
-Number of CPU cores of a non-serverless instance
+Number of CPU cores of normal instance
         :type Cpu: int
         :param Memory: It is required when `DbMode` is set to `NORMAL` or left empty.
 Memory of a non-serverless instance in GB
         :type Memory: int
         :param Storage: This parameter has been deprecated.
-Storage capacity in GB.
+Storage capacity in GB
         :type Storage: int
-        :param ClusterName: Cluster name
+        :param ClusterName: Cluster name, which can contain less than 64 letters, digits, or symbols (-_.).
         :type ClusterName: str
-        :param AdminPassword: Account password (it must contain 8-64 characters in at least three of the following four types: uppercase letters, lowercase letters, digits, and symbols (~!@#$%^&*_-+=`|\(){}[]:;'<>,.?/).)
+        :param AdminPassword: Account password, which must contain 8-64 characters in at least three of the following four types: uppercase letters, lowercase letters, digits, and symbols (~!@#$%^&*_-+=`|\(){}[]:;'<>,.?/).
         :type AdminPassword: str
-        :param Port: Port. Default value: 5432
+        :param Port: Port. Valid range: [0, 65535). Default value: 3306
         :type Port: int
-        :param PayMode: Billing mode. 0: pay-as-you-go; 1: monthly subscription. Default value: 0
+        :param PayMode: Billing mode. `0`: pay-as-you-go; `1`: monthly subscription. Default value: `0`
         :type PayMode: int
-        :param Count: Number of purchased items. Currently, only 1 can be passed in. If this parameter is left empty, 1 will be used by default.
+        :param Count: Number of purchased clusters. Valid range: [1,50]. Default value: 1
         :type Count: int
         :param RollbackStrategy: Rollback type:
-noneRollback: no rollback
-snapRollback: rollback by snapshot
+noneRollback: no rollback;
+snapRollback: rollback by snapshot;
 timeRollback: rollback by time point
         :type RollbackStrategy: str
         :param RollbackId: `snapshotId` for snapshot rollback or `queryId` for time point rollback. 0 indicates to determine whether the time point is valid
         :type RollbackId: int
-        :param OriginalClusterId: Pass in the source cluster ID during rollback to find the source `poolId`
+        :param OriginalClusterId: The source cluster ID passed in during rollback to find the source `poolId`
         :type OriginalClusterId: str
         :param ExpectTime: Specified time for time point rollback or snapshot time for snapshot rollback
         :type ExpectTime: str
         :param ExpectTimeThresh: This parameter has been deprecated.
 Specified allowed time range for time point rollback
         :type ExpectTimeThresh: int
-        :param StorageLimit: The maximum storage of a non-serverless instance in GB
-If `DbType` is `MYSQL` and the storage billing mode is prepaid, the parameter value cannot exceed the maximum storage corresponding to the CPU and memory specifications.
+        :param StorageLimit: Storage upper limit of normal instance in GB
+If `DbType` is `MYSQL` and the storage billing mode is monthly subscription, the parameter value can’t exceed the maximum storage corresponding to the CPU and memory specifications.
         :type StorageLimit: int
-        :param InstanceCount: Number of instances
+        :param InstanceCount: Number of Instances. Valid range: (0,16]
         :type InstanceCount: int
         :param TimeSpan: Purchase duration of monthly subscription plan
         :type TimeSpan: int
-        :param TimeUnit: Purchase duration unit of monthly subscription plan
+        :param TimeUnit: Duration unit of monthly subscription. Valid values: `s`, `d`, `m`, `y`
         :type TimeUnit: str
-        :param AutoRenewFlag: Whether auto-renewal is enabled for monthly subscription plan
+        :param AutoRenewFlag: Whether auto-renewal is enabled for monthly subscription plan. Default value: `0`
         :type AutoRenewFlag: int
-        :param AutoVoucher: Whether to automatically select a voucher. 1: yes; 0: no. Default value: 0
+        :param AutoVoucher: Whether to automatically select a voucher. `1`: yes; `0`: no. Default value: `0`
         :type AutoVoucher: int
         :param HaCount: Number of instances (this parameter has been disused and is retained only for compatibility with existing instances)
         :type HaCount: int
@@ -545,15 +549,15 @@ If `DbType` is `MYSQL` and the storage billing mode is prepaid, the parameter va
         :param ResourceTags: Array of tags to be bound to the created cluster
         :type ResourceTags: list of Tag
         :param DbMode: Database type
-Valid values when `DbType` is `MYSQL` (default value: NORMAL):
+Valid values when `DbType` is `MYSQL` (default value: `NORMAL`):
 <li>NORMAL</li>
 <li>SERVERLESS</li>
         :type DbMode: str
-        :param MinCpu: This parameter is required if `DbMode` is `SERVERLESS`
-Minimum number of CPU cores. For the value range, please see the returned result of `DescribeServerlessInstanceSpecs`
+        :param MinCpu: This parameter is required if `DbMode` is `SERVERLESS`.
+Minimum number of CPU cores. For the value range, see the returned result of `DescribeServerlessInstanceSpecs`.
         :type MinCpu: float
-        :param MaxCpu: This parameter is required if `DbMode` is `SERVERLESS`:
-Maximum number of CPU cores. For the value range, please see the returned result of `DescribeServerlessInstanceSpecs`
+        :param MaxCpu: This parameter is required if `DbMode` is `SERVERLESS`.
+Maximum number of CPU cores. For the value range, see the returned result of `DescribeServerlessInstanceSpecs`.
         :type MaxCpu: float
         :param AutoPause: This parameter specifies whether the cluster will be automatically paused if `DbMode` is `SERVERLESS`. Valid values:
 <li>yes</li>
@@ -561,11 +565,11 @@ Maximum number of CPU cores. For the value range, please see the returned result
 Default value: yes
         :type AutoPause: str
         :param AutoPauseDelay: This parameter specifies the delay for automatic cluster pause in seconds if `DbMode` is `SERVERLESS`. Value range: [600,691200]
-Default value: 600
+Default value: `600`
         :type AutoPauseDelay: int
-        :param StoragePayMode: The billing mode of cluster storage. Valid values: `0` (postpaid), `1` (prepaid). Default value: `0`.
-If `DbType` is `MYSQL` and the billing mode of cluster compute is pay-as-you-go (or the `DbMode` is `SERVERLESS`), the billing mode of cluster storage must be postpaid.
-Clusters with storage billed in prepaid mode cannot be cloned or rolled back.
+        :param StoragePayMode: The billing mode of cluster storage. Valid values: `0` (pay-as-you-go), `1` (monthly subscription). Default value: `0`.
+If `DbType` is `MYSQL` and the billing mode of cluster compute is pay-as-you-go (or the `DbMode` is `SERVERLESS`), the billing mode of cluster storage must be pay-as-you-go.
+Clusters with storage billed in monthly subscription can’t be cloned or rolled back.
         :type StoragePayMode: int
         :param SecurityGroupIds: Array of security group IDs
         :type SecurityGroupIds: list of str
@@ -575,8 +579,10 @@ Clusters with storage billed in prepaid mode cannot be cloned or rolled back.
         :type ClusterParams: list of ParamItem
         :param DealMode: Transaction mode. Valid values: `0` (place and pay for an order), `1` (place an order)
         :type DealMode: int
-        :param ParamTemplateId: Parameter template ID
+        :param ParamTemplateId: Parameter template ID, which can be obtained by querying parameter template information “DescribeParamTemplates”
         :type ParamTemplateId: int
+        :param SlaveZone: Multi-AZ address
+        :type SlaveZone: str
         """
         self.Zone = None
         self.VpcId = None
@@ -617,6 +623,7 @@ Clusters with storage billed in prepaid mode cannot be cloned or rolled back.
         self.ClusterParams = None
         self.DealMode = None
         self.ParamTemplateId = None
+        self.SlaveZone = None
 
 
     def _deserialize(self, params):
@@ -669,6 +676,7 @@ Clusters with storage billed in prepaid mode cannot be cloned or rolled back.
                 self.ClusterParams.append(obj)
         self.DealMode = params.get("DealMode")
         self.ParamTemplateId = params.get("ParamTemplateId")
+        self.SlaveZone = params.get("SlaveZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -686,19 +694,19 @@ class CreateClustersResponse(AbstractModel):
     def __init__(self):
         r"""
         :param TranId: Freezing transaction ID
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TranId: str
         :param DealNames: Order ID
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type DealNames: list of str
-        :param ResourceIds: List of resource IDs (This field has been deprecated. Please use `dealNames` in the `DescribeResourcesByDealName` API to get resource IDs.)
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param ResourceIds: List of resource IDs (This field has been deprecated. You need to use `dealNames` in the `DescribeResourcesByDealName` API to get resource IDs.)
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ResourceIds: list of str
-        :param ClusterIds: List of cluster IDs (This field has been deprecated. Please use `dealNames` in the `DescribeResourcesByDealName` API to get cluster IDs.)
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param ClusterIds: List of cluster IDs (This field has been deprecated. You need to use `dealNames` in the `DescribeResourcesByDealName` API to get cluster IDs.)
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ClusterIds: list of str
-        :param BigDealIds: Big order ID.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param BigDealIds: Big order ID
+Note: This field may return null, indicating that no valid values can be obtained.
         :type BigDealIds: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2504,14 +2512,18 @@ class DescribeResourcesByDealNameRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DealName: Order ID. (If the cluster is not delivered yet, the `DescribeResourcesByDealName` API may return the `InvalidParameterValue.DealNameNotFound` error. Please call the API again until it succeeds.)
+        :param DealName: Order ID. (If the cluster is not delivered yet, the `DescribeResourcesByDealName` API may return the `InvalidParameterValue.DealNameNotFound` error. Call the API again until it succeeds.)
         :type DealName: str
+        :param DealNames: Order ID, which can be used to query the resource information of multiple orders ID (If the cluster is not delivered yet, the `DescribeResourcesByDealName` API may return the `InvalidParameterValue.DealNameNotFound` error. Call the API again until it succeeds.)
+        :type DealNames: list of str
         """
         self.DealName = None
+        self.DealNames = None
 
 
     def _deserialize(self, params):
         self.DealName = params.get("DealName")
+        self.DealNames = params.get("DealNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3051,7 +3063,7 @@ class ModifyClusterParamRequest(AbstractModel):
         r"""
         :param ClusterId: Cluster ID
         :type ClusterId: str
-        :param ParamList: List of the parameters to be modified. Each element in the list is a combination of `ParamName`, `CurrentValue`, and `OldValue`.
+        :param ParamList: List of the parameters to be modified. Each element in the list is a combination of `ParamName`, `CurrentValue`, and `OldValue`. `ParamName` is the parameter name; `CurrentValue` is the current value; `OldValue` is the old value that doesn’t need to be verified.
         :type ParamList: list of ParamItem
         :param IsInMaintainPeriod: Valid values: `yes` (execute during maintenance time), `no` (execute now)
         :type IsInMaintainPeriod: str

@@ -143,7 +143,7 @@ class CdnClient(AbstractClient):
 
 
     def DeleteClsLogTopic(self, request):
-        """This API is used to delete a log topic. Note: when a log topic is deleted, all logs of the domain names bound to it will no longer be published to the topic, and the logs previously published to the topic will be deleted. This action will take effect within 5-15 minutes.
+        """This API is used to delete a log topic. Note: when a log topic is deleted, all logs of the domain names bound to it will no longer be published to the topic, and the logs previously published to the topic will be deleted. This action will take effect within 5–15 minutes.
 
         :param request: Request instance for DeleteClsLogTopic.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DeleteClsLogTopicRequest`
@@ -301,7 +301,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeCdnOriginIp(self, request):
-        """This API is used to query the IP information of CDN intermediate nodes. Note: this API will be deactivated soon. Please call `DescribeIpStatus` instead.
+        """This API is used to query the IP information of CDN intermediate nodes. Note: this API will be deactivated soon and no longer be maintained. Please call `DescribeIpStatus` instead.
 
         :param request: Request instance for DescribeCdnOriginIp.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeCdnOriginIpRequest`
@@ -330,7 +330,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeCertDomains(self, request):
-        """This API is used to verify an SSL certificate and extract the domain names. It will then return the list of domain names connected to CDN and the list of domain names with the certificate configured.
+        """This API is used to verify a SSL certificate and obtain its domain names.
 
         :param request: Request instance for DescribeCertDomains.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeCertDomainsRequest`
@@ -665,7 +665,6 @@ class CdnClient(AbstractClient):
 
     def DescribePushTasks(self, request):
         """This API is used to query the submission record and progress of prefetch tasks.
-        This API is in beta test and not fully available yet. Please stay tuned.
 
         :param request: Request instance for DescribePushTasks.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribePushTasksRequest`
@@ -782,7 +781,7 @@ class CdnClient(AbstractClient):
 
 
     def DisableClsLogTopic(self, request):
-        """This API is used to stop publishing to a log topic. Note: after a log topic is disabled, all logs of the domain names bound to it will no longer be published to the topic, and the logs that have already been published will be retained. This action will take effect within 5-15 minutes.
+        """This API is used to stop publishing to a log topic. Note: after a log topic is disabled, all logs of the domain names bound to it will no longer be published to the topic, and the logs that have already been published will be retained. This action will take effect within 5–15 minutes.
 
         :param request: Request instance for DisableClsLogTopic.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DisableClsLogTopicRequest`
@@ -840,7 +839,7 @@ class CdnClient(AbstractClient):
 
 
     def EnableClsLogTopic(self, request):
-        """This API is used to start publishing to a log topic. Note: after a log topic is enabled, all logs of the domain names bound to the topic will be published to it. This action will take effect within 5-15 minutes.
+        """This API is used to start publishing to a log topic. Note: after a log topic is enabled, all logs of the domain names bound to the topic will be published to it. This action will take effect within 5–15 minutes.
 
         :param request: Request instance for EnableClsLogTopic.
         :type request: :class:`tencentcloud.cdn.v20180606.models.EnableClsLogTopicRequest`

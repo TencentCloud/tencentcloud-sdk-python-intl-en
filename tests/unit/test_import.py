@@ -409,6 +409,11 @@ def test_import_trtc():
     from tencentcloud.trtc.v20190722 import models
 
 
+def test_import_tts():
+    from tencentcloud.tts.v20190823 import tts_client
+    from tencentcloud.tts.v20190823 import models
+
+
 def test_import_vm():
     from tencentcloud.vm.v20201229 import vm_client
     from tencentcloud.vm.v20201229 import models

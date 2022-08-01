@@ -252,6 +252,264 @@ class ChargePrepaid(AbstractModel):
         
 
 
+class ChcDeployExtraConfig(AbstractModel):
+    """Configuration options for MiniOS of the CHC deployment network
+
+    """
+
+
+class ChcHost(AbstractModel):
+    """CHC host information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChcId: CHC host ID
+        :type ChcId: str
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        :param SerialNumber: Server serial number
+        :type SerialNumber: str
+        :param InstanceState: CHC host status<br/>
+<ul>
+<li>REGISTERED: The CHC host is registered, but the out-of-band network and deployment network are not configured.</li>
+<li>VPC_READY: The out-of-band network and deployment network are configured.</li>
+<li>PREPARED: It’s ready and can be associated with a CVM.</li>
+<li>ONLINE: It’s already associated with a CVM.</li>
+</ul>
+        :type InstanceState: str
+        :param DeviceType: Device type
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type DeviceType: str
+        :param Placement: Availability zone
+        :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
+        :param BmcVirtualPrivateCloud: Out-of-band network
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type BmcVirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
+        :param BmcIp: Out-of-band network IP
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type BmcIp: str
+        :param BmcSecurityGroupIds: Out-of-band network security group ID
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type BmcSecurityGroupIds: list of str
+        :param DeployVirtualPrivateCloud: Deployment network
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type DeployVirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
+        :param DeployIp: Deployment network IP
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type DeployIp: str
+        :param DeploySecurityGroupIds: Deployment network security group ID
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type DeploySecurityGroupIds: list of str
+        :param CvmInstanceId: ID of the associated CVM
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CvmInstanceId: str
+        :param CreatedTime: Server creation time
+        :type CreatedTime: str
+        :param HardwareDescription: Instance hardware description, including CPU cores, memory capacity and disk capacity.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type HardwareDescription: str
+        :param CPU: CPU cores of the CHC host
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CPU: int
+        :param Memory: Memory capacity of the CHC host (unit: GB)
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Memory: int
+        :param Disk: Disk capacity of the CHC host
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Disk: str
+        :param BmcMAC: MAC address assigned under the out-of-band network
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type BmcMAC: str
+        :param DeployMAC: MAC address assigned under the deployment network
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type DeployMAC: str
+        :param TenantType: Management type
+HOSTING: Hosting
+TENANT: Leasing
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type TenantType: str
+        :param DeployExtraConfig: CHC DHCP option, which is used for MiniOS debugging.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type DeployExtraConfig: :class:`tencentcloud.cvm.v20170312.models.ChcDeployExtraConfig`
+        """
+        self.ChcId = None
+        self.InstanceName = None
+        self.SerialNumber = None
+        self.InstanceState = None
+        self.DeviceType = None
+        self.Placement = None
+        self.BmcVirtualPrivateCloud = None
+        self.BmcIp = None
+        self.BmcSecurityGroupIds = None
+        self.DeployVirtualPrivateCloud = None
+        self.DeployIp = None
+        self.DeploySecurityGroupIds = None
+        self.CvmInstanceId = None
+        self.CreatedTime = None
+        self.HardwareDescription = None
+        self.CPU = None
+        self.Memory = None
+        self.Disk = None
+        self.BmcMAC = None
+        self.DeployMAC = None
+        self.TenantType = None
+        self.DeployExtraConfig = None
+
+
+    def _deserialize(self, params):
+        self.ChcId = params.get("ChcId")
+        self.InstanceName = params.get("InstanceName")
+        self.SerialNumber = params.get("SerialNumber")
+        self.InstanceState = params.get("InstanceState")
+        self.DeviceType = params.get("DeviceType")
+        if params.get("Placement") is not None:
+            self.Placement = Placement()
+            self.Placement._deserialize(params.get("Placement"))
+        if params.get("BmcVirtualPrivateCloud") is not None:
+            self.BmcVirtualPrivateCloud = VirtualPrivateCloud()
+            self.BmcVirtualPrivateCloud._deserialize(params.get("BmcVirtualPrivateCloud"))
+        self.BmcIp = params.get("BmcIp")
+        self.BmcSecurityGroupIds = params.get("BmcSecurityGroupIds")
+        if params.get("DeployVirtualPrivateCloud") is not None:
+            self.DeployVirtualPrivateCloud = VirtualPrivateCloud()
+            self.DeployVirtualPrivateCloud._deserialize(params.get("DeployVirtualPrivateCloud"))
+        self.DeployIp = params.get("DeployIp")
+        self.DeploySecurityGroupIds = params.get("DeploySecurityGroupIds")
+        self.CvmInstanceId = params.get("CvmInstanceId")
+        self.CreatedTime = params.get("CreatedTime")
+        self.HardwareDescription = params.get("HardwareDescription")
+        self.CPU = params.get("CPU")
+        self.Memory = params.get("Memory")
+        self.Disk = params.get("Disk")
+        self.BmcMAC = params.get("BmcMAC")
+        self.DeployMAC = params.get("DeployMAC")
+        self.TenantType = params.get("TenantType")
+        if params.get("DeployExtraConfig") is not None:
+            self.DeployExtraConfig = ChcDeployExtraConfig()
+            self.DeployExtraConfig._deserialize(params.get("DeployExtraConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfigureChcAssistVpcRequest(AbstractModel):
+    """ConfigureChcAssistVpc request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChcIds: CHC host IDs
+        :type ChcIds: list of str
+        :param BmcVirtualPrivateCloud: Out-of-band network information
+        :type BmcVirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
+        :param BmcSecurityGroupIds: Out-of-band network security group list
+        :type BmcSecurityGroupIds: list of str
+        :param DeployVirtualPrivateCloud: Deployment network information
+        :type DeployVirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
+        :param DeploySecurityGroupIds: Deployment network security group list
+        :type DeploySecurityGroupIds: list of str
+        """
+        self.ChcIds = None
+        self.BmcVirtualPrivateCloud = None
+        self.BmcSecurityGroupIds = None
+        self.DeployVirtualPrivateCloud = None
+        self.DeploySecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.ChcIds = params.get("ChcIds")
+        if params.get("BmcVirtualPrivateCloud") is not None:
+            self.BmcVirtualPrivateCloud = VirtualPrivateCloud()
+            self.BmcVirtualPrivateCloud._deserialize(params.get("BmcVirtualPrivateCloud"))
+        self.BmcSecurityGroupIds = params.get("BmcSecurityGroupIds")
+        if params.get("DeployVirtualPrivateCloud") is not None:
+            self.DeployVirtualPrivateCloud = VirtualPrivateCloud()
+            self.DeployVirtualPrivateCloud._deserialize(params.get("DeployVirtualPrivateCloud"))
+        self.DeploySecurityGroupIds = params.get("DeploySecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfigureChcAssistVpcResponse(AbstractModel):
+    """ConfigureChcAssistVpc response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ConfigureChcDeployVpcRequest(AbstractModel):
+    """ConfigureChcDeployVpc request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChcIds: CHC instance ID
+        :type ChcIds: list of str
+        :param DeployVirtualPrivateCloud: Deployment network information
+        :type DeployVirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
+        :param DeploySecurityGroupIds: Deployment network security group list
+        :type DeploySecurityGroupIds: list of str
+        """
+        self.ChcIds = None
+        self.DeployVirtualPrivateCloud = None
+        self.DeploySecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.ChcIds = params.get("ChcIds")
+        if params.get("DeployVirtualPrivateCloud") is not None:
+            self.DeployVirtualPrivateCloud = VirtualPrivateCloud()
+            self.DeployVirtualPrivateCloud._deserialize(params.get("DeployVirtualPrivateCloud"))
+        self.DeploySecurityGroupIds = params.get("DeploySecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfigureChcDeployVpcResponse(AbstractModel):
+    """ConfigureChcDeployVpc response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateDisasterRecoverGroupRequest(AbstractModel):
     """CreateDisasterRecoverGroup request structure.
 
@@ -425,14 +683,23 @@ You can query the project IDs in two ways:
 <li>Query the project IDs in the project list.
 <li>Call `DescribeProject` and look for `projectId` in the response.
         :type ProjectId: int
+        :param TagSpecification: Tag description list. This parameter is used to bind a tag to a key pair.
+        :type TagSpecification: list of TagSpecification
         """
         self.KeyName = None
         self.ProjectId = None
+        self.TagSpecification = None
 
 
     def _deserialize(self, params):
         self.KeyName = params.get("KeyName")
         self.ProjectId = params.get("ProjectId")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = TagSpecification()
+                obj._deserialize(item)
+                self.TagSpecification.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -663,7 +930,7 @@ class DataDisk(AbstractModel):
         :param DiskType: Data disk type. For more information about limits on different data disk types, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values: <br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>LOCAL_NVME: local NVME disk, specified in the `InstanceType`<br><li>LOCAL_PRO: local HDD disk, specified in the `InstanceType`<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: Tremendous SSD<br><br>Default value: LOCAL_BASIC.<br><br>This parameter is invalid for the `ResizeInstanceDisk` API.
         :type DiskType: str
         :param DiskId: Data disk ID. Note that it’s not available for `LOCAL_BASIC` and `LOCAL_SSD` disks.
-This parameter is only available for the `DescribeInstances` API.
+It is only used as a response parameter for APIs such as `DescribeInstances`, and cannot be used as a request parameter for APIs such as `RunInstances`.
         :type DiskId: str
         :param DeleteWithInstance: Whether to terminate the data disk when its CVM is terminated. Valid values:
 <li>TRUE: terminate the data disk when its CVM is terminated. This value only supports pay-as-you-go cloud disks billed on an hourly basis.
@@ -938,6 +1205,88 @@ class DeleteLaunchTemplateVersionsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeChcHostsRequest(AbstractModel):
+    """DescribeChcHosts request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChcIds: CHC host ID. Up to 100 instances per request is allowed. `ChcIds` and `Filters` cannot be specified at the same time.
+        :type ChcIds: list of str
+        :param Filters: <li><strong>zone</strong></li>
+<p style="padding-left: 30px;">Filter by the <strong>availability zone</strong>, such as `ap-guangzhou-1`.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p><p style="padding-left: 30px;">Valid values: See <a href="https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1">Regions and Availability Zones</a></p>
+<li><strong>instance-name</strong></li>
+<p style="padding-left: 30px;">Filter by the <strong>instance name</strong>.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
+<li><strong>instance-state</strong></li>
+<p style="padding-left: 30px;">Filter by the <strong>instance status</strong>. For status details, see [InstanceStatus](https://intl.cloud.tencent.com/document/api/213/15753?from_cn_redirect=1#InstanceStatus).</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
+<li><strong>device-type</strong></li>
+<p style="padding-left: 30px;">Filter by the <strong>device type</strong>.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
+<li><strong>vpc-id</strong></li>
+<p style="padding-left: 30px;">Filter by the <strong>unique VPC ID</strong>.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
+<li><strong>subnet-id</strong></li>
+<p style="padding-left: 30px;">Filter by the <strong>unique VPC subnet ID</strong>.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
+        :type Filters: list of Filter
+        :param Offset: The offset. Default value: `0`. For more information on `Offset`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :type Offset: int
+        :param Limit: The number of returned results. Default value: `20`. Maximum value: `100`. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :type Limit: int
+        """
+        self.ChcIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ChcIds = params.get("ChcIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeChcHostsResponse(AbstractModel):
+    """DescribeChcHosts response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Number of eligible instances
+        :type TotalCount: int
+        :param ChcHostSet: List of returned instances
+        :type ChcHostSet: list of ChcHost
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ChcHostSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ChcHostSet") is not None:
+            self.ChcHostSet = []
+            for item in params.get("ChcHostSet"):
+                obj = ChcHost()
+                obj._deserialize(item)
+                self.ChcHostSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1759,7 +2108,7 @@ class DescribeLaunchTemplatesRequest(AbstractModel):
         r"""
         :param LaunchTemplateIds: Instance launch template ID. ID of one or more instance launch templates. If not specified, all templates of the user will be displayed.
         :type LaunchTemplateIds: list of str
-        :param Filters: <p style="padding-left: 30px;">Filter by [<strong>LaunchTemplateNames</strong>].</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
+        :param Filters: <p style="padding-left: 30px;">Filter by [<strong>LaunchTemplateName</strong>].</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
 The maximum number of `Filters` in each request is 10. The upper limit for `Filter.Values` is 5. This parameter cannot specify `LaunchTemplateIds` and `Filters` at the same time.
         :type Filters: list of Filter
         :param Offset: The offset. Default value: 0. For more information on `Offset`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
@@ -2837,16 +3186,25 @@ If you want to use the default project, specify 0 for the parameter.
         :type ProjectId: int
         :param PublicKey: Content of the public key in the key pair in the `OpenSSH RSA` format.
         :type PublicKey: str
+        :param TagSpecification: Tag description list. This parameter is used to bind a tag to a key pair.
+        :type TagSpecification: list of TagSpecification
         """
         self.KeyName = None
         self.ProjectId = None
         self.PublicKey = None
+        self.TagSpecification = None
 
 
     def _deserialize(self, params):
         self.KeyName = params.get("KeyName")
         self.ProjectId = params.get("ProjectId")
         self.PublicKey = params.get("PublicKey")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = TagSpecification()
+                obj._deserialize(item)
+                self.TagSpecification.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4226,6 +4584,67 @@ Note: This field may return null, indicating that no valid value is found.
         
 
 
+class ModifyChcAttributeRequest(AbstractModel):
+    """ModifyChcAttribute request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChcIds: CHC host IDs
+        :type ChcIds: list of str
+        :param InstanceName: CHC host name
+        :type InstanceName: str
+        :param DeviceType: Server type
+        :type DeviceType: str
+        :param BmcUser: Valid characters: Letters, numbers, hyphens and underscores
+        :type BmcUser: str
+        :param Password: The password can contain 8 to 16 characters, including letters, numbers and special symbols (()`~!@#$%^&*-+=_|{}).
+        :type Password: str
+        :param BmcSecurityGroupIds: BMC network security group list
+        :type BmcSecurityGroupIds: list of str
+        """
+        self.ChcIds = None
+        self.InstanceName = None
+        self.DeviceType = None
+        self.BmcUser = None
+        self.Password = None
+        self.BmcSecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.ChcIds = params.get("ChcIds")
+        self.InstanceName = params.get("InstanceName")
+        self.DeviceType = params.get("DeviceType")
+        self.BmcUser = params.get("BmcUser")
+        self.Password = params.get("Password")
+        self.BmcSecurityGroupIds = params.get("BmcSecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyChcAttributeResponse(AbstractModel):
+    """ModifyChcAttribute response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDisasterRecoverGroupAttributeRequest(AbstractModel):
     """ModifyDisasterRecoverGroupAttribute request structure.
 
@@ -4960,6 +5379,88 @@ class RegionInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RemoveChcAssistVpcRequest(AbstractModel):
+    """RemoveChcAssistVpc request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChcIds: CHC ID
+        :type ChcIds: list of str
+        """
+        self.ChcIds = None
+
+
+    def _deserialize(self, params):
+        self.ChcIds = params.get("ChcIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveChcAssistVpcResponse(AbstractModel):
+    """RemoveChcAssistVpc response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class RemoveChcDeployVpcRequest(AbstractModel):
+    """RemoveChcDeployVpc request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChcIds: CHC ID
+        :type ChcIds: list of str
+        """
+        self.ChcIds = None
+
+
+    def _deserialize(self, params):
+        self.ChcIds = params.get("ChcIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveChcDeployVpcResponse(AbstractModel):
+    """RemoveChcDeployVpc response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ReservedInstanceConfigInfoItem(AbstractModel):
@@ -6106,7 +6607,8 @@ class SystemDisk(AbstractModel):
         r"""
         :param DiskType: System disk type. For more information on limits of system disk types, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values:<br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_SSD: SSD<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><br>The disk type currently in stock will be used by default. 
         :type DiskType: str
-        :param DiskId: System disk ID. System disks whose type is `LOCAL_BASIC` or `LOCAL_SSD` do not have an ID and do not support this parameter currently.
+        :param DiskId: System disk ID. System disks whose type is `LOCAL_BASIC` or `LOCAL_SSD` do not have an ID and do not support this parameter.
+It is only used as a response parameter for APIs such as `DescribeInstances`, and cannot be used as a request parameter for APIs such as `RunInstances`.
         :type DiskId: str
         :param DiskSize: System disk size; unit: GB; default value: 50 GB.
         :type DiskSize: int
@@ -6168,7 +6670,7 @@ class TagSpecification(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceType: The type of resource that the tag is bound to. Valid values: `instance` (for CVM), `host` (for CDH) and `image` (for image).
+        :param ResourceType: The type of resource that the tag is bound to. Valid values: `instance` (for CVM), `host` (for CDH), `image` (for image), and `keypair` (for key).
         :type ResourceType: str
         :param Tags: List of tags
         :type Tags: list of Tag

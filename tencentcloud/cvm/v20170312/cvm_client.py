@@ -119,6 +119,64 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ConfigureChcAssistVpc(self, request):
+        """This API is used to configure the out-of-band network and deployment network of a CHC host.
+
+        :param request: Request instance for ConfigureChcAssistVpc.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.ConfigureChcAssistVpcRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.ConfigureChcAssistVpcResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ConfigureChcAssistVpc", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ConfigureChcAssistVpcResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ConfigureChcDeployVpc(self, request):
+        """This API is used to configure the deployment network of a CHC host.
+
+        :param request: Request instance for ConfigureChcDeployVpc.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.ConfigureChcDeployVpcRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.ConfigureChcDeployVpcResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ConfigureChcDeployVpc", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ConfigureChcDeployVpcResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDisasterRecoverGroup(self, request):
         """This API is used to create a [spread placement group](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1). After you create one, you can specify it for an instance when you [create the instance](https://intl.cloud.tencent.com/document/api/213/15730?from_cn_redirect=1),
 
@@ -378,6 +436,38 @@ class CvmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLaunchTemplateVersionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeChcHosts(self, request):
+        """This API is used to query the details of one or more CHC host.
+
+        * You can filter the query results with the instance ID, name or device type. See `Filter` for more information.
+        * If no parameter is defined, a certain number of instances under the current account will be returned. The number is specified by `Limit` and is `20` by default.
+
+        :param request: Request instance for DescribeChcHosts.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeChcHostsRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeChcHostsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeChcHosts", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeChcHostsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1297,6 +1387,35 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyChcAttribute(self, request):
+        """This API is used to modify the CHC host attributes.
+
+        :param request: Request instance for ModifyChcAttribute.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyChcAttributeRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.ModifyChcAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyChcAttribute", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyChcAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyDisasterRecoverGroupAttribute(self, request):
         """This API is used to modify the attributes of [spread placement groups](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1).
 
@@ -1456,13 +1575,12 @@ class CvmClient(AbstractClient):
 
 
     def ModifyInstancesProject(self, request):
-        """This API is used to change the project to which an instance belongs.
+        """This API is used to change the project to which an instance is assigned.
 
-        * Project is a virtual concept. You can create multiple projects under one account, manage different resources in each project, and assign different instances to different projects. You may use the [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API to query instances and use the project ID to filter results.
-        * You cannot modify the project of an instance that is bound to a load balancer. You need to firstly unbind the load balancer from the instance by using the [`DeregisterInstancesFromLoadBalancer`](https://intl.cloud.tencent.com/document/api/214/1258?from_cn_redirect=1) API.
-        [^_^]: # (If you modify the project of an instance, security groups associated with the instance will be automatically disassociated. You can use the [`ModifyInstancesAttribute`](https://intl.cloud.tencent.com/document/api/213/15739?from_cn_redirect=1) API to associate the instance with the security groups again.
-        * Batch operations are supported. You can operate up to 100 instances in each request.
-        * You can call the [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) API and find the result of the operation in the response parameter `LatestOperationState`. If the value is `SUCCESS`, the operation is successful.
+        * Project is a virtual concept. You can create multiple projects under one account, manage different resources in each project, and assign different instances to different projects. You may use the [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API to query instances and use the project ID to filter the results.
+        * You cannot modify the project of an instance that is bound to a load balancer. You need to unbind the load balancer from the instance by using the [DeregisterInstancesFromLoadBalancer](https://intl.cloud.tencent.com/document/api/214/1258?from_cn_redirect=1) API before using this API.
+        * Batch operations are supported. Up to 100 instances per request is allowed.
+        * You can use the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) to query the operation result. If the `LatestOperationState` in the response is `SUCCESS`, the operation is successful.
 
         :param request: Request instance for ModifyInstancesProject.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyInstancesProjectRequest`
@@ -1632,6 +1750,64 @@ class CvmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RebootInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RemoveChcAssistVpc(self, request):
+        """This API is used to remove the out-of-band network and deployment network of a CHC host.
+
+        :param request: Request instance for RemoveChcAssistVpc.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.RemoveChcAssistVpcRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.RemoveChcAssistVpcResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RemoveChcAssistVpc", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RemoveChcAssistVpcResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RemoveChcDeployVpc(self, request):
+        """This API is used to remove the deployment network of a CHC host.
+
+        :param request: Request instance for RemoveChcDeployVpc.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.RemoveChcDeployVpcRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.RemoveChcDeployVpcResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RemoveChcDeployVpc", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RemoveChcDeployVpcResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

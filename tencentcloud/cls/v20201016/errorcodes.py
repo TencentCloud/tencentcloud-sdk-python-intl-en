@@ -101,6 +101,9 @@ INVALIDPARAMETER_CONTENT = 'InvalidParameter.Content'
 # The unique key of database conflicts.
 INVALIDPARAMETER_DBDUPLICATION = 'InvalidParameter.DbDuplication'
 
+# The export job already exists.
+INVALIDPARAMETER_EXPORTCONFLICT = 'InvalidParameter.ExportConflict'
+
 # IA storage does not support key-value or tag index configuration.
 INVALIDPARAMETER_INVALIDINDEXRULEFORSEARCHLOW = 'InvalidParameter.InValidIndexRuleForSearchLow'
 
@@ -151,6 +154,9 @@ LIMITEXCEEDED_MACHINEGROUPIPLABELS = 'LimitExceeded.MachineGroupIpLabels'
 
 # The number of partitions exceeds the limit.
 LIMITEXCEEDED_PARTITION = 'LimitExceeded.Partition'
+
+# 
+LIMITEXCEEDED_SEARCHRESOURCES = 'LimitExceeded.SearchResources'
 
 # The number of logs returned by the search API exceeds the upper limit (20 MB).
 LIMITEXCEEDED_SEARCHRESULTTOOLARGE = 'LimitExceeded.SearchResultTooLarge'
