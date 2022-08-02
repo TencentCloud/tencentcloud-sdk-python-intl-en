@@ -280,7 +280,7 @@ class GeneralAccurateOCRResponse(AbstractModel):
         r"""
         :param TextDetections: Information on recognized text, including the text line content, confidence, text line coordinates, and text line coordinates after rotation correction. For more information, please click the link on the left.
         :type TextDetections: list of TextDetection
-        :param Angel: Image rotation angle in degrees. 0° indicates horizontal text. A positive value indicates clockwise rotation. A negative value indicates anticlockwise rotation. For more information, please see <a href="https://intl.cloud.tencent.com/document/product/866/45139?from_cn_redirect=1">How to Correct Tilted Text</a>.
+        :param Angel: Image rotation angle in degrees. 0°: The horizontal direction of the text on the image; a positive value: rotate clockwise; a negative value: rotate counterclockwise.
         :type Angel: float
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -388,7 +388,7 @@ class GeneralBasicOCRResponse(AbstractModel):
         :type TextDetections: list of TextDetection
         :param Language: Detected language. For more information on the supported languages, please see the description of the `LanguageType` input parameter.
         :type Language: str
-        :param Angel: Image rotation angle in degrees. 0° indicates horizontal text, a positive value indicates clockwise rotation, and a negative value indicates anticlockwise rotation. For more information, please see <a href="https://intl.cloud.tencent.com/document/product/866/45139?from_cn_redirect=1">How to Correct Tilted Text</a>.
+        :param Angel: Image rotation angle in degrees. 0°: The horizontal direction of the text on the image; a positive value: rotate clockwise; a negative value: rotate counterclockwise.
         :type Angel: float
         :param PdfPageSize: Total number of PDF pages to be returned if the image is a PDF. Default value: 0.
         :type PdfPageSize: int
@@ -572,116 +572,6 @@ class ItemCoord(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
-
-
-class MLIDCardOCRRequest(AbstractModel):
-    """MLIDCardOCR request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ImageBase64: Base64-encoded value of an image.
-Supported image formats: PNG, JPG, JPEG. GIF is currently not supported.
-Supported image size: the downloaded image cannot exceed 7 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
-        :type ImageBase64: str
-        :param ImageUrl: URL of an image. (This field is not supported outside the Chinese mainland)
-Supported image formats: PNG, JPG, JPEG. GIF is currently not supported.
-Supported image size: the downloaded image cannot exceed 7 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
-We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
-The download speed and stability of non-Tencent Cloud URLs may be low.
-        :type ImageUrl: str
-        :param RetImage: Whether to return an image
-        :type RetImage: bool
-        """
-        self.ImageBase64 = None
-        self.ImageUrl = None
-        self.RetImage = None
-
-
-    def _deserialize(self, params):
-        self.ImageBase64 = params.get("ImageBase64")
-        self.ImageUrl = params.get("ImageUrl")
-        self.RetImage = params.get("RetImage")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class MLIDCardOCRResponse(AbstractModel):
-    """MLIDCardOCR response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ID: Identity card number
-        :type ID: str
-        :param Name: Name
-        :type Name: str
-        :param Address: Address
-        :type Address: str
-        :param Sex: Gender
-        :type Sex: str
-        :param Warn: Warning code
--9103 Warning for spoofed card
--9102 Warning for photocopied card
--9106 Warning for covered card
--9107 Warning for blurry image
-        :type Warn: list of int
-        :param Image: Identity photo
-        :type Image: str
-        :param AdvancedInfo: Extended field:
-{
-    ID:{
-        Confidence:0.9999
-    },
-    Name:{
-        Confidence:0.9996
-    }
-}
-        :type AdvancedInfo: str
-        :param Type: Certificate type
-MyKad  ID card
-MyPR    Permanent resident card
-MyTentera   Military identity card
-MyKAS    Temporary ID card
-POLIS  Police card
-IKAD   Work permit
-MyKid   Kid card
-        :type Type: str
-        :param Birthday: Date of birth (currently, this field is only supported for IKAD).
-        :type Birthday: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.ID = None
-        self.Name = None
-        self.Address = None
-        self.Sex = None
-        self.Warn = None
-        self.Image = None
-        self.AdvancedInfo = None
-        self.Type = None
-        self.Birthday = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.ID = params.get("ID")
-        self.Name = params.get("Name")
-        self.Address = params.get("Address")
-        self.Sex = params.get("Sex")
-        self.Warn = params.get("Warn")
-        self.Image = params.get("Image")
-        self.AdvancedInfo = params.get("AdvancedInfo")
-        self.Type = params.get("Type")
-        self.Birthday = params.get("Birthday")
-        self.RequestId = params.get("RequestId")
 
 
 class MLIDPassportOCRRequest(AbstractModel):

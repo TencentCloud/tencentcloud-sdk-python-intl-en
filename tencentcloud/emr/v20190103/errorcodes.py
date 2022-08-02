@@ -20,6 +20,9 @@ FAILEDOPERATION = 'FailedOperation'
 # Duplicate order. Please check the EMR console.
 FAILEDOPERATION_DUPLICATEORDERNOTALLOWED = 'FailedOperation.DuplicateOrderNotAllowed'
 
+# Operation failed. The pods are not supported.
+FAILEDOPERATION_NOTSUPPORTPOD = 'FailedOperation.NotSupportPod'
+
 # Internal error.
 INTERNALERROR = 'InternalError'
 
@@ -62,6 +65,9 @@ INTERNALERROR_PROJECTCGWERROR = 'InternalError.ProjectCgwError'
 # An error occurred when calling a security group API.
 INTERNALERROR_SGERROR = 'InternalError.SgError'
 
+# An error occurred while calling TKE.
+INTERNALERROR_TKEERROR = 'InternalError.TKEError'
+
 # An error occurred while calling another service API.
 INTERNALERROR_TAGERROR = 'InternalError.TagError'
 
@@ -98,6 +104,9 @@ INVALIDPARAMETER_INVALIDAPPID = 'InvalidParameter.InvalidAppId'
 # Invalid auto-renewal flag.
 INVALIDPARAMETER_INVALIDAUTORENEW = 'InvalidParameter.InvalidAutoRenew'
 
+# Invalid ClickHouse cluster.
+INVALIDPARAMETER_INVALIDCLICKHOUSECLUSTER = 'InvalidParameter.InvalidClickHouseCluster'
+
 # Invalid `ClientToken`.
 INVALIDPARAMETER_INVALIDCLIENTTOKEN = 'InvalidParameter.InvalidClientToken'
 
@@ -113,8 +122,20 @@ INVALIDPARAMETER_INVALIDCOMPONENT = 'InvalidParameter.InvalidComponent'
 # The number of core nodes is invalid.
 INVALIDPARAMETER_INVALIDCORECOUNT = 'InvalidParameter.InvalidCoreCount'
 
+# The count must be greater than 0.
+INVALIDPARAMETER_INVALIDCOUNT = 'InvalidParameter.InvalidCount'
+
+# A scale-out request only applies to task nodes or core nodes.
+INVALIDPARAMETER_INVALIDCOUNTNUM = 'InvalidParameter.InvalidCountNum'
+
+# Error message: Invalid PodParameter.
+INVALIDPARAMETER_INVALIDCUSTOMIZEDPODPARAM = 'InvalidParameter.InvalidCustomizedPodParam'
+
 # Invalid disk size.
 INVALIDPARAMETER_INVALIDDISKSIZE = 'InvalidParameter.InvalidDiskSize'
+
+# Invalid EKS instance.
+INVALIDPARAMETER_INVALIDEKSINSTANCE = 'InvalidParameter.InvalidEksInstance'
 
 # Invalid `CustomConfig`.
 INVALIDPARAMETER_INVALIDEXTENDFIELD = 'InvalidParameter.InvalidExtendField'
@@ -161,11 +182,17 @@ INVALIDPARAMETER_INVALIDRESOURCEIDS = 'InvalidParameter.InvalidResourceIds'
 # Invalid resource specification.
 INVALIDPARAMETER_INVALIDRESOURCESPEC = 'InvalidParameter.InvalidResourceSpec'
 
+# This EMR version does not support the security mode.
+INVALIDPARAMETER_INVALIDSECURITYSUPPORT = 'InvalidParameter.InvalidSecuritySupport'
+
 # Invalid security group ID.
 INVALIDPARAMETER_INVALIDSERCURITYGRPUPID = 'InvalidParameter.InvalidSercurityGrpupId'
 
 # The service name is invalid.
 INVALIDPARAMETER_INVALIDSERVICENAME = 'InvalidParameter.InvalidServiceName'
+
+# The `ServiceNodeInfo` parameter is invalid or incorrect.
+INVALIDPARAMETER_INVALIDSERVICENODEINFO = 'InvalidParameter.InvalidServiceNodeInfo'
 
 # The `InvalidSoftDeployInfo` parameter is invalid or incorrect.
 INVALIDPARAMETER_INVALIDSOFTDEPLOYINFO = 'InvalidParameter.InvalidSoftDeployInfo'
@@ -188,11 +215,17 @@ INVALIDPARAMETER_INVALIDSUBNETID = 'InvalidParameter.InvalidSubnetId'
 # Invalid high availability parameter.
 INVALIDPARAMETER_INVALIDSUPPORTHA = 'InvalidParameter.InvalidSupportHA'
 
+# The number of task nodes cannot exceed 20.
+INVALIDPARAMETER_INVALIDTASKCOUNT = 'InvalidParameter.InvalidTaskCount'
+
 # Invalid `timespan`.
 INVALIDPARAMETER_INVALIDTIMESPAN = 'InvalidParameter.InvalidTimeSpan'
 
 # Invalid `TimeUnit`.
 INVALIDPARAMETER_INVALIDTIMEUNIT = 'InvalidParameter.InvalidTimeUnit'
+
+# The TKE cluster ID is invalid, or the TKE cluster is not eligible.
+INVALIDPARAMETER_INVALIDTKEINSTANCE = 'InvalidParameter.InvalidTkeInstance'
 
 # Invalid unified metadatabase.
 INVALIDPARAMETER_INVALIDUNIFYMETA = 'InvalidParameter.InvalidUnifyMeta'
@@ -230,6 +263,9 @@ INVALIDPARAMETER_ZONERESOURCENOTMATCH = 'InvalidParameter.ZoneResourceNotMatch'
 # Incorrect parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
+# The TKE cluster ID is invalid, or the TKE cluster is not eligible.
+INVALIDPARAMETERVALUE_INVALIDTKEINSTANCE = 'InvalidParameterValue.InvalidTkeInstance'
+
 # Missing parameter.
 MISSINGPARAMETER = 'MissingParameter'
 
@@ -257,8 +293,14 @@ RESOURCENOTFOUND_RESOURCENOTFOUND = 'ResourceNotFound.ResourceNotFound'
 # No corresponding subnet found.
 RESOURCENOTFOUND_SUBNETNOTFOUND = 'ResourceNotFound.SubnetNotFound'
 
+# Preset components of the TKE cluster are not deployed.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+RESOURCENOTFOUND_TKEPRECONDITIONNOTFOUND = 'ResourceNotFound.TKEPreconditionNotFound'
+
 # No specified tag found.
 RESOURCENOTFOUND_TAGSNOTFOUND = 'ResourceNotFound.TagsNotFound'
+
+# There is no default value of the current resource spec.
+RESOURCEUNAVAILABLE_RESOURCESPECNOTDEFAULTSPEC = 'ResourceUnavailable.ResourceSpecNotDefaultSpec'
 
 # The resources have been sold out.
 RESOURCESSOLDOUT = 'ResourcesSoldOut'
@@ -274,3 +316,6 @@ UNKNOWNPARAMETER = 'UnknownParameter'
 
 # Unsupported operation.
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
+
+# This operation is not supported.
+UNSUPPORTEDOPERATION_SERVICENOTSUPPORT = 'UnsupportedOperation.ServiceNotSupport'

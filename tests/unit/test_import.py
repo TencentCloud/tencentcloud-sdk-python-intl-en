@@ -139,6 +139,11 @@ def test_import_dcdb():
     from tencentcloud.dcdb.v20180411 import models
 
 
+def test_import_dlc():
+    from tencentcloud.dlc.v20210125 import dlc_client
+    from tencentcloud.dlc.v20210125 import models
+
+
 def test_import_dms():
     from tencentcloud.dms.v20200819 import dms_client
     from tencentcloud.dms.v20200819 import models

@@ -114,6 +114,35 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeEmrApplicationStatics(self, request):
+        """This API is used to query the Yarn application statistics.
+
+        :param request: Request instance for DescribeEmrApplicationStatics.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeEmrApplicationStaticsRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeEmrApplicationStaticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEmrApplicationStatics", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEmrApplicationStaticsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstances(self, request):
         """This API is used to query EMR instances.
 
@@ -289,6 +318,35 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def InquiryPriceScaleOutInstance(self, request):
+        """This API is used to query price of scale-out.
+
+        :param request: Request instance for InquiryPriceScaleOutInstance.
+        :type request: :class:`tencentcloud.emr.v20190103.models.InquiryPriceScaleOutInstanceRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.InquiryPriceScaleOutInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquiryPriceScaleOutInstance", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquiryPriceScaleOutInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def InquiryPriceUpdateInstance(self, request):
         """This API is used to query price of scaling.
 
@@ -362,6 +420,64 @@ class EmrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyResourceSchedulerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ScaleOutInstance(self, request):
+        """This API is used to scale out instances.
+
+        :param request: Request instance for ScaleOutInstance.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ScaleOutInstanceRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ScaleOutInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ScaleOutInstance", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ScaleOutInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TerminateInstance(self, request):
+        """This API is used to terminate EMR instances. It is only supported in the official paid edition of EMR.
+
+        :param request: Request instance for TerminateInstance.
+        :type request: :class:`tencentcloud.emr.v20190103.models.TerminateInstanceRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.TerminateInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TerminateInstance", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TerminateInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

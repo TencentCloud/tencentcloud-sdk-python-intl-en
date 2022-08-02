@@ -78,6 +78,58 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.RequestId = params.get("RequestId")
 
 
+class ApplicationStatics(AbstractModel):
+    """Yarn application statistics
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Queue: Queue name
+        :type Queue: str
+        :param User: Username
+        :type User: str
+        :param ApplicationType: Application type
+        :type ApplicationType: str
+        :param SumMemorySeconds: `SumMemorySeconds` meaning
+        :type SumMemorySeconds: int
+        :param SumVCoreSeconds: 
+        :type SumVCoreSeconds: int
+        :param SumHDFSBytesWritten: SumHDFSBytesWritten (with unit)
+        :type SumHDFSBytesWritten: str
+        :param SumHDFSBytesRead: SumHDFSBytesRead (with unit)
+        :type SumHDFSBytesRead: str
+        :param CountApps: Application count
+        :type CountApps: int
+        """
+        self.Queue = None
+        self.User = None
+        self.ApplicationType = None
+        self.SumMemorySeconds = None
+        self.SumVCoreSeconds = None
+        self.SumHDFSBytesWritten = None
+        self.SumHDFSBytesRead = None
+        self.CountApps = None
+
+
+    def _deserialize(self, params):
+        self.Queue = params.get("Queue")
+        self.User = params.get("User")
+        self.ApplicationType = params.get("ApplicationType")
+        self.SumMemorySeconds = params.get("SumMemorySeconds")
+        self.SumVCoreSeconds = params.get("SumVCoreSeconds")
+        self.SumHDFSBytesWritten = params.get("SumHDFSBytesWritten")
+        self.SumHDFSBytesRead = params.get("SumHDFSBytesRead")
+        self.CountApps = params.get("CountApps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class COSSettings(AbstractModel):
     """COS-related configuration
 
@@ -918,6 +970,112 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEmrApplicationStaticsRequest(AbstractModel):
+    """DescribeEmrApplicationStatics request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Cluster ID
+        :type InstanceId: str
+        :param StartTime: Start time in the format of timestamp. Unit: seconds.
+        :type StartTime: int
+        :param EndTime: End time in the format of timestamp. Unit: seconds.
+        :type EndTime: int
+        :param Queues: Queue name used for filtering
+        :type Queues: list of str
+        :param Users: Username used for filtering
+        :type Users: list of str
+        :param ApplicationTypes: Application type used for filtering
+        :type ApplicationTypes: list of str
+        :param GroupBy: Group field. Valid values: `queue`, `user`, and `applicationType`.
+        :type GroupBy: list of str
+        :param OrderBy: Sorting field. Valid values: `sumMemorySeconds`, `sumVCoreSeconds`, `sumHDFSBytesWritten`, and `sumHDFSBytesRead`.
+        :type OrderBy: str
+        :param IsAsc: Order type. Valid values: `0` (descending) and `1`(ascending).
+        :type IsAsc: int
+        :param Offset: Page number
+        :type Offset: int
+        :param Limit: Page limit
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Queues = None
+        self.Users = None
+        self.ApplicationTypes = None
+        self.GroupBy = None
+        self.OrderBy = None
+        self.IsAsc = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Queues = params.get("Queues")
+        self.Users = params.get("Users")
+        self.ApplicationTypes = params.get("ApplicationTypes")
+        self.GroupBy = params.get("GroupBy")
+        self.OrderBy = params.get("OrderBy")
+        self.IsAsc = params.get("IsAsc")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEmrApplicationStaticsResponse(AbstractModel):
+    """DescribeEmrApplicationStatics response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Statics: Application statistics
+        :type Statics: list of ApplicationStatics
+        :param TotalCount: Total count
+        :type TotalCount: int
+        :param Queues: Available queue name
+        :type Queues: list of str
+        :param Users: Available usernames
+        :type Users: list of str
+        :param ApplicationTypes: Available application type
+        :type ApplicationTypes: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Statics = None
+        self.TotalCount = None
+        self.Queues = None
+        self.Users = None
+        self.ApplicationTypes = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Statics") is not None:
+            self.Statics = []
+            for item in params.get("Statics"):
+                obj = ApplicationStatics()
+                obj._deserialize(item)
+                self.Statics.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.Queues = params.get("Queues")
+        self.Users = params.get("Users")
+        self.ApplicationTypes = params.get("ApplicationTypes")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeInstancesListRequest(AbstractModel):
     """DescribeInstancesList request structure.
 
@@ -1217,6 +1375,42 @@ Note: This field may return null, indicating that no valid value can be obtained
                 obj._deserialize(item)
                 self.UserManagerUserList.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class DynamicPodSpec(AbstractModel):
+    """Pod floating specification
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestCpu: Minimum number of CPUs
+        :type RequestCpu: float
+        :param LimitCpu: Maximum number of CPUs
+        :type LimitCpu: float
+        :param RequestMemory: Minimum memory in MB
+        :type RequestMemory: float
+        :param LimitMemory: Maximum memory in MB
+        :type LimitMemory: float
+        """
+        self.RequestCpu = None
+        self.LimitCpu = None
+        self.RequestMemory = None
+        self.LimitMemory = None
+
+
+    def _deserialize(self, params):
+        self.RequestCpu = params.get("RequestCpu")
+        self.LimitCpu = params.get("LimitCpu")
+        self.RequestMemory = params.get("RequestMemory")
+        self.LimitMemory = params.get("LimitMemory")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class EmrListInstance(AbstractModel):
@@ -1561,6 +1755,31 @@ class Filters(AbstractModel):
         
 
 
+class HostVolumeContext(AbstractModel):
+    """Description of `HostPath` mounting method in the pod
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VolumePath: The directory for mounting the host in the pod, which is the mount point of the host in the resource. A specified mount point corresponds to the host path and is used as the data storage directory in the pod.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VolumePath: str
+        """
+        self.VolumePath = None
+
+
+    def _deserialize(self, params):
+        self.VolumePath = params.get("VolumePath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InquiryPriceCreateInstanceRequest(AbstractModel):
     """InquiryPriceCreateInstance request structure.
 
@@ -1810,6 +2029,109 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.DiscountCost = params.get("DiscountCost")
         self.TimeUnit = params.get("TimeUnit")
         self.TimeSpan = params.get("TimeSpan")
+        self.RequestId = params.get("RequestId")
+
+
+class InquiryPriceScaleOutInstanceRequest(AbstractModel):
+    """InquiryPriceScaleOutInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TimeUnit: Time unit of scale-out. Valid value:
+<li>s: Second. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>
+        :type TimeUnit: str
+        :param TimeSpan: Time span of scale-out, which needs to be used together with `TimeUnit`.
+<li>When `PayMode` is 0, `TimeSpan` can only be 3,600.</li>
+        :type TimeSpan: int
+        :param ZoneId: ID of the AZ where an instance resides.
+        :type ZoneId: int
+        :param PayMode: Instance billing mode. Valid value:
+<li>0: Pay-as-you-go.</li>
+        :type PayMode: int
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param CoreCount: Number of core nodes to be added.
+        :type CoreCount: int
+        :param TaskCount: Number of task nodes to be added.
+        :type TaskCount: int
+        :param Currency: Currency.
+        :type Currency: str
+        :param RouterCount: Number of router nodes to be added.
+        :type RouterCount: int
+        :param MasterCount: Number of master nodes to be added.
+        :type MasterCount: int
+        """
+        self.TimeUnit = None
+        self.TimeSpan = None
+        self.ZoneId = None
+        self.PayMode = None
+        self.InstanceId = None
+        self.CoreCount = None
+        self.TaskCount = None
+        self.Currency = None
+        self.RouterCount = None
+        self.MasterCount = None
+
+
+    def _deserialize(self, params):
+        self.TimeUnit = params.get("TimeUnit")
+        self.TimeSpan = params.get("TimeSpan")
+        self.ZoneId = params.get("ZoneId")
+        self.PayMode = params.get("PayMode")
+        self.InstanceId = params.get("InstanceId")
+        self.CoreCount = params.get("CoreCount")
+        self.TaskCount = params.get("TaskCount")
+        self.Currency = params.get("Currency")
+        self.RouterCount = params.get("RouterCount")
+        self.MasterCount = params.get("MasterCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryPriceScaleOutInstanceResponse(AbstractModel):
+    """InquiryPriceScaleOutInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OriginalCost: Original price.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OriginalCost: str
+        :param DiscountCost: Discounted price.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DiscountCost: str
+        :param Unit: Time unit of scale-out. Valid value:
+<li>s: Second.</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Unit: str
+        :param PriceSpec: Node spec queried for price.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PriceSpec: :class:`tencentcloud.emr.v20190103.models.PriceResource`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.OriginalCost = None
+        self.DiscountCost = None
+        self.Unit = None
+        self.PriceSpec = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.OriginalCost = params.get("OriginalCost")
+        self.DiscountCost = params.get("DiscountCost")
+        self.Unit = params.get("Unit")
+        if params.get("PriceSpec") is not None:
+            self.PriceSpec = PriceResource()
+            self.PriceSpec._deserialize(params.get("PriceSpec"))
         self.RequestId = params.get("RequestId")
 
 
@@ -2529,6 +2851,41 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class PersistentVolumeContext(AbstractModel):
+    """Description of Pod `PVC` storage method
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskSize: Disk size in GB.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DiskSize: int
+        :param DiskType: Disk type. Valid values: `CLOUD_PREMIUM` and `CLOUD_SSD`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DiskType: str
+        :param DiskNum: Number of disks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DiskNum: int
+        """
+        self.DiskSize = None
+        self.DiskType = None
+        self.DiskNum = None
+
+
+    def _deserialize(self, params):
+        self.DiskSize = params.get("DiskSize")
+        self.DiskType = params.get("DiskType")
+        self.DiskNum = params.get("DiskNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Placement(AbstractModel):
     """Location information of cluster instance
 
@@ -2548,6 +2905,268 @@ class Placement(AbstractModel):
     def _deserialize(self, params):
         self.ProjectId = params.get("ProjectId")
         self.Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PodParameter(AbstractModel):
+    """Custom pod permission and parameter
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: ID of TKE or EKS cluster
+        :type ClusterId: str
+        :param Config: Custom permissions
+Example:
+{
+  "apiVersion": "v1",
+  "Clusters": [
+    {
+      "cluster": {
+        "certificate-authority-data": "xxxxxx==",
+        "server": "https://xxxxx.com"
+      },
+      "name": "cls-xxxxx"
+    }
+  ],
+  "contexts": [
+    {
+      "context": {
+        "cluster": "cls-xxxxx",
+        "user": "100014xxxxx"
+      },
+      "name": "cls-a44yhcxxxxxxxxxx"
+    }
+  ],
+  "current-context": "cls-a4xxxx-context-default",
+  "kind": "Config",
+  "preferences": {},
+  "users": [
+    {
+      "name": "100014xxxxx",
+      "user": {
+        "client-certificate-data": "xxxxxx",
+        "client-key-data": "xxxxxx"
+      }
+    }
+  ]
+}
+        :type Config: str
+        :param Parameter: Custom parameters
+Example:
+{
+    "apiVersion": "apps/v1",
+    "kind": "Deployment",
+    "metadata": {
+      "name": "test-deployment",
+      "labels": {
+        "app": "test"
+      }
+    },
+    "spec": {
+      "replicas": 3,
+      "selector": {
+        "matchLabels": {
+          "app": "test-app"
+        }
+      },
+      "template": {
+        "metadata": {
+          "annotations": {
+            "your-organization.com/department-v1": "test-example-v1",
+            "your-organization.com/department-v2": "test-example-v2"
+          },
+          "labels": {
+            "app": "test-app",
+            "environment": "production"
+          }
+        },
+        "spec": {
+          "nodeSelector": {
+            "your-organization/node-test": "test-node"
+          },
+          "containers": [
+            {
+              "name": "nginx",
+              "image": "nginx:1.14.2",
+              "ports": [
+                {
+                  "containerPort": 80
+                }
+              ]
+            }
+          ],
+          "affinity": {
+            "nodeAffinity": {
+              "requiredDuringSchedulingIgnoredDuringExecution": {
+                "nodeSelectorTerms": [
+                  {
+                    "matchExpressions": [
+                      {
+                        "key": "disk-type",
+                        "operator": "In",
+                        "values": [
+                          "ssd",
+                          "sas"
+                        ]
+                      },
+                      {
+                        "key": "cpu-num",
+                        "operator": "Gt",
+                        "values": [
+                          "6"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+        :type Parameter: str
+        """
+        self.ClusterId = None
+        self.Config = None
+        self.Parameter = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Config = params.get("Config")
+        self.Parameter = params.get("Parameter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PodSpec(AbstractModel):
+    """Resource description for container resource scale-out
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceProviderIdentifier: Identifier of external resource provider, such as "cls-a1cd23fa".
+        :type ResourceProviderIdentifier: str
+        :param ResourceProviderType: Type of external resource provider, such as "tke". Currently, only "tke" is supported.
+        :type ResourceProviderType: str
+        :param NodeType: Purpose of the resource, which means the node type and can only be "TASK".
+        :type NodeType: str
+        :param Cpu: Number of CPUs
+        :type Cpu: int
+        :param Memory: Memory size in GB.
+        :type Memory: int
+        :param DataVolumes: Mount point of resources for the host. A specified mount point corresponds to the host path and is used as the data storage directory in the pod. (This parameter has been disused)
+        :type DataVolumes: list of str
+        :param CpuType: EKS cluster - CPU type. Valid values: `intel` and `amd`.
+        :type CpuType: str
+        :param PodVolumes: Data directory mounting information of the pod node.
+        :type PodVolumes: list of PodVolume
+        :param IsDynamicSpec: Whether floating specification is used. `1`: Yes; `0`: No.
+        :type IsDynamicSpec: int
+        :param DynamicPodSpec: Floating specification
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DynamicPodSpec: :class:`tencentcloud.emr.v20190103.models.DynamicPodSpec`
+        :param VpcId: Unique VPC ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VpcId: str
+        :param SubnetId: Unique VPC subnet ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubnetId: str
+        :param PodName: pod name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PodName: str
+        """
+        self.ResourceProviderIdentifier = None
+        self.ResourceProviderType = None
+        self.NodeType = None
+        self.Cpu = None
+        self.Memory = None
+        self.DataVolumes = None
+        self.CpuType = None
+        self.PodVolumes = None
+        self.IsDynamicSpec = None
+        self.DynamicPodSpec = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.PodName = None
+
+
+    def _deserialize(self, params):
+        self.ResourceProviderIdentifier = params.get("ResourceProviderIdentifier")
+        self.ResourceProviderType = params.get("ResourceProviderType")
+        self.NodeType = params.get("NodeType")
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
+        self.DataVolumes = params.get("DataVolumes")
+        self.CpuType = params.get("CpuType")
+        if params.get("PodVolumes") is not None:
+            self.PodVolumes = []
+            for item in params.get("PodVolumes"):
+                obj = PodVolume()
+                obj._deserialize(item)
+                self.PodVolumes.append(obj)
+        self.IsDynamicSpec = params.get("IsDynamicSpec")
+        if params.get("DynamicPodSpec") is not None:
+            self.DynamicPodSpec = DynamicPodSpec()
+            self.DynamicPodSpec._deserialize(params.get("DynamicPodSpec"))
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.PodName = params.get("PodName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PodVolume(AbstractModel):
+    """Description of Pod storage.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VolumeType: Storage type. Valid values: `pvc` and `hostpath`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VolumeType: str
+        :param PVCVolume: This field will take effect if `VolumeType` is `pvc`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PVCVolume: :class:`tencentcloud.emr.v20190103.models.PersistentVolumeContext`
+        :param HostVolume: This field will take effect if `VolumeType` is `hostpath`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HostVolume: :class:`tencentcloud.emr.v20190103.models.HostVolumeContext`
+        """
+        self.VolumeType = None
+        self.PVCVolume = None
+        self.HostVolume = None
+
+
+    def _deserialize(self, params):
+        self.VolumeType = params.get("VolumeType")
+        if params.get("PVCVolume") is not None:
+            self.PVCVolume = PersistentVolumeContext()
+            self.PVCVolume._deserialize(params.get("PVCVolume"))
+        if params.get("HostVolume") is not None:
+            self.HostVolume = HostVolumeContext()
+            self.HostVolume._deserialize(params.get("HostVolume"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2616,6 +3235,101 @@ class PreExecuteFileSettings(AbstractModel):
         self.CosSecretId = params.get("CosSecretId")
         self.CosSecretKey = params.get("CosSecretKey")
         self.AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PriceResource(AbstractModel):
+    """Resource queried for price
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Spec: Target specification
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Spec: str
+        :param StorageType: Disk type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StorageType: int
+        :param DiskType: Disk type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DiskType: str
+        :param RootSize: System disk size
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RootSize: int
+        :param MemSize: Memory size.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MemSize: int
+        :param Cpu: Number of CPUs.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Cpu: int
+        :param DiskSize: Disk size.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DiskSize: int
+        :param MultiDisks: List of cloud disks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MultiDisks: list of MultiDisk
+        :param DiskCnt: Number of disks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DiskCnt: int
+        :param InstanceType: Specification
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceType: str
+        :param Tags: Tag
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of Tag
+        :param DiskNum: Number of disks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DiskNum: int
+        :param LocalDiskNum: Number of local disks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LocalDiskNum: int
+        """
+        self.Spec = None
+        self.StorageType = None
+        self.DiskType = None
+        self.RootSize = None
+        self.MemSize = None
+        self.Cpu = None
+        self.DiskSize = None
+        self.MultiDisks = None
+        self.DiskCnt = None
+        self.InstanceType = None
+        self.Tags = None
+        self.DiskNum = None
+        self.LocalDiskNum = None
+
+
+    def _deserialize(self, params):
+        self.Spec = params.get("Spec")
+        self.StorageType = params.get("StorageType")
+        self.DiskType = params.get("DiskType")
+        self.RootSize = params.get("RootSize")
+        self.MemSize = params.get("MemSize")
+        self.Cpu = params.get("Cpu")
+        self.DiskSize = params.get("DiskSize")
+        if params.get("MultiDisks") is not None:
+            self.MultiDisks = []
+            for item in params.get("MultiDisks"):
+                obj = MultiDisk()
+                obj._deserialize(item)
+                self.MultiDisks.append(obj)
+        self.DiskCnt = params.get("DiskCnt")
+        self.InstanceType = params.get("InstanceType")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.DiskNum = params.get("DiskNum")
+        self.LocalDiskNum = params.get("LocalDiskNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2723,6 +3437,189 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ScaleOutInstanceRequest(AbstractModel):
+    """ScaleOutInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TimeUnit: Time unit of scale-out. Valid values:
+<li>s: Second. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>
+<li>m: Month. When `PayMode` is 1, `TimeUnit` can only be `m`.</li>
+        :type TimeUnit: str
+        :param TimeSpan: Time span of scale-out, which needs to be used together with `TimeUnit`.
+        :type TimeSpan: int
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param PayMode: Instance billing mode. Valid value:
+<li>0: Pay-as-you-go.</li>
+        :type PayMode: int
+        :param ClientToken: Client token.
+        :type ClientToken: str
+        :param PreExecutedFileSettings: Bootstrap script settings.
+        :type PreExecutedFileSettings: list of PreExecuteFileSettings
+        :param TaskCount: Number of task nodes to be added.
+        :type TaskCount: int
+        :param CoreCount: Number of core nodes to be added.
+        :type CoreCount: int
+        :param UnNecessaryNodeList: Processes unnecessary for scale-out.
+        :type UnNecessaryNodeList: list of int non-negative
+        :param RouterCount: Number of router nodes to be added.
+        :type RouterCount: int
+        :param SoftDeployInfo: Deployed service.
+<li>`SoftDeployInfo` and `ServiceNodeInfo` are in the same group and mutually exclusive with `UnNecessaryNodeList`.</li>
+<li>The combination of `SoftDeployInfo` and `ServiceNodeInfo` is recommended.</li>
+        :type SoftDeployInfo: list of int non-negative
+        :param ServiceNodeInfo: Started process.
+        :type ServiceNodeInfo: list of int non-negative
+        :param DisasterRecoverGroupIds: List of spread placement group IDs. Only one can be specified currently.
+        :type DisasterRecoverGroupIds: list of str
+        :param Tags: List of tags bound to added nodes.
+        :type Tags: list of Tag
+        :param HardwareResourceType: Resource type selected for scaling. Valid values: `host` (general CVM resource) and `pod` (resource provided by TKE or EKS cluster).
+        :type HardwareResourceType: str
+        :param PodSpec: Specified information such as pod specification and source for scale-out with pod resources.
+        :type PodSpec: :class:`tencentcloud.emr.v20190103.models.PodSpec`
+        :param ClickHouseClusterName: Server group name selected for ClickHouse cluster scale-out.
+        :type ClickHouseClusterName: str
+        :param ClickHouseClusterType: Server group type selected for ClickHouse cluster scale-out. Valid values: `new` (create a group) and `old` (select an existing group).
+        :type ClickHouseClusterType: str
+        :param YarnNodeLabel: Yarn node label specified for rule-based scale-out.
+        :type YarnNodeLabel: str
+        :param PodParameter: Custom pod permission and parameter
+        :type PodParameter: :class:`tencentcloud.emr.v20190103.models.PodParameter`
+        :param MasterCount: Number of master nodes to be added.
+When a ClickHouse cluster is scaled, this parameter does not take effect.
+When a Kafka cluster is scaled, this parameter does not take effect.
+When `HardwareResourceType` is `pod`, this parameter does not take effect.
+        :type MasterCount: int
+        :param StartServiceAfterScaleOut: Whether to start the service after scale-out. `true`: Yes; `false`: No.
+        :type StartServiceAfterScaleOut: str
+        :param ZoneId: AZ, which defaults to the primary AZ of the cluster.
+        :type ZoneId: int
+        :param SubnetId: Subnet, which defaults to the subnet used when the cluster is created.
+        :type SubnetId: str
+        :param ScaleOutServiceConfAssign: Pre-defined configuration set
+        :type ScaleOutServiceConfAssign: str
+        """
+        self.TimeUnit = None
+        self.TimeSpan = None
+        self.InstanceId = None
+        self.PayMode = None
+        self.ClientToken = None
+        self.PreExecutedFileSettings = None
+        self.TaskCount = None
+        self.CoreCount = None
+        self.UnNecessaryNodeList = None
+        self.RouterCount = None
+        self.SoftDeployInfo = None
+        self.ServiceNodeInfo = None
+        self.DisasterRecoverGroupIds = None
+        self.Tags = None
+        self.HardwareResourceType = None
+        self.PodSpec = None
+        self.ClickHouseClusterName = None
+        self.ClickHouseClusterType = None
+        self.YarnNodeLabel = None
+        self.PodParameter = None
+        self.MasterCount = None
+        self.StartServiceAfterScaleOut = None
+        self.ZoneId = None
+        self.SubnetId = None
+        self.ScaleOutServiceConfAssign = None
+
+
+    def _deserialize(self, params):
+        self.TimeUnit = params.get("TimeUnit")
+        self.TimeSpan = params.get("TimeSpan")
+        self.InstanceId = params.get("InstanceId")
+        self.PayMode = params.get("PayMode")
+        self.ClientToken = params.get("ClientToken")
+        if params.get("PreExecutedFileSettings") is not None:
+            self.PreExecutedFileSettings = []
+            for item in params.get("PreExecutedFileSettings"):
+                obj = PreExecuteFileSettings()
+                obj._deserialize(item)
+                self.PreExecutedFileSettings.append(obj)
+        self.TaskCount = params.get("TaskCount")
+        self.CoreCount = params.get("CoreCount")
+        self.UnNecessaryNodeList = params.get("UnNecessaryNodeList")
+        self.RouterCount = params.get("RouterCount")
+        self.SoftDeployInfo = params.get("SoftDeployInfo")
+        self.ServiceNodeInfo = params.get("ServiceNodeInfo")
+        self.DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.HardwareResourceType = params.get("HardwareResourceType")
+        if params.get("PodSpec") is not None:
+            self.PodSpec = PodSpec()
+            self.PodSpec._deserialize(params.get("PodSpec"))
+        self.ClickHouseClusterName = params.get("ClickHouseClusterName")
+        self.ClickHouseClusterType = params.get("ClickHouseClusterType")
+        self.YarnNodeLabel = params.get("YarnNodeLabel")
+        if params.get("PodParameter") is not None:
+            self.PodParameter = PodParameter()
+            self.PodParameter._deserialize(params.get("PodParameter"))
+        self.MasterCount = params.get("MasterCount")
+        self.StartServiceAfterScaleOut = params.get("StartServiceAfterScaleOut")
+        self.ZoneId = params.get("ZoneId")
+        self.SubnetId = params.get("SubnetId")
+        self.ScaleOutServiceConfAssign = params.get("ScaleOutServiceConfAssign")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScaleOutInstanceResponse(AbstractModel):
+    """ScaleOutInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param DealNames: Order number.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DealNames: list of str
+        :param ClientToken: Client token.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ClientToken: str
+        :param FlowId: Scale-out workflow ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FlowId: int
+        :param BillId: Big order ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BillId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.DealNames = None
+        self.ClientToken = None
+        self.FlowId = None
+        self.BillId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DealNames = params.get("DealNames")
+        self.ClientToken = params.get("ClientToken")
+        self.FlowId = params.get("FlowId")
+        self.BillId = params.get("BillId")
+        self.RequestId = params.get("RequestId")
 
 
 class SearchItem(AbstractModel):
@@ -2839,6 +3736,51 @@ class Tag(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class TerminateInstanceRequest(AbstractModel):
+    """TerminateInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param ResourceIds: ID of terminated node. This parameter is reserved and does not need to be configured.
+        :type ResourceIds: list of str
+        """
+        self.InstanceId = None
+        self.ResourceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ResourceIds = params.get("ResourceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TerminateInstanceResponse(AbstractModel):
+    """TerminateInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class TerminateTasksRequest(AbstractModel):
