@@ -3664,7 +3664,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param ClusterType: Instance type.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ClusterType: str
-        :param Features: 
+        :param Features: Instance feature list.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Features: list of str
         """
         self.InstanceId = None
@@ -4233,6 +4234,8 @@ class ModifyTopicAttributesRequest(AbstractModel):
         :type QuotaProducerByteRate: int
         :param QuotaConsumerByteRate: Consumption throttling in MB/sec.
         :type QuotaConsumerByteRate: int
+        :param ReplicaNum: The number of topic replicas.
+        :type ReplicaNum: int
         """
         self.InstanceId = None
         self.TopicName = None
@@ -4251,6 +4254,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
         self.Tags = None
         self.QuotaProducerByteRate = None
         self.QuotaConsumerByteRate = None
+        self.ReplicaNum = None
 
 
     def _deserialize(self, params):
@@ -4276,6 +4280,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
                 self.Tags.append(obj)
         self.QuotaProducerByteRate = params.get("QuotaProducerByteRate")
         self.QuotaConsumerByteRate = params.get("QuotaConsumerByteRate")
+        self.ReplicaNum = params.get("ReplicaNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
