@@ -1199,6 +1199,35 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeProjects(self, request):
+        """This API is used to get the list of projects (under teams created by an instance).
+
+        :param request: Request instance for DescribeProjects.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeProjectsRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeProjectsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProjects", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProjectsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePvList(self, request):
         """This API is used to get the list of PVs under a project.
 
@@ -1272,6 +1301,35 @@ class RumClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReleaseFilesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeScores(self, request):
+        """This API is used to get the list of homepage scores.
+
+        :param request: Request instance for DescribeScores.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeScoresRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeScoresResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeScores", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeScoresResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

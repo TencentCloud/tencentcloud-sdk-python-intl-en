@@ -325,7 +325,7 @@ class CreateTawInstanceRequest(AbstractModel):
         r"""
         :param AreaId: Region ID (at least greater than 0)
         :type AreaId: int
-        :param ChargeType: Billing mode (1: trial; 2: prepaid; 3: postpaid)
+        :param ChargeType: Billing type (1: Pay-as-you-go).
         :type ChargeType: int
         :param DataRetentionDays: Data retention period (at least greater than 0)
         :type DataRetentionDays: int
@@ -1148,6 +1148,10 @@ class DescribeDataFetchProjectRequest(AbstractModel):
         :type Url: str
         :param Env: Environment
         :type Env: str
+        :param Status: HTTP status code.
+        :type Status: str
+        :param Ret: retcode
+        :type Ret: str
         """
         self.StartTime = None
         self.Type = None
@@ -1172,6 +1176,8 @@ class DescribeDataFetchProjectRequest(AbstractModel):
         self.CostType = None
         self.Url = None
         self.Env = None
+        self.Status = None
+        self.Ret = None
 
 
     def _deserialize(self, params):
@@ -1198,6 +1204,8 @@ class DescribeDataFetchProjectRequest(AbstractModel):
         self.CostType = params.get("CostType")
         self.Url = params.get("Url")
         self.Env = params.get("Env")
+        self.Status = params.get("Status")
+        self.Ret = params.get("Ret")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1414,6 +1422,10 @@ class DescribeDataFetchUrlRequest(AbstractModel):
         :type Url: str
         :param Env: Environment
         :type Env: str
+        :param Status: HTTP status code.
+        :type Status: str
+        :param Ret: retcode
+        :type Ret: str
         """
         self.StartTime = None
         self.Type = None
@@ -1438,6 +1450,8 @@ class DescribeDataFetchUrlRequest(AbstractModel):
         self.CostType = None
         self.Url = None
         self.Env = None
+        self.Status = None
+        self.Ret = None
 
 
     def _deserialize(self, params):
@@ -1464,6 +1478,8 @@ class DescribeDataFetchUrlRequest(AbstractModel):
         self.CostType = params.get("CostType")
         self.Url = params.get("Url")
         self.Env = params.get("Env")
+        self.Status = params.get("Status")
+        self.Ret = params.get("Ret")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2341,6 +2357,8 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
         :type CostType: str
         :param Env: Environment
         :type Env: str
+        :param PackageType: The obtained package.
+        :type PackageType: str
         """
         self.StartTime = None
         self.Type = None
@@ -2364,6 +2382,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
         self.Browser = None
         self.CostType = None
         self.Env = None
+        self.PackageType = None
 
 
     def _deserialize(self, params):
@@ -2389,6 +2408,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
         self.Browser = params.get("Browser")
         self.CostType = params.get("CostType")
         self.Env = params.get("Env")
+        self.PackageType = params.get("PackageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3328,6 +3348,77 @@ class DescribeProjectLimitsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeProjectsRequest(AbstractModel):
+    """DescribeProjects request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: Number of items per page (integer)
+        :type Limit: int
+        :param Offset: Page number (integer)
+        :type Offset: int
+        :param Filters: Filter parameter. Pass in {"Name": "IsDemo", "Values":["1"]} for the demo mode.
+        :type Filters: list of Filter
+        :param IsDemo: This parameter has been disused. You need to indicate whether the demo mode is used in `Filters`.
+        :type IsDemo: int
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.IsDemo = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.IsDemo = params.get("IsDemo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProjectsResponse(AbstractModel):
+    """DescribeProjects response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number of items in the list
+        :type TotalCount: int
+        :param ProjectSet: Project list
+        :type ProjectSet: list of RumProject
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ProjectSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ProjectSet") is not None:
+            self.ProjectSet = []
+            for item in params.get("ProjectSet"):
+                obj = RumProject()
+                obj._deserialize(item)
+                self.ProjectSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePvListRequest(AbstractModel):
     """DescribePvList request structure.
 
@@ -3503,6 +3594,68 @@ class DescribeReleaseFilesResponse(AbstractModel):
                 obj = ReleaseFile()
                 obj._deserialize(item)
                 self.Files.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeScoresRequest(AbstractModel):
+    """DescribeScores request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EndTime: End time
+        :type EndTime: str
+        :param StartTime: Start time
+        :type StartTime: str
+        :param ID: Project ID
+        :type ID: int
+        :param IsDemo: This parameter has been disused.
+        :type IsDemo: int
+        """
+        self.EndTime = None
+        self.StartTime = None
+        self.ID = None
+        self.IsDemo = None
+
+
+    def _deserialize(self, params):
+        self.EndTime = params.get("EndTime")
+        self.StartTime = params.get("StartTime")
+        self.ID = params.get("ID")
+        self.IsDemo = params.get("IsDemo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeScoresResponse(AbstractModel):
+    """DescribeScores response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScoreSet: Array
+        :type ScoreSet: list of ScoreInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ScoreSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ScoreSet") is not None:
+            self.ScoreSet = []
+            for item in params.get("ScoreSet"):
+                obj = ScoreInfo()
+                obj._deserialize(item)
+                self.ScoreSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3686,6 +3839,37 @@ class DescribeWhitelistsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.WhitelistSet.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class Filter(AbstractModel):
+    """Key-Value pair filter for conditional filtering queries, such as filtering ID, name, status, etc.
+
+    · If more than one filter exists, the logical relationship between these filters is `AND`.
+    · If multiple values exist in one filter, the logical relationship between these values is `OR`.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Values: One or more filter values.
+        :type Values: list of str
+        :param Name: Filter name.
+        :type Name: str
+        """
+        self.Values = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Values = params.get("Values")
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class LogExport(AbstractModel):
@@ -4106,6 +4290,95 @@ class RumAreaInfo(AbstractModel):
         
 
 
+class RumProject(AbstractModel):
+    """RUM project information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Project name
+        :type Name: str
+        :param Creator: Creator ID
+        :type Creator: str
+        :param InstanceID: Instance ID
+        :type InstanceID: str
+        :param Type: Project type
+        :type Type: str
+        :param CreateTime: Creation time
+        :type CreateTime: str
+        :param Repo: Project repository address
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Repo: str
+        :param URL: Project URL
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type URL: str
+        :param Rate: Project sample rate
+        :type Rate: str
+        :param Key: Unique project key (12 characters)
+        :type Key: str
+        :param EnableURLGroup: Whether to enable URL aggregation
+        :type EnableURLGroup: int
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        :param ID: Project ID
+        :type ID: int
+        :param InstanceKey: Instance key
+        :type InstanceKey: str
+        :param Desc: Project description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Desc: str
+        :param IsStar: Starred status. 1: yes; 0: no
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IsStar: int
+        :param ProjectStatus: Project status (`1`: Creating; `2`: Running; `3`: Abnormal; `4`: Restarting; `5`: Stopping; `6`: Stopped; `7`: Terminating; `8`: Terminated)
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ProjectStatus: int
+        """
+        self.Name = None
+        self.Creator = None
+        self.InstanceID = None
+        self.Type = None
+        self.CreateTime = None
+        self.Repo = None
+        self.URL = None
+        self.Rate = None
+        self.Key = None
+        self.EnableURLGroup = None
+        self.InstanceName = None
+        self.ID = None
+        self.InstanceKey = None
+        self.Desc = None
+        self.IsStar = None
+        self.ProjectStatus = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Creator = params.get("Creator")
+        self.InstanceID = params.get("InstanceID")
+        self.Type = params.get("Type")
+        self.CreateTime = params.get("CreateTime")
+        self.Repo = params.get("Repo")
+        self.URL = params.get("URL")
+        self.Rate = params.get("Rate")
+        self.Key = params.get("Key")
+        self.EnableURLGroup = params.get("EnableURLGroup")
+        self.InstanceName = params.get("InstanceName")
+        self.ID = params.get("ID")
+        self.InstanceKey = params.get("InstanceKey")
+        self.Desc = params.get("Desc")
+        self.IsStar = params.get("IsStar")
+        self.ProjectStatus = params.get("ProjectStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RumPvInfo(AbstractModel):
     """RUM log object
 
@@ -4162,6 +4435,78 @@ class RumUvInfo(AbstractModel):
         self.ProjectId = params.get("ProjectId")
         self.Uv = params.get("Uv")
         self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScoreInfo(AbstractModel):
+    """Project score entity
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StaticDuration: duration
+        :type StaticDuration: str
+        :param PagePv: pv
+        :type PagePv: str
+        :param ApiFail: Failure
+        :type ApiFail: str
+        :param ApiNum: Request
+        :type ApiNum: str
+        :param StaticFail: fail
+        :type StaticFail: str
+        :param ProjectID: Project ID
+        :type ProjectID: int
+        :param PageUv: uv
+        :type PageUv: str
+        :param ApiDuration: Number of requests
+        :type ApiDuration: str
+        :param Score: Score
+        :type Score: str
+        :param PageError: error
+        :type PageError: str
+        :param StaticNum: num
+        :type StaticNum: str
+        :param RecordNum: num
+        :type RecordNum: int
+        :param PageDuration: Duration
+        :type PageDuration: str
+        """
+        self.StaticDuration = None
+        self.PagePv = None
+        self.ApiFail = None
+        self.ApiNum = None
+        self.StaticFail = None
+        self.ProjectID = None
+        self.PageUv = None
+        self.ApiDuration = None
+        self.Score = None
+        self.PageError = None
+        self.StaticNum = None
+        self.RecordNum = None
+        self.PageDuration = None
+
+
+    def _deserialize(self, params):
+        self.StaticDuration = params.get("StaticDuration")
+        self.PagePv = params.get("PagePv")
+        self.ApiFail = params.get("ApiFail")
+        self.ApiNum = params.get("ApiNum")
+        self.StaticFail = params.get("StaticFail")
+        self.ProjectID = params.get("ProjectID")
+        self.PageUv = params.get("PageUv")
+        self.ApiDuration = params.get("ApiDuration")
+        self.Score = params.get("Score")
+        self.PageError = params.get("PageError")
+        self.StaticNum = params.get("StaticNum")
+        self.RecordNum = params.get("RecordNum")
+        self.PageDuration = params.get("PageDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
