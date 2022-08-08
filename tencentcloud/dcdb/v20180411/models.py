@@ -839,6 +839,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param ResourceTags: Instance tag information
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ResourceTags: list of ResourceTag
+        :param DbVersionId: Database engine version
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DbVersionId: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -889,6 +892,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.DcnDstNum = None
         self.InstanceType = None
         self.ResourceTags = None
+        self.DbVersionId = None
 
 
     def _deserialize(self, params):
@@ -951,6 +955,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj = ResourceTag()
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
+        self.DbVersionId = params.get("DbVersionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
