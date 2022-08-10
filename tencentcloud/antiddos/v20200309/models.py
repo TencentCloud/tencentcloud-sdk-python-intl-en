@@ -18,6 +18,42 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AnycastOutPackRelation(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NormalBandwidth: 
+        :type NormalBandwidth: int
+        :param ForwardRulesLimit: 
+        :type ForwardRulesLimit: int
+        :param AutoRenewFlag: 
+        :type AutoRenewFlag: int
+        :param CurDeadline: 
+        :type CurDeadline: str
+        """
+        self.NormalBandwidth = None
+        self.ForwardRulesLimit = None
+        self.AutoRenewFlag = None
+        self.CurDeadline = None
+
+
+    def _deserialize(self, params):
+        self.NormalBandwidth = params.get("NormalBandwidth")
+        self.ForwardRulesLimit = params.get("ForwardRulesLimit")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.CurDeadline = params.get("CurDeadline")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AssociateDDoSEipAddressRequest(AbstractModel):
     """AssociateDDoSEipAddress request structure.
 
@@ -196,8 +232,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param BGPIPChannelFlag: Whether it’s an Anti-DDoS Advanced instance from Tencent Cloud channels. `1`: Yes; `0`: No.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type BGPIPChannelFlag: int
-        :param TagInfoList: 
+        :param TagInfoList: Tag that the Anti-DDoS Advanced instance is associated with
+Note: This field may return `null`, indicating that no valid value can be obtained.
         :type TagInfoList: list of TagInfo
+        :param AnycastOutPackRelation: 
+        :type AnycastOutPackRelation: :class:`tencentcloud.antiddos.v20200309.models.AnycastOutPackRelation`
+        :param InstanceVersion: 
+        :type InstanceVersion: int
         """
         self.InstanceDetail = None
         self.SpecificationLimit = None
@@ -220,6 +261,8 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.V6Flag = None
         self.BGPIPChannelFlag = None
         self.TagInfoList = None
+        self.AnycastOutPackRelation = None
+        self.InstanceVersion = None
 
 
     def _deserialize(self, params):
@@ -265,6 +308,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
                 obj = TagInfo()
                 obj._deserialize(item)
                 self.TagInfoList.append(obj)
+        if params.get("AnycastOutPackRelation") is not None:
+            self.AnycastOutPackRelation = AnycastOutPackRelation()
+            self.AnycastOutPackRelation._deserialize(params.get("AnycastOutPackRelation"))
+        self.InstanceVersion = params.get("InstanceVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -557,11 +604,14 @@ class BlackWhiteIpRelation(AbstractModel):
         :type InstanceDetailList: list of InstanceRelation
         :param Mask: IP mask. `0` indicates a 32-bit IP.
         :type Mask: int
+        :param ModifyTime: Modification time
+        :type ModifyTime: str
         """
         self.Ip = None
         self.Type = None
         self.InstanceDetailList = None
         self.Mask = None
+        self.ModifyTime = None
 
 
     def _deserialize(self, params):
@@ -574,6 +624,7 @@ class BlackWhiteIpRelation(AbstractModel):
                 obj._deserialize(item)
                 self.InstanceDetailList.append(obj)
         self.Mask = params.get("Mask")
+        self.ModifyTime = params.get("ModifyTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1269,12 +1320,15 @@ class CreateCCReqLimitPolicyRequest(AbstractModel):
         :type Domain: str
         :param Policy: Configuration field
         :type Policy: :class:`tencentcloud.antiddos.v20200309.models.CCReqLimitPolicyRecord`
+        :param IsGlobal: Whether it’s a global CC frequency limit
+        :type IsGlobal: int
         """
         self.InstanceId = None
         self.Ip = None
         self.Protocol = None
         self.Domain = None
         self.Policy = None
+        self.IsGlobal = None
 
 
     def _deserialize(self, params):
@@ -1285,6 +1339,7 @@ class CreateCCReqLimitPolicyRequest(AbstractModel):
         if params.get("Policy") is not None:
             self.Policy = CCReqLimitPolicyRecord()
             self.Policy._deserialize(params.get("Policy"))
+        self.IsGlobal = params.get("IsGlobal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2203,55 +2258,6 @@ class DefaultAlarmThreshold(AbstractModel):
         
 
 
-class DeleteBlackWhiteIpListRequest(AbstractModel):
-    """DeleteBlackWhiteIpList request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceId: Anti-DDoS instance ID
-        :type InstanceId: str
-        :param IpList: List of IPs
-        :type IpList: list of str
-        :param Type: IP type. Valid values: `black` (blocklisted IP), `white`(allowlisted IP).
-        :type Type: str
-        """
-        self.InstanceId = None
-        self.IpList = None
-        self.Type = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.IpList = params.get("IpList")
-        self.Type = params.get("Type")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DeleteBlackWhiteIpListResponse(AbstractModel):
-    """DeleteBlackWhiteIpList response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class DeleteCCLevelPolicyRequest(AbstractModel):
     """DeleteCCLevelPolicy request structure.
 
@@ -2955,7 +2961,7 @@ class DescribeCCLevelListResponse(AbstractModel):
         r"""
         :param Total: Total number of level-defining policies
         :type Total: int
-        :param LevelList: Details of level-defining policies
+        :param LevelList: Total number of level-defining policies
         :type LevelList: list of CCLevelPolicy
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3702,8 +3708,10 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         :type FilterCname: str
         :param FilterInstanceIdList: Filters by the instance ID
         :type FilterInstanceIdList: list of str
-        :param FilterTag: 
+        :param FilterTag: Searches by tag
         :type FilterTag: :class:`tencentcloud.antiddos.v20200309.models.TagFilter`
+        :param FilterPackType: 
+        :type FilterPackType: list of str
         """
         self.Offset = None
         self.Limit = None
@@ -3719,6 +3727,7 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         self.FilterCname = None
         self.FilterInstanceIdList = None
         self.FilterTag = None
+        self.FilterPackType = None
 
 
     def _deserialize(self, params):
@@ -3738,6 +3747,7 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         if params.get("FilterTag") is not None:
             self.FilterTag = TagFilter()
             self.FilterTag._deserialize(params.get("FilterTag"))
+        self.FilterPackType = params.get("FilterPackType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5230,7 +5240,7 @@ class ListenerCcThreholdConfig(AbstractModel):
         r"""
         :param Domain: Domain name
         :type Domain: str
-        :param Protocol: Protocol. Value: htttps
+        :param Protocol: Protocol. Value: `https`.
         :type Protocol: str
         :param CCEnable: Status. Valid values: `0` (disabled), `1` (enabled).
         :type CCEnable: int
@@ -5996,9 +6006,12 @@ class PacketFilterRelation(AbstractModel):
         :type PacketFilterConfig: :class:`tencentcloud.antiddos.v20200309.models.PacketFilterConfig`
         :param InstanceDetailList: Anti-DDoS instance configured
         :type InstanceDetailList: list of InstanceRelation
+        :param ModifyTime: Modification time
+        :type ModifyTime: str
         """
         self.PacketFilterConfig = None
         self.InstanceDetailList = None
+        self.ModifyTime = None
 
 
     def _deserialize(self, params):
@@ -6011,6 +6024,7 @@ class PacketFilterRelation(AbstractModel):
                 obj = InstanceRelation()
                 obj._deserialize(item)
                 self.InstanceDetailList.append(obj)
+        self.ModifyTime = params.get("ModifyTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6553,15 +6567,15 @@ class SwitchWaterPrintConfigResponse(AbstractModel):
 
 
 class TagFilter(AbstractModel):
-    """
+    """Tag type
 
     """
 
     def __init__(self):
         r"""
-        :param TagKey: 
+        :param TagKey: Tag key
         :type TagKey: str
-        :param TagValue: 
+        :param TagValue: Tag value
         :type TagValue: list of str
         """
         self.TagKey = None
@@ -6581,15 +6595,15 @@ class TagFilter(AbstractModel):
 
 
 class TagInfo(AbstractModel):
-    """
+    """Tag information, which is used to return the tag of the associated instance
 
     """
 
     def __init__(self):
         r"""
-        :param TagKey: 
+        :param TagKey: Tag key
         :type TagKey: str
-        :param TagValue: 
+        :param TagValue: Tag value
         :type TagValue: str
         """
         self.TagKey = None
