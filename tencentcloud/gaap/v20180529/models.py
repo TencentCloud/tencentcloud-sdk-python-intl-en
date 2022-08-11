@@ -1549,6 +1549,8 @@ If this field is not passed in, it indicates that the ForwardProtocol of the cor
         :type ServerNameIndicationSwitch: str
         :param ServerNameIndication: Server Name Indication (SNI). This field is required when `ServerNameIndicationSwitch` is `ON`.
         :type ServerNameIndication: str
+        :param ForcedRedirect: Enables HTTP-to-HTTPS force redirect for a forwarding rule. Enter a hostname and path of the current forwarding rule.
+        :type ForcedRedirect: str
         """
         self.ListenerId = None
         self.Domain = None
@@ -1561,6 +1563,7 @@ If this field is not passed in, it indicates that the ForwardProtocol of the cor
         self.ForwardHost = None
         self.ServerNameIndicationSwitch = None
         self.ServerNameIndication = None
+        self.ForcedRedirect = None
 
 
     def _deserialize(self, params):
@@ -1577,6 +1580,7 @@ If this field is not passed in, it indicates that the ForwardProtocol of the cor
         self.ForwardHost = params.get("ForwardHost")
         self.ServerNameIndicationSwitch = params.get("ServerNameIndicationSwitch")
         self.ServerNameIndication = params.get("ServerNameIndication")
+        self.ForcedRedirect = params.get("ForcedRedirect")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5963,6 +5967,8 @@ If `ForwardHost=default`, the domain name configured with the forwarding rule wi
         :type ServerNameIndicationSwitch: str
         :param ServerNameIndication: Server Name Indication (SNI). This field is required when `ServerNameIndicationSwitch` is `ON`.
         :type ServerNameIndication: str
+        :param ForcedRedirect: Enables HTTP-to-HTTPS force redirect for a forwarding rule. Enter a hostname and path of the current forwarding rule.
+        :type ForcedRedirect: str
         """
         self.ListenerId = None
         self.RuleId = None
@@ -5974,6 +5980,7 @@ If `ForwardHost=default`, the domain name configured with the forwarding rule wi
         self.ForwardHost = None
         self.ServerNameIndicationSwitch = None
         self.ServerNameIndication = None
+        self.ForcedRedirect = None
 
 
     def _deserialize(self, params):
@@ -5989,6 +5996,7 @@ If `ForwardHost=default`, the domain name configured with the forwarding rule wi
         self.ForwardHost = params.get("ForwardHost")
         self.ServerNameIndicationSwitch = params.get("ServerNameIndicationSwitch")
         self.ServerNameIndication = params.get("ServerNameIndication")
+        self.ForcedRedirect = params.get("ForcedRedirect")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7256,6 +7264,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 Note: This field may return `null`, indicating that no valid value can be obtained.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type ServerNameIndication: str
+        :param ForcedRedirect: Forces requests to redirect to HTTPS. When `https:` is passed in, all requests are redirected to HTTPS.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ForcedRedirect: str
         """
         self.RuleId = None
         self.ListenerId = None
@@ -7271,6 +7282,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.ForwardHost = None
         self.ServerNameIndicationSwitch = None
         self.ServerNameIndication = None
+        self.ForcedRedirect = None
 
 
     def _deserialize(self, params):
@@ -7295,6 +7307,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.ForwardHost = params.get("ForwardHost")
         self.ServerNameIndicationSwitch = params.get("ServerNameIndicationSwitch")
         self.ServerNameIndication = params.get("ServerNameIndication")
+        self.ForcedRedirect = params.get("ForcedRedirect")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

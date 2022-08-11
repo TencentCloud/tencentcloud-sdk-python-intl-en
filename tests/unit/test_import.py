@@ -79,6 +79,11 @@ def test_import_ciam():
     from tencentcloud.ciam.v20210420 import models
 
 
+def test_import_ciam():
+    from tencentcloud.ciam.v20220331 import ciam_client
+    from tencentcloud.ciam.v20220331 import models
+
+
 def test_import_ckafka():
     from tencentcloud.ckafka.v20190819 import ckafka_client
     from tencentcloud.ckafka.v20190819 import models

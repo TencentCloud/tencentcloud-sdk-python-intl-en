@@ -113,6 +113,64 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ChangeInstanceRole(self, request):
+        """This API is used to modify the role of an instance in a replication group.
+
+        :param request: Request instance for ChangeInstanceRole.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ChangeInstanceRoleRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ChangeInstanceRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChangeInstanceRole", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ChangeInstanceRoleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ChangeMasterInstance(self, request):
+        """This API is used to switch with master instance in a replication group.
+
+        :param request: Request instance for ChangeMasterInstance.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ChangeMasterInstanceRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ChangeMasterInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChangeMasterInstance", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ChangeMasterInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ChangeReplicaToMaster(self, request):
         """This API is used to promote a replica node group of a multi-AZ deployed instance to master node group or a replica node of a single-AZ deployed instance to master node.
 

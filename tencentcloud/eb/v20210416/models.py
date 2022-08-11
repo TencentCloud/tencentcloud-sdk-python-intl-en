@@ -324,9 +324,9 @@ class CreateConnectionRequest(AbstractModel):
         :type ConnectionName: str
         :param Description: Description
         :type Description: str
-        :param Enable: Switch
+        :param Enable: Whether to enable
         :type Enable: bool
-        :param Type: Type
+        :param Type: Type of the connector
         :type Type: str
         """
         self.ConnectionDescription = None
@@ -383,9 +383,9 @@ class CreateEventBusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventBusName: Event bus name, which can contain 2–60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter
+        :param EventBusName: Event bus name: it can contain 2-60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter.
         :type EventBusName: str
-        :param Description: Event bus description, which can contain up to 200 characters of any type
+        :param Description: Event bus description, which can contain up to 200 characters of any type.
         :type Description: str
         """
         self.EventBusName = None
@@ -863,6 +863,50 @@ class DeleteTransformationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ESTargetParams(AbstractModel):
+    """ES rule targets
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NetMode: Network connection type
+        :type NetMode: str
+        :param IndexPrefix: Index prefix
+        :type IndexPrefix: str
+        :param RotationInterval: ES log rotation interval
+        :type RotationInterval: str
+        :param OutputMode: DTS event configuration
+        :type OutputMode: str
+        :param IndexSuffixMode: DTS indexing configuration
+        :type IndexSuffixMode: str
+        :param IndexTemplateType: ES template type
+        :type IndexTemplateType: str
+        """
+        self.NetMode = None
+        self.IndexPrefix = None
+        self.RotationInterval = None
+        self.OutputMode = None
+        self.IndexSuffixMode = None
+        self.IndexTemplateType = None
+
+
+    def _deserialize(self, params):
+        self.NetMode = params.get("NetMode")
+        self.IndexPrefix = params.get("IndexPrefix")
+        self.RotationInterval = params.get("RotationInterval")
+        self.OutputMode = params.get("OutputMode")
+        self.IndexSuffixMode = params.get("IndexSuffixMode")
+        self.IndexTemplateType = params.get("IndexTemplateType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EtlFilter(AbstractModel):
     """Describes how to filter data
 
@@ -1033,7 +1077,7 @@ class GetEventBusResponse(AbstractModel):
         :type Description: str
         :param ClsTopicId: Log topic ID
         :type ClsTopicId: str
-        :param AddTime: Creation time
+        :param AddTime: Creation time.
         :type AddTime: str
         :param ClsLogsetId: Logset ID
         :type ClsLogsetId: str
@@ -1756,10 +1800,13 @@ class TargetDescription(AbstractModel):
         :type SCFParams: :class:`tencentcloud.eb.v20210416.models.SCFParams`
         :param CkafkaTargetParams: CKafka parameters
         :type CkafkaTargetParams: :class:`tencentcloud.eb.v20210416.models.CkafkaTargetParams`
+        :param ESTargetParams: ElasticSearch parameters
+        :type ESTargetParams: :class:`tencentcloud.eb.v20210416.models.ESTargetParams`
         """
         self.ResourceDescription = None
         self.SCFParams = None
         self.CkafkaTargetParams = None
+        self.ESTargetParams = None
 
 
     def _deserialize(self, params):
@@ -1770,6 +1817,9 @@ class TargetDescription(AbstractModel):
         if params.get("CkafkaTargetParams") is not None:
             self.CkafkaTargetParams = CkafkaTargetParams()
             self.CkafkaTargetParams._deserialize(params.get("CkafkaTargetParams"))
+        if params.get("ESTargetParams") is not None:
+            self.ESTargetParams = ESTargetParams()
+            self.ESTargetParams._deserialize(params.get("ESTargetParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1945,9 +1995,9 @@ class UpdateEventBusRequest(AbstractModel):
         r"""
         :param EventBusId: Event bus ID
         :type EventBusId: str
-        :param Description: Event bus description, which can contain up to 200 characters of any type
+        :param Description: Event bus description, which can contain up to 200 characters of any type.
         :type Description: str
-        :param EventBusName: Event bus name, which can contain 2–60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter
+        :param EventBusName: Event bus name: it can contain 2-60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter.
         :type EventBusName: str
         """
         self.EventBusId = None

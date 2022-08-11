@@ -149,6 +149,9 @@ FAILEDOPERATION_UNTAGRESOURCESFAILED = 'FailedOperation.UnTagResourcesFailed'
 # Unverified user.
 FAILEDOPERATION_USERNOTAUTHENTICATED = 'FailedOperation.UserNotAuthenticated'
 
+# 
+FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = 'FailedOperation.UserNotConfirmProtocol'
+
 # Internal error.
 INTERNALERROR = 'InternalError'
 

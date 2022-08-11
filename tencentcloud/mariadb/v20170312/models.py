@@ -590,17 +590,22 @@ class CreateHourDBInstanceResponse(AbstractModel):
         :param InstanceIds: IDs of the instances you have purchased in this order. If no instance IDs are returned, you can query them with the `DescribeOrders` API. You can also use the `DescribeDBInstances` API to check whether an instance has been created successfully.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type InstanceIds: list of str
+        :param FlowId: Async task ID, which can be used in the [DescribeFlow](https://www.tencentcloud.com/document/product/237/16177) API to query the async task result.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FlowId: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.DealName = None
         self.InstanceIds = None
+        self.FlowId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.DealName = params.get("DealName")
         self.InstanceIds = params.get("InstanceIds")
+        self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
 
 
@@ -781,6 +786,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ResourceTags: Instance tag information
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ResourceTags: list of ResourceTag
+        :param DbVersionId: Database version
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DbVersionId: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -833,6 +841,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.DcnDstNum = None
         self.InstanceType = None
         self.ResourceTags = None
+        self.DbVersionId = None
 
 
     def _deserialize(self, params):
@@ -892,6 +901,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj = ResourceTag()
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
+        self.DbVersionId = params.get("DbVersionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

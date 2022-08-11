@@ -327,6 +327,108 @@ class BigKeyTypeInfo(AbstractModel):
         
 
 
+class ChangeInstanceRoleRequest(AbstractModel):
+    """ChangeInstanceRole request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: Replication group ID
+        :type GroupId: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param InstanceRole: Instance role. Valid values: `rw` (read-write), `r`( read-only).
+        :type InstanceRole: str
+        """
+        self.GroupId = None
+        self.InstanceId = None
+        self.InstanceRole = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceRole = params.get("InstanceRole")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChangeInstanceRoleResponse(AbstractModel):
+    """ChangeInstanceRole response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: Async task ID
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class ChangeMasterInstanceRequest(AbstractModel):
+    """ChangeMasterInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: Replication group ID
+        :type GroupId: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self.GroupId = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChangeMasterInstanceResponse(AbstractModel):
+    """ChangeMasterInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: Async task ID
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class ChangeReplicaToMasterRequest(AbstractModel):
     """ChangeReplicaToMaster request structure.
 
@@ -2436,6 +2538,8 @@ class DescribeInstancesRequest(AbstractModel):
         :type TagKeys: list of str
         :param ProductVersions: Product editions to be filtered. Valid values: `local` (local disk edition), `cloud` (cloud disk edition), `cdc` (dedicated cluster edition). If this parameter is not passed in, the product will not be filtered by default.
         :type ProductVersions: list of str
+        :param InstanceIds: The specified instances for batch query
+        :type InstanceIds: list of str
         """
         self.Limit = None
         self.Offset = None
@@ -2462,6 +2566,7 @@ class DescribeInstancesRequest(AbstractModel):
         self.InstanceTags = None
         self.TagKeys = None
         self.ProductVersions = None
+        self.InstanceIds = None
 
 
     def _deserialize(self, params):
@@ -2495,6 +2600,7 @@ class DescribeInstancesRequest(AbstractModel):
                 self.InstanceTags.append(obj)
         self.TagKeys = params.get("TagKeys")
         self.ProductVersions = params.get("ProductVersions")
+        self.InstanceIds = params.get("InstanceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

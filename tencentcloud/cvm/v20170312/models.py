@@ -3118,6 +3118,11 @@ class ImportImageRequest(AbstractModel):
         :type Force: bool
         :param TagSpecification: Tag description list. This parameter is used to bind a tag to a custom image.
         :type TagSpecification: list of TagSpecification
+        :param LicenseType: The license type used to activate the OS after importing an image.
+Valid values:
+`TencentCloud`: Tencent Cloud official license
+`BYOL`: Bring Your Own License
+        :type LicenseType: str
         """
         self.Architecture = None
         self.OsType = None
@@ -3128,6 +3133,7 @@ class ImportImageRequest(AbstractModel):
         self.DryRun = None
         self.Force = None
         self.TagSpecification = None
+        self.LicenseType = None
 
 
     def _deserialize(self, params):
@@ -3145,6 +3151,7 @@ class ImportImageRequest(AbstractModel):
                 obj = TagSpecification()
                 obj._deserialize(item)
                 self.TagSpecification.append(obj)
+        self.LicenseType = params.get("LicenseType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

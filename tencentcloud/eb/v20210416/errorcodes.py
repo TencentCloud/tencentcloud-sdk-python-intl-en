@@ -20,6 +20,9 @@ AUTHFAILURE = 'AuthFailure'
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
+# 
+FAILEDOPERATION_AUTHENTICATEUSERFAILED = 'FailedOperation.AuthenticateUserFailed'
+
 # Failed to create the delivery target. Please check the function status.
 FAILEDOPERATION_CREATETRIGGER = 'FailedOperation.CreateTrigger'
 
@@ -30,9 +33,12 @@ FAILEDOPERATION_DELETECONNECTION = 'FailedOperation.DeleteConnection'
 FAILEDOPERATION_DELETERULE = 'FailedOperation.DeleteRule'
 
 # 
+FAILEDOPERATION_ESREQUESTFAILED = 'FailedOperation.ESRequestFailed'
+
+# The rule does not match with the event. Please modify and try again.
 FAILEDOPERATION_ERRORFILTER = 'FailedOperation.ErrorFilter'
 
-# 
+# Failed to register the CLS service.
 FAILEDOPERATION_REGISTERCLSSERVICE = 'FailedOperation.RegisterCLSService'
 
 # ServiceError: operation failed. Please check the resource information.
@@ -50,13 +56,13 @@ INTERNALERROR = 'InternalError'
 # An error occurred while processing the service. Please try again later. If the problem persists, please contact the smart customer service or submit a ticket.
 INTERNALERROR_OSSEXCEPTION = 'InternalError.OssException'
 
-# An error occurred while processing the service. Please try again later. If the problem persists, please contact the smart customer service or submit a ticket.
+# Service error. Please try again. If the problem persists, please submit a ticket.
 INTERNALERROR_SYSTEM = 'InternalError.System'
 
-# Incorrect parameter.
+# Parameter error.
 INVALIDPARAMETER = 'InvalidParameter'
 
-# 
+# APIGateway cannot be enabled or disabled. Please check and try again.
 INVALIDPARAMETER_ENABLEAPIGATEWAY = 'InvalidParameter.EnableAPIGateway'
 
 # `Payload` does not conform to the specification. Please fix it and try again.
@@ -86,10 +92,10 @@ INVALIDPARAMETERVALUE_CONNECTIONDESCRIPTION = 'InvalidParameterValue.ConnectionD
 # The `ConnectionId` value does not conform to the specification. Please fix it and try again.
 INVALIDPARAMETERVALUE_CONNECTIONID = 'InvalidParameterValue.ConnectionId'
 
-# The `ConnectionName` value does not conform to the specification. Please fix it and try again.
+# The value of `ConnectionName` is invalid. Please check and try again.
 INVALIDPARAMETERVALUE_CONNECTIONNAME = 'InvalidParameterValue.ConnectionName'
 
-# 
+# The value of `AMPParams` is invalid. Please check and try again.
 INVALIDPARAMETERVALUE_DTSPARAMS = 'InvalidParameterValue.DTSParams'
 
 # The dead letter queue parameter is invalid. Please check and try again.
@@ -98,34 +104,37 @@ INVALIDPARAMETERVALUE_DEADLETTERCONFIG = 'InvalidParameterValue.DeadLetterConfig
 # The `Description` value does not conform to the specification. Please fix it and try again.
 INVALIDPARAMETERVALUE_DESCRIPTION = 'InvalidParameterValue.Description'
 
+# 
+INVALIDPARAMETERVALUE_ELASTICSEARCHTARGETPARAMS = 'InvalidParameterValue.ElasticSearchTargetParams'
+
 # The `EventBusId` value does not conform to the specification. Please fix it and try again.
 INVALIDPARAMETERVALUE_EVENTBUSID = 'InvalidParameterValue.EventBusId'
 
-# The `EventBusName` value does not conform to the specification. Please fix it and try again.
+# The value of `EventBusName` is invalid. Please check and try again.
 INVALIDPARAMETERVALUE_EVENTBUSNAME = 'InvalidParameterValue.EventBusName'
 
 # The `EventPattern` value does not conform to the specification. Please fix it and try again.
 INVALIDPARAMETERVALUE_EVENTPATTERN = 'InvalidParameterValue.EventPattern'
 
-# 
+# The linkage tracing parameter is invalid. Please check and try again.
 INVALIDPARAMETERVALUE_EVENTTRACECONFIG = 'InvalidParameterValue.EventTraceConfig'
 
 # The `Filters` value does not conform to the specification. Please fix it and try again.
 INVALIDPARAMETERVALUE_FILTERS = 'InvalidParameterValue.Filters'
 
-# The `InvalidApiRequestConfig` value does not conform to the specification. Please fix it and try again.
+# The value of `InvalidApiRequestConfig` is invalid. Please check and try again.
 INVALIDPARAMETERVALUE_INVALIDAPIREQUESTCONFIG = 'InvalidParameterValue.InvalidApiRequestConfig'
 
-# 
+# Invalid event mode format. Please check and try again.
 INVALIDPARAMETERVALUE_INVALIDFILTERRULE = 'InvalidParameterValue.InvalidFilterRule'
 
-# 
+# Invalid matching rules. Please check and try again.
 INVALIDPARAMETERVALUE_INVALIDPATTERN = 'InvalidParameterValue.InvalidPattern'
 
 # The `Limit` value does not conform to the specification. Please fix it and try again.
 INVALIDPARAMETERVALUE_LIMIT = 'InvalidParameterValue.Limit'
 
-# 
+# The value of `LinkMode` is invalid. Please check and try again.
 INVALIDPARAMETERVALUE_LINKMODE = 'InvalidParameterValue.LinkMode'
 
 # The `NoticeReceiverChannel` value does not conform to the specification. Please fix it and try again.
@@ -158,6 +167,9 @@ INVALIDPARAMETERVALUE_RULEID = 'InvalidParameterValue.RuleId'
 # The `RuleName` value does not conform to the specification. Please fix it and try again.
 INVALIDPARAMETERVALUE_RULENAME = 'InvalidParameterValue.RuleName'
 
+# 
+INVALIDPARAMETERVALUE_TAGS = 'InvalidParameterValue.Tags'
+
 # The `TargetDescription` value does not conform to the specification. Please fix it and try again.
 INVALIDPARAMETERVALUE_TARGETDESCRIPTION = 'InvalidParameterValue.TargetDescription'
 
@@ -173,19 +185,19 @@ INVALIDPARAMETERVALUE_TRANSFORMATIONS = 'InvalidParameterValue.Transformations'
 # The `Type` value does not conform to the specification. Please fix it and try again.
 INVALIDPARAMETERVALUE_TYPE = 'InvalidParameterValue.Type'
 
-# The `Connection` quantity has reached the upper limit. You can submit a ticket to increase it.
+# The number of `Connection` reaches the upper limit. You can submit a ticket to increase it.
 LIMITEXCEEDED_CONNECTION = 'LimitExceeded.Connection'
 
-# The `EventBus` quantity has reached the upper limit. You can submit a ticket to increase it.
+# The number of `EventBus` reaches the upper limit. You can submit a ticket to increase it.
 LIMITEXCEEDED_EVENTBUS = 'LimitExceeded.EventBus'
 
-# 
+# Failed to create the resource: Insufficient balance. Please check and try again.
 LIMITEXCEEDED_INSUFFICIENTBALANCE = 'LimitExceeded.InsufficientBalance'
 
 # The `Logset` quantity has reached the upper limit. You can submit a ticket to increase it.
 LIMITEXCEEDED_LOGSET = 'LimitExceeded.Logset'
 
-# The `RouteOverLimit` quantity has reached the upper limit. You can submit a ticket to increase it.
+# The number of `RouteOverLimit` reaches the upper limit. Submit a ticket to increase it.
 LIMITEXCEEDED_ROUTEOVERLIMIT = 'LimitExceeded.RouteOverLimit'
 
 # The `Rule` quantity has reached the upper limit. You can submit a ticket to increase it.
@@ -212,7 +224,7 @@ OPERATIONDENIED_UNSUPPORTEDOPERATION = 'OperationDenied.UnsupportedOperation'
 # The default Tencent Cloud service event bus cannot be created repeatedly in the same region.
 RESOURCEINUSE_DEFAULTEVENTBUS = 'ResourceInUse.DefaultEventBus'
 
-# There are rules or connectors under the event bus, so it cannot be deleted. Please delete all rules and connectors and try again.
+# Failed to delete the event bus. Please first delete all rules, connectors and archives of it. 
 RESOURCEINUSE_EVENTBUS = 'ResourceInUse.EventBus'
 
 # There are targets under the rule, so it cannot be deleted. Please delete all targets and try again.
@@ -239,6 +251,9 @@ RESOURCENOTFOUND_INVALIDSERVICE = 'ResourceNotFound.InvalidService'
 # Failed to create the delivery target, as the specified namespace was not found. Please create it and try again.
 RESOURCENOTFOUND_NAMESPACE = 'ResourceNotFound.Namespace'
 
+# 
+RESOURCENOTFOUND_PRIVATELINKRESOURCE = 'ResourceNotFound.PrivateLinkResource'
+
 # The specified service role was not found. Please create it and try again.
 RESOURCENOTFOUND_ROLE = 'ResourceNotFound.Role'
 
@@ -254,7 +269,7 @@ RESOURCENOTFOUND_TRANSFORMATION = 'ResourceNotFound.Transformation'
 # Failed to create the delivery target, as the specified service version was not found. Please create it and try again.
 RESOURCENOTFOUND_VERSION = 'ResourceNotFound.Version'
 
-# Failed to create the connector, as the current resource was unavailable.
+# Failed to create the connector: The current resource is unavailable.
 RESOURCEUNAVAILABLE_CONNECTION = 'ResourceUnavailable.Connection'
 
 # Failed to create the delivery target, as the current resource was unavailable.
@@ -263,11 +278,11 @@ RESOURCEUNAVAILABLE_TARGET = 'ResourceUnavailable.Target'
 # The current account does not have permissions to use EB. Please log in to the CAM console for authorization.
 UNAUTHORIZEDOPERATION_CAM = 'UnauthorizedOperation.CAM'
 
-# Unsupported operation.
+# Unsupported operation
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
 # The connector operation failed, as the API did not support the current operation.
 UNSUPPORTEDOPERATION_INVALIDACTION = 'UnsupportedOperation.InvalidAction'
 
-# Failed to create the connector, as the current backend service type was not supported.
+# Failed to create the connector: The current backend service type is not supported.
 UNSUPPORTEDOPERATION_INVALIDENDPOINTTYPE = 'UnsupportedOperation.InvalidEndpointType'
