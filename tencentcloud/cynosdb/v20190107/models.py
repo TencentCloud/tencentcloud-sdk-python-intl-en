@@ -2455,6 +2455,42 @@ class DescribeMaintainPeriodResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeParamTemplatesRequest(AbstractModel):
+    """DescribeParamTemplates request structure.
+
+    """
+
+
+class DescribeParamTemplatesResponse(AbstractModel):
+    """DescribeParamTemplates response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Number of parameter templates
+        :type TotalCount: int
+        :param Items: Parameter template information
+        :type Items: list of ParamTemplateListInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ParamTemplateListInfo()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeProjectSecurityGroupsRequest(AbstractModel):
     """DescribeProjectSecurityGroups request structure.
 
@@ -2747,6 +2783,169 @@ class ExportInstanceSlowQueriesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FileContent = params.get("FileContent")
+        self.RequestId = params.get("RequestId")
+
+
+class InquirePriceCreateRequest(AbstractModel):
+    """InquirePriceCreate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zone: AZ
+        :type Zone: str
+        :param GoodsNum: Purchase quantity
+        :type GoodsNum: int
+        :param InstancePayMode: Instance type for purchase. Valid values: `PREPAID`, `POSTPAID`, `SERVERLESS`.
+        :type InstancePayMode: str
+        :param StoragePayMode: Storage type for purchase. Valid values: `PREPAID`, `POSTPAID`.
+        :type StoragePayMode: str
+        :param Cpu: Number of CPU cores, which is required when `InstancePayMode` is `PREPAID` or `POSTPAID`.
+        :type Cpu: int
+        :param Memory: Memory size in GB, which is required when `InstancePayMode` is `PREPAID` or `POSTPAID`.
+        :type Memory: int
+        :param Ccu: CCU size, which is required when `InstancePayMode` is `SERVERLESS`.
+        :type Ccu: float
+        :param StorageLimit: Storage size, which is required when `StoragePayMode` is `PREPAID`.
+        :type StorageLimit: int
+        :param TimeSpan: Validity period, which is required when `InstancePayMode` is `PREPAID`.
+        :type TimeSpan: int
+        :param TimeUnit: Duration unit, which is required when `InstancePayMode` is `PREPAID`. Valid values: `m` (month), `d` (day).
+        :type TimeUnit: str
+        """
+        self.Zone = None
+        self.GoodsNum = None
+        self.InstancePayMode = None
+        self.StoragePayMode = None
+        self.Cpu = None
+        self.Memory = None
+        self.Ccu = None
+        self.StorageLimit = None
+        self.TimeSpan = None
+        self.TimeUnit = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.GoodsNum = params.get("GoodsNum")
+        self.InstancePayMode = params.get("InstancePayMode")
+        self.StoragePayMode = params.get("StoragePayMode")
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
+        self.Ccu = params.get("Ccu")
+        self.StorageLimit = params.get("StorageLimit")
+        self.TimeSpan = params.get("TimeSpan")
+        self.TimeUnit = params.get("TimeUnit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquirePriceCreateResponse(AbstractModel):
+    """InquirePriceCreate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstancePrice: Instance price
+        :type InstancePrice: :class:`tencentcloud.cynosdb.v20190107.models.TradePrice`
+        :param StoragePrice: Storage price
+        :type StoragePrice: :class:`tencentcloud.cynosdb.v20190107.models.TradePrice`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstancePrice = None
+        self.StoragePrice = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstancePrice") is not None:
+            self.InstancePrice = TradePrice()
+            self.InstancePrice._deserialize(params.get("InstancePrice"))
+        if params.get("StoragePrice") is not None:
+            self.StoragePrice = TradePrice()
+            self.StoragePrice._deserialize(params.get("StoragePrice"))
+        self.RequestId = params.get("RequestId")
+
+
+class InquirePriceRenewRequest(AbstractModel):
+    """InquirePriceRenew request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param TimeSpan: Validity period, which needs to be used together with `TimeUnit`.
+        :type TimeSpan: int
+        :param TimeUnit: Unit of validity period, which needs to be used together with `TimeSpan`. Valid values: `d` (day), `m` (month).
+        :type TimeUnit: str
+        """
+        self.ClusterId = None
+        self.TimeSpan = None
+        self.TimeUnit = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.TimeSpan = params.get("TimeSpan")
+        self.TimeUnit = params.get("TimeUnit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquirePriceRenewResponse(AbstractModel):
+    """InquirePriceRenew response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param InstanceIds: Instance ID list
+        :type InstanceIds: list of str
+        :param Prices: Price of instance specification in array
+        :type Prices: list of TradePrice
+        :param InstanceRealTotalPrice: Total renewal price of compute node
+        :type InstanceRealTotalPrice: int
+        :param StorageRealTotalPrice: Total renewal price of storage node
+        :type StorageRealTotalPrice: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ClusterId = None
+        self.InstanceIds = None
+        self.Prices = None
+        self.InstanceRealTotalPrice = None
+        self.StorageRealTotalPrice = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.InstanceIds = params.get("InstanceIds")
+        if params.get("Prices") is not None:
+            self.Prices = []
+            for item in params.get("Prices"):
+                obj = TradePrice()
+                obj._deserialize(item)
+                self.Prices.append(obj)
+        self.InstanceRealTotalPrice = params.get("InstanceRealTotalPrice")
+        self.StorageRealTotalPrice = params.get("StorageRealTotalPrice")
         self.RequestId = params.get("RequestId")
 
 
@@ -3511,6 +3710,42 @@ class ParamItem(AbstractModel):
         
 
 
+class ParamTemplateListInfo(AbstractModel):
+    """Parameter template information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: Parameter template ID
+        :type Id: int
+        :param TemplateName: Parameter template name
+        :type TemplateName: str
+        :param TemplateDescription: Parameter template description
+        :type TemplateDescription: str
+        :param EngineVersion: Engine version
+        :type EngineVersion: str
+        """
+        self.Id = None
+        self.TemplateName = None
+        self.TemplateDescription = None
+        self.EngineVersion = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.TemplateName = params.get("TemplateName")
+        self.TemplateDescription = params.get("TemplateDescription")
+        self.EngineVersion = params.get("EngineVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PauseServerlessRequest(AbstractModel):
     """PauseServerless request structure.
 
@@ -3883,6 +4118,54 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TradePrice(AbstractModel):
+    """Billing details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalPrice: The non-discounted total price of monthly subscribed resources (unit: US cent)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalPrice: int
+        :param Discount: Total discount. `100` means no discount.
+        :type Discount: float
+        :param TotalPriceDiscount: The discounted total price of monthly subscribed resources (unit: US cent). If a discount is applied, `TotalPriceDiscount` will be the product of `TotalPrice` and `Discount`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalPriceDiscount: int
+        :param UnitPrice: The non-discounted unit price of pay-as-you-go resources (unit: US cent)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UnitPrice: int
+        :param UnitPriceDiscount: The discounted unit price of pay-as-you-go resources (unit: US cent). If a discount is applied, `UnitPriceDiscount` will be the product of `UnitPrice` and `Discount`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UnitPriceDiscount: int
+        :param ChargeUnit: Price unit
+        :type ChargeUnit: str
+        """
+        self.TotalPrice = None
+        self.Discount = None
+        self.TotalPriceDiscount = None
+        self.UnitPrice = None
+        self.UnitPriceDiscount = None
+        self.ChargeUnit = None
+
+
+    def _deserialize(self, params):
+        self.TotalPrice = params.get("TotalPrice")
+        self.Discount = params.get("Discount")
+        self.TotalPriceDiscount = params.get("TotalPriceDiscount")
+        self.UnitPrice = params.get("UnitPrice")
+        self.UnitPriceDiscount = params.get("UnitPriceDiscount")
+        self.ChargeUnit = params.get("ChargeUnit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

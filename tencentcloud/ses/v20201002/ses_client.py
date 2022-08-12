@@ -27,7 +27,7 @@ class SesClient(AbstractClient):
 
 
     def BatchSendEmail(self, request):
-        """This API is used to send a TEXT or HTML email to multiple recipients at a time for marketing or notification purposes. By default, you can send emails using a template only. To send custom content, please contact your sales rep to enable this feature. You need to create a recipient group with email addresses first and then send emails by group ID. SES supports scheduled and recurring email sending tasks. You need to pass in `TimedParam` for a scheduled task and `CycleParam` for a recurring one.
+        """This API is used to send a TEXT or HTML email to multiple recipients at a time for marketing or notification purposes. By default, you can send emails using a template only. You need to create a recipient group with email addresses first and then send emails by group ID. SES supports scheduled and recurring email sending tasks. You need to pass in `TimedParam` for a scheduled task and `CycleParam` for a recurring one.
 
         :param request: Request instance for BatchSendEmail.
         :type request: :class:`tencentcloud.ses.v20201002.models.BatchSendEmailRequest`
@@ -406,6 +406,7 @@ class SesClient(AbstractClient):
 
     def GetSendEmailStatus(self, request):
         """This API is used to get email sending status. Only data within 30 days can be queried.
+        Default API request rate limit: 1 request/sec.
 
         :param request: Request instance for GetSendEmailStatus.
         :type request: :class:`tencentcloud.ses.v20201002.models.GetSendEmailStatusRequest`
@@ -637,7 +638,7 @@ class SesClient(AbstractClient):
 
 
     def SendEmail(self, request):
-        """This API is used to send a TEXT or HTML email triggered for authentication or transaction. By default, you can send emails using a template only. To send custom content, please contact your sales rep to enable this feature.
+        """This API is used to send an HTML or TEXT email triggered for authentication or transaction. By default, you can send emails using a template only.
 
         :param request: Request instance for SendEmail.
         :type request: :class:`tencentcloud.ses.v20201002.models.SendEmailRequest`

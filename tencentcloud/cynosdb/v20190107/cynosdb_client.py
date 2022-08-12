@@ -606,6 +606,35 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeParamTemplates(self, request):
+        """This API is used to query all parameter templates information of a user-specified product.
+
+        :param request: Request instance for DescribeParamTemplates.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeParamTemplatesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeParamTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeParamTemplates", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeParamTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeProjectSecurityGroups(self, request):
         """This API is used to query the security group information of a project.
 
@@ -737,6 +766,64 @@ class CynosdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportInstanceSlowQueriesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def InquirePriceCreate(self, request):
+        """This API is used to query the purchasable price of a cluster.
+
+        :param request: Request instance for InquirePriceCreate.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.InquirePriceCreateRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.InquirePriceCreateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquirePriceCreate", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquirePriceCreateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def InquirePriceRenew(self, request):
+        """This API is used to query the renewal price of a cluster.
+
+        :param request: Request instance for InquirePriceRenew.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.InquirePriceRenewRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.InquirePriceRenewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquirePriceRenew", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquirePriceRenewResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

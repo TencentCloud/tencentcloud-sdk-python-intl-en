@@ -63,11 +63,11 @@ Tencent Cloud team <noreply@mail.qcloud.com>
         :type Subject: str
         :param TaskType: Task type. `1`: immediate; `2`: scheduled; `3`: recurring
         :type TaskType: int
-        :param ReplyToAddresses: Reply-to address. You can enter a valid personal email address that can receive emails. If this parameter is left empty, reply emails will be sent to Tencent Cloud.
+        :param ReplyToAddresses: Reply-to address. You can enter a valid personal email address that can receive emails. If this parameter is left empty, reply emails will fail to be sent.
         :type ReplyToAddresses: str
         :param Template: Template when emails are sent using a template
         :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
-        :param Simple: Email content when emails are sent by calling the API. This parameter is currently unavailable.
+        :param Simple: Disused
         :type Simple: :class:`tencentcloud.ses.v20201002.models.Simple`
         :param Attachments: Attachment parameters to set when you need to send attachments. This parameter is currently unavailable.
         :type Attachments: list of Attachment
@@ -712,16 +712,24 @@ class EmailIdentity(AbstractModel):
         :type IdentityType: str
         :param SendingEnabled: Verification passed or not.
         :type SendingEnabled: bool
+        :param CurrentReputationLevel: Current reputation level
+        :type CurrentReputationLevel: int
+        :param DailyQuota: Maximum number of messages sent per day
+        :type DailyQuota: int
         """
         self.IdentityName = None
         self.IdentityType = None
         self.SendingEnabled = None
+        self.CurrentReputationLevel = None
+        self.DailyQuota = None
 
 
     def _deserialize(self, params):
         self.IdentityName = params.get("IdentityName")
         self.IdentityType = params.get("IdentityType")
         self.SendingEnabled = params.get("SendingEnabled")
+        self.CurrentReputationLevel = params.get("CurrentReputationLevel")
+        self.DailyQuota = params.get("DailyQuota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -856,10 +864,13 @@ class GetEmailTemplateResponse(AbstractModel):
         r"""
         :param TemplateContent: Template content.
         :type TemplateContent: :class:`tencentcloud.ses.v20201002.models.TemplateContent`
+        :param TemplateStatus: Template status. Valid values: `0` (approved); `1` (pending approval); `2` (rejected).
+        :type TemplateStatus: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.TemplateContent = None
+        self.TemplateStatus = None
         self.RequestId = None
 
 
@@ -867,6 +878,7 @@ class GetEmailTemplateResponse(AbstractModel):
         if params.get("TemplateContent") is not None:
             self.TemplateContent = TemplateContent()
             self.TemplateContent._deserialize(params.get("TemplateContent"))
+        self.TemplateStatus = params.get("TemplateStatus")
         self.RequestId = params.get("RequestId")
 
 
@@ -877,15 +889,15 @@ class GetSendEmailStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestDate: Sent date. This parameter is required. You can only query the sending status for a single date at a time.
+        :param RequestDate: Date sent. This parameter is required. You can only query the sending status for a single date at a time.
         :type RequestDate: str
-        :param Offset: Offset. Default value: `0`
+        :param Offset: Offset. Default value: `0`.
         :type Offset: int
-        :param Limit: Maximum number of pulled entries. The maximum value is `100`.
+        :param Limit: Maximum number of pulled entries. Maximum value: `100`.
         :type Limit: int
-        :param MessageId: `MessageId` field returned by the `SendMail` API
+        :param MessageId: The `MessageId` field returned by the `SendMail` API.
         :type MessageId: str
-        :param ToEmailAddress: Recipient email address
+        :param ToEmailAddress: Recipient email address.
         :type ToEmailAddress: str
         """
         self.RequestDate = None
@@ -917,7 +929,7 @@ class GetSendEmailStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EmailStatusList: Email sending status list
+        :param EmailStatusList: Status of sent emails
         :type EmailStatusList: list of SendEmailStatus
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1126,10 +1138,16 @@ class ListEmailIdentitiesResponse(AbstractModel):
         r"""
         :param EmailIdentities: List of sender domains.
         :type EmailIdentities: list of EmailIdentity
+        :param MaxReputationLevel: Maximum reputation level
+        :type MaxReputationLevel: int
+        :param MaxDailyQuota: Maximum number of emails sent per domain name
+        :type MaxDailyQuota: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.EmailIdentities = None
+        self.MaxReputationLevel = None
+        self.MaxDailyQuota = None
         self.RequestId = None
 
 
@@ -1140,6 +1158,8 @@ class ListEmailIdentitiesResponse(AbstractModel):
                 obj = EmailIdentity()
                 obj._deserialize(item)
                 self.EmailIdentities.append(obj)
+        self.MaxReputationLevel = params.get("MaxReputationLevel")
+        self.MaxDailyQuota = params.get("MaxDailyQuota")
         self.RequestId = params.get("RequestId")
 
 
@@ -1180,7 +1200,7 @@ class ListEmailTemplatesResponse(AbstractModel):
         r"""
         :param TemplatesMetadata: List of email templates.
         :type TemplatesMetadata: list of TemplatesMetadata
-        :param TotalCount: Total number of templates.
+        :param TotalCount: Total number of templates
         :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1398,11 +1418,11 @@ Sender <email address>
         :type Destination: list of str
         :param Subject: Email subject.
         :type Subject: str
-        :param ReplyToAddresses: Reply-to address. You can enter a valid personal email address that can receive emails. If this field is left empty, reply emails will be sent to Tencent Cloud.
+        :param ReplyToAddresses: Reply-to address. You can enter a valid personal email address that can receive emails. If this parameter is left empty, reply emails will fail to be sent.
         :type ReplyToAddresses: str
         :param Template: Template when sending emails using a template.
         :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
-        :param Simple: Email content when sending emails by calling the API.
+        :param Simple: Disused
         :type Simple: :class:`tencentcloud.ses.v20201002.models.Simple`
         :param Attachments: Email attachments
         :type Attachments: list of Attachment
@@ -1472,48 +1492,48 @@ class SendEmailResponse(AbstractModel):
 
 
 class SendEmailStatus(AbstractModel):
-    """Describes the email sending status.
+    """Describes the email sending status
 
     """
 
     def __init__(self):
         r"""
-        :param MessageId: `MessageId` field returned by the `SendEmail` API
+        :param MessageId: The `MessageId` field returned by the `SendEmail` API
         :type MessageId: str
         :param ToEmailAddress: Recipient email address
         :type ToEmailAddress: str
         :param FromEmailAddress: Sender email address
         :type FromEmailAddress: str
-        :param SendStatus: Tencent Cloud processing status:
-0: successful.
-1001: internal system exception.
-1002: internal system exception.
-1003: internal system exception.
-1003: internal system exception.
-1004: email sending timeout.
-1005: internal system exception.
-1006: you have sent too many emails to the same address in a short period.
-1007: the email address is in the blocklist.
-1009: internal system exception.
-1010: daily email sending limit exceeded.
-1011: no permission to send custom content. Use a template.
-2001: no results found.
-3007: invalid template ID or unavailable template.
-3008: template status exception.
-3009: no permission to use this template.
-3010: the format of the `TemplateData` field is incorrect. 
-3014: unable to send the email because the sender domain is not verified.
-3020: the recipient email address is in the blocklist.
-3024: failed to pre-check the email address format.
-3030: email sending is restricted temporarily due to high bounce rate.
-3033: the account has insufficient balance or overdue payment.
+        :param SendStatus: Tencent Cloud processing status
+0: Successful.
+1001: Internal system exception.
+1002: Internal system exception.
+1003: Internal system exception.
+1003: Internal system exception.
+1004: Email sending timed out.
+1005: Internal system exception.
+1006: You have sent too many emails to the same address in a short period.
+1007: The email address is in the blocklist.
+1009: Internal system exception.
+1010: The daily email sending limit is exceeded.
+1011: You have no permission to send custom content. Use a template.
+2001: No results were found.
+3007: The template ID is invalid or the template is unavailable.
+3008: Template status exception.
+3009: You have no permission to use this template.
+3010: The format of the `TemplateData` field is incorrect. 
+3014: The email cannot be sent because the sender domain is not verified.
+3020: The recipient email address is in the blocklist.
+3024: Failed to precheck the email address format.
+3030: Email sending is restricted temporarily due to high bounce rate.
+3033: The account has insufficient balance or overdue payment.
         :type SendStatus: int
-        :param DeliverStatus: Recipient processing status:
+        :param DeliverStatus: Recipient processing status
 0: Tencent Cloud has accepted the request and added it to the send queue.
-1: the email is delivered successfully, `DeliverTime` indicates the time when the email is delivered successfully.
-2: the email is discarded. `DeliverMessage` indicates the reason for discarding.
-3: the recipient's ESP rejects the email, probably because the email address does not exist or due to other reasons.
-8: the email is delayed by the ESP. `DeliverMessage` indicates the reason for delay.
+1: The email is delivered successfully. `DeliverTime` indicates the time when the email is delivered successfully.
+2: The email is discarded. `DeliverMessage` indicates the reason for discarding.
+3: The recipient's ESP rejects the email, probably because the email address does not exist or due to other reasons.
+8: The email is delayed by the ESP. `DeliverMessage` indicates the reason for delay.
         :type DeliverStatus: int
         :param DeliverMessage: Description of the recipient processing status
         :type DeliverMessage: str
@@ -1525,7 +1545,7 @@ class SendEmailStatus(AbstractModel):
         :type UserOpened: bool
         :param UserClicked: Whether the recipient has clicked the links in the email
         :type UserClicked: bool
-        :param UserUnsubscribed: Whether the recipient has unsubscribed from emails sent by the sender
+        :param UserUnsubscribed: Whether the recipient has unsubscribed from the email sent by the sender
         :type UserUnsubscribed: bool
         :param UserComplainted: Whether the recipient has reported the sender
         :type UserComplainted: bool

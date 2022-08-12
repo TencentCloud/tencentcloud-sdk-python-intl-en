@@ -47,6 +47,8 @@ It can contain 2-128 letters, digits, and symbols (=,.@:/-). Regex: [\w+=,.@:\/-
         :type ExternalId: str
         :param Tags: List of session tags. Up to 50 tags are allowed. The tag keys can not duplicate.
         :type Tags: list of Tag
+        :param SourceIdentity: UIN of the initiator
+        :type SourceIdentity: str
         """
         self.RoleArn = None
         self.RoleSessionName = None
@@ -54,6 +56,7 @@ It can contain 2-128 letters, digits, and symbols (=,.@:/-). Regex: [\w+=,.@:\/-
         self.Policy = None
         self.ExternalId = None
         self.Tags = None
+        self.SourceIdentity = None
 
 
     def _deserialize(self, params):
@@ -68,6 +71,7 @@ It can contain 2-128 letters, digits, and symbols (=,.@:/-). Regex: [\w+=,.@:\/-
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.SourceIdentity = params.get("SourceIdentity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
