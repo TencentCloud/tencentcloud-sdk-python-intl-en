@@ -119,6 +119,11 @@ def test_import_cynosdb():
     from tencentcloud.cynosdb.v20190107 import models
 
 
+def test_import_dataintegration():
+    from tencentcloud.dataintegration.v20220613 import dataintegration_client
+    from tencentcloud.dataintegration.v20220613 import models
+
+
 def test_import_dayu():
     from tencentcloud.dayu.v20180709 import dayu_client
     from tencentcloud.dayu.v20180709 import models

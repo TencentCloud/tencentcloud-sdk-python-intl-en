@@ -35,6 +35,9 @@ FAILEDOPERATION_CREATERECORDFAILED = 'FailedOperation.CreateRecordFailed'
 # Failed to create the private domain.
 FAILEDOPERATION_CREATEZONEFAILED = 'FailedOperation.CreateZoneFailed'
 
+# Data exception.
+FAILEDOPERATION_DATAERROR = 'FailedOperation.DataError'
+
 # Failed to modify the record.
 FAILEDOPERATION_MODIFYRECORDFAILED = 'FailedOperation.ModifyRecordFailed'
 
@@ -187,3 +190,6 @@ UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
 # Account not bound.
 UNSUPPORTEDOPERATION_ACCOUNTNOTBOUND = 'UnsupportedOperation.AccountNotBound'
+
+# Subdomain recursive DNS is not supported.
+UNSUPPORTEDOPERATION_NOTSUPPORTDNSFORWARD = 'UnsupportedOperation.NotSupportDnsForward'

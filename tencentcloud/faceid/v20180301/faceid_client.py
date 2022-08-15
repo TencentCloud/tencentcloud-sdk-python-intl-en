@@ -143,3 +143,32 @@ class FaceidClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def VideoLivenessCompare(self, request):
+        """This API is used to pass in URLs of a video and a photo, determine whether the person in the video is real, and if yes, then determine whether the person in the video is the same as that in the photo.
+
+        :param request: Request instance for VideoLivenessCompare.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.VideoLivenessCompareRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.VideoLivenessCompareResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("VideoLivenessCompare", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.VideoLivenessCompareResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

@@ -144,6 +144,38 @@ class DetectReflectLivenessAndCompareResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class FileInfo(AbstractModel):
+    """The description of a file, including a download URL and the MD5 checksum and size of the file.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Url: The URL for downloading the file
+        :type Url: str
+        :param MD5: The 32-bit MD5 checksum of the file
+        :type MD5: str
+        :param Size: The file size
+        :type Size: int
+        """
+        self.Url = None
+        self.MD5 = None
+        self.Size = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        self.MD5 = params.get("MD5")
+        self.Size = params.get("Size")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GenerateReflectSequenceRequest(AbstractModel):
     """GenerateReflectSequence request structure.
 
@@ -308,4 +340,91 @@ class LivenessCompareResponse(AbstractModel):
         self.Result = params.get("Result")
         self.Description = params.get("Description")
         self.BestFrameList = params.get("BestFrameList")
+        self.RequestId = params.get("RequestId")
+
+
+class VideoLivenessCompareRequest(AbstractModel):
+    """VideoLivenessCompare request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageUrl: The URL of the photo for face comparison. The downloaded image after Base64 encoding can be up to 3 MB and must be in JPG or PNG.
+
+The image must be stored in a COS bucket in the region where the FaceID service resides to ensure a higher download speed and better stability. You can generate an image URL by using `CreateUploadUrl` or purchase the COS service.
+        :type ImageUrl: str
+        :param ImageMd5: The 32-bit MD5 checksum of the image for comparison
+        :type ImageMd5: str
+        :param VideoUrl: The URL of the video for liveness detection. The downloaded video after Base64 encoding can be up to 8 MB and must be in MP4, AVI, or FLV. It takes no more than 4s to download the video.
+
+The video must be stored in a COS bucket in the region where the FaceID service resides to ensure a higher download speed and better stability. You can generate a video URL by using `CreateUploadUrl` or purchase the COS service.
+        :type VideoUrl: str
+        :param VideoMd5: The 32-bit MD5 checksum of the video
+        :type VideoMd5: str
+        :param LivenessType: The liveness detection type. Valid values: `LIP`, `ACTION`, and `SILENT`.
+`LIP`: Numeric mode; `ACTION`: Motion mode; `SILENT`: silent mode. Select one of them.
+        :type LivenessType: str
+        :param ValidateData: LIP parameter: Pass in a custom 4-digit verification code.
+ACTION parameter: Pass in a custom action sequence (`2,1` or `1,2`).
+SILENT parameter: Null.
+        :type ValidateData: str
+        """
+        self.ImageUrl = None
+        self.ImageMd5 = None
+        self.VideoUrl = None
+        self.VideoMd5 = None
+        self.LivenessType = None
+        self.ValidateData = None
+
+
+    def _deserialize(self, params):
+        self.ImageUrl = params.get("ImageUrl")
+        self.ImageMd5 = params.get("ImageMd5")
+        self.VideoUrl = params.get("VideoUrl")
+        self.VideoMd5 = params.get("VideoMd5")
+        self.LivenessType = params.get("LivenessType")
+        self.ValidateData = params.get("ValidateData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoLivenessCompareResponse(AbstractModel):
+    """VideoLivenessCompare response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Sim: The similarity. Value range: [0.00, 100.00]. As a recommendation, when the similarity is greater than or equal to 70, it can be determined that the two persons are of the same person. You can adjust the threshold according to your specific scenario (the FARs at the thresholds of 70 and 80 are 0.1% and 0.01%, respectively).
+        :type Sim: float
+        :param Result: The service error code. `Success` will be returned for success. For error information, see the `FailedOperation` section in the error code list below.
+        :type Result: str
+        :param Description: The service result description
+        :type Description: str
+        :param BestFrame: The best video screenshot after successful verification
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BestFrame: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Sim = None
+        self.Result = None
+        self.Description = None
+        self.BestFrame = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Sim = params.get("Sim")
+        self.Result = params.get("Result")
+        self.Description = params.get("Description")
+        if params.get("BestFrame") is not None:
+            self.BestFrame = FileInfo()
+            self.BestFrame._deserialize(params.get("BestFrame"))
         self.RequestId = params.get("RequestId")
