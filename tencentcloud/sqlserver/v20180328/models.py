@@ -1246,10 +1246,14 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :type CrossBackupEnabled: str
         :param CrossBackupSaveDays: The retention period of cross-region backup. Default value: 7 days
         :type CrossBackupSaveDays: int
-        :param DnsPodDomain: 
+        :param DnsPodDomain: Domain name of the public network address
         :type DnsPodDomain: str
-        :param TgwWanVPort: 
+        :param TgwWanVPort: Port number of the public network
         :type TgwWanVPort: int
+        :param Collation: 
+        :type Collation: str
+        :param TimeZone: 
+        :type TimeZone: str
         """
         self.InstanceId = None
         self.Name = None
@@ -1299,6 +1303,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.CrossBackupSaveDays = None
         self.DnsPodDomain = None
         self.TgwWanVPort = None
+        self.Collation = None
+        self.TimeZone = None
 
 
     def _deserialize(self, params):
@@ -1355,6 +1361,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.CrossBackupSaveDays = params.get("CrossBackupSaveDays")
         self.DnsPodDomain = params.get("DnsPodDomain")
         self.TgwWanVPort = params.get("TgwWanVPort")
+        self.Collation = params.get("Collation")
+        self.TimeZone = params.get("TimeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

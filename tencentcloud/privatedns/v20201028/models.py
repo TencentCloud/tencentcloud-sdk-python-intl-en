@@ -325,12 +325,14 @@ class CreatePrivateZoneRequest(AbstractModel):
         :type VpcSet: list of VpcInfo
         :param Remark: Remarks
         :type Remark: str
-        :param DnsForwardStatus: Whether to enable subdomain recursive DNS. Valid values: ENABLED, DISABLED. Default value: DISABLED
+        :param DnsForwardStatus: Whether to enable subdomain recursive DNS. Valid values: `ENABLED` (default) and `DISABLED`.
         :type DnsForwardStatus: str
         :param Vpcs: Associates the private domain to a VPC when it is created
         :type Vpcs: list of VpcInfo
         :param AccountVpcSet: List of authorized accounts' VPCs to associate with the private domain
         :type AccountVpcSet: list of AccountVpcInfo
+        :param CnameSpeedupStatus: Whether to enable CNAME flattening. Valid values: `ENABLED` (default) and `DISABLED`.
+        :type CnameSpeedupStatus: str
         """
         self.Domain = None
         self.TagSet = None
@@ -339,6 +341,7 @@ class CreatePrivateZoneRequest(AbstractModel):
         self.DnsForwardStatus = None
         self.Vpcs = None
         self.AccountVpcSet = None
+        self.CnameSpeedupStatus = None
 
 
     def _deserialize(self, params):
@@ -369,6 +372,7 @@ class CreatePrivateZoneRequest(AbstractModel):
                 obj = AccountVpcInfo()
                 obj._deserialize(item)
                 self.AccountVpcSet.append(obj)
+        self.CnameSpeedupStatus = params.get("CnameSpeedupStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -986,16 +990,20 @@ class ModifyPrivateZoneRequest(AbstractModel):
         :type Remark: str
         :param DnsForwardStatus: Whether to enable subdomain recursive DNS. Valid values: ENABLED, DISABLED
         :type DnsForwardStatus: str
+        :param CnameSpeedupStatus: Whether to enable CNAME flattening. Valid values: `ENABLED` and `DISABLED`.
+        :type CnameSpeedupStatus: str
         """
         self.ZoneId = None
         self.Remark = None
         self.DnsForwardStatus = None
+        self.CnameSpeedupStatus = None
 
 
     def _deserialize(self, params):
         self.ZoneId = params.get("ZoneId")
         self.Remark = params.get("Remark")
         self.DnsForwardStatus = params.get("DnsForwardStatus")
+        self.CnameSpeedupStatus = params.get("CnameSpeedupStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
