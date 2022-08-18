@@ -27,7 +27,9 @@ class AutoscalingClient(AbstractClient):
 
 
     def AttachInstances(self, request):
-        """This API (AttachInstances) is used to add CVM instances to an auto scaling group.
+        """This API is used to add CVM instances to an auto scaling group.
+        * Only CVM instances in `RUNNING` or `STOPPED` status can be added.
+        * The added CVM instances must in the same VPC as the scaling group.
 
         :param request: Request instance for AttachInstances.
         :type request: :class:`tencentcloud.autoscaling.v20180419.models.AttachInstancesRequest`
@@ -190,6 +192,39 @@ class AutoscalingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAutoScalingGroupFromInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateLaunchConfiguration(self, request):
+        """This API is used to create a launch configuration.
+
+        * To modify a launch configuration, you can use `ModifyLaunchConfigurationAttributes`.
+
+        * You can create up to 20 launch configurations for each project. For more information, see [Usage Limits](https://intl.cloud.tencent.com/document/product/377/3120?from_cn_redirect=1).
+
+        :param request: Request instance for CreateLaunchConfiguration.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.CreateLaunchConfigurationRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.CreateLaunchConfigurationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLaunchConfiguration", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLaunchConfigurationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -721,6 +756,38 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLaunchConfigurations(self, request):
+        """This API is used to query the information of launch configurations.
+
+        * You can query the launch configuration details based on information such as launch configuration ID and name. For more information on filters, see `Filter`.
+        * If the parameter is empty, a certain number (specified by `Limit` and 20 by default) of launch configurations of the current user will be returned.
+
+        :param request: Request instance for DescribeLaunchConfigurations.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DescribeLaunchConfigurationsRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DescribeLaunchConfigurationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLaunchConfigurations", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLaunchConfigurationsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLifecycleHooks(self, request):
         """This API (DescribeLifecycleHooks) is used to query the information of lifecycle hooks.
 
@@ -893,6 +960,48 @@ class AutoscalingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachLoadBalancersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DisableAutoScalingGroup(self, request):
+        """This API is used to disable the specified auto-scaling group.
+        * When a scaling group is disabled, the following activities are not triggered automatically:
+            - Scaling activities triggered alert policies
+            - Scaling activities triggered by desired group capacity
+            - Replacement of unhealthy instances
+            - Scheduled actions
+        * When the scaling group is disabled, you can trigger scaling activities manually, including:
+            - Scale out to the specify number of instances (ScaleOutInstances)
+            - Scale in to the specify number of instances (ScaleInInstances)
+            - Remove instances from the scaling group (DetachInstances)
+            - Delete instances from the scaling group (RemoveInstances)
+            - Add instances to a scaling group (AttachInstances)
+            - Shut down CVM instances in a scaling group (StopAutoScalingInstances)
+            - Start up CVM instances in a scaling group (StartAutoScalingInstances)
+
+        :param request: Request instance for DisableAutoScalingGroup.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DisableAutoScalingGroupRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DisableAutoScalingGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableAutoScalingGroup", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisableAutoScalingGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1269,6 +1378,74 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ScaleInInstances(self, request):
+        """This API is used to reduce the specified number of instances from the scaling group.
+        * There is no on going scaling task.
+        * This API is valid even when the scaling group is disabled. For more details, see [DisableAutoScalingGroup](https://intl.cloud.tencent.com/document/api/377/20435?from_cn_redirect=1).
+        * You can specify the instances to remove in the scale-in activity by using `TerminationPolicies`. For more information, see [Scaling In Policies](https://intl.cloud.tencent.com/document/product/377/8563?from_cn_redirect=1).
+        * Only the `IN_SERVICE` instances will be reduced. To reduce instances in other statues, use the [`DetachInstances`](https://intl.cloud.tencent.com/document/api/377/20436?from_cn_redirect=1) or [`RemoveInstances`](https://intl.cloud.tencent.com/document/api/377/20431?from_cn_redirect=1) API.
+        * The desired capacity will be reduced accordingly. The new desired capacity should be no less than the minimum capacity.
+        * If the scale-in activity failed or partially succeeded, the final desired capacity only deducts the instances that have been reduced successfully.
+
+        :param request: Request instance for ScaleInInstances.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.ScaleInInstancesRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ScaleInInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ScaleInInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ScaleInInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ScaleOutInstances(self, request):
+        """This API is used to add the specified number of instances to the scaling group, which returns the scaling activity ID `ActivityId`.
+        * There is no on going scaling task.
+        * This API is valid even when the scaling group is disabled. For more details, see [DisableAutoScalingGroup](https://intl.cloud.tencent.com/document/api/377/20435?from_cn_redirect=1).
+        * The desired capacity will be increased accordingly. The new desired capacity should be no more than the maximum capacity.
+        * If the scale-out activity failed or partially succeeded, the final desired capacity only includes the instances that have been added successfully.
+
+        :param request: Request instance for ScaleOutInstances.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.ScaleOutInstancesRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ScaleOutInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ScaleOutInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ScaleOutInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SetInstancesProtection(self, request):
         """This API is used to enable scale-in protection for an instance.
         When scale-in protection is enabled, the instance will not be removed in scale-in activities triggered by replacement of unhealthy instances, alarm threshold reached, change of desired quantity, etc.
@@ -1349,6 +1526,38 @@ class AutoscalingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopAutoScalingInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpgradeLaunchConfiguration(self, request):
+        """This API is used to upgrade a launch configuration.
+
+        * This API is used to upgrade a launch configuration in a "completely overriding" manner, i.e., it uniformly sets a new configuration according to the API parameters regardless of the original parameters. If optional fields are left empty, their default values will be used.
+        * After the launch configuration is upgraded, the existing instances that have been created by it will not be changed, but new instances will be created according to the new configuration.
+
+        :param request: Request instance for UpgradeLaunchConfiguration.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.UpgradeLaunchConfigurationRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.UpgradeLaunchConfigurationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeLaunchConfiguration", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpgradeLaunchConfigurationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

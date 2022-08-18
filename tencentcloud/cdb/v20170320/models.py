@@ -46,6 +46,54 @@ class Account(AbstractModel):
         
 
 
+class AccountInfo(AbstractModel):
+    """Account details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Notes: Account remarks
+        :type Notes: str
+        :param Host: Account domain name
+        :type Host: str
+        :param User: Account name
+        :type User: str
+        :param ModifyTime: Account information modification time
+        :type ModifyTime: str
+        :param ModifyPasswordTime: Password modification time
+        :type ModifyPasswordTime: str
+        :param CreateTime: This parameter is no longer supported.
+        :type CreateTime: str
+        :param MaxUserConnections: The maximum number of instance connections supported by an account
+        :type MaxUserConnections: int
+        """
+        self.Notes = None
+        self.Host = None
+        self.User = None
+        self.ModifyTime = None
+        self.ModifyPasswordTime = None
+        self.CreateTime = None
+        self.MaxUserConnections = None
+
+
+    def _deserialize(self, params):
+        self.Notes = params.get("Notes")
+        self.Host = params.get("Host")
+        self.User = params.get("User")
+        self.ModifyTime = params.get("ModifyTime")
+        self.ModifyPasswordTime = params.get("ModifyPasswordTime")
+        self.CreateTime = params.get("CreateTime")
+        self.MaxUserConnections = params.get("MaxUserConnections")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AddTimeWindowRequest(AbstractModel):
     """AddTimeWindow request structure.
 
@@ -1092,6 +1140,72 @@ Note: this field may return `null`, indicating that no valid value can be found.
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateAccountsRequest(AbstractModel):
+    """CreateAccounts request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
+        :type InstanceId: str
+        :param Accounts: TencentDB account.
+        :type Accounts: list of Account
+        :param Password: Password of the new account
+        :type Password: str
+        :param Description: Remarks
+        :type Description: str
+        :param MaxUserConnections: Maximum connections of the new account. Default value: `10240`. Maximum value: `10240`.
+        :type MaxUserConnections: int
+        """
+        self.InstanceId = None
+        self.Accounts = None
+        self.Password = None
+        self.Description = None
+        self.MaxUserConnections = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Accounts") is not None:
+            self.Accounts = []
+            for item in params.get("Accounts"):
+                obj = Account()
+                obj._deserialize(item)
+                self.Accounts.append(obj)
+        self.Password = params.get("Password")
+        self.Description = params.get("Description")
+        self.MaxUserConnections = params.get("MaxUserConnections")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAccountsResponse(AbstractModel):
+    """CreateAccounts response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AsyncRequestId: Async task request ID, which can be used to query the execution result of an async task.
+        :type AsyncRequestId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
 
 
 class CreateAuditPolicyRequest(AbstractModel):
@@ -2144,6 +2258,76 @@ class DescribeAccountPrivilegesResponse(AbstractModel):
                 obj = ColumnPrivilege()
                 obj._deserialize(item)
                 self.ColumnPrivileges.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAccountsRequest(AbstractModel):
+    """DescribeAccounts request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
+        :type InstanceId: str
+        :param Offset: Record offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of results to be returned for a single request. Value range: 1-100. Default value: 20.
+        :type Limit: int
+        :param AccountRegexp: Regular expression for matching account names, which complies with the rules at MySQL official website.
+        :type AccountRegexp: str
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+        self.AccountRegexp = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.AccountRegexp = params.get("AccountRegexp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccountsResponse(AbstractModel):
+    """DescribeAccounts response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Number of eligible accounts.
+        :type TotalCount: int
+        :param Items: Details of eligible accounts.
+        :type Items: list of AccountInfo
+        :param MaxUserConnections: The maximum number of instance connections (set by the MySQL parameter `max_connections`)
+        :type MaxUserConnections: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.MaxUserConnections = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = AccountInfo()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.MaxUserConnections = params.get("MaxUserConnections")
         self.RequestId = params.get("RequestId")
 
 
@@ -6547,7 +6731,7 @@ class ModifyBackupConfigRequest(AbstractModel):
         :type BinlogExpireDays: int
         :param BackupTimeWindow: Backup time window; for example, to set up backup between 10:00 and 14:00 on every Tuesday and Sunday, you should set this parameter as follows: {"Monday": "", "Tuesday": "10:00-14:00", "Wednesday": "", "Thursday": "", "Friday": "", "Saturday": "", "Sunday": "10:00-14:00"} (Note: You can set up backup on different days, but the backup time windows need to be the same. If this field is set, the `StartTime` field will be ignored)
         :type BackupTimeWindow: :class:`tencentcloud.cdb.v20170320.models.CommonTimeWindow`
-        :param EnableBackupPeriodSave: Switch for archive backup retention. Valid values: `off` (disable), `on` (enable). Default value:`off`.
+        :param EnableBackupPeriodSave: Switch for periodic archive. Valid values: `off` (disable), `on` (enable). Default value:`off`. When you enable the periodic archive policy for the first time, you need to enter the `BackupPeriodSaveDays`, `BackupPeriodSaveInterval`, `BackupPeriodSaveCount`, and `StartBackupPeriodSaveDate` parameters; otherwise, the policy will not take effect.
         :type EnableBackupPeriodSave: str
         :param EnableBackupPeriodLongTermSave: Switch for long-term backup retention (This field can be ignored, for its feature hasn’t been launched). Valid values: `off` (disable), `on` (enable). Default value: `off`. Once enabled, the parameters (BackupPeriodSaveDays, BackupPeriodSaveInterval, and BackupPeriodSaveCount) will be invalid.
         :type EnableBackupPeriodLongTermSave: str
@@ -7057,6 +7241,72 @@ class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDBInstanceVipVportRequest(AbstractModel):
+    """ModifyDBInstanceVipVport request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters.
+        :type InstanceId: str
+        :param DstIp: Destination IP. Either this parameter or `DstPort` must be passed in.
+        :type DstIp: str
+        :param DstPort: Destination port number. Value range: [1024-65535]. Either this parameter or `DstIp` must be passed in.
+        :type DstPort: int
+        :param UniqVpcId: Unified VPC ID
+        :type UniqVpcId: str
+        :param UniqSubnetId: Unified subnet ID.
+        :type UniqSubnetId: str
+        :param ReleaseDuration: Repossession duration in hours for old IP in the original network when changing from the basic network to VPC or changing the VPC subnet. Value range: 0-168 hours. Default value: 24 hours.
+        :type ReleaseDuration: int
+        """
+        self.InstanceId = None
+        self.DstIp = None
+        self.DstPort = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.ReleaseDuration = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DstIp = params.get("DstIp")
+        self.DstPort = params.get("DstPort")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.ReleaseDuration = params.get("ReleaseDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceVipVportResponse(AbstractModel):
+    """ModifyDBInstanceVipVport response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AsyncRequestId: Async task ID. (This returned field has been disused)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AsyncRequestId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyInstanceParamRequest(AbstractModel):
     """ModifyInstanceParam request structure.
 
@@ -7100,6 +7350,60 @@ class ModifyInstanceParamRequest(AbstractModel):
 
 class ModifyInstanceParamResponse(AbstractModel):
     """ModifyInstanceParam response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AsyncRequestId: Async task ID, which can be used to query task progress.
+        :type AsyncRequestId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyInstancePasswordComplexityRequest(AbstractModel):
+    """ModifyInstancePasswordComplexity request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: Instance ID list
+        :type InstanceIds: list of str
+        :param ParamList: List of parameters to be modified. Every element is a pair of `Name` (parameter name) and `CurrentValue` (new value).
+        :type ParamList: list of Parameter
+        """
+        self.InstanceIds = None
+        self.ParamList = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        if params.get("ParamList") is not None:
+            self.ParamList = []
+            for item in params.get("ParamList"):
+                obj = Parameter()
+                obj._deserialize(item)
+                self.ParamList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstancePasswordComplexityResponse(AbstractModel):
+    """ModifyInstancePasswordComplexity response structure.
 
     """
 
@@ -7187,7 +7491,7 @@ class ModifyLocalBinlogConfigRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
         :type InstanceId: str
-        :param SaveHours: Retention period of local binlog. Value range: [120,168].
+        :param SaveHours: Retention period of local binlog. Valid range: 72-168 hours. When there is disaster recovery instance, the valid range will be 120-168 hours.
         :type SaveHours: int
         :param MaxUsage: Space utilization of local binlog. Value range: [30,50].
         :type MaxUsage: int
@@ -7212,6 +7516,55 @@ class ModifyLocalBinlogConfigRequest(AbstractModel):
 
 class ModifyLocalBinlogConfigResponse(AbstractModel):
     """ModifyLocalBinlogConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyNameOrDescByDpIdRequest(AbstractModel):
+    """ModifyNameOrDescByDpId request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeployGroupId: ID of a placement group.
+        :type DeployGroupId: str
+        :param DeployGroupName: Name of a placement group, which can contain up to 60 characters. The placement group name and description cannot both be empty.
+        :type DeployGroupName: str
+        :param Description: Description of a placement group, which can contain up to 200 characters. The placement group name and description cannot both be empty.
+        :type Description: str
+        """
+        self.DeployGroupId = None
+        self.DeployGroupName = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.DeployGroupId = params.get("DeployGroupId")
+        self.DeployGroupName = params.get("DeployGroupName")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNameOrDescByDpIdResponse(AbstractModel):
+    """ModifyNameOrDescByDpId response structure.
 
     """
 
