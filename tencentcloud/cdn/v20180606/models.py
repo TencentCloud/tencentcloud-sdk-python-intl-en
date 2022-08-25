@@ -5109,7 +5109,8 @@ class FollowRedirect(AbstractModel):
 `on`: Enable
 `off`: Disable
         :type Switch: str
-        :param RedirectConfig: 
+        :param RedirectConfig: Specifies a host header for 302 redirects. This feature is only available to beta users. To join the beta, please submit a ticket.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type RedirectConfig: :class:`tencentcloud.cdn.v20180606.models.RedirectConfig`
         """
         self.Switch = None
@@ -7919,17 +7920,17 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class RedirectConfig(AbstractModel):
-    """
+    """Host header for 302 redirects
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 
+        :param Switch: Configuration switch
         :type Switch: str
-        :param FollowRedirectHost: 
+        :param FollowRedirectHost: The custom host header that is sent when the primary origin server follows 302 redirects
         :type FollowRedirectHost: str
-        :param FollowRedirectBackupHost: 
+        :param FollowRedirectBackupHost: The custom host header that is sent when the secondary origin server follows 302 redirects
         :type FollowRedirectBackupHost: str
         """
         self.Switch = None

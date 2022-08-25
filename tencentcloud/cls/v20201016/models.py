@@ -536,7 +536,7 @@ class CompressInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Format: Compression format. Valid values: `gzip`, `lzop`, `none` (no compression)
+        :param Format: Compression format. Valid values: `gzip`; `lzop`; `snappy`; `none` (no compression)
         :type Format: str
         """
         self.Format = None
@@ -5332,6 +5332,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :type Content: :class:`tencentcloud.cls.v20201016.models.ContentInfo`
         :param CreateTime: Creation time of shipped log
         :type CreateTime: str
+        :param FilenameMode: Shipping file naming configuration. Valid values: `0` (by random number); `1` (by shipping time). Default value: `0`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FilenameMode: int
         """
         self.ShipperId = None
         self.TopicId = None
@@ -5346,6 +5349,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Compress = None
         self.Content = None
         self.CreateTime = None
+        self.FilenameMode = None
 
 
     def _deserialize(self, params):
@@ -5371,6 +5375,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
             self.Content = ContentInfo()
             self.Content._deserialize(params.get("Content"))
         self.CreateTime = params.get("CreateTime")
+        self.FilenameMode = params.get("FilenameMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

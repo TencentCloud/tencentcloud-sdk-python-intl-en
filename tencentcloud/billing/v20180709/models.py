@@ -602,6 +602,8 @@ Note: This field may return `null`, indicating that no valid value can be found.
         :type BillMonth: str
         :param TotalCost: The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
         :type TotalCost: str
+        :param TransferPayAmount: Payment by commission credits
+        :type TransferPayAmount: str
         """
         self.BusinessCode = None
         self.BusinessCodeName = None
@@ -612,6 +614,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
         self.VoucherPayAmount = None
         self.BillMonth = None
         self.TotalCost = None
+        self.TransferPayAmount = None
 
 
     def _deserialize(self, params):
@@ -624,6 +627,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
         self.VoucherPayAmount = params.get("VoucherPayAmount")
         self.BillMonth = params.get("BillMonth")
         self.TotalCost = params.get("TotalCost")
+        self.TransferPayAmount = params.get("TransferPayAmount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -650,12 +654,15 @@ class BusinessSummaryTotal(AbstractModel):
         :type CashPayAmount: str
         :param TotalCost: The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
         :type TotalCost: str
+        :param TransferPayAmount: Payment by commission credits
+        :type TransferPayAmount: str
         """
         self.RealTotalCost = None
         self.VoucherPayAmount = None
         self.IncentivePayAmount = None
         self.CashPayAmount = None
         self.TotalCost = None
+        self.TransferPayAmount = None
 
 
     def _deserialize(self, params):
@@ -664,6 +671,7 @@ class BusinessSummaryTotal(AbstractModel):
         self.IncentivePayAmount = params.get("IncentivePayAmount")
         self.CashPayAmount = params.get("CashPayAmount")
         self.TotalCost = params.get("TotalCost")
+        self.TransferPayAmount = params.get("TransferPayAmount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1491,6 +1499,8 @@ class PayModeSummaryOverviewItem(AbstractModel):
         :type VoucherPayAmount: str
         :param TotalCost: The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
         :type TotalCost: str
+        :param TransferPayAmount: Payment by commission credits
+        :type TransferPayAmount: str
         """
         self.PayMode = None
         self.PayModeName = None
@@ -1501,6 +1511,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
         self.IncentivePayAmount = None
         self.VoucherPayAmount = None
         self.TotalCost = None
+        self.TransferPayAmount = None
 
 
     def _deserialize(self, params):
@@ -1518,6 +1529,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
         self.IncentivePayAmount = params.get("IncentivePayAmount")
         self.VoucherPayAmount = params.get("VoucherPayAmount")
         self.TotalCost = params.get("TotalCost")
+        self.TransferPayAmount = params.get("TransferPayAmount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1552,6 +1564,8 @@ class ProjectSummaryOverviewItem(AbstractModel):
         :type BillMonth: str
         :param TotalCost: The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
         :type TotalCost: str
+        :param TransferPayAmount: Payment by commission credits
+        :type TransferPayAmount: str
         """
         self.ProjectId = None
         self.ProjectName = None
@@ -1562,6 +1576,7 @@ class ProjectSummaryOverviewItem(AbstractModel):
         self.VoucherPayAmount = None
         self.BillMonth = None
         self.TotalCost = None
+        self.TransferPayAmount = None
 
 
     def _deserialize(self, params):
@@ -1574,6 +1589,7 @@ class ProjectSummaryOverviewItem(AbstractModel):
         self.VoucherPayAmount = params.get("VoucherPayAmount")
         self.BillMonth = params.get("BillMonth")
         self.TotalCost = params.get("TotalCost")
+        self.TransferPayAmount = params.get("TransferPayAmount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1609,6 +1625,8 @@ Note: This field may return null, indicating that no valid value was found.
         :type BillMonth: str
         :param TotalCost: The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
         :type TotalCost: str
+        :param TransferPayAmount: Payment by commission credits
+        :type TransferPayAmount: str
         """
         self.RegionId = None
         self.RegionName = None
@@ -1619,6 +1637,7 @@ Note: This field may return null, indicating that no valid value was found.
         self.VoucherPayAmount = None
         self.BillMonth = None
         self.TotalCost = None
+        self.TransferPayAmount = None
 
 
     def _deserialize(self, params):
@@ -1631,6 +1650,7 @@ Note: This field may return null, indicating that no valid value was found.
         self.VoucherPayAmount = params.get("VoucherPayAmount")
         self.BillMonth = params.get("BillMonth")
         self.TotalCost = params.get("TotalCost")
+        self.TransferPayAmount = params.get("TransferPayAmount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1689,11 +1709,27 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param TotalCost: The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type TotalCost: str
+        :param CashPayAmount: Payment by cash credits
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CashPayAmount: str
+        :param IncentivePayAmount: Payment by free credits
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IncentivePayAmount: str
+        :param VoucherPayAmount: Payment by vouchers
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VoucherPayAmount: str
+        :param TransferPayAmount: Payment by commission credits
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TransferPayAmount: str
         """
         self.TagValue = None
         self.RealTotalCost = None
         self.RealTotalCostRatio = None
         self.TotalCost = None
+        self.CashPayAmount = None
+        self.IncentivePayAmount = None
+        self.VoucherPayAmount = None
+        self.TransferPayAmount = None
 
 
     def _deserialize(self, params):
@@ -1701,6 +1737,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.RealTotalCost = params.get("RealTotalCost")
         self.RealTotalCostRatio = params.get("RealTotalCostRatio")
         self.TotalCost = params.get("TotalCost")
+        self.CashPayAmount = params.get("CashPayAmount")
+        self.IncentivePayAmount = params.get("IncentivePayAmount")
+        self.VoucherPayAmount = params.get("VoucherPayAmount")
+        self.TransferPayAmount = params.get("TransferPayAmount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

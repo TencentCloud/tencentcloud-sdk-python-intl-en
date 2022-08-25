@@ -122,7 +122,7 @@ FAILEDOPERATION_INSTANCENOTFOUND = 'FailedOperation.InstanceNotFound'
 # The instance is not running.
 FAILEDOPERATION_INSTANCENOTRUNNING = 'FailedOperation.InstanceNotRunning'
 
-# 
+# Internal service error.
 FAILEDOPERATION_INTERNALERROR = 'FailedOperation.InternalError'
 
 # The resource already exists.

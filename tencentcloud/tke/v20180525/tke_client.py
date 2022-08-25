@@ -432,6 +432,35 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateEdgeLogConfig(self, request):
+        """This API is used to create log collection configuration for a TKE Edge cluster.
+
+        :param request: Request instance for CreateEdgeLogConfig.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreateEdgeLogConfigRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateEdgeLogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateEdgeLogConfig", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateEdgeLogConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreatePrometheusAlertRule(self, request):
         """This API is used to create an alarm rule.
 
@@ -1099,6 +1128,35 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeClusterEndpoints(self, request):
+        """This API is used to query cluster access addresses, including private network address, public network address, public network domain name, and security policy for public network access.
+
+        :param request: Request instance for DescribeClusterEndpoints.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterEndpointsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterEndpointsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterEndpoints", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterEndpointsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeClusterInstances(self, request):
         """This API is used to query information of one or more instances in a cluster.
 
@@ -1549,6 +1607,35 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeClusterInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeEdgeLogSwitches(self, request):
+        """This API is used to query the status of events, audits and logs.
+
+        :param request: Request instance for DescribeEdgeLogSwitches.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeLogSwitchesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeLogSwitchesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEdgeLogSwitches", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEdgeLogSwitchesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2143,6 +2230,35 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def InstallEdgeLogAgent(self, request):
+        """This API is used to install the log collection add-on on TKE Edge cluster nodes.
+
+        :param request: Request instance for InstallEdgeLogAgent.
+        :type request: :class:`tencentcloud.tke.v20180525.models.InstallEdgeLogAgentRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.InstallEdgeLogAgentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InstallEdgeLogAgent", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InstallEdgeLogAgentResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyClusterAsGroupAttribute(self, request):
         """Modify cluster scaling group attributes
 
@@ -2419,6 +2535,35 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetNodePoolNodeProtectionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UninstallEdgeLogAgent(self, request):
+        """This API is used to uninstall the log collection add-on from TKE Edge cluster nodes.
+
+        :param request: Request instance for UninstallEdgeLogAgent.
+        :type request: :class:`tencentcloud.tke.v20180525.models.UninstallEdgeLogAgentRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.UninstallEdgeLogAgentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UninstallEdgeLogAgent", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UninstallEdgeLogAgentResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

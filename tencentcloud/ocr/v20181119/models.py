@@ -574,6 +574,114 @@ class ItemCoord(AbstractModel):
         
 
 
+class MLIDCardOCRRequest(AbstractModel):
+    """MLIDCardOCR request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageBase64: The Base64-encoded value of an image.
+Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
+Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+        :type ImageBase64: str
+        :param ImageUrl: The URL of an image. (This field is not available outside the Chinese mainland.)
+Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
+Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+We recommend that you store the image in Tencent Cloud for higher download speed and stability.
+For a non-Tencent Cloud URL, the download speed and stability may be low.
+        :type ImageUrl: str
+        :param RetImage: Whether to return an image. Default value: `false`.
+        :type RetImage: bool
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+        self.RetImage = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+        self.RetImage = params.get("RetImage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MLIDCardOCRResponse(AbstractModel):
+    """MLIDCardOCR response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ID: ID number
+        :type ID: str
+        :param Name: Full name
+        :type Name: str
+        :param Address: Address
+        :type Address: str
+        :param Sex: Gender
+        :type Sex: str
+        :param Warn: Alarm codes
+-9103 Alarm for photographed certificate
+-9102 Alarm for photocopied certificate
+-9106 Alarm for covered certificate
+-9107 Alarm for blurry image
+        :type Warn: list of int
+        :param Image: Identity photo
+        :type Image: str
+        :param AdvancedInfo: This is an extended field, 
+with the confidence of a field recognition result returned in the following format.
+{
+  Field name:{
+    Confidence:0.9999
+  }
+}
+        :type AdvancedInfo: str
+        :param Type: Certificate type
+MyKad  ID card
+MyPR    Permanent resident card
+MyTentera   Military identity card
+MyKAS    Temporary ID card
+POLIS  Police card
+IKAD   Work permit
+MyKid   Kid card
+        :type Type: str
+        :param Birthday: Date of birth. This field is available only for work permits (i-Kad) and ID cards (MyKad).
+        :type Birthday: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ID = None
+        self.Name = None
+        self.Address = None
+        self.Sex = None
+        self.Warn = None
+        self.Image = None
+        self.AdvancedInfo = None
+        self.Type = None
+        self.Birthday = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ID = params.get("ID")
+        self.Name = params.get("Name")
+        self.Address = params.get("Address")
+        self.Sex = params.get("Sex")
+        self.Warn = params.get("Warn")
+        self.Image = params.get("Image")
+        self.AdvancedInfo = params.get("AdvancedInfo")
+        self.Type = params.get("Type")
+        self.Birthday = params.get("Birthday")
+        self.RequestId = params.get("RequestId")
+
+
 class MLIDPassportOCRRequest(AbstractModel):
     """MLIDPassportOCR request structure.
 

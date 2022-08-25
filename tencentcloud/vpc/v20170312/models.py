@@ -3341,6 +3341,53 @@ class CreateNetDetectResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateNetworkAclQuintupleEntriesRequest(AbstractModel):
+    """CreateNetworkAclQuintupleEntries request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NetworkAclId: Network ACL instance ID, such as `acl-12345678`.
+        :type NetworkAclId: str
+        :param NetworkAclQuintupleSet: Network ACL quintuple rule set.
+        :type NetworkAclQuintupleSet: :class:`tencentcloud.vpc.v20170312.models.NetworkAclQuintupleEntries`
+        """
+        self.NetworkAclId = None
+        self.NetworkAclQuintupleSet = None
+
+
+    def _deserialize(self, params):
+        self.NetworkAclId = params.get("NetworkAclId")
+        if params.get("NetworkAclQuintupleSet") is not None:
+            self.NetworkAclQuintupleSet = NetworkAclQuintupleEntries()
+            self.NetworkAclQuintupleSet._deserialize(params.get("NetworkAclQuintupleSet"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateNetworkAclQuintupleEntriesResponse(AbstractModel):
+    """CreateNetworkAclQuintupleEntries response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateNetworkAclRequest(AbstractModel):
     """CreateNetworkAcl request structure.
 
@@ -3352,14 +3399,27 @@ class CreateNetworkAclRequest(AbstractModel):
         :type VpcId: str
         :param NetworkAclName: Network ACL name, which can contain up to 60 bytes.
         :type NetworkAclName: str
+        :param NetworkAclType: Network ACL type. Valid values: `TRIPLE` and `QUINTUPLE`.
+        :type NetworkAclType: str
+        :param Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
+        :type Tags: list of Tag
         """
         self.VpcId = None
         self.NetworkAclName = None
+        self.NetworkAclType = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
         self.VpcId = params.get("VpcId")
         self.NetworkAclName = params.get("NetworkAclName")
+        self.NetworkAclType = params.get("NetworkAclType")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5462,6 +5522,53 @@ class DeleteNetDetectRequest(AbstractModel):
 
 class DeleteNetDetectResponse(AbstractModel):
     """DeleteNetDetect response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteNetworkAclQuintupleEntriesRequest(AbstractModel):
+    """DeleteNetworkAclQuintupleEntries request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NetworkAclId: Network ACL instance ID, such as `acl-12345678`.
+        :type NetworkAclId: str
+        :param NetworkAclQuintupleSet: Network ACL quintuple rule set.
+        :type NetworkAclQuintupleSet: :class:`tencentcloud.vpc.v20170312.models.NetworkAclQuintupleEntries`
+        """
+        self.NetworkAclId = None
+        self.NetworkAclQuintupleSet = None
+
+
+    def _deserialize(self, params):
+        self.NetworkAclId = params.get("NetworkAclId")
+        if params.get("NetworkAclQuintupleSet") is not None:
+            self.NetworkAclQuintupleSet = NetworkAclQuintupleEntries()
+            self.NetworkAclQuintupleSet._deserialize(params.get("NetworkAclQuintupleSet"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteNetworkAclQuintupleEntriesResponse(AbstractModel):
+    """DeleteNetworkAclQuintupleEntries response structure.
 
     """
 
@@ -8523,6 +8630,84 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = NetDetect()
                 obj._deserialize(item)
                 self.NetDetectSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNetworkAclQuintupleEntriesRequest(AbstractModel):
+    """DescribeNetworkAclQuintupleEntries request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NetworkAclId: Network ACL instance ID, such as `acl-12345678`.
+        :type NetworkAclId: str
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Returned quantity. Default: 20. Value range: 1-100.
+        :type Limit: int
+        :param Filters: Filter condition. `HaVipIds` and `Filters` cannot be specified at the same time.
+<li>`protocol` - String - Such as `TCP`</li>
+<li>`description` - String - Description</li>
+<li>`destination-cidr` - String - Destination CIDR block, such as `192.168.0.0/24`</li>
+<li>`source-cidr` - String - Source CIDR block, such as `192.168.0.0/24`</li>
+<li>`action` - String - ·Values: `ACCEPT`, `DROP`</li>
+<li>`network-acl-quintuple-entry-id` - String - Unique ID of the quintuple, such as `acli45-ahnu4rv5`</li>
+<li>`network-acl-direction` - String - Direction of the policy. Values: `INGRESS` or `EGRESS`.</li>
+        :type Filters: list of Filter
+        """
+        self.NetworkAclId = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.NetworkAclId = params.get("NetworkAclId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNetworkAclQuintupleEntriesResponse(AbstractModel):
+    """DescribeNetworkAclQuintupleEntries response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NetworkAclQuintupleSet: The list of the network ACL quintuple entries
+        :type NetworkAclQuintupleSet: list of NetworkAclQuintupleEntry
+        :param TotalCount: Number of eligible instances.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.NetworkAclQuintupleSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NetworkAclQuintupleSet") is not None:
+            self.NetworkAclQuintupleSet = []
+            for item in params.get("NetworkAclQuintupleSet"):
+                obj = NetworkAclQuintupleEntry()
+                obj._deserialize(item)
+                self.NetworkAclQuintupleSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
@@ -13711,9 +13896,12 @@ class ModifyNetworkAclEntriesRequest(AbstractModel):
         :type NetworkAclId: str
         :param NetworkAclEntrySet: Network ACL rule set. `NetworkAclEntrySet` and `NetworkAclQuintupleSet` cannot be entered at the same time.
         :type NetworkAclEntrySet: :class:`tencentcloud.vpc.v20170312.models.NetworkAclEntrySet`
+        :param NetworkAclQuintupleSet: Network ACL quintuple rule set. `NetworkAclEntrySet` and `NetworkAclQuintupleSet` cannot be entered at the same time.
+        :type NetworkAclQuintupleSet: :class:`tencentcloud.vpc.v20170312.models.NetworkAclQuintupleEntries`
         """
         self.NetworkAclId = None
         self.NetworkAclEntrySet = None
+        self.NetworkAclQuintupleSet = None
 
 
     def _deserialize(self, params):
@@ -13721,6 +13909,9 @@ class ModifyNetworkAclEntriesRequest(AbstractModel):
         if params.get("NetworkAclEntrySet") is not None:
             self.NetworkAclEntrySet = NetworkAclEntrySet()
             self.NetworkAclEntrySet._deserialize(params.get("NetworkAclEntrySet"))
+        if params.get("NetworkAclQuintupleSet") is not None:
+            self.NetworkAclQuintupleSet = NetworkAclQuintupleEntries()
+            self.NetworkAclQuintupleSet._deserialize(params.get("NetworkAclQuintupleSet"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13732,6 +13923,53 @@ class ModifyNetworkAclEntriesRequest(AbstractModel):
 
 class ModifyNetworkAclEntriesResponse(AbstractModel):
     """ModifyNetworkAclEntries response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyNetworkAclQuintupleEntriesRequest(AbstractModel):
+    """ModifyNetworkAclQuintupleEntries request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NetworkAclId: Network ACL instance ID, such as `acl-12345678`.
+        :type NetworkAclId: str
+        :param NetworkAclQuintupleSet: Network ACL quintuple rule set.
+        :type NetworkAclQuintupleSet: :class:`tencentcloud.vpc.v20170312.models.NetworkAclQuintupleEntries`
+        """
+        self.NetworkAclId = None
+        self.NetworkAclQuintupleSet = None
+
+
+    def _deserialize(self, params):
+        self.NetworkAclId = params.get("NetworkAclId")
+        if params.get("NetworkAclQuintupleSet") is not None:
+            self.NetworkAclQuintupleSet = NetworkAclQuintupleEntries()
+            self.NetworkAclQuintupleSet._deserialize(params.get("NetworkAclQuintupleSet"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNetworkAclQuintupleEntriesResponse(AbstractModel):
+    """ModifyNetworkAclQuintupleEntries response structure.
 
     """
 
@@ -15058,6 +15296,10 @@ class NetworkAcl(AbstractModel):
         :type IngressEntries: list of NetworkAclEntry
         :param EgressEntries: Outbound rules of the network ACL.
         :type EgressEntries: list of NetworkAclEntry
+        :param NetworkAclType: Network ACL type. Valid values: `TRIPLE` and `QUINTUPLE`.
+        :type NetworkAclType: str
+        :param TagSet: Tag key-value pairs
+        :type TagSet: list of Tag
         """
         self.VpcId = None
         self.NetworkAclId = None
@@ -15066,6 +15308,8 @@ class NetworkAcl(AbstractModel):
         self.SubnetSet = None
         self.IngressEntries = None
         self.EgressEntries = None
+        self.NetworkAclType = None
+        self.TagSet = None
 
 
     def _deserialize(self, params):
@@ -15091,6 +15335,13 @@ class NetworkAcl(AbstractModel):
                 obj = NetworkAclEntry()
                 obj._deserialize(item)
                 self.EgressEntries.append(obj)
+        self.NetworkAclType = params.get("NetworkAclType")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15177,6 +15428,108 @@ class NetworkAclEntrySet(AbstractModel):
                 obj = NetworkAclEntry()
                 obj._deserialize(item)
                 self.Egress.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NetworkAclQuintupleEntries(AbstractModel):
+    """Network ACL quintuple
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ingress: Network ACL quintuple inbound rule.
+        :type Ingress: list of NetworkAclQuintupleEntry
+        :param Egress: Network ACL quintuple outbound rule.
+        :type Egress: list of NetworkAclQuintupleEntry
+        """
+        self.Ingress = None
+        self.Egress = None
+
+
+    def _deserialize(self, params):
+        if params.get("Ingress") is not None:
+            self.Ingress = []
+            for item in params.get("Ingress"):
+                obj = NetworkAclQuintupleEntry()
+                obj._deserialize(item)
+                self.Ingress.append(obj)
+        if params.get("Egress") is not None:
+            self.Egress = []
+            for item in params.get("Egress"):
+                obj = NetworkAclQuintupleEntry()
+                obj._deserialize(item)
+                self.Egress.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NetworkAclQuintupleEntry(AbstractModel):
+    """Network ACL quintuple entry
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Protocol: Protocol. Valid values: `TCP`, `UDP`, `ICMP`, `ALL`.
+        :type Protocol: str
+        :param Description: Description
+        :type Description: str
+        :param SourcePort: Source port. Valid values: all, single port, range. When `Protocol` is `ALL` or `ICMP`, `Port` cannot be specified.
+        :type SourcePort: str
+        :param SourceCidr: Source CIDR block.
+        :type SourceCidr: str
+        :param DestinationPort: Destination port. Valid values: all, single port, range. When `Protocol` is `ALL` or `ICMP`, `Port` cannot be specified.
+        :type DestinationPort: str
+        :param DestinationCidr: Destination CIDR block.
+        :type DestinationCidr: str
+        :param Action: Action. Valid values: `ACCEPT` and `DROP`.
+        :type Action: str
+        :param NetworkAclQuintupleEntryId: Unique ID of a network ACL entry.
+        :type NetworkAclQuintupleEntryId: str
+        :param Priority: Priority. `1` refers to the highest priority.
+        :type Priority: int
+        :param CreateTime: Creation time. It’s returned by `DescribeNetworkAclQuintupleEntries`.
+        :type CreateTime: str
+        :param NetworkAclDirection: Direction of the rule. It’s returned by `DescribeNetworkAclQuintupleEntries`. Valid values: `INGRESS` and `EGRESS`.
+        :type NetworkAclDirection: str
+        """
+        self.Protocol = None
+        self.Description = None
+        self.SourcePort = None
+        self.SourceCidr = None
+        self.DestinationPort = None
+        self.DestinationCidr = None
+        self.Action = None
+        self.NetworkAclQuintupleEntryId = None
+        self.Priority = None
+        self.CreateTime = None
+        self.NetworkAclDirection = None
+
+
+    def _deserialize(self, params):
+        self.Protocol = params.get("Protocol")
+        self.Description = params.get("Description")
+        self.SourcePort = params.get("SourcePort")
+        self.SourceCidr = params.get("SourceCidr")
+        self.DestinationPort = params.get("DestinationPort")
+        self.DestinationCidr = params.get("DestinationCidr")
+        self.Action = params.get("Action")
+        self.NetworkAclQuintupleEntryId = params.get("NetworkAclQuintupleEntryId")
+        self.Priority = params.get("Priority")
+        self.CreateTime = params.get("CreateTime")
+        self.NetworkAclDirection = params.get("NetworkAclDirection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

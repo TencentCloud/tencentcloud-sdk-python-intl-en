@@ -32,7 +32,7 @@ FAILEDOPERATION_CLBUNEXPECTEDERROR = 'FailedOperation.CLBUnexpectedError'
 # Not authorized to access this API
 FAILEDOPERATION_CAMNOAUTH = 'FailedOperation.CamNoAuth'
 
-# 
+# The cluster cannot be deleted.
 FAILEDOPERATION_CLUSTERFORBIDDENTODELETE = 'FailedOperation.ClusterForbiddenToDelete'
 
 # The cluster is not found.
@@ -71,7 +71,7 @@ FAILEDOPERATION_DBRECORDNOTFOUND = 'FailedOperation.DbRecordNotFound'
 # Failed to obtain security group quota.
 FAILEDOPERATION_DFWGETUSGQUOTA = 'FailedOperation.DfwGetUSGQuota'
 
-# 
+# Failed to enable the VPC-CNI mode.
 FAILEDOPERATION_ENABLEVPCCNIFAILED = 'FailedOperation.EnableVPCCNIFailed'
 
 # Failed to connect to the customer Kubernetes cluster.
@@ -431,7 +431,7 @@ UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 # Failed to enable CA because AS is disabled.
 UNSUPPORTEDOPERATION_CAENABLEFAILED = 'UnsupportedOperation.CaEnableFailed'
 
-# 
+# The VPC-CNI mode is not supported.
 UNSUPPORTEDOPERATION_CLUSTERNOTSUITENABLEVPCCNI = 'UnsupportedOperation.ClusterNotSuitEnableVPCCNI'
 
 # The user is not in the allowlist.

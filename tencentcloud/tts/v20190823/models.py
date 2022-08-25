@@ -18,6 +18,46 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class Subtitle(AbstractModel):
+    """The information about the timestamps.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Text: The word in the text that is sent.
+        :type Text: str
+        :param BeginTime: The start timestamp of the word in the synthesized audio data, in milliseconds.
+        :type BeginTime: int
+        :param EndTime: The end timestamp of the word in the synthesized audio data, in milliseconds.
+        :type EndTime: int
+        :param BeginIndex: The start index of the character in the whole sentence, starting from 0.
+        :type BeginIndex: int
+        :param EndIndex: The end index of the character in the whole sentence, starting from 0.
+        :type EndIndex: int
+        """
+        self.Text = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.BeginIndex = None
+        self.EndIndex = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.BeginIndex = params.get("BeginIndex")
+        self.EndIndex = params.get("EndIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TextToVoiceRequest(AbstractModel):
     """TextToVoice request structure.
 
@@ -46,6 +86,8 @@ It can contain up to 150 Chinese characters (a full-width punctuation as a Chine
         :type SampleRate: int
         :param Codec: Format of returned audio. Valid values: WAV (default), MP3, and PCM.
         :type Codec: str
+        :param EnableSubtitle: Whether to enable the timestamp feature. Default value: `false`.
+        :type EnableSubtitle: bool
         """
         self.Text = None
         self.SessionId = None
@@ -57,6 +99,7 @@ It can contain up to 150 Chinese characters (a full-width punctuation as a Chine
         self.PrimaryLanguage = None
         self.SampleRate = None
         self.Codec = None
+        self.EnableSubtitle = None
 
 
     def _deserialize(self, params):
@@ -70,6 +113,7 @@ It can contain up to 150 Chinese characters (a full-width punctuation as a Chine
         self.PrimaryLanguage = params.get("PrimaryLanguage")
         self.SampleRate = params.get("SampleRate")
         self.Codec = params.get("Codec")
+        self.EnableSubtitle = params.get("EnableSubtitle")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -90,15 +134,24 @@ class TextToVoiceResponse(AbstractModel):
         :type Audio: str
         :param SessionId: The `SessionId` of a request
         :type SessionId: str
+        :param Subtitles: Timestamp information. If the timestamp feature is not enabled, an empty array will be returned.
+        :type Subtitles: list of Subtitle
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.Audio = None
         self.SessionId = None
+        self.Subtitles = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Audio = params.get("Audio")
         self.SessionId = params.get("SessionId")
+        if params.get("Subtitles") is not None:
+            self.Subtitles = []
+            for item in params.get("Subtitles"):
+                obj = Subtitle()
+                obj._deserialize(item)
+                self.Subtitles.append(obj)
         self.RequestId = params.get("RequestId")

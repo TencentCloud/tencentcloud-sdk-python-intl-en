@@ -6740,6 +6740,51 @@ class SwitchInstanceVipResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SwitchProxyRequest(AbstractModel):
+    """SwitchProxy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param ProxyID: Instance ProxyID
+        :type ProxyID: str
+        """
+        self.InstanceId = None
+        self.ProxyID = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ProxyID = params.get("ProxyID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchProxyResponse(AbstractModel):
+    """SwitchProxy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class TaskInfoDetail(AbstractModel):
     """Task details
 

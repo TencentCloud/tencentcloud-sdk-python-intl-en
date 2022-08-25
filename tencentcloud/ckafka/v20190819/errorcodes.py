@@ -56,6 +56,9 @@ INVALIDPARAMETERVALUE_WRONGACTION = 'InvalidParameterValue.WrongAction'
 # The zone is not supported.
 INVALIDPARAMETERVALUE_ZONENOTSUPPORT = 'InvalidParameterValue.ZoneNotSupport'
 
+# The quota limit has been reached.
+LIMITEXCEEDED = 'LimitExceeded'
+
 # Operation denied.
 OPERATIONDENIED = 'OperationDenied'
 

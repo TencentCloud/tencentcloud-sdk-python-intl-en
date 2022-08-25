@@ -3949,15 +3949,24 @@ class DescribeMonitorTypesResponse(AbstractModel):
         r"""
         :param MonitorTypes: Monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring)
         :type MonitorTypes: list of str
+        :param MonitorTypeInfos: Monitoring type details
+        :type MonitorTypeInfos: list of MonitorTypeInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.MonitorTypes = None
+        self.MonitorTypeInfos = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.MonitorTypes = params.get("MonitorTypes")
+        if params.get("MonitorTypeInfos") is not None:
+            self.MonitorTypeInfos = []
+            for item in params.get("MonitorTypeInfos"):
+                obj = MonitorTypeInfo()
+                obj._deserialize(item)
+                self.MonitorTypeInfos.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -7451,6 +7460,38 @@ class ModifyPrometheusInstanceAttributesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class MonitorTypeInfo(AbstractModel):
+    """Monitoring type details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: Monitoring type ID
+        :type Id: str
+        :param Name: Monitoring type
+        :type Name: str
+        :param SortId: Sort order
+        :type SortId: int
+        """
+        self.Id = None
+        self.Name = None
+        self.SortId = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.SortId = params.get("SortId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class MonitorTypeNamespace(AbstractModel):

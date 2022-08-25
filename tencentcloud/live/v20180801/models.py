@@ -245,29 +245,29 @@ The time accuracy matches with the query granularity.
         
 
 
-class BindLiveDomainCertRequest(AbstractModel):
-    """BindLiveDomainCert request structure.
+class BatchDomainOperateErrors(AbstractModel):
+    """Error information for domains that a batch domain operation API fails to operate.
 
     """
 
     def __init__(self):
         r"""
-        :param CertId: Certificate ID, which can be obtained through the `CreateLiveCert` API.
-        :type CertId: int
-        :param DomainName: Playback domain name.
+        :param DomainName: The domain that the API failed to operate.
         :type DomainName: str
-        :param Status: HTTPS status. 0: disabled, 1: enabled.
-        :type Status: int
+        :param Code: The API 3.0 error code.
+        :type Code: str
+        :param Message: The API 3.0 error message.
+        :type Message: str
         """
-        self.CertId = None
         self.DomainName = None
-        self.Status = None
+        self.Code = None
+        self.Message = None
 
 
     def _deserialize(self, params):
-        self.CertId = params.get("CertId")
         self.DomainName = params.get("DomainName")
-        self.Status = params.get("Status")
+        self.Code = params.get("Code")
+        self.Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -275,23 +275,6 @@ class BindLiveDomainCertRequest(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
-
-
-class BindLiveDomainCertResponse(AbstractModel):
-    """BindLiveDomainCert response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
 
 
 class CallBackRuleInfo(AbstractModel):
@@ -1072,73 +1055,6 @@ class CreateLiveCallbackTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class CreateLiveCertRequest(AbstractModel):
-    """CreateLiveCert request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param CertType: Certificate type. 0: user-added certificate, 1: Tencent Cloud-hosted certificate.
-Note: if the certificate type is 0, `HttpsCrt` and `HttpsKey` are required;
-If the certificate type is 1, the certificate corresponding to `CloudCertId` will be used first. If `CloudCertId` is empty, `HttpsCrt` and `HttpsKey` will be used.
-        :type CertType: int
-        :param CertName: Certificate name.
-        :type CertName: str
-        :param HttpsCrt: Certificate content, i.e., public key.
-        :type HttpsCrt: str
-        :param HttpsKey: Private key.
-        :type HttpsKey: str
-        :param Description: Description.
-        :type Description: str
-        :param CloudCertId: Tencent Cloud-hosted certificate ID.
-        :type CloudCertId: str
-        """
-        self.CertType = None
-        self.CertName = None
-        self.HttpsCrt = None
-        self.HttpsKey = None
-        self.Description = None
-        self.CloudCertId = None
-
-
-    def _deserialize(self, params):
-        self.CertType = params.get("CertType")
-        self.CertName = params.get("CertName")
-        self.HttpsCrt = params.get("HttpsCrt")
-        self.HttpsKey = params.get("HttpsKey")
-        self.Description = params.get("Description")
-        self.CloudCertId = params.get("CloudCertId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateLiveCertResponse(AbstractModel):
-    """CreateLiveCert response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param CertId: Certificate ID
-        :type CertId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.CertId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.CertId = params.get("CertId")
-        self.RequestId = params.get("RequestId")
-
-
 class CreateLivePullStreamTaskRequest(AbstractModel):
     """CreateLivePullStreamTask request structure.
 
@@ -1165,7 +1081,7 @@ Notes:
         :type SourceUrls: list of str
         :param DomainName: The push domain name.
 The pulled stream is pushed to this domain.
-Use a push domain you have added in the CSS console.
+Note: If the destination is not a CSS address and its format is different from that of CSS addresses, pass the full address to `ToUrl`. For details, see the description of the `ToUrl` parameter.
         :type DomainName: str
         :param AppName: The application to push to.
 The pulled stream is pushed to this application.
@@ -1243,6 +1159,8 @@ Notes:
         :param BackupSourceUrl: The URL of the backup source.
 You can specify only one backup source URL.
         :type BackupSourceUrl: str
+        :param WatermarkList: 
+        :type WatermarkList: list of PullPushWatermarkInfo
         """
         self.SourceType = None
         self.SourceUrls = None
@@ -1262,6 +1180,7 @@ You can specify only one backup source URL.
         self.ToUrl = None
         self.BackupSourceType = None
         self.BackupSourceUrl = None
+        self.WatermarkList = None
 
 
     def _deserialize(self, params):
@@ -1283,6 +1202,12 @@ You can specify only one backup source URL.
         self.ToUrl = params.get("ToUrl")
         self.BackupSourceType = params.get("BackupSourceType")
         self.BackupSourceUrl = params.get("BackupSourceUrl")
+        if params.get("WatermarkList") is not None:
+            self.WatermarkList = []
+            for item in params.get("WatermarkList"):
+                obj = PullPushWatermarkInfo()
+                obj._deserialize(item)
+                self.WatermarkList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2225,47 +2150,6 @@ class DeleteLiveCallbackTemplateRequest(AbstractModel):
 
 class DeleteLiveCallbackTemplateResponse(AbstractModel):
     """DeleteLiveCallbackTemplate response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class DeleteLiveCertRequest(AbstractModel):
-    """DeleteLiveCert request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param CertId: Certificate ID obtained through the `DescribeLiveCerts` API.
-        :type CertId: int
-        """
-        self.CertId = None
-
-
-    def _deserialize(self, params):
-        self.CertId = params.get("CertId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DeleteLiveCertResponse(AbstractModel):
-    """DeleteLiveCert response structure.
 
     """
 
@@ -3309,6 +3193,79 @@ class DescribeLiveDelayInfoListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLiveDomainCertBindingsRequest(AbstractModel):
+    """DescribeLiveDomainCertBindings request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainSearch: The keyword to use to search for domains.
+        :type DomainSearch: str
+        :param Offset: The number of records to skip before starting to return any results. 0 means to start from the first record and is the default.
+        :type Offset: int
+        :param Length: The maximum number of records to return. The default is 50.
+If this parameter is not specified, up to 50 records will be returned.
+        :type Length: int
+        :param DomainName: The name of a particular domain to query.
+        :type DomainName: str
+        :param OrderBy: Valid values:
+ExpireTimeAsc: Sort the records by certificate expiration time in ascending order.
+ExpireTimeDesc: Sort the records by certificate expiration time in descending order.
+        :type OrderBy: str
+        """
+        self.DomainSearch = None
+        self.Offset = None
+        self.Length = None
+        self.DomainName = None
+        self.OrderBy = None
+
+
+    def _deserialize(self, params):
+        self.DomainSearch = params.get("DomainSearch")
+        self.Offset = params.get("Offset")
+        self.Length = params.get("Length")
+        self.DomainName = params.get("DomainName")
+        self.OrderBy = params.get("OrderBy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLiveDomainCertBindingsResponse(AbstractModel):
+    """DescribeLiveDomainCertBindings response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LiveDomainCertBindings: The information of domains that meet the query criteria.
+        :type LiveDomainCertBindings: list of LiveDomainCertBindings
+        :param TotalNum: The number of records returned, which is needed for pagination.
+        :type TotalNum: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.LiveDomainCertBindings = None
+        self.TotalNum = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LiveDomainCertBindings") is not None:
+            self.LiveDomainCertBindings = []
+            for item in params.get("LiveDomainCertBindings"):
+                obj = LiveDomainCertBindings()
+                obj._deserialize(item)
+                self.LiveDomainCertBindings.append(obj)
+        self.TotalNum = params.get("TotalNum")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLiveDomainCertRequest(AbstractModel):
     """DescribeLiveDomainCert request structure.
 
@@ -3516,12 +3473,16 @@ class DescribeLiveDomainsResponse(AbstractModel):
         :param CreateLimitCount: The number of domain names that can be added
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type CreateLimitCount: int
+        :param PlayTypeCount: The number of domains accelerated in the Chinese mainland, globally, and outside the Chinese mainland respectively.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PlayTypeCount: list of int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.AllCount = None
         self.DomainList = None
         self.CreateLimitCount = None
+        self.PlayTypeCount = None
         self.RequestId = None
 
 
@@ -3534,6 +3495,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj._deserialize(item)
                 self.DomainList.append(obj)
         self.CreateLimitCount = params.get("CreateLimitCount")
+        self.PlayTypeCount = params.get("PlayTypeCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -6086,16 +6048,26 @@ class ForbidStreamInfo(AbstractModel):
         :type CreateTime: str
         :param ExpireTime: Forbidding expiration time.
         :type ExpireTime: str
+        :param AppName: The push path.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AppName: str
+        :param DomainName: The push domain name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DomainName: str
         """
         self.StreamName = None
         self.CreateTime = None
         self.ExpireTime = None
+        self.AppName = None
+        self.DomainName = None
 
 
     def _deserialize(self, params):
         self.StreamName = params.get("StreamName")
         self.CreateTime = params.get("CreateTime")
         self.ExpireTime = params.get("ExpireTime")
+        self.AppName = params.get("AppName")
+        self.DomainName = params.get("DomainName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6295,6 +6267,94 @@ class HttpStatusInfo(AbstractModel):
         
 
 
+class LiveCertDomainInfo(AbstractModel):
+    """The domains to bind to a certificate.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainName: The domain name.
+        :type DomainName: str
+        :param Status: Whether to enable HTTPS for the domain.
+1: Enable
+0: Disable
+-1: Keep the current configuration
+        :type Status: int
+        """
+        self.DomainName = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveDomainCertBindings(AbstractModel):
+    """The domain and certificate information returned by `DescribeLiveDomainCertBindings` and `DescribeLiveDomainCertBindingsGray`.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainName: The domain name.
+        :type DomainName: str
+        :param CertificateAlias: The remarks for the certificate. This parameter is the same as `CertName`.
+        :type CertificateAlias: str
+        :param CertType: The certificate type.
+0: Self-owned certificate
+1: Tencent Cloud-hosted certificate
+        :type CertType: int
+        :param Status: Whether HTTPS is enabled.
+1: Enabled
+0: Disabled
+        :type Status: int
+        :param CertExpireTime: The expiration time of the certificate.
+        :type CertExpireTime: str
+        :param CertId: The certificate ID.
+        :type CertId: int
+        :param CloudCertId: The SSL certificate ID assigned by Tencent Cloud.
+        :type CloudCertId: str
+        :param UpdateTime: The last updated time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdateTime: str
+        """
+        self.DomainName = None
+        self.CertificateAlias = None
+        self.CertType = None
+        self.Status = None
+        self.CertExpireTime = None
+        self.CertId = None
+        self.CloudCertId = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.CertificateAlias = params.get("CertificateAlias")
+        self.CertType = params.get("CertType")
+        self.Status = params.get("Status")
+        self.CertExpireTime = params.get("CertExpireTime")
+        self.CertId = params.get("CertId")
+        self.CloudCertId = params.get("CloudCertId")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyLiveCallbackTemplateRequest(AbstractModel):
     """ModifyLiveCallbackTemplate request structure.
 
@@ -6369,41 +6429,46 @@ class ModifyLiveCallbackTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ModifyLiveCertRequest(AbstractModel):
-    """ModifyLiveCert request structure.
+class ModifyLiveDomainCertBindingsRequest(AbstractModel):
+    """ModifyLiveDomainCertBindings request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param CertId: Certificate ID.
-        :type CertId: str
-        :param CertType: Certificate type. 0: user-added certificate, 1: Tencent Cloud-hosted certificate.
-        :type CertType: int
-        :param CertName: Certificate name.
-        :type CertName: str
-        :param HttpsCrt: Certificate content, i.e., public key.
-        :type HttpsCrt: str
-        :param HttpsKey: Private key.
-        :type HttpsKey: str
-        :param Description: Description.
-        :type Description: str
+        :param DomainInfos: The playback domains to bind and whether to enable HTTPS for them.
+If neither `CloudCertId` nor the public/private key is specified, and a domain is already bound with a certificate, this API will only update the HTTPS configuration of the domain and, if the certificate is a self-owned certificate, upload it to Tencent Cloud.
+        :type DomainInfos: list of LiveCertDomainInfo
+        :param CloudCertId: The SSL certificate ID assigned by Tencent Cloud.
+For details, see https://intl.cloud.tencent.com/document/api/400/41665?from_cn_redirect=1
+        :type CloudCertId: str
+        :param CertificatePublicKey: The public key of the certificate.
+You can specify either `CloudCertId` or the public/private key. If both are specified, the private and public key parameters will be ignored. If you pass in only the public and private keys, the corresponding certificate will be uploaded to Tencent Cloud SSL Certificate Service, which will generate a `CloudCertId` for the certificate.
+        :type CertificatePublicKey: str
+        :param CertificatePrivateKey: The private key of the certificate.
+You can specify either `CloudCertId` or the public/private key. If both are specified, the private and public key parameters will be ignored. If you pass in only the public and private keys, the corresponding certificate will be uploaded to Tencent Cloud SSL Certificate Service, which will generate a `CloudCertId` for the certificate.
+        :type CertificatePrivateKey: str
+        :param CertificateAlias: The remarks for the certificate in Tencent Cloud SSL Certificate Service. This parameter will be ignored if `CloudCertId` is specified.
+        :type CertificateAlias: str
         """
-        self.CertId = None
-        self.CertType = None
-        self.CertName = None
-        self.HttpsCrt = None
-        self.HttpsKey = None
-        self.Description = None
+        self.DomainInfos = None
+        self.CloudCertId = None
+        self.CertificatePublicKey = None
+        self.CertificatePrivateKey = None
+        self.CertificateAlias = None
 
 
     def _deserialize(self, params):
-        self.CertId = params.get("CertId")
-        self.CertType = params.get("CertType")
-        self.CertName = params.get("CertName")
-        self.HttpsCrt = params.get("HttpsCrt")
-        self.HttpsKey = params.get("HttpsKey")
-        self.Description = params.get("Description")
+        if params.get("DomainInfos") is not None:
+            self.DomainInfos = []
+            for item in params.get("DomainInfos"):
+                obj = LiveCertDomainInfo()
+                obj._deserialize(item)
+                self.DomainInfos.append(obj)
+        self.CloudCertId = params.get("CloudCertId")
+        self.CertificatePublicKey = params.get("CertificatePublicKey")
+        self.CertificatePrivateKey = params.get("CertificatePrivateKey")
+        self.CertificateAlias = params.get("CertificateAlias")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6413,69 +6478,34 @@ class ModifyLiveCertRequest(AbstractModel):
         
 
 
-class ModifyLiveCertResponse(AbstractModel):
-    """ModifyLiveCert response structure.
+class ModifyLiveDomainCertBindingsResponse(AbstractModel):
+    """ModifyLiveDomainCertBindings response structure.
 
     """
 
     def __init__(self):
         r"""
+        :param MismatchedDomainNames: The domains skipped due to certificate mismatch.
+        :type MismatchedDomainNames: list of str
+        :param Errors: The domains that the API failed to bind, including those in `MismatchedDomainNames`, and the error information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Errors: list of BatchDomainOperateErrors
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.MismatchedDomainNames = None
+        self.Errors = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class ModifyLiveDomainCertRequest(AbstractModel):
-    """ModifyLiveDomainCert request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param DomainName: Playback domain name.
-        :type DomainName: str
-        :param CertId: Certificate ID.
-        :type CertId: int
-        :param Status: Status. 0: off, 1: on.
-        :type Status: int
-        """
-        self.DomainName = None
-        self.CertId = None
-        self.Status = None
-
-
-    def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.CertId = params.get("CertId")
-        self.Status = params.get("Status")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyLiveDomainCertResponse(AbstractModel):
-    """ModifyLiveDomainCert response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
+        self.MismatchedDomainNames = params.get("MismatchedDomainNames")
+        if params.get("Errors") is not None:
+            self.Errors = []
+            for item in params.get("Errors"):
+                obj = BatchDomainOperateErrors()
+                obj._deserialize(item)
+                self.Errors.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -7394,6 +7424,62 @@ In UTC format, such as 2018-06-29T19:00:00Z.
 
     def _deserialize(self, params):
         self.PublishTime = params.get("PublishTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PullPushWatermarkInfo(AbstractModel):
+    """Watermark information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WatermarkId: Watermark ID.
+        :type WatermarkId: int
+        :param PictureUrl: Watermark image URL.
+        :type PictureUrl: str
+        :param XPosition: Display position: X-axis offset.
+        :type XPosition: int
+        :param YPosition: Display position: Y-axis offset.
+        :type YPosition: int
+        :param WatermarkName: Watermark name.
+        :type WatermarkName: str
+        :param Status: Current status. 0: not used. 1: in use.
+        :type Status: int
+        :param CreateTime: Creation time.
+        :type CreateTime: str
+        :param Width: Watermark width
+        :type Width: int
+        :param Height: Watermark height
+        :type Height: int
+        """
+        self.WatermarkId = None
+        self.PictureUrl = None
+        self.XPosition = None
+        self.YPosition = None
+        self.WatermarkName = None
+        self.Status = None
+        self.CreateTime = None
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        self.WatermarkId = params.get("WatermarkId")
+        self.PictureUrl = params.get("PictureUrl")
+        self.XPosition = params.get("XPosition")
+        self.YPosition = params.get("YPosition")
+        self.WatermarkName = params.get("WatermarkName")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

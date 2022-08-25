@@ -2046,6 +2046,55 @@ class CreateECMInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateEdgeLogConfigRequest(AbstractModel):
+    """CreateEdgeLogConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param LogConfig: Log collection configuration in json form
+        :type LogConfig: str
+        :param LogsetId: CLS logset ID
+        :type LogsetId: str
+        """
+        self.ClusterId = None
+        self.LogConfig = None
+        self.LogsetId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.LogConfig = params.get("LogConfig")
+        self.LogsetId = params.get("LogsetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEdgeLogConfigResponse(AbstractModel):
+    """CreateEdgeLogConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreatePrometheusAlertRuleRequest(AbstractModel):
     """CreatePrometheusAlertRule request structure.
 
@@ -3258,6 +3307,69 @@ class DescribeClusterEndpointVipStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeClusterEndpointsRequest(AbstractModel):
+    """DescribeClusterEndpoints request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterEndpointsResponse(AbstractModel):
+    """DescribeClusterEndpoints response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CertificationAuthority: CA certificate of cluster APIServer
+        :type CertificationAuthority: str
+        :param ClusterExternalEndpoint: Public network access address of cluster APIServer
+        :type ClusterExternalEndpoint: str
+        :param ClusterIntranetEndpoint: Private network access address of cluster APIServer
+        :type ClusterIntranetEndpoint: str
+        :param ClusterDomain: Domain name of cluster APIServer
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ClusterDomain: str
+        :param ClusterExternalACL: Public network access ACL of cluster APIServer
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ClusterExternalACL: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.CertificationAuthority = None
+        self.ClusterExternalEndpoint = None
+        self.ClusterIntranetEndpoint = None
+        self.ClusterDomain = None
+        self.ClusterExternalACL = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CertificationAuthority = params.get("CertificationAuthority")
+        self.ClusterExternalEndpoint = params.get("ClusterExternalEndpoint")
+        self.ClusterIntranetEndpoint = params.get("ClusterIntranetEndpoint")
+        self.ClusterDomain = params.get("ClusterDomain")
+        self.ClusterExternalACL = params.get("ClusterExternalACL")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeClusterInstancesRequest(AbstractModel):
     """DescribeClusterInstances request structure.
 
@@ -4275,6 +4387,52 @@ class DescribeEdgeClusterInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEdgeLogSwitchesRequest(AbstractModel):
+    """DescribeEdgeLogSwitches request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterIds: List of cluster IDs
+        :type ClusterIds: list of str
+        """
+        self.ClusterIds = None
+
+
+    def _deserialize(self, params):
+        self.ClusterIds = params.get("ClusterIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEdgeLogSwitchesResponse(AbstractModel):
+    """DescribeEdgeLogSwitches response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SwitchSet: Array of TKE Edge cluster log switches
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type SwitchSet: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SwitchSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SwitchSet = params.get("SwitchSet")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEnableVpcCniProgressRequest(AbstractModel):
     """DescribeEnableVpcCniProgress request structure.
 
@@ -4957,11 +5115,14 @@ class DescribeTKEEdgeScriptRequest(AbstractModel):
         :type NodeName: str
         :param Config: Node configuration in JSON format 
         :type Config: str
+        :param ScriptVersion: A legacy version of edgectl script can be downloaded. The latest version is downloaded by default. The version information can be checked in the script.
+        :type ScriptVersion: str
         """
         self.ClusterId = None
         self.Interface = None
         self.NodeName = None
         self.Config = None
+        self.ScriptVersion = None
 
 
     def _deserialize(self, params):
@@ -4969,6 +5130,7 @@ class DescribeTKEEdgeScriptRequest(AbstractModel):
         self.Interface = params.get("Interface")
         self.NodeName = params.get("NodeName")
         self.Config = params.get("Config")
+        self.ScriptVersion = params.get("ScriptVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4991,12 +5153,16 @@ class DescribeTKEEdgeScriptResponse(AbstractModel):
         :type Token: str
         :param Command: Whether to download the command
         :type Command: str
+        :param ScriptVersion: Version of edgectl script. The latest version is obtained by default.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ScriptVersion: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.Link = None
         self.Token = None
         self.Command = None
+        self.ScriptVersion = None
         self.RequestId = None
 
 
@@ -5004,6 +5170,7 @@ class DescribeTKEEdgeScriptResponse(AbstractModel):
         self.Link = params.get("Link")
         self.Token = params.get("Token")
         self.Command = params.get("Command")
+        self.ScriptVersion = params.get("ScriptVersion")
         self.RequestId = params.get("RequestId")
 
 
@@ -5401,6 +5568,9 @@ class EdgeCluster(AbstractModel):
         :param MaxNodePodNum: Maximum number of Pods on the node
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type MaxNodePodNum: int
+        :param ClusterAdvancedSettings: Cluster advanced settings
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ClusterAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.EdgeClusterAdvancedSettings`
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -5413,6 +5583,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.CreatedTime = None
         self.EdgeClusterVersion = None
         self.MaxNodePodNum = None
+        self.ClusterAdvancedSettings = None
 
 
     def _deserialize(self, params):
@@ -5427,6 +5598,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.CreatedTime = params.get("CreatedTime")
         self.EdgeClusterVersion = params.get("EdgeClusterVersion")
         self.MaxNodePodNum = params.get("MaxNodePodNum")
+        if params.get("ClusterAdvancedSettings") is not None:
+            self.ClusterAdvancedSettings = EdgeClusterAdvancedSettings()
+            self.ClusterAdvancedSettings._deserialize(params.get("ClusterAdvancedSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5446,14 +5620,24 @@ class EdgeClusterAdvancedSettings(AbstractModel):
         :param ExtraArgs: Custom parameters of the cluster
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.EdgeClusterExtraArgs`
+        :param Runtime: Runtime type. Valid values: "docker" (default), "containerd".
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Runtime: str
+        :param ProxyMode: Forwarding mode of kube-proxy. Valid values: "iptables" (default), "ipvs".
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ProxyMode: str
         """
         self.ExtraArgs = None
+        self.Runtime = None
+        self.ProxyMode = None
 
 
     def _deserialize(self, params):
         if params.get("ExtraArgs") is not None:
             self.ExtraArgs = EdgeClusterExtraArgs()
             self.ExtraArgs._deserialize(params.get("ExtraArgs"))
+        self.Runtime = params.get("Runtime")
+        self.ProxyMode = params.get("ProxyMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6215,6 +6399,47 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class InstallEdgeLogAgentRequest(AbstractModel):
+    """InstallEdgeLogAgent request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstallEdgeLogAgentResponse(AbstractModel):
+    """InstallEdgeLogAgent response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class Instance(AbstractModel):
@@ -8356,6 +8581,47 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UninstallEdgeLogAgentRequest(AbstractModel):
+    """UninstallEdgeLogAgent request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UninstallEdgeLogAgentResponse(AbstractModel):
+    """UninstallEdgeLogAgent response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class UpdateClusterVersionRequest(AbstractModel):

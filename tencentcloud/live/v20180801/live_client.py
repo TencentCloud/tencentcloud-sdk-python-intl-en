@@ -116,36 +116,6 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def BindLiveDomainCert(self, request):
-        """This API is used to bind a domain name certificate.
-        Note: you need to call the `CreateLiveCert` API first to add a certificate. After getting the certificate ID, call this API for binding.
-
-        :param request: Request instance for BindLiveDomainCert.
-        :type request: :class:`tencentcloud.live.v20180801.models.BindLiveDomainCertRequest`
-        :rtype: :class:`tencentcloud.live.v20180801.models.BindLiveDomainCertResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("BindLiveDomainCert", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.BindLiveDomainCertResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def CancelCommonMixStream(self, request):
         """This API is used to cancel a stream mix. It can be used basically in the same way as `mix_streamv2.cancel_mix_stream`.
 
@@ -253,35 +223,6 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLiveCallbackTemplateResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def CreateLiveCert(self, request):
-        """This API is used to add a certificate.
-
-        :param request: Request instance for CreateLiveCert.
-        :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveCertRequest`
-        :rtype: :class:`tencentcloud.live.v20180801.models.CreateLiveCertResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateLiveCert", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateLiveCertResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -668,35 +609,6 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLiveCallbackTemplateResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DeleteLiveCert(self, request):
-        """This API is used to delete a certificate corresponding to the domain name.
-
-        :param request: Request instance for DeleteLiveCert.
-        :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveCertRequest`
-        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteLiveCertResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteLiveCert", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteLiveCertResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1398,6 +1310,35 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveDomainCertResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLiveDomainCertBindings(self, request):
+        """This API is used to query domains bound with certificates.
+
+        :param request: Request instance for DescribeLiveDomainCertBindings.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainCertBindingsRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainCertBindingsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLiveDomainCertBindings", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveDomainCertBindingsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2570,50 +2511,22 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyLiveCert(self, request):
-        """This API is used to modify a certificate.
+    def ModifyLiveDomainCertBindings(self, request):
+        """This API is used to bind a certificate to multiple playback domains and update the HTTPS configuration of the domains.
+        If a self-owned certificate is used, it will be automatically uploaded to Tencent Cloud’s SSL Certificate Service.
 
-        :param request: Request instance for ModifyLiveCert.
-        :type request: :class:`tencentcloud.live.v20180801.models.ModifyLiveCertRequest`
-        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyLiveCertResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyLiveCert", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyLiveCertResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ModifyLiveDomainCert(self, request):
-        """This API is used to modify the domain name and certificate binding information.
-
-        :param request: Request instance for ModifyLiveDomainCert.
-        :type request: :class:`tencentcloud.live.v20180801.models.ModifyLiveDomainCertRequest`
-        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyLiveDomainCertResponse`
+        :param request: Request instance for ModifyLiveDomainCertBindings.
+        :type request: :class:`tencentcloud.live.v20180801.models.ModifyLiveDomainCertBindingsRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyLiveDomainCertBindingsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("ModifyLiveDomainCert", params, headers=headers)
+            body = self.call("ModifyLiveDomainCertBindings", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyLiveDomainCertResponse()
+                model = models.ModifyLiveDomainCertBindingsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

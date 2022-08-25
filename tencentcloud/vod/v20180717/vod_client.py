@@ -115,11 +115,18 @@ class VodClient(AbstractClient):
 
 
     def ComposeMedia(self, request):
-        """This API is used to compose a media file, including:
+        """This API is used to compose a media file. You can use it to do the following:
 
-        1. Clipping a media file to generate a new media file;
-        2. Clipping and splicing multiple media files to generate a new media file;
-        3. Clipping and splicing the media streams of multiple media files to generate a new media file;
+        1. **Rotation/Flipping**: Rotate a video or image by a specific angle or flip a video or image.
+        2. **Audio control**: Increase/Lower the volume of an audio/video file or mute an audio/video file.
+        3. **Overlaying**: Overlay videos/images in a specified sequence to achieve the picture-in-picture effect.
+        4. **Audio mixing**: Mix the audios of audio/video files.
+        5 **Audio extraction**: Extract audio from a video.
+        6. **Clipping**: Clip segments from audio/video files according to a specified start and end time.
+        7. **Splicing**: Splice videos/audios/images in a specified sequence.
+        8. **Transition**: Add transition effects between video segments or images that are spliced together.
+
+        The output file is in MP4 or MP3 format. In the callback for media composition, the event type is [ComposeMediaComplete](https://intl.cloud.tencent.com/document/product/266/43000?from_cn_redirect=1).
 
         :param request: Request instance for ComposeMedia.
         :type request: :class:`tencentcloud.vod.v20180717.models.ComposeMediaRequest`
@@ -561,7 +568,7 @@ class VodClient(AbstractClient):
 
 
     def CreateSuperPlayerConfig(self, request):
-        """This API is used to create a superplayer configuration. Up to 100 configurations can be created.
+        """This API is used to create a player configuration. Up to 100 configurations can be created.
 
         :param request: Request instance for CreateSuperPlayerConfig.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateSuperPlayerConfigRequest`
@@ -1060,8 +1067,8 @@ class VodClient(AbstractClient):
 
 
     def DeleteSuperPlayerConfig(self, request):
-        """This API is used to delete a superplayer configuration.
-        *Note: preset player configurations cannot be deleted.*
+        """This API is used to delete a player configuration.
+        *Note: Preset player configurations cannot be deleted.*
 
         :param request: Request instance for DeleteSuperPlayerConfig.
         :type request: :class:`tencentcloud.vod.v20180717.models.DeleteSuperPlayerConfigRequest`
@@ -1434,6 +1441,38 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCdnLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClientUploadAccelerationUsageData(self, request):
+        """This API is used to query the usage of the client upload acceleration service in a specific time period.
+           1. You can query the usage of client upload acceleration in the last 365 days.
+           2. The maximum time period allowed for query is 90 days.
+           3. If the period specified is longer than one day, the statistics returned will be on a daily basis; otherwise, they will be on a 5-minute basis.
+
+        :param request: Request instance for DescribeClientUploadAccelerationUsageData.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeClientUploadAccelerationUsageDataRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeClientUploadAccelerationUsageDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClientUploadAccelerationUsageData", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClientUploadAccelerationUsageDataResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1981,7 +2020,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeSuperPlayerConfigs(self, request):
-        """This API is used to query the list of superplayer configurations and supports paginated queries by filters.
+        """This API is used to query player configurations. It supports pagination.
 
         :param request: Request instance for DescribeSuperPlayerConfigs.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeSuperPlayerConfigsRequest`
@@ -2775,7 +2814,7 @@ class VodClient(AbstractClient):
 
 
     def ModifySuperPlayerConfig(self, request):
-        """This API is used to modify a superplayer configuration.
+        """This API is used to modify a player configuration.
 
         :param request: Request instance for ModifySuperPlayerConfig.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifySuperPlayerConfigRequest`

@@ -205,13 +205,13 @@ class CreateCloudRecordingRequest(AbstractModel):
         :type SdkAppId: int
         :param RoomId: The [room ID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are recorded.
         :type RoomId: str
-        :param UserId: The [user ID](https://intl.cloud.tencent.com/document/product/647/37714) of the recording robot in the TRTC room, which cannot be the same as a user ID already in use. We recommend you include this user ID in the room ID.
+        :param UserId: The [user ID](https://intl.cloud.tencent.com/document/product/647/37714) of the recording robot in the TRTC room, which cannot be the same as a user ID already in use. We recommend you include the room ID in the user ID.
         :type UserId: str
-        :param UserSig: The signature (similar to login password) required for the recording robot to enter the room. For information on how to calculate the signature, see [What is UserSig?](https://intl.cloud.tencent.com/document/product/647/38104). |
+        :param UserSig: The signature (similar to a login password) required for the recording robot to enter the room. Each user ID corresponds to a signature. For information on how to calculate the signature, see [What is UserSig?](https://intl.cloud.tencent.com/document/product/647/38104).
         :type UserSig: str
         :param RecordParams: The on-cloud recording parameters.
         :type RecordParams: :class:`tencentcloud.trtc.v20190722.models.RecordParams`
-        :param StorageParams: The cloud storage parameters.
+        :param StorageParams: The cloud storage information of the recording file. Currently, you can only save recording files to Tencent Cloud VOD.
         :type StorageParams: :class:`tencentcloud.trtc.v20190722.models.StorageParams`
         :param RoomIdType: The type of the TRTC room ID, which must be the same as the ID type of the room whose streams are recorded.
 0: String
@@ -663,6 +663,67 @@ class McuLayoutParams(AbstractModel):
         
 
 
+class McuLayoutVolume(AbstractModel):
+    """The SEI parameters for audio volume layout. You can specify the `AppData` and `PayloadType`.
+    This parameter may be empty, in which case the default SEI parameters for audio volume layout will be used.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AppData: The application data, which will be embedded in the `app_data` field of the custom SEI. It must be shorter than 4,096 characters.
+        :type AppData: str
+        :param PayloadType: The payload type of the SEI message. The default is 100. Value range: 100-254 (244 is used internally by Tencent Cloud for timestamps).
+        :type PayloadType: int
+        """
+        self.AppData = None
+        self.PayloadType = None
+
+
+    def _deserialize(self, params):
+        self.AppData = params.get("AppData")
+        self.PayloadType = params.get("PayloadType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuPassThrough(AbstractModel):
+    """The custom pass-through SEI.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PayloadContent: The payload of the pass-through SEI.
+        :type PayloadContent: str
+        :param PayloadType: The payload type of the SEI message. Value range: 5 and 100-254 (244 is used internally by Tencent Cloud for timestamps).
+        :type PayloadType: int
+        :param PayloadUuid: This parameter is required only if `PayloadType` is 5. It must be a 32-character hexadecimal string. If `PayloadType` is not 5, this parameter will be ignored.
+        :type PayloadUuid: str
+        """
+        self.PayloadContent = None
+        self.PayloadType = None
+        self.PayloadUuid = None
+
+
+    def _deserialize(self, params):
+        self.PayloadContent = params.get("PayloadContent")
+        self.PayloadType = params.get("PayloadType")
+        self.PayloadUuid = params.get("PayloadUuid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class McuPublishCdnParam(AbstractModel):
     """The relaying parameters.
 
@@ -682,6 +743,38 @@ class McuPublishCdnParam(AbstractModel):
     def _deserialize(self, params):
         self.PublishCdnUrl = params.get("PublishCdnUrl")
         self.IsTencentCdn = params.get("IsTencentCdn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuSeiParams(AbstractModel):
+    """The stream mixing SEI parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LayoutVolume: The audio volume layout SEI.
+        :type LayoutVolume: :class:`tencentcloud.trtc.v20190722.models.McuLayoutVolume`
+        :param PassThrough: The pass-through SEI.
+        :type PassThrough: :class:`tencentcloud.trtc.v20190722.models.McuPassThrough`
+        """
+        self.LayoutVolume = None
+        self.PassThrough = None
+
+
+    def _deserialize(self, params):
+        if params.get("LayoutVolume") is not None:
+            self.LayoutVolume = McuLayoutVolume()
+            self.LayoutVolume._deserialize(params.get("LayoutVolume"))
+        if params.get("PassThrough") is not None:
+            self.PassThrough = McuPassThrough()
+            self.PassThrough._deserialize(params.get("PassThrough"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -824,13 +917,17 @@ class McuWaterMarkParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WaterMarkImage: The information of the watermark image.
+        :param WaterMarkType: The watermark type. The default is 0, which indicates an image watermark.
+        :type WaterMarkType: int
+        :param WaterMarkImage: The watermark image information. This parameter is required if `WaterMarkType` is 0.
         :type WaterMarkImage: :class:`tencentcloud.trtc.v20190722.models.McuWaterMarkImage`
         """
+        self.WaterMarkType = None
         self.WaterMarkImage = None
 
 
     def _deserialize(self, params):
+        self.WaterMarkType = params.get("WaterMarkType")
         if params.get("WaterMarkImage") is not None:
             self.WaterMarkImage = McuWaterMarkImage()
             self.WaterMarkImage._deserialize(params.get("WaterMarkImage"))
@@ -1129,8 +1226,8 @@ class RecordParams(AbstractModel):
     def __init__(self):
         r"""
         :param RecordMode: The recording mode.
-1: Single-stream recording. Records the audio and video of each subscribed user (`UserId`) in a room and saves the recording files (M3U8/TS) to the cloud.
-2: Mixed-stream recording. Mixes the audios and videos of subscribed users (`UserId`) in a room, records the mixed stream, and saves the recording files (M3U8/TS) to the cloud.
+1: Single-stream recording. Records the audio and video of each subscribed user (`UserId`) in a room and saves the recording files to the cloud.
+2: Mixed-stream recording. Mixes the audios and videos of subscribed users (`UserId`) in a room, records the mixed stream, and saves the recording files to the cloud.
         :type RecordMode: int
         :param MaxIdleTime: The time period (seconds) to wait after there are no anchors in a room to stop recording automatically. The value cannot be smaller than 5 or larger than 86400 (24 hours). Default value: 30.
         :type MaxIdleTime: int
@@ -1141,7 +1238,7 @@ class RecordParams(AbstractModel):
         :type StreamType: int
         :param SubscribeStreamUserIds: The allowlist/blocklist for stream subscription.
         :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
-        :param OutputFormat: The format of recording files. 0 (default): HLS; 1: HLS + MP4 (recorded in HLS and converted to MP4).
+        :param OutputFormat: The format of recording files. 0 (default): HLS; 1: HLS + MP4 (recorded in HLS and converted to MP4). This parameter is invalid if recording files are saved to VOD.
         :type OutputFormat: int
         """
         self.RecordMode = None
@@ -1317,6 +1414,8 @@ class StartPublishCdnStreamRequest(AbstractModel):
         :type SingleSubscribeParams: :class:`tencentcloud.trtc.v20190722.models.SingleSubscribeParams`
         :param PublishCdnParams: The CDN information.
         :type PublishCdnParams: list of McuPublishCdnParam
+        :param SeiParams: The stream mixing SEI parameters.
+        :type SeiParams: :class:`tencentcloud.trtc.v20190722.models.McuSeiParams`
         """
         self.SdkAppId = None
         self.RoomId = None
@@ -1327,6 +1426,7 @@ class StartPublishCdnStreamRequest(AbstractModel):
         self.VideoParams = None
         self.SingleSubscribeParams = None
         self.PublishCdnParams = None
+        self.SeiParams = None
 
 
     def _deserialize(self, params):
@@ -1352,6 +1452,9 @@ class StartPublishCdnStreamRequest(AbstractModel):
                 obj = McuPublishCdnParam()
                 obj._deserialize(item)
                 self.PublishCdnParams.append(obj)
+        if params.get("SeiParams") is not None:
+            self.SeiParams = McuSeiParams()
+            self.SeiParams._deserialize(params.get("SeiParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1612,6 +1715,8 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
         :type SingleSubscribeParams: :class:`tencentcloud.trtc.v20190722.models.SingleSubscribeParams`
         :param PublishCdnParams: Pass this parameter to change the CDNs to relay to. If you do not pass this parameter, no changes will be made.
         :type PublishCdnParams: list of McuPublishCdnParam
+        :param SeiParams: The stream mixing SEI parameters.
+        :type SeiParams: :class:`tencentcloud.trtc.v20190722.models.McuSeiParams`
         """
         self.SdkAppId = None
         self.TaskId = None
@@ -1621,6 +1726,7 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
         self.VideoParams = None
         self.SingleSubscribeParams = None
         self.PublishCdnParams = None
+        self.SeiParams = None
 
 
     def _deserialize(self, params):
@@ -1643,6 +1749,9 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
                 obj = McuPublishCdnParam()
                 obj._deserialize(item)
                 self.PublishCdnParams.append(obj)
+        if params.get("SeiParams") is not None:
+            self.SeiParams = McuSeiParams()
+            self.SeiParams._deserialize(params.get("SeiParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

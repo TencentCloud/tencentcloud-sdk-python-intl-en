@@ -1187,6 +1187,35 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateNetworkAclQuintupleEntries(self, request):
+        """This API is used to add one or more in/outbound rules of the network ACL quintuple.
+
+        :param request: Request instance for CreateNetworkAclQuintupleEntries.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateNetworkAclQuintupleEntriesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateNetworkAclQuintupleEntriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateNetworkAclQuintupleEntries", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateNetworkAclQuintupleEntriesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateNetworkInterface(self, request):
         """This API is used to create an ENI.
         * You can specify private IP addresses and a primary IP when creating an ENI. The specified private IP must be in the same subnet as the ENI and is not occupied.
@@ -2194,6 +2223,35 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNetworkAclResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteNetworkAclQuintupleEntries(self, request):
+        """This API is used to delete specified in/outbound rules of the network ACL quintuple. In the `NetworkAclQuintupleEntrySet` parameters, `NetworkAclQuintupleEntryId` is required for `NetworkAclQuintupleEntry`.
+
+        :param request: Request instance for DeleteNetworkAclQuintupleEntries.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteNetworkAclQuintupleEntriesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteNetworkAclQuintupleEntriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteNetworkAclQuintupleEntries", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteNetworkAclQuintupleEntriesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3415,7 +3473,7 @@ class VpcClient(AbstractClient):
 
     def DescribeIpGeolocationInfos(self, request):
         """This API is used to query the location and network information of one or more IP addresses.
-        This API is currently in beta test. To use it, please [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=660&source=0&data_title=%E5%BC%B9%E6%80%A7%E5%85%AC%E7%BD%91%20EIP&level3_id=662&queue=96&scene_code=16400&step=2).
+        This API is only available for existing customers. For any questions, please [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=660&source=0&data_title=%E5%BC%B9%E6%80%A7%E5%85%AC%E7%BD%91%20EIP&level3_id=662&queue=96&scene_code=16400&step=2).
 
         :param request: Request instance for DescribeIpGeolocationInfos.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeIpGeolocationInfosRequest`
@@ -3632,6 +3690,35 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNetDetectsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNetworkAclQuintupleEntries(self, request):
+        """This API is used to query the list of in/outbound network ACL quintuple entries.
+
+        :param request: Request instance for DescribeNetworkAclQuintupleEntries.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNetworkAclQuintupleEntriesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeNetworkAclQuintupleEntriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNetworkAclQuintupleEntries", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNetworkAclQuintupleEntriesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -5771,6 +5858,35 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyNetworkAclEntriesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyNetworkAclQuintupleEntries(self, request):
+        """This API is used to modify the in/outbound rules of the network ACL quintuple. In the `NetworkAclQuintupleEntrySet` parameters, `NetworkAclQuintupleEntryId` is required for `NetworkAclQuintupleEntry`.
+
+        :param request: Request instance for ModifyNetworkAclQuintupleEntries.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyNetworkAclQuintupleEntriesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyNetworkAclQuintupleEntriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyNetworkAclQuintupleEntries", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyNetworkAclQuintupleEntriesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

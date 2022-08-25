@@ -8694,6 +8694,71 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeClientUploadAccelerationUsageDataRequest(AbstractModel):
+    """DescribeClientUploadAccelerationUsageData request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: The start date for the query in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format).
+        :type StartTime: str
+        :param EndTime: The end date for the query in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format). The end date must be later than the start date.
+        :type EndTime: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
+        :param Type: The client upload acceleration type. Valid values:
+<li> AccelerationWithHTTP: Acceleration of HTTP transmission</li>
+<li> AccelerationWithQUIC: Acceleration of QUIC transmission</li>
+If you do not specify this parameter, the usage of both types will be queried.
+        :type Type: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.SubAppId = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SubAppId = params.get("SubAppId")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClientUploadAccelerationUsageDataResponse(AbstractModel):
+    """DescribeClientUploadAccelerationUsageData response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClientUploadAccelerationUsageDataSet: The usage of client upload acceleration.
+        :type ClientUploadAccelerationUsageDataSet: list of StatDataItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ClientUploadAccelerationUsageDataSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClientUploadAccelerationUsageDataSet") is not None:
+            self.ClientUploadAccelerationUsageDataSet = []
+            for item in params.get("ClientUploadAccelerationUsageDataSet"):
+                obj = StatDataItem()
+                obj._deserialize(item)
+                self.ClientUploadAccelerationUsageDataSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeContentReviewTemplatesRequest(AbstractModel):
     """DescribeContentReviewTemplates request structure.
 
@@ -9880,6 +9945,8 @@ class DescribeSuperPlayerConfigsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Names: Player configuration name filter. Array length limit: 100.
         :type Names: list of str
         :param Offset: Pagination offset. Default value: 0.
@@ -9890,22 +9957,20 @@ class DescribeSuperPlayerConfigsRequest(AbstractModel):
 <li>Preset: preset configuration;</li>
 <li>Custom: custom configuration.</li>
         :type Type: str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
+        self.SubAppId = None
         self.Names = None
         self.Offset = None
         self.Limit = None
         self.Type = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
         self.Names = params.get("Names")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.Type = params.get("Type")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10951,21 +11016,21 @@ class EventContent(AbstractModel):
         :param EventHandle: Event handler. The caller must call `ConfirmEvents` to confirm that the message has been received, and the confirmation is valid for 30 seconds. After the confirmation expires, the event can be obtained again.
         :type EventHandle: str
         :param EventType: <b>Supported event types:</b>
-<li>NewFileUpload: finished video upload</li>
-<li>ProcedureStateChanged: task flow status changed</li>
-<li>FileDeleted: finished video deletion</li>
-<li>PullComplete: finished pulling for upload</li>
-<li>EditMediaComplete: finished video editing</li>
-<li>SplitMediaComplete: finished video splitting</li>
-<li>WechatPublishComplete: finished publishing on WeChat</li>
-<li>ComposeMediaComplete: finished producing the media file</li>
-<li>WechatMiniProgramPublishComplete: finished publishing on WeChat Mini Program</li>
-<b>Support v2017 task types:</b>
-<li>TranscodeComplete: finished video transcoding</li>
-<li>ConcatComplete: finished video splicing</li>
-<li>ClipComplete: finished video clipping</li>
-<li>CreateImageSpriteComplete: finished image sprite generation</li>
-<li>CreateSnapshotByTimeOffsetComplete: finished point-in-time screencapturing</li>
+<li>NewFileUpload: Video uploaded.</li>
+<li>ProcedureStateChanged: Task flow status changed.</li>
+<li>FileDeleted: Video deleted.</li>
+<li>PullComplete: Finished video pulling.</li>
+<li>EditMediaComplete: Finished video editing.</li>
+<li>SplitMediaComplete: Finished video splitting.</li>
+<li>WechatPublishComplete: Published to WeChat.</li>
+<li>ComposeMediaComplete: Finished composition.</li>
+<li>FastClipMediaComplete: Finished quick clipping.</li>
+<b>v2017 task types:</b>
+<li>TranscodeComplete: Finished video transcoding.</li>
+<li>ConcatComplete: Finished video splicing.</li>
+<li>ClipComplete: Finished video clipping.</li>
+<li>CreateImageSpriteComplete: Finished image sprite generation.</li>
+<li>CreateSnapshotByTimeOffsetComplete: Finished time point screencapturing.</li>
         :type EventType: str
         :param FileUploadEvent: Video upload completion event, which is valid if the event type is `NewFileUpload`.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -12614,30 +12679,34 @@ class MediaClassInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClassId: Category ID
+        :param ClassId: The category ID.
         :type ClassId: int
         :param ParentId: Parent category ID, which is -1 for a first-level category.
         :type ParentId: int
-        :param ClassName: Category name
-        :type ClassName: str
+        :param Name: The category name.
+        :type Name: str
         :param Level: Category level. 0 for first-level category, up to 3, i.e., up to 4 levels of categories are allowed.
         :type Level: int
-        :param SubClassIdSet: Set of IDs of the immediate subcategories in current category
+        :param SubClassIdSet: The IDs of the immediate subcategories of the current category.
         :type SubClassIdSet: list of int
+        :param ClassName: The category name. This parameter is not recommended. Please use `Name` instead.
+        :type ClassName: str
         """
         self.ClassId = None
         self.ParentId = None
-        self.ClassName = None
+        self.Name = None
         self.Level = None
         self.SubClassIdSet = None
+        self.ClassName = None
 
 
     def _deserialize(self, params):
         self.ClassId = params.get("ClassId")
         self.ParentId = params.get("ParentId")
-        self.ClassName = params.get("ClassName")
+        self.Name = params.get("Name")
         self.Level = params.get("Level")
         self.SubClassIdSet = params.get("SubClassIdSet")
+        self.ClassName = params.get("ClassName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15823,6 +15892,8 @@ class ModifySuperPlayerConfigRequest(AbstractModel):
         r"""
         :param Name: Player configuration name.
         :type Name: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param AudioVideoType: Type of audio/video played. Valid values:
 <li>AdaptiveDynamicStreaming</li>
 <li>Transcode</li>
@@ -15851,10 +15922,9 @@ class ModifySuperPlayerConfigRequest(AbstractModel):
         :type Scheme: str
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
         self.Name = None
+        self.SubAppId = None
         self.AudioVideoType = None
         self.DrmSwitch = None
         self.AdaptiveDynamicStreamingDefinition = None
@@ -15865,11 +15935,11 @@ class ModifySuperPlayerConfigRequest(AbstractModel):
         self.Domain = None
         self.Scheme = None
         self.Comment = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
+        self.SubAppId = params.get("SubAppId")
         self.AudioVideoType = params.get("AudioVideoType")
         self.DrmSwitch = params.get("DrmSwitch")
         self.AdaptiveDynamicStreamingDefinition = params.get("AdaptiveDynamicStreamingDefinition")
@@ -15887,7 +15957,6 @@ class ModifySuperPlayerConfigRequest(AbstractModel):
         self.Domain = params.get("Domain")
         self.Scheme = params.get("Scheme")
         self.Comment = params.get("Comment")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16738,6 +16807,11 @@ class PlayerConfig(AbstractModel):
 <li>Preset: preset configuration;</li>
 <li>Custom: custom configuration.</li>
         :type Type: str
+        :param AudioVideoType: The type of audio/video played. Valid values:
+<li>AdaptiveDynamicStreaming: Adaptive bitrate stream</li>
+<li>Transcode: Transcoded stream</li>
+<li>Original: The original stream</li>
+        :type AudioVideoType: str
         :param DrmSwitch: Switch of DRM-protected adaptive bitstream playback:
 <li>ON: enabled, indicating to play back only output adaptive bitstreams protected by DRM;</li>
 <li>OFF: disabled, indicating to play back unencrypted output adaptive bitstreams.</li>
@@ -16746,6 +16820,8 @@ class PlayerConfig(AbstractModel):
         :type AdaptiveDynamicStreamingDefinition: int
         :param DrmStreamingsInfo: Content of the DRM-protected adaptive bitrate streaming template that allows output.
         :type DrmStreamingsInfo: :class:`tencentcloud.vod.v20180717.models.DrmStreamingsInfo`
+        :param TranscodeDefinition: The ID of the transcoding template allowed.
+        :type TranscodeDefinition: int
         :param ImageSpriteDefinition: ID of the image sprite generating template that allows output.
         :type ImageSpriteDefinition: int
         :param ResolutionNameSet: Display name of player for substreams with different resolutions.
@@ -16766,9 +16842,11 @@ class PlayerConfig(AbstractModel):
         """
         self.Name = None
         self.Type = None
+        self.AudioVideoType = None
         self.DrmSwitch = None
         self.AdaptiveDynamicStreamingDefinition = None
         self.DrmStreamingsInfo = None
+        self.TranscodeDefinition = None
         self.ImageSpriteDefinition = None
         self.ResolutionNameSet = None
         self.CreateTime = None
@@ -16781,11 +16859,13 @@ class PlayerConfig(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Type = params.get("Type")
+        self.AudioVideoType = params.get("AudioVideoType")
         self.DrmSwitch = params.get("DrmSwitch")
         self.AdaptiveDynamicStreamingDefinition = params.get("AdaptiveDynamicStreamingDefinition")
         if params.get("DrmStreamingsInfo") is not None:
             self.DrmStreamingsInfo = DrmStreamingsInfo()
             self.DrmStreamingsInfo._deserialize(params.get("DrmStreamingsInfo"))
+        self.TranscodeDefinition = params.get("TranscodeDefinition")
         self.ImageSpriteDefinition = params.get("ImageSpriteDefinition")
         if params.get("ResolutionNameSet") is not None:
             self.ResolutionNameSet = []
@@ -19786,8 +19866,8 @@ class SubAppIdInfo(AbstractModel):
         r"""
         :param SubAppId: Subapplication ID.
         :type SubAppId: int
-        :param Name: Subapplication name.
-        :type Name: str
+        :param SubAppIdName: The subapplication name.
+        :type SubAppIdName: str
         :param Description: Subapplication overview.
         :type Description: str
         :param CreateTime: Subapplication creation time of task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
@@ -19798,20 +19878,24 @@ class SubAppIdInfo(AbstractModel):
 <li>Destroying: terminating</li>
 <li>Destroyed: terminated</li>
         :type Status: str
+        :param Name: The subapplication name. This parameter is not recommended. Please use `SubAppIdName` instead.
+        :type Name: str
         """
         self.SubAppId = None
-        self.Name = None
+        self.SubAppIdName = None
         self.Description = None
         self.CreateTime = None
         self.Status = None
+        self.Name = None
 
 
     def _deserialize(self, params):
         self.SubAppId = params.get("SubAppId")
-        self.Name = params.get("Name")
+        self.SubAppIdName = params.get("SubAppIdName")
         self.Description = params.get("Description")
         self.CreateTime = params.get("CreateTime")
         self.Status = params.get("Status")
+        self.Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -21367,21 +21451,19 @@ If the value is 0, the bitrate of the video will be the same as that of the sour
 Default value: open.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ResolutionAdaptive: str
-        :param Width: Maximum value of the width (or long side) of a video stream in px. Value range: 0 and [128, 4,096].
-<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
-<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
-<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
-<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
+        :param Width: The maximum video width (or long side) in pixels. Value range: 0 and [128, 8192].
+<li>If both `Width` and `Height` are 0, the output resolution will be the same as that of the source video.</li>
+<li>If `Width` is 0 and `Height` is not, the video width will be proportionally scaled.</li>
+<li>If `Width` is not 0 and `Height` is, the video height will be proportionally scaled.</li>
+<li>If neither `Width` nor `Height` is 0, the specified width and height will be used.</li>
 Default value: 0.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type Width: int
-        :param Height: Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].
-<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
-<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
-<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
-<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
+        :param Height: The maximum video height (or short side) in pixels. Value range: 0 and [128, 8192].
+<li>If both `Width` and `Height` are 0, the output resolution will be the same as that of the source video.</li>
+<li>If `Width` is 0 and `Height` is not, the video width will be proportionally scaled.</li>
+<li>If `Width` is not 0 and `Height` is, the video height will be proportionally scaled.</li>
+<li>If neither `Width` nor `Height` is 0, the specified width and height will be used.</li>
 Default value: 0.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type Height: int
         :param FillType: Fill type, the way of processing a screenshot when the configured aspect ratio is different from that of the source video. Valid values:
 <li>stretch: stretches the video image frame by frame to fill the screen. The video image may become "squashed" or "stretched" after transcoding.</li>
@@ -21400,6 +21482,11 @@ Default value: black
         :param Gop: I-frame interval in frames. Valid values: 0 and 1-100000.
 When this parameter is set to 0 or left empty, `Gop` will be automatically set.
         :type Gop: int
+        :param PreserveHDRSwitch: Whether to output an HDR (high dynamic range) video if the source video is HDR. Valid values:
+<li>ON: If the source video is HDR, output an HDR video; if not, output an SDR (standard dynamic range) video.</li>
+<li>OFF: Output an SDR video regardless of whether the source video is HDR.</li>
+Default value: OFF.
+        :type PreserveHDRSwitch: str
         """
         self.Codec = None
         self.Fps = None
@@ -21410,6 +21497,7 @@ When this parameter is set to 0 or left empty, `Gop` will be automatically set.
         self.FillType = None
         self.Vcrf = None
         self.Gop = None
+        self.PreserveHDRSwitch = None
 
 
     def _deserialize(self, params):
@@ -21422,6 +21510,7 @@ When this parameter is set to 0 or left empty, `Gop` will be automatically set.
         self.FillType = params.get("FillType")
         self.Vcrf = params.get("Vcrf")
         self.Gop = params.get("Gop")
+        self.PreserveHDRSwitch = params.get("PreserveHDRSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -21457,13 +21546,13 @@ If the value is 0, the bitrate of the video will be the same as that of the sour
 <li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
 <li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
         :type ResolutionAdaptive: str
-        :param Width: Maximum value of the width (or long side) of a video stream in px. Value range: 0 and [128, 4,096].
-<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
-<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
-<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
-<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
+        :param Width: The maximum video width (or long side) in pixels. Value range: 0 and [128, 8192].
+<li>If both `Width` and `Height` are 0, the output resolution will be the same as that of the source video.</li>
+<li>If `Width` is 0 and `Height` is not, the video width will be proportionally scaled.</li>
+<li>If `Width` is not 0 and `Height` is, the video height will be proportionally scaled.</li>
+<li>If neither `Width` nor `Height` is 0, the specified width and height will be used.</li>
         :type Width: int
-        :param Height: Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].
+        :param Height: The maximum video height (or short side) in pixels. Value range: 0 and [128, 8192].
         :type Height: int
         :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. Valid values:
 <li>stretch: stretches video image frame by frame to fill the screen. The video image may become "squashed" or "stretched" after transcoding.</li>
@@ -21481,6 +21570,10 @@ If the value is 0, the bitrate of the video will be the same as that of the sour
         :param Gop: I-frame interval in frames. Valid values: 0 and 1-100000.
 When this parameter is set to 0 or left empty, `Gop` will be automatically set.
         :type Gop: int
+        :param PreserveHDRSwitch: Whether to output an HDR (high dynamic range) video if the source video is HDR. Valid values:
+<li>ON: If the source video is HDR, output an HDR video; if not, output an SDR (standard dynamic range) video.</li>
+<li>OFF: Output an SDR video regardless of whether the source video is HDR.</li>
+        :type PreserveHDRSwitch: str
         """
         self.Codec = None
         self.Fps = None
@@ -21491,6 +21584,7 @@ When this parameter is set to 0 or left empty, `Gop` will be automatically set.
         self.FillType = None
         self.Vcrf = None
         self.Gop = None
+        self.PreserveHDRSwitch = None
 
 
     def _deserialize(self, params):
@@ -21503,6 +21597,7 @@ When this parameter is set to 0 or left empty, `Gop` will be automatically set.
         self.FillType = params.get("FillType")
         self.Vcrf = params.get("Vcrf")
         self.Gop = params.get("Gop")
+        self.PreserveHDRSwitch = params.get("PreserveHDRSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

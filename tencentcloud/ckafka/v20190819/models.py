@@ -2998,6 +2998,72 @@ class FetchMessageByOffsetResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class FetchMessageListByOffsetRequest(AbstractModel):
+    """FetchMessageListByOffset request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Topic: Topic name
+        :type Topic: str
+        :param Partition: Partition ID
+        :type Partition: int
+        :param Offset: Offset information
+        :type Offset: int
+        :param SinglePartitionRecordNumber: The maximum number of messages that can be queried. Default value: 20. Maximum value: 20.
+        :type SinglePartitionRecordNumber: int
+        """
+        self.InstanceId = None
+        self.Topic = None
+        self.Partition = None
+        self.Offset = None
+        self.SinglePartitionRecordNumber = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Topic = params.get("Topic")
+        self.Partition = params.get("Partition")
+        self.Offset = params.get("Offset")
+        self.SinglePartitionRecordNumber = params.get("SinglePartitionRecordNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FetchMessageListByOffsetResponse(AbstractModel):
+    """FetchMessageListByOffset response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Returned result. Note: The returned list does not display the message content (key and value). To query the message content, call the `FetchMessageByOffset` API.
+        :type Result: list of ConsumerRecord
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = ConsumerRecord()
+                obj._deserialize(item)
+                self.Result.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class Filter(AbstractModel):
     """Query filter
     >Key-value pair filters for conditional filtering queries, such as filter ID, name, and status

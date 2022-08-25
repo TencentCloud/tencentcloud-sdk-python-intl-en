@@ -27,18 +27,18 @@ class TrtcClient(AbstractClient):
 
 
     def CreateCloudRecording(self, request):
-        """### API description
+        """API description:
         This API is used to start an on-cloud recording task. It records the audio and video streams in a room and saves them to the specified cloud storage. You can use this API to record the streams in a room separately, or you can mix the streams first and then record the mixed stream.
 
-        ### You can use this API to perform the following operations:
+        You can use this API to perform the following operations:
         * Specify the anchors whose streams you want or do not want to record by using the `RecordParams` parameter
         * Specify the storage service you want to save recording files to by using the `StorageParams` parameter
         * Specify transcoding settings for mixed-stream recording, including video resolution, video bitrate, frame rate, and audio quality, by using `MixTranscodeParams`
         * Specify the layout of different videos in mixed-stream recording mode or select an auto-arranged layout template
 
-        ### Key concepts
-        * Single-stream recording: Record the audio and video of each subscribed user (`UserId`) in a room and save the recording files (M3U8/TS) to the cloud
-        * Mixed-stream recording: Mix the audios and videos of subscribed users (`UserId`) in a room, record the mixed stream, and save the recording files (M3U8/TS) to the cloud
+        Key concepts:
+        * Single-stream recording: Record the audio and video of each subscribed user (`UserId`) in a room and save the recording files to VOD.
+        * Mixed-stream recording: Mix the audios and videos of subscribed users (`UserId`) in a room, record the mixed stream, and save the recording files to VOD.
 
         :param request: Request instance for CreateCloudRecording.
         :type request: :class:`tencentcloud.trtc.v20190722.models.CreateCloudRecordingRequest`
@@ -67,7 +67,7 @@ class TrtcClient(AbstractClient):
 
 
     def DeleteCloudRecording(self, request):
-        """This API is used to stop a recording task. It works only when a task is in progress. If the task has already ended when this API is called, an error will be returned. If a task is stopped successfully, but the uploading of recording files has not completed, the backend will continue to upload the files and will notify you via a callback when the upload is completed.
+        """This API is used to stop a recording task. If a task is stopped successfully, but the uploading of recording files has not completed, the backend will continue to upload the files and will notify you via a callback when the upload is completed.
 
         :param request: Request instance for DeleteCloudRecording.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DeleteCloudRecordingRequest`
@@ -97,6 +97,7 @@ class TrtcClient(AbstractClient):
 
     def DescribeCloudRecording(self, request):
         """This API is used to query the status of a recording task after it starts. It works only when a task is in progress. If the task has already ended when this API is called, an error will be returned.
+        If a recording file is being uploaded to VOD, the response parameter `StorageFileList` will not contain the information of the recording file. Please listen for the recording file callback to get the information.
 
         :param request: Request instance for DescribeCloudRecording.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeCloudRecordingRequest`
@@ -270,26 +271,26 @@ class TrtcClient(AbstractClient):
 
 
     def StartPublishCdnStream(self, request):
-        """This API is used to start a relaying task.
-        1. To ensure the stability of relaying, you cannot switch between relaying audio only, relaying audio and video, and relaying video only for the same task.
-        2. To ensure the stability of relaying, you cannot change the video codec, audio codec, sample rate, or number of sound channels during relay.
-        3. The `StartPublishCdnStream` API will return a task ID, which uniquely identifies a relaying task. You need to pass this task ID when making a request to change the relaying parameters or stop the relaying task.
+        """This API is used to mix streams and relay the mixed stream to CDNs. You can use this API to do the following:
+        1. Publish (also known as “relay”) the audio/video stream of one anchor to CDNs. For details, see example 2 (starting a task to relay the audio and video of a stream) and example 3 (starting a task to relay only the audio of a stream).
+        2. Mix the streams of multiple anchors in a room or in different rooms and publish the mixed stream to CDNs. You can use `AudioParams.SubscribeAudioList` to specify the users whose audios are mixed, and use `VideoParams.LayoutParams` to specify the layout of the anchors’ videos. For details, see example 1 (mixing streams and publishing the mixed stream to a CDN).
+        3. Mix multiple streams in a room according to a template and publish the mixed stream to CDNs. The TRTC backend will detect the change of anchors in the room and adjust the video layout automatically according to the stream mixing template. The following template types are supported:
+             - Floating: The entire screen is covered by the video image of the first user who enters the room, and the images of other users are displayed as small images in rows in the bottom-left corner in room entry sequence. The screen allows up to 4 rows of 4 small images, which float over the large main image. Up to 1 large image and 15 small images can be displayed.
+             - Grid: The images of all users split the screen evenly. The more the users, the smaller the image dimensions. Up to 16 images are supported.
+             - Screen sharing: This is designed for video conferencing and online education. The shared screen (or camera image of the anchor) is always displayed as the large main image, which occupies the left half of the screen, and the images of other users occupy the right half in up to two columns of up to eight small images each. Up to 1 large image and 15 small images can be displayed. If the upstream aspect ratio does not match the output, the large image on the left will be scaled and displayed in whole, while the small images on the right will be cropped.
+        4. Publish audio/video streams to up to 10 CDNs at a time. You can use `PublishCdnParams.PublishCdnUrl` to specify the URLs of the CDNs to publish to. To publish to Tencent Cloud’s CDN, set `PublishCdnParams.IsTencentCdn` to 1.
+        5. Configure a server-side callback to have Tencent Cloud send relay status updates to your server in the form of HTTP/HTTPS POST requests. To use the callback for relay events, please contact Technical Support.
+        Notes:
+        1. **Because On-Cloud MixTranscoding is a paid feature, calling this API will incur MixTranscoding fees. For details, see [Billing of MixTranscoding and Relay to CDN](https://intl.cloud.tencent.com/document/product/647/47631?lang=en&pg=).**
+        2. **Relaying to third-party CDNs will incur relaying fees. For details, see [Billing of MixTranscoding and Relay to CDN](https://intl.cloud.tencent.com/document/product/647/47631?lang=en&pg=).**
+
+        Others:
+        1. You need to first call `StartPublishCdnStream` to start a relay task and get the task ID before you can use the `UpdatePublishCdnStream` API to modify the task and `StopPublishCdnStream` to stop the task.
+        2. To ensure the stability of relaying, you cannot switch between relaying audio only, relaying audio and video, and relaying video only for the same task.
+        3. To ensure the stability of relaying, you cannot change the video codec, audio codec, audio sample rate, audio bitrate, or sound channels using the `UpdatePublishCdnStream` API.
         4. When you relay a single stream, specify both `AudioParams` and `VideoParams` to publish both audio and video, and specify only `AudioParams` to publish audio only. You cannot switch between the two modes during the relaying process. For `VideoParams`, set `Width`, `Height`, `Fps`, `Bitrate`, and `Gop` according to the actual settings used for publishing.
-        5. When you make a request to change the relaying parameters, set `AudioParams.SubscribeAudioList` to specify the audios to mix and set `VideoParams.LayoutParams` to specify the video layout.
-        6. The `SequenceNumber` parameter is required when you make a request to change the relaying parameters. It ensures that multiple requests for the same relaying task are in the correct order. The value of `SequenceNumber` increases each time a new request is made for the same task. If `InternalError` is returned, try again using the same `SequenceNumber`. You don’t need to handle the `FailedOperation.OutdateRequest` error.
-        7. In a request to change the relaying parameters, it is OK to pass only the parameters you want to change, but the value of each parameter you pass must be complete.
-        For example, to change the destination URLs, you only need to pass `PublishCdnParams` plus the required parameters of the `UpdatePublishCdnStream` API, but make sure `PublishCdnParams` includes all the URLs you want to relay to.
-        Pass the following parameters to change different relaying parameters:
-            a. WithTranscoding: Pass this parameter to switch from not transcoding to transcoding (this parameter is required).
-            b. AudioParams.UserInfoList: Pass this parameter to change the users whose audios you want to mix.
-            c. VideoParams.VideoEncode: Pass this parameter to change video parameters other than the codec, including the output resolution, bitrate, frame rate, and GOP. This parameter is valid only if streams are transcoded.
-            d. LayoutParams: Pass this parameter to change the video layout. This parameter is valid only if streams are transcoded.
-            e. BackGroundColor and BackgroundImageUrl: Pass these two parameters to change the background image and color. They are valid only when streams are transcoded.
-            f. WaterMarkList: Pass this parameter to change the watermarks. This parameter is valid only if streams are transcoded.
-            g. PublishCdnParams: Pass this parameter to change the destination URLs.
-        8. You can create a relaying task even when there are no anchors in the room, but make sure you manually stop the task when relaying is finished. If you don’t, after all the users whose streams are mixed leave the room, the TRTC backend will wait for the timeout period to elapse before stopping the relaying task.
-        9. You can specify at most 10 destination URLs for each relaying task.
-        10. When making a request to switch from not transcoding to transcoding, you need to specify all the parameters of the relaying task.
+        5. The `SequenceNumber` parameter is required when you call `UpdatePublishCdnStream` to change the relaying parameters. It ensures that multiple requests for the same relaying task are in the correct order. The value of `SequenceNumber` increases each time a new request is made for the same task. If `InternalError` is returned, try again using the same `SequenceNumber`. You don’t need to handle the `FailedOperation.OutdateRequest` error.
+        6. You can create a relay task before anchors enter a room, in which case you need to manually call `StopPublishCdnStream` to stop the task. If you don’t, after all the users whose streams are mixed leave the room, the TRTC backend will wait for the timeout period (`AgentParams.MaxIdleTime`) to elapse before stopping the relaying task.
 
         :param request: Request instance for StartPublishCdnStream.
         :type request: :class:`tencentcloud.trtc.v20190722.models.StartPublishCdnStreamRequest`
