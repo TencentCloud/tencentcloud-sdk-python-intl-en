@@ -1391,6 +1391,89 @@ class PullSmsSendStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ReportConversionRequest(AbstractModel):
+    """ReportConversion request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SmsSdkAppId: The SMS SdkAppId generated after an application is created in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as “1400006666”.
+        :type SmsSdkAppId: str
+        :param SerialNo: The serial number returned for a message sent.
+        :type SerialNo: str
+        :param ConversionTime: The recipient’s reply time in seconds in the format of UNIX timestamp.
+        :type ConversionTime: int
+        """
+        self.SmsSdkAppId = None
+        self.SerialNo = None
+        self.ConversionTime = None
+
+
+    def _deserialize(self, params):
+        self.SmsSdkAppId = params.get("SmsSdkAppId")
+        self.SerialNo = params.get("SerialNo")
+        self.ConversionTime = params.get("ConversionTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReportConversionResponse(AbstractModel):
+    """ReportConversion response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReportConversionStatus: Response packet for conversion rate reporting.
+        :type ReportConversionStatus: :class:`tencentcloud.sms.v20210111.models.ReportConversionStatus`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ReportConversionStatus = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ReportConversionStatus") is not None:
+            self.ReportConversionStatus = ReportConversionStatus()
+            self.ReportConversionStatus._deserialize(params.get("ReportConversionStatus"))
+        self.RequestId = params.get("RequestId")
+
+
+class ReportConversionStatus(AbstractModel):
+    """Response for conversion rate reporting
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Code: Error code. `ok` is returned if the conversion rate is successfully reported.
+        :type Code: str
+        :param Message: Error code description.
+        :type Message: str
+        """
+        self.Code = None
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SendSmsRequest(AbstractModel):
     """SendSms request structure.
 
@@ -1403,10 +1486,9 @@ For example, +8613711112222, which has a + sign followed by 86 (country/region c
         :type PhoneNumberSet: list of str
         :param SmsSdkAppId: The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 1400006666.
         :type SmsSdkAppId: str
-        :param TemplateId: Template ID. You must enter the ID of an approved template, which can be viewed on the [Chinese Mainland SMS](https://console.cloud.tencent.com/smsv2/csms-template) or [Global SMS](https://console.cloud.tencent.com/smsv2/isms-template) body template management page. If you need to send SMS messages to global mobile numbers, you can only use a Global SMS template.
+        :param TemplateId: Template ID, which can be viewed on the **Body Templates** page in [Global SMS](https://console.cloud.tencent.com/smsv2/isms-template). You must enter the ID of an approved template.
         :type TemplateId: str
-        :param SignName: Content of the SMS signature, which should be encoded in UTF-8. You must enter an approved signature, such as Tencent Cloud. The signature information can be viewed on the [Chinese Mainland SMS](https://console.cloud.tencent.com/smsv2/csms-sign) or [Global SMS](https://console.cloud.tencent.com/smsv2/isms-sign) signature management page.
-<dx-alert infotype="notice" title="Note">This parameter is required for Chinese Mainland SMS.</dx-alert>
+        :param SignName: SMS signature information which is encoded in UTF-8. You must enter an approved signature (such as Tencent Cloud). The signing information can be viewed on the **Signatures** page in [Global SMS](https://console.cloud.tencent.com/smsv2/isms-sign).
         :type SignName: str
         :param TemplateParamSet: Template parameter. If there is no template parameter, leave this field empty.
 <dx-alert infotype="notice" title="Note">The number of template parameters should be consistent with that of the template variables of `TemplateId`.</dx-alert>
@@ -1415,8 +1497,8 @@ For example, +8613711112222, which has a + sign followed by 86 (country/region c
         :type ExtendCode: str
         :param SessionContext: User session content, which can carry context information such as user-side ID and will be returned as-is by the server.
         :type SessionContext: str
-        :param SenderId: This parameter is not required for Chinese Mainland SMS. For Global SMS, if you have applied for a separate `SenderId`, this parameter is required. By default, the public `SenderId` is used, in which case you don't need to enter this parameter.
-Note: if your monthly usage reaches the specified threshold, you can apply for an independent `SenderId`. For more information, contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).
+        :param SenderId: For Global SMS, if you have applied for a separate `SenderId`, this parameter is required. By default, the public `SenderId` is used, in which case you don't need to enter this parameter.
+Note: If your monthly usage reaches the specified threshold, you can apply for an independent `SenderId`. For more information, contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).
         :type SenderId: str
         """
         self.PhoneNumberSet = None

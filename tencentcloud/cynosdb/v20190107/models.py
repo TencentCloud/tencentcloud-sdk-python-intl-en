@@ -3480,12 +3480,24 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param NetType: Network type. Valid values: `ro` (read-only), `rw` or `ha` (read-write)
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type NetType: str
+        :param UniqSubnetId: Subnet ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UniqSubnetId: str
+        :param UniqVpcId: VPC ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UniqVpcId: str
+        :param Description: Description
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Description: str
         """
         self.Vip = None
         self.Vport = None
         self.WanDomain = None
         self.WanPort = None
         self.NetType = None
+        self.UniqSubnetId = None
+        self.UniqVpcId = None
+        self.Description = None
 
 
     def _deserialize(self, params):
@@ -3494,6 +3506,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.WanDomain = params.get("WanDomain")
         self.WanPort = params.get("WanPort")
         self.NetType = params.get("NetType")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

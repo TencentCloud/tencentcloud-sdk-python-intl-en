@@ -695,6 +695,9 @@ UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 # The specified instance or network cannot use the bandwidth package.
 UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = 'UnsupportedOperation.BandwidthPackageIdNotSupported'
 
+# 
+UNSUPPORTEDOPERATION_ELASTICNETWORKINTERFACE = 'UnsupportedOperation.ElasticNetworkInterface'
+
 # You cannot change the model of a heterogeneous instance.
 UNSUPPORTEDOPERATION_HETEROGENEOUSCHANGEINSTANCEFAMILY = 'UnsupportedOperation.HeterogeneousChangeInstanceFamily'
 

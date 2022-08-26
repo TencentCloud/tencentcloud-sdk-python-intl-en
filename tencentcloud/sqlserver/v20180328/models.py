@@ -709,6 +709,10 @@ class CreateDBInstancesRequest(AbstractModel):
         :type MultiZones: bool
         :param ResourceTags: Tags associated with the instances to be created
         :type ResourceTags: list of ResourceTag
+        :param Collation: Collation of system character sets. Default value: `Chinese_PRC_CI_AS`.
+        :type Collation: str
+        :param TimeZone: System time zone. Default value: `China Standard Time`.
+        :type TimeZone: str
         """
         self.Zone = None
         self.Memory = None
@@ -730,6 +734,8 @@ class CreateDBInstancesRequest(AbstractModel):
         self.HAType = None
         self.MultiZones = None
         self.ResourceTags = None
+        self.Collation = None
+        self.TimeZone = None
 
 
     def _deserialize(self, params):
@@ -758,6 +764,8 @@ class CreateDBInstancesRequest(AbstractModel):
                 obj = ResourceTag()
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
+        self.Collation = params.get("Collation")
+        self.TimeZone = params.get("TimeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1250,9 +1258,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :type DnsPodDomain: str
         :param TgwWanVPort: Port number of the public network
         :type TgwWanVPort: int
-        :param Collation: 
+        :param Collation: Collation of system character sets. Default value: `Chinese_PRC_CI_AS`.
         :type Collation: str
-        :param TimeZone: 
+        :param TimeZone: System time zone. Default value: `China Standard Time`.
         :type TimeZone: str
         """
         self.InstanceId = None

@@ -56,7 +56,7 @@ FAILEDOPERATION_OTHERERROR = 'FailedOperation.OtherError'
 # Unknown error. If necessary, you can contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) for assistance.
 FAILEDOPERATION_PARAMETERSOTHERERROR = 'FailedOperation.ParametersOtherError'
 
-# The mobile number is in the blocklist. Usually, this is because that the user unsubscribed or the carrier's blocklist was hit. You can contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) for assistance.
+# The mobile number is in the opt-out list. This may be because the recipient has unsubscribed from your service or the mobile number is in the carrier’s opt-out list. To solve this problem, contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).
 FAILEDOPERATION_PHONENUMBERINBLACKLIST = 'FailedOperation.PhoneNumberInBlacklist'
 
 # Failed to parse the mobile number. Please check whether it meets the E.164 standard.
@@ -77,17 +77,26 @@ FAILEDOPERATION_TEMPLATEALREADYPASSEDCHECK = 'FailedOperation.TemplateAlreadyPas
 # The template ID or signature ID does not exist.
 FAILEDOPERATION_TEMPLATEIDNOTEXIST = 'FailedOperation.TemplateIdNotExist'
 
-# The template is not approved or in wrong format. (1) Log in to the [SMS console](https://console.cloud.tencent.com/smsv2) and check whether the template has been approved; (2) Check whether the template is in compliance with the [format specification](https://intl.cloud.tencent.com/document/product/382/9558?from_cn_redirect=1#.E8.BF.94.E5.9B.9E1014.E9.94.99.E8.AF.AF.E5.A6.82.E4.BD.95.E5.A4.84.E7.90.86.EF.BC.9F). If you have any questions, you can contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) for assistance.
+# The template has not been approved or its content does not match that of the approved template. (1) Please log in to the [SMS console](https://console.cloud.tencent.com/smsv2) to check whether the template has been reviewed and approved. (2) Please click [here](https://intl.cloud.tencent.com/document/product/382/9558?from_cn_redirect=1#.E8.BF.94.E5.9B.9E1014.E9.94.99.E8.AF.AF.E5.A6.82.E4.BD.95.E5.A4.84.E7.90.86.EF.BC.9F) to check whether the template format is correct. If you have any questions, contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).
 FAILEDOPERATION_TEMPLATEINCORRECTORUNAPPROVED = 'FailedOperation.TemplateIncorrectOrUnapproved'
 
 # The number of templates has reached the maximum value.
 FAILEDOPERATION_TEMPLATENUMBERLIMIT = 'FailedOperation.TemplateNumberLimit'
+
+# The request content does not match that of the approved template. Please check whether the number of parameters in the request is consistent with that in the approved template. If you have any questions, contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).
+FAILEDOPERATION_TEMPLATEPARAMSETNOTMATCHAPPROVEDTEMPLATE = 'FailedOperation.TemplateParamSetNotMatchApprovedTemplate'
+
+# The template has not been approved or does not exist. Please log in to the [SMS console](https://console.cloud.tencent.com/smsv2) to check whether the template has been reviewed and approved. If you have any questions, contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).
+FAILEDOPERATION_TEMPLATEUNAPPROVEDORNOTEXIST = 'FailedOperation.TemplateUnapprovedOrNotExist'
 
 # Failed to parse the user parameter. You can contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) for assistance.
 INTERNALERROR_JSONPARSEFAIL = 'InternalError.JsonParseFail'
 
 # Other error. You can contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) and provide the failed mobile number for assistance.
 INTERNALERROR_OTHERERROR = 'InternalError.OtherError'
+
+# Failed to parse the carrier’s response packet. Please contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) for assistance.
+INTERNALERROR_PARSEBACKENDRESPONSEFAIL = 'InternalError.ParseBackendResponseFail'
 
 # The request was initiated in an exceptional time. Usually, this is because that the difference between your server time and Tencent Cloud server time exceeds 10 minutes. Please check whether the server time and the time field in the API are correct.
 INTERNALERROR_REQUESTTIMEEXCEPTION = 'InternalError.RequestTimeException'
@@ -182,19 +191,19 @@ INVALIDPARAMETERVALUE_TEMPLATEPARAMETERLENGTHLIMIT = 'InvalidParameterValue.Temp
 # The template content contains sensitive words. For more information, please see [Body Template Review Standards](https://intl.cloud.tencent.com/document/product/382/39023?from_cn_redirect=1).
 INVALIDPARAMETERVALUE_TEMPLATEWITHDIRTYWORDS = 'InvalidParameterValue.TemplateWithDirtyWords'
 
-# The number of SMS messages delivered on the current day for the specified country/region exceeds the configured upper limit. You can adjust the SMS delivery rate limit policy in the console.
+# The number of Global SMS messages sent to the specified country/region per day has exceeded the preset limit. You can adjust the message sending limit in **Application Management** > **Basic Configuration** in the SMS console.
 LIMITEXCEEDED_APPCOUNTRYORREGIONDAILYLIMIT = 'LimitExceeded.AppCountryOrRegionDailyLimit'
 
-# The specified country/region for the SMS message is in the blocklist. You can adjust the SMS delivery limit policy in the console.
+# The Global SMS message failed to be sent because the recipient country/region is not included in the specified country/region list. You can adjust the country/region list in **Application Management** > **Basic Configuration** in the SMS console.
 LIMITEXCEEDED_APPCOUNTRYORREGIONINBLACKLIST = 'LimitExceeded.AppCountryOrRegionInBlacklist'
 
 # The number of SMS messages delivered on the current day exceeds the set upper limit. You can adjust the SMS delivery rate limit policy in the console.
 LIMITEXCEEDED_APPDAILYLIMIT = 'LimitExceeded.AppDailyLimit'
 
-# The number of Global SMS messages delivered on the current day exceeds the configured upper limit. You can adjust the SMS delivery rate limit policy in the console.
+# The number of Global SMS messages sent per day has exceeded the preset limit. You can adjust the message sending threshold in **Application Management** > **Basic Configuration** in the SMS console.
 LIMITEXCEEDED_APPGLOBALDAILYLIMIT = 'LimitExceeded.AppGlobalDailyLimit'
 
-# The number of Chinese Mainland SMS messages delivered on the current day exceeds the configured upper limit. You can adjust the SMS delivery rate limit policy in the console.
+# The number of Chinese Mainland SMS messages sent per day has exceeded the preset limit. You can adjust the message sending threshold in **Application Management** > **Basic Configuration** in the SMS console.
 LIMITEXCEEDED_APPMAINLANDCHINADAILYLIMIT = 'LimitExceeded.AppMainlandChinaDailyLimit'
 
 # The number of SMS messages delivered on the current day exceeds the set upper limit (for Global SMS). If you want to adjust the limit, you can contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1) for assistance.
@@ -245,8 +254,14 @@ UNAUTHORIZEDOPERATION_SMSSDKAPPIDVERIFYFAIL = 'UnauthorizedOperation.SmsSdkAppId
 # The request is not supported.
 UNSUPPORTEDOPERATION_ = 'UnsupportedOperation.'
 
+# A Chinese Mainland SMS template cannot be used to sent messages to global numbers. Please use a Global SMS template instead.
+UNSUPPORTEDOPERATION_CHINESEMAINLANDTEMPLATETOGLOBALPHONE = 'UnsupportedOperation.ChineseMainlandTemplateToGlobalPhone'
+
 # The group message request contains both Chinese mainland numbers and international numbers. Please check: (1) whether the message is sent to international numbers with a Chinese mainland signature or template; (2) whether the message is sent to Chinese mainland numbers with an international signature or template.
 UNSUPPORTEDOPERATION_CONTAINDOMESTICANDINTERNATIONALPHONENUMBER = 'UnsupportedOperation.ContainDomesticAndInternationalPhoneNumber'
+
+# A Global SMS template cannot be used to sent messages to Chinese mainland numbers. Please use a Chinese Mainland SMS template instead.
+UNSUPPORTEDOPERATION_GLOBALTEMPLATETOCHINESEMAINLANDPHONE = 'UnsupportedOperation.GlobalTemplateToChineseMainlandPhone'
 
 # SMS delivery to this region is not supported.
 UNSUPPORTEDOPERATION_UNSUPORTEDREGION = 'UnsupportedOperation.UnsuportedRegion'

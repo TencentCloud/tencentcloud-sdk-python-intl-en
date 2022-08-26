@@ -152,7 +152,7 @@ INVALIDPARAMETERVALUE_PARAMBOTHSETERROR = 'InvalidParameterValue.ParamBothSetErr
 # Incorrect parameter.
 INVALIDPARAMETERVALUE_PARAMERROR = 'InvalidParameterValue.ParamError'
 
-# 
+# Invalid parameter value
 INVALIDPARAMETERVALUE_PARAMETEROUTRANGEERROR = 'InvalidParameterValue.ParameterOutRangeError'
 
 # This operation is not allowed for monthly-subscribed instances.

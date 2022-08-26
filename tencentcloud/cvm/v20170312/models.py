@@ -398,6 +398,38 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         
 
 
+class ChcHostDeniedActions(AbstractModel):
+    """Describe details of actions not allowed for a CHC instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChcId: CHC instance ID
+        :type ChcId: str
+        :param State: CHC instance status
+        :type State: str
+        :param DenyActions: Actions not allowed for the current CHC instance
+        :type DenyActions: list of str
+        """
+        self.ChcId = None
+        self.State = None
+        self.DenyActions = None
+
+
+    def _deserialize(self, params):
+        self.ChcId = params.get("ChcId")
+        self.State = params.get("State")
+        self.DenyActions = params.get("DenyActions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConfigureChcAssistVpcRequest(AbstractModel):
     """ConfigureChcAssistVpc request structure.
 
@@ -927,7 +959,7 @@ class DataDisk(AbstractModel):
         r"""
         :param DiskSize: Data disk size (in GB). The minimum adjustment increment is 10 GB. The value range varies by data disk type. For more information on limits, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). The default value is 0, indicating that no data disk is purchased. For more information, see the product documentation.
         :type DiskSize: int
-        :param DiskType: Data disk type. For more information about limits on different data disk types, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values: <br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>LOCAL_NVME: local NVME disk, specified in the `InstanceType`<br><li>LOCAL_PRO: local HDD disk, specified in the `InstanceType`<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: Tremendous SSD<br><br>Default value: LOCAL_BASIC.<br><br>This parameter is invalid for the `ResizeInstanceDisk` API.
+        :param DiskType: Data disk type. For more information about limits on different data disk types, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values: <br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>LOCAL_NVME: local NVME disk, specified in the `InstanceType`<br><li>LOCAL_PRO: local HDD disk, specified in the `InstanceType`<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: Tremendous SSD<br><li>CLOUD_BSSD: Balanced SSD<br><br>Default value: LOCAL_BASIC.<br><br>This parameter is invalid for the `ResizeInstanceDisk` API.
         :type DiskType: str
         :param DiskId: Data disk ID. Note that it’s not available for `LOCAL_BASIC` and `LOCAL_SSD` disks.
 It is only used as a response parameter for APIs such as `DescribeInstances`, and cannot be used as a request parameter for APIs such as `RunInstances`.
@@ -1205,6 +1237,56 @@ class DeleteLaunchTemplateVersionsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeChcDeniedActionsRequest(AbstractModel):
+    """DescribeChcDeniedActions request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChcIds: CHC instance ID
+        :type ChcIds: list of str
+        """
+        self.ChcIds = None
+
+
+    def _deserialize(self, params):
+        self.ChcIds = params.get("ChcIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeChcDeniedActionsResponse(AbstractModel):
+    """DescribeChcDeniedActions response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChcHostDeniedActionSet: Actions not allowed for the CHC instance
+        :type ChcHostDeniedActionSet: list of ChcHostDeniedActions
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ChcHostDeniedActionSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ChcHostDeniedActionSet") is not None:
+            self.ChcHostDeniedActionSet = []
+            for item in params.get("ChcHostDeniedActionSet"):
+                obj = ChcHostDeniedActions()
+                obj._deserialize(item)
+                self.ChcHostDeniedActionSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -6121,7 +6203,7 @@ class RunInstancesRequest(AbstractModel):
         :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
         :param DataDisks: The configuration information of instance data disks. If this parameter is not specified, no data disk will be purchased by default. When purchasing, you can specify 21 data disks, which can contain at most 1 LOCAL_BASIC or LOCAL_SSD data disk, and at most 20 CLOUD_BASIC, CLOUD_PREMIUM, or CLOUD_SSD data disks.
         :type DataDisks: list of DataDisk
-        :param VirtualPrivateCloud: Configuration information of VPC. This parameter is used to specify VPC ID and subnet ID, etc. If this parameter is not specified, the classic network is used by default. If a VPC IP is specified in this parameter, it indicates the primary ENI IP of each instance. The value of parameter InstanceCount must be same as the number of VPC IPs, which cannot be greater than 20.
+        :param VirtualPrivateCloud: Configuration information of VPC. This parameter is used to specify VPC ID and subnet ID, etc. If a VPC IP is specified in this parameter, it indicates the primary ENI IP of each instance. The value of parameter InstanceCount must be the same as the number of VPC IPs, which cannot be greater than 20.
         :type VirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         :param InternetAccessible: Configuration of public network bandwidth. If this parameter is not specified, 0 Mbps will be used by default.
         :type InternetAccessible: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
@@ -6273,7 +6355,7 @@ class RunInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceIdSet: If you use this API to create instance(s), this parameter will be returned, representing one or more instance IDs. Retuning the instance ID list does not necessarily mean that the instance(s) were created successfully. To check whether the instance(s) were created successfully, you can call [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and check the status of the instances in `InstancesSet` in the response. If the status of an instance changes from "preparing" to "running", it means that the instance has been created successfully.
+        :param InstanceIdSet: If you use this API to create instance(s), this parameter will be returned, representing one or more instance IDs. Retuning the instance ID list does not necessarily mean that the instance(s) were created successfully. To check whether the instance(s) were created successfully, you can call [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and check the status of the instances in `InstancesSet` in the response. If the status of an instance changes from "PENDING" to "RUNNING", it means that the instance has been created successfully.
         :type InstanceIdSet: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -6612,7 +6694,7 @@ class SystemDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskType: System disk type. For more information on limits of system disk types, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values:<br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_SSD: SSD<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><br>The disk type currently in stock will be used by default. 
+        :param DiskType: System disk type. For more information about the limits of system disk types, please see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values:<br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_SSD: SSD cloud disk<br><li>CLOUD_PREMIUM: Premium cloud storage<br><li>CLOUD_BSSD: Balanced SSD<br><br>The disk currently in stock will be used by default.
         :type DiskType: str
         :param DiskId: System disk ID. System disks whose type is `LOCAL_BASIC` or `LOCAL_SSD` do not have an ID and do not support this parameter.
 It is only used as a response parameter for APIs such as `DescribeInstances`, and cannot be used as a request parameter for APIs such as `RunInstances`.

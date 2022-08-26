@@ -637,7 +637,7 @@ class ConsumerContent(AbstractModel):
         :param EnableTag: Whether to ship tag information
 Note: This field may return `null`, indicating that no valid value was found.
         :type EnableTag: bool
-        :param MetaFields: List of metadata to ship. Only \_\_SOURCE\_\_, \_\_FILENAME\_\_, and \_\_TIMESTAMP\_\_ are supported.
+        :param MetaFields: List of metadata to ship. Supported metadata types: \_\_SOURCE\_\_, \_\_FILENAME\_\_, \_\_TIMESTAMP\_\_, \_\_HOSTNAME\_\_, and \_\_PKGID\_\_.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MetaFields: list of str
         :param TagJsonNotTiled: This parameter is required if `EnableTag` is `true`, and is used to specify whether the tag information is JSON tiled. Valid values: `true` (not tiled); `false` (tiled)
@@ -972,11 +972,14 @@ class CreateConsumerRequest(AbstractModel):
         :type Content: :class:`tencentcloud.cls.v20201016.models.ConsumerContent`
         :param Ckafka: CKafka information
         :type Ckafka: :class:`tencentcloud.cls.v20201016.models.Ckafka`
+        :param Compression: Compression mode. Valid values: `0` (no compression), `2` (snappy), `3` (LZ4).
+        :type Compression: int
         """
         self.TopicId = None
         self.NeedContent = None
         self.Content = None
         self.Ckafka = None
+        self.Compression = None
 
 
     def _deserialize(self, params):
@@ -988,6 +991,7 @@ class CreateConsumerRequest(AbstractModel):
         if params.get("Ckafka") is not None:
             self.Ckafka = Ckafka()
             self.Ckafka._deserialize(params.get("Ckafka"))
+        self.Compression = params.get("Compression")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2301,6 +2305,9 @@ Note: This field may return `null`, indicating that no valid value was found.
         :type Content: :class:`tencentcloud.cls.v20201016.models.ConsumerContent`
         :param Ckafka: CKafka information
         :type Ckafka: :class:`tencentcloud.cls.v20201016.models.Ckafka`
+        :param Compression: Compression mode. Valid values: `0` (no compression), `2` (snappy), `3` (LZ4).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Compression: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -2308,6 +2315,7 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.NeedContent = None
         self.Content = None
         self.Ckafka = None
+        self.Compression = None
         self.RequestId = None
 
 
@@ -2320,6 +2328,7 @@ Note: This field may return `null`, indicating that no valid value was found.
         if params.get("Ckafka") is not None:
             self.Ckafka = Ckafka()
             self.Ckafka._deserialize(params.get("Ckafka"))
+        self.Compression = params.get("Compression")
         self.RequestId = params.get("RequestId")
 
 
@@ -4379,12 +4388,15 @@ class ModifyConsumerRequest(AbstractModel):
         :type Content: :class:`tencentcloud.cls.v20201016.models.ConsumerContent`
         :param Ckafka: CKafka information
         :type Ckafka: :class:`tencentcloud.cls.v20201016.models.Ckafka`
+        :param Compression: Compression mode. Valid values: `0` (no compression), `2` (snappy), `3` (LZ4).
+        :type Compression: int
         """
         self.TopicId = None
         self.Effective = None
         self.NeedContent = None
         self.Content = None
         self.Ckafka = None
+        self.Compression = None
 
 
     def _deserialize(self, params):
@@ -4397,6 +4409,7 @@ class ModifyConsumerRequest(AbstractModel):
         if params.get("Ckafka") is not None:
             self.Ckafka = Ckafka()
             self.Ckafka._deserialize(params.get("Ckafka"))
+        self.Compression = params.get("Compression")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
