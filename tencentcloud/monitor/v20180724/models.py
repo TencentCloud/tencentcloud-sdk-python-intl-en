@@ -933,6 +933,47 @@ class CLSNotice(AbstractModel):
         
 
 
+class CleanGrafanaInstanceRequest(AbstractModel):
+    """CleanGrafanaInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance name
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CleanGrafanaInstanceResponse(AbstractModel):
+    """CleanGrafanaInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CommonNamespace(AbstractModel):
     """Unified namespace information
 
@@ -976,6 +1017,47 @@ class CommonNamespace(AbstractModel):
         self.AvailableRegions = params.get("AvailableRegions")
         self.SortId = params.get("SortId")
         self.DashboardId = params.get("DashboardId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CommonNamespaceNew(AbstractModel):
+    """Policy type information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: Namespace ID
+        :type Id: str
+        :param Name: Namespace name
+        :type Name: str
+        :param MonitorType: Monitoring type
+        :type MonitorType: str
+        :param Dimensions: Dimension information
+        :type Dimensions: list of DimensionNew
+        """
+        self.Id = None
+        self.Name = None
+        self.MonitorType = None
+        self.Dimensions = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.MonitorType = params.get("MonitorType")
+        if params.get("Dimensions") is not None:
+            self.Dimensions = []
+            for item in params.get("Dimensions"):
+                obj = DimensionNew()
+                obj._deserialize(item)
+                self.Dimensions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1439,6 +1521,182 @@ class CreateExporterIntegrationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateGrafanaInstanceRequest(AbstractModel):
+    """CreateGrafanaInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param SubnetIds: Array of subnet IDs
+        :type SubnetIds: list of str
+        :param GrafanaInitPassword: Initial Grafana password
+        :type GrafanaInitPassword: str
+        :param EnableInternet: Whether to enable public network access
+        :type EnableInternet: bool
+        :param TagSpecification: Tag
+        :type TagSpecification: list of PrometheusTag
+        """
+        self.InstanceName = None
+        self.VpcId = None
+        self.SubnetIds = None
+        self.GrafanaInitPassword = None
+        self.EnableInternet = None
+        self.TagSpecification = None
+
+
+    def _deserialize(self, params):
+        self.InstanceName = params.get("InstanceName")
+        self.VpcId = params.get("VpcId")
+        self.SubnetIds = params.get("SubnetIds")
+        self.GrafanaInitPassword = params.get("GrafanaInitPassword")
+        self.EnableInternet = params.get("EnableInternet")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = PrometheusTag()
+                obj._deserialize(item)
+                self.TagSpecification.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateGrafanaInstanceResponse(AbstractModel):
+    """CreateGrafanaInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance name
+        :type InstanceId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateGrafanaIntegrationRequest(AbstractModel):
+    """CreateGrafanaIntegration request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance name
+        :type InstanceId: str
+        :param Kind: Type
+        :type Kind: str
+        :param Content: Configuration
+        :type Content: str
+        """
+        self.InstanceId = None
+        self.Kind = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Kind = params.get("Kind")
+        self.Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateGrafanaIntegrationResponse(AbstractModel):
+    """CreateGrafanaIntegration response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateGrafanaNotificationChannelRequest(AbstractModel):
+    """CreateGrafanaNotificationChannel request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance name
+        :type InstanceId: str
+        :param ChannelName: Channel name
+        :type ChannelName: str
+        :param OrgId: Organization ID
+        :type OrgId: int
+        :param Receivers: Array of notification channel IDs
+        :type Receivers: list of str
+        :param ExtraOrgIds: Array of extra organization IDs
+        :type ExtraOrgIds: list of str
+        """
+        self.InstanceId = None
+        self.ChannelName = None
+        self.OrgId = None
+        self.Receivers = None
+        self.ExtraOrgIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ChannelName = params.get("ChannelName")
+        self.OrgId = params.get("OrgId")
+        self.Receivers = params.get("Receivers")
+        self.ExtraOrgIds = params.get("ExtraOrgIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateGrafanaNotificationChannelResponse(AbstractModel):
+    """CreateGrafanaNotificationChannel response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreatePolicyGroupCondition(AbstractModel):
     """Alarm threshold condition passed in when a policy is created.
 
@@ -1864,6 +2122,64 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class CreateSSOAccountRequest(AbstractModel):
+    """CreateSSOAccount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param UserId: User account ID
+        :type UserId: str
+        :param Role: Permission
+        :type Role: list of GrafanaAccountRole
+        :param Notes: Remarks
+        :type Notes: str
+        """
+        self.InstanceId = None
+        self.UserId = None
+        self.Role = None
+        self.Notes = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.UserId = params.get("UserId")
+        if params.get("Role") is not None:
+            self.Role = []
+            for item in params.get("Role"):
+                obj = GrafanaAccountRole()
+                obj._deserialize(item)
+                self.Role.append(obj)
+        self.Notes = params.get("Notes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSSOAccountResponse(AbstractModel):
+    """CreateSSOAccount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateServiceDiscoveryRequest(AbstractModel):
     """CreateServiceDiscovery request structure.
 
@@ -2163,6 +2479,137 @@ class DeleteExporterIntegrationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteGrafanaInstanceRequest(AbstractModel):
+    """DeleteGrafanaInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIDs: Array of instance names
+        :type InstanceIDs: list of str
+        """
+        self.InstanceIDs = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIDs = params.get("InstanceIDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGrafanaInstanceResponse(AbstractModel):
+    """DeleteGrafanaInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteGrafanaIntegrationRequest(AbstractModel):
+    """DeleteGrafanaIntegration request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param IntegrationId: Integration ID
+        :type IntegrationId: str
+        """
+        self.InstanceId = None
+        self.IntegrationId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.IntegrationId = params.get("IntegrationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGrafanaIntegrationResponse(AbstractModel):
+    """DeleteGrafanaIntegration response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteGrafanaNotificationChannelRequest(AbstractModel):
+    """DeleteGrafanaNotificationChannel request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelIDs: Array of channel IDs
+        :type ChannelIDs: list of str
+        :param InstanceId: Instance name
+        :type InstanceId: str
+        """
+        self.ChannelIDs = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.ChannelIDs = params.get("ChannelIDs")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGrafanaNotificationChannelResponse(AbstractModel):
+    """DeleteGrafanaNotificationChannel response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeletePolicyGroupRequest(AbstractModel):
     """DeletePolicyGroup request structure.
 
@@ -2287,6 +2734,51 @@ class DeleteRecordingRulesRequest(AbstractModel):
 
 class DeleteRecordingRulesResponse(AbstractModel):
     """DeleteRecordingRules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteSSOAccountRequest(AbstractModel):
+    """DeleteSSOAccount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param UserId: User account ID
+        :type UserId: str
+        """
+        self.InstanceId = None
+        self.UserId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSSOAccountResponse(AbstractModel):
+    """DeleteSSOAccount response structure.
 
     """
 
@@ -3228,6 +3720,9 @@ class DescribeAllNamespacesResponse(AbstractModel):
         :type QceNamespacesNew: list of CommonNamespace
         :param CustomNamespacesNew: Other alarm policy type (not supported currently)
         :type CustomNamespacesNew: list of CommonNamespace
+        :param CommonNamespaces: General alarm policy type, including TAPM, RUM, and CAT.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CommonNamespaces: list of CommonNamespaceNew
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -3235,6 +3730,7 @@ class DescribeAllNamespacesResponse(AbstractModel):
         self.CustomNamespaces = None
         self.QceNamespacesNew = None
         self.CustomNamespacesNew = None
+        self.CommonNamespaces = None
         self.RequestId = None
 
 
@@ -3257,6 +3753,12 @@ class DescribeAllNamespacesResponse(AbstractModel):
                 obj = CommonNamespace()
                 obj._deserialize(item)
                 self.CustomNamespacesNew.append(obj)
+        if params.get("CommonNamespaces") is not None:
+            self.CommonNamespaces = []
+            for item in params.get("CommonNamespaces"):
+                obj = CommonNamespaceNew()
+                obj._deserialize(item)
+                self.CommonNamespaces.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3533,11 +4035,15 @@ Note: This field may return null, indicating that no valid value was found.
         :param Total: Total number.
 Note: This field may return null, indicating that no valid value was found.
         :type Total: int
+        :param Warning: Remarks
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Warning: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.Alarms = None
         self.Total = None
+        self.Warning = None
         self.RequestId = None
 
 
@@ -3549,6 +4055,7 @@ Note: This field may return null, indicating that no valid value was found.
                 obj._deserialize(item)
                 self.Alarms.append(obj)
         self.Total = params.get("Total")
+        self.Warning = params.get("Warning")
         self.RequestId = params.get("RequestId")
 
 
@@ -3847,6 +4354,51 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDNSConfigRequest(AbstractModel):
+    """DescribeDNSConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance name
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDNSConfigResponse(AbstractModel):
+    """DescribeDNSConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NameServers: Array of DNS servers
+        :type NameServers: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.NameServers = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NameServers = params.get("NameServers")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeExporterIntegrationsRequest(AbstractModel):
     """DescribeExporterIntegrations request structure.
 
@@ -3913,6 +4465,407 @@ class DescribeExporterIntegrationsResponse(AbstractModel):
                 obj = IntegrationConfiguration()
                 obj._deserialize(item)
                 self.IntegrationSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGrafanaConfigRequest(AbstractModel):
+    """DescribeGrafanaConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: None
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGrafanaConfigResponse(AbstractModel):
+    """DescribeGrafanaConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Config: JSON-encoded string
+        :type Config: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Config = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Config = params.get("Config")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGrafanaEnvironmentsRequest(AbstractModel):
+    """DescribeGrafanaEnvironments request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance name
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGrafanaEnvironmentsResponse(AbstractModel):
+    """DescribeGrafanaEnvironments response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Envs: Environment variable string
+        :type Envs: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Envs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Envs = params.get("Envs")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGrafanaInstancesRequest(AbstractModel):
+    """DescribeGrafanaInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: Offset for query
+        :type Offset: int
+        :param Limit: Number of items to be queried
+        :type Limit: int
+        :param InstanceIds: Array of instance IDs
+        :type InstanceIds: list of str
+        :param InstanceName: Instance name, which supports fuzzy search by prefix.
+        :type InstanceName: str
+        :param InstanceStatus: Query status
+        :type InstanceStatus: list of int
+        :param TagFilters: Array of tag filters
+        :type TagFilters: list of PrometheusTag
+        """
+        self.Offset = None
+        self.Limit = None
+        self.InstanceIds = None
+        self.InstanceName = None
+        self.InstanceStatus = None
+        self.TagFilters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.InstanceIds = params.get("InstanceIds")
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceStatus = params.get("InstanceStatus")
+        if params.get("TagFilters") is not None:
+            self.TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = PrometheusTag()
+                obj._deserialize(item)
+                self.TagFilters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGrafanaInstancesResponse(AbstractModel):
+    """DescribeGrafanaInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceSet: This parameter has been disused. Use `Instances` instead.
+        :type InstanceSet: list of GrafanaInstanceInfo
+        :param TotalCount: Number of eligible instances
+        :type TotalCount: int
+        :param Instances: List of instances
+        :type Instances: list of GrafanaInstanceInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceSet = None
+        self.TotalCount = None
+        self.Instances = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceSet") is not None:
+            self.InstanceSet = []
+            for item in params.get("InstanceSet"):
+                obj = GrafanaInstanceInfo()
+                obj._deserialize(item)
+                self.InstanceSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = GrafanaInstanceInfo()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGrafanaIntegrationsRequest(AbstractModel):
+    """DescribeGrafanaIntegrations request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance name
+        :type InstanceId: str
+        :param IntegrationId: Integration ID
+        :type IntegrationId: str
+        :param Kind: Type
+        :type Kind: str
+        """
+        self.InstanceId = None
+        self.IntegrationId = None
+        self.Kind = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.IntegrationId = params.get("IntegrationId")
+        self.Kind = params.get("Kind")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGrafanaIntegrationsResponse(AbstractModel):
+    """DescribeGrafanaIntegrations response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IntegrationSet: Array of integrations
+        :type IntegrationSet: list of GrafanaIntegrationConfig
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.IntegrationSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("IntegrationSet") is not None:
+            self.IntegrationSet = []
+            for item in params.get("IntegrationSet"):
+                obj = GrafanaIntegrationConfig()
+                obj._deserialize(item)
+                self.IntegrationSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGrafanaNotificationChannelsRequest(AbstractModel):
+    """DescribeGrafanaNotificationChannels request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance name
+        :type InstanceId: str
+        :param Offset: Offset
+        :type Offset: int
+        :param Limit: Number of items to be queried
+        :type Limit: int
+        :param ChannelName: Channel name
+        :type ChannelName: str
+        :param ChannelIDs: Channel ID
+        :type ChannelIDs: list of str
+        :param ChannelState: Status
+        :type ChannelState: int
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+        self.ChannelName = None
+        self.ChannelIDs = None
+        self.ChannelState = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ChannelName = params.get("ChannelName")
+        self.ChannelIDs = params.get("ChannelIDs")
+        self.ChannelState = params.get("ChannelState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGrafanaNotificationChannelsResponse(AbstractModel):
+    """DescribeGrafanaNotificationChannels response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NotificationChannelSet: Array of notification channels
+        :type NotificationChannelSet: list of GrafanaNotificationChannel
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.NotificationChannelSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NotificationChannelSet") is not None:
+            self.NotificationChannelSet = []
+            for item in params.get("NotificationChannelSet"):
+                obj = GrafanaNotificationChannel()
+                obj._deserialize(item)
+                self.NotificationChannelSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGrafanaWhiteListRequest(AbstractModel):
+    """DescribeGrafanaWhiteList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance name
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGrafanaWhiteListResponse(AbstractModel):
+    """DescribeGrafanaWhiteList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WhiteList: Array
+        :type WhiteList: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.WhiteList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.WhiteList = params.get("WhiteList")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstalledPluginsRequest(AbstractModel):
+    """DescribeInstalledPlugins request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstalledPluginsResponse(AbstractModel):
+    """DescribeInstalledPlugins response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PluginSet: List of plugins
+        :type PluginSet: list of GrafanaPlugin
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.PluginSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PluginSet") is not None:
+            self.PluginSet = []
+            for item in params.get("PluginSet"):
+                obj = GrafanaPlugin()
+                obj._deserialize(item)
+                self.PluginSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -5129,11 +6082,15 @@ Note: This field may return null, indicating that no valid value was found.
         :type GroupList: list of DescribePolicyGroupListGroup
         :param Total: Total number of policy groups.
         :type Total: int
+        :param Warning: Remarks
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Warning: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.GroupList = None
         self.Total = None
+        self.Warning = None
         self.RequestId = None
 
 
@@ -5145,6 +6102,7 @@ Note: This field may return null, indicating that no valid value was found.
                 obj._deserialize(item)
                 self.GroupList.append(obj)
         self.Total = params.get("Total")
+        self.Warning = params.get("Warning")
         self.RequestId = params.get("RequestId")
 
 
@@ -5872,6 +6830,57 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSSOAccountRequest(AbstractModel):
+    """DescribeSSOAccount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSSOAccountResponse(AbstractModel):
+    """DescribeSSOAccount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccountSet: List of authorized accounts
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AccountSet: list of GrafanaAccountInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AccountSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AccountSet") is not None:
+            self.AccountSet = []
+            for item in params.get("AccountSet"):
+                obj = GrafanaAccountInfo()
+                obj._deserialize(item)
+                self.AccountSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeServiceDiscoveryRequest(AbstractModel):
     """DescribeServiceDiscovery request structure.
 
@@ -6101,6 +7110,80 @@ class Dimension(AbstractModel):
         
 
 
+class DimensionNew(AbstractModel):
+    """Dimension information of the policy type
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: Dimension key ID displayed on the backend
+        :type Key: str
+        :param Name: Dimension key name displayed on the frontend
+        :type Name: str
+        :param IsRequired: Whether it is required
+        :type IsRequired: bool
+        :param Operators: List of supported operators
+        :type Operators: list of Operator
+        :param IsMultiple: Whether multiple items can be selected
+        :type IsMultiple: bool
+        :param IsMutable: Whether it can be modified after creation
+        :type IsMutable: bool
+        :param IsVisible: Whether it is displayed to users
+        :type IsVisible: bool
+        :param CanFilterPolicy: Whether it can be used to filter policies
+        :type CanFilterPolicy: bool
+        :param CanFilterHistory: Whether it can be used to filter historical alarms
+        :type CanFilterHistory: bool
+        :param CanGroupBy: Whether it can be used as an aggregate dimension
+        :type CanGroupBy: bool
+        :param MustGroupBy: Whether it must be used as an aggregate dimension
+        :type MustGroupBy: bool
+        :param ShowValueReplace: The key to be replaced on the frontend
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ShowValueReplace: str
+        """
+        self.Key = None
+        self.Name = None
+        self.IsRequired = None
+        self.Operators = None
+        self.IsMultiple = None
+        self.IsMutable = None
+        self.IsVisible = None
+        self.CanFilterPolicy = None
+        self.CanFilterHistory = None
+        self.CanGroupBy = None
+        self.MustGroupBy = None
+        self.ShowValueReplace = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Name = params.get("Name")
+        self.IsRequired = params.get("IsRequired")
+        if params.get("Operators") is not None:
+            self.Operators = []
+            for item in params.get("Operators"):
+                obj = Operator()
+                obj._deserialize(item)
+                self.Operators.append(obj)
+        self.IsMultiple = params.get("IsMultiple")
+        self.IsMutable = params.get("IsMutable")
+        self.IsVisible = params.get("IsVisible")
+        self.CanFilterPolicy = params.get("CanFilterPolicy")
+        self.CanFilterHistory = params.get("CanFilterHistory")
+        self.CanGroupBy = params.get("CanGroupBy")
+        self.MustGroupBy = params.get("MustGroupBy")
+        self.ShowValueReplace = params.get("ShowValueReplace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DimensionsDesc(AbstractModel):
     """Dimension information
 
@@ -6123,6 +7206,141 @@ class DimensionsDesc(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class EnableGrafanaInternetRequest(AbstractModel):
+    """EnableGrafanaInternet request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceID: Instance ID
+        :type InstanceID: str
+        :param EnableInternet: Enable or disable
+        :type EnableInternet: bool
+        """
+        self.InstanceID = None
+        self.EnableInternet = None
+
+
+    def _deserialize(self, params):
+        self.InstanceID = params.get("InstanceID")
+        self.EnableInternet = params.get("EnableInternet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableGrafanaInternetResponse(AbstractModel):
+    """EnableGrafanaInternet response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EnableGrafanaSSORequest(AbstractModel):
+    """EnableGrafanaSSO request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnableSSO: Whether to enable SSO
+        :type EnableSSO: bool
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self.EnableSSO = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.EnableSSO = params.get("EnableSSO")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableGrafanaSSOResponse(AbstractModel):
+    """EnableGrafanaSSO response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EnableSSOCamCheckRequest(AbstractModel):
+    """EnableSSOCamCheck request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param EnableSSOCamCheck: Whether to enable CAM authentication
+        :type EnableSSOCamCheck: bool
+        """
+        self.InstanceId = None
+        self.EnableSSOCamCheck = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.EnableSSOCamCheck = params.get("EnableSSOCamCheck")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableSSOCamCheckResponse(AbstractModel):
+    """EnableSSOCamCheck response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class EventCondition(AbstractModel):
@@ -6306,6 +7524,332 @@ class GetPrometheusAgentManagementCommandResponse(AbstractModel):
         if params.get("Command") is not None:
             self.Command = ManagementCommand()
             self.Command._deserialize(params.get("Command"))
+        self.RequestId = params.get("RequestId")
+
+
+class GrafanaAccountInfo(AbstractModel):
+    """TCMG authorized account information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserId: User account ID
+        :type UserId: str
+        :param Role: User permission
+        :type Role: list of GrafanaAccountRole
+        :param Notes: Remarks
+        :type Notes: str
+        :param CreateAt: Creation time
+        :type CreateAt: str
+        """
+        self.UserId = None
+        self.Role = None
+        self.Notes = None
+        self.CreateAt = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        if params.get("Role") is not None:
+            self.Role = []
+            for item in params.get("Role"):
+                obj = GrafanaAccountRole()
+                obj._deserialize(item)
+                self.Role.append(obj)
+        self.Notes = params.get("Notes")
+        self.CreateAt = params.get("CreateAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GrafanaAccountRole(AbstractModel):
+    """TCMG account permission
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Organization: Organization
+        :type Organization: str
+        :param Role: Permission
+        :type Role: str
+        """
+        self.Organization = None
+        self.Role = None
+
+
+    def _deserialize(self, params):
+        self.Organization = params.get("Organization")
+        self.Role = params.get("Role")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GrafanaInstanceInfo(AbstractModel):
+    """Instance type when the Grafana instance is queried
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Region: Region
+        :type Region: str
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param SubnetIds: Array of subnet IDs
+        :type SubnetIds: list of str
+        :param InternetUrl: Grafana private network address
+        :type InternetUrl: str
+        :param InternalUrl: Grafana public network address
+        :type InternalUrl: str
+        :param CreatedAt: Creation time
+        :type CreatedAt: str
+        :param InstanceStatus: Status. Valid values: `1` (creating), `2` (running), `3` (abnormal), `4` (restarting), `5` (stopping), `6` (stopped), `7` (deleted).
+        :type InstanceStatus: int
+        :param TagSpecification: Instance tag
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TagSpecification: list of PrometheusTag
+        :param Zone: Instance AZ
+        :type Zone: str
+        :param InstanceChargeType: Billing mode. Valid value: `1` (monthly subscription).
+        :type InstanceChargeType: int
+        :param VpcName: VPC name
+        :type VpcName: str
+        :param SubnetName: Subnet name
+        :type SubnetName: str
+        :param RegionId: Region ID
+        :type RegionId: int
+        :param RootUrl: The full URL used to access this instance
+        :type RootUrl: str
+        :param EnableSSO: Whether to enable SSO
+        :type EnableSSO: bool
+        :param Version: Version number
+        :type Version: str
+        :param EnableSSOCamCheck: Whether to enable CAM authentication during SSO
+        :type EnableSSOCamCheck: bool
+        """
+        self.InstanceName = None
+        self.InstanceId = None
+        self.Region = None
+        self.VpcId = None
+        self.SubnetIds = None
+        self.InternetUrl = None
+        self.InternalUrl = None
+        self.CreatedAt = None
+        self.InstanceStatus = None
+        self.TagSpecification = None
+        self.Zone = None
+        self.InstanceChargeType = None
+        self.VpcName = None
+        self.SubnetName = None
+        self.RegionId = None
+        self.RootUrl = None
+        self.EnableSSO = None
+        self.Version = None
+        self.EnableSSOCamCheck = None
+
+
+    def _deserialize(self, params):
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceId = params.get("InstanceId")
+        self.Region = params.get("Region")
+        self.VpcId = params.get("VpcId")
+        self.SubnetIds = params.get("SubnetIds")
+        self.InternetUrl = params.get("InternetUrl")
+        self.InternalUrl = params.get("InternalUrl")
+        self.CreatedAt = params.get("CreatedAt")
+        self.InstanceStatus = params.get("InstanceStatus")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = PrometheusTag()
+                obj._deserialize(item)
+                self.TagSpecification.append(obj)
+        self.Zone = params.get("Zone")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.VpcName = params.get("VpcName")
+        self.SubnetName = params.get("SubnetName")
+        self.RegionId = params.get("RegionId")
+        self.RootUrl = params.get("RootUrl")
+        self.EnableSSO = params.get("EnableSSO")
+        self.Version = params.get("Version")
+        self.EnableSSOCamCheck = params.get("EnableSSOCamCheck")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GrafanaIntegrationConfig(AbstractModel):
+    """Grafana instance configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IntegrationId: Integration ID
+        :type IntegrationId: str
+        :param Kind: Integration type
+        :type Kind: str
+        :param Content: Integration content
+        :type Content: str
+        :param Description: Integration description
+        :type Description: str
+        """
+        self.IntegrationId = None
+        self.Kind = None
+        self.Content = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.IntegrationId = params.get("IntegrationId")
+        self.Kind = params.get("Kind")
+        self.Content = params.get("Content")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GrafanaNotificationChannel(AbstractModel):
+    """Grafana notification channel
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelId: Channel ID
+        :type ChannelId: str
+        :param ChannelName: Channel name
+        :type ChannelName: str
+        :param Receivers: Array of notification channel template IDs
+        :type Receivers: list of str
+        :param CreatedAt: Creation time
+        :type CreatedAt: str
+        :param UpdatedAt: Update time
+        :type UpdatedAt: str
+        """
+        self.ChannelId = None
+        self.ChannelName = None
+        self.Receivers = None
+        self.CreatedAt = None
+        self.UpdatedAt = None
+
+
+    def _deserialize(self, params):
+        self.ChannelId = params.get("ChannelId")
+        self.ChannelName = params.get("ChannelName")
+        self.Receivers = params.get("Receivers")
+        self.CreatedAt = params.get("CreatedAt")
+        self.UpdatedAt = params.get("UpdatedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GrafanaPlugin(AbstractModel):
+    """Grafana plugin
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PluginId: Grafana plugin ID
+        :type PluginId: str
+        :param Version: Grafana plugin version
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Version: str
+        """
+        self.PluginId = None
+        self.Version = None
+
+
+    def _deserialize(self, params):
+        self.PluginId = params.get("PluginId")
+        self.Version = params.get("Version")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstallPluginsRequest(AbstractModel):
+    """InstallPlugins request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Plugins: Plugin information
+        :type Plugins: list of GrafanaPlugin
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self.Plugins = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Plugins") is not None:
+            self.Plugins = []
+            for item in params.get("Plugins"):
+                obj = GrafanaPlugin()
+                obj._deserialize(item)
+                self.Plugins.append(obj)
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstallPluginsResponse(AbstractModel):
+    """InstallPlugins response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -7242,6 +8786,51 @@ class ModifyAlarmReceiversResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyGrafanaInstanceRequest(AbstractModel):
+    """ModifyGrafanaInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyGrafanaInstanceResponse(AbstractModel):
+    """ModifyGrafanaInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyPolicyGroupCondition(AbstractModel):
     """Modification of the metric threshold condition passed in by the alarm policy group.
 
@@ -7513,6 +9102,34 @@ class MonitorTypeNamespace(AbstractModel):
     def _deserialize(self, params):
         self.MonitorType = params.get("MonitorType")
         self.Namespace = params.get("Namespace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Operator(AbstractModel):
+    """Operators supported by the instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: Operator ID
+        :type Id: str
+        :param Name: Operator name
+        :type Name: str
+        """
+        self.Id = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8413,6 +10030,47 @@ class RecordingRuleSet(AbstractModel):
         
 
 
+class ResumeGrafanaInstanceRequest(AbstractModel):
+    """ResumeGrafanaInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResumeGrafanaInstanceResponse(AbstractModel):
+    """ResumeGrafanaInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class SendCustomAlarmMsgRequest(AbstractModel):
     """SendCustomAlarmMsg request structure.
 
@@ -8999,6 +10657,51 @@ class UninstallGrafanaDashboardResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UninstallGrafanaPluginsRequest(AbstractModel):
+    """UninstallGrafanaPlugins request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PluginIds: Array of plugin IDs
+        :type PluginIds: list of str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self.PluginIds = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.PluginIds = params.get("PluginIds")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UninstallGrafanaPluginsResponse(AbstractModel):
+    """UninstallGrafanaPlugins response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class UpdateAlertRuleRequest(AbstractModel):
     """UpdateAlertRule request structure.
 
@@ -9148,6 +10851,51 @@ class UpdateAlertRuleStateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UpdateDNSConfigRequest(AbstractModel):
+    """UpdateDNSConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance name
+        :type InstanceId: str
+        :param NameServers: Array of DNS servers
+        :type NameServers: list of str
+        """
+        self.InstanceId = None
+        self.NameServers = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.NameServers = params.get("NameServers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateDNSConfigResponse(AbstractModel):
+    """UpdateDNSConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class UpdateExporterIntegrationRequest(AbstractModel):
     """UpdateExporterIntegration request structure.
 
@@ -9193,6 +10941,251 @@ class UpdateExporterIntegrationRequest(AbstractModel):
 
 class UpdateExporterIntegrationResponse(AbstractModel):
     """UpdateExporterIntegration response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateGrafanaConfigRequest(AbstractModel):
+    """UpdateGrafanaConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: None
+        :type InstanceId: str
+        :param Config: JSON-encoded string
+        :type Config: str
+        """
+        self.InstanceId = None
+        self.Config = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Config = params.get("Config")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateGrafanaConfigResponse(AbstractModel):
+    """UpdateGrafanaConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateGrafanaEnvironmentsRequest(AbstractModel):
+    """UpdateGrafanaEnvironments request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance name
+        :type InstanceId: str
+        :param Envs: Environment variable string
+        :type Envs: str
+        """
+        self.InstanceId = None
+        self.Envs = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Envs = params.get("Envs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateGrafanaEnvironmentsResponse(AbstractModel):
+    """UpdateGrafanaEnvironments response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateGrafanaIntegrationRequest(AbstractModel):
+    """UpdateGrafanaIntegration request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IntegrationId: Integration ID
+        :type IntegrationId: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Kind: Integration type
+        :type Kind: str
+        :param Content: Integration content
+        :type Content: str
+        """
+        self.IntegrationId = None
+        self.InstanceId = None
+        self.Kind = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.IntegrationId = params.get("IntegrationId")
+        self.InstanceId = params.get("InstanceId")
+        self.Kind = params.get("Kind")
+        self.Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateGrafanaIntegrationResponse(AbstractModel):
+    """UpdateGrafanaIntegration response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateGrafanaNotificationChannelRequest(AbstractModel):
+    """UpdateGrafanaNotificationChannel request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelId: Channel ID
+        :type ChannelId: str
+        :param InstanceId: Instance name
+        :type InstanceId: str
+        :param ChannelName: Channel name
+        :type ChannelName: str
+        :param Receivers: Array of notification channel IDs
+        :type Receivers: list of str
+        :param ExtraOrgIds: Array of extra organization IDs
+        :type ExtraOrgIds: list of str
+        """
+        self.ChannelId = None
+        self.InstanceId = None
+        self.ChannelName = None
+        self.Receivers = None
+        self.ExtraOrgIds = None
+
+
+    def _deserialize(self, params):
+        self.ChannelId = params.get("ChannelId")
+        self.InstanceId = params.get("InstanceId")
+        self.ChannelName = params.get("ChannelName")
+        self.Receivers = params.get("Receivers")
+        self.ExtraOrgIds = params.get("ExtraOrgIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateGrafanaNotificationChannelResponse(AbstractModel):
+    """UpdateGrafanaNotificationChannel response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateGrafanaWhiteListRequest(AbstractModel):
+    """UpdateGrafanaWhiteList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance name
+        :type InstanceId: str
+        :param Whitelist: Allowlist in array
+        :type Whitelist: list of str
+        """
+        self.InstanceId = None
+        self.Whitelist = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Whitelist = params.get("Whitelist")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateGrafanaWhiteListResponse(AbstractModel):
+    """UpdateGrafanaWhiteList response structure.
 
     """
 
@@ -9378,6 +11371,64 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class UpdateSSOAccountRequest(AbstractModel):
+    """UpdateSSOAccount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param UserId: User account ID
+        :type UserId: str
+        :param Role: Permission
+        :type Role: list of GrafanaAccountRole
+        :param Notes: Remarks
+        :type Notes: str
+        """
+        self.InstanceId = None
+        self.UserId = None
+        self.Role = None
+        self.Notes = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.UserId = params.get("UserId")
+        if params.get("Role") is not None:
+            self.Role = []
+            for item in params.get("Role"):
+                obj = GrafanaAccountRole()
+                obj._deserialize(item)
+                self.Role.append(obj)
+        self.Notes = params.get("Notes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateSSOAccountResponse(AbstractModel):
+    """UpdateSSOAccount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class UpgradeGrafanaDashboardRequest(AbstractModel):
     """UpgradeGrafanaDashboard request structure.
 
@@ -9425,6 +11476,51 @@ class UpgradeGrafanaDashboardRequest(AbstractModel):
 
 class UpgradeGrafanaDashboardResponse(AbstractModel):
     """UpgradeGrafanaDashboard response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpgradeGrafanaInstanceRequest(AbstractModel):
+    """UpgradeGrafanaInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance name
+        :type InstanceId: str
+        :param Alias: Version alias
+        :type Alias: str
+        """
+        self.InstanceId = None
+        self.Alias = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Alias = params.get("Alias")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeGrafanaInstanceResponse(AbstractModel):
+    """UpgradeGrafanaInstance response structure.
 
     """
 

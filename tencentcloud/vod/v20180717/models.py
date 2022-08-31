@@ -341,6 +341,11 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 <li>FairPlay</li>
 If this parameter is an empty string, it indicates that the video is not protected by DRM.
         :type DrmType: str
+        :param DrmKeyProvider: The provider of the DRM key. Valid values:
+<li>SDMC</li>
+<li>VOD</li>
+The default is `VOD`.
+        :type DrmKeyProvider: str
         :param StreamInfos: Parameter information of input stream for adaptive bitrate streaming. Up to 10 streams can be input.
         :type StreamInfos: list of AdaptiveStreamTemplate
         :param DisableHigherVideoBitrate: Whether to prohibit transcoding from low bitrate to high bitrate. Valid values:
@@ -362,6 +367,7 @@ If this parameter is an empty string, it indicates that the video is not protect
         self.Comment = None
         self.Format = None
         self.DrmType = None
+        self.DrmKeyProvider = None
         self.StreamInfos = None
         self.DisableHigherVideoBitrate = None
         self.DisableHigherVideoResolution = None
@@ -376,6 +382,7 @@ If this parameter is an empty string, it indicates that the video is not protect
         self.Comment = params.get("Comment")
         self.Format = params.get("Format")
         self.DrmType = params.get("DrmType")
+        self.DrmKeyProvider = params.get("DrmKeyProvider")
         if params.get("StreamInfos") is not None:
             self.StreamInfos = []
             for item in params.get("StreamInfos"):
@@ -1397,14 +1404,17 @@ class AiRecognitionTaskAsrFullTextResultOutput(AbstractModel):
         :type SegmentSet: list of AiRecognitionTaskAsrFullTextSegmentItem
         :param SegmentSetFileUrl: URL to the file of the list for full-text speech recognition segments. The file format is JSON, and the data structure is the same as `SegmentSet`. The file will be deleted upon the expiration time `SegmentSetFileUrlExpireTime`, instead of being stored permanently.
         :type SegmentSetFileUrl: str
-        :param SegmentSetFileUrlExpireTime: Expiration time of the URL to the file of the list for full-text speech recognition segments, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732)
+        :param SegmentSetFileUrlExpireTime: The expiration time of the URLs of full-text speech recognition segments in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format).
         :type SegmentSetFileUrlExpireTime: str
-        :param SubtitleUrl: Subtitles file URL.
+        :param SubtitleSet: The subtitle files generated, whose format is determined by the `SubtitleFormats` parameter of [AsrFullTextConfigureInfo](https://intl.cloud.tencent.com/document/api/266/31773?from_cn_redirect=1#AsrFullTextConfigureInfo).
+        :type SubtitleSet: list of AiRecognitionTaskAsrFullTextResultOutputSubtitleItem
+        :param SubtitleUrl: The URLs of the subtitle files generated, whose format is determined by the `SubtitleFormats` parameter of [AsrFullTextConfigureInfo](https://intl.cloud.tencent.com/document/api/266/31773?from_cn_redirect=1#AsrFullTextConfigureInfo).
         :type SubtitleUrl: str
         """
         self.SegmentSet = None
         self.SegmentSetFileUrl = None
         self.SegmentSetFileUrlExpireTime = None
+        self.SubtitleSet = None
         self.SubtitleUrl = None
 
 
@@ -1417,7 +1427,43 @@ class AiRecognitionTaskAsrFullTextResultOutput(AbstractModel):
                 self.SegmentSet.append(obj)
         self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
         self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
+        if params.get("SubtitleSet") is not None:
+            self.SubtitleSet = []
+            for item in params.get("SubtitleSet"):
+                obj = AiRecognitionTaskAsrFullTextResultOutputSubtitleItem()
+                obj._deserialize(item)
+                self.SubtitleSet.append(obj)
         self.SubtitleUrl = params.get("SubtitleUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskAsrFullTextResultOutputSubtitleItem(AbstractModel):
+    """The subtitle information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Format: The format of the subtitle files. Valid values:
+<li>vtt</li>
+<li>srt</li>
+        :type Format: str
+        :param Url: The URL of a subtitle file.
+        :type Url: str
+        """
+        self.Format = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.Format = params.get("Format")
+        self.Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4413,16 +4459,24 @@ class AsrFullTextConfigureInfo(AbstractModel):
 <li>ON: enables intelligent full speech recognition task;</li>
 <li>OFF: disables intelligent full speech recognition task.</li>
         :type Switch: str
-        :param SubtitleFormat: Format of generated subtitles file. If this parameter is left empty or a blank string is entered, no subtitles files will be generated. Valid value:
-<li>vtt: generates a WebVTT subtitles file.</li>
+        :param SubtitleFormats: The formats of the subtitle files generated. If this parameter is not passed or an empty string is passed in, no subtitles files will be generated. Valid values:
+<li>vtt</li>
+<li>srt</li>
+        :type SubtitleFormats: list of str
+        :param SubtitleFormat: The format of the subtitle file generated. If this parameter is not passed or an empty string is passed in, no subtitles files will be generated. Valid values:
+<li>vtt</li>
+<li>srt</li>
+<font color='red'>Note: This parameter has been deprecated. Please use `SubtitleFormats` instead.</font>
         :type SubtitleFormat: str
         """
         self.Switch = None
+        self.SubtitleFormats = None
         self.SubtitleFormat = None
 
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+        self.SubtitleFormats = params.get("SubtitleFormats")
         self.SubtitleFormat = params.get("SubtitleFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -4444,16 +4498,24 @@ class AsrFullTextConfigureInfoForUpdate(AbstractModel):
 <li>ON: enables intelligent full speech recognition task;</li>
 <li>OFF: disables intelligent full speech recognition task.</li>
         :type Switch: str
-        :param SubtitleFormat: Format of generated subtitles file. If an empty string is entered, no subtitles files will be generated. Valid values:
-<li>vtt: generates a WebVTT subtitles file.</li>
+        :param SubtitleFormatsOperation: The modification information of the subtitle format list.
+        :type SubtitleFormatsOperation: :class:`tencentcloud.vod.v20180717.models.SubtitleFormatsOperation`
+        :param SubtitleFormat: The format of the subtitle file generated. <font color='red'>If you pass in an empty string</font>, no subtitle files will be generated. Valid values:
+<li>vtt</li>
+<li>srt</li>
+<font color='red'>Note: This parameter has been deprecated. Please use `SubtitleFormatsOperation` instead.</font>
         :type SubtitleFormat: str
         """
         self.Switch = None
+        self.SubtitleFormatsOperation = None
         self.SubtitleFormat = None
 
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+        if params.get("SubtitleFormatsOperation") is not None:
+            self.SubtitleFormatsOperation = SubtitleFormatsOperation()
+            self.SubtitleFormatsOperation._deserialize(params.get("SubtitleFormatsOperation"))
         self.SubtitleFormat = params.get("SubtitleFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -5944,6 +6006,11 @@ Note: the frame rate of all substreams must be the same; otherwise, the frame ra
 <li>FairPlay</li>
 If this parameter is an empty string, it indicates that the video is not protected by DRM.
         :type DrmType: str
+        :param DrmKeyProvider: The provider of the DRM key. Valid values:
+<li>SDMC</li>
+<li>VOD</li>
+The default is `VOD`.
+        :type DrmKeyProvider: str
         :param DisableHigherVideoBitrate: Whether to prohibit transcoding video from low bitrate to high bitrate. Valid values:
 <li>0: no,</li>
 <li>1: yes.</li>
@@ -5962,6 +6029,7 @@ Default value: no.
         self.SubAppId = None
         self.Name = None
         self.DrmType = None
+        self.DrmKeyProvider = None
         self.DisableHigherVideoBitrate = None
         self.DisableHigherVideoResolution = None
         self.Comment = None
@@ -5978,6 +6046,7 @@ Default value: no.
         self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.DrmType = params.get("DrmType")
+        self.DrmKeyProvider = params.get("DrmKeyProvider")
         self.DisableHigherVideoBitrate = params.get("DisableHigherVideoBitrate")
         self.DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
         self.Comment = params.get("Comment")
@@ -8883,6 +8952,54 @@ class DescribeDailyPlayStatFileListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDrmKeyProviderInfoRequest(AbstractModel):
+    """DescribeDrmKeyProviderInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubAppId: The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDrmKeyProviderInfoResponse(AbstractModel):
+    """DescribeDrmKeyProviderInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SDMCInfo: The DRM key information provided by SDMC.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SDMCInfo: :class:`tencentcloud.vod.v20180717.models.SDMCDrmKeyProviderInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SDMCInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SDMCInfo") is not None:
+            self.SDMCInfo = SDMCDrmKeyProviderInfo()
+            self.SDMCInfo._deserialize(params.get("SDMCInfo"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeImageReviewUsageDataRequest(AbstractModel):
     """DescribeImageReviewUsageData request structure.
 
@@ -10019,7 +10136,7 @@ class DescribeTaskDetailRequest(AbstractModel):
         r"""
         :param TaskId: Video processing task ID.
         :type TaskId: str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.TaskId = None
@@ -10051,16 +10168,9 @@ class DescribeTaskDetailResponse(AbstractModel):
 <li>SplitMedia: Video splitting</li>
 <li>ComposeMedia: Media file producing</li>
 <li>WechatPublish: WeChat publishing</li>
-<li>WechatMiniProgramPublish: Publishing videos on WeChat Mini Program</li>
 <li>PullUpload: Pulling media files for upload</li>
 <li>FastClipMedia: Quick clipping</li>
-
-Task types for v2017:
-<li>Transcode: Transcoding</li>
-<li>SnapshotByTimeOffset: Screencapturing</li>
-<li>Concat: Video splicing</li>
-<li>Clip: Video clipping</li>
-<li>ImageSprites: Image sprite generating</li>
+<li>RemoveWatermarkTask: Watermark removal</li>
         :type TaskType: str
         :param Status: Task status. Valid values:
 <li>WAITING: waiting;</li>
@@ -10109,6 +10219,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SnapshotByTimeOffsetTask: Time point screencapturing task information. This field has a value only when `TaskType` is `SnapshotByTimeOffset`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SnapshotByTimeOffsetTask: :class:`tencentcloud.vod.v20180717.models.SnapshotByTimeOffsetTask2017`
+        :param RemoveWatermarkTask: The information of a watermark removal task. This parameter is valid only if `TaskType` is `RemoveWatermark`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RemoveWatermarkTask: :class:`tencentcloud.vod.v20180717.models.RemoveWatermarkTask`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -10129,6 +10242,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ClipTask = None
         self.CreateImageSpriteTask = None
         self.SnapshotByTimeOffsetTask = None
+        self.RemoveWatermarkTask = None
         self.RequestId = None
 
 
@@ -10174,6 +10288,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("SnapshotByTimeOffsetTask") is not None:
             self.SnapshotByTimeOffsetTask = SnapshotByTimeOffsetTask2017()
             self.SnapshotByTimeOffsetTask._deserialize(params.get("SnapshotByTimeOffsetTask"))
+        if params.get("RemoveWatermarkTask") is not None:
+            self.RemoveWatermarkTask = RemoveWatermarkTask()
+            self.RemoveWatermarkTask._deserialize(params.get("RemoveWatermarkTask"))
         self.RequestId = params.get("RequestId")
 
 
@@ -11074,6 +11191,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param WechatMiniProgramPublishCompleteEvent: Release on WeChat Mini Program task completion event, which is valid if the event type is `WechatMiniProgramPublishComplete`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type WechatMiniProgramPublishCompleteEvent: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTask`
+        :param RemoveWatermarkCompleteEvent: Watermark removal completion event. This parameter is valid only if `TaskType` is `RemoveWatermark`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RemoveWatermarkCompleteEvent: :class:`tencentcloud.vod.v20180717.models.RemoveWatermarkTask`
         :param RestoreMediaCompleteEvent: Callback for video retrieval. This parameter is valid when the event type is `RestoreMediaComplete`.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type RestoreMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.RestoreMediaTask`
@@ -11094,6 +11214,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.SnapshotByTimeOffsetCompleteEvent = None
         self.WechatPublishCompleteEvent = None
         self.WechatMiniProgramPublishCompleteEvent = None
+        self.RemoveWatermarkCompleteEvent = None
         self.RestoreMediaCompleteEvent = None
 
 
@@ -11142,6 +11263,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         if params.get("WechatMiniProgramPublishCompleteEvent") is not None:
             self.WechatMiniProgramPublishCompleteEvent = WechatMiniProgramPublishTask()
             self.WechatMiniProgramPublishCompleteEvent._deserialize(params.get("WechatMiniProgramPublishCompleteEvent"))
+        if params.get("RemoveWatermarkCompleteEvent") is not None:
+            self.RemoveWatermarkCompleteEvent = RemoveWatermarkTask()
+            self.RemoveWatermarkCompleteEvent._deserialize(params.get("RemoveWatermarkCompleteEvent"))
         if params.get("RestoreMediaCompleteEvent") is not None:
             self.RestoreMediaCompleteEvent = RestoreMediaTask()
             self.RestoreMediaCompleteEvent._deserialize(params.get("RestoreMediaCompleteEvent"))
@@ -12065,10 +12189,22 @@ class LiveRealTimeClipRequest(AbstractModel):
         :type ExpireTime: str
         :param Procedure: VOD task flow processing for video generated by persistent clipping. For more information, please see [Specifying Task Flow After Upload](https://intl.cloud.tencent.com/document/product/266/9759?from_cn_redirect=1). This parameter will be valid only when `IsPersistence` is 1.
         :type Procedure: str
+        :param ClassId: The ID of the media file’s category. You can use the [CreateClass](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API to create a category and get the category ID.
+<li>The default value is `0`, which means the “Other” category.</li>
+This parameter is valid only if `IsPersistence` is `1`.
+        :type ClassId: int
+        :param SourceContext: The source context, which is used to pass through user request information. The [NewFileUpload](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) callback will return the value of this parameter. It can contain up to 250 characters and is valid only if `IsPersistence` is `1`.
+        :type SourceContext: str
+        :param SessionContext: The session context, which is used to pass through user request information. If the `Procedure` parameter is specified, the [ProcedureStateChanged](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1) callback will return the value of this parameter. It can contain up to 1,000 characters and is valid only if `IsPersistence` is `1`.
+        :type SessionContext: str
         :param MetaDataRequired: Whether the metadata of clipped video needs to be returned. 0: no, 1: yes. Default value: no.
         :type MetaDataRequired: int
         :param Host: Domain name used for live clipping. Time shifting must be enabled in LVB.
         :type Host: str
+        :param StreamInfo: The information of the live stream to clip.
+<li>The video clip is cut from the original stream by default.</li>
+<li>If `Type` of `StreamInfo` is set to `Transcoding`, the video clip will be cut from the output stream of the transcoding template specified by `TemplateId`.</li>
+        :type StreamInfo: :class:`tencentcloud.vod.v20180717.models.LiveRealTimeClipStreamInfo`
         :param ExtInfo: Reserved field. Do not enter a value for it.
         :type ExtInfo: str
         """
@@ -12079,8 +12215,12 @@ class LiveRealTimeClipRequest(AbstractModel):
         self.IsPersistence = None
         self.ExpireTime = None
         self.Procedure = None
+        self.ClassId = None
+        self.SourceContext = None
+        self.SessionContext = None
         self.MetaDataRequired = None
         self.Host = None
+        self.StreamInfo = None
         self.ExtInfo = None
 
 
@@ -12092,8 +12232,14 @@ class LiveRealTimeClipRequest(AbstractModel):
         self.IsPersistence = params.get("IsPersistence")
         self.ExpireTime = params.get("ExpireTime")
         self.Procedure = params.get("Procedure")
+        self.ClassId = params.get("ClassId")
+        self.SourceContext = params.get("SourceContext")
+        self.SessionContext = params.get("SessionContext")
         self.MetaDataRequired = params.get("MetaDataRequired")
         self.Host = params.get("Host")
+        if params.get("StreamInfo") is not None:
+            self.StreamInfo = LiveRealTimeClipStreamInfo()
+            self.StreamInfo._deserialize(params.get("StreamInfo"))
         self.ExtInfo = params.get("ExtInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -12140,6 +12286,37 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.MetaData = MediaMetaData()
             self.MetaData._deserialize(params.get("MetaData"))
         self.RequestId = params.get("RequestId")
+
+
+class LiveRealTimeClipStreamInfo(AbstractModel):
+    """The information of the live stream to clip.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: The type of live stream to clip. Valid values:
+<li>Original (<b>default</b>)</li>
+<li>Transcoding</li>
+        :type Type: str
+        :param TemplateId: The transcoding template ID.
+<b>This is required if `Type` is `Transcoding`.</b>
+        :type TemplateId: int
+        """
+        self.Type = None
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ManageTaskRequest(AbstractModel):
@@ -14234,14 +14411,21 @@ class MediaSourceData(AbstractModel):
         :param SourceContext: Field passed through when a file is created.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SourceContext: str
+        :param TrtcRecordInfo: The TRTC recording information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TrtcRecordInfo: :class:`tencentcloud.vod.v20180717.models.TrtcRecordInfo`
         """
         self.SourceType = None
         self.SourceContext = None
+        self.TrtcRecordInfo = None
 
 
     def _deserialize(self, params):
         self.SourceType = params.get("SourceType")
         self.SourceContext = params.get("SourceContext")
+        if params.get("TrtcRecordInfo") is not None:
+            self.TrtcRecordInfo = TrtcRecordInfo()
+            self.TrtcRecordInfo._deserialize(params.get("TrtcRecordInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18512,6 +18696,192 @@ class RefreshUrlCacheResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RemoveWaterMarkTaskInput(AbstractModel):
+    """The input of a watermark removal task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: The ID of the media file.
+        :type FileId: str
+        """
+        self.FileId = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveWaterMarkTaskOutput(AbstractModel):
+    """The output of a watermark removal task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: The file ID of the video.
+        :type FileId: str
+        :param MetaData: The metadata of the video, including size, duration, video stream information, and audio stream information.
+        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
+        """
+        self.FileId = None
+        self.MetaData = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        if params.get("MetaData") is not None:
+            self.MetaData = MediaMetaData()
+            self.MetaData._deserialize(params.get("MetaData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveWatermarkRequest(AbstractModel):
+    """RemoveWatermark request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: The ID of the media file.
+        :type FileId: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
+        :param SessionId: The session ID, which is used for de-duplication. If there was a request with the same session ID in the last seven days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.
+        :type SessionId: str
+        :param SessionContext: The source context, which is used to pass through user request information. The `ProcedureStateChanged` callback will return the value of this parameter. It can contain up to 1,000 characters.
+        :type SessionContext: str
+        :param TasksPriority: The priority of a task flow. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.
+        :type TasksPriority: int
+        :param TasksNotifyMode: This parameter is invalid now.
+        :type TasksNotifyMode: str
+        """
+        self.FileId = None
+        self.SubAppId = None
+        self.SessionId = None
+        self.SessionContext = None
+        self.TasksPriority = None
+        self.TasksNotifyMode = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.SubAppId = params.get("SubAppId")
+        self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
+        self.TasksPriority = params.get("TasksPriority")
+        self.TasksNotifyMode = params.get("TasksNotifyMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveWatermarkResponse(AbstractModel):
+    """RemoveWatermark response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: The task ID.
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class RemoveWatermarkTask(AbstractModel):
+    """The information of a watermark removal task. This parameter is valid only if `TaskType` is `RemoveWatermark`.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: The task ID.
+        :type TaskId: str
+        :param Status: The task flow status. Valid values:
+<li>PROCESSING</li>
+<li>FINISH</li>
+        :type Status: str
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video processing error codes](https://intl.cloud.tencent.com/document/product/266/39145?lang=en&pg=#video-processing).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0: Successful; other values: Failed.
+<li>40000: Invalid input parameter.</li>
+<li>60000: Source file error (e.g., video data is corrupted).</li>
+<li>70000: Internal server error. Please try again.</li>
+        :type ErrCode: int
+        :param Message: The error message.
+        :type Message: str
+        :param Input: The input of a watermark removal task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Input: :class:`tencentcloud.vod.v20180717.models.RemoveWaterMarkTaskInput`
+        :param Output: The output of a watermark removal task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.vod.v20180717.models.RemoveWaterMarkTaskOutput`
+        :param SessionId: The session ID, which is used for de-duplication. If there was a request with the same session ID in the last seven days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.
+        :type SessionId: str
+        :param SessionContext: The source context, which is used to pass through user request information. The `ProcedureStateChanged` callback will return the value of this parameter. It can contain up to 1,000 characters.
+        :type SessionContext: str
+        """
+        self.TaskId = None
+        self.Status = None
+        self.ErrCodeExt = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+        self.SessionId = None
+        self.SessionContext = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = RemoveWaterMarkTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = RemoveWaterMarkTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+        self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResetProcedureTemplateRequest(AbstractModel):
     """ResetProcedureTemplate request structure.
 
@@ -18751,6 +19121,42 @@ class RestoreMediaTask(AbstractModel):
         
 
 
+class SDMCDrmKeyProviderInfo(AbstractModel):
+    """The DRM key information provided by SDMC.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Uid: The user ID assigned by SDMC, which can contain up to 128 characters.
+        :type Uid: str
+        :param SecretId: The secret ID assigned by SDMC, which can contain up to 128 characters.
+        :type SecretId: str
+        :param SecretKey: The secret key assigned by SDMC, which can contain up to 128 characters.
+        :type SecretKey: str
+        :param FairPlayCertificateUrl: The URL of the FairPlay certificate issued by SDMC. It must be an HTTPS address and can contain up to 1,024 characters.
+        :type FairPlayCertificateUrl: str
+        """
+        self.Uid = None
+        self.SecretId = None
+        self.SecretKey = None
+        self.FairPlayCertificateUrl = None
+
+
+    def _deserialize(self, params):
+        self.Uid = params.get("Uid")
+        self.SecretId = params.get("SecretId")
+        self.SecretKey = params.get("SecretKey")
+        self.FairPlayCertificateUrl = params.get("FairPlayCertificateUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SampleSnapshotTaskInput(AbstractModel):
     """Input parameter type of sampling screencapturing task
 
@@ -18961,6 +19367,13 @@ class SearchMediaRequest(AbstractModel):
 <li>ARCHIVE</li>
 <li>DEEP_ARCHIVE</li>
         :type StorageClasses: list of str
+        :param TrtcSdkAppIds: The TRTC application IDs. Any file that matches one of the application IDs will be returned.
+<li>Array length limit: 10</li>
+        :type TrtcSdkAppIds: list of int non-negative
+        :param TrtcRoomIds: The TRTC room IDs. Any file that matches one of the room IDs will be returned.
+<li>Element length limit: 64 characters.</li>
+<li>Array length limit: 10.</li>
+        :type TrtcRoomIds: list of str
         :param Text: (This is not recommended. `Names`, `NamePrefixes`, or `Descriptions` should be used instead)
 Search text, which fuzzily matches the media file name or description. The more matching items and the higher the match rate, the higher-ranked the result. It can contain up to 64 characters.
         :type Text: str
@@ -19005,6 +19418,8 @@ End time in the creation time range.
         self.Filters = None
         self.StorageRegions = None
         self.StorageClasses = None
+        self.TrtcSdkAppIds = None
+        self.TrtcRoomIds = None
         self.Text = None
         self.SourceType = None
         self.StreamId = None
@@ -19039,6 +19454,8 @@ End time in the creation time range.
         self.Filters = params.get("Filters")
         self.StorageRegions = params.get("StorageRegions")
         self.StorageClasses = params.get("StorageClasses")
+        self.TrtcSdkAppIds = params.get("TrtcSdkAppIds")
+        self.TrtcRoomIds = params.get("TrtcRoomIds")
         self.Text = params.get("Text")
         self.SourceType = params.get("SourceType")
         self.StreamId = params.get("StreamId")
@@ -19137,6 +19554,53 @@ class SegmentConfigureInfoForUpdate(AbstractModel):
         
 
 
+class SetDrmKeyProviderInfoRequest(AbstractModel):
+    """SetDrmKeyProviderInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SDMCInfo: The DRM key information provided by SDMC.
+        :type SDMCInfo: :class:`tencentcloud.vod.v20180717.models.SDMCDrmKeyProviderInfo`
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
+        """
+        self.SDMCInfo = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SDMCInfo") is not None:
+            self.SDMCInfo = SDMCDrmKeyProviderInfo()
+            self.SDMCInfo._deserialize(params.get("SDMCInfo"))
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetDrmKeyProviderInfoResponse(AbstractModel):
+    """SetDrmKeyProviderInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class SimpleHlsClipRequest(AbstractModel):
     """SimpleHlsClip request structure.
 
@@ -19154,12 +19618,29 @@ class SimpleHlsClipRequest(AbstractModel):
         :type EndTimeOffset: float
         :param IsPersistence: Whether to store the video clip persistently. 0: no (default), 1: yes.
         :type IsPersistence: int
+        :param ExpireTime: The expiration time of the video clip that is to be saved, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I). `9999-12-31T23:59:59Z` is the default value, which means the video clip will never expire. After expiration, the media file and its related resources (such as transcoding results and image sprites) will be permanently deleted. This parameter is valid only if `IsPersistence` is 1.
+        :type ExpireTime: str
+        :param Procedure: The task flow to execute on the video clipped for persistent storage. For details, see [Upload from Server](https://intl.cloud.tencent.com/document/product/266/33912). This parameter is valid only if `IsPersistence` is 1.
+        :type Procedure: str
+        :param ClassId: The ID of the media file’s category. You can use the [CreateClass](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API to create a category and get the category ID.
+<li>The default value is `0`, which means the “Other” category.</li>
+This parameter is valid only if `IsPersistence` is `1`.
+        :type ClassId: int
+        :param SourceContext: The source context, which is used to pass through user request information. The [NewFileUpload](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) callback will return the value of this parameter. It can contain up to 250 characters and is valid only if `IsPersistence` is `1`.
+        :type SourceContext: str
+        :param SessionContext: The session context, which is used to pass through user request information. If the `Procedure` parameter is specified, the [ProcedureStateChanged](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1) callback will return the value of this parameter. It can contain up to 1,000 characters and is valid only if `IsPersistence` is `1`.
+        :type SessionContext: str
         """
         self.Url = None
         self.SubAppId = None
         self.StartTimeOffset = None
         self.EndTimeOffset = None
         self.IsPersistence = None
+        self.ExpireTime = None
+        self.Procedure = None
+        self.ClassId = None
+        self.SourceContext = None
+        self.SessionContext = None
 
 
     def _deserialize(self, params):
@@ -19168,6 +19649,11 @@ class SimpleHlsClipRequest(AbstractModel):
         self.StartTimeOffset = params.get("StartTimeOffset")
         self.EndTimeOffset = params.get("EndTimeOffset")
         self.IsPersistence = params.get("IsPersistence")
+        self.ExpireTime = params.get("ExpireTime")
+        self.Procedure = params.get("Procedure")
+        self.ClassId = params.get("ClassId")
+        self.SourceContext = params.get("SourceContext")
+        self.SessionContext = params.get("SessionContext")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -19190,12 +19676,15 @@ class SimpleHlsClipResponse(AbstractModel):
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param FileId: Unique ID of a video clip for persistent storage.
         :type FileId: str
+        :param TaskId: The ID of the task flow to execute on the video clipped for persistent storage.
+        :type TaskId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.Url = None
         self.MetaData = None
         self.FileId = None
+        self.TaskId = None
         self.RequestId = None
 
 
@@ -19205,6 +19694,7 @@ class SimpleHlsClipResponse(AbstractModel):
             self.MetaData = MediaMetaData()
             self.MetaData._deserialize(params.get("MetaData"))
         self.FileId = params.get("FileId")
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -19896,6 +20386,39 @@ class SubAppIdInfo(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.Status = params.get("Status")
         self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubtitleFormatsOperation(AbstractModel):
+    """The modification of the subtitle format list.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: The modification type. Valid values:
+<li>add: Add the formats specified by `Formats`.</li>
+<li>delete: Delete the formats specified by `Formats`.<l/i>
+<li>reset: Reset the format list to formats specified by `Formats`.</li>
+        :type Type: str
+        :param Formats: The subtitle format list. Valid values:
+<li>vtt</li>
+<li>srt</li>
+        :type Formats: list of str
+        """
+        self.Type = None
+        self.Formats = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Formats = params.get("Formats")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -21070,6 +21593,42 @@ class TransitionOpertion(AbstractModel):
 
     def _deserialize(self, params):
         self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TrtcRecordInfo(AbstractModel):
+    """The TRTC recording information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: The TRTC application ID.
+        :type SdkAppId: int
+        :param RoomId: The TRTC room ID.
+        :type RoomId: str
+        :param TaskId: The recording task ID.
+        :type TaskId: str
+        :param UserIds: The IDs of users whose streams are mixed.
+        :type UserIds: list of str
+        """
+        self.SdkAppId = None
+        self.RoomId = None
+        self.TaskId = None
+        self.UserIds = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.RoomId = params.get("RoomId")
+        self.TaskId = params.get("TaskId")
+        self.UserIds = params.get("UserIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

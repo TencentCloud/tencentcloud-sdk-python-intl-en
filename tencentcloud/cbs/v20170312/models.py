@@ -195,55 +195,70 @@ class AutoSnapshotPolicy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AutoSnapshotPolicyId: Scheduled snapshot policy ID.
-        :type AutoSnapshotPolicyId: str
-        :param AutoSnapshotPolicyName: Scheduled snapshot policy name.
-        :type AutoSnapshotPolicyName: str
-        :param AutoSnapshotPolicyState: Scheduled snapshot policy state. Value range:<br><li>NORMAL: Normal<br><li>ISOLATED: Isolated.
-        :type AutoSnapshotPolicyState: str
-        :param IsActivated: Whether scheduled snapshot policy is activated.
-        :type IsActivated: bool
-        :param IsPermanent: Whether the snapshot created by this scheduled snapshot policy is retained permanently.
-        :type IsPermanent: bool
-        :param RetentionDays: Number of days the snapshot created by this scheduled snapshot policy is retained.
-        :type RetentionDays: int
-        :param CreateTime: The time the scheduled snapshot policy was created.
-        :type CreateTime: str
-        :param NextTriggerTime: The time the scheduled snapshot will be triggered again.
-        :type NextTriggerTime: str
-        :param Policy: The policy for executing the scheduled snapshot.
-        :type Policy: list of Policy
         :param DiskIdSet: The list of cloud disk IDs that the current scheduled snapshot policy is bound to.
         :type DiskIdSet: list of str
+        :param IsActivated: Whether scheduled snapshot policy is activated.
+        :type IsActivated: bool
+        :param AutoSnapshotPolicyState: Scheduled snapshot policy state. Value range:<br><li>NORMAL: Normal<br><li>ISOLATED: Isolated.
+        :type AutoSnapshotPolicyState: str
+        :param IsCopyToRemote: Whether it is to replicate a snapshot across accounts. `1`: yes, `0`: no.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsCopyToRemote: int
+        :param IsPermanent: Whether the snapshot created by this scheduled snapshot policy is retained permanently.
+        :type IsPermanent: bool
+        :param NextTriggerTime: The time the scheduled snapshot will be triggered again.
+        :type NextTriggerTime: str
+        :param AutoSnapshotPolicyName: Scheduled snapshot policy name.
+        :type AutoSnapshotPolicyName: str
+        :param AutoSnapshotPolicyId: Scheduled snapshot policy ID.
+        :type AutoSnapshotPolicyId: str
+        :param Policy: The policy for executing the scheduled snapshot.
+        :type Policy: list of Policy
+        :param CreateTime: The time the scheduled snapshot policy was created.
+        :type CreateTime: str
+        :param RetentionDays: Number of days the snapshot created by this scheduled snapshot policy is retained.
+        :type RetentionDays: int
+        :param CopyToAccountUin: ID of the replication target account
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CopyToAccountUin: str
+        :param InstanceIdSet: List of IDs of the instances associated with the scheduled snapshot policy.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceIdSet: list of str
         """
-        self.AutoSnapshotPolicyId = None
-        self.AutoSnapshotPolicyName = None
-        self.AutoSnapshotPolicyState = None
-        self.IsActivated = None
-        self.IsPermanent = None
-        self.RetentionDays = None
-        self.CreateTime = None
-        self.NextTriggerTime = None
-        self.Policy = None
         self.DiskIdSet = None
+        self.IsActivated = None
+        self.AutoSnapshotPolicyState = None
+        self.IsCopyToRemote = None
+        self.IsPermanent = None
+        self.NextTriggerTime = None
+        self.AutoSnapshotPolicyName = None
+        self.AutoSnapshotPolicyId = None
+        self.Policy = None
+        self.CreateTime = None
+        self.RetentionDays = None
+        self.CopyToAccountUin = None
+        self.InstanceIdSet = None
 
 
     def _deserialize(self, params):
-        self.AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
-        self.AutoSnapshotPolicyName = params.get("AutoSnapshotPolicyName")
-        self.AutoSnapshotPolicyState = params.get("AutoSnapshotPolicyState")
+        self.DiskIdSet = params.get("DiskIdSet")
         self.IsActivated = params.get("IsActivated")
+        self.AutoSnapshotPolicyState = params.get("AutoSnapshotPolicyState")
+        self.IsCopyToRemote = params.get("IsCopyToRemote")
         self.IsPermanent = params.get("IsPermanent")
-        self.RetentionDays = params.get("RetentionDays")
-        self.CreateTime = params.get("CreateTime")
         self.NextTriggerTime = params.get("NextTriggerTime")
+        self.AutoSnapshotPolicyName = params.get("AutoSnapshotPolicyName")
+        self.AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
         if params.get("Policy") is not None:
             self.Policy = []
             for item in params.get("Policy"):
                 obj = Policy()
                 obj._deserialize(item)
                 self.Policy.append(obj)
-        self.DiskIdSet = params.get("DiskIdSet")
+        self.CreateTime = params.get("CreateTime")
+        self.RetentionDays = params.get("RetentionDays")
+        self.CopyToAccountUin = params.get("CopyToAccountUin")
+        self.InstanceIdSet = params.get("InstanceIdSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1342,7 +1357,7 @@ Note: This field may return null, indicating that no valid value was found.
         :param RenewFlag: Auto renewal flag. Supported values:<br><li>NOTIFY_AND_AUTO_RENEW: Notify expiry and renew automatically<br><li>NOTIFY_AND_MANUAL_RENEW: Notify expiry but not renew automatically<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Neither notify expiry nor renew automatically.
 Note: This field may return null, indicating that no valid value was found.
         :type RenewFlag: str
-        :param DiskType: Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: Tremendous SSD
+        :param DiskType: Cloud disk types. Valid values: <br><li>CLOUD_BASIC: HDD cloud disk <br><li>CLOUD_PREMIUM: Premium Cloud Disk <br><li>CLOUD_BSSD: General Purpose SSD <br><li>CLOUD_SSD: SSD <br><li>CLOUD_HSSD: Enhanced SSD <br><li>CLOUD_TSSD: Tremendous SSD
         :type DiskType: str
         :param DiskState: The state of the cloud disk. Value range: <br><li>UNATTACHED: Not mounted <br><li>ATTACHING: Mounting <br><li>ATTACHED: Mounted <br><li>DETACHING: Un-mounting <br><li>EXPANDING: Expanding <br><li>ROLLBACKING: Rolling back <br><li>TORECYCE: Pending recycling. <br><li>DUMPING: Copying the hard drive.
         :type DiskState: str
@@ -1421,6 +1436,10 @@ Note: This field may return null, indicating that no valid value was found.
         :type CreateTime: str
         :param DeleteSnapshot: Delete the associated non-permanently reserved snapshots upon deletion of the source cloud disk. `0`: No (default). `1`: Yes. To check whether a snapshot is permanently reserved, refer to the `IsPermanent` field returned by the `DescribeSnapshots` API. 
         :type DeleteSnapshot: int
+        :param DiskBackupCount: Number of used cloud disk backups.
+        :type DiskBackupCount: int
+        :param InstanceType: Type of the instance mounted to the cloud disk. Valid values: <br><li>CVM<br><li>EKS
+        :type InstanceType: str
         """
         self.DeleteWithInstance = None
         self.RenewFlag = None
@@ -1458,6 +1477,8 @@ Note: This field may return null, indicating that no valid value was found.
         self.Shareable = None
         self.CreateTime = None
         self.DeleteSnapshot = None
+        self.DiskBackupCount = None
+        self.InstanceType = None
 
 
     def _deserialize(self, params):
@@ -1504,6 +1525,8 @@ Note: This field may return null, indicating that no valid value was found.
         self.Shareable = params.get("Shareable")
         self.CreateTime = params.get("CreateTime")
         self.DeleteSnapshot = params.get("DeleteSnapshot")
+        self.DiskBackupCount = params.get("DiskBackupCount")
+        self.InstanceType = params.get("InstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1554,46 +1577,56 @@ class DiskConfig(AbstractModel):
         r"""
         :param Available: Whether the configuration is available.
         :type Available: bool
-        :param DiskType: Type of cloud disk medium. Value range: <br><li>CLOUD_BASIC: Ordinary cloud disk <br><li>CLOUD_PREMIUM: Premium cloud storage <br><li>CLOUD_SSD: SSD cloud disk.
-        :type DiskType: str
-        :param DiskUsage: Cloud disk type. Value range: <br><li>SYSTEM_DISK: System disk <br><li>DATA_DISK: Data disk.
-        :type DiskUsage: str
         :param DiskChargeType: Billing method. Value range: <br><li>PREPAID: Prepaid, that is, monthly subscription<br><li>POSTPAID_BY_HOUR: Postpaid, that is, pay as you go.
         :type DiskChargeType: str
-        :param MaxDiskSize: The maximum configurable cloud disk size (in GB).
-        :type MaxDiskSize: int
-        :param MinDiskSize: The minimum configurable cloud disk size (in GB).
-        :type MinDiskSize: int
         :param Zone: The [Availability Region](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#ZoneInfo) of the cloud drive.
         :type Zone: str
-        :param DeviceClass: Instance model.
-Note: This field may return null, indicating that no valid value was found.
-        :type DeviceClass: str
         :param InstanceFamily: Instance model series. For more information, please see [Instance Models](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1)
 Note: This field may return null, indicating that no valid value was found.
         :type InstanceFamily: str
+        :param DiskType: Type of cloud disk medium. Value range: <br><li>CLOUD_BASIC: Ordinary cloud disk <br><li>CLOUD_PREMIUM: Premium cloud storage <br><li>CLOUD_SSD: SSD cloud disk.
+        :type DiskType: str
+        :param StepSize: Minimum increment of cloud disk size adjustment in GB.
+Note: This field might return null, indicating that no valid values can be obtained.
+        :type StepSize: int
+        :param ExtraPerformanceRange: Additional performance range.
+Note: This field might return null, indicating that no valid values can be obtained.
+        :type ExtraPerformanceRange: list of int
+        :param DeviceClass: Instance model.
+Note: This field may return null, indicating that no valid value was found.
+        :type DeviceClass: str
+        :param DiskUsage: Cloud disk type. Value range: <br><li>SYSTEM_DISK: System disk <br><li>DATA_DISK: Data disk.
+        :type DiskUsage: str
+        :param MinDiskSize: The minimum configurable cloud disk size (in GB).
+        :type MinDiskSize: int
+        :param MaxDiskSize: The maximum configurable cloud disk size (in GB).
+        :type MaxDiskSize: int
         """
         self.Available = None
-        self.DiskType = None
-        self.DiskUsage = None
         self.DiskChargeType = None
-        self.MaxDiskSize = None
-        self.MinDiskSize = None
         self.Zone = None
-        self.DeviceClass = None
         self.InstanceFamily = None
+        self.DiskType = None
+        self.StepSize = None
+        self.ExtraPerformanceRange = None
+        self.DeviceClass = None
+        self.DiskUsage = None
+        self.MinDiskSize = None
+        self.MaxDiskSize = None
 
 
     def _deserialize(self, params):
         self.Available = params.get("Available")
-        self.DiskType = params.get("DiskType")
-        self.DiskUsage = params.get("DiskUsage")
         self.DiskChargeType = params.get("DiskChargeType")
-        self.MaxDiskSize = params.get("MaxDiskSize")
-        self.MinDiskSize = params.get("MinDiskSize")
         self.Zone = params.get("Zone")
-        self.DeviceClass = params.get("DeviceClass")
         self.InstanceFamily = params.get("InstanceFamily")
+        self.DiskType = params.get("DiskType")
+        self.StepSize = params.get("StepSize")
+        self.ExtraPerformanceRange = params.get("ExtraPerformanceRange")
+        self.DeviceClass = params.get("DeviceClass")
+        self.DiskUsage = params.get("DiskUsage")
+        self.MinDiskSize = params.get("MinDiskSize")
+        self.MaxDiskSize = params.get("MaxDiskSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1983,36 +2016,36 @@ class ModifyAutoSnapshotPolicyAttributeRequest(AbstractModel):
         r"""
         :param AutoSnapshotPolicyId: Scheduled snapshot policy ID.
         :type AutoSnapshotPolicyId: str
-        :param Policy: The policy for executing the scheduled snapshot.
-        :type Policy: list of Policy
-        :param AutoSnapshotPolicyName: The name of the scheduled snapshot policy to be created. If it is left empty, the default is 'Not named'. The maximum length cannot exceed 60 bytes.
-        :type AutoSnapshotPolicyName: str
         :param IsActivated: Whether or not the scheduled snapshot policy is activated. FALSE: Not activated. TRUE: Activated. The default value is TRUE.
         :type IsActivated: bool
         :param IsPermanent: Whether the snapshot created by this scheduled snapshot policy is retained permanently. FALSE: Not retained permanently. TRUE: Retained permanently. The default value is FALSE.
         :type IsPermanent: bool
-        :param RetentionDays: The number of days for which snapshots created by this policy are retained. This parameter cannot clash with `IsPermanent`, which is, if the scheduled snapshot policy is configured to retain permanently, `RetentionDays` must be 0.
+        :param AutoSnapshotPolicyName: The name of the scheduled snapshot policy to be created. If it is left empty, the default is 'Not named'. The maximum length cannot exceed 60 bytes.
+        :type AutoSnapshotPolicyName: str
+        :param Policy: The policy for executing the scheduled snapshot.
+        :type Policy: list of Policy
+        :param RetentionDays: Number of days to retain the snapshots created according to this scheduled snapshot policy. If this parameter is specified, `IsPermanent` cannot be specified as `TRUE`; otherwise, they will conflict with each other.
         :type RetentionDays: int
         """
         self.AutoSnapshotPolicyId = None
-        self.Policy = None
-        self.AutoSnapshotPolicyName = None
         self.IsActivated = None
         self.IsPermanent = None
+        self.AutoSnapshotPolicyName = None
+        self.Policy = None
         self.RetentionDays = None
 
 
     def _deserialize(self, params):
         self.AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
+        self.IsActivated = params.get("IsActivated")
+        self.IsPermanent = params.get("IsPermanent")
+        self.AutoSnapshotPolicyName = params.get("AutoSnapshotPolicyName")
         if params.get("Policy") is not None:
             self.Policy = []
             for item in params.get("Policy"):
                 obj = Policy()
                 obj._deserialize(item)
                 self.Policy.append(obj)
-        self.AutoSnapshotPolicyName = params.get("AutoSnapshotPolicyName")
-        self.IsActivated = params.get("IsActivated")
-        self.IsPermanent = params.get("IsPermanent")
         self.RetentionDays = params.get("RetentionDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -2296,24 +2329,24 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class Policy(AbstractModel):
-    """Describes the execution policy for scheduled snapshots. This can be understood as that, on the days specified by DayOfWeek, the scheduled snapshot policy is executed at the hour specified by Hour.
+    """Execution policy for scheduled snapshot. It indicates that a scheduled snapshot policy is executed at the specified `Hour` in the days specified by `DayOfWeek` or `DayOfMonth` or once every `IntervalDays` days. Note: `DayOfWeek`, `DayOfMonth`, and `IntervalDays` are mutually exclusive, and only one policy rule can be set.
 
     """
 
     def __init__(self):
         r"""
-        :param DayOfWeek: Specifies the days of the week, from Monday to Sunday, on which a scheduled snapshot will be triggered. Value range: [0, 6]. 0 indicates triggering on Sunday, 1-6 indicate triggering on Monday-Saturday.
-        :type DayOfWeek: list of int non-negative
         :param Hour: Specifies the time that that the scheduled snapshot policy will be triggered. The unit is hour. The value range is [0-23]. 00:00-23:00 is a total of 24 time points that can be selected. 1 indicates 01:00, and so on.
         :type Hour: list of int non-negative
+        :param DayOfWeek: Specifies the days of the week, from Monday to Sunday, on which a scheduled snapshot will be triggered. Value range: [0, 6]. 0 indicates triggering on Sunday, 1-6 indicate triggering on Monday-Saturday.
+        :type DayOfWeek: list of int non-negative
         """
-        self.DayOfWeek = None
         self.Hour = None
+        self.DayOfWeek = None
 
 
     def _deserialize(self, params):
-        self.DayOfWeek = params.get("DayOfWeek")
         self.Hour = params.get("Hour")
+        self.DayOfWeek = params.get("DayOfWeek")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2529,93 +2562,102 @@ class Snapshot(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SnapshotId: Snapshot ID.
-        :type SnapshotId: str
         :param Placement: Location of the snapshot.
         :type Placement: :class:`tencentcloud.cbs.v20170312.models.Placement`
-        :param DiskUsage: The type of the cloud disk used to create the snapshot. Value range: <br><li>SYSTEM_DISK: System disk <br><li>DATA_DISK: Data disk.
-        :type DiskUsage: str
-        :param DiskId: ID of the cloud disk used to create this snapshot.
-        :type DiskId: str
-        :param DiskSize: Size of the cloud disk used to create this snapshot (in GB).
-        :type DiskSize: int
-        :param SnapshotState: Snapshot status. Valid values: <br><li>NORMAL: normal <br><li>CREATING: creating<br><li>ROLLBACKING: rolling back<br><li>COPYING_FROM_REMOTE: cross-region replicating<li>CHECKING_COPIED: verifying the cross-region replicated data<br><li>TORECYCLE: to be repossessed.
-        :type SnapshotState: str
-        :param SnapshotName: Snapshot name, the user-defined snapshot alias. Call [ModifySnapshotAttribute](https://intl.cloud.tencent.com/document/product/362/15650?from_cn_redirect=1) to modify this field.
-        :type SnapshotName: str
-        :param Percent: The progress percentage for snapshot creation. This field is always 100 after the snapshot is created successfully.
-        :type Percent: int
-        :param CreateTime: Creation time of the snapshot.
-        :type CreateTime: str
-        :param DeadlineTime: The expiration time of the snapshot. If the snapshot is permanently retained, this field is blank.
-        :type DeadlineTime: str
-        :param Encrypt: Whether the snapshot is created from an encrypted disk. Value range: <br><li>true: Yes <br><li>false: No.
-        :type Encrypt: bool
-        :param IsPermanent: Whether it is a permanent snapshot. Value range: <br><li>true: Permanent snapshot <br><li>false: Non-permanent snapshot.
-        :type IsPermanent: bool
-        :param CopyingToRegions: The destination region to which the snapshot is being replicated. Default value is [ ].
-        :type CopyingToRegions: list of str
         :param CopyFromRemote: Whether the snapshot is replicated across regions. Value range: <br><li>true: Indicates that the snapshot is replicated across regions. <br><li>false: Indicates that the snapshot belongs to the local region.
         :type CopyFromRemote: bool
+        :param SnapshotState: Snapshot status. Valid values: <br><li>NORMAL: normal <br><li>CREATING: creating<br><li>ROLLBACKING: rolling back<br><li>COPYING_FROM_REMOTE: cross-region replicating<li>CHECKING_COPIED: verifying the cross-region replicated data<br><li>TORECYCLE: to be repossessed.
+        :type SnapshotState: str
+        :param IsPermanent: Whether it is a permanent snapshot. Value range: <br><li>true: Permanent snapshot <br><li>false: Non-permanent snapshot.
+        :type IsPermanent: bool
+        :param SnapshotName: Snapshot name, the user-defined snapshot alias. Call [ModifySnapshotAttribute](https://intl.cloud.tencent.com/document/product/362/15650?from_cn_redirect=1) to modify this field.
+        :type SnapshotName: str
+        :param DeadlineTime: The expiration time of the snapshot. If the snapshot is permanently retained, this field is blank.
+        :type DeadlineTime: str
+        :param Percent: The progress percentage for snapshot creation. This field is always 100 after the snapshot is created successfully.
+        :type Percent: int
         :param Images: List of images associated with snapshot.
         :type Images: list of Image
-        :param ImageCount: Number of images associated with snapshot.
-        :type ImageCount: int
-        :param SnapshotType: Snapshot type. This value can currently be either PRIVATE_SNAPSHOT or SHARED_SNAPSHOT.
-        :type SnapshotType: str
         :param ShareReference: Number of snapshots currently shared
         :type ShareReference: int
+        :param SnapshotType: Snapshot type. This value can currently be either PRIVATE_SNAPSHOT or SHARED_SNAPSHOT.
+        :type SnapshotType: str
+        :param DiskSize: Size of the cloud disk used to create this snapshot (in GB).
+        :type DiskSize: int
+        :param DiskId: ID of the cloud disk used to create this snapshot.
+        :type DiskId: str
+        :param CopyingToRegions: The destination region to which the snapshot is being replicated. Default value is [ ].
+        :type CopyingToRegions: list of str
+        :param Encrypt: Whether the snapshot is created from an encrypted disk. Value range: <br><li>true: Yes <br><li>false: No.
+        :type Encrypt: bool
+        :param CreateTime: Creation time of the snapshot.
+        :type CreateTime: str
+        :param ImageCount: Number of images associated with snapshot.
+        :type ImageCount: int
+        :param DiskUsage: The type of the cloud disk used to create the snapshot. Value range: <br><li>SYSTEM_DISK: System disk <br><li>DATA_DISK: Data disk.
+        :type DiskUsage: str
+        :param SnapshotId: Snapshot ID.
+        :type SnapshotId: str
         :param TimeStartShare: The time when the snapshot sharing starts
         :type TimeStartShare: str
+        :param Tags: List of tags associated with the snapshot.
+        :type Tags: list of Tag
         """
-        self.SnapshotId = None
         self.Placement = None
-        self.DiskUsage = None
-        self.DiskId = None
-        self.DiskSize = None
-        self.SnapshotState = None
-        self.SnapshotName = None
-        self.Percent = None
-        self.CreateTime = None
-        self.DeadlineTime = None
-        self.Encrypt = None
-        self.IsPermanent = None
-        self.CopyingToRegions = None
         self.CopyFromRemote = None
+        self.SnapshotState = None
+        self.IsPermanent = None
+        self.SnapshotName = None
+        self.DeadlineTime = None
+        self.Percent = None
         self.Images = None
-        self.ImageCount = None
-        self.SnapshotType = None
         self.ShareReference = None
+        self.SnapshotType = None
+        self.DiskSize = None
+        self.DiskId = None
+        self.CopyingToRegions = None
+        self.Encrypt = None
+        self.CreateTime = None
+        self.ImageCount = None
+        self.DiskUsage = None
+        self.SnapshotId = None
         self.TimeStartShare = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
-        self.SnapshotId = params.get("SnapshotId")
         if params.get("Placement") is not None:
             self.Placement = Placement()
             self.Placement._deserialize(params.get("Placement"))
-        self.DiskUsage = params.get("DiskUsage")
-        self.DiskId = params.get("DiskId")
-        self.DiskSize = params.get("DiskSize")
-        self.SnapshotState = params.get("SnapshotState")
-        self.SnapshotName = params.get("SnapshotName")
-        self.Percent = params.get("Percent")
-        self.CreateTime = params.get("CreateTime")
-        self.DeadlineTime = params.get("DeadlineTime")
-        self.Encrypt = params.get("Encrypt")
-        self.IsPermanent = params.get("IsPermanent")
-        self.CopyingToRegions = params.get("CopyingToRegions")
         self.CopyFromRemote = params.get("CopyFromRemote")
+        self.SnapshotState = params.get("SnapshotState")
+        self.IsPermanent = params.get("IsPermanent")
+        self.SnapshotName = params.get("SnapshotName")
+        self.DeadlineTime = params.get("DeadlineTime")
+        self.Percent = params.get("Percent")
         if params.get("Images") is not None:
             self.Images = []
             for item in params.get("Images"):
                 obj = Image()
                 obj._deserialize(item)
                 self.Images.append(obj)
-        self.ImageCount = params.get("ImageCount")
-        self.SnapshotType = params.get("SnapshotType")
         self.ShareReference = params.get("ShareReference")
+        self.SnapshotType = params.get("SnapshotType")
+        self.DiskSize = params.get("DiskSize")
+        self.DiskId = params.get("DiskId")
+        self.CopyingToRegions = params.get("CopyingToRegions")
+        self.Encrypt = params.get("Encrypt")
+        self.CreateTime = params.get("CreateTime")
+        self.ImageCount = params.get("ImageCount")
+        self.DiskUsage = params.get("DiskUsage")
+        self.SnapshotId = params.get("SnapshotId")
         self.TimeStartShare = params.get("TimeStartShare")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

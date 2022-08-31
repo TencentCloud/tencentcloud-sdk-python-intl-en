@@ -1552,6 +1552,35 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDrmKeyProviderInfo(self, request):
+        """This API is used to query DRM key information.
+
+        :param request: Request instance for DescribeDrmKeyProviderInfo.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeDrmKeyProviderInfoRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeDrmKeyProviderInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDrmKeyProviderInfo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDrmKeyProviderInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeImageReviewUsageData(self, request):
         """This API is used to query your daily usage of the image recognition feature in a specified time period.
            1. You can query statistics from the last 365 days.
@@ -3253,6 +3282,35 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RemoveWatermark(self, request):
+        """This API is used to remove watermarks from a video.
+
+        :param request: Request instance for RemoveWatermark.
+        :type request: :class:`tencentcloud.vod.v20180717.models.RemoveWatermarkRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.RemoveWatermarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RemoveWatermark", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RemoveWatermarkResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ResetProcedureTemplate(self, request):
         """This API is used to reset a custom task flow template.
 
@@ -3312,40 +3370,42 @@ class VodClient(AbstractClient):
 
 
     def SearchMedia(self, request):
-        """This API is used to search for media information and supports filtering and sorting the returned results in many ways. You can:
-        - Specify the file ID set `FileIds` to return the media files with any ID in the set.
-        - Fuzzily search by multiple media filenames `Names` or multiple descriptions `Descriptions`.
-        - Search by multiple filename prefixes `NamePrefixes`.
-        - Specify the category set `ClassIds` (please see the input parameters) to return the media files in any category in the set. For example, assuming that there are categories of `Movies`, `TV Series`, and `Variety Shows`, and there are subcategories of `History`, `Action`, and `Romance` in the category of `Movies`, if `Movies` and `TV Series` are specified in `ClassIds`, then all the subcategories under `Movies` and `TV Series` will be returned. However, if `History` and `Action` are specified in `ClassIds`, only the media files in these two subcategories will be returned.
-        - Specify the tag set `Tags` (please see the input parameters) to return the media files with any tag in the set. For example, assuming that there are tags of `ACG`, `Drama`, and `YTPMV`, if `ACG` and `YTPMV` are specified in `Tags`, then any media files with either tag will be retrieved.
-        - Specify the file type set `Categories` (please see the input parameters) to return the media files of any type in the set. For example, assuming that there are `Video`, `Audio`, and `Image` file types, if `Video` and `Audio` are specified in `Categories`, then all media files of these two types will be retrieved.
-        - Specify the source set `SourceTypes` (please see the input parameters) to return the media files from any source in the set. For example, assuming that there are `Record` (live recording) and `Upload` (upload) sources, if `Record` and `Upload` are specified in `SourceTypes`, then all media files from these two sources will be retrieved.
-        - Specify the live stream code set `StreamIds` (please see the input parameters) to filter live recording media files.
-        - Specify the video ID set `Vids` (please see the input parameters) to filter live recording media files.
-        - Specify the creation time range to filter media files.
-        - Specify a text string `Text` for fuzzy search by media filenames or descriptions. (This is not recommended. `Names`, `NamePrefixes`, or `Descriptions` should be used instead.)
-        - Specify a media file source `SourceType` for search. (This is not recommended. `SourceTypes` should be used instead.)
-        - Specify a live stream code `StreamId` for search. (This is not recommended. `StreamIds` should be used instead.)
-        - Specify a video ID `Vid` for search. (This is not recommended. `Vids` should be used instead.)
-        - Specify a creation start time `StartTime` for search. (This is not recommended. `CreateTime` should be used instead.)
-        - Specify a creation end time `EndTime` for search. (This is not recommended. `CreateTime` should be used instead.)
-        - Search by any combination of the parameters above. For example, you can search for the media files with the tags of "Drama" and "Suspense" in the category of "Movies" or "TV Series" created between 12:00:00, December 1, 2018 and 12:00:00, December 8, 2018. Please note that for any parameter that supports array input, the search logic between its elements is "OR", and the logical relationship between parameters is "AND".
+        """This API is used to search for media files by specific criteria. You can sort the results and specify the information to return.
+        - Specify a list of file IDs (`FileIds`). Any file that matches one of the IDs will be returned.
+        - Specify one or multiple keywords for `Names` or `Descriptions` for fuzzy search by filename or description.
+        - Specify multiple filename prefixes (`NamePrefixes`).
+        - Specify a list of categories (`ClassIds`). Any file that matches one of the categories will be returned. For example, assume that there are categories `Movies`, `TV Series`, and `Variety Shows`, and `Movies` has subcategories including `History`, `Action`, and `Romance`. If `ClassIds` is set to `Movies` and `TV Series`, all media files in `Movies` (including its subcategories) and `TV Series` will be returned. If `ClassIds` is set to `History` and `Action`, only the files in those two subcategories will be returned.
+        - Specify a list of tags (`Tags`). Any file that matches one or more of the tags will be returned. For example, assume that there are tags `ACG`, `Drama`, and `YTPMV`. If `Tags` is set to `ACG` and `YTPMV`, any media file with either tag will be returned.
+        - Specify the types (`Categories`) of media files. Any file that matches one of the types will be returned. There are three file types: `Video`, `Audio`, and `Image`. If `Categories` is set to `Video` and `Audio`, all audio and video files will be returned.
+        - Specify the source types (`SourceTypes`). Any file that matches one of the source types specified will be returned. For example, if you set `SourceTypes` to `Record` (live recording) and `Upload` (upload), all recording files and uploaded files will be returned.
+        - Specify the stream IDs (`StreamIds`) of live recording files.
+        - Specify the video IDs (`Vids`) of live recording files.
+        - Specify a time range for search by file creation time.
+        - Specify the TRTC application IDs.
+        - Specify the TRTC room IDs.
+        - Specify one keyword for `Text` for fuzzy search by filename or description. (This is not recommended. Please use `Names`, `NamePrefixes` or `Descriptions` instead.)
+        - Specify one source (`SourceType`). (This is not recommended. Please use `SourceTypes` instead.)
+        - Specify one stream ID (`StreamId`). (This is not recommended. Please use `StreamIds` instead.)
+        - Specify one video ID (`Vid`). (This is not recommended. Please use `Vids` instead.)
+        - Specify the start (`StartTime`) of the time range to search by creation time. (This is not recommended. Please use `CreateTime` instead.)
+        - Specify the end (`EndTime`) of the time range to search by creation time. (This is not recommended. Please use `CreateTime` instead.)
+        - You can search by any combination of the parameters above. For example, you can search for media files with the tag "Drama" or "Suspense" in the category of "Movies" and "TV Series" created between 12:00:00, December 1, 2018 and 12:00:00, December 8, 2018. Note that for parameters whose data type is array, the search logic between their elements is "OR". The search logic between parameters is "AND".
 
-        - Sort the results by creation time and return them in multiple pages by specifying `Offset` and `Limit` (please see the input parameters).
-        - Specify `Filters` to return specified types of media information (all types will be returned by default). Valid values:
-            1. Basic information `basicInfo`: media name, category, playback address, cover image, etc.
-            2. Metadata `metaData`: size, duration, video stream information, audio stream information, etc.
-            3. Information of the transcoding result `transcodeInfo`: addresses, video stream parameters, and audio stream parameters of various specifications generated by the file transcoding.
-            4. Information of the animated image generating result `animatedGraphicsInfo`: information of an animated image (such as .gif) generated from a video.
-            5. Information of a sampled screenshot `sampleSnapshotInfo`: information of a sampled screenshot of a video.
-            6. Information of an image sprite `imageSpriteInfo`: information of an image sprite generated from a video.
-            7. Information of a point-in-time screenshot `snapshotByTimeOffsetInfo`: information of a point-in-time screenshot of a video.
-            8. Information of a timestamp `keyFrameDescInfo`: information of a timestamp configured for a video.
-            9. Information of transcoding to adaptive bitrate streaming `adaptiveDynamicStreamingInfo`: specification, encryption type, muxing format, etc.
+        - You can sort the results by creation time and return them in multiple pages by specifying `Offset` and `Limit`.
+        - You can use `Filters` to specify the types of file information to return (all types are returned by default). Valid values:
+            1. `basicInfo`: The file name, category, playback URL, thumbnail, etc.
+            2. `metaData`: The file size, duration, video stream information, audio stream information, etc.
+            3. `transcodeInfo`: The URLs, video stream parameters, and audio stream parameters of transcoding outputs.
+            4. `animatedGraphicsInfo`: The information of the animated images (such as GIF images) generated.
+            5. `sampleSnapshotInfo`: The information of the sampled screenshots generated.
+            6. `imageSpriteInfo`: The information of the image sprites generated.
+            7. `snapshotByTimeOffsetInfo`: The information of the time point screenshots generated.
+            8. `keyFrameDescInfo`: The video timestamp information.
+            9. `adaptiveDynamicStreamingInfo`: The specification, encryption type, format, etc.
 
-        <div id="maxResultsDesc">Upper limit of returned results:</div>
-        - The <b><a href="#p_offset">Offset</a> and <a href="#p_limit">Limit</a> parameters determine the number of search results on one single page. Note: if both of them use the default value, this API will return up to 10 results.</b>
-        - <b>Up to 5,000 search results can be returned, and excessive ones will not be displayed. If there are too many search results, you are recommended to use more filters to narrow down the search results.</b>
+        <div id="maxResultsDesc">Limits for returned records:</div>
+        - The <b><a href="#p_offset">Offset</a> and <a href="#p_limit">Limit</a> parameters determine the number of records per page. If neither parameter is passed, this API will return up to 10 records.</b>
+        - <b>Up to 5,000 records can be returned. If a request returns too many records, we recommend you use more specific search criteria to narrow down the results.</b>
 
         :param request: Request instance for SearchMedia.
         :type request: :class:`tencentcloud.vod.v20180717.models.SearchMediaRequest`
@@ -3373,28 +3433,57 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SetDrmKeyProviderInfo(self, request):
+        """This API is used to configure DRM key information.
+
+        :param request: Request instance for SetDrmKeyProviderInfo.
+        :type request: :class:`tencentcloud.vod.v20180717.models.SetDrmKeyProviderInfoRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.SetDrmKeyProviderInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetDrmKeyProviderInfo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetDrmKeyProviderInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SimpleHlsClip(self, request):
-        """This API is used to clip an HLS video by time period and then generate a new HLS video which developers can share right away or store persistently.
+        """This API is used to cut a clip from an HLS video to generate a new video (in HLS format). You can either share the new video or save it.
 
         VOD supports two types of clipping:
-        - Clipping for persistent storage: the video clip is saved as an independent video file with a `FileId`.
-        - Clipping for temporary sharing: the video clip is affiliated to the input file and has no `FileId`.
+        - Clipping for persistent storage: The video clip is saved as an independent video file with its own `FileId`.
+        - Clipping for temporary sharing: The video clip shares `FileId` with the input file.
 
         Notes:
-        - Clipping is based on the input M3U8 file that contains the list of TS segments, so the smallest clipping unit is one TS segment instead of in seconds or less.
+        - Clipping is based on the M3U8 file that contains a list of TS segments, so the smallest clipping unit is one TS segment instead of a second or less.
 
 
-        ### Clipping for Persistent Storage
+        ### Clipping for persistent storage
         In this mode, a video clip is saved as an independent video file with a `FileId`, and its lifecycle is not subject to the input video. Even if the source video is deleted, the video clip still exists. Moreover, the video clip can be transcoded, published on WeChat, and processed in other ways.
 
-        Take the video of a two-hour long football match for example. The customer may only want to store the original two-hour video for two months to save costs, but want to store clipped highlights for a specified longer time and also to transcode and publish such highlights on WeChat. Clipping for persistent storage is suitable for this customer.
+        Suppose you recorded a two-hour football match. You want to save the full video for only two months to save costs, but want to save the highlights for a longer time and perhaps transcode and publish the highlight clip to WeChat. In this case, you can choose clipping for persistent storage.
 
         The advantage of clipping for persistent storage is that the video clip has a lifecycle independent of the input video and can be managed independently and stored persistently.
 
-        ### Clipping for Temporary Sharing
+        ### Clipping for temporary sharing
         The video clip (an M3U8 file) shares the same TS segments with the input video instead of being an independent video. It only has a playback URL but has no `FileId`, and its validity period is the same as that of the input video. Once the input video is deleted, the video clip cannot be played back.
 
-        As the video clip is not an independent video, it will not be managed as a VOD media asset. For example, it will not be counted in the total videos displayed on the VOD console, and also cannot be transcoded or published on WeChat.
+        Because the video clip is not an independent video, it’s not displayed as a media asset in the VOD console, and cannot be transcoded or published to WeChat.
 
         Clipping for temporary sharing is lightweight and incurs no additional storage fees. However, the video clip has the same lifecycle as the source recording video and cannot be transcoded or processed in other ways.
 

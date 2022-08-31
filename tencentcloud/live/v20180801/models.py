@@ -1159,7 +1159,11 @@ Notes:
         :param BackupSourceUrl: The URL of the backup source.
 You can specify only one backup source URL.
         :type BackupSourceUrl: str
-        :param WatermarkList: 
+        :param WatermarkList: The information of watermarks to add.
+Notes:
+1. You can add up to four watermarks to different locations of the video.
+2. Make sure you use publicly accessible URLs for the watermark images.
+3. Supported image formats include PNG, JPG, and GIF.
         :type WatermarkList: list of PullPushWatermarkInfo
         """
         self.SourceType = None
@@ -6745,6 +6749,16 @@ Notes:
         :param BackupSourceUrl: The URL of the backup source.
 You can specify only one backup source URL.
         :type BackupSourceUrl: str
+        :param WatermarkList: The information of watermarks to add.
+Notes:
+1. You can add up to four watermarks to different locations of the video.
+2. Make sure you use publicly accessible URLs for the watermark images.
+3. Supported image formats include PNG and JPG.
+4. If you change the watermark configuration of a task whose source is a list of video files, the new configuration will take effect for the next file in the list.
+5. If you change the watermark configuration of a task whose source is a live stream, the new configuration will take effect immediately.
+6. If you want to stop using watermarks, pass in an empty array.
+7. Currently, animated watermarks are not supported.
+        :type WatermarkList: list of PullPushWatermarkInfo
         """
         self.TaskId = None
         self.Operator = None
@@ -6761,6 +6775,7 @@ You can specify only one backup source URL.
         self.Comment = None
         self.BackupSourceType = None
         self.BackupSourceUrl = None
+        self.WatermarkList = None
 
 
     def _deserialize(self, params):
@@ -6779,6 +6794,12 @@ You can specify only one backup source URL.
         self.Comment = params.get("Comment")
         self.BackupSourceType = params.get("BackupSourceType")
         self.BackupSourceUrl = params.get("BackupSourceUrl")
+        if params.get("WatermarkList") is not None:
+            self.WatermarkList = []
+            for item in params.get("WatermarkList"):
+                obj = PullPushWatermarkInfo()
+                obj._deserialize(item)
+                self.WatermarkList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7434,52 +7455,46 @@ In UTC format, such as 2018-06-29T19:00:00Z.
 
 
 class PullPushWatermarkInfo(AbstractModel):
-    """Watermark information
+    """The watermark configuration for a relay task.
 
     """
 
     def __init__(self):
         r"""
-        :param WatermarkId: Watermark ID.
-        :type WatermarkId: int
-        :param PictureUrl: Watermark image URL.
+        :param PictureUrl: The watermark image URL.
+Characters not allowed:
+;(){}$>`#"'|
         :type PictureUrl: str
-        :param XPosition: Display position: X-axis offset.
+        :param XPosition: The horizontal offset (%) of the watermark. The default value is 0.
         :type XPosition: int
-        :param YPosition: Display position: Y-axis offset.
+        :param YPosition: The vertical offset (%) of the watermark. The default value is 0.
         :type YPosition: int
-        :param WatermarkName: Watermark name.
-        :type WatermarkName: str
-        :param Status: Current status. 0: not used. 1: in use.
-        :type Status: int
-        :param CreateTime: Creation time.
-        :type CreateTime: str
-        :param Width: Watermark width
+        :param Width: The watermark width as a percentage of the video width. To avoid distorted images, we recommend you specify only the width or height so that the other side can be scaled proportionally. By default, the original width of the watermark image is used.
         :type Width: int
-        :param Height: Watermark height
+        :param Height: The watermark height as a percentage of the video height. To avoid distorted images, we recommend you specify only the width or height so that the other side can be scaled proportionally. By default, the original height of the watermark image is used.
         :type Height: int
+        :param Location: The origin. The default value is 0.
+0: Top left corner
+1: Top right corner
+2: Bottom right corner
+3: Bottom left corner
+        :type Location: int
         """
-        self.WatermarkId = None
         self.PictureUrl = None
         self.XPosition = None
         self.YPosition = None
-        self.WatermarkName = None
-        self.Status = None
-        self.CreateTime = None
         self.Width = None
         self.Height = None
+        self.Location = None
 
 
     def _deserialize(self, params):
-        self.WatermarkId = params.get("WatermarkId")
         self.PictureUrl = params.get("PictureUrl")
         self.XPosition = params.get("XPosition")
         self.YPosition = params.get("YPosition")
-        self.WatermarkName = params.get("WatermarkName")
-        self.Status = params.get("Status")
-        self.CreateTime = params.get("CreateTime")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.Location = params.get("Location")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7588,6 +7603,17 @@ The information includes the source URL, offset, and report time.
         :type RecentPullInfo: :class:`tencentcloud.live.v20180801.models.RecentPullInfo`
         :param Comment: The remarks for the task.
         :type Comment: str
+        :param BackupSourceType: The backup source type. Valid values:
+PullLivePushLive: Live streaming
+PullVodPushLive: Video files
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BackupSourceType: str
+        :param BackupSourceUrl: The URL of the backup source.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BackupSourceUrl: str
+        :param WatermarkList: The information of watermarks to add.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WatermarkList: list of PullPushWatermarkInfo
         """
         self.TaskId = None
         self.SourceType = None
@@ -7612,6 +7638,9 @@ The information includes the source URL, offset, and report time.
         self.Status = None
         self.RecentPullInfo = None
         self.Comment = None
+        self.BackupSourceType = None
+        self.BackupSourceUrl = None
+        self.WatermarkList = None
 
 
     def _deserialize(self, params):
@@ -7640,6 +7669,14 @@ The information includes the source URL, offset, and report time.
             self.RecentPullInfo = RecentPullInfo()
             self.RecentPullInfo._deserialize(params.get("RecentPullInfo"))
         self.Comment = params.get("Comment")
+        self.BackupSourceType = params.get("BackupSourceType")
+        self.BackupSourceUrl = params.get("BackupSourceUrl")
+        if params.get("WatermarkList") is not None:
+            self.WatermarkList = []
+            for item in params.get("WatermarkList"):
+                obj = PullPushWatermarkInfo()
+                obj._deserialize(item)
+                self.WatermarkList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
