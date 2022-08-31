@@ -29,6 +29,9 @@ INTERNALERROR = 'InternalError'
 # Server error.
 INTERNALERROR_BACKENDERROR = 'InternalError.BackendError'
 
+# 
+INTERNALERROR_DBERROR = 'InternalError.DBError'
+
 # Failed to get configuration
 INTERNALERROR_DOMAINCONFIG = 'InternalError.DomainConfig'
 
@@ -44,7 +47,7 @@ INTERNALERROR_PROXYSERVER = 'InternalError.ProxyServer'
 # Server error.
 INTERNALERROR_QUOTASYSTEM = 'InternalError.QuotaSystem'
 
-# 
+# The backend routing address is incorrect.
 INTERNALERROR_ROUTEERROR = 'InternalError.RouteError'
 
 # Internal error.
@@ -56,14 +59,17 @@ INVALIDPARAMETER = 'InvalidParameter'
 # The domain name does not exist or not belong to this account.
 INVALIDPARAMETER_DOMAINNOTFOUND = 'InvalidParameter.DomainNotFound'
 
-# 
+# Invalid node cache.
 INVALIDPARAMETER_INVALIDCACHEONLYONSWITCH = 'InvalidParameter.InvalidCacheOnlyOnSwitch'
 
 # Incorrect certificate information.
 INVALIDPARAMETER_INVALIDCERTINFO = 'InvalidParameter.InvalidCertInfo'
 
-# 
+# Invalid client IP request header.
 INVALIDPARAMETER_INVALIDCLIENTIPHEADERNAME = 'InvalidParameter.InvalidClientIpHeaderName'
+
+# 
+INVALIDPARAMETER_INVALIDDYNAMICROUTINEBILLING = 'InvalidParameter.InvalidDynamicRoutineBilling'
 
 # Invalid origin server.
 INVALIDPARAMETER_INVALIDORIGIN = 'InvalidParameter.InvalidOrigin'
@@ -83,7 +89,7 @@ INVALIDPARAMETER_INVALIDWEBSOCKETTIMEOUT = 'InvalidParameter.InvalidWebSocketTim
 # Invalid parameter
 INVALIDPARAMETER_PARAMETERERROR = 'InvalidParameter.ParameterError'
 
-# Security parameter error.
+# Invalid parameter.
 INVALIDPARAMETER_SECURITY = 'InvalidParameter.Security'
 
 # Incorrect domain name configuration.
@@ -98,13 +104,13 @@ INVALIDPARAMETER_TASKNOTGENERATED = 'InvalidParameter.TaskNotGenerated'
 # Invalid file upload link.
 INVALIDPARAMETER_UPLOADURL = 'InvalidParameter.UploadUrl'
 
-# 
+# The site does not exist.
 INVALIDPARAMETER_ZONENOTFOUND = 'InvalidParameter.ZoneNotFound'
 
 # It conflicts with existing records.
 INVALIDPARAMETERVALUE_CONFLICTRECORD = 'InvalidParameterValue.ConflictRecord'
 
-# 
+# DNS records conflict with DNSSEC.
 INVALIDPARAMETERVALUE_CONFLICTWITHDNSSEC = 'InvalidParameterValue.ConflictWithDNSSEC'
 
 # This DNS record conflicts with CLB records.
@@ -119,7 +125,7 @@ INVALIDPARAMETERVALUE_INVALIDDNSCONTENT = 'InvalidParameterValue.InvalidDNSConte
 # Incorrect DNS CNAME
 INVALIDPARAMETERVALUE_INVALIDDNSNAME = 'InvalidParameterValue.InvalidDNSName'
 
-# 
+# Incorrect DNS proxied domain name.
 INVALIDPARAMETERVALUE_INVALIDPROXYNAME = 'InvalidParameterValue.InvalidProxyName'
 
 # Incorrect DNS proxy
@@ -142,6 +148,9 @@ LIMITEXCEEDED_DAILYQUOTA = 'LimitExceeded.DailyQuota'
 
 # Operation denied.
 OPERATIONDENIED = 'OperationDenied'
+
+# 
+OPERATIONDENIED_DOMAINNOICP = 'OperationDenied.DomainNoICP'
 
 # The resource is occupied.
 RESOURCEINUSE = 'ResourceInUse'

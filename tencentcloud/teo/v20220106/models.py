@@ -1817,7 +1817,7 @@ class CreateLoadBalancingRequest(AbstractModel):
         r"""
         :param ZoneId: Site ID
         :type ZoneId: str
-        :param Host: Subdomain name. You can use @ to represent the root domain.
+        :param Host: Subdomain name
         :type Host: str
         :param Type: Proxy mode. Valid values:
 `dns_only`: Only DNS
@@ -2112,16 +2112,25 @@ class CreateZoneRequest(AbstractModel):
         :type Type: str
         :param JumpStart: Specifies whether to skip resolution record scanning
         :type JumpStart: bool
+        :param Tags: Resource tag
+        :type Tags: list of Tag
         """
         self.Name = None
         self.Type = None
         self.JumpStart = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Type = params.get("Type")
         self.JumpStart = params.get("JumpStart")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7077,16 +7086,6 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :type Type: str
         :param Paused: Indicates whether the site is disabled
         :type Paused: bool
-        :param CreatedOn: Site creation date
-        :type CreatedOn: str
-        :param ModifiedOn: Site modification date
-        :type ModifiedOn: str
-        :param VanityNameServers: User-defined name server information
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :type VanityNameServers: :class:`tencentcloud.teo.v20220106.models.VanityNameServers`
-        :param VanityNameServersIps: User-defined name server IP information
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :type VanityNameServersIps: list of VanityNameServersIps
         :param CnameSpeedUp: Specifies whether to enable CNAME acceleration
 - `enabled`: Enable
 - `disabled`: Disable
@@ -7096,6 +7095,24 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 - `pending`: The site is waiting for verification.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type CnameStatus: str
+        :param Tags: Resource tag
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of Tag
+        :param Area: 
+        :type Area: str
+        :param Resources: Billable resource
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Resources: list of Resource
+        :param ModifiedOn: Site modification date
+        :type ModifiedOn: str
+        :param CreatedOn: Site creation date
+        :type CreatedOn: str
+        :param VanityNameServers: User-defined name server information
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type VanityNameServers: :class:`tencentcloud.teo.v20220106.models.VanityNameServers`
+        :param VanityNameServersIps: User-defined name server IP information
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type VanityNameServersIps: list of VanityNameServersIps
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -7106,12 +7123,15 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.Status = None
         self.Type = None
         self.Paused = None
-        self.CreatedOn = None
-        self.ModifiedOn = None
-        self.VanityNameServers = None
-        self.VanityNameServersIps = None
         self.CnameSpeedUp = None
         self.CnameStatus = None
+        self.Tags = None
+        self.Area = None
+        self.Resources = None
+        self.ModifiedOn = None
+        self.CreatedOn = None
+        self.VanityNameServers = None
+        self.VanityNameServersIps = None
         self.RequestId = None
 
 
@@ -7123,8 +7143,23 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.Status = params.get("Status")
         self.Type = params.get("Type")
         self.Paused = params.get("Paused")
-        self.CreatedOn = params.get("CreatedOn")
+        self.CnameSpeedUp = params.get("CnameSpeedUp")
+        self.CnameStatus = params.get("CnameStatus")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.Area = params.get("Area")
+        if params.get("Resources") is not None:
+            self.Resources = []
+            for item in params.get("Resources"):
+                obj = Resource()
+                obj._deserialize(item)
+                self.Resources.append(obj)
         self.ModifiedOn = params.get("ModifiedOn")
+        self.CreatedOn = params.get("CreatedOn")
         if params.get("VanityNameServers") is not None:
             self.VanityNameServers = VanityNameServers()
             self.VanityNameServers._deserialize(params.get("VanityNameServers"))
@@ -7134,8 +7169,6 @@ Note: This field may return `null`, indicating that no valid value can be obtain
                 obj = VanityNameServersIps()
                 obj._deserialize(item)
                 self.VanityNameServersIps.append(obj)
-        self.CnameSpeedUp = params.get("CnameSpeedUp")
-        self.CnameStatus = params.get("CnameStatus")
         self.RequestId = params.get("RequestId")
 
 
@@ -10513,6 +10546,75 @@ class ReclaimZoneResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Resource(AbstractModel):
+    """Billable resource
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: Resource ID
+        :type Id: str
+        :param PayMode: Billing mode
+`0`: Pay-as-you-go
+        :type PayMode: int
+        :param CreateTime: Creation time
+        :type CreateTime: str
+        :param EnableTime: Effective time
+        :type EnableTime: str
+        :param ExpireTime: Expiration time
+        :type ExpireTime: str
+        :param Status: Status of the plan
+        :type Status: str
+        :param Sv: Pricing query parameter
+        :type Sv: list of Sv
+        :param AutoRenewFlag: Specifies whether to enable auto-renewal
+`0`: Default
+`1`: Enable auto-renewal
+`2`: Disable auto-renewal
+        :type AutoRenewFlag: int
+        :param PlanId: ID of the plan
+        :type PlanId: str
+        :param Area: 
+        :type Area: str
+        """
+        self.Id = None
+        self.PayMode = None
+        self.CreateTime = None
+        self.EnableTime = None
+        self.ExpireTime = None
+        self.Status = None
+        self.Sv = None
+        self.AutoRenewFlag = None
+        self.PlanId = None
+        self.Area = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.PayMode = params.get("PayMode")
+        self.CreateTime = params.get("CreateTime")
+        self.EnableTime = params.get("EnableTime")
+        self.ExpireTime = params.get("ExpireTime")
+        self.Status = params.get("Status")
+        if params.get("Sv") is not None:
+            self.Sv = []
+            for item in params.get("Sv"):
+                obj = Sv()
+                obj._deserialize(item)
+                self.Sv.append(obj)
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.PlanId = params.get("PlanId")
+        self.Area = params.get("Area")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ScanDnsRecordsRequest(AbstractModel):
     """ScanDnsRecords request structure.
 
@@ -10902,6 +11004,34 @@ class SmartRouting(AbstractModel):
         
 
 
+class Sv(AbstractModel):
+    """Pricing query parameter
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: Parameter key
+        :type Key: str
+        :param Value: Parameter value
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SwitchConfig(AbstractModel):
     """Web security configuration switch
 
@@ -10917,6 +11047,36 @@ class SwitchConfig(AbstractModel):
 
     def _deserialize(self, params):
         self.WebSwitch = params.get("WebSwitch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Tag(AbstractModel):
+    """Tag configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagKey: Tag key
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TagKey: str
+        :param TagValue: Tag value
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11658,15 +11818,28 @@ class Zone(AbstractModel):
         :type Type: str
         :param Paused: Indicates whether the site is disabled
         :type Paused: bool
-        :param CreatedOn: Site creation date
-        :type CreatedOn: str
-        :param ModifiedOn: Site modification date
-        :type ModifiedOn: str
+        :param CnameSpeedUp: Specifies whether to enable CNAME acceleration
+- `enabled`: Enable
+- `disabled`: Disable
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CnameSpeedUp: str
         :param CnameStatus: Ownership verification status of the site when it is connected to EdgeOne via CNAME.
 - `finished`: The site is verified.
 - `pending`: Verifying the ownership of the site.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type CnameStatus: str
+        :param Tags: Resource tag
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type Tags: list of Tag
+        :param Resources: Billable resource
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type Resources: list of Resource
+        :param CreatedOn: Site creation date
+        :type CreatedOn: str
+        :param ModifiedOn: Site modification date
+        :type ModifiedOn: str
+        :param Area: 
+        :type Area: str
         """
         self.Id = None
         self.Name = None
@@ -11675,9 +11848,13 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.Status = None
         self.Type = None
         self.Paused = None
+        self.CnameSpeedUp = None
+        self.CnameStatus = None
+        self.Tags = None
+        self.Resources = None
         self.CreatedOn = None
         self.ModifiedOn = None
-        self.CnameStatus = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -11688,9 +11865,23 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.Status = params.get("Status")
         self.Type = params.get("Type")
         self.Paused = params.get("Paused")
+        self.CnameSpeedUp = params.get("CnameSpeedUp")
+        self.CnameStatus = params.get("CnameStatus")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        if params.get("Resources") is not None:
+            self.Resources = []
+            for item in params.get("Resources"):
+                obj = Resource()
+                obj._deserialize(item)
+                self.Resources.append(obj)
         self.CreatedOn = params.get("CreatedOn")
         self.ModifiedOn = params.get("ModifiedOn")
-        self.CnameStatus = params.get("CnameStatus")
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11710,6 +11901,8 @@ class ZoneFilter(AbstractModel):
         :param Name: Filters by the field name. Vaules:
 - `name`: Site name.
 - `status`: Site status.
+- `tagKey`: Tag key.
+- `tagValue`: Tag value.
         :type Name: str
         :param Values: Filters by the field value
         :type Values: list of str
