@@ -53,13 +53,21 @@ class AllocateCustomerCreditResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param TotalCredit: The updated total credit
+        :type TotalCredit: float
+        :param RemainingCredit: The updated available credit
+        :type RemainingCredit: float
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.TotalCredit = None
+        self.RemainingCredit = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TotalCredit = params.get("TotalCredit")
+        self.RemainingCredit = params.get("RemainingCredit")
         self.RequestId = params.get("RequestId")
 
 
@@ -225,16 +233,20 @@ class QueryCreditAllocationHistoryData(AbstractModel):
         :type Operator: str
         :param Credit: Allocated credit value
         :type Credit: float
+        :param AllocatedCredit: The allocated total credit
+        :type AllocatedCredit: float
         """
         self.AllocatedTime = None
         self.Operator = None
         self.Credit = None
+        self.AllocatedCredit = None
 
 
     def _deserialize(self, params):
         self.AllocatedTime = params.get("AllocatedTime")
         self.Operator = params.get("Operator")
         self.Credit = params.get("Credit")
+        self.AllocatedCredit = params.get("AllocatedCredit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -335,6 +347,12 @@ class QueryCustomersCreditData(AbstractModel):
         :type Credit: float
         :param RemainingCredit: The remaining credit of reseller’s customer
         :type RemainingCredit: float
+        :param IdentifyType: 0: Identity not verified; 1: Individual identity verified; 2: Enterprise identity verified.
+        :type IdentifyType: int
+        :param Remark: Customer remarks
+        :type Remark: str
+        :param Force: Forced status
+        :type Force: int
         """
         self.Name = None
         self.Type = None
@@ -346,6 +364,9 @@ class QueryCustomersCreditData(AbstractModel):
         self.ClientUin = None
         self.Credit = None
         self.RemainingCredit = None
+        self.IdentifyType = None
+        self.Remark = None
+        self.Force = None
 
 
     def _deserialize(self, params):
@@ -359,6 +380,9 @@ class QueryCustomersCreditData(AbstractModel):
         self.ClientUin = params.get("ClientUin")
         self.Credit = params.get("Credit")
         self.RemainingCredit = params.get("RemainingCredit")
+        self.IdentifyType = params.get("IdentifyType")
+        self.Remark = params.get("Remark")
+        self.Force = params.get("Force")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -372,6 +396,40 @@ class QueryCustomersCreditRequest(AbstractModel):
     """QueryCustomersCredit request structure.
 
     """
+
+    def __init__(self):
+        r"""
+        :param FilterType: Search condition type. You can only search by UIN, name, or remarks.
+        :type FilterType: str
+        :param Filter: Search condition
+        :type Filter: str
+        :param Page: A pagination parameter that specifies the current page number, with a value starting from 1.
+        :type Page: int
+        :param PageSize: A pagination parameter that specifies the number of entries per page.
+        :type PageSize: int
+        :param Order: A sort parameter that specifies the sort order. Valid values: `desc` (descending order), or `asc` (ascending order) based on `AssociationTime`. The value will be `desc` if left empty.
+        :type Order: str
+        """
+        self.FilterType = None
+        self.Filter = None
+        self.Page = None
+        self.PageSize = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.FilterType = params.get("FilterType")
+        self.Filter = params.get("Filter")
+        self.Page = params.get("Page")
+        self.PageSize = params.get("PageSize")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class QueryCustomersCreditResponse(AbstractModel):
