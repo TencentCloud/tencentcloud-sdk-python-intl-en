@@ -44,6 +44,9 @@ INTERNALERROR_CALLNOTIFICATIONERROR = 'InternalError.CallNotificationError'
 # The STS API call failed.
 INTERNALERROR_CALLSTSERROR = 'InternalError.CallStsError'
 
+# 
+INTERNALERROR_CALLTATERROR = 'InternalError.CallTATError'
+
 # The tag API call failed.
 INTERNALERROR_CALLTAGERROR = 'InternalError.CallTagError'
 
@@ -167,7 +170,7 @@ INVALIDPARAMETERVALUE_INVALIDCLBREGION = 'InvalidParameterValue.InvalidClbRegion
 # Invalid filter condition.
 INVALIDPARAMETERVALUE_INVALIDFILTER = 'InvalidParameterValue.InvalidFilter'
 
-# 
+# The HPC ID is invalid.
 INVALIDPARAMETERVALUE_INVALIDHPCCLUSTERID = 'InvalidParameterValue.InvalidHpcClusterId'
 
 # Invalid image ID.
@@ -349,6 +352,9 @@ RESOURCENOTFOUND_AUTOSCALINGNOTIFICATIONNOTFOUND = 'ResourceNotFound.AutoScaling
 
 # The specified CMQ queue does not exist.
 RESOURCENOTFOUND_CMQQUEUENOTFOUND = 'ResourceNotFound.CmqQueueNotFound'
+
+# 
+RESOURCENOTFOUND_COMMANDNOTFOUND = 'ResourceNotFound.CommandNotFound'
 
 # The specified instance does not exist.
 RESOURCENOTFOUND_INSTANCESNOTFOUND = 'ResourceNotFound.InstancesNotFound'

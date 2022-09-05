@@ -18159,6 +18159,20 @@ class VpnConnection(AbstractModel):
         :type HealthCheckRemoteIp: str
         :param HealthCheckStatus: Tunnel health check status. Valid values: AVAILABLE: healthy; UNAVAILABLE: unhealthy. This parameter will be returned only after health check is enabled.
         :type HealthCheckStatus: str
+        :param DpdEnable: Whether to enable DPD. Values: `0` (Disable) and `1` (Enable)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DpdEnable: int
+        :param DpdTimeout: DPD timeout period. 
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DpdTimeout: str
+        :param DpdAction: The action to take in case of DPD timeout. Values: `clear` (Disconnect) and `restart` (retry). This parameter only takes effect when `DpdEnable` is set to `1`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DpdAction: str
+        :param TagSet: Array of tag key-value pairs
+        :type TagSet: list of Tag
+        :param NegotiationType: Negotiation type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NegotiationType: str
         """
         self.VpnConnectionId = None
         self.VpnConnectionName = None
@@ -18179,6 +18193,11 @@ class VpnConnection(AbstractModel):
         self.HealthCheckLocalIp = None
         self.HealthCheckRemoteIp = None
         self.HealthCheckStatus = None
+        self.DpdEnable = None
+        self.DpdTimeout = None
+        self.DpdAction = None
+        self.TagSet = None
+        self.NegotiationType = None
 
 
     def _deserialize(self, params):
@@ -18210,6 +18229,16 @@ class VpnConnection(AbstractModel):
         self.HealthCheckLocalIp = params.get("HealthCheckLocalIp")
         self.HealthCheckRemoteIp = params.get("HealthCheckRemoteIp")
         self.HealthCheckStatus = params.get("HealthCheckStatus")
+        self.DpdEnable = params.get("DpdEnable")
+        self.DpdTimeout = params.get("DpdTimeout")
+        self.DpdAction = params.get("DpdAction")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
+        self.NegotiationType = params.get("NegotiationType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

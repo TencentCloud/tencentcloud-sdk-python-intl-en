@@ -47,7 +47,7 @@ INTERNALERROR = 'InternalError'
 # Failed to create the Ckafka route. Please retry later.
 INTERNALERROR_CREATECKAFKAROUTEERROR = 'InternalError.CreateCkafkaRouteError'
 
-# 
+# Internal module error
 INTERNALERROR_MODULEERROR = 'InternalError.ModuleError'
 
 # Internal error.
@@ -179,7 +179,7 @@ INVALIDPARAMETERVALUE_INCONSISTENTINSTANCEINTERNETCHARGETYPE = 'InvalidParameter
 # This instance does not support an Anycast EIP.
 INVALIDPARAMETERVALUE_INSTANCEDOESNOTSUPPORTANYCAST = 'InvalidParameterValue.InstanceDoesNotSupportAnycast'
 
-# 
+# The instance does not have a public IP.
 INVALIDPARAMETERVALUE_INSTANCEHASNOWANIP = 'InvalidParameterValue.InstanceHasNoWanIP'
 
 # This instance already has a WanIP (public IP).

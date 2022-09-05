@@ -1003,7 +1003,8 @@ If this field is configured in a launch configuration, the `InstanceName` of a C
 <br><li>ORIGINAL: uses the configured cloud disk type
 <br><li>AUTOMATIC: automatically chooses an available cloud disk type
         :type DiskTypePolicy: str
-        :param HpcClusterId: 
+        :param HpcClusterId: HPC ID<br>
+Note: This field is default to empty
         :type HpcClusterId: str
         """
         self.LaunchConfigurationName = None
@@ -3295,7 +3296,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 <br><li>ORIGINAL: uses the configured cloud disk type
 <br><li>AUTOMATIC: automatically chooses an available cloud disk type in the current availability zone
         :type DiskTypePolicy: str
-        :param HpcClusterId: 
+        :param HpcClusterId: HPC ID<br>
+Note: This field is default to empty
         :type HpcClusterId: str
         """
         self.ProjectId = None
@@ -3821,7 +3823,7 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
         r"""
         :param LaunchConfigurationId: Launch configuration ID
         :type LaunchConfigurationId: str
-        :param ImageId: Valid [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-8toqc6s3`. There are four types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><li>Marketplace images </li><br/>You can obtain the available image IDs in the following ways: <br/><li>For `public images`, `custom images`, and `shared images`, log in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE) to query the image IDs; for `marketplace images`, query the image IDs through [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>This value can be obtained from the `ImageId` field in the return value of the [DescribeImages API](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1).</li>
+        :param ImageId: [Image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are three types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><br/>You can obtain the image IDs in the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE).</li><li>You can also use the [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>
         :type ImageId: str
         :param InstanceTypes: List of instance types. Each type specifies different resource specifications. This list contains up to 10 instance types.
 The launch configuration uses `InstanceType` to indicate one single instance type and `InstanceTypes` to indicate multiple instance types. Specifying the `InstanceTypes` field will invalidate the original `InstanceType`.
@@ -3879,6 +3881,9 @@ This field requires passing in the `InstanceName` field. Other fields that are n
         :type EnhancedService: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
         :param CamRoleName: CAM role name. This parameter can be obtained from the `roleName` field returned by DescribeRoleList API.
         :type CamRoleName: str
+        :param HpcClusterId: HPC ID<br>
+Note: This field is default to empty
+        :type HpcClusterId: str
         """
         self.LaunchConfigurationId = None
         self.ImageId = None
@@ -3898,6 +3903,7 @@ This field requires passing in the `InstanceName` field. Other fields that are n
         self.InstanceNameSettings = None
         self.EnhancedService = None
         self.CamRoleName = None
+        self.HpcClusterId = None
 
 
     def _deserialize(self, params):
@@ -3938,6 +3944,7 @@ This field requires passing in the `InstanceName` field. Other fields that are n
             self.EnhancedService = EnhancedService()
             self.EnhancedService._deserialize(params.get("EnhancedService"))
         self.CamRoleName = params.get("CamRoleName")
+        self.HpcClusterId = params.get("HpcClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
