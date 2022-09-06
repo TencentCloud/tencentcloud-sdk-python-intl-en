@@ -18,6 +18,377 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ApplyLivenessTokenRequest(AbstractModel):
+    """ApplyLivenessToken request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SecureLevel: Enumerated value. Valid values: `1`, `2`, `3`, and `4`.
+Their meanings are as follows:
+1 - silent
+2 - blinking
+3 - light
+4 - blinking + light (default)
+        :type SecureLevel: str
+        """
+        self.SecureLevel = None
+
+
+    def _deserialize(self, params):
+        self.SecureLevel = params.get("SecureLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyLivenessTokenResponse(AbstractModel):
+    """ApplyLivenessToken response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkToken: The token used to identify an SDK-based verification process. It is valid for 10 minutes and can be used to get the verification result after the process is completed.
+        :type SdkToken: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SdkToken = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SdkToken = params.get("SdkToken")
+        self.RequestId = params.get("RequestId")
+
+
+class ApplySdkVerificationTokenRequest(AbstractModel):
+    """ApplySdkVerificationToken request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NeedVerifyIdCard: Whether ID card authentication is required. If not, only document OCR will be performed. Currently, authentication is available only when the value of `IdCardType` is `HK`.
+        :type NeedVerifyIdCard: bool
+        :param IdCardType: Card type. Valid values: `HK` (Hong Kong ID cards) (default), `ML` (Malaysian ID cards), `PhilippinesVoteID` (Philippine voters ID cards), and `PhilippinesDrivingLicense` (Philippine driving licenses).
+        :type IdCardType: str
+        :param DisableChangeOcrResult: Disable the modification of the OCR result by the user. Default value: `false` (modification allowed).
+        :type DisableChangeOcrResult: bool
+        :param DisableCheckOcrWarnings: Disable the OCR warnings. Default value: `false` (not disable), where OCR warnings are enabled and the OCR result will not be returned based on the warnings. If the value of `NeedVerifyIdCard` is `true`, the value of this field will also be `true`.
+        :type DisableCheckOcrWarnings: bool
+        :param Extra: A passthrough field, which is returned together with the verification result and can contain up to 1,024 bits.
+        :type Extra: str
+        """
+        self.NeedVerifyIdCard = None
+        self.IdCardType = None
+        self.DisableChangeOcrResult = None
+        self.DisableCheckOcrWarnings = None
+        self.Extra = None
+
+
+    def _deserialize(self, params):
+        self.NeedVerifyIdCard = params.get("NeedVerifyIdCard")
+        self.IdCardType = params.get("IdCardType")
+        self.DisableChangeOcrResult = params.get("DisableChangeOcrResult")
+        self.DisableCheckOcrWarnings = params.get("DisableCheckOcrWarnings")
+        self.Extra = params.get("Extra")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplySdkVerificationTokenResponse(AbstractModel):
+    """ApplySdkVerificationToken response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkToken: The token used to identify an SDK-based verification process. It is valid for 7,200s and can be used to get the verification result after the process is completed.
+        :type SdkToken: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SdkToken = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SdkToken = params.get("SdkToken")
+        self.RequestId = params.get("RequestId")
+
+
+class ApplyWebVerificationTokenRequest(AbstractModel):
+    """ApplyWebVerificationToken request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RedirectUrl: The web redirect URL after the verification is completed.
+        :type RedirectUrl: str
+        :param CompareImageUrl: The COS URL of the image for face comparison, which can be obtained with one of the following methods:
+1. Call the `CreateUploadUrl` API to generate a URL and call it again after the image is successfully uploaded.
+2. Use an existing COS URL. For a private bucket, grant the download permission with a pre-signed URL. The corresponding COS bucket must be in the same region as the input parameter `Region`.
+        :type CompareImageUrl: str
+        :param CompareImageMd5: The MD5 hash values of the image for face comparison (CompareImageUrl).
+        :type CompareImageMd5: str
+        """
+        self.RedirectUrl = None
+        self.CompareImageUrl = None
+        self.CompareImageMd5 = None
+
+
+    def _deserialize(self, params):
+        self.RedirectUrl = params.get("RedirectUrl")
+        self.CompareImageUrl = params.get("CompareImageUrl")
+        self.CompareImageMd5 = params.get("CompareImageMd5")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyWebVerificationTokenResponse(AbstractModel):
+    """ApplyWebVerificationToken response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VerificationUrl: The verification URL to be opened with a browser to start the verification process.
+        :type VerificationUrl: str
+        :param BizToken: The token used to identify a web-based verification process. It is valid for 7,200s and can be used to get the verification result after the process is completed.
+        :type BizToken: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.VerificationUrl = None
+        self.BizToken = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.VerificationUrl = params.get("VerificationUrl")
+        self.BizToken = params.get("BizToken")
+        self.RequestId = params.get("RequestId")
+
+
+class CardVerifyResult(AbstractModel):
+    """The result of a single authentication or OCR process during the identity verification.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IsPass: Whether the authentication or OCR process is successful.
+        :type IsPass: bool
+        :param CardVideo: The video for ID card authentication. This field is returned only if the video-based ID card authentication is enabled. The URL is valid for 10 minutes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CardVideo: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        :param CardImage: The identity document image. The URL is valid for 10 minutes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CardImage: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        :param CardInfoOcrJson: The OCR result (in JSON) of the identity document image. If authentication or OCR fails, this parameter is left empty. The URL is valid for 10 minutes.
+When the value of `IdCardType` is `HK`:
+- CnName string: Chinese name
+- EnName string: English name
+- TelexCode string: The code corresponding to the Chinese name
+- Sex string: Gender. Valid values: `M` (male) and `F` (female).
+- Birthday string: Date of birth.
+- Permanent int: Whether it is a permanent residence identity card. Valid values: `0` (non-permanent), `1` (permanent), and `-1` (unknown).
+- IdNum string: ID number.
+- Symbol string: The ID symbol below the date of birth, such as "***AZ".
+- FirstIssueDate string: The date of first issuance.
+- CurrentIssueDate string: The date of latest issuance.
+
+When the value of `IdCardType` is `ML`:
+- Sex string: `LELAKI` (male) and `PEREMPUAN` (female).
+- Birthday string: Date of birth.
+- ID string: ID number.
+- Name string: Name.
+- Address string: Address.
+- Type string: Identity document type.
+
+When the value of `IdCardType` is `PhilippinesVoteID`:
+- Birthday string: Date of birth.
+- Address string: Address.
+- LastName string: Family name.
+- FirstName string: First name.
+- VIN string: VIN number.
+- CivilStatus string: Marital status.
+- Citizenship string: Citizenship.
+- PrecinctNo string: Region.
+
+When the value of `IdCardType` is `PhilippinesDrivingLicense`:
+- Sex string: Gender.
+- Birthday string: Date of birth.
+- Name string: Name.
+- Address string: Address.
+- LastName string: Family name.
+- FirstName string: First name.
+- MiddleName string: Middle name.
+- Nationality string: Nationality.
+- LicenseNo string: License number.
+- ExpiresDate string: Validity period.
+- AgencyCode string: Agency code.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CardInfoOcrJson: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        :param RequestId: The request ID of a single process.
+        :type RequestId: str
+        """
+        self.IsPass = None
+        self.CardVideo = None
+        self.CardImage = None
+        self.CardInfoOcrJson = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.IsPass = params.get("IsPass")
+        if params.get("CardVideo") is not None:
+            self.CardVideo = FileInfo()
+            self.CardVideo._deserialize(params.get("CardVideo"))
+        if params.get("CardImage") is not None:
+            self.CardImage = FileInfo()
+            self.CardImage._deserialize(params.get("CardImage"))
+        if params.get("CardInfoOcrJson") is not None:
+            self.CardInfoOcrJson = FileInfo()
+            self.CardInfoOcrJson._deserialize(params.get("CardInfoOcrJson"))
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CompareResult(AbstractModel):
+    """The description of a single comparison result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrorCode: The final comparison result.
+        :type ErrorCode: str
+        :param ErrorMsg: The description of the final comparison result.
+        :type ErrorMsg: str
+        :param LiveData: 
+        :type LiveData: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        :param LiveVideo: The video for this liveness detection process. The URL is valid for 10 minutes.
+        :type LiveVideo: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        :param LiveErrorCode: The code of the liveness detection result.
+        :type LiveErrorCode: str
+        :param LiveErrorMsg: The description of the liveness detection result.
+        :type LiveErrorMsg: str
+        :param BestFrame: The best face screenshot in this liveness detection. The URL is valid for 10 minutes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BestFrame: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        :param ProfileImage: The profile photo screenshot from the identity document. The URL is valid for 10 minutes.
+        :type ProfileImage: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        :param CompareErrorCode: The code of the face comparison result.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CompareErrorCode: str
+        :param CompareErrorMsg: The description of the face comparison result.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CompareErrorMsg: str
+        :param Sim: Similarity
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Sim: float
+        :param IsNeedCharge: This field is disused.
+        :type IsNeedCharge: bool
+        :param CardInfoInputJson: The identity document photo info edited by the user in JSON. If the value of `DisableChangeOcrResult` is `true`, the editing feature is disabled and this field does not exist. The URL is valid for 10 minutes.
+When the value of `IdCardType` is `HK`:
+- CnName string: Chinese name
+- EnName string: English name
+- TelexCode string: The code corresponding to the Chinese name
+- Sex string: Gender. Valid values: `M` (male) and `F` (female).
+- Birthday string: Date of birth.
+- Permanent int: Whether it is a permanent residence identity card. Valid values: `0` (non-permanent), `1` (permanent), and `-1` (unknown).
+- IdNum string: ID number.
+- Symbol string: The ID symbol below the date of birth, such as "***AZ".
+- FirstIssueDate string: The date of first issuance.
+- CurrentIssueDate string: The date of latest issuance.
+
+When the value of `IdCardType` is `ML`:
+- Sex string: `LELAKI` (male) and `PEREMPUAN` (female).
+- Birthday string
+- ID string
+- Name string
+- Address string
+- Type string: Identity document type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CardInfoInputJson: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        :param RequestId: The request ID of this verification process.
+        :type RequestId: str
+        """
+        self.ErrorCode = None
+        self.ErrorMsg = None
+        self.LiveData = None
+        self.LiveVideo = None
+        self.LiveErrorCode = None
+        self.LiveErrorMsg = None
+        self.BestFrame = None
+        self.ProfileImage = None
+        self.CompareErrorCode = None
+        self.CompareErrorMsg = None
+        self.Sim = None
+        self.IsNeedCharge = None
+        self.CardInfoInputJson = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrorCode = params.get("ErrorCode")
+        self.ErrorMsg = params.get("ErrorMsg")
+        if params.get("LiveData") is not None:
+            self.LiveData = FileInfo()
+            self.LiveData._deserialize(params.get("LiveData"))
+        if params.get("LiveVideo") is not None:
+            self.LiveVideo = FileInfo()
+            self.LiveVideo._deserialize(params.get("LiveVideo"))
+        self.LiveErrorCode = params.get("LiveErrorCode")
+        self.LiveErrorMsg = params.get("LiveErrorMsg")
+        if params.get("BestFrame") is not None:
+            self.BestFrame = FileInfo()
+            self.BestFrame._deserialize(params.get("BestFrame"))
+        if params.get("ProfileImage") is not None:
+            self.ProfileImage = FileInfo()
+            self.ProfileImage._deserialize(params.get("ProfileImage"))
+        self.CompareErrorCode = params.get("CompareErrorCode")
+        self.CompareErrorMsg = params.get("CompareErrorMsg")
+        self.Sim = params.get("Sim")
+        self.IsNeedCharge = params.get("IsNeedCharge")
+        if params.get("CardInfoInputJson") is not None:
+            self.CardInfoInputJson = FileInfo()
+            self.CardInfoInputJson._deserialize(params.get("CardInfoInputJson"))
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateUploadUrlRequest(AbstractModel):
     """CreateUploadUrl request structure.
 
@@ -236,6 +607,221 @@ class GenerateReflectSequenceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetLivenessResultRequest(AbstractModel):
+    """GetLivenessResult request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkToken: The token used to identify an SDK-based verification process.
+        :type SdkToken: str
+        """
+        self.SdkToken = None
+
+
+    def _deserialize(self, params):
+        self.SdkToken = params.get("SdkToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetLivenessResultResponse(AbstractModel):
+    """GetLivenessResult response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: The final verification result.
+        :type Result: str
+        :param Description: The description of the final verification result.
+        :type Description: str
+        :param BestFrame: The face screenshot.
+        :type BestFrame: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        :param Video: The video for the detection.
+        :type Video: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.Description = None
+        self.BestFrame = None
+        self.Video = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.Description = params.get("Description")
+        if params.get("BestFrame") is not None:
+            self.BestFrame = FileInfo()
+            self.BestFrame._deserialize(params.get("BestFrame"))
+        if params.get("Video") is not None:
+            self.Video = FileInfo()
+            self.Video._deserialize(params.get("Video"))
+        self.RequestId = params.get("RequestId")
+
+
+class GetSdkVerificationResultRequest(AbstractModel):
+    """GetSdkVerificationResult request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkToken: The token used to identify an SDK-based verification process.
+        :type SdkToken: str
+        """
+        self.SdkToken = None
+
+
+    def _deserialize(self, params):
+        self.SdkToken = params.get("SdkToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetSdkVerificationResultResponse(AbstractModel):
+    """GetSdkVerificationResult response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: The result of the entire verification process.
+        :type Result: str
+        :param Description: The result description.
+        :type Description: str
+        :param ChargeCount: The charge count.
+        :type ChargeCount: int
+        :param CardVerifyResults: The results of multiple OCR processes (in order). The result of the final process is taken as the valid result.
+        :type CardVerifyResults: list of CardVerifyResult
+        :param CompareResults: The results of multiple liveness detection processes (in order). The result of the final process is taken as the valid result.
+        :type CompareResults: list of CompareResult
+        :param Extra: Info passed in the process of getting the token.
+        :type Extra: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.Description = None
+        self.ChargeCount = None
+        self.CardVerifyResults = None
+        self.CompareResults = None
+        self.Extra = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.Description = params.get("Description")
+        self.ChargeCount = params.get("ChargeCount")
+        if params.get("CardVerifyResults") is not None:
+            self.CardVerifyResults = []
+            for item in params.get("CardVerifyResults"):
+                obj = CardVerifyResult()
+                obj._deserialize(item)
+                self.CardVerifyResults.append(obj)
+        if params.get("CompareResults") is not None:
+            self.CompareResults = []
+            for item in params.get("CompareResults"):
+                obj = CompareResult()
+                obj._deserialize(item)
+                self.CompareResults.append(obj)
+        self.Extra = params.get("Extra")
+        self.RequestId = params.get("RequestId")
+
+
+class GetWebVerificationResultRequest(AbstractModel):
+    """GetWebVerificationResult request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BizToken: The token for the web-based verification, which is generated with the `ApplyWebVerificationToken` API.
+        :type BizToken: str
+        """
+        self.BizToken = None
+
+
+    def _deserialize(self, params):
+        self.BizToken = params.get("BizToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetWebVerificationResultResponse(AbstractModel):
+    """GetWebVerificationResult response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrorCode: The final result of this verification. `0` indicates that the person is the same as that in the photo.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorCode: int
+        :param ErrorMsg: The description of the final verification result.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorMsg: str
+        :param VideoBestFrameUrl: The temporary URL of the best face screenshot collected from the video stream. It is valid for 10 minutes. Download the image if needed.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VideoBestFrameUrl: str
+        :param VideoBestFrameMd5: The MD5 hash value of the best face screenshot collected from the video stream. It can be used to check whether the image content is consistent with the file content.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VideoBestFrameMd5: str
+        :param VerificationDetailList: The details list of this verification process.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VerificationDetailList: list of VerificationDetail
+        :param VideoUrl: 
+        :type VideoUrl: str
+        :param VideoMd5: 
+        :type VideoMd5: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ErrorCode = None
+        self.ErrorMsg = None
+        self.VideoBestFrameUrl = None
+        self.VideoBestFrameMd5 = None
+        self.VerificationDetailList = None
+        self.VideoUrl = None
+        self.VideoMd5 = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrorCode = params.get("ErrorCode")
+        self.ErrorMsg = params.get("ErrorMsg")
+        self.VideoBestFrameUrl = params.get("VideoBestFrameUrl")
+        self.VideoBestFrameMd5 = params.get("VideoBestFrameMd5")
+        if params.get("VerificationDetailList") is not None:
+            self.VerificationDetailList = []
+            for item in params.get("VerificationDetailList"):
+                obj = VerificationDetail()
+                obj._deserialize(item)
+                self.VerificationDetailList.append(obj)
+        self.VideoUrl = params.get("VideoUrl")
+        self.VideoMd5 = params.get("VideoMd5")
+        self.RequestId = params.get("RequestId")
+
+
 class LivenessCompareRequest(AbstractModel):
     """LivenessCompare request structure.
 
@@ -341,6 +927,71 @@ class LivenessCompareResponse(AbstractModel):
         self.Description = params.get("Description")
         self.BestFrameList = params.get("BestFrameList")
         self.RequestId = params.get("RequestId")
+
+
+class VerificationDetail(AbstractModel):
+    """The details of the verification process.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrorCode: The final result of this verification. `0` indicates that the person is the same as that in the photo.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorCode: int
+        :param ErrorMsg: The description of the final verification result.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorMsg: str
+        :param LivenessErrorCode: The result of this liveness detection process. `0` indicates success.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LivenessErrorCode: int
+        :param LivenessErrorMsg: The result description of this liveness detection process.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LivenessErrorMsg: str
+        :param CompareErrorCode: The result of this comparison process. `0` indicates that the person in the best face screenshot collected from the video stream is the same as that in the uploaded image for comparison.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CompareErrorCode: int
+        :param CompareErrorMsg: The result description of this comparison process.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CompareErrorMsg: str
+        :param ReqTimestamp: The timestamp (ms) of this verification process.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReqTimestamp: int
+        :param Similarity: The similarity of the best face screenshot collected from the video stream and the uploaded image for comparison in this verification process. Valid range: [0.00, 100.00]. By default, the person in the screenshot is judged as the same person in the image if the similarity is greater than or equal to 70.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Similarity: float
+        :param Seq: Unique ID of this verification process.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Seq: str
+        """
+        self.ErrorCode = None
+        self.ErrorMsg = None
+        self.LivenessErrorCode = None
+        self.LivenessErrorMsg = None
+        self.CompareErrorCode = None
+        self.CompareErrorMsg = None
+        self.ReqTimestamp = None
+        self.Similarity = None
+        self.Seq = None
+
+
+    def _deserialize(self, params):
+        self.ErrorCode = params.get("ErrorCode")
+        self.ErrorMsg = params.get("ErrorMsg")
+        self.LivenessErrorCode = params.get("LivenessErrorCode")
+        self.LivenessErrorMsg = params.get("LivenessErrorMsg")
+        self.CompareErrorCode = params.get("CompareErrorCode")
+        self.CompareErrorMsg = params.get("CompareErrorMsg")
+        self.ReqTimestamp = params.get("ReqTimestamp")
+        self.Similarity = params.get("Similarity")
+        self.Seq = params.get("Seq")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class VideoLivenessCompareRequest(AbstractModel):

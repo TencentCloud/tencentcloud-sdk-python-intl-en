@@ -185,6 +185,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SubLabel: This field is used to return a subtag under the current tag (Lable).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SubLabel: str
+        :param Suggestion: This field returns the suggested action according to the check result. <br>Values: `Block`, `Review`, `Pass`.
+        :type Suggestion: str
         """
         self.Label = None
         self.Score = None
@@ -192,6 +194,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.EndTime = None
         self.SubLabelCode = None
         self.SubLabel = None
+        self.Suggestion = None
 
 
     def _deserialize(self, params):
@@ -201,6 +204,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.EndTime = params.get("EndTime")
         self.SubLabelCode = params.get("SubLabelCode")
         self.SubLabel = params.get("SubLabel")
+        self.Suggestion = params.get("Suggestion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -179,14 +179,35 @@ INTERNALERROR_LIFEPHOTOPOORQUALITY = 'InternalError.LifePhotoPoorQuality'
 # The image passed in is too large or too small.
 INTERNALERROR_LIFEPHOTOSIZEERROR = 'InternalError.LifePhotoSizeError'
 
+# Unknown internal error.
+INTERNALERROR_UNKNOWN = 'InternalError.UnKnown'
+
 # Invalid parameter.
 INVALIDPARAMETER = 'InvalidParameter'
 
 # Incorrect parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
+# BizToken expired.
+INVALIDPARAMETERVALUE_BIZTOKENEXPIRED = 'InvalidParameterValue.BizTokenExpired'
+
+# Invalid BizToken.
+INVALIDPARAMETERVALUE_BIZTOKENILLEGAL = 'InvalidParameterValue.BizTokenIllegal'
+
+# Operation denied.
+OPERATIONDENIED = 'OperationDenied'
+
+# The resource is unavailable.
+RESOURCEUNAVAILABLE = 'ResourceUnavailable'
+
 # Unauthorized operation.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
+
+# Service activation exception.
+UNAUTHORIZEDOPERATION_ACTIVATEERROR = 'UnauthorizedOperation.ActivateError'
+
+# Activating the service.
+UNAUTHORIZEDOPERATION_ACTIVATING = 'UnauthorizedOperation.Activating'
 
 # The account is in arrears.
 UNAUTHORIZEDOPERATION_ARREARS = 'UnauthorizedOperation.Arrears'
