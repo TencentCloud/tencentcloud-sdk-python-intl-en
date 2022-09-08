@@ -789,9 +789,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param VerificationDetailList: The details list of this verification process.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VerificationDetailList: list of VerificationDetail
-        :param VideoUrl: 
+        :param VideoUrl: The temporary URL of the video collected from the video stream. It is valid for 10 minutes. Download the video if needed.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type VideoUrl: str
-        :param VideoMd5: 
+        :param VideoMd5: The MD5 hash value of the video collected from the video stream. It can be used to check whether the video content is consistent with the file content.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type VideoMd5: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str

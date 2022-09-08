@@ -116,10 +116,10 @@ FAILEDOPERATION_DRUIDTABLENOTFOUND = 'FailedOperation.DruidTableNotFound'
 # The name already exists.
 FAILEDOPERATION_DUPLICATENAME = 'FailedOperation.DuplicateName'
 
-# 
+# You have not enabled pay-as-you-go billing for API requests.
 FAILEDOPERATION_ERRNOTOPEN = 'FailedOperation.ErrNotOpen'
 
-# 
+# You have overdue payments.
 FAILEDOPERATION_ERROWED = 'FailedOperation.ErrOwed'
 
 # An error occurred while generating the resource ID.

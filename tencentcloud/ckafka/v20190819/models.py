@@ -4083,6 +4083,8 @@ class ModifyInstanceAttributesRequest(AbstractModel):
         :type PublicNetwork: int
         :param DynamicDiskConfig: Dynamic disk expansion policy configuration.
         :type DynamicDiskConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicDiskConfig`
+        :param MaxMessageByte: The size of a single message in bytes at the instance level.
+        :type MaxMessageByte: int
         """
         self.InstanceId = None
         self.MsgRetentionTime = None
@@ -4092,6 +4094,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
         self.RebalanceTime = None
         self.PublicNetwork = None
         self.DynamicDiskConfig = None
+        self.MaxMessageByte = None
 
 
     def _deserialize(self, params):
@@ -4109,6 +4112,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
         if params.get("DynamicDiskConfig") is not None:
             self.DynamicDiskConfig = DynamicDiskConfig()
             self.DynamicDiskConfig._deserialize(params.get("DynamicDiskConfig"))
+        self.MaxMessageByte = params.get("MaxMessageByte")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

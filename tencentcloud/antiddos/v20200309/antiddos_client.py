@@ -1013,7 +1013,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeCCPrecisionPlyList(self, request):
-        """This API is used to obtain a CC precise protection policy.
+        """This API is used to obtain the list of CC precise protection policies.
 
         :param request: Request instance for DescribeCCPrecisionPlyList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeCCPrecisionPlyListRequest`
@@ -1100,7 +1100,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeCcBlackWhiteIpList(self, request):
-        """This API is used to obtain a layer-4 access control list.
+        """This API is used to obtain the layer-4 access control list.
 
         :param request: Request instance for DescribeCcBlackWhiteIpList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeCcBlackWhiteIpListRequest`

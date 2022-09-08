@@ -19,19 +19,23 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AnycastOutPackRelation(AbstractModel):
-    """
+    """Details of the Anycast package
 
     """
 
     def __init__(self):
         r"""
-        :param NormalBandwidth: 
+        :param NormalBandwidth: Application bandwidth (in Mbps).
+Note: This field may return null, indicating that no valid values can be obtained.
         :type NormalBandwidth: int
-        :param ForwardRulesLimit: 
+        :param ForwardRulesLimit: Number of forwarding rules
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ForwardRulesLimit: int
-        :param AutoRenewFlag: 
+        :param AutoRenewFlag: Auto-renewal flag
+Note: This field may return null, indicating that no valid values can be obtained.
         :type AutoRenewFlag: int
-        :param CurDeadline: 
+        :param CurDeadline: Expiration date
+Note: This field may return null, indicating that no valid values can be obtained.
         :type CurDeadline: str
         """
         self.NormalBandwidth = None
@@ -235,7 +239,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param TagInfoList: Tag that the Anti-DDoS Advanced instance is associated with
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type TagInfoList: list of TagInfo
-        :param AnycastOutPackRelation: 
+        :param AnycastOutPackRelation: All-out package details of the instance
+When an all-out package is not used by the instance, this field is `null`.
+Note: This field may return `null`, indicating that no valid value can be obtained.
         :type AnycastOutPackRelation: :class:`tencentcloud.antiddos.v20200309.models.AnycastOutPackRelation`
         :param InstanceVersion: 
         :type InstanceVersion: int
@@ -411,50 +417,54 @@ class BGPIPInstanceUsages(AbstractModel):
 
 
 class BGPInstance(AbstractModel):
-    """Anti-DDoS Pro instance details
+    """Details of the Anti-DDoS Pro instance
 
     """
 
     def __init__(self):
         r"""
-        :param InstanceDetail: Anti-DDoS instance details
+        :param InstanceDetail: Details of the Anti-DDoS Pro instance
         :type InstanceDetail: :class:`tencentcloud.antiddos.v20200309.models.InstanceRelation`
-        :param SpecificationLimit: Anti-DDoS instance specifications
+        :param SpecificationLimit: Specifications of the Anti-DDoS Pro instance
         :type SpecificationLimit: :class:`tencentcloud.antiddos.v20200309.models.BGPInstanceSpecification`
-        :param Usage: Anti-DDoS instance usage statistics
+        :param Usage: Usage statistics of the Anti-DDoS Pro instance
         :type Usage: :class:`tencentcloud.antiddos.v20200309.models.BGPInstanceUsages`
-        :param Region: Region of the Anti-DDoS instance
+        :param Region: Region of the Anti-DDoS Pro instance
         :type Region: :class:`tencentcloud.antiddos.v20200309.models.RegionInfo`
-        :param Status: Status of the Anti-DDoS instance. Valid values:
-`idle`: running
-`attacking`: under attacks
-`blocking`: blocked
-`creating`: creating
-`deblocking`: unblocked
-`isolate`: isolated
+        :param Status: Status of the Anti-DDoS Pro instance. Valid values:
+`idle`: The instance is running normally.
+`attacking`: The instance is under attack.
+`blocking`: The instance is blocked.
+`creating`: The instance is being created.
+`deblocking`: Unblocking the instance
+`isolate`: The instance is being isolated.
         :type Status: str
-        :param CreatedTime: Purchase Time
+        :param CreatedTime: Purchase time
         :type CreatedTime: str
         :param ExpiredTime: Expiration time
         :type ExpiredTime: str
-        :param Name: Name of the Anti-DDoS instance
+        :param Name: Name of the Anti-DDoS Pro instance
         :type Name: str
-        :param PackInfo: Package details of the Anti-DDoS instance.
-Note: This field is `null` for an Anti-DDoS instance without using a package.
+        :param PackInfo: Details of the package to which the Anti-DDoS Pro instance belongs.
+When the package provided is not used by the instance, this field is `null`.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type PackInfo: :class:`tencentcloud.antiddos.v20200309.models.PackInfo`
         :param EipProductInfos: Details of the cloud product used by the EIP bound to the Anti-DDoS Pro instance
         :type EipProductInfos: list of EipProductInfo
         :param BoundStatus: Binding status of the Anti-DDoS Pro instance
-`idle`: the instance is bound.
- `bounding`: the instance is in binding.
-`failed`: the binding failed.
+`idle`: The instance is bound.
+ `bounding`: Binding the instance.
+`failed`: Failed to bind
 ]
         :type BoundStatus: str
         :param DDoSLevel: Layer-4 protection level
         :type DDoSLevel: str
-        :param CCEnable: CC protection switch
+        :param CCEnable: Status of CC protection
         :type CCEnable: int
+        :param TagInfoList: Tags associated with the resource
+        :type TagInfoList: list of TagInfo
+        :param IpCountNewFlag: New edition of Anti-DDoS Pro
+        :type IpCountNewFlag: int
         """
         self.InstanceDetail = None
         self.SpecificationLimit = None
@@ -469,6 +479,8 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.BoundStatus = None
         self.DDoSLevel = None
         self.CCEnable = None
+        self.TagInfoList = None
+        self.IpCountNewFlag = None
 
 
     def _deserialize(self, params):
@@ -500,6 +512,13 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.BoundStatus = params.get("BoundStatus")
         self.DDoSLevel = params.get("DDoSLevel")
         self.CCEnable = params.get("CCEnable")
+        if params.get("TagInfoList") is not None:
+            self.TagInfoList = []
+            for item in params.get("TagInfoList"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.TagInfoList.append(obj)
+        self.IpCountNewFlag = params.get("IpCountNewFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -520,18 +539,31 @@ class BGPInstanceSpecification(AbstractModel):
         :type ProtectBandwidth: int
         :param ProtectCountLimit: Number of protection chances
         :type ProtectCountLimit: int
-        :param ProtectIPNumberLimit: Number of protection IPs
+        :param ProtectIPNumberLimit: Number of protected IPs
         :type ProtectIPNumberLimit: int
-        :param AutoRenewFlag: Auto-renewal status. Valid values:
-`0`: disabled
-`1`: enabled
+        :param AutoRenewFlag: Auto-renewal status. Values:
+`0`: Disabled
+`1`: Enabled
 ]
         :type AutoRenewFlag: int
         :param UnionPackFlag: Protection type of Anti-DDoS Pro. Valid values: `0` (general protection) and `1` (Lighthouse-based protection).
-Note: This field may return `null`, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type UnionPackFlag: int
-        :param ServiceBandWidth: 
+        :param ServiceBandWidth: Application bandwidth
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ServiceBandWidth: int
+        :param BattleEditionFlag: Whether it’s an Anti-DDoS Pro Premium edition. Values: `0` (General edition); `1` (Premium edition).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BattleEditionFlag: int
+        :param ChannelEditionFlag: Whether it’s an Anti-DDoS Pro Standard edition. Values: `0` (General edition); `1` (Standard edition).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ChannelEditionFlag: int
+        :param EnterpriseFlag: Whether it’s an Anti-DDoS Pro Enterprise edition. Values: `0` (General edition); `1` (Enterprise edition).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EnterpriseFlag: int
+        :param ElasticLimit: Elastic bandwidth threshold of the Anti-DDoS Pro Enterprise edition.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ElasticLimit: int
         """
         self.ProtectBandwidth = None
         self.ProtectCountLimit = None
@@ -539,6 +571,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.AutoRenewFlag = None
         self.UnionPackFlag = None
         self.ServiceBandWidth = None
+        self.BattleEditionFlag = None
+        self.ChannelEditionFlag = None
+        self.EnterpriseFlag = None
+        self.ElasticLimit = None
 
 
     def _deserialize(self, params):
@@ -548,6 +584,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.AutoRenewFlag = params.get("AutoRenewFlag")
         self.UnionPackFlag = params.get("UnionPackFlag")
         self.ServiceBandWidth = params.get("ServiceBandWidth")
+        self.BattleEditionFlag = params.get("BattleEditionFlag")
+        self.ChannelEditionFlag = params.get("ChannelEditionFlag")
+        self.EnterpriseFlag = params.get("EnterpriseFlag")
+        self.ElasticLimit = params.get("ElasticLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -647,7 +687,7 @@ class BoundIpInfo(AbstractModel):
         :type BizType: str
         :param InstanceId: Anti-DDoS instance ID of the IP. This field is required only when the instance is bound to an IP. For example, this field InstanceId will be `eni-*` if the instance ID is bound to an ENI IP; `none` if there is no instance to bind to a managed IP.
         :type InstanceId: str
-        :param DeviceType: Sub-product category. Valid values: `cvm` (CVM), `lb` (Load balancer), `eni` (ENI), `vpngw` (VPN gateway), `natgw` (NAT gateway), `waf` (WAF), `fpc` (financial products), `gaap` (GAAP), `eip` (BM EIP) and `other` (hosted IP). This field is required when you perform binding.
+        :param DeviceType: Sub-product category. Valid values: `cvm` (CVM), `lb` (Load balancer), `eni` (ENI), `vpngw` (VPN gateway), `natgw` (NAT gateway), `waf` (WAF), `fpc` (financial products), `gaap` (GAAP), `eip` (BM EIP) and `other` (managed IP). This field is required when you perform binding.
         :type DeviceType: str
         :param IspCode: ISP. Valid values: `0` (China Telecom), `1` (China Unicom), `2` (China Mobile), and `5` (BGP). This field is required when you perform binding.
         :type IspCode: int
@@ -3710,7 +3750,7 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         :type FilterInstanceIdList: list of str
         :param FilterTag: Searches by tag
         :type FilterTag: :class:`tencentcloud.antiddos.v20200309.models.TagFilter`
-        :param FilterPackType: 
+        :param FilterPackType: Filters by package type.
         :type FilterPackType: list of str
         """
         self.Offset = None
@@ -3798,20 +3838,26 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of items per page. The default value is 20 when `Limit = 0`. The maximum value is 100.
         :type Limit: int
-        :param FilterIp: IP filter
+        :param FilterIp: Filters by IP.
         :type FilterIp: str
         :param FilterInstanceId: Anti-DDoS instance ID filter. For example, `bgp-00000001`.
         :type FilterInstanceId: str
-        :param FilterRegion: Region filter. For example, `ap-guangzhou`.
+        :param FilterRegion: Filters by region. For example, `ap-guangzhou`.
         :type FilterRegion: str
-        :param FilterName: Name filter
+        :param FilterName: Filters by name.
         :type FilterName: str
         :param FilterLine: Line filter. Valid values: 1: BGP; 2: Non-BGP.
         :type FilterLine: int
         :param FilterStatus: Filters by instance status. `idle`: Running; `attacking`: Being attacked; `blocking`: Being blocked.
         :type FilterStatus: str
-        :param FilterBoundStatus: Filters by binding status. `bounding`: the instance is bound; `failed`: the binding failed.
+        :param FilterBoundStatus: Filters by binding status. `bounding`: The instance is bound; `failed`: The binding failed.
         :type FilterBoundStatus: str
+        :param FilterInstanceIdList: Array of instance IDs
+        :type FilterInstanceIdList: list of str
+        :param FilterEnterpriseFlag: Filters by Enterprise edition
+        :type FilterEnterpriseFlag: int
+        :param FilterTag: Filters by tag
+        :type FilterTag: :class:`tencentcloud.antiddos.v20200309.models.TagFilter`
         """
         self.Offset = None
         self.Limit = None
@@ -3822,6 +3868,9 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         self.FilterLine = None
         self.FilterStatus = None
         self.FilterBoundStatus = None
+        self.FilterInstanceIdList = None
+        self.FilterEnterpriseFlag = None
+        self.FilterTag = None
 
 
     def _deserialize(self, params):
@@ -3834,6 +3883,11 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         self.FilterLine = params.get("FilterLine")
         self.FilterStatus = params.get("FilterStatus")
         self.FilterBoundStatus = params.get("FilterBoundStatus")
+        self.FilterInstanceIdList = params.get("FilterInstanceIdList")
+        self.FilterEnterpriseFlag = params.get("FilterEnterpriseFlag")
+        if params.get("FilterTag") is not None:
+            self.FilterTag = TagFilter()
+            self.FilterTag._deserialize(params.get("FilterTag"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3850,7 +3904,7 @@ class DescribeListBGPInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Total: Total number of lists
+        :param Total: Total number of Anti-DDoS Pro instances
         :type Total: int
         :param InstanceList: List of Anti-DDoS Pro instances
         :type InstanceList: list of BGPInstance

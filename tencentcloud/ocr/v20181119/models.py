@@ -729,7 +729,7 @@ class MLIDPassportOCRResponse(AbstractModel):
         :type DateOfExpiration: str
         :param IssuingCountry: Issuing country
         :type IssuingCountry: str
-        :param Nationality: Nationality
+        :param Nationality: Country/region code
         :type Nationality: str
         :param Warn: Alarm code
 -9103 Alarm for spoofed card

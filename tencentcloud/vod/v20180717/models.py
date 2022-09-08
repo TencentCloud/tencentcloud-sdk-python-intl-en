@@ -10166,11 +10166,12 @@ class DescribeTaskDetailResponse(AbstractModel):
 <li>Procedure: Video processing</li>
 <li>EditMedia: Video editing</li>
 <li>SplitMedia: Video splitting</li>
-<li>ComposeMedia: Media file producing</li>
+<li>ComposeMedia: Media file production</li>
 <li>WechatPublish: WeChat publishing</li>
 <li>PullUpload: Pulling media files for upload</li>
 <li>FastClipMedia: Quick clipping</li>
 <li>RemoveWatermarkTask: Watermark removal</li>
+<li> ReviewAudioVideo: Moderation</li>
         :type TaskType: str
         :param Status: Task status. Valid values:
 <li>WAITING: waiting;</li>
@@ -10222,6 +10223,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param RemoveWatermarkTask: The information of a watermark removal task. This parameter is valid only if `TaskType` is `RemoveWatermark`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RemoveWatermarkTask: :class:`tencentcloud.vod.v20180717.models.RemoveWatermarkTask`
+        :param ReviewAudioVideoTask: The information of a moderation task. This parameter is valid only if `TaskType` is `ReviewAudioVideo`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReviewAudioVideoTask: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoTask`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -10243,6 +10247,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.CreateImageSpriteTask = None
         self.SnapshotByTimeOffsetTask = None
         self.RemoveWatermarkTask = None
+        self.ReviewAudioVideoTask = None
         self.RequestId = None
 
 
@@ -10291,6 +10296,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("RemoveWatermarkTask") is not None:
             self.RemoveWatermarkTask = RemoveWatermarkTask()
             self.RemoveWatermarkTask._deserialize(params.get("RemoveWatermarkTask"))
+        if params.get("ReviewAudioVideoTask") is not None:
+            self.ReviewAudioVideoTask = ReviewAudioVideoTask()
+            self.ReviewAudioVideoTask._deserialize(params.get("ReviewAudioVideoTask"))
         self.RequestId = params.get("RequestId")
 
 
@@ -11140,8 +11148,9 @@ class EventContent(AbstractModel):
 <li>EditMediaComplete: Finished video editing.</li>
 <li>SplitMediaComplete: Finished video splitting.</li>
 <li>WechatPublishComplete: Published to WeChat.</li>
-<li>ComposeMediaComplete: Finished composition.</li>
+<li>ComposeMediaComplete: Finished producing the media file.</li>
 <li>FastClipMediaComplete: Finished quick clipping.</li>
+<li>ReviewAudioVideoComplete: Finished moderation</li>
 <b>v2017 task types:</b>
 <li>TranscodeComplete: Finished video transcoding.</li>
 <li>ConcatComplete: Finished video splicing.</li>
@@ -11197,6 +11206,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param RestoreMediaCompleteEvent: Callback for video retrieval. This parameter is valid when the event type is `RestoreMediaComplete`.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type RestoreMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.RestoreMediaTask`
+        :param ReviewAudioVideoCompleteEvent: The callback for the completion of the moderation task. This parameter is valid only if `EventType` is `ReviewAudioVideoComplete`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReviewAudioVideoCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoTask`
         """
         self.EventHandle = None
         self.EventType = None
@@ -11216,6 +11228,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.WechatMiniProgramPublishCompleteEvent = None
         self.RemoveWatermarkCompleteEvent = None
         self.RestoreMediaCompleteEvent = None
+        self.ReviewAudioVideoCompleteEvent = None
 
 
     def _deserialize(self, params):
@@ -11269,6 +11282,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         if params.get("RestoreMediaCompleteEvent") is not None:
             self.RestoreMediaCompleteEvent = RestoreMediaTask()
             self.RestoreMediaCompleteEvent._deserialize(params.get("RestoreMediaCompleteEvent"))
+        if params.get("ReviewAudioVideoCompleteEvent") is not None:
+            self.ReviewAudioVideoCompleteEvent = ReviewAudioVideoTask()
+            self.ReviewAudioVideoCompleteEvent._deserialize(params.get("ReviewAudioVideoCompleteEvent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -19112,6 +19128,199 @@ class RestoreMediaTask(AbstractModel):
         self.RestoreDay = params.get("RestoreDay")
         self.Status = params.get("Status")
         self.Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReviewAudioVideoSegmentItem(AbstractModel):
+    """The suspicious segment detected.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTimeOffset: The start time offset (seconds) of the segment.
+        :type StartTimeOffset: float
+        :param EndTimeOffset: The end time offset (seconds) of the segment.
+        :type EndTimeOffset: float
+        :param Confidence: The confidence score of the segment.
+        :type Confidence: float
+        :param Suggestion: The processing suggestion for the segment. Valid values:
+<li>review: The content may be non-compliant. Please review it.</li>
+<li>block: The content is non-compliant. We recommend you block it.</li>
+        :type Suggestion: str
+        :param Label: The most likely label for the segment. Valid values:
+<li>Porn</li>
+<li>Terrorism</li>
+        :type Label: str
+        :param SubLabel: The sublabel for the segment. This parameter is valid only if `Form` is `Image` or `Voice`.
+Valid values when `Form` is `Image` and `Label` is `Porn`:
+<li>porn</li>
+<li>vulgar</li>
+
+Valid values when `Form` is `Image` and `Label` is `Terrorism`:
+<li>guns</li>
+<li>bloody</li>
+<li>banners</li>
+<li>scenario (terrorist scenes)</li>
+<li>explosion</li>
+
+Valid values when `Form` is `Voice` and `Label` is `Porn`:
+<li>moan</li>
+        :type SubLabel: str
+        :param Form: The format of the suspicious segment detected. Valid values:
+<li>Image</li>
+<li>OCR</li>
+<li>ASR</li>
+<li>Voice</li>
+        :type Form: str
+        :param AreaCoordSet: The pixel coordinates ([x1, y1, x2, y2]) of the top-left corner and bottom-right corner of the suspicious text. This parameter is valid only if `Form` is `OCR`.
+        :type AreaCoordSet: list of int
+        :param Text: The content of the suspicious text detected. This parameter is valid only if `Form` is `OCR` or `ASR`.
+        :type Text: str
+        :param KeywordSet: The keywords that match the suspicious text. This parameter is valid only if `Form` is `OCR` or `ASR`.
+        :type KeywordSet: list of str
+        """
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.Confidence = None
+        self.Suggestion = None
+        self.Label = None
+        self.SubLabel = None
+        self.Form = None
+        self.AreaCoordSet = None
+        self.Text = None
+        self.KeywordSet = None
+
+
+    def _deserialize(self, params):
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.Label = params.get("Label")
+        self.SubLabel = params.get("SubLabel")
+        self.Form = params.get("Form")
+        self.AreaCoordSet = params.get("AreaCoordSet")
+        self.Text = params.get("Text")
+        self.KeywordSet = params.get("KeywordSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReviewAudioVideoTask(AbstractModel):
+    """The information of a moderation task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: The task ID.
+        :type TaskId: str
+        :param Status: The task status. Valid values:
+<li>PROCESSING</li>
+<li>FINISH</li>
+        :type Status: str
+        :param ErrCodeExt: The error code. An empty string indicates the task is successful; other values indicate that the task failed. For details, see [Video processing error codes](https://intl.cloud.tencent.com/document/product/266/39145?lang=en&pg=#video-processing).
+        :type ErrCodeExt: str
+        :param Message: The error message.
+        :type Message: str
+        :param Output: The output of a moderation task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoTaskOutput`
+        :param SessionId: The session ID, which is used for de-duplication. If there was a request with the same session ID in the last seven days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.
+        :type SessionId: str
+        :param SessionContext: The source context, which is used to pass through user request information. The `ProcedureStateChanged` callback will return the value of this parameter. It can contain up to 1,000 characters.
+        :type SessionContext: str
+        """
+        self.TaskId = None
+        self.Status = None
+        self.ErrCodeExt = None
+        self.Message = None
+        self.Output = None
+        self.SessionId = None
+        self.SessionContext = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
+        self.Message = params.get("Message")
+        if params.get("Output") is not None:
+            self.Output = ReviewAudioVideoTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+        self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReviewAudioVideoTaskOutput(AbstractModel):
+    """The output of a moderation task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Suggestion: The handling suggestion. Valid values:
+<li>pass</li>
+<li>review</li>
+<li>block</li>
+        :type Suggestion: str
+        :param Label: The most likely label for the suspicious content. This parameter is valid only if `Suggestion` is `review` or `block`.
+<li>Porn</li>
+<li>Terrorism</li>
+        :type Label: str
+        :param Form: The most likely format of the suspicious content. This parameter is valid only if `Suggestion` is `review` or `block`.
+<li>Image</li>
+<li>OCR</li>
+<li>ASR</li>
+<li>Voice</li>
+        :type Form: str
+        :param SegmentSet: A list of the suspicious segments detected.
+<font color=red>Note</font>: Only the first 10 results will be returned at most. You can get all the results from the file specified by `SegmentSetFileUrl`.
+        :type SegmentSet: list of ReviewAudioVideoSegmentItem
+        :param SegmentSetFileUrl: The URL of the file that contains suspicious segments. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time (`SegmentSetFileUrlExpireTime`).
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: The expiration time of the file that contains suspicious segments, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format).
+        :type SegmentSetFileUrlExpireTime: str
+        """
+        self.Suggestion = None
+        self.Label = None
+        self.Form = None
+        self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.Suggestion = params.get("Suggestion")
+        self.Label = params.get("Label")
+        self.Form = params.get("Form")
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = ReviewAudioVideoSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

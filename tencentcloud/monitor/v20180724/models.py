@@ -255,6 +255,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param PolicyIds: List of IDs of the alarm policies bound to alarm notification template
 Note: this field may return null, indicating that no valid values can be obtained.
         :type PolicyIds: list of str
+        :param AMPConsumerId: Backend AMP consumer ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AMPConsumerId: str
         :param CLSNotices: Channel to push alarm notifications to CLS.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type CLSNotices: list of CLSNotice
@@ -269,6 +272,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.IsPreset = None
         self.NoticeLanguage = None
         self.PolicyIds = None
+        self.AMPConsumerId = None
         self.CLSNotices = None
 
 
@@ -293,6 +297,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.IsPreset = params.get("IsPreset")
         self.NoticeLanguage = params.get("NoticeLanguage")
         self.PolicyIds = params.get("PolicyIds")
+        self.AMPConsumerId = params.get("AMPConsumerId")
         if params.get("CLSNotices") is not None:
             self.CLSNotices = []
             for item in params.get("CLSNotices"):
@@ -940,7 +945,7 @@ class CleanGrafanaInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance name
+        :param InstanceId: Instance ID.
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -1598,7 +1603,7 @@ class CreateGrafanaIntegrationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance name
+        :param InstanceId: Instance ID.
         :type InstanceId: str
         :param Kind: Type
         :type Kind: str
@@ -1630,13 +1635,17 @@ class CreateGrafanaIntegrationResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param IntegrationId: 
+        :type IntegrationId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.IntegrationId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.IntegrationId = params.get("IntegrationId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1647,7 +1656,7 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance name
+        :param InstanceId: Instance ID.
         :type InstanceId: str
         :param ChannelName: Channel name
         :type ChannelName: str
@@ -1657,12 +1666,15 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
         :type Receivers: list of str
         :param ExtraOrgIds: Array of extra organization IDs
         :type ExtraOrgIds: list of str
+        :param OrganizationIds: 
+        :type OrganizationIds: list of str
         """
         self.InstanceId = None
         self.ChannelName = None
         self.OrgId = None
         self.Receivers = None
         self.ExtraOrgIds = None
+        self.OrganizationIds = None
 
 
     def _deserialize(self, params):
@@ -1671,6 +1683,7 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
         self.OrgId = params.get("OrgId")
         self.Receivers = params.get("Receivers")
         self.ExtraOrgIds = params.get("ExtraOrgIds")
+        self.OrganizationIds = params.get("OrganizationIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1687,13 +1700,17 @@ class CreateGrafanaNotificationChannelResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param ChannelId: 
+        :type ChannelId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.ChannelId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.ChannelId = params.get("ChannelId")
         self.RequestId = params.get("RequestId")
 
 
@@ -2170,13 +2187,17 @@ class CreateSSOAccountResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param UserId: 
+        :type UserId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.UserId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.UserId = params.get("UserId")
         self.RequestId = params.get("RequestId")
 
 
@@ -4361,7 +4382,7 @@ class DescribeDNSConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance name
+        :param InstanceId: Instance ID.
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -4475,7 +4496,7 @@ class DescribeGrafanaConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: None
+        :param InstanceId: Instance ID.
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -4520,7 +4541,7 @@ class DescribeGrafanaEnvironmentsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance name
+        :param InstanceId: Instance ID.
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -4653,7 +4674,7 @@ class DescribeGrafanaIntegrationsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance name
+        :param InstanceId: Instance ID.
         :type InstanceId: str
         :param IntegrationId: Integration ID
         :type IntegrationId: str
@@ -4711,7 +4732,7 @@ class DescribeGrafanaNotificationChannelsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance name
+        :param InstanceId: Instance ID.
         :type InstanceId: str
         :param Offset: Offset
         :type Offset: int
@@ -4781,7 +4802,7 @@ class DescribeGrafanaWhiteListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance name
+        :param InstanceId: Instance ID.
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -5612,7 +5633,7 @@ class DescribePolicyGroupInfoReceiverInfo(AbstractModel):
         :type ReceiverGroupList: list of int
         :param ReceiverUserList: List of alarm recipient IDs.
         :type ReceiverUserList: list of int
-        :param StartTime: Start time of the alarm period. Value range: [0,86400). Convert the Unix timestamp to Beijing time and then remove the date. For example, 7200 indicates '10:0:0'.
+        :param StartTime: Start time of the alarm period. Value range: [0,86400). Convert the Unix timestamp to Beijing time and then remove the date. For example, 7200 indicates “10:0:0”.
         :type StartTime: int
         :param EndTime: End time of the alarm period. The meaning is the same as that of StartTime.
         :type EndTime: int
@@ -7843,13 +7864,17 @@ class InstallPluginsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param PluginIds: 
+        :type PluginIds: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.PluginIds = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.PluginIds = params.get("PluginIds")
         self.RequestId = params.get("RequestId")
 
 
@@ -9909,7 +9934,7 @@ class ReceiverInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: Start time of the alarm period. Value range: [0,86400). Convert the Unix timestamp to Beijing time and then remove the date. For example, 7200 indicates '10:0:0'.
+        :param StartTime: Start time of the alarm period. Value range: [0,86400). Convert the Unix timestamp to Beijing time and then remove the date. For example, 7200 indicates “10:0:0”.
         :type StartTime: int
         :param EndTime: End time of the alarm period. The meaning is the same as that of StartTime.
         :type EndTime: int
@@ -9921,7 +9946,7 @@ class ReceiverInfo(AbstractModel):
         :type Id: int
         :param SendFor: Alarm call notification time. Valid values: OCCUR (indicating that a notice is sent when the alarm is triggered) and RECOVER (indicating that a notice is sent when the alarm is recovered).
         :type SendFor: list of str
-        :param UidList: Uid of the alarm call recipient.
+        :param UidList: UID of the phone call alarm.
         :type UidList: list of int
         :param RoundNumber: Number of alarm call rounds.
         :type RoundNumber: int
@@ -9933,9 +9958,9 @@ class ReceiverInfo(AbstractModel):
         :type RecoverNotify: list of str
         :param NeedSendNotice: Whether to send an alarm call delivery notice. The value 0 indicates that no notice needs to be sent. The value 1 indicates that a notice needs to be sent.
         :type NeedSendNotice: int
-        :param ReceiverGroupList: Recipient group list. The list of recipient group IDs that is queried by a platform API.
+        :param ReceiverGroupList: Recipient group list. The list of recipient group IDs that is queried by API.
         :type ReceiverGroupList: list of int
-        :param ReceiverUserList: Recipient list. The list of recipient IDs that is queried by a platform API.
+        :param ReceiverUserList: Recipient list. The list of recipient IDs that is queried by API.
         :type ReceiverUserList: list of int
         :param ReceiveLanguage: Language of received alarms. Enumerated values: zh-CN and en-US.
         :type ReceiveLanguage: str
@@ -10858,7 +10883,7 @@ class UpdateDNSConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance name
+        :param InstanceId: Instance ID.
         :type InstanceId: str
         :param NameServers: Array of DNS servers
         :type NameServers: list of str
@@ -10963,7 +10988,7 @@ class UpdateGrafanaConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: None
+        :param InstanceId: Instance ID.
         :type InstanceId: str
         :param Config: JSON-encoded string
         :type Config: str
@@ -11008,7 +11033,7 @@ class UpdateGrafanaEnvironmentsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance name
+        :param InstanceId: Instance ID.
         :type InstanceId: str
         :param Envs: Environment variable string
         :type Envs: str
@@ -11108,7 +11133,7 @@ class UpdateGrafanaNotificationChannelRequest(AbstractModel):
         r"""
         :param ChannelId: Channel ID
         :type ChannelId: str
-        :param InstanceId: Instance name
+        :param InstanceId: Instance ID.
         :type InstanceId: str
         :param ChannelName: Channel name
         :type ChannelName: str
@@ -11116,12 +11141,15 @@ class UpdateGrafanaNotificationChannelRequest(AbstractModel):
         :type Receivers: list of str
         :param ExtraOrgIds: Array of extra organization IDs
         :type ExtraOrgIds: list of str
+        :param OrganizationIds: 
+        :type OrganizationIds: list of str
         """
         self.ChannelId = None
         self.InstanceId = None
         self.ChannelName = None
         self.Receivers = None
         self.ExtraOrgIds = None
+        self.OrganizationIds = None
 
 
     def _deserialize(self, params):
@@ -11130,6 +11158,7 @@ class UpdateGrafanaNotificationChannelRequest(AbstractModel):
         self.ChannelName = params.get("ChannelName")
         self.Receivers = params.get("Receivers")
         self.ExtraOrgIds = params.get("ExtraOrgIds")
+        self.OrganizationIds = params.get("OrganizationIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11498,7 +11527,7 @@ class UpgradeGrafanaInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance name
+        :param InstanceId: Instance ID.
         :type InstanceId: str
         :param Alias: Version alias
         :type Alias: str
