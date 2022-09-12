@@ -107,6 +107,55 @@ class ActivateInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AddClusterSlaveZoneRequest(AbstractModel):
+    """AddClusterSlaveZone request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param SlaveZone: Replica AZ
+        :type SlaveZone: str
+        """
+        self.ClusterId = None
+        self.SlaveZone = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.SlaveZone = params.get("SlaveZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddClusterSlaveZoneResponse(AbstractModel):
+    """AddClusterSlaveZone response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Async FlowId
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class AddInstancesRequest(AbstractModel):
     """AddInstances request structure.
 
@@ -1983,6 +2032,60 @@ class DescribeClusterInstanceGrpsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeClusterParamsRequest(AbstractModel):
+    """DescribeClusterParams request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterParamsResponse(AbstractModel):
+    """DescribeClusterParams response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Number of parameters
+        :type TotalCount: int
+        :param Items: Instance parameter list
+        :type Items: list of ParamInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ParamInfo()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeClustersRequest(AbstractModel):
     """DescribeClusters request structure.
 
@@ -2263,12 +2366,16 @@ class DescribeInstanceSpecsRequest(AbstractModel):
         :param DbType: Database type. Valid values: 
 <li> MYSQL </li>
         :type DbType: str
+        :param IncludeZoneStocks: Whether to return the AZ information.
+        :type IncludeZoneStocks: bool
         """
         self.DbType = None
+        self.IncludeZoneStocks = None
 
 
     def _deserialize(self, params):
         self.DbType = params.get("DbType")
+        self.IncludeZoneStocks = params.get("IncludeZoneStocks")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2626,21 +2733,30 @@ class DescribeRollbackTimeRangeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TimeRangeStart: Start time point of valid rollback time range
+        :param TimeRangeStart: Start time of valid rollback time range (disused)
         :type TimeRangeStart: str
-        :param TimeRangeEnd: End time point of valid rollback time range
+        :param TimeRangeEnd: End time of valid rollback time range (disused)
         :type TimeRangeEnd: str
+        :param RollbackTimeRanges: Time range available for rollback
+        :type RollbackTimeRanges: list of RollbackTimeRange
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.TimeRangeStart = None
         self.TimeRangeEnd = None
+        self.RollbackTimeRanges = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.TimeRangeStart = params.get("TimeRangeStart")
         self.TimeRangeEnd = params.get("TimeRangeEnd")
+        if params.get("RollbackTimeRanges") is not None:
+            self.RollbackTimeRanges = []
+            for item in params.get("RollbackTimeRanges"):
+                obj = RollbackTimeRange()
+                obj._deserialize(item)
+                self.RollbackTimeRanges.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2964,11 +3080,27 @@ class InstanceSpec(AbstractModel):
         :type MaxStorageSize: int
         :param MinStorageSize: Minimum instance storage capacity GB
         :type MinStorageSize: int
+        :param HasStock: Whether there is an inventory.
+        :type HasStock: bool
+        :param MachineType: Machine type
+        :type MachineType: str
+        :param MaxIops: Maximum IOPS
+        :type MaxIops: int
+        :param MaxIoBandWidth: Maximum bandwidth
+        :type MaxIoBandWidth: int
+        :param ZoneStockInfos: Inventory information in a region
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ZoneStockInfos: list of ZoneStockInfo
         """
         self.Cpu = None
         self.Memory = None
         self.MaxStorageSize = None
         self.MinStorageSize = None
+        self.HasStock = None
+        self.MachineType = None
+        self.MaxIops = None
+        self.MaxIoBandWidth = None
+        self.ZoneStockInfos = None
 
 
     def _deserialize(self, params):
@@ -2976,6 +3108,16 @@ class InstanceSpec(AbstractModel):
         self.Memory = params.get("Memory")
         self.MaxStorageSize = params.get("MaxStorageSize")
         self.MinStorageSize = params.get("MinStorageSize")
+        self.HasStock = params.get("HasStock")
+        self.MachineType = params.get("MachineType")
+        self.MaxIops = params.get("MaxIops")
+        self.MaxIoBandWidth = params.get("MaxIoBandWidth")
+        if params.get("ZoneStockInfos") is not None:
+            self.ZoneStockInfos = []
+            for item in params.get("ZoneStockInfos"):
+                obj = ZoneStockInfo()
+                obj._deserialize(item)
+                self.ZoneStockInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3308,6 +3450,59 @@ class ModifyClusterParamResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyClusterSlaveZoneRequest(AbstractModel):
+    """ModifyClusterSlaveZone request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param OldSlaveZone: Old replica AZ
+        :type OldSlaveZone: str
+        :param NewSlaveZone: New replica AZ
+        :type NewSlaveZone: str
+        """
+        self.ClusterId = None
+        self.OldSlaveZone = None
+        self.NewSlaveZone = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.OldSlaveZone = params.get("OldSlaveZone")
+        self.NewSlaveZone = params.get("NewSlaveZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterSlaveZoneResponse(AbstractModel):
+    """ModifyClusterSlaveZone response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Async FlowId
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
 
 
@@ -3693,6 +3888,71 @@ class OfflineInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ParamInfo(AbstractModel):
+    """Parameter information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CurrentValue: Current value
+        :type CurrentValue: str
+        :param Default: Default value
+        :type Default: str
+        :param EnumValue: List of valid values when parameter type is `enum`, `string` or `bool`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EnumValue: list of str
+        :param Max: Maximum value when parameter type is `float` or `integer`.
+        :type Max: str
+        :param Min: Minimum value when parameter type is `float` or `integer`.
+        :type Min: str
+        :param ParamName: Parameter name
+        :type ParamName: str
+        :param NeedReboot: Whether to restart the instance for the modified parameters to take effect.
+        :type NeedReboot: int
+        :param ParamType: Parameter type: `integer`, `float`, `string`, `enum`, `bool`.
+        :type ParamType: str
+        :param MatchType: Match type. Regex can be used when parameter type is `string`. Valid value: `multiVal`.
+        :type MatchType: str
+        :param MatchValue: Match values, which will be separated by semicolon when match type is `multiVal`.
+        :type MatchValue: str
+        :param Description: Parameter description
+        :type Description: str
+        """
+        self.CurrentValue = None
+        self.Default = None
+        self.EnumValue = None
+        self.Max = None
+        self.Min = None
+        self.ParamName = None
+        self.NeedReboot = None
+        self.ParamType = None
+        self.MatchType = None
+        self.MatchValue = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.CurrentValue = params.get("CurrentValue")
+        self.Default = params.get("Default")
+        self.EnumValue = params.get("EnumValue")
+        self.Max = params.get("Max")
+        self.Min = params.get("Min")
+        self.ParamName = params.get("ParamName")
+        self.NeedReboot = params.get("NeedReboot")
+        self.ParamType = params.get("ParamType")
+        self.MatchType = params.get("MatchType")
+        self.MatchValue = params.get("MatchValue")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ParamItem(AbstractModel):
     """Parameter to be modified
 
@@ -3898,6 +4158,55 @@ class QueryFilter(AbstractModel):
         
 
 
+class RemoveClusterSlaveZoneRequest(AbstractModel):
+    """RemoveClusterSlaveZone request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param SlaveZone: Replica AZ
+        :type SlaveZone: str
+        """
+        self.ClusterId = None
+        self.SlaveZone = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.SlaveZone = params.get("SlaveZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveClusterSlaveZoneResponse(AbstractModel):
+    """RemoveClusterSlaveZone response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Async FlowId
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class ResumeServerlessRequest(AbstractModel):
     """ResumeServerless request structure.
 
@@ -3941,6 +4250,34 @@ class ResumeServerlessResponse(AbstractModel):
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
+
+
+class RollbackTimeRange(AbstractModel):
+    """Rollback time range
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TimeRangeStart: Start time
+        :type TimeRangeStart: str
+        :param TimeRangeEnd: End time
+        :type TimeRangeEnd: str
+        """
+        self.TimeRangeStart = None
+        self.TimeRangeEnd = None
+
+
+    def _deserialize(self, params):
+        self.TimeRangeStart = params.get("TimeRangeStart")
+        self.TimeRangeEnd = params.get("TimeRangeEnd")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SecurityGroup(AbstractModel):
@@ -4114,6 +4451,63 @@ class SlowQueriesItem(AbstractModel):
         
 
 
+class SwitchClusterZoneRequest(AbstractModel):
+    """SwitchClusterZone request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param OldZone: The current AZ
+        :type OldZone: str
+        :param NewZone: New AZ
+        :type NewZone: str
+        :param IsInMaintainPeriod: Valid values: `yes` (execute during maintenance time), `no` (execute now)
+        :type IsInMaintainPeriod: str
+        """
+        self.ClusterId = None
+        self.OldZone = None
+        self.NewZone = None
+        self.IsInMaintainPeriod = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.OldZone = params.get("OldZone")
+        self.NewZone = params.get("NewZone")
+        self.IsInMaintainPeriod = params.get("IsInMaintainPeriod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchClusterZoneResponse(AbstractModel):
+    """SwitchClusterZone response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Async FlowId
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class Tag(AbstractModel):
     """Information of tags associated with cluster, including `TagKey` and `TagValue`
 
@@ -4271,3 +4665,31 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.BigDealIds = params.get("BigDealIds")
         self.DealNames = params.get("DealNames")
         self.RequestId = params.get("RequestId")
+
+
+class ZoneStockInfo(AbstractModel):
+    """Inventory information in an AZ
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zone: AZ
+        :type Zone: str
+        :param HasStock: Whether there is an inventory.
+        :type HasStock: bool
+        """
+        self.Zone = None
+        self.HasStock = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.HasStock = params.get("HasStock")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

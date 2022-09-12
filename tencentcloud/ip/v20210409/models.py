@@ -132,9 +132,9 @@ A password must contain numbers, letters, and special symbols [!@#$%^&*()]. Spac
         :param PhoneNum: Customer mobile number, which should be valid and correct.
 A global mobile number within 1-32 digits is allowed, such as 18888888888.
         :type PhoneNum: str
-        :param CountryCode: Country code, which can be obtained via the `GetCountryCodes` API, such as 852.
+        :param CountryCode: Customer’s country/region code, which can be obtained via the `GetCountryCodes` API, such as “852”.
         :type CountryCode: str
-        :param Area: ISO2 standard country code, which can be obtained via the `GetCountryCodes` API. It should correspond to the `CountryCode` field.
+        :param Area: Customer’s ISO2 standard country/region code, which can be obtained via the `GetCountryCodes` API. It should correspond to the `CountryCode` field, such as `HK`.
         :type Area: str
         :param Extended: Expanded field, which is left empty by default.
         :type Extended: str
