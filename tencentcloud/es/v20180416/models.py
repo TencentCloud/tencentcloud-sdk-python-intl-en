@@ -337,6 +337,10 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
         :type WebNodeTypeInfo: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
         :param Protocol: Valid values: `https`, `http` (default)
         :type Protocol: str
+        :param OperationDuration: The maintenance time slot
+        :type OperationDuration: :class:`tencentcloud.es.v20180416.models.OperationDuration`
+        :param EnableHybridStorage: Whether to enable the storage-computing separation feature.
+        :type EnableHybridStorage: bool
         """
         self.Zone = None
         self.EsVersion = None
@@ -368,6 +372,8 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
         self.SceneType = None
         self.WebNodeTypeInfo = None
         self.Protocol = None
+        self.OperationDuration = None
+        self.EnableHybridStorage = None
 
 
     def _deserialize(self, params):
@@ -418,6 +424,10 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
             self.WebNodeTypeInfo = WebNodeTypeInfo()
             self.WebNodeTypeInfo._deserialize(params.get("WebNodeTypeInfo"))
         self.Protocol = params.get("Protocol")
+        if params.get("OperationDuration") is not None:
+            self.OperationDuration = OperationDuration()
+            self.OperationDuration._deserialize(params.get("OperationDuration"))
+        self.EnableHybridStorage = params.get("EnableHybridStorage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -898,6 +908,8 @@ class DescribeInstancesRequest(AbstractModel):
         :type ZoneList: list of str
         :param HealthStatus: Health status filter list
         :type HealthStatus: list of int
+        :param VpcIds: VPC IDs
+        :type VpcIds: list of str
         """
         self.Zone = None
         self.InstanceIds = None
@@ -910,6 +922,7 @@ class DescribeInstancesRequest(AbstractModel):
         self.IpList = None
         self.ZoneList = None
         self.HealthStatus = None
+        self.VpcIds = None
 
 
     def _deserialize(self, params):
@@ -929,6 +942,7 @@ class DescribeInstancesRequest(AbstractModel):
         self.IpList = params.get("IpList")
         self.ZoneList = params.get("ZoneList")
         self.HealthStatus = params.get("HealthStatus")
+        self.VpcIds = params.get("VpcIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1689,6 +1703,18 @@ Note: This field may return `null`, indicating that no valid value was found.
         :param EsConfigSets: Configuration set info of the cluster.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type EsConfigSets: list of EsConfigSetInfo
+        :param OperationDuration: The maintenance time slot of the cluster
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OperationDuration: :class:`tencentcloud.es.v20180416.models.OperationDuration`
+        :param OptionalWebServiceInfos: Web node list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OptionalWebServiceInfos: list of OptionalWebServiceInfo
+        :param AutoIndexEnabled: Autonomous index option
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AutoIndexEnabled: bool
+        :param EnableHybridStorage: Whether the storage-computing separation feature is enabled.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EnableHybridStorage: bool
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1765,6 +1791,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.EsPrivateUrl = None
         self.EsPrivateDomain = None
         self.EsConfigSets = None
+        self.OperationDuration = None
+        self.OptionalWebServiceInfos = None
+        self.AutoIndexEnabled = None
+        self.EnableHybridStorage = None
 
 
     def _deserialize(self, params):
@@ -1877,6 +1907,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = EsConfigSetInfo()
                 obj._deserialize(item)
                 self.EsConfigSets.append(obj)
+        if params.get("OperationDuration") is not None:
+            self.OperationDuration = OperationDuration()
+            self.OperationDuration._deserialize(params.get("OperationDuration"))
+        if params.get("OptionalWebServiceInfos") is not None:
+            self.OptionalWebServiceInfos = []
+            for item in params.get("OptionalWebServiceInfos"):
+                obj = OptionalWebServiceInfo()
+                obj._deserialize(item)
+                self.OptionalWebServiceInfos.append(obj)
+        self.AutoIndexEnabled = params.get("AutoIndexEnabled")
+        self.EnableHybridStorage = params.get("EnableHybridStorage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2375,6 +2416,138 @@ class OperationDetail(AbstractModel):
         
 
 
+class OperationDuration(AbstractModel):
+    """The maintenance time slot of the cluster
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Periods: Maintenance period, which can be one or more days from Monday to Sunday. Valid values: [0, 6].
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Periods: list of int non-negative
+        :param TimeStart: The maintenance start time
+        :type TimeStart: str
+        :param TimeEnd: The maintenance end time
+        :type TimeEnd: str
+        :param TimeZone: The time zone expressed in UTC.
+        :type TimeZone: str
+        """
+        self.Periods = None
+        self.TimeStart = None
+        self.TimeEnd = None
+        self.TimeZone = None
+
+
+    def _deserialize(self, params):
+        self.Periods = params.get("Periods")
+        self.TimeStart = params.get("TimeStart")
+        self.TimeEnd = params.get("TimeEnd")
+        self.TimeZone = params.get("TimeZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OperationDurationUpdated(AbstractModel):
+    """The maintenance time slot of the cluster
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Periods: Maintenance period, which can be one or more days from Monday to Sunday. Valid values: [0, 6].
+        :type Periods: list of int non-negative
+        :param TimeStart: The maintenance start time
+        :type TimeStart: str
+        :param TimeEnd: The maintenance end time
+        :type TimeEnd: str
+        :param TimeZone: The time zone expressed in UTC.
+        :type TimeZone: str
+        :param MoreInstances: The array of ES cluster IDs
+        :type MoreInstances: list of str
+        """
+        self.Periods = None
+        self.TimeStart = None
+        self.TimeEnd = None
+        self.TimeZone = None
+        self.MoreInstances = None
+
+
+    def _deserialize(self, params):
+        self.Periods = params.get("Periods")
+        self.TimeStart = params.get("TimeStart")
+        self.TimeEnd = params.get("TimeEnd")
+        self.TimeZone = params.get("TimeZone")
+        self.MoreInstances = params.get("MoreInstances")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OptionalWebServiceInfo(AbstractModel):
+    """The information of optional web components
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: Type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        :param Status: Status
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: int
+        :param PublicUrl: Public URL
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PublicUrl: str
+        :param PrivateUrl: Private URL
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PrivateUrl: str
+        :param PublicAccess: Public network access
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PublicAccess: str
+        :param PrivateAccess: Private network access
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PrivateAccess: str
+        :param Version: Version
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Version: str
+        """
+        self.Type = None
+        self.Status = None
+        self.PublicUrl = None
+        self.PrivateUrl = None
+        self.PublicAccess = None
+        self.PrivateAccess = None
+        self.Version = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Status = params.get("Status")
+        self.PublicUrl = params.get("PublicUrl")
+        self.PrivateUrl = params.get("PrivateUrl")
+        self.PublicAccess = params.get("PublicAccess")
+        self.PrivateAccess = params.get("PrivateAccess")
+        self.Version = params.get("Version")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RestartInstanceRequest(AbstractModel):
     """RestartInstance request structure.
 
@@ -2719,6 +2892,8 @@ class UpdateIndexRequest(AbstractModel):
         :type Username: str
         :param Password: Password for cluster access
         :type Password: str
+        :param RolloverBackingIndex: Whether to roll over the backup index
+        :type RolloverBackingIndex: bool
         """
         self.InstanceId = None
         self.IndexType = None
@@ -2726,6 +2901,7 @@ class UpdateIndexRequest(AbstractModel):
         self.UpdateMetaJson = None
         self.Username = None
         self.Password = None
+        self.RolloverBackingIndex = None
 
 
     def _deserialize(self, params):
@@ -2735,6 +2911,7 @@ class UpdateIndexRequest(AbstractModel):
         self.UpdateMetaJson = params.get("UpdateMetaJson")
         self.Username = params.get("Username")
         self.Password = params.get("Password")
+        self.RolloverBackingIndex = params.get("RolloverBackingIndex")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2834,6 +3011,8 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
         :type CerebroPrivateAccess: str
         :param EsConfigSet: Added or modified configuration set information
         :type EsConfigSet: :class:`tencentcloud.es.v20180416.models.EsConfigSetInfo`
+        :param OperationDuration: The maintenance time slot
+        :type OperationDuration: :class:`tencentcloud.es.v20180416.models.OperationDurationUpdated`
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -2865,6 +3044,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
         self.CerebroPublicAccess = None
         self.CerebroPrivateAccess = None
         self.EsConfigSet = None
+        self.OperationDuration = None
 
 
     def _deserialize(self, params):
@@ -2918,6 +3098,9 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
         if params.get("EsConfigSet") is not None:
             self.EsConfigSet = EsConfigSetInfo()
             self.EsConfigSet._deserialize(params.get("EsConfigSet"))
+        if params.get("OperationDuration") is not None:
+            self.OperationDuration = OperationDurationUpdated()
+            self.OperationDuration._deserialize(params.get("OperationDuration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
