@@ -19235,18 +19235,22 @@ class ReviewAudioVideoTask(AbstractModel):
         :type ErrCodeExt: str
         :param Message: The error message.
         :type Message: str
+        :param Input: The input of a moderation task.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Input: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoTaskInput`
         :param Output: The output of a moderation task.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoTaskOutput`
         :param SessionId: The session ID, which is used for de-duplication. If there was a request with the same session ID in the last seven days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.
         :type SessionId: str
-        :param SessionContext: The source context, which is used to pass through user request information. The `ProcedureStateChanged` callback will return the value of this parameter. It can contain up to 1,000 characters.
+        :param SessionContext: The source context, which is used to pass through user request information. The `ReviewAudioVideoComplete` callback will return the value of this parameter. It can contain up to 1,000 characters.
         :type SessionContext: str
         """
         self.TaskId = None
         self.Status = None
         self.ErrCodeExt = None
         self.Message = None
+        self.Input = None
         self.Output = None
         self.SessionId = None
         self.SessionContext = None
@@ -19257,11 +19261,38 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Status = params.get("Status")
         self.ErrCodeExt = params.get("ErrCodeExt")
         self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = ReviewAudioVideoTaskInput()
+            self.Input._deserialize(params.get("Input"))
         if params.get("Output") is not None:
             self.Output = ReviewAudioVideoTaskOutput()
             self.Output._deserialize(params.get("Output"))
         self.SessionId = params.get("SessionId")
         self.SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReviewAudioVideoTaskInput(AbstractModel):
+    """The input of a moderation task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: The ID of the media file.
+        :type FileId: str
+        """
+        self.FileId = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
