@@ -361,6 +361,42 @@ class AutoscalingAdded(AbstractModel):
         
 
 
+class CUDNN(AbstractModel):
+    """cuDNN version information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Version: cuDNN version
+        :type Version: str
+        :param Name: cuDNN name
+        :type Name: str
+        :param DocName: Doc name of cuDNN
+        :type DocName: str
+        :param DevName: Dev name of cuDNN
+        :type DevName: str
+        """
+        self.Version = None
+        self.Name = None
+        self.DocName = None
+        self.DevName = None
+
+
+    def _deserialize(self, params):
+        self.Version = params.get("Version")
+        self.Name = params.get("Name")
+        self.DocName = params.get("DocName")
+        self.DevName = params.get("DevName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CheckEdgeClusterCIDRRequest(AbstractModel):
     """CheckEdgeClusterCIDR request structure.
 
@@ -572,6 +608,9 @@ Note: this field may return null, indicating that no valid value is obtained.
         :param QGPUShareEnable: Whether to enable qGPU Sharing
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type QGPUShareEnable: bool
+        :param RuntimeVersion: Runtime version
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type RuntimeVersion: str
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -595,6 +634,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.ClusterLevel = None
         self.AutoUpgradeClusterLevel = None
         self.QGPUShareEnable = None
+        self.RuntimeVersion = None
 
 
     def _deserialize(self, params):
@@ -627,6 +667,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.ClusterLevel = params.get("ClusterLevel")
         self.AutoUpgradeClusterLevel = params.get("AutoUpgradeClusterLevel")
         self.QGPUShareEnable = params.get("QGPUShareEnable")
+        self.RuntimeVersion = params.get("RuntimeVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2046,6 +2087,75 @@ class CreateECMInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateEdgeCVMInstancesRequest(AbstractModel):
+    """CreateEdgeCVMInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterID: Cluster ID
+        :type ClusterID: str
+        :param RunInstancePara: Pass-through parameter for CVM creation in the format of a JSON string. To ensure the idempotency of requests for adding cluster nodes, you need to add the `ClientToken` field in this parameter. For more information, see the documentation for [RunInstances](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1) API.
+        :type RunInstancePara: str
+        :param CvmRegion: Region of the CVM instances to create
+        :type CvmRegion: str
+        :param CvmCount: Quantity of CVM instances to create
+        :type CvmCount: int
+        :param External: Instance extension information
+        :type External: str
+        :param UserScript: Custom script
+        :type UserScript: str
+        :param EnableEni: Whether to enable ENI
+        :type EnableEni: bool
+        """
+        self.ClusterID = None
+        self.RunInstancePara = None
+        self.CvmRegion = None
+        self.CvmCount = None
+        self.External = None
+        self.UserScript = None
+        self.EnableEni = None
+
+
+    def _deserialize(self, params):
+        self.ClusterID = params.get("ClusterID")
+        self.RunInstancePara = params.get("RunInstancePara")
+        self.CvmRegion = params.get("CvmRegion")
+        self.CvmCount = params.get("CvmCount")
+        self.External = params.get("External")
+        self.UserScript = params.get("UserScript")
+        self.EnableEni = params.get("EnableEni")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEdgeCVMInstancesResponse(AbstractModel):
+    """CreateEdgeCVMInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CvmIdSet: List of CVM IDs
+        :type CvmIdSet: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.CvmIdSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CvmIdSet = params.get("CvmIdSet")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateEdgeLogConfigRequest(AbstractModel):
     """CreateEdgeLogConfig request structure.
 
@@ -2171,6 +2281,12 @@ class CreateTKEEdgeClusterRequest(AbstractModel):
         :type MaxNodePodNum: int
         :param PublicLB: Public LB of the TKE Edge cluster
         :type PublicLB: :class:`tencentcloud.tke.v20180525.models.EdgeClusterPublicLB`
+        :param ClusterLevel: Cluster specification level
+        :type ClusterLevel: str
+        :param AutoUpgradeClusterLevel: Whether auto upgrade is supported
+        :type AutoUpgradeClusterLevel: bool
+        :param ChargeType: Cluster billing mode
+        :type ChargeType: str
         """
         self.K8SVersion = None
         self.VpcId = None
@@ -2181,6 +2297,9 @@ class CreateTKEEdgeClusterRequest(AbstractModel):
         self.ClusterAdvancedSettings = None
         self.MaxNodePodNum = None
         self.PublicLB = None
+        self.ClusterLevel = None
+        self.AutoUpgradeClusterLevel = None
+        self.ChargeType = None
 
 
     def _deserialize(self, params):
@@ -2197,6 +2316,9 @@ class CreateTKEEdgeClusterRequest(AbstractModel):
         if params.get("PublicLB") is not None:
             self.PublicLB = EdgeClusterPublicLB()
             self.PublicLB._deserialize(params.get("PublicLB"))
+        self.ClusterLevel = params.get("ClusterLevel")
+        self.AutoUpgradeClusterLevel = params.get("AutoUpgradeClusterLevel")
+        self.ChargeType = params.get("ChargeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2225,6 +2347,31 @@ class CreateTKEEdgeClusterResponse(AbstractModel):
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.RequestId = params.get("RequestId")
+
+
+class CustomDriver(AbstractModel):
+    """Custom driver information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Address: URL of custom GPU driver address
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Address: str
+        """
+        self.Address = None
+
+
+    def _deserialize(self, params):
+        self.Address = params.get("Address")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DataDisk(AbstractModel):
@@ -3350,6 +3497,15 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param ClusterExternalACL: Public network access ACL of cluster APIServer
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type ClusterExternalACL: list of str
+        :param ClusterExternalDomain: Public network domain name
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ClusterExternalDomain: str
+        :param ClusterIntranetDomain: Private network domain name
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ClusterIntranetDomain: str
+        :param SecurityGroup: Public network security group
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type SecurityGroup: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -3358,6 +3514,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.ClusterIntranetEndpoint = None
         self.ClusterDomain = None
         self.ClusterExternalACL = None
+        self.ClusterExternalDomain = None
+        self.ClusterIntranetDomain = None
+        self.SecurityGroup = None
         self.RequestId = None
 
 
@@ -3367,6 +3526,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.ClusterIntranetEndpoint = params.get("ClusterIntranetEndpoint")
         self.ClusterDomain = params.get("ClusterDomain")
         self.ClusterExternalACL = params.get("ClusterExternalACL")
+        self.ClusterExternalDomain = params.get("ClusterExternalDomain")
+        self.ClusterIntranetDomain = params.get("ClusterIntranetDomain")
+        self.SecurityGroup = params.get("SecurityGroup")
         self.RequestId = params.get("RequestId")
 
 
@@ -5317,6 +5479,34 @@ class DisableClusterDeletionProtectionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DriverVersion(AbstractModel):
+    """Version information of GPU driver and CUDA
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Version: Version of GPU driver or CUDA
+        :type Version: str
+        :param Name: Name of GPU driver or CUDA
+        :type Name: str
+        """
+        self.Version = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Version = params.get("Version")
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ECMEnhancedService(AbstractModel):
     """ECM enhanced services
 
@@ -6198,6 +6388,58 @@ class ForwardTKEEdgeApplicationRequestV3Response(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GPUArgs(AbstractModel):
+    """GPU parameters, including GPU driver version, CDUA version, cuDNN version and whether to enable MIG.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MIGEnable: Whether to enable MIG
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type MIGEnable: bool
+        :param Driver: GPU driver version
+        :type Driver: :class:`tencentcloud.tke.v20180525.models.DriverVersion`
+        :param CUDA: CUDA version
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CUDA: :class:`tencentcloud.tke.v20180525.models.DriverVersion`
+        :param CUDNN: cuDNN version
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CUDNN: :class:`tencentcloud.tke.v20180525.models.CUDNN`
+        :param CustomDriver: Custom GPU driver
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CustomDriver: :class:`tencentcloud.tke.v20180525.models.CustomDriver`
+        """
+        self.MIGEnable = None
+        self.Driver = None
+        self.CUDA = None
+        self.CUDNN = None
+        self.CustomDriver = None
+
+
+    def _deserialize(self, params):
+        self.MIGEnable = params.get("MIGEnable")
+        if params.get("Driver") is not None:
+            self.Driver = DriverVersion()
+            self.Driver._deserialize(params.get("Driver"))
+        if params.get("CUDA") is not None:
+            self.CUDA = DriverVersion()
+            self.CUDA._deserialize(params.get("CUDA"))
+        if params.get("CUDNN") is not None:
+            self.CUDNN = CUDNN()
+            self.CUDNN._deserialize(params.get("CUDNN"))
+        if params.get("CustomDriver") is not None:
+            self.CustomDriver = CustomDriver()
+            self.CustomDriver._deserialize(params.get("CustomDriver"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GetClusterLevelPriceRequest(AbstractModel):
     """GetClusterLevelPrice request structure.
 
@@ -6540,6 +6782,9 @@ Note: This field may return null, indicating that no valid value was found.
         :param DesiredPodNumber: When the custom PodCIDR mode is enabled for the cluster, you can specify the maximum number of pods per node.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type DesiredPodNumber: int
+        :param GPUArgs: GPU driver parameters
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type GPUArgs: :class:`tencentcloud.tke.v20180525.models.GPUArgs`
         :param PreStartUserScript: Specifies the base64-encoded custom script to be executed before initialization of the node. It’s only valid for adding existing nodes for now.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type PreStartUserScript: str
@@ -6555,6 +6800,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.DataDisks = None
         self.ExtraArgs = None
         self.DesiredPodNumber = None
+        self.GPUArgs = None
         self.PreStartUserScript = None
         self.Taints = None
 
@@ -6580,6 +6826,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
             self.ExtraArgs = InstanceExtraArgs()
             self.ExtraArgs._deserialize(params.get("ExtraArgs"))
         self.DesiredPodNumber = params.get("DesiredPodNumber")
+        if params.get("GPUArgs") is not None:
+            self.GPUArgs = GPUArgs()
+            self.GPUArgs._deserialize(params.get("GPUArgs"))
         self.PreStartUserScript = params.get("PreStartUserScript")
         if params.get("Taints") is not None:
             self.Taints = []
@@ -7177,14 +7426,18 @@ class ModifyClusterEndpointSPRequest(AbstractModel):
         :type ClusterId: str
         :param SecurityPolicies: Security policy opens single IP or CIDR block to the Internet (for example: '192.168.1.0/24', with 'reject all' as the default).
         :type SecurityPolicies: list of str
+        :param SecurityGroup: Modify public network security group
+        :type SecurityGroup: str
         """
         self.ClusterId = None
         self.SecurityPolicies = None
+        self.SecurityGroup = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.SecurityPolicies = params.get("SecurityPolicies")
+        self.SecurityGroup = params.get("SecurityGroup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

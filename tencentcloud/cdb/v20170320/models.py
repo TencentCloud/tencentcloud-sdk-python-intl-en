@@ -63,7 +63,7 @@ class AccountInfo(AbstractModel):
         :type ModifyTime: str
         :param ModifyPasswordTime: Password modification time
         :type ModifyPasswordTime: str
-        :param CreateTime: This parameter is no longer supported.
+        :param CreateTime: This parameter is deprecated.
         :type CreateTime: str
         :param MaxUserConnections: The maximum number of instance connections supported by an account
         :type MaxUserConnections: int
@@ -1149,9 +1149,9 @@ class CreateAccountsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
+        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
         :type InstanceId: str
-        :param Accounts: TencentDB account.
+        :param Accounts: List of TencentDB accounts
         :type Accounts: list of Account
         :param Password: Password of the new account
         :type Password: str
@@ -1194,7 +1194,7 @@ class CreateAccountsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AsyncRequestId: Async task request ID, which can be used to query the execution result of an async task.
+        :param AsyncRequestId: Async task request ID, which can be used to query the execution result of an async task
         :type AsyncRequestId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1558,7 +1558,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type MasterInstanceId: str
         :param InstanceRole: Instance type. Valid values: master (primary instance), dr (disaster recovery instance), ro (read-only instance). Default value: master.
         :type InstanceRole: str
-        :param MasterRegion: AZ information of the primary instance, which is required for purchasing disaster recovery instances.
+        :param MasterRegion: AZ information of the source instance, which is required for purchasing disaster recovery instances and read-only instances.
         :type MasterRegion: str
         :param Port: Custom port. Value range: [1024-65535].
         :type Port: int
@@ -1592,7 +1592,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type DeviceType: str
         :param ParamTemplateId: Parameter template ID.
         :type ParamTemplateId: int
-        :param AlarmPolicyList: The array of alarm policy IDs.
+        :param AlarmPolicyList: Array of alarm policy IDs, which is `OriginId` obtained through the `DescribeAlarmPolicy` API.
         :type AlarmPolicyList: list of int
         :param InstanceNodes: The number of nodes of the instance. To purchase a read-only replica or a basic instance, set this parameter to `1` or leave it empty. To purchase a three-node instance, set this parameter to `3` or specify the `BackupZone` parameter. If the instance to be purchased is a source instance and both `BackupZone` and this parameter are left empty, the value `2` will be used, which indicates the source instance will have two nodes.
         :type InstanceNodes: int
@@ -2268,13 +2268,13 @@ class DescribeAccountsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
+        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
         :type InstanceId: str
-        :param Offset: Record offset. Default value: 0.
+        :param Offset: Record offset. Default value: `0`.
         :type Offset: int
-        :param Limit: Number of results to be returned for a single request. Value range: 1-100. Default value: 20.
+        :param Limit: Number of results to be returned for a single request. Value range: 1-100. Default value: `20`.
         :type Limit: int
-        :param AccountRegexp: Regular expression for matching account names, which complies with the rules at MySQL official website.
+        :param AccountRegexp: Regex for matching account names, which complies with the rules at MySQL's official website
         :type AccountRegexp: str
         """
         self.InstanceId = None
@@ -2304,11 +2304,11 @@ class DescribeAccountsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of eligible accounts.
+        :param TotalCount: Number of eligible accounts
         :type TotalCount: int
-        :param Items: Details of eligible accounts.
+        :param Items: Details of eligible accounts
         :type Items: list of AccountInfo
-        :param MaxUserConnections: The maximum number of instance connections (set by the MySQL parameter `max_connections`)
+        :param MaxUserConnections: The maximum number of instance connections
         :type MaxUserConnections: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3657,6 +3657,83 @@ class DescribeDBInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBPriceRequest(AbstractModel):
+    """DescribeDBPrice request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zone: AZ information in the format of "ap-guangzhou-2". You can use the <a href="https://cloud.tencent.com/document/api/236/17229">DescribeDBZoneConfig</a> API to query the values that can be set.
+        :type Zone: str
+        :param GoodsNum: Number of instances. Value range: 1-100. Default value: 1.
+        :type GoodsNum: int
+        :param Memory: Instance memory size in MB.
+        :type Memory: int
+        :param Volume: Instance disk size in GB.
+        :type Volume: int
+        :param PayType: Billing method. Value range: PRE_PAID (monthly subscribed), HOUR_PAID (pay-as-you-go).
+        :type PayType: str
+        :param Period: Instance validity period in months. Value range: 1-36. This field is invalid when querying prices of pay-as-you-go instances.
+        :type Period: int
+        :param InstanceRole: Instance type. Value range: master (master instance), dr (disaster recovery instance), ro (read-only instance). Default value: master.
+        :type InstanceRole: str
+        :param ProtectMode: Data replication mode. Value range: 0 (async), 1 (semi-sync), 2 (strong sync). Default value: 0.
+        :type ProtectMode: int
+        """
+        self.Zone = None
+        self.GoodsNum = None
+        self.Memory = None
+        self.Volume = None
+        self.PayType = None
+        self.Period = None
+        self.InstanceRole = None
+        self.ProtectMode = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.GoodsNum = params.get("GoodsNum")
+        self.Memory = params.get("Memory")
+        self.Volume = params.get("Volume")
+        self.PayType = params.get("PayType")
+        self.Period = params.get("Period")
+        self.InstanceRole = params.get("InstanceRole")
+        self.ProtectMode = params.get("ProtectMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBPriceResponse(AbstractModel):
+    """DescribeDBPrice response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Price: Price of the instance in 0.01 CNY.
+        :type Price: int
+        :param OriginalPrice: Original price of the instance in 0.01 CNY
+        :type OriginalPrice: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Price = None
+        self.OriginalPrice = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Price = params.get("Price")
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBSecurityGroupsRequest(AbstractModel):
     """DescribeDBSecurityGroups request structure.
 
@@ -3768,42 +3845,6 @@ class DescribeDBSwitchRecordsResponse(AbstractModel):
             self.Items = []
             for item in params.get("Items"):
                 obj = DBSwitchInfo()
-                obj._deserialize(item)
-                self.Items.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeDBZoneConfigRequest(AbstractModel):
-    """DescribeDBZoneConfig request structure.
-
-    """
-
-
-class DescribeDBZoneConfigResponse(AbstractModel):
-    """DescribeDBZoneConfig response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TotalCount: Number of configurations in purchasable regions
-        :type TotalCount: int
-        :param Items: Details of configurations in purchasable regions
-        :type Items: list of RegionSellConf
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.Items = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("Items") is not None:
-            self.Items = []
-            for item in params.get("Items"):
-                obj = RegionSellConf()
                 obj._deserialize(item)
                 self.Items.append(obj)
         self.RequestId = params.get("RequestId")
@@ -4402,12 +4443,24 @@ class DescribeParamTemplatesRequest(AbstractModel):
         r"""
         :param EngineVersions: Engine version. If it is left empty, all parameter templates will be queried.
         :type EngineVersions: list of str
+        :param EngineTypes: Engine type. If it is left empty, all engine types will be queried.
+        :type EngineTypes: list of str
+        :param TemplateNames: Template name. If it is left empty, all template names will be queried.
+        :type TemplateNames: list of str
+        :param TemplateIds: Template ID. If it is left empty, all template IDs will be queried.
+        :type TemplateIds: list of int
         """
         self.EngineVersions = None
+        self.EngineTypes = None
+        self.TemplateNames = None
+        self.TemplateIds = None
 
 
     def _deserialize(self, params):
         self.EngineVersions = params.get("EngineVersions")
+        self.EngineTypes = params.get("EngineTypes")
+        self.TemplateNames = params.get("TemplateNames")
+        self.TemplateIds = params.get("TemplateIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7248,17 +7301,17 @@ class ModifyDBInstanceVipVportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters.
+        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv, cdbro-c2nl9rpv, or cdbrg-c3nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872) API to query the ID, which is the value of the `InstanceId` output parameter.
         :type InstanceId: str
-        :param DstIp: Destination IP. Either this parameter or `DstPort` must be passed in.
+        :param DstIp: Target IP. Either this parameter or `DstPort` must be passed in.
         :type DstIp: str
-        :param DstPort: Destination port number. Value range: [1024-65535]. Either this parameter or `DstIp` must be passed in.
+        :param DstPort: Target port number. Value range: 1024-65535. Either this parameter or `DstIp` must be passed in.
         :type DstPort: int
         :param UniqVpcId: Unified VPC ID
         :type UniqVpcId: str
-        :param UniqSubnetId: Unified subnet ID.
+        :param UniqSubnetId: Unified subnet ID
         :type UniqSubnetId: str
-        :param ReleaseDuration: Repossession duration in hours for old IP in the original network when changing from the basic network to VPC or changing the VPC subnet. Value range: 0-168 hours. Default value: 24 hours.
+        :param ReleaseDuration: Repossession duration in hours for old IP in the original network when changing from classic network to VPC or changing the VPC subnet. Value range: 0–168. Default value: `24`.
         :type ReleaseDuration: int
         """
         self.InstanceId = None
@@ -7292,8 +7345,8 @@ class ModifyDBInstanceVipVportResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AsyncRequestId: Async task ID. (This returned field has been disused)
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param AsyncRequestId: Async task ID. This parameter is deprecated.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type AsyncRequestId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -7538,11 +7591,11 @@ class ModifyNameOrDescByDpIdRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DeployGroupId: ID of a placement group.
+        :param DeployGroupId: Placement group ID
         :type DeployGroupId: str
-        :param DeployGroupName: Name of a placement group, which can contain up to 60 characters. The placement group name and description cannot both be empty.
+        :param DeployGroupName: Name of a placement group, which can contain up to 60 characters. The placement group name and description can’t be empty.
         :type DeployGroupName: str
-        :param Description: Description of a placement group, which can contain up to 200 characters. The placement group name and description cannot both be empty.
+        :param Description: Description of a placement group, which can contain up to 200 characters. The placement group name and description can’t be empty.
         :type Description: str
         """
         self.DeployGroupId = None
@@ -8603,51 +8656,6 @@ class RWInstanceInfo(AbstractModel):
     """
 
 
-class RegionSellConf(AbstractModel):
-    """Sale configuration of the region
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RegionName: Region name
-        :type RegionName: str
-        :param Area: Area
-        :type Area: str
-        :param IsDefaultRegion: Whether it is a default region
-        :type IsDefaultRegion: int
-        :param Region: Region name
-        :type Region: str
-        :param ZonesConf: Sale configuration of the AZ
-        :type ZonesConf: list of ZoneSellConf
-        """
-        self.RegionName = None
-        self.Area = None
-        self.IsDefaultRegion = None
-        self.Region = None
-        self.ZonesConf = None
-
-
-    def _deserialize(self, params):
-        self.RegionName = params.get("RegionName")
-        self.Area = params.get("Area")
-        self.IsDefaultRegion = params.get("IsDefaultRegion")
-        self.Region = params.get("Region")
-        if params.get("ZonesConf") is not None:
-            self.ZonesConf = []
-            for item in params.get("ZonesConf"):
-                obj = ZoneSellConf()
-                obj._deserialize(item)
-                self.ZonesConf.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class ReleaseIsolatedDBInstancesRequest(AbstractModel):
     """ReleaseIsolatedDBInstances request structure.
 
@@ -9486,134 +9494,6 @@ class SecurityGroup(AbstractModel):
         self.SecurityGroupId = params.get("SecurityGroupId")
         self.SecurityGroupName = params.get("SecurityGroupName")
         self.SecurityGroupRemark = params.get("SecurityGroupRemark")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SellConfig(AbstractModel):
-    """Purchasable configuration details
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Device: (Disused) Device type
-        :type Device: str
-        :param Type: (Disused) Purchasable specification description 
-        :type Type: str
-        :param CdbType: (Disused) Instance type 
-        :type CdbType: str
-        :param Memory: Memory size in MB
-        :type Memory: int
-        :param Cpu: CPU core count
-        :type Cpu: int
-        :param VolumeMin: Minimum disk size in GB
-        :type VolumeMin: int
-        :param VolumeMax: Maximum disk size in GB
-        :type VolumeMax: int
-        :param VolumeStep: Disk increment in GB
-        :type VolumeStep: int
-        :param Connection: Number of connections
-        :type Connection: int
-        :param Qps: Queries per second
-        :type Qps: int
-        :param Iops: IOs per second
-        :type Iops: int
-        :param Info: Application scenario description
-        :type Info: str
-        :param Status: Status. Value `0` indicates that this specification is purchasable.
-        :type Status: int
-        :param Tag: (Disused) Tag value
-        :type Tag: int
-        :param DeviceType: Instance resource isolation type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance).
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
-        :type DeviceType: str
-        :param DeviceTypeName: Instance resource isolation type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance).
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
-        :type DeviceTypeName: str
-        :param EngineType: Engine type. Valid values: `Innodb`,`RocksDB`.
-Note: This field may return null, indicating that no valid value can be obtained.
-        :type EngineType: str
-        """
-        self.Device = None
-        self.Type = None
-        self.CdbType = None
-        self.Memory = None
-        self.Cpu = None
-        self.VolumeMin = None
-        self.VolumeMax = None
-        self.VolumeStep = None
-        self.Connection = None
-        self.Qps = None
-        self.Iops = None
-        self.Info = None
-        self.Status = None
-        self.Tag = None
-        self.DeviceType = None
-        self.DeviceTypeName = None
-        self.EngineType = None
-
-
-    def _deserialize(self, params):
-        self.Device = params.get("Device")
-        self.Type = params.get("Type")
-        self.CdbType = params.get("CdbType")
-        self.Memory = params.get("Memory")
-        self.Cpu = params.get("Cpu")
-        self.VolumeMin = params.get("VolumeMin")
-        self.VolumeMax = params.get("VolumeMax")
-        self.VolumeStep = params.get("VolumeStep")
-        self.Connection = params.get("Connection")
-        self.Qps = params.get("Qps")
-        self.Iops = params.get("Iops")
-        self.Info = params.get("Info")
-        self.Status = params.get("Status")
-        self.Tag = params.get("Tag")
-        self.DeviceType = params.get("DeviceType")
-        self.DeviceTypeName = params.get("DeviceTypeName")
-        self.EngineType = params.get("EngineType")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SellType(AbstractModel):
-    """Purchasable instance type
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TypeName: Name of the purchasable instance
-        :type TypeName: str
-        :param EngineVersion: Kernel version number
-        :type EngineVersion: list of str
-        :param Configs: Configuration details of a purchasable specification
-        :type Configs: list of SellConfig
-        """
-        self.TypeName = None
-        self.EngineVersion = None
-        self.Configs = None
-
-
-    def _deserialize(self, params):
-        self.TypeName = params.get("TypeName")
-        self.EngineVersion = params.get("EngineVersion")
-        if params.get("Configs") is not None:
-            self.Configs = []
-            for item in params.get("Configs"):
-                obj = SellConfig()
-                obj._deserialize(item)
-                self.Configs.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10883,150 +10763,6 @@ class UploadInfo(AbstractModel):
     def _deserialize(self, params):
         self.AllSliceNum = params.get("AllSliceNum")
         self.CompleteNum = params.get("CompleteNum")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ZoneConf(AbstractModel):
-    """Multi-AZ information
-
-    """
-
-    def __init__(self):
-        r"""
-        :param DeployMode: AZ deployment mode. Value range: 0 (single-AZ), 1 (multi-AZ)
-        :type DeployMode: list of int
-        :param MasterZone: AZ where the primary instance is located
-        :type MasterZone: list of str
-        :param SlaveZone: AZ where salve database 1 is located when the instance is deployed in multi-AZ mode
-        :type SlaveZone: list of str
-        :param BackupZone: AZ where salve database 2 is located when the instance is deployed in multi-AZ mode
-        :type BackupZone: list of str
-        """
-        self.DeployMode = None
-        self.MasterZone = None
-        self.SlaveZone = None
-        self.BackupZone = None
-
-
-    def _deserialize(self, params):
-        self.DeployMode = params.get("DeployMode")
-        self.MasterZone = params.get("MasterZone")
-        self.SlaveZone = params.get("SlaveZone")
-        self.BackupZone = params.get("BackupZone")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ZoneSellConf(AbstractModel):
-    """AZ sale configurations
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Status: AZ status used to indicate whether instances are purchasable. Value range: `1` (purchasable), `3` (not purchasable), `4` (AZ not displayed)
-        :type Status: int
-        :param ZoneName: AZ name
-        :type ZoneName: str
-        :param IsCustom: Whether it is a custom instance type
-        :type IsCustom: bool
-        :param IsSupportDr: Whether disaster recovery is supported
-        :type IsSupportDr: bool
-        :param IsSupportVpc: Whether VPC is supported
-        :type IsSupportVpc: bool
-        :param HourInstanceSaleMaxNum: Maximum purchasable quantity of hourly billed instances
-        :type HourInstanceSaleMaxNum: int
-        :param IsDefaultZone: Whether it is a default AZ
-        :type IsDefaultZone: bool
-        :param IsBm: Whether it is a BM zone
-        :type IsBm: bool
-        :param PayType: Supported billing method. Value range: 0 (monthly subscribed), 1 (hourly), 2 (postpaid)
-        :type PayType: list of str
-        :param ProtectMode: Data replication type. Value range: 0 (async), 1 (semi-sync), 2 (strong sync)
-        :type ProtectMode: list of str
-        :param Zone: AZ name
-        :type Zone: str
-        :param SellType: Array of purchasable instance types
-        :type SellType: list of SellType
-        :param ZoneConf: Multi-AZ information
-        :type ZoneConf: :class:`tencentcloud.cdb.v20170320.models.ZoneConf`
-        :param DrZone: Information of the supported disaster recovery AZ
-        :type DrZone: list of str
-        :param IsSupportRemoteRo: Whether cross-AZ read-only access is supported
-        :type IsSupportRemoteRo: bool
-        :param RemoteRoZone: Information of supported cross-AZ read-only zone
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type RemoteRoZone: list of str
-        :param ExClusterStatus: AZ status used to indicate whether dedicated instances are purchasable. Valid values: `1 (purchasable), `3` (not purchasable), `4` (AZ not displayed)
-        :type ExClusterStatus: int
-        :param ExClusterRemoteRoZone: AZ information of the cross-AZ deployed read-only instances which are associated with a dedicated instance
-Note: This field may return `null`, indicating that no valid values can be obtained.
-        :type ExClusterRemoteRoZone: list of str
-        :param ExClusterZoneConf: AZ information of a multi-AZ deployed dedicated instance.
-Note: This field may return `null`, indicating that no valid values can be obtained.
-        :type ExClusterZoneConf: :class:`tencentcloud.cdb.v20170320.models.ZoneConf`
-        """
-        self.Status = None
-        self.ZoneName = None
-        self.IsCustom = None
-        self.IsSupportDr = None
-        self.IsSupportVpc = None
-        self.HourInstanceSaleMaxNum = None
-        self.IsDefaultZone = None
-        self.IsBm = None
-        self.PayType = None
-        self.ProtectMode = None
-        self.Zone = None
-        self.SellType = None
-        self.ZoneConf = None
-        self.DrZone = None
-        self.IsSupportRemoteRo = None
-        self.RemoteRoZone = None
-        self.ExClusterStatus = None
-        self.ExClusterRemoteRoZone = None
-        self.ExClusterZoneConf = None
-
-
-    def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.ZoneName = params.get("ZoneName")
-        self.IsCustom = params.get("IsCustom")
-        self.IsSupportDr = params.get("IsSupportDr")
-        self.IsSupportVpc = params.get("IsSupportVpc")
-        self.HourInstanceSaleMaxNum = params.get("HourInstanceSaleMaxNum")
-        self.IsDefaultZone = params.get("IsDefaultZone")
-        self.IsBm = params.get("IsBm")
-        self.PayType = params.get("PayType")
-        self.ProtectMode = params.get("ProtectMode")
-        self.Zone = params.get("Zone")
-        if params.get("SellType") is not None:
-            self.SellType = []
-            for item in params.get("SellType"):
-                obj = SellType()
-                obj._deserialize(item)
-                self.SellType.append(obj)
-        if params.get("ZoneConf") is not None:
-            self.ZoneConf = ZoneConf()
-            self.ZoneConf._deserialize(params.get("ZoneConf"))
-        self.DrZone = params.get("DrZone")
-        self.IsSupportRemoteRo = params.get("IsSupportRemoteRo")
-        self.RemoteRoZone = params.get("RemoteRoZone")
-        self.ExClusterStatus = params.get("ExClusterStatus")
-        self.ExClusterRemoteRoZone = params.get("ExClusterRemoteRoZone")
-        if params.get("ExClusterZoneConf") is not None:
-            self.ExClusterZoneConf = ZoneConf()
-            self.ExClusterZoneConf._deserialize(params.get("ExClusterZoneConf"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

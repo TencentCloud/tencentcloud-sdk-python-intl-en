@@ -86,6 +86,9 @@ FAILEDOPERATION_SNAPSHOTSIZELESSTHANDATASIZE = 'FailedOperation.SnapshotSizeLess
 # The tag key specified in the request is reserved for the system.
 FAILEDOPERATION_TAGKEYRESERVED = 'FailedOperation.TagKeyReserved'
 
+# This image is not a Linux&x86_64 image.
+FAILEDOPERATION_TATAGENTNOTSUPPORT = 'FailedOperation.TatAgentNotSupport'
+
 # The instance is unreturnable.
 FAILEDOPERATION_UNRETURNABLE = 'FailedOperation.Unreturnable'
 
@@ -284,6 +287,9 @@ INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDMALFORMED = 'InvalidParameterValue.Bandw
 # The specified bandwidth package does not exist.
 INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDNOTFOUND = 'InvalidParameterValue.BandwidthPackageIdNotFound'
 
+# 
+INVALIDPARAMETERVALUE_BASICNETWORKINSTANCEFAMILY = 'InvalidParameterValue.BasicNetworkInstanceFamily'
+
 # The bucket does not exist.
 INVALIDPARAMETERVALUE_BUCKETNOTFOUND = 'InvalidParameterValue.BucketNotFound'
 
@@ -328,6 +334,9 @@ INVALIDPARAMETERVALUE_ILLEGALHOSTNAME = 'InvalidParameterValue.IllegalHostName'
 
 # Incorrect request parameter format.
 INVALIDPARAMETERVALUE_INCORRECTFORMAT = 'InvalidParameterValue.IncorrectFormat'
+
+# 
+INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = 'InvalidParameterValue.InstanceIdMalformed'
 
 # The specified instance type does not exist.
 INVALIDPARAMETERVALUE_INSTANCETYPENOTFOUND = 'InvalidParameterValue.InstanceTypeNotFound'
@@ -739,6 +748,9 @@ UNSUPPORTEDOPERATION_INSTANCESTATEFREEZING = 'UnsupportedOperation.InstanceState
 
 # Unable to isolate: the instance is isolated
 UNSUPPORTEDOPERATION_INSTANCESTATEISOLATING = 'UnsupportedOperation.InstanceStateIsolating'
+
+# 
+UNSUPPORTEDOPERATION_INSTANCESTATELAUNCHFAILED = 'UnsupportedOperation.InstanceStateLaunchFailed'
 
 # The instances are being created, and this operation is not supported.
 UNSUPPORTEDOPERATION_INSTANCESTATEPENDING = 'UnsupportedOperation.InstanceStatePending'

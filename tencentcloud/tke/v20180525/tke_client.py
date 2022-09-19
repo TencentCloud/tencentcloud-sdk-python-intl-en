@@ -432,6 +432,35 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateEdgeCVMInstances(self, request):
+        """This API is used to create CVM instances in the specified TKE edge cluster.
+
+        :param request: Request instance for CreateEdgeCVMInstances.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreateEdgeCVMInstancesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateEdgeCVMInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateEdgeCVMInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateEdgeCVMInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateEdgeLogConfig(self, request):
         """This API is used to create log collection configuration for a TKE Edge cluster.
 

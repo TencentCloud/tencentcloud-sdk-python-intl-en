@@ -679,6 +679,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param Configure: Layer-7 rule configuration for CC frequency limiting
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Configure: list of ScdnSevenLayerRules
+        :param Switch: Whether to enable the rule. Values: `on` (enable), `off` (disable).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Switch: str
         """
         self.RuleName = None
         self.DetectionTime = None
@@ -688,6 +691,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Action = None
         self.RedirectUrl = None
         self.Configure = None
+        self.Switch = None
 
 
     def _deserialize(self, params):
@@ -704,6 +708,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj = ScdnSevenLayerRules()
                 obj._deserialize(item)
                 self.Configure.append(obj)
+        self.Switch = params.get("Switch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5283,6 +5288,34 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         
 
 
+class HTTPHeader(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 
+        :type Name: str
+        :param Value: 
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HeaderKey(AbstractModel):
     """A part of `CacheKey`
 
@@ -7664,6 +7697,10 @@ Notes:
 Notes:
 This feature is in beta test.
         :type DisableRange: bool
+        :param Headers: 
+        :type Headers: list of HTTPHeader
+        :param UrlEncode: Whether to encode the URL
+        :type UrlEncode: bool
         """
         self.Urls = None
         self.UserAgent = None
@@ -7671,6 +7708,8 @@ This feature is in beta test.
         self.Layer = None
         self.ParseM3U8 = None
         self.DisableRange = None
+        self.Headers = None
+        self.UrlEncode = None
 
 
     def _deserialize(self, params):
@@ -7680,6 +7719,13 @@ This feature is in beta test.
         self.Layer = params.get("Layer")
         self.ParseM3U8 = params.get("ParseM3U8")
         self.DisableRange = params.get("DisableRange")
+        if params.get("Headers") is not None:
+            self.Headers = []
+            for item in params.get("Headers"):
+                obj = HTTPHeader()
+                obj._deserialize(item)
+                self.Headers.append(obj)
+        self.UrlEncode = params.get("UrlEncode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8870,10 +8916,14 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param AdvancedRules: Advanced custom CC attack defense rule
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type AdvancedRules: list of AdvancedCCRules
+        :param GlobalAdvancedRules: Global advanced CC protection rules
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type GlobalAdvancedRules: list of AdvancedCCRules
         """
         self.Switch = None
         self.Rules = None
         self.AdvancedRules = None
+        self.GlobalAdvancedRules = None
 
 
     def _deserialize(self, params):
@@ -8890,6 +8940,12 @@ Note: This field may return `null`, indicating that no valid value can be obtain
                 obj = AdvancedCCRules()
                 obj._deserialize(item)
                 self.AdvancedRules.append(obj)
+        if params.get("GlobalAdvancedRules") is not None:
+            self.GlobalAdvancedRules = []
+            for item in params.get("GlobalAdvancedRules"):
+                obj = AdvancedCCRules()
+                obj._deserialize(item)
+                self.GlobalAdvancedRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

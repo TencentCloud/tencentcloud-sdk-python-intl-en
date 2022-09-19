@@ -3628,6 +3628,153 @@ class InquiryPriceResizeInstanceDisksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class InquiryPriceRunInstancesRequest(AbstractModel):
+    """InquiryPriceRunInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Placement: Location of the instance. You can use this parameter to specify the attributes of the instance, such as its availability zone and project.
+ <b>Note: `Placement` is required when `LaunchTemplate` is not specified. If both the parameters are passed in, `Placement` prevails.</b>
+        :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
+        :param ImageId: [Image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are four types of images: <br/><li>Public images</li><li>Custom images</li><li>Shared images</li><li>Marketplace images</li><br/>You can obtain the available image IDs in the following ways: <br/><li>For IDs of `public images`, `custom images`, and `shared images`, log in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE) to query the information; for IDs of `marketplace images`, go to [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>
+ <b>Note: `ImageId` is required when `LaunchTemplate` is not specified. If both the parameters are passed in, `ImageId` prevails.</b>
+        :type ImageId: str
+        :param InstanceChargeType: The instance [billing method](https://intl.cloud.tencent.com/document/product/213/2180?from_cn_redirect=1).<br><li>POSTPAID_BY_HOUR: hourly, pay-as-you-go<br>Default value: POSTPAID_BY_HOUR.
+        :type InstanceChargeType: str
+        :param InstanceChargePrepaid: Configuration of prepaid instances. You can use the parameter to specify the attributes of prepaid instances, such as the subscription period and the auto-renewal plan. This parameter is required for prepaid instances.
+        :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
+        :param InstanceType: The instance model. Different resource specifications are specified for different models. For specific values, call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) to retrieve the latest specification list or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). If the parameter is not specified, `S1.SMALL1` will be used by default.
+        :type InstanceType: str
+        :param SystemDisk: System disk configuration of the instance. If this parameter is not specified, the default value will be used.
+        :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
+        :param DataDisks: The configuration information of the instance data disk. If this parameter is not specified, no data disk will be purchased by default. When purchasing, you can specify 21 data disks, which can contain at most 1 LOCAL_BASIC data disk or LOCAL_SSD data disk, and at most 20 CLOUD_BASIC data disks, CLOUD_PREMIUM data disks, or CLOUD_SSD data disks.
+        :type DataDisks: list of DataDisk
+        :param VirtualPrivateCloud: VPC configurations. You can use this parameter to specify the VPC ID, subnet ID, etc. If this parameter is not specified, the basic network will be used by default. If a VPC IP is specified in this parameter, the `InstanceCount` parameter can only be 1. 
+        :type VirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
+        :param InternetAccessible: Configuration of public network bandwidth. If this parameter is not specified, 0 Mbps will be used by default.
+        :type InternetAccessible: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
+        :param InstanceCount: Number of instances to be purchased. Value range: [1, 100]; default value: 1. The specified number of instances to be purchased cannot exceed the remaining quota allowed for the user. For more information on quota, see [CVM instance purchase limit](https://intl.cloud.tencent.com/document/product/213/2664).
+        :type InstanceCount: int
+        :param InstanceName: Instance name to be displayed.<br><li>If this parameter is not specified, "Unnamed" will be displayed by default.</li><li>If you purchase multiple instances at the same time and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string, `server_{R:3}`. If you only purchase 1 instance, the instance will be named `server_3`; if you purchase 2, they will be named `server_3` and `server_4`. You can specify multiple pattern strings in the format of `{R:x}`.</li><li>If you purchase multiple instances at the same time and do not specify a pattern string, the instance names will be suffixed by `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase 2 instances and name them as `server_`, the instance names will be displayed as `server_1` and `server_2`.</li><li>The instance name contains up to 60 characters (including pattern strings).
+        :type InstanceName: str
+        :param LoginSettings: Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center.
+        :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
+        :param SecurityGroupIds: Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response. If this parameter is not specified, the instance will not be associated with any security group by default.
+        :type SecurityGroupIds: list of str
+        :param EnhancedService: Enhanced services. You can use this parameter to specify whether to enable services such as Cloud Monitor and Cloud Security. If this parameter is not specified, Cloud Monitor and Cloud Security will be enabled by default.
+        :type EnhancedService: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
+        :param ClientToken: A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed. <br>For more information, see 'How to ensure idempotency'.
+        :type ClientToken: str
+        :param HostName: Host name of the CVM. <br><li>Periods (.) or hyphens (-) cannot be the start or end of a host name or appear consecutively in a host name.<br><li>For Windows instances, the host name must be 2-15 characters long and can contain uppercase and lowercase letters, numbers, and hyphens (-). It cannot contain periods (.) or contain only numbers. <br><li>For other instances, such as Linux instances, the host name must be 2-30 characters long. It supports multiple periods (.) and allows uppercase and lowercase letters, numbers, and hyphens (-) between any two periods (.).
+        :type HostName: str
+        :param TagSpecification: The tag description list. This parameter is used to bind a tag to a resource instance. A tag can only be bound to CVM instances.
+        :type TagSpecification: list of TagSpecification
+        :param InstanceMarketOptions: The market options of the instance.
+        :type InstanceMarketOptions: :class:`tencentcloud.cvm.v20170312.models.InstanceMarketOptionsRequest`
+        :param HpcClusterId: HPC cluster ID.
+        :type HpcClusterId: str
+        """
+        self.Placement = None
+        self.ImageId = None
+        self.InstanceChargeType = None
+        self.InstanceChargePrepaid = None
+        self.InstanceType = None
+        self.SystemDisk = None
+        self.DataDisks = None
+        self.VirtualPrivateCloud = None
+        self.InternetAccessible = None
+        self.InstanceCount = None
+        self.InstanceName = None
+        self.LoginSettings = None
+        self.SecurityGroupIds = None
+        self.EnhancedService = None
+        self.ClientToken = None
+        self.HostName = None
+        self.TagSpecification = None
+        self.InstanceMarketOptions = None
+        self.HpcClusterId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Placement") is not None:
+            self.Placement = Placement()
+            self.Placement._deserialize(params.get("Placement"))
+        self.ImageId = params.get("ImageId")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self.InstanceType = params.get("InstanceType")
+        if params.get("SystemDisk") is not None:
+            self.SystemDisk = SystemDisk()
+            self.SystemDisk._deserialize(params.get("SystemDisk"))
+        if params.get("DataDisks") is not None:
+            self.DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self.DataDisks.append(obj)
+        if params.get("VirtualPrivateCloud") is not None:
+            self.VirtualPrivateCloud = VirtualPrivateCloud()
+            self.VirtualPrivateCloud._deserialize(params.get("VirtualPrivateCloud"))
+        if params.get("InternetAccessible") is not None:
+            self.InternetAccessible = InternetAccessible()
+            self.InternetAccessible._deserialize(params.get("InternetAccessible"))
+        self.InstanceCount = params.get("InstanceCount")
+        self.InstanceName = params.get("InstanceName")
+        if params.get("LoginSettings") is not None:
+            self.LoginSettings = LoginSettings()
+            self.LoginSettings._deserialize(params.get("LoginSettings"))
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("EnhancedService") is not None:
+            self.EnhancedService = EnhancedService()
+            self.EnhancedService._deserialize(params.get("EnhancedService"))
+        self.ClientToken = params.get("ClientToken")
+        self.HostName = params.get("HostName")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = TagSpecification()
+                obj._deserialize(item)
+                self.TagSpecification.append(obj)
+        if params.get("InstanceMarketOptions") is not None:
+            self.InstanceMarketOptions = InstanceMarketOptionsRequest()
+            self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
+        self.HpcClusterId = params.get("HpcClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryPriceRunInstancesResponse(AbstractModel):
+    """InquiryPriceRunInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Price: Price of the instance with the specified configurations.
+        :type Price: :class:`tencentcloud.cvm.v20170312.models.Price`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Price = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self.Price = Price()
+            self.Price._deserialize(params.get("Price"))
+        self.RequestId = params.get("RequestId")
+
+
 class Instance(AbstractModel):
     """Describes information on an instance
 
@@ -6647,20 +6794,26 @@ class SyncImagesRequest(AbstractModel):
         r"""
         :param ImageIds: List of image IDs. You can obtain the image IDs in two ways: <br><li>Call the [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) API and find the value of `ImageId` in the response. <br><li>Find the image IDs in the [Image Console](https://console.cloud.tencent.com/cvm/image). <br>The specified images must meet the following requirement: <br><li>the images must be in the `NORMAL` state. <br>For more information on image status, see [Image Data Table](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#Image).
         :type ImageIds: list of str
-        :param DestinationRegions: List of destination regions for synchronization. A destination region must meet the following requirements: <br><li>It cannot be the source region. <br><li>It must be valid. <br><li>Currently some regions do not support image synchronization. <br>For specific regions, see [Region](https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1).
+        :param DestinationRegions: List of destination regions for synchronization. Limits:<br><li>It cannot be the same as the source region.<br><li>The Region parameter is correct. See [Region](https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1).<br><li>Image synchronization is only available in limited regions.<br>
+
+For a shared image, the destination region must be the source region, which indicates to create a copy of the image as a custom image in the same region.
         :type DestinationRegions: list of str
-        :param DryRun: Checks whether image synchronization can be initiated 
+        :param DryRun: Checks whether image synchronization can be initiated.
         :type DryRun: bool
+        :param ImageName: Destination image name.
+        :type ImageName: str
         """
         self.ImageIds = None
         self.DestinationRegions = None
         self.DryRun = None
+        self.ImageName = None
 
 
     def _deserialize(self, params):
         self.ImageIds = params.get("ImageIds")
         self.DestinationRegions = params.get("DestinationRegions")
         self.DryRun = params.get("DryRun")
+        self.ImageName = params.get("ImageName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6880,14 +7033,14 @@ The following is a list of all availability zones:
 <li> ap-seoul-2 </li>
 <li> ap-chengdu-1 </li>
 <li> ap-chengdu-2 </li>
-<li> ap-hongkong-1 (sold out)</li>
+<li> ap-hongkong-1 (resource out of stock)</li>
 <li> ap-hongkong-2 </li>
 <li> ap-hongkong-3 </li>
 <li> ap-shenzhen-fsi-1 </li>
 <li> ap-shenzhen-fsi-2 </li>
 <li> ap-shenzhen-fsi-3 </li>
-<li> ap-guangzhou-1 (sold out)</li>
-<li> ap-guangzhou-2 (sold out)</li>
+<li> ap-guangzhou-1 (resource out of stock)</li>
+<li> ap-guangzhou-2 (resource out of stock)</li>
 <li> ap-guangzhou-3 </li>
 <li> ap-guangzhou-4 </li>
 <li> ap-guangzhou-6 </li>
@@ -6897,20 +7050,22 @@ The following is a list of all availability zones:
 <li> ap-singapore-1 </li>
 <li> ap-singapore-2 </li>
 <li> ap-singapore-3 </li>
+<li>ap-singapore-4 </li>
 <li> ap-shanghai-fsi-1 </li>
 <li> ap-shanghai-fsi-2 </li>
 <li> ap-shanghai-fsi-3 </li>
 <li> ap-bangkok-1 </li>
 <li> ap-bangkok-2 </li>
-<li> ap-shanghai-1 (sold out) </li>
+<li> ap-shanghai-1 (resource out of stock) </li>
 <li> ap-shanghai-2 </li>
 <li> ap-shanghai-3 </li>
 <li> ap-shanghai-4 </li>
 <li> ap-shanghai-5 </li>
+<li> ap-shanghai-8 </li>
 <li> ap-mumbai-1 </li>
 <li> ap-mumbai-2 </li>
 <li> eu-moscow-1 </li>
-<li> ap-beijing-1 (sold out) </li>
+<li> ap-beijing-1 (resource out of stock) </li>
 <li> ap-beijing-2 </li>
 <li> ap-beijing-3 </li>
 <li> ap-beijing-4 </li>
@@ -6926,7 +7081,10 @@ The following is a list of all availability zones:
 <li> na-ashburn-2 </li>
 <li> ap-nanjing-1 </li>
 <li> ap-nanjing-2 </li>
+<li> ap-nanjing-3 </li>
 <li> sa-saopaulo-1</li>
+<li> ap-jakarta-1 </li>
+<li> ap-jakarta-2 </li>
         :type Zone: str
         :param ZoneName: Availability zone description, such as Guangzhou Zone 3.
         :type ZoneName: str

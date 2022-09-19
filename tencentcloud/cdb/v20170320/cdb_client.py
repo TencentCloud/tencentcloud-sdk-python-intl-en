@@ -201,7 +201,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateAccounts(self, request):
-        """This API is used to create one or more TencentDB instance accounts. The account names, host addresses, and passwords are required, and account remarks and the maximum connections are optional.
+        """This API is used to create a TencentDB account. The account name, host address, and password are required. Account remarks and maximum connections can also be configured.
 
         :param request: Request instance for CreateAccounts.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateAccountsRequest`
@@ -588,7 +588,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeAccounts(self, request):
-        """This API (DescribeAccounts) is used to query information of all TencentDB accounts.
+        """This API is used to query information of all TencentDB accounts.
 
         :param request: Request instance for DescribeAccounts.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAccountsRequest`
@@ -1167,6 +1167,37 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDBPrice(self, request):
+        """This API (DescribeDBPrice) is used to query the prices of pay-as-you-go or monthly subscribed TencentDB instances by passing in information such as instance type, purchased duration, number of purchased instances, memory size, disk size, and AZ.
+
+        Note: To query prices in a specific region, please use the access point of the region. For more information on access points, see <a href="https://cloud.tencent.com/document/api/236/15832">Service Addresses</a>. For example, to query prices in Guangzhou, send a request to: cdb.ap-guangzhou.tencentcloudapi.com. Likewise, to query prices in Shanghai, send a request to: cdb.ap-shanghai.tencentcloudapi.com.
+
+        :param request: Request instance for DescribeDBPrice.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBPriceRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeDBPriceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBPrice", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDBPriceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDBSecurityGroups(self, request):
         """This API (DescribeDBSecurityGroups) is used to query the security group details of an instance.
 
@@ -1211,35 +1242,6 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBSwitchRecordsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeDBZoneConfig(self, request):
-        """This API (DescribeDBZoneConfig) is used to query the specifications of TencentDB instances purchasable in a region.
-
-        :param request: Request instance for DescribeDBZoneConfig.
-        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBZoneConfigRequest`
-        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeDBZoneConfigResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeDBZoneConfig", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDBZoneConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2478,7 +2480,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyDBInstanceVipVport(self, request):
-        """This API (ModifyDBInstanceVipVport) is used to modify the IP and port number of a TencentDB instance, switch from the basic network to VPC, or change VPC subnets.
+        """This API is used to modify the IP and port number of a TencentDB instance, switch from classic network to VPC, or change VPC subnets.
 
         :param request: Request instance for ModifyDBInstanceVipVport.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyDBInstanceVipVportRequest`

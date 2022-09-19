@@ -26,9 +26,6 @@ FAILEDOPERATION_ACCOUNTUSERNOTAUTHENTICATED = 'FailedOperation.AccountUserNotAut
 # An error occurs while creating scaling group resources.
 FAILEDOPERATION_ASCOMMON = 'FailedOperation.AsCommon'
 
-# Unknown CLB error.
-FAILEDOPERATION_CLBUNEXPECTEDERROR = 'FailedOperation.CLBUnexpectedError'
-
 # Not authorized to access this API
 FAILEDOPERATION_CAMNOAUTH = 'FailedOperation.CamNoAuth'
 
@@ -391,6 +388,9 @@ OPERATIONDENIED_CLUSTERINDELETIONPROTECTION = 'OperationDenied.ClusterInDeletion
 
 # The resource is occupied.
 RESOURCEINUSE = 'ResourceInUse'
+
+# 
+RESOURCEINUSE_RESOURCEEXISTALREADY = 'ResourceInUse.ResourceExistAlready'
 
 # The resource does not exist.
 RESOURCENOTFOUND = 'ResourceNotFound'
