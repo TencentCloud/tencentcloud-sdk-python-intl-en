@@ -524,6 +524,72 @@ class CreateAccountsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateBackupRequest(AbstractModel):
+    """CreateBackup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param BackupType: Backup type. Valid values: `logic` (logic backup), `snapshot` (physical backup)
+        :type BackupType: str
+        :param BackupDatabases: Backup database, which is valid when `BackupType` is `logic`.
+        :type BackupDatabases: list of str
+        :param BackupTables: Backup table, which is valid when `BackupType` is `logic`.
+        :type BackupTables: list of DatabaseTables
+        :param BackupName: Backup name
+        :type BackupName: str
+        """
+        self.ClusterId = None
+        self.BackupType = None
+        self.BackupDatabases = None
+        self.BackupTables = None
+        self.BackupName = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.BackupType = params.get("BackupType")
+        self.BackupDatabases = params.get("BackupDatabases")
+        if params.get("BackupTables") is not None:
+            self.BackupTables = []
+            for item in params.get("BackupTables"):
+                obj = DatabaseTables()
+                obj._deserialize(item)
+                self.BackupTables.append(obj)
+        self.BackupName = params.get("BackupName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBackupResponse(AbstractModel):
+    """CreateBackup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Async task flow ID
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateClustersRequest(AbstractModel):
     """CreateClusters request structure.
 
@@ -1519,6 +1585,36 @@ class CynosdbInstanceGrp(AbstractModel):
                 obj = CynosdbInstance()
                 obj._deserialize(item)
                 self.InstanceSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DatabaseTables(AbstractModel):
+    """Database table information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Database: Database name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Database: str
+        :param Tables: Table name list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tables: list of str
+        """
+        self.Database = None
+        self.Tables = None
+
+
+    def _deserialize(self, params):
+        self.Database = params.get("Database")
+        self.Tables = params.get("Tables")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2911,7 +3007,7 @@ class InquirePriceCreateRequest(AbstractModel):
         r"""
         :param Zone: AZ
         :type Zone: str
-        :param GoodsNum: Purchase quantity
+        :param GoodsNum: Number of compute node to purchase
         :type GoodsNum: int
         :param InstancePayMode: Instance type for purchase. Valid values: `PREPAID`, `POSTPAID`, `SERVERLESS`.
         :type InstancePayMode: str

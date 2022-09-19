@@ -1303,6 +1303,8 @@ class CreateShipperRequest(AbstractModel):
         :type Compress: :class:`tencentcloud.cls.v20201016.models.CompressInfo`
         :param Content: Format configuration of shipped log content
         :type Content: :class:`tencentcloud.cls.v20201016.models.ContentInfo`
+        :param FilenameMode: Naming a shipping file. Valid values: `0` (by random number); `1` (by shipping time). Default value: `0`.
+        :type FilenameMode: int
         """
         self.TopicId = None
         self.Bucket = None
@@ -1314,6 +1316,7 @@ class CreateShipperRequest(AbstractModel):
         self.Partition = None
         self.Compress = None
         self.Content = None
+        self.FilenameMode = None
 
 
     def _deserialize(self, params):
@@ -1336,6 +1339,7 @@ class CreateShipperRequest(AbstractModel):
         if params.get("Content") is not None:
             self.Content = ContentInfo()
             self.Content._deserialize(params.get("Content"))
+        self.FilenameMode = params.get("FilenameMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3632,8 +3636,8 @@ class JsonInfo(AbstractModel):
         r"""
         :param EnableTag: Enablement flag
         :type EnableTag: bool
-        :param MetaFields: Metadata information list. Valid values: __SOURCE__; __FILENAME__; __TIMESTAMP__
-Note: This field may return `null`, indicating that no valid value was found.
+        :param MetaFields: List of metadata. Supported metadata types: __SOURCE__, __FILENAME__, __TIMESTAMP__, __HOSTNAME__.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MetaFields: list of str
         """
         self.EnableTag = None
@@ -4654,6 +4658,8 @@ class ModifyShipperRequest(AbstractModel):
         :type Compress: :class:`tencentcloud.cls.v20201016.models.CompressInfo`
         :param Content: Format configuration of shipped log content
         :type Content: :class:`tencentcloud.cls.v20201016.models.ContentInfo`
+        :param FilenameMode: Naming a shipping file. Valid values: `0` (by random number), `1` (by shipping time). Default value: `0`.
+        :type FilenameMode: int
         """
         self.ShipperId = None
         self.Bucket = None
@@ -4666,6 +4672,7 @@ class ModifyShipperRequest(AbstractModel):
         self.Partition = None
         self.Compress = None
         self.Content = None
+        self.FilenameMode = None
 
 
     def _deserialize(self, params):
@@ -4689,6 +4696,7 @@ class ModifyShipperRequest(AbstractModel):
         if params.get("Content") is not None:
             self.Content = ContentInfo()
             self.Content._deserialize(params.get("Content"))
+        self.FilenameMode = params.get("FilenameMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4734,7 +4742,7 @@ class ModifyTopicRequest(AbstractModel):
         :type AutoSplit: bool
         :param MaxSplitPartitions: Maximum number of partitions to split into for this topic if automatic split is enabled
         :type MaxSplitPartitions: int
-        :param Period: Lifecycle in days. Value range: 1-3600 (3640 indicates permanent retention)
+        :param Period: Lifecycle in days. Value range: 1–3600 (STANDARD storage); 7–3600 (IA storage). `3640` indicates permanent retention.
         :type Period: int
         """
         self.TopicId = None
@@ -4875,12 +4883,16 @@ class OpenKafkaConsumerRequest(AbstractModel):
         r"""
         :param FromTopicId: `TopicId` created by the CLS console
         :type FromTopicId: str
+        :param Compression: Compression mode. Valid values: `0` (no compression); `2` (snappy); `3` (LZ4)
+        :type Compression: int
         """
         self.FromTopicId = None
+        self.Compression = None
 
 
     def _deserialize(self, params):
         self.FromTopicId = params.get("FromTopicId")
+        self.Compression = params.get("Compression")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

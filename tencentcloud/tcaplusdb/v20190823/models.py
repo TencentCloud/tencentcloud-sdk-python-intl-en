@@ -4297,6 +4297,108 @@ Note: `null` may be returned for this field, indicating that no valid values can
         
 
 
+class SyncTableField(AbstractModel):
+    """Mapping of cache table field name
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceName: Field name of TcaplusDB table
+        :type SourceName: str
+        :param TargetName: Field name of the target cache table
+        :type TargetName: str
+        """
+        self.SourceName = None
+        self.TargetName = None
+
+
+    def _deserialize(self, params):
+        self.SourceName = params.get("SourceName")
+        self.TargetName = params.get("TargetName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SyncTableInfo(AbstractModel):
+    """TcaplusDB cache table information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TargetTableSplitNum: Sharded table quantity of the target cache table
+        :type TargetTableSplitNum: int
+        :param TargetTableNamePrefix: Prefix of the target cache table name
+        :type TargetTableNamePrefix: list of str
+        :param TargetSyncDBInstanceId: Instance ID of the cache database
+        :type TargetSyncDBInstanceId: str
+        :param TargetDatabaseName: Name of the database where the cache table resides
+        :type TargetDatabaseName: str
+        :param Status: Caching status. Valid values: `0` (creating), `1` (caching), `2` (disabled), `-1` (deleted).
+        :type Status: int
+        :param ClusterId: ID of cluster where the table resides
+        :type ClusterId: str
+        :param TableGroupId: The ID of the table group where the table resides
+        :type TableGroupId: int
+        :param TableName: Table name
+        :type TableName: str
+        :param TableId: Table ID
+        :type TableId: str
+        :param KeyFieldMapping: Mapping from the primary key field of the TcaplusDB table to the field of the target cache table
+        :type KeyFieldMapping: list of SyncTableField
+        :param ValueFieldMapping: Mapping of TcaplusDB table field to target cache table field
+        :type ValueFieldMapping: list of SyncTableField
+        """
+        self.TargetTableSplitNum = None
+        self.TargetTableNamePrefix = None
+        self.TargetSyncDBInstanceId = None
+        self.TargetDatabaseName = None
+        self.Status = None
+        self.ClusterId = None
+        self.TableGroupId = None
+        self.TableName = None
+        self.TableId = None
+        self.KeyFieldMapping = None
+        self.ValueFieldMapping = None
+
+
+    def _deserialize(self, params):
+        self.TargetTableSplitNum = params.get("TargetTableSplitNum")
+        self.TargetTableNamePrefix = params.get("TargetTableNamePrefix")
+        self.TargetSyncDBInstanceId = params.get("TargetSyncDBInstanceId")
+        self.TargetDatabaseName = params.get("TargetDatabaseName")
+        self.Status = params.get("Status")
+        self.ClusterId = params.get("ClusterId")
+        self.TableGroupId = params.get("TableGroupId")
+        self.TableName = params.get("TableName")
+        self.TableId = params.get("TableId")
+        if params.get("KeyFieldMapping") is not None:
+            self.KeyFieldMapping = []
+            for item in params.get("KeyFieldMapping"):
+                obj = SyncTableField()
+                obj._deserialize(item)
+                self.KeyFieldMapping.append(obj)
+        if params.get("ValueFieldMapping") is not None:
+            self.ValueFieldMapping = []
+            for item in params.get("ValueFieldMapping"):
+                obj = SyncTableField()
+                obj._deserialize(item)
+                self.ValueFieldMapping.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TableGroupInfo(AbstractModel):
     """Table group details
 
@@ -4428,6 +4530,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param TxhBackupExpireDay: The number of days after which the table Txh backup files will be expire and deleted.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type TxhBackupExpireDay: int
+        :param SyncTableInfo: Cached information of the table
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SyncTableInfo: :class:`tencentcloud.tcaplusdb.v20190823.models.SyncTableInfo`
         """
         self.TableName = None
         self.TableInstanceId = None
@@ -4457,6 +4562,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.SortRule = None
         self.DbClusterInfoStruct = None
         self.TxhBackupExpireDay = None
+        self.SyncTableInfo = None
 
 
     def _deserialize(self, params):
@@ -4495,6 +4601,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.SortRule = params.get("SortRule")
         self.DbClusterInfoStruct = params.get("DbClusterInfoStruct")
         self.TxhBackupExpireDay = params.get("TxhBackupExpireDay")
+        if params.get("SyncTableInfo") is not None:
+            self.SyncTableInfo = SyncTableInfo()
+            self.SyncTableInfo._deserialize(params.get("SyncTableInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
