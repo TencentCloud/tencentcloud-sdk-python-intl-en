@@ -205,7 +205,7 @@ class CreateCloudRecordingRequest(AbstractModel):
         :type SdkAppId: int
         :param RoomId: The [room ID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are recorded.
         :type RoomId: str
-        :param UserId: The [user ID](https://intl.cloud.tencent.com/document/product/647/37714) of the recording robot in the TRTC room, which cannot be the same as a user ID already in use. We recommend you include the room ID in the user ID.
+        :param UserId: The [user ID](https://www.tencentcloud.com/document/product/647/37714#userid) of the recording robot in the TRTC room, which cannot be identical to the user IDs of anchors in the room or other recording robots. To distinguish this user ID from others, we recommend you include the room ID in the user ID.
         :type UserId: str
         :param UserSig: The signature (similar to a login password) required for the recording robot to enter the room. Each user ID corresponds to a signature. For information on how to calculate the signature, see [What is UserSig?](https://intl.cloud.tencent.com/document/product/647/38104).
         :type UserSig: str
@@ -555,6 +555,42 @@ class McuAudioParams(AbstractModel):
         
 
 
+class McuCustomCrop(AbstractModel):
+    """The cropping parameters for mixed videos.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LocationX: The horizontal offset (pixels) of the starting point for cropping. This parameter must be greater than 0.
+        :type LocationX: int
+        :param LocationY: The vertical offset (pixels) of the starting point for cropping. This parameter must be greater than 0.
+        :type LocationY: int
+        :param Width: The video width (pixels) after cropping. The sum of this parameter and `LocationX` cannot be greater than 10000.
+        :type Width: int
+        :param Height: The video height (pixels) after cropping. The sum of this parameter and `LocationY` cannot be greater than 10000.
+        :type Height: int
+        """
+        self.LocationX = None
+        self.LocationY = None
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        self.LocationX = params.get("LocationX")
+        self.LocationY = params.get("LocationY")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class McuLayout(AbstractModel):
     """The layout parameters.
 
@@ -587,6 +623,8 @@ Grey: 0x999999
         :type BackGroundColor: str
         :param BackgroundImageUrl: The URL of the background image for the video. This parameter allows you to specify an image to display when the user’s camera is turned off or before the user enters the room. If the dimensions of the image specified are different from those of the video window, the image will be stretched to fit the space. This parameter has a higher priority than `BackGroundColor`.
         :type BackgroundImageUrl: str
+        :param CustomCrop: Custom cropping.
+        :type CustomCrop: :class:`tencentcloud.trtc.v20190722.models.McuCustomCrop`
         """
         self.UserMediaStream = None
         self.ImageWidth = None
@@ -597,6 +635,7 @@ Grey: 0x999999
         self.RenderMode = None
         self.BackGroundColor = None
         self.BackgroundImageUrl = None
+        self.CustomCrop = None
 
 
     def _deserialize(self, params):
@@ -611,6 +650,9 @@ Grey: 0x999999
         self.RenderMode = params.get("RenderMode")
         self.BackGroundColor = params.get("BackGroundColor")
         self.BackgroundImageUrl = params.get("BackgroundImageUrl")
+        if params.get("CustomCrop") is not None:
+            self.CustomCrop = McuCustomCrop()
+            self.CustomCrop._deserialize(params.get("CustomCrop"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1238,14 +1280,17 @@ class RecordParams(AbstractModel):
         :type StreamType: int
         :param SubscribeStreamUserIds: The allowlist/blocklist for stream subscription.
         :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
-        :param OutputFormat: The format of recording files. 0 (default): HLS; 1: HLS + MP4 (recorded in HLS and converted to MP4). This parameter is invalid if recording files are saved to VOD.
+        :param OutputFormat: The output format. 0 (default): HLS; 1: HLS + MP4 (recorded in HLS and converted to MP4). This parameter is invalid if you save recording files to VOD. To specify the format of files saved to VOD, use `MediaType` of `TencentVod`.
         :type OutputFormat: int
+        :param AvMerge: Whether to merge the audio and video of a user in the single-stream recording mode. 0 (default): Do not mix the audio and video; 1: Mix the audio and video into one TS file. You don’t need to specify this parameter for mixed-stream recording, which merges audios and videos by default.
+        :type AvMerge: int
         """
         self.RecordMode = None
         self.MaxIdleTime = None
         self.StreamType = None
         self.SubscribeStreamUserIds = None
         self.OutputFormat = None
+        self.AvMerge = None
 
 
     def _deserialize(self, params):
@@ -1256,6 +1301,7 @@ class RecordParams(AbstractModel):
             self.SubscribeStreamUserIds = SubscribeStreamUserIds()
             self.SubscribeStreamUserIds._deserialize(params.get("SubscribeStreamUserIds"))
         self.OutputFormat = params.get("OutputFormat")
+        self.AvMerge = params.get("AvMerge")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1582,7 +1628,7 @@ class StorageParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CloudStorage: The cloud storage information.
+        :param CloudStorage: The third-party cloud storage information (not supported currently).
         :type CloudStorage: :class:`tencentcloud.trtc.v20190722.models.CloudStorage`
         :param CloudVod: The VOD information.
         :type CloudVod: :class:`tencentcloud.trtc.v20190722.models.CloudVod`
@@ -1665,6 +1711,8 @@ The default value is `0`, which means others.
         :type SessionContext: str
         :param SourceContext: The upload context, which is passed through after upload is completed.
         :type SourceContext: str
+        :param MediaType: The format of recording files saved to VOD. 0 (default): MP4; 1: HLS.
+        :type MediaType: int
         """
         self.Procedure = None
         self.ExpireTime = None
@@ -1673,6 +1721,7 @@ The default value is `0`, which means others.
         self.SubAppId = None
         self.SessionContext = None
         self.SourceContext = None
+        self.MediaType = None
 
 
     def _deserialize(self, params):
@@ -1683,6 +1732,7 @@ The default value is `0`, which means others.
         self.SubAppId = params.get("SubAppId")
         self.SessionContext = params.get("SessionContext")
         self.SourceContext = params.get("SourceContext")
+        self.MediaType = params.get("MediaType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
