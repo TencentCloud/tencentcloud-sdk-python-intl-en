@@ -17,8 +17,14 @@
 # No permission.
 AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
 
+# Operation failed.
+FAILEDOPERATION = 'FailedOperation'
+
 # Invalid App ID.
 FAILEDOPERATION_INVALIDAPPID = 'FailedOperation.InvalidAppId'
+
+# Payment failed. Please contact Tencent Cloud to resolve this issue.
+FAILEDOPERATION_PAYPRICEERROR = 'FailedOperation.PayPriceError'
 
 # Failed to get the number of data entries.
 FAILEDOPERATION_QUERYCOUNTFAILED = 'FailedOperation.QueryCountFailed'

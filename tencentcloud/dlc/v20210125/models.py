@@ -713,7 +713,7 @@ class DescribeTaskResultRequest(AbstractModel):
         r"""
         :param TaskId: Unique task ID
         :type TaskId: str
-        :param NextToken: Pagination information returned by the last response. This parameter can be omitted for the first response, where the data will be returned from the beginning. 1,000 rows of data are returned each time.
+        :param NextToken: The pagination information returned by the last response. This parameter can be omitted for the first response, where the data will be returned from the beginning. The data with a volume set by the `MaxResults` field is returned each time.
         :type NextToken: str
         :param MaxResults: Maximum number of returned rows. Value range: 0–1,000. Default value: 1,000.
         :type MaxResults: int
@@ -833,11 +833,15 @@ class DescribeTasksResponse(AbstractModel):
         :type TaskList: list of TaskResponseInfo
         :param TotalCount: Total number of instances
         :type TotalCount: int
+        :param TasksOverview: The task overview.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TasksOverview: :class:`tencentcloud.dlc.v20210125.models.TasksOverview`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.TaskList = None
         self.TotalCount = None
+        self.TasksOverview = None
         self.RequestId = None
 
 
@@ -849,6 +853,9 @@ class DescribeTasksResponse(AbstractModel):
                 obj._deserialize(item)
                 self.TaskList.append(obj)
         self.TotalCount = params.get("TotalCount")
+        if params.get("TasksOverview") is not None:
+            self.TasksOverview = TasksOverview()
+            self.TasksOverview._deserialize(params.get("TasksOverview"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1336,7 +1343,7 @@ class Task(AbstractModel):
 
 
 class TaskResponseInfo(AbstractModel):
-    """Task instance
+    """The task instance.
 
     """
 
@@ -1348,7 +1355,7 @@ class TaskResponseInfo(AbstractModel):
         :type DataAmount: int
         :param Id: Task ID
         :type Id: str
-        :param UsedTime: Computing time in ms
+        :param UsedTime: The compute time in ms.
         :type UsedTime: int
         :param OutputPath: Task output path
         :type OutputPath: str
@@ -1417,6 +1424,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param UiUrl: Spark UI URL
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UiUrl: str
+        :param TotalTime: The task time in ms.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalTime: int
+        :param CmdArgs: The program entry parameter for running a task under a Spark job.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CmdArgs: str
         """
         self.DatabaseName = None
         self.DataAmount = None
@@ -1448,6 +1461,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.SparkJobId = None
         self.SparkJobFile = None
         self.UiUrl = None
+        self.TotalTime = None
+        self.CmdArgs = None
 
 
     def _deserialize(self, params):
@@ -1481,6 +1496,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.SparkJobId = params.get("SparkJobId")
         self.SparkJobFile = params.get("SparkJobFile")
         self.UiUrl = params.get("UiUrl")
+        self.TotalTime = params.get("TotalTime")
+        self.CmdArgs = params.get("CmdArgs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1491,7 +1508,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TaskResultInfo(AbstractModel):
-    """Task result information
+    """The task result information.
 
     """
 
@@ -1513,7 +1530,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type State: int
         :param DataAmount: Amount of the data scanned in bytes
         :type DataAmount: int
-        :param UsedTime: Task execution time in seconds
+        :param UsedTime: The compute time in ms.
         :type UsedTime: int
         :param OutputPath: Address of the COS bucket for storing the task result
         :type OutputPath: str
@@ -1537,6 +1554,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type ProgressDetail: str
         :param DisplayFormat: Console display format. Valid values: `table`, `text`.
         :type DisplayFormat: str
+        :param TotalTime: The task time in ms.
+        :type TotalTime: int
         """
         self.TaskId = None
         self.DatasourceConnectionName = None
@@ -1556,6 +1575,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Percentage = None
         self.ProgressDetail = None
         self.DisplayFormat = None
+        self.TotalTime = None
 
 
     def _deserialize(self, params):
@@ -1582,6 +1602,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Percentage = params.get("Percentage")
         self.ProgressDetail = params.get("ProgressDetail")
         self.DisplayFormat = params.get("DisplayFormat")
+        self.TotalTime = params.get("TotalTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1632,6 +1653,42 @@ class TasksInfo(AbstractModel):
                 obj = KVPair()
                 obj._deserialize(item)
                 self.Params.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TasksOverview(AbstractModel):
+    """The task overview.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskQueuedCount: The number of tasks in queue.
+        :type TaskQueuedCount: int
+        :param TaskInitCount: The number of initialized tasks.
+        :type TaskInitCount: int
+        :param TaskRunningCount: The number of tasks in progress.
+        :type TaskRunningCount: int
+        :param TotalTaskCount: The total number of tasks in this time range.
+        :type TotalTaskCount: int
+        """
+        self.TaskQueuedCount = None
+        self.TaskInitCount = None
+        self.TaskRunningCount = None
+        self.TotalTaskCount = None
+
+
+    def _deserialize(self, params):
+        self.TaskQueuedCount = params.get("TaskQueuedCount")
+        self.TaskInitCount = params.get("TaskInitCount")
+        self.TaskRunningCount = params.get("TaskRunningCount")
+        self.TotalTaskCount = params.get("TotalTaskCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -681,6 +681,81 @@ class BusinessSummaryTotal(AbstractModel):
         
 
 
+class DescribeAccountBalanceRequest(AbstractModel):
+    """DescribeAccountBalance request structure.
+
+    """
+
+
+class DescribeAccountBalanceResponse(AbstractModel):
+    """DescribeAccountBalance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Balance: Available account balance in cents, which takes the same calculation rules as `RealBalance`, `CreditBalance`, and `RealCreditBalance`.
+        :type Balance: int
+        :param Uin: The UIN to query.
+        :type Uin: int
+        :param RealBalance: Available account balance in cents, which takes the same calculation rules as `Balance`, `CreditBalance`, and `RealCreditBalance`.
+        :type RealBalance: float
+        :param CashAccountBalance: Cash account balance in cents. Currently, this field is not applied.
+        :type CashAccountBalance: float
+        :param IncomeIntoAccountBalance: Income account balance in cents. Currently, this field is not applied.
+        :type IncomeIntoAccountBalance: float
+        :param PresentAccountBalance: Present account balance in cents. Currently, this field is not applied.
+        :type PresentAccountBalance: float
+        :param FreezeAmount: Frozen amount in cents.
+        :type FreezeAmount: float
+        :param OweAmount: Overdue amount in cents, which is when the available credit balance is negative.
+        :type OweAmount: float
+        :param IsAllowArrears: Whether overdue payments are allowed. Currently, this field is not applied.
+        :type IsAllowArrears: bool
+        :param IsCreditLimited: Whether you have a credit limit. Currently, this field is not applied.
+        :type IsCreditLimited: bool
+        :param CreditAmount: Credit limit. Credit limit－available credit balance = consumption amount
+        :type CreditAmount: float
+        :param CreditBalance: Available credit balance in cents, which takes the same calculation rules as `Balance`, `RealBalance`, and `RealCreditBalance`.
+        :type CreditBalance: float
+        :param RealCreditBalance: Available account balance in cents, which takes the same calculation rules as `Balance`, `RealBalance`, and `CreditBalance`.
+        :type RealCreditBalance: float
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Balance = None
+        self.Uin = None
+        self.RealBalance = None
+        self.CashAccountBalance = None
+        self.IncomeIntoAccountBalance = None
+        self.PresentAccountBalance = None
+        self.FreezeAmount = None
+        self.OweAmount = None
+        self.IsAllowArrears = None
+        self.IsCreditLimited = None
+        self.CreditAmount = None
+        self.CreditBalance = None
+        self.RealCreditBalance = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Balance = params.get("Balance")
+        self.Uin = params.get("Uin")
+        self.RealBalance = params.get("RealBalance")
+        self.CashAccountBalance = params.get("CashAccountBalance")
+        self.IncomeIntoAccountBalance = params.get("IncomeIntoAccountBalance")
+        self.PresentAccountBalance = params.get("PresentAccountBalance")
+        self.FreezeAmount = params.get("FreezeAmount")
+        self.OweAmount = params.get("OweAmount")
+        self.IsAllowArrears = params.get("IsAllowArrears")
+        self.IsCreditLimited = params.get("IsCreditLimited")
+        self.CreditAmount = params.get("CreditAmount")
+        self.CreditBalance = params.get("CreditBalance")
+        self.RealCreditBalance = params.get("RealCreditBalance")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBillDetailRequest(AbstractModel):
     """DescribeBillDetail request structure.
 

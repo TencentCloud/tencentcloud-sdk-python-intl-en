@@ -877,6 +877,303 @@ class BinlogInfo(AbstractModel):
         
 
 
+class CdbRegionSellConf(AbstractModel):
+    """The purchasable configuration in a region
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegionName: Region name
+        :type RegionName: str
+        :param Area: Area
+        :type Area: str
+        :param IsDefaultRegion: Whether it is a default region
+        :type IsDefaultRegion: int
+        :param Region: Region name
+        :type Region: str
+        :param RegionConfig: The purchasable configuration in an AZ in a region
+        :type RegionConfig: list of CdbZoneSellConf
+        """
+        self.RegionName = None
+        self.Area = None
+        self.IsDefaultRegion = None
+        self.Region = None
+        self.RegionConfig = None
+
+
+    def _deserialize(self, params):
+        self.RegionName = params.get("RegionName")
+        self.Area = params.get("Area")
+        self.IsDefaultRegion = params.get("IsDefaultRegion")
+        self.Region = params.get("Region")
+        if params.get("RegionConfig") is not None:
+            self.RegionConfig = []
+            for item in params.get("RegionConfig"):
+                obj = CdbZoneSellConf()
+                obj._deserialize(item)
+                self.RegionConfig.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CdbSellConfig(AbstractModel):
+    """The details of purchasable configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Memory: Memory size in MB
+        :type Memory: int
+        :param Cpu: CPU core count
+        :type Cpu: int
+        :param VolumeMin: Minimum disk size in GB
+        :type VolumeMin: int
+        :param VolumeMax: Maximum disk size in GB
+        :type VolumeMax: int
+        :param VolumeStep: Disk capacity increment in GB
+        :type VolumeStep: int
+        :param Iops: IO operations per second
+        :type Iops: int
+        :param Info: Application scenario description
+        :type Info: str
+        :param Status: Status. The value `0` indicates that this specification is available.
+        :type Status: int
+        :param DeviceType: Instance type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DeviceType: str
+        :param EngineType: Engine type description. Valid values: `Innodb`, `RocksDB`.
+        :type EngineType: str
+        :param Id: Purchasable specifications ID
+        :type Id: int
+        """
+        self.Memory = None
+        self.Cpu = None
+        self.VolumeMin = None
+        self.VolumeMax = None
+        self.VolumeStep = None
+        self.Iops = None
+        self.Info = None
+        self.Status = None
+        self.DeviceType = None
+        self.EngineType = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Memory = params.get("Memory")
+        self.Cpu = params.get("Cpu")
+        self.VolumeMin = params.get("VolumeMin")
+        self.VolumeMax = params.get("VolumeMax")
+        self.VolumeStep = params.get("VolumeStep")
+        self.Iops = params.get("Iops")
+        self.Info = params.get("Info")
+        self.Status = params.get("Status")
+        self.DeviceType = params.get("DeviceType")
+        self.EngineType = params.get("EngineType")
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CdbSellType(AbstractModel):
+    """Purchasable instance type
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TypeName: Name of the purchasable instance
+        :type TypeName: str
+        :param EngineVersion: Engine version number
+        :type EngineVersion: list of str
+        :param ConfigIds: Purchasable specifications ID
+        :type ConfigIds: list of int
+        """
+        self.TypeName = None
+        self.EngineVersion = None
+        self.ConfigIds = None
+
+
+    def _deserialize(self, params):
+        self.TypeName = params.get("TypeName")
+        self.EngineVersion = params.get("EngineVersion")
+        self.ConfigIds = params.get("ConfigIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CdbZoneDataResult(AbstractModel):
+    """The purchasable specifications in a region
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Configs: List of purchasable specifications
+        :type Configs: list of CdbSellConfig
+        :param Regions: List of AZs in purchasable regions
+        :type Regions: list of CdbRegionSellConf
+        """
+        self.Configs = None
+        self.Regions = None
+
+
+    def _deserialize(self, params):
+        if params.get("Configs") is not None:
+            self.Configs = []
+            for item in params.get("Configs"):
+                obj = CdbSellConfig()
+                obj._deserialize(item)
+                self.Configs.append(obj)
+        if params.get("Regions") is not None:
+            self.Regions = []
+            for item in params.get("Regions"):
+                obj = CdbRegionSellConf()
+                obj._deserialize(item)
+                self.Regions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CdbZoneSellConf(AbstractModel):
+    """Purchasable specifications in an AZ
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: AZ status, which is used to indicate whether instances are purchasable. Valid values: `1` (purchasable), `3` (not purchasable), `4` (AZ not displayed)
+        :type Status: int
+        :param ZoneName: AZ name
+        :type ZoneName: str
+        :param IsCustom: Whether it is a custom instance type
+        :type IsCustom: bool
+        :param IsSupportDr: Whether disaster recovery is supported
+        :type IsSupportDr: bool
+        :param IsSupportVpc: Whether VPC is supported
+        :type IsSupportVpc: bool
+        :param HourInstanceSaleMaxNum: Maximum purchasable quantity of hourly billed instances
+        :type HourInstanceSaleMaxNum: int
+        :param IsDefaultZone: Whether it is a default AZ
+        :type IsDefaultZone: bool
+        :param IsBm: Whether it is a BM zone
+        :type IsBm: bool
+        :param PayType: Supported billing method. Valid values: `0` (monthly subscribed), `1` (hourly billed), `2` (pay-as-you-go)
+        :type PayType: list of str
+        :param ProtectMode: Data replication type. Valid values: `0` (async), `1` (semi-sync), `2` (strong sync)
+        :type ProtectMode: list of str
+        :param Zone: AZ name
+        :type Zone: str
+        :param ZoneConf: Multi-AZ information
+        :type ZoneConf: :class:`tencentcloud.cdb.v20170320.models.ZoneConf`
+        :param DrZone: Information of supported disaster recovery AZs
+        :type DrZone: list of str
+        :param IsSupportRemoteRo: Whether cross-AZ read-only access is supported
+        :type IsSupportRemoteRo: bool
+        :param RemoteRoZone: Information of supported cross-AZ read-only zone
+        :type RemoteRoZone: list of str
+        :param ExClusterStatus: AZ status, which is used to indicate whether dedicated instances are purchasable. Valid values: `1 (purchasable), `3` (not purchasable), `4` (AZ not displayed)
+        :type ExClusterStatus: int
+        :param ExClusterRemoteRoZone: Information of cross-AZ read-only zones supported by a dedicated instance
+        :type ExClusterRemoteRoZone: list of str
+        :param ExClusterZoneConf: AZ information of a multi-AZ deployed dedicated instance.
+        :type ExClusterZoneConf: :class:`tencentcloud.cdb.v20170320.models.ZoneConf`
+        :param SellType: Array of purchasable instance types. The value of `configIds` and `configs` have a one-to-one correspondence.
+        :type SellType: list of CdbSellType
+        :param ZoneId: AZ ID
+        :type ZoneId: int
+        :param IsSupportIpv6: Whether IPv6 is supported
+        :type IsSupportIpv6: bool
+        :param EngineType: Supported engine types for purchasable database
+        :type EngineType: list of str
+        """
+        self.Status = None
+        self.ZoneName = None
+        self.IsCustom = None
+        self.IsSupportDr = None
+        self.IsSupportVpc = None
+        self.HourInstanceSaleMaxNum = None
+        self.IsDefaultZone = None
+        self.IsBm = None
+        self.PayType = None
+        self.ProtectMode = None
+        self.Zone = None
+        self.ZoneConf = None
+        self.DrZone = None
+        self.IsSupportRemoteRo = None
+        self.RemoteRoZone = None
+        self.ExClusterStatus = None
+        self.ExClusterRemoteRoZone = None
+        self.ExClusterZoneConf = None
+        self.SellType = None
+        self.ZoneId = None
+        self.IsSupportIpv6 = None
+        self.EngineType = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ZoneName = params.get("ZoneName")
+        self.IsCustom = params.get("IsCustom")
+        self.IsSupportDr = params.get("IsSupportDr")
+        self.IsSupportVpc = params.get("IsSupportVpc")
+        self.HourInstanceSaleMaxNum = params.get("HourInstanceSaleMaxNum")
+        self.IsDefaultZone = params.get("IsDefaultZone")
+        self.IsBm = params.get("IsBm")
+        self.PayType = params.get("PayType")
+        self.ProtectMode = params.get("ProtectMode")
+        self.Zone = params.get("Zone")
+        if params.get("ZoneConf") is not None:
+            self.ZoneConf = ZoneConf()
+            self.ZoneConf._deserialize(params.get("ZoneConf"))
+        self.DrZone = params.get("DrZone")
+        self.IsSupportRemoteRo = params.get("IsSupportRemoteRo")
+        self.RemoteRoZone = params.get("RemoteRoZone")
+        self.ExClusterStatus = params.get("ExClusterStatus")
+        self.ExClusterRemoteRoZone = params.get("ExClusterRemoteRoZone")
+        if params.get("ExClusterZoneConf") is not None:
+            self.ExClusterZoneConf = ZoneConf()
+            self.ExClusterZoneConf._deserialize(params.get("ExClusterZoneConf"))
+        if params.get("SellType") is not None:
+            self.SellType = []
+            for item in params.get("SellType"):
+                obj = CdbSellType()
+                obj._deserialize(item)
+                self.SellType.append(obj)
+        self.ZoneId = params.get("ZoneId")
+        self.IsSupportIpv6 = params.get("IsSupportIpv6")
+        self.EngineType = params.get("EngineType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloneItem(AbstractModel):
     """Clone task information.
 
@@ -2884,21 +3181,29 @@ class DescribeBinlogBackupOverviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BinlogBackupVolume: Total capacity of log backups in bytes.
+        :param BinlogBackupVolume: Total capacity of log backups in bytes (including remote log backups)
         :type BinlogBackupVolume: int
-        :param BinlogBackupCount: Total number of log backups.
+        :param BinlogBackupCount: Total number of log backups (include remote log backups)
         :type BinlogBackupCount: int
+        :param RemoteBinlogVolume: Capacity of remote log backups in bytes
+        :type RemoteBinlogVolume: int
+        :param RemoteBinlogCount: Number of remote backups
+        :type RemoteBinlogCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.BinlogBackupVolume = None
         self.BinlogBackupCount = None
+        self.RemoteBinlogVolume = None
+        self.RemoteBinlogCount = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.BinlogBackupVolume = params.get("BinlogBackupVolume")
         self.BinlogBackupCount = params.get("BinlogBackupCount")
+        self.RemoteBinlogVolume = params.get("RemoteBinlogVolume")
+        self.RemoteBinlogCount = params.get("RemoteBinlogCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -3056,6 +3361,35 @@ Note: this field may return `null`, indicating that no valid value can be found.
                 obj = ProxyGroup()
                 obj._deserialize(item)
                 self.ProxyGroup.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCdbZoneConfigRequest(AbstractModel):
+    """DescribeCdbZoneConfig request structure.
+
+    """
+
+
+class DescribeCdbZoneConfigResponse(AbstractModel):
+    """DescribeCdbZoneConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataResult: List of purchasable specification and region information
+        :type DataResult: :class:`tencentcloud.cdb.v20170320.models.CdbZoneDataResult`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DataResult = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataResult") is not None:
+            self.DataResult = CdbZoneDataResult()
+            self.DataResult._deserialize(params.get("DataResult"))
         self.RequestId = params.get("RequestId")
 
 
@@ -3664,42 +3998,62 @@ class DescribeDBPriceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Zone: AZ information in the format of "ap-guangzhou-2". You can use the <a href="https://cloud.tencent.com/document/api/236/17229">DescribeDBZoneConfig</a> API to query the values that can be set.
-        :type Zone: str
-        :param GoodsNum: Number of instances. Value range: 1-100. Default value: 1.
-        :type GoodsNum: int
-        :param Memory: Instance memory size in MB.
-        :type Memory: int
-        :param Volume: Instance disk size in GB.
-        :type Volume: int
-        :param PayType: Billing method. Value range: PRE_PAID (monthly subscribed), HOUR_PAID (pay-as-you-go).
-        :type PayType: str
-        :param Period: Instance validity period in months. Value range: 1-36. This field is invalid when querying prices of pay-as-you-go instances.
+        :param Period: Instance validity period in months. Value range: 1-36. This field is invalid when querying the prices of pay-as-you-go instances.
         :type Period: int
-        :param InstanceRole: Instance type. Value range: master (master instance), dr (disaster recovery instance), ro (read-only instance). Default value: master.
+        :param Zone: AZ information in the format of "ap-guangzhou-2". You can use the <a href="https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1">DescribeDBZoneConfig</a> API to query the configurable values. This parameter is required when `InstanceId` is empty.
+        :type Zone: str
+        :param GoodsNum: Number of instances. Value range: 1-100. Default value: 1. This parameter is required when `InstanceId` is empty.
+        :type GoodsNum: int
+        :param Memory: Instance memory size in MB. This parameter is required when `InstanceId` is empty.
+        :type Memory: int
+        :param Volume: Instance disk size in GB. This parameter is required when `InstanceId` is empty.
+        :type Volume: int
+        :param InstanceRole: Instance type. Valid values: `master` (source instance), `dr` (disaster recovery instance), `ro` (read-only instance). Default value: `master`. This parameter is required when `InstanceId` is empty.
         :type InstanceRole: str
-        :param ProtectMode: Data replication mode. Value range: 0 (async), 1 (semi-sync), 2 (strong sync). Default value: 0.
+        :param PayType: Billing mode. Valid values: `PRE_PAID` (monthly subscribed), `HOUR_PAID` (pay-as-you-go). This parameter is required when `InstanceId` is empty.
+        :type PayType: str
+        :param ProtectMode: Data replication mode. Valid values: `0` (async), 1 (semi-sync), `2` (strong sync). Default value: `0`.
         :type ProtectMode: int
+        :param DeviceType: Instance isolation type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance). Default value: `UNIVERSAL`.
+        :type DeviceType: str
+        :param InstanceNodes: The number of the instance. Valid values: `1` (for read-only and basic instances), `2` (for other source instances). To query the price of a three-node instance, set this value to `3`.
+        :type InstanceNodes: int
+        :param Cpu: CPU core count of the price-queried instance. To ensure that the CPU value to be passed in is valid, use the [DescribeDBZoneConfig](https://www.tencentcloud.com/document/product/236/17229) API to query the number of purchasable cores. If this value is not specified, a default value based on memory size will be set.
+        :type Cpu: int
+        :param InstanceId: Instance ID for querying renewal price. To query the renewal price of the instance, pass in the values of `InstanceId` and `Period`.
+        :type InstanceId: str
+        :param Ladder: Tiered pay-as-you-go pricing, which is valid only when `PayType` is set to `HOUR_PAID`. Valid values: `1`, `2`, `3`. For more information on tiered duration, visit https://intl.cloud.tencent.com/document/product/236/18335.?from_cn_redirect=1
+        :type Ladder: int
         """
+        self.Period = None
         self.Zone = None
         self.GoodsNum = None
         self.Memory = None
         self.Volume = None
-        self.PayType = None
-        self.Period = None
         self.InstanceRole = None
+        self.PayType = None
         self.ProtectMode = None
+        self.DeviceType = None
+        self.InstanceNodes = None
+        self.Cpu = None
+        self.InstanceId = None
+        self.Ladder = None
 
 
     def _deserialize(self, params):
+        self.Period = params.get("Period")
         self.Zone = params.get("Zone")
         self.GoodsNum = params.get("GoodsNum")
         self.Memory = params.get("Memory")
         self.Volume = params.get("Volume")
-        self.PayType = params.get("PayType")
-        self.Period = params.get("Period")
         self.InstanceRole = params.get("InstanceRole")
+        self.PayType = params.get("PayType")
         self.ProtectMode = params.get("ProtectMode")
+        self.DeviceType = params.get("DeviceType")
+        self.InstanceNodes = params.get("InstanceNodes")
+        self.Cpu = params.get("Cpu")
+        self.InstanceId = params.get("InstanceId")
+        self.Ladder = params.get("Ladder")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3716,21 +4070,25 @@ class DescribeDBPriceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Price: Price of the instance in 0.01 CNY.
+        :param Price: Instance price. If `Currency` is set to `CNY`, the unit will be 0.01 CNY. If `Currency` is set to `USD`, the unit will be US Cent.
         :type Price: int
-        :param OriginalPrice: Original price of the instance in 0.01 CNY
+        :param OriginalPrice: Original price of the instance. If `Currency` is set to `CNY`, the unit will be 0.01 CNY. If `Currency` is set to `USD`, the unit will be US Cent.
         :type OriginalPrice: int
+        :param Currency: Currency: `CNY`, `USD`.
+        :type Currency: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.Price = None
         self.OriginalPrice = None
+        self.Currency = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Price = params.get("Price")
         self.OriginalPrice = params.get("OriginalPrice")
+        self.Currency = params.get("Currency")
         self.RequestId = params.get("RequestId")
 
 
@@ -3893,6 +4251,10 @@ class DescribeDataBackupOverviewResponse(AbstractModel):
         :type ManualBackupVolume: int
         :param ManualBackupCount: Total number of manual backups in the current region.
         :type ManualBackupCount: int
+        :param RemoteBackupVolume: Total capacity of remote backups in the current region
+        :type RemoteBackupVolume: int
+        :param RemoteBackupCount: Total number of remote backups in the current region
+        :type RemoteBackupCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -3902,6 +4264,8 @@ class DescribeDataBackupOverviewResponse(AbstractModel):
         self.AutoBackupCount = None
         self.ManualBackupVolume = None
         self.ManualBackupCount = None
+        self.RemoteBackupVolume = None
+        self.RemoteBackupCount = None
         self.RequestId = None
 
 
@@ -3912,6 +4276,8 @@ class DescribeDataBackupOverviewResponse(AbstractModel):
         self.AutoBackupCount = params.get("AutoBackupCount")
         self.ManualBackupVolume = params.get("ManualBackupVolume")
         self.ManualBackupCount = params.get("ManualBackupCount")
+        self.RemoteBackupVolume = params.get("RemoteBackupVolume")
+        self.RemoteBackupCount = params.get("RemoteBackupCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -6070,6 +6436,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param TagList: List of tags
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type TagList: list of TagInfoItem
+        :param EngineType: Engine type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EngineType: str
+        :param MaxDelayTime: Maximum delay threshold
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MaxDelayTime: int
         """
         self.WanStatus = None
         self.Zone = None
@@ -6114,6 +6486,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.ZoneId = None
         self.InstanceNodes = None
         self.TagList = None
+        self.EngineType = None
+        self.MaxDelayTime = None
 
 
     def _deserialize(self, params):
@@ -6181,6 +6555,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj = TagInfoItem()
                 obj._deserialize(item)
                 self.TagList.append(obj)
+        self.EngineType = params.get("EngineType")
+        self.MaxDelayTime = params.get("MaxDelayTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10763,6 +11139,42 @@ class UploadInfo(AbstractModel):
     def _deserialize(self, params):
         self.AllSliceNum = params.get("AllSliceNum")
         self.CompleteNum = params.get("CompleteNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZoneConf(AbstractModel):
+    """Multi-AZ information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeployMode: AZ deployment mode. Value range: 0 (single-AZ), 1 (multi-AZ)
+        :type DeployMode: list of int
+        :param MasterZone: AZ where the primary instance is located
+        :type MasterZone: list of str
+        :param SlaveZone: AZ where salve database 1 is located when the instance is deployed in multi-AZ mode
+        :type SlaveZone: list of str
+        :param BackupZone: AZ where salve database 2 is located when the instance is deployed in multi-AZ mode
+        :type BackupZone: list of str
+        """
+        self.DeployMode = None
+        self.MasterZone = None
+        self.SlaveZone = None
+        self.BackupZone = None
+
+
+    def _deserialize(self, params):
+        self.DeployMode = params.get("DeployMode")
+        self.MasterZone = params.get("MasterZone")
+        self.SlaveZone = params.get("SlaveZone")
+        self.BackupZone = params.get("BackupZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
