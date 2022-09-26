@@ -41,6 +41,9 @@ INTERNALERROR_DELETESERVICEERROR = 'InternalError.DeleteServiceError'
 # Failed to invoke the version deployment
 INTERNALERROR_DEPLOYVERSIONERROR = 'InternalError.DeployVersionError'
 
+# 
+INTERNALERROR_DESCRIBEINGRESSERROR = 'InternalError.DescribeIngressError'
+
 # Failed to query the instance information
 INTERNALERROR_DESCRIBERUNPODLISTERROR = 'InternalError.DescribeRunPodListError'
 
@@ -59,14 +62,29 @@ INTERNALERROR_STOPAPPLICATIONERROR = 'InternalError.StopApplicationError'
 # Failed to update the ingress
 INTERNALERROR_UPDATEINGRESSERROR = 'InternalError.UpdateIngressError'
 
+# 
+INVALIDPARAMETERVALUE_APMNOTBIND = 'InvalidParameterValue.ApmNotBind'
+
 # Only one auto scaler can be specified.
 INVALIDPARAMETERVALUE_AUTOSCALERLARGERTHANONE = 'InvalidParameterValue.AutoScalerLargerThanOne'
+
+# 
+INVALIDPARAMETERVALUE_CANNOTOVERWRITEOTHERAPPLICATIONSERVICE = 'InvalidParameterValue.CannotOverWriteOtherApplicationService'
 
 # The version number is invalid.
 INVALIDPARAMETERVALUE_INVALIDDEPLOYVERSION = 'InvalidParameterValue.InvalidDeployVersion'
 
 # 
+INVALIDPARAMETERVALUE_INVALIDENVNAME = 'InvalidParameterValue.InvalidEnvName'
+
+# 
+INVALIDPARAMETERVALUE_INVALIDMOUNTPATH = 'InvalidParameterValue.InvalidMountPath'
+
+# Invalid application name
 INVALIDPARAMETERVALUE_INVALIDSERVICENAME = 'InvalidParameterValue.InvalidServiceName'
+
+# 
+INVALIDPARAMETERVALUE_JDKVERSIONREQUIRED = 'InvalidParameterValue.JdkVersionRequired'
 
 # The environment already exists.
 INVALIDPARAMETERVALUE_NAMESPACEDUPLICATEERROR = 'InvalidParameterValue.NamespaceDuplicateError'
@@ -81,25 +99,40 @@ INVALIDPARAMETERVALUE_NAMESPACEREACHMAXIMUM = 'InvalidParameterValue.NamespaceRe
 INVALIDPARAMETERVALUE_NAMESPACERESOURCEREACHMAXIMUM = 'InvalidParameterValue.NamespaceResourceReachMaximum'
 
 # 
+INVALIDPARAMETERVALUE_OSNOTSUPPORT = 'InvalidParameterValue.OsNotSupport'
+
+# Public image parameter error
 INVALIDPARAMETERVALUE_PUBLICREPOTYPEPARAMETERERROR = 'InvalidParameterValue.PublicRepoTypeParameterError'
+
+# 
+INVALIDPARAMETERVALUE_REGISTRYNOTBIND = 'InvalidParameterValue.RegistryNotBind'
 
 # There are running pods in this application.
 INVALIDPARAMETERVALUE_SERVICEFOUNDRUNNINGVERSION = 'InvalidParameterValue.ServiceFoundRunningVersion'
 
-# 
+# The application name must be in lowercase.
 INVALIDPARAMETERVALUE_SERVICELOWERCASE = 'InvalidParameterValue.ServiceLowerCase'
 
 # This application name already exists.
 INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = 'InvalidParameterValue.ServiceNameDuplicateError'
 
+# 
+INVALIDPARAMETERVALUE_SERVICENOTBELONGTOAPPID = 'InvalidParameterValue.ServiceNotBelongToAppid'
+
 # Failed to create the instance. The upper limit is reached.
 INVALIDPARAMETERVALUE_SERVICEPODREACHMAXIMUM = 'InvalidParameterValue.ServicePodReachMaximum'
 
-# 
+# Failed to create the application. The upper limit is reached.
 INVALIDPARAMETERVALUE_SERVICEREACHMAXIMUM = 'InvalidParameterValue.ServiceReachMaximum'
+
+# 
+INVALIDPARAMETERVALUE_TEMIDINVALID = 'InvalidParameterValue.TemIdInvalid'
 
 # Linkage tracing is not available for non-JAVA applications.
 INVALIDPARAMETERVALUE_TRAITSTRACINGNOTSUPPORTED = 'InvalidParameterValue.TraitsTracingNotSupported'
+
+# 
+INVALIDPARAMETERVALUE_VERSIONLENGTHLIMIT = 'InvalidParameterValue.VersionLengthLimit'
 
 # The version must be in lower case.
 INVALIDPARAMETERVALUE_VERSIONLOWERCASE = 'InvalidParameterValue.VersionLowerCase'
@@ -107,8 +140,14 @@ INVALIDPARAMETERVALUE_VERSIONLOWERCASE = 'InvalidParameterValue.VersionLowerCase
 # There is still traffic routed to this version.
 INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = 'InvalidParameterValue.VersionRouteRateNotZero'
 
+# 
+MISSINGPARAMETER_DEPLOYMODENULL = 'MissingParameter.DeployModeNull'
+
 # The deployment version cannot be empty.
 MISSINGPARAMETER_DEPLOYVERSIONNULL = 'MissingParameter.DeployVersionNull'
+
+# 
+MISSINGPARAMETER_LOGSETORTOPICNULL = 'MissingParameter.LogsetOrTopicNull'
 
 # The environment ID can not be left empty.
 MISSINGPARAMETER_NAMESPACEIDNULL = 'MissingParameter.NamespaceIdNull'
@@ -122,7 +161,13 @@ MISSINGPARAMETER_SERVICEIDNULL = 'MissingParameter.ServiceIdNull'
 # The image repository is not ready.
 MISSINGPARAMETER_SVCREPONOTREADY = 'MissingParameter.SvcRepoNotReady'
 
-# 
+# Insufficient account balance.
+OPERATIONDENIED_BALANCENOTENOUGH = 'OperationDenied.BalanceNotEnough'
+
+# There’re overdue payments under your account. Please make the payment first.
+OPERATIONDENIED_RESOURCEISOLATED = 'OperationDenied.ResourceIsolated'
+
+# The specified resource is occupied by another operation. Please try again later.
 RESOURCEINUSE_RESOURCEALREADYLOCKED = 'ResourceInUse.ResourceAlreadyLocked'
 
 # This resource is already bound.
@@ -146,11 +191,17 @@ RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = 'ResourceNotFound.VersionNamespaceNo
 # The environment corresponding to this version is not found.
 RESOURCENOTFOUND_VERSIONSERVICENOTFOUND = 'ResourceNotFound.VersionServiceNotFound'
 
+# 
+RESOURCEUNAVAILABLE_APPLICATIONNOTDELETABLE = 'ResourceUnavailable.ApplicationNotDeletable'
+
 # Waiting for the installation of addon
 RESOURCEUNAVAILABLE_WAITFORKRUISE = 'ResourceUnavailable.WaitForKruise'
 
-# Unauthorized
+# 
+UNAUTHORIZEDOPERATION_MISSINGEKSLOGROLE = 'UnauthorizedOperation.MissingEksLogRole'
+
+# Not authorized
 UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = 'UnauthorizedOperation.UnauthorizedOperation'
 
-# 
+# ACTION not supported
 UNSUPPORTEDOPERATION_UNSUPPORTACTION = 'UnsupportedOperation.UnsupportAction'

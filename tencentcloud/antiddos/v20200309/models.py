@@ -243,7 +243,8 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 When an all-out package is not used by the instance, this field is `null`.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type AnycastOutPackRelation: :class:`tencentcloud.antiddos.v20200309.models.AnycastOutPackRelation`
-        :param InstanceVersion: 
+        :param InstanceVersion: Edition of the instance
+Note: This field may return `null`, indicating that no valid value can be obtained.
         :type InstanceVersion: int
         """
         self.InstanceDetail = None
@@ -1825,6 +1826,70 @@ class CreateL7RuleCertsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateNewL7RulesRequest(AbstractModel):
+    """CreateNewL7Rules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Rules: List of rules
+        :type Rules: list of L7RuleEntry
+        :param Business: Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)
+        :type Business: str
+        :param IdList: List of resource IDs
+        :type IdList: list of str
+        :param VipList: List of resource IPs
+        :type VipList: list of str
+        """
+        self.Rules = None
+        self.Business = None
+        self.IdList = None
+        self.VipList = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = L7RuleEntry()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.Business = params.get("Business")
+        self.IdList = params.get("IdList")
+        self.VipList = params.get("VipList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateNewL7RulesResponse(AbstractModel):
+    """CreateNewL7Rules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Success: Success code
+        :type Success: :class:`tencentcloud.antiddos.v20200309.models.SuccessCode`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Success = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self.Success = SuccessCode()
+            self.Success._deserialize(params.get("Success"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreatePacketFilterConfigRequest(AbstractModel):
     """CreatePacketFilterConfig request structure.
 
@@ -2818,6 +2883,83 @@ class DescribeBasicDeviceStatusResponse(AbstractModel):
                 obj = KeyValue()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBgpBizTrendRequest(AbstractModel):
+    """DescribeBgpBizTrend request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Business: Anti-DDoS service code. `bgp-multip` indicates Anti-DDos Pro.
+        :type Business: str
+        :param StartTime: Beginning of the time range for the query, such as `2020-09-22 00:00:00`.
+        :type StartTime: str
+        :param EndTime: End of the time range for the query, such as `2020-09-22 00:00:00`.
+        :type EndTime: str
+        :param MetricName: Statistical metric. Values: `intraffic`, `outtraffic`, `inpkg`, and `outpkg`.
+        :type MetricName: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Flag: `0`: Fixed time. `1`: Custom time.
+        :type Flag: int
+        """
+        self.Business = None
+        self.StartTime = None
+        self.EndTime = None
+        self.MetricName = None
+        self.InstanceId = None
+        self.Flag = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.MetricName = params.get("MetricName")
+        self.InstanceId = params.get("InstanceId")
+        self.Flag = params.get("Flag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBgpBizTrendResponse(AbstractModel):
+    """DescribeBgpBizTrend response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataList: Values of the samples
+        :type DataList: list of int non-negative
+        :param Total: Number of samples
+        :type Total: int
+        :param MetricName: Statistical metric
+        :type MetricName: str
+        :param MaxData: Maximum value of the arrays returned
+        :type MaxData: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DataList = None
+        self.Total = None
+        self.MetricName = None
+        self.MaxData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DataList = params.get("DataList")
+        self.Total = params.get("Total")
+        self.MetricName = params.get("MetricName")
+        self.MaxData = params.get("MaxData")
         self.RequestId = params.get("RequestId")
 
 
@@ -4643,6 +4785,97 @@ class DescribeListWaterPrintConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeNewL7RulesRequest(AbstractModel):
+    """DescribeNewL7Rules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Business: Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)
+        :type Business: str
+        :param StatusList: (Optional) Searches by rule status. Valid values: `0` (Successfully configured), `1` (Being configured), `2` (Configuration failed), `3` (Being deleted), `5` (Deletion failed), `6` (awaiting configuration), `7` (awaiting deletion), and `8` (awaiting certificate configuration).
+        :type StatusList: list of int non-negative
+        :param Domain: (Optional) Searches by domain name.
+        :type Domain: str
+        :param Ip: (Optional) Searches by IP.
+        :type Ip: str
+        :param Limit: Number of items in a page. Returned results are not paged if you enter “0”.
+        :type Limit: int
+        :param Offset: Starting offset of the page. Value: (number of pages – 1) * items per page.
+        :type Offset: int
+        :param ProtocolList: (Optional) Searches by forwarding protocol. Values: [http, https, http/https]
+        :type ProtocolList: list of str
+        :param Cname: CNAME of the Anti-DDoS Advanced instance
+        :type Cname: str
+        """
+        self.Business = None
+        self.StatusList = None
+        self.Domain = None
+        self.Ip = None
+        self.Limit = None
+        self.Offset = None
+        self.ProtocolList = None
+        self.Cname = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.StatusList = params.get("StatusList")
+        self.Domain = params.get("Domain")
+        self.Ip = params.get("Ip")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.ProtocolList = params.get("ProtocolList")
+        self.Cname = params.get("Cname")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNewL7RulesResponse(AbstractModel):
+    """DescribeNewL7Rules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Rules: List of forwarding rules
+        :type Rules: list of NewL7RuleEntry
+        :param Healths: List of health check settings
+        :type Healths: list of L7RuleHealth
+        :param Total: Total number of rules
+        :type Total: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Rules = None
+        self.Healths = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = NewL7RuleEntry()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        if params.get("Healths") is not None:
+            self.Healths = []
+            for item in params.get("Healths"):
+                obj = L7RuleHealth()
+                obj._deserialize(item)
+                self.Healths.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeOverviewDDoSEventListRequest(AbstractModel):
     """DescribeOverviewDDoSEventList request structure.
 
@@ -5144,16 +5377,216 @@ class L4RuleSource(AbstractModel):
         :param Port: 8000
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Port: int
+        :param Backup: Secondary origin server. `1`: secondary origin server; `0`: general origin server.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Backup: int
         """
         self.Source = None
         self.Weight = None
         self.Port = None
+        self.Backup = None
 
 
     def _deserialize(self, params):
         self.Source = params.get("Source")
         self.Weight = params.get("Weight")
         self.Port = params.get("Port")
+        self.Backup = params.get("Backup")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class L7RuleEntry(AbstractModel):
+    """Layer-7 forwarding rule.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param KeepTime: Session persistence duration, in seconds.
+        :type KeepTime: int
+        :param Domain: Forwarding domain name.
+        :type Domain: str
+        :param Protocol: Forwarding protocol. Valid values: `http` and `https`.
+        :type Protocol: str
+        :param SourceType: Forwarding method. Valid values: `1` (by domain name); `2` (by IP).
+        :type SourceType: int
+        :param LbType: Load balancing method. Valid value: `1` (weighed polling).
+        :type LbType: int
+        :param SourceList: List of origins
+        :type SourceList: list of L4RuleSource
+        :param KeepEnable: Whether session persistence is enabled. Valid values: `0` (disabled) and `1` (enabled).
+        :type KeepEnable: int
+        :param Status: Rule status. Valid values: `0` (the rule was successfully configured), `1` (configuring the rule), `2` (rule configuration failed), `3` (deleting the rule), `5` (failed to delete rule), `6` (rule awaiting configuration), `7` (rule awaiting deletion), and `8` (rule awaiting certificate configuration).
+        :type Status: int
+        :param RuleId: Rule ID. This field is not required for adding a rule, but is required for modifying or deleting a rule.
+        :type RuleId: str
+        :param CCThreshold: CC protection threshold based on HTTPS.
+        :type CCThreshold: int
+        :param PrivateKey: [Disused] When the certificate is an external certificate, the certificate key should be provided here. 
+        :type PrivateKey: str
+        :param CCEnable: CC protection status based on HTTPS. Valid values: `0` (disabled) and `1` (enabled).
+        :type CCEnable: int
+        :param HttpsToHttpEnable: Whether to enable **Forward HTTPS requests via HTTP**. Valid values: `0` (disable) and `1` (enable). It defaults to `0`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HttpsToHttpEnable: int
+        :param CertType: Certificate source. When the forwarding protocol is HTTPS, this field must be set to `2` (Tencent Cloud managed certificate), and for HTTP protocol, it can be set to `0`.
+        :type CertType: int
+        :param Cert: [Disused] When the certificate is an external certificate, the certificate content should be provided here. 
+        :type Cert: str
+        :param CCLevel: CC protection level based on HTTPS.
+        :type CCLevel: str
+        :param RuleName: Rule description.
+        :type RuleName: str
+        :param CCStatus: CC protection status. Valid values: `0` (disabled) and `1` (enabled).
+        :type CCStatus: int
+        :param VirtualPort: Access port number.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VirtualPort: int
+        :param SSLId: When the certificate is managed by Tencent Cloud, this field must be set to the ID of the managed certificate.
+        :type SSLId: str
+        :param Id: ID of the rule
+        :type Id: str
+        :param CCAIEnable: Intelligent CC protection status. Valid values: `0` (disabled) and `1` (enabled).
+        :type CCAIEnable: int
+        """
+        self.KeepTime = None
+        self.Domain = None
+        self.Protocol = None
+        self.SourceType = None
+        self.LbType = None
+        self.SourceList = None
+        self.KeepEnable = None
+        self.Status = None
+        self.RuleId = None
+        self.CCThreshold = None
+        self.PrivateKey = None
+        self.CCEnable = None
+        self.HttpsToHttpEnable = None
+        self.CertType = None
+        self.Cert = None
+        self.CCLevel = None
+        self.RuleName = None
+        self.CCStatus = None
+        self.VirtualPort = None
+        self.SSLId = None
+        self.Id = None
+        self.CCAIEnable = None
+
+
+    def _deserialize(self, params):
+        self.KeepTime = params.get("KeepTime")
+        self.Domain = params.get("Domain")
+        self.Protocol = params.get("Protocol")
+        self.SourceType = params.get("SourceType")
+        self.LbType = params.get("LbType")
+        if params.get("SourceList") is not None:
+            self.SourceList = []
+            for item in params.get("SourceList"):
+                obj = L4RuleSource()
+                obj._deserialize(item)
+                self.SourceList.append(obj)
+        self.KeepEnable = params.get("KeepEnable")
+        self.Status = params.get("Status")
+        self.RuleId = params.get("RuleId")
+        self.CCThreshold = params.get("CCThreshold")
+        self.PrivateKey = params.get("PrivateKey")
+        self.CCEnable = params.get("CCEnable")
+        self.HttpsToHttpEnable = params.get("HttpsToHttpEnable")
+        self.CertType = params.get("CertType")
+        self.Cert = params.get("Cert")
+        self.CCLevel = params.get("CCLevel")
+        self.RuleName = params.get("RuleName")
+        self.CCStatus = params.get("CCStatus")
+        self.VirtualPort = params.get("VirtualPort")
+        self.SSLId = params.get("SSLId")
+        self.Id = params.get("Id")
+        self.CCAIEnable = params.get("CCAIEnable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class L7RuleHealth(AbstractModel):
+    """Health check parameters of layer-7 forwarding rules
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: Configuration status. Values: `0` (normal), `1` (configuration in progress) and `2` (configuration failed).
+        :type Status: int
+        :param Enable: Switch. Values: `1`: Enable; `0`: Disable.
+        :type Enable: int
+        :param RuleId: ID of the rule
+        :type RuleId: str
+        :param Url: HTTP request path. The default value is /.
+        :type Url: str
+        :param Interval: Health check interval. Unit: second.
+        :type Interval: int
+        :param AliveNum: Healthy threshold, which specifies the number of consecutive successful health checks.
+        :type AliveNum: int
+        :param KickNum: Unhealthy threshold, which specifies the number of consecutive failed health checks.
+        :type KickNum: int
+        :param Method: HTTP request method. Values: `HEAD` and `GET`.
+        :type Method: str
+        :param StatusCode: Status code that signifies a normal state. Values: `1` (1xx), `2` (2xx), `4` (3xx), `8` (4xx), and `16` (5xx).
+        :type StatusCode: int
+        :param ProtocolFlag: Whether to deploy both HTTP and HTTPS health check rules
+        :type ProtocolFlag: int
+        :param PassiveEnable: Enables passive detection. Values: `1` (enable) and `0` (disable).
+        :type PassiveEnable: int
+        :param BlockInter: Blocking period in the passive detection configuration
+        :type BlockInter: int
+        :param FailedCountInter: Time interval between passive detections
+        :type FailedCountInter: int
+        :param FailedThreshold: Unhealthy threshold in the passive detection configuration
+        :type FailedThreshold: int
+        :param PassiveStatusCode: Status code that signals that the passive detection considers the status normal. Values: `1` (1xx), `2` (2xx), `4` (3xx), `8` (4xx), and `16` (5xx).
+        :type PassiveStatusCode: int
+        """
+        self.Status = None
+        self.Enable = None
+        self.RuleId = None
+        self.Url = None
+        self.Interval = None
+        self.AliveNum = None
+        self.KickNum = None
+        self.Method = None
+        self.StatusCode = None
+        self.ProtocolFlag = None
+        self.PassiveEnable = None
+        self.BlockInter = None
+        self.FailedCountInter = None
+        self.FailedThreshold = None
+        self.PassiveStatusCode = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Enable = params.get("Enable")
+        self.RuleId = params.get("RuleId")
+        self.Url = params.get("Url")
+        self.Interval = params.get("Interval")
+        self.AliveNum = params.get("AliveNum")
+        self.KickNum = params.get("KickNum")
+        self.Method = params.get("Method")
+        self.StatusCode = params.get("StatusCode")
+        self.ProtocolFlag = params.get("ProtocolFlag")
+        self.PassiveEnable = params.get("PassiveEnable")
+        self.BlockInter = params.get("BlockInter")
+        self.FailedCountInter = params.get("FailedCountInter")
+        self.FailedThreshold = params.get("FailedThreshold")
+        self.PassiveStatusCode = params.get("PassiveStatusCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

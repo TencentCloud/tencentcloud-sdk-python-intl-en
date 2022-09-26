@@ -152,6 +152,9 @@ INVALIDPARAMETER_INVALIDLOGINSETTING = 'InvalidParameter.InvalidLoginSetting'
 # Invalid parameter.
 INVALIDPARAMETER_INVALIDMASTERDISKTYPE = 'InvalidParameter.InvalidMasterDiskType'
 
+# Invalid metadatabase URL.
+INVALIDPARAMETER_INVALIDMETADATAJDBCURL = 'InvalidParameter.InvalidMetaDataJdbcUrl'
+
 # Invalid metadata table type.
 INVALIDPARAMETER_INVALIDMETATYPE = 'InvalidParameter.InvalidMetaType'
 

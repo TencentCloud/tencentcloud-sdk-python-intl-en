@@ -144,9 +144,9 @@ class TemClient(AbstractClient):
 
     def DeleteApplication(self, request):
         """This API is used to delete an application.
-          - Stop the application if it’s running
-          - Delete resources associated with this application
-          - Delele the application
+          - Stop running the current application
+          - Delete resources related to the application
+          - Delete the application
 
         :param request: Request instance for DeleteApplication.
         :type request: :class:`tencentcloud.tem.v20210701.models.DeleteApplicationRequest`
@@ -392,6 +392,35 @@ class TemClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRelatedIngressesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DestroyEnvironment(self, request):
+        """This API is used to terminate a namespace.
+
+        :param request: Request instance for DestroyEnvironment.
+        :type request: :class:`tencentcloud.tem.v20210701.models.DestroyEnvironmentRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.DestroyEnvironmentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DestroyEnvironment", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DestroyEnvironmentResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

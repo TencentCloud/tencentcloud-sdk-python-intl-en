@@ -301,17 +301,17 @@ class BackupFileInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SnapshotId: Snapshot file ID used for rollback
+        :param SnapshotId: Snapshot file ID, which is deprecated. You need to use `BackupId`.
         :type SnapshotId: int
-        :param FileName: Snapshot file name
+        :param FileName: Backup file name
         :type FileName: str
-        :param FileSize: Snapshot file size
+        :param FileSize: Backup file size
         :type FileSize: int
-        :param StartTime: Snapshot backup start time
+        :param StartTime: Backup start time
         :type StartTime: str
-        :param FinishTime: Snapshot backup end time
+        :param FinishTime: Backup end time
         :type FinishTime: str
-        :param BackupType: Backup type. snapshot: snapshot backup; timepoint: time point backup
+        :param BackupType: Backup type. Valid values: `snapshot` (snapshot backup), `logic` (logic backup).
         :type BackupType: str
         :param BackupMethod: Back mode. auto: auto backup; manual: manual backup
         :type BackupMethod: str
@@ -319,6 +319,14 @@ class BackupFileInfo(AbstractModel):
         :type BackupStatus: str
         :param SnapshotTime: Backup file time
         :type SnapshotTime: str
+        :param BackupId: Backup ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BackupId: int
+        :param SnapShotType: 
+        :type SnapShotType: str
+        :param BackupName: Backup file alias
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BackupName: str
         """
         self.SnapshotId = None
         self.FileName = None
@@ -329,6 +337,9 @@ class BackupFileInfo(AbstractModel):
         self.BackupMethod = None
         self.BackupStatus = None
         self.SnapshotTime = None
+        self.BackupId = None
+        self.SnapShotType = None
+        self.BackupName = None
 
 
     def _deserialize(self, params):
@@ -341,6 +352,9 @@ class BackupFileInfo(AbstractModel):
         self.BackupMethod = params.get("BackupMethod")
         self.BackupStatus = params.get("BackupStatus")
         self.SnapshotTime = params.get("SnapshotTime")
+        self.BackupId = params.get("BackupId")
+        self.SnapShotType = params.get("SnapShotType")
+        self.BackupName = params.get("BackupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1804,18 +1818,42 @@ class DescribeBackupListRequest(AbstractModel):
         r"""
         :param ClusterId: Cluster ID
         :type ClusterId: str
-        :param Limit: Backup file list offset
+        :param Limit: The number of results to be returned. Value range: (0,100]
         :type Limit: int
-        :param Offset: Backup file list start
+        :param Offset: Record offset. Value range: [0,INF)
         :type Offset: int
         :param DbType: Database type. Valid values: 
 <li> MYSQL </li>
         :type DbType: str
+        :param BackupIds: Backup ID
+        :type BackupIds: list of int
+        :param BackupType: Backup type. Valid values: `snapshot` (snapshot backup), `logic` (logic backup).
+        :type BackupType: str
+        :param BackupMethod: Back mode. Valid values: `auto` (automatic backup), `manual` (manual backup)
+        :type BackupMethod: str
+        :param SnapShotType: 
+        :type SnapShotType: str
+        :param StartTime: Backup start time
+        :type StartTime: str
+        :param EndTime: Backup end time
+        :type EndTime: str
+        :param FileNames: 
+        :type FileNames: list of str
+        :param BackupNames: Backup alias, which supports fuzzy query.
+        :type BackupNames: list of str
         """
         self.ClusterId = None
         self.Limit = None
         self.Offset = None
         self.DbType = None
+        self.BackupIds = None
+        self.BackupType = None
+        self.BackupMethod = None
+        self.SnapShotType = None
+        self.StartTime = None
+        self.EndTime = None
+        self.FileNames = None
+        self.BackupNames = None
 
 
     def _deserialize(self, params):
@@ -1823,6 +1861,14 @@ class DescribeBackupListRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
         self.DbType = params.get("DbType")
+        self.BackupIds = params.get("BackupIds")
+        self.BackupType = params.get("BackupType")
+        self.BackupMethod = params.get("BackupMethod")
+        self.SnapShotType = params.get("SnapShotType")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.FileNames = params.get("FileNames")
+        self.BackupNames = params.get("BackupNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

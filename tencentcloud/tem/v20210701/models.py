@@ -85,11 +85,11 @@ class CreateApplicationRequest(AbstractModel):
         :type ApplicationName: str
         :param Description: Description
         :type Description: str
-        :param UseDefaultImageService: Whether to use the default image service. 1: yes; 0: no
+        :param UseDefaultImageService: Whether to use the default image service. `1`: yes; `0`: no
         :type UseDefaultImageService: int
-        :param RepoType: Type of the bound repository. 0: Personal Edition; 1: Enterprise Edition
+        :param RepoType: Type of the bound repository. `0`: TCR Personal; `1`: TCR Enterprise
         :type RepoType: int
-        :param InstanceId: Instance ID of Enterprise Edition image service
+        :param InstanceId: TCR Enterprise instance ID
         :type InstanceId: str
         :param RepoServer: Address of the bound image server
         :type RepoServer: str
@@ -108,8 +108,10 @@ class CreateApplicationRequest(AbstractModel):
 - JAR
 - WAR
         :type DeployMode: str
-        :param EnableTracing: Whether to enable the call chain feature
+        :param EnableTracing: Whether to enable APM tracing for the Java application. `1`: Enable, `0`: Disable
         :type EnableTracing: int
+        :param UseDefaultImageServiceParameters: Parameters of the default image service
+        :type UseDefaultImageServiceParameters: :class:`tencentcloud.tem.v20210701.models.UseDefaultRepoParameters`
         """
         self.ApplicationName = None
         self.Description = None
@@ -123,6 +125,7 @@ class CreateApplicationRequest(AbstractModel):
         self.CodingLanguage = None
         self.DeployMode = None
         self.EnableTracing = None
+        self.UseDefaultImageServiceParameters = None
 
 
     def _deserialize(self, params):
@@ -138,6 +141,9 @@ class CreateApplicationRequest(AbstractModel):
         self.CodingLanguage = params.get("CodingLanguage")
         self.DeployMode = params.get("DeployMode")
         self.EnableTracing = params.get("EnableTracing")
+        if params.get("UseDefaultImageServiceParameters") is not None:
+            self.UseDefaultImageServiceParameters = UseDefaultRepoParameters()
+            self.UseDefaultImageServiceParameters._deserialize(params.get("UseDefaultImageServiceParameters"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -154,7 +160,7 @@ class CreateApplicationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Service code
+        :param Result: ID of the created application
         :type Result: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -456,11 +462,11 @@ class DeleteApplicationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplicationId: Service ID
+        :param ApplicationId: Application ID.
         :type ApplicationId: str
         :param EnvironmentId: Environment ID
         :type EnvironmentId: str
-        :param SourceChannel: Retain as default
+        :param SourceChannel: Source channel. Please keep the default value.
         :type SourceChannel: int
         :param DeleteApplicationIfNoRunningVersion: Whether to delete this application automatically when there is no running version.
         :type DeleteApplicationIfNoRunningVersion: bool
@@ -492,7 +498,7 @@ class DeleteApplicationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Returned result
+        :param Result: Returned result.
         :type Result: bool
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -664,8 +670,17 @@ If `konajdk` is selected, the value can be:
         :type OsFlavour: str
         :param EnablePrometheusConf: Specifies whether to enable Prometheus metric
         :type EnablePrometheusConf: :class:`tencentcloud.tem.v20210701.models.EnablePrometheusConf`
-        :param EnableTracing: `1`: Enable APM collection; `0`: Disable APM collection
+        :param EnableTracing: `1`: Enable APM tracing (Skywalking)
+`0`: Disable APM tracing
         :type EnableTracing: int
+        :param EnableMetrics: 
+        :type EnableMetrics: int
+        :param TcrInstanceId: 
+        :type TcrInstanceId: str
+        :param RepoServer: 
+        :type RepoServer: str
+        :param RepoType: 
+        :type RepoType: int
         """
         self.ApplicationId = None
         self.InitPodNum = None
@@ -708,6 +723,10 @@ If `konajdk` is selected, the value can be:
         self.OsFlavour = None
         self.EnablePrometheusConf = None
         self.EnableTracing = None
+        self.EnableMetrics = None
+        self.TcrInstanceId = None
+        self.RepoServer = None
+        self.RepoType = None
 
 
     def _deserialize(self, params):
@@ -798,6 +817,10 @@ If `konajdk` is selected, the value can be:
             self.EnablePrometheusConf = EnablePrometheusConf()
             self.EnablePrometheusConf._deserialize(params.get("EnablePrometheusConf"))
         self.EnableTracing = params.get("EnableTracing")
+        self.EnableMetrics = params.get("EnableMetrics")
+        self.TcrInstanceId = params.get("TcrInstanceId")
+        self.RepoServer = params.get("RepoServer")
+        self.RepoType = params.get("RepoType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1283,6 +1306,55 @@ class DescribeRunPodPage(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DestroyEnvironmentRequest(AbstractModel):
+    """DestroyEnvironment request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: Namespace ID.
+        :type EnvironmentId: str
+        :param SourceChannel: Namespace
+        :type SourceChannel: int
+        """
+        self.EnvironmentId = None
+        self.SourceChannel = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.SourceChannel = params.get("SourceChannel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DestroyEnvironmentResponse(AbstractModel):
+    """DestroyEnvironment response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Returned result.
+        :type Result: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
 
 
 class EksService(AbstractModel):
@@ -1877,7 +1949,7 @@ class ModifyApplicationInfoRequest(AbstractModel):
         :type Description: str
         :param SourceChannel: Source channel
         :type SourceChannel: int
-        :param EnableTracing: Whether to enable the call chain. Valid values: `0`: disable; `1`: enable
+        :param EnableTracing: (Disused) Whether to enable the call chain. 
         :type EnableTracing: int
         """
         self.ApplicationId = None
@@ -2178,16 +2250,20 @@ class PortMapping(AbstractModel):
         :type TargetPort: int
         :param Protocol: TCP/UDP protocol stack.
         :type Protocol: str
+        :param ServiceName: K8s service name
+        :type ServiceName: str
         """
         self.Port = None
         self.TargetPort = None
         self.Protocol = None
+        self.ServiceName = None
 
 
     def _deserialize(self, params):
         self.Port = params.get("Port")
         self.TargetPort = params.get("TargetPort")
         self.Protocol = params.get("Protocol")
+        self.ServiceName = params.get("ServiceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2747,6 +2823,41 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.ClusterStatus = params.get("ClusterStatus")
         self.EnableTswTraceService = params.get("EnableTswTraceService")
         self.Locked = params.get("Locked")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UseDefaultRepoParameters(AbstractModel):
+    """Repository parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnterpriseInstanceName: TCR Enterprise instance name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EnterpriseInstanceName: str
+        :param EnterpriseInstanceChargeType: TCR Enterprise billing mode. `0`: Pay-as-you-go 
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EnterpriseInstanceChargeType: int
+        :param EnterpriseInstanceType: Edition of the TCR Enterprise. Values: `basic`, `standard`, `premium` (Advanced edition)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EnterpriseInstanceType: str
+        """
+        self.EnterpriseInstanceName = None
+        self.EnterpriseInstanceChargeType = None
+        self.EnterpriseInstanceType = None
+
+
+    def _deserialize(self, params):
+        self.EnterpriseInstanceName = params.get("EnterpriseInstanceName")
+        self.EnterpriseInstanceChargeType = params.get("EnterpriseInstanceChargeType")
+        self.EnterpriseInstanceType = params.get("EnterpriseInstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

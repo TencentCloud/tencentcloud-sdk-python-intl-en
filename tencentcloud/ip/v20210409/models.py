@@ -118,7 +118,7 @@ class CreateAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccountType: Account type of a new customer. Valid value: `business`.
+        :param AccountType: Account type of a new customer. Valid values: `personal`, `company`.
         :type AccountType: str
         :param Mail: Registered email address, which should be valid and correct.
 For example, account@qq.com.

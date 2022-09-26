@@ -899,6 +899,10 @@ Note: only the above values are supported for the time being. Entering other val
         :type HardwareResourceType: str
         :param SearchFields: Searchable field
         :type SearchFields: list of SearchItem
+        :param OrderField: None
+        :type OrderField: str
+        :param Asc: None
+        :type Asc: int
         """
         self.InstanceId = None
         self.NodeFlag = None
@@ -906,6 +910,8 @@ Note: only the above values are supported for the time being. Entering other val
         self.Limit = None
         self.HardwareResourceType = None
         self.SearchFields = None
+        self.OrderField = None
+        self.Asc = None
 
 
     def _deserialize(self, params):
@@ -920,6 +926,8 @@ Note: only the above values are supported for the time being. Entering other val
                 obj = SearchItem()
                 obj._deserialize(item)
                 self.SearchFields.append(obj)
+        self.OrderField = params.get("OrderField")
+        self.Asc = params.get("Asc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2671,6 +2679,18 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param Clients: Client
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type Clients: str
+        :param CurrentTime: The current system time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CurrentTime: str
+        :param IsFederation: Whether the hardware node is used in a federation. Valid values: `0` (no), `1` (yes).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsFederation: int
+        :param DeviceName: Device name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DeviceName: str
+        :param ServiceClient: Service
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ServiceClient: str
         """
         self.AppId = None
         self.SerialNo = None
@@ -2716,6 +2736,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.Zone = None
         self.SubnetInfo = None
         self.Clients = None
+        self.CurrentTime = None
+        self.IsFederation = None
+        self.DeviceName = None
+        self.ServiceClient = None
 
 
     def _deserialize(self, params):
@@ -2777,6 +2801,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
             self.SubnetInfo = SubnetInfo()
             self.SubnetInfo._deserialize(params.get("SubnetInfo"))
         self.Clients = params.get("Clients")
+        self.CurrentTime = params.get("CurrentTime")
+        self.IsFederation = params.get("IsFederation")
+        self.DeviceName = params.get("DeviceName")
+        self.ServiceClient = params.get("ServiceClient")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

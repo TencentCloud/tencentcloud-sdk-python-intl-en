@@ -432,6 +432,35 @@ class AntiddosClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateNewL7Rules(self, request):
+        """This API is used to add layer-7 forwarding rules.
+
+        :param request: Request instance for CreateNewL7Rules.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateNewL7RulesRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.CreateNewL7RulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateNewL7Rules", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateNewL7RulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreatePacketFilterConfig(self, request):
         """This API is used to add Anti-DDoS feature filtering rules.
 
@@ -882,6 +911,35 @@ class AntiddosClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBasicDeviceStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBgpBizTrend(self, request):
+        """This API is used to obtain Anti-DDoS Pro traffic data.
+
+        :param request: Request instance for DescribeBgpBizTrend.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeBgpBizTrendRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeBgpBizTrendResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBgpBizTrend", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBgpBizTrendResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1607,6 +1665,35 @@ class AntiddosClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeListWaterPrintConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNewL7Rules(self, request):
+        """This API is used to obtain layer-7 forwarding rules.
+
+        :param request: Request instance for DescribeNewL7Rules.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeNewL7RulesRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeNewL7RulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNewL7Rules", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNewL7RulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
