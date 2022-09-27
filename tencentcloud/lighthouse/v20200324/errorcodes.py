@@ -143,6 +143,9 @@ INVALIDPARAMETERVALUE_BLUEPRINTID = 'InvalidParameterValue.BlueprintId'
 # Invalid parameter value: the image ID format is invalid.
 INVALIDPARAMETERVALUE_BLUEPRINTIDMALFORMED = 'InvalidParameterValue.BlueprintIdMalformed'
 
+# The package and the image do not match.
+INVALIDPARAMETERVALUE_BUNDLEANDBLUEPRINTNOTMATCH = 'InvalidParameterValue.BundleAndBlueprintNotMatch'
+
 # The ID format of the CCN instance is invalid.
 INVALIDPARAMETERVALUE_CCNIDMALFORMED = 'InvalidParameterValue.CcnIdMalformed'
 
@@ -314,7 +317,7 @@ RESOURCENOTFOUND_FIREWALLNOTFOUND = 'ResourceNotFound.FirewallNotFound'
 # The firewall rule does not exist.
 RESOURCENOTFOUND_FIREWALLRULESNOTFOUND = 'ResourceNotFound.FirewallRulesNotFound'
 
-# 
+# There are no data disks mounted to the instance.
 RESOURCENOTFOUND_INSTANCEDATADISKNOTFOUND = 'ResourceNotFound.InstanceDataDiskNotFound'
 
 # The instance ID does not exist.
@@ -325,6 +328,9 @@ RESOURCENOTFOUND_INSTANCENOTFOUND = 'ResourceNotFound.InstanceNotFound'
 
 # The key pair ID does not exist.
 RESOURCENOTFOUND_KEYIDNOTFOUND = 'ResourceNotFound.KeyIdNotFound'
+
+# The custom image does not exist.
+RESOURCENOTFOUND_PRIVATEBLUEPRINTNOTFOUND = 'ResourceNotFound.PrivateBlueprintNotFound'
 
 # The snapshot ID does not exist.
 RESOURCENOTFOUND_SNAPSHOTIDNOTFOUND = 'ResourceNotFound.SnapshotIdNotFound'
@@ -353,7 +359,7 @@ UNAUTHORIZEDOPERATION_MFAEXPIRED = 'UnauthorizedOperation.MFAExpired'
 # MFA does not exist.
 UNAUTHORIZEDOPERATION_MFANOTFOUND = 'UnauthorizedOperation.MFANotFound'
 
-# 
+# No permission
 UNAUTHORIZEDOPERATION_NOPERMISSION = 'UnauthorizedOperation.NoPermission'
 
 # Unknown parameter error.
@@ -437,8 +443,11 @@ UNSUPPORTEDOPERATION_RESETATTACHCCNFAILED = 'UnsupportedOperation.ResetAttachCcn
 # The snapshot is busy.
 UNSUPPORTEDOPERATION_SNAPSHOTBUSY = 'UnsupportedOperation.SnapshotBusy'
 
-# 
+# System busy
 UNSUPPORTEDOPERATION_SYSTEMBUSY = 'UnsupportedOperation.SystemBusy'
 
 # Windows instances do not support binding key pairs.
 UNSUPPORTEDOPERATION_WINDOWSNOTALLOWTOASSOCIATEKEYPAIR = 'UnsupportedOperation.WindowsNotAllowToAssociateKeyPair'
+
+# SSH key pair is not available for Windows instances
+UNSUPPORTEDOPERATION_WINDOWSNOTSUPPORTKEYPAIR = 'UnsupportedOperation.WindowsNotSupportKeyPair'

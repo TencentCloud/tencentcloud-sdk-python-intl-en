@@ -272,6 +272,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ImageId: ID of the Lighthouse image shared from a CVM image
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ImageId: str
+        :param CommunityUrl: URL of official website of the open-source project
+        :type CommunityUrl: str
+        :param GuideUrl: Guide documentation URL
+        :type GuideUrl: str
+        :param SceneIdSet: Array of IDs of scenes associated with an image
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type SceneIdSet: list of str
         """
         self.BlueprintId = None
         self.DisplayTitle = None
@@ -289,6 +296,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.SupportAutomationTools = None
         self.RequiredMemorySize = None
         self.ImageId = None
+        self.CommunityUrl = None
+        self.GuideUrl = None
+        self.SceneIdSet = None
 
 
     def _deserialize(self, params):
@@ -308,6 +318,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.SupportAutomationTools = params.get("SupportAutomationTools")
         self.RequiredMemorySize = params.get("RequiredMemorySize")
         self.ImageId = params.get("ImageId")
+        self.CommunityUrl = params.get("CommunityUrl")
+        self.GuideUrl = params.get("GuideUrl")
+        self.SceneIdSet = params.get("SceneIdSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -530,7 +543,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ContainerEnv(AbstractModel):
-    """Container environment variables
+    """Container environment variable
 
     """
 
@@ -720,15 +733,15 @@ class CreateInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BundleId: ID of the Lighthouse package
+        :param BundleId: Bundle ID.
         :type BundleId: str
-        :param BlueprintId: ID of the Lighthouse image
+        :param BlueprintId: Image ID
         :type BlueprintId: str
         :param InstanceChargePrepaid: Monthly subscription information for the instance, including the purchase period, setting of auto-renewal, etc.
         :type InstanceChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
-        :param InstanceName: The display name of the Lighthouse instance
+        :param InstanceName: Instance display name.
         :type InstanceName: str
-        :param InstanceCount: Number of the Lighthouse instances to purchase. For monthly subscribed instances, the value can be 1 to 30. The default value is `1`. Note that this number can not exceed the remaining quota under the current account.
+        :param InstanceCount: Number of the instances to purchase. For monthly subscribed instances, the value can be 1 to 30. The default value is `1`. Note that this number can not exceed the remaining quota under the current account.
         :type InstanceCount: int
         :param Zones: List of availability zones. A random AZ is selected by default.
         :type Zones: list of str
@@ -744,6 +757,8 @@ If the dry run succeeds, the RequestId will be returned.
         :type LoginConfiguration: :class:`tencentcloud.lighthouse.v20200324.models.LoginConfiguration`
         :param Containers: Configuration of the containers to create
         :type Containers: list of DockerContainerConfiguration
+        :param AutoVoucher: Whether to use the vouchers automatically. It defaults to No.
+        :type AutoVoucher: bool
         """
         self.BundleId = None
         self.BlueprintId = None
@@ -755,6 +770,7 @@ If the dry run succeeds, the RequestId will be returned.
         self.ClientToken = None
         self.LoginConfiguration = None
         self.Containers = None
+        self.AutoVoucher = None
 
 
     def _deserialize(self, params):
@@ -777,6 +793,7 @@ If the dry run succeeds, the RequestId will be returned.
                 obj = DockerContainerConfiguration()
                 obj._deserialize(item)
                 self.Containers.append(obj)
+        self.AutoVoucher = params.get("AutoVoucher")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -867,7 +884,7 @@ class DataDiskPrice(AbstractModel):
         :type DiskId: str
         :param OriginalDiskPrice: Cloud disk unit price.
         :type OriginalDiskPrice: float
-        :param OriginalPrice: Total cloud disk price.
+        :param OriginalPrice: Total price of cloud disk
         :type OriginalPrice: float
         :param Discount: Discount.
         :type Discount: float
@@ -1177,17 +1194,20 @@ class DescribeBlueprintsRequest(AbstractModel):
 Type: String
 Required: no
 <li>blueprint-type</li>Filter by **image type**.
-Valid values: `APP_OS`: application image; `PURE_OS`: system image; `PRIVATE`: custom image; `SHARED`: shared image
+Valid values: `APP_OS` (application image); `PURE_OS` (system image); `PRIVATE` (custom image) and `SHARED` (shared image)
 Type: String
 Required: no
-<li>platform-type</li>Filter by **image platform type**.
-Valid values: `LINUX_UNIX`: Linux or Unix; `WINDOWS`: Windows
+<li>platform-type</li>Filter by **image operating system**.
+Valid values: `LINUX_UNIX` (Linux or Unix), `WINDOWS` (Windows)
 Type: String
 Required: no
 <li>blueprint-name</li>Filter by **image name**.
 Type: String
 Required: no
 <li>blueprint-state</li>Filter by **image status**.
+Type: String
+Required: no
+<li>scene-id</li>Filter by **scene ID**.
 Type: String
 Required: no
 
@@ -1488,14 +1508,18 @@ class DescribeDiskDiscountRequest(AbstractModel):
         :type DiskType: str
         :param DiskSize: Cloud disk size.
         :type DiskSize: int
+        :param DiskBackupQuota: Specify the quota of disk backups. No quota if it’s left empty. Only one quota is allowed.
+        :type DiskBackupQuota: int
         """
         self.DiskType = None
         self.DiskSize = None
+        self.DiskBackupQuota = None
 
 
     def _deserialize(self, params):
         self.DiskType = params.get("DiskType")
         self.DiskSize = params.get("DiskSize")
+        self.DiskBackupQuota = params.get("DiskBackupQuota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1594,32 +1618,34 @@ class DescribeDisksRequest(AbstractModel):
         r"""
         :param DiskIds: List of cloud disk IDs.
         :type DiskIds: list of str
-        :param Filters: Filter list.
+        :param Filters: Filter list
 disk-id
 Filter by **cloud disk ID**.
 Type: String
-Required: no
+Required: No
 instance-id
 Filter by **instance ID**.
 Type: String
-Required: no
+Required: No
 disk-name
 Filter by **cloud disk name**.
 Type: String
-Required: no
+Required: No
 zone
 Filter by **availability zone**.
 Type: String
-Required: no
+Required: No
 disk-usage
 Filter by **cloud disk type**.
 Type: String
-Required: no
+Required: No
+Values: `SYSTEM_DISK` and `DATA_DISK`
 disk-state
 Filter by **cloud disk status**.
 Type: String
-Required: no
-Each request can contain up to 10 filters, each of which can have 5 values. You cannot specify both `DiskIds` and `Filters` at the same time.
+Required: No
+Values: See `DiskState` in [Disk](https://intl.cloud.tencent.com/document/api/1207/47576?from_cn_redirect=1#Disk)
+Each request can contain up to 10 `Filters` and 100 `Filter.Values`. `DiskIds` and `Filters` cannot be specified at the same time.
         :type Filters: list of Filter
         :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
@@ -1860,7 +1886,18 @@ class DescribeGeneralResourceQuotasRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceNames: List of resource names. Valid values: USER_KEY_PAIR, INSTANCE, SNAPSHOT.
+        :param ResourceNames: Resource name list. Values:
+- `GENERAL_BUNDLE_INSTANCE`: General bundle
+- `STORAGE_BUNDLE_INSTANCE`:  Storage bundle 
+- `ENTERPRISE_BUNDLE_INSTANCE`: Enterprise bundle 
+- `EXCLUSIVE_BUNDLE_INSTANCE`： Dedicated bundle
+- `BEFAST_BUNDLE_INSTANCE`: BeFast bundle
+- `USER_KEY_PAIR`: Key pair
+- `SNAPSHOT`: Snapshot
+- `BLUEPRINT`: Custom image
+- `FREE_BLUEPRINT`: Free custom image
+- `DATA_DISK`: Data disk
+- `FIREWALL_RULE`: Firewall rules
         :type ResourceNames: list of str
         """
         self.ResourceNames = None
@@ -2106,14 +2143,14 @@ class DescribeInstancesRequest(AbstractModel):
         r"""
         :param InstanceIds: Instance ID list. Each request can contain up to 100 instances at a time.
         :type InstanceIds: list of str
-        :param Filters: Filter list
-<li>instance-name</li>Filter by the instance name
+        :param Filters: Filter list.
+<li>instance-name</li>Filter by **instance name**.
 Type: String
 Required: no
-<li>private-ip-address</li>Filter by the private IP of instance primary ENI
+<li>private-ip-address</li>Filter by **private IP of instance primary ENI**.
 Type: String
 Required: no
-<li>public-ip-address</li>Filter by the public IP of instance primary ENI
+<li>public-ip-address</li>Filter by **public IP of instance primary ENI**.
 Type: String
 Required: no
 <li>zone</li>Filter by the availability zone
@@ -2122,7 +2159,7 @@ Required: no
 <li>instance-state</li>Filter by **instance status**.
 Type: String
 Required: no
-Each request can contain up to 10 filters, each of which can have 100 values. You cannot specify both `InstanceIds` and `Filters` at the same time.
+Each request can contain up to 10 `Filters` and 100 `Filter.Values`. You cannot specify both `InstanceIds` and `Filters` at the same time.
         :type Filters: list of Filter
         :param Offset: Offset. Default value: 0. For more information on `Offset`, please see the relevant section in [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
         :type Offset: int
@@ -2163,7 +2200,7 @@ class DescribeInstancesResponse(AbstractModel):
         r"""
         :param TotalCount: Number of eligible instances.
         :type TotalCount: int
-        :param InstanceSet: List of instance details.
+        :param InstanceSet: List of instance details
         :type InstanceSet: list of Instance
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2735,7 +2772,7 @@ class DescribeZonesRequest(AbstractModel):
         r"""
         :param OrderField: Sorting field. Valid values:
 <li>`ZONE`: Sort by the availability zone.
-<li>`INSTANCE_DISPLAY_LABEL`: Sort by the labels of availability zones. Labels include `HIDDEN`, `NORMAL` and `SELECTED`.
+<li>`INSTANCE_DISPLAY_LABEL`: Sort by visibility labels (`HIDDEN`, `NORMAL` and `SELECTED`). Default: ['HIDDEN', 'NORMAL', 'SELECTED'].
 The default value is `ZONE`.
         :type OrderField: str
         :param Order: Specifies how availability zones are listed. Valid values:
@@ -2872,6 +2909,48 @@ class DetachDisksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DetailPrice(AbstractModel):
+    """Billable items
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PriceName: Values: 
+<li>"DiskSpace": Cloud disk space</li>
+<li>"DiskBackupQuota": Cloud disk backups</li>
+        :type PriceName: str
+        :param OriginUnitPrice: Official unit price of the billable item
+        :type OriginUnitPrice: float
+        :param OriginalPrice: Official total price of the billable item
+        :type OriginalPrice: float
+        :param Discount: Discount of the billable item
+        :type Discount: float
+        :param DiscountPrice: Discounted total price of the billable item
+        :type DiscountPrice: float
+        """
+        self.PriceName = None
+        self.OriginUnitPrice = None
+        self.OriginalPrice = None
+        self.Discount = None
+        self.DiscountPrice = None
+
+
+    def _deserialize(self, params):
+        self.PriceName = params.get("PriceName")
+        self.OriginUnitPrice = params.get("OriginUnitPrice")
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.Discount = params.get("Discount")
+        self.DiscountPrice = params.get("DiscountPrice")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DisassociateInstancesKeyPairsRequest(AbstractModel):
     """DisassociateInstancesKeyPairs request structure.
 
@@ -2988,7 +3067,17 @@ class Disk(AbstractModel):
         :type DiskSize: int
         :param RenewFlag: Renewal flag
         :type RenewFlag: str
-        :param DiskState: Disk status
+        :param DiskState: Disk status. Values: 
+<li>`PENDING`: Creating</li>
+<li>`UNATTACHED`: Not attached</li>
+<li>`ATTACHING`: Attaching</li>
+<li>`ATTACHED`: Attached</li>
+<li>`DETACHING`: Detaching</li>
+<li>`SHUTDOWN`: Isolated</li>
+<li>`CREATED_FAILED`: Failed to create</li>
+<li>`TERMINATING`: Terminating</li>
+<li>`DELETING`: Deleting</li>
+<li>`FREEZING`: Freezing</li>
         :type DiskState: str
         :param Attached: Whether the disk is attached to an instance
         :type Attached: bool
@@ -3000,14 +3089,21 @@ class Disk(AbstractModel):
         :type LatestOperationState: str
         :param LatestOperationRequestId: Last request ID
         :type LatestOperationRequestId: str
-        :param CreatedTime: Creation time
+        :param CreatedTime: Creation time according to ISO 8601 standard. UTC time is used. 
+Format: YYYY-MM-DDThh:mm:ssZ.
         :type CreatedTime: str
-        :param ExpiredTime: Expiration date
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ExpiredTime: Expiration time according to ISO 8601 standard. UTC time is used. 
+Format: YYYY-MM-DDThh:mm:ssZ.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ExpiredTime: str
-        :param IsolatedTime: Isolation time
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param IsolatedTime: Isolation time according to ISO 8601 standard. UTC time is used. 
+Format: YYYY-MM-DDThh:mm:ssZ.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type IsolatedTime: str
+        :param DiskBackupCount: Total disk backups
+        :type DiskBackupCount: int
+        :param DiskBackupQuota: Disk backup quota
+        :type DiskBackupQuota: int
         """
         self.DiskId = None
         self.InstanceId = None
@@ -3027,6 +3123,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.CreatedTime = None
         self.ExpiredTime = None
         self.IsolatedTime = None
+        self.DiskBackupCount = None
+        self.DiskBackupQuota = None
 
 
     def _deserialize(self, params):
@@ -3048,6 +3146,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.CreatedTime = params.get("CreatedTime")
         self.ExpiredTime = params.get("ExpiredTime")
         self.IsolatedTime = params.get("IsolatedTime")
+        self.DiskBackupCount = params.get("DiskBackupCount")
+        self.DiskBackupQuota = params.get("DiskBackupQuota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3181,11 +3281,14 @@ class DiskPrice(AbstractModel):
         :type Discount: float
         :param DiscountPrice: Discounted total price.
         :type DiscountPrice: float
+        :param DetailPrices: Detailed billing items
+        :type DetailPrices: list of DetailPrice
         """
         self.OriginalDiskPrice = None
         self.OriginalPrice = None
         self.Discount = None
         self.DiscountPrice = None
+        self.DetailPrices = None
 
 
     def _deserialize(self, params):
@@ -3193,6 +3296,12 @@ class DiskPrice(AbstractModel):
         self.OriginalPrice = params.get("OriginalPrice")
         self.Discount = params.get("Discount")
         self.DiscountPrice = params.get("DiscountPrice")
+        if params.get("DetailPrices") is not None:
+            self.DetailPrices = []
+            for item in params.get("DetailPrices"):
+                obj = DetailPrice()
+                obj._deserialize(item)
+                self.DetailPrices.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3309,10 +3418,10 @@ class DockerContainerPublishPort(AbstractModel):
         :param ContainerPort: Container port
         :type ContainerPort: int
         :param Ip: External IP. It defaults to 0.0.0.0.
-Note: This field may return `null`, indicating that no valid value was found.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Ip: str
         :param Protocol: The protocol defaults to `tcp`. Valid values: `tcp`, `udp` and `sctp`.
-Note: This field may return `null`, indicating that no valid value was found.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Protocol: str
         """
         self.HostPort = None
@@ -3629,11 +3738,14 @@ class InquirePriceCreateDisksRequest(AbstractModel):
         :type DiskChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.DiskChargePrepaid`
         :param DiskCount: Number of cloud disks. Default value: 1.
         :type DiskCount: int
+        :param DiskBackupQuota: Specify the quota of disk backups. No quota if it’s left empty. Only one quota is allowed.
+        :type DiskBackupQuota: int
         """
         self.DiskSize = None
         self.DiskType = None
         self.DiskChargePrepaid = None
         self.DiskCount = None
+        self.DiskBackupQuota = None
 
 
     def _deserialize(self, params):
@@ -3643,6 +3755,7 @@ class InquirePriceCreateDisksRequest(AbstractModel):
             self.DiskChargePrepaid = DiskChargePrepaid()
             self.DiskChargePrepaid._deserialize(params.get("DiskChargePrepaid"))
         self.DiskCount = params.get("DiskCount")
+        self.DiskBackupQuota = params.get("DiskBackupQuota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3837,7 +3950,7 @@ class InquirePriceRenewInstancesResponse(AbstractModel):
         :param Price: Price query information.
         :type Price: :class:`tencentcloud.lighthouse.v20200324.models.Price`
         :param DataDiskPriceSet: List of data disk price information.
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type DataDiskPriceSet: list of DataDiskPrice
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3899,7 +4012,7 @@ NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically.
         :param LoginSettings: Instance login settings.
         :type LoginSettings: :class:`tencentcloud.lighthouse.v20200324.models.LoginSettings`
         :param InstanceState: Instance status. Valid values: 
-<li>PENDING: creating</li><li>LAUNCH_FAILED: creation failed</li><li>RUNNING: running</li><li>STOPPED: shut down</li><li>STARTING: starting</li><li>STOPPING: shutting down</li><li>REBOOTING: rebooting</li><li>SHUTDOWN: shut down and to be terminated</li><li>TERMINATING: terminating</li>
+<li>PENDING: Creating</li><li>LAUNCH_FAILED: Failed to create</li><li>RUNNING: Running</li><li>STOPPED: Shut down</li><li>STARTING: Starting up</li><li>STOPPING: Shutting down</li><li>REBOOTING: Restarting</li><li>SHUTDOWN: Shutdown and to be terminated</li><li>TERMINATING: Terminating</li><li>DELETING: Deleting</li><li>FREEZING: Frozen</li><li>ENTER_RESCUE_MODE: Entering the rescue mode</li><li>RESCUE_MODE: Rescue mode</li><li>EXIT_RESCUE_MODE: Exiting from the rescue mode</li>
         :type InstanceState: str
         :param Uuid: Globally unique ID of instance.
         :type Uuid: str
@@ -3936,6 +4049,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Zone: str
         :param Tags: The list of tags associated with the instance
         :type Tags: list of Tag
+        :param InstanceRestrictState: Obtain instance status
+<li>NORMAL: The instance is normal</li><li>NETWORK_RESTRICT: The instance is blocked from the network.</li>
+        :type InstanceRestrictState: str
         """
         self.InstanceId = None
         self.BundleId = None
@@ -3963,6 +4079,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.OsName = None
         self.Zone = None
         self.Tags = None
+        self.InstanceRestrictState = None
 
 
     def _deserialize(self, params):
@@ -4003,6 +4120,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.InstanceRestrictState = params.get("InstanceRestrictState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4180,7 +4298,7 @@ class InstanceTrafficPackage(AbstractModel):
 
 
 class InternetAccessible(AbstractModel):
-    """Public network accessibility of the instance created by the launch configuration, public network usage billing mode of the instance, maximum bandwidth, etc.
+    """This describes the internet accessibility of the instance created by a launch configuration and declares the internet usage billing method of the instance and the maximum bandwidth
 
     """
 
@@ -4265,9 +4383,37 @@ class LoginConfiguration(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param AutoGeneratePassword: <li>`YES`: Random password. In this case, `Password` cannot be specified. </li>
+<li>`No`: Custom. `Password` must be specified. </li>
+        :type AutoGeneratePassword: str
+        :param Password: Instace login password.
+For Windows instances, the password must contain 12 to 30 characters of the following types. It cannot start with “/” and cannot include the username.
+<li>[a-z]</li>
+<li>[A-Z]</li>
+<li>[0-9]</li>
+<li>[()`~!@#$%^&*-+=_|{}[]:;' <>,.?/]</li>
+        :type Password: str
+        """
+        self.AutoGeneratePassword = None
+        self.Password = None
+
+
+    def _deserialize(self, params):
+        self.AutoGeneratePassword = params.get("AutoGeneratePassword")
+        self.Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class LoginSettings(AbstractModel):
-    """Instance login configuration and information.
+    """Describes login settings of an instance.
 
     """
 
@@ -5368,7 +5514,7 @@ class StopInstancesResponse(AbstractModel):
 
 
 class SystemDisk(AbstractModel):
-    """Information of the block device where the OS is installed, namely, the system disk.
+    """Information on the block device where the operating system is installed, namely the system disk.
 
     """
 
@@ -5409,9 +5555,9 @@ class Tag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: Tag key.
+        :param Key: Tag key
         :type Key: str
-        :param Value: Tag value.
+        :param Value: Tag value
         :type Value: str
         """
         self.Key = None

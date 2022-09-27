@@ -163,12 +163,15 @@ You can also specify a custom KMS CMK created in the same region for encryption.
         :type KmsKeyId: str
         :param Tags: List of tags.
         :type Tags: list of Tag
+        :param SSHKeyName: Name of the SSH key pair, which only contains digits, letters and underscores and must start with a digit or letter. The maximum length is 25 characters.
+        :type SSHKeyName: str
         """
         self.SecretName = None
         self.ProjectId = None
         self.Description = None
         self.KmsKeyId = None
         self.Tags = None
+        self.SSHKeyName = None
 
 
     def _deserialize(self, params):
@@ -182,6 +185,7 @@ You can also specify a custom KMS CMK created in the same region for encryption.
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.SSHKeyName = params.get("SSHKeyName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1003,8 +1007,8 @@ class GetServiceStatusResponse(AbstractModel):
         :type ServiceEnabled: bool
         :param InvalidType: Invalid service type. `0`: not purchased; `1`: normal; `2`: suspended due to arrears; `3`: resource released
         :type InvalidType: int
-        :param AccessKeyEscrowEnabled: `true`: allow SSM to manage Tencent Cloud API key secrets.
-`false`: forbid SSM to manage Tencent Cloud API key secrets.
+        :param AccessKeyEscrowEnabled: `true`: Allow SSM to manage Tencent Cloud API key secrets.
+`false`: Forbid SSM to manage Tencent Cloud API key secrets.
         :type AccessKeyEscrowEnabled: bool
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str

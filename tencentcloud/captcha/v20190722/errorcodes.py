@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
-# Copyright 1999-2018 Tencent Ltd.
+# -*- coding: utf8 -*-
+# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,4 +13,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-__version__ = '3.0.554'
+
+# Internal error.
+INTERNALERROR = 'InternalError'
+
+# Missing parameter.
+MISSINGPARAMETER = 'MissingParameter'
+
+# Authentication failed.
+UNAUTHORIZEDOPERATION_ERRAUTH = 'UnauthorizedOperation.ErrAuth'
+
+# Operation not authorized/No valid package/The account is overdue
+UNAUTHORIZEDOPERATION_UNAUTHORIZED = 'UnauthorizedOperation.Unauthorized'
