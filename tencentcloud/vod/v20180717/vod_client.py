@@ -2282,6 +2282,35 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ExtractTraceWatermark(self, request):
+        """This API is used to extract the user ID of a user that distributed a video containing a digital watermark.
+
+        :param request: Request instance for ExtractTraceWatermark.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ExtractTraceWatermarkRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ExtractTraceWatermarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExtractTraceWatermark", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ExtractTraceWatermarkResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ForbidMediaDistribution(self, request):
         """* After a media file is forbidden, except previewing it in the VOD Console, accessing the URLs of its various resources (such as source file, output files, and screenshots) in other scenarios will return error 403.
           It takes about 5-10 minutes for a forbidding/unblocking operation to take effect across the entire network.

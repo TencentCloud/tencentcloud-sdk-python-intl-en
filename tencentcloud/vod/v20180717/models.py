@@ -248,12 +248,17 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 <li>If the file is a DASH file, the value of this parameter is the sum of the size of the MPD and segment files.</li>
 <li><font color=red>Note</font>: For adaptive bitrate streaming files generated before 2022-01-10T16:00:00Z, the value of this parameter is `0`.</li>
         :type Size: int
+        :param DigitalWatermarkType: The watermark type. Valid values:
+<li>Trace: Digital watermark</li>
+<li>None: Regular watermark</li>
+        :type DigitalWatermarkType: str
         """
         self.Definition = None
         self.Package = None
         self.DrmType = None
         self.Url = None
         self.Size = None
+        self.DigitalWatermarkType = None
 
 
     def _deserialize(self, params):
@@ -262,6 +267,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
         self.DrmType = params.get("DrmType")
         self.Url = params.get("Url")
         self.Size = params.get("Size")
+        self.DigitalWatermarkType = params.get("DigitalWatermarkType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10168,10 +10174,12 @@ class DescribeTaskDetailResponse(AbstractModel):
 <li>SplitMedia: Video splitting</li>
 <li>ComposeMedia: Media file production</li>
 <li>WechatPublish: WeChat publishing</li>
+<li>WechatMiniProgramPublish: Publishing videos on WeChat Mini Program</li>
 <li>PullUpload: Pulling media files for upload</li>
 <li>FastClipMedia: Quick clipping</li>
 <li>RemoveWatermarkTask: Watermark removal</li>
 <li> ReviewAudioVideo: Moderation</li>
+<li> ReduceMediaBitrate: Bitrate reduction</li>
         :type TaskType: str
         :param Status: Task status. Valid values:
 <li>WAITING: waiting;</li>
@@ -10223,9 +10231,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param RemoveWatermarkTask: The information of a watermark removal task. This parameter is valid only if `TaskType` is `RemoveWatermark`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RemoveWatermarkTask: :class:`tencentcloud.vod.v20180717.models.RemoveWatermarkTask`
+        :param ExtractTraceWatermarkTask: The information of a digital watermark extraction task. This parameter is valid only if `TaskType` is `ExtractTraceWatermark`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExtractTraceWatermarkTask: :class:`tencentcloud.vod.v20180717.models.ExtractTraceWatermarkTask`
         :param ReviewAudioVideoTask: The information of a moderation task. This parameter is valid only if `TaskType` is `ReviewAudioVideo`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ReviewAudioVideoTask: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoTask`
+        :param ReduceMediaBitrateTask: The information of a bitrate reduction task. This parameter is valid only if `TaskType` is `ReduceMediaBitrate`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReduceMediaBitrateTask: :class:`tencentcloud.vod.v20180717.models.ReduceMediaBitrateTask`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -10247,7 +10261,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.CreateImageSpriteTask = None
         self.SnapshotByTimeOffsetTask = None
         self.RemoveWatermarkTask = None
+        self.ExtractTraceWatermarkTask = None
         self.ReviewAudioVideoTask = None
+        self.ReduceMediaBitrateTask = None
         self.RequestId = None
 
 
@@ -10296,9 +10312,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("RemoveWatermarkTask") is not None:
             self.RemoveWatermarkTask = RemoveWatermarkTask()
             self.RemoveWatermarkTask._deserialize(params.get("RemoveWatermarkTask"))
+        if params.get("ExtractTraceWatermarkTask") is not None:
+            self.ExtractTraceWatermarkTask = ExtractTraceWatermarkTask()
+            self.ExtractTraceWatermarkTask._deserialize(params.get("ExtractTraceWatermarkTask"))
         if params.get("ReviewAudioVideoTask") is not None:
             self.ReviewAudioVideoTask = ReviewAudioVideoTask()
             self.ReviewAudioVideoTask._deserialize(params.get("ReviewAudioVideoTask"))
+        if params.get("ReduceMediaBitrateTask") is not None:
+            self.ReduceMediaBitrateTask = ReduceMediaBitrateTask()
+            self.ReduceMediaBitrateTask._deserialize(params.get("ReduceMediaBitrateTask"))
         self.RequestId = params.get("RequestId")
 
 
@@ -11149,8 +11171,10 @@ class EventContent(AbstractModel):
 <li>SplitMediaComplete: Finished video splitting.</li>
 <li>WechatPublishComplete: Published to WeChat.</li>
 <li>ComposeMediaComplete: Finished producing the media file.</li>
+<li>WechatMiniProgramPublishComplete: Finished publishing on WeChat Mini Program</li>
 <li>FastClipMediaComplete: Finished quick clipping.</li>
-<li>ReviewAudioVideoComplete: Finished moderation</li>
+<li>ReviewAudioVideoComplete: Finished moderation.</li>
+<li>ExtractTraceWatermarkComplete: Finished digital watermark extraction.</li>
 <b>v2017 task types:</b>
 <li>TranscodeComplete: Finished video transcoding.</li>
 <li>ConcatComplete: Finished video splicing.</li>
@@ -11206,9 +11230,15 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param RestoreMediaCompleteEvent: Callback for video retrieval. This parameter is valid when the event type is `RestoreMediaComplete`.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type RestoreMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.RestoreMediaTask`
+        :param ExtractTraceWatermarkCompleteEvent: The callback for the completion of digital watermark extraction. This parameter is valid only if `EventType` is `ExtractTraceWatermarkComplete`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExtractTraceWatermarkCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ExtractTraceWatermarkTask`
         :param ReviewAudioVideoCompleteEvent: The callback for the completion of the moderation task. This parameter is valid only if `EventType` is `ReviewAudioVideoComplete`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ReviewAudioVideoCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoTask`
+        :param ReduceMediaBitrateCompleteEvent: The callback for the completion of bitrate reduction. This parameter is valid only if `EventType` is `ReduceMediaBitrateComplete`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReduceMediaBitrateCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ReduceMediaBitrateTask`
         """
         self.EventHandle = None
         self.EventType = None
@@ -11228,7 +11258,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.WechatMiniProgramPublishCompleteEvent = None
         self.RemoveWatermarkCompleteEvent = None
         self.RestoreMediaCompleteEvent = None
+        self.ExtractTraceWatermarkCompleteEvent = None
         self.ReviewAudioVideoCompleteEvent = None
+        self.ReduceMediaBitrateCompleteEvent = None
 
 
     def _deserialize(self, params):
@@ -11282,9 +11314,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("RestoreMediaCompleteEvent") is not None:
             self.RestoreMediaCompleteEvent = RestoreMediaTask()
             self.RestoreMediaCompleteEvent._deserialize(params.get("RestoreMediaCompleteEvent"))
+        if params.get("ExtractTraceWatermarkCompleteEvent") is not None:
+            self.ExtractTraceWatermarkCompleteEvent = ExtractTraceWatermarkTask()
+            self.ExtractTraceWatermarkCompleteEvent._deserialize(params.get("ExtractTraceWatermarkCompleteEvent"))
         if params.get("ReviewAudioVideoCompleteEvent") is not None:
             self.ReviewAudioVideoCompleteEvent = ReviewAudioVideoTask()
             self.ReviewAudioVideoCompleteEvent._deserialize(params.get("ReviewAudioVideoCompleteEvent"))
+        if params.get("ReduceMediaBitrateCompleteEvent") is not None:
+            self.ReduceMediaBitrateCompleteEvent = ReduceMediaBitrateTask()
+            self.ReduceMediaBitrateCompleteEvent._deserialize(params.get("ReduceMediaBitrateCompleteEvent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11358,6 +11396,188 @@ Note: this field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
+
+
+class ExtractTraceWatermarkRequest(AbstractModel):
+    """ExtractTraceWatermark request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Url: The URL of the media on which digital watermark extraction is to be performed.
+        :type Url: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
+        :param SessionContext: The source context, which is used to pass through user request information. The `ExtractTraceWatermarkComplete` callback and the `ProcedureStateChanged` callback will return the value of this parameter. It can contain up to 1,000 characters.
+        :type SessionContext: str
+        :param SessionId: The session ID, which is used for de-duplication. If there was a request with the same session ID in the last three days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.
+        :type SessionId: str
+        :param TasksPriority: The task priority, which can be a value from -10 to 10. The higher the value, the higher the priority. If this parameter is left empty, 0 will be used.
+        :type TasksPriority: int
+        :param ExtInfo: A reserved parameter.
+        :type ExtInfo: str
+        """
+        self.Url = None
+        self.SubAppId = None
+        self.SessionContext = None
+        self.SessionId = None
+        self.TasksPriority = None
+        self.ExtInfo = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        self.SubAppId = params.get("SubAppId")
+        self.SessionContext = params.get("SessionContext")
+        self.SessionId = params.get("SessionId")
+        self.TasksPriority = params.get("TasksPriority")
+        self.ExtInfo = params.get("ExtInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtractTraceWatermarkResponse(AbstractModel):
+    """ExtractTraceWatermark response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: The task ID.
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class ExtractTraceWatermarkTask(AbstractModel):
+    """A digital watermark extraction task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: The task ID.
+        :type TaskId: str
+        :param Status: The task status. Valid values:
+<li>PROCESSING</li>
+<li>FINISH</li>
+        :type Status: str
+        :param ErrCode: The error code. `0` indicates the task is successful. Other values indicate that the task failed.
+<li>40000: Invalid input parameter.</li>
+<li>60000: Source file error (e.g., video data is corrupted).</li>
+<li>70000: Internal server error. Please try again.</li>
+        :type ErrCode: int
+        :param Message: The error message.
+        :type Message: str
+        :param ErrCodeExt: The error code. An empty string indicates the task is successful; other values indicate that the task failed. For details, see [Video processing error codes](https://intl.cloud.tencent.com/document/product/266/39145?lang=en&pg=#video-processing).
+        :type ErrCodeExt: str
+        :param Input: The information of a digital watermark extraction task.
+        :type Input: :class:`tencentcloud.vod.v20180717.models.ExtractTraceWatermarkTaskInput`
+        :param Output: The output of a digital watermark extraction task.
+        :type Output: :class:`tencentcloud.vod.v20180717.models.ExtractTraceWatermarkTaskOutput`
+        :param SessionId: The session ID, which is used for de-duplication. If there was a request with the same session ID in the last seven days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.
+        :type SessionId: str
+        :param SessionContext: The source context, which is used to pass through user request information. The `ProcedureStateChanged` callback will return the value of this parameter. It can contain up to 1,000 characters.
+        :type SessionContext: str
+        """
+        self.TaskId = None
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.ErrCodeExt = None
+        self.Input = None
+        self.Output = None
+        self.SessionId = None
+        self.SessionContext = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        self.ErrCodeExt = params.get("ErrCodeExt")
+        if params.get("Input") is not None:
+            self.Input = ExtractTraceWatermarkTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = ExtractTraceWatermarkTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+        self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtractTraceWatermarkTaskInput(AbstractModel):
+    """The input of digital watermark extraction.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Url: The URL of the media on which digital watermark extraction is to be performed.
+        :type Url: str
+        """
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtractTraceWatermarkTaskOutput(AbstractModel):
+    """The output of digital watermark extraction.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Uv: The distributor’s user ID, which is a six-digit hex number. This parameter is relevant when [digital watermarks](https://intl.cloud.tencent.com/document/product/266/75789?from_cn_redirect=1) are used.
+        :type Uv: str
+        :param Uid: This parameter has been deprecated.
+        :type Uid: str
+        """
+        self.Uv = None
+        self.Uid = None
+
+
+    def _deserialize(self, params):
+        self.Uv = params.get("Uv")
+        self.Uid = params.get("Uid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class FaceConfigureInfo(AbstractModel):
@@ -14744,6 +14964,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param AudioStreamSet: Audio stream information.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AudioStreamSet: list of MediaAudioStreamItem
+        :param DigitalWatermarkType: The watermark type. Valid values:
+<li>Trace: Digital watermark</li>
+<li>None: Regular watermark</li>
+        :type DigitalWatermarkType: str
         """
         self.Url = None
         self.Definition = None
@@ -14756,6 +14980,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Container = None
         self.VideoStreamSet = None
         self.AudioStreamSet = None
+        self.DigitalWatermarkType = None
 
 
     def _deserialize(self, params):
@@ -14780,6 +15005,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = MediaAudioStreamItem()
                 obj._deserialize(item)
                 self.AudioStreamSet.append(obj)
+        self.DigitalWatermarkType = params.get("DigitalWatermarkType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18623,6 +18849,223 @@ class PushUrlCacheResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ReduceMediaBitrateAdaptiveDynamicStreamingResult(AbstractModel):
+    """The information of an adaptive bitrate (bitrate reduction) task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: The task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: The error code. An empty string indicates the task is successful; other values indicate that the task failed. For details, see [Video processing error codes](https://intl.cloud.tencent.com/document/product/266/39145?lang=en&pg=#video-processing).
+        :type ErrCodeExt: str
+        :param Message: The error message.
+        :type Message: str
+        :param Input: The input of an adaptive bitrate task.
+        :type Input: :class:`tencentcloud.vod.v20180717.models.AdaptiveDynamicStreamingTaskInput`
+        :param Output: The output of an adaptive bitrate task.
+        :type Output: :class:`tencentcloud.vod.v20180717.models.AdaptiveDynamicStreamingInfoItem`
+        """
+        self.Status = None
+        self.ErrCodeExt = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AdaptiveDynamicStreamingTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AdaptiveDynamicStreamingInfoItem()
+            self.Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReduceMediaBitrateMediaProcessTaskResult(AbstractModel):
+    """The result of a bitrate reduction task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: The task type. Valid values:
+<li>Transcode</li>
+<li>AdaptiveDynamicStreaming</li>
+        :type Type: str
+        :param TranscodeTask: The result of a transcoding task. This parameter is valid if `Type` is `Transcode`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TranscodeTask: :class:`tencentcloud.vod.v20180717.models.ReduceMediaBitrateTranscodeResult`
+        :param AdaptiveDynamicStreamingTask: The result of an adaptive bitrate task. This parameter is valid if `Type` is `AdaptiveDynamicStreaming`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AdaptiveDynamicStreamingTask: :class:`tencentcloud.vod.v20180717.models.ReduceMediaBitrateAdaptiveDynamicStreamingResult`
+        """
+        self.Type = None
+        self.TranscodeTask = None
+        self.AdaptiveDynamicStreamingTask = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("TranscodeTask") is not None:
+            self.TranscodeTask = ReduceMediaBitrateTranscodeResult()
+            self.TranscodeTask._deserialize(params.get("TranscodeTask"))
+        if params.get("AdaptiveDynamicStreamingTask") is not None:
+            self.AdaptiveDynamicStreamingTask = ReduceMediaBitrateAdaptiveDynamicStreamingResult()
+            self.AdaptiveDynamicStreamingTask._deserialize(params.get("AdaptiveDynamicStreamingTask"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReduceMediaBitrateTask(AbstractModel):
+    """The information of a bitrate reduction task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: The task ID.
+        :type TaskId: str
+        :param Status: The task flow status. Valid values:
+<li>PROCESSING</li>
+<li>FINISH</li>
+        :type Status: str
+        :param FileId: The ID of the media file.
+        :type FileId: str
+        :param FileName: The name of the media file.
+        :type FileName: str
+        :param FileUrl: The address of the media file.
+        :type FileUrl: str
+        :param MetaData: The metadata of the source video.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
+        :param MediaProcessResultSet: The execution status and result of the bitrate reduction task.
+        :type MediaProcessResultSet: list of ReduceMediaBitrateMediaProcessTaskResult
+        :param TasksPriority: The task priority, which can be a value from -10 to 10.
+        :type TasksPriority: int
+        :param TasksNotifyMode: The notification mode for the change of task status. Valid values:
+<li>Finish: Send a notification after the task is completed.</li>
+<li>None: Do not send status change notifications for this task.</li>
+        :type TasksNotifyMode: str
+        :param SessionContext: The source context, which is used to pass through user request information. The `ProcedureStateChanged` callback will return the value of this parameter. It can contain up to 1,000 characters.
+        :type SessionContext: str
+        :param SessionId: The session ID, which is used for de-duplication. If there was a request with the same session ID in the last seven days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.
+        :type SessionId: str
+        """
+        self.TaskId = None
+        self.Status = None
+        self.FileId = None
+        self.FileName = None
+        self.FileUrl = None
+        self.MetaData = None
+        self.MediaProcessResultSet = None
+        self.TasksPriority = None
+        self.TasksNotifyMode = None
+        self.SessionContext = None
+        self.SessionId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.FileId = params.get("FileId")
+        self.FileName = params.get("FileName")
+        self.FileUrl = params.get("FileUrl")
+        if params.get("MetaData") is not None:
+            self.MetaData = MediaMetaData()
+            self.MetaData._deserialize(params.get("MetaData"))
+        if params.get("MediaProcessResultSet") is not None:
+            self.MediaProcessResultSet = []
+            for item in params.get("MediaProcessResultSet"):
+                obj = ReduceMediaBitrateMediaProcessTaskResult()
+                obj._deserialize(item)
+                self.MediaProcessResultSet.append(obj)
+        self.TasksPriority = params.get("TasksPriority")
+        self.TasksNotifyMode = params.get("TasksNotifyMode")
+        self.SessionContext = params.get("SessionContext")
+        self.SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReduceMediaBitrateTranscodeResult(AbstractModel):
+    """The information of a transcoding (bitrate reduction) task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: The task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: The error code. An empty string indicates the task is successful; other values indicate that the task failed. For details, see [Video processing error codes](https://intl.cloud.tencent.com/document/product/266/39145?lang=en&pg=#video-processing).
+        :type ErrCodeExt: str
+        :param Message: The error message.
+        :type Message: str
+        :param Input: The input of a transcoding task.
+        :type Input: :class:`tencentcloud.vod.v20180717.models.TranscodeTaskInput`
+        :param Output: The output of a transcoding task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.vod.v20180717.models.MediaTranscodeItem`
+        :param Progress: The transcoding progress. Value range: 0-100.
+        :type Progress: int
+        :param BeginProcessTime: The start time of the transcoding task, in [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
+        :type BeginProcessTime: str
+        :param FinishTime: The end time of the transcoding task, in [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
+        :type FinishTime: str
+        """
+        self.Status = None
+        self.ErrCodeExt = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+        self.Progress = None
+        self.BeginProcessTime = None
+        self.FinishTime = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = TranscodeTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = MediaTranscodeItem()
+            self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
+        self.BeginProcessTime = params.get("BeginProcessTime")
+        self.FinishTime = params.get("FinishTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RefererAuthPolicy(AbstractModel):
     """Referer hotlink protection configuration
 
@@ -20919,16 +21362,17 @@ class TaskSimpleInfo(AbstractModel):
         :type Status: str
         :param FileId: Video ID
         :type FileId: str
-        :param TaskType: Task type. Valid values:
-<li>Procedure: video processing task;</li>
-<li>EditMedia: video editing task</li>
-<li>WechatDistribute: release on WeChat task.</li>
-Task types compatible with v2017:
-<li>Transcode: transcoding task;</li>
-<li>SnapshotByTimeOffset: video screencapturing task</li>
-<li>Concat: video splicing task;</li>
-<li>Clip: video clipping task;</li>
-<li>ImageSprites: image sprite generating task.</li>
+        :param TaskType: The task type. Valid values:
+<li>Procedure: Video processing</li>
+<li>EditMedia: Video editing</li>
+<li> ReduceMediaBitrate: Bitrate reduction</li>
+<li>WechatDistribute: Publishing to WeChat</li>
+Task types for v2017:
+<li>Transcode: Transcoding</li>
+<li>SnapshotByTimeOffset: Screencapturing</li>
+<li>Concat: Video splicing</li>
+<li>Clip: Video clipping</li>
+<li>ImageSprites: Image sprite generating</li>
         :type TaskType: str
         :param CreateTime: Creation time of task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type CreateTime: str
@@ -21486,13 +21930,19 @@ class TraceWatermarkInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Definition: The watermark template ID.
+        :param Switch: Whether to use digital watermarks. This parameter is required. Valid values:
+<li>ON</li>
+<li>OFF</li>
+        :type Switch: str
+        :param Definition: This parameter has been deprecated.
         :type Definition: int
         """
+        self.Switch = None
         self.Definition = None
 
 
     def _deserialize(self, params):
+        self.Switch = params.get("Switch")
         self.Definition = params.get("Definition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
