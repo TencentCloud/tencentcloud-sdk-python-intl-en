@@ -2050,6 +2050,8 @@ class UpdateRuleRequest(AbstractModel):
         :type Enable: bool
         :param Description: Rule description, which can contain up to 200 characters of any type.
         :type Description: str
+        :param EventPattern: See [CKafka Target](https://intl.cloud.tencent.com/document/product/1359/56084?from_cn_redirect=1)
+        :type EventPattern: str
         :param RuleName: Event rule name, which can contain 2–60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter
         :type RuleName: str
         """
@@ -2057,6 +2059,7 @@ class UpdateRuleRequest(AbstractModel):
         self.EventBusId = None
         self.Enable = None
         self.Description = None
+        self.EventPattern = None
         self.RuleName = None
 
 
@@ -2065,6 +2068,7 @@ class UpdateRuleRequest(AbstractModel):
         self.EventBusId = params.get("EventBusId")
         self.Enable = params.get("Enable")
         self.Description = params.get("Description")
+        self.EventPattern = params.get("EventPattern")
         self.RuleName = params.get("RuleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

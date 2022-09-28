@@ -405,6 +405,51 @@ class DeleteDeviceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteDeviceShadowRequest(AbstractModel):
+    """DeleteDeviceShadow request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: Product ID
+        :type ProductId: str
+        :param DeviceName: Device name
+        :type DeviceName: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDeviceShadowResponse(AbstractModel):
+    """DeleteDeviceShadow response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeletePrivateCARequest(AbstractModel):
     """DeletePrivateCA request structure.
 

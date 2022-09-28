@@ -20,7 +20,10 @@ AUTHFAILURE = 'AuthFailure'
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
-# 
+# Failed to add the private link
+FAILEDOPERATION_ADDPRIVATELINK = 'FailedOperation.AddPrivateLink'
+
+# User authentication failed
 FAILEDOPERATION_AUTHENTICATEUSERFAILED = 'FailedOperation.AuthenticateUserFailed'
 
 # Failed to create the delivery target. Please check the function status.
@@ -29,11 +32,20 @@ FAILEDOPERATION_CREATETRIGGER = 'FailedOperation.CreateTrigger'
 # Failed to delete the connector. Please check the resource status.
 FAILEDOPERATION_DELETECONNECTION = 'FailedOperation.DeleteConnection'
 
+# Failed to delete the private link
+FAILEDOPERATION_DELETEPRIVATELINK = 'FailedOperation.DeletePrivateLink'
+
 # Failed to delete the rule. Please make sure the resource exists, and the status is normal.
 FAILEDOPERATION_DELETERULE = 'FailedOperation.DeleteRule'
 
-# 
+# ES cluster internal error
+FAILEDOPERATION_ESINTERNALERROR = 'FailedOperation.ESInternalError'
+
+# ES cluster operation failure
 FAILEDOPERATION_ESREQUESTFAILED = 'FailedOperation.ESRequestFailed'
+
+# ES indexing template conflict
+FAILEDOPERATION_ESTEMPLATECONFLICT = 'FailedOperation.ESTemplateConflict'
 
 # The rule does not match with the event. Please modify and try again.
 FAILEDOPERATION_ERRORFILTER = 'FailedOperation.ErrorFilter'
@@ -43,6 +55,15 @@ FAILEDOPERATION_REGISTERCLSSERVICE = 'FailedOperation.RegisterCLSService'
 
 # ServiceError: operation failed. Please check the resource information.
 FAILEDOPERATION_SERVICEERROR = 'FailedOperation.ServiceError'
+
+# Failed to bind the tag
+FAILEDOPERATION_TAGRESOURCE = 'FailedOperation.TagResource'
+
+# Failed to apply for more tag quota
+FAILEDOPERATION_TAGRESOURCEALLOCATEQUOTAS = 'FailedOperation.TagResourceAllocateQuotas'
+
+# Failed to unbind the tag
+FAILEDOPERATION_UNTAGRESOURCE = 'FailedOperation.UnTagResource'
 
 # Failed to update the connector. Please make sure the resource exists, and the status is normal.
 FAILEDOPERATION_UPDATECONNECTION = 'FailedOperation.UpdateConnection'
@@ -104,7 +125,7 @@ INVALIDPARAMETERVALUE_DEADLETTERCONFIG = 'InvalidParameterValue.DeadLetterConfig
 # The `Description` value does not conform to the specification. Please fix it and try again.
 INVALIDPARAMETERVALUE_DESCRIPTION = 'InvalidParameterValue.Description'
 
-# 
+# ES target parameter error
 INVALIDPARAMETERVALUE_ELASTICSEARCHTARGETPARAMS = 'InvalidParameterValue.ElasticSearchTargetParams'
 
 # The `EventBusId` value does not conform to the specification. Please fix it and try again.
@@ -167,7 +188,7 @@ INVALIDPARAMETERVALUE_RULEID = 'InvalidParameterValue.RuleId'
 # The `RuleName` value does not conform to the specification. Please fix it and try again.
 INVALIDPARAMETERVALUE_RULENAME = 'InvalidParameterValue.RuleName'
 
-# 
+# Incorrect tag parameter
 INVALIDPARAMETERVALUE_TAGS = 'InvalidParameterValue.Tags'
 
 # The `TargetDescription` value does not conform to the specification. Please fix it and try again.
@@ -184,6 +205,9 @@ INVALIDPARAMETERVALUE_TRANSFORMATIONS = 'InvalidParameterValue.Transformations'
 
 # The `Type` value does not conform to the specification. Please fix it and try again.
 INVALIDPARAMETERVALUE_TYPE = 'InvalidParameterValue.Type'
+
+# Reached the upper limit of cluster private links
+LIMITEXCEEDED_CLUSTERPRIVATELINKEXCEEDED = 'LimitExceeded.ClusterPrivateLinkExceeded'
 
 # The number of `Connection` reaches the upper limit. You can submit a ticket to increase it.
 LIMITEXCEEDED_CONNECTION = 'LimitExceeded.Connection'
@@ -209,11 +233,20 @@ LIMITEXCEEDED_TARGET = 'LimitExceeded.Target'
 # Failed to create the delivery target, as the number of function triggers has reached the limit. You can submit a ticket to increase it.
 LIMITEXCEEDED_TRIGGER = 'LimitExceeded.Trigger'
 
+# Reached the upper limit of private links for the user
+LIMITEXCEEDED_USERPRIVATELINKEXCEEDED = 'LimitExceeded.UserPrivateLinkExceeded'
+
 # Failed to create the delivery target, as it was detected that the current account did not exist. Please check your account status.
 OPERATIONDENIED_ACCOUNTNOTEXISTS = 'OperationDenied.AccountNotExists'
 
 # You cannot create a CLS event target based on the default EventBridge logset in the custom event bus.
 OPERATIONDENIED_DEFAULTCLSRESOURCEUNSUPPORTED = 'OperationDenied.DefaultCLSResourceUnsupported'
+
+# The current ES version is not supported.
+OPERATIONDENIED_ESVERSIONUNSUPPORTED = 'OperationDenied.ESVersionUnsupported'
+
+# 
+OPERATIONDENIED_EVENTBUSRESOURCEISLOCKED = 'OperationDenied.EventBusResourceIsLocked'
 
 # The operation failed, as the resource could not be modified or deleted.
 OPERATIONDENIED_RESOURCEIMMUTABLE = 'OperationDenied.ResourceImmutable'
@@ -251,7 +284,10 @@ RESOURCENOTFOUND_INVALIDSERVICE = 'ResourceNotFound.InvalidService'
 # Failed to create the delivery target, as the specified namespace was not found. Please create it and try again.
 RESOURCENOTFOUND_NAMESPACE = 'ResourceNotFound.Namespace'
 
-# 
+# The network resource association is not found.
+RESOURCENOTFOUND_NETASSOCIATION = 'ResourceNotFound.NetAssociation'
+
+# The privatelink is not found.
 RESOURCENOTFOUND_PRIVATELINKRESOURCE = 'ResourceNotFound.PrivateLinkResource'
 
 # The specified service role was not found. Please create it and try again.
@@ -259,6 +295,9 @@ RESOURCENOTFOUND_ROLE = 'ResourceNotFound.Role'
 
 # The specified `Rule` was not found. Please create it and try again.
 RESOURCENOTFOUND_RULE = 'ResourceNotFound.Rule'
+
+# The specified tag is not found.
+RESOURCENOTFOUND_TAG = 'ResourceNotFound.Tag'
 
 # The specified `Target` was not found. Please create it and try again.
 RESOURCENOTFOUND_TARGET = 'ResourceNotFound.Target'
@@ -271,6 +310,9 @@ RESOURCENOTFOUND_VERSION = 'ResourceNotFound.Version'
 
 # Failed to create the connector: The current resource is unavailable.
 RESOURCEUNAVAILABLE_CONNECTION = 'ResourceUnavailable.Connection'
+
+# ES cluster status error
+RESOURCEUNAVAILABLE_ESUNHEALTH = 'ResourceUnavailable.ESUnhealth'
 
 # Failed to create the delivery target, as the current resource was unavailable.
 RESOURCEUNAVAILABLE_TARGET = 'ResourceUnavailable.Target'

@@ -142,6 +142,35 @@ class IotcloudClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteDeviceShadow(self, request):
+        """This API is used to delete a device shadow.
+
+        :param request: Request instance for DeleteDeviceShadow.
+        :type request: :class:`tencentcloud.iotcloud.v20210408.models.DeleteDeviceShadowRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20210408.models.DeleteDeviceShadowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDeviceShadow", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteDeviceShadowResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeletePrivateCA(self, request):
         """This API is used to delete a private CA certificate.
 

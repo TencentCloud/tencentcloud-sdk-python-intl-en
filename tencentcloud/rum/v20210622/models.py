@@ -4269,11 +4269,20 @@ class RumAreaInfo(AbstractModel):
         :type AreaName: str
         :param AreaKey: Region key
         :type AreaKey: str
+        :param AreaRegionID: Region ID.
+        :type AreaRegionID: str
+        :param AreaRegionCode: Region code, such as “ap-xxx” (xxx is the region name).
+        :type AreaRegionCode: str
+        :param AreaAbbr: Region abbreviation.
+        :type AreaAbbr: str
         """
         self.AreaId = None
         self.AreaStatus = None
         self.AreaName = None
         self.AreaKey = None
+        self.AreaRegionID = None
+        self.AreaRegionCode = None
+        self.AreaAbbr = None
 
 
     def _deserialize(self, params):
@@ -4281,6 +4290,9 @@ class RumAreaInfo(AbstractModel):
         self.AreaStatus = params.get("AreaStatus")
         self.AreaName = params.get("AreaName")
         self.AreaKey = params.get("AreaKey")
+        self.AreaRegionID = params.get("AreaRegionID")
+        self.AreaRegionCode = params.get("AreaRegionCode")
+        self.AreaAbbr = params.get("AreaAbbr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

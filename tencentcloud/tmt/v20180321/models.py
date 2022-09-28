@@ -25,7 +25,7 @@ class TextTranslateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SourceText: The pure texts to be translated. It must be encoded in UTF-8 and can contain up to 2,000 characters in a request. For non-pure texts such as those with HTML tags, the translation may fail.
+        :param SourceText: The texts to be translated, which must be encoded in UTF-8 and can contain up to 2,000 characters in a request. For non-pure texts such as those with HTML tags, the translation may fail.
         :type SourceText: str
         :param Source: Supported source languages:
 auto: Automatic language detection
