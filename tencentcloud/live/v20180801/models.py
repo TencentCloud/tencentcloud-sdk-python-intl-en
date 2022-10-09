@@ -107,12 +107,20 @@ Default value: 0.
 1: LVB on Mini Program.
 Default value: 0.
         :type IsMiniProgramLive: int
+        :param VerifyOwnerType: The domain verification type.
+Valid values (the value of this parameter must be the same as `VerifyType` of the `AuthenticateDomainOwner` API):
+dnsCheck: Check immediately whether the verification DNS record has been added successfully. If so, record this verification result.
+fileCheck: Check immediately whether the verification HTML file has been uploaded successfully. If so, record this verification result.
+dbCheck: Check whether the domain has already been verified.
+If you do not pass a value, `dbCheck` will be used.
+        :type VerifyOwnerType: str
         """
         self.DomainName = None
         self.DomainType = None
         self.PlayType = None
         self.IsDelayLive = None
         self.IsMiniProgramLive = None
+        self.VerifyOwnerType = None
 
 
     def _deserialize(self, params):
@@ -121,6 +129,7 @@ Default value: 0.
         self.PlayType = params.get("PlayType")
         self.IsDelayLive = params.get("IsDelayLive")
         self.IsMiniProgramLive = params.get("IsMiniProgramLive")
+        self.VerifyOwnerType = params.get("VerifyOwnerType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -212,6 +221,71 @@ class AddLiveWatermarkResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.WatermarkId = params.get("WatermarkId")
+        self.RequestId = params.get("RequestId")
+
+
+class AuthenticateDomainOwnerRequest(AbstractModel):
+    """AuthenticateDomainOwner request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainName: The domain to verify.
+        :type DomainName: str
+        :param VerifyType: The verification type. Valid values:
+dnsCheck: Check immediately whether the verification DNS record has been added successfully. If so, record this verification result.
+fileCheck: Check immediately whether the verification HTML file has been uploaded successfully. If so, record this verification result.
+dbCheck: Check whether the domain has already been successfully verified.
+        :type VerifyType: str
+        """
+        self.DomainName = None
+        self.VerifyType = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.VerifyType = params.get("VerifyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuthenticateDomainOwnerResponse(AbstractModel):
+    """AuthenticateDomainOwner response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Content: The content verified.
+If `VerifyType` is `dnsCheck`, this is the TXT record that should be added for verification.
+If `VerifyType` is `fileCheck`, this is the file that should be uploaded for verification.
+        :type Content: str
+        :param Status: The verification status.
+If the value of this parameter is 0 or greater, the domain has been verified.
+If the value of this parameter is smaller than 0, the domain has not been verified.
+        :type Status: int
+        :param MainDomain: The primary domain of the domain verified.
+Verification is not required if another domain under the same primary domain has been successfully verified.
+        :type MainDomain: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Content = None
+        self.Status = None
+        self.MainDomain = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Content = params.get("Content")
+        self.Status = params.get("Status")
+        self.MainDomain = params.get("MainDomain")
         self.RequestId = params.get("RequestId")
 
 
@@ -5386,8 +5460,8 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
         r"""
         :param StartTime: Start time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS
         :type StartTime: str
-        :param EndTime: End time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS
-The start time and end time cannot be more than 24 hours apart and must be within the last 15 days.
+        :param EndTime: The end time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS.
+The start time and end time cannot be more than 24 hours apart and must be within the past month.
         :type EndTime: str
         :param PlayDomain: Playback domain name,
 If this parameter is left empty, data of live streams of all playback domain names will be queried.
@@ -5546,6 +5620,64 @@ class DescribeTopClientIpSumInfoListResponse(AbstractModel):
             self.DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = ClientIpPlaySumInfo()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTranscodeTaskNumRequest(AbstractModel):
+    """DescribeTranscodeTaskNum request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: The start time in the format of yyyy-mm-dd HH:MM:SS.
+        :type StartTime: str
+        :param EndTime: The end time in the format of yyyy-mm-dd HH:MM:SS.
+        :type EndTime: str
+        :param PushDomains: The push domains to query. If you do not pass a value, all push domains will be queried.
+        :type PushDomains: list of str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.PushDomains = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.PushDomains = params.get("PushDomains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTranscodeTaskNumResponse(AbstractModel):
+    """DescribeTranscodeTaskNum response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataInfoList: The number of tasks.
+        :type DataInfoList: list of TranscodeTaskNum
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = TranscodeTaskNum()
                 obj._deserialize(item)
                 self.DataInfoList.append(obj)
         self.RequestId = params.get("RequestId")
@@ -6990,6 +7122,16 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
         r"""
         :param TemplateId: Template ID.
         :type TemplateId: int
+        :param CosAppId: The COS application ID.
+**Please note that this parameter is required now**.
+        :type CosAppId: int
+        :param CosBucket: The COS bucket name.
+Note: Do not include the `-[appid]` part in the value of `CosBucket`.
+**Please note that this parameter is required now**.
+        :type CosBucket: str
+        :param CosRegion: The COS region.
+**Please note that this parameter is required now**.
+        :type CosRegion: str
         :param TemplateName: Template name.
 Maximum length: 255 bytes.
         :type TemplateName: str
@@ -7007,43 +7149,36 @@ Value range: 5-300s.
 0: do not enable.
 1: enable.
         :type PornFlag: int
-        :param CosAppId: COS application ID.
-        :type CosAppId: int
-        :param CosBucket: COS bucket name.
-Note: the value of `CosBucket` cannot contain `-[appid]`.
-        :type CosBucket: str
-        :param CosRegion: COS region.
-        :type CosRegion: str
         :param CosPrefix: COS bucket folder prefix.
         :type CosPrefix: str
         :param CosFileName: COS filename.
         :type CosFileName: str
         """
         self.TemplateId = None
+        self.CosAppId = None
+        self.CosBucket = None
+        self.CosRegion = None
         self.TemplateName = None
         self.Description = None
         self.SnapshotInterval = None
         self.Width = None
         self.Height = None
         self.PornFlag = None
-        self.CosAppId = None
-        self.CosBucket = None
-        self.CosRegion = None
         self.CosPrefix = None
         self.CosFileName = None
 
 
     def _deserialize(self, params):
         self.TemplateId = params.get("TemplateId")
+        self.CosAppId = params.get("CosAppId")
+        self.CosBucket = params.get("CosBucket")
+        self.CosRegion = params.get("CosRegion")
         self.TemplateName = params.get("TemplateName")
         self.Description = params.get("Description")
         self.SnapshotInterval = params.get("SnapshotInterval")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.PornFlag = params.get("PornFlag")
-        self.CosAppId = params.get("CosAppId")
-        self.CosBucket = params.get("CosBucket")
-        self.CosRegion = params.get("CosRegion")
         self.CosPrefix = params.get("CosPrefix")
         self.CosFileName = params.get("CosFileName")
         memeber_set = set(params.keys())
@@ -8776,6 +8911,38 @@ topspeed_H265: top speed codec - H265.
         self.Type = params.get("Type")
         self.PushDomain = params.get("PushDomain")
         self.Resolution = params.get("Resolution")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TranscodeTaskNum(AbstractModel):
+    """The number of tasks.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Time: The time of query.
+        :type Time: str
+        :param CodeRate: The bitrate.
+        :type CodeRate: int
+        :param Num: The number of tasks.
+        :type Num: int
+        """
+        self.Time = None
+        self.CodeRate = None
+        self.Num = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.CodeRate = params.get("CodeRate")
+        self.Num = params.get("Num")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1447,6 +1447,35 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRocketMQVipInstances(self, request):
+        """This API is used to query the list of the purchased TDMQ for RocketMQ exclusive instances.
+
+        :param request: Request instance for DescribeRocketMQVipInstances.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQVipInstancesRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQVipInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRocketMQVipInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRocketMQVipInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRoles(self, request):
         """This API is used to get the list of roles.
 
@@ -1912,11 +1941,11 @@ class TdmqClient(AbstractClient):
 
 
     def ReceiveMessage(self, request):
-        """This API is used to receive messages sent to a specified topic. If this API is called when there are no messages in the topic, the `ReceiveTimeout` exception will be reported.
+        """Currently, the `ReceiveMessage` API only supports partitioned topics. It is used to receive messages sent to a specified partitioned topic. If it is called when there are no messages in the partitioned topic, the `ReceiveTimeout` exception will be reported.
 
         Instructions on how to use `BatchReceivePolicy`:
 
-        `BatchReceive` has the three parameters:
+        `BatchReceive` has three parameters:
 
         ● `MaxNumMessages`: The maximum number of messages returned by `Receive` when `BatchReceive` is used.
         ● `MaxNumBytes`: The maximum size (in bytes) of the message returned by `Receive` when `BatchReceive` is used.

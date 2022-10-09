@@ -1113,9 +1113,9 @@ class MpsClient(AbstractClient):
 
 
     def DescribeTasks(self, request):
-        """* This API is used to query the task list;
-        * If there are many data entries in the list, one single call of the API may not be able to pull the entire list. The `ScrollToken` parameter can be used to pull the list in batches;
-        * Only tasks in the last three days (72 hours) can be queried.
+        """* This API is used to query tasks.
+        * If the data is large, one API call may not be able to obtain all the tasks in the query. You can use the `ScrollToken` parameter to query tasks with multiple calls.
+        * Only tasks in the last seven days (168 hours) can be queried.
 
         :param request: Request instance for DescribeTasks.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeTasksRequest`

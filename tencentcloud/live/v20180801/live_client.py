@@ -116,6 +116,35 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AuthenticateDomainOwner(self, request):
+        """This API is used to verify the ownership of a domain.
+
+        :param request: Request instance for AuthenticateDomainOwner.
+        :type request: :class:`tencentcloud.live.v20180801.models.AuthenticateDomainOwnerRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.AuthenticateDomainOwnerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AuthenticateDomainOwner", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AuthenticateDomainOwnerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CancelCommonMixStream(self, request):
         """This API is used to cancel a stream mix. It can be used basically in the same way as `mix_streamv2.cancel_mix_stream`.
 
@@ -409,8 +438,8 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveSnapshotTemplate(self, request):
-        """After a screencapturing template is created and a template ID is successfully returned, you need to call the [CreateLiveSnapshotRule](https://intl.cloud.tencent.com/document/product/267/32625?from_cn_redirect=1) API and bind the template ID to the stream.
-        <br>Screencapturing-related document: [LVB Screencapturing](https://intl.cloud.tencent.com/document/product/267/32737?from_cn_redirect=1).
+        """This API is used to create a screencapture template. After a template ID is returned, you need to call the [CreateLiveSnapshotRule](https://intl.cloud.tencent.com/document/product/267/32625?from_cn_redirect=1) API to bind the template ID to a stream. You can create up to 50 screencapture templates.
+        <br>To learn more about the live screencapture feature, see [Live Screencapture](https://intl.cloud.tencent.com/document/product/267/32737?from_cn_redirect=1).
 
         :param request: Request instance for CreateLiveSnapshotTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveSnapshotTemplateRequest`
@@ -2014,10 +2043,10 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveTranscodeTotalInfo(self, request):
-        """This API is used to query your total usage of the transcoding service in the last 30 days.
+        """This API is used to query transcoding usage. You can use it to query data in the past three months.
         Notes:
         If the start time and end time are on the same day, the data returned will be on a 5-minute basis.
-        If not or if the data of specified domains is queried, the data returned will be on an hourly basis.
+        If the start time and end time are not on the same day or if the data of specified domains is queried, the data returned will be on an hourly basis.
 
         :param request: Request instance for DescribeLiveTranscodeTotalInfo.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveTranscodeTotalInfoRequest`
@@ -2323,6 +2352,35 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTopClientIpSumInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTranscodeTaskNum(self, request):
+        """This API is used to query the number of transcoding tasks.
+
+        :param request: Request instance for DescribeTranscodeTaskNum.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeTranscodeTaskNumRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeTranscodeTaskNumResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTranscodeTaskNum", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTranscodeTaskNumResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

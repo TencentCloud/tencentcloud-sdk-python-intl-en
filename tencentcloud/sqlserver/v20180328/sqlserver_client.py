@@ -55,6 +55,35 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CloseInterCommunication(self, request):
+        """This API is used to disable instance interconnection.
+
+        :param request: Request instance for CloseInterCommunication.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.CloseInterCommunicationRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.CloseInterCommunicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseInterCommunication", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CloseInterCommunicationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAccount(self, request):
         """This API is used to create an instance account.
 
@@ -128,6 +157,64 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateBackupMigrationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateBusinessDBInstances(self, request):
+        """This API is used to create a business intelligence service instance.
+
+        :param request: Request instance for CreateBusinessDBInstances.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateBusinessDBInstancesRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.CreateBusinessDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBusinessDBInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateBusinessDBInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateBusinessIntelligenceFile(self, request):
+        """This API is used to add a business intelligence service file.
+
+        :param request: Request instance for CreateBusinessIntelligenceFile.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateBusinessIntelligenceFileRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.CreateBusinessIntelligenceFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBusinessIntelligenceFile", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateBusinessIntelligenceFileResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -302,6 +389,35 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteBackupMigrationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteBusinessIntelligenceFile(self, request):
+        """This API is used to delete a business intelligence service file.
+
+        :param request: Request instance for DeleteBusinessIntelligenceFile.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DeleteBusinessIntelligenceFileRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DeleteBusinessIntelligenceFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteBusinessIntelligenceFile", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteBusinessIntelligenceFileResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -577,6 +693,35 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBusinessIntelligenceFile(self, request):
+        """This API is used to query the files required by business intelligence service.
+
+        :param request: Request instance for DescribeBusinessIntelligenceFile.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBusinessIntelligenceFileRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBusinessIntelligenceFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBusinessIntelligenceFile", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBusinessIntelligenceFileResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDBCharsets(self, request):
         """This API is used to query the database character sets supported by an instance.
 
@@ -592,6 +737,35 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBCharsetsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDBInstanceInter(self, request):
+        """This API is used to query the information of the interconnected instances.
+
+        :param request: Request instance for DescribeDBInstanceInter.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBInstanceInterRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBInstanceInterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBInstanceInter", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDBInstanceInterResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1551,6 +1725,35 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMigrationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def OpenInterCommunication(self, request):
+        """This API is used to enable instance interconnection, which can interconnect business intelligence services.
+
+        :param request: Request instance for OpenInterCommunication.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.OpenInterCommunicationRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.OpenInterCommunicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenInterCommunication", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.OpenInterCommunicationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

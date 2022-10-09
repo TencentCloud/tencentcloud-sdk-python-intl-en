@@ -7108,12 +7108,16 @@ class EditMediaOutputConfig(AbstractModel):
         r"""
         :param Container: Format. Valid values: `mp4` (default), `hls`, `mov`, `flv`, `avi`
         :type Container: str
+        :param Type: The editing mode. Valid values are `normal` and `fast`. The default is `normal`, which indicates precise editing.
+        :type Type: str
         """
         self.Container = None
+        self.Type = None
 
 
     def _deserialize(self, params):
         self.Container = params.get("Container")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13786,12 +13790,15 @@ class TaskSimpleInfo(AbstractModel):
         :type BeginProcessTime: str
         :param FinishTime: End time of a task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). If the task has not been completed yet, this field will be `0000-00-00T00:00:00Z`.
         :type FinishTime: str
+        :param SubTaskTypes: The subtask type.
+        :type SubTaskTypes: list of str
         """
         self.TaskId = None
         self.TaskType = None
         self.CreateTime = None
         self.BeginProcessTime = None
         self.FinishTime = None
+        self.SubTaskTypes = None
 
 
     def _deserialize(self, params):
@@ -13800,6 +13807,7 @@ class TaskSimpleInfo(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.BeginProcessTime = params.get("BeginProcessTime")
         self.FinishTime = params.get("FinishTime")
+        self.SubTaskTypes = params.get("SubTaskTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15207,9 +15215,9 @@ class WorkflowTask(AbstractModel):
 <li>PROCESSING: Processing;</li>
 <li>FINISH: Completed.</li>
         :type Status: str
-        :param ErrCode: Disused. Please use `ErrCode` of each specific task.
+        :param ErrCode: If the value returned is not 0, there was a source error. If 0 is returned, refer to the error codes of the corresponding task type.
         :type ErrCode: int
-        :param Message: Disused. Please use `Message` of each specific task.
+        :param Message: Except those for source errors, error messages vary with task type.
         :type Message: str
         :param InputInfo: The information of the file processed.
 Note: This field may return null, indicating that no valid value can be obtained.

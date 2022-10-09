@@ -3398,6 +3398,37 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ReviewAudioVideo(self, request):
+        """This API is used to start a moderation task on a file stored in VOD to detect non-compliant content in images, text, and speech.
+
+        If event notifications are used, the event type is [ProcedureStateChanged](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1).
+
+        :param request: Request instance for ReviewAudioVideo.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReviewAudioVideo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReviewAudioVideoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SearchMedia(self, request):
         """This API is used to search for media files by specific criteria. You can sort the results and specify the information to return.
         - Specify a list of file IDs (`FileIds`). Any file that matches one of the IDs will be returned.

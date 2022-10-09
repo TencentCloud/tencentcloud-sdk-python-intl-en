@@ -9351,30 +9351,33 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: End date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). The end date must be on or after the start date.
         :type EndTime: str
-        :param Type: The type of media processing task. Valid values:
-<li>Transcoding: General transcoding</li>
-<li>Transcoding-TESHD: TESHD transcoding</li>
-<li>Editing: Video editing</li>
-<li>Editing-TESHD: TESHD editing</li>
-<li>AdaptiveBitrateStreaming: Adaptive bitrate streaming</li>
-<li>ContentAudit: Content moderation</li>
-<li>RemoveWatermark: Watermark removal</li>
-<li>Transcode: Transcoding, including general transcoding, TESHD transcoding, and video editing. This value is not recommended.</li>
-        :type Type: str
         :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
+        :param Type: The type of media processing task. Valid values:
+<li>Transcoding: General transcoding</li>
+<li>Transcoding-TESHD: Top Speed Codec transcoding</li>
+<li>Editing: Video editing</li>
+<li>Editing-TESHD: Top Speed Codec editing</li>
+<li>AdaptiveBitrateStreaming: Adaptive bitrate streaming</li>
+<li>ContentAudit: Content moderation</li>
+<li> ContentRecognition: Content recognition</li>
+<li>RemoveWatermark: Watermark removal</li>
+<li> ExtractTraceWatermark: Digital watermark extraction</li>
+<li> AddTraceWatermark: Digital watermarking</li>
+<li>Transcode: Transcoding, including general transcoding, Top Speed Codec transcoding, and video editing. This value is not recommended.</li>
+        :type Type: str
         """
         self.StartTime = None
         self.EndTime = None
-        self.Type = None
         self.SubAppId = None
+        self.Type = None
 
 
     def _deserialize(self, params):
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
-        self.Type = params.get("Type")
         self.SubAppId = params.get("SubAppId")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -19580,6 +19583,71 @@ class RestoreMediaTask(AbstractModel):
         
 
 
+class ReviewAudioVideoRequest(AbstractModel):
+    """ReviewAudioVideo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: The media file ID, which is assigned after upload and uniquely identifies a file in VOD. You can view the ID of a file in the [NewFileUpload](https://www.tencentcloud.com/document/product/266/33950) callback or in the [VOD console](https://console.tencentcloud.com/vod/media).
+        :type FileId: str
+        :param SubAppId: <b>The VOD [subapplication](https://www.tencentcloud.com/document/product/266/33987) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
+        :param TasksPriority: The priority of a task flow. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.
+        :type TasksPriority: int
+        :param SessionContext: The source context, which is used to pass through user request information. The `ReviewAudioVideoComplete` callback will return the value of this parameter. It can contain up to 1,000 characters.
+        :type SessionContext: str
+        :param SessionId: The session ID, which is used to identify duplicate requests. If there was a request with the same session ID in the last three days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.
+        :type SessionId: str
+        :param ExtInfo: A reserved parameter.
+        :type ExtInfo: str
+        """
+        self.FileId = None
+        self.SubAppId = None
+        self.TasksPriority = None
+        self.SessionContext = None
+        self.SessionId = None
+        self.ExtInfo = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.SubAppId = params.get("SubAppId")
+        self.TasksPriority = params.get("TasksPriority")
+        self.SessionContext = params.get("SessionContext")
+        self.SessionId = params.get("SessionId")
+        self.ExtInfo = params.get("ExtInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReviewAudioVideoResponse(AbstractModel):
+    """ReviewAudioVideo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: The task ID.
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class ReviewAudioVideoSegmentItem(AbstractModel):
     """The suspicious segment detected.
 
@@ -19623,6 +19691,7 @@ Valid values when `Form` is `Voice` and `Label` is `Porn`:
 <li>Voice</li>
         :type Form: str
         :param AreaCoordSet: The pixel coordinates ([x1, y1, x2, y2]) of the top-left corner and bottom-right corner of the suspicious text. This parameter is valid only if `Form` is `OCR`.
+<font color=red>Note</font>: This parameter is not supported currently.
         :type AreaCoordSet: list of int
         :param Text: The content of the suspicious text detected. This parameter is valid only if `Form` is `OCR` or `ASR`.
         :type Text: str
@@ -21424,13 +21493,16 @@ class TaskStatData(AbstractModel):
         r"""
         :param TaskType: The task type.
 <li>Transcoding: General transcoding</li>
-<li>Transcoding-TESHD: TESHD transcoding</li>
+<li>Transcoding-TESHD: Top Speed Codec transcoding</li>
 <li>Editing: Video editing</li>
-<li>Editing-TESHD: TESHD editing</li>
+<li>Editing-TESHD: Top Speed Codec editing</li>
 <li>AdaptiveBitrateStreaming: Adaptive bitrate streaming</li>
 <li>ContentAudit: Content moderation</li>
+<li> ContentRecognition: Content recognition</li>
 <li>RemoveWatermark: Watermark removal</li>
-<li>Transcode: Transcoding, including general transcoding, TESHD transcoding, and video editing. This value is not recommended.</li>
+<li> ExtractTraceWatermark: Digital watermark extraction</li>
+<li> AddTraceWatermark: Digital watermarking</li>
+<li>Transcode: Transcoding, including general transcoding, Top Speed Codec transcoding, and video editing. This value is not recommended.</li>
         :type TaskType: str
         :param Summary: Task statistics overview (usage unit: second).
         :type Summary: list of TaskStatDataItem

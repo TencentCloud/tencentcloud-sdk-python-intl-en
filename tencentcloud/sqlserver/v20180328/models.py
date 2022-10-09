@@ -408,6 +408,84 @@ class BackupFile(AbstractModel):
         
 
 
+class BusinessIntelligenceFile(AbstractModel):
+    """Business intelligence service file type
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileName: File name
+        :type FileName: str
+        :param FileType: File type
+        :type FileType: str
+        :param FileURL: File COS_URL
+        :type FileURL: str
+        :param FilePath: The file path on the server
+        :type FilePath: str
+        :param FileSize: File size in bytes
+        :type FileSize: int
+        :param FileMd5: File MD5 value
+        :type FileMd5: str
+        :param Status: File deployment status. Valid values: `1`(Initialize to be deployed), `2` (Deploying), `3` (Deployment successful), `4` (Deployment failed).
+        :type Status: int
+        :param Remark: Remarks
+        :type Remark: str
+        :param CreateTime: File creation time
+        :type CreateTime: str
+        :param StartTime: Start time of file deployment
+        :type StartTime: str
+        :param EndTime: End time of file deployment
+        :type EndTime: str
+        :param Message: Returned error message
+        :type Message: str
+        :param InstanceId: Business intelligence instance ID
+        :type InstanceId: str
+        :param Action: Operation information
+        :type Action: :class:`tencentcloud.sqlserver.v20180328.models.FileAction`
+        """
+        self.FileName = None
+        self.FileType = None
+        self.FileURL = None
+        self.FilePath = None
+        self.FileSize = None
+        self.FileMd5 = None
+        self.Status = None
+        self.Remark = None
+        self.CreateTime = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Message = None
+        self.InstanceId = None
+        self.Action = None
+
+
+    def _deserialize(self, params):
+        self.FileName = params.get("FileName")
+        self.FileType = params.get("FileType")
+        self.FileURL = params.get("FileURL")
+        self.FilePath = params.get("FilePath")
+        self.FileSize = params.get("FileSize")
+        self.FileMd5 = params.get("FileMd5")
+        self.Status = params.get("Status")
+        self.Remark = params.get("Remark")
+        self.CreateTime = params.get("CreateTime")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Message = params.get("Message")
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Action") is not None:
+            self.Action = FileAction()
+            self.Action._deserialize(params.get("Action"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloneDBRequest(AbstractModel):
     """CloneDB request structure.
 
@@ -459,6 +537,56 @@ class CloneDBResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class CloseInterCommunicationRequest(AbstractModel):
+    """CloseInterCommunication request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIdSet: IDs of instances with interconnection disabled
+        :type InstanceIdSet: list of str
+        """
+        self.InstanceIdSet = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIdSet = params.get("InstanceIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseInterCommunicationResponse(AbstractModel):
+    """CloseInterCommunication response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InterInstanceFlowSet: IDs of instance and async task
+        :type InterInstanceFlowSet: list of InterInstanceFlow
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InterInstanceFlowSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InterInstanceFlowSet") is not None:
+            self.InterInstanceFlowSet = []
+            for item in params.get("InterInstanceFlowSet"):
+                obj = InterInstanceFlow()
+                obj._deserialize(item)
+                self.InterInstanceFlowSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -659,6 +787,169 @@ class CreateBackupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateBusinessDBInstancesRequest(AbstractModel):
+    """CreateBusinessDBInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zone: Instance AZ, such as ap-guangzhou-1 (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the`DescribeZones` API.
+        :type Zone: str
+        :param Memory: Instance memory size in GB
+        :type Memory: int
+        :param Storage: Instance disk size in GB
+        :type Storage: int
+        :param Cpu: The number of CPU cores of the instance you want to purchase.
+        :type Cpu: int
+        :param MachineType: The host type of purchased instance. Valid values: `CLOUD_PREMIUM` (virtual machine with premium cloud disk), `CLOUD_SSD` (virtual machine with SSD).
+        :type MachineType: str
+        :param ProjectId: Project ID
+        :type ProjectId: int
+        :param GoodsNum: Number of instances purchased this time. Default value: `1`.
+        :type GoodsNum: int
+        :param SubnetId: VPC subnet ID in the format of subnet-bdoe83fa. Both `SubnetId` and `VpcId` need to be set or unset at the same time.
+        :type SubnetId: str
+        :param VpcId: VPC ID in the format of vpc-dsp338hz. Both `SubnetId` and `VpcId` need to be set or unset at the same time.
+        :type VpcId: str
+        :param DBVersion: - Supported versions of business intelligence server. Valid values: `201603` (SQL Server 2016 Integration Services), `201703` (SQL Server 2017 Integration Services), `201903` (SQL Server 2019 Integration Services). Default value: `201903`. As the purchasable versions are region-specific, you can use the `DescribeProductConfig` API to query the information of purchasable versions in each region.
+        :type DBVersion: str
+        :param SecurityGroupList: Security group list, which contains security group IDs in the format of sg-xxx.
+        :type SecurityGroupList: list of str
+        :param Weekly: Configuration of the maintenance window, which specifies the day of the week when maintenance can be performed. Valid values: `1` (Monday), `2` (Tuesday), `3` (Wednesday), `4` (Thursday), `5` (Friday), `6` (Saturday), `7` (Sunday).
+        :type Weekly: list of int
+        :param StartTime: Configuration of the maintenance window, which specifies the start time of daily maintenance.
+        :type StartTime: str
+        :param Span: Configuration of the maintenance window, which specifies the maintenance duration in hours.
+        :type Span: int
+        :param ResourceTags: Tags associated with the instances to be created
+        :type ResourceTags: list of ResourceTag
+        """
+        self.Zone = None
+        self.Memory = None
+        self.Storage = None
+        self.Cpu = None
+        self.MachineType = None
+        self.ProjectId = None
+        self.GoodsNum = None
+        self.SubnetId = None
+        self.VpcId = None
+        self.DBVersion = None
+        self.SecurityGroupList = None
+        self.Weekly = None
+        self.StartTime = None
+        self.Span = None
+        self.ResourceTags = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.Cpu = params.get("Cpu")
+        self.MachineType = params.get("MachineType")
+        self.ProjectId = params.get("ProjectId")
+        self.GoodsNum = params.get("GoodsNum")
+        self.SubnetId = params.get("SubnetId")
+        self.VpcId = params.get("VpcId")
+        self.DBVersion = params.get("DBVersion")
+        self.SecurityGroupList = params.get("SecurityGroupList")
+        self.Weekly = params.get("Weekly")
+        self.StartTime = params.get("StartTime")
+        self.Span = params.get("Span")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBusinessDBInstancesResponse(AbstractModel):
+    """CreateBusinessDBInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealName: Order name
+        :type DealName: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DealName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealName = params.get("DealName")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateBusinessIntelligenceFileRequest(AbstractModel):
+    """CreateBusinessIntelligenceFile request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param FileURL: 
+        :type FileURL: str
+        :param FileType: File type. Valid values: `FLAT` (flat file as data source), `SSIS` (.ispac SSIS package file)
+        :type FileType: str
+        :param Remark: Remarks
+        :type Remark: str
+        """
+        self.InstanceId = None
+        self.FileURL = None
+        self.FileType = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.FileURL = params.get("FileURL")
+        self.FileType = params.get("FileType")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBusinessIntelligenceFileResponse(AbstractModel):
+    """CreateBusinessIntelligenceFile response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileTaskId: File name
+        :type FileTaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FileTaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FileTaskId = params.get("FileTaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1726,6 +2017,51 @@ class DeleteBackupMigrationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteBusinessIntelligenceFileRequest(AbstractModel):
+    """DeleteBusinessIntelligenceFile request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param FileNameSet: File name set
+        :type FileNameSet: list of str
+        """
+        self.InstanceId = None
+        self.FileNameSet = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.FileNameSet = params.get("FileNameSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBusinessIntelligenceFileResponse(AbstractModel):
+    """DeleteBusinessIntelligenceFile response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteDBRequest(AbstractModel):
     """DeleteDB request structure.
 
@@ -2316,6 +2652,88 @@ class DescribeBackupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBusinessIntelligenceFileRequest(AbstractModel):
+    """DescribeBusinessIntelligenceFile request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param FileName: File name
+        :type FileName: str
+        :param StatusSet: Migration task status set. Valid values: `1` (Initialize to be deployed), `2` (Deploying), `3` (Deployment successful), `4` (Deployment failed)
+        :type StatusSet: list of int
+        :param FileType: File type. Valid values: `FLAT` (flat files), `SSIS` (project file for business intelligence service).
+        :type FileType: str
+        :param Limit: The maximum number of results returned per page. Value range: 1-100.
+        :type Limit: int
+        :param Offset: Page number. Default value: `0`.
+        :type Offset: int
+        :param OrderBy: Sorting field. Valid values: `file_name`, `create_time`, `start_time`.
+        :type OrderBy: str
+        :param OrderByType: Sorting order: Valid values: `desc`, `asc`.
+        :type OrderByType: str
+        """
+        self.InstanceId = None
+        self.FileName = None
+        self.StatusSet = None
+        self.FileType = None
+        self.Limit = None
+        self.Offset = None
+        self.OrderBy = None
+        self.OrderByType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.FileName = params.get("FileName")
+        self.StatusSet = params.get("StatusSet")
+        self.FileType = params.get("FileType")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBusinessIntelligenceFileResponse(AbstractModel):
+    """DescribeBusinessIntelligenceFile response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number of file deployment tasks
+        :type TotalCount: int
+        :param BackupMigrationSet: File deployment task set
+        :type BackupMigrationSet: list of BusinessIntelligenceFile
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.BackupMigrationSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("BackupMigrationSet") is not None:
+            self.BackupMigrationSet = []
+            for item in params.get("BackupMigrationSet"):
+                obj = BusinessIntelligenceFile()
+                obj._deserialize(item)
+                self.BackupMigrationSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBCharsetsRequest(AbstractModel):
     """DescribeDBCharsets request structure.
 
@@ -2358,6 +2776,80 @@ class DescribeDBCharsetsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.DatabaseCharsets = params.get("DatabaseCharsets")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDBInstanceInterRequest(AbstractModel):
+    """DescribeDBInstanceInter request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: The maximum number of results returned per page. Value range: 1-100.
+        :type Limit: int
+        :param InstanceId: Filter by instance ID
+        :type InstanceId: str
+        :param Status: Filter by status. Valid values: `1` (Enabling interworking IP), `2` (Enabled interworking IP), `3` (Adding to interworking group), `4` (Added to interworking group), `5` (Reclaiming interworking IP), `6` (Reclaimed interworking IP), `7` (Removing from interworking group), `8` (Removed from interworking group).
+        :type Status: int
+        :param VersionSet: The list of instance version numbers
+        :type VersionSet: list of str
+        :param Zone: Instance AZ ID in the format of ap-guangzhou-2
+        :type Zone: str
+        :param Offset: Page number. Default value: `0`.
+        :type Offset: int
+        """
+        self.Limit = None
+        self.InstanceId = None
+        self.Status = None
+        self.VersionSet = None
+        self.Zone = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.InstanceId = params.get("InstanceId")
+        self.Status = params.get("Status")
+        self.VersionSet = params.get("VersionSet")
+        self.Zone = params.get("Zone")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBInstanceInterResponse(AbstractModel):
+    """DescribeDBInstanceInter response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Number of records returned
+        :type TotalCount: int
+        :param InterInstanceSet: Details of instance in the interworking group
+        :type InterInstanceSet: list of InterInstance
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.InterInstanceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("InterInstanceSet") is not None:
+            self.InterInstanceSet = []
+            for item in params.get("InterInstanceSet"):
+                obj = InterInstance()
+                obj._deserialize(item)
+                self.InterInstanceSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3415,6 +3907,34 @@ class DescribeZonesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class FileAction(AbstractModel):
+    """Information of allowed operation
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AllAction: Allowed operations. Valid values: `view` (view list), `remark` (modify remark), `deploy` (deploy files), `delete` (delete files).
+        :type AllAction: list of str
+        :param AllowedAction: Operation allowed in the current status. If the subset of `AllAction` is empty, no operations will be allowed.
+        :type AllowedAction: list of str
+        """
+        self.AllAction = None
+        self.AllowedAction = None
+
+
+    def _deserialize(self, params):
+        self.AllAction = params.get("AllAction")
+        self.AllowedAction = params.get("AllowedAction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InquiryPriceCreateDBInstancesRequest(AbstractModel):
     """InquiryPriceCreateDBInstances request structure.
 
@@ -3585,6 +4105,98 @@ class InstanceDBDetail(AbstractModel):
                 obj = DBDetail()
                 obj._deserialize(item)
                 self.DBDetails.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InterInstance(AbstractModel):
+    """Details of instances in the interwoking group
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param InterVip: Instance interworking IP, which can be accessed after the instance is added to the interworking group.
+        :type InterVip: str
+        :param InterPort: Instance interworking port, which can be accessed after the instance is added to the interworking group.
+        :type InterPort: int
+        :param Status: Instance interworking status. Valid values: `1` (Enabling interworking IP), `2` (Enabled interworking IP), `3` (Adding to interworking group), `4` (Added to interworking group), `5` (Reclaiming interworking IP), `6`(Reclaimed interworking IP), `7` (Removing from interworking group), `8` (Removed from interworking group).
+        :type Status: int
+        :param Region: Instance region, such as ap-guangzhou.
+        :type Region: str
+        :param Zone: Instance AZ name, such as ap-guangzhou-1.
+        :type Zone: str
+        :param Version: Instance version code
+        :type Version: str
+        :param VersionName: Instance version
+        :type VersionName: str
+        :param Name: Instance name
+        :type Name: str
+        :param Vip: Instance access IP
+        :type Vip: str
+        :param Vport: Instance access port
+        :type Vport: int
+        """
+        self.InstanceId = None
+        self.InterVip = None
+        self.InterPort = None
+        self.Status = None
+        self.Region = None
+        self.Zone = None
+        self.Version = None
+        self.VersionName = None
+        self.Name = None
+        self.Vip = None
+        self.Vport = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InterVip = params.get("InterVip")
+        self.InterPort = params.get("InterPort")
+        self.Status = params.get("Status")
+        self.Region = params.get("Region")
+        self.Zone = params.get("Zone")
+        self.Version = params.get("Version")
+        self.VersionName = params.get("VersionName")
+        self.Name = params.get("Name")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InterInstanceFlow(AbstractModel):
+    """Instance status after enabling or disabling the interworking group
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID, such as mssql-sdf32n1d.
+        :type InstanceId: str
+        :param FlowId: Instance task ID for enabling or disabling the interworking group. When `FlowId` is less than 0, the interworking group will be enabled or disabled successfully; otherwise, the operation failed.
+        :type FlowId: int
+        """
+        self.InstanceId = None
+        self.FlowId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.FlowId = params.get("FlowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4857,6 +5469,56 @@ class ModifyMigrationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.MigrateId = params.get("MigrateId")
+        self.RequestId = params.get("RequestId")
+
+
+class OpenInterCommunicationRequest(AbstractModel):
+    """OpenInterCommunication request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIdSet: IDs of instances with interwoking group enabled
+        :type InstanceIdSet: list of str
+        """
+        self.InstanceIdSet = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIdSet = params.get("InstanceIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenInterCommunicationResponse(AbstractModel):
+    """OpenInterCommunication response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InterInstanceFlowSet: IDs of instance and async task
+        :type InterInstanceFlowSet: list of InterInstanceFlow
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InterInstanceFlowSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InterInstanceFlowSet") is not None:
+            self.InterInstanceFlowSet = []
+            for item in params.get("InterInstanceFlowSet"):
+                obj = InterInstanceFlow()
+                obj._deserialize(item)
+                self.InterInstanceFlowSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 

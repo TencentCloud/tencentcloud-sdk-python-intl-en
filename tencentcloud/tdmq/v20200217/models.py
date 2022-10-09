@@ -1229,7 +1229,7 @@ class CreateEnvironmentRequest(AbstractModel):
         r"""
         :param EnvironmentId: Environment (namespace) name, which can contain up to 16 letters, digits, hyphens, and underscores.
         :type EnvironmentId: str
-        :param MsgTTL: Retention period for unconsumed messages in seconds. Value range: 60s to 1,296,000s.
+        :param MsgTTL: Retention period for unconsumed messages in seconds. Value range: 60s to 1,296,000s (or 15 days).
         :type MsgTTL: int
         :param Remark: Remarks (up to 128 characters).
         :type Remark: str
@@ -3818,6 +3818,73 @@ class DescribeRocketMQTopicsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRocketMQVipInstancesRequest(AbstractModel):
+    """DescribeRocketMQVipInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: Query condition filter
+        :type Filters: list of Filter
+        :param Limit: The maximum number of queried items, which defaults to 20.
+        :type Limit: int
+        :param Offset: Start offset for query
+        :type Offset: int
+        """
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQVipInstancesResponse(AbstractModel):
+    """DescribeRocketMQVipInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: The total number of unpaginated items
+        :type TotalCount: int
+        :param Instances: Instance information list
+        :type Instances: list of RocketMQVipInstance
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Instances = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = RocketMQVipInstance()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRolesRequest(AbstractModel):
     """DescribeRoles request structure.
 
@@ -4526,7 +4593,7 @@ class ModifyEnvironmentAttributesRequest(AbstractModel):
         r"""
         :param EnvironmentId: Namespace name.
         :type EnvironmentId: str
-        :param MsgTTL: Retention period for unconsumed messages in seconds. Value range: 60s to 1,296,000s.
+        :param MsgTTL: Retention period for unconsumed messages in seconds. Value range: 60s to 1,296,000s (or 15 days).
         :type MsgTTL: int
         :param Remark: Remarks (up to 128 characters).
         :type Remark: str
@@ -5213,7 +5280,7 @@ class ReceiveMessageRequest(AbstractModel):
         :type SubscriptionName: str
         :param ReceiverQueueSize: Default value: 1000. Messages received by the consumer will first be stored in the `receiverQueueSize` queue to tune the message receiving rate.
         :type ReceiverQueueSize: int
-        :param SubInitialPosition: Default value: Latest. It is used to determine the position where the consumer initially receives messages. Valid values: Earliest, Latest.
+        :param SubInitialPosition: A parameter used to determine the position where the consumer initially receives messages. Valid values: `Earliest` (default), `Latest`.
         :type SubInitialPosition: str
         :param MaxNumMessages: This parameter is used to specify the maximum number of received messages in a batch for `BatchReceivePolicy`. The default value is 0, indicating that `BatchReceivePolicy` is disabled.
         :type MaxNumMessages: int
@@ -5839,6 +5906,84 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class RocketMQVipInstance(AbstractModel):
+    """Information of TDMQ for RocketMQ exclusive instances
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        :param InstanceVersion: Instance version
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceVersion: str
+        :param Status: Instance status. Valid values: `0` (Creating), `1` (Normal), `2` (Isolated), `3` (Terminated), `4` (Abnormal).
+        :type Status: int
+        :param NodeCount: Number of nodes
+        :type NodeCount: int
+        :param ConfigDisplay: Instance specification name
+        :type ConfigDisplay: str
+        :param MaxTps: Peak TPS
+        :type MaxTps: int
+        :param MaxBandWidth: Peak bandwidth in Mbps
+        :type MaxBandWidth: int
+        :param MaxStorage: Storage capacity in GB
+        :type MaxStorage: int
+        :param ExpireTime: Instance expiration time in milliseconds
+        :type ExpireTime: int
+        :param AutoRenewFlag: Renewal mode. Valid values: `0` (Manual renewal, which is the default mode), `1` (Auto-renewal), `2` (Manual renewal, which is specified by users).
+        :type AutoRenewFlag: int
+        :param PayMode: Payment mode. 0: Postpaid; 1: Prepaid.
+        :type PayMode: int
+        :param Remark: Remarks
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Remark: str
+        :param SpecName: Instance specification ID
+        :type SpecName: str
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.InstanceVersion = None
+        self.Status = None
+        self.NodeCount = None
+        self.ConfigDisplay = None
+        self.MaxTps = None
+        self.MaxBandWidth = None
+        self.MaxStorage = None
+        self.ExpireTime = None
+        self.AutoRenewFlag = None
+        self.PayMode = None
+        self.Remark = None
+        self.SpecName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceVersion = params.get("InstanceVersion")
+        self.Status = params.get("Status")
+        self.NodeCount = params.get("NodeCount")
+        self.ConfigDisplay = params.get("ConfigDisplay")
+        self.MaxTps = params.get("MaxTps")
+        self.MaxBandWidth = params.get("MaxBandWidth")
+        self.MaxStorage = params.get("MaxStorage")
+        self.ExpireTime = params.get("ExpireTime")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.PayMode = params.get("PayMode")
+        self.Remark = params.get("Remark")
+        self.SpecName = params.get("SpecName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Role(AbstractModel):
     """Role instance
 
@@ -6032,7 +6177,8 @@ class SendMessagesRequest(AbstractModel):
         :type Payload: str
         :param StringToken: Token used for authentication, which is optional and will be automatically obtained by the system.
         :type StringToken: str
-        :param ProducerName: Producer name, which must be globally unique. If it is not configured, the system will randomly generate one.
+        :param ProducerName: Producer name, which is randomly generated and must be globally unique. If you set the producer name manually, the producer may fail to be created, causing message sending failure.
+This parameter is used only when a specific producer is allowed to produce messages. It won’t be used in most cases.
         :type ProducerName: str
         :param SendTimeout: Message sending timeout period, which is 30s by default.
         :type SendTimeout: int

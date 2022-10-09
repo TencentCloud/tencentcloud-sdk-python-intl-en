@@ -161,6 +161,9 @@ INTERNALERROR_SYSTEMERROR = 'InternalError.SystemError'
 # Incorrect parameter.
 INVALIDPARAMETER = 'InvalidParameter'
 
+# Incorrect partition count.
+INVALIDPARAMETER_PARTITION = 'InvalidParameter.Partition'
+
 # The uploaded tenant name is incorrect.
 INVALIDPARAMETER_TENANTNOTFOUND = 'InvalidParameter.TenantNotFound'
 

@@ -2052,6 +2052,8 @@ class CreateParamTemplateRequest(AbstractModel):
         :type ParamList: list of Parameter
         :param TemplateType: Type of the default parameter template. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template).
         :type TemplateType: str
+        :param EngineType: Instance engine type. Valid values: `InnoDB` (default), `RocksDB`.
+        :type EngineType: str
         """
         self.Name = None
         self.Description = None
@@ -2059,6 +2061,7 @@ class CreateParamTemplateRequest(AbstractModel):
         self.TemplateId = None
         self.ParamList = None
         self.TemplateType = None
+        self.EngineType = None
 
 
     def _deserialize(self, params):
@@ -2073,6 +2076,7 @@ class CreateParamTemplateRequest(AbstractModel):
                 obj._deserialize(item)
                 self.ParamList.append(obj)
         self.TemplateType = params.get("TemplateType")
+        self.EngineType = params.get("EngineType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3970,7 +3974,7 @@ class DescribeDBInstancesResponse(AbstractModel):
         r"""
         :param TotalCount: Number of eligible instances.
         :type TotalCount: int
-        :param Items: Instance details.
+        :param Items: List of instance details
         :type Items: list of InstanceInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str

@@ -2782,11 +2782,15 @@ class TaskDetail(AbstractModel):
         :type FinishTime: str
         :param SubTasks: Subtask
         :type SubTasks: list of SubTaskDetail
+        :param ElapsedTime: The task time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ElapsedTime: int
         """
         self.Name = None
         self.Progress = None
         self.FinishTime = None
         self.SubTasks = None
+        self.ElapsedTime = None
 
 
     def _deserialize(self, params):
@@ -2799,6 +2803,7 @@ class TaskDetail(AbstractModel):
                 obj = SubTaskDetail()
                 obj._deserialize(item)
                 self.SubTasks.append(obj)
+        self.ElapsedTime = params.get("ElapsedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3013,6 +3018,8 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
         :type EsConfigSet: :class:`tencentcloud.es.v20180416.models.EsConfigSetInfo`
         :param OperationDuration: The maintenance time slot
         :type OperationDuration: :class:`tencentcloud.es.v20180416.models.OperationDurationUpdated`
+        :param KibanaAlteringPublicAccess: Whether to enable the option for sending alerting messages over the public network.
+        :type KibanaAlteringPublicAccess: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -3045,6 +3052,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
         self.CerebroPrivateAccess = None
         self.EsConfigSet = None
         self.OperationDuration = None
+        self.KibanaAlteringPublicAccess = None
 
 
     def _deserialize(self, params):
@@ -3101,6 +3109,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
         if params.get("OperationDuration") is not None:
             self.OperationDuration = OperationDurationUpdated()
             self.OperationDuration._deserialize(params.get("OperationDuration"))
+        self.KibanaAlteringPublicAccess = params.get("KibanaAlteringPublicAccess")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3259,6 +3268,8 @@ class UpgradeInstanceRequest(AbstractModel):
         :type UpgradeMode: str
         :param CosBackup: Whether to back up the cluster before version upgrade (no backup by default)
         :type CosBackup: bool
+        :param SkipCheckForceRestart: Whether to skip the check and perform a force restart in the rolling mode. Default value: `false`.
+        :type SkipCheckForceRestart: bool
         """
         self.InstanceId = None
         self.EsVersion = None
@@ -3267,6 +3278,7 @@ class UpgradeInstanceRequest(AbstractModel):
         self.BasicSecurityType = None
         self.UpgradeMode = None
         self.CosBackup = None
+        self.SkipCheckForceRestart = None
 
 
     def _deserialize(self, params):
@@ -3277,6 +3289,7 @@ class UpgradeInstanceRequest(AbstractModel):
         self.BasicSecurityType = params.get("BasicSecurityType")
         self.UpgradeMode = params.get("UpgradeMode")
         self.CosBackup = params.get("CosBackup")
+        self.SkipCheckForceRestart = params.get("SkipCheckForceRestart")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
