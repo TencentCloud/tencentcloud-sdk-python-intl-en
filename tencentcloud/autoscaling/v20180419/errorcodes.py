@@ -44,7 +44,7 @@ INTERNALERROR_CALLNOTIFICATIONERROR = 'InternalError.CallNotificationError'
 # The STS API call failed.
 INTERNALERROR_CALLSTSERROR = 'InternalError.CallStsError'
 
-# 
+# Failed to call the Tencent Automation Tools (TAT) API.
 INTERNALERROR_CALLTATERROR = 'InternalError.CallTATError'
 
 # The tag API call failed.
@@ -353,7 +353,7 @@ RESOURCENOTFOUND_AUTOSCALINGNOTIFICATIONNOTFOUND = 'ResourceNotFound.AutoScaling
 # The specified CMQ queue does not exist.
 RESOURCENOTFOUND_CMQQUEUENOTFOUND = 'ResourceNotFound.CmqQueueNotFound'
 
-# 
+# The command does not exist.
 RESOURCENOTFOUND_COMMANDNOTFOUND = 'ResourceNotFound.CommandNotFound'
 
 # The specified instance does not exist.

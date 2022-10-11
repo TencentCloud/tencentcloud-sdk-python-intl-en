@@ -140,16 +140,16 @@ FAILEDOPERATION_RESOURCEUPGRADING = 'FailedOperation.ResourceUpgrading'
 # Rule already exists.
 FAILEDOPERATION_RULEALREADYEXISTED = 'FailedOperation.RuleAlreadyExisted'
 
-# 
+# Failed to add the tag to the resource.
 FAILEDOPERATION_TAGRESOURCESFAILED = 'FailedOperation.TagResourcesFailed'
 
 # Failed to unbind the tag.
 FAILEDOPERATION_UNTAGRESOURCESFAILED = 'FailedOperation.UnTagResourcesFailed'
 
-# Unverified user.
+# The current account has not completed identity verification.
 FAILEDOPERATION_USERNOTAUTHENTICATED = 'FailedOperation.UserNotAuthenticated'
 
-# 
+# Protocol not activated.
 FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = 'FailedOperation.UserNotConfirmProtocol'
 
 # Internal error.
@@ -160,6 +160,9 @@ INVALIDPARAMETER = 'InvalidParameter'
 
 # Incorrect parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
+
+# 
+INVALIDPARAMETERVALUE_CERTIFICATECONTENTNOTMATCHKEY = 'InvalidParameterValue.CertificateContentNotMatchKey'
 
 # The HTTP certificate does not match the domain name.
 INVALIDPARAMETERVALUE_CERTIFICATENOTMATCHDOMAIN = 'InvalidParameterValue.CertificateNotMatchDomain'
@@ -230,7 +233,7 @@ INVALIDPARAMETERVALUE_UNKNOWNDESTREGION = 'InvalidParameterValue.UnknownDestRegi
 # The quota limit should not be exceeded.
 LIMITEXCEEDED = 'LimitExceeded'
 
-# 
+# Insufficient tags
 LIMITEXCEEDED_TAGQUOTA = 'LimitExceeded.TagQuota'
 
 # Missing parameter.

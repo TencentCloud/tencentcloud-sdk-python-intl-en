@@ -240,9 +240,11 @@ class AutoscalingClient(AbstractClient):
 
 
     def CreateLifecycleHook(self, request):
-        """This API (CreateLifeCycleHook) is used to create a lifecycle hook.
+        """This API is used to create a lifecycle hook.
 
-        * You can configure message notifications in the following format for lifecycle hooks, which will be sent to your CMQ queue by AS:
+        * You can configure notifications or automation commands (TAT) for the lifecycle hook.
+
+        If you configured a notification, Auto Scaling will notify the TDMQ queue of the following information:
 
         ```
         {

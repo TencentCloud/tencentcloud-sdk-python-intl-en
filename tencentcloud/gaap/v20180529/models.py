@@ -27,9 +27,9 @@ class AccessConfiguration(AbstractModel):
         r"""
         :param AccessRegion: Acceleration region.
         :type AccessRegion: str
-        :param Bandwidth: Connection bandwidth upper limit in Mbps.
+        :param Bandwidth: Connection bandwidth cap. Unit: Mbps.
         :type Bandwidth: int
-        :param Concurrent: Concurrent connection upper limit in 10,000 connections, which indicates the allowed number of concurrently online connections.
+        :param Concurrent: Connection concurrence cap, which indicates the maximum number of simultaneous online connections. Unit: 10,000 connections.
         :type Concurrent: int
         :param NetworkType: Network type. Valid values: `normal` (default), `cn2`
         :type NetworkType: str
@@ -156,9 +156,9 @@ class AddRealServersRequest(AbstractModel):
         :type ProjectId: int
         :param RealServerIP: IP or domain name corresponding to origin server
         :type RealServerIP: list of str
-        :param RealServerName: Origin server name
+        :param RealServerName: Name of the origin server
         :type RealServerName: str
-        :param TagSet: Tag list
+        :param TagSet: List of tags
         :type TagSet: list of TagPair
         """
         self.ProjectId = None
@@ -193,7 +193,7 @@ class AddRealServersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RealServerSet: Origin server information list
+        :param RealServerSet: An information list of origin server
         :type RealServerSet: list of NewRealServer
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -318,6 +318,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type RealServerPort: int
         :param DownIPList: If the origin server is a domain name, the domain name will be resolved to one or multiple IPs. This field indicates the exceptional IP list.
         :type DownIPList: list of str
+        :param RealServerFailoverRole: Role of the origin server. Values: `master` (primary origin server); `slave` (secondary origin server). This parameter only takes effect when origin failover is enabled for the listener.
+        :type RealServerFailoverRole: str
         """
         self.RealServerId = None
         self.RealServerIP = None
@@ -325,6 +327,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RealServerStatus = None
         self.RealServerPort = None
         self.DownIPList = None
+        self.RealServerFailoverRole = None
 
 
     def _deserialize(self, params):
@@ -334,6 +337,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RealServerStatus = params.get("RealServerStatus")
         self.RealServerPort = params.get("RealServerPort")
         self.DownIPList = params.get("DownIPList")
+        self.RealServerFailoverRole = params.get("RealServerFailoverRole")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -621,7 +625,7 @@ class CheckProxyCreateRequest(AbstractModel):
         :type NetworkType: str
         :param PackageType: Package type of connection groups. Valid values: `Thunder` (general connection group), `Accelerator` (game accelerator connection group), and `CrossBorder` (cross-border connection group).
         :type PackageType: str
-        :param Http3Supported: Specifies whether to enable HTTP3. Valid values: `0` (disable HTTP3); `1` (enable HTTP3). Note: If HTTP3 is enabled for a connection, TCP/UDP access will not be allowed. After the connection is created, you cannot change your HTTP3 setting.
+        :param Http3Supported: (Disused) HTTP3.0 is supported by default when `IPAddressVersion` is `IPv4`.
         :type Http3Supported: int
         """
         self.AccessRegion = None
@@ -1337,7 +1341,7 @@ class CreateProxyGroupRequest(AbstractModel):
         :type GroupName: str
         :param RealServerRegion: Origin server region; Reference API: DescribeDestRegions; It returnes the `RegionId` of the parameter `RegionDetail`.
         :type RealServerRegion: str
-        :param TagSet: Tag list
+        :param TagSet: List of tags
         :type TagSet: list of TagPair
         :param AccessRegionSet: List of acceleration regions, including their names, bandwidth, and concurrence configuration.
         :type AccessRegionSet: list of AccessConfiguration
@@ -1345,11 +1349,7 @@ class CreateProxyGroupRequest(AbstractModel):
         :type IPAddressVersion: str
         :param PackageType: Package type of connection group. Valid values: `Thunder` (default) and `Accelerator`.
         :type PackageType: str
-        :param Http3Supported: Specifies whether to enable HTTP3. Valid values:
-`0`: disable HTTP3;
-`1`: enable HTTP3.
-Note that if HTTP3 is enabled for a connection, TCP/UDP access will not be allowed.
-After the connection is created, you cannot change your HTTP3 setting.
+        :param Http3Supported: (Disused) HTTP3.0 is supported by default when `IPAddressVersion` is `IPv4`.
         :type Http3Supported: int
         """
         self.ProjectId = None
@@ -1397,7 +1397,7 @@ class CreateProxyGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: Connection Group ID
+        :param GroupId: ID of the connection group
         :type GroupId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1420,7 +1420,7 @@ class CreateProxyRequest(AbstractModel):
         r"""
         :param ProjectId: Project ID of connection.
         :type ProjectId: int
-        :param ProxyName: Connection name.
+        :param ProxyName: Name of the connection
         :type ProxyName: str
         :param AccessRegion: Access region.
         :type AccessRegion: str
@@ -1430,7 +1430,7 @@ class CreateProxyRequest(AbstractModel):
         :type Concurrent: int
         :param RealServerRegion: Origin server region. If GroupId exists, the origin server region is the one of connection group, and this field is not required. If GroupId does not exist, this field is reuqired.
         :type RealServerRegion: str
-        :param ClientToken: A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
+        :param ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idem-potency of the request cannot be guaranteed.
 For more information, please see How to Ensure Idempotence.
         :type ClientToken: str
         :param GroupId: Connection group ID. This parameter is required when the connection is created in the connection group. Otherwise, this field is ignored.
@@ -1448,7 +1448,7 @@ The connection is to be replicated if this parameter is set.
         :type NetworkType: str
         :param PackageType: Package type of connection groups. Valid values: `Thunder` (general), `Accelerator` (specific for games), and `CrossBorder` (cross-MLC-border connection).
         :type PackageType: str
-        :param Http3Supported: Specifies whether to enable HTTP3. Valid values: `0` (disable HTTP3); `1` (enable HTTP3). Note: If HTTP3 is enabled for a connection, TCP/UDP access will not be allowed. After the connection is created, you cannot change your HTTP3 setting.
+        :param Http3Supported: (Disused) HTTP3.0 is supported by default when `IPAddressVersion` is `IPv4`.
         :type Http3Supported: int
         """
         self.ProjectId = None
@@ -1534,7 +1534,7 @@ class CreateRuleRequest(AbstractModel):
         :type Path: str
         :param RealServerType: The origin server type of the forwarding rule, which supports IP and DOMAIN types.
         :type RealServerType: str
-        :param Scheduler: Forwarding rules of origin server, which supports round robin (rr), weighted round robin (wrr), and least connections (lc).
+        :param Scheduler: The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).
         :type Scheduler: str
         :param HealthCheck: Whether the health check is enabled for rules. 1: enabled; 0: disabled.
         :type HealthCheck: int
@@ -1729,11 +1729,11 @@ class CreateTCPListenersRequest(AbstractModel):
         :type ListenerName: str
         :param Ports: List of listener ports.
         :type Ports: list of int non-negative
-        :param Scheduler: Origin server scheduling policy of listeners, which supports round robin (rr), weighted round robin (wrr), and least connections (lc).
+        :param Scheduler: The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).
         :type Scheduler: str
         :param HealthCheck: Whether origin server has the health check enabled. 1: enabled; 0: disabled. UDP listeners do not support health check.
         :type HealthCheck: int
-        :param RealServerType: The origin server type of listeners, supporting IP or DOMAIN type. The DOMAIN origin servers do not support the weighted round robin.
+        :param RealServerType: The origin server type. Values: `IP` (IP address); `DOMAIN` (domain name).
         :type RealServerType: str
         :param ProxyId: Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
         :type ProxyId: str
@@ -1826,9 +1826,9 @@ class CreateUDPListenersRequest(AbstractModel):
         :type ListenerName: str
         :param Ports: List of listener ports
         :type Ports: list of int non-negative
-        :param Scheduler: Origin server scheduling policy of listeners, which supports round robin (rr), weighted round robin (wrr), and least connections (lc).
+        :param Scheduler: The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).
         :type Scheduler: str
-        :param RealServerType: Origin server type of listeners, which supports IP or DOMAIN type.
+        :param RealServerType: The origin server type. Values: `IP` (IP address); `DOMAIN` (domain name).
         :type RealServerType: str
         :param ProxyId: Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
         :type ProxyId: str
@@ -1836,6 +1836,28 @@ class CreateUDPListenersRequest(AbstractModel):
         :type GroupId: str
         :param RealServerPorts: List of origin server ports, which only supports the listeners of version 1.0 and connection group.
         :type RealServerPorts: list of int non-negative
+        :param DelayLoop: Time interval of origin server health check (unit: seconds). Value range: [5, 300].
+        :type DelayLoop: int
+        :param ConnectTimeout: Response timeout of origin server health check (unit: seconds). Value range: [2, 60]. The timeout value shall be less than the time interval for health check DelayLoop.
+        :type ConnectTimeout: int
+        :param HealthyThreshold: Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.
+        :type HealthyThreshold: int
+        :param UnhealthyThreshold: Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 - 10.
+        :type UnhealthyThreshold: int
+        :param FailoverSwitch: Whether to enable the primary/secondary origin server mode for failover. Values: `1` (enabled); `0` (disabled). It’s not available if the origin type is `DOMAIN`.
+        :type FailoverSwitch: int
+        :param HealthCheck: Whether the health check is enabled for the origin server. Values: `1` (enabled); `0` (disabled).
+        :type HealthCheck: int
+        :param CheckType: The health check type. Values: `PORT` (port); `PING` (ping).
+        :type CheckType: str
+        :param CheckPort: The health probe port.
+        :type CheckPort: int
+        :param ContextType: The UDP message type. Values: `TEXT` (text). This parameter is used only when `CheckType = PORT`.
+        :type ContextType: str
+        :param SendContext: The UDP message sent by the health probe port. This parameter is used only when `CheckType = PORT`.
+        :type SendContext: str
+        :param RecvContext: The UDP message received by the health probe port. This parameter is used only when `CheckType = PORT`.
+        :type RecvContext: str
         """
         self.ListenerName = None
         self.Ports = None
@@ -1844,6 +1866,17 @@ class CreateUDPListenersRequest(AbstractModel):
         self.ProxyId = None
         self.GroupId = None
         self.RealServerPorts = None
+        self.DelayLoop = None
+        self.ConnectTimeout = None
+        self.HealthyThreshold = None
+        self.UnhealthyThreshold = None
+        self.FailoverSwitch = None
+        self.HealthCheck = None
+        self.CheckType = None
+        self.CheckPort = None
+        self.ContextType = None
+        self.SendContext = None
+        self.RecvContext = None
 
 
     def _deserialize(self, params):
@@ -1854,6 +1887,17 @@ class CreateUDPListenersRequest(AbstractModel):
         self.ProxyId = params.get("ProxyId")
         self.GroupId = params.get("GroupId")
         self.RealServerPorts = params.get("RealServerPorts")
+        self.DelayLoop = params.get("DelayLoop")
+        self.ConnectTimeout = params.get("ConnectTimeout")
+        self.HealthyThreshold = params.get("HealthyThreshold")
+        self.UnhealthyThreshold = params.get("UnhealthyThreshold")
+        self.FailoverSwitch = params.get("FailoverSwitch")
+        self.HealthCheck = params.get("HealthCheck")
+        self.CheckType = params.get("CheckType")
+        self.CheckPort = params.get("CheckPort")
+        self.ContextType = params.get("ContextType")
+        self.SendContext = params.get("SendContext")
+        self.RecvContext = params.get("RecvContext")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2091,8 +2135,8 @@ class DeleteProxyGroupRequest(AbstractModel):
         :param GroupId: ID of the connection group to be deleted.
         :type GroupId: str
         :param Force: Whether to enable forced deletion. Valid values:
-0: no;
-1: yes.
+`0`: No;
+`1`: Yes.
 Default value: 0. If there is a connection or listener/rule bound to an origin server in the connection group and `Force` is 0, the operation will return a failure.
         :type Force: int
         """
@@ -5027,6 +5071,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param PolyClientCertificateAliasInfo: Alias information of multiple client CA certificates.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PolyClientCertificateAliasInfo: list of CertificateAliasInfo
+        :param Http3Supported: Whether to support HTTP3. Values:
+`0`: Do not support HTTP3 access;
+`1`: Support HTTP3 access.
+If HTTP3 is supported for a connection, the listener will use the port that is originally accessed to UDP, and a UDP listener with the same port cannot be created.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Http3Supported: int
         """
         self.ListenerId = None
         self.ListenerName = None
@@ -5041,6 +5091,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.AuthType = None
         self.ClientCertificateAlias = None
         self.PolyClientCertificateAliasInfo = None
+        self.Http3Supported = None
 
 
     def _deserialize(self, params):
@@ -5062,6 +5113,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = CertificateAliasInfo()
                 obj._deserialize(item)
                 self.PolyClientCertificateAliasInfo.append(obj)
+        self.Http3Supported = params.get("Http3Supported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5158,7 +5210,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         :type NetworkType: str
         :param PackageType: Package type of connection groups. Valid values: `Thunder` (general), `Accelerator` (specific for games), and `CrossBorder` (cross-MLC-border connection).
         :type PackageType: str
-        :param Http3Supported: Specifies whether to enable HTTP3. Valid values: `0` (disable HTTP3); `1` (enable HTTP3). Note: If HTTP3 is enabled for a connection, TCP/UDP access will not be allowed. After the connection is created, you cannot change your HTTP3 setting.
+        :param Http3Supported: (Disused) HTTP3.0 is supported by default when `IPAddressVersion` is `IPv4`.
         :type Http3Supported: int
         """
         self.AccessRegion = None
@@ -5944,10 +5996,7 @@ class ModifyRuleAttributeRequest(AbstractModel):
         :type ListenerId: str
         :param RuleId: Forwarding rule ID
         :type RuleId: str
-        :param Scheduler: Scheduling policy:
-rr: round robin;
-wrr: weighted round robin;
-lc: least connections.
+        :param Scheduler: The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).
         :type Scheduler: str
         :param HealthCheck: Whether to enable the origin server health check:
 1: enable;
@@ -6107,7 +6156,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
         :type ProxyId: str
         :param ListenerName: Listener name
         :type ListenerName: str
-        :param Scheduler: Origin server scheduling policy of listeners, which supports round robin (rr), weighted round robin (wrr), and least connections (lc).
+        :param Scheduler: The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).
         :type Scheduler: str
         :param DelayLoop: Time interval of origin server health check (unit: seconds). Value range: [5, 300].
         :type DelayLoop: int
@@ -6188,14 +6237,47 @@ class ModifyUDPListenerAttributeRequest(AbstractModel):
         :type ProxyId: str
         :param ListenerName: Listener name
         :type ListenerName: str
-        :param Scheduler: Origin server scheduling policy of listeners
+        :param Scheduler: The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).
         :type Scheduler: str
+        :param DelayLoop: Time interval of origin server health check (unit: seconds). Value range: [5, 300].
+        :type DelayLoop: int
+        :param ConnectTimeout: Response timeout of origin server health check (unit: seconds). Value range: [2, 60]. The timeout value shall be less than the time interval for health check DelayLoop.
+        :type ConnectTimeout: int
+        :param HealthyThreshold: Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.
+        :type HealthyThreshold: int
+        :param UnhealthyThreshold: Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 - 10.
+        :type UnhealthyThreshold: int
+        :param FailoverSwitch: Whether to enable the primary/secondary origin server mode for failover. Values: `1` (enabled); `0` (disabled). It’s not available if the origin type is `DOMAIN`.
+        :type FailoverSwitch: int
+        :param HealthCheck: Whether the health check is enabled for the origin server. Values: `1` (enabled); `0` (disabled).
+        :type HealthCheck: int
+        :param CheckType: The health check type. Values: `PORT` (port); `PING` (ping).
+        :type CheckType: str
+        :param CheckPort: The health probe port.
+        :type CheckPort: int
+        :param ContextType: The UDP message type. Values: `TEXT` (text). This parameter is used only when `CheckType = PORT`.
+        :type ContextType: str
+        :param SendContext: The UDP message sent by the health probe port. This parameter is used only when `CheckType = PORT`.
+        :type SendContext: str
+        :param RecvContext: The UDP message received by the health probe port. This parameter is used only when `CheckType = PORT`.
+        :type RecvContext: str
         """
         self.ListenerId = None
         self.GroupId = None
         self.ProxyId = None
         self.ListenerName = None
         self.Scheduler = None
+        self.DelayLoop = None
+        self.ConnectTimeout = None
+        self.HealthyThreshold = None
+        self.UnhealthyThreshold = None
+        self.FailoverSwitch = None
+        self.HealthCheck = None
+        self.CheckType = None
+        self.CheckPort = None
+        self.ContextType = None
+        self.SendContext = None
+        self.RecvContext = None
 
 
     def _deserialize(self, params):
@@ -6204,6 +6286,17 @@ class ModifyUDPListenerAttributeRequest(AbstractModel):
         self.ProxyId = params.get("ProxyId")
         self.ListenerName = params.get("ListenerName")
         self.Scheduler = params.get("Scheduler")
+        self.DelayLoop = params.get("DelayLoop")
+        self.ConnectTimeout = params.get("ConnectTimeout")
+        self.HealthyThreshold = params.get("HealthyThreshold")
+        self.UnhealthyThreshold = params.get("UnhealthyThreshold")
+        self.FailoverSwitch = params.get("FailoverSwitch")
+        self.HealthCheck = params.get("HealthCheck")
+        self.CheckType = params.get("CheckType")
+        self.CheckPort = params.get("CheckPort")
+        self.ContextType = params.get("ContextType")
+        self.SendContext = params.get("SendContext")
+        self.RecvContext = params.get("RecvContext")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6502,6 +6595,20 @@ Note: This field may return null, indicating that no valid values can be obtaine
 `1`: Enable
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Http3Supported: int
+        :param FeatureBitmap: Feature bitmap. Valid values:
+`0`: Feature not supported
+`1`: Feature supported
+Each bit in the bitmap represents a feature:
+1st bit: Layer-4 acceleration;
+2nd bit: Layer-7 acceleration;
+3rd bit: HTTP3 access;
+4th bit: IPv6;
+5th bit: Dedicated BGP access;
+6th bit: Non-BGP access;
+7th bit: QoS acceleration.
+Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FeatureBitmap: int
         """
         self.CreateTime = None
         self.ProjectId = None
@@ -6522,6 +6629,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.IPAddressVersion = None
         self.PackageType = None
         self.Http3Supported = None
+        self.FeatureBitmap = None
 
 
     def _deserialize(self, params):
@@ -6551,6 +6659,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.IPAddressVersion = params.get("IPAddressVersion")
         self.PackageType = params.get("PackageType")
         self.Http3Supported = params.get("Http3Supported")
+        self.FeatureBitmap = params.get("FeatureBitmap")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6603,6 +6712,20 @@ Note: this field may return null, indicating that no valid values can be obtaine
 `1`: Enable
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Http3Supported: int
+        :param FeatureBitmap: Feature bitmap. Valid values:
+`0`: Feature not supported
+`1`: Feature supported
+Each bit in the bitmap represents a feature:
+1st bit: Layer-4 acceleration;
+2nd bit: Layer-7 acceleration;
+3rd bit: HTTP3 access;
+4th bit: IPv6;
+5th bit: Dedicated BGP access;
+6th bit: Non-BGP access;
+7th bit: QoS acceleration.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type FeatureBitmap: int
         """
         self.GroupId = None
         self.Domain = None
@@ -6615,6 +6738,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.CreateTime = None
         self.ProxyType = None
         self.Http3Supported = None
+        self.FeatureBitmap = None
 
 
     def _deserialize(self, params):
@@ -6636,6 +6760,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.CreateTime = params.get("CreateTime")
         self.ProxyType = params.get("ProxyType")
         self.Http3Supported = params.get("Http3Supported")
+        self.FeatureBitmap = params.get("FeatureBitmap")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6691,7 +6816,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type RealServerRegion: str
         :param Bandwidth: Bandwidth. Unit: Mbps.
         :type Bandwidth: int
-        :param Concurrent: Concurrence. Unit: requests/second.
+        :param Concurrent: Concurrence. Unit: 10K requests/second.
         :type Concurrent: int
         :param Status: Connection status. Valid values:
 `RUNNING`: Running
@@ -6778,6 +6903,20 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         :param InBanBlacklist: Indicates whether the origin server IP or domain name is in the blocklist. Valid values: `0` (no) and `1` (yes).
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type InBanBlacklist: int
+        :param FeatureBitmap: Feature bitmap. Valid values:
+`0`: Feature not supported
+`1`: Feature supported
+Each bit in the bitmap represents a feature:
+1st bit: Layer-4 acceleration;
+2nd bit: Layer-7 acceleration;
+3rd bit: HTTP3 access;
+4th bit: IPv6;
+5th bit: Dedicated BGP access;
+6th bit: Non-BGP access;
+7th bit: QoS acceleration.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type FeatureBitmap: int
         """
         self.InstanceId = None
         self.CreateTime = None
@@ -6813,6 +6952,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.IPList = None
         self.Http3Supported = None
         self.InBanBlacklist = None
+        self.FeatureBitmap = None
 
 
     def _deserialize(self, params):
@@ -6864,6 +7004,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
                 self.IPList.append(obj)
         self.Http3Supported = params.get("Http3Supported")
         self.InBanBlacklist = params.get("InBanBlacklist")
+        self.FeatureBitmap = params.get("FeatureBitmap")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7004,7 +7145,7 @@ class RealServerBindSetReq(AbstractModel):
         :type RealServerIP: str
         :param RealServerWeight: Origin server weight
         :type RealServerWeight: int
-        :param RealServerFailoverRole: Origin server role: master (primary origin server); slave (secondary origin server). This parameter is applicable when the primary/secondary origin server mode is enabled for a TCP listener.
+        :param RealServerFailoverRole: Role of the origin server. Values: `master` (primary origin server); `slave` (secondary origin server). This parameter only takes effect when origin failover is enabled for the listener.
         :type RealServerFailoverRole: str
         """
         self.RealServerId = None
@@ -7239,7 +7380,7 @@ class RuleInfo(AbstractModel):
         :type Path: str
         :param RealServerType: Origin server type
         :type RealServerType: str
-        :param Scheduler: Forwarding policy of the origin server
+        :param Scheduler: The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).
         :type Scheduler: str
         :param HealthCheck: Whether health check is enabled. 1: enabled, 0: disabled
         :type HealthCheck: int
@@ -7554,10 +7695,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 `3`: Adjusting origin server
 `4`: Adjusting configuration
         :type ListenerStatus: int
-        :param Scheduler: Origin server access policy of listeners:
-`rr`: Round robin
-`wrr`: Weighted round robin
-`lc`: Least connection
+        :param Scheduler: The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).
         :type Scheduler: str
         :param ConnectTimeout: Response timeout of origin server health check (unit: seconds).
         :type ConnectTimeout: int
@@ -7733,7 +7871,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 `3`: Adjusting origin server
 `4`: Adjusting configuration
         :type ListenerStatus: int
-        :param Scheduler: Origin server access policy of listeners
+        :param Scheduler: The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).
         :type Scheduler: str
         :param BindStatus: Origin server binding status of listeners. `0`: Normal; `1`: IP exception; `2`: Domain name resolution exception.
         :type BindStatus: int
@@ -7744,6 +7882,39 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param SessionPersist: Specifies whether to enable session persistence. Values: `0` (disable), `1` (enable)
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SessionPersist: int
+        :param DelayLoop: Time interval of origin server health check (unit: seconds). Value range: [5, 300].
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type DelayLoop: int
+        :param ConnectTimeout: Response timeout of origin server health check (unit: seconds). Value range: [2, 60]. The timeout value shall be less than the time interval for health check DelayLoop.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type ConnectTimeout: int
+        :param HealthyThreshold: Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HealthyThreshold: int
+        :param UnhealthyThreshold: Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 - 10.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type UnhealthyThreshold: int
+        :param FailoverSwitch: Whether to enable the primary/secondary origin server mode for failover. Values: `1` (enabled); `0` (disabled). It’s not available if the origin type is `DOMAIN`.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type FailoverSwitch: int
+        :param HealthCheck: Whether the health check is enabled for the origin server. Values: `1` (enabled); `0` (disabled).
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type HealthCheck: int
+        :param CheckType: The health check type. Values: `PORT` (port); `PING` (ping).
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type CheckType: str
+        :param CheckPort: The health probe port.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type CheckPort: int
+        :param ContextType: The UDP message type. Values: `TEXT` (text). This parameter is used only when `CheckType = PORT`.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type ContextType: str
+        :param SendContext: The UDP message sent by the health probe port. This parameter is used only when `CheckType = PORT`.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type SendContext: str
+        :param RecvContext: The UDP message received by the health probe port. This parameter is used only when `CheckType = PORT`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RecvContext: str
         """
         self.ListenerId = None
         self.ListenerName = None
@@ -7757,6 +7928,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RealServerSet = None
         self.CreateTime = None
         self.SessionPersist = None
+        self.DelayLoop = None
+        self.ConnectTimeout = None
+        self.HealthyThreshold = None
+        self.UnhealthyThreshold = None
+        self.FailoverSwitch = None
+        self.HealthCheck = None
+        self.CheckType = None
+        self.CheckPort = None
+        self.ContextType = None
+        self.SendContext = None
+        self.RecvContext = None
 
 
     def _deserialize(self, params):
@@ -7777,6 +7959,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 self.RealServerSet.append(obj)
         self.CreateTime = params.get("CreateTime")
         self.SessionPersist = params.get("SessionPersist")
+        self.DelayLoop = params.get("DelayLoop")
+        self.ConnectTimeout = params.get("ConnectTimeout")
+        self.HealthyThreshold = params.get("HealthyThreshold")
+        self.UnhealthyThreshold = params.get("UnhealthyThreshold")
+        self.FailoverSwitch = params.get("FailoverSwitch")
+        self.HealthCheck = params.get("HealthCheck")
+        self.CheckType = params.get("CheckType")
+        self.CheckPort = params.get("CheckPort")
+        self.ContextType = params.get("ContextType")
+        self.SendContext = params.get("SendContext")
+        self.RecvContext = params.get("RecvContext")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

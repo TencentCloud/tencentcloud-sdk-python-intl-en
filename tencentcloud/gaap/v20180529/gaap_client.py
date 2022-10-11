@@ -406,7 +406,7 @@ class GaapClient(AbstractClient):
 
 
     def CreateProxy(self, request):
-        """This API (CreateProxy) is used to create an acceleration connection with specified configuration.
+        """This API is used to create/replicate an acceleration connection with the specified configuration. To replicate a connection, the basic configuration parameters need to be set for the new connection, and `ClonedProxyId` is needed to identify the replicated connection.
 
         :param request: Request instance for CreateProxy.
         :type request: :class:`tencentcloud.gaap.v20180529.models.CreateProxyRequest`

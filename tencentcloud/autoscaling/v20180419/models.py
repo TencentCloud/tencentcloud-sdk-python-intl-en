@@ -1134,12 +1134,14 @@ class CreateLifecycleHookRequest(AbstractModel):
         :type DefaultResult: str
         :param HeartbeatTimeout: The maximum length of time (in seconds) that can elapse before the lifecycle hook times out. Value range: 30-7200. Default value: 300
         :type HeartbeatTimeout: int
-        :param NotificationMetadata: Additional information of a notification that Auto Scaling sends to targets. This parameter is left empty by default. Up to 1024 characters are allowed.
+        :param NotificationMetadata: Additional information of a notification that Auto Scaling sends to targets. This parameter is set when you configure a notification (default value: ""). Up to 1024 characters are allowed.
         :type NotificationMetadata: str
-        :param NotificationTarget: Notification target
+        :param NotificationTarget: Notification target. `NotificationTarget` and `LifecycleCommand` cannot be specified at the same time.
         :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
         :param LifecycleTransitionType: The scenario where the lifecycle hook is applied. `EXTENSION`: the lifecycle hook will be triggered when AttachInstances, DetachInstances or RemoveInstaces is called. `NORMAL`: the lifecycle hook is not triggered by the above APIs. 
         :type LifecycleTransitionType: str
+        :param LifecycleCommand: Remote command execution object. `NotificationTarget` and `LifecycleCommand` cannot be specified at the same time.
+        :type LifecycleCommand: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
         """
         self.AutoScalingGroupId = None
         self.LifecycleHookName = None
@@ -1149,6 +1151,7 @@ class CreateLifecycleHookRequest(AbstractModel):
         self.NotificationMetadata = None
         self.NotificationTarget = None
         self.LifecycleTransitionType = None
+        self.LifecycleCommand = None
 
 
     def _deserialize(self, params):
@@ -1162,6 +1165,9 @@ class CreateLifecycleHookRequest(AbstractModel):
             self.NotificationTarget = NotificationTarget()
             self.NotificationTarget._deserialize(params.get("NotificationTarget"))
         self.LifecycleTransitionType = params.get("LifecycleTransitionType")
+        if params.get("LifecycleCommand") is not None:
+            self.LifecycleCommand = LifecycleCommand()
+            self.LifecycleCommand._deserialize(params.get("LifecycleCommand"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3417,15 +3423,35 @@ class LifecycleActionResultInfo(AbstractModel):
         :type LifecycleHookId: str
         :param InstanceId: ID of the instance
         :type InstanceId: str
-        :param NotificationResult: Whether the notification is sent to CMQ successfully
+        :param InvocationId: Execution task ID. You can query the result by using the [DescribeInvocations](https://intl.cloud.tencent.com/document/api/1340/52679?from_cn_redirect=1) API of TAT. 
+        :type InvocationId: str
+        :param InvokeCommandResult: Result of command invocation,
+<li>`SUCCESSFUL`: Successful command invocation. It does mean that the task is successfully. You can query the task result with the `InvocationId.</li>
+<li>`FAILED`: Failed to invoke the command</li>
+<li>`NONE`</li>
+        :type InvokeCommandResult: str
+        :param NotificationResult: Notification result, which indicates whether it is successful to notify CMQ/TDMQ.<br>
+<li>SUCCESSFUL: It is successful to notify CMQ/TDMQ.</li>
+<li>FAILED: It is failed to notify CMQ/TDMQ.</li>
+<li>NONE</li>
         :type NotificationResult: str
         :param LifecycleActionResult: Result of the lifecyle hook action. Values: CONTINUE, ABANDON
         :type LifecycleActionResult: str
-        :param ResultReason: Cause of the result
+        :param ResultReason: Reason of the result <br>
+<li>`HEARTBEAT_TIMEOUT`: Heartbeat timed out. The setting of `DefaultResult` is used.</li>
+<li>`NOTIFICATION_FAILURE`: Failed to send the notification. The setting of `DefaultResult` is used.</li>
+<li>`CALL_INTERFACE`: Calls the `CompleteLifecycleAction` to set the result</li>
+<li>ANOTHER_ACTION_ABANDON: It has been set to `ABANDON` by another operation.</li>
+<li>COMMAND_CALL_FAILURE: Failed to call the command. The DefaultResult is applied.</li>
+<li>COMMAND_EXEC_FINISH: Command completed</li>
+<li>COMMAND_CALL_FAILURE: Failed to execute the command. The DefaultResult is applied.</li>
+<li>COMMAND_EXEC_RESULT_CHECK_FAILURE: Failed to check the command result. The DefaultResult is applied.</li>
         :type ResultReason: str
         """
         self.LifecycleHookId = None
         self.InstanceId = None
+        self.InvocationId = None
+        self.InvokeCommandResult = None
         self.NotificationResult = None
         self.LifecycleActionResult = None
         self.ResultReason = None
@@ -3434,9 +3460,44 @@ class LifecycleActionResultInfo(AbstractModel):
     def _deserialize(self, params):
         self.LifecycleHookId = params.get("LifecycleHookId")
         self.InstanceId = params.get("InstanceId")
+        self.InvocationId = params.get("InvocationId")
+        self.InvokeCommandResult = params.get("InvokeCommandResult")
         self.NotificationResult = params.get("NotificationResult")
         self.LifecycleActionResult = params.get("LifecycleActionResult")
         self.ResultReason = params.get("ResultReason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LifecycleCommand(AbstractModel):
+    """Remote command execution object.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CommandId: Remote command ID. It’s required to execute a command.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CommandId: str
+        :param Parameters: Custom parameter. The field type is JSON encoded string. For example, {"varA": "222"}.
+`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.
+If this parameter is not specified, the `DefaultParameters` of `Command` is used.
+Up to 20 customer parameters allowed. The parameter name can contain up to 64 characters, including [a-z], [A-Z], [0-9] and [-_].
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Parameters: str
+        """
+        self.CommandId = None
+        self.Parameters = None
+
+
+    def _deserialize(self, params):
+        self.CommandId = params.get("CommandId")
+        self.Parameters = params.get("Parameters")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3473,6 +3534,9 @@ class LifecycleHook(AbstractModel):
         :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
         :param LifecycleTransitionType: Applicable scenario of the lifecycle hook
         :type LifecycleTransitionType: str
+        :param LifecycleCommand: Remote command execution object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LifecycleCommand: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
         """
         self.LifecycleHookId = None
         self.LifecycleHookName = None
@@ -3484,6 +3548,7 @@ class LifecycleHook(AbstractModel):
         self.CreatedTime = None
         self.NotificationTarget = None
         self.LifecycleTransitionType = None
+        self.LifecycleCommand = None
 
 
     def _deserialize(self, params):
@@ -3499,6 +3564,9 @@ class LifecycleHook(AbstractModel):
             self.NotificationTarget = NotificationTarget()
             self.NotificationTarget._deserialize(params.get("NotificationTarget"))
         self.LifecycleTransitionType = params.get("LifecycleTransitionType")
+        if params.get("LifecycleCommand") is not None:
+            self.LifecycleCommand = LifecycleCommand()
+            self.LifecycleCommand._deserialize(params.get("LifecycleCommand"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3998,6 +4066,8 @@ class ModifyLifecycleHookRequest(AbstractModel):
         :type LifecycleTransitionType: str
         :param NotificationTarget: Information of the notification target.
         :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
+        :param LifecycleCommand: Remote command execution object.
+        :type LifecycleCommand: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
         """
         self.LifecycleHookId = None
         self.LifecycleHookName = None
@@ -4007,6 +4077,7 @@ class ModifyLifecycleHookRequest(AbstractModel):
         self.NotificationMetadata = None
         self.LifecycleTransitionType = None
         self.NotificationTarget = None
+        self.LifecycleCommand = None
 
 
     def _deserialize(self, params):
@@ -4020,6 +4091,9 @@ class ModifyLifecycleHookRequest(AbstractModel):
         if params.get("NotificationTarget") is not None:
             self.NotificationTarget = NotificationTarget()
             self.NotificationTarget._deserialize(params.get("NotificationTarget"))
+        if params.get("LifecycleCommand") is not None:
+            self.LifecycleCommand = LifecycleCommand()
+            self.LifecycleCommand._deserialize(params.get("LifecycleCommand"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5244,12 +5318,14 @@ class UpgradeLifecycleHookRequest(AbstractModel):
         :type DefaultResult: str
         :param HeartbeatTimeout: The maximum length of time (in seconds) that can elapse before the lifecycle hook times out. Value range: 30-7200. Default value: 300
         :type HeartbeatTimeout: int
-        :param NotificationMetadata: Additional information of a notification that Auto Scaling sends to targets. This parameter is left empty by default.
+        :param NotificationMetadata: Additional information of a notification that Auto Scaling sends to targets. This parameter is set when you configure a notification (default value: "").
         :type NotificationMetadata: str
-        :param NotificationTarget: Notification target
+        :param NotificationTarget: Notification result. `NotificationTarget` and `LifecycleCommand` cannot be specified at the same time.
         :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
         :param LifecycleTransitionType: The scenario where the lifecycle hook is applied. `EXTENSION`: the lifecycle hook will be triggered when AttachInstances, DetachInstances or RemoveInstaces is called. `NORMAL`: the lifecycle hook is not triggered by the above APIs. 
         :type LifecycleTransitionType: str
+        :param LifecycleCommand: Remote command execution object. `NotificationTarget` and `LifecycleCommand` cannot be specified at the same time.
+        :type LifecycleCommand: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
         """
         self.LifecycleHookId = None
         self.LifecycleHookName = None
@@ -5259,6 +5335,7 @@ class UpgradeLifecycleHookRequest(AbstractModel):
         self.NotificationMetadata = None
         self.NotificationTarget = None
         self.LifecycleTransitionType = None
+        self.LifecycleCommand = None
 
 
     def _deserialize(self, params):
@@ -5272,6 +5349,9 @@ class UpgradeLifecycleHookRequest(AbstractModel):
             self.NotificationTarget = NotificationTarget()
             self.NotificationTarget._deserialize(params.get("NotificationTarget"))
         self.LifecycleTransitionType = params.get("LifecycleTransitionType")
+        if params.get("LifecycleCommand") is not None:
+            self.LifecycleCommand = LifecycleCommand()
+            self.LifecycleCommand._deserialize(params.get("LifecycleCommand"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
