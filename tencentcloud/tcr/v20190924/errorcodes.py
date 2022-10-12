@@ -23,11 +23,38 @@ FAILEDOPERATION = 'FailedOperation'
 # Dependency exception.
 FAILEDOPERATION_DEPENDENCEERROR = 'FailedOperation.DependenceError'
 
+# An error occurred while obtaining the database data.
+FAILEDOPERATION_ERRORGETDBDATAERROR = 'FailedOperation.ErrorGetDBDataError'
+
+# Invalid request header.
+FAILEDOPERATION_ERRORTCRINVALIDMEDIATYPE = 'FailedOperation.ErrorTcrInvalidMediaType'
+
+# TCR instance resource conflict.
+FAILEDOPERATION_ERRORTCRRESOURCECONFLICT = 'FailedOperation.ErrorTcrResourceConflict'
+
+# No permission for TCR operation.
+FAILEDOPERATION_ERRORTCRUNAUTHORIZED = 'FailedOperation.ErrorTcrUnauthorized'
+
 # An error occurs while obtaining the database data.
 FAILEDOPERATION_GETDBDATAERROR = 'FailedOperation.GetDBDataError'
 
+# An error occurred while obtaining the security group policy.
+FAILEDOPERATION_GETSECURITYPOLICYFAIL = 'FailedOperation.GetSecurityPolicyFail'
+
 # An error occurs while obtaining TcrClient.
 FAILEDOPERATION_GETTCRCLIENT = 'FailedOperation.GetTcrClient'
+
+# The operation is canceled.
+FAILEDOPERATION_OPERATIONCANCEL = 'FailedOperation.OperationCancel'
+
+# The transaction failed.
+FAILEDOPERATION_TRADEFAILED = 'FailedOperation.TradeFailed'
+
+# Failed to verify the repository name.
+FAILEDOPERATION_VALIDATEREGISTRYNAMEFAIL = 'FailedOperation.ValidateRegistryNameFail'
+
+# An error occurred while verifying available regions.
+FAILEDOPERATION_VALIDATESUPPORTEDREGIONFAIL = 'FailedOperation.ValidateSupportedRegionFail'
 
 # Internal error. Please check and try again.
 INTERNALERROR = 'InternalError'
@@ -68,6 +95,12 @@ INVALIDPARAMETER = 'InvalidParameter'
 # The instance name already exists.
 INVALIDPARAMETER_ERRORNAMEEXISTS = 'InvalidParameter.ErrorNameExists'
 
+# Invalid instance name.
+INVALIDPARAMETER_ERRORNAMEILLEGAL = 'InvalidParameter.ErrorNameIllegal'
+
+# The instance name is reserved.
+INVALIDPARAMETER_ERRORNAMERESERVED = 'InvalidParameter.ErrorNameReserved'
+
 # Invalid instance name. Its format is incorrect or it has been reserved.
 INVALIDPARAMETER_ERRORREGISTRYNAME = 'InvalidParameter.ErrorRegistryName'
 
@@ -76,6 +109,9 @@ INVALIDPARAMETER_ERRORTAGOVERLIMIT = 'InvalidParameter.ErrorTagOverLimit'
 
 # Invalid TCR request.
 INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = 'InvalidParameter.ErrorTcrInvalidParameter'
+
+# 
+INVALIDPARAMETER_REPLICATIONEXISTS = 'InvalidParameter.ReplicationExists'
 
 # Creating instance is not supported in this region.
 INVALIDPARAMETER_UNSUPPORTEDREGION = 'InvalidParameter.UnsupportedRegion'
@@ -86,8 +122,14 @@ MISSINGPARAMETER = 'MissingParameter'
 # Operation denied.
 OPERATIONDENIED = 'OperationDenied'
 
+# Reached the upper limit of quota.
+OPERATIONDENIED_QUOTAOVERLIMIT = 'OperationDenied.QuotaOverLimit'
+
 # Exceptional instance status.
 RESOURCEINSUFFICIENT_ERRORINSTANCENOTRUNNING = 'ResourceInsufficient.ErrorInstanceNotRunning'
+
+# The VPC DNS resolution status is abnormal or the resolution is not deleted.
+RESOURCEINSUFFICIENT_ERRORVPCDNSSTATUS = 'ResourceInsufficient.ErrorVpcDnsStatus'
 
 # The resource does not exist.
 RESOURCENOTFOUND = 'ResourceNotFound'

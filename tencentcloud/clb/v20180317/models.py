@@ -1650,11 +1650,14 @@ class CreateTopicRequest(AbstractModel):
         :type TopicType: str
         :param Period: Logset retention period (in days). Default: 30 days.
         :type Period: int
+        :param StorageType: Log topic storage type. Valid values: `hot` (STANDARD storage); `cold` (IA storage). Default value: `hot`.
+        :type StorageType: str
         """
         self.TopicName = None
         self.PartitionCount = None
         self.TopicType = None
         self.Period = None
+        self.StorageType = None
 
 
     def _deserialize(self, params):
@@ -1662,6 +1665,7 @@ class CreateTopicRequest(AbstractModel):
         self.PartitionCount = params.get("PartitionCount")
         self.TopicType = params.get("TopicType")
         self.Period = params.get("Period")
+        self.StorageType = params.get("StorageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1993,9 +1997,9 @@ class DeleteRuleRequest(AbstractModel):
         :type ListenerId: str
         :param LocationIds: Array of IDs of the forwarding rules to be deleted
         :type LocationIds: list of str
-        :param Domain: Specifies the target domain name. Only one domain name is allowed. This field is invalid when `LocationIds` is specified.
+        :param Domain: The domain name associated with the forwarding rule to delete. If the rule is associated with multiple domain names, specify any one of them.
         :type Domain: str
-        :param Url: Forwarding path of the forwarding rule to be deleted. This parameter does not take effect if LocationIds is specified.
+        :param Url: The forwarding path of the forwarding rule to delete.
         :type Url: str
         :param NewDefaultServerDomain: Specifies a new default domain name for the listener. This field is used when the original default domain name is disabled. If there are multiple domain names, specify one of them.
         :type NewDefaultServerDomain: str
@@ -2822,6 +2826,69 @@ class DescribeCustomizedConfigListResponse(AbstractModel):
                 obj = ConfigListItem()
                 obj._deserialize(item)
                 self.ConfigList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeIdleLoadBalancersRequest(AbstractModel):
+    """DescribeIdleLoadBalancers request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: Data offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned CLB instances. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        :param LoadBalancerRegion: CLB instance region
+        :type LoadBalancerRegion: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.LoadBalancerRegion = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.LoadBalancerRegion = params.get("LoadBalancerRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIdleLoadBalancersResponse(AbstractModel):
+    """DescribeIdleLoadBalancers response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdleLoadBalancers: List of idle CLBs
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type IdleLoadBalancers: list of IdleLoadBalancer
+        :param TotalCount: Total number of idle CLB instances
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.IdleLoadBalancers = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("IdleLoadBalancers") is not None:
+            self.IdleLoadBalancers = []
+            for item in params.get("IdleLoadBalancers"):
+                obj = IdleLoadBalancer()
+                obj._deserialize(item)
+                self.IdleLoadBalancers.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
@@ -3954,14 +4021,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UnHealthNum: int
         :param HttpCode: Health check status code (applicable only to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners). Value range: 1-31. Default value: 31.
-1 means that the return value of 1xx after detection means healthy, 2 for returning 2xx for healthy, 4 for returning 3xx for healthy, 8 for returning 4xx for healthy, and 16 for returning 5xx for healthy. If you want multiple return codes to represent healthy, sum up the corresponding values. Note: The HTTP health check mode of TCP listeners only supports specifying one kind of health check status code.
-Note: This field may return null, indicating that no valid values can be obtained.
+`1`: Returns code 1xx for healthy status. `2`: Returns code 2xx for healthy status. `4`: Returns code 3xx for healthy status. `8`: Returns code 4xx for healthy status. `16`: Returns code 5xx for healthy status. If you want multiple return codes to represent healthy, sum up the corresponding values. 
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type HttpCode: int
         :param HttpCheckPath: Health check path (applicable only to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type HttpCheckPath: str
-        :param HttpCheckDomain: Health check domain name (applicable only to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param HttpCheckDomain: The target domain name for health check. It’s applicable only to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners. It’s required for TCP listeners.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type HttpCheckDomain: str
         :param HttpCheckMethod: Health check method (applicable only to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners). Value range: HEAD, GET. Default value: HEAD.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -4028,6 +4095,55 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.HttpVersion = params.get("HttpVersion")
         self.SourceIpType = params.get("SourceIpType")
         self.ExtendedCode = params.get("ExtendedCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IdleLoadBalancer(AbstractModel):
+    """ID of the idle CLB instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoadBalancerId: CLB instance ID
+        :type LoadBalancerId: str
+        :param LoadBalancerName: CLB instance name
+        :type LoadBalancerName: str
+        :param Region: CLB instance region
+        :type Region: str
+        :param Vip: CLB instance VIP
+        :type Vip: str
+        :param IdleReason: The reason why the load balancer is considered idle. `NO_RULES`: No rules configured. `NO_RS`: The rules are not associated with servers.
+        :type IdleReason: str
+        :param Status: CLB instance status, including:
+`0`: Creating; `1`: Running.
+        :type Status: int
+        :param Forward: CLB type. Value range: `1` (CLB); `0` (classic CLB).
+        :type Forward: int
+        """
+        self.LoadBalancerId = None
+        self.LoadBalancerName = None
+        self.Region = None
+        self.Vip = None
+        self.IdleReason = None
+        self.Status = None
+        self.Forward = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.LoadBalancerName = params.get("LoadBalancerName")
+        self.Region = params.get("Region")
+        self.Vip = params.get("Vip")
+        self.IdleReason = params.get("IdleReason")
+        self.Status = params.get("Status")
+        self.Forward = params.get("Forward")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

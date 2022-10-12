@@ -1008,6 +1008,35 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeIdleLoadBalancers(self, request):
+        """Idle CLB instances are pay-as-you-go load balancers that, within seven days after the creation, do not have rules configured or the configured rules are not associated with any servers.
+
+        :param request: Request instance for DescribeIdleLoadBalancers.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeIdleLoadBalancersRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeIdleLoadBalancersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIdleLoadBalancers", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIdleLoadBalancersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLBListeners(self, request):
         """This API is used to query CLB instances bound to the CVM or ENI.
 

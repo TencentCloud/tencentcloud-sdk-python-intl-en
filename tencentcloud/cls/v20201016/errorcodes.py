@@ -194,6 +194,9 @@ OPERATIONDENIED_ALARMNOTSUPPORTFORSEARCHLOW = 'OperationDenied.AlarmNotSupportFo
 # The analysis feature is not enabled for the field.
 OPERATIONDENIED_ANALYSISSWITCHCLOSE = 'OperationDenied.AnalysisSwitchClose'
 
+# 
+OPERATIONDENIED_NEWSYNTAXNOTSUPPORTED = 'OperationDenied.NewSyntaxNotSupported'
+
 # The notification template is bound to an alarm and cannot be deleted.
 OPERATIONDENIED_NOTICEHASALARM = 'OperationDenied.NoticeHasAlarm'
 

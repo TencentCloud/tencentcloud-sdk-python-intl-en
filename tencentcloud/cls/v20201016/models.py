@@ -3345,6 +3345,20 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param JsonStandard: Whether to be formatted as JSON (standard). Valid values: `0` (No) and `1` (Yes).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type JsonStandard: int
+        :param Protocol: Syslog protocol. Valid values: `tcp`, `udp`.
+This field can be used when you create/modify collection rule configurations.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Protocol: str
+        :param Address: Listening address and port specified by the syslog collection. Format: [ip]:[port]. Example: 127.0.0.1:9000.
+This field can be used when you create/modify collection rule configurations.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Address: str
+        :param ParseProtocol: `rfc3164`: Resolve logs by using the RFC3164 protocol during the syslog collection.
+`rfc5424`: Resolve logs by using the RFC5424 protocol during the syslog collection.
+`auto`: Automatically match either the RFC3164 or RFC5424 protocol.
+This field can be used when you create/modify collection rule configurations.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ParseProtocol: str
         """
         self.TimeKey = None
         self.TimeFormat = None
@@ -3358,6 +3372,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Backtracking = None
         self.IsGBK = None
         self.JsonStandard = None
+        self.Protocol = None
+        self.Address = None
+        self.ParseProtocol = None
 
 
     def _deserialize(self, params):
@@ -3378,6 +3395,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Backtracking = params.get("Backtracking")
         self.IsGBK = params.get("IsGBK")
         self.JsonStandard = params.get("JsonStandard")
+        self.Protocol = params.get("Protocol")
+        self.Address = params.get("Address")
+        self.ParseProtocol = params.get("ParseProtocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
