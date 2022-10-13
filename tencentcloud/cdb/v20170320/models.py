@@ -7755,11 +7755,17 @@ class ModifyInstanceParamRequest(AbstractModel):
         :type TemplateId: int
         :param WaitSwitch: When to perform the parameter adjustment task. Default value: 0. Valid values: 0 - execute immediately, 1 - execute during window. When its value is 1, only one instance ID can be passed in (i.e., only one `InstanceIds` can be passed in).
         :type WaitSwitch: int
+        :param NotSyncRo: Whether to sync the parameters to read-only instance of the source instance. Valid values: `true` (not sync), `false` (sync). Default value: `false`.
+        :type NotSyncRo: bool
+        :param NotSyncDr: Whether to sync the parameters to disaster recovery instance of the source instance. Valid values: `true` (not sync), `false` (sync). Default value: `false`.
+        :type NotSyncDr: bool
         """
         self.InstanceIds = None
         self.ParamList = None
         self.TemplateId = None
         self.WaitSwitch = None
+        self.NotSyncRo = None
+        self.NotSyncDr = None
 
 
     def _deserialize(self, params):
@@ -7772,6 +7778,8 @@ class ModifyInstanceParamRequest(AbstractModel):
                 self.ParamList.append(obj)
         self.TemplateId = params.get("TemplateId")
         self.WaitSwitch = params.get("WaitSwitch")
+        self.NotSyncRo = params.get("NotSyncRo")
+        self.NotSyncDr = params.get("NotSyncDr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -245,6 +245,9 @@ INVALIDPARAMETERVALUE_INVALIDGENLANGUAGE = 'InvalidParameterValue.InvalidGenLang
 # The value of the backend address parameter is incorrect.
 INVALIDPARAMETERVALUE_INVALIDIPADDRESS = 'InvalidParameterValue.InvalidIPAddress'
 
+# Invalid quota
+INVALIDPARAMETERVALUE_INVALIDMAXREQUESTNUM = 'InvalidParameterValue.InvalidMaxRequestNum'
+
 # The method is incorrect. For backend services in the WEBSOCKET type, the frontend method should be configured as GET.
 INVALIDPARAMETERVALUE_INVALIDMETHOD = 'InvalidParameterValue.InvalidMethod'
 
@@ -322,6 +325,9 @@ INVALIDPARAMETERVALUE_PARAMETERVALUELIMITEXCEEDED = 'InvalidParameterValue.Param
 
 # The parameter value is incorrect, as it is not within the valid value range.
 INVALIDPARAMETERVALUE_RANGEEXCEEDED = 'InvalidParameterValue.RangeExceeded'
+
+# Invalid parameter value.
+INVALIDPARAMETERVALUE_UNSUPPORTEDPARAMETER = 'InvalidParameterValue.UnsupportedParameter'
 
 # The quota limit is exceeded.
 LIMITEXCEEDED = 'LimitExceeded'
@@ -433,6 +439,9 @@ UNKNOWNPARAMETER = 'UnknownParameter'
 
 # Unsupported operation.
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
+
+# Insufficient account balance
+UNSUPPORTEDOPERATION_ACCOUNTARREARS = 'UnsupportedOperation.AccountArrears'
 
 # The key has already been bound to a usage plan.
 UNSUPPORTEDOPERATION_ALREADYBINDUSAGEPLAN = 'UnsupportedOperation.AlreadyBindUsagePlan'

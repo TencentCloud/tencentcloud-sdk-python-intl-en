@@ -2388,6 +2388,39 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         
 
 
+class CreateApiRspSet(AbstractModel):
+    """Information of the APIs created
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number of APIs
+        :type TotalCount: int
+        :param ApiSet: Information of created APIs
+        :type ApiSet: list of CreateApiRsp
+        """
+        self.TotalCount = None
+        self.ApiSet = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ApiSet") is not None:
+            self.ApiSet = []
+            for item in params.get("ApiSet"):
+                obj = CreateApiRsp()
+                obj._deserialize(item)
+                self.ApiSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateIPStrategyRequest(AbstractModel):
     """CreateIPStrategy request structure.
 
@@ -6576,6 +6609,65 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ImportOpenApiRequest(AbstractModel):
+    """ImportOpenApi request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceId: The unique ID of the service associated with the API
+        :type ServiceId: str
+        :param Content: Content of the openAPI
+        :type Content: str
+        :param EncodeType: Format of the content. Values: `YAML` (default), `JSON`
+        :type EncodeType: str
+        :param ContentVersion: Version of the content. It can only be `openAPI` for now.
+        :type ContentVersion: str
+        """
+        self.ServiceId = None
+        self.Content = None
+        self.EncodeType = None
+        self.ContentVersion = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        self.Content = params.get("Content")
+        self.EncodeType = params.get("EncodeType")
+        self.ContentVersion = params.get("ContentVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImportOpenApiResponse(AbstractModel):
+    """ImportOpenApi response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: The result of importing the OpenAPI
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.CreateApiRspSet`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = CreateApiRspSet()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
 
 
 class K8sLabel(AbstractModel):
