@@ -1303,7 +1303,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeSlowLog(self, request):
-        """This API is used to query the slow log.
+        """This API is used to query the records of slow query.
 
         :param request: Request instance for DescribeSlowLog.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeSlowLogRequest`
@@ -1825,7 +1825,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyInstanceParams(self, request):
-        """This API is used to modify instance parameters.
+        """This API is used to modify the parameters of TencentDB for Redis instances
 
         :param request: Request instance for ModifyInstanceParams.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceParamsRequest`

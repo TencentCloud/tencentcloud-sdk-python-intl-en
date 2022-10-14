@@ -26,6 +26,39 @@ class CbsClient(AbstractClient):
     _service = 'cbs'
 
 
+    def ApplyDiskBackup(self, request):
+        """This API is used to roll back a backup point to the original cloud disk.
+
+        * Only rollback to the original cloud disk is supported. For a data disk backup point, if you want to copy the backup point data to another cloud disk, use the `CreateSnapshot` API to convert the backup point into a snapshot, use the `CreateDisks` API to create an elastic cloud disk, and then copy the snapshot data to it.
+        * Only backup points in `NORMAL` status can be rolled back. To query the status of a backup point, call the `DescribeDiskBackups` API and see the `BackupState` field in the response.
+        * For an elastic cloud disk, it must be in unattached status. To query the status of the cloud disk, call the `DescribeDisks` API and see the `Attached` field in the response. For a non-elastic cloud disk purchased together with an instance, the instance must be in shutdown status, which can be queried through the `DescribeInstancesStatus` API.
+
+        :param request: Request instance for ApplyDiskBackup.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.ApplyDiskBackupRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.ApplyDiskBackupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ApplyDiskBackup", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ApplyDiskBackupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ApplySnapshot(self, request):
         """This API (ApplySnapshot) is used to roll back a snapshot to the original cloud disk.
 
@@ -188,10 +221,10 @@ class CbsClient(AbstractClient):
 
 
     def CreateDisks(self, request):
-        """This API is used to create one or more cloud disks.
+        """This API is used to create cloud disks.
 
         * This API supports creating a cloud disk with a data disk snapshot so that the snapshot data can be copied to the purchased cloud disk.
-        * This API is an async API. A cloud disk ID list will be returned when a request is made successfully, but it does not mean that the creation has been completed. You can call the [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) API to query cloud disks by `DiskId`. If a new cloud disk can be found and its state is 'UNATTACHED' or 'ATTACHED', it means that the cloud disk has been created successfully.
+        * This API is async. A cloud disk ID list will be returned when a request is made successfully, but it does not mean that the creation has been completed. You can call the [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) API to query cloud disks by `DiskId`. If a new cloud disk can be found and its status is `UNATTACHED` or `ATTACHED`, the cloud disk has been created successfully.
 
         :param request: Request instance for CreateDisks.
         :type request: :class:`tencentcloud.cbs.v20170312.models.CreateDisksRequest`
@@ -220,10 +253,11 @@ class CbsClient(AbstractClient):
 
 
     def CreateSnapshot(self, request):
-        """This API (CreateSnapshot) is used to create a snapshot of a specified cloud disk.
+        """This API is used to create a snapshot for the specified cloud disk.
 
-        * Snapshots can only be created for cloud disks with the snapshot capability. To check whether a cloud disk has the snapshot capability, see the SnapshotAbility field returned by the API [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1).
-        * For the number of snapshots that can be created, please see [Product Usage Restriction](https://intl.cloud.tencent.com/doc/product/362/5145?from_cn_redirect=1).
+        * You can only create snapshots for cloud disks with the snapshot capability. To check whether a cloud disk is snapshot-enabled, call the [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) API and see the `SnapshotAbility` field in the response.
+        * For the maximum number of snapshots that can be created, see [Use Limits](https://intl.cloud.tencent.com/doc/product/362/5145?from_cn_redirect=1).
+        * Currently, you can convert backup points into general snapshots. After the conversion, snapshot usage fees may be charged, backup points will not be retained, and the occupied backup point quota will be released.
 
         :param request: Request instance for CreateSnapshot.
         :type request: :class:`tencentcloud.cbs.v20170312.models.CreateSnapshotRequest`
@@ -268,6 +302,35 @@ class CbsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAutoSnapshotPoliciesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteDiskBackups(self, request):
+        """This API is used to delete the backup points of the specified cloud disk in batches.
+
+        :param request: Request instance for DeleteDiskBackups.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.DeleteDiskBackupsRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.DeleteDiskBackupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDiskBackups", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteDiskBackupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -361,6 +424,38 @@ class CbsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDiskAssociatedAutoSnapshotPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDiskBackups(self, request):
+        """This API is used to query the details of backup points.
+
+        You can filter results by backup point ID. You can also look for certain backup points by specifying the ID or type of the cloud disk for which the backup points are created. The relationship between different filters is logical `AND`. For more information on filters, see `Filter`.
+        If the parameter is empty, a certain number (as specified by `Limit` and 20 by default) of backup points will be returned.
+
+        :param request: Request instance for DescribeDiskBackups.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.DescribeDiskBackupsRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.DescribeDiskBackupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDiskBackups", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDiskBackupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -684,6 +779,35 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def InquirePriceModifyDiskBackupQuota(self, request):
+        """This API is used to query the price of a cloud disk after its backup point quota is modified.
+
+        :param request: Request instance for InquirePriceModifyDiskBackupQuota.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.InquirePriceModifyDiskBackupQuotaRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.InquirePriceModifyDiskBackupQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquirePriceModifyDiskBackupQuota", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquirePriceModifyDiskBackupQuotaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def InquirePriceModifyDiskExtraPerformance(self, request):
         """This API is used to query the price for adjusting the cloud disk’s extra performance.
 
@@ -714,9 +838,9 @@ class CbsClient(AbstractClient):
 
 
     def InquiryPriceCreateDisks(self, request):
-        """This API (InquiryPriceCreateDisks) is used to inquire the price for cloud disk creation.
+        """This API is used to query the price of creating cloud disks.
 
-        * It supports inquiring the price for the creation of multiple cloud disks. The total price for the creation is returned.
+        * You can query the price of creating multiple cloud disks in a single request. In this case, the price returned will be the total price.
 
         :param request: Request instance for InquiryPriceCreateDisks.
         :type request: :class:`tencentcloud.cbs.v20170312.models.InquiryPriceCreateDisksRequest`
@@ -822,6 +946,35 @@ class CbsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDiskAttributesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDiskBackupQuota(self, request):
+        """This API is used to modify the cloud disk backup point quota.
+
+        :param request: Request instance for ModifyDiskBackupQuota.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.ModifyDiskBackupQuotaRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.ModifyDiskBackupQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDiskBackupQuota", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDiskBackupQuotaResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

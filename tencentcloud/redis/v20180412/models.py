@@ -678,7 +678,7 @@ class CreateInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TypeId: Instance type. Valid values: `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture).
+        :param TypeId: Instance type. Valid values: `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture), `15` (Redis 6.0 Memory Edition in standard architecture), `16` (Redis 6.0 Memory Edition in cluster architecture)
         :type TypeId: int
         :param MemSize: Memory capacity in MB, which must be a multiple of 1,024. It is subject to the purchasable specifications returned by the [DescribeProductInfo API](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1).
 If `TypeId` is the standard architecture, `MemSize` indicates the total memory capacity of the instance; if `TypeId` is the cluster architecture, `MemSize` indicates the memory capacity per shard.
@@ -3126,16 +3126,18 @@ class DescribeSlowLogRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID
         :type InstanceId: str
-        :param BeginTime: Start time
+        :param BeginTime: The start time
         :type BeginTime: str
-        :param EndTime: End time
+        :param EndTime: The end time
         :type EndTime: str
-        :param MinQueryTime: Slow log threshold in microseconds
+        :param MinQueryTime: The average execution time threshold of slow query in microseconds
         :type MinQueryTime: int
-        :param Limit: Number of entries per page
+        :param Limit: Number of slow queries displayed per page. Default value: `20`.
         :type Limit: int
-        :param Offset: Offset, which is an integral multiple of `Limit`
+        :param Offset: Slow query offset, which is an integral multiple of `Limit`.
         :type Offset: int
+        :param Role: Node role. <ul><li>`Master`: Master node</li><li>`Slave`: Replica node</li></ul>
+        :type Role: str
         """
         self.InstanceId = None
         self.BeginTime = None
@@ -3143,6 +3145,7 @@ class DescribeSlowLogRequest(AbstractModel):
         self.MinQueryTime = None
         self.Limit = None
         self.Offset = None
+        self.Role = None
 
 
     def _deserialize(self, params):
@@ -3152,6 +3155,7 @@ class DescribeSlowLogRequest(AbstractModel):
         self.MinQueryTime = params.get("MinQueryTime")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.Role = params.get("Role")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3168,9 +3172,9 @@ class DescribeSlowLogResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number of slow logs
+        :param TotalCount: Total number of slow queries
         :type TotalCount: int
-        :param InstanceSlowlogDetail: Slow log details
+        :param InstanceSlowlogDetail: Slow query details
         :type InstanceSlowlogDetail: list of InstanceSlowlogDetail
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -4286,9 +4290,9 @@ class InstanceParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: Sets a parameter name
+        :param Key: Parameter name, such as “timeout”. For supported custom parameters, see <a href="https://www.tencentcloud.com/document/product/239/39796">Setting Instance Parameters</a>
         :type Key: str
-        :param Value: Sets a parameter value
+        :param Value: Current parameter value. For example, if you set the current value of “timeout” to 120 (in seconds), the client connections that remain idle longer than 120 seconds will be closed. For more information on parameter values, see <a href="https://www.tencentcloud.com/document/product/239/39796">Setting Instance Parameters</a>
         :type Value: str
         """
         self.Key = None
@@ -5285,9 +5289,9 @@ class ModifyInstanceParamsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Changed: Whether a modification is successfully made.
+        :param Changed: Whether the parameter is modified successfully. <br><li>`True`: Yes<br><li>`False`: No<br>
         :type Changed: bool
-        :param TaskId: Task ID
+        :param TaskId: ID of the task
         :type TaskId: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str

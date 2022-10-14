@@ -18,6 +18,51 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ApplyDiskBackupRequest(AbstractModel):
+    """ApplyDiskBackup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskBackupId: ID of the cloud disk backup point, which can be queried through the `DescribeDiskBackups` API.
+        :type DiskBackupId: str
+        :param DiskId: ID of the original cloud disk of the backup point, which can be queried through the `DescribeDisks` API.
+        :type DiskId: str
+        """
+        self.DiskBackupId = None
+        self.DiskId = None
+
+
+    def _deserialize(self, params):
+        self.DiskBackupId = params.get("DiskBackupId")
+        self.DiskId = params.get("DiskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyDiskBackupResponse(AbstractModel):
+    """ApplyDiskBackup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ApplySnapshotRequest(AbstractModel):
     """ApplySnapshot request structure.
 
@@ -157,7 +202,7 @@ class AttachDisksResponse(AbstractModel):
 
 
 class AutoMountConfiguration(AbstractModel):
-    """Describes how a newly purchased cloud disk is initialized and mounted to a CVM
+    """Describes how a newly purchased cloud disk is initialized and attached to a CVM instance.
 
     """
 
@@ -165,9 +210,9 @@ class AutoMountConfiguration(AbstractModel):
         r"""
         :param InstanceId: ID of the instance to which the cloud disk is attached.
         :type InstanceId: list of str
-        :param MountPoint: Path to the mount point in the CVM
+        :param MountPoint: Mount point in the instance.
         :type MountPoint: list of str
-        :param FileSystemType: File system type. Supported: ext4 and xfs.
+        :param FileSystemType: File system type. Valid values: `ext4`, `xfs`.
         :type FileSystemType: str
         """
         self.InstanceId = None
@@ -452,36 +497,38 @@ class CreateDisksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Placement: The location of the instance. The availability zone and the project that the instance belongs to can be specified using this parameter. If the project is not specified, it will be created under the default project.
+        :param Placement: Location of the instance. You can use this parameter to specify the attributes of the instance, such as its availability zone and project. If no project is specified, the default project will be used.
         :type Placement: :class:`tencentcloud.cbs.v20170312.models.Placement`
-        :param DiskChargeType: Cloud disk billing method. POSTPAID_BY_HOUR: pay as you go by hour<br><li>CDCPAID: Billed together with the bound dedicated cluster<br>For information about the pricing of each method, see the cloud disk [Pricing Overview](https://intl.cloud.tencent.com/document/product/362/2413?from_cn_redirect=1).
+        :param DiskChargeType: Cloud disk billing mode. POSTPAID_BY_HOUR: Pay-as-you-go by hour<br><li>CDCPAID: Billed together with the bound dedicated cluster<br>For more information on the pricing in each mode, see [Pricing Overview](https://intl.cloud.tencent.com/document/product/362/2413?from_cn_redirect=1).
         :type DiskChargeType: str
-        :param DiskType: Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: Tremendous SSD
+        :param DiskType: Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD Cloud Storage<br><li>CLOUD_PREMIUM: Premium Cloud Disk<br><li>CLOUD_BSSD: Balanced SSD<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: ulTra SSD.
         :type DiskType: str
-        :param DiskName: The displayed name of the cloud disk. If it is left empty, the default is 'Not named'. The maximum length cannot exceed 60 bytes.
+        :param DiskName: Cloud disk name. If it is not specified, "Unnamed" will be used by default. The maximum length is 60 bytes.
         :type DiskName: str
-        :param Tags: Cloud disk binding tag.
+        :param Tags: Tags bound to the cloud disk.
         :type Tags: list of Tag
-        :param SnapshotId: Snapshot ID. If this parameter is specified, the cloud disk is created based on the snapshot. The snapshot type must be a data disk snapshot. The snapshot can be queried in the DiskUsage field in the output parameter through the API [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1).
+        :param SnapshotId: Snapshot ID. If this parameter is specified, the cloud disk will be created based on the snapshot. The snapshot must be a data disk snapshot. To query the type of a snapshot, call the [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1) API and see the `DiskUsage` field in the response.
         :type SnapshotId: str
-        :param DiskCount: If the number of cloud disks to be created is left empty, the default is 1. There is a limit to the maximum number of cloud disks that can be created for a single request. For more information, please see [CBS Use Limits](https://intl.cloud.tencent.com/doc/product/362/5145?from_cn_redirect=1).
+        :param DiskCount: Number of cloud disks to be created. If it is not specified, `1` will be used by default. There is an upper limit on the maximum number of cloud disks that can be created in a single request. For more information, see [Use Limits](https://intl.cloud.tencent.com/doc/product/362/5145?from_cn_redirect=1).
         :type DiskCount: int
-        :param ThroughputPerformance: Extra performance purchased for a cloud disk.<br>This optional parameter is only valid for Tremendous SSD (CLOUD_TSSD) and Enhanced SSD (CLOUD_HSSD).
+        :param ThroughputPerformance: Extra performance purchased for a cloud disk.<br>This optional parameter is only valid for ulTra SSD (CLOUD_TSSD) and Enhanced SSD (CLOUD_HSSD).
         :type ThroughputPerformance: int
-        :param DiskSize: Cloud hard disk size (in GB). <br><li> If `SnapshotId` is passed, `DiskSize` cannot be passed. In this case, the size of the cloud disk is the size of the snapshot. <br><li>To pass `SnapshotId` and `DiskSize` at the same time, the size of the disk must be larger than or equal to the size of the snapshot. <br><li>For information about the size range of cloud disks, see cloud disk [Product Types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1).
+        :param DiskSize: Cloud disk size in GB. <br><li>`DiskSize` is not required if `SnapshotId` is specified. In this case, the size of the cloud disk will be equal to that of the snapshot. <br><li>If you specify both `SnapshotId` and `DiskSize`, the specified disk size cannot be smaller than the snapshot size. <br><li>For the value range of cloud disk size, see [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1).
         :type DiskSize: int
-        :param Shareable: The default of optional parameter is False. When True is selected, the cloud disk will be created as a shareable cloud disk.
+        :param Shareable: Optional parameter. Default value: `False`. If `True` is specified, the new cloud disk will be shared.
         :type Shareable: bool
-        :param ClientToken: A string to ensure the idempotency of the request, which is generated by the client. Each request shall have a unique string with a maximum of 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be ensured.
+        :param ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
         :type ClientToken: str
-        :param Encrypt: This parameter is used to create an encrypted cloud disk. Its value is always ENCRYPT.
+        :param Encrypt: This parameter is used to create encrypted cloud disks. It is fixed at `ENCRYPT`.
         :type Encrypt: str
         :param DiskChargePrepaid: Relevant parameter settings for the prepaid mode (i.e., monthly subscription). The monthly subscription cloud disk purchase attributes such as usage period and whether or not auto-renewal is set up can be specified using this parameter. <br>This parameter is required when creating a prepaid cloud disk. This parameter is not required when creating an hourly postpaid cloud disk. 
         :type DiskChargePrepaid: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
-        :param DeleteSnapshot: Whether to delete the associated non-permanent snapshots when a cloud disk is terminated. Valid values: `0` (do not delete); `1` (delete). Default value: `0`. To find out whether a snapshot is permanent, you can call the `DescribeSnapshots` API and check the `IsPermanent` field (`true`: permanent; `false`: non-permanent) in its response.
+        :param DeleteSnapshot: Whether to delete the associated non-permanently reserved snapshots upon deletion of the source cloud disk. `0`: No (default value). `1`: Yes. To check whether a snapshot is permanently reserved, see the `IsPermanent` field returned by the `DescribeSnapshots` API.
         :type DeleteSnapshot: int
-        :param AutoMountConfiguration: When a cloud disk is created, automatically initialize it and attach it to the specified mount point
+        :param AutoMountConfiguration: Specifies whether to automatically attach and initialize the newly created data disk.
         :type AutoMountConfiguration: :class:`tencentcloud.cbs.v20170312.models.AutoMountConfiguration`
+        :param DiskBackupQuota: Specifies the cloud disk backup point quota.
+        :type DiskBackupQuota: int
         """
         self.Placement = None
         self.DiskChargeType = None
@@ -498,6 +545,7 @@ class CreateDisksRequest(AbstractModel):
         self.DiskChargePrepaid = None
         self.DeleteSnapshot = None
         self.AutoMountConfiguration = None
+        self.DiskBackupQuota = None
 
 
     def _deserialize(self, params):
@@ -527,6 +575,7 @@ class CreateDisksRequest(AbstractModel):
         if params.get("AutoMountConfiguration") is not None:
             self.AutoMountConfiguration = AutoMountConfiguration()
             self.AutoMountConfiguration._deserialize(params.get("AutoMountConfiguration"))
+        self.DiskBackupQuota = params.get("DiskBackupQuota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -543,7 +592,7 @@ class CreateDisksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskIdSet: List of created cloud disk IDs. 
+        :param DiskIdSet: List of IDs of the created cloud disks.
         :type DiskIdSet: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -564,22 +613,35 @@ class CreateSnapshotRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskId: ID of the cloud disk, for which a snapshot needs to be created. It can be queried via the API [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1).
+        :param DiskId: ID of the cloud disk for which to create a snapshot, which can be queried through the [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) API.
         :type DiskId: str
-        :param SnapshotName: Snapshot name. If it is left empty, the new snapshot name is "Not named" by default.
+        :param SnapshotName: Snapshot name. If it is not specified, "Unnamed" will be used by default.
         :type SnapshotName: str
-        :param Deadline: Expiration time of the snapshot. It must be in UTC ISO-8601 format, eg. 2022-01-08T09:47:55+00:00. The snapshot will be automatically deleted when it expires
+        :param Deadline: Expiration time of the snapshot. It must be in UTC ISO-8601 format, such as 2022-01-08T09:47:55+00:00. The snapshot will be automatically deleted when it expires.
         :type Deadline: str
+        :param DiskBackupId: ID of the cloud disk backup point. When this parameter is specified, the snapshot will be created from the backup point.
+        :type DiskBackupId: str
+        :param Tags: Tags bound to the snapshot.
+        :type Tags: list of Tag
         """
         self.DiskId = None
         self.SnapshotName = None
         self.Deadline = None
+        self.DiskBackupId = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
         self.DiskId = params.get("DiskId")
         self.SnapshotName = params.get("SnapshotName")
         self.Deadline = params.get("Deadline")
+        self.DiskBackupId = params.get("DiskBackupId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -636,6 +698,47 @@ class DeleteAutoSnapshotPoliciesRequest(AbstractModel):
 
 class DeleteAutoSnapshotPoliciesResponse(AbstractModel):
     """DeleteAutoSnapshotPolicies response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteDiskBackupsRequest(AbstractModel):
+    """DeleteDiskBackups request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskBackupIds: ID of the cloud disk backup point to be deleted.
+        :type DiskBackupIds: list of str
+        """
+        self.DiskBackupIds = None
+
+
+    def _deserialize(self, params):
+        self.DiskBackupIds = params.get("DiskBackupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDiskBackupsResponse(AbstractModel):
+    """DeleteDiskBackups response structure.
 
     """
 
@@ -826,6 +929,87 @@ class DescribeDiskAssociatedAutoSnapshotPolicyResponse(AbstractModel):
                 obj = AutoSnapshotPolicy()
                 obj._deserialize(item)
                 self.AutoSnapshotPolicySet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDiskBackupsRequest(AbstractModel):
+    """DescribeDiskBackups request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskBackupIds: List of IDs of the backup points to be queried. `DiskBackupIds` and `Filters` cannot be specified at the same time.
+        :type DiskBackupIds: list of str
+        :param Filters: Filter. `DiskBackupIds` and `Filters` cannot be specified at the same time. Valid values: <br><li>disk-backup-id - Array of String - Required: No - (Filter) Filter by backup point ID in the format of `dbp-11112222`.
+<br><li>disk-id - Array of String - Required: No - (Filter) Filter by ID of the cloud disk for which backup points are created.
+<br><li>disk-usage - Array of String - Required: No - (Filter) Filter by type of the cloud disk for which backup points are created. (SYSTEM_DISK: System disk | DATA_DISK: Data disk)
+        :type Filters: list of Filter
+        :param Offset: Offset. Default value: 0. For more information on `Offset`, see the relevant section of the API [Overview](https://intl.cloud.tencent.com/document/product/362/15633?from_cn_redirect=1).
+        :type Offset: int
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section of the API [Overview](https://intl.cloud.tencent.com/document/product/362/15633?from_cn_redirect=1).
+        :type Limit: int
+        :param Order: Sorting order of cloud disk backup points. Valid values:<br><li>ASC: Ascending<br><li>DESC: Descending
+        :type Order: str
+        :param OrderField: The field by which cloud disk backup points are sorted. Valid values:<br><li>CREATE_TIME: Sort by creation time<br>Backup points are sorted by creation time by default.
+        :type OrderField: str
+        """
+        self.DiskBackupIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+        self.Order = None
+        self.OrderField = None
+
+
+    def _deserialize(self, params):
+        self.DiskBackupIds = params.get("DiskBackupIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Order = params.get("Order")
+        self.OrderField = params.get("OrderField")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDiskBackupsResponse(AbstractModel):
+    """DescribeDiskBackups response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Number of eligible cloud disk backup points.
+        :type TotalCount: int
+        :param DiskBackupSet: List of details of cloud disk backup points.
+        :type DiskBackupSet: list of DiskBackup
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.DiskBackupSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("DiskBackupSet") is not None:
+            self.DiskBackupSet = []
+            for item in params.get("DiskBackupSet"):
+                obj = DiskBackup()
+                obj._deserialize(item)
+                self.DiskBackupSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1536,18 +1720,74 @@ Note: This field may return null, indicating that no valid value was found.
         
 
 
-class DiskChargePrepaid(AbstractModel):
-    """The billing method of an instance
+class DiskBackup(AbstractModel):
+    """Cloud disk backup point.
 
     """
 
     def __init__(self):
         r"""
-        :param Period: The purchased usage period of a cloud disk (in months). Value range: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.
+        :param DiskBackupId: Cloud disk backup point ID.
+        :type DiskBackupId: str
+        :param DiskId: ID of the cloud disk with which the backup point is associated.
+        :type DiskId: str
+        :param DiskSize: Cloud disk size in GB.
+        :type DiskSize: int
+        :param DiskUsage: Cloud disk type. Valid values:<br><li>SYSTEM_DISK: System disk <br><li>DATA_DISK: Data disk
+        :type DiskUsage: str
+        :param DiskBackupName: Backup point name.
+        :type DiskBackupName: str
+        :param DiskBackupState: Cloud disk backup point status. Valid values:<br><li>NORMAL: Normal<br><li>CREATING: Creating<br><li>ROLLBACKING: Rolling back
+        :type DiskBackupState: str
+        :param Percent: Cloud disk creation progress in percentage.
+        :type Percent: int
+        :param CreateTime: Creation time of the cloud disk backup point.
+        :type CreateTime: str
+        :param Encrypt: Whether the cloud disk is encrypted. Valid values: <br><li>false: Not encrypted <br><li>true: Encrypted
+        :type Encrypt: bool
+        """
+        self.DiskBackupId = None
+        self.DiskId = None
+        self.DiskSize = None
+        self.DiskUsage = None
+        self.DiskBackupName = None
+        self.DiskBackupState = None
+        self.Percent = None
+        self.CreateTime = None
+        self.Encrypt = None
+
+
+    def _deserialize(self, params):
+        self.DiskBackupId = params.get("DiskBackupId")
+        self.DiskId = params.get("DiskId")
+        self.DiskSize = params.get("DiskSize")
+        self.DiskUsage = params.get("DiskUsage")
+        self.DiskBackupName = params.get("DiskBackupName")
+        self.DiskBackupState = params.get("DiskBackupState")
+        self.Percent = params.get("Percent")
+        self.CreateTime = params.get("CreateTime")
+        self.Encrypt = params.get("Encrypt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiskChargePrepaid(AbstractModel):
+    """Billing mode of the instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Period: Subscription period of the cloud disk in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.
         :type Period: int
-        :param RenewFlag: Auto Renewal flag. Value range: <br><li>NOTIFY_AND_AUTO_RENEW: Notify expiry and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: Notify expiry but do not renew automatically <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Neither notify expiry nor renew automatically <br><br>Default value range: NOTIFY_AND_MANUAL_RENEW: Notify expiry but do not renew automatically.
+        :param RenewFlag: Auto-renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: Notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: Notify upon expiration but do not renew automatically <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Neither notify upon expiration nor renew automatically <br><br>Default value: NOTIFY_AND_MANUAL_RENEW.
         :type RenewFlag: str
-        :param CurInstanceDeadline: This parameter is used when you align the expiration time of the cloud disk with that of the mounted server. It is the current expiration time of the server. In this case, the Period passed represents the renewal period of the server, and the cloud disk will be automatically renewed in alignment with the expiration time of the renewed server. Example value: 2018-03-30 20:15:03.
+        :param CurInstanceDeadline: You can specify this parameter when you need to ensure that a cloud disk and the CVM instance to which it is attached have the same expiration time. This parameter represents the current expiration time of the instance. In this case, if you specify `Period`, `Period` will represent how long you want to renew the instance, and the cloud disk will be renewed based on the new expiration time of the instance. For example, the value of this parameter can be `2018-03-30 20:15:03`.
         :type CurInstanceDeadline: str
         """
         self.Period = None
@@ -1828,6 +2068,57 @@ class InitializeDisksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class InquirePriceModifyDiskBackupQuotaRequest(AbstractModel):
+    """InquirePriceModifyDiskBackupQuota request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskId: Cloud disk ID, which can be queried through the `DescribeDisks` API.
+        :type DiskId: str
+        :param DiskBackupQuota: Cloud disk backup point quota after the modification, i.e., the number of backup points that a cloud disk can have.
+        :type DiskBackupQuota: int
+        """
+        self.DiskId = None
+        self.DiskBackupQuota = None
+
+
+    def _deserialize(self, params):
+        self.DiskId = params.get("DiskId")
+        self.DiskBackupQuota = params.get("DiskBackupQuota")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquirePriceModifyDiskBackupQuotaResponse(AbstractModel):
+    """InquirePriceModifyDiskBackupQuota response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskPrice: Price of the cloud disk after its backup point quota is modified.
+        :type DiskPrice: :class:`tencentcloud.cbs.v20170312.models.Price`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DiskPrice = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DiskPrice") is not None:
+            self.DiskPrice = Price()
+            self.DiskPrice._deserialize(params.get("DiskPrice"))
+        self.RequestId = params.get("RequestId")
+
+
 class InquirePriceModifyDiskExtraPerformanceRequest(AbstractModel):
     """InquirePriceModifyDiskExtraPerformance request structure.
 
@@ -1886,40 +2177,44 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskType: Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: Tremendous SSD.
-        :type DiskType: str
-        :param DiskSize: Cloud disk size (in GB). For the value range of the cloud disk sizes, see cloud disk [Product Types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1).
-        :type DiskSize: int
-        :param DiskChargeType: Cloud disk billing method. <br><li>POSTPAID_BY_HOUR: Pay-as-you-go on an hourly basis
+        :param DiskChargeType: Cloud disk billing mode. <br><li>POSTPAID_BY_HOUR: Hourly pay-as-you-go.
         :type DiskChargeType: str
+        :param DiskType: Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD Cloud Storage<br><li>CLOUD_PREMIUM: Premium Cloud Disk<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: ulTra SSD.
+        :type DiskType: str
+        :param DiskSize: Cloud disk size in GB. For the value range, see [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1).
+        :type DiskSize: int
+        :param ProjectId: ID of the project to which the cloud disk belongs.
+        :type ProjectId: int
+        :param DiskCount: Number of cloud disks to be purchased. If it is not specified, `1` will be used by default.
+        :type DiskCount: int
+        :param ThroughputPerformance: Extra performance in MB/s purchased for a cloud disk.<br>This parameter is only valid for Enhanced SSD (CLOUD_HSSD) and ulTra SSD (CLOUD_TSSD).
+        :type ThroughputPerformance: int
         :param DiskChargePrepaid: Relevant parameter settings for the prepaid mode (i.e., monthly subscription). The monthly subscription cloud disk purchase attributes such as usage period and whether or not auto-renewal is set up can be specified using this parameter. <br>This parameter is required when creating a prepaid cloud disk. This parameter is not required when creating an hourly postpaid cloud disk.
         :type DiskChargePrepaid: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
-        :param DiskCount: Quantity of cloud disks purchased. If left empty, default is 1.
-        :type DiskCount: int
-        :param ProjectId: ID of project the cloud disk belongs to.
-        :type ProjectId: int
-        :param ThroughputPerformance: Extra performance (in MB/sec) purchased for a cloud disk.<br>This parameter is only valid for Enhanced SSD (CLOUD_HSSD) and Tremendous SSD (CLOUD_TSSD).
-        :type ThroughputPerformance: int
+        :param DiskBackupQuota: Specifies the cloud disk backup point quota.
+        :type DiskBackupQuota: int
         """
+        self.DiskChargeType = None
         self.DiskType = None
         self.DiskSize = None
-        self.DiskChargeType = None
-        self.DiskChargePrepaid = None
-        self.DiskCount = None
         self.ProjectId = None
+        self.DiskCount = None
         self.ThroughputPerformance = None
+        self.DiskChargePrepaid = None
+        self.DiskBackupQuota = None
 
 
     def _deserialize(self, params):
+        self.DiskChargeType = params.get("DiskChargeType")
         self.DiskType = params.get("DiskType")
         self.DiskSize = params.get("DiskSize")
-        self.DiskChargeType = params.get("DiskChargeType")
+        self.ProjectId = params.get("ProjectId")
+        self.DiskCount = params.get("DiskCount")
+        self.ThroughputPerformance = params.get("ThroughputPerformance")
         if params.get("DiskChargePrepaid") is not None:
             self.DiskChargePrepaid = DiskChargePrepaid()
             self.DiskChargePrepaid._deserialize(params.get("DiskChargePrepaid"))
-        self.DiskCount = params.get("DiskCount")
-        self.ProjectId = params.get("ProjectId")
-        self.ThroughputPerformance = params.get("ThroughputPerformance")
+        self.DiskBackupQuota = params.get("DiskBackupQuota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1936,7 +2231,7 @@ class InquiryPriceCreateDisksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskPrice: Describes the price of purchasing new cloud disk.
+        :param DiskPrice: Describes the price of newly purchased cloud disks.
         :type DiskPrice: :class:`tencentcloud.cbs.v20170312.models.Price`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2119,6 +2414,51 @@ class ModifyDiskAttributesRequest(AbstractModel):
 
 class ModifyDiskAttributesResponse(AbstractModel):
     """ModifyDiskAttributes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDiskBackupQuotaRequest(AbstractModel):
+    """ModifyDiskBackupQuota request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskId: Cloud disk ID.
+        :type DiskId: str
+        :param DiskBackupQuota: Cloud disk backup point quota after the adjustment
+        :type DiskBackupQuota: int
+        """
+        self.DiskId = None
+        self.DiskBackupQuota = None
+
+
+    def _deserialize(self, params):
+        self.DiskId = params.get("DiskId")
+        self.DiskBackupQuota = params.get("DiskBackupQuota")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDiskBackupQuotaResponse(AbstractModel):
+    """ModifyDiskBackupQuota response structure.
 
     """
 

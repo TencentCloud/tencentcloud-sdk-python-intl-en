@@ -47,7 +47,7 @@ INVALIDDISK_EXPIRE = 'InvalidDisk.Expire'
 # Non-elastic cloud disks are not supported.
 INVALIDDISK_NOTPORTABLE = 'InvalidDisk.NotPortable'
 
-# The cloud disk does not have the snapshot capability.
+# The cloud disk does not support snapshot.
 INVALIDDISK_NOTSUPPORTSNAPSHOT = 'InvalidDisk.NotSupportSnapshot'
 
 # Indicates that the operation is not supported for the cloud disk.
@@ -113,7 +113,7 @@ MISSINGPARAMETER = 'MissingParameter'
 # The resource is busy. Try again later.
 RESOURCEBUSY = 'ResourceBusy'
 
-# Occupied resource.
+# The resource is in use.
 RESOURCEINUSE = 'ResourceInUse'
 
 # The specified snapshot is being replicated to the destination region.
@@ -134,11 +134,20 @@ RESOURCEINSUFFICIENT_OVERQUOTA = 'ResourceInsufficient.OverQuota'
 # The number of returned cloud disks has reached the limit and no more cloud disks can be returned.
 RESOURCEINSUFFICIENT_OVERREFUNDQUOTA = 'ResourceInsufficient.OverRefundQuota'
 
+# The resource does not exist.
+RESOURCENOTFOUND = 'ResourceNotFound'
+
 # The resource is not found.
 RESOURCENOTFOUND_NOTFOUND = 'ResourceNotFound.NotFound'
 
+# The resource is unavailable.
+RESOURCEUNAVAILABLE = 'ResourceUnavailable'
+
 # The cloud disk has been mounted to another CVM.
 RESOURCEUNAVAILABLE_ATTACHED = 'ResourceUnavailable.Attached'
+
+# 
+RESOURCEUNAVAILABLE_DISKSNAPSHOTCHAINTOOLARGE = 'ResourceUnavailable.DiskSnapshotChainTooLarge'
 
 # The cloud disk has expired.
 RESOURCEUNAVAILABLE_EXPIRE = 'ResourceUnavailable.Expire'
@@ -158,7 +167,7 @@ RESOURCEUNAVAILABLE_REPEATREFUND = 'ResourceUnavailable.RepeatRefund'
 # Unable to use: the snapshot is being created
 RESOURCEUNAVAILABLE_SNAPSHOTCREATING = 'ResourceUnavailable.SnapshotCreating'
 
-# Too many snapshots created on entire network.
+# Too many snapshots are being created in the entire network.
 RESOURCEUNAVAILABLE_TOOMANYCREATINGSNAPSHOT = 'ResourceUnavailable.TooManyCreatingSnapshot'
 
 # Incorrect cloud disk type. For example, a system disk cannot be mounted to CVM.
@@ -170,13 +179,13 @@ RESOURCEUNAVAILABLE_ZONENOTMATCH = 'ResourceUnavailable.ZoneNotMatch'
 # Order conflict.
 TRADEDEALCONFLICT = 'TradeDealConflict'
 
-# Unauthorized operation.
+# The operation is unauthorized.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
 # Multi-factor authentication (MFA) has expired. Please try again.
 UNAUTHORIZEDOPERATION_MFAEXPIRED = 'UnauthorizedOperation.MFAExpired'
 
-# The account has not completed identity verification. Payment failed.
+# Payment failed as the account has not completed identity verification.
 UNAUTHORIZEDOPERATION_NOTCERTIFICATION = 'UnauthorizedOperation.NotCertification'
 
 # No payment permission.
@@ -191,7 +200,7 @@ UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 # 
 UNSUPPORTEDOPERATION_DETACHPOD = 'UnsupportedOperation.DetachPod'
 
-# Disk is encrypted.
+# The disk is encrypted.
 UNSUPPORTEDOPERATION_DISKENCRYPT = 'UnsupportedOperation.DiskEncrypt'
 
 # Instance mounted on cloud disk not shut down.
