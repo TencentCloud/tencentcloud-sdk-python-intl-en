@@ -15074,12 +15074,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Fps: Frame rate in Hz.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Fps: int
+        :param CodecTag: The codec tag. This parameter is valid only if `Codec` is `hevc`.
+        :type CodecTag: str
         """
         self.Bitrate = None
         self.Height = None
         self.Width = None
         self.Codec = None
         self.Fps = None
+        self.CodecTag = None
 
 
     def _deserialize(self, params):
@@ -15088,6 +15091,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Width = params.get("Width")
         self.Codec = params.get("Codec")
         self.Fps = params.get("Fps")
+        self.CodecTag = params.get("CodecTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -22808,6 +22812,11 @@ When this parameter is set to 0 or left empty, `Gop` will be automatically set.
 <li>OFF: Output an SDR video regardless of whether the source video is HDR.</li>
 Default value: OFF.
         :type PreserveHDRSwitch: str
+        :param CodecTag: The codec tag. This parameter is valid only if the H.265 codec is used. Valid values:
+<li>hvc1</li>
+<li>hev1</li>
+Default value: hvc1.
+        :type CodecTag: str
         """
         self.Codec = None
         self.Fps = None
@@ -22819,6 +22828,7 @@ Default value: OFF.
         self.Vcrf = None
         self.Gop = None
         self.PreserveHDRSwitch = None
+        self.CodecTag = None
 
 
     def _deserialize(self, params):
@@ -22832,6 +22842,7 @@ Default value: OFF.
         self.Vcrf = params.get("Vcrf")
         self.Gop = params.get("Gop")
         self.PreserveHDRSwitch = params.get("PreserveHDRSwitch")
+        self.CodecTag = params.get("CodecTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -22895,6 +22906,11 @@ When this parameter is set to 0 or left empty, `Gop` will be automatically set.
 <li>ON: If the source video is HDR, output an HDR video; if not, output an SDR (standard dynamic range) video.</li>
 <li>OFF: Output an SDR video regardless of whether the source video is HDR.</li>
         :type PreserveHDRSwitch: str
+        :param CodecTag: The codec tag. This parameter is valid only if the H.265 codec is used. Valid values:
+<li>hvc1</li>
+<li>hev1</li>
+Default value: hvc1.
+        :type CodecTag: str
         """
         self.Codec = None
         self.Fps = None
@@ -22906,6 +22922,7 @@ When this parameter is set to 0 or left empty, `Gop` will be automatically set.
         self.Vcrf = None
         self.Gop = None
         self.PreserveHDRSwitch = None
+        self.CodecTag = None
 
 
     def _deserialize(self, params):
@@ -22919,6 +22936,7 @@ When this parameter is set to 0 or left empty, `Gop` will be automatically set.
         self.Vcrf = params.get("Vcrf")
         self.Gop = params.get("Gop")
         self.PreserveHDRSwitch = params.get("PreserveHDRSwitch")
+        self.CodecTag = params.get("CodecTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
