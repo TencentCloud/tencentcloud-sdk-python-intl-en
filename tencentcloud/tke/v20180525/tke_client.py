@@ -230,7 +230,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateClusterEndpoint(self, request):
-        """Create a cluster access port (intranet / extranet access is enabled for independent clusters, and intranet access is supported for managed clusters)
+        """This API is used to create a cluster access endpoint.
 
         :param request: Request instance for CreateClusterEndpoint.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterEndpointRequest`
@@ -607,7 +607,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteClusterEndpoint(self, request):
-        """Delete the cluster access port (intranet / extranet access is enabled for independent clusters, and intranet access is supported for managed clusters)
+        """This API is used to delete a cluster access endpoint.
 
         :param request: Request instance for DeleteClusterEndpoint.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterEndpointRequest`
@@ -955,7 +955,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeAvailableTKEEdgeVersion(self, request):
-        """This API is used to query the K8s versions supported by TKE Edge.
+        """This API is used to check the edge component versions and K8s versions supported by TKE Edge.
 
         :param request: Request instance for DescribeAvailableTKEEdgeVersion.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeAvailableTKEEdgeVersionRequest`

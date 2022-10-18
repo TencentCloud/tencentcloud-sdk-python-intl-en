@@ -1708,6 +1708,35 @@ class AntiddosClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeNewL7RulesErrHealth(self, request):
+        """This API is used to getting the exception results of the health check on layer-7 forwarding rules.
+
+        :param request: Request instance for DescribeNewL7RulesErrHealth.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeNewL7RulesErrHealthRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeNewL7RulesErrHealthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNewL7RulesErrHealth", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNewL7RulesErrHealthResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeOverviewDDoSEventList(self, request):
         """This API is used to obtain the list of DDoS attacks.
 

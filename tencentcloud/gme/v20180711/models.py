@@ -324,6 +324,93 @@ class CreateAppResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteResult(AbstractModel):
+    """Result of the operation to delete a room or remove members
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Code: Status code. `0`: Succeeded. Others: Failed\
+        :type Code: int
+        :param ErrorMsg: Description
+        :type ErrorMsg: str
+        """
+        self.Code = None
+        self.ErrorMsg = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.ErrorMsg = params.get("ErrorMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRoomMemberRequest(AbstractModel):
+    """DeleteRoomMember request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoomId: ID of the target room
+        :type RoomId: str
+        :param Uids: List of the members to remove
+        :type Uids: list of str
+        :param DeleteType: Operation type. `1`: Delete a room; `2`: Remove members
+        :type DeleteType: int
+        :param BizId: Application ID
+        :type BizId: int
+        """
+        self.RoomId = None
+        self.Uids = None
+        self.DeleteType = None
+        self.BizId = None
+
+
+    def _deserialize(self, params):
+        self.RoomId = params.get("RoomId")
+        self.Uids = params.get("Uids")
+        self.DeleteType = params.get("DeleteType")
+        self.BizId = params.get("BizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRoomMemberResponse(AbstractModel):
+    """DeleteRoomMember response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeleteResult: Result of the operation to delete a room or remove a member
+        :type DeleteResult: :class:`tencentcloud.gme.v20180711.models.DeleteResult`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DeleteResult = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DeleteResult") is not None:
+            self.DeleteResult = DeleteResult()
+            self.DeleteResult._deserialize(params.get("DeleteResult"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAppStatisticsRequest(AbstractModel):
     """DescribeAppStatistics request structure.
 

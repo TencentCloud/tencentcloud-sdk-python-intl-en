@@ -1516,7 +1516,7 @@ class CreateClusterEndpointRequest(AbstractModel):
         :type IsExtranet: bool
         :param Domain: The domain name
         :type Domain: str
-        :param SecurityGroup: The security group in use. Required only for public network access.
+        :param SecurityGroup: The security group in use, which must be passed in when public access is enabled.
         :type SecurityGroup: str
         :param ExtensiveParameters: The LB parameter. Required only for public network access.
         :type ExtensiveParameters: str
@@ -2287,6 +2287,10 @@ class CreateTKEEdgeClusterRequest(AbstractModel):
         :type AutoUpgradeClusterLevel: bool
         :param ChargeType: Cluster billing mode
         :type ChargeType: str
+        :param EdgeVersion: Edge cluster version. It is the set of versions of all cluster components.
+        :type EdgeVersion: str
+        :param RegistryPrefix: Prefix of the image registry of an edge component
+        :type RegistryPrefix: str
         """
         self.K8SVersion = None
         self.VpcId = None
@@ -2300,6 +2304,8 @@ class CreateTKEEdgeClusterRequest(AbstractModel):
         self.ClusterLevel = None
         self.AutoUpgradeClusterLevel = None
         self.ChargeType = None
+        self.EdgeVersion = None
+        self.RegistryPrefix = None
 
 
     def _deserialize(self, params):
@@ -2319,6 +2325,8 @@ class CreateTKEEdgeClusterRequest(AbstractModel):
         self.ClusterLevel = params.get("ClusterLevel")
         self.AutoUpgradeClusterLevel = params.get("AutoUpgradeClusterLevel")
         self.ChargeType = params.get("ChargeType")
+        self.EdgeVersion = params.get("EdgeVersion")
+        self.RegistryPrefix = params.get("RegistryPrefix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3103,6 +3111,24 @@ class DescribeAvailableTKEEdgeVersionRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param ClusterId: You can enter the `ClusterId` to query the current and latest versions of all cluster components.
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeAvailableTKEEdgeVersionResponse(AbstractModel):
     """DescribeAvailableTKEEdgeVersion response structure.
@@ -3113,15 +3139,25 @@ class DescribeAvailableTKEEdgeVersionResponse(AbstractModel):
         r"""
         :param Versions: Version list
         :type Versions: list of str
+        :param EdgeVersionLatest: Latest version of the edge cluster
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type EdgeVersionLatest: str
+        :param EdgeVersionCurrent: Current version of the edge cluster
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type EdgeVersionCurrent: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.Versions = None
+        self.EdgeVersionLatest = None
+        self.EdgeVersionCurrent = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Versions = params.get("Versions")
+        self.EdgeVersionLatest = params.get("EdgeVersionLatest")
+        self.EdgeVersionCurrent = params.get("EdgeVersionCurrent")
         self.RequestId = params.get("RequestId")
 
 

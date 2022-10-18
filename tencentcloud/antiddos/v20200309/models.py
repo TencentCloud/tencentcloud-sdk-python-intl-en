@@ -466,6 +466,8 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :type TagInfoList: list of TagInfo
         :param IpCountNewFlag: New edition of Anti-DDoS Pro
         :type IpCountNewFlag: int
+        :param VitalityVersion: The version of attack defense package
+        :type VitalityVersion: int
         """
         self.InstanceDetail = None
         self.SpecificationLimit = None
@@ -482,6 +484,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.CCEnable = None
         self.TagInfoList = None
         self.IpCountNewFlag = None
+        self.VitalityVersion = None
 
 
     def _deserialize(self, params):
@@ -520,6 +523,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
                 obj._deserialize(item)
                 self.TagInfoList.append(obj)
         self.IpCountNewFlag = params.get("IpCountNewFlag")
+        self.VitalityVersion = params.get("VitalityVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4782,6 +4786,64 @@ class DescribeListWaterPrintConfigResponse(AbstractModel):
                 obj = WaterPrintRelation()
                 obj._deserialize(item)
                 self.ConfigList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNewL7RulesErrHealthRequest(AbstractModel):
+    """DescribeNewL7RulesErrHealth request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Business: Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)
+        :type Business: str
+        :param RuleIdList: List of rule IDs
+        :type RuleIdList: list of str
+        """
+        self.Business = None
+        self.RuleIdList = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.RuleIdList = params.get("RuleIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNewL7RulesErrHealthResponse(AbstractModel):
+    """DescribeNewL7RulesErrHealth response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrHealths: List of rules with exceptions. `Key`: Rule ID, `Value`: Exception IPs and error message. 
+        :type ErrHealths: list of KeyValue
+        :param Total: Total number of rules with exceptions
+        :type Total: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ErrHealths = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ErrHealths") is not None:
+            self.ErrHealths = []
+            for item in params.get("ErrHealths"):
+                obj = KeyValue()
+                obj._deserialize(item)
+                self.ErrHealths.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
