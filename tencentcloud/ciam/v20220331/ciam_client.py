@@ -142,6 +142,35 @@ class CiamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeUser(self, request):
+        """This API is used to query the user information with multiple conditions.
+
+        :param request: Request instance for DescribeUser.
+        :type request: :class:`tencentcloud.ciam.v20220331.models.DescribeUserRequest`
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.DescribeUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUser", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeUserById(self, request):
         """This API is used to query a user by ID.
 

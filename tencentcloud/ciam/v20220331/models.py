@@ -85,7 +85,6 @@ class CreateFileExportUserJobRequest(AbstractModel):
         :type UserStoreId: str
         :param Format: Exported data type
 
-<li> **JSON** </li>  JSON
 <li> **NDJSON** </li>  New-line Delimited JSON
 <li> **CSV** </li>  Comma-Separated Values
         :type Format: str
@@ -177,6 +176,16 @@ class CreateUserRequest(AbstractModel):
         :type Birthdate: int
         :param CustomizationAttributes: Custom attribute
         :type CustomizationAttributes: list of MemberMap
+        :param IndexedAttribute1: Index field 1
+        :type IndexedAttribute1: str
+        :param IndexedAttribute2: Index field 2
+        :type IndexedAttribute2: str
+        :param IndexedAttribute3: Index field 3
+        :type IndexedAttribute3: str
+        :param IndexedAttribute4: Index field 4
+        :type IndexedAttribute4: str
+        :param IndexedAttribute5: Index field 5
+        :type IndexedAttribute5: str
         """
         self.UserStoreId = None
         self.PhoneNumber = None
@@ -188,6 +197,11 @@ class CreateUserRequest(AbstractModel):
         self.UserGroup = None
         self.Birthdate = None
         self.CustomizationAttributes = None
+        self.IndexedAttribute1 = None
+        self.IndexedAttribute2 = None
+        self.IndexedAttribute3 = None
+        self.IndexedAttribute4 = None
+        self.IndexedAttribute5 = None
 
 
     def _deserialize(self, params):
@@ -206,6 +220,11 @@ class CreateUserRequest(AbstractModel):
                 obj = MemberMap()
                 obj._deserialize(item)
                 self.CustomizationAttributes.append(obj)
+        self.IndexedAttribute1 = params.get("IndexedAttribute1")
+        self.IndexedAttribute2 = params.get("IndexedAttribute2")
+        self.IndexedAttribute3 = params.get("IndexedAttribute3")
+        self.IndexedAttribute4 = params.get("IndexedAttribute4")
+        self.IndexedAttribute5 = params.get("IndexedAttribute5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -295,7 +314,10 @@ class DescribeUserByIdRequest(AbstractModel):
         :type UserStoreId: str
         :param UserId: User ID
         :type UserId: str
-        :param Original: 
+        :param Original: Whether the content is passed through
+
+<li> **false** </li>Default. The returned information is desensitized.
+<li> **true** </li>Return the original content.
         :type Original: bool
         """
         self.UserStoreId = None
@@ -337,6 +359,94 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("User") is not None:
             self.User = User()
             self.User._deserialize(params.get("User"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUserRequest(AbstractModel):
+    """DescribeUser request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserStoreId: User directory ID
+        :type UserStoreId: str
+        :param Pageable: Pagination data
+        :type Pageable: :class:`tencentcloud.ciam.v20220331.models.Pageable`
+        :param Filters: Query condition (`propertycode` and `propertykey`)
+        :type Filters: list of QueryUserFilter
+        :param Original: Whether the plaintext is returned
+        :type Original: bool
+        :param Sort: Sorting configuration
+        :type Sort: :class:`tencentcloud.ciam.v20220331.models.Sort`
+        """
+        self.UserStoreId = None
+        self.Pageable = None
+        self.Filters = None
+        self.Original = None
+        self.Sort = None
+
+
+    def _deserialize(self, params):
+        self.UserStoreId = params.get("UserStoreId")
+        if params.get("Pageable") is not None:
+            self.Pageable = Pageable()
+            self.Pageable._deserialize(params.get("Pageable"))
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = QueryUserFilter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Original = params.get("Original")
+        if params.get("Sort") is not None:
+            self.Sort = Sort()
+            self.Sort._deserialize(params.get("Sort"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserResponse(AbstractModel):
+    """DescribeUser response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: The total number of returned results.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Total: int
+        :param Pageable: Pagination object
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Pageable: :class:`tencentcloud.ciam.v20220331.models.Pageable`
+        :param Content: User List
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Content: list of User
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Pageable = None
+        self.Content = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Pageable") is not None:
+            self.Pageable = Pageable()
+            self.Pageable._deserialize(params.get("Pageable"))
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = User()
+                obj._deserialize(item)
+                self.Content.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -524,6 +634,16 @@ class ImportUser(AbstractModel):
         :type Salt: :class:`tencentcloud.ciam.v20220331.models.Salt`
         :param PasswordEncryptTypeEnum: Password encryption method. Valid values: `SHA1`, `BCRYPT`.
         :type PasswordEncryptTypeEnum: str
+        :param IndexedAttribute1: Index field 1
+        :type IndexedAttribute1: str
+        :param IndexedAttribute2: Index field 2
+        :type IndexedAttribute2: str
+        :param IndexedAttribute3: Index field 3
+        :type IndexedAttribute3: str
+        :param IndexedAttribute4: Index field 4
+        :type IndexedAttribute4: str
+        :param IndexedAttribute5: Index field 5
+        :type IndexedAttribute5: str
         """
         self.UserName = None
         self.PhoneNumber = None
@@ -551,6 +671,11 @@ class ImportUser(AbstractModel):
         self.CustomizationAttributes = None
         self.Salt = None
         self.PasswordEncryptTypeEnum = None
+        self.IndexedAttribute1 = None
+        self.IndexedAttribute2 = None
+        self.IndexedAttribute3 = None
+        self.IndexedAttribute4 = None
+        self.IndexedAttribute5 = None
 
 
     def _deserialize(self, params):
@@ -587,6 +712,11 @@ class ImportUser(AbstractModel):
             self.Salt = Salt()
             self.Salt._deserialize(params.get("Salt"))
         self.PasswordEncryptTypeEnum = params.get("PasswordEncryptTypeEnum")
+        self.IndexedAttribute1 = params.get("IndexedAttribute1")
+        self.IndexedAttribute2 = params.get("IndexedAttribute2")
+        self.IndexedAttribute3 = params.get("IndexedAttribute3")
+        self.IndexedAttribute4 = params.get("IndexedAttribute4")
+        self.IndexedAttribute5 = params.get("IndexedAttribute5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -621,10 +751,9 @@ class Job(AbstractModel):
         :type CreatedDate: int
         :param Format: Data type of the task
 
-<li> **JSON** </li>  JSON
 <li> **NDJSON** </li>  New-line Delimited JSON
 <li> **CSV** </li>  Comma-Separated Values
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type Format: str
         :param Location: Task result download address
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -883,7 +1012,7 @@ class ListUserByPropertyRequest(AbstractModel):
         :type PropertyCode: str
         :param PropertyValue: Attribute value
         :type PropertyValue: str
-        :param Original: 
+        :param Original: Whether the content is passed through
         :type Original: bool
         """
         self.UserStoreId = None
@@ -949,7 +1078,7 @@ class ListUserRequest(AbstractModel):
 <li> **condition** </li>	Values = Query condition, which can be user ID, username, mobile number, or email address.
 <li> **userGroupId** </li>	Values = User group ID
         :type Filters: list of Filter
-        :param Original: 
+        :param Original: Whether the content is passed through
         :type Original: bool
         """
         self.UserStoreId = None
@@ -1186,6 +1315,42 @@ class Pageable(AbstractModel):
         
 
 
+class QueryUserFilter(AbstractModel):
+    """Conditions to query the user information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PropertyKey: Property key
+        :type PropertyKey: str
+        :param PropertyValue: Property value
+        :type PropertyValue: str
+        :param Logic: Logic value. `True` or `False`
+        :type Logic: bool
+        :param OperateLogic: Operator. Values: `>`, `<`, `=`, `>=`, `<=`, `!=` and `between`. 
+        :type OperateLogic: str
+        """
+        self.PropertyKey = None
+        self.PropertyValue = None
+        self.Logic = None
+        self.OperateLogic = None
+
+
+    def _deserialize(self, params):
+        self.PropertyKey = params.get("PropertyKey")
+        self.PropertyValue = params.get("PropertyValue")
+        self.Logic = params.get("Logic")
+        self.OperateLogic = params.get("OperateLogic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResetPasswordRequest(AbstractModel):
     """ResetPassword request structure.
 
@@ -1368,6 +1533,34 @@ class SetPasswordResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Sort(AbstractModel):
+    """Sorting of the result of user query
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PropertyKey: Key for sorting. See custom attributes
+        :type PropertyKey: str
+        :param Order: `ASC` or `DESC`
+        :type Order: str
+        """
+        self.PropertyKey = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.PropertyKey = params.get("PropertyKey")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UpdateUserRequest(AbstractModel):
     """UpdateUser request structure.
 
@@ -1395,6 +1588,16 @@ class UpdateUserRequest(AbstractModel):
         :type Birthdate: int
         :param CustomizationAttributes: Custom attribute
         :type CustomizationAttributes: list of MemberMap
+        :param IndexedAttribute1: Index field 1
+        :type IndexedAttribute1: str
+        :param IndexedAttribute2: Index field 2
+        :type IndexedAttribute2: str
+        :param IndexedAttribute3: Index field 3
+        :type IndexedAttribute3: str
+        :param IndexedAttribute4: Index field 4
+        :type IndexedAttribute4: str
+        :param IndexedAttribute5: Index field 5
+        :type IndexedAttribute5: str
         """
         self.UserId = None
         self.UserStoreId = None
@@ -1406,6 +1609,11 @@ class UpdateUserRequest(AbstractModel):
         self.UserGroup = None
         self.Birthdate = None
         self.CustomizationAttributes = None
+        self.IndexedAttribute1 = None
+        self.IndexedAttribute2 = None
+        self.IndexedAttribute3 = None
+        self.IndexedAttribute4 = None
+        self.IndexedAttribute5 = None
 
 
     def _deserialize(self, params):
@@ -1424,6 +1632,11 @@ class UpdateUserRequest(AbstractModel):
                 obj = MemberMap()
                 obj._deserialize(item)
                 self.CustomizationAttributes.append(obj)
+        self.IndexedAttribute1 = params.get("IndexedAttribute1")
+        self.IndexedAttribute2 = params.get("IndexedAttribute2")
+        self.IndexedAttribute3 = params.get("IndexedAttribute3")
+        self.IndexedAttribute4 = params.get("IndexedAttribute4")
+        self.IndexedAttribute5 = params.get("IndexedAttribute5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1621,6 +1834,21 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param LockTime: Lock time
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LockTime: int
+        :param IndexedAttribute1: Index field 1
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IndexedAttribute1: str
+        :param IndexedAttribute2: Index field 2
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IndexedAttribute2: str
+        :param IndexedAttribute3: Index field 3
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IndexedAttribute3: str
+        :param IndexedAttribute4: Index field 4
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IndexedAttribute4: str
+        :param IndexedAttribute5: Index field 5
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IndexedAttribute5: str
         """
         self.UserId = None
         self.UserName = None
@@ -1658,6 +1886,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Version = None
         self.LockType = None
         self.LockTime = None
+        self.IndexedAttribute1 = None
+        self.IndexedAttribute2 = None
+        self.IndexedAttribute3 = None
+        self.IndexedAttribute4 = None
+        self.IndexedAttribute5 = None
 
 
     def _deserialize(self, params):
@@ -1702,6 +1935,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Version = params.get("Version")
         self.LockType = params.get("LockType")
         self.LockTime = params.get("LockTime")
+        self.IndexedAttribute1 = params.get("IndexedAttribute1")
+        self.IndexedAttribute2 = params.get("IndexedAttribute2")
+        self.IndexedAttribute3 = params.get("IndexedAttribute3")
+        self.IndexedAttribute4 = params.get("IndexedAttribute4")
+        self.IndexedAttribute5 = params.get("IndexedAttribute5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

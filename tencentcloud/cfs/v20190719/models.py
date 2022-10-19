@@ -18,6 +18,83 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AutoSnapshotPolicyInfo(AbstractModel):
+    """Snapshot policy information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoSnapshotPolicyId: Snapshot policy ID
+        :type AutoSnapshotPolicyId: str
+        :param PolicyName: Snapshot policy name
+        :type PolicyName: str
+        :param CreationTime: Snapshot policy creation time
+        :type CreationTime: str
+        :param FileSystemNums: Number of bound file systems
+        :type FileSystemNums: int
+        :param DayOfWeek: The day of the week on which to regularly back up the snapshot
+        :type DayOfWeek: str
+        :param Hour: The hour of a day at which to regularly back up the snapshot
+        :type Hour: str
+        :param IsActivated: Whether to activate the scheduled snapshot feature
+        :type IsActivated: int
+        :param NextActiveTime: Next time to trigger snapshot
+        :type NextActiveTime: str
+        :param Status: Snapshot policy status
+        :type Status: str
+        :param AppId: Account ID
+        :type AppId: int
+        :param AliveDays: Retention period
+        :type AliveDays: int
+        :param RegionName: Region
+        :type RegionName: str
+        :param FileSystems: File system information
+        :type FileSystems: list of FileSystemByPolicy
+        """
+        self.AutoSnapshotPolicyId = None
+        self.PolicyName = None
+        self.CreationTime = None
+        self.FileSystemNums = None
+        self.DayOfWeek = None
+        self.Hour = None
+        self.IsActivated = None
+        self.NextActiveTime = None
+        self.Status = None
+        self.AppId = None
+        self.AliveDays = None
+        self.RegionName = None
+        self.FileSystems = None
+
+
+    def _deserialize(self, params):
+        self.AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
+        self.PolicyName = params.get("PolicyName")
+        self.CreationTime = params.get("CreationTime")
+        self.FileSystemNums = params.get("FileSystemNums")
+        self.DayOfWeek = params.get("DayOfWeek")
+        self.Hour = params.get("Hour")
+        self.IsActivated = params.get("IsActivated")
+        self.NextActiveTime = params.get("NextActiveTime")
+        self.Status = params.get("Status")
+        self.AppId = params.get("AppId")
+        self.AliveDays = params.get("AliveDays")
+        self.RegionName = params.get("RegionName")
+        if params.get("FileSystems") is not None:
+            self.FileSystems = []
+            for item in params.get("FileSystems"):
+                obj = FileSystemByPolicy()
+                obj._deserialize(item)
+                self.FileSystems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AvailableProtoStatus(AbstractModel):
     """Versioning - protocol details
 
@@ -171,6 +248,112 @@ class AvailableZone(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class BindAutoSnapshotPolicyRequest(AbstractModel):
+    """BindAutoSnapshotPolicy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoSnapshotPolicyId: Snapshot policy ID
+        :type AutoSnapshotPolicyId: str
+        :param FileSystemIds: List of file systems
+        :type FileSystemIds: str
+        """
+        self.AutoSnapshotPolicyId = None
+        self.FileSystemIds = None
+
+
+    def _deserialize(self, params):
+        self.AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
+        self.FileSystemIds = params.get("FileSystemIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindAutoSnapshotPolicyResponse(AbstractModel):
+    """BindAutoSnapshotPolicy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoSnapshotPolicyId: Snapshot policy ID
+        :type AutoSnapshotPolicyId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AutoSnapshotPolicyId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAutoSnapshotPolicyRequest(AbstractModel):
+    """CreateAutoSnapshotPolicy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DayOfWeek: The day of the week on which to repeat the snapshot operation
+        :type DayOfWeek: str
+        :param Hour: The time point when to repeat the snapshot operation
+        :type Hour: str
+        :param PolicyName: Policy name
+        :type PolicyName: str
+        :param AliveDays: Snapshot retention period
+        :type AliveDays: int
+        """
+        self.DayOfWeek = None
+        self.Hour = None
+        self.PolicyName = None
+        self.AliveDays = None
+
+
+    def _deserialize(self, params):
+        self.DayOfWeek = params.get("DayOfWeek")
+        self.Hour = params.get("Hour")
+        self.PolicyName = params.get("PolicyName")
+        self.AliveDays = params.get("AliveDays")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAutoSnapshotPolicyResponse(AbstractModel):
+    """CreateAutoSnapshotPolicy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoSnapshotPolicyId: Snapshot policy ID
+        :type AutoSnapshotPolicyId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AutoSnapshotPolicyId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
+        self.RequestId = params.get("RequestId")
 
 
 class CreateCfsFileSystemRequest(AbstractModel):
@@ -449,6 +632,109 @@ class CreateCfsRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateCfsSnapshotRequest(AbstractModel):
+    """CreateCfsSnapshot request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileSystemId: File system ID
+        :type FileSystemId: str
+        :param SnapshotName: Snapshot name
+        :type SnapshotName: str
+        :param ResourceTags: Snapshot tag
+        :type ResourceTags: list of TagInfo
+        """
+        self.FileSystemId = None
+        self.SnapshotName = None
+        self.ResourceTags = None
+
+
+    def _deserialize(self, params):
+        self.FileSystemId = params.get("FileSystemId")
+        self.SnapshotName = params.get("SnapshotName")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCfsSnapshotResponse(AbstractModel):
+    """CreateCfsSnapshot response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotId: File system snapshot ID
+        :type SnapshotId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SnapshotId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotId = params.get("SnapshotId")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAutoSnapshotPolicyRequest(AbstractModel):
+    """DeleteAutoSnapshotPolicy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoSnapshotPolicyId: Snapshot policy ID
+        :type AutoSnapshotPolicyId: str
+        """
+        self.AutoSnapshotPolicyId = None
+
+
+    def _deserialize(self, params):
+        self.AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAutoSnapshotPolicyResponse(AbstractModel):
+    """DeleteAutoSnapshotPolicy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoSnapshotPolicyId: Snapshot policy ID
+        :type AutoSnapshotPolicyId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AutoSnapshotPolicyId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteCfsFileSystemRequest(AbstractModel):
     """DeleteCfsFileSystem request structure.
 
@@ -592,6 +878,51 @@ class DeleteCfsRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteCfsSnapshotRequest(AbstractModel):
+    """DeleteCfsSnapshot request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotId: File system snapshot ID
+        :type SnapshotId: str
+        """
+        self.SnapshotId = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotId = params.get("SnapshotId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCfsSnapshotResponse(AbstractModel):
+    """DeleteCfsSnapshot response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotId: File system ID
+        :type SnapshotId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SnapshotId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotId = params.get("SnapshotId")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteMountTargetRequest(AbstractModel):
     """DeleteMountTarget request structure.
 
@@ -634,6 +965,85 @@ class DeleteMountTargetResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
+    """DescribeAutoSnapshotPolicies request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoSnapshotPolicyId: Snapshot policy ID
+        :type AutoSnapshotPolicyId: str
+        :param Offset: Page offset
+        :type Offset: int
+        :param Limit: Page length
+        :type Limit: int
+        :param Filters: Filters
+        :type Filters: list of Filter
+        :param Order: Ascending or descending order
+        :type Order: str
+        :param OrderField: Sorting field
+        :type OrderField: str
+        """
+        self.AutoSnapshotPolicyId = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+        self.Order = None
+        self.OrderField = None
+
+
+    def _deserialize(self, params):
+        self.AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.OrderField = params.get("OrderField")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAutoSnapshotPoliciesResponse(AbstractModel):
+    """DescribeAutoSnapshotPolicies response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number of snapshot policies
+        :type TotalCount: int
+        :param AutoSnapshotPolicies: Snapshot policy information
+        :type AutoSnapshotPolicies: list of AutoSnapshotPolicyInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.AutoSnapshotPolicies = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AutoSnapshotPolicies") is not None:
+            self.AutoSnapshotPolicies = []
+            for item in params.get("AutoSnapshotPolicies"):
+                obj = AutoSnapshotPolicyInfo()
+                obj._deserialize(item)
+                self.AutoSnapshotPolicies.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -890,6 +1300,125 @@ class DescribeCfsServiceStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCfsSnapshotOverviewRequest(AbstractModel):
+    """DescribeCfsSnapshotOverview request structure.
+
+    """
+
+
+class DescribeCfsSnapshotOverviewResponse(AbstractModel):
+    """DescribeCfsSnapshotOverview response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StatisticsList: Statistics
+        :type StatisticsList: list of SnapshotStatistics
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.StatisticsList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("StatisticsList") is not None:
+            self.StatisticsList = []
+            for item in params.get("StatisticsList"):
+                obj = SnapshotStatistics()
+                obj._deserialize(item)
+                self.StatisticsList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCfsSnapshotsRequest(AbstractModel):
+    """DescribeCfsSnapshots request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileSystemId: File system ID
+        :type FileSystemId: str
+        :param SnapshotId: Snapshot ID
+        :type SnapshotId: str
+        :param Offset: The starting position of paging
+        :type Offset: int
+        :param Limit: Page length
+        :type Limit: int
+        :param Filters: Filters
+        :type Filters: list of Filter
+        :param OrderField: Order field
+        :type OrderField: str
+        :param Order: Sorting order (ascending or descending)
+        :type Order: str
+        """
+        self.FileSystemId = None
+        self.SnapshotId = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+        self.OrderField = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.FileSystemId = params.get("FileSystemId")
+        self.SnapshotId = params.get("SnapshotId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.OrderField = params.get("OrderField")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCfsSnapshotsResponse(AbstractModel):
+    """DescribeCfsSnapshots response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number
+        :type TotalCount: int
+        :param Snapshots: Snapshot information description
+        :type Snapshots: list of SnapshotInfo
+        :param TotalSize: Total size of snapshots
+        :type TotalSize: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Snapshots = None
+        self.TotalSize = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Snapshots") is not None:
+            self.Snapshots = []
+            for item in params.get("Snapshots"):
+                obj = SnapshotInfo()
+                obj._deserialize(item)
+                self.Snapshots.append(obj)
+        self.TotalSize = params.get("TotalSize")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeMountTargetsRequest(AbstractModel):
     """DescribeMountTargets request structure.
 
@@ -942,6 +1471,116 @@ class DescribeMountTargetsResponse(AbstractModel):
                 self.MountTargets.append(obj)
         self.NumberOfMountTargets = params.get("NumberOfMountTargets")
         self.RequestId = params.get("RequestId")
+
+
+class DescribeSnapshotOperationLogsRequest(AbstractModel):
+    """DescribeSnapshotOperationLogs request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotId: File system snapshot ID
+        :type SnapshotId: str
+        :param StartTime: Start time
+        :type StartTime: str
+        :param EndTime: End time
+        :type EndTime: str
+        """
+        self.SnapshotId = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotId = params.get("SnapshotId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSnapshotOperationLogsResponse(AbstractModel):
+    """DescribeSnapshotOperationLogs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotId: Snapshot ID
+        :type SnapshotId: str
+        :param SnapshotOperates: Operation log
+        :type SnapshotOperates: list of SnapshotOperateLog
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SnapshotId = None
+        self.SnapshotOperates = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotId = params.get("SnapshotId")
+        if params.get("SnapshotOperates") is not None:
+            self.SnapshotOperates = []
+            for item in params.get("SnapshotOperates"):
+                obj = SnapshotOperateLog()
+                obj._deserialize(item)
+                self.SnapshotOperates.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class FileSystemByPolicy(AbstractModel):
+    """Information of the file system bound to the snapshot policy
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CreationToken: File system name
+        :type CreationToken: str
+        :param FileSystemId: File system ID
+        :type FileSystemId: str
+        :param SizeByte: File system size
+        :type SizeByte: int
+        :param StorageType: Storage class
+        :type StorageType: str
+        :param TotalSnapshotSize: Total snapshot size
+        :type TotalSnapshotSize: int
+        :param CreationTime: File system creation time
+        :type CreationTime: str
+        :param ZoneId: Region ID of the file system
+        :type ZoneId: int
+        """
+        self.CreationToken = None
+        self.FileSystemId = None
+        self.SizeByte = None
+        self.StorageType = None
+        self.TotalSnapshotSize = None
+        self.CreationTime = None
+        self.ZoneId = None
+
+
+    def _deserialize(self, params):
+        self.CreationToken = params.get("CreationToken")
+        self.FileSystemId = params.get("FileSystemId")
+        self.SizeByte = params.get("SizeByte")
+        self.StorageType = params.get("StorageType")
+        self.TotalSnapshotSize = params.get("TotalSnapshotSize")
+        self.CreationTime = params.get("CreationTime")
+        self.ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class FileSystemClient(AbstractModel):
@@ -1086,6 +1725,34 @@ class FileSystemInfo(AbstractModel):
                 obj = TagInfo()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Filter(AbstractModel):
+    """Conditional filter
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Values: Value
+        :type Values: list of str
+        :param Name: Name
+        :type Name: str
+        """
+        self.Values = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Values = params.get("Values")
+        self.Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1284,7 +1951,7 @@ class SignUpCfsServiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CfsServiceStatus: Current status of the CFS service for this user. Valid values: none (not activated), creating (activating), created (activated)
+        :param CfsServiceStatus: Current status of the CFS service for this user. Valid values: `creating` (activating); `created` (activated)
         :type CfsServiceStatus: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1296,6 +1963,155 @@ class SignUpCfsServiceResponse(AbstractModel):
     def _deserialize(self, params):
         self.CfsServiceStatus = params.get("CfsServiceStatus")
         self.RequestId = params.get("RequestId")
+
+
+class SnapshotInfo(AbstractModel):
+    """Snapshot information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CreationTime: Snapshot creation time
+        :type CreationTime: str
+        :param SnapshotName: Snapshot name
+        :type SnapshotName: str
+        :param SnapshotId: Snapshot ID
+        :type SnapshotId: str
+        :param Status: Snapshot status
+        :type Status: str
+        :param RegionName: Region name
+        :type RegionName: str
+        :param FileSystemId: File system ID
+        :type FileSystemId: str
+        :param Size: Snapshot size
+        :type Size: int
+        :param AliveDay: Retention period in days
+        :type AliveDay: int
+        :param Percent: Snapshot progress
+        :type Percent: int
+        :param AppId: Account ID
+        :type AppId: int
+        :param DeleteTime: Snapshot deletion time
+        :type DeleteTime: str
+        :param FsName: File system name
+        :type FsName: str
+        :param Tags: Snapshot tag
+        :type Tags: list of TagInfo
+        """
+        self.CreationTime = None
+        self.SnapshotName = None
+        self.SnapshotId = None
+        self.Status = None
+        self.RegionName = None
+        self.FileSystemId = None
+        self.Size = None
+        self.AliveDay = None
+        self.Percent = None
+        self.AppId = None
+        self.DeleteTime = None
+        self.FsName = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.CreationTime = params.get("CreationTime")
+        self.SnapshotName = params.get("SnapshotName")
+        self.SnapshotId = params.get("SnapshotId")
+        self.Status = params.get("Status")
+        self.RegionName = params.get("RegionName")
+        self.FileSystemId = params.get("FileSystemId")
+        self.Size = params.get("Size")
+        self.AliveDay = params.get("AliveDay")
+        self.Percent = params.get("Percent")
+        self.AppId = params.get("AppId")
+        self.DeleteTime = params.get("DeleteTime")
+        self.FsName = params.get("FsName")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SnapshotOperateLog(AbstractModel):
+    """Snapshot operation log
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Action: Operation type
+        :type Action: str
+        :param ActionTime: Operation time
+        :type ActionTime: str
+        :param ActionName: Operation name
+        :type ActionName: str
+        :param Operator: Operator
+        :type Operator: str
+        :param Result: Result
+        :type Result: int
+        """
+        self.Action = None
+        self.ActionTime = None
+        self.ActionName = None
+        self.Operator = None
+        self.Result = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.ActionTime = params.get("ActionTime")
+        self.ActionName = params.get("ActionName")
+        self.Operator = params.get("Operator")
+        self.Result = params.get("Result")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SnapshotStatistics(AbstractModel):
+    """File system snapshot statistics
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Region: Region
+        :type Region: str
+        :param SnapshotNumber: Total number of snapshots
+        :type SnapshotNumber: int
+        :param SnapshotSize: Total snapshot size
+        :type SnapshotSize: int
+        """
+        self.Region = None
+        self.SnapshotNumber = None
+        self.SnapshotSize = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.SnapshotNumber = params.get("SnapshotNumber")
+        self.SnapshotSize = params.get("SnapshotSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TagInfo(AbstractModel):
@@ -1324,6 +2140,120 @@ class TagInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UnbindAutoSnapshotPolicyRequest(AbstractModel):
+    """UnbindAutoSnapshotPolicy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileSystemIds: List of IDs of the file systems to be unbound, separated by comma
+        :type FileSystemIds: str
+        :param AutoSnapshotPolicyId: ID of the snapshot to be unbound
+        :type AutoSnapshotPolicyId: str
+        """
+        self.FileSystemIds = None
+        self.AutoSnapshotPolicyId = None
+
+
+    def _deserialize(self, params):
+        self.FileSystemIds = params.get("FileSystemIds")
+        self.AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnbindAutoSnapshotPolicyResponse(AbstractModel):
+    """UnbindAutoSnapshotPolicy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoSnapshotPolicyId: Snapshot policy ID
+        :type AutoSnapshotPolicyId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AutoSnapshotPolicyId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateAutoSnapshotPolicyRequest(AbstractModel):
+    """UpdateAutoSnapshotPolicy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoSnapshotPolicyId: Snapshot policy ID
+        :type AutoSnapshotPolicyId: str
+        :param PolicyName: Snapshot policy name
+        :type PolicyName: str
+        :param DayOfWeek: The day of the week on which to regularly back up the snapshot
+        :type DayOfWeek: str
+        :param Hour: The hour of a day at which to regularly back up the snapshot
+        :type Hour: str
+        :param AliveDays: Snapshot retention period
+        :type AliveDays: int
+        :param IsActivated: Whether to activate the scheduled snapshot feature
+        :type IsActivated: int
+        """
+        self.AutoSnapshotPolicyId = None
+        self.PolicyName = None
+        self.DayOfWeek = None
+        self.Hour = None
+        self.AliveDays = None
+        self.IsActivated = None
+
+
+    def _deserialize(self, params):
+        self.AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
+        self.PolicyName = params.get("PolicyName")
+        self.DayOfWeek = params.get("DayOfWeek")
+        self.Hour = params.get("Hour")
+        self.AliveDays = params.get("AliveDays")
+        self.IsActivated = params.get("IsActivated")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateAutoSnapshotPolicyResponse(AbstractModel):
+    """UpdateAutoSnapshotPolicy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoSnapshotPolicyId: Snapshot policy ID
+        :type AutoSnapshotPolicyId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AutoSnapshotPolicyId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
+        self.RequestId = params.get("RequestId")
 
 
 class UpdateCfsFileSystemNameRequest(AbstractModel):
@@ -1624,4 +2554,57 @@ class UpdateCfsRuleResponse(AbstractModel):
         self.RWPermission = params.get("RWPermission")
         self.UserPermission = params.get("UserPermission")
         self.Priority = params.get("Priority")
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateCfsSnapshotAttributeRequest(AbstractModel):
+    """UpdateCfsSnapshotAttribute request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotId: File system snapshot ID
+        :type SnapshotId: str
+        :param SnapshotName: File system snapshot name
+        :type SnapshotName: str
+        :param AliveDays: File system snapshot retention period in days
+        :type AliveDays: int
+        """
+        self.SnapshotId = None
+        self.SnapshotName = None
+        self.AliveDays = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotId = params.get("SnapshotId")
+        self.SnapshotName = params.get("SnapshotName")
+        self.AliveDays = params.get("AliveDays")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateCfsSnapshotAttributeResponse(AbstractModel):
+    """UpdateCfsSnapshotAttribute response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotId: File system snapshot ID
+        :type SnapshotId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SnapshotId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotId = params.get("SnapshotId")
         self.RequestId = params.get("RequestId")

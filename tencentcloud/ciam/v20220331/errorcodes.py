@@ -41,6 +41,9 @@ FAILEDOPERATION_EMAILISNULL = 'FailedOperation.EmailIsNull'
 # The user is empty during user import.
 FAILEDOPERATION_IMPORTUSERISEMPTY = 'FailedOperation.ImportUserIsEmpty'
 
+# indexedAttribute can contain up to 512 characters.
+FAILEDOPERATION_INDEXEDATTRIBUTETOOLONG = 'FailedOperation.IndexedAttributeTooLong'
+
 # The tenant is invalid.
 FAILEDOPERATION_INVALIDTENANT = 'FailedOperation.InvalidTenant'
 
@@ -61,6 +64,15 @@ FAILEDOPERATION_PHONENUMBERISNULL = 'FailedOperation.PhoneNumberIsNull'
 
 # The primary user does not exist.
 FAILEDOPERATION_PRIMARYUSERNOTFOUND = 'FailedOperation.PrimaryUserNotFound'
+
+# The query condition must contain at least one of the followings: userName, phoneNumber, email, userGroup, alipayUserId, wechatOpenId,wechatUnionId, qqOpenId, qqUnionId,lastModifiedDate, indexedAttribute1, indexedAttribute2,indexedAttribute3, indexedAttribute4, indexedAttribute5.
+FAILEDOPERATION_QUERYUSERSPARAMETERMUSTINWHITELIST = 'FailedOperation.QueryUsersParameterMustInWhitelist'
+
+# The conditions can not duplicate.
+FAILEDOPERATION_QUERYUSERSPARAMETERREPEAT = 'FailedOperation.QueryUsersParameterRepeat'
+
+# The `PropertyKey` of `Sort` must include one of the followings: id, userName, phoneNumber, email, userGroup, alipayUserId, wechatOpenId,wechatUnionId, qqOpenId, qqUnionId,lastModifiedDate, indexedAttribute1, indexedAttribute2,indexedAttribute3, indexedAttribute4, indexedAttribute5.
+FAILEDOPERATION_QUERYUSERSSORTPARAMETERMUSTINWHITELIST = 'FailedOperation.QueryUsersSortParameterMustInWhitelist'
 
 # The quota is exceeded. Contact customer service.
 FAILEDOPERATION_QUOTALIMITEXCEEDED = 'FailedOperation.QuotaLimitExceeded'

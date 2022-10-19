@@ -1430,7 +1430,6 @@ class BandwidthAlert(AbstractModel):
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type BpsThreshold: int
         :param CounterMeasure: Action taken when threshold is reached
-`RESOLVE_DNS_TO_ORIGIN`: Requests will be forwarded to the origin server. This is only supported for domain names of external origin.
 `RETURN_404`: A 404 error will be returned for all requests.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type CounterMeasure: str
@@ -5289,15 +5288,15 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class HTTPHeader(AbstractModel):
-    """
+    """HTTP request header
 
     """
 
     def __init__(self):
         r"""
-        :param Name: 
+        :param Name: Request header name
         :type Name: str
-        :param Value: 
+        :param Value: Request header value
         :type Value: str
         """
         self.Name = None
@@ -5513,11 +5512,10 @@ class Https(AbstractModel):
 `off`: Disable
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Switch: str
-        :param Http2: HTTP2 configuration switch
+        :param Http2: Whether to enable HTTP2
 `on`: Enable
 `off`: Disable
-Enabling HTTPS acceleration for the first time will enable HTTP2 configuration by default.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Http2: str
         :param OcspStapling: OCSP configuration switch
 `on`: Enable
@@ -7697,7 +7695,7 @@ Notes:
 Notes:
 This feature is in beta test.
         :type DisableRange: bool
-        :param Headers: 
+        :param Headers: Custom HTTP request headers (Up to 20). `Name`: Up to 128 characters. `Value`: Up to 1024 characters.
         :type Headers: list of HTTPHeader
         :param UrlEncode: Whether to encode the URL
         :type UrlEncode: bool
@@ -9323,7 +9321,6 @@ class ServerCert(AbstractModel):
     """HTTPS acceleration server certificate configuration:
     + Supports deployment with certificates that are being hosted by the SSL Certificate Services
     + Supports uploading certificates of PEM format for deployment
-    Note: when uploading certificates of PEM format, the Base64 encoding is required.
 
     """
 

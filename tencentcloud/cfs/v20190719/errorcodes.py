@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# A CAM signature/authentication error occurred.
+AUTHFAILURE = 'AuthFailure'
+
 # Request unauthorized.
 AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
 
@@ -52,6 +55,39 @@ INTERNALERROR_GETACCOUNTSTATUSFAILED = 'InternalError.GetAccountStatusFailed'
 
 # Invalid parameter.
 INVALIDPARAMETER = 'InvalidParameter'
+
+# The snapshot policy was not found.
+INVALIDPARAMETER_AUTOPOLICYNOTFOUND = 'InvalidParameter.AutoPolicyNotFound'
+
+# The snapshot retention period is invalid.
+INVALIDPARAMETER_INVALIDALIVEDDAYS = 'InvalidParameter.InvalidAlivedDays'
+
+# The scheduled day of the week parameter is invalid.
+INVALIDPARAMETER_INVALIDPARAMDAYOFWEEK = 'InvalidParameter.InvalidParamDayofWeek'
+
+# The value of the scheduled hour parameter is incorrect.
+INVALIDPARAMETER_INVALIDPARAMHOUR = 'InvalidParameter.InvalidParamHour'
+
+# The snapshot policy is invalid.
+INVALIDPARAMETER_INVALIDSNAPPOLICYSTATUS = 'InvalidParameter.InvalidSnapPolicyStatus'
+
+# The file system snapshot parameter name is invalid.
+INVALIDPARAMETER_INVALIDSNAPSHOTNAME = 'InvalidParameter.InvalidSnapshotName'
+
+# The file system snapshot policy name is invalid.
+INVALIDPARAMETER_INVALIDSNAPSHOTPOLICYNAME = 'InvalidParameter.InvalidSnapshotPolicyName'
+
+# The policy parameter is missing.
+INVALIDPARAMETER_MISSINGPOLICYPARAM = 'InvalidParameter.MissingPolicyParam'
+
+# The file system snapshot name exceeds the upper limit.
+INVALIDPARAMETER_SNAPSHOTNAMELIMITEXCEEDED = 'InvalidParameter.SnapshotNameLimitExceeded'
+
+# The file system snapshot policy name exceeds the limit.
+INVALIDPARAMETER_SNAPSHOTPOLICYNAMELIMITEXCEEDED = 'InvalidParameter.SnapshotPolicyNameLimitExceeded'
+
+# The parameter value is incorrect.
+INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
 # The length of the string used to ensure the idempotency of the request exceeds the upper limit of 64 bytes.
 INVALIDPARAMETERVALUE_CLIENTTOKENLIMITEXCEEDED = 'InvalidParameterValue.ClientTokenLimitExceeded'
@@ -119,7 +155,7 @@ INVALIDPARAMETERVALUE_INVALIDRESOURCETAGS = 'InvalidParameterValue.InvalidResour
 # Incorrect read/write permission settings.
 INVALIDPARAMETERVALUE_INVALIDRWPERMISSION = 'InvalidParameterValue.InvalidRwPermission'
 
-# 
+# The snapshot is invalid.
 INVALIDPARAMETERVALUE_INVALIDSNAPSHOTSTATUS = 'InvalidParameterValue.InvalidSnapshotStatus'
 
 # The resource pack does not exist or has been bound.
@@ -133,6 +169,12 @@ INVALIDPARAMETERVALUE_INVALIDSUBNETID = 'InvalidParameterValue.InvalidSubnetId'
 
 # The tag key cannot be empty.
 INVALIDPARAMETERVALUE_INVALIDTAGKEY = 'InvalidParameterValue.InvalidTagKey'
+
+# The tag value is empty or the character is invalid.
+INVALIDPARAMETERVALUE_INVALIDTAGVALUE = 'InvalidParameterValue.InvalidTagValue'
+
+# The capacity value is invalid.
+INVALIDPARAMETERVALUE_INVALIDTURBOCAPACITY = 'InvalidParameterValue.InvalidTurboCapacity'
 
 # Incorrect user permission settings.
 INVALIDPARAMETERVALUE_INVALIDUSERPERMISSION = 'InvalidParameterValue.InvalidUserPermission'
@@ -233,6 +275,9 @@ RESOURCEINSUFFICIENT_SUBNETIPALLOCCUPIED = 'ResourceInsufficient.SubnetIpAllOccu
 # The quantity of the resource tags reached the upper limit.
 RESOURCEINSUFFICIENT_TAGLIMITEXCEEDED = 'ResourceInsufficient.TagLimitExceeded'
 
+# The tag quota is insufficient.
+RESOURCEINSUFFICIENT_TAGQUOTASEXCEEDED = 'ResourceInsufficient.TagQuotasExceeded'
+
 # The resource does not exist.
 RESOURCENOTFOUND = 'ResourceNotFound'
 
@@ -248,6 +293,9 @@ RESOURCENOTFOUND_PGROUPNOTFOUND = 'ResourceNotFound.PgroupNotFound'
 # The permission rule does not exist.
 RESOURCENOTFOUND_RULENOTFOUND = 'ResourceNotFound.RuleNotFound'
 
+# The snapshot ID does not exist.
+RESOURCENOTFOUND_SNAPSHOTNOTFOUND = 'ResourceNotFound.SnapshotNotFound'
+
 # Unsupported operation.
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
@@ -256,6 +304,9 @@ UNSUPPORTEDOPERATION_BASICNETINTERFACENOTSUPPORTED = 'UnsupportedOperation.Basic
 
 # Your account is in arrears. Please top up and try again.
 UNSUPPORTEDOPERATION_OUTOFSERVICE = 'UnsupportedOperation.OutOfService'
+
+# The CFS role was not authorized.
+UNSUPPORTEDOPERATION_UNAUTHORIZEDCFSQCSROLE = 'UnsupportedOperation.UnauthorizedCfsQcsRole'
 
 # Unverified user.
 UNSUPPORTEDOPERATION_UNVERIFIEDUSER = 'UnsupportedOperation.UnverifiedUser'

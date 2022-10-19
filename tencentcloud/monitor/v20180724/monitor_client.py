@@ -1337,6 +1337,35 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeGrafanaChannels(self, request):
+        """This API is used to list all Grafana alert channels.
+
+        :param request: Request instance for DescribeGrafanaChannels.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeGrafanaChannelsRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeGrafanaChannelsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGrafanaChannels", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeGrafanaChannelsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeGrafanaConfig(self, request):
         """This API is used to list Grafana settings, i.e., the `grafana.ini` file content.
 
@@ -2011,10 +2040,13 @@ class MonitorClient(AbstractClient):
 
 
     def GetMonitorData(self, request):
-        """This API is used to get the monitoring data of Tencent Cloud services except TKE. To pull TKE’s monitoring data, please use the API [DescribeStatisticData](https://intl.cloud.tencent.com/document/product/248/51845?from_cn_redirect=1).
+        """This API is used to get the monitoring data of Tencent Cloud services except TKE. To pull TKE’s monitoring data, use the [DescribeStatisticData](https://www.tencentcloud.com/document/product/248/39481) API.
         You can get the monitoring data of a Tencent Cloud service by passing in its namespace, object dimension description, and monitoring metrics.
         API call rate limit: 20 calls/second (1,200 calls/minute). A single request can get the data of up to 10 instances for up to 1,440 data points.
         If you need to call a large number of APIs to pull metrics or objects at a time, some APIs may fail to be called due to the rate limit. We suggest you evenly arrange API calls at a time granularity.
+
+        >?
+        >- Cloud Monitor has started billing the `GetMonitorData` API on September 1, 2022. Each root account has a free tier of one million call requests a month. If you want to call this API after the free tier is exceeded, you need to enable [pay-as-you-go billing for API requests](https://buy.cloud.tencent.com/APIRequestBuy). For billing rules, see [API billing documentation](https://intl.cloud.tencent.com/document/product/248/77914?from_cn_redirect=1).
 
         :param request: Request instance for GetMonitorData.
         :type request: :class:`tencentcloud.monitor.v20180724.models.GetMonitorDataRequest`

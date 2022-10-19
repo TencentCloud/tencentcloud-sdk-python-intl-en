@@ -50,6 +50,38 @@ class AlarmEvent(AbstractModel):
         
 
 
+class AlarmHierarchicalValue(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Remind: 
+        :type Remind: str
+        :param Warn: 
+        :type Warn: str
+        :param Serious: 
+        :type Serious: str
+        """
+        self.Remind = None
+        self.Warn = None
+        self.Serious = None
+
+
+    def _deserialize(self, params):
+        self.Remind = params.get("Remind")
+        self.Warn = params.get("Warn")
+        self.Serious = params.get("Serious")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AlarmHistory(AbstractModel):
     """Alarm record data
 
@@ -261,6 +293,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param CLSNotices: Channel to push alarm notifications to CLS.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type CLSNotices: list of CLSNotice
+        :param Tags: Tags bound to a notification template
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of Tag
         """
         self.Id = None
         self.Name = None
@@ -274,6 +309,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.PolicyIds = None
         self.AMPConsumerId = None
         self.CLSNotices = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -304,6 +340,12 @@ Note: This field may return `null`, indicating that no valid values can be obtai
                 obj = CLSNotice()
                 obj._deserialize(item)
                 self.CLSNotices.append(obj)
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -422,6 +464,12 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param AdvancedMetricNumber: The number of advanced metrics.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type AdvancedMetricNumber: int
+        :param IsBindAll: Whether the policy is associated with all objects
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsBindAll: int
+        :param Tags: Policy tag
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of Tag
         """
         self.PolicyId = None
         self.PolicyName = None
@@ -456,6 +504,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.IsOneClick = None
         self.OneClickStatus = None
         self.AdvancedMetricNumber = None
+        self.IsBindAll = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -513,6 +563,13 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.IsOneClick = params.get("IsOneClick")
         self.OneClickStatus = params.get("OneClickStatus")
         self.AdvancedMetricNumber = params.get("AdvancedMetricNumber")
+        self.IsBindAll = params.get("IsBindAll")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -684,6 +741,14 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param ProductId: Integration center product ID.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type ProductId: str
+        :param ValueMax: Maximum value
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ValueMax: float
+        :param ValueMin: Minimum value
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ValueMin: float
+        :param HierarchicalValue: 
+        :type HierarchicalValue: :class:`tencentcloud.monitor.v20180724.models.AlarmHierarchicalValue`
         """
         self.MetricName = None
         self.Period = None
@@ -699,6 +764,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.IsAdvanced = None
         self.IsOpen = None
         self.ProductId = None
+        self.ValueMax = None
+        self.ValueMin = None
+        self.HierarchicalValue = None
 
 
     def _deserialize(self, params):
@@ -718,6 +786,11 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.IsAdvanced = params.get("IsAdvanced")
         self.IsOpen = params.get("IsOpen")
         self.ProductId = params.get("ProductId")
+        self.ValueMax = params.get("ValueMax")
+        self.ValueMin = params.get("ValueMin")
+        if params.get("HierarchicalValue") is not None:
+            self.HierarchicalValue = AlarmHierarchicalValue()
+            self.HierarchicalValue._deserialize(params.get("HierarchicalValue"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1089,8 +1162,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param CalcValue: Detection value.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type CalcValue: str
-        :param ContinueTime: Duration.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param ContinueTime: Duration in seconds.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ContinueTime: str
         :param MetricID: Metric ID.
         :type MetricID: int
@@ -1102,6 +1175,13 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :type RuleID: int
         :param Unit: Metric unit.
         :type Unit: str
+        :param IsAdvanced: Whether it is an advanced metric. Valid values: `0` (no), `1` (yes).
+        :type IsAdvanced: int
+        :param IsOpen: Whether the advance metric feature is enabled. Valid values: `0` (no), `1` (yes).
+        :type IsOpen: int
+        :param ProductId: Product ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProductId: str
         """
         self.AlarmNotifyPeriod = None
         self.AlarmNotifyType = None
@@ -1113,6 +1193,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.Period = None
         self.RuleID = None
         self.Unit = None
+        self.IsAdvanced = None
+        self.IsOpen = None
+        self.ProductId = None
 
 
     def _deserialize(self, params):
@@ -1126,6 +1209,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.Period = params.get("Period")
         self.RuleID = params.get("RuleID")
         self.Unit = params.get("Unit")
+        self.IsAdvanced = params.get("IsAdvanced")
+        self.IsOpen = params.get("IsOpen")
+        self.ProductId = params.get("ProductId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1195,6 +1281,8 @@ class CreateAlarmNoticeRequest(AbstractModel):
         :type URLNotices: list of URLNotice
         :param CLSNotices: The operation of pushing alarm notifications to CLS. Up to one CLS log topic can be configured.
         :type CLSNotices: list of CLSNotice
+        :param Tags: Tags bound to a template
+        :type Tags: list of Tag
         """
         self.Module = None
         self.Name = None
@@ -1203,6 +1291,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
         self.UserNotices = None
         self.URLNotices = None
         self.CLSNotices = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -1228,6 +1317,12 @@ class CreateAlarmNoticeRequest(AbstractModel):
                 obj = CLSNotice()
                 obj._deserialize(item)
                 self.CLSNotices.append(obj)
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1293,6 +1388,10 @@ class CreateAlarmPolicyRequest(AbstractModel):
         :type Filter: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyFilter`
         :param GroupBy: Aggregation dimension list, which is used to specify which dimension keys data is grouped by.
         :type GroupBy: list of str
+        :param Tags: Tags bound to a template
+        :type Tags: list of Tag
+        :param LogAlarmReqInfo: Log alarm information
+        :type LogAlarmReqInfo: :class:`tencentcloud.monitor.v20180724.models.LogAlarmReq`
         """
         self.Module = None
         self.PolicyName = None
@@ -1308,6 +1407,8 @@ class CreateAlarmPolicyRequest(AbstractModel):
         self.TriggerTasks = None
         self.Filter = None
         self.GroupBy = None
+        self.Tags = None
+        self.LogAlarmReqInfo = None
 
 
     def _deserialize(self, params):
@@ -1336,6 +1437,15 @@ class CreateAlarmPolicyRequest(AbstractModel):
             self.Filter = AlarmPolicyFilter()
             self.Filter._deserialize(params.get("Filter"))
         self.GroupBy = params.get("GroupBy")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        if params.get("LogAlarmReqInfo") is not None:
+            self.LogAlarmReqInfo = LogAlarmReq()
+            self.LogAlarmReqInfo._deserialize(params.get("LogAlarmReqInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1635,7 +1745,8 @@ class CreateGrafanaIntegrationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IntegrationId: 
+        :param IntegrationId: Integration ID
+Note: This field may return null, indicating that no valid values can be obtained.
         :type IntegrationId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1660,13 +1771,13 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
         :type InstanceId: str
         :param ChannelName: Channel name
         :type ChannelName: str
-        :param OrgId: Organization ID
+        :param OrgId: Default value: `1`. This parameter has been deprecated. Please use `OrganizationIds` instead.
         :type OrgId: int
         :param Receivers: Array of notification channel IDs
         :type Receivers: list of str
-        :param ExtraOrgIds: Array of extra organization IDs
+        :param ExtraOrgIds: Array of extra organization IDs. This parameter has been deprecated. Please use `OrganizationIds` instead.
         :type ExtraOrgIds: list of str
-        :param OrganizationIds: 
+        :param OrganizationIds: Array of all valid organization IDs. Default value: `1`.
         :type OrganizationIds: list of str
         """
         self.InstanceId = None
@@ -1700,7 +1811,8 @@ class CreateGrafanaNotificationChannelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ChannelId: 
+        :param ChannelId: Channel ID.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ChannelId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2187,7 +2299,7 @@ class CreateSSOAccountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 
+        :param UserId: The added user UIN
         :type UserId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3347,6 +3459,8 @@ class DescribeAlarmNoticesRequest(AbstractModel):
         :type GroupIds: list of int
         :param NoticeIds: Filter by notification template ID. If an empty array is passed in or if this parameter is left empty, the filter operation will not be performed.
         :type NoticeIds: list of str
+        :param Tags: Filter templates by tag
+        :type Tags: list of Tag
         """
         self.Module = None
         self.PageNumber = None
@@ -3358,6 +3472,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
         self.UserIds = None
         self.GroupIds = None
         self.NoticeIds = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -3371,6 +3486,12 @@ class DescribeAlarmNoticesRequest(AbstractModel):
         self.UserIds = params.get("UserIds")
         self.GroupIds = params.get("GroupIds")
         self.NoticeIds = params.get("NoticeIds")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3468,6 +3589,12 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
         :type TriggerTasks: list of AlarmPolicyTriggerTask
         :param OneClickPolicyType: Filter by quick alarm policy. If this parameter is left empty, all policies are displayed. `ONECLICK`: Display quick alarm policies; `NOT_ONECLICK`: Display non-quick alarm policies.
         :type OneClickPolicyType: list of str
+        :param NotBindAll: Whether the returned result filters policies associated with all objects. Valid values: `1` (Yes), `0` (No).
+        :type NotBindAll: int
+        :param NotInstanceGroup: Whether the returned result filters policies associated with instance groups. Valid values: `1` (Yes), `0` (No).
+        :type NotInstanceGroup: int
+        :param Tags: Filter policies by tag
+        :type Tags: list of Tag
         """
         self.Module = None
         self.PageNumber = None
@@ -3490,6 +3617,9 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
         self.NeedCorrespondence = None
         self.TriggerTasks = None
         self.OneClickPolicyType = None
+        self.NotBindAll = None
+        self.NotInstanceGroup = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -3519,6 +3649,14 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
                 obj._deserialize(item)
                 self.TriggerTasks.append(obj)
         self.OneClickPolicyType = params.get("OneClickPolicyType")
+        self.NotBindAll = params.get("NotBindAll")
+        self.NotInstanceGroup = params.get("NotInstanceGroup")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4317,6 +4455,8 @@ class DescribeConditionsTemplateListRequest(AbstractModel):
         :type Offset: int
         :param UpdateTimeOrder: Sorting method by update time. `asc`: Ascending order; `desc`: Descending order.
         :type UpdateTimeOrder: str
+        :param PolicyCountOrder: Sorting order based on the number of associated policies. Valid values: `asc` (ascending order), `desc` (descending order).
+        :type PolicyCountOrder: str
         """
         self.Module = None
         self.ViewName = None
@@ -4325,6 +4465,7 @@ class DescribeConditionsTemplateListRequest(AbstractModel):
         self.Limit = None
         self.Offset = None
         self.UpdateTimeOrder = None
+        self.PolicyCountOrder = None
 
 
     def _deserialize(self, params):
@@ -4335,6 +4476,7 @@ class DescribeConditionsTemplateListRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
         self.UpdateTimeOrder = params.get("UpdateTimeOrder")
+        self.PolicyCountOrder = params.get("PolicyCountOrder")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4486,6 +4628,76 @@ class DescribeExporterIntegrationsResponse(AbstractModel):
                 obj = IntegrationConfiguration()
                 obj._deserialize(item)
                 self.IntegrationSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGrafanaChannelsRequest(AbstractModel):
+    """DescribeGrafanaChannels request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Offset: Offset.
+        :type Offset: int
+        :param Limit: Number of items to be queried
+        :type Limit: int
+        :param ChannelName: Channel name
+        :type ChannelName: str
+        :param ChannelIds: Channel ID.
+        :type ChannelIds: list of str
+        :param ChannelState: Channel status
+        :type ChannelState: int
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+        self.ChannelName = None
+        self.ChannelIds = None
+        self.ChannelState = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ChannelName = params.get("ChannelName")
+        self.ChannelIds = params.get("ChannelIds")
+        self.ChannelState = params.get("ChannelState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGrafanaChannelsResponse(AbstractModel):
+    """DescribeGrafanaChannels response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NotificationChannelSet: Array of alert channels
+        :type NotificationChannelSet: list of GrafanaChannel
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.NotificationChannelSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NotificationChannelSet") is not None:
+            self.NotificationChannelSet = []
+            for item in params.get("NotificationChannelSet"):
+                obj = GrafanaChannel()
+                obj._deserialize(item)
+                self.NotificationChannelSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4849,12 +5061,16 @@ class DescribeInstalledPluginsRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID
         :type InstanceId: str
+        :param PluginId: Filter by plugin ID
+        :type PluginId: str
         """
         self.InstanceId = None
+        self.PluginId = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.PluginId = params.get("PluginId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6860,12 +7076,16 @@ class DescribeSSOAccountRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID
         :type InstanceId: str
+        :param UserId: Filter by account UIN
+        :type UserId: str
         """
         self.InstanceId = None
+        self.UserId = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7563,11 +7783,18 @@ class GrafanaAccountInfo(AbstractModel):
         :type Notes: str
         :param CreateAt: Creation time
         :type CreateAt: str
+        :param InstanceId: Instance ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param Uin: User’s root account UIN
+        :type Uin: str
         """
         self.UserId = None
         self.Role = None
         self.Notes = None
         self.CreateAt = None
+        self.InstanceId = None
+        self.Uin = None
 
 
     def _deserialize(self, params):
@@ -7580,6 +7807,8 @@ class GrafanaAccountInfo(AbstractModel):
                 self.Role.append(obj)
         self.Notes = params.get("Notes")
         self.CreateAt = params.get("CreateAt")
+        self.InstanceId = params.get("InstanceId")
+        self.Uin = params.get("Uin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7608,6 +7837,51 @@ class GrafanaAccountRole(AbstractModel):
     def _deserialize(self, params):
         self.Organization = params.get("Organization")
         self.Role = params.get("Role")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GrafanaChannel(AbstractModel):
+    """Grafana alert channel
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelId: Channel ID
+        :type ChannelId: str
+        :param ChannelName: Channel name
+        :type ChannelName: str
+        :param Receivers: Array of alert channel template IDs
+        :type Receivers: list of str
+        :param CreatedAt: Creation time
+        :type CreatedAt: str
+        :param UpdatedAt: Update time
+        :type UpdatedAt: str
+        :param OrganizationIds: All valid organizations in an alert channel
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OrganizationIds: list of str
+        """
+        self.ChannelId = None
+        self.ChannelName = None
+        self.Receivers = None
+        self.CreatedAt = None
+        self.UpdatedAt = None
+        self.OrganizationIds = None
+
+
+    def _deserialize(self, params):
+        self.ChannelId = params.get("ChannelId")
+        self.ChannelName = params.get("ChannelName")
+        self.Receivers = params.get("Receivers")
+        self.CreatedAt = params.get("CreatedAt")
+        self.UpdatedAt = params.get("UpdatedAt")
+        self.OrganizationIds = params.get("OrganizationIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7734,11 +8008,15 @@ class GrafanaIntegrationConfig(AbstractModel):
         :type Content: str
         :param Description: Integration description
         :type Description: str
+        :param GrafanaURL: Grafana redirection address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GrafanaURL: str
         """
         self.IntegrationId = None
         self.Kind = None
         self.Content = None
         self.Description = None
+        self.GrafanaURL = None
 
 
     def _deserialize(self, params):
@@ -7746,6 +8024,7 @@ class GrafanaIntegrationConfig(AbstractModel):
         self.Kind = params.get("Kind")
         self.Content = params.get("Content")
         self.Description = params.get("Description")
+        self.GrafanaURL = params.get("GrafanaURL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7772,12 +8051,27 @@ class GrafanaNotificationChannel(AbstractModel):
         :type CreatedAt: str
         :param UpdatedAt: Update time
         :type UpdatedAt: str
+        :param OrgId: Default valid organization. This parameter has been deprecated. Please use `OrganizationIds` instead.
+        :type OrgId: str
+        :param ExtraOrgIds: Extra valid organization. This parameter has been deprecated. Please use `OrganizationIds` instead.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExtraOrgIds: list of str
+        :param OrgIds: Valid organization. This parameter has been deprecated. Please use `OrganizationIds` instead.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OrgIds: str
+        :param OrganizationIds: All valid organizations in an alert channel
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OrganizationIds: str
         """
         self.ChannelId = None
         self.ChannelName = None
         self.Receivers = None
         self.CreatedAt = None
         self.UpdatedAt = None
+        self.OrgId = None
+        self.ExtraOrgIds = None
+        self.OrgIds = None
+        self.OrganizationIds = None
 
 
     def _deserialize(self, params):
@@ -7786,6 +8080,10 @@ class GrafanaNotificationChannel(AbstractModel):
         self.Receivers = params.get("Receivers")
         self.CreatedAt = params.get("CreatedAt")
         self.UpdatedAt = params.get("UpdatedAt")
+        self.OrgId = params.get("OrgId")
+        self.ExtraOrgIds = params.get("ExtraOrgIds")
+        self.OrgIds = params.get("OrgIds")
+        self.OrganizationIds = params.get("OrganizationIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7864,7 +8162,8 @@ class InstallPluginsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PluginIds: 
+        :param PluginIds: ID of the installed plugin
+Note: This field may return null, indicating that no valid values can be obtained.
         :type PluginIds: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -8004,6 +8303,79 @@ class IntegrationConfiguration(AbstractModel):
         self.Category = params.get("Category")
         self.InstanceDesc = params.get("InstanceDesc")
         self.GrafanaDashboardURL = params.get("GrafanaDashboardURL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogAlarmReq(AbstractModel):
+    """Log alarm request information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: APM instance ID
+        :type InstanceId: str
+        :param Filter: Search condition
+        :type Filter: list of LogFilterInfo
+        :param AlarmMerge: The switch to enable/disable alarm merging
+        :type AlarmMerge: str
+        :param AlarmMergeTime: Alarm merging time
+        :type AlarmMergeTime: str
+        """
+        self.InstanceId = None
+        self.Filter = None
+        self.AlarmMerge = None
+        self.AlarmMergeTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Filter") is not None:
+            self.Filter = []
+            for item in params.get("Filter"):
+                obj = LogFilterInfo()
+                obj._deserialize(item)
+                self.Filter.append(obj)
+        self.AlarmMerge = params.get("AlarmMerge")
+        self.AlarmMergeTime = params.get("AlarmMergeTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogFilterInfo(AbstractModel):
+    """Log alarm search condition structure
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: Field name
+        :type Key: str
+        :param Operator: Comparison operator
+        :type Operator: str
+        :param Value: Field value
+        :type Value: str
+        """
+        self.Key = None
+        self.Operator = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Operator = params.get("Operator")
+        self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8498,6 +8870,8 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
         :type Filter: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyFilter`
         :param GroupBy: Aggregation dimension list, which is used to specify which dimension keys data is grouped by.
         :type GroupBy: list of str
+        :param LogAlarmReqInfo: Log alarm creation request parameters
+        :type LogAlarmReqInfo: :class:`tencentcloud.monitor.v20180724.models.LogAlarmReq`
         """
         self.Module = None
         self.PolicyId = None
@@ -8506,6 +8880,7 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
         self.EventCondition = None
         self.Filter = None
         self.GroupBy = None
+        self.LogAlarmReqInfo = None
 
 
     def _deserialize(self, params):
@@ -8522,6 +8897,9 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
             self.Filter = AlarmPolicyFilter()
             self.Filter._deserialize(params.get("Filter"))
         self.GroupBy = params.get("GroupBy")
+        if params.get("LogAlarmReqInfo") is not None:
+            self.LogAlarmReqInfo = LogAlarmReq()
+            self.LogAlarmReqInfo._deserialize(params.get("LogAlarmReqInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9610,6 +9988,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param GrafanaInstanceId: ID of the bound Grafana instance
 Note: This field may return null, indicating that no valid values can be obtained.
         :type GrafanaInstanceId: str
+        :param AlertRuleLimit: The alert rule limit
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AlertRuleLimit: int
+        :param RecordingRuleLimit: The recording rule limit
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RecordingRuleLimit: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -9638,6 +10022,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.GrafanaIpWhiteList = None
         self.Grant = None
         self.GrafanaInstanceId = None
+        self.AlertRuleLimit = None
+        self.RecordingRuleLimit = None
 
 
     def _deserialize(self, params):
@@ -9675,6 +10061,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self.Grant = PrometheusInstanceGrantInfo()
             self.Grant._deserialize(params.get("Grant"))
         self.GrafanaInstanceId = params.get("GrafanaInstanceId")
+        self.AlertRuleLimit = params.get("AlertRuleLimit")
+        self.RecordingRuleLimit = params.get("RecordingRuleLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10018,7 +10406,7 @@ class RecordingRuleSet(AbstractModel):
         :type RuleId: str
         :param RuleState: Rule status code
         :type RuleState: int
-        :param Name: Rule name
+        :param Name: Group name
         :type Name: str
         :param Group: Rule group
         :type Group: str
@@ -10028,6 +10416,9 @@ class RecordingRuleSet(AbstractModel):
         :type CreatedAt: str
         :param UpdatedAt: Rule update time
         :type UpdatedAt: str
+        :param RuleName: Rule name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RuleName: str
         """
         self.RuleId = None
         self.RuleState = None
@@ -10036,6 +10427,7 @@ class RecordingRuleSet(AbstractModel):
         self.Total = None
         self.CreatedAt = None
         self.UpdatedAt = None
+        self.RuleName = None
 
 
     def _deserialize(self, params):
@@ -10046,6 +10438,7 @@ class RecordingRuleSet(AbstractModel):
         self.Total = params.get("Total")
         self.CreatedAt = params.get("CreatedAt")
         self.UpdatedAt = params.get("UpdatedAt")
+        self.RuleName = params.get("RuleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10239,6 +10632,34 @@ class SetDefaultAlarmPolicyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class Tag(AbstractModel):
+    """Tag
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: Tag key
+        :type Key: str
+        :param Value: Tag value
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TagInstance(AbstractModel):
@@ -11139,9 +11560,9 @@ class UpdateGrafanaNotificationChannelRequest(AbstractModel):
         :type ChannelName: str
         :param Receivers: Array of notification channel IDs
         :type Receivers: list of str
-        :param ExtraOrgIds: Array of extra organization IDs
+        :param ExtraOrgIds: This parameter has been deprecated. Please use `OrganizationIds` instead.
         :type ExtraOrgIds: list of str
-        :param OrganizationIds: 
+        :param OrganizationIds: Array of valid organization IDs
         :type OrganizationIds: list of str
         """
         self.ChannelId = None
